@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>SimpleGrid - AI-Native ERP | Deploy in Days | Zero Cost to Start</title>
-<meta name="description" content="ERP that adapts to your business in days. Built for manufacturers running 50–1,500 people. Fully custom. Free until you're sure.">
+<title>Product - SimpleGrid</title>
+<meta name="description" content="The events ledger for your enterprise. Domain-Driven Design + Event Sourcing. Operator-first ERP that deploys in 7 days.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
 <link rel="stylesheet" href="colors_and_type.css">
@@ -19,22 +19,45 @@
 <script type="text/babel" src="components/LoginModal.jsx"></script>
 <script type="text/babel" src="components/Interactive.jsx"></script>
 <script type="text/babel" src="components/ProductionFlow.jsx"></script>
-<script type="text/babel" src="components/HomeTop.jsx"></script>
+<script type="text/babel" src="components/EventsLedger.jsx"></script>
 <script type="text/babel" src="components/HomeMid.jsx"></script>
 <script type="text/babel" src="components/HomeBottom.jsx"></script>
 <script type="text/babel" src="components/Footer.jsx"></script>
 
 <script type="text/babel">
-function App() {
+function ProductPage() {
   const [showLogin, setShowLogin] = React.useState(false);
   return (<>
-    <Nav page="home" onLoginClick={() => setShowLogin(true)} />
-    <Hero />
-    <ProblemSection />
-    <WhatWeDo />
-    <HowItWorks />
-    <ProofSection />
-    <FinalCTA />
+    <Nav page="product" onLoginClick={() => setShowLogin(true)} />
+
+    {/* HOOK - set the stage */}
+    <ProductHeroNew />
+
+    {/* MOTIVATION - Fogg M: pain in operator voice */}
+    <MotivationSection />
+
+    {/* TRIGGER + ABILITY preview - show the system working */}
+    <ProductionFlow />
+
+    {/* THE BIG IDEA - Events Ledger (flagship section) */}
+    <EventsLedger />
+
+    {/* ARCHITECTURE - DDD + Event Sourcing explainer */}
+    <ArchitectureNew />
+
+    {/* ABILITY - adoption is easy */}
+    <AbilitySection />
+
+    {/* RULES - your process, enforced */}
+    <CustomRules />
+
+    {/* INTEGRATIONS + SECURITY - supporting pillars */}
+    <Integrations />
+    <DataSecurity />
+
+    {/* TRIGGER - final CTA */}
+    <TriggerCTA />
+
     <Footer />
     {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     <div className="mobile-cta">
@@ -42,7 +65,7 @@ function App() {
     </div>
   </>);
 }
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(<ProductPage />);
 </script>
 </body>
 </html>

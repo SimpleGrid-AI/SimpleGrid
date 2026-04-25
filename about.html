@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>SimpleGrid - AI-Native ERP | Deploy in Days | Zero Cost to Start</title>
-<meta name="description" content="ERP that adapts to your business in days. Built for manufacturers running 50–1,500 people. Fully custom. Free until you're sure.">
+<title>About Us - SimpleGrid</title>
+<meta name="description" content="SimpleGrid is built by operators, for operators. Founder-led deployment. No sales team. No chatbot.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
 <link rel="stylesheet" href="colors_and_type.css">
@@ -14,35 +14,42 @@
 </head>
 <body>
 <div id="root"></div>
-
 <script type="text/babel" src="components/Nav.jsx"></script>
 <script type="text/babel" src="components/LoginModal.jsx"></script>
 <script type="text/babel" src="components/Interactive.jsx"></script>
-<script type="text/babel" src="components/ProductionFlow.jsx"></script>
-<script type="text/babel" src="components/HomeTop.jsx"></script>
-<script type="text/babel" src="components/HomeMid.jsx"></script>
 <script type="text/babel" src="components/HomeBottom.jsx"></script>
 <script type="text/babel" src="components/Footer.jsx"></script>
-
 <script type="text/babel">
-function App() {
+function AboutPage() {
   const [showLogin, setShowLogin] = React.useState(false);
   return (<>
-    <Nav page="home" onLoginClick={() => setShowLogin(true)} />
-    <Hero />
-    <ProblemSection />
-    <WhatWeDo />
-    <HowItWorks />
-    <ProofSection />
-    <FinalCTA />
+    <Nav page="about" onLoginClick={() => setShowLogin(true)} />
+
+    <section className="section" style={{paddingBottom:24}}>
+      <div className="container">
+        <div className="tag">ABOUT US</div>
+        <h2 className="h2 ink" style={{maxWidth:880}}>An ERP built by operators, for operators.</h2>
+        <p className="lead" style={{maxWidth:760}}>
+          SimpleGrid was not designed in a boardroom. It was designed on a shop floor that was already running on Excel and WhatsApp - and not working. We built the system we wished we had.
+        </p>
+      </div>
+    </section>
+
+    <FounderStory />
+
+    <section className="section section-dark final-cta">
+      <div className="container">
+        <h2 className="h2">Want the founder on your call?</h2>
+        <p className="sub">Every deployment is led by Mukund personally. No sales team. No chatbot.</p>
+        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener" className="btn btn-lg btn-primary">Book a call</a>
+      </div>
+    </section>
+
     <Footer />
     {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
-    <div className="mobile-cta">
-      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener" className="btn btn-primary">Book a call - it's free</a>
-    </div>
   </>);
 }
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(<AboutPage />);
 </script>
 </body>
 </html>

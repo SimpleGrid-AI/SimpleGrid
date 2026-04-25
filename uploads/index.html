@@ -33,12 +33,19 @@ function App() {
     <ProblemSection />
     <WhatWeDo />
     <HowItWorks />
+    <DemoVideo />
+    <ProductionFlow />
+    <CustomRules />
+    <WhatYourTeamSees />
+    <FounderStory />
     <ProofSection />
+    <Integrations />
+    <DataSecurity />
     <FinalCTA />
     <Footer />
     {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     <div className="mobile-cta">
-      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener" className="btn btn-primary">Book a call - it's free</a>
+      <a href="https://calendly.com" target="_blank" rel="noopener" className="btn btn-primary">Book a call</a>
     </div>
   </>);
 }
