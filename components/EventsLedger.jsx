@@ -250,9 +250,9 @@ function ArchitectureNew() {
           </p>
         </Reveal>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, marginTop: 40 }}>
+        <div className="arch-ddd-grid">
           <Reveal>
-            <div style={{
+            <div className="arch-ddd-card" style={{
               border: '1px solid var(--border)', borderRadius: 12, padding: 32, height: '100%',
               borderLeft: '4px solid var(--sg-purple)',
             }}>
@@ -288,16 +288,16 @@ function ArchitectureNew() {
         </div>
 
         {/* The "why this matters" outcome row */}
-        <div style={{ marginTop: 40, padding: 32, background: 'var(--sg-off-white)', border: '1px solid var(--border)', borderRadius: 12 }}>
+        <div className="arch-outcome-box">
           <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg3)', marginBottom: 18 }}>What this combination unlocks</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+          <div className="arch-outcome-grid">
             {[
               { t: '7-day deploys', p: 'New domain → new system, generated from configuration. No new codebase per customer.' },
               { t: 'Audit by design', p: 'You don\'t add audit logs. The audit is the system. Every regulator question already has an answer.' },
               { t: 'Rules without releases', p: 'Change a rule, the system changes. No deploy cycle. No IT ticket. No version migration.' },
               { t: 'Disputes resolved', p: 'Vendor said 500. Log says 450, by Mike, 4:13 PM Tuesday. Argument over.' },
             ].map((x, i) => (
-              <div key={i}>
+              <div key={i} className="arch-outcome-cell">
                 <div style={{ fontFamily: 'var(--font-heading)', fontSize: 16, fontWeight: 700, color: 'var(--fg1)', marginBottom: 6 }}>{x.t}</div>
                 <div style={{ fontSize: 13, color: 'var(--fg2)', lineHeight: 1.6 }}>{x.p}</div>
               </div>

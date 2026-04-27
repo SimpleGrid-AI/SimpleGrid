@@ -370,6 +370,22 @@ img { max-width: 100%; display: block; }
 }
 @media (min-width: 769px) { .mobile-cta { display: none; } }
 
+/* ===== About page: Architecture (DDD × Event Sourcing) ===== */
+.arch-ddd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+.arch-outcome-box { margin-top: 40px; padding: 32px; background: var(--sg-off-white); border: 1px solid var(--border); border-radius: 12px; }
+.arch-outcome-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.arch-outcome-cell { min-width: 0; }
+
+@media (max-width: 880px) {
+  .arch-ddd-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+  .arch-ddd-card { padding: 22px !important; }
+  .arch-outcome-box { margin-top: 28px; padding: 22px; }
+  .arch-outcome-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+}
+@media (max-width: 520px) {
+  .arch-outcome-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
 /* ===== Home page: Problem section grid + visual containers ===== */
 .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .problem-visual { background: var(--sg-off-white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; display: flex; align-items: center; justify-content: center; }
