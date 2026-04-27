@@ -287,7 +287,6 @@ function ArchitectureNew() {
             <p style={{ fontSize: 15, color: 'var(--fg2)', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
               "This is not AI. AI is the surface. Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know."
             </p>
-            <p style={{ fontSize: 13, color: 'var(--fg3)', marginTop: 10 }}>- Mukund Agarwal, founder · operator first, technologist second</p>
           </div>
         </Reveal>
       </div>

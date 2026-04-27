@@ -122,12 +122,11 @@ function FounderStory() {
       <div className="container">
         <Reveal>
           <div className="founder-text" style={{maxWidth:780}}>
-            <div className="tag">BUILT BY AN OPERATOR</div>
-            <blockquote>I built a $30M manufacturing business. Survived two ERP failures. Ended up on Google Sheets.</blockquote>
-            <p className="body">SimpleGrid exists because I was the customer first. Multiple factories, 400-person workforce. I know what breaks when your system can't keep up.</p>
-            <p className="body">I lead every deployment personally. You deal with the founder. Not a sales team. Not a chatbot.</p>
-            <p className="body">SimpleGrid is what came out of all that - built the way operators actually run a plant. The next two sections are how we think about it, and how it works in practice.</p>
-            <p className="attr"> - Mukund, Founder, SimpleGrid</p>
+            <div className="tag">BUILT BY OPERATORS</div>
+            <blockquote>We built a $30M manufacturing business. Survived two ERP failures. Ended up on Google Sheets.</blockquote>
+            <p className="body">SimpleGrid exists because we were the customer first. Multiple factories, 400-person workforce. We know what breaks when your system can't keep up.</p>
+            <p className="body">We lead every deployment personally. You deal with our team — not a sales team, not a chatbot.</p>
+            <p className="body">SimpleGrid is what came out of all that — built the way operators actually run a plant. The next two sections are how we think about it, and how it works in practice.</p>
           </div>
         </Reveal>
       </div>

@@ -156,12 +156,12 @@ function BlogPost() {
         </div>
         
         {/* Prev/Next */}
-        <div style={{display:'flex',justifyContent:'space-between',marginTop:40,paddingTop:24,borderTop:'1px solid var(--border)',gap:20}}>
+        <div className="post-pager">
           {prevBlog ? (
-            <a href={'post.html?id='+prevBlog.id} style={{fontSize:14,color:'var(--sg-blue)',textDecoration:'none',border:'none'}}>← {prevBlog.title.length > 50 ? prevBlog.title.substring(0,50)+'…' : prevBlog.title}</a>
+            <a className="post-pager-link" href={'post.html?id='+prevBlog.id}>← {prevBlog.title.length > 50 ? prevBlog.title.substring(0,50)+'…' : prevBlog.title}</a>
           ) : <span></span>}
           {nextBlog ? (
-            <a href={'post.html?id='+nextBlog.id} style={{fontSize:14,color:'var(--sg-blue)',textDecoration:'none',border:'none',textAlign:'right'}}>{nextBlog.title.length > 50 ? nextBlog.title.substring(0,50)+'…' : nextBlog.title} →</a>
+            <a className="post-pager-link post-pager-next" href={'post.html?id='+nextBlog.id}>{nextBlog.title.length > 50 ? nextBlog.title.substring(0,50)+'…' : nextBlog.title} →</a>
           ) : <span></span>}
         </div>
       </div>
