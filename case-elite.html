@@ -109,10 +109,20 @@
 .contractor-table .ct-detail { font-size: 12px; color: var(--fg3); line-height: 1.5; }
 
 @media (max-width: 760px) {
-  .value-grid { grid-template-columns: 1fr 1fr; }
+  .value-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .value-card { padding: 18px 16px; }
+  .value-card h4 { font-size: 13px; margin-bottom: 10px; }
+  .value-card .ba { flex-wrap: wrap; row-gap: 2px; }
+  .value-card .ba .from { font-size: 14px; }
+  .value-card .ba .to { font-size: 22px; }
+  .value-card .desc { font-size: 11.5px; }
   .proc-row { grid-template-columns: 48px 1fr; }
   .proc-row .step-meta { display: none; }
   .contractor-table .ct-row { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 520px) {
+  .value-grid { grid-template-columns: 1fr; gap: 12px; }
+  .value-card .ba .to { font-size: 24px; }
 }
 </style>
 </head>
