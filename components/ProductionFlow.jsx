@@ -33,7 +33,7 @@ function ProductionFlow() {
   const stageProgress = (progress * stages.length) - activeStage;
 
   return (
-    <div ref={containerRef} style={{ height: '400vh', position: 'relative' }}>
+    <div ref={containerRef} id="watch-it-work" style={{ height: '400vh', position: 'relative' }}>
       <div style={{
         position: 'sticky', top: 0, height: '100vh',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -49,8 +49,8 @@ function ProductionFlow() {
         <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 1100, padding: '0 32px' }}>
           {/* Title */}
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
-            <div className="tag">WATCH IT WORK</div>
-            <h2 className="h2" style={{ fontSize: 28 }}>One order. From PO to dispatch. Every step tracked.</h2>
+            <div className="tag">WHERE WE COVER</div>
+            <h2 className="h2" style={{ fontSize: 28 }}>From the first PO to the final dispatch, we cover every step in between.</h2>
           </div>
 
           {/* Stage pipeline */}

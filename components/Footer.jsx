@@ -11,12 +11,12 @@ function FIcon({ kind }) {
 function Footer() {
   const cols = [
     { h: 'Product', links: [
-      { l: 'Watch it work', href: 'product.html' },
-      { l: 'Your process, enforced', href: 'product.html#rules' },
-      { l: 'What your team sees', href: 'product.html#team' },
+      { l: 'Meet Hank', href: 'product.html#hank' },
       { l: 'Integrations', href: 'product.html#integrations' },
       { l: 'Data security', href: 'product.html#security' },
-      { l: 'Architecture', href: 'product.html#architecture' },
+      { l: 'Events ledger', href: 'product.html#ledger' },
+      { l: 'Adoption', href: 'product.html#ability' },
+      { l: 'Your process, enforced', href: 'product.html#rules' },
     ]},
     { h: 'Resources', links: [
       { l: 'Case studies', href: 'case-studies.html' },
@@ -24,6 +24,7 @@ function Footer() {
     ]},
     { h: 'Company', links: [
       { l: 'About', href: 'about.html' },
+      { l: 'Architecture', href: 'about.html#architecture' },
       { l: 'Hiring', href: 'hiring.html' },
     ]},
   ];
@@ -32,7 +33,7 @@ function Footer() {
     { kind: 'mail',     l: 'hello@simplegrid.ai', href: 'mailto:hello@simplegrid.ai' },
     { kind: 'phone',    l: '+91 96499 33000',     href: 'tel:+919649933000' },
     { kind: 'linkedin', l: 'LinkedIn',            href: 'https://www.linkedin.com/company/simplegridai', external: true },
-    { kind: 'calendar', l: 'Book a call',         href: 'https://calendly.com', external: true },
+    { kind: 'calendar', l: 'Book a call',         href: 'https://cal.com/simplegrid-ai', external: true },
     { kind: 'pin',      l: '22nd Cross, 23rd Main Rd, HSR Layout\nBengaluru, Karnataka 560102', isAddress: true, href: 'https://www.google.com/maps/search/?api=1&query=22nd+Cross+Road,+23rd+Main+Road,+HSR+Layout,+Bengaluru,+Karnataka+560102', external: true },
   ];
 

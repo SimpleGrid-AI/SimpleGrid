@@ -118,18 +118,16 @@ window.ApparelVisual = ApparelVisual;
 
 function FounderStory() {
   return (
-    <section className="section" id="founder">
+    <section className="section section-alt" id="founder">
       <div className="container">
         <Reveal>
-          <div className="founder-grid">
-            <div className="founder-photo">Photo placeholder</div>
-            <div className="founder-text">
-              <div className="tag">BUILT BY AN OPERATOR</div>
-              <blockquote>I built a $30M manufacturing business. Survived two ERP failures. Ended up on Google Sheets.</blockquote>
-              <p className="body">SimpleGrid exists because I was the customer first. Multiple factories, 400-person workforce, international buyers. I know what breaks when your system can't keep up.</p>
-              <p className="body">I lead every deployment personally. You deal with the founder. Not a sales team. Not a chatbot.</p>
-              <p className="attr">- Mukund Agarwal, Founder &amp; CEO</p>
-            </div>
+          <div className="founder-text" style={{maxWidth:780}}>
+            <div className="tag">BUILT BY AN OPERATOR</div>
+            <blockquote>I built a $30M manufacturing business. Survived two ERP failures. Ended up on Google Sheets.</blockquote>
+            <p className="body">SimpleGrid exists because I was the customer first. Multiple factories, 400-person workforce. I know what breaks when your system can't keep up.</p>
+            <p className="body">I lead every deployment personally. You deal with the founder. Not a sales team. Not a chatbot.</p>
+            <p className="body">SimpleGrid is what came out of all that - built the way operators actually run a plant. The next two sections are how we think about it, and how it works in practice.</p>
+            <p className="attr"> - Mukund, Founder, SimpleGrid</p>
           </div>
         </Reveal>
       </div>
@@ -140,15 +138,16 @@ window.FounderStory = FounderStory;
 
 function ProofSection() {
   return (
-    <section className="section section-alt">
+    <section className="section">
       <div className="container">
         <Reveal>
-          <div className="tag">PROOF</div>
-          <h2 className="h2">Deployed. Running. Live data.</h2>
+          <div className="tag" style={{textAlign:'center'}}>CASE STUDIES</div>
+          <h2 className="h2" style={{textAlign:'center'}}>Two case studies we can share.</h2>
+          <p className="lead" style={{maxWidth:920,margin:'0 auto 40px',textAlign:'center'}}>The deployments below are the two our partners have agreed to talk about publicly. We will add more case studies here as new partners come on board and give us permission to share.</p>
         </Reveal>
         <div className="proof-grid">
           {[
-            { kind: 'image', img: 'url(assets/elite-factory.jpeg) center/cover', name: 'Elite Arts & Crafts', desc: 'Furniture exporter. 600–800 employees. ~1M sqft. Excel + WhatsApp → live ERP.', stats: '64 tracked · 72 triggers · 21 days', quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."', attr: '- Chirag, Founder', link: 'case-elite.html' },
+            { kind: 'image', img: 'url(assets/elite-factory.jpeg) center/cover', name: 'Elite Arts & Crafts', desc: 'Furniture exporter. 600–800 employees. ~1M sqft. Excel + group chats → live ERP.', stats: '64 tracked · 72 triggers · 21 days', quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."', attr: '- Chirag, Founder', link: 'case-elite.html' },
             { kind: 'apparel', name: 'Apex Apparel', desc: 'Apparel manufacturer · 80–100k shirts/mo. 3 streams. 20+ job workers. 30+ inventory locations. Live in 12 days.', stats: '34 tracked · 44 triggers · 12 days', quote: '"Working demo in 24 hours - 60–70% accurate. No vendor has ever done that."', attr: '- Founder, Apex Apparel (confidential)', link: 'case-apex.html' },
           ].map((c,i) => (
             <Reveal key={i} delay={i * 150}>
@@ -182,32 +181,67 @@ function ProofSection() {
 window.ProofSection = ProofSection;
 
 function Integrations() {
+  // Add more entries to this array - the marquee will pick them up automatically.
   const items = [
     { name: 'Gmail', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg>' },
+    { name: 'Outlook', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#0078D4"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">O</text></svg>' },
     { name: 'Tally', svg: '<svg viewBox="0 0 40 40" width="24" height="24"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg>' },
     { name: 'QuickBooks', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M7.5 8a2 2 0 00-2 2v4a2 2 0 002 2h1V8h-1zm3-1v10h1a4 4 0 004-4v-2a4 4 0 00-4-4h-1zm2 2.5a1.5 1.5 0 011.5 1.5v2a1.5 1.5 0 01-1.5 1.5V9.5z" fill="#fff"/></svg>' },
+    { name: 'Xero', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg>' },
+    { name: 'Stripe', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#635BFF"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">S</text></svg>' },
     { name: 'Zoho', svg: '<svg viewBox="0 0 40 40" width="24" height="24"><rect width="40" height="40" rx="6" fill="#D0312D"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="12">ZOHO</text></svg>' },
     { name: 'Excel', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#107C41"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="11">XL</text></svg>' },
+    { name: 'Google Sheets', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" fill="#0F9D58"/><path d="M14 2v6h6" fill="#0B7B47"/><rect x="7" y="11" width="10" height="8" rx="1" fill="#fff"/><line x1="7" y1="14" x2="17" y2="14" stroke="#0F9D58" stroke-width="0.8"/><line x1="7" y1="17" x2="17" y2="17" stroke="#0F9D58" stroke-width="0.8"/><line x1="10.5" y1="11" x2="10.5" y2="19" stroke="#0F9D58" stroke-width="0.8"/><line x1="14" y1="11" x2="14" y2="19" stroke="#0F9D58" stroke-width="0.8"/></svg>' },
     { name: 'Shopify', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#96BF48"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="11">S</text></svg>' },
+    { name: 'WooCommerce', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#7F54B3"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">WC</text></svg>' },
+    { name: 'Mailchimp', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#FFE01B"/><text x="12" y="16" text-anchor="middle" fill="#241C15" font-family="sans-serif" font-weight="700" font-size="13">M</text></svg>' },
+    { name: 'Klaviyo', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">K</text></svg>' },
+    { name: 'ShipStation', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#0099FF"/><path d="M6 9 L12 6.5 L18 9 L18 15.5 L12 18 L6 15.5 Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/><line x1="6" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="18" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="12" y1="11.5" x2="12" y2="18" stroke="#fff" stroke-width="1.4"/></svg>' },
+    { name: 'PostgreSQL', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="12" fill="#336791"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="10">Pg</text></svg>' },
+    { name: 'Amazon', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#232F3E"/><text x="12" y="14" text-anchor="middle" fill="#FF9900" font-family="sans-serif" font-weight="700" font-size="11">a</text><path d="M6.5 17 Q 12 19.5 17.5 17" fill="none" stroke="#FF9900" stroke-width="1.4" stroke-linecap="round"/></svg>' },
+    { name: 'Braze', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#FE5832"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">B</text></svg>' },
+    { name: 'Bill.com', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#006FFF"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">BILL</text></svg>' },
+    { name: 'TikTok Shop', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#FE2C55" font-family="sans-serif" font-weight="700" font-size="11">TT</text></svg>' },
+    { name: 'SFTP', svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="#4A5568"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">SFTP</text></svg>' },
+    { name: '+ Build custom', custom: true, svg: '<svg viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="4" fill="none" stroke="#4A7BF7" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="12" y1="7" x2="12" y2="17" stroke="#4A7BF7" stroke-width="2" stroke-linecap="round"/><line x1="7" y1="12" x2="17" y2="12" stroke="#4A7BF7" stroke-width="2" stroke-linecap="round"/></svg>' },
   ];
+  // Duplicate the list so the loop is seamless when the track translates by -50%.
+  const doubled = [...items, ...items];
   return (
     <section className="section" id="integrations">
+      <style dangerouslySetInnerHTML={{__html:`
+        .int-marquee{overflow:hidden;padding:6px 0;mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);margin-top:24px}
+        .int-track{display:flex;gap:14px;width:max-content;animation:int-roll 38s linear infinite}
+        .int-marquee:hover .int-track{animation-play-state:paused}
+        .int-marquee .int-card{flex:0 0 150px}
+        .int-marquee .int-card-custom{border:1px dashed var(--sg-blue);background:rgba(74,123,247,0.04)}
+        .int-marquee .int-card-custom .int-name{color:var(--sg-blue)}
+        @keyframes int-roll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
+        @media(prefers-reduced-motion:reduce){.int-track{animation:none}}
+      `}}/>
       <div className="container">
         <Reveal>
           <div className="tag">INTEGRATIONS</div>
           <h2 className="h2">Works with what you already use.</h2>
-          <p className="lead">Connect to the tools your team relies on. Need something not listed? We build it.</p>
+          <p className="lead">Connects to the tools your team relies on - and we build new integrations on request, as your stack changes.</p>
         </Reveal>
-        <Reveal delay={200}>
-          <div className="int-grid">
-            {items.map((ig,i) => (
-              <div key={i} className="int-card">
+      </div>
+      <Reveal delay={200}>
+        <div className="int-marquee">
+          <div className="int-track">
+            {doubled.map((ig,i) => (
+              <div key={i} className={'int-card' + (ig.custom ? ' int-card-custom' : '')} aria-hidden={i >= items.length ? 'true' : undefined}>
                 <div className="int-icon" dangerouslySetInnerHTML={{__html: ig.svg}}></div>
                 <div className="int-name">{ig.name}</div>
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
+      </Reveal>
+      <div className="container">
+        <div style={{textAlign:'center',marginTop:24,fontSize:13,color:'var(--fg2)',lineHeight:1.6,maxWidth:560,margin:'24px auto 0'}}>
+          Don't see yours? Email <a href="mailto:hello@simplegrid.ai?subject=Integration%20request%20%E2%80%94%20SimpleGrid&body=Hi%20SimpleGrid%2C%0D%0A%0D%0AWe%27d%20like%20SimpleGrid%20to%20integrate%20with%3A%20%5Btool%20name%5D%0D%0A%0D%0ABrief%20note%20on%20what%20we%20need%3A%0D%0A%5BWhat%20it%20syncs%2C%20how%20often%2C%20any%20auth%20notes%5D%0D%0A%0D%0AThanks%21" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'underline'}}>hello@simplegrid.ai</a> with a brief note on what you need - we'll add it.
+        </div>
       </div>
     </section>
   );
@@ -307,7 +341,7 @@ function FinalCTA() {
         <Reveal>
           <h2 className="h2">Deploy in days. Decide in 30.</h2>
           <p className="sub">We build it at our cost. You run it with your team. Doesn't work? Walk away.</p>
-          <a href="https://calendly.com" target="_blank" rel="noopener" className="btn btn-lg btn-primary">Book a call - it's free</a>
+          <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener" className="btn btn-lg btn-primary">Book a call - it's free</a>
           <p className="note">No commitment. Migration included. Founder-led onboarding.</p>
         </Reveal>
       </div>

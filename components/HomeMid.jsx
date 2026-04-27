@@ -92,7 +92,7 @@ function CustomRules() {
         <Reveal>
           <div className="tag">YOUR PROCESS, ENFORCED</div>
           <h2 className="h2">Every factory has rules that only the people inside it understand.</h2>
-          <p className="lead">Approval chains. Vendor exceptions. QC gates that differ per buyer. These rules live in your head, in WhatsApp, in notebooks. In our system, they live in configuration - and the system enforces them automatically.</p>
+          <p className="lead" style={{maxWidth:'none'}}>Approval chains. Vendor exceptions. QC gates that differ per buyer. These rules live in your head, in messaging apps, in notebooks. In our system, they live in configuration - and the system enforces them automatically.</p>
         </Reveal>
         <div className="scenario-grid">
           {scenarios.map((s,i) => (
@@ -132,8 +132,8 @@ function WhatYourTeamSees() {
         <Reveal delay={100}>
           <div className="feature-row">
             <div>
-              <h3>Talk to it like you'd talk to a colleague</h3>
-              <p>Your warehouse manager types what happened - the same way he'd send a WhatsApp. The system finds the PO, checks the quantity, updates inventory, fires all triggers, and confirms. One sentence in. Seven steps done.</p>
+              <h3>Talk to your factory like you'd text your team</h3>
+              <p>Your warehouse manager types what happened - the same way he'd send a text, a Slack message, or a Teams chat. The system finds the PO, checks the quantity, updates inventory, fires all triggers, and confirms. One sentence in. Seven steps done.</p>
             </div>
             <TypingDemo lines={hankLines} />
           </div>

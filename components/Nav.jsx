@@ -55,17 +55,17 @@ function Nav({ page = 'home', onLoginClick }) {
           </div>
         </nav>
         <div className="nav-right">
-          <a href="build.html" className="btn-build desktop-only" title="Describe your business. Get a working ERP in 5 minutes. No credit card.">
+          <a href="build.html" className="btn-build desktop-only" title="Beta product. Describe your business and get a working ERP draft in 2 minutes. Free, self-serve, no credit card.">
             <span className="build-spark" aria-hidden="true">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2l2.39 5.84L20 10l-5.61 2.16L12 18l-2.39-5.84L4 10l5.61-2.16L12 2z" fill="#fff"/>
               </svg>
             </span>
             <span className="build-text">
-              <span className="build-main">Build your own ERP</span>
-              <span className="build-sub">Tell us about your business</span>
+              <span className="build-main">Try the ERP Builder</span>
+              <span className="build-sub">2-min self-serve · free</span>
             </span>
-            <span className="free-pill">FREE</span>
+            <span className="free-pill">BETA</span>
           </a>
           <button className="btn btn-sm btn-secondary desktop-only" onClick={onLoginClick}>Log in</button>
           <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener" className="btn btn-sm btn-primary">Book a Call</a>

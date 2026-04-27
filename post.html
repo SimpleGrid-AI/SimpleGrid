@@ -17,12 +17,12 @@
 <script type="text/babel" src="components/Nav.jsx"></script>
 <script type="text/babel" src="components/LoginModal.jsx"></script>
 <script type="text/babel" src="components/Footer.jsx"></script>
+<script type="text/babel" src="components/PostInfographics.jsx"></script>
 <script type="text/babel">
-function parseBlogBody(body, title, images) {
+function parseBlogBody(body, title, images, blogId) {
   const hasRealImages = Array.isArray(images) && images.length > 0;
   const lines = body.split('\n');
   const elements = [];
-  let graphicCount = 0;
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
@@ -34,11 +34,6 @@ function parseBlogBody(body, title, images) {
     const nextIsLong = nextLine.length > 80;
 
     if (isShort && noEndPunct && nextIsLong && line.length > 10) {
-      graphicCount++;
-      // Only insert generic placeholder when this blog has no real images
-      if (!hasRealImages && graphicCount % 3 === 0) {
-        elements.push(<div key={'g-'+i} className="post-graphic">Infographic / diagram placeholder</div>);
-      }
       elements.push(<h2 key={'h-'+i}>{line}</h2>);
     } else if (line.startsWith('Event ') && line.includes(':') && line.length < 120 && line.includes('Actor:')) {
       elements.push(<div key={'e-'+i} style={{fontFamily:'var(--font-mono)',fontSize:13,color:'var(--fg2)',padding:'4px 0',lineHeight:1.6}}>{line}</div>);
@@ -58,17 +53,22 @@ function parseBlogBody(body, title, images) {
         {img.alt && <figcaption>{img.alt}</figcaption>}
       </figure>
     ));
-    // Insert from last to first so earlier indices stay valid
     for (let idx = n - 1; idx >= 0; idx--) {
       const pos = Math.floor(elements.length * (idx + 1) / (n + 1));
       elements.splice(pos, 0, figures[idx]);
     }
-  } else if (graphicCount < 2) {
-    // Fallback: keep the original placeholder behaviour for blogs without real images
-    elements.splice(Math.floor(elements.length / 2), 0,
-      <div key="g-mid" className="post-graphic">Infographic / visual placeholder</div>
-    );
-    elements.push(<div key="g-end" className="post-graphic">Summary graphic placeholder</div>);
+  }
+
+  // Per-blog responsive content blocks (replaces all generic placeholders)
+  const pi = (window.PostInfographics || {})[blogId];
+  if (pi) {
+    if (pi.mid) {
+      const midPos = Math.floor(elements.length * (hasRealImages ? 0.55 : 0.5));
+      elements.splice(midPos, 0, <div key="pi-mid">{pi.mid}</div>);
+    }
+    if (pi.end) {
+      elements.push(<div key="pi-end">{pi.end}</div>);
+    }
   }
 
   return elements;
@@ -116,7 +116,7 @@ function BlogPost() {
     
     <section className="post-content">
       <div className="container-sm">
-        {parseBlogBody(blog.body, blog.title, blog.images)}
+        {parseBlogBody(blog.body, blog.title, blog.images, blog.id)}
         
         {/* CTA */}
         <div style={{background:'var(--sg-blue-light)',borderRadius:'var(--radius-lg)',padding:'32px',marginTop:40,textAlign:'center'}}>
