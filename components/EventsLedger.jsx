@@ -746,10 +746,10 @@ function AbilitySection() {
       <div className="container">
         <Reveal>
           <div className="tag">FOR THE PEOPLE WHO ACTUALLY DO THE WORK</div>
-          <h2 className="h2 ink" style={{ maxWidth: 900 }}>
+          <h2 className="h2 ink" style={{ maxWidth: 1200 }}>
             If your warehouse manager can send a text, he can run your ERP.
           </h2>
-          <p className="lead" style={{ maxWidth: 820 }}>
+          <p className="lead" style={{ maxWidth: '100%' }}>
             Adoption is where ERPs go to die. We removed the menus, the codes, the training manual. Your team types what happened. The system does the seven steps.
           </p>
         </Reveal>

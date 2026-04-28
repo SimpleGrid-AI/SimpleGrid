@@ -41,7 +41,6 @@ function Footer() {
 
   const contact = [
     { kind: 'mail',     l: 'hello@simplegrid.ai', href: 'mailto:hello@simplegrid.ai' },
-    { kind: 'phone',    l: '+91 96499 33000',     href: 'tel:+919649933000' },
     { kind: 'linkedin', l: 'LinkedIn',            href: 'https://www.linkedin.com/company/simplegridai', external: true },
     { kind: 'calendar', l: 'Book a call',         href: 'https://cal.com/simplegrid-ai', external: true },
     { kind: 'pin',      l: '22nd Cross, 23rd Main Rd, HSR Layout\nBengaluru, Karnataka 560102', isAddress: true, href: 'https://www.google.com/maps/search/?api=1&query=22nd+Cross+Road,+23rd+Main+Road,+HSR+Layout,+Bengaluru,+Karnataka+560102', external: true },
