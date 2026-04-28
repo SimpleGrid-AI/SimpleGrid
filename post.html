@@ -65,7 +65,7 @@ function parseBlogBody(body, title, images, blogId) {
     const n = images.length;
     const figures = images.map((img, idx) => (
       <figure key={'fig-'+idx} className="post-figure">
-        <img src={img.src} alt={img.alt || ''} loading="lazy" width="1200" height="675" style={{aspectRatio:'16/9', maxWidth:'100%', height:'auto'}}/>
+        <img src={img.src} alt={img.alt || ''} loading="lazy" width="2808" height="1040" style={{maxWidth:'100%', height:'auto', display:'block'}}/>
         {img.alt && <figcaption>{img.alt}</figcaption>}
       </figure>
     ));
