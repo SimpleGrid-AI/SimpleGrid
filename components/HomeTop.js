@@ -229,6 +229,62 @@ function RadialBurst({
   }));
 }
 window.RadialBurst = RadialBurst;
+function CycleHeadline() {
+  const HEADLINES = [/*#__PURE__*/React.createElement(React.Fragment, {
+    key: "a"
+  }, "AI-native ERP", /*#__PURE__*/React.createElement("br", null), "For operators, not accountants"), /*#__PURE__*/React.createElement(React.Fragment, {
+    key: "b"
+  }, "You don't adapt to the system", /*#__PURE__*/React.createElement("br", null), "The system adapts to you"), /*#__PURE__*/React.createElement(React.Fragment, {
+    key: "c"
+  }, "Your operation", /*#__PURE__*/React.createElement("br", null), "We build the ERP around it", /*#__PURE__*/React.createElement("br", null), "30 days to earn its keep, or walk away")];
+  // Each tile fades smoothly; staggering them by (x+y)*delay gives a diagonal
+  // sweep that visually "breaks" the headline into checkboxes and reassembles.
+  const TX = 8,
+    TY = 3;
+  const TILES = React.useMemo(() => Array.from({
+    length: TX * TY
+  }, (_, idx) => {
+    const x = idx % TX,
+      y = Math.floor(idx / TX);
+    return {
+      idx,
+      delay: (x + y) * 70
+    };
+  }), []);
+  const HOLD = 4500; // headline fully visible
+  const TRANSITION = 1300; // tile sweep duration (longest delay + per-tile fade)
+  const [i, setI] = React.useState(0);
+  const [phase, setPhase] = React.useState('reveal'); // 'reveal' = tiles transparent (text visible), 'cover' = tiles opaque (text hidden)
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let swap;
+    const tick = setInterval(() => {
+      setPhase('cover');
+      swap = setTimeout(() => {
+        setI(x => (x + 1) % HEADLINES.length);
+        setPhase('reveal');
+      }, TRANSITION);
+    }, HOLD + TRANSITION);
+    return () => {
+      clearInterval(tick);
+      clearTimeout(swap);
+    };
+  }, []);
+  return /*#__PURE__*/React.createElement("div", {
+    className: 'hero-title-stage hero-title-' + phase
+  }, /*#__PURE__*/React.createElement("h1", {
+    className: "hero-title"
+  }, HEADLINES[i]), /*#__PURE__*/React.createElement("div", {
+    className: "hero-title-tiles",
+    "aria-hidden": "true"
+  }, TILES.map(t => /*#__PURE__*/React.createElement("span", {
+    key: t.idx,
+    className: "hero-title-tile",
+    style: {
+      transitionDelay: t.delay + 'ms'
+    }
+  }))));
+}
 function Hero() {
   const [count, setCount] = React.useState(547);
   const [showInvite, setShowInvite] = React.useState(false);
@@ -266,7 +322,7 @@ function Hero() {
     className: "hero-theme-toggle",
     onClick: toggleTheme,
     "aria-label": theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-  }, theme === 'dark' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("svg", {
+  }, theme === 'dark' ? /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
@@ -279,7 +335,7 @@ function Hero() {
     r: "4"
   }), /*#__PURE__*/React.createElement("path", {
     d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-  })), "Light") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("svg", {
+  })) : /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
@@ -288,19 +344,17 @@ function Hero() {
     strokeLinejoin: "round"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-  })), "Dark")), /*#__PURE__*/React.createElement(RadialBurst, {
+  }))), /*#__PURE__*/React.createElement(RadialBurst, {
     theme: theme
   }), /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-inner"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("h1", {
-    className: "hero-title"
-  }, "AI-native ERP.", /*#__PURE__*/React.createElement("br", null), "For operators, not accountants.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(CycleHeadline, null)), /*#__PURE__*/React.createElement(Reveal, {
     delay: 200
   }, /*#__PURE__*/React.createElement("p", {
     className: "hero-sub"
-  }, "Your operation. We build the ERP around it. 30 days to earn its keep, or walk away.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Your factory runs differently from every other factory. That's not a problem - it's what makes you competitive. We build a custom ERP around your exact process, at our expense, and have you live in days. You only pay once you decide it works.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 400
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-cta"
