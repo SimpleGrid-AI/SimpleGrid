@@ -338,13 +338,13 @@ function Hero() {
               <h1 className="hero-title">You don't adapt to the system.<br/>The system adapts to you.</h1>
             </Reveal>
             <Reveal delay={200}>
-              <p className="hero-sub">Your factory runs differently from every other factory. That's not a problem - it's what makes you competitive. We build a custom ERP around your exact process. At our cost. In days.</p>
+              <p className="hero-sub">Your factory runs differently from every other factory. That's not a problem - it's what makes you competitive. We build a custom ERP around your exact process, at our expense, and have you live in days. You only pay once you decide it works.</p>
             </Reveal>
             <Reveal delay={400}>
               <div className="hero-cta">
-                <button type="button" onClick={() => setShowInvite(true)} className="btn btn-lg btn-primary" style={{background:'linear-gradient(135deg, #2256E8 0%, #1e4dd9 100%)',boxShadow:'0 0 0 0 rgba(34,86,232,0.55), 0 6px 20px rgba(34,86,232,0.4)',animation:'sgBuildPulse 1.8s ease-in-out infinite'}}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{marginRight:2}}>
-                    <path d="M12 2l2.39 5.84L20 10l-5.61 2.16L12 18l-2.39-5.84L4 10l5.61-2.16L12 2z" fill="#fff"/>
+                <button type="button" onClick={() => setShowInvite(true)} className="btn btn-lg btn-invite" style={{boxShadow:'0 0 0 0 rgba(74,123,247,0.45), 0 6px 20px rgba(74,123,247,0.18)',animation:'sgBuildPulse 1.8s ease-in-out infinite'}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{marginRight:2}} aria-hidden="true">
+                    <path d="M12 2l2.39 5.84L20 10l-5.61 2.16L12 18l-2.39-5.84L4 10l5.61-2.16L12 2z" fill="currentColor"/>
                   </svg>
                   Request an Invite
                 </button>
@@ -356,11 +356,12 @@ function Hero() {
               <div style={{fontSize:10,textTransform:'uppercase',letterSpacing:'0.16em',color:'var(--fg3)',marginBottom:8}}>Average ERP deploy time</div>
               <div style={{fontFamily:'var(--font-heading)',fontSize:80,fontWeight:700,color:'var(--fg1)',lineHeight:1,letterSpacing:'-0.04em',position:'relative'}}>
                 <span>{count}</span>
-                <span style={{fontSize:24,color:'var(--fg3)',marginLeft:6,fontWeight:500}}>days</span>
+                <span style={{fontSize:24,color:'var(--fg3)',marginLeft:14,fontWeight:500,letterSpacing:'normal'}}>days</span>
               </div>
               <div style={{fontSize:13,color:'var(--fg2)',marginTop:8}}>Industry average: 547 days. <span style={{color:'var(--sg-blue)',fontWeight:700}}>SimpleGrid: 7</span>.</div>
+              <div style={{fontSize:10,color:'var(--fg3)',marginTop:6,fontStyle:'italic',lineHeight:1.4}}>Source: Panorama Consulting 2024 ERP Report - 18-month median for mid-market.</div>
               <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:1,marginTop:28,background:'var(--border)',borderRadius:10,overflow:'hidden'}}>
-                {[{n:'$0',l:'Cost to start'},{n:'30',l:'Day free trial'},{n:'2',l:'Case studies live'}].map((s,i) => (
+                {[{n:'$0',l:'Cost to start'},{n:'30',l:'Day free trial'},{n:'2',l:'Industries deployed'}].map((s,i) => (
                   <div key={i} style={{background:'#FFFFFF',padding:'16px 12px'}}>
                     <div style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,color:'var(--fg1)'}}>{s.n}</div>
                     <div style={{fontSize:10,color:'var(--fg3)',marginTop:2}}>{s.l}</div>
@@ -389,8 +390,8 @@ function ProblemSection() {
         const t = setInterval(() => {
           step++;
           setActiveChatStep(step);
-          if (step >= 4) clearInterval(t);
-        }, 900);
+          if (step >= 7) clearInterval(t);
+        }, 800);
         return () => clearInterval(t);
       }
     }, { threshold: 0.3 });
@@ -399,48 +400,107 @@ function ProblemSection() {
   }, []);
 
   const problems = [
-    { 
-      n: '01', t: 'Upfront cost is brutal', b: '$500K+ before you see a screen.',
+    {
+      n: '01', t: 'You pay before you ever see what works', b: 'Six figures, often before you see a working screen. Three possible systems come out. You only find out which one you got after the cheque clears.',
+      footer: 'With SimpleGrid, you see and use it first. Then you pay.',
       visual: (
         <svg viewBox="0 0 400 200" style={{width:'100%',height:'100%'}}>
-          <line x1="40" y1="170" x2="375" y2="170" stroke="#E5E8ED" strokeWidth="2"/>
-          <line x1="40" y1="170" x2="40" y2="20" stroke="#E5E8ED" strokeWidth="2"/>
-          <line x1="40" y1="130" x2="375" y2="130" stroke="#F0F2F5" strokeWidth="1" strokeDasharray="3 3"/>
-          <line x1="40" y1="90" x2="375" y2="90" stroke="#F0F2F5" strokeWidth="1" strokeDasharray="3 3"/>
-          <line x1="40" y1="50" x2="375" y2="50" stroke="#F0F2F5" strokeWidth="1" strokeDasharray="3 3"/>
-          <path d="M 50 160 Q 120 150 180 120 T 300 55 L 360 25" fill="none" stroke="#DC2A3D" strokeWidth="3.5" strokeLinecap="round" style={{strokeDasharray:500,strokeDashoffset:500,animation:'sg-dash 4s ease-in-out infinite'}}/>
-          <circle cx="360" cy="25" r="6" fill="#DC2A3D" style={{animation:'sg-dot-a 4s ease-in-out infinite'}}/>
-          <text x="360" y="15" fontSize="14" fill="#DC2A3D" fontWeight="700" textAnchor="end" style={{animation:'sg-dot-a 4s ease-in-out infinite'}}>$500K+</text>
-          <text x="30" y="174" fontSize="10" fill="#9CA3AF" textAnchor="end">$0</text>
-          <text x="30" y="134" fontSize="10" fill="#9CA3AF" textAnchor="end">$150K</text>
-          <text x="30" y="94" fontSize="10" fill="#9CA3AF" textAnchor="end">$300K</text>
-          <text x="30" y="54" fontSize="10" fill="#9CA3AF" textAnchor="end">$450K</text>
-          <text x="45" y="188" fontSize="11" fill="#9CA3AF">Contract signed</text>
-          <text x="370" y="188" fontSize="11" fill="#9CA3AF" textAnchor="end">Go-live (18 mo)</text>
-          <style>{`@keyframes sg-dash{0%{stroke-dashoffset:500}60%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}@keyframes sg-dot-a{0%,50%{opacity:0}70%,100%{opacity:1}}`}</style>
+          <defs>
+            <radialGradient id="sgHoleCore" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#000" stopOpacity="1"/>
+              <stop offset="55%" stopColor="#0F1419" stopOpacity="1"/>
+              <stop offset="100%" stopColor="#1F2937" stopOpacity="0"/>
+            </radialGradient>
+            <radialGradient id="sgHoleHalo" cx="50%" cy="50%" r="50%">
+              <stop offset="40%" stopColor="#DC2A3D" stopOpacity="0"/>
+              <stop offset="80%" stopColor="#DC2A3D" stopOpacity="0.2"/>
+              <stop offset="100%" stopColor="#DC2A3D" stopOpacity="0"/>
+            </radialGradient>
+          </defs>
+
+          {/* Money inflows - five labeled $ chips with curved trails into the hole */}
+          {[
+            { y: 18,  label: 'Consultants',     dy: 76,  delay: '0s'   },
+            { y: 50,  label: 'Integrations',    dy: 44,  delay: '0.3s' },
+            { y: 82,  label: 'Licensing cost',  dy: 12,  delay: '0.6s' },
+            { y: 114, label: 'Delays',          dy: -20, delay: '0.9s' },
+            { y: 146, label: 'Change requests', dy: -52, delay: '1.2s' },
+          ].map((it, i) => (
+            <g key={i}>
+              {/* Curved dashed trail from chip start to hole center */}
+              <path d={`M 32 ${it.y + 6} Q 90 ${it.y + 6} 178 100`} fill="none" stroke="#DC2A3D" strokeWidth="1" strokeDasharray="2 4" strokeOpacity="0.3"/>
+              {/* Static label */}
+              <text x="38" y={it.y - 2} fontSize="10.5" fill="#374151" fontWeight="600">{it.label}</text>
+              {/* Animated $ chip flowing into the hole */}
+              <g style={{animation:`sg-suck-${i} 4s ${it.delay} ease-in infinite`, transformOrigin:'0 0'}}>
+                <rect x="10" y={it.y} width="22" height="14" rx="3" fill="#DC2A3D"/>
+                <text x="21" y={it.y + 11} fontSize="10" fill="#fff" fontWeight="700" textAnchor="middle">$</text>
+              </g>
+            </g>
+          ))}
+
+          {/* Black hole halo + core (centered at 178, 100) */}
+          <circle cx="178" cy="100" r="62" fill="url(#sgHoleHalo)" style={{animation:'sg-halo 3s ease-in-out infinite'}}/>
+          <g style={{transformOrigin:'178px 100px',animation:'sg-spin 9s linear infinite'}}>
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.35)" strokeWidth="1"/>
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.22)" strokeWidth="1" transform="rotate(45 178 100)"/>
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.18)" strokeWidth="1" transform="rotate(90 178 100)"/>
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.18)" strokeWidth="1" transform="rotate(135 178 100)"/>
+          </g>
+          <circle cx="178" cy="100" r="36" fill="url(#sgHoleCore)"/>
+          <text x="178" y="98" fontSize="13" fill="#fff" fontWeight="700" textAnchor="middle" letterSpacing="0.02em">$500K+</text>
+          <text x="178" y="112" fontSize="8.5" fill="rgba(255,255,255,0.55)" fontWeight="700" textAnchor="middle" letterSpacing="0.18em">SUNK</text>
+
+          {/* Output side - three possible outcomes branching from the hole.
+              Two-line labels (line 1 + "system" on line 2) keep "system" readable
+              inside the 400-wide viewBox even with the longest sub. */}
+          {[
+            { y: 36,  l1: 'No usable',     l2: 'system', color: '#DC2A3D', sub: 'project shelved' },
+            { y: 100, l1: 'Half-working',  l2: 'system', color: '#F59E0B', sub: 'forced into modules' },
+            { y: 164, l1: 'Fully working', l2: 'system', color: '#10B981', sub: 'rare, slow, expensive' },
+          ].map((o, i) => (
+            <g key={i}>
+              {/* Branching dashed arrow from hole right edge to flat tail */}
+              <path d={`M 214 100 Q 232 ${(100 + o.y) / 2} 244 ${o.y} L 268 ${o.y}`} fill="none" stroke={o.color} strokeWidth="1.5" strokeDasharray="3 3" strokeOpacity="0.85"/>
+              <polygon points={`274,${o.y} 266,${o.y - 4} 266,${o.y + 4}`} fill={o.color}/>
+              <text x="280" y={o.y - 4} fontSize="11" fill={o.color} fontWeight="700">{o.l1}</text>
+              <text x="280" y={o.y + 8} fontSize="11" fill={o.color} fontWeight="700">{o.l2}</text>
+              <text x="280" y={o.y + 20} fontSize="9" fill="#6B7280" fontStyle="italic">{o.sub}</text>
+            </g>
+          ))}
+
+          <style>{`
+            @keyframes sg-suck-0 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,76px) scale(0.3);opacity:0} 100%{transform:translate(146px,76px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-1 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,44px) scale(0.3);opacity:0} 100%{transform:translate(146px,44px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-2 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,12px) scale(0.3);opacity:0} 100%{transform:translate(146px,12px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-3 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,-20px) scale(0.3);opacity:0} 100%{transform:translate(146px,-20px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-4 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,-52px) scale(0.3);opacity:0} 100%{transform:translate(146px,-52px) scale(0.3);opacity:0} }
+            @keyframes sg-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+            @keyframes sg-halo { 0%,100%{opacity:0.55} 50%{opacity:1} }
+          `}</style>
         </svg>
       )
     },
-    { 
-      n: '02', t: 'Your business evolves. Your ERP does not.', b: 'Small change = 6-week consulting project.',
+    {
+      n: '02', t: 'Your business evolves. Your ERP does not.', b: 'Every small change = 6-week consulting project.',
+      footer: 'SimpleGrid bends to your process. Most systems lock you in mid-growth.',
       visual: (
         <svg viewBox="0 0 400 200" style={{width:'100%',height:'100%'}}>
-          <text x="20" y="38" fontSize="13" fill="var(--fg1)" fontWeight="600">Your business with a fluid ERP</text>
-          <rect x="20" y="48" width="360" height="18" rx="9" fill="#E5E8ED"/>
-          <rect x="20" y="48" width="360" height="18" rx="9" fill="#10B981" style={{transformOrigin:'20px 57px',animation:'sg-grow-b 3s ease-out infinite'}}/>
-          <text x="370" y="61" fontSize="11" fill="#fff" fontWeight="700" textAnchor="end" style={{opacity:0,animation:'sg-fade-b 3s ease-out infinite'}}>Scales</text>
-          <text x="20" y="104" fontSize="13" fill="var(--fg1)" fontWeight="600">Your business with a rigid ERP</text>
-          <rect x="20" y="114" width="360" height="18" rx="9" fill="#E5E8ED"/>
-          <rect x="20" y="114" width="180" height="18" rx="9" fill="#DC2A3D" style={{transformOrigin:'20px 123px',animation:'sg-grow-c 3s ease-out infinite'}}/>
-          <text x="214" y="127" fontSize="11" fill="#DC2A3D" fontWeight="700">← Stuck</text>
-          <text x="20" y="170" fontSize="12" fill="var(--fg2)" fontStyle="italic">SimpleGrid bends to your process.</text>
-          <text x="20" y="188" fontSize="12" fill="var(--fg2)" fontStyle="italic">Others trap you mid-growth.</text>
+          <text x="20" y="50" fontSize="13" fill="var(--fg1)" fontWeight="600">Your business with a fluid ERP</text>
+          <rect x="20" y="62" width="360" height="20" rx="10" fill="#E5E8ED"/>
+          <rect x="20" y="62" width="360" height="20" rx="10" fill="#10B981" style={{transformOrigin:'20px 72px',animation:'sg-grow-b 3s ease-out infinite'}}/>
+          <text x="370" y="76" fontSize="11" fill="#fff" fontWeight="700" textAnchor="end" style={{opacity:0,animation:'sg-fade-b 3s ease-out infinite'}}>Scales</text>
+          <text x="20" y="124" fontSize="13" fill="var(--fg1)" fontWeight="600">Your business with a rigid ERP</text>
+          <rect x="20" y="136" width="360" height="20" rx="10" fill="#E5E8ED"/>
+          <rect x="20" y="136" width="180" height="20" rx="10" fill="#DC2A3D" style={{transformOrigin:'20px 146px',animation:'sg-grow-c 3s ease-out infinite'}}/>
+          <text x="214" y="150" fontSize="11" fill="#DC2A3D" fontWeight="700">← Growth Stalls</text>
           <style>{`@keyframes sg-grow-b{0%{transform:scaleX(0)}60%,100%{transform:scaleX(1)}}@keyframes sg-grow-c{0%{transform:scaleX(0)}50%,100%{transform:scaleX(1)}}@keyframes sg-fade-b{0%,60%{opacity:0}75%,100%{opacity:1}}`}</style>
         </svg>
       )
     },
-    { 
-      n: '03', t: 'UI built for accountants, not operators', b: 'Seven tabs. Twelve fields. Floor staff bounce.',
+    {
+      n: '03', t: 'UI built for accountants, not operators', b: 'Seven tabs. Twelve fields. Nothing gets done.',
+      footer: 'The ERP slows the floor, so teams go around it.',
       visual: (
         <svg viewBox="0 0 400 200" style={{width:'100%',height:'100%'}}>
           <rect x="10" y="10" width="380" height="180" rx="6" fill="#fff" stroke="#E5E8ED" strokeWidth="1.5"/>
@@ -473,8 +533,9 @@ function ProblemSection() {
         </svg>
       )
     },
-    { 
-      n: '04', t: 'You cannot change how 100 people work', b: 'That is why 75% of ERP projects fail.',
+    {
+      n: '04', t: 'You cannot change how 100 people work', b: 'So your ERP has to work like they already do.',
+      footer: 'If they can text, they can use this.',
       visual: null,
       isChatDemo: true,
     },
@@ -490,7 +551,7 @@ function ProblemSection() {
         <div className="problem-grid" style={{marginTop:32}} ref={chatRef}>
           {problems.map((p,i) => (
             <Reveal key={p.n} delay={i * 100}>
-              <div style={{background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',padding:24,height:'100%'}}>
+              <div style={{background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',padding:24,height:'100%',display:'flex',flexDirection:'column'}}>
                 <div style={{display:'flex',alignItems:'baseline',gap:12,marginBottom:14}}>
                   <div style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,color:'var(--sg-red)',letterSpacing:'-0.02em'}}>{p.n}</div>
                   <h3 style={{fontFamily:'var(--font-heading)',fontSize:17,fontWeight:700,color:'var(--fg1)',margin:0,letterSpacing:'-0.01em',lineHeight:1.3}}>{p.t}</h3>
@@ -498,14 +559,26 @@ function ProblemSection() {
                 <p style={{fontSize:13,color:'var(--fg2)',lineHeight:1.5,margin:'0 0 14px'}}>{p.b}</p>
                 <div className={'problem-visual' + (p.isChatDemo ? ' problem-visual-chat' : ' problem-visual-svg')}>
                   {p.isChatDemo ? (
-                    <div style={{width:'100%',fontFamily:'var(--font-mono)',fontSize:14,lineHeight:1.8}}>
+                    <div style={{width:'100%',fontFamily:'var(--font-mono)',fontSize:13.5,lineHeight:1.7}}>
                       <div style={{color:'var(--fg3)',fontSize:11,marginBottom:10,fontFamily:'var(--font-body)',fontWeight:600,letterSpacing:'0.08em',textTransform:'uppercase'}}>Warehouse manager types:</div>
                       <div style={{color:'var(--fg1)',opacity:activeChatStep>=1?1:0.2,transition:'opacity 0.3s'}}>&gt; Received 2200cft of material from West Elm</div>
-                      <div style={{color:'var(--sg-green)',marginTop:8,opacity:activeChatStep>=2?1:0.2,transition:'opacity 0.3s'}}>✓ PO matched. Inventory updated.</div>
-                      <div style={{marginTop:12,fontFamily:'var(--font-body)',fontSize:13,color:'var(--fg3)',fontStyle:'italic',opacity:activeChatStep>=3?1:0.2,transition:'opacity 0.3s'}}>No training. Same habit as texting.</div>
+                      <div style={{color:'var(--sg-green)',marginTop:6,opacity:activeChatStep>=2?1:0.2,transition:'opacity 0.3s'}}>✓ PO matched. Inventory updated.</div>
+                      <div style={{marginTop:14,paddingTop:12,borderTop:'1px dashed var(--border)',color:'var(--fg3)',fontSize:11,marginBottom:8,fontFamily:'var(--font-body)',fontWeight:600,letterSpacing:'0.08em',textTransform:'uppercase',opacity:activeChatStep>=3?1:0.2,transition:'opacity 0.3s'}}>Sales drops a PDF in chat:</div>
+                      <div style={{display:'inline-flex',alignItems:'center',gap:8,padding:'6px 10px',border:'1px solid var(--border)',borderRadius:8,background:'#fff',opacity:activeChatStep>=3?1:0.2,transition:'opacity 0.3s'}}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sg-red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span style={{color:'var(--fg1)',fontSize:12}}>SO_4521_WestElm.pdf</span>
+                      </div>
+                      <div style={{color:'var(--sg-green)',marginTop:8,opacity:activeChatStep>=4?1:0.2,transition:'opacity 0.3s'}}>✓ AI parsed. 23 line items matched to BOM.</div>
+                      <div style={{color:'var(--sg-blue)',marginTop:4,opacity:activeChatStep>=5?1:0.2,transition:'opacity 0.3s'}}>→ Routed to founder for approval.</div>
+                      <div style={{marginTop:12,fontFamily:'var(--font-body)',fontSize:13,color:'var(--fg3)',fontStyle:'italic',opacity:activeChatStep>=6?1:0.2,transition:'opacity 0.3s'}}>No training. Same habit as texting.</div>
                     </div>
                   ) : p.visual}
                 </div>
+                {p.footer && (
+                  <div style={{marginTop:'auto'}}>
+                    <div style={{marginTop:14,paddingTop:14,borderTop:'1px solid var(--border)',fontFamily:'var(--font-body)',fontSize:14,fontWeight:700,color:'var(--sg-blue)',lineHeight:1.4}}>{p.footer}</div>
+                  </div>
+                )}
               </div>
             </Reveal>
           ))}
@@ -518,46 +591,277 @@ window.ProblemSection = ProblemSection;
 
 function WhatWeDo() {
   const [showInvite, setShowInvite] = React.useState(false);
+  const sonarRef = React.useRef(null);
+
+  // Sonar canvas: concentric rings expanding from center, fading as they grow.
+  // All color is pulled live from --sg-blue (the brand accent) so the canvas
+  // tracks the design system rather than hardcoding a hex.
+  React.useEffect(() => {
+    const canvas = sonarRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue('--sg-blue').trim() || '#4A7BF7';
+
+    const RING_LIFE_MS = 5500;
+    const SPAWN_INTERVAL_MS = 1000;
+    const rings = [];
+    let raf, w = 0, h = 0, dpr = 1, lastSpawn = -SPAWN_INTERVAL_MS, cancelled = false;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = rect.width;
+      h = rect.height;
+      canvas.width = Math.max(1, Math.round(w * dpr));
+      canvas.height = Math.max(1, Math.round(h * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+
+    const ro = (typeof ResizeObserver !== 'undefined') ? new ResizeObserver(resize) : null;
+    if (ro) ro.observe(canvas);
+    window.addEventListener('resize', resize);
+
+    function frame(now) {
+      if (cancelled) return;
+      ctx.clearRect(0, 0, w, h);
+      const cx = w / 2;
+      const cy = h / 2;
+      const maxR = Math.min(w, h) * 0.62;
+
+      if (now - lastSpawn >= SPAWN_INTERVAL_MS) {
+        rings.push({ born: now });
+        lastSpawn = now;
+      }
+
+      for (let i = rings.length - 1; i >= 0; i--) {
+        const t = (now - rings[i].born) / RING_LIFE_MS;
+        if (t >= 1) { rings.splice(i, 1); continue; }
+        const r = t * maxR;
+        const eased = 1 - t;
+        ctx.globalAlpha = eased * eased * 0.4;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      // Soft center halo
+      ctx.globalAlpha = 0.18;
+      ctx.fillStyle = accent;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 30, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      raf = requestAnimationFrame(frame);
+    }
+    raf = requestAnimationFrame(frame);
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', resize);
+      if (ro) ro.disconnect();
+    };
+  }, []);
+
   return (
     <>
-    <section className="section section-blue" style={{position:'relative',overflow:'hidden'}}>
-      <FlowWaves />
-      <div className="container" style={{maxWidth:880,margin:'0 auto',padding:'0 32px',position:'relative',zIndex:2}}>
+    <section className="section section-dark sg-onboard" style={{position:'relative',overflow:'hidden',paddingTop:40,paddingBottom:48}}>
+      {/* Background grid with radial fade at the edges. Uses color-mix on
+          --sg-blue so it tracks the brand accent without hardcoding a hex. */}
+      <div className="sg-onboard-grid" aria-hidden="true" style={{
+        position:'absolute', inset:0, pointerEvents:'none',
+        backgroundImage:
+          'linear-gradient(color-mix(in srgb, var(--sg-blue) 10%, transparent) 1px, transparent 1px),'+
+          'linear-gradient(90deg, color-mix(in srgb, var(--sg-blue) 10%, transparent) 1px, transparent 1px)',
+        backgroundSize:'48px 48px',
+        WebkitMaskImage:'radial-gradient(ellipse at center, #000 25%, transparent 75%)',
+        maskImage:'radial-gradient(ellipse at center, #000 25%, transparent 75%)',
+      }}/>
+
+      <div className="container" style={{position:'relative',zIndex:2,maxWidth:920,margin:'0 auto'}}>
         <Reveal>
           <div style={{textAlign:'center'}}>
-            <div className="tag">CURRENTLY ONBOARDING</div>
-            <h2 className="h2">We don't onboard everyone.<br/>A few partner slots open each cycle.</h2>
-            <p style={{fontSize:16,color:'var(--fg2)',lineHeight:1.65,maxWidth:620,margin:'0 auto 22px'}}>
-              We're packed with active builds right now. Every partner gets our founder to onboard.
-            </p>
-            <p style={{fontSize:16,color:'var(--fg2)',lineHeight:1.65,maxWidth:620,margin:'0 auto 28px'}}>
-              If we take you on, we build a custom ERP around how your operation actually runs. You run it for 30 days. If it doesn't earn its keep, walk away. No contract. No invoice.
+            {/* Kicker: pulsing dot + label */}
+            <div style={{display:'inline-flex',alignItems:'center',gap:10,marginBottom:10}}>
+              <span aria-hidden="true" className="sg-kicker-dot" style={{display:'inline-block',width:8,height:8,borderRadius:'50%',background:'var(--sg-blue)'}}/>
+              <span style={{fontSize:11,fontWeight:700,letterSpacing:'0.18em',textTransform:'uppercase',color:'rgba(255,255,255,0.62)'}}>Selective Onboarding</span>
+            </div>
+
+            {/* Headline */}
+            <h2 className="h2 sg-onboard-h" style={{maxWidth:780,margin:'0 auto 8px',lineHeight:1.1,letterSpacing:'-0.025em'}}>
+              We'd love to onboard everyone.<br/>
+              We just <span style={{color:'var(--sg-blue)'}}>can't - yet.</span>
+            </h2>
+
+            {/* Subtext */}
+            <p style={{fontSize:15,color:'rgba(255,255,255,0.6)',lineHeight:1.55,maxWidth:640,margin:'0 auto 22px'}}>
+              Our founder personally builds and deploys every system. We run tight to keep the experience exceptional.
             </p>
           </div>
         </Reveal>
+
+        {/* Sonar viz area */}
+        <Reveal delay={150}>
+          <div className="sg-sonar-area" style={{position:'relative',height:240,marginBottom:22}}>
+            <canvas ref={sonarRef} style={{position:'absolute',inset:0,width:'100%',height:'100%',display:'block'}}/>
+            {/* Center label */}
+            <div style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%, calc(-50% + 26px))',textAlign:'center',pointerEvents:'none'}}>
+              <div style={{fontSize:10,fontWeight:700,letterSpacing:'0.18em',textTransform:'uppercase',color:'rgba(255,255,255,0.55)'}}>3 slots open</div>
+            </div>
+            {/* Build tags */}
+            <div className="sg-build-tag sg-build-tag-l" style={{position:'absolute',top:'24%',left:'4%'}}>
+              <span aria-hidden="true" className="sg-build-tag-dot"/>
+              <span style={{fontFamily:'var(--font-mono)',fontSize:12,fontWeight:600,color:'#fff'}}>build_014</span>
+              <span style={{fontSize:11,color:'rgba(255,255,255,0.55)',marginTop:3}}>furniture mfg · day 5</span>
+            </div>
+            <div className="sg-build-tag sg-build-tag-r" style={{position:'absolute',top:'62%',right:'4%'}}>
+              <span aria-hidden="true" className="sg-build-tag-dot"/>
+              <span style={{fontFamily:'var(--font-mono)',fontSize:12,fontWeight:600,color:'#fff'}}>build_015</span>
+              <span style={{fontSize:11,color:'rgba(255,255,255,0.55)',marginTop:3}}>apparel d2c · day 2</span>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Promise card */}
         <Reveal delay={200}>
-          <div style={{display:'flex',justifyContent:'center',gap:14,flexWrap:'wrap',marginBottom:32}}>
+          <div style={{border:'1px solid rgba(255,255,255,0.12)',borderRadius:'var(--radius-lg)',padding:'14px 20px',background:'rgba(255,255,255,0.03)',maxWidth:760,margin:'0 auto 16px'}}>
+            <p style={{fontSize:14,color:'rgba(255,255,255,0.78)',lineHeight:1.6,margin:0}}>
+              If we take you on, we build a custom ERP around <strong style={{color:'#fff',fontWeight:700}}>how your operation actually runs</strong>. You run it for 30 days. If it doesn't earn its keep, walk away. <strong style={{color:'#fff',fontWeight:700}}>No contract. No invoice.</strong>
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Stats row */}
+        <Reveal delay={260}>
+          <div className="sg-onboard-stats" style={{display:'grid',gridTemplateColumns:'repeat(3, 1fr)',gap:1,background:'rgba(255,255,255,0.10)',border:'1px solid rgba(255,255,255,0.10)',borderRadius:'var(--radius-lg)',overflow:'hidden',maxWidth:520,margin:'0 auto 18px'}}>
             {[
               {n:'7d',l:'Time to live'},
               {n:'30d',l:'Free trial'},
               {n:'$0',l:'To start'},
             ].map((s,i) => (
-              <div key={i} style={{background:'rgba(255,255,255,0.7)',backdropFilter:'blur(6px)',WebkitBackdropFilter:'blur(6px)',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',padding:'14px 22px',display:'flex',alignItems:'baseline',gap:10,minWidth:140}}>
-                <span style={{fontFamily:'var(--font-heading)',fontSize:24,fontWeight:700,color:'var(--sg-blue)',letterSpacing:'-0.02em'}}>{s.n}</span>
-                <span style={{fontSize:11,color:'var(--fg3)',textTransform:'uppercase',letterSpacing:'0.1em',fontWeight:600}}>{s.l}</span>
+              <div key={i} className="sg-onboard-stat" style={{padding:'12px 12px',textAlign:'center'}}>
+                <div style={{fontFamily:'var(--font-heading)',fontSize:24,fontWeight:700,color:'var(--sg-blue)',letterSpacing:'-0.02em',lineHeight:1}}>{s.n}</div>
+                <div style={{fontSize:10,color:'rgba(255,255,255,0.55)',textTransform:'uppercase',letterSpacing:'0.14em',fontWeight:600,marginTop:4}}>{s.l}</div>
               </div>
             ))}
           </div>
         </Reveal>
-        <Reveal delay={300}>
+
+        {/* CTA - matches the hero CTA shape: outline blue with subtle pulse + sparkle */}
+        <Reveal delay={320}>
           <div style={{textAlign:'center'}}>
-            <button type="button" onClick={() => setShowInvite(true)} className="btn btn-lg btn-primary">Request an Invite →</button>
-            <div style={{fontSize:11,color:'var(--fg3)',marginTop:14,letterSpacing:'0.1em',textTransform:'uppercase',fontWeight:600}}>
-              We reply within 48 hours · Selected partners only
+            <button type="button" onClick={() => setShowInvite(true)} className="btn btn-lg btn-invite"
+              style={{boxShadow:'0 0 0 0 rgba(74,123,247,0.45), 0 6px 20px rgba(74,123,247,0.22)',animation:'sgBuildPulse 1.8s ease-in-out infinite'}}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{marginRight:2}} aria-hidden="true">
+                <path d="M12 2l2.39 5.84L20 10l-5.61 2.16L12 18l-2.39-5.84L4 10l5.61-2.16L12 2z" fill="currentColor"/>
+              </svg>
+              Request an Invite
+            </button>
+            <div style={{fontSize:10,color:'rgba(255,255,255,0.42)',marginTop:10,letterSpacing:'0.18em',textTransform:'uppercase',fontWeight:600}}>
+              We reply within 24 hours · Select partners only
             </div>
           </div>
         </Reveal>
       </div>
+
+      <style>{`
+        .sg-kicker-dot {
+          position: relative;
+          box-shadow: 0 0 0 0 var(--sg-blue);
+          animation: sgKickerPulse 2s ease-in-out infinite;
+        }
+        @keyframes sgKickerPulse {
+          0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-blue) 55%, transparent); }
+          70%  { box-shadow: 0 0 0 10px color-mix(in srgb, var(--sg-blue) 0%, transparent); }
+          100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-blue) 0%, transparent); }
+        }
+
+        .sg-build-tag {
+          display: inline-flex;
+          flex-direction: column;
+          gap: 2px;
+          padding: 12px 16px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.10);
+          border-radius: var(--radius-md);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          z-index: 3;
+        }
+        .sg-build-tag-dot {
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: var(--sg-green);
+          box-shadow: 0 0 0 0 var(--sg-green);
+          animation: sgBuildDotPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes sgBuildDotPulse {
+          0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-green) 60%, transparent); }
+          70%  { box-shadow: 0 0 0 8px color-mix(in srgb, var(--sg-green) 0%, transparent); }
+          100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-green) 0%, transparent); }
+        }
+
+        .sg-onboard-stat {
+          background: var(--sg-black);
+          transition: background 200ms var(--ease-standard, ease);
+        }
+        .sg-onboard-stat:hover { background: rgba(74,123,247,0.08); }
+
+        .sg-onboard-cta {
+          appearance: none;
+          background: transparent;
+          border: 1px solid var(--sg-blue);
+          color: var(--sg-blue);
+          font-family: var(--font-body);
+          font-size: 14px;
+          font-weight: 600;
+          padding: 11px 24px;
+          border-radius: 999px;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          transition: transform 180ms var(--ease-standard, ease), background 180ms var(--ease-standard, ease), box-shadow 180ms var(--ease-standard, ease);
+        }
+        .sg-onboard-cta:hover {
+          background: color-mix(in srgb, var(--sg-blue) 12%, transparent);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px color-mix(in srgb, var(--sg-blue) 25%, transparent);
+        }
+        .sg-onboard-cta .sg-cta-arrow {
+          display: inline-block;
+          transition: transform 180ms var(--ease-standard, ease);
+        }
+        .sg-onboard-cta:hover .sg-cta-arrow { transform: translateX(4px); }
+
+        .sg-onboard .sg-onboard-h { font-size: 34px; }
+
+        @media (max-width: 720px) {
+          .sg-onboard { padding-top: 32px !important; padding-bottom: 40px !important; }
+          .sg-onboard .sg-onboard-h { font-size: 26px; }
+          .sg-build-tag { display: none !important; }
+          .sg-sonar-area { height: 200px !important; margin-bottom: 18px !important; }
+          .sg-onboard-stats { grid-template-columns: 1fr !important; max-width: 300px !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .sg-kicker-dot, .sg-build-tag-dot { animation: none !important; }
+        }
+      `}</style>
     </section>
     {showInvite && <InviteModal onClose={() => setShowInvite(false)} />}
     </>
@@ -570,16 +874,16 @@ function HowItWorks() {
 
   const cards = [
     {
-      body: "A real 3-hour conversation with our founder. We map your basic workflows.",
+      body: "A real 3-hour conversation with our founder. We map your core workflows.",
       title: "A live video call with the founder.",
       details: [
         { kind: 'p', text: "Day 1 is a 3-hour live video call with Mukund - our founder, not a sales rep, not an SDR. We walk through your operations end-to-end: how orders come in, who approves what, your production stages, vendor relationships, QC rules, dispatch, and the exceptions every floor has." },
-        { kind: 'p', text: "Bring whoever should be in the room - your COO, plant manager, a couple of floor leads. The more voices, the sharper the model. We map your basic workflows live on the call, asking the questions only an operator would think to ask." },
+        { kind: 'p', text: "Bring whoever should be in the room - your COO, plant manager, a couple of floor leads. The more voices, the sharper the model. We map your core workflows live on the call, asking the questions only an operator would think to ask." },
         { kind: 'list', items: [
           "Live video call (Zoom or Google Meet - whichever you prefer).",
           "3 hours, broken into operations blocks: orders, planning, production, QC, dispatch, accounts.",
           "We take notes in real time - you'll have them within an hour of the call.",
-          "Confidential by default. We sign your MNDA before the call if needed.",
+          "Confidential by default. We sign a confidentiality agreement before the call if needed.",
         ] },
       ],
       visual: (
@@ -680,7 +984,7 @@ function HowItWorks() {
       body: "Live in 7 days with your real data, orders, and team.",
       title: "Live in production by day 7.",
       details: [
-        { kind: 'p', text: "Day 4-7 is migration, integration, and go-live. We pull from your existing ERP, accounting tool, email, and any CSV exports. Integrations turn on - your accounting, your inbox, your shipping platform." },
+        { kind: 'p', text: "Most deployments go live within 7-21 days, depending on how much custom configuration your operation needs. Day 4-7 is migration, integration, and go-live. We pull from your existing ERP, accounting tool, email, and any CSV exports. Integrations turn on - your accounting, your inbox, your shipping platform." },
         { kind: 'p', text: "Your team uses the system in parallel for one week, on real orders, with real money. By day 7, SimpleGrid is the source of truth. Old spreadsheets and chat threads get archived." },
         { kind: 'list', items: [
           "Migration of master data: products, customers, vendors, GL, open orders, inventory.",
@@ -716,7 +1020,7 @@ function HowItWorks() {
       title: "Zero-training adoption.",
       details: [
         { kind: 'p', text: "Floor staff don't get a 50-page manual. There's nothing to learn. They text the system in plain English - same habit as iMessage, Slack, or Teams." },
-        { kind: 'p', text: "“Received 50 units red oak from Acme.” → System parses, matches the PO, updates inventory, fires triggers, confirms. Hank, our AI chatbot, sits in the same chat ready for queries: “What's our cash position by buyer?” “Did the QC reject for Hampton go back?”" },
+        { kind: 'p', text: "“Received 50 units red oak from Acme.” → System parses, matches the PO, updates inventory, fires triggers, confirms. Hank, our AI assistant, sits in the same chat ready for queries: “What's our cash position by buyer?” “Did the QC reject for Hampton go back?”" },
         { kind: 'list', items: [
           "5 minutes to learn - most operators are productive on day one.",
           "Works on any device: phone, tablet, browser. No app installs.",

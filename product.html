@@ -105,6 +105,7 @@
 <script type="text/babel">
 function ProductPage() {
   const [showLogin, setShowLogin] = React.useState(false);
+  const [showInvite, setShowInvite] = React.useState(false);
   React.useEffect(() => {
     if (!window.location.hash) return;
     const id = window.location.hash.slice(1);
@@ -147,8 +148,9 @@ function ProductPage() {
     </main>
     <Footer />
     {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+    {showInvite && <InviteModal onClose={() => setShowInvite(false)} />}
     <div className="mobile-cta">
-      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a call</a>
+      <button type="button" onClick={() => setShowInvite(true)} className="btn btn-invite">Request an invite</button>
     </div>
   </>);
 }

@@ -55,6 +55,31 @@ img { max-width: 100%; display: block; }
 .btn-ghost:hover { background: var(--sg-blue-light); }
 .btn-lg { padding: 14px 32px; font-size: 16px; }
 
+/* Outline "Request an Invite" CTA - transparent fill, blue border + text.
+   Pairs with the sgBuildPulse animation for the same alive feel as the
+   filled primary, without the heavy solid color. Used everywhere the
+   "Request an Invite" CTA appears. */
+.btn-invite {
+  background: transparent;
+  color: var(--sg-blue);
+  border: 1.5px solid var(--sg-blue);
+}
+.btn-invite:hover {
+  background: color-mix(in srgb, var(--sg-blue) 10%, transparent);
+  color: var(--sg-blue);
+  border-color: var(--sg-blue);
+}
+.section-dark .btn-invite { background: transparent; }
+.section-dark .btn-invite:hover { background: color-mix(in srgb, var(--sg-blue) 14%, transparent); }
+
+/* Soft brand-blue pulse halo for the Request-an-Invite CTA. Applied
+   inline as `animation: sgBuildPulse 1.8s ease-in-out infinite`. */
+@keyframes sgBuildPulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-blue) 45%, transparent), 0 6px 20px color-mix(in srgb, var(--sg-blue) 18%, transparent); }
+  70%  { box-shadow: 0 0 0 12px color-mix(in srgb, var(--sg-blue) 0%, transparent), 0 6px 20px color-mix(in srgb, var(--sg-blue) 22%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-blue) 0%, transparent), 0 6px 20px color-mix(in srgb, var(--sg-blue) 18%, transparent); }
+}
+
 /* ===== BUILD-ERP HERO BUTTON (PLG entry point) ===== */
 .btn-build {
   position: relative;
@@ -161,7 +186,7 @@ img { max-width: 100%; display: block; }
 .hero > .container { position: relative; z-index: 2; max-width: 1400px; }
 
 /* ===== HERO v2 ===== */
-.hero { background: var(--sg-black); color: #fff; padding: 96px 0 80px; overflow: hidden; min-height: calc(100vh - 144px); display: flex; flex-direction: column; justify-content: center; }
+.hero { background: var(--sg-black); color: #fff; padding: 96px 0 80px; overflow: hidden; min-height: calc(100vh - 64px); display: flex; flex-direction: column; justify-content: center; }
 .hero.hero-light { background: #FCFCFD; color: var(--fg1); }
 .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
 .hero-title { font-family: var(--font-heading); font-size: 56px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 22px; color: #fff; }
