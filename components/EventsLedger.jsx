@@ -320,8 +320,11 @@ function ProductHeroNew() {
   const bgStyle = isDark
     ? { paddingTop: 88, paddingBottom: 64, position: 'relative', overflow: 'hidden' }
     : { paddingTop: 88, paddingBottom: 64, position: 'relative', overflow: 'hidden', background: '#FCFCFD' };
+  // Dark mode: no radial tint, so the hero reads as the same #1A1A1A as the
+  // other section-dark blocks (FinalCTA, EventsLedger dark variant). Light
+  // mode keeps the subtle blue/purple radial for visual interest.
   const overlayBg = isDark
-    ? 'radial-gradient(circle at 80% 20%, rgba(74,123,247,0.18), transparent 50%), radial-gradient(circle at 20% 80%, rgba(124,58,237,0.12), transparent 50%)'
+    ? 'none'
     : 'radial-gradient(circle at 80% 20%, rgba(74,123,247,0.10), transparent 50%), radial-gradient(circle at 20% 80%, rgba(124,58,237,0.06), transparent 50%)';
   const tagColor = isDark ? 'rgba(255,255,255,0.5)' : 'var(--fg3)';
   const h1Color = isDark ? '#fff' : 'var(--fg1)';
