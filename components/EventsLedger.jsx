@@ -306,7 +306,7 @@ window.ArchitectureNew = ArchitectureNew;
 function ProductHeroNew() {
   const [showInvite, setShowInvite] = React.useState(false);
   const [theme, setTheme] = React.useState(() => {
-    try { return localStorage.getItem('sg_product_hero_theme') || 'light'; } catch { return 'light'; }
+    try { return localStorage.getItem('sg_product_hero_theme') || 'dark'; } catch { return 'dark'; }
   });
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark';

@@ -546,9 +546,9 @@ function ProductHeroNew() {
   const [showInvite, setShowInvite] = React.useState(false);
   const [theme, setTheme] = React.useState(() => {
     try {
-      return localStorage.getItem('sg_product_hero_theme') || 'light';
+      return localStorage.getItem('sg_product_hero_theme') || 'dark';
     } catch {
-      return 'light';
+      return 'dark';
     }
   });
   const toggleTheme = () => {
