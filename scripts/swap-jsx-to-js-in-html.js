@@ -68,11 +68,15 @@ function processHtml(filePath, appSlug, isBlogSlug = false) {
     }
   );
 
-  // 4) Replace the inline <script type="text/babel">…App()…</script> block (root pages only)
+  // 4) Replace the inline <script type="text/babel">…App()…</script> block (root pages only).
+  // The component scripts with src= were already handled in step 3, so the only
+  // remaining `type="text/babel"` script is the inline App() block. Use a tight
+  // lazy match that stops at the FIRST `</script>` so we don't accidentally eat
+  // any sibling inline scripts (e.g. the Cal.com lazy-loader) that come after.
   if (appSlug) {
     src = src.replace(
-      /<script type="text\/babel">[\s\S]*?<\/script>(\s*<\/body>)/,
-      `<script src="app/${appSlug}.js" defer></script>$1`
+      /<script type="text\/babel">((?:(?!<\/script>)[\s\S])*?)<\/script>/,
+      `<script src="app/${appSlug}.js" defer></script>`
     );
   }
 

@@ -36,9 +36,8 @@
 <meta name="twitter:description" content="Field notes from operators on fast-deploy ERP and factory floor software.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous" defer></script>
 <script src="data/blogs.js"></script>
 
 <!-- PostHog Analytics (deferred to idle / 2s timeout) -->
@@ -57,11 +56,11 @@
 </head>
 <body>
 <div id="root"></div>
-<script type="text/babel" src="components/Nav.jsx"></script>
-<script type="text/babel" src="components/LoginModal.jsx"></script>
-<script type="text/babel" src="components/Footer.jsx"></script>
-<script type="text/babel" src="components/PostInfographics.jsx"></script>
-<script type="text/babel" src="components/PostMain.jsx"></script>
+<script src="components/Nav.js" defer></script>
+<script src="components/LoginModal.js" defer></script>
+<script src="components/Footer.js" defer></script>
+<script src="components/PostInfographics.js" defer></script>
+<script src="components/PostMain.js" defer></script>
 <!-- Cal.com lazy-loader: defers embed.js until first user interaction so it doesn't hit Lighthouse. -->
 <script>
   var calLoaded = false;

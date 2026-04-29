@@ -89,9 +89,8 @@
   ]
 }
 </script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous" defer></script>
 
 <!-- PostHog Analytics (deferred to idle / 2s timeout) -->
 <script>
@@ -110,70 +109,17 @@
 <body>
 <div id="root"></div>
 
-<script type="text/babel" src="components/Nav.jsx"></script>
-<script type="text/babel" src="components/LoginModal.jsx"></script>
-<script type="text/babel" src="components/InviteModal.jsx"></script>
-<script type="text/babel" src="components/Interactive.jsx"></script>
-<script type="text/babel" src="components/ProductionFlow.jsx"></script>
-<script type="text/babel" src="components/EventsLedger.jsx"></script>
-<script type="text/babel" src="components/HomeMid.jsx"></script>
-<script type="text/babel" src="components/HomeBottom.jsx"></script>
-<script type="text/babel" src="components/Footer.jsx"></script>
+<script src="components/Nav.js" defer></script>
+<script src="components/LoginModal.js" defer></script>
+<script src="components/InviteModal.js" defer></script>
+<script src="components/Interactive.js" defer></script>
+<script src="components/ProductionFlow.js" defer></script>
+<script src="components/EventsLedger.js" defer></script>
+<script src="components/HomeMid.js" defer></script>
+<script src="components/HomeBottom.js" defer></script>
+<script src="components/Footer.js" defer></script>
 
-<script type="text/babel">
-function ProductPage() {
-  const [showLogin, setShowLogin] = React.useState(false);
-  const [showInvite, setShowInvite] = React.useState(false);
-  React.useEffect(() => {
-    if (!window.location.hash) return;
-    const id = window.location.hash.slice(1);
-    let tries = 0;
-    const tryScroll = () => {
-      const el = document.getElementById(id);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      } else if (tries++ < 20) {
-        setTimeout(tryScroll, 100);
-      }
-    };
-    setTimeout(tryScroll, 150);
-  }, []);
-  return (<>
-    <Nav page="product" onLoginClick={() => setShowLogin(true)} />
-    <main>
-      {/* HOOK - set the stage */}
-      <ProductHeroNew />
-
-      {/* MOTIVATION - Fogg M: pain in operator voice */}
-      <MotivationSection />
-
-      {/* INTEGRATIONS + SECURITY - supporting pillars */}
-      <Integrations />
-      <DataSecurity />
-
-      {/* THE BIG IDEA - Events Ledger (flagship section) */}
-      <EventsLedger />
-
-      {/* ABILITY - adoption is easy */}
-      <AbilitySection />
-
-      {/* RULES - your process, enforced */}
-      <CustomRules />
-
-      {/* TRIGGER - final CTA */}
-      <TriggerCTA />
-    </main>
-    <Footer />
-    {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
-    {showInvite && <InviteModal onClose={() => setShowInvite(false)} />}
-    <div className="mobile-cta">
-      <button type="button" onClick={() => setShowInvite(true)} className="btn btn-invite">Request an invite</button>
-    </div>
-  </>);
-}
-ReactDOM.createRoot(document.getElementById('root')).render(<ProductPage />);
-</script>
+<script src="app/product.js" defer></script>
 <!-- Cal.com lazy-loader: defers embed.js until first user interaction so it doesn't hit Lighthouse. -->
 <script>
   var calLoaded = false;

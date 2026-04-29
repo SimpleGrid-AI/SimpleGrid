@@ -163,9 +163,8 @@
   ]
 }
 </script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous" defer></script>
 
 <!-- PostHog Analytics (deferred to idle / 2s timeout) -->
 <script>
@@ -190,38 +189,15 @@
   <p>SimpleGrid is an AI-native ERP software for mid-market manufacturers in the United States and India. Common alternative spellings: SimpleGrid AI, Simple Grid AI, SimpleGridAI, simplegrid.ai, SimpleGrid ERP, Simple Grid ERP. Operated by Valaya AI Technologies Pvt. Ltd.</p>
 </section>
 
-<script type="text/babel" src="components/Nav.jsx"></script>
-<script type="text/babel" src="components/LoginModal.jsx"></script>
-<script type="text/babel" src="components/InviteModal.jsx"></script>
-<script type="text/babel" src="components/Interactive.jsx"></script>
-<script type="text/babel" src="components/HomeTop.jsx"></script>
-<script type="text/babel" src="components/HomeBottom.jsx"></script>
-<script type="text/babel" src="components/Footer.jsx"></script>
+<script src="components/Nav.js" defer></script>
+<script src="components/LoginModal.js" defer></script>
+<script src="components/InviteModal.js" defer></script>
+<script src="components/Interactive.js" defer></script>
+<script src="components/HomeTop.js" defer></script>
+<script src="components/HomeBottom.js" defer></script>
+<script src="components/Footer.js" defer></script>
 
-<script type="text/babel">
-function App() {
-  const [showLogin, setShowLogin] = React.useState(false);
-  const [showInvite, setShowInvite] = React.useState(false);
-  return (<>
-    <Nav page="home" onLoginClick={() => setShowLogin(true)} />
-    <main>
-      <Hero />
-      <ProblemSection />
-      <WhatWeDo />
-      <HowItWorks />
-      <ProofSection />
-      <FinalCTA />
-    </main>
-    <Footer />
-    {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
-    {showInvite && <InviteModal onClose={() => setShowInvite(false)} />}
-    <div className="mobile-cta">
-      <button type="button" onClick={() => setShowInvite(true)} className="btn btn-invite">Request an invite</button>
-    </div>
-  </>);
-}
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-</script>
+<script src="app/home.js" defer></script>
 <!-- Cal.com lazy-loader: defers embed.js until first user interaction so it doesn't hit Lighthouse. -->
 <script>
   var calLoaded = false;
