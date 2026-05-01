@@ -223,6 +223,9 @@ window.RadialBurst = RadialBurst;
 
 function CycleHeadline() {
   const HEADLINES = [
+    // First (server-rendered) headline aligns with the <title> tag's primary
+    // keywords ("AI ERP for manufacturers, live in 7 days") for SEO.
+    <React.Fragment key="d">AI ERP for manufacturers<br/>Live in 7 days</React.Fragment>,
     <React.Fragment key="b">You don't adapt to the system<br/>The system adapts to you</React.Fragment>,
     <React.Fragment key="a">AI-native ERP<br/>For operators, not accountants</React.Fragment>,
     <React.Fragment key="c">Your operation<br/>We build the ERP around it<br/>30 days to earn its keep, or walk away</React.Fragment>,

@@ -7,6 +7,21 @@ function parseBlogBody(body, title, images, blogId) {
   const lines = body.split('\n');
   const elements = [];
 
+  // Parse markdown-style [text](href) inline links into a React children
+  // array. Used for in-body cross-linking between related posts.
+  function inline(text) {
+    const out = [];
+    const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let last = 0, m, k = 0;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) out.push(text.slice(last, m.index));
+      out.push(<a key={'a-' + k++} href={m[2]}>{m[1]}</a>);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) out.push(text.slice(last));
+    return out.length ? out : text;
+  }
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
@@ -21,9 +36,9 @@ function parseBlogBody(body, title, images, blogId) {
     } else if (line.startsWith('Event ') && line.includes(':') && line.length < 120 && line.includes('Actor:')) {
       elements.push(<div key={'e-' + i} style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--fg2)', padding: '4px 0', lineHeight: 1.6 }}>{line}</div>);
     } else if (/^\d+\.\s/.test(line)) {
-      elements.push(<p key={'n-' + i} style={{ paddingLeft: 8 }}><strong>{line.match(/^\d+\./)[0]}</strong> {line.replace(/^\d+\.\s*/, '')}</p>);
+      elements.push(<p key={'n-' + i} style={{ paddingLeft: 8 }}><strong>{line.match(/^\d+\./)[0]}</strong> {inline(line.replace(/^\d+\.\s*/, ''))}</p>);
     } else {
-      elements.push(<p key={'p-' + i}>{line}</p>);
+      elements.push(<p key={'p-' + i}>{inline(line)}</p>);
     }
   }
 

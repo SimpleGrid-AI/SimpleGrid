@@ -231,6 +231,8 @@ function RadialBurst({
 window.RadialBurst = RadialBurst;
 function CycleHeadline() {
   const HEADLINES = [/*#__PURE__*/React.createElement(React.Fragment, {
+    key: "d"
+  }, "AI ERP for manufacturers", /*#__PURE__*/React.createElement("br", null), "Live in 7 days"), /*#__PURE__*/React.createElement(React.Fragment, {
     key: "b"
   }, "You don't adapt to the system", /*#__PURE__*/React.createElement("br", null), "The system adapts to you"), /*#__PURE__*/React.createElement(React.Fragment, {
     key: "a"

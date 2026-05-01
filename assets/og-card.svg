@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid meet" role="img" aria-label="SimpleGrid - AI ERP for manufacturers, live in 7 days">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E1320"/>
+      <stop offset="0.55" stop-color="#141A2D"/>
+      <stop offset="1" stop-color="#0A0E1A"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4A7BF7"/>
+      <stop offset="1" stop-color="#7B5BF7"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.4" r="0.65">
+      <stop offset="0" stop-color="#4A7BF7" stop-opacity="0.22"/>
+      <stop offset="0.6" stop-color="#4A7BF7" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#4A7BF7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Subtle factory-grid pattern in the background (8x4 dots) -->
+  <g opacity="0.18">
+    <g fill="#4A7BF7">
+      <circle cx="80" cy="500" r="2"/><circle cx="160" cy="500" r="2"/><circle cx="240" cy="500" r="2"/><circle cx="320" cy="500" r="2"/><circle cx="400" cy="500" r="2"/><circle cx="480" cy="500" r="2"/><circle cx="560" cy="500" r="2"/><circle cx="640" cy="500" r="2"/>
+      <circle cx="80" cy="540" r="2"/><circle cx="160" cy="540" r="2"/><circle cx="240" cy="540" r="2"/><circle cx="320" cy="540" r="2"/><circle cx="400" cy="540" r="2"/><circle cx="480" cy="540" r="2"/><circle cx="560" cy="540" r="2"/><circle cx="640" cy="540" r="2"/>
+      <circle cx="80" cy="580" r="2"/><circle cx="160" cy="580" r="2"/><circle cx="240" cy="580" r="2"/><circle cx="320" cy="580" r="2"/>
+    </g>
+  </g>
+
+  <!-- Logo mark (simplified grid + S) -->
+  <g transform="translate(60, 70)">
+    <rect x="0" y="0" width="44" height="44" rx="9" fill="url(#accentGrad)"/>
+    <text x="22" y="32" font-family="Geist, system-ui, -apple-system, sans-serif" font-size="26" font-weight="700" fill="#0E1320" text-anchor="middle">S</text>
+    <text x="60" y="32" font-family="Geist, system-ui, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" letter-spacing="-0.3">SimpleGrid</text>
+  </g>
+
+  <!-- Tag line -->
+  <text x="60" y="180" font-family="Geist, system-ui, sans-serif" font-size="20" font-weight="700" fill="#7AA0FF" letter-spacing="3" text-transform="uppercase">AI ERP for Manufacturers</text>
+
+  <!-- Main headline -->
+  <text x="60" y="280" font-family="Geist, system-ui, sans-serif" font-size="78" font-weight="700" fill="#FFFFFF" letter-spacing="-2.4">Live in 7 days.</text>
+  <text x="60" y="365" font-family="Geist, system-ui, sans-serif" font-size="78" font-weight="700" fill="#FFFFFF" letter-spacing="-2.4">$0 to start.</text>
+
+  <!-- Subheadline (the operator promise) -->
+  <text x="60" y="430" font-family="Geist, system-ui, sans-serif" font-size="26" font-weight="500" fill="#9CA1AC" letter-spacing="-0.3">You don't adapt to the system. The system adapts to you.</text>
+
+  <!-- Pillar bar at bottom -->
+  <g transform="translate(60, 510)">
+    <text x="0" y="0" font-family="Geist, system-ui, sans-serif" font-size="14" font-weight="700" fill="#7AA0FF" letter-spacing="2">SG SCHEMA</text>
+    <text x="0" y="24" font-family="Geist, system-ui, sans-serif" font-size="13" fill="#5A6480">Your operation, modeled in your language</text>
+    <line x1="0" y1="40" x2="280" y2="40" stroke="#1F2436" stroke-width="1"/>
+  </g>
+  <g transform="translate(380, 510)">
+    <text x="0" y="0" font-family="Geist, system-ui, sans-serif" font-size="14" font-weight="700" fill="#7AA0FF" letter-spacing="2">SG ENGINE</text>
+    <text x="0" y="24" font-family="Geist, system-ui, sans-serif" font-size="13" fill="#5A6480">Reads the spec. Generates the ERP.</text>
+    <line x1="0" y1="40" x2="280" y2="40" stroke="#1F2436" stroke-width="1"/>
+  </g>
+  <g transform="translate(700, 510)">
+    <text x="0" y="0" font-family="Geist, system-ui, sans-serif" font-size="14" font-weight="700" fill="#7AA0FF" letter-spacing="2">EVENT SOURCING</text>
+    <text x="0" y="24" font-family="Geist, system-ui, sans-serif" font-size="13" fill="#5A6480">Every action permanent. Audit by design.</text>
+    <line x1="0" y1="40" x2="280" y2="40" stroke="#1F2436" stroke-width="1"/>
+  </g>
+
+  <!-- URL footer -->
+  <text x="1140" y="600" font-family="Geist, system-ui, sans-serif" font-size="13" fill="#5A6480" text-anchor="end" letter-spacing="0.5">simplegrid.ai</text>
+</svg>

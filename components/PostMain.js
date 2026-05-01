@@ -6,6 +6,20 @@ function parseBlogBody(body, title, images, blogId) {
   const hasRealImages = Array.isArray(images) && images.length > 0;
   const lines = body.split('\n');
   const elements = [];
+
+  function inline(text) {
+    const out = [];
+    const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let last = 0, m, k = 0;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) out.push(text.slice(last, m.index));
+      out.push(/*#__PURE__*/React.createElement("a", { key: 'a-' + k++, href: m[2] }, m[1]));
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) out.push(text.slice(last));
+    return out.length ? out : text;
+  }
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
@@ -34,11 +48,11 @@ function parseBlogBody(body, title, images, blogId) {
         style: {
           paddingLeft: 8
         }
-      }, /*#__PURE__*/React.createElement("strong", null, line.match(/^\d+\./)[0]), " ", line.replace(/^\d+\.\s*/, '')));
+      }, /*#__PURE__*/React.createElement("strong", null, line.match(/^\d+\./)[0]), " ", inline(line.replace(/^\d+\.\s*/, ''))));
     } else {
       elements.push(/*#__PURE__*/React.createElement("p", {
         key: 'p-' + i
-      }, line));
+      }, inline(line)));
     }
   }
   if (hasRealImages) {

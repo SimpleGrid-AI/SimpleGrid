@@ -833,7 +833,7 @@
       className: "pi-mvd-col pi-mvd-col-good"
     }, /*#__PURE__*/React.createElement("div", {
       className: "pi-mvd-col-h"
-    }, "SG Schema (SimpleGrid)"), /*#__PURE__*/React.createElement("div", {
+    }, "SG Schema"), /*#__PURE__*/React.createElement("div", {
       className: "pi-mvd-steps"
     }, domainSteps.map((s, i) => /*#__PURE__*/React.createElement("div", {
       key: i,
@@ -1607,8 +1607,8 @@
       sub: "One business rule enters two architectures. Watch how the work plays out on each side, step by step."
     }, /*#__PURE__*/React.createElement(ModuleVsDomainDemo, null)),
     end: /*#__PURE__*/React.createElement(Bottom, {
-      big: "No modules. We model your domain.",
-      p: "Your rules. Your language. Your operation. The platform generates itself from the way you actually work."
+      big: "No modules. We write your SG Schema.",
+      p: "Your rules. Your language. Your operation. SG Engine generates the system from the spec, not from a template."
     })
   };
 

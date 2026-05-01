@@ -1175,7 +1175,7 @@
         <ModuleVsDomainDemo />
       </Block>
     ),
-    end: <Bottom big="No modules. We model your domain." p="Your rules. Your language. Your operation. The platform generates itself from the way you actually work." />,
+    end: <Bottom big="No modules. We write your SG Schema." p="Your rules. Your language. Your operation. SG Engine generates the system from the spec, not from a template." />,
   };
 
   // 7 - Claude chatbot

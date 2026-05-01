@@ -51,7 +51,7 @@ function EliteFactoryRoad({
   }, {
     id: 2,
     short: 'PLAN',
-    h: 'Planning & wood agg.',
+    h: 'Planning & wood aggregated',
     p: 'Planner allocates per SKU. All component-level wood needs aggregated across orders.',
     kind: 'plan',
     pricing: null,

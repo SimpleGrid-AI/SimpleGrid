@@ -372,7 +372,7 @@ function ArchitectureNew() {
     style: {
       maxWidth: 820
     }
-  }, "Most ERPs are data-entry apps wearing a suit - tables, forms, overwrites. SimpleGrid is built on two ideas no other business platform ships at the core: a ", /*#__PURE__*/React.createElement("strong", null, "SG Schema"), " that captures one factory's complete operational blueprint, and an ", /*#__PURE__*/React.createElement("strong", null, "event-sourced"), " ledger that stores every change. SG Engine reads the SG Schema and runs your factory from it. The result is a system that bends to your business instead of the other way around.")), /*#__PURE__*/React.createElement("div", {
+  }, "Most ERPs are data-entry apps wearing a suit - tables, forms, overwrites. SimpleGrid is built on two ideas no other business platform ships at the core: an ", /*#__PURE__*/React.createElement("strong", null, "SG Schema"), " that captures one factory's complete operational blueprint, and an ", /*#__PURE__*/React.createElement("strong", null, "event-sourced"), " ledger that stores every change. SG Engine reads the SG Schema and runs your factory from it. The result is a system that bends to your business instead of the other way around.")), /*#__PURE__*/React.createElement("div", {
     className: "arch-ddd-grid"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
     className: "arch-ddd-card",
@@ -470,7 +470,7 @@ function ArchitectureNew() {
     className: "arch-outcome-grid"
   }, [{
     t: '7-day deploys',
-    p: 'New domain → new system, generated from configuration. No new codebase per customer.'
+    p: 'New operation → new system, generated from your SG Schema. No new codebase per customer.'
   }, {
     t: 'Audit by design',
     p: 'You don\'t add audit logs. The audit is the system. Every regulator question already has an answer.'

@@ -42,7 +42,7 @@ function EliteFactoryRoad({ compact = false } = {}) {
 
   const STAGES = [
     { id: 1,  short:'SO',    h:'Sales order received',  p:'Buyer PO arrives. AI parses any format and creates a sales order.', kind:'so',     pricing:null,                                                  color:'#4A7BF7' },
-    { id: 2,  short:'PLAN',  h:'Planning & wood agg.',  p:'Planner allocates per SKU. All component-level wood needs aggregated across orders.', kind:'plan',  pricing:null,                                  color:'#7C3AED' },
+    { id: 2,  short:'PLAN',  h:'Planning & wood aggregated',  p:'Planner allocates per SKU. All component-level wood needs aggregated across orders.', kind:'plan',  pricing:null,                                  color:'#7C3AED' },
     { id: 3,  short:'PO',    h:'Wood ordered',          p:'One PO per species + thickness, multi-vendor.',                    kind:'po',     pricing:'Quoted by species + thickness',                       color:'#0EA5E9' },
     { id: 4,  short:'RECV',  h:'Wood received',         p:'Seasoned vs unseasoned check at receipt. Inventory live.',         kind:'recv',   pricing:null,                                                  color:'#10B981' },
     { id: 5,  short:'SEAS',  h:'Seasoning chamber',     p:'Unseasoned stock loaded into the seasoning chamber. Door closes, timer runs, planks come out dry and stable.', kind:'seas', pricing:null,         color:'#10B981' },
