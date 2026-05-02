@@ -282,8 +282,8 @@ function CycleHeadline() {
   }, HEADLINES[0]));
 }
 function Hero() {
-  const [count, setCount] = React.useState(547);
-  const [cost, setCost] = React.useState(150000);
+  const count = 7;
+  const cost = 0;
   const [showInvite, setShowInvite] = React.useState(false);
   const [theme, setTheme] = React.useState(() => {
     try {
@@ -299,18 +299,6 @@ function Hero() {
       localStorage.setItem('sg_hero_theme', next);
     } catch {}
   };
-  React.useEffect(() => {
-    const startTime = Date.now(),
-      duration = 300;
-    const timer = setInterval(() => {
-      const progress = Math.min((Date.now() - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(547 - (547 - 7) * eased));
-      setCost(Math.round(150000 - 150000 * eased));
-      if (progress >= 1) clearInterval(timer);
-    }, 16);
-    return () => clearInterval(timer);
-  }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("section", {
     className: 'hero' + (theme === 'light' ? ' hero-light' : '')
   }, /*#__PURE__*/React.createElement("button", {
