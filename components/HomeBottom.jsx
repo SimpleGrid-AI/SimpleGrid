@@ -346,7 +346,7 @@ function FinalCTA() {
           <h2 className="h2">Deploy in days. Decide in 30.</h2>
           <p className="sub">We build it at our cost. You run it with your team. Doesn't work? Walk away.</p>
           <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-lg btn-primary">Book a call</a>
-          <p className="note">No commitment. Migration included. Founder-led onboarding.</p>
+          <p className="note">No commitment. Migration included. Senior team on every deployment.</p>
         </Reveal>
       </div>
     </section>

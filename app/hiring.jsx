@@ -47,7 +47,7 @@ const ROLES = [
     comp: 'Competitive stipend - discussed on the call',
     summary: 'Run with whatever the founder needs run with. Customer ops, deployment notes, content, data, sales-ops, partner outreach. Six months of unfair access to how a B2B startup is actually built.',
     about: [
-      'This is not a coffee-and-decks internship. The founder runs every deployment personally. You will sit next to him on customer calls, take the followups, build the spreadsheets, draft the contracts, write the case studies, and own the loose ends.',
+      'This is not a coffee-and-decks internship. Founders and senior engineers run every deployment together. You will sit next to them on customer calls, take the followups, build the spreadsheets, draft the contracts, write the case studies, and own the loose ends.',
       'If you want to be a founder yourself one day, this is the densest six months you can spend.',
     ],
     what: [
@@ -84,7 +84,7 @@ function HiringHero() {
         <div className="tag" style={{color:'rgba(255,255,255,0.45)'}}>HIRING</div>
         <h1 className="h1" style={{color:'#fff',maxWidth:880}}>Build the ERP every operator wishes existed.</h1>
         <p className="lead" style={{color:'rgba(255,255,255,0.7)',maxWidth:760,marginTop:16}}>
-          Small team. Founder-led. Real customers paying us. We are looking for engineers, operators, and go-to-market hires who want to ship a system that gets used - not bought and shelved.
+          Lean team. Senior engineers and founders on every customer. Real customers paying us. We are looking for engineers, operators, and go-to-market hires who want to ship a system that gets used - not bought and shelved.
         </p>
         <div style={{marginTop:28,display:'flex',gap:12,flexWrap:'wrap'}}>
           <a href="#roles" className="btn btn-lg btn-primary">See open roles</a>

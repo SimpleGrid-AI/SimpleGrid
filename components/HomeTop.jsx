@@ -339,44 +339,38 @@ function Hero() {
 }
 window.Hero = Hero;
 
-// Slim "Integrates with" bar shown between the hero and the problem
-// section. Text-only logo wall — every integration is one short label.
+// "Integrates with" running marquee shown between the hero and the
+// problem section. Single-color brand glyphs (Simple Icons paths,
+// CC0) + label, list duplicated so the CSS keyframe loops seamlessly.
 function IntegrationsBar() {
   const items = [
-    'WhatsApp', 'Slack', 'Gmail', 'Excel', 'Google Sheets',
-    'QuickBooks', 'Tally', 'Shopify', 'Amazon', 'ShipStation',
+    { name: 'WhatsApp',      path: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413' },
+    { name: 'Slack',         path: 'M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z' },
+    { name: 'Gmail',         path: 'M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z' },
+    { name: 'Microsoft Excel', path: 'M23.546 1.785H7.93v3.43H0v13.572h7.93v3.428h15.616A.45.45 0 0 0 24 21.764V2.236a.45.45 0 0 0-.454-.451zm-12.16 14.193l-1.998-3.51-1.7 3.255H4.992l3.103-4.937L5.027 5.85h2.768l1.764 3.337L11.357 5.85h2.696l-2.999 5.06 3.108 4.94zm10.875 1.85h-7.95V13.51h2.997v-1.78h-2.997V9.95h2.997V8.16h-2.997V6.376h7.95z' },
+    { name: 'Google Sheets', path: 'M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6zm-3.41 8.727H7.91v1.909h3.41V8.727zm1.227 3.818v-1.909h3.41v1.91zm0-3.818v1.909h3.41V8.727zM19.5 24H4.5C3.12 24 2 22.88 2 21.5v-19C2 1.12 3.12 0 4.5 0H14v6h6v15.5c0 1.38-1.12 2.5-2.5 2.5zM18 7.5H6v9h12z' },
+    { name: 'QuickBooks',    path: 'M0 12c0 6.624 5.376 12 12 12s12-5.376 12-12S18.624 0 12 0 0 5.376 0 12zm12-9.6c5.302 0 9.6 4.298 9.6 9.6s-4.298 9.6-9.6 9.6S2.4 17.302 2.4 12 6.698 2.4 12 2.4zM7.2 8.4h2.4v7.2H7.2c-1.99 0-3.6-1.61-3.6-3.6S5.21 8.4 7.2 8.4zm9.6 7.2h-2.4V8.4h2.4c1.99 0 3.6 1.61 3.6 3.6s-1.61 3.6-3.6 3.6z' },
+    { name: 'Tally',         path: 'M3 3h3v18H3zM10 3h3v18h-3zM17 3h4v18h-4z' },
+    { name: 'Shopify',       path: 'M15.337 23.979 23.879 22.115S20.794 1.281 20.775 1.139C20.756.997 20.628.916 20.523.91c-.105-.006-2.328-.166-2.328-.166s-1.523-1.483-1.673-1.633c-.151-.151-.444-.105-.557-.073-.017.005-.331.103-.831.255-.503-1.422-1.401-2.736-2.965-2.736-.043 0-.087.002-.131.005C11.594-3.875 11.052-4.1 10.585-4.1c-3.581 0-5.295 4.479-5.834 6.756-1.394.432-2.385.738-2.508.776-.78.244-.808.27-.91 1.005-.077.553-2.116 16.353-2.116 16.353l14.65 2.747 1.47-.058z' },
+    { name: 'Amazon',        path: 'M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 0 1-4.726.624c-2.74 0-5.317-.474-7.728-1.43-2.43-.96-4.582-2.32-6.46-4.05-.103-.097-.155-.196-.155-.292 0-.063.022-.114.073-.18zm6.272-6.86c0-1.1.272-2.04.815-2.83.55-.79 1.3-1.395 2.25-1.81.872-.39 1.93-.65 3.187-.795.42-.045 1.13-.108 2.106-.179v-.39c0-1.046-.115-1.756-.34-2.155-.336-.51-.87-.75-1.595-.75h-.21c-.553.045-1.03.226-1.435.55-.4.32-.66.77-.78 1.34-.063.36-.252.567-.566.612l-3.218-.39c-.317-.077-.476-.226-.476-.508 0-.038.04-.226.08-.55.157-.81.4-1.51.73-2.094.34-.59.79-1.12 1.34-1.59.55-.47 1.21-.83 1.96-1.08C11.115.183 11.886.06 12.696.06h.4c1.5 0 2.7.31 3.62.93.92.62 1.5 1.45 1.74 2.5.06.27.1.49.13.65.02.16.04.42.04.78v6.65c0 .58.04 1.12.1 1.62.07.5.18.93.32 1.27.14.34.27.65.39.93.13.28.34.6.62.96.05.07.08.13.08.2 0 .07-.04.14-.13.21-.61.5-1.21 1-1.81 1.51l-.13.07c-.21.07-.4.04-.59-.1-.41-.34-.81-.76-1.21-1.27-.41-.51-.81-1-.92-1.17-.13-.18-.26-.36-.39-.55-1.31 1.42-2.94 2.13-4.89 2.13-1.42 0-2.63-.43-3.62-1.29-.99-.86-1.49-1.99-1.49-3.4l-.07-.16zm5.55.27c0 .81.21 1.45.62 1.93.41.49.96.73 1.65.73.06 0 .14-.01.24-.03.1-.02.16-.03.21-.03.81-.21 1.45-.7 1.92-1.46.21-.32.37-.74.48-1.27.11-.53.16-1 .16-1.37v-.78c-1.18 0-2.09.13-2.7.39-.61.26-1.03.64-1.27 1.13-.34.49-.51 1.03-.51 1.62l-.07.14z' },
+    { name: 'ShipStation',   path: 'M3 16.2c0-.4.3-.7.7-.7H22c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7zM3 19.4h19c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7v-.5c0-.4.3-.7.7-.7zM3 12.3c0-.4.3-.7.7-.7h13.6c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7zM3 8.4c0-.4.3-.7.7-.7h10c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7zM3 4.5c0-.4.3-.7.7-.7H22c.4 0 .7.3.7.7V5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7z' },
   ];
+  // Two copies of the list so the CSS marquee loops seamlessly.
+  const list = [...items, ...items];
   return (
-    <section style={{
-      borderTop: '1px solid var(--border)',
-      borderBottom: '1px solid var(--border)',
-      background: 'var(--sg-off-white)',
-      padding: '18px 0',
-    }}>
-      <div className="container" style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '14px 28px',
-      }}>
-        <span style={{
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          color: 'var(--fg3)',
-          marginRight: 6,
-        }}>Integrates with</span>
-        {items.map((it, i) => (
-          <span key={i} style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: 14,
-            fontWeight: 600,
-            color: 'var(--fg2)',
-            letterSpacing: '-0.01em',
-          }}>{it}</span>
-        ))}
+    <section className="ig-bar" aria-label="Integration partners">
+      <span className="ig-label">Integrates with</span>
+      <div className="ig-marquee">
+        <div className="ig-track">
+          {list.map((it, i) => (
+            <div key={i} className="ig-item" title={it.name}>
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                <path d={it.path} fill="currentColor" />
+              </svg>
+              <span>{it.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -726,7 +720,7 @@ function WhatWeDo() {
 
             {/* Subtext */}
             <p style={{fontSize:15,color:'rgba(255,255,255,0.6)',lineHeight:1.55,maxWidth:640,margin:'0 auto 22px'}}>
-              Our founder personally builds and deploys every system. We run tight to keep the experience exceptional.
+              Our senior engineers and founders are on every deployment. We run tight to keep the experience exceptional.
             </p>
           </div>
         </Reveal>
@@ -898,7 +892,7 @@ function HowItWorks() {
       body: "A real 3-hour conversation with our founder. We map your core workflows.",
       title: "A live video call with the founder.",
       details: [
-        { kind: 'p', text: "Day 1 is a 3-hour live video call with Mukund - our founder, not a sales rep, not an SDR. We walk through your operations end-to-end: how orders come in, who approves what, your production stages, vendor relationships, QC rules, dispatch, and the exceptions every floor has." },
+        { kind: 'p', text: "Day 1 is a 3-hour live video call with our founders and lead engineer - not a sales rep, not an SDR. We walk through your operations end-to-end: how orders come in, who approves what, your production stages, vendor relationships, QC rules, dispatch, and the exceptions every floor has." },
         { kind: 'p', text: "Bring whoever should be in the room - your COO, plant manager, a couple of floor leads. The more voices, the sharper the model. We map your core workflows live on the call, asking the questions only an operator would think to ask." },
         { kind: 'list', items: [
           "Live video call (Zoom or Google Meet - whichever you prefer).",

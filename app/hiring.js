@@ -21,7 +21,7 @@ const ROLES = [{
   datePosted: '2026-04-10',
   comp: 'Competitive stipend - discussed on the call',
   summary: 'Run with whatever the founder needs run with. Customer ops, deployment notes, content, data, sales-ops, partner outreach. Six months of unfair access to how a B2B startup is actually built.',
-  about: ['This is not a coffee-and-decks internship. The founder runs every deployment personally. You will sit next to him on customer calls, take the followups, build the spreadsheets, draft the contracts, write the case studies, and own the loose ends.', 'If you want to be a founder yourself one day, this is the densest six months you can spend.'],
+  about: ['This is not a coffee-and-decks internship. Founders and senior engineers run every deployment together. You will sit next to them on customer calls, take the followups, build the spreadsheets, draft the contracts, write the case studies, and own the loose ends.', 'If you want to be a founder yourself one day, this is the densest six months you can spend.'],
   what: ['Customer ops: own followups, deployment trackers, and customer-success notes for every live account.', 'Sales ops: research target accounts, draft outbound, prep founder for calls, log everything in CRM.', 'Content: turn deployment learnings into case studies, blog posts, and product docs.', 'Internal tooling: keep dashboards, hiring trackers, and finance trackers honest.', 'Anything that is on fire that nobody else is owning.'],
   you: ['Final-year undergrad, recent grad, or pre-MBA / pre-grad-school.', 'Strong written English. We write everything down here.', 'Ridiculously organized. Things you own do not slip.', 'Comfortable with ambiguity, allergic to fluff, fast on a keyboard.', 'Bonus: prior startup internship, debate / writing background, basic SQL or spreadsheets-at-depth.'],
   not: ['A remote internship. We want you in the room.', 'A passive role. We will not assign you a project; you will find the next thing yourself.'],
@@ -54,7 +54,7 @@ function HiringHero() {
       maxWidth: 760,
       marginTop: 16
     }
-  }, "Small team. Founder-led. Real customers paying us. We are looking for engineers, operators, and go-to-market hires who want to ship a system that gets used - not bought and shelved."), /*#__PURE__*/React.createElement("div", {
+  }, "Lean team. Senior engineers and founders on every customer. Real customers paying us. We are looking for engineers, operators, and go-to-market hires who want to ship a system that gets used - not bought and shelved."), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28,
       display: 'flex',

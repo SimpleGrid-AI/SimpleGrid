@@ -11,6 +11,18 @@ img { max-width: 100%; display: block; }
 .skip-link { position: absolute; top: 0; left: 0; padding: 12px 20px; background: var(--sg-blue, #4A7BF7); color: #fff; font-weight: 600; text-decoration: none; z-index: 10000; transform: translateY(-100%); transition: transform 120ms ease; }
 .skip-link:focus { transform: translateY(0); outline: 2px solid #fff; outline-offset: 2px; }
 
+/* ===== Integrations marquee (between hero + problem section) ===== */
+.ig-bar { display: flex; align-items: center; gap: 18px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--sg-off-white); padding: 14px 24px; overflow: hidden; }
+.ig-label { flex: 0 0 auto; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg3); white-space: nowrap; }
+.ig-marquee { flex: 1 1 auto; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.ig-track { display: flex; gap: 36px; width: max-content; animation: ig-scroll 40s linear infinite; }
+.ig-marquee:hover .ig-track { animation-play-state: paused; }
+.ig-item { display: inline-flex; align-items: center; gap: 8px; color: var(--fg2); font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; flex: 0 0 auto; }
+.ig-item svg { flex: 0 0 auto; opacity: 0.85; }
+@keyframes ig-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ig-track { animation: none; } }
+@media (max-width: 640px) { .ig-bar { flex-direction: column; gap: 10px; padding: 12px 0; } .ig-label { padding: 0 16px; } }
+
 /* ===== NAV ===== */
 .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); }
 .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; gap: 32px; }

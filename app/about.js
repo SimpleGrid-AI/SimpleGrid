@@ -80,7 +80,7 @@ function AboutPage() {
       color: 'rgba(255,255,255,0.5)',
       marginTop: 14
     }
-  }, "Founder-led onboarding \xB7 We reply within 48 hours \xB7 Select partners only"), /*#__PURE__*/React.createElement("div", {
+  }, "Senior team on every deployment \xB7 We reply within 48 hours \xB7 Select partners only"), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 20,
       textAlign: 'center'

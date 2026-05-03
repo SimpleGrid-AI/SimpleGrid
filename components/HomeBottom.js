@@ -800,6 +800,6 @@ function FinalCTA() {
     className: "btn btn-lg btn-primary"
   }, "Book a call"), /*#__PURE__*/React.createElement("p", {
     className: "note"
-  }, "No commitment. Migration included. Founder-led onboarding."))));
+  }, "No commitment. Migration included. Senior team on every deployment."))));
 }
 window.FinalCTA = FinalCTA;

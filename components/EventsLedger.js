@@ -37,7 +37,7 @@ function EventsLedger() {
     impact: 'Auto-routed to original contractor'
   }, {
     t: '11:46:31',
-    actor: 'Mukund · Owner',
+    actor: 'James · Owner',
     verb: 'APPROVE',
     entity: 'PO-8819 · ₹ 14.2 L',
     from: 'Pending',
@@ -526,7 +526,7 @@ function ArchitectureNew() {
       fontStyle: 'normal',
       fontWeight: 600
     }
-  }, "- Mukund Agarwal, Founder"), /*#__PURE__*/React.createElement("p", {
+  }, "- The founding team"), /*#__PURE__*/React.createElement("p", {
     style: {
       fontSize: 14,
       color: 'var(--fg2)',
@@ -673,7 +673,7 @@ function ProductHeroNew() {
       fontSize: 13,
       color: noteColor
     }
-  }, /*#__PURE__*/React.createElement("span", null, "\u25CF 7-day deployment"), /*#__PURE__*/React.createElement("span", null, "\u25CF No commitment"), /*#__PURE__*/React.createElement("span", null, "\u25CF Founder runs your onboarding"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
+  }, /*#__PURE__*/React.createElement("span", null, "\u25CF 7-day deployment"), /*#__PURE__*/React.createElement("span", null, "\u25CF No commitment"), /*#__PURE__*/React.createElement("span", null, "\u25CF Senior team runs your onboarding"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)
   }));
 }
@@ -1422,7 +1422,7 @@ function TriggerCTA() {
       color: 'rgba(255,255,255,0.5)',
       marginTop: 14
     }
-  }, "Founder-led onboarding \xB7 Migration included \xB7 No commitment"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
+  }, "Senior-led onboarding \xB7 Migration included \xB7 No commitment"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)
   }));
 }

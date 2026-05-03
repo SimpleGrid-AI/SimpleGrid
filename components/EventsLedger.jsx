@@ -8,7 +8,7 @@ function EventsLedger() {
     { t: '11:46:58', actor: 'System',        verb: 'TRIGGER_FIRED',   entity: 'Inventory rule R-204',     from: '-',             to: 'Reorder draft', impact: 'PO-8821 prepared for approval' },
     { t: '11:46:51', actor: 'Mike · Floor',  verb: 'START_STAGE',     entity: 'JO-KEN-MIRROR · Assembly', from: 'Issued',        to: 'In progress',   impact: 'Stage clock started' },
     { t: '11:46:44', actor: 'Raj · QC',      verb: 'REJECT_BATCH',    entity: 'Batch B-7710 · 12 pcs',    from: 'Pending',       to: 'Rejected',      impact: 'Auto-routed to original contractor' },
-    { t: '11:46:31', actor: 'Mukund · Owner',verb: 'APPROVE',         entity: 'PO-8819 · ₹ 14.2 L',       from: 'Pending',       to: 'Approved',      impact: 'Vendor notified · Funds reserved' },
+    { t: '11:46:31', actor: 'James · Owner',verb: 'APPROVE',         entity: 'PO-8819 · ₹ 14.2 L',       from: 'Pending',       to: 'Approved',      impact: 'Vendor notified · Funds reserved' },
     { t: '11:46:18', actor: 'Bruce · Disp.', verb: 'SHIP_DISPATCH',   entity: 'HACO-Dispatch-441',        from: 'Packed',        to: 'Shipped',       impact: 'Invoice INV-2207 generated' },
     { t: '11:46:05', actor: 'System',        verb: 'RECONCILE',       entity: 'Bank · ICICI 4421',        from: '-',             to: 'Matched',       impact: '37 receipts matched · 2 flagged' },
     { t: '11:45:52', actor: 'Hank · Whse',   verb: 'RECEIVE_GOODS',   entity: 'GRN-3320 · 200 sheets',    from: '-',             to: 'In stock',      impact: 'Inventory +200 · AP +₹ 14.2 L' },
@@ -288,7 +288,7 @@ function ArchitectureNew() {
               "This is not AI. AI is the surface. Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know."
             </p>
             <p style={{ fontSize: 13, color: 'var(--fg3)', lineHeight: 1.5, margin: '6px 0 0', fontStyle: 'normal', fontWeight: 600 }}>
-              - Mukund Agarwal, Founder
+              - The founding team
             </p>
             <p style={{ fontSize: 14, color: 'var(--fg2)', lineHeight: 1.7, margin: '14px 0 0' }}>
               <a href="about.html" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'none'}}>Built by operators who ran a $30M factory</a> - not by software vendors who watched one from the outside.
@@ -369,7 +369,7 @@ function ProductHeroNew() {
         <div style={{ marginTop: 36, display: 'flex', gap: 32, flexWrap: 'wrap', fontSize: 13, color: noteColor }}>
           <span>● 7-day deployment</span>
           <span>● No commitment</span>
-          <span>● Founder runs your onboarding</span>
+          <span>● Senior team runs your onboarding</span>
         </div>
       </div>
       {showInvite && <InviteModal onClose={() => setShowInvite(false)} />}
@@ -801,7 +801,7 @@ function TriggerCTA() {
           <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center' }}>
             <button type="button" onClick={() => setShowInvite(true)} className="btn btn-lg btn-invite" style={{animation:'sgBuildPulse 1.8s ease-in-out infinite'}}>Request an Invite →</button>
           </div>
-          <p className="note" style={{ color: 'rgba(255,255,255,0.5)', marginTop: 14 }}>Founder-led onboarding · Migration included · No commitment</p>
+          <p className="note" style={{ color: 'rgba(255,255,255,0.5)', marginTop: 14 }}>Senior-led onboarding · Migration included · No commitment</p>
         </Reveal>
       </div>
       {showInvite && <InviteModal onClose={() => setShowInvite(false)} />}

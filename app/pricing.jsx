@@ -7,7 +7,7 @@ const TIERS = [
     accent: 'var(--sg-blue)',
     features: [
       '7-day deployment, at our cost',
-      'Founder-led onboarding',
+      'Senior team on every deployment',
       'All your data migrated for you',
       'Unlimited floor users',
       'Walk away anytime in 30 days',
@@ -27,7 +27,7 @@ const TIERS = [
       'All features included. No tiers, no add-ons.',
       'Every change to your ERP, now and forever, included.',
       'New features ship regularly and are yours automatically.',
-      'Founder still answers your call.',
+      'Direct line to the founding team.',
     ],
     cta: 'Talk to sales',
     ctaHref: 'https://cal.com/simplegrid-ai',
@@ -48,7 +48,7 @@ const INCLUDED = [
   { h: 'Working demo in 24 hours', p: 'Not a slideshow. A live system reflecting how your operation actually runs.' },
   { h: 'Data migration',      p: 'Your spreadsheets, your existing ERP exports, your group chats - we move what we can use.' },
   { h: 'Floor-staff training', p: 'Your team types what happened the way they would on WhatsApp. The training is the conversation.' },
-  { h: 'Founder-led onboarding', p: 'Every deployment is led personally - not by a sales engineer or an account manager.' },
+  { h: 'Senior-led onboarding', p: 'Every deployment is led by senior engineers and founders — not by a sales engineer or an account manager.' },
   { h: 'All future rule changes', p: 'New approval rule. New production stage. New QC gate. All configuration, not code. No change orders.' },
 ];
 
@@ -179,7 +179,7 @@ function PricingPage() {
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:18, marginTop:28}} className="pricing-faq-grid">
           {[
             { q: 'How much does SimpleGrid cost after the trial?', a: 'Talk to us. We agree on a price together that fits your operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items.' },
-            { q: 'Is there a setup or deployment fee?', a: 'No. SimpleGrid deploys at our cost. You pay nothing for the modeling sessions, the configuration, or the founder-led onboarding.' },
+            { q: 'Is there a setup or deployment fee?', a: 'No. SimpleGrid deploys at our cost. You pay nothing for the modeling sessions, the configuration, or the senior-led onboarding.' },
             { q: 'What does "pay only if it works" mean?', a: 'At the end of 30 days you decide. If the system is being used daily by your floor staff and your dashboards match the floor, it works. If not, you walk away. No invoice. No clawback.' },
             { q: 'Do you charge for changes to the ERP - today or tomorrow?', a: 'No. New approval rule, new production stage, new QC gate, new report, new integration - every change is included, at go-live and forever after. Most ERPs charge $8K-$20K per change order. We never do.' },
             { q: 'Are there feature tiers or add-on fees?', a: 'No. Every customer gets every feature. There is no Pro plan, no Enterprise tier, no per-feature licensing. When we ship something new, it is automatically yours.' },

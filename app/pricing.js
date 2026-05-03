@@ -4,7 +4,7 @@ const TIERS = [{
   price: '$0',
   priceUnit: '',
   accent: 'var(--sg-blue)',
-  features: ['7-day deployment, at our cost', 'Founder-led onboarding', 'All your data migrated for you', 'Unlimited floor users', 'Walk away anytime in 30 days'],
+  features: ['7-day deployment, at our cost', 'Senior team on every deployment', 'All your data migrated for you', 'Unlimited floor users', 'Walk away anytime in 30 days'],
   cta: 'Book a Call',
   ctaHref: 'https://cal.com/simplegrid-ai',
   highlight: true
@@ -14,7 +14,7 @@ const TIERS = [{
   price: 'Contact us',
   priceUnit: 'Custom-quoted because every operation is different - but it\'s one number, included.',
   accent: 'var(--sg-purple)',
-  features: ['One monthly subscription. That is the whole bill.', 'All features included. No tiers, no add-ons.', 'Every change to your ERP, now and forever, included.', 'New features ship regularly and are yours automatically.', 'Founder still answers your call.'],
+  features: ['One monthly subscription. That is the whole bill.', 'All features included. No tiers, no add-ons.', 'Every change to your ERP, now and forever, included.', 'New features ship regularly and are yours automatically.', 'Direct line to the founding team.'],
   cta: 'Talk to sales',
   ctaHref: 'https://cal.com/simplegrid-ai',
   highlight: false
@@ -63,7 +63,7 @@ const INCLUDED = [{
   h: 'Floor-staff training',
   p: 'Your team types what happened the way they would on WhatsApp. The training is the conversation.'
 }, {
-  h: 'Founder-led onboarding',
+  h: 'Senior-led onboarding',
   p: 'Every deployment is led personally - not by a sales engineer or an account manager.'
 }, {
   h: 'All future rule changes',
@@ -323,7 +323,7 @@ function PricingPage() {
     a: 'Talk to us. We agree on a price together that fits your operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items.'
   }, {
     q: 'Is there a setup or deployment fee?',
-    a: 'No. SimpleGrid deploys at our cost. You pay nothing for the modeling sessions, the configuration, or the founder-led onboarding.'
+    a: 'No. SimpleGrid deploys at our cost. You pay nothing for the modeling sessions, the configuration, or the senior-led onboarding.'
   }, {
     q: 'What does "pay only if it works" mean?',
     a: 'At the end of 30 days you decide. If the system is being used daily by your floor staff and your dashboards match the floor, it works. If not, you walk away. No invoice. No clawback.'
