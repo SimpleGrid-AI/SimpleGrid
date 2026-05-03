@@ -597,7 +597,7 @@ function ApexCaseStudy() {
       fontSize: 14
     }
   }, /*#__PURE__*/React.createElement("a", {
-    href: "case-elite.html",
+    href: "case-furniture-manufacturer.html",
     style: {
       color: 'var(--sg-blue)',
       fontWeight: 600,

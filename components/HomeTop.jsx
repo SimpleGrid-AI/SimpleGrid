@@ -521,12 +521,12 @@ function ProblemSection() {
                   {p.isChatDemo ? (
                     <div style={{width:'100%',fontFamily:'var(--font-mono)',fontSize:13.5,lineHeight:1.7}}>
                       <div style={{color:'var(--fg3)',fontSize:11,marginBottom:10,fontFamily:'var(--font-body)',fontWeight:600,letterSpacing:'0.08em',textTransform:'uppercase'}}>Warehouse manager types:</div>
-                      <div style={{color:'var(--fg1)',opacity:activeChatStep>=1?1:0.2,transition:'opacity 0.3s'}}>&gt; Received 2200cft of material from West Elm</div>
+                      <div style={{color:'var(--fg1)',opacity:activeChatStep>=1?1:0.2,transition:'opacity 0.3s'}}>&gt; Received 2,200 units of grade-A material from Midwest Supply</div>
                       <div style={{color:'var(--sg-green)',marginTop:6,opacity:activeChatStep>=2?1:0.2,transition:'opacity 0.3s'}}>✓ PO matched. Inventory updated.</div>
                       <div style={{marginTop:14,paddingTop:12,borderTop:'1px dashed var(--border)',color:'var(--fg3)',fontSize:11,marginBottom:8,fontFamily:'var(--font-body)',fontWeight:600,letterSpacing:'0.08em',textTransform:'uppercase',opacity:activeChatStep>=3?1:0.2,transition:'opacity 0.3s'}}>Sales drops a PDF in chat:</div>
                       <div style={{display:'inline-flex',alignItems:'center',gap:8,padding:'6px 10px',border:'1px solid var(--border)',borderRadius:8,background:'#fff',opacity:activeChatStep>=3?1:0.2,transition:'opacity 0.3s'}}>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sg-red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        <span style={{color:'var(--fg1)',fontSize:12}}>SO_4521_WestElm.pdf</span>
+                        <span style={{color:'var(--fg1)',fontSize:12}}>SO_4521_BuyerPO.pdf</span>
                       </div>
                       <div style={{color:'var(--sg-green)',marginTop:8,opacity:activeChatStep>=4?1:0.2,transition:'opacity 0.3s'}}>✓ AI parsed. 23 line items matched to BOM.</div>
                       <div style={{color:'var(--sg-blue)',marginTop:4,opacity:activeChatStep>=5?1:0.2,transition:'opacity 0.3s'}}>→ Routed to founder for approval.</div>
@@ -699,7 +699,7 @@ function WhatWeDo() {
             <div className="sg-build-tag sg-build-tag-l" style={{position:'absolute',top:'24%',left:'4%'}}>
               <span aria-hidden="true" className="sg-build-tag-dot"/>
               <span style={{fontFamily:'var(--font-mono)',fontSize:12,fontWeight:600,color:'#fff'}}>build_014</span>
-              <span style={{fontSize:11,color:'rgba(255,255,255,0.55)',marginTop:3}}>furniture mfg · day 5</span>
+              <span style={{fontSize:11,color:'rgba(255,255,255,0.55)',marginTop:3}}>metal fab · day 5</span>
             </div>
             <div className="sg-build-tag sg-build-tag-r" style={{position:'absolute',top:'62%',right:'4%'}}>
               <span aria-hidden="true" className="sg-build-tag-dot"/>

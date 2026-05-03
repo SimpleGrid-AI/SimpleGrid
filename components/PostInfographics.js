@@ -417,13 +417,15 @@
 
   // ===== Blog 2 - SG Schema: same word, different operational boundaries =====
   function DomainMorph() {
+    // Three boundaries from three industries — same word ("order") means
+    // a different entity in each. The point is breadth, not furniture.
     const ctx = [{
-      name: 'Sales',
+      name: 'Sales (Furniture)',
       color: 'blue',
       entity: "Buyer's Order",
       fields: [{
         k: 'Buyer',
-        v: 'West Elm'
+        v: 'Brand A'
       }, {
         k: 'Price',
         v: '$48,200'
@@ -436,33 +438,33 @@
       }],
       rule: 'Approval freezes price + delivery date'
     }, {
-      name: 'Production',
+      name: 'Production (Apparel)',
       color: 'purple',
-      entity: 'Job Order',
+      entity: 'Cutting Ticket',
       fields: [{
-        k: 'Components',
-        v: '22 per SKU'
+        k: 'Style',
+        v: 'Polo SS-2026'
       }, {
-        k: 'Wood',
-        v: 'Mango · Sheesham · Teak'
+        k: 'Fabric',
+        v: 'CVC piqué · 200 GSM'
       }, {
-        k: 'Stage',
-        v: 'Machining'
+        k: 'Sizes',
+        v: 'S-XL · 4-deep'
       }, {
         k: 'Worker',
-        v: 'Ravi & Co.'
+        v: 'Cutting Unit 3'
       }],
-      rule: 'Cannot start without component plan'
+      rule: 'Cannot start without fabric inward'
     }, {
-      name: 'Stores',
+      name: 'Stores (Metal Fab)',
       color: 'green',
       entity: 'Vendor PO',
       fields: [{
         k: 'Vendor',
-        v: 'Shree Timber'
+        v: 'Midwest Supply'
       }, {
         k: 'Material',
-        v: '500 CFT mango'
+        v: '500 sheets · 304 stainless'
       }, {
         k: 'Receipt',
         v: '300 of 500'
@@ -995,7 +997,7 @@
       ans: 'no',
       reason: 'Adds complexity to the floor staff. Skip.'
     }, {
-      idea: 'Let storekeeper say "Got 300 planks from Shree Timber"',
+      idea: 'Let storekeeper say "Got 300 sheets from Midwest Supply"',
       ans: 'yes',
       reason: 'Same behavior they already do on WhatsApp. Build it.'
     }, {

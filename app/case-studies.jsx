@@ -10,7 +10,7 @@ function CaseStudiesPage() {
         <p className="section-lead">Real factories. Real numbers. Real floor staff using the system every day. The two below are public - more are running confidentially.</p>
         <div className="case-list">
 
-          <a href="case-elite.html" className="proof-card case-row" style={{textDecoration:'none',color:'inherit',transition:'all 160ms var(--ease-standard)'}}>
+          <a href="case-furniture-manufacturer.html" className="proof-card case-row" style={{textDecoration:'none',color:'inherit',transition:'all 160ms var(--ease-standard)'}}>
             <div className="proof-photo case-row-photo" style={{background:'url(assets/elite-factory.jpeg) center/cover',position:'relative'}}>
               <span style={{
                 position:'absolute', top:10, left:10,

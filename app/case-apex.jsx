@@ -307,7 +307,7 @@ function ApexCaseStudy() {
         <p>Two years and two failed ERPs. Then 12 days with SimpleGrid. Inventory visible across 20+ job worker facilities and 10+ logistics partner warehouses, all in one live ledger.</p>
         <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{marginTop:16}}>Book a call - See how we'd model your operations</a>
         <div style={{marginTop:20,fontSize:14}}>
-          <a href="case-elite.html" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'none'}}>See a furniture manufacturer's deployment - live in 21 days →</a>
+          <a href="case-furniture-manufacturer.html" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'none'}}>See a furniture manufacturer's deployment - live in 21 days →</a>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ function CaseStudiesPage() {
   }, "Real factories. Real numbers. Real floor staff using the system every day. The two below are public - more are running confidentially."), /*#__PURE__*/React.createElement("div", {
     className: "case-list"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "case-elite.html",
+    href: "case-furniture-manufacturer.html",
     className: "proof-card case-row",
     style: {
       textDecoration: 'none',

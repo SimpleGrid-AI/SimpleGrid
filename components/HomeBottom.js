@@ -426,7 +426,7 @@ function ProofSection() {
     stats: '64 tracked · 72 triggers · 21 days',
     quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."',
     attr: '- The founder',
-    link: 'case-elite.html',
+    link: 'case-furniture-manufacturer.html',
     anchor: 'How they deployed in 21 days'
   }, {
     kind: 'apparel',

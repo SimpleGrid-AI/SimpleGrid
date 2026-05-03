@@ -357,15 +357,17 @@
 
   // ===== Blog 2 - SG Schema: same word, different operational boundaries =====
   function DomainMorph() {
+    // Three boundaries from three industries — same word ("order") means
+    // a different entity in each. The point is breadth, not furniture.
     const ctx = [
-      { name:'Sales', color:'blue', entity:"Buyer's Order", fields:[
-        {k:'Buyer', v:'West Elm'}, {k:'Price', v:'$48,200'}, {k:'Delivery', v:'Mar 15'}, {k:'Lines', v:'12 SKUs'}
+      { name:'Sales (Furniture)', color:'blue', entity:"Buyer's Order", fields:[
+        {k:'Buyer', v:'Brand A'}, {k:'Price', v:'$48,200'}, {k:'Delivery', v:'Mar 15'}, {k:'Lines', v:'12 SKUs'}
       ], rule:'Approval freezes price + delivery date' },
-      { name:'Production', color:'purple', entity:'Job Order', fields:[
-        {k:'Components', v:'22 per SKU'}, {k:'Wood', v:'Mango · Sheesham · Teak'}, {k:'Stage', v:'Machining'}, {k:'Worker', v:'Ravi & Co.'}
-      ], rule:'Cannot start without component plan' },
-      { name:'Stores', color:'green', entity:'Vendor PO', fields:[
-        {k:'Vendor', v:'Shree Timber'}, {k:'Material', v:'500 CFT mango'}, {k:'Receipt', v:'300 of 500'}, {k:'AP', v:'Open · 60 days'}
+      { name:'Production (Apparel)', color:'purple', entity:'Cutting Ticket', fields:[
+        {k:'Style', v:'Polo SS-2026'}, {k:'Fabric', v:'CVC piqué · 200 GSM'}, {k:'Sizes', v:'S-XL · 4-deep'}, {k:'Worker', v:'Cutting Unit 3'}
+      ], rule:'Cannot start without fabric inward' },
+      { name:'Stores (Metal Fab)', color:'green', entity:'Vendor PO', fields:[
+        {k:'Vendor', v:'Midwest Supply'}, {k:'Material', v:'500 sheets · 304 stainless'}, {k:'Receipt', v:'300 of 500'}, {k:'AP', v:'Open · 60 days'}
       ], rule:'Cannot receive more than ordered' },
     ];
     const [i, setI] = useAutoCycle(ctx.length, 3500);
@@ -732,7 +734,7 @@
   function FloorFilterDemo() {
     const ideas = [
       { idea: 'Add a feature flag for new approval workflows', ans: 'no',  reason: 'Adds complexity to the floor staff. Skip.' },
-      { idea: 'Let storekeeper say "Got 300 planks from Shree Timber"', ans: 'yes', reason: 'Same behavior they already do on WhatsApp. Build it.' },
+      { idea: 'Let storekeeper say "Got 300 sheets from Midwest Supply"', ans: 'yes', reason: 'Same behavior they already do on WhatsApp. Build it.' },
       { idea: 'Build a "Settings → Advanced → Power user" panel', ans: 'no', reason: 'Complexity for 2% of users. Solve through configuration.' },
       { idea: 'Auto-route POs above $10K to the founder', ans: 'yes', reason: 'Removes a manual step. Floor benefits. Build it.' },
       { idea: 'Add competitor parity on a feature nobody asked for', ans: 'no', reason: 'Roadmap noise. Skip.' },

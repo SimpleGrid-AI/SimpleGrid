@@ -973,7 +973,7 @@ function ProblemSection() {
       opacity: activeChatStep >= 1 ? 1 : 0.2,
       transition: 'opacity 0.3s'
     }
-  }, "> Received 2200cft of material from West Elm"), /*#__PURE__*/React.createElement("div", {
+  }, "> Received 2,200 units of grade-A material from Midwest Supply"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: 'var(--sg-green)',
       marginTop: 6,
@@ -1028,7 +1028,7 @@ function ProblemSection() {
       color: 'var(--fg1)',
       fontSize: 12
     }
-  }, "SO_4521_WestElm.pdf")), /*#__PURE__*/React.createElement("div", {
+  }, "SO_4521_BuyerPO.pdf")), /*#__PURE__*/React.createElement("div", {
     style: {
       color: 'var(--sg-green)',
       marginTop: 8,
@@ -1309,7 +1309,7 @@ function WhatWeDo() {
       color: 'rgba(255,255,255,0.55)',
       marginTop: 3
     }
-  }, "furniture mfg \xB7 day 5")), /*#__PURE__*/React.createElement("div", {
+  }, "metal fab \xB7 day 5")), /*#__PURE__*/React.createElement("div", {
     className: "sg-build-tag sg-build-tag-r",
     style: {
       position: 'absolute',
