@@ -457,7 +457,7 @@
   function TenantDemo() {
     const clients = [
       { name: 'Apex Apparel', color: 'blue' },
-      { name: 'Elite Arts', color: 'purple' },
+      { name: 'Furniture Exporter', color: 'purple' },
       { name: 'Pharma Co.', color: 'green' },
       { name: 'Stamping Inc.', color: 'gold' },
     ];

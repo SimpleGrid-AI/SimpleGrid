@@ -21,12 +21,12 @@ function CaseStudiesPage() {
             </div>
             <div className="proof-body case-row-body">
               <div className="tag" style={{marginBottom:8}}>FURNITURE EXPORT</div>
-              <h2 style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,margin:'0 0 10px',letterSpacing:'-0.015em'}}>Elite Arts &amp; Crafts</h2>
+              <h2 style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,margin:'0 0 10px',letterSpacing:'-0.015em'}}>Furniture Manufacturer &amp; Exporter</h2>
               <p>600–800 employees. ~1 million sq ft. Multi-stage production. Deployed in 21 days.</p>
               <div className="proof-stats">64 things tracked. 72 automatic triggers.</div>
               <div className="proof-quote">
                 "SimpleGrid feels like our system. My stores manager was comfortable on day one."
-                <div className="proof-attr">- Chirag, Founder</div>
+                <div className="proof-attr">- The founder</div>
               </div>
             </div>
           </a>

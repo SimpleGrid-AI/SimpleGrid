@@ -504,7 +504,7 @@ function EliteCaseStudy() {
     className: "tag"
   }, "CASE STUDY \xB7 FURNITURE EXPORT"), /*#__PURE__*/React.createElement("h1", null, "How a furniture exporter with 800 employees went from Excel to a live ERP in 21 days"), /*#__PURE__*/React.createElement("p", {
     className: "case-hook"
-  }, "Over four years, Elite Arts & Crafts lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just a furniture manufacturing operation running at 600\u2013800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around."), /*#__PURE__*/React.createElement("div", {
+  }, "Over four years, a furniture manufacturer and exporter \u2014 12+ countries across North America, Europe, and Asia \u2014 lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600\u2013800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around."), /*#__PURE__*/React.createElement("div", {
     className: "case-strip"
   }, /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
@@ -538,7 +538,7 @@ function EliteCaseStudy() {
     style: {
       maxWidth: 920
     }
-  }, "Elite Arts & Crafts is a furniture exporter running 600\u2013800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit ", /*#__PURE__*/React.createElement("strong", null, "19 tracked stages, four quality gates, and six contractor types"), " - each paid by a different formula. The catalog runs to ", /*#__PURE__*/React.createElement("strong", null, "550 active SKUs"), ", each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame."), /*#__PURE__*/React.createElement("p", {
+  }, "The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600\u2013800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit ", /*#__PURE__*/React.createElement("strong", null, "19 tracked stages, four quality gates, and six contractor types"), " - each paid by a different formula. The catalog runs to ", /*#__PURE__*/React.createElement("strong", null, "550 active SKUs"), ", each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 920
     }
@@ -566,7 +566,7 @@ function EliteCaseStudy() {
     }
   }, "Every one of these rules is a configuration, not code. When the business adds a new rule, we add it in minutes.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "The floor staff problem, solved"), /*#__PURE__*/React.createElement("p", null, "Elite's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. ", /*#__PURE__*/React.createElement("strong", null, "30 non-technical staff"), " who wouldn't touch the old system."), /*#__PURE__*/React.createElement("p", null, "With SimpleGrid, they talk to ", /*#__PURE__*/React.createElement("strong", null, "Hank"), ", the AI assistant. The storekeeper types: \"Received 300 mango planks from Shree Timber.\" Hank identifies the PO, checks the quantity, updates inventory, and confirms. No menus. No dropdowns. No training manual."), /*#__PURE__*/React.createElement("p", null, "Today all 30 use the system daily. Storekeepers log receipts. QC inspectors record pass/fail per stage. Supervisors close production tickets. The same 30 people who refused the previous ERP.")), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("h2", null, "The floor staff problem, solved"), /*#__PURE__*/React.createElement("p", null, "The client's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. ", /*#__PURE__*/React.createElement("strong", null, "30 non-technical staff"), " who wouldn't touch the old system."), /*#__PURE__*/React.createElement("p", null, "With SimpleGrid, they talk to ", /*#__PURE__*/React.createElement("strong", null, "Hank"), ", the AI assistant. The storekeeper types: \"Received 300 mango planks from Shree Timber.\" Hank identifies the PO, checks the quantity, updates inventory, and confirms. No menus. No dropdowns. No training manual."), /*#__PURE__*/React.createElement("p", null, "Today all 30 use the system daily. Storekeepers log receipts. QC inspectors record pass/fail per stage. Supervisors close production tickets. The same 30 people who refused the previous ERP.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("table", {
     className: "ba-table"
@@ -574,7 +574,7 @@ function EliteCaseStudy() {
     className: "testimonial-block"
   }, /*#__PURE__*/React.createElement("blockquote", null, "\"We have our own way of doing things: vendor consolidation by wood species, component-level QC, six different contractor settlement formulas that nobody else understands. We needed an ERP that was made for us, not one we'd have to change our process for. SimpleGrid feels like our system. Our Excel and texting habits didn't go away - the AI chatbot just replaced them. My stores manager was comfortable on day one because it works the way he already works.\""), /*#__PURE__*/React.createElement("div", {
     className: "attr"
-  }, "- Chirag, Founder, Elite Arts & Crafts")), /*#__PURE__*/React.createElement("div", {
+  }, "- The founder")), /*#__PURE__*/React.createElement("div", {
     className: "case-bottom-line"
   }, /*#__PURE__*/React.createElement("div", {
     className: "big"

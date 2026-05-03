@@ -641,7 +641,7 @@
       name: 'Apex Apparel',
       color: 'blue'
     }, {
-      name: 'Elite Arts',
+      name: 'Furniture Exporter',
       color: 'purple'
     }, {
       name: 'Pharma Co.',

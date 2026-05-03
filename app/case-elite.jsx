@@ -234,7 +234,7 @@ function EliteCaseStudy() {
       <div className="container">
         <div className="tag">CASE STUDY · FURNITURE EXPORT</div>
         <h1>How a furniture exporter with 800 employees went from Excel to a live ERP in 21 days</h1>
-        <p className="case-hook">Over four years, Elite Arts &amp; Crafts lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just a furniture manufacturing operation running at 600–800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around.</p>
+        <p className="case-hook">Over four years, a furniture manufacturer and exporter — 12+ countries across North America, Europe, and Asia — lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600–800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around.</p>
         <div className="case-strip">
           <div className="case-strip-item"><div className="label">Industry</div><div className="value">Furniture export</div></div>
           <div className="case-strip-item"><div className="label">Employees</div><div className="value">600–800</div></div>
@@ -253,7 +253,7 @@ function EliteCaseStudy() {
       <section className="case-section">
         <h2>The operation</h2>
         <p style={{maxWidth:920}}>
-          Elite Arts &amp; Crafts is a furniture exporter running 600–800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit <strong>19 tracked stages, four quality gates, and six contractor types</strong> - each paid by a different formula. The catalog runs to <strong>550 active SKUs</strong>, each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame.
+          The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600–800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit <strong>19 tracked stages, four quality gates, and six contractor types</strong> - each paid by a different formula. The catalog runs to <strong>550 active SKUs</strong>, each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame.
         </p>
         <p style={{maxWidth:920}}>
           Work happens at two levels and they cross over at assembly. Wood issuance and machining track at the <strong>component level</strong> - every cubic foot attaches to a specific SKU + component. Once all components for a SKU are machined and QC&rsquo;d they merge; from there, tracking is at the <strong>SKU level</strong> through sanding, finishing, hardware, final QC, packaging, and dispatch. Six contractor types each bill on their own formula - machining per-sqft for panels and per-running-foot for frames with rates changing on wood thickness; assembly per SKU; sanding and finishing per sqft of finished surface for 90% of products; hardware fitting on a fittings × screw-size matrix; packaging on CBM of packed material. Every one of those formulas is a row in a config table - not code.
@@ -308,7 +308,7 @@ function EliteCaseStudy() {
       {/* Floor Staff */}
       <section className="case-section">
         <h2>The floor staff problem, solved</h2>
-        <p>Elite's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. <strong>30 non-technical staff</strong> who wouldn't touch the old system.</p>
+        <p>The client's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. <strong>30 non-technical staff</strong> who wouldn't touch the old system.</p>
         <p>With SimpleGrid, they talk to <strong>Hank</strong>, the AI assistant. The storekeeper types: "Received 300 mango planks from Shree Timber." Hank identifies the PO, checks the quantity, updates inventory, and confirms. No menus. No dropdowns. No training manual.</p>
         <p>Today all 30 use the system daily. Storekeepers log receipts. QC inspectors record pass/fail per stage. Supervisors close production tickets. The same 30 people who refused the previous ERP.</p>
       </section>
@@ -335,7 +335,7 @@ function EliteCaseStudy() {
       {/* Testimonial */}
       <div className="testimonial-block">
         <blockquote>"We have our own way of doing things: vendor consolidation by wood species, component-level QC, six different contractor settlement formulas that nobody else understands. We needed an ERP that was made for us, not one we'd have to change our process for. SimpleGrid feels like our system. Our Excel and texting habits didn't go away - the AI chatbot just replaced them. My stores manager was comfortable on day one because it works the way he already works."</blockquote>
-        <div className="attr">- Chirag, Founder, Elite Arts &amp; Crafts</div>
+        <div className="attr">- The founder</div>
       </div>
 
       {/* Bottom Line */}

@@ -421,13 +421,13 @@ function ProofSection() {
   }, [{
     kind: 'image',
     img: 'url(assets/elite-factory.jpeg) center/cover',
-    name: 'Elite Arts & Crafts',
-    desc: 'Furniture exporter. 600–800 employees. ~1 million sq ft. Excel + group chats → live ERP.',
+    name: 'Furniture Manufacturer & Exporter',
+    desc: '12+ countries (NA, Europe, Asia). 600–800 employees. ~1 million sq ft. Excel + group chats → live ERP.',
     stats: '64 tracked · 72 triggers · 21 days',
     quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."',
-    attr: '- Chirag, Founder',
+    attr: '- The founder',
     link: 'case-elite.html',
-    anchor: 'How Elite deployed in 21 days'
+    anchor: 'How they deployed in 21 days'
   }, {
     kind: 'apparel',
     name: 'Apex Apparel',

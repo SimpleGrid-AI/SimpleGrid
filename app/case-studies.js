@@ -62,13 +62,13 @@ function CaseStudiesPage() {
       margin: '0 0 10px',
       letterSpacing: '-0.015em'
     }
-  }, "Elite Arts & Crafts"), /*#__PURE__*/React.createElement("p", null, "600\u2013800 employees. ~1 million sq ft. Multi-stage production. Deployed in 21 days."), /*#__PURE__*/React.createElement("div", {
+  }, "Furniture Manufacturer & Exporter"), /*#__PURE__*/React.createElement("p", null, "600\u2013800 employees. ~1 million sq ft. Multi-stage production. Deployed in 21 days."), /*#__PURE__*/React.createElement("div", {
     className: "proof-stats"
   }, "64 things tracked. 72 automatic triggers."), /*#__PURE__*/React.createElement("div", {
     className: "proof-quote"
   }, "\"SimpleGrid feels like our system. My stores manager was comfortable on day one.\"", /*#__PURE__*/React.createElement("div", {
     className: "proof-attr"
-  }, "- Chirag, Founder")))), /*#__PURE__*/React.createElement("a", {
+  }, "- The founder")))), /*#__PURE__*/React.createElement("a", {
     href: "case-apex.html",
     className: "proof-card case-row",
     style: {
