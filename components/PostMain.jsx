@@ -175,6 +175,13 @@ function BlogPost() {
         <a href="/blog.html" style={{ fontSize: 13, color: 'var(--sg-blue)', textDecoration: 'none', border: 'none' }}>← Back to blog</a>
         <h1>{blog.title}</h1>
         <div className="post-meta">
+          {blog.datePublished && (
+            <time dateTime={blog.datePublished}>{(function(){
+              const [y, m, d] = blog.datePublished.split('-').map(n => parseInt(n, 10));
+              const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+              return months[m - 1] + ' ' + d + ', ' + y;
+            })()}</time>
+          )}
           <span>{blog.cat}</span>
           <span>{blog.readTime} read</span>
         </div>

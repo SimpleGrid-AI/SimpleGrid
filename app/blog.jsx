@@ -157,12 +157,23 @@ function BlogGraphic({ id, fg, sub, accent }) {
   </svg>);
 }
 
+function fmtBlogDate(iso) {
+  if (!iso) return '';
+  const [y, m, d] = iso.split('-').map(n => parseInt(n, 10));
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return months[m - 1] + ' ' + d + ', ' + y;
+}
+
 function BlogPage() {
   const [showLogin, setShowLogin] = React.useState(false);
   const [filter, setFilter] = React.useState('All');
-  
-  const cats = ['All', ...new Set(BLOG_DATA.map(b => b.cat))];
-  const filtered = filter === 'All' ? BLOG_DATA : BLOG_DATA.filter(b => b.cat === filter);
+
+  // Most recent first by datePublished (ISO yyyy-mm-dd sorts lexicographically).
+  const sorted = [...BLOG_DATA].sort((a, b) =>
+    (b.datePublished || '').localeCompare(a.datePublished || '')
+  );
+  const cats = ['All', ...new Set(sorted.map(b => b.cat))];
+  const filtered = filter === 'All' ? sorted : sorted.filter(b => b.cat === filter);
 
   return (<>
     <Nav page="blog" onLoginClick={() => setShowLogin(true)} />
@@ -194,7 +205,13 @@ function BlogPage() {
                 </div>
                 <div className="blog-body">
                   <h2 className="blog-card-title">{b.title}</h2>
-                  <div className="meta">{b.readTime} read</div>
+                  <div className="meta">
+                    {b.datePublished && (
+                      <time dateTime={b.datePublished}>{fmtBlogDate(b.datePublished)}</time>
+                    )}
+                    {b.datePublished && b.readTime && <span aria-hidden="true"> · </span>}
+                    {b.readTime && <span>{b.readTime} read</span>}
+                  </div>
                 </div>
               </a>
             );

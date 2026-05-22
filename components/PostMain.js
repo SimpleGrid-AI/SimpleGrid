@@ -234,7 +234,14 @@ function BlogPost() {
     }
   }, "\u2190 Back to blog"), /*#__PURE__*/React.createElement("h1", null, blog.title), /*#__PURE__*/React.createElement("div", {
     className: "post-meta"
-  }, /*#__PURE__*/React.createElement("span", null, blog.cat), /*#__PURE__*/React.createElement("span", null, blog.readTime, " read")))), /*#__PURE__*/React.createElement("section", {
+  },
+    blog.datePublished && /*#__PURE__*/React.createElement("time", { dateTime: blog.datePublished }, (function(){
+      const parts = blog.datePublished.split('-').map(n => parseInt(n, 10));
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return months[parts[1] - 1] + ' ' + parts[2] + ', ' + parts[0];
+    })()),
+    /*#__PURE__*/React.createElement("span", null, blog.cat),
+    /*#__PURE__*/React.createElement("span", null, blog.readTime, " read")))), /*#__PURE__*/React.createElement("section", {
     className: "post-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container-sm"
