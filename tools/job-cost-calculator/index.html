@@ -74,9 +74,9 @@
   <section class="tool-app"><div class="container-sm">
     <div class="tool-card"><h2>Job info</h2>
       <div class="tool-form-grid cols-3">
-        <div class="tool-field"><label for="job-name">Job number / name</label><input id="job-name" type="text" placeholder="J-2026-0042 / Dining table run"></div>
+        <div class="tool-field"><label for="job-name">Job number / name</label><input id="job-name" type="text" data-required placeholder="J-2026-0042 / Dining table run"></div>
         <div class="tool-field"><label for="job-customer">Customer</label><input id="job-customer" type="text" placeholder="Northwoods Furniture"></div>
-        <div class="tool-field"><label for="job-qty">Quantity (units)</label><input id="job-qty" type="number" min="1" value="100" step="1"></div>
+        <div class="tool-field"><label for="job-qty">Quantity (units)</label><input id="job-qty" type="number" data-clamp="1,1000000" value="100" step="1"></div>
       </div>
     </div>
 
@@ -109,17 +109,17 @@
 
     <div class="tool-card"><h2>Other costs</h2>
       <div class="tool-form-grid cols-3">
-        <div class="tool-field"><label for="job-sub">Subcontractor / outside ops ($)</label><input id="job-sub" type="number" step="0.01" min="0" value="0"></div>
-        <div class="tool-field"><label for="job-setup">Tooling / setup ($)</label><input id="job-setup" type="number" step="0.01" min="0" value="0"></div>
-        <div class="tool-field"><label for="job-overhead">Overhead rate (%)</label><input id="job-overhead" type="number" step="0.1" min="0" max="200" value="25"></div>
+        <div class="tool-field"><label for="job-sub">Subcontractor / outside ops ($)</label><input id="job-sub" type="number" step="0.01" data-clamp="0,10000000" value="0"></div>
+        <div class="tool-field"><label for="job-setup">Tooling / setup ($)</label><input id="job-setup" type="number" step="0.01" data-clamp="0,10000000" value="0"></div>
+        <div class="tool-field"><label for="job-overhead">Overhead rate (%)</label><input id="job-overhead" type="number" step="0.1" data-clamp="0,200" value="25"></div>
       </div>
       <p class="tool-note">Overhead = facility cost + indirect labor + utilities + QC + admin allocated to production. 15–40 % is the typical mid-market range.</p>
     </div>
 
     <div class="tool-card"><h2>Selling price + margin</h2>
       <div class="tool-form-grid">
-        <div class="tool-field"><label for="job-price">Selling price per unit ($)</label><input id="job-price" type="number" step="0.01" min="0" placeholder="0.00"></div>
-        <div class="tool-field"><label for="job-target-margin">Target margin (%) <span class="hint">if you want a suggested price</span></label><input id="job-target-margin" type="number" step="0.1" min="0" max="99" placeholder="30"></div>
+        <div class="tool-field"><label for="job-price">Selling price per unit ($)</label><input id="job-price" type="number" step="0.01" data-clamp="0,10000000" placeholder="0.00"></div>
+        <div class="tool-field"><label for="job-target-margin">Target margin (%) <span class="hint">if you want a suggested price</span></label><input id="job-target-margin" type="number" step="0.1" data-clamp="0,95" placeholder="30"></div>
       </div>
     </div>
 
@@ -186,11 +186,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     tr.innerHTML = cols.map(c=>{
       if (c.type==='action') return '<td class="col-actions"><button type="button" class="row-del">×</button></td>';
       if (c.type==='total') return `<td class="col-line-total" data-f="${c.f}">$0.00</td>`;
-      return `<td><input type="${c.type}" ${c.cls?'class="'+c.cls+'"':''} data-f="${c.f}" ${c.step?'step="'+c.step+'"':''} ${c.min!=null?'min="'+c.min+'"':''} placeholder="${c.ph||''}" value="${prefill[c.f]!=null?prefill[c.f]:''}"></td>`;
+      // Numeric cells get data-clamp="0,..." so the shared helper enforces non-negative on blur.
+      const clamp = c.type==='number' ? ' data-clamp="0,10000000"' : '';
+      return `<td><input type="${c.type}" ${c.cls?'class="'+c.cls+'"':''} data-f="${c.f}" ${c.step?'step="'+c.step+'"':''}${clamp} placeholder="${c.ph||''}" value="${prefill[c.f]!=null?prefill[c.f]:''}"></td>`;
     }).join('');
     parent.appendChild(tr);
     tr.querySelector('.row-del')?.addEventListener('click',()=>{tr.remove();recalc();});
     tr.querySelectorAll('input').forEach(i=>i.addEventListener('input',recalc));
+    // Wire clamp listeners on the newly-added inputs.
+    if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(tr);
     return tr;
   }
   const matCols=[{type:'text',f:'name',ph:'16-gauge steel sheet'},{type:'number',cls:'num',f:'qty',step:'0.01',min:0,ph:'0'},{type:'text',f:'unit',ph:'sheet'},{type:'number',cls:'num',f:'price',step:'0.01',min:0,ph:'0.00'},{type:'total',f:'line'},{type:'action'}];
@@ -198,10 +202,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   const machCols=[{type:'text',f:'name',ph:'CNC Mill / Press brake'},{type:'number',cls:'num',f:'hours',step:'0.1',min:0,ph:'0'},{type:'number',cls:'num',f:'rate',step:'0.01',min:0,ph:'45.00'},{type:'total',f:'line'},{type:'action'}];
 
   function recalc(){
+    // nn = "non-negative" guard so negative interim values during typing never
+    // flow into the math. Blur-time clamping fixes the field; this fixes the result.
+    const nn = v => Math.max(0, parseFloat(v) || 0);
     function sum(tableBody,fields){
       let total=0;
       Array.from(tableBody.querySelectorAll('tr')).forEach(tr=>{
-        const vals=fields.map(f=>parseFloat(tr.querySelector('[data-f="'+f+'"]').value)||0);
+        const vals=fields.map(f=>nn(tr.querySelector('[data-f="'+f+'"]').value));
         const line=vals.reduce((a,b)=>a*b,1);
         total+=line;
         tr.querySelector('[data-f="line"]').textContent=money(line);
@@ -211,9 +218,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     const matTotal=sum(document.getElementById('mat-body'),['qty','price']);
     const labTotal=sum(document.getElementById('lab-body'),['hours','rate']);
     const machTotal=sum(document.getElementById('mach-body'),['hours','rate']);
-    const sub=parseFloat(document.getElementById('job-sub').value)||0;
-    const setup=parseFloat(document.getElementById('job-setup').value)||0;
-    const ohRate=parseFloat(document.getElementById('job-overhead').value)||0;
+    const sub=nn(document.getElementById('job-sub').value);
+    const setup=nn(document.getElementById('job-setup').value);
+    const ohRate=Math.min(200, nn(document.getElementById('job-overhead').value));
     const overhead=(labTotal+machTotal)*(ohRate/100);
     const totalJob=matTotal+labTotal+machTotal+sub+setup+overhead;
     const qty=Math.max(1,parseInt(document.getElementById('job-qty').value)||1);
@@ -229,10 +236,13 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div class="cost-row" style="margin-top:8px"><span>Per-unit cost</span><strong>${money(perUnit)}</strong></div>
     `;
     // Margin / suggested price
-    const sellPrice=parseFloat(document.getElementById('job-price').value)||0;
-    const targetMargin=parseFloat(document.getElementById('job-target-margin').value);
+    const sellPrice=nn(document.getElementById('job-price').value);
+    let targetMargin=parseFloat(document.getElementById('job-target-margin').value);
+    if (isNaN(targetMargin)) targetMargin = 0;
+    if (targetMargin < 0) targetMargin = 0;
+    if (targetMargin > 95) targetMargin = 95;
     const mc=document.getElementById('margin-card');
-    if (sellPrice>0 || (!isNaN(targetMargin) && targetMargin>0)) {
+    if (sellPrice>0 || targetMargin>0) {
       mc.style.display='block';
       let html='';
       if (sellPrice>0) {
@@ -245,8 +255,12 @@ document.addEventListener('DOMContentLoaded',()=>{
           <div class="margin-stat"><div class="label">Gross margin</div><div class="value ${cls}">${margin.toFixed(1)}%</div></div>
           <div class="margin-stat"><div class="label">Profit on job</div><div class="value ${cls}">${money(profit)}</div></div>
           <div class="margin-stat"><div class="label">Markup over cost</div><div class="value ${cls}">${markup.toFixed(1)}%</div></div>`;
+      } else {
+        // No selling price yet, but a target margin IS set. Tell the user what we need
+        // instead of showing a blank block.
+        html = `<div class="margin-stat" style="grid-column:1 / -1"><div class="label">Add a selling price above to see live margin</div><div class="value" style="font-size:14px;font-weight:500;color:var(--fg3)">- - -</div></div>`;
       }
-      if (!isNaN(targetMargin) && targetMargin>0 && targetMargin<100) {
+      if (targetMargin>0 && targetMargin<100) {
         const suggested=perUnit/(1-targetMargin/100);
         html += `<div class="margin-stat" style="grid-column:1 / -1;background:var(--sg-blue-light)"><div class="label">Suggested per-unit price for ${targetMargin}% margin</div><div class="value">${money(suggested)}</div></div>`;
       }
@@ -266,9 +280,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   makeRow(document.getElementById('lab-body'),labCols);
   makeRow(document.getElementById('lab-body'),labCols);
   makeRow(document.getElementById('mach-body'),machCols);
+  // Wire shared clamp behaviour for static + dynamic inputs.
+  if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(document);
   recalc();
 
   document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired === 'function' && !sgValidateRequired(document)) return;
     const r=recalc();
     function rows(tbodyId,labels){return Array.from(document.getElementById(tbodyId).querySelectorAll('tr')).map(tr=>labels.map(l=>{const i=tr.querySelector('[data-f="'+l+'"]');if(!i)return '';if(i.tagName==='TD')return i.textContent;return i.value;}));}
     const matRows=rows('mat-body',['name','qty','unit','price','line']).filter(r=>r[0]||parseFloat(r[3])>0);

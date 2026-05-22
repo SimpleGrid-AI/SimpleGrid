@@ -55,15 +55,15 @@
   <section class="tool-app"><div class="container-sm">
     <div class="tool-card"><h2>Inspection info</h2>
       <div class="tool-form-grid cols-3">
-        <div class="tool-field"><label for="ins-number">Inspection #</label><input id="ins-number" type="text"></div>
-        <div class="tool-field"><label for="ins-date">Date</label><input id="ins-date" type="date"></div>
+        <div class="tool-field"><label for="ins-number">Inspection #</label><input id="ins-number" type="text" data-required></div>
+        <div class="tool-field"><label for="ins-date">Date</label><input id="ins-date" type="date" data-required></div>
         <div class="tool-field"><label for="ins-type">Inspection type</label>
           <select id="ins-type"><option>Incoming material</option><option>In-process</option><option>Final QC</option><option>Pre-shipment</option><option>Customer return</option></select>
         </div>
         <div class="tool-field"><label for="ins-product">Product / SKU</label><input id="ins-product" type="text" placeholder="DT-4SEAT-001"></div>
         <div class="tool-field"><label for="ins-batch">Batch / lot #</label><input id="ins-batch" type="text" placeholder="LOT-2026-A12"></div>
-        <div class="tool-field"><label for="ins-qty">Quantity inspected</label><input id="ins-qty" type="number" min="0" placeholder="50"></div>
-        <div class="tool-field"><label for="ins-inspector">Inspector name</label><input id="ins-inspector" type="text" placeholder="Sarah K."></div>
+        <div class="tool-field"><label for="ins-qty">Quantity inspected</label><input id="ins-qty" type="number" data-clamp="0,1000000" placeholder="50"></div>
+        <div class="tool-field"><label for="ins-inspector">Inspector name</label><input id="ins-inspector" type="text" data-required placeholder="Sarah K."></div>
         <div class="tool-field"><label for="ins-job">Job / PO reference</label><input id="ins-job" type="text" placeholder="J-0042"></div>
         <div class="tool-field"><label for="ins-party">Customer / Vendor</label><input id="ins-party" type="text" placeholder="Northwoods Furniture"></div>
       </div>
@@ -155,6 +155,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     row.querySelectorAll('input,select').forEach(i=>i.addEventListener('input',updateSummary));
   }
   function rows(){return Array.from(list.querySelectorAll('.qc-row:not(.header)')).map(r=>({crit:r.querySelector('[data-f="crit"]').value,target:r.querySelector('[data-f="target"]').value,actual:r.querySelector('[data-f="actual"]').value,pf:r.querySelector('[data-f="pf"]').value,notes:r.querySelector('[data-f="notes"]').value}));}
+  function dispositionWarning(failCount, totalCount, disposition){
+    // "Accepted" with any Fail item = contradiction. QC sign-off must be coherent.
+    if (failCount > 0 && disposition === 'Accepted') {
+      return `⚠ Disposition is "Accepted" but ${failCount} of ${totalCount} item(s) failed. Change to "Accepted with rework", "Rejected", or "Hold for engineering" - or change the failed items to Pass.`;
+    }
+    if (failCount === 0 && totalCount > 0 && disposition === 'Rejected') {
+      return `⚠ Disposition is "Rejected" but no items failed. Either mark item(s) Fail or change the disposition.`;
+    }
+    return '';
+  }
   function updateSummary(){
     const rs=rows().filter(r=>r.crit||r.actual);
     const total=rs.length;
@@ -162,9 +172,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     const fail=rs.filter(r=>r.pf==='Fail').length;
     const na=rs.filter(r=>r.pf==='N/A').length;
     const passPct=total>0?Math.round((pass/(total-na||1))*100):0;
-    // Use darker green/red shades that pass WCAG AA contrast on white (the default
-    // --sg-green #10B981 is 2.53:1 on white at 28px - fails). #047857 = 5.6:1 ✓ ;
-    // #B91C1C = 6.2:1 ✓ on white.
     const PASS_GREEN = '#047857';
     const FAIL_RED = '#B91C1C';
     document.getElementById('qc-summary').innerHTML=`
@@ -172,13 +179,31 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div style="padding:14px;background:#fff;border-radius:10px;text-align:center"><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg3)">Pass</div><div style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:${PASS_GREEN}">${pass}</div></div>
       <div style="padding:14px;background:#fff;border-radius:10px;text-align:center"><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg3)">Fail</div><div style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:${FAIL_RED}">${fail}</div></div>
       <div style="padding:14px;background:#fff;border-radius:10px;text-align:center"><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg3)">Pass rate</div><div style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:${passPct>=95?PASS_GREEN:passPct>=80?'var(--fg1)':FAIL_RED}">${passPct}%</div></div>`;
+    // Render or clear the disposition-contradiction warning box.
+    const warn = dispositionWarning(fail, total, document.getElementById('ins-disp').value);
+    let box = document.getElementById('disp-warn');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'disp-warn';
+      box.setAttribute('role','alert');
+      box.style.cssText = 'margin-top:14px;padding:12px 14px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.30);border-radius:10px;color:#B91C1C;font-weight:600;font-size:14px;line-height:1.45';
+      document.getElementById('qc-summary').after(box);
+    }
+    if (warn) { box.textContent = warn; box.style.display = 'block'; }
+    else { box.style.display = 'none'; box.textContent = ''; }
   }
+  // Recompute when the disposition dropdown itself changes.
+  setTimeout(() => {
+    const disp = document.getElementById('ins-disp');
+    if (disp) disp.addEventListener('change', updateSummary);
+  }, 0);
   document.getElementById('add-row').addEventListener('click',()=>{addRow();updateSummary();});
   // Seed friendly defaults
   addRow({crit:'Dimensional check - length',target:'48 ± 0.5 in',actual:'',pf:'Pass'});
   addRow({crit:'Surface finish - visual',target:'Smooth, no scratches',actual:'',pf:'Pass'});
   addRow({crit:'Weight',target:'24–26 lbs',actual:'',pf:'Pass'});
   addRow({crit:'Hardware torque',target:'15 ft-lb ± 1',actual:'',pf:'Pass'});
+  if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(document);
   updateSummary();
 
   document.getElementById('export-csv').addEventListener('click',()=>{
@@ -200,8 +225,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 
   document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired === 'function' && !sgValidateRequired(document)) return;
     const rs=rows().filter(r=>r.crit||r.actual);
     if(rs.length===0){alert('Add at least one inspection item.');return;}
+    const failCount = rs.filter(r=>r.pf==='Fail').length;
+    const warn = dispositionWarning(failCount, rs.length, document.getElementById('ins-disp').value);
+    if (warn && !confirm(warn + '\n\nGenerate the PDF anyway?')) return;
     sgBuildPdf({
       title:'Quality Inspection Report', docNumberLabel:'Inspection #', docNumber:document.getElementById('ins-number').value,
       date:document.getElementById('ins-date').value,

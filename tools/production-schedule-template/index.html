@@ -26,6 +26,8 @@
 {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Production Schedule","item":"https://simplegrid.ai/tools/production-schedule-template/"}]}
 ]}
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
 <script src="../tools.js" defer></script>
 
 <!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
@@ -78,9 +80,10 @@
 
     <div class="tool-actions" style="justify-content:flex-end;gap:10px;flex-wrap:wrap">
       <button type="button" id="export-csv" class="btn-secondary">Export CSV</button>
-      <button type="button" id="print" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Print / Save as PDF</button>
+      <button type="button" id="generate-pdf" class="btn-secondary">Download PDF (schedule list)</button>
+      <button type="button" id="print" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Print Gantt / Save as PDF</button>
     </div>
-    <p class="tool-note" style="text-align:right">Print → "Save as PDF" in your browser's print dialog gives you a printable PDF with the Gantt visible.</p>
+    <p class="tool-note" style="text-align:right">"Download PDF" gives you the tabular schedule. For the printable Gantt, use Print → "Save as PDF" in your browser's print dialog.</p>
 
     <div class="tool-cta">
       <div class="eyebrow">When the whiteboard stops working</div>
@@ -134,7 +137,11 @@ document.addEventListener('DOMContentLoaded',()=>{
       <td class="col-actions"><button type="button" class="row-del">×</button></td>`;
     tbody.appendChild(tr);
     tr.querySelector('.row-del').addEventListener('click',()=>{tr.remove();renderGantt();save();});
-    tr.querySelectorAll('input,select').forEach(i=>i.addEventListener('input',()=>{renderGantt();save();}));
+    tr.querySelectorAll('input,select').forEach(i=>{
+      i.addEventListener('input',()=>{renderGantt();save();});
+      // Reset internal scroll position so long values don't render left-truncated.
+      i.addEventListener('blur', ()=>{ i.scrollLeft = 0; });
+    });
   }
   function jobs(){return Array.from(tbody.querySelectorAll('tr')).map(tr=>({name:tr.querySelector('[data-f="name"]').value,start:tr.querySelector('[data-f="start"]').value,end:tr.querySelector('[data-f="end"]').value,status:tr.querySelector('[data-f="status"]').value,who:tr.querySelector('[data-f="who"]').value}));}
   function save(){sgSave(SKEY,jobs());}
@@ -145,8 +152,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   function renderGantt(){
     const wrap=document.getElementById('gantt-wrap');
-    const js=jobs().filter(j=>j.name&&j.start&&j.end);
-    if(js.length===0){wrap.innerHTML='<div style="padding:32px;color:var(--fg3);font-size:14px;text-align:center">Add at least one job with start and end dates.</div>';return;}
+    const all=jobs().filter(j=>j.name&&j.start&&j.end);
+    // Separate valid jobs (end >= start) from invalid - invalid jobs are still
+    // listed but called out with a warning instead of silently dropped.
+    const invalid = all.filter(j => j.end < j.start);
+    const js = all.filter(j => j.end >= j.start);
+    let invalidBanner = '';
+    if (invalid.length) {
+      invalidBanner = `<div role="alert" style="margin-bottom:12px;padding:10px 12px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.30);border-radius:8px;color:#B91C1C;font-size:14px;font-weight:600">⚠ ${invalid.length} job${invalid.length>1?'s have':' has'} an end date before the start date and ${invalid.length>1?'are':'is'} not shown on the chart: ${invalid.map(j=>'<em style="font-style:normal;font-weight:400">' + (j.name||'(unnamed)') + ' (' + j.start + ' → ' + j.end + ')</em>').join(', ')}. Fix the dates to include ${invalid.length>1?'them':'it'}.</div>`;
+    }
+    if(js.length===0){wrap.innerHTML=invalidBanner+'<div style="padding:32px;color:var(--fg3);font-size:14px;text-align:center">Add at least one job with start and end dates.</div>';return;}
     const minStart=js.reduce((a,j)=>a<j.start?a:j.start,js[0].start);
     const maxEnd=js.reduce((a,j)=>a>j.end?a:j.end,js[0].end);
     const totalDays=Math.max(1,daysBetween(minStart,maxEnd)+1);
@@ -170,7 +185,7 @@ document.addEventListener('DOMContentLoaded',()=>{
           <div class="bar ${statusColor[j.status]||''}" role="img" aria-label="${j.name} - ${j.status}" style="position:absolute;left:${left+4}px;top:8px;width:${w}px"></div>
         </td></tr>`;
     });
-    wrap.innerHTML=`<table class="gantt"><thead><tr>${headHtml}</tr></thead><tbody>${rowsHtml}</tbody></table>`;
+    wrap.innerHTML=invalidBanner+`<table class="gantt"><thead><tr>${headHtml}</tr></thead><tbody>${rowsHtml}</tbody></table>`;
   }
 
   document.getElementById('add-row').addEventListener('click',()=>{addRow();renderGantt();save();});
@@ -180,6 +195,33 @@ document.addEventListener('DOMContentLoaded',()=>{
     sgDownloadCSV('production-schedule.csv',[['Job','Start','End','Status','Assigned to'],...js.map(j=>[j.name,j.start,j.end,j.status,j.who])]);
   });
   document.getElementById('print').addEventListener('click',()=>{window.print();});
+
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    const js = jobs().filter(j => j.name && j.start && j.end);
+    if (js.length === 0) { alert('Add at least one job with start and end dates.'); return; }
+    const invalid = js.filter(j => j.end < j.start);
+    if (invalid.length && !confirm(invalid.length + ' job(s) have end date before start date. Generate the PDF anyway (those rows will be flagged)?')) return;
+    const sorted = [...js].sort((a,b) => a.start.localeCompare(b.start));
+    sgBuildPdf({
+      title: 'Production Schedule',
+      docNumberLabel: 'Generated',
+      docNumber: todayISO(),
+      date: todayISO(),
+      terms: sorted.length + ' job(s) · earliest start ' + sorted[0].start + ' · latest end ' + sorted.reduce((a,j)=>j.end>a?j.end:a, sorted[0].end),
+      fromLabel: 'SCHEDULE',
+      from: ['SimpleGrid Production Schedule', 'simplegrid.ai/tools/production-schedule-template/'],
+      toLabel: 'AS OF',
+      to: [fmtDateUS(todayISO())],
+      itemColumns: ['Job', 'Start', 'End', 'Days', 'Status', 'Assigned'],
+      items: sorted,
+      itemRowMapper: j => {
+        const days = j.end >= j.start ? (Math.round((new Date(j.end) - new Date(j.start)) / 86400000) + 1) : '⚠ end<start';
+        return [j.name, fmtDateUS(j.start), fmtDateUS(j.end), days, j.status, j.who || ''];
+      },
+      itemColumnStyles: { 0: { cellWidth: 160 }, 1: { cellWidth: 60 }, 2: { cellWidth: 60 }, 3: { halign: 'right', cellWidth: 50 }, 4: { cellWidth: 70 }, 5: { cellWidth: 'auto' } },
+      filename: 'production-schedule-' + todayISO() + '.pdf'
+    });
+  });
 
   // Restore saved jobs or seed demo data
   const saved=sgLoad(SKEY,null);

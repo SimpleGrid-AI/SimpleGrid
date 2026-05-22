@@ -55,10 +55,10 @@
   <section class="tool-app"><div class="container-sm">
     <div class="tool-card"><h2>Finished product</h2>
       <div class="tool-form-grid">
-        <div class="tool-field"><label for="prod-sku">Product / parent SKU</label><input id="prod-sku" type="text" placeholder="DT-4SEAT-001"></div>
+        <div class="tool-field"><label for="prod-sku">Product / parent SKU</label><input id="prod-sku" type="text" data-required placeholder="DT-4SEAT-001"></div>
         <div class="tool-field"><label for="prod-desc">Description</label><input id="prod-desc" type="text" placeholder="4-seat solid oak dining table"></div>
         <div class="tool-field"><label for="prod-uom">UoM (unit of measure)</label><input id="prod-uom" type="text" placeholder="each"></div>
-        <div class="tool-field"><label for="prod-qty">Build quantity <span class="hint">for total cost</span></label><input id="prod-qty" type="number" min="1" step="1" value="1"></div>
+        <div class="tool-field"><label for="prod-qty">Build quantity <span class="hint">for total cost</span></label><input id="prod-qty" type="number" data-clamp="1,1000000" step="1" value="1"></div>
         <div class="tool-field full"><label for="prod-rev">Revision / Notes <span class="hint">optional</span></label><input id="prod-rev" type="text" placeholder="Rev B, 2026-05-22"></div>
       </div>
     </div>
@@ -143,34 +143,54 @@ document.addEventListener('DOMContentLoaded',()=>{
     tr.innerHTML=`<td><input type="text" data-f="num" value="${p.num||itemNum}" style="text-align:center"></td>
       <td><input type="text" data-f="sku" placeholder="LEG-OAK-30" value="${p.sku||''}"></td>
       <td><input type="text" data-f="desc" placeholder="Solid oak table leg 30in" value="${p.desc||''}"></td>
-      <td><input type="number" class="num" data-f="qty" step="0.01" min="0" value="${p.qty!=null?p.qty:''}" placeholder="0"></td>
+      <td><input type="number" class="num" data-f="qty" data-clamp="0,1000000" step="0.01" value="${p.qty!=null?p.qty:''}" placeholder="0"></td>
       <td><input type="text" data-f="uom" value="${p.uom||''}" placeholder="each"></td>
-      <td><input type="number" class="num" data-f="price" step="0.01" min="0" value="${p.price!=null?p.price:''}" placeholder="0.00"></td>
+      <td><input type="number" class="num" data-f="price" data-clamp="0,1000000" step="0.01" value="${p.price!=null?p.price:''}" placeholder="0.00"></td>
       <td class="col-line-total" data-f="line">$0.00</td>
       <td class="col-actions"><button type="button" class="row-del">×</button></td>`;
     tbody.appendChild(tr);
     tr.querySelector('.row-del').addEventListener('click',()=>{tr.remove();recalc();});
     tr.querySelectorAll('input').forEach(i=>i.addEventListener('input',recalc));
+    if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(tr);
   }
   function rows(){return Array.from(tbody.querySelectorAll('tr')).map(tr=>({num:tr.querySelector('[data-f="num"]').value,sku:tr.querySelector('[data-f="sku"]').value,desc:tr.querySelector('[data-f="desc"]').value,qty:parseFloat(tr.querySelector('[data-f="qty"]').value)||0,uom:tr.querySelector('[data-f="uom"]').value,price:parseFloat(tr.querySelector('[data-f="price"]').value)||0}));}
+  function findDuplicateItemNumbers(){
+    const seen = {};
+    const dupes = [];
+    Array.from(tbody.querySelectorAll('tr')).forEach(tr=>{
+      const v = (tr.querySelector('[data-f="num"]').value||'').trim();
+      if (!v) return;
+      if (seen[v]) dupes.push(v);
+      else seen[v] = true;
+    });
+    return Array.from(new Set(dupes));
+  }
   function recalc(){
+    const nn = v => Math.max(0, parseFloat(v) || 0);
     let perUnit=0;
     Array.from(tbody.querySelectorAll('tr')).forEach(tr=>{
-      const q=parseFloat(tr.querySelector('[data-f="qty"]').value)||0;
-      const p=parseFloat(tr.querySelector('[data-f="price"]').value)||0;
+      const q=nn(tr.querySelector('[data-f="qty"]').value);
+      const p=nn(tr.querySelector('[data-f="price"]').value);
       const line=q*p; perUnit+=line;
       tr.querySelector('[data-f="line"]').textContent=money(line);
     });
-    const buildQty=parseInt(document.getElementById('prod-qty').value)||1;
+    const buildQty=Math.max(1, parseInt(document.getElementById('prod-qty').value)||1);
     const total=perUnit*buildQty;
-    tfoot.innerHTML=`<tr class="totals"><td colspan="6" class="label">Assembly cost / unit</td><td class="value">${money(perUnit)}</td><td></td></tr>
+    // Duplicate-item-number warning row (manufacturing BOMs rely on unique item numbers).
+    const dupes = findDuplicateItemNumbers();
+    const warnRow = dupes.length
+      ? `<tr class="totals"><td colspan="8" style="background:rgba(239,68,68,0.06);color:#B91C1C;font-weight:600;padding:8px 12px">⚠ Duplicate item number(s): ${dupes.join(', ')} - each item number on a BOM must be unique.</td></tr>`
+      : '';
+    tfoot.innerHTML=`${warnRow}<tr class="totals"><td colspan="6" class="label">Assembly cost / unit</td><td class="value">${money(perUnit)}</td><td></td></tr>
       <tr class="totals grand-total"><td colspan="6" class="label">Total cost for ${buildQty} units</td><td class="value">${money(total)}</td><td></td></tr>`;
-    return {perUnit,total,buildQty};
+    return {perUnit,total,buildQty,dupes};
   }
   document.getElementById('add-row').addEventListener('click',()=>{addRow();recalc();});
   document.getElementById('prod-qty').addEventListener('input',recalc);
   // Seed
-  addRow(); addRow(); addRow(); recalc();
+  addRow(); addRow(); addRow();
+  if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(document);
+  recalc();
 
   document.getElementById('export-csv').addEventListener('click',()=>{
     const r=recalc();
@@ -192,9 +212,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 
   document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired === 'function' && !sgValidateRequired(document)) return;
     const r=recalc();
     const rs=rows().filter(x=>x.sku||x.desc||x.qty>0);
     if(rs.length===0){alert('Add at least one component.');return;}
+    if (r.dupes && r.dupes.length){
+      if (!confirm('Duplicate item number(s) found: ' + r.dupes.join(', ') + '\nGenerate the PDF anyway?')) return;
+    }
     sgBuildPdf({
       title:'Bill of Materials', docNumberLabel:'Parent SKU', docNumber:document.getElementById('prod-sku').value||'(unnamed)',
       date:todayISO(),

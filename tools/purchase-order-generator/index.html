@@ -163,7 +163,7 @@
           <button id="vendor-clear" type="button" class="btn-secondary">Clear vendor</button>
         </div>
         <div class="tool-form-grid">
-          <div class="tool-field"><label>Vendor name</label><input id="vendor-name" type="text" placeholder="Midwest Steel Supply LLC"></div>
+          <div class="tool-field"><label>Vendor name</label><input data-required id="vendor-name" type="text" placeholder="Midwest Steel Supply LLC"></div>
           <div class="tool-field"><label for="vendor-contact">Vendor contact</label><input id="vendor-contact" type="text" placeholder="Tom Reed"></div>
           <div class="tool-field full"><label for="vendor-address">Vendor address</label><input id="vendor-address" type="text" placeholder="8400 W. Industrial Blvd, Cleveland, OH 44114"></div>
           <div class="tool-field"><label for="vendor-phone">Phone</label><input id="vendor-phone" type="text" placeholder="(216) 555-0142"></div>
@@ -174,8 +174,8 @@
       <div class="tool-card">
         <h2>PO details</h2>
         <div class="tool-form-grid cols-3">
-          <div class="tool-field"><label for="po-number">PO number</label><input id="po-number" type="text" placeholder="PO-2026-0001"></div>
-          <div class="tool-field"><label for="po-date">Date</label><input id="po-date" type="date"></div>
+          <div class="tool-field"><label for="po-number">PO number</label><input data-required id="po-number" type="text" placeholder="PO-2026-0001"></div>
+          <div class="tool-field"><label for="po-date">Date</label><input data-required id="po-date" type="date"></div>
           <div class="tool-field"><label for="po-delivery">Expected delivery</label><input id="po-delivery" type="date"></div>
           <div class="tool-field"><label for="po-terms">Payment terms</label>
             <select id="po-terms">
@@ -210,9 +210,9 @@
         </div>
 
         <div class="tool-form-grid cols-3" style="margin-top:20px">
-          <div class="tool-field"><label for="po-tax">Tax rate (%)</label><input id="po-tax" type="number" step="0.01" min="0" max="100" value="0"></div>
-          <div class="tool-field"><label for="po-shipping">Shipping ($)</label><input id="po-shipping" type="number" step="0.01" min="0" value="0"></div>
-          <div class="tool-field"><label for="po-other">Other / handling ($)</label><input id="po-other" type="number" step="0.01" min="0" value="0"></div>
+          <div class="tool-field"><label for="po-tax">Tax rate (%)</label><input data-clamp="0,100" id="po-tax" type="number" step="0.01" min="0" max="100" value="0"></div>
+          <div class="tool-field"><label for="po-shipping">Shipping ($)</label><input data-clamp="0,10000000" id="po-shipping" type="number" step="0.01" min="0" value="0"></div>
+          <div class="tool-field"><label for="po-other">Other / handling ($)</label><input data-clamp="0,10000000" id="po-other" type="number" step="0.01" min="0" value="0"></div>
         </div>
       </div>
 
@@ -507,15 +507,16 @@ document.addEventListener('DOMContentLoaded', () => {
     tr.innerHTML = `
       <td><input type="text" data-f="sku" placeholder="STL-16-48" value="${prefill.sku || ''}"></td>
       <td><input type="text" data-f="desc" placeholder="16-gauge steel sheet 4ft × 8ft" value="${prefill.desc || ''}"></td>
-      <td><input type="number" class="num" data-f="qty" step="1" min="0" value="${prefill.qty != null ? prefill.qty : ''}" placeholder="0"></td>
+      <td><input data-clamp="0,10000000" type="number" class="num" data-f="qty" step="1" min="0" value="${prefill.qty != null ? prefill.qty : ''}" placeholder="0"></td>
       <td><input type="text" data-f="unit" placeholder="sheet" value="${prefill.unit || ''}"></td>
-      <td><input type="number" class="num" data-f="price" step="0.01" min="0" value="${prefill.price != null ? prefill.price : ''}" placeholder="0.00"></td>
+      <td><input data-clamp="0,10000000" type="number" class="num" data-f="price" step="0.01" min="0" value="${prefill.price != null ? prefill.price : ''}" placeholder="0.00"></td>
       <td class="col-line-total" data-f="line">$0.00</td>
       <td class="col-actions"><button type="button" class="row-del" title="Remove">×</button></td>
     `;
     itemsBody.appendChild(tr);
     tr.querySelector('.row-del').addEventListener('click', () => { tr.remove(); recalc(); });
     tr.querySelectorAll('input').forEach(i => i.addEventListener('input', recalc));
+    if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(tr);
     recalc();
   }
 
@@ -530,17 +531,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function recalc() {
+    const nn = v => Math.max(0, parseFloat(v) || 0);
     let subtotal = 0;
     Array.from(itemsBody.querySelectorAll('tr')).forEach(tr => {
-      const q = parseFloat(tr.querySelector('[data-f="qty"]').value) || 0;
-      const p = parseFloat(tr.querySelector('[data-f="price"]').value) || 0;
+      const q = nn(tr.querySelector('[data-f="qty"]').value);
+      const p = nn(tr.querySelector('[data-f="price"]').value);
       const line = q * p;
       subtotal += line;
       tr.querySelector('[data-f="line"]').textContent = money(line);
     });
-    const taxPct = parseFloat(document.getElementById('po-tax').value) || 0;
-    const shipping = parseFloat(document.getElementById('po-shipping').value) || 0;
-    const other = parseFloat(document.getElementById('po-other').value) || 0;
+    const taxPct = Math.min(100, nn(document.getElementById('po-tax').value));
+    const shipping = nn(document.getElementById('po-shipping').value);
+    const other = nn(document.getElementById('po-other').value);
     const tax = subtotal * (taxPct / 100);
     const grand = subtotal + tax + shipping + other;
     itemsFoot.innerHTML = `
@@ -561,6 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Seed with two empty lines for a friendly UX
   addItem({ sku: '', desc: '', qty: '', unit: '', price: '' });
   addItem({ sku: '', desc: '', qty: '', unit: '', price: '' });
+  if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(document);
 
   // -----------------------------------------------------------------
   // Vendor library
@@ -621,6 +624,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Generate PDF
   // -----------------------------------------------------------------
   document.getElementById('generate-pdf').addEventListener('click', () => {
+    if (typeof sgValidateRequired === 'function' && !sgValidateRequired(document)) return;
+    if (typeof sgValidateDateOrder === 'function' && !sgValidateDateOrder(document.getElementById('po-date'), document.getElementById('po-delivery'), 'Expected delivery date')) return;
     const t = recalc();
     const lines = items().filter(i => i.sku || i.desc || i.qty || i.price);
     if (lines.length === 0) { alert('Add at least one line item.'); return; }

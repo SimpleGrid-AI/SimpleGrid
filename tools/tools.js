@@ -219,6 +219,90 @@ function sgDownloadCSV(filename, rows) {
   setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
 }
 
+// ===== Shared validation helpers (sg* prefix) =====
+// Use across every tool so behaviour is consistent.
+
+// Clamp a numeric input to [min, max]. Returns the clamped number.
+// Pass {silent:true} to suppress the visual nudge.
+function sgClampInput(el, min, max, opts) {
+  if (!el) return 0;
+  opts = opts || {};
+  let v = parseFloat(el.value);
+  if (isNaN(v)) v = 0;
+  let clamped = v;
+  if (typeof min === 'number' && clamped < min) clamped = min;
+  if (typeof max === 'number' && clamped > max) clamped = max;
+  if (clamped !== v) {
+    el.value = clamped;
+    if (!opts.silent) sgFlashField(el);
+  }
+  return clamped;
+}
+
+// Briefly highlight a field that just had its value corrected/rejected.
+function sgFlashField(el) {
+  if (!el) return;
+  const prev = el.style.boxShadow;
+  el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.30)';
+  setTimeout(() => { el.style.boxShadow = prev; }, 700);
+}
+
+// Apply min/max to every input matching a selector. Selector defaults to
+// all number/text inputs with a data-clamp attribute. The data-clamp value is
+// "min,max" (either side optional, e.g. "0,100" or "0," or ",100").
+// On 'blur' the value is clamped. On 'input' the field is just flagged.
+function sgWireNumericClamps(scope) {
+  scope = scope || document;
+  scope.querySelectorAll('[data-clamp]').forEach(el => {
+    const [minStr, maxStr] = el.getAttribute('data-clamp').split(',');
+    const min = minStr === '' ? undefined : parseFloat(minStr);
+    const max = maxStr === '' ? undefined : parseFloat(maxStr);
+    // Browser-level guard (works for steppers + most validation tools).
+    if (typeof min === 'number') el.setAttribute('min', min);
+    if (typeof max === 'number') el.setAttribute('max', max);
+    el.addEventListener('blur', () => sgClampInput(el, min, max));
+  });
+}
+
+// Check that every element matching [data-required] has a non-empty value.
+// Returns true if all required fields are filled; otherwise focuses the first
+// empty one, highlights it, and returns false.
+function sgValidateRequired(scope) {
+  scope = scope || document;
+  const empties = [];
+  scope.querySelectorAll('[data-required]').forEach(el => {
+    const v = (el.value || '').trim();
+    if (!v) empties.push(el);
+  });
+  if (empties.length === 0) return true;
+  empties.forEach(sgFlashField);
+  empties[0].focus();
+  const label = empties[0].labels && empties[0].labels[0] ? empties[0].labels[0].textContent.trim() : (empties[0].placeholder || empties[0].name || 'a required field');
+  alert('Please fill in ' + label + ' before generating the PDF.');
+  return false;
+}
+
+// Compare two date strings (YYYY-MM-DD). Returns -1/0/1 like compareFn.
+function sgDateCmp(a, b) {
+  if (!a || !b) return 0;
+  return a < b ? -1 : (a > b ? 1 : 0);
+}
+
+// Validate that endDate >= startDate (both YYYY-MM-DD). Returns true if OK.
+// If not OK, flashes both fields and shows a one-time alert.
+function sgValidateDateOrder(startEl, endEl, label) {
+  if (!startEl || !endEl) return true;
+  const s = startEl.value, e = endEl.value;
+  if (!s || !e) return true;
+  if (sgDateCmp(e, s) < 0) {
+    sgFlashField(startEl);
+    sgFlashField(endEl);
+    alert((label || 'End date') + ' must be on or after the start date. (' + s + ' → ' + e + ')');
+    return false;
+  }
+  return true;
+}
+
 // ----- Reusable: hook up "Save my company" pattern -----
 function sgBindFields(fieldIdsToStorageKey) {
   // fieldIdsToStorageKey = { 'company-name': 'mycompany_name', ... }
