@@ -91,19 +91,31 @@ function sgBuildPdf(spec) {
   doc.setTextColor(20, 22, 28);
   doc.text(spec.title || 'Document', titleX, 50);
 
-  // Doc number + date
+  // Doc number + date (wrap the terms line in case it's long, e.g. payment-terms +
+  // ship-via concatenation on quotes)
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(10);
   doc.setTextColor(110, 116, 128);
   let metaY = 70;
-  if (spec.docNumber) { doc.text(spec.docNumberLabel + ': ' + spec.docNumber, M, metaY); metaY += 14; }
-  if (spec.date)      { doc.text('Date: ' + fmtDateUS(spec.date), M, metaY); metaY += 14; }
-  if (spec.dueDate)   { doc.text(spec.dueDateLabel + ': ' + fmtDateUS(spec.dueDate), M, metaY); metaY += 14; }
-  if (spec.terms)     { doc.text('Terms: ' + spec.terms, M, metaY); metaY += 14; }
+  const metaMaxWidth = W - 2 * M; // full content width for meta lines
+  function metaLine(text) {
+    const wrapped = doc.splitTextToSize(String(text), metaMaxWidth);
+    doc.text(wrapped, M, metaY);
+    metaY += 14 * wrapped.length;
+  }
+  if (spec.docNumber) metaLine(spec.docNumberLabel + ': ' + spec.docNumber);
+  if (spec.date)      metaLine('Date: ' + fmtDateUS(spec.date));
+  if (spec.dueDate)   metaLine(spec.dueDateLabel + ': ' + fmtDateUS(spec.dueDate));
+  if (spec.terms)     metaLine('Terms: ' + spec.terms);
 
-  // Two-column "From / To" block
+  // Two-column "From / To" block. Each column gets equal width with a 20pt gap so
+  // long address lines wrap inside their column instead of spilling into the other.
+  const COL_GAP = 20;
+  const colWidth = (W - 2 * M - COL_GAP) / 2; // ~248pt on US Letter
+  const leftX  = M;
+  const rightX = M + colWidth + COL_GAP;
   let topBlockY = metaY + 10;
-  function partyBlock(x, title, lines) {
+  function partyBlock(x, title, lines, maxWidth) {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9);
     doc.setTextColor(110, 116, 128);
@@ -112,11 +124,15 @@ function sgBuildPdf(spec) {
     doc.setFontSize(10);
     doc.setTextColor(20, 22, 28);
     let y = topBlockY + 14;
-    lines.filter(Boolean).forEach(line => { doc.text(String(line), x, y); y += 12; });
+    lines.filter(Boolean).forEach(line => {
+      const wrapped = doc.splitTextToSize(String(line), maxWidth);
+      doc.text(wrapped, x, y);
+      y += 12 * wrapped.length;
+    });
     return y;
   }
-  let y1 = partyBlock(M, spec.fromLabel || 'From', spec.from || []);
-  let y2 = partyBlock(W / 2 + 10, spec.toLabel || 'To', spec.to || []);
+  let y1 = partyBlock(leftX,  spec.fromLabel || 'From', spec.from || [], colWidth);
+  let y2 = partyBlock(rightX, spec.toLabel   || 'To',   spec.to   || [], colWidth);
   let bodyStartY = Math.max(y1, y2) + 16;
 
   // Line items table
