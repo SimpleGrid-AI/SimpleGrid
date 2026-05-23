@@ -56,7 +56,7 @@ function _hexToRgb(hex) {
 }
 function sgBuildPdf(spec) {
   if (!window.jspdf || !window.jspdf.jsPDF) {
-    alert('PDF library is still loading - wait a moment and try again.');
+    sgToast('PDF library is still loading - wait a moment and try again.', { type: 'error', duration: 6000 });
     return;
   }
   const { jsPDF } = window.jspdf;
@@ -222,6 +222,60 @@ function sgDownloadCSV(filename, rows) {
 // ===== Shared validation helpers (sg* prefix) =====
 // Use across every tool so behaviour is consistent.
 
+// Escape a string for safe insertion into an HTML attribute or text node.
+// Prevents stored-XSS when prefill values are interpolated into innerHTML.
+function sgEscapeHtml(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Non-blocking toast notification. Replaces alert() for tool feedback so the
+// renderer never freezes on a modal dialog (browsers + automation hang on
+// alerts). opts.type: 'error' | 'info' | 'success'. opts.duration: ms.
+function sgToast(message, opts) {
+  opts = opts || {};
+  const type = opts.type || 'info';
+  const dur = typeof opts.duration === 'number' ? opts.duration : 4000;
+  let host = document.getElementById('sg-toast-host');
+  if (!host) {
+    host = document.createElement('div');
+    host.id = 'sg-toast-host';
+    host.setAttribute('aria-live', 'polite');
+    host.setAttribute('role', 'status');
+    document.body.appendChild(host);
+  }
+  const t = document.createElement('div');
+  t.className = 'sg-toast sg-toast-' + type;
+  t.textContent = message;
+  host.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('sg-toast-in'));
+  setTimeout(() => {
+    t.classList.remove('sg-toast-in');
+    setTimeout(() => { if (t.parentNode) t.parentNode.removeChild(t); }, 250);
+  }, dur);
+}
+
+// Validate that an input contains a plausible email. Empty values pass (use
+// data-required for required-ness). Returns true on pass.
+function sgValidateEmail(el) {
+  if (!el) return true;
+  const v = (el.value || '').trim();
+  if (!v) return true;
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  if (!ok) {
+    sgFlashField(el);
+    el.focus();
+    sgToast('That email address does not look right: ' + v, { type: 'error' });
+    return false;
+  }
+  return true;
+}
+
 // Clamp a numeric input to [min, max]. Returns the clamped number.
 // Pass {silent:true} to suppress the visual nudge.
 function sgClampInput(el, min, max, opts) {
@@ -254,13 +308,22 @@ function sgFlashField(el) {
 function sgWireNumericClamps(scope) {
   scope = scope || document;
   scope.querySelectorAll('[data-clamp]').forEach(el => {
+    if (el.dataset.sgClamped) return;
+    el.dataset.sgClamped = '1';
     const [minStr, maxStr] = el.getAttribute('data-clamp').split(',');
     const min = minStr === '' ? undefined : parseFloat(minStr);
     const max = maxStr === '' ? undefined : parseFloat(maxStr);
-    // Browser-level guard (works for steppers + most validation tools).
     if (typeof min === 'number') el.setAttribute('min', min);
     if (typeof max === 'number') el.setAttribute('max', max);
+    // Cap visible character length so users can't paste numbers that exceed
+    // safe-integer math and visually overflow the cell.
+    if (typeof max === 'number' && !el.getAttribute('maxlength')) {
+      el.setAttribute('maxlength', String(Math.max(10, String(Math.floor(max)).length + 4)));
+    }
     el.addEventListener('blur', () => sgClampInput(el, min, max));
+    // Also clamp on input so values entered without a subsequent blur (mouse
+    // straight to submit button) cannot pass through unbounded.
+    el.addEventListener('input', () => sgClampInput(el, min, max, { silent: true }));
   });
 }
 
@@ -278,7 +341,7 @@ function sgValidateRequired(scope) {
   empties.forEach(sgFlashField);
   empties[0].focus();
   const label = empties[0].labels && empties[0].labels[0] ? empties[0].labels[0].textContent.trim() : (empties[0].placeholder || empties[0].name || 'a required field');
-  alert('Please fill in ' + label + ' before generating the PDF.');
+  sgToast('Please fill in ' + label + ' before generating the PDF.', { type: 'error' });
   return false;
 }
 
@@ -297,7 +360,7 @@ function sgValidateDateOrder(startEl, endEl, label) {
   if (sgDateCmp(e, s) < 0) {
     sgFlashField(startEl);
     sgFlashField(endEl);
-    alert((label || 'End date') + ' must be on or after the start date. (' + s + ' → ' + e + ')');
+    sgToast((label || 'End date') + ' must be on or after the start date. (' + s + ' to ' + e + ')', { type: 'error' });
     return false;
   }
   return true;

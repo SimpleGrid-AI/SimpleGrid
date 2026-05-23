@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const CKEY='q_customers',cLoad=document.getElementById('cust-load');
   function refreshC(){const list=sgLoad(CKEY,[]);cLoad.innerHTML='<option value="">- Load saved -</option>';list.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name||'(unnamed)';cLoad.appendChild(o);});}
   cLoad.addEventListener('change',()=>{const i=cLoad.value;if(i==='')return;const v=sgLoad(CKEY,[])[i];if(!v)return;document.getElementById('cust-name').value=v.name||'';document.getElementById('cust-contact').value=v.contact||'';document.getElementById('cust-address').value=v.address||'';document.getElementById('cust-phone').value=v.phone||'';document.getElementById('cust-email').value=v.email||'';});
-  document.getElementById('cust-save').addEventListener('click',()=>{const v={name:document.getElementById('cust-name').value.trim(),contact:document.getElementById('cust-contact').value.trim(),address:document.getElementById('cust-address').value.trim(),phone:document.getElementById('cust-phone').value.trim(),email:document.getElementById('cust-email').value.trim()};if(!v.name){alert('Add a name first.');return;}const list=sgLoad(CKEY,[]);const idx=list.findIndex(x=>x.name===v.name);if(idx>=0)list[idx]=v;else list.push(v);sgSave(CKEY,list);refreshC();alert(`Saved "${v.name}".`);});
+  document.getElementById('cust-save').addEventListener('click',()=>{const v={name:document.getElementById('cust-name').value.trim(),contact:document.getElementById('cust-contact').value.trim(),address:document.getElementById('cust-address').value.trim(),phone:document.getElementById('cust-phone').value.trim(),email:document.getElementById('cust-email').value.trim()};if(!v.name){sgToast('Add a name first.',{type:'error'});return;}const list=sgLoad(CKEY,[]);const idx=list.findIndex(x=>x.name===v.name);if(idx>=0)list[idx]=v;else list.push(v);sgSave(CKEY,list);refreshC();sgToast('Saved "'+v.name+'".',{type:'success'});});
   document.getElementById('cust-clear').addEventListener('click',()=>{['cust-name','cust-contact','cust-address','cust-phone','cust-email'].forEach(id=>document.getElementById(id).value='');cLoad.value='';});
   refreshC();
 
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof sgValidateDateOrder === 'function' && !sgValidateDateOrder(document.getElementById('q-date'), document.getElementById('q-valid'), 'Valid-until date')) return;
     const t=recalc();
     const lines=lineItems().filter(i=>i.sku||i.desc||i.qty||i.price);
-    if(lines.length===0){alert('Add at least one line item.');return;}
+    if(lines.length===0){sgToast('Add at least one line item.',{type:'error'});return;}
     const qNum=document.getElementById('q-number').value||'Q';
     const notes=document.getElementById('q-notes').value;
     let extraNotes=notes;

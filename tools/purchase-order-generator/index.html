@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
@@ -110,11 +110,11 @@
       <div class="tool-card">
         <h2>Your company (buyer)</h2>
         <div class="tool-form-grid">
-          <div class="tool-field"><label for="buyer-name">Company name</label><input id="buyer-name" type="text" placeholder="Acme Manufacturing Inc."></div>
-          <div class="tool-field"><label for="buyer-phone">Phone <span class="hint">optional</span></label><input id="buyer-phone" type="text" placeholder="(330) 555-0188"></div>
-          <div class="tool-field full"><label for="buyer-address">Address</label><input id="buyer-address" type="text" placeholder="1200 Industrial Way, Akron, OH 44310"></div>
-          <div class="tool-field"><label for="buyer-email">Email</label><input id="buyer-email" type="email" placeholder="purchasing@acme.com"></div>
-          <div class="tool-field"><label for="buyer-contact">Buyer (your name)</label><input id="buyer-contact" type="text" placeholder="Sarah Mitchell"></div>
+          <div class="tool-field"><label for="buyer-name">Company name</label><input id="buyer-name" type="text" maxlength="120" placeholder="Acme Manufacturing Inc."></div>
+          <div class="tool-field"><label for="buyer-phone">Phone <span class="hint">optional</span></label><input id="buyer-phone" type="text" maxlength="30" placeholder="(330) 555-0188"></div>
+          <div class="tool-field full"><label for="buyer-address">Address</label><input id="buyer-address" type="text" maxlength="200" placeholder="1200 Industrial Way, Akron, OH 44310"></div>
+          <div class="tool-field"><label for="buyer-email">Email</label><input id="buyer-email" type="email" maxlength="120" placeholder="purchasing@acme.com"></div>
+          <div class="tool-field"><label for="buyer-contact">Buyer (your name)</label><input id="buyer-contact" type="text" maxlength="80" placeholder="Sarah Mitchell"></div>
         </div>
       </div>
 
@@ -157,18 +157,18 @@
           <button id="vendor-clear" type="button" class="btn-secondary">Clear vendor</button>
         </div>
         <div class="tool-form-grid">
-          <div class="tool-field"><label>Vendor name</label><input data-required id="vendor-name" type="text" placeholder="Midwest Steel Supply LLC"></div>
-          <div class="tool-field"><label for="vendor-contact">Vendor contact</label><input id="vendor-contact" type="text" placeholder="Tom Reed"></div>
-          <div class="tool-field full"><label for="vendor-address">Vendor address</label><input id="vendor-address" type="text" placeholder="8400 W. Industrial Blvd, Cleveland, OH 44114"></div>
-          <div class="tool-field"><label for="vendor-phone">Phone</label><input id="vendor-phone" type="text" placeholder="(216) 555-0142"></div>
-          <div class="tool-field"><label for="vendor-email">Email</label><input id="vendor-email" type="email" placeholder="orders@midweststeel.com"></div>
+          <div class="tool-field"><label>Vendor name</label><input data-required id="vendor-name" type="text" maxlength="120" placeholder="Midwest Steel Supply LLC"></div>
+          <div class="tool-field"><label for="vendor-contact">Vendor contact</label><input id="vendor-contact" type="text" maxlength="80" placeholder="Tom Reed"></div>
+          <div class="tool-field full"><label for="vendor-address">Vendor address</label><input id="vendor-address" type="text" maxlength="200" placeholder="8400 W. Industrial Blvd, Cleveland, OH 44114"></div>
+          <div class="tool-field"><label for="vendor-phone">Phone</label><input id="vendor-phone" type="text" maxlength="30" placeholder="(216) 555-0142"></div>
+          <div class="tool-field"><label for="vendor-email">Email</label><input id="vendor-email" type="email" maxlength="120" placeholder="orders@midweststeel.com"></div>
         </div>
       </div>
 
       <div class="tool-card">
         <h2>PO details</h2>
         <div class="tool-form-grid cols-3">
-          <div class="tool-field"><label for="po-number">PO number</label><input data-required id="po-number" type="text" placeholder="PO-2026-0001"></div>
+          <div class="tool-field"><label for="po-number">PO number</label><input data-required id="po-number" type="text" maxlength="40" placeholder="PO-2026-0001"></div>
           <div class="tool-field"><label for="po-date">Date</label><input data-required id="po-date" type="date"></div>
           <div class="tool-field"><label for="po-delivery">Expected delivery</label><input id="po-delivery" type="date"></div>
           <div class="tool-field"><label for="po-terms">Payment terms</label>
@@ -177,8 +177,8 @@
               <option>Due on receipt</option><option>2/10 Net 30</option><option>COD</option>
             </select>
           </div>
-          <div class="tool-field"><label for="po-ship-via">Ship via <span class="hint">optional</span></label><input id="po-ship-via" type="text" placeholder="Vendor's truck / UPS / etc."></div>
-          <div class="tool-field"><label for="po-fob">FOB <span class="hint">optional</span></label><input id="po-fob" type="text" placeholder="Origin / Destination"></div>
+          <div class="tool-field"><label for="po-ship-via">Ship via <span class="hint">optional</span></label><input id="po-ship-via" type="text" maxlength="60" placeholder="Vendor's truck / UPS / etc."></div>
+          <div class="tool-field"><label for="po-fob">FOB <span class="hint">optional</span></label><input id="po-fob" type="text" maxlength="40" placeholder="Origin / Destination"></div>
         </div>
       </div>
 
@@ -205,15 +205,15 @@
 
         <div class="tool-form-grid cols-3" style="margin-top:20px">
           <div class="tool-field"><label for="po-tax">Tax rate (%)</label><input data-clamp="0,100" id="po-tax" type="number" step="0.01" min="0" max="100" value="0"></div>
-          <div class="tool-field"><label for="po-shipping">Shipping ($)</label><input data-clamp="0,10000000" id="po-shipping" type="number" step="0.01" min="0" value="0"></div>
-          <div class="tool-field"><label for="po-other">Other / handling ($)</label><input data-clamp="0,10000000" id="po-other" type="number" step="0.01" min="0" value="0"></div>
+          <div class="tool-field"><label for="po-shipping">Shipping ($)</label><input data-clamp="0,1000000" id="po-shipping" type="number" step="0.01" min="0" value="0"></div>
+          <div class="tool-field"><label for="po-other">Other / handling ($)</label><input data-clamp="0,1000000" id="po-other" type="number" step="0.01" min="0" value="0"></div>
         </div>
       </div>
 
       <div class="tool-card">
         <h2>Notes & terms</h2>
         <div class="tool-field">
-          <textarea id="po-notes" rows="4" placeholder="Standard terms. Quality must conform to spec sheet rev B. Late delivery may forfeit 2% per week."></textarea>
+          <textarea id="po-notes" rows="4" maxlength="1500" placeholder="Standard terms. Quality must conform to spec sheet rev B. Late delivery may forfeit 2% per week."></textarea>
         </div>
       </div>
 
@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openCropper(dataUrl) {
     if (!window.Cropper) {
-      alert('Cropper library still loading - wait a moment and try again.');
+      sgToast('Logo crop tool is still loading - wait a moment and try again.', { type: 'error' });
       return;
     }
     originalForCrop = dataUrl;
@@ -435,13 +435,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const f = e.target.files && e.target.files[0];
     if (!f) return;
     if (f.size > 8 * 1024 * 1024) {
-      alert('Image is over 8 MB. Please resize before uploading.');
+      sgToast('Image is over 8 MB. Please resize before uploading.', { type: 'error' });
       logoUpload.value = '';
       return;
     }
     const fr = new FileReader();
     fr.onload = ev => openCropper(ev.target.result);
-    fr.onerror = () => alert('Could not read the file. Try a different image.');
+    fr.onerror = () => sgToast('Could not read the file. Try a different image.', { type: 'error' });
     fr.readAsDataURL(f);
   });
 
@@ -456,12 +456,13 @@ document.addEventListener('DOMContentLoaded', () => {
       imageSmoothingEnabled: true,
       imageSmoothingQuality: 'high'
     });
-    if (!canvas) { alert('Could not crop. Try again.'); return; }
+    if (!canvas) { sgToast('Could not crop. Try again.', { type: 'error' }); return; }
     const cropped = canvas.toDataURL('image/png');
     sgSave(LOGO_KEY, cropped);
     showLogo(cropped);
     closeCropper();
     logoUpload.value = '';
+    sgToast('Logo saved.', { type: 'success', duration: 2000 });
   });
 
   document.getElementById('logo-recrop').addEventListener('click', () => {
@@ -497,15 +498,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function addItem(prefill) {
     prefill = prefill || {};
+    const esc = sgEscapeHtml;
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td><input type="text" data-f="sku" placeholder="STL-16-48" value="${prefill.sku || ''}"></td>
-      <td><input type="text" data-f="desc" placeholder="16-gauge steel sheet 4ft × 8ft" value="${prefill.desc || ''}"></td>
-      <td><input data-clamp="0,10000000" type="number" class="num" data-f="qty" step="1" min="0" value="${prefill.qty != null ? prefill.qty : ''}" placeholder="0"></td>
-      <td><input type="text" data-f="unit" placeholder="sheet" value="${prefill.unit || ''}"></td>
-      <td><input data-clamp="0,10000000" type="number" class="num" data-f="price" step="0.01" min="0" value="${prefill.price != null ? prefill.price : ''}" placeholder="0.00"></td>
+      <td><input type="text" maxlength="40" data-f="sku" placeholder="STL-16-48" value="${esc(prefill.sku || '')}"></td>
+      <td><input type="text" maxlength="200" data-f="desc" placeholder="16-gauge steel sheet 4ft x 8ft" value="${esc(prefill.desc || '')}"></td>
+      <td><input data-clamp="0,1000000" type="number" class="num" data-f="qty" step="1" min="0" max="1000000" value="${esc(prefill.qty != null ? prefill.qty : '')}" placeholder="0"></td>
+      <td><input type="text" maxlength="12" data-f="unit" placeholder="sheet" value="${esc(prefill.unit || '')}"></td>
+      <td><input data-clamp="0,1000000" type="number" class="num" data-f="price" step="0.01" min="0" max="1000000" value="${esc(prefill.price != null ? prefill.price : '')}" placeholder="0.00"></td>
       <td class="col-line-total" data-f="line">$0.00</td>
-      <td class="col-actions"><button type="button" class="row-del" title="Remove">×</button></td>
+      <td class="col-actions"><button type="button" class="row-del" title="Remove">x</button></td>
     `;
     itemsBody.appendChild(tr);
     tr.querySelector('.row-del').addEventListener('click', () => { tr.remove(); recalc(); });
@@ -597,14 +599,14 @@ document.addEventListener('DOMContentLoaded', () => {
       phone: document.getElementById('vendor-phone').value.trim(),
       email: document.getElementById('vendor-email').value.trim()
     };
-    if (!v.name) { alert('Add a vendor name first.'); return; }
+    if (!v.name) { sgToast('Add a vendor name first.', { type: 'error' }); return; }
     const list = sgLoad(VKEY, []);
     const existingIdx = list.findIndex(x => x.name === v.name);
     if (existingIdx >= 0) list[existingIdx] = v;
     else list.push(v);
     sgSave(VKEY, list);
     refreshVendorList();
-    alert(`Vendor "${v.name}" saved.`);
+    sgToast('Vendor "' + v.name + '" saved.', { type: 'success' });
   });
 
   document.getElementById('vendor-clear').addEventListener('click', () => {
@@ -620,9 +622,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('generate-pdf').addEventListener('click', () => {
     if (typeof sgValidateRequired === 'function' && !sgValidateRequired(document)) return;
     if (typeof sgValidateDateOrder === 'function' && !sgValidateDateOrder(document.getElementById('po-date'), document.getElementById('po-delivery'), 'Expected delivery date')) return;
+    if (typeof sgValidateEmail === 'function') {
+      if (!sgValidateEmail(document.getElementById('buyer-email'))) return;
+      if (!sgValidateEmail(document.getElementById('vendor-email'))) return;
+    }
     const t = recalc();
     const lines = items().filter(i => i.sku || i.desc || i.qty || i.price);
-    if (lines.length === 0) { alert('Add at least one line item.'); return; }
+    if (lines.length === 0) { sgToast('Add at least one line item.', { type: 'error' }); return; }
     const poNum = document.getElementById('po-number').value || 'PO';
     sgBuildPdf({
       title: 'Purchase Order',
