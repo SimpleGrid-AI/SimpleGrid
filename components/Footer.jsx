@@ -27,44 +27,8 @@ function Footer() {
       { l: 'Adoption', href: 'product.html#ability' },
       { l: 'Your process, enforced', href: 'product.html#rules' },
     ]},
-    { h: 'Productive tools', links: [
-      { l: 'PO Generator', href: 'tools/purchase-order-generator/' },
-      { l: 'Invoice Generator', href: 'tools/invoice-generator/' },
-      { l: 'Quote Generator', href: 'tools/quote-generator/' },
-      { l: 'Job Cost Calculator', href: 'tools/job-cost-calculator/' },
-      { l: 'BOM Builder', href: 'tools/bill-of-materials-template/' },
-      { l: 'Production Schedule', href: 'tools/production-schedule-template/' },
-      { l: 'Quality Inspection', href: 'tools/quality-inspection-checklist/' },
-      { l: 'Markup vs Margin', href: 'tools/markup-vs-margin/' },
-      { l: 'Revenue per Employee', href: 'tools/revenue-per-employee/' },
-      { l: 'Scrap & Waste Cost', href: 'tools/scrap-waste-calculator/' },
-      { l: 'Do I Need an ERP?', href: 'tools/erp-needs-assessment/' },
-      { l: 'EBITDA Calculator', href: 'tools/ebitda-calculator/' },
-      { l: 'OEE Calculator', href: 'tools/oee-calculator/' },
-      { l: 'Labor Burden Rate', href: 'tools/burden-rate-calculator/' },
-      { l: 'Downtime Cost', href: 'tools/downtime-cost-calculator/' },
-      { l: 'Break-Even', href: 'tools/break-even-calculator/' },
-      { l: 'Business Valuation', href: 'tools/business-valuation-calculator/' },
-      { l: 'KPI Benchmark', href: 'tools/manufacturing-kpi-benchmark/' },
-      { l: 'ERP Readiness', href: 'tools/erp-readiness-scorecard/' },
-      { l: 'Reorder Point + EOQ', href: 'tools/reorder-point-calculator/' },
-      { l: 'Make vs Buy', href: 'tools/make-vs-buy-calculator/' },
-      { l: 'Operations Health Score', href: 'tools/operations-health-score/' },
-      { l: 'Customer Concentration Risk', href: 'tools/customer-concentration-risk/' },
-      { l: 'SDE Calculator', href: 'tools/sde-calculator/' },
-      { l: 'Automation ROI', href: 'tools/automation-roi-estimator/' },
-      { l: 'Cost of Poor Quality', href: 'tools/cost-of-poor-quality/' },
-      { l: 'Digital Maturity', href: 'tools/digital-maturity-assessment/' },
-      { l: 'Exit Readiness', href: 'tools/exit-readiness-scorecard/' },
-      { l: 'Capacity Planning', href: 'tools/capacity-planning-calculator/' },
-      { l: 'Hire vs Overtime', href: 'tools/hire-vs-overtime/' },
-      { l: 'Lease vs Buy', href: 'tools/lease-vs-buy-equipment/' },
-      { l: 'Expansion ROI', href: 'tools/expansion-roi-calculator/' },
-      { l: 'OSHA Checklist', href: 'tools/osha-compliance-checklist/' },
-      { l: 'ISO 9001 Readiness', href: 'tools/iso-9001-readiness/' },
-      { l: 'Insurance Audit', href: 'tools/insurance-coverage-checklist/' },
-    ]},
     { h: 'Resources', links: [
+      { l: 'Productive Tools (35)', href: 'tools/' },
       { l: 'Case studies', href: 'case-studies.html' },
       { l: 'Blog', href: 'blog.html' },
     ]},
@@ -120,7 +84,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className="footer-cols" style={{gridTemplateColumns: '1fr 1fr 1fr 1.5fr', gap: 20}}>
+          <div className="footer-cols" style={{gridTemplateColumns: '1fr 1fr 1fr 1.5fr', gap: 24}}>
             {cols.map(c => (
               <div key={c.h}>
                 <div className="footer-h">{c.h}</div>

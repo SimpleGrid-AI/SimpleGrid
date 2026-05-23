@@ -47,13 +47,14 @@ function Nav({
     label: 'Product',
     href: 'product.html',
     title: 'How SimpleGrid manufacturing ERP works'
-  }, {
+  }];
+  const resourceLinks = [{
     id: 'tools',
     label: 'Productive Tools',
     href: 'tools/',
+    desc: 'PO, invoice, BOM, job cost, 30+ calculators.',
     title: 'Productive tools for manufacturers - PO, invoice, BOM, job cost'
-  }];
-  const resourceLinks = [{
+  }, {
     id: 'cases',
     label: 'Case studies',
     href: 'case-studies.html',
@@ -66,7 +67,7 @@ function Nav({
     desc: 'Field notes on ERP and ops.',
     title: 'SimpleGrid blog for manufacturers'
   }];
-  const isResourceActive = page === 'cases' || page === 'blog';
+  const isResourceActive = page === 'tools' || page === 'cases' || page === 'blog';
   const mobileTopLinks = [{
     id: 'home',
     label: 'Home',
@@ -77,13 +78,13 @@ function Nav({
     label: 'Product',
     href: 'product.html',
     title: 'How SimpleGrid works'
-  }, {
+  }];
+  const mobileResourceLinks = [{
     id: 'tools',
     label: 'Productive Tools',
     href: 'tools/',
     title: 'Productive tools for manufacturers'
-  }];
-  const mobileResourceLinks = [{
+  }, {
     id: 'cases',
     label: 'Case studies',
     href: 'case-studies.html',

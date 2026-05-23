@@ -94,12 +94,12 @@
     <nav class="nav-links" aria-label="Main navigation">
       <a href="/" class="nav-link">Home</a>
       <a href="/product.html" class="nav-link">Product</a>
-      <a href="/tools/" class="nav-link">Productive Tools</a>
       <details class="nav-resources">
-        <summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary>
+        <summary class="nav-link active" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary>
         <div class="nav-resources-menu">
+          <a href="/tools/">Productive Tools <span>PO, invoice, BOM, job cost, 30+ calculators.</span></a>
           <a href="/case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a>
-          <a href="/blog.html">Blog <span>Field notes on ERP and ops.</span></a>
+          <a href="/blog.html" class="active">Blog <span>Field notes on ERP and ops.</span></a>
         </div>
       </details>
     </nav>
@@ -311,25 +311,22 @@
         <img src="assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
         <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p>
       </div>
-      <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px">
         <div>
           <div class="footer-h">Product</div>
           <a href="product.html" class="footer-link">How it works</a>
           <a href="pricing.html" class="footer-link">Pricing</a>
-          <a href="case-studies.html" class="footer-link">Case studies</a>
         </div>
         <div>
-          <div class="footer-h">Productive tools</div>
-          <a href="tools/" class="footer-link">All tools</a>
-          <a href="tools/purchase-order-generator/" class="footer-link">PO Generator</a>
-          <a href="tools/invoice-generator/" class="footer-link">Invoice Generator</a>
-          <a href="tools/operations-health-score/" class="footer-link">Operations Health Score</a>
+          <div class="footer-h">Resources</div>
+          <a href="tools/" class="footer-link">Productive Tools (35)</a>
+          <a href="case-studies.html" class="footer-link">Case studies</a>
+          <a href="blog.html" class="footer-link">Blog</a>
         </div>
         <div>
           <div class="footer-h">Company</div>
           <a href="about.html" class="footer-link">About</a>
           <a href="hiring.html" class="footer-link">Careers</a>
-          <a href="blog.html" class="footer-link">Blog</a>
         </div>
         <div>
           <div class="footer-h">Get in touch</div>

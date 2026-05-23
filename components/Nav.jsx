@@ -37,20 +37,20 @@ function Nav({ page = 'home', onLoginClick }) {
   const links = [
     { id: 'home', label: 'Home', href: 'index.html', title: 'SimpleGrid home - AI ERP for manufacturers' },
     { id: 'product', label: 'Product', href: 'product.html', title: 'How SimpleGrid manufacturing ERP works' },
-    { id: 'tools', label: 'Productive Tools', href: 'tools/', title: 'Productive tools for manufacturers - PO, invoice, BOM, job cost' },
   ];
   const resourceLinks = [
+    { id: 'tools', label: 'Productive Tools', href: 'tools/', desc: 'PO, invoice, BOM, job cost, 30+ calculators.', title: 'Productive tools for manufacturers - PO, invoice, BOM, job cost' },
     { id: 'cases', label: 'Case studies', href: 'case-studies.html', desc: 'Real deployments. Real numbers.', title: 'SimpleGrid manufacturing ERP case studies' },
     { id: 'blog', label: 'Blog', href: 'blog.html', desc: 'Field notes on ERP and ops.', title: 'SimpleGrid blog for manufacturers' },
   ];
-  const isResourceActive = page === 'cases' || page === 'blog';
+  const isResourceActive = page === 'tools' || page === 'cases' || page === 'blog';
 
   const mobileTopLinks = [
     { id: 'home', label: 'Home', href: 'index.html', title: 'SimpleGrid home' },
     { id: 'product', label: 'Product', href: 'product.html', title: 'How SimpleGrid works' },
-    { id: 'tools', label: 'Productive Tools', href: 'tools/', title: 'Productive tools for manufacturers' },
   ];
   const mobileResourceLinks = [
+    { id: 'tools', label: 'Productive Tools', href: 'tools/', title: 'Productive tools for manufacturers' },
     { id: 'cases', label: 'Case studies', href: 'case-studies.html', title: 'Manufacturing ERP case studies' },
     { id: 'blog', label: 'Blog', href: 'blog.html', title: 'SimpleGrid blog' },
   ];
