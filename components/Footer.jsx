@@ -39,6 +39,11 @@ function Footer() {
       { l: 'Revenue per Employee', href: 'tools/revenue-per-employee/' },
       { l: 'Scrap & Waste Cost', href: 'tools/scrap-waste-calculator/' },
       { l: 'Do I Need an ERP?', href: 'tools/erp-needs-assessment/' },
+      { l: 'EBITDA Calculator', href: 'tools/ebitda-calculator/' },
+      { l: 'OEE Calculator', href: 'tools/oee-calculator/' },
+      { l: 'Labor Burden Rate', href: 'tools/burden-rate-calculator/' },
+      { l: 'Downtime Cost', href: 'tools/downtime-cost-calculator/' },
+      { l: 'Break-Even', href: 'tools/break-even-calculator/' },
     ]},
     { h: 'Resources', links: [
       { l: 'Case studies', href: 'case-studies.html' },

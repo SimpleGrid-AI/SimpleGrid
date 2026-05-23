@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>Labor Burden Rate Calculator for Manufacturers | SimpleGrid</title>
+<meta name="description" content="Free fully-loaded labor cost calculator. Base + FICA + benefits + overhead per productive hour. Stop underpricing labor by 30-50%. PDF export.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/burden-rate-calculator/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/burden-rate-calculator/"><meta property="og:title" content="Labor Burden Rate Calculator for Manufacturers | SimpleGrid"><meta property="og:description" content="Free fully-loaded labor cost calculator. Base + FICA + benefits + overhead per productive hour. Stop underpricing labor by 30-50%. PDF export."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"Labor Burden Rate Calculator for Manufacturers | SimpleGrid","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/burden-rate-calculator/","description":"Free fully-loaded labor cost calculator. Base + FICA + benefits + overhead per productive hour. Stop underpricing labor by 30-50%. PDF export.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Labor Burden Rate Calculator for Manufacturers | SimpleGrid","item":"https://simplegrid.ai/tools/burden-rate-calculator/"}]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>Labor Burden Rate Calculator - what your employees actually cost.</h1>
+    <p class="lead">Base hourly rate is what you pay. Burden rate is what they cost. Manufacturers typically miss 30-50% of true labor cost when quoting jobs. This calculator gives you the loaded number - per productive hour, not per paid hour.</p>
+  </div></section>
+
+<section class="tool-app"><div class="container-sm">
+    <div class="tool-card"><h2>Base pay</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="rate">Hourly base rate ($)</label><input id="rate" type="number" data-clamp="0,1000" step="0.01" value="22" data-required></div>
+        <div class="tool-field"><label for="hours">Paid hours per year</label><input id="hours" type="number" data-clamp="1,3000" step="1" value="2080"></div>
+        <div class="tool-field"><label for="ptodays">PTO + holidays (days/year)</label><input id="ptodays" type="number" data-clamp="0,60" step="1" value="23"></div>
+      </div>
+    </div>
+    <div class="tool-card"><h2>Statutory costs</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="fica">FICA (% of base)</label><input id="fica" type="number" data-clamp="0,15" step="0.01" value="7.65"></div>
+        <div class="tool-field"><label for="suta">SUTA (state unemployment %)</label><input id="suta" type="number" data-clamp="0,15" step="0.01" value="2.5"></div>
+        <div class="tool-field"><label for="wc">Workers Comp ($ per $100 payroll)</label><input id="wc" type="number" data-clamp="0,30" step="0.01" value="3.5"></div>
+      </div>
+    </div>
+    <div class="tool-card"><h2>Benefits</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="health">Health insurance ($/yr)</label><input id="health" type="number" data-clamp="0,50000" step="100" value="7900"></div>
+        <div class="tool-field"><label for="dental">Dental + vision ($/yr)</label><input id="dental" type="number" data-clamp="0,10000" step="50" value="800"></div>
+        <div class="tool-field"><label for="ret">Retirement (% of base)</label><input id="ret" type="number" data-clamp="0,25" step="0.1" value="4"></div>
+        <div class="tool-field"><label for="life">Life + disability insurance ($/yr)</label><input id="life" type="number" data-clamp="0,5000" step="50" value="400"></div>
+      </div>
+    </div>
+    <div class="tool-card"><h2>Overhead per employee</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="facility">Facility cost / employee ($/yr)</label><input id="facility" type="number" data-clamp="0,100000" step="100" value="3500"></div>
+        <div class="tool-field"><label for="equip">Equipment + tools / employee ($/yr)</label><input id="equip" type="number" data-clamp="0,100000" step="100" value="1500"></div>
+        <div class="tool-field"><label for="training">Training cost / employee ($/yr)</label><input id="training" type="number" data-clamp="0,20000" step="50" value="1200"></div>
+        <div class="tool-field"><label for="sup">Supervision cost / employee ($/yr)</label><input id="sup" type="number" data-clamp="0,50000" step="100" value="4500"></div>
+        <div class="tool-field"><label for="safety">Safety + PPE ($/yr)</label><input id="safety" type="number" data-clamp="0,10000" step="50" value="500"></div>
+        <div class="tool-field"><label for="hr">HR + admin / employee ($/yr)</label><input id="hr" type="number" data-clamp="0,20000" step="100" value="2500"></div>
+      </div>
+    </div>
+
+    <div class="results-hero" id="hero"></div>
+    <div class="tool-card" id="detail" style="margin-top:24px"></div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px"><button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button></div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When every quote depends on the right labor cost</div>
+      <h2>SimpleGrid prices jobs at fully-loaded labor - not base rate.</h2>
+      <p>Burden rates set once, applied automatically to every job cost calculation. When health insurance jumps 8%, your quotes reflect it the same day.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="burden_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  function fmt$(n){return '$'+(n||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function nn(id){return Math.max(0, parseFloat(document.getElementById(id).value)||0);}
+  function recalc(){
+    const rate = nn('rate');
+    const hours = Math.max(1, nn('hours'));
+    const ptoDays = nn('ptodays');
+    const productiveHours = hours - ptoDays*8;
+    const base = rate * hours;
+    const fica = base * nn('fica')/100;
+    const suta = base * nn('suta')/100;
+    const wc = base * nn('wc')/100;
+    const statutory = fica + suta + wc;
+    const health = nn('health'), dental = nn('dental'), life = nn('life');
+    const retire = base * nn('ret')/100;
+    const ptoCost = ptoDays * 8 * rate;
+    const benefits = health + dental + life + retire + ptoCost;
+    const overhead = nn('facility')+nn('equip')+nn('training')+nn('sup')+nn('safety')+nn('hr');
+    const total = base + statutory + benefits + overhead;
+    const burdenRate = productiveHours>0 ? total / productiveHours : 0;
+    const mult = base>0 ? total/base : 0;
+    document.getElementById('hero').innerHTML = `
+      <div class="big-label">Fully loaded burden rate</div>
+      <div class="big-number">${fmt$(burdenRate)}</div>
+      <div class="big-caption"><strong>${mult.toFixed(2)}x base pay.</strong> Each ${fmt$(rate)} hourly employee actually costs you ${fmt$(burdenRate)} per productive hour. Manufacturing average multiplier: 1.35-1.55x (BLS).</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Annual total cost</div><div class="value">${fmt$(total)}</div></div>
+        <div class="results-stat"><div class="label">Productive hours / year</div><div class="value">${productiveHours.toFixed(0)}</div><div class="sub">of ${hours} paid</div></div>
+        <div class="results-stat"><div class="label">Cost / paid hour</div><div class="value">${fmt$(total/hours)}</div></div>
+      </div>
+    `;
+    document.getElementById('detail').innerHTML = `
+      <h2 style="margin-bottom:14px">Cost breakdown</h2>
+      <div class="bar-row"><span class="bar-label">Base pay</span><div class="bar-track"><div class="bar-fill" style="width:${(base/total*100)}%"></div></div><span class="bar-value">${fmt$(base)} (${(base/total*100).toFixed(0)}%)</span></div>
+      <div class="bar-row"><span class="bar-label">Statutory</span><div class="bar-track"><div class="bar-fill gold" style="width:${(statutory/total*100)}%"></div></div><span class="bar-value">${fmt$(statutory)} (${(statutory/total*100).toFixed(0)}%)</span></div>
+      <div class="bar-row"><span class="bar-label">Benefits + PTO</span><div class="bar-track"><div class="bar-fill green" style="width:${(benefits/total*100)}%"></div></div><span class="bar-value">${fmt$(benefits)} (${(benefits/total*100).toFixed(0)}%)</span></div>
+      <div class="bar-row"><span class="bar-label">Overhead</span><div class="bar-track"><div class="bar-fill red" style="width:${(overhead/total*100)}%"></div></div><span class="bar-value">${fmt$(overhead)} (${(overhead/total*100).toFixed(0)}%)</span></div>
+
+      <h2 style="margin-top:32px;margin-bottom:14px">Pricing impact</h2>
+      <p style="font-size:15px;color:var(--fg1);line-height:1.6">If you quote labor at the base rate ${fmt$(rate)}/hr instead of the burdened rate ${fmt$(burdenRate)}/hr, you underprice by <strong style="color:#B91C1C">${fmt$(burdenRate-rate)}/hr</strong> - that's <strong>${((burdenRate-rate)/rate*100).toFixed(0)}%</strong>. On a 100-hour job you leave ${fmt$((burdenRate-rate)*100)} on the table. This is the single most common pricing error in manufacturing.</p>
+    `;
+    return {rate, hours, productiveHours, base, statutory, benefits, overhead, total, burdenRate, mult};
+  }
+  document.querySelectorAll('input').forEach(el=>el.addEventListener('input', recalc));
+  if (typeof sgWireNumericClamps==='function') sgWireNumericClamps(document);
+  recalc();
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired==='function' && !sgValidateRequired(document)) return;
+    const r = recalc();
+    sgBuildPdf({
+      title:'Labor Burden Rate Calculation', docNumberLabel:'Burden rate', docNumber:fmt$(r.burdenRate)+'/hr',
+      date: todayISO(),
+      fromLabel:'INPUTS', from:['Base hourly: '+fmt$(r.rate), 'Paid hours: '+r.hours, 'Productive hours: '+r.productiveHours.toFixed(0)],
+      toLabel:'RESULT', to:['Total annual cost: '+fmt$(r.total), 'Burden rate: '+fmt$(r.burdenRate)+'/hr', 'Burden multiplier: '+r.mult.toFixed(2)+'x base'],
+      itemColumns:['Category','Annual','% of total'],
+      items:[['Base pay', fmt$(r.base), (r.base/r.total*100).toFixed(0)+'%'],['Statutory (FICA/SUTA/WC)', fmt$(r.statutory), (r.statutory/r.total*100).toFixed(0)+'%'],['Benefits + PTO', fmt$(r.benefits), (r.benefits/r.total*100).toFixed(0)+'%'],['Overhead', fmt$(r.overhead), (r.overhead/r.total*100).toFixed(0)+'%']],
+      itemRowMapper: x=>x,
+      notes:'Manufacturing average burden multiplier: 1.35-1.55x base pay (BLS Employer Costs for Employee Compensation). Use the burden rate for every job cost calculation - never the base rate.',
+      filename:'burden-rate-'+todayISO()+'.pdf'
+    });
+  });
+});
+</script>
+
+<section class="tool-seo"><div class="container-sm">
+    <h2>The hidden cost of labor</h2>
+    <p>When you pay a worker $22/hr base, you actually spend $28-34/hr to keep them employed. The difference is statutory costs (FICA, unemployment, workers comp), benefits (health insurance, retirement, PTO), and overhead (facility, equipment, supervision). Every quote you build using the base rate underprices labor by 30-50%.</p>
+    <h2>Why "productive hours" matters</h2>
+    <p>The denominator is productive hours, not paid hours. A worker paid 2,080 hours/year but taking 23 days of PTO/holidays is actually productive 1,896 hours. That 184-hour gap (8.8%) inflates your real hourly cost.</p>
+    <h2>FAQ</h2>
+    <details><summary>What's the typical burden multiplier?</summary><p>1.35-1.55x base pay for US manufacturing. India is typically 1.20-1.35x (lower statutory + benefits). Knowing yours specifically beats using an industry average.</p></details>
+    <details><summary>What about overtime hours?</summary><p>OT is paid at 1.5x base but the burden stays largely the same (FICA + workers comp scale, benefits don't). OT productive hours have a different multiplier - typically 1.25-1.35x. Many shops underestimate the real cost of OT for this reason.</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+</body>
+</html>

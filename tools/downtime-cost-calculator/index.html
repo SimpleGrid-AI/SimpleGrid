@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>Machine Downtime Cost Calculator for Manufacturers | SimpleGrid</title>
+<meta name="description" content="Free machine downtime cost calculator. Lost revenue + OT + expedite + late penalties. Improvement scenarios with $ saving estimates. PDF export.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/downtime-cost-calculator/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/downtime-cost-calculator/"><meta property="og:title" content="Machine Downtime Cost Calculator for Manufacturers | SimpleGrid"><meta property="og:description" content="Free machine downtime cost calculator. Lost revenue + OT + expedite + late penalties. Improvement scenarios with $ saving estimates. PDF export."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"Machine Downtime Cost Calculator for Manufacturers | SimpleGrid","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/downtime-cost-calculator/","description":"Free machine downtime cost calculator. Lost revenue + OT + expedite + late penalties. Improvement scenarios with $ saving estimates. PDF export.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Machine Downtime Cost Calculator for Manufacturers | SimpleGrid","item":"https://simplegrid.ai/tools/downtime-cost-calculator/"}]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>Machine Downtime Cost Calculator - the hidden tax on your operation.</h1>
+    <p class="lead">Downtime cost rarely appears as a line item - it shows up as overtime, expedite shipping, and missed deliveries. This calculator quantifies the full cost and shows what a PM program, SMED, or a CMMS would save.</p>
+  </div></section>
+
+<section class="tool-app"><div class="container-sm">
+    <div class="tool-card"><h2>Your equipment</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="machines">Number of production machines / lines</label><input id="machines" type="number" data-clamp="1,500" step="1" value="5" data-required></div>
+        <div class="tool-field"><label for="unplanned">Avg unplanned downtime per machine / month (hrs)</label><input id="unplanned" type="number" data-clamp="0,720" step="0.5" value="12"></div>
+        <div class="tool-field"><label for="planned">Avg planned downtime per machine / month (hrs)</label><input id="planned" type="number" data-clamp="0,720" step="0.5" value="4"></div>
+        <div class="tool-field"><label for="changeover">Avg changeover time per machine / month (hrs)</label><input id="changeover" type="number" data-clamp="0,720" step="0.5" value="20"></div>
+        <div class="tool-field"><label for="revhr">Revenue per production hour (whole operation, $)</label><input id="revhr" type="number" data-clamp="0,1000000" step="10" value="1200" data-required></div>
+      </div>
+    </div>
+    <div class="tool-card"><h2>Recovery costs</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="ot-hours">OT hours / month driven by downtime recovery</label><input id="ot-hours" type="number" data-clamp="0,10000" step="1" value="80"></div>
+        <div class="tool-field"><label for="ot-premium">OT premium per hour ($)</label><input id="ot-premium" type="number" data-clamp="0,1000" step="0.50" value="14"></div>
+        <div class="tool-field"><label for="expedite">Expedite shipping / month ($)</label><input id="expedite" type="number" data-clamp="0,1000000" step="100" value="3500"></div>
+        <div class="tool-field"><label for="late-q">Late deliveries / quarter</label><input id="late-q" type="number" data-clamp="0,10000" step="1" value="3"></div>
+        <div class="tool-field"><label for="late-cost">Avg penalty per late delivery ($)</label><input id="late-cost" type="number" data-clamp="0,1000000" step="100" value="1500"></div>
+      </div>
+    </div>
+
+    <div class="results-hero" id="hero"></div>
+    <div class="tool-card" id="detail" style="margin-top:24px"></div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px"><button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button></div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When downtime is a hidden tax, not a managed cost</div>
+      <h2>SimpleGrid tracks every minute - planned, unplanned, changeover - and ties it to revenue impact.</h2>
+      <p>The 80:20 planned-to-unplanned ratio is the world-class benchmark (SMRP). Most plants run 30:70 the wrong way. A CMMS layered on event-sourced data flips this in 6-12 months.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="downtime_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  function fmt$(n){return '$'+Math.round(n||0).toLocaleString();}
+  function fmt$K(n){if(!isFinite(n)||n<=0) return '$0'; if(n>=1000000) return '$'+(n/1000000).toFixed(2)+'M'; if(n>=10000) return '$'+Math.round(n/1000)+'K'; return '$'+Math.round(n);}
+  function nn(id){return Math.max(0, parseFloat(document.getElementById(id).value)||0);}
+  function recalc(){
+    const machines = Math.max(1, nn('machines'));
+    const up = nn('unplanned') * machines * 12;
+    const planned = nn('planned') * machines * 12;
+    const change = nn('changeover') * machines * 12;
+    const revhr = nn('revhr');
+    const lostRevenue = up * revhr;
+    const otHours = nn('ot-hours') * 12;
+    const otCost = otHours * nn('ot-premium');
+    const expedite = nn('expedite') * 12;
+    const lateAnnual = nn('late-q') * 4;
+    const lateCost = lateAnnual * nn('late-cost');
+    const totalCost = lostRevenue + otCost + expedite + lateCost;
+    const plannedRatio = (planned + up) > 0 ? planned / (planned + up) * 100 : 0;
+    const changeOpportunity = change * revhr * 0.5; // SMED 50% reduction estimate
+    document.getElementById('hero').innerHTML = `
+      <div class="big-label">Total annual downtime cost</div>
+      <div class="big-number red">${fmt$K(totalCost)}</div>
+      <div class="big-caption">${Math.round(up).toLocaleString()} hours of unplanned downtime + ${Math.round(change).toLocaleString()} hours of changeover. Planned-to-unplanned ratio: <strong>${plannedRatio.toFixed(0)}:${(100-plannedRatio).toFixed(0)}</strong>. World-class target: 80:20.</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Lost production value</div><div class="value red">${fmt$K(lostRevenue)}</div></div>
+        <div class="results-stat"><div class="label">OT recovery cost</div><div class="value">${fmt$K(otCost)}</div></div>
+        <div class="results-stat"><div class="label">Expedite + late penalties</div><div class="value">${fmt$K(expedite+lateCost)}</div></div>
+      </div>
+    `;
+    document.getElementById('detail').innerHTML = `
+      <h2 style="margin-bottom:14px">Improvement scenarios</h2>
+      <table class="results-table">
+        <thead><tr><th>Scenario</th><th class="num">Action</th><th class="num">Estimated annual saving</th></tr></thead>
+        <tbody>
+          <tr><td>Reduce unplanned downtime 30%</td><td class="num">PM program + CMMS</td><td class="num"><strong style="color:#047857">${fmt$K(lostRevenue*0.3 + otCost*0.3)}</strong></td></tr>
+          <tr><td>Reduce changeover 50%</td><td class="num">SMED methodology</td><td class="num"><strong style="color:#047857">${fmt$K(changeOpportunity)}</strong></td></tr>
+          <tr><td>Shift to 80:20 planned:unplanned</td><td class="num">CMMS + scheduled PM</td><td class="num"><strong style="color:#047857">${fmt$K(lostRevenue*0.5)}</strong></td></tr>
+          <tr><td><strong>All three combined</strong></td><td class="num">Maintenance transformation</td><td class="num"><strong style="color:#047857">${fmt$K(lostRevenue*0.5 + otCost*0.3 + changeOpportunity)}</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="tool-note" style="margin-top:14px">Sources: SMRP (Society for Maintenance & Reliability Professionals), Deloitte Future of Maintenance 2022, ARC Advisory Group. Average emergency repair cost $15,000 vs. planned $3,500 - planned maintenance is 3-4x cheaper.</p>
+    `;
+    return {machines, up, planned, change, revhr, lostRevenue, otCost, expedite, lateCost, totalCost, plannedRatio, changeOpportunity};
+  }
+  document.querySelectorAll('input').forEach(el=>el.addEventListener('input', recalc));
+  if (typeof sgWireNumericClamps==='function') sgWireNumericClamps(document);
+  recalc();
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired==='function' && !sgValidateRequired(document)) return;
+    const r = recalc();
+    sgBuildPdf({
+      title:'Machine Downtime Cost Report', docNumberLabel:'Total cost', docNumber:fmt$K(r.totalCost),
+      date: todayISO(),
+      fromLabel:'INPUTS', from:['Machines: '+r.machines, 'Unplanned hrs/yr: '+Math.round(r.up), 'Changeover hrs/yr: '+Math.round(r.change), 'Revenue/hr: '+fmt$(r.revhr)],
+      toLabel:'COST', to:['Lost production: '+fmt$(r.lostRevenue), 'OT recovery: '+fmt$(r.otCost), 'Expedite: '+fmt$(r.expedite), 'Late penalties: '+fmt$(r.lateCost), 'Total: '+fmt$(r.totalCost)],
+      itemColumns:['Improvement scenario','Annual saving'],
+      items:[
+        ['Reduce unplanned 30% (PM program)', fmt$(r.lostRevenue*0.3 + r.otCost*0.3)],
+        ['Reduce changeover 50% (SMED)', fmt$(r.changeOpportunity)],
+        ['Shift to 80:20 planned:unplanned', fmt$(r.lostRevenue*0.5)],
+        ['All three combined', fmt$(r.lostRevenue*0.5 + r.otCost*0.3 + r.changeOpportunity)]
+      ],
+      itemRowMapper: x=>x,
+      filename:'downtime-cost-'+todayISO()+'.pdf'
+    });
+  });
+});
+</script>
+
+<section class="tool-seo"><div class="container-sm">
+    <h2>What downtime really costs</h2>
+    <p>Most mid-market manufacturers don't quantify downtime because it shows up as overtime, expedite shipping, and missed deliveries rather than a single line item. ARC Advisory Group estimates $50B in annual downtime cost across US industrial manufacturers. The average plant loses 800 hours per year to unplanned downtime (Deloitte 2022).</p>
+    <h2>The 80:20 rule for maintenance</h2>
+    <p>World-class maintenance organizations target 80% planned downtime, 20% unplanned (SMRP standard). Most mid-market plants run 30:70 the wrong way. Emergency repairs cost 3-4x more than planned maintenance. The shift from reactive to planned typically pays back in 6-12 months.</p>
+    <h2>FAQ</h2>
+    <details><summary>What's a CMMS and do I need one?</summary><p>Computerized Maintenance Management System - basically work-order software for equipment. Tracks PM schedules, parts inventory, downtime causes, technician time. If you have more than 5 critical machines and no CMMS, you're losing money you can't see. Standalone CMMS is $30-150/month; integrated ERP includes it.</p></details>
+    <details><summary>What is SMED?</summary><p>Single-Minute Exchange of Dies - a structured methodology to reduce changeover time. Originally developed at Toyota, typically reduces changeover by 40-60% within 90 days. The most cost-effective ops improvement available.</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+</body>
+</html>

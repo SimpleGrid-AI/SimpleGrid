@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>OEE Calculator (Overall Equipment Effectiveness) | SimpleGrid</title>
+<meta name="description" content="Free OEE calculator for manufacturers. Availability x Performance x Quality. World-class 85%. Find the biggest production loss with $ impact. PDF export.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/oee-calculator/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/oee-calculator/"><meta property="og:title" content="OEE Calculator (Overall Equipment Effectiveness) | SimpleGrid"><meta property="og:description" content="Free OEE calculator for manufacturers. Availability x Performance x Quality. World-class 85%. Find the biggest production loss with $ impact. PDF export."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"OEE Calculator (Overall Equipment Effectiveness) | SimpleGrid","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/oee-calculator/","description":"Free OEE calculator for manufacturers. Availability x Performance x Quality. World-class 85%. Find the biggest production loss with $ impact. PDF export.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"OEE Calculator (Overall Equipment Effectiveness) | SimpleGrid","item":"https://simplegrid.ai/tools/oee-calculator/"}]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>OEE Calculator - what your equipment actually produces vs what it could.</h1>
+    <p class="lead">OEE is the gold-standard metric for manufacturing productivity. It rolls availability, speed, and quality into one number. Most plants without OEE tracking score 40-60%. World-class is 85%+. This tool shows you exactly where the gap is.</p>
+  </div></section>
+
+<section class="tool-app"><div class="container-sm">
+    <div class="tool-card"><h2>Production data (per shift or per day)</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="planned">Planned production time (hours)</label><input id="planned" type="number" data-clamp="0.1,24" step="0.1" value="8" data-required></div>
+        <div class="tool-field"><label for="running">Actual running time (hours)</label><input id="running" type="number" data-clamp="0,24" step="0.1" value="6.5" data-required></div>
+        <div class="tool-field"><label for="ideal">Ideal cycle time (units/hour)</label><input id="ideal" type="number" data-clamp="0.01,1000000" step="0.1" value="100" data-required></div>
+        <div class="tool-field"><label for="actual">Actual output (units, incl. defects)</label><input id="actual" type="number" data-clamp="0,10000000" step="1" value="520" data-required></div>
+        <div class="tool-field"><label for="good">Good units (passed inspection)</label><input id="good" type="number" data-clamp="0,10000000" step="1" value="495" data-required></div>
+        <div class="tool-field"><label for="price">Selling price per good unit ($) <span class="hint">optional - for $ impact</span></label><input id="price" type="number" data-clamp="0,1000000" step="0.01" value="50"></div>
+      </div>
+    </div>
+
+    <div class="results-hero" id="hero"></div>
+    <div class="tool-card" id="detail" style="margin-top:24px"></div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px"><button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button></div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When OEE is a number on a clipboard, not a signal you act on</div>
+      <h2>SimpleGrid captures OEE from production flow - no manual logging.</h2>
+      <p>Every cycle, every stop, every defect posts to the event ledger. OEE updates live. Bottleneck reveals itself. You stop chasing the wrong machines.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="oee_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  function fmt$(n){return '$'+Math.round(n||0).toLocaleString();}
+  function nn(id){return Math.max(0, parseFloat(document.getElementById(id).value)||0);}
+  function recalc(){
+    const planned = Math.max(0.1, nn('planned'));
+    const running = Math.min(nn('running'), planned);
+    const ideal = Math.max(0.01, nn('ideal'));
+    const actual = nn('actual');
+    let good = Math.min(nn('good'), actual);
+    const price = nn('price');
+    const availability = (running / planned) * 100;
+    const maxAtRunning = running * ideal;
+    let performance = maxAtRunning>0 ? (actual / maxAtRunning) * 100 : 0;
+    if (performance > 100) performance = 100;
+    const quality = actual>0 ? (good / actual) * 100 : 0;
+    const oee = (availability * performance * quality) / 10000;
+    const theoMax = planned * ideal;
+    const availLossUnits = (planned - running) * ideal;
+    const perfLossUnits = maxAtRunning - actual;
+    const qualLossUnits = actual - good;
+    const totalLossUnits = availLossUnits + perfLossUnits + qualLossUnits;
+    let rating, cls;
+    if (oee>=85) { rating='World-class (top 10% of plants)'; cls='green'; }
+    else if (oee>=72) { rating='Good - approaching world-class'; cls='green'; }
+    else if (oee>=60) { rating='Reasonable - room for improvement'; cls='gold'; }
+    else if (oee>=40) { rating='Typical for plants without OEE tracking'; cls='gold'; }
+    else { rating='Critical - significant improvement opportunity'; cls='red'; }
+    document.getElementById('hero').innerHTML = `
+      <div class="big-label">Your OEE</div>
+      <div class="big-number ${cls}">${oee.toFixed(1)}%</div>
+      <div class="big-caption"><strong>${rating}.</strong> Availability ${availability.toFixed(1)}% x Performance ${performance.toFixed(1)}% x Quality ${quality.toFixed(1)}%. World-class is 85%+ (only ~10% of plants achieve it).</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Availability</div><div class="value ${availability>=90?'green':availability>=75?'gold':'red'}">${availability.toFixed(1)}%</div><div class="sub">target 90%+</div></div>
+        <div class="results-stat"><div class="label">Performance</div><div class="value ${performance>=95?'green':performance>=80?'gold':'red'}">${performance.toFixed(1)}%</div><div class="sub">target 95%+</div></div>
+        <div class="results-stat"><div class="label">Quality</div><div class="value ${quality>=99?'green':quality>=95?'gold':'red'}">${quality.toFixed(1)}%</div><div class="sub">target 99.9%+</div></div>
+      </div>
+    `;
+    document.getElementById('detail').innerHTML = `
+      <h2 style="margin-bottom:14px">Where production is lost</h2>
+      <table class="results-table">
+        <thead><tr><th>Loss type</th><th class="num">Units lost / shift</th>${price>0?'<th class="num">Revenue lost / shift</th><th class="num">Annual revenue lost (1 shift x 250 days)</th>':''}</tr></thead>
+        <tbody>
+          <tr><td>Availability (breakdowns + changeovers)</td><td class="num">${Math.round(availLossUnits)}</td>${price>0?'<td class="num">'+fmt$(availLossUnits*price)+'</td><td class="num">'+fmt$(availLossUnits*price*250)+'</td>':''}</tr>
+          <tr><td>Performance (slow running + minor stops)</td><td class="num">${Math.round(perfLossUnits)}</td>${price>0?'<td class="num">'+fmt$(perfLossUnits*price)+'</td><td class="num">'+fmt$(perfLossUnits*price*250)+'</td>':''}</tr>
+          <tr><td>Quality (defects + startup rejects)</td><td class="num">${Math.round(qualLossUnits)}</td>${price>0?'<td class="num">'+fmt$(qualLossUnits*price)+'</td><td class="num">'+fmt$(qualLossUnits*price*250)+'</td>':''}</tr>
+          <tr><td><strong>Total</strong></td><td class="num"><strong>${Math.round(totalLossUnits)}</strong></td>${price>0?'<td class="num"><strong>'+fmt$(totalLossUnits*price)+'</strong></td><td class="num"><strong style="color:#B91C1C">'+fmt$(totalLossUnits*price*250)+'</strong></td>':''}</tr>
+        </tbody>
+      </table>
+      <p class="tool-note" style="margin-top:14px">Producing ${good} good units out of a theoretical max of ${Math.round(theoMax)} (${(good/theoMax*100).toFixed(1)}% utilization of theoretical capacity).</p>
+    `;
+    return {oee,availability,performance,quality,availLossUnits,perfLossUnits,qualLossUnits,totalLossUnits,price,rating};
+  }
+  document.querySelectorAll('input').forEach(el=>el.addEventListener('input', recalc));
+  if (typeof sgWireNumericClamps==='function') sgWireNumericClamps(document);
+  recalc();
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired==='function' && !sgValidateRequired(document)) return;
+    const r = recalc();
+    sgBuildPdf({
+      title:'OEE Report', docNumberLabel:'OEE', docNumber:r.oee.toFixed(1)+'%',
+      date: todayISO(),
+      fromLabel:'RESULT', from:['Availability: '+r.availability.toFixed(1)+'%', 'Performance: '+r.performance.toFixed(1)+'%', 'Quality: '+r.quality.toFixed(1)+'%', 'OEE: '+r.oee.toFixed(1)+'%'],
+      toLabel:'STATUS', to:[r.rating],
+      itemColumns:['Loss type','Units / shift', r.price>0?'Revenue / shift':'', r.price>0?'Annual (250 shifts)':''].filter(Boolean),
+      items:[
+        ['Availability', Math.round(r.availLossUnits), r.price>0?fmt$(r.availLossUnits*r.price):'', r.price>0?fmt$(r.availLossUnits*r.price*250):''].filter(x=>x!==''),
+        ['Performance', Math.round(r.perfLossUnits), r.price>0?fmt$(r.perfLossUnits*r.price):'', r.price>0?fmt$(r.perfLossUnits*r.price*250):''].filter(x=>x!==''),
+        ['Quality', Math.round(r.qualLossUnits), r.price>0?fmt$(r.qualLossUnits*r.price):'', r.price>0?fmt$(r.qualLossUnits*r.price*250):''].filter(x=>x!=='')
+      ],
+      itemRowMapper: x=>x,
+      notes:'OEE methodology from Seiichi Nakajima (TPM, 1960s, Nippondenso). World-class threshold of 85% per industry standard. Most plants without OEE tracking score 40-60%.',
+      filename:'oee-report-'+todayISO()+'.pdf'
+    });
+  });
+});
+</script>
+
+<section class="tool-seo"><div class="container-sm">
+    <h2>OEE = Availability x Performance x Quality</h2>
+    <p>OEE was developed by Seiichi Nakajima as part of Total Productive Maintenance (TPM) at Nippondenso in the 1960s. It captures the six big losses that reduce equipment effectiveness: breakdowns, changeover, idling/minor stops, reduced speed, process defects, startup rejects.</p>
+    <ul>
+      <li><strong>Availability</strong>: actual running time / planned production time. Target 90%+.</li>
+      <li><strong>Performance</strong>: actual output / (running time x ideal cycle time). Target 95%+.</li>
+      <li><strong>Quality</strong>: good units / actual output. Target 99.9%+.</li>
+    </ul>
+    <h2>The 85% world-class threshold</h2>
+    <p>OEE of 85% (often shown as 90% x 95% x 99.9%) is achievable but rare - only about 10% of manufacturing plants hit it. Most plants without active OEE tracking sit in the 40-60% range. The gap between current and world-class is usually 20-40 percentage points - which translates to 25-65% more output from the same equipment.</p>
+    <h2>FAQ</h2>
+    <details><summary>My Performance % is over 100. What does that mean?</summary><p>Your "ideal cycle time" is too conservative. Either you're under-stating what the machine can do, or your operators have learned to beat the nameplate speed. Recalibrate ideal cycle time - use the fastest sustained pace you've ever achieved.</p></details>
+    <details><summary>Should I track OEE per machine or per line?</summary><p>Start at the bottleneck. OEE on a non-bottleneck machine is interesting but doesn't change throughput. Track the constraint first - it's the only metric that moves the system.</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+</body>
+</html>

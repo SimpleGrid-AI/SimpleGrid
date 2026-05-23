@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>Break-Even Calculator for Manufacturers | SimpleGrid</title>
+<meta name="description" content="Free break-even and Cost-Volume-Profit calculator for manufacturers. Contribution margin, margin of safety, what-if scenarios. PDF export.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/break-even-calculator/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/break-even-calculator/"><meta property="og:title" content="Break-Even Calculator for Manufacturers | SimpleGrid"><meta property="og:description" content="Free break-even and Cost-Volume-Profit calculator for manufacturers. Contribution margin, margin of safety, what-if scenarios. PDF export."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"Break-Even Calculator for Manufacturers | SimpleGrid","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/break-even-calculator/","description":"Free break-even and Cost-Volume-Profit calculator for manufacturers. Contribution margin, margin of safety, what-if scenarios. PDF export.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Break-Even Calculator for Manufacturers | SimpleGrid","item":"https://simplegrid.ai/tools/break-even-calculator/"}]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>Break-Even Calculator - the foundation of every pricing + capacity decision.</h1>
+    <p class="lead">Every expansion, every price change, every new product decision should start here. CVP analysis tells you where revenue covers cost - and how much room you have before you slip into a loss.</p>
+  </div></section>
+
+<section class="tool-app"><div class="container-sm">
+    <div class="tool-card"><h2>Your numbers (monthly)</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="fixed">Fixed costs / month ($)</label><input id="fixed" type="number" data-clamp="0,100000000" step="100" value="80000" data-required></div>
+        <div class="tool-field"><label for="varc">Variable cost / unit ($)</label><input id="varc" type="number" data-clamp="0,100000" step="0.01" value="35" data-required></div>
+        <div class="tool-field"><label for="price">Selling price / unit ($)</label><input id="price" type="number" data-clamp="0,100000" step="0.01" value="85" data-required></div>
+        <div class="tool-field"><label for="volume">Current monthly volume (units)</label><input id="volume" type="number" data-clamp="0,10000000" step="1" value="2500"></div>
+        <div class="tool-field"><label for="target">Target monthly profit ($) <span class="hint">optional</span></label><input id="target" type="number" data-clamp="0,100000000" step="100" value="0"></div>
+      </div>
+    </div>
+
+    <div class="results-hero" id="hero"></div>
+    <div class="tool-card" id="detail" style="margin-top:24px"></div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px"><button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button></div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When pricing, capacity, and product mix decisions all start here</div>
+      <h2>SimpleGrid runs break-even live - per product, per line, per customer.</h2>
+      <p>Every new product line, pricing change, or capex decision should start with a CVP analysis. ERP gives you the real numbers (fixed + variable), not your best guess from last quarter's P&L.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="be_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  function fmt$(n){return '$'+Math.round(n||0).toLocaleString();}
+  function nn(id){return Math.max(0, parseFloat(document.getElementById(id).value)||0);}
+  function recalc(){
+    const fixed = nn('fixed');
+    const varc = nn('varc');
+    const price = nn('price');
+    const volume = nn('volume');
+    const target = nn('target');
+    const cm = price - varc;
+    const cmRatio = price>0 ? cm/price*100 : 0;
+    const beUnits = cm>0 ? fixed/cm : 0;
+    const beRevenue = beUnits * price;
+    const mos = volume - beUnits;
+    const mosPct = volume>0 ? mos/volume*100 : 0;
+    const targetUnits = cm>0 ? (fixed + target)/cm : 0;
+    const profit = volume * cm - fixed;
+    const cls = cm>0 ? (mosPct>=20?'green':mosPct>=0?'gold':'red') : 'red';
+    document.getElementById('hero').innerHTML = `
+      <div class="big-label">Break-even point</div>
+      <div class="big-number ${cls}">${Math.round(beUnits).toLocaleString()} <span style="font-size:24px;color:var(--fg3);font-weight:500">units/month</span></div>
+      <div class="big-caption"><strong>${fmt$(beRevenue)}/month</strong> in revenue to cover ${fmt$(fixed)} fixed costs at ${cmRatio.toFixed(1)}% contribution margin. ${cm<=0?'<strong style="color:#B91C1C">Selling below variable cost - every unit deepens the loss.</strong>':''}</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Contribution margin / unit</div><div class="value ${cm>=0?'green':'red'}">${fmt$(cm)}</div><div class="sub">${cmRatio.toFixed(1)}% of selling price</div></div>
+        <div class="results-stat"><div class="label">Margin of safety</div><div class="value ${cls}">${mosPct.toFixed(1)}%</div><div class="sub">${Math.round(mos)} units above break-even</div></div>
+        <div class="results-stat"><div class="label">Current monthly profit</div><div class="value ${profit>=0?'green':'red'}">${fmt$(profit)}</div></div>
+      </div>
+    `;
+    let scenarioTable = `
+      <h2 style="margin-top:32px;margin-bottom:14px">What-if scenarios</h2>
+      <table class="results-table">
+        <thead><tr><th>Scenario</th><th class="num">New break-even (units)</th><th class="num">Change</th></tr></thead>
+        <tbody>`;
+    function scen(name, newFixed, newVar, newPrice){
+      const nCm = newPrice - newVar;
+      const nBe = nCm>0 ? newFixed/nCm : 0;
+      const delta = nBe - beUnits;
+      return `<tr><td>${name}</td><td class="num">${Math.round(nBe).toLocaleString()}</td><td class="num">${delta>0?'+':''}${Math.round(delta)} (${delta>0?'+':''}${beUnits>0?(delta/beUnits*100).toFixed(0):0}%)</td></tr>`;
+    }
+    scenarioTable += scen('Price +10%', fixed, varc, price*1.1);
+    scenarioTable += scen('Price -10%', fixed, varc, price*0.9);
+    scenarioTable += scen('Variable cost +15%', fixed, varc*1.15, price);
+    scenarioTable += scen('Fixed costs +$10K/month', fixed+10000, varc, price);
+    if (target>0) scenarioTable += `<tr><td>For ${fmt$(target)}/month profit</td><td class="num"><strong>${Math.round(targetUnits).toLocaleString()}</strong></td><td class="num">+${Math.round(targetUnits-beUnits)} above break-even</td></tr>`;
+    scenarioTable += '</tbody></table>';
+    document.getElementById('detail').innerHTML = scenarioTable + `
+      <p class="tool-note" style="margin-top:14px">Healthy margin of safety for manufacturing: 20%+ (you can lose 20% of volume and still break even). Below 10% is fragile. Negative means you're already operating at a loss.</p>
+    `;
+    return {fixed,varc,price,volume,cm,cmRatio,beUnits,beRevenue,mos,mosPct,profit,target,targetUnits};
+  }
+  document.querySelectorAll('input').forEach(el=>el.addEventListener('input', recalc));
+  if (typeof sgWireNumericClamps==='function') sgWireNumericClamps(document);
+  recalc();
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired==='function' && !sgValidateRequired(document)) return;
+    const r = recalc();
+    sgBuildPdf({
+      title:'Break-Even Analysis', docNumberLabel:'Break-even', docNumber:Math.round(r.beUnits).toLocaleString()+' units/mo',
+      date: todayISO(),
+      fromLabel:'INPUTS', from:['Fixed: '+fmt$(r.fixed)+'/mo', 'Variable: '+fmt$(r.varc)+'/unit', 'Price: '+fmt$(r.price)+'/unit', 'Current volume: '+r.volume],
+      toLabel:'RESULT', to:['Break-even units: '+Math.round(r.beUnits), 'Break-even revenue: '+fmt$(r.beRevenue), 'CM/unit: '+fmt$(r.cm), 'CM ratio: '+r.cmRatio.toFixed(1)+'%', 'Margin of safety: '+r.mosPct.toFixed(1)+'%'],
+      itemColumns:['Metric','Value'],
+      items:[['Fixed costs/month', fmt$(r.fixed)],['Variable cost/unit', fmt$(r.varc)],['Price/unit', fmt$(r.price)],['Contribution margin/unit', fmt$(r.cm)],['CM ratio', r.cmRatio.toFixed(2)+'%'],['Break-even units/month', Math.round(r.beUnits)],['Break-even revenue/month', fmt$(r.beRevenue)],['Current monthly profit', fmt$(r.profit)]],
+      itemRowMapper: x=>x,
+      notes:'CVP (Cost-Volume-Profit) analysis - standard managerial accounting from Horngren. Healthy margin of safety: 20%+. Below 10% is fragile.',
+      filename:'break-even-'+todayISO()+'.pdf'
+    });
+  });
+});
+</script>
+
+<section class="tool-seo"><div class="container-sm">
+    <h2>Break-even is the start, not the finish</h2>
+    <p>The break-even point tells you where revenue covers cost. The Margin of Safety tells you how much room you have before you slip into a loss. Operating Leverage tells you how sensitive profit is to volume changes. Together they describe the resilience of your business model.</p>
+    <h2>What the numbers actually mean</h2>
+    <ul>
+      <li><strong>Contribution margin per unit</strong> = price minus variable cost. Every unit above break-even adds this much to operating profit.</li>
+      <li><strong>CM ratio</strong> = CM as % of price. Every $1 of revenue contributes this percentage toward fixed costs and profit.</li>
+      <li><strong>Margin of safety</strong> = volume above break-even, expressed as % of current volume. 20%+ is healthy.</li>
+    </ul>
+    <h2>FAQ</h2>
+    <details><summary>Should overhead labor count as fixed or variable?</summary><p>Salaried supervisors = fixed. Hourly direct labor = variable (you cut hours when volume drops). Hybrid (salaried with OT scaling to volume) = blend. Be honest about which is which - it changes break-even by 20-40% in mid-market shops.</p></details>
+    <details><summary>Does this work for multi-product businesses?</summary><p>Yes, but use the weighted-average CM ratio. Or do break-even per product line. Don't lump together: your low-margin product might be subsidizing your high-margin one, which is a different management problem than overall break-even.</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+</body>
+</html>

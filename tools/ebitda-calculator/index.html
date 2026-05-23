@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>EBITDA & SDE Calculator for Manufacturers | SimpleGrid</title>
+<meta name="description" content="Free EBITDA and SDE calculator for US manufacturers. Step-by-step walkthrough with owner add-backs. Valuation range estimate. PDF export.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/ebitda-calculator/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/ebitda-calculator/"><meta property="og:title" content="EBITDA & SDE Calculator for Manufacturers | SimpleGrid"><meta property="og:description" content="Free EBITDA and SDE calculator for US manufacturers. Step-by-step walkthrough with owner add-backs. Valuation range estimate. PDF export."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"EBITDA & SDE Calculator for Manufacturers | SimpleGrid","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/ebitda-calculator/","description":"Free EBITDA and SDE calculator for US manufacturers. Step-by-step walkthrough with owner add-backs. Valuation range estimate. PDF export.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"EBITDA & SDE Calculator for Manufacturers | SimpleGrid","item":"https://simplegrid.ai/tools/ebitda-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is EBITDA vs SDE?","acceptedAnswer":{"@type":"Answer","text":"EBITDA = Earnings before interest, taxes, depreciation, amortization. SDE adds back owner compensation. EBITDA is used for valuations above $5M EBITDA; SDE for below."}},{"@type":"Question","name":"What is a good EBITDA margin for manufacturing?","acceptedAnswer":{"@type":"Answer","text":"Manufacturing median is 8-12%. Top quartile is 16% or higher. Source: US Census Bureau Annual Survey of Manufactures."}}]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>EBITDA & SDE Calculator - the bottom line buyers actually look at.</h1>
+    <p class="lead">Most mid-market manufacturers conflate EBITDA, SDE, and net income. The differences are worth millions at exit. This calculator walks you through both - step by step - with valuation ranges at the end.</p>
+  </div></section>
+
+<section class="tool-app"><div class="container-sm">
+    <div class="tool-card"><h2>Step 1: Start with Net Income</h2>
+      <div class="tool-form-grid">
+        <div class="tool-field"><label for="rev">Annual revenue ($)</label><input id="rev" type="number" data-clamp="0,10000000000" step="1000" value="10000000"></div>
+        <div class="tool-field"><label for="ni">Net Income (bottom line of P&L) ($)</label><input id="ni" type="number" data-clamp="-10000000000,10000000000" step="1000" value="500000" data-required></div>
+      </div>
+    </div>
+
+    <div class="tool-card"><h2>Step 2: Add back standard EBITDA adjustments</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="int">Interest expense ($)</label><input id="int" type="number" data-clamp="0,10000000000" step="100" value="40000"></div>
+        <div class="tool-field"><label for="tax">Income tax ($)</label><input id="tax" type="number" data-clamp="0,10000000000" step="100" value="120000"></div>
+        <div class="tool-field"><label for="dep">Depreciation ($)</label><input id="dep" type="number" data-clamp="0,10000000000" step="100" value="180000"></div>
+        <div class="tool-field"><label for="amort">Amortization ($)</label><input id="amort" type="number" data-clamp="0,10000000000" step="100" value="0"></div>
+      </div>
+    </div>
+
+    <div class="tool-card"><h2>Step 3: Add back for SDE (if you're under $5M EBITDA)</h2>
+      <p class="tool-note" style="margin-top:0;margin-bottom:14px">SDE = what a buyer takes home. Used for valuations of businesses under $5M EBITDA. Add back owner compensation and discretionary expenses a new owner wouldn't continue.</p>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="owsal">Owner salary ($)</label><input id="owsal" type="number" data-clamp="0,10000000" step="1000" value="180000"></div>
+        <div class="tool-field"><label for="owhealth">Owner health insurance ($)</label><input id="owhealth" type="number" data-clamp="0,1000000" step="100" value="24000"></div>
+        <div class="tool-field"><label for="owret">Owner retirement contributions ($)</label><input id="owret" type="number" data-clamp="0,1000000" step="100" value="20000"></div>
+        <div class="tool-field"><label for="owveh">Owner vehicle / phone / personal ($)</label><input id="owveh" type="number" data-clamp="0,1000000" step="100" value="15000"></div>
+        <div class="tool-field"><label for="owpax">Owner family on payroll, above-market rent, perks ($)</label><input id="owpax" type="number" data-clamp="0,10000000" step="100" value="0"></div>
+        <div class="tool-field"><label for="onetime">One-time / non-recurring expenses ($) <span class="hint">things that won't repeat</span></label><input id="onetime" type="number" data-clamp="0,10000000000" step="100" value="0"></div>
+      </div>
+    </div>
+
+    <div class="results-hero" id="hero"></div>
+    <div class="tool-card" id="detail" style="margin-top:24px"></div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px">
+      <button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button>
+    </div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When your books need to stand up to a buyer's audit</div>
+      <h2>SimpleGrid's event ledger gives you defensible EBITDA - every transaction traced to source.</h2>
+      <p>Owner add-backs documented automatically. Depreciation schedules current. Monthly close in days, not weeks. Buyers do 60-90 days of due diligence; your data should be ready.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="ebitda_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  function fmt$(n){return '$'+Math.round(n||0).toLocaleString();}
+  function nn(id,defv){const v=parseFloat(document.getElementById(id).value);return isNaN(v)?defv||0:v;}
+  function nnn(id){return Math.max(0, nn(id));}
+  function recalc(){
+    const rev = nnn('rev');
+    const ni = nn('ni');
+    const interest = nnn('int');
+    const tax = nnn('tax');
+    const dep = nnn('dep');
+    const amort = nnn('amort');
+    const ebitda = ni + interest + tax + dep + amort;
+    const owsal = nnn('owsal');
+    const owhealth = nnn('owhealth');
+    const owret = nnn('owret');
+    const owveh = nnn('owveh');
+    const owpax = nnn('owpax');
+    const onetime = nnn('onetime');
+    const ownerTotal = owsal + owhealth + owret + owveh + owpax;
+    const sde = ebitda + ownerTotal + onetime;
+    const ebitdaMargin = rev>0 ? ebitda/rev*100 : 0;
+    const sdeMargin = rev>0 ? sde/rev*100 : 0;
+    const margCls = ebitdaMargin>=12?'green':ebitdaMargin>=6?'gold':'red';
+    document.getElementById('hero').innerHTML = `
+      <div class="big-label">EBITDA</div>
+      <div class="big-number ${margCls}">${fmt$(ebitda)}</div>
+      <div class="big-caption">Margin: <strong>${ebitdaMargin.toFixed(1)}%</strong> on ${fmt$(rev)} revenue. Manufacturing median: 8-12% (Census Bureau ASM). Top quartile: 16%+.</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Net Income</div><div class="value">${fmt$(ni)}</div></div>
+        <div class="results-stat"><div class="label">EBITDA</div><div class="value ${margCls}">${fmt$(ebitda)}</div><div class="sub">${ebitdaMargin.toFixed(1)}% margin</div></div>
+        <div class="results-stat"><div class="label">SDE</div><div class="value">${fmt$(sde)}</div><div class="sub">${sdeMargin.toFixed(1)}% margin</div></div>
+      </div>
+    `;
+    const ebVal = [ebitda*4, ebitda*5.5, ebitda*7];
+    const sdeVal = [sde*2.5, sde*3.5, sde*4.5];
+    document.getElementById('detail').innerHTML = `
+      <h2 style="margin-bottom:14px">Walkthrough</h2>
+      <table class="results-table">
+        <thead><tr><th>Line item</th><th class="num">Amount</th><th class="num">Running total</th></tr></thead>
+        <tbody>
+          <tr><td>Net Income</td><td class="num">${fmt$(ni)}</td><td class="num"><strong>${fmt$(ni)}</strong></td></tr>
+          <tr><td>+ Interest</td><td class="num">${fmt$(interest)}</td><td class="num">${fmt$(ni+interest)}</td></tr>
+          <tr><td>+ Taxes</td><td class="num">${fmt$(tax)}</td><td class="num">${fmt$(ni+interest+tax)}</td></tr>
+          <tr><td>+ Depreciation</td><td class="num">${fmt$(dep)}</td><td class="num">${fmt$(ni+interest+tax+dep)}</td></tr>
+          <tr><td>+ Amortization</td><td class="num">${fmt$(amort)}</td><td class="num"><strong style="color:var(--sg-blue)">= EBITDA: ${fmt$(ebitda)}</strong></td></tr>
+          <tr><td>+ Owner compensation</td><td class="num">${fmt$(ownerTotal)}</td><td class="num">${fmt$(ebitda+ownerTotal)}</td></tr>
+          <tr><td>+ One-time expenses</td><td class="num">${fmt$(onetime)}</td><td class="num"><strong style="color:#047857">= SDE: ${fmt$(sde)}</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top:32px;margin-bottom:14px">Estimated valuation ranges</h2>
+      <table class="results-table">
+        <thead><tr><th>Method</th><th class="num">Low (2.5x / 4x)</th><th class="num">Mid (3.5x / 5.5x)</th><th class="num">High (4.5x / 7x)</th></tr></thead>
+        <tbody>
+          <tr><td>SDE method (under $5M EBITDA)</td><td class="num">${fmt$(sdeVal[0])}</td><td class="num"><strong>${fmt$(sdeVal[1])}</strong></td><td class="num">${fmt$(sdeVal[2])}</td></tr>
+          <tr><td>EBITDA method (over $5M EBITDA)</td><td class="num">${fmt$(ebVal[0])}</td><td class="num"><strong>${fmt$(ebVal[1])}</strong></td><td class="num">${fmt$(ebVal[2])}</td></tr>
+        </tbody>
+      </table>
+      <p class="tool-note" style="margin-top:14px">Manufacturing multiples vary by vertical (BizBuySell + IBBA data). CNC/machine shops + chemical processing run at the high end; furniture/woodworking run at the low end. Use the Business Valuation Calculator for vertical-specific multiples.</p>
+    `;
+    return {rev,ni,interest,tax,dep,amort,ebitda,ownerTotal,onetime,sde,ebitdaMargin,sdeMargin};
+  }
+  document.querySelectorAll('input').forEach(el=>el.addEventListener('input', recalc));
+  if (typeof sgWireNumericClamps==='function') sgWireNumericClamps(document);
+  recalc();
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired==='function' && !sgValidateRequired(document)) return;
+    const r = recalc();
+    sgBuildPdf({
+      title:'EBITDA & SDE Calculation', docNumberLabel:'EBITDA margin', docNumber:r.ebitdaMargin.toFixed(1)+'%',
+      date: todayISO(),
+      fromLabel:'INPUTS', from:['Revenue: '+fmt$(r.rev), 'Net Income: '+fmt$(r.ni), 'Interest: '+fmt$(r.interest), 'Taxes: '+fmt$(r.tax), 'D&A: '+fmt$(r.dep+r.amort)],
+      toLabel:'RESULT', to:['EBITDA: '+fmt$(r.ebitda), 'EBITDA margin: '+r.ebitdaMargin.toFixed(1)+'%', 'SDE: '+fmt$(r.sde), 'SDE margin: '+r.sdeMargin.toFixed(1)+'%'],
+      itemColumns:['Line','Amount'],
+      items:[
+        ['Net Income', fmt$(r.ni)],['+ Interest', fmt$(r.interest)],['+ Taxes', fmt$(r.tax)],['+ Depreciation', fmt$(r.dep)],['+ Amortization', fmt$(r.amort)],
+        ['= EBITDA', fmt$(r.ebitda)],['+ Owner compensation', fmt$(r.ownerTotal)],['+ One-time expenses', fmt$(r.onetime)],['= SDE', fmt$(r.sde)]
+      ],
+      itemRowMapper: x=>x,
+      notes:'Benchmark: Manufacturing EBITDA margin median 8-12% (US Census Bureau ASM). SDE margin healthy range 15-25% for mid-market manufacturing. Buyers do 60-90 day due diligence - documented add-backs matter.',
+      filename:'ebitda-sde-'+todayISO()+'.pdf'
+    });
+  });
+});
+</script>
+
+<section class="tool-seo"><div class="container-sm">
+    <h2>EBITDA vs SDE - which one matters?</h2>
+    <p>EBITDA strips out financing decisions (interest), accounting decisions (depreciation/amortization), and tax structure. It's how buyers compare your earning power to other businesses, regardless of how each is financed. Used for valuations above $5M EBITDA.</p>
+    <p>SDE goes further: it adds back owner compensation and discretionary perks - because a new owner would replace your salary with a market-rate manager and stop paying for your golf membership. Used for valuations under $5M EBITDA, where the owner's involvement is material.</p>
+    <h2>Why EBITDA is not cash flow</h2>
+    <p>EBITDA ignores working capital, capital expenditure, and loan payments. A business with $1M EBITDA but $500K in annual equipment needs has $500K in real cash flow. Buyers know this - they look at EBITDA, then they look at capex and working capital separately.</p>
+    <h2>FAQ</h2>
+    <details><summary>What add-backs will buyers question?</summary><p>Any single add-back over 5% of SDE will get scrutiny. Total add-backs above 50% of SDE will get heavy scrutiny. Document everything - emails, receipts, board minutes - for anything you add back.</p></details>
+    <details><summary>What's a healthy EBITDA margin for mid-market manufacturing?</summary><p>Median is 8-12%. Top quartile is 16%+. Below 6% is bottom quartile and indicates a structural problem - usually pricing power, scale, or product mix. Below 6% with growth makes you a turnaround target; above 12% with growth makes you a strategic acquisition target.</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+</body>
+</html>
