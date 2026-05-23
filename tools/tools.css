@@ -1,6 +1,30 @@
 /* Shared styles for /tools/* free-utility pages.
    Layered on top of colors_and_type.css + styles.css. */
 
+/* Resources dropdown in the inline tool-page nav. CSS-only via <details>
+   so it matches the React Nav's "Resources ▾" without needing JS. */
+.nav-resources { position: relative; }
+.nav-resources > summary {
+  list-style: none; cursor: pointer; user-select: none;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.nav-resources > summary::-webkit-details-marker { display: none; }
+.nav-resources > summary svg { transition: transform 0.15s; }
+.nav-resources[open] > summary svg { transform: rotate(180deg); }
+.nav-resources-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg, 12px);
+  padding: 8px; min-width: 280px; box-shadow: 0 12px 32px rgba(0,0,0,0.08); z-index: 100;
+}
+.nav-resources-menu a {
+  display: block; padding: 12px 14px; border-radius: 8px; text-decoration: none;
+  color: var(--fg1); font-size: 14px; font-weight: 600; transition: background 0.15s;
+}
+.nav-resources-menu a span {
+  display: block; font-size: 12px; font-weight: 400; color: var(--fg3); margin-top: 2px;
+}
+.nav-resources-menu a:hover { background: var(--sg-off-white); }
+
 .tool-header { padding: 56px 0 32px; background: linear-gradient(180deg, var(--sg-blue-light) 0%, transparent 100%); }
 .tool-header .back-link { font-size: 14px; color: var(--sg-blue); text-decoration: none; display: inline-block; margin-bottom: 12px; }
 .tool-header h1 { font-family: var(--font-heading); font-size: 38px; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 14px; color: var(--fg1); }
