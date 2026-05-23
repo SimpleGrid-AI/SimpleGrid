@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>Markup vs Margin Calculator for Manufacturers | SimpleGrid</title>
+<meta name="description" content="Free markup vs margin calculator for manufacturers. A 50% markup is NOT a 50% margin - it's 33%. Calculate price, margin, markup correctly. PDF export.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/markup-vs-margin/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/markup-vs-margin/"><meta property="og:title" content="Markup vs Margin Calculator for Manufacturers"><meta property="og:description" content="A 50% markup is NOT a 50% margin. Calculate price, margin, markup correctly. Free PDF export."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"Markup vs Margin Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/markup-vs-margin/","description":"Free browser-based markup vs margin calculator for manufacturers. Three modes: cost-to-price, price-to-margin, side-by-side comparison.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Markup vs Margin Calculator","item":"https://simplegrid.ai/tools/markup-vs-margin/"}]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What's the difference between markup and margin?","acceptedAnswer":{"@type":"Answer","text":"Markup is profit as a percentage of cost. Margin is profit as a percentage of selling price. A 50% markup gives only a 33.3% margin. A 50% margin requires a 100% markup."}},
+{"@type":"Question","name":"Which should I use for pricing?","acceptedAnswer":{"@type":"Answer","text":"For pricing decisions, think in margin - it tells you what percentage of every dollar you keep. For cost-plus quoting, markup is the calculation. Knowing both prevents the most common pricing error in manufacturing."}}
+]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>Markup vs Margin Calculator - stop the pricing error that costs you 5-15%.</h1>
+    <p class="lead">A 50% markup is not a 50% margin. It's a 33% margin. Manufacturers confuse these two every day and undercharge as a result. This calculator works three ways: cost to price, price to margin check, and a side-by-side comparison so you never make the mistake again.</p>
+  </div></section>
+
+  <section class="tool-app"><div class="container-sm">
+    <div class="tool-card"><h2>Pick a mode</h2>
+      <div class="tool-form-grid cols-3">
+        <label style="cursor:pointer;display:flex;flex-direction:column;gap:6px;padding:16px;border:2px solid var(--sg-blue);border-radius:10px;background:var(--sg-blue-light)">
+          <input type="radio" name="mode" value="cost-to-price" checked style="margin-bottom:6px"> <strong style="color:var(--sg-blue)">I have cost</strong>
+          <span style="font-size:13px;color:var(--fg2);line-height:1.4">Tell me my selling price for a target markup or margin.</span>
+        </label>
+        <label style="cursor:pointer;display:flex;flex-direction:column;gap:6px;padding:16px;border:2px solid var(--border);border-radius:10px">
+          <input type="radio" name="mode" value="price-to-margin" style="margin-bottom:6px"> <strong>I have price + cost</strong>
+          <span style="font-size:13px;color:var(--fg2);line-height:1.4">Check my actual margin and markup.</span>
+        </label>
+        <label style="cursor:pointer;display:flex;flex-direction:column;gap:6px;padding:16px;border:2px solid var(--border);border-radius:10px">
+          <input type="radio" name="mode" value="compare" style="margin-bottom:6px"> <strong>Show me the difference</strong>
+          <span style="font-size:13px;color:var(--fg2);line-height:1.4">Side-by-side table of markup vs margin at every common %.</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="tool-card" id="card-c2p">
+      <h2>Cost &rarr; Price</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="c2p-cost">Unit cost ($)</label><input id="c2p-cost" type="number" data-clamp="0,10000000" step="0.01" value="100" data-required></div>
+        <div class="tool-field"><label for="c2p-pct">Percent (%)</label><input id="c2p-pct" type="number" data-clamp="0,99.9" step="0.01" value="30"></div>
+        <div class="tool-field"><label for="c2p-type">Apply as</label>
+          <select id="c2p-type"><option value="markup">Markup (% above cost)</option><option value="margin">Margin (% of selling price)</option></select>
+        </div>
+        <div class="tool-field"><label for="c2p-vol">Annual unit volume <span class="hint">optional - for impact estimate</span></label><input id="c2p-vol" type="number" data-clamp="0,10000000" step="1" placeholder="10000"></div>
+      </div>
+      <div class="results-hero" id="c2p-results"></div>
+    </div>
+
+    <div class="tool-card" id="card-p2m" style="display:none">
+      <h2>Price &rarr; Margin check</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="p2m-price">Selling price ($)</label><input id="p2m-price" type="number" data-clamp="0,10000000" step="0.01" value="150"></div>
+        <div class="tool-field"><label for="p2m-cost">Unit cost ($)</label><input id="p2m-cost" type="number" data-clamp="0,10000000" step="0.01" value="100"></div>
+        <div class="tool-field"><label for="p2m-vol">Annual unit volume <span class="hint">optional</span></label><input id="p2m-vol" type="number" data-clamp="0,10000000" step="1" placeholder="10000"></div>
+      </div>
+      <div class="results-hero" id="p2m-results"></div>
+    </div>
+
+    <div class="tool-card" id="card-cmp" style="display:none">
+      <h2>Side-by-side comparison</h2>
+      <div class="tool-form-grid">
+        <div class="tool-field"><label for="cmp-cost">Unit cost ($)</label><input id="cmp-cost" type="number" data-clamp="0,10000000" step="0.01" value="100"></div>
+        <div class="tool-field"><label for="cmp-vol">Annual unit volume <span class="hint">optional</span></label><input id="cmp-vol" type="number" data-clamp="0,10000000" step="1" placeholder="10000"></div>
+      </div>
+      <table class="results-table" id="cmp-table" style="margin-top:20px"></table>
+      <p class="tool-note" style="margin-top:14px">A 50% markup gives you a 33.3% margin. A 50% margin requires a 100% markup. This is the single most common pricing error in manufacturing.</p>
+    </div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px">
+      <button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button>
+    </div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When every quote depends on getting margin right</div>
+      <h2>SimpleGrid prices every line item against the live cost of producing it.</h2>
+      <p>Material cost changed last week? Your next quote reflects it. Labor burden up 8%? Your margin shows the truth, not the spreadsheet from last quarter.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="markup_margin_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+
+  <section class="tool-seo"><div class="container-sm">
+    <h2>Markup vs Margin - the formulas every manufacturer should know</h2>
+    <p><strong>Markup</strong> answers: "How much above my cost am I charging?"  Formula: <em>(Price - Cost) / Cost x 100</em></p>
+    <p><strong>Margin</strong> answers: "What percentage of my selling price is profit?"  Formula: <em>(Price - Cost) / Price x 100</em></p>
+    <p>They are not the same number. Markup is always larger than margin for the same dollar profit, because the denominator (cost) is smaller than the denominator for margin (price).</p>
+
+    <h2>Why the confusion costs real money</h2>
+    <p>A manufacturer with $100 of cost who wants a "30% margin" but applies it as markup ends up at $130 - giving them a 23.1% actual margin. At 10,000 units/year that is $69,000 of profit left on the table.</p>
+    <p>Going the other way is worse: thinking you are pricing for 50% markup when the buyer reads it as 50% margin means you've quoted 33% less than intended. On a $1M contract that is a $330K mistake.</p>
+
+    <h2>Quick reference: markup % to margin %</h2>
+    <ul>
+      <li>20% markup = 16.7% margin</li>
+      <li>30% markup = 23.1% margin</li>
+      <li>40% markup = 28.6% margin</li>
+      <li>50% markup = 33.3% margin</li>
+      <li>67% markup = 40% margin</li>
+      <li>100% markup = 50% margin</li>
+      <li>150% markup = 60% margin</li>
+    </ul>
+
+    <h2>FAQ</h2>
+    <details><summary>Which one should I use for cost-plus pricing?</summary><p>Markup. Cost-plus means you start with cost and add a percentage. So 50% markup on $100 cost = $150 price. If you want to think in margin terms, calculate margin from the final price.</p></details>
+    <details><summary>Which one should I use when comparing my pricing to competitors?</summary><p>Margin. Margin is comparable across cost structures. Markup depends on your specific cost basis, which competitors don't share.</p></details>
+    <details><summary>Why is gross margin different from net margin?</summary><p>Gross margin uses only direct cost (materials, labor, machine). Net margin subtracts everything - SG&A, taxes, interest. This tool calculates gross margin. For mid-market manufacturing, target 25-40% gross margin to leave room for 8-15% net margin.</p></details>
+    <details><summary>What if my "cost" already includes overhead?</summary><p>Then this is your fully-loaded cost and the margin you calculate is closer to net margin. Be consistent: either always use direct cost (for gross margin analysis) or always use loaded cost (for net margin analysis). Don't mix.</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  const cards = { 'cost-to-price':'card-c2p', 'price-to-margin':'card-p2m', 'compare':'card-cmp' };
+  function setMode(mode){
+    document.querySelectorAll('input[name="mode"]').forEach(r=>{
+      const wrap = r.closest('label');
+      const active = r.value === mode;
+      wrap.style.borderColor = active ? 'var(--sg-blue)' : 'var(--border)';
+      wrap.style.background  = active ? 'var(--sg-blue-light)' : '';
+      wrap.querySelector('strong').style.color = active ? 'var(--sg-blue)' : '';
+    });
+    Object.entries(cards).forEach(([m,id])=>{
+      document.getElementById(id).style.display = m===mode ? 'block' : 'none';
+    });
+    recalc();
+  }
+  document.querySelectorAll('input[name="mode"]').forEach(r=>{
+    r.addEventListener('change',()=>setMode(r.value));
+  });
+
+  function fmt$(n){return '$' + (n||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function nn(v){return Math.max(0, parseFloat(v)||0);}
+
+  function recalcC2P(){
+    const cost = nn(document.getElementById('c2p-cost').value);
+    let pct = nn(document.getElementById('c2p-pct').value);
+    const type = document.getElementById('c2p-type').value;
+    const vol = nn(document.getElementById('c2p-vol').value);
+    if (type==='margin' && pct >= 99.9) pct = 99.9;
+    let price, markup, margin;
+    if (type === 'markup'){
+      price = cost * (1 + pct/100);
+      markup = pct;
+      margin = price>0 ? (price - cost) / price * 100 : 0;
+    } else {
+      price = cost / (1 - pct/100);
+      margin = pct;
+      markup = cost>0 ? (price - cost) / cost * 100 : 0;
+    }
+    const profit = price - cost;
+    const annualProfit = profit * vol;
+    document.getElementById('c2p-results').innerHTML = `
+      <div class="big-label">Required selling price</div>
+      <div class="big-number">${fmt$(price)}</div>
+      <div class="big-caption">Cost of ${fmt$(cost)} + ${type==='markup'?'a '+markup.toFixed(1)+'% markup gives a '+margin.toFixed(1)+'% margin':'a '+margin.toFixed(1)+'% margin requires a '+markup.toFixed(1)+'% markup'}</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Profit per unit</div><div class="value green">${fmt$(profit)}</div></div>
+        <div class="results-stat"><div class="label">Markup</div><div class="value">${markup.toFixed(1)}%</div></div>
+        <div class="results-stat"><div class="label">Margin</div><div class="value">${margin.toFixed(1)}%</div></div>
+      </div>
+      ${vol>0 ? `<div class="results-stat" style="margin-top:14px"><div class="label">Annual profit at ${vol.toLocaleString()} units</div><div class="value green">${fmt$(annualProfit)}</div></div>` : ''}
+    `;
+    return {mode:'c2p', cost, price, profit, markup, margin, vol, annualProfit};
+  }
+
+  function recalcP2M(){
+    const price = nn(document.getElementById('p2m-price').value);
+    const cost  = nn(document.getElementById('p2m-cost').value);
+    const vol   = nn(document.getElementById('p2m-vol').value);
+    const profit = price - cost;
+    const markup = cost>0 ? profit/cost*100 : 0;
+    const margin = price>0 ? profit/price*100 : 0;
+    const cls = margin>=25?'green':margin>=10?'gold':'red';
+    document.getElementById('p2m-results').innerHTML = `
+      <div class="big-label">Your actual margin</div>
+      <div class="big-number ${cls}">${margin.toFixed(1)}%</div>
+      <div class="big-caption">Selling ${fmt$(price)} at ${fmt$(cost)} cost = ${fmt$(profit)} profit per unit</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Profit per unit</div><div class="value ${cls}">${fmt$(profit)}</div></div>
+        <div class="results-stat"><div class="label">Markup</div><div class="value">${markup.toFixed(1)}%</div></div>
+        <div class="results-stat"><div class="label">Margin</div><div class="value ${cls}">${margin.toFixed(1)}%</div></div>
+      </div>
+      ${vol>0 ? `<div class="results-stat" style="margin-top:14px"><div class="label">Annual profit at ${vol.toLocaleString()} units</div><div class="value ${cls}">${fmt$(profit*vol)}</div></div>` : ''}
+      <div style="margin-top:18px;padding:12px 14px;background:#fff;border-radius:8px;font-size:13px;color:var(--fg2);text-align:left">
+        ${margin<15?'<strong style="color:#B91C1C">Below 15% gross margin</strong> is generally unprofitable for mid-market manufacturing once SG&A, sales costs, and bad debt are accounted for.':margin<25?'<strong style="color:#B45309">15-25% gross margin</strong> is workable but leaves little room for shocks. Top quartile manufacturers run 30%+.':'<strong style="color:#047857">Healthy gross margin.</strong> Mid-market manufacturing top quartile is 30-40% gross margin.'}
+      </div>
+    `;
+    return {mode:'p2m', cost, price, profit, markup, margin, vol, annualProfit: profit*vol};
+  }
+
+  function recalcCMP(){
+    const cost = nn(document.getElementById('cmp-cost').value);
+    const vol  = nn(document.getElementById('cmp-vol').value);
+    const targets = [10, 20, 25, 30, 35, 40, 50, 60, 67, 75, 100];
+    let html = `<thead><tr><th>Target %</th><th class="num">If applied as markup<br><span style="font-weight:400;color:var(--fg3);font-size:10px">Cost x (1 + %)</span></th><th class="num">If applied as margin<br><span style="font-weight:400;color:var(--fg3);font-size:10px">Cost / (1 - %)</span></th><th class="num">Price difference</th>${vol>0?'<th class="num">Annual at '+vol.toLocaleString()+' units</th>':''}</tr></thead><tbody>`;
+    targets.forEach(t=>{
+      const asMarkup = cost*(1+t/100);
+      const asMargin = t<100 ? cost/(1-t/100) : asMarkup;
+      const diff = asMargin - asMarkup;
+      const annual = diff * vol;
+      html += `<tr><td><strong>${t}%</strong></td><td class="num">${fmt$(asMarkup)}</td><td class="num">${fmt$(asMargin)}</td><td class="num">${fmt$(diff)}</td>${vol>0?'<td class="num"><strong style="color:#047857">'+fmt$(annual)+'</strong></td>':''}</tr>`;
+    });
+    html += '</tbody>';
+    document.getElementById('cmp-table').innerHTML = html;
+    return {mode:'cmp', cost, vol};
+  }
+
+  function recalc(){
+    const mode = document.querySelector('input[name="mode"]:checked').value;
+    if (mode==='cost-to-price') return recalcC2P();
+    if (mode==='price-to-margin') return recalcP2M();
+    return recalcCMP();
+  }
+
+  document.querySelectorAll('input[type="number"], select').forEach(el=>{
+    el.addEventListener('input', recalc);
+  });
+  if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(document);
+  setMode('cost-to-price');
+
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired === 'function' && !sgValidateRequired(document)) return;
+    const mode = document.querySelector('input[name="mode"]:checked').value;
+    if (mode==='cost-to-price'){
+      const r = recalcC2P();
+      sgBuildPdf({
+        title:'Markup vs Margin Calculation', docNumberLabel:'Mode', docNumber:'Cost to Price',
+        date: todayISO(),
+        fromLabel:'INPUTS', from:['Unit cost: '+fmt$(r.cost), 'Applied as: '+(document.getElementById('c2p-type').value)+' '+document.getElementById('c2p-pct').value+'%', 'Annual volume: '+(r.vol||'-')],
+        toLabel:'RESULT', to:['Selling price: '+fmt$(r.price), 'Profit/unit: '+fmt$(r.profit), 'Markup: '+r.markup.toFixed(1)+'%', 'Margin: '+r.margin.toFixed(1)+'%', r.vol?'Annual profit: '+fmt$(r.annualProfit):''],
+        itemColumns:['Metric','Value'],
+        items:[
+          ['Cost', fmt$(r.cost)],
+          ['Selling price', fmt$(r.price)],
+          ['Profit per unit', fmt$(r.profit)],
+          ['Markup over cost', r.markup.toFixed(2)+'%'],
+          ['Margin of selling price', r.margin.toFixed(2)+'%']
+        ],
+        itemRowMapper: x=>x,
+        filename:'markup-vs-margin-'+todayISO()+'.pdf'
+      });
+    } else if (mode==='price-to-margin'){
+      const r = recalcP2M();
+      sgBuildPdf({
+        title:'Margin Check', docNumberLabel:'Mode', docNumber:'Price to Margin',
+        date: todayISO(),
+        fromLabel:'INPUTS', from:['Selling price: '+fmt$(r.price), 'Unit cost: '+fmt$(r.cost), 'Annual volume: '+(r.vol||'-')],
+        toLabel:'RESULT', to:['Profit/unit: '+fmt$(r.profit), 'Margin: '+r.margin.toFixed(1)+'%', 'Markup: '+r.markup.toFixed(1)+'%'],
+        itemColumns:['Metric','Value'],
+        items:[
+          ['Selling price', fmt$(r.price)],
+          ['Cost', fmt$(r.cost)],
+          ['Profit per unit', fmt$(r.profit)],
+          ['Margin (of selling price)', r.margin.toFixed(2)+'%'],
+          ['Markup (over cost)', r.markup.toFixed(2)+'%']
+        ],
+        itemRowMapper: x=>x,
+        filename:'margin-check-'+todayISO()+'.pdf'
+      });
+    } else {
+      const r = recalcCMP();
+      const targets = [10,20,25,30,35,40,50,60,67,75,100];
+      sgBuildPdf({
+        title:'Markup vs Margin Comparison Table', docNumberLabel:'Mode', docNumber:'Side-by-side',
+        date: todayISO(),
+        fromLabel:'INPUTS', from:['Unit cost: '+fmt$(r.cost), 'Annual volume: '+(r.vol||'-')],
+        toLabel:'RESULT', to:['See table at right'],
+        itemColumns:['Target %','If markup','If margin','Difference', r.vol?'Annual at '+r.vol.toLocaleString():''],
+        items: targets.map(t=>{
+          const m = r.cost*(1+t/100);
+          const g = t<100 ? r.cost/(1-t/100) : m;
+          const d = g - m;
+          return [t+'%', fmt$(m), fmt$(g), fmt$(d), r.vol?fmt$(d*r.vol):''];
+        }),
+        itemRowMapper: x=>x,
+        filename:'markup-vs-margin-table-'+todayISO()+'.pdf'
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>

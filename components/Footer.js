@@ -105,6 +105,18 @@ function Footer() {
     }, {
       l: 'Quality Inspection',
       href: 'tools/quality-inspection-checklist/'
+    }, {
+      l: 'Markup vs Margin',
+      href: 'tools/markup-vs-margin/'
+    }, {
+      l: 'Revenue per Employee',
+      href: 'tools/revenue-per-employee/'
+    }, {
+      l: 'Scrap & Waste Cost',
+      href: 'tools/scrap-waste-calculator/'
+    }, {
+      l: 'Do I Need an ERP?',
+      href: 'tools/erp-needs-assessment/'
     }]
   }, {
     h: 'Resources',

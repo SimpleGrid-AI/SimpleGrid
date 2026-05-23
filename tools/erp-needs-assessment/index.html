@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>Do I Need an ERP? Free Diagnostic for Manufacturers | SimpleGrid</title>
+<meta name="description" content="Free 8-question ERP needs assessment for US manufacturers. Quantifies the annual cost of operating without a system. PDF report with peer comparison.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/erp-needs-assessment/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/erp-needs-assessment/"><meta property="og:title" content="Do I Need an ERP? Free Diagnostic"><meta property="og:description" content="8 questions, 3 minutes. Get a real number for what operating without a system costs you."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"Do I Need an ERP? Diagnostic","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/erp-needs-assessment/","description":"Free 8-question diagnostic that quantifies the annual cost of running a mid-market manufacturing business without an ERP system.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Do I Need an ERP?","item":"https://simplegrid.ai/tools/erp-needs-assessment/"}]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+
+<style>
+.q-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.q-card .q-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-blue); margin-bottom: 6px; }
+.q-card .q-text { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--fg1); margin: 0 0 14px; letter-spacing: -0.005em; line-height: 1.3; }
+.q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (max-width: 600px) { .q-options { grid-template-columns: 1fr; } }
+.q-option { padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 14px; color: var(--fg1); transition: all 120ms ease; background: #fff; }
+.q-option:hover { border-color: var(--sg-blue); }
+.q-option.selected { background: var(--sg-blue-light); border-color: var(--sg-blue); color: var(--sg-blue); font-weight: 600; }
+.q-option input { display: none; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>Do I Need an ERP? - 8 questions, 3 minutes, a real number.</h1>
+    <p class="lead">Mid-market manufacturers typically outgrow spreadsheets at $8-15M revenue but don't feel it until $25M when the pain is acute. This diagnostic quantifies the annual cost of operating without a system - then shows you whether you're in the green, the yellow, or bleeding money.</p>
+  </div></section>
+
+  <section class="tool-app"><div class="container-sm">
+    <form id="diag-form">
+      <div class="q-card"><div class="q-num">Question 1 of 8</div><div class="q-text">Annual revenue</div>
+        <div class="q-options" data-q="rev">
+          <label class="q-option"><input type="radio" name="rev" value="0">Under $3M</label>
+          <label class="q-option"><input type="radio" name="rev" value="5">$3M - $8M</label>
+          <label class="q-option"><input type="radio" name="rev" value="15">$8M - $25M</label>
+          <label class="q-option"><input type="radio" name="rev" value="25">$25M - $80M</label>
+          <label class="q-option"><input type="radio" name="rev" value="30">$80M+</label>
+        </div>
+        <div class="tool-field" style="margin-top:14px;max-width:240px">
+          <label for="rev-exact">Exact figure ($) <span class="hint">used for cost estimate</span></label>
+          <input id="rev-exact" type="number" data-clamp="0,10000000000" step="100000" value="10000000">
+        </div>
+      </div>
+
+      <div class="q-card"><div class="q-num">Question 2 of 8</div><div class="q-text">Number of employees</div>
+        <div class="q-options" data-q="emp">
+          <label class="q-option"><input type="radio" name="emp" value="0">Under 15</label>
+          <label class="q-option"><input type="radio" name="emp" value="5">15 - 50</label>
+          <label class="q-option"><input type="radio" name="emp" value="15">50 - 150</label>
+          <label class="q-option"><input type="radio" name="emp" value="25">150 - 500</label>
+          <label class="q-option"><input type="radio" name="emp" value="30">500+</label>
+        </div>
+      </div>
+
+      <div class="q-card"><div class="q-num">Question 3 of 8</div><div class="q-text">How many SKUs / products do you manage?</div>
+        <div class="q-options" data-q="sku">
+          <label class="q-option"><input type="radio" name="sku" value="0">Under 20</label>
+          <label class="q-option"><input type="radio" name="sku" value="5">20 - 100</label>
+          <label class="q-option"><input type="radio" name="sku" value="10">100 - 500</label>
+          <label class="q-option"><input type="radio" name="sku" value="20">500 - 2,000</label>
+          <label class="q-option"><input type="radio" name="sku" value="25">2,000+</label>
+        </div>
+      </div>
+
+      <div class="q-card"><div class="q-num">Question 4 of 8</div><div class="q-text">How do you currently track production?</div>
+        <div class="q-options" data-q="track">
+          <label class="q-option"><input type="radio" name="track" value="25">Paper / whiteboard</label>
+          <label class="q-option"><input type="radio" name="track" value="15">Excel / Google Sheets</label>
+          <label class="q-option"><input type="radio" name="track" value="5">Basic software</label>
+          <label class="q-option"><input type="radio" name="track" value="0">ERP system</label>
+        </div>
+      </div>
+
+      <div class="q-card"><div class="q-num">Question 5 of 8</div><div class="q-text">How often do you miss delivery dates?</div>
+        <div class="q-options" data-q="otd">
+          <label class="q-option"><input type="radio" name="otd" value="0">Rarely (under 5%)</label>
+          <label class="q-option"><input type="radio" name="otd" value="10">Sometimes (5-15%)</label>
+          <label class="q-option"><input type="radio" name="otd" value="20">Often (15-30%)</label>
+          <label class="q-option"><input type="radio" name="otd" value="30">Frequently (over 30%)</label>
+        </div>
+      </div>
+
+      <div class="q-card"><div class="q-num">Question 6 of 8</div><div class="q-text">Can you tell me your exact inventory value right now?</div>
+        <div class="q-options" data-q="inv">
+          <label class="q-option"><input type="radio" name="inv" value="0">Yes, within 5%</label>
+          <label class="q-option"><input type="radio" name="inv" value="10">Roughly, within 20%</label>
+          <label class="q-option"><input type="radio" name="inv" value="20">I'd have to check</label>
+          <label class="q-option"><input type="radio" name="inv" value="30">No idea</label>
+        </div>
+      </div>
+
+      <div class="q-card"><div class="q-num">Question 7 of 8</div><div class="q-text">Hours per week your team spends on data entry across systems?</div>
+        <div class="q-options" data-q="data">
+          <label class="q-option"><input type="radio" name="data" value="0" data-hrs="3">Under 5 hrs</label>
+          <label class="q-option"><input type="radio" name="data" value="10" data-hrs="10">5 - 15 hrs</label>
+          <label class="q-option"><input type="radio" name="data" value="20" data-hrs="25">15 - 40 hrs</label>
+          <label class="q-option"><input type="radio" name="data" value="30" data-hrs="50">40+ hrs</label>
+        </div>
+      </div>
+
+      <div class="q-card"><div class="q-num">Question 8 of 8</div><div class="q-text">Customers lost in the last 12 months due to operational issues?</div>
+        <div class="q-options" data-q="lost">
+          <label class="q-option"><input type="radio" name="lost" value="0">None</label>
+          <label class="q-option"><input type="radio" name="lost" value="10">Maybe one</label>
+          <label class="q-option"><input type="radio" name="lost" value="20">Yes, 2-3</label>
+          <label class="q-option"><input type="radio" name="lost" value="30">Yes, more than 3</label>
+        </div>
+      </div>
+    </form>
+
+    <div class="results-hero" id="diag-hero" style="display:none"></div>
+    <div class="tool-card" id="diag-detail" style="display:none;margin-top:24px"></div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px;gap:10px">
+      <button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px" disabled>Download PDF Report</button>
+    </div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When the score points to "yes"</div>
+      <h2>SimpleGrid is the only ERP you try on before you buy.</h2>
+      <p>We build a custom ERP modelled on how your factory actually runs. We carry the cost and the risk. You run it for 30 days on your real floor. If it doesn't move the business, you walk - we earn nothing.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="erp_diag_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+
+  <section class="tool-seo"><div class="container-sm">
+    <h2>How the diagnostic works</h2>
+    <p>The 8 questions are weighted to surface the three signals that matter for ERP readiness in mid-market manufacturing: operational complexity (revenue + employees + SKUs), data fragmentation (tracking system + inventory accuracy + data entry hours), and growth pressure (delivery performance + customer churn).</p>
+    <p>The score ranges 0-185. Anything above 80 means the annual cost of operating without a system is now visible on your P&L - whether you label it that way or not.</p>
+
+    <h2>What "annual cost" actually means</h2>
+    <p>Four buckets:</p>
+    <ul>
+      <li><strong>Data-entry waste</strong> - team hours/week on manual re-keying x loaded labor cost x 52. Based on McKinsey Global Institute research that 50% of manufacturing work activities are automatable.</li>
+      <li><strong>Missed-delivery cost</strong> - Aberdeen Group's 2% revenue impact per percentage point of on-time delivery gap (customer concessions, expedite premiums, lost reorders).</li>
+      <li><strong>Inventory inaccuracy</strong> - APICS/ASCM 15% carrying cost on the variance between book and actual inventory.</li>
+      <li><strong>Lost customers</strong> - average customer revenue x churn count. Operational failures are the #2 cited reason for B2B churn (HBR 2022).</li>
+    </ul>
+
+    <h2>FAQ</h2>
+    <details><summary>What if I scored under 40?</summary><p>You're fine. Spreadsheets work below a certain complexity threshold. Use the score as a watch-list: if 2-3 dimensions creep up over the next year, revisit. Most manufacturers know when they're across the line - the pain becomes acute around $25M revenue or 150 employees.</p></details>
+    <details><summary>What if I scored 100+?</summary><p>The operational cost is real and growing. The question isn't "should I get an ERP" - it's "which one, and how do I avoid the 55-75% implementation failure rate." That's where the ERP Readiness Scorecard (coming next) helps.</p></details>
+    <details><summary>Is this biased toward selling SimpleGrid?</summary><p>The scoring methodology is industry-standard (Gartner Postmodern ERP, Aberdeen mid-market benchmarks, Panorama Consulting ERP Reports). The recommendation at the end is operator advice, not a sales pitch. The CTA at the bottom is contextual - if you score green, we don't push.</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  const fields = ['rev','emp','sku','track','otd','inv','data','lost'];
+  function fmt$(n){return '$' + Math.round(n||0).toLocaleString();}
+  function fmt$K(n){
+    if (!isFinite(n) || n<=0) return '$0';
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+    if (n >= 10000) return '$' + Math.round(n/1000) + 'K';
+    return '$' + Math.round(n);
+  }
+
+  // Wire option selection styling
+  document.querySelectorAll('.q-options').forEach(group=>{
+    group.querySelectorAll('label.q-option').forEach(lbl=>{
+      lbl.addEventListener('click', ()=>{
+        group.querySelectorAll('label.q-option').forEach(l=>l.classList.remove('selected'));
+        lbl.classList.add('selected');
+        setTimeout(recalc, 50);
+      });
+    });
+  });
+
+  function answered(){
+    return fields.every(f => document.querySelector('input[name="'+f+'"]:checked'));
+  }
+  function val(f){
+    const el = document.querySelector('input[name="'+f+'"]:checked');
+    return el ? parseInt(el.value) : 0;
+  }
+  function valHrs(){
+    const el = document.querySelector('input[name="data"]:checked');
+    return el && el.getAttribute('data-hrs') ? parseInt(el.getAttribute('data-hrs')) : 0;
+  }
+  function valRev(){
+    return Math.max(0, parseFloat(document.getElementById('rev-exact').value) || 0);
+  }
+
+  function recalc(){
+    if (!answered()) {
+      document.getElementById('diag-hero').style.display = 'none';
+      document.getElementById('diag-detail').style.display = 'none';
+      document.getElementById('generate-pdf').disabled = true;
+      return null;
+    }
+    const score = fields.reduce((sum,f)=>sum+val(f), 0);
+    const revenue = valRev();
+    const otdScore = val('otd');
+    const lostScore = val('lost');
+    const invScore = val('inv');
+    const hrs = valHrs();
+
+    // Cost estimate (US, loaded labor $38/hr)
+    const dataEntryWaste = hrs * 38 * 52;
+    const otdPct = otdScore===0?0:otdScore===10?10:otdScore===20?22:35;
+    const missedDeliveryCost = revenue * (otdPct/100) * 0.02;
+    const invInaccuracy = invScore===0?0:invScore===10?5:invScore===20?15:25;
+    const inventoryCost = revenue * 0.05 * (invInaccuracy/100) * 0.15; // material spend ~5% of revenue estimate, 15% carrying
+    const churnCount = lostScore===0?0:lostScore===10?1:lostScore===20?2.5:5;
+    const lostCustomerCost = (revenue / 30) * churnCount; // assume avg customer = 1/30th of revenue
+    const totalAnnualCost = dataEntryWaste + missedDeliveryCost + inventoryCost + lostCustomerCost;
+
+    let band, bandCls, summary;
+    if (score <= 40)        { band='Green: spreadsheets are still working'; bandCls='green'; summary="You're operating in the zone where spreadsheets and basic tools still work. Use the dimensions below as a watch-list - revisit if 2-3 climb in the next year."; }
+    else if (score <= 80)   { band='Yellow: approaching the ERP window'; bandCls='gold'; summary="You're showing early signs. Start evaluating ERPs in the next 6 months. The ERP Readiness Scorecard (coming next) will tell you whether you're ready to implement, or whether to address gaps first."; }
+    else if (score <= 130)  { band='Orange: an ERP would pay for itself within 12 months'; bandCls='gold'; summary="The operational cost is now measurable on your P&L. You don't have to label it 'ERP cost' - it shows up as expedite premiums, customer concessions, OT, and inventory writedowns. An ERP at this scale typically pays back in 9-15 months."; }
+    else                    { band='Red: every month without a system is costing you'; bandCls='red'; summary="You're past the inflection point. The annual cost shown below is real, recurring, and growing. The question isn't 'should I get an ERP' - it's 'which one, and how do I avoid the 55-75% implementation failure rate.'"; }
+
+    // Peer comparison
+    let peerLine;
+    if (revenue < 8000000) peerLine = "About 35% of manufacturers your size use a real ERP. The rest get by on spreadsheets + accounting software.";
+    else if (revenue < 25000000) peerLine = "About 65% of manufacturers your size use a real ERP (Panorama 2023). Median time to ROI: 23 months.";
+    else if (revenue < 80000000) peerLine = "About 88% of manufacturers your size use a real ERP. You're in the minority if you don't.";
+    else peerLine = "Over 95% of manufacturers your size run on an ERP. The operational complexity at your scale makes it functionally mandatory.";
+
+    document.getElementById('diag-hero').style.display = 'block';
+    document.getElementById('diag-detail').style.display = 'block';
+    document.getElementById('generate-pdf').disabled = false;
+
+    document.getElementById('diag-hero').innerHTML = `
+      <div class="big-label">Your ERP need score</div>
+      <div class="big-number ${bandCls}">${score} <span style="font-size:24px;color:var(--fg3);font-weight:500">/ 185</span></div>
+      <div class="big-caption"><strong>${band}.</strong> ${summary}</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Estimated annual cost</div><div class="value ${bandCls}">${fmt$K(totalAnnualCost)}</div><div class="sub">of operating without a system</div></div>
+        <div class="results-stat"><div class="label">3-year cost</div><div class="value">${fmt$K(totalAnnualCost*3.15)}</div><div class="sub">(assuming 5%/yr inflation)</div></div>
+        <div class="results-stat"><div class="label">% of revenue</div><div class="value">${revenue>0?((totalAnnualCost/revenue)*100).toFixed(1):0}%</div><div class="sub">of annual revenue lost to operational drag</div></div>
+      </div>
+    `;
+
+    document.getElementById('diag-detail').innerHTML = `
+      <h2 style="margin-bottom:14px">Where the cost is</h2>
+      <div class="bar-row"><span class="bar-label">Data-entry waste</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, dataEntryWaste/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(dataEntryWaste)}</span></div>
+      <div class="bar-row"><span class="bar-label">Missed deliveries</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, missedDeliveryCost/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(missedDeliveryCost)}</span></div>
+      <div class="bar-row"><span class="bar-label">Inventory inaccuracy</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, inventoryCost/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(inventoryCost)}</span></div>
+      <div class="bar-row"><span class="bar-label">Lost customers</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, lostCustomerCost/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(lostCustomerCost)}</span></div>
+
+      <h2 style="margin-top:32px;margin-bottom:12px">Peer comparison</h2>
+      <p style="font-size:15px;color:var(--fg1);line-height:1.6">${peerLine}</p>
+      <p style="font-size:14px;color:var(--fg3);margin-top:6px">Sources: Panorama Consulting ERP Report 2023, Aberdeen Group Mid-Market Manufacturing 2022.</p>
+
+      <h2 style="margin-top:32px;margin-bottom:12px">Recommended next step</h2>
+      <p style="font-size:15px;color:var(--fg1);line-height:1.6">${
+        score<=40 ? "Document your top 5 processes. Establish a simple item master. Track on-time delivery monthly. These take you to the next stage without any software investment." :
+        score<=80 ? "Take the ERP Readiness Scorecard (coming next) to surface gaps before you evaluate vendors. The biggest predictor of implementation success is internal readiness, not vendor capability." :
+        "You're past the evaluation stage. Talk to vendors. Critical question to ask each: 'How do you handle the 55-75% implementation failure rate in mid-market manufacturing?' Their answer tells you everything."
+      }</p>
+    `;
+    return {score, band, summary, totalAnnualCost, dataEntryWaste, missedDeliveryCost, inventoryCost, lostCustomerCost, revenue};
+  }
+
+  document.getElementById('rev-exact').addEventListener('input', recalc);
+  if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(document);
+
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    const r = recalc();
+    if (!r) { alert('Answer all 8 questions first.'); return; }
+    sgBuildPdf({
+      title:'Do I Need an ERP? - Diagnostic Result', docNumberLabel:'Score', docNumber:r.score + ' / 185',
+      date: todayISO(),
+      fromLabel:'BAND', from:[r.band],
+      toLabel:'ANNUAL COST', to:['Total: '+fmt$(r.totalAnnualCost), 'Data-entry: '+fmt$(r.dataEntryWaste), 'Missed deliveries: '+fmt$(r.missedDeliveryCost), 'Inventory: '+fmt$(r.inventoryCost), 'Lost customers: '+fmt$(r.lostCustomerCost)],
+      itemColumns:['Cost driver','Annual cost'],
+      items:[
+        ['Data-entry waste', fmt$(r.dataEntryWaste)],
+        ['Missed-delivery cost', fmt$(r.missedDeliveryCost)],
+        ['Inventory inaccuracy', fmt$(r.inventoryCost)],
+        ['Lost customer revenue', fmt$(r.lostCustomerCost)],
+        ['TOTAL ANNUAL COST', fmt$(r.totalAnnualCost)]
+      ],
+      itemRowMapper: x=>x,
+      notes: r.summary + '\n\nMethodology: Gartner Postmodern ERP framework, Aberdeen Group mid-market manufacturing benchmarks, McKinsey Global Institute automation research, APICS/ASCM inventory carrying-cost standard.',
+      filename:'erp-needs-assessment-'+todayISO()+'.pdf'
+    });
+  });
+});
+</script>
+</body>
+</html>

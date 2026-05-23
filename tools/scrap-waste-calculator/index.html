@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+
+<title>Scrap & Waste Cost Calculator for Manufacturers | SimpleGrid</title>
+<meta name="description" content="Free scrap and rework cost calculator for US manufacturers. Material + labor + overhead waste. Shows true margin after waste. Benchmarks + reduction scenarios.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/tools/scrap-waste-calculator/">
+<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../tools.css">
+<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/scrap-waste-calculator/"><meta property="og:title" content="Scrap & Waste Cost Calculator"><meta property="og:description" content="Calculate your true scrap + rework cost. Most manufacturers underestimate by 40%."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"Scrap & Waste Cost Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/scrap-waste-calculator/","description":"Free manufacturing scrap and rework cost calculator with benchmark comparisons and reduction scenarios.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Scrap & Waste Cost Calculator","item":"https://simplegrid.ai/tools/scrap-waste-calculator/"}]}
+]}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+<script src="../tools.js" defer></script>
+
+<script src="../../assets/js/analytics-init.js" defer></script>
+<script src="../../assets/js/tracking.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="nav" role="banner"><div class="nav-inner">
+  <a class="nav-logo" href="../../" aria-label="SimpleGrid home"><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" width="160" height="32" fetchpriority="high" decoding="async"></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="../../" class="nav-link">Home</a><a href="../../product.html" class="nav-link">Product</a><a href="../" class="nav-link active">Productive Tools</a><details class="nav-resources"><summary class="nav-link" role="button">Resources <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></summary><div class="nav-resources-menu"><a href="../../case-studies.html">Case studies <span>Real deployments. Real numbers.</span></a><a href="../../blog.html">Blog <span>Field notes on ERP and ops.</span></a></div></details></nav>
+  <div class="nav-right"><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">Book a call with the founder</a></div>
+</div></header>
+
+<main id="main">
+  <section class="tool-header"><div class="container-sm">
+    <a href="../" class="back-link">← All productive tools</a>
+    <h1>Scrap & Waste Cost Calculator - what defects actually cost you.</h1>
+    <p class="lead">Manufacturers track scrap rate but rarely calculate the full cost. Scrap is materials + labor already spent + overhead absorbed + the lost revenue from a unit that never sold. This calculator shows the real number, plus what's possible if you cut waste in half.</p>
+  </div></section>
+
+  <section class="tool-app"><div class="container-sm">
+    <div class="tool-card"><h2>Production volume</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="sw-volume">Monthly production volume (units)</label><input id="sw-volume" type="number" data-clamp="0,10000000" step="1" value="10000" data-required></div>
+        <div class="tool-field"><label for="sw-scrap">Scrap rate (%)</label><input id="sw-scrap" type="number" data-clamp="0,100" step="0.1" value="5" data-required></div>
+        <div class="tool-field"><label for="sw-rework">Rework rate (%)</label><input id="sw-rework" type="number" data-clamp="0,100" step="0.1" value="3"></div>
+      </div>
+    </div>
+
+    <div class="tool-card"><h2>Per-unit costs and price</h2>
+      <div class="tool-form-grid cols-3">
+        <div class="tool-field"><label for="sw-mat">Material cost / unit ($)</label><input id="sw-mat" type="number" data-clamp="0,10000000" step="0.01" value="25"></div>
+        <div class="tool-field"><label for="sw-lab">Labor cost / unit ($)</label><input id="sw-lab" type="number" data-clamp="0,10000000" step="0.01" value="12"></div>
+        <div class="tool-field"><label for="sw-oh">Overhead / unit ($) <span class="hint">if unknown, leave 0 - we'll estimate at 1.5x labor</span></label><input id="sw-oh" type="number" data-clamp="0,10000000" step="0.01" value="0"></div>
+        <div class="tool-field"><label for="sw-price">Selling price / unit ($)</label><input id="sw-price" type="number" data-clamp="0,10000000" step="0.01" value="85"></div>
+        <div class="tool-field"><label for="sw-rework-cost">Rework labor / unit ($) <span class="hint">extra labor to fix a defect</span></label><input id="sw-rework-cost" type="number" data-clamp="0,10000000" step="0.01" value="8"></div>
+        <div class="tool-field"><label for="sw-recovery">Scrap recovery rate (%) <span class="hint">% of material cost you recover via resale/recycling</span></label><input id="sw-recovery" type="number" data-clamp="0,100" step="1" value="10"></div>
+      </div>
+    </div>
+
+    <div class="results-hero" id="sw-hero"></div>
+    <div class="tool-card" id="sw-detail" style="margin-top:24px"></div>
+
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px">
+      <button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button>
+    </div>
+
+    <div class="tool-cta">
+      <div class="eyebrow">When defects are an event, not a number on a monthly report</div>
+      <h2>SimpleGrid captures every rejection at the source - and posts the cost to the job that caused it.</h2>
+      <p>Material issued, labor logged, rework applied - every event posts to the right job in real time. You see margin live, not after month-end. Six Sigma's first rule: you can't fix what you can't see.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="scrap_cta" class="btn btn-primary">Book a call with the founder</a>
+    </div>
+  </div></section>
+
+  <section class="tool-seo"><div class="container-sm">
+    <h2>The true cost of scrap and rework</h2>
+    <p>Most manufacturers calculate scrap cost as <em>scrapped units x material cost</em>. That's about a third of the real number. Once a unit reaches scrap status, you've already spent: material + labor + machine time + overhead allocation + opportunity cost (the revenue it would have generated). And rework is worse - you spend extra labor to fix something that should have been right the first time.</p>
+
+    <h2>The benchmarks</h2>
+    <ul>
+      <li>World-class scrap rate (Six Sigma): under 1%</li>
+      <li>Top quartile mid-market manufacturers: 1-2%</li>
+      <li>Median: 3-5%</li>
+      <li>Bottom quartile: 6%+</li>
+    </ul>
+    <p>Source: IndustryWeek Best Plants benchmarking, ASQ data.</p>
+
+    <h2>FAQ</h2>
+    <details><summary>Should rework labor count as full labor cost?</summary><p>Rework labor is usually 0.5-1.5x the original labor cost. It's slower (operator is being careful) but it's also labor that produces zero new units. This tool asks for the rework labor cost separately.</p></details>
+    <details><summary>What about defects we ship to the customer?</summary><p>Those become warranty claims, returns, or customer complaints - much more expensive than internal scrap. The 1-10-100 rule from quality research: $1 to prevent a defect, $10 to catch it internally, $100 to fix it after it ships. The cost calculator here covers the $1-$10 zone. If you have significant external failures, you need a full Cost of Poor Quality assessment.</p></details>
+    <details><summary>My scrap rate "feels" right but I can't measure it precisely. What's a reasonable estimate?</summary><p>Most mid-market manufacturers underestimate scrap by 30-50%. If your gut says 3%, the real number is usually 4-5%. The first month of formal tracking almost always reveals more than expected. That awareness alone reduces scrap by 10-15% within a quarter (Hawthorne effect).</p></details>
+  </div></section>
+</main>
+
+<footer class="footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div><img src="../../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">
+      <p class="footer-tagline">Custom ERP. Built at our risk. Paid for if it works.</p></div>
+    <div class="footer-cols" style="grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div><div class="footer-h">Product</div><a href="../../product.html" class="footer-link">How it works</a><a href="../../pricing.html" class="footer-link">Pricing</a><a href="../../case-studies.html" class="footer-link">Case studies</a></div>
+      <div><div class="footer-h">Productive tools</div><a href="../purchase-order-generator/" class="footer-link">PO Generator</a><a href="../invoice-generator/" class="footer-link">Invoice Generator</a><a href="../quote-generator/" class="footer-link">Quote Generator</a><a href="../job-cost-calculator/" class="footer-link">Job Cost Calculator</a><a href="../bill-of-materials-template/" class="footer-link">BOM Builder</a><a href="../production-schedule-template/" class="footer-link">Production Schedule</a><a href="../quality-inspection-checklist/" class="footer-link">Quality Inspection</a><a href="../markup-vs-margin/" class="footer-link">Markup vs Margin</a><a href="../revenue-per-employee/" class="footer-link">Revenue per Employee</a><a href="../scrap-waste-calculator/" class="footer-link">Scrap & Waste Cost</a><a href="../erp-needs-assessment/" class="footer-link">Do I Need an ERP?</a></div>
+      <div><div class="footer-h">Company</div><a href="../../about.html" class="footer-link">About</a><a href="../../hiring.html" class="footer-link">Careers</a><a href="../../blog.html" class="footer-link">Blog</a></div>
+      <div><div class="footer-h">Get in touch</div><a href="mailto:hello@simplegrid.ai" class="footer-link">hello@simplegrid.ai</a><a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="footer-link">Book a call with the founder</a><a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div>(c) 2026 Valaya AI Technologies</div><div class="footer-legal"><a href="../../privacy.html">Privacy Policy</a><a href="../../terms.html">Terms</a></div></div>
+</div></footer>
+
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+  function fmt$(n){return '$' + Math.round(n||0).toLocaleString();}
+  function fmt$K(n){
+    if (!isFinite(n)) return '$0';
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+    if (n >= 10000) return '$' + Math.round(n/1000) + 'K';
+    return '$' + Math.round(n);
+  }
+  function nn(v){return Math.max(0, parseFloat(v)||0);}
+
+  function recalc(){
+    const volume = nn(document.getElementById('sw-volume').value);
+    const scrapPct = Math.min(100, nn(document.getElementById('sw-scrap').value));
+    const reworkPct = Math.min(100, nn(document.getElementById('sw-rework').value));
+    const matCost = nn(document.getElementById('sw-mat').value);
+    const labCost = nn(document.getElementById('sw-lab').value);
+    let ohCost = nn(document.getElementById('sw-oh').value);
+    if (ohCost === 0) ohCost = labCost * 1.5; // estimate per spec
+    const price = nn(document.getElementById('sw-price').value);
+    const reworkLab = nn(document.getElementById('sw-rework-cost').value);
+    const recovery = Math.min(100, nn(document.getElementById('sw-recovery').value)) / 100;
+
+    const scrappedUnits = volume * scrapPct / 100;
+    const reworkedUnits = volume * reworkPct / 100;
+
+    // Monthly scrap costs
+    const scrapMat = scrappedUnits * matCost * (1 - recovery);
+    const scrapLab = scrappedUnits * labCost;
+    const scrapOh = scrappedUnits * ohCost;
+    const scrapTotal = scrapMat + scrapLab + scrapOh;
+    const lostRevenue = scrappedUnits * price;
+
+    // Monthly rework costs
+    const reworkLabTotal = reworkedUnits * reworkLab;
+    const reworkMat = reworkedUnits * matCost * 0.1; // 10% extra material per spec
+    const reworkTotal = reworkLabTotal + reworkMat;
+
+    const monthlyWaste = scrapTotal + reworkTotal;
+    const annualWaste = monthlyWaste * 12;
+    const annualLostRevenue = lostRevenue * 12;
+    const annualRevenue = volume * 12 * price;
+    const annualCOGS = volume * 12 * (matCost + labCost + ohCost);
+    const wastePctRev = annualRevenue>0 ? (annualWaste / annualRevenue) * 100 : 0;
+    const wastePctCOGS = annualCOGS>0 ? (annualWaste / annualCOGS) * 100 : 0;
+
+    // True margin
+    const goodUnits = volume - scrappedUnits;
+    const wastePerGood = goodUnits>0 ? monthlyWaste / goodUnits : 0;
+    const reportedMargin = price>0 ? ((price - (matCost + labCost + ohCost)) / price) * 100 : 0;
+    const trueMargin = price>0 ? ((price - (matCost + labCost + ohCost) - wastePerGood) / price) * 100 : 0;
+
+    // Benchmark category
+    let bench, benchCls;
+    if (scrapPct < 1)      { bench = 'World-class (<1%, Six Sigma territory)'; benchCls = 'green'; }
+    else if (scrapPct < 2) { bench = 'Top quartile (1-2%)'; benchCls = 'green'; }
+    else if (scrapPct < 5) { bench = 'Industry median (2-5%)'; benchCls = 'gold'; }
+    else if (scrapPct < 8) { bench = 'Below median (5-8%)'; benchCls = 'gold'; }
+    else                   { bench = 'Bottom quartile (8%+) - significant opportunity'; benchCls = 'red'; }
+
+    // Reduction scenarios
+    function scenario(targetPct){
+      const newScrapped = volume * targetPct/100;
+      const newScrapMat = newScrapped * matCost * (1 - recovery);
+      const newScrapLab = newScrapped * labCost;
+      const newScrapOh = newScrapped * ohCost;
+      const newScrapTotal = newScrapMat + newScrapLab + newScrapOh;
+      const newMonthly = newScrapTotal + reworkTotal;
+      const annualSaving = (monthlyWaste - newMonthly) * 12;
+      const marginGain = price>0 ? (wastePerGood - (newMonthly / (volume - newScrapped))) / price * 100 : 0;
+      return { rate: targetPct, annualSaving, marginGain };
+    }
+
+    document.getElementById('sw-hero').innerHTML = `
+      <div class="big-label">Annual waste cost</div>
+      <div class="big-number ${benchCls}">${fmt$K(annualWaste)}</div>
+      <div class="big-caption"><strong>${bench}.</strong> ${fmt$K(monthlyWaste)} per month. Plus ${fmt$K(annualLostRevenue)} in lost revenue from units that never sold.</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Waste as % of revenue</div><div class="value ${wastePctRev<2?'green':wastePctRev<5?'gold':'red'}">${wastePctRev.toFixed(1)}%</div><div class="sub">World-class: &lt;1%</div></div>
+        <div class="results-stat"><div class="label">Waste as % of COGS</div><div class="value">${wastePctCOGS.toFixed(1)}%</div></div>
+        <div class="results-stat"><div class="label">True margin after waste</div><div class="value ${trueMargin>=25?'green':trueMargin>=15?'gold':'red'}">${trueMargin.toFixed(1)}%</div><div class="sub">Reported: ${reportedMargin.toFixed(1)}%</div></div>
+      </div>
+    `;
+
+    const s1 = scenario(scrapPct * 0.75);
+    const s2 = scenario(scrapPct * 0.5);
+    const s3 = scenario(Math.min(scrapPct, 3));
+    const s4 = scenario(Math.min(scrapPct, 1));
+
+    document.getElementById('sw-detail').innerHTML = `
+      <h2 style="margin-bottom:16px">Where the money goes</h2>
+      <div class="bar-row"><span class="bar-label">Scrap material</span><div class="bar-track"><div class="bar-fill red" style="width:${Math.min(100, scrapMat/monthlyWaste*100)}%"></div></div><span class="bar-value">${fmt$K(scrapMat*12)}</span></div>
+      <div class="bar-row"><span class="bar-label">Scrap labor</span><div class="bar-track"><div class="bar-fill red" style="width:${Math.min(100, scrapLab/monthlyWaste*100)}%"></div></div><span class="bar-value">${fmt$K(scrapLab*12)}</span></div>
+      <div class="bar-row"><span class="bar-label">Scrap overhead</span><div class="bar-track"><div class="bar-fill red" style="width:${Math.min(100, scrapOh/monthlyWaste*100)}%"></div></div><span class="bar-value">${fmt$K(scrapOh*12)}</span></div>
+      <div class="bar-row"><span class="bar-label">Rework labor</span><div class="bar-track"><div class="bar-fill gold" style="width:${Math.min(100, reworkLabTotal/monthlyWaste*100)}%"></div></div><span class="bar-value">${fmt$K(reworkLabTotal*12)}</span></div>
+      <div class="bar-row"><span class="bar-label">Rework material</span><div class="bar-track"><div class="bar-fill gold" style="width:${Math.min(100, reworkMat/monthlyWaste*100)}%"></div></div><span class="bar-value">${fmt$K(reworkMat*12)}</span></div>
+
+      <h2 style="margin-top:32px;margin-bottom:12px">If you cut scrap rate to...</h2>
+      <table class="results-table">
+        <thead><tr><th>New scrap rate</th><th class="num">Annual savings</th><th class="num">Margin gain</th></tr></thead>
+        <tbody>
+          <tr><td>${s1.rate.toFixed(1)}% (25% reduction)</td><td class="num"><strong style="color:#047857">${fmt$K(s1.annualSaving)}</strong></td><td class="num">+${s1.marginGain.toFixed(1)} pts</td></tr>
+          <tr><td>${s2.rate.toFixed(1)}% (50% reduction)</td><td class="num"><strong style="color:#047857">${fmt$K(s2.annualSaving)}</strong></td><td class="num">+${s2.marginGain.toFixed(1)} pts</td></tr>
+          <tr><td>${s3.rate.toFixed(1)}% (industry median)</td><td class="num"><strong style="color:#047857">${fmt$K(s3.annualSaving)}</strong></td><td class="num">+${s3.marginGain.toFixed(1)} pts</td></tr>
+          <tr><td>${s4.rate.toFixed(1)}% (world-class)</td><td class="num"><strong style="color:#047857">${fmt$K(s4.annualSaving)}</strong></td><td class="num">+${s4.marginGain.toFixed(1)} pts</td></tr>
+        </tbody>
+      </table>
+      <p class="tool-note" style="margin-top:14px">Every dollar saved on scrap drops straight to operating profit. At your current margin, ${fmt$K(annualWaste)} of waste is equivalent to about ${fmt$K(annualWaste / Math.max(0.01, reportedMargin/100))} in new revenue you'd have to generate to net the same profit.</p>
+    `;
+
+    return {volume, scrapPct, reworkPct, matCost, labCost, ohCost, price, monthlyWaste, annualWaste, annualLostRevenue, wastePctRev, wastePctCOGS, trueMargin, reportedMargin, bench, s1, s2, s3, s4};
+  }
+
+  document.querySelectorAll('input, select').forEach(el=>el.addEventListener('input', recalc));
+  if (typeof sgWireNumericClamps === 'function') sgWireNumericClamps(document);
+  recalc();
+
+  document.getElementById('generate-pdf').addEventListener('click',()=>{
+    if (typeof sgValidateRequired === 'function' && !sgValidateRequired(document)) return;
+    const r = recalc();
+    sgBuildPdf({
+      title:'Scrap & Waste Cost Report', docNumberLabel:'Scrap rate', docNumber:r.scrapPct.toFixed(1)+'%',
+      date: todayISO(),
+      fromLabel:'INPUTS', from:['Monthly volume: '+r.volume.toLocaleString()+' units', 'Scrap: '+r.scrapPct.toFixed(1)+'%', 'Rework: '+r.reworkPct.toFixed(1)+'%', 'Material: '+fmt$(r.matCost)+'/unit', 'Labor: '+fmt$(r.labCost)+'/unit', 'Price: '+fmt$(r.price)+'/unit'],
+      toLabel:'IMPACT', to:['Annual waste: '+fmt$(r.annualWaste), 'Lost revenue: '+fmt$(r.annualLostRevenue), 'Waste %: '+r.wastePctRev.toFixed(1)+'% of revenue', 'True margin: '+r.trueMargin.toFixed(1)+'%', 'Reported margin: '+r.reportedMargin.toFixed(1)+'%', 'Status: '+r.bench],
+      itemColumns:['Scenario','Annual savings','Margin gain'],
+      items:[
+        ['25% reduction ('+r.s1.rate.toFixed(1)+'%)', fmt$(r.s1.annualSaving), '+'+r.s1.marginGain.toFixed(1)+' pts'],
+        ['50% reduction ('+r.s2.rate.toFixed(1)+'%)', fmt$(r.s2.annualSaving), '+'+r.s2.marginGain.toFixed(1)+' pts'],
+        ['Industry median ('+r.s3.rate.toFixed(1)+'%)', fmt$(r.s3.annualSaving), '+'+r.s3.marginGain.toFixed(1)+' pts'],
+        ['World-class ('+r.s4.rate.toFixed(1)+'%)', fmt$(r.s4.annualSaving), '+'+r.s4.marginGain.toFixed(1)+' pts']
+      ],
+      itemRowMapper: x=>x,
+      filename:'scrap-waste-report-'+todayISO()+'.pdf'
+    });
+  });
+});
+</script>
+</body>
+</html>
