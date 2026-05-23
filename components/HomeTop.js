@@ -366,7 +366,7 @@ function Hero() {
   }, /*#__PURE__*/React.createElement("path", {
     d: "M12 2l2.39 5.84L20 10l-5.61 2.16L12 18l-2.39-5.84L4 10l5.61-2.16L12 2z",
     fill: "currentColor"
-  })), "Book a call with the founder")))), /*#__PURE__*/React.createElement(Reveal, {
+  })), "Book a call")))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 300
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-stat-box",

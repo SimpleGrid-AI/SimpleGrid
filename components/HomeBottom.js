@@ -391,7 +391,7 @@ function FounderStory() {
     className: "body"
   }, "That's why we built SimpleGrid the only way that makes sense to an operator: model it on your factory, run it on your real floor for 30 days, and only charge when it earns its keep."), /*#__PURE__*/React.createElement("p", {
     className: "body"
-  }, "Senior engineers and a founder are on every deployment. No sales reps. No SDRs. No chatbot. You deal with the people who'll actually build your system."), /*#__PURE__*/React.createElement("p", {
+  }, "Senior engineers, deployment experts, and founder engagement on every deployment. No sales reps. No SDRs. No chatbot. You deal with the people who'll actually build your system."), /*#__PURE__*/React.createElement("p", {
     className: "body",
     style: { marginTop: 18 }
   }, /*#__PURE__*/React.createElement("a", {
@@ -827,7 +827,7 @@ function HomeFAQ() {
     a: "Before you decide, we agree on a number together based on the size of your operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items, no per-seat fees. We are not free and not cheap. We are priced like an operator who has carried the build for you."
   }, {
     q: "Who runs the deployment - sales reps, or actual engineers?",
-    a: "Senior engineers and a founder. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You deal with the people who'll actually build your system."
+    a: "Senior engineers, deployment experts, and founder engagement. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You work directly with the team that builds the system."
   }, {
     q: "What's the catch?",
     a: "We onboard selectively each quarter because we can only succeed when our customers succeed. If we don't think we can win for you, we'll say so on the call. That's the catch."
@@ -890,7 +890,7 @@ function FinalCTA() {
     target: "_blank",
     rel: "noopener noreferrer",
     className: "btn btn-lg btn-primary"
-  }, "Book a call with the founder"), /*#__PURE__*/React.createElement("p", {
+  }, "Book a call"), /*#__PURE__*/React.createElement("p", {
     className: "note"
   }, "Founder-led. Limited slots each quarter. We onboard selectively - only when we know we can win for you."))));
 }

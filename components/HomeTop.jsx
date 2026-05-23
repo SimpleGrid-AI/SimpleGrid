@@ -308,7 +308,7 @@ function Hero() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{marginRight:2}} aria-hidden="true">
                     <path d="M12 2l2.39 5.84L20 10l-5.61 2.16L12 18l-2.39-5.84L4 10l5.61-2.16L12 2z" fill="currentColor"/>
                   </svg>
-                  Book a call with the founder
+                  Book a call
                 </a>
               </div>
             </Reveal>

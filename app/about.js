@@ -80,7 +80,7 @@ function AboutPage() {
       color: 'rgba(255,255,255,0.5)',
       marginTop: 14
     }
-  }, "Senior engineers and a founder on every deployment \xB7 We reply within 48 hours"), /*#__PURE__*/React.createElement("div", {
+  }, "Senior engineers, deployment experts, and founder engagement on every deployment \xB7 We reply within 48 hours"), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 20,
       textAlign: 'center'

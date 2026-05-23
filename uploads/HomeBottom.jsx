@@ -9,7 +9,7 @@ function FounderStory() {
               <div className="tag">BUILT BY AN OPERATOR</div>
               <blockquote>I built a $30M manufacturing business. Survived two ERP failures. Ended up on Google Sheets.</blockquote>
               <p className="body">SimpleGrid exists because I was the customer first. Multiple factories, 400-person workforce, international buyers. I know what breaks when your system can't keep up.</p>
-              <p className="body">I lead every deployment personally. You deal with the founder. Not a sales team. Not a chatbot.</p>
+              <p className="body">Every deployment runs with senior engineers, deployment experts, and direct founder engagement. You work with the team that builds the system. Not a sales rep. Not a chatbot.</p>
               <p className="attr">- Mukund Agarwal, Founder &amp; CEO</p>
             </div>
           </div>

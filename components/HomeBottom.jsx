@@ -126,7 +126,7 @@ function FounderStory() {
             <blockquote>Built a $30M manufacturing business. Survived two ERP failures. Ended up on Google Sheets.</blockquote>
             <p className="body">SimpleGrid exists because we were the customer first - multiple factories, 400-person workforce. We bought the same enterprise systems you're being pitched today. We watched them fail. We know exactly what breaks when the system can't keep up with the floor.</p>
             <p className="body">That's why we built SimpleGrid the only way that makes sense to an operator: model it on your factory, run it on your real floor for 30 days, and only charge when it earns its keep.</p>
-            <p className="body">Senior engineers and a founder are on every deployment. No sales reps. No SDRs. No chatbot. You deal with the people who'll actually build your system.</p>
+            <p className="body">Senior engineers, deployment experts, and founder engagement on every deployment. No sales reps. No SDRs. No chatbot. You deal with the people who'll actually build your system.</p>
             <p className="body" style={{marginTop:18}}>
               <a href="https://www.linkedin.com/company/simplegridai" target="_blank" rel="noopener noreferrer" data-cta="founder_linkedin" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'none'}}>See the team on LinkedIn →</a>
             </p>
@@ -424,7 +424,7 @@ function HomeFAQ() {
     },
     {
       q: "Who runs the deployment - sales reps, or actual engineers?",
-      a: "Senior engineers and a founder. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You deal with the people who'll actually build your system."
+      a: "Senior engineers, deployment experts, and founder engagement. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You work directly with the team that builds the system."
     },
     {
       q: "What's the catch?",
@@ -473,7 +473,7 @@ function FinalCTA() {
         <Reveal>
           <h2 className="h2">Try it on. Then decide.</h2>
           <p className="sub">We build a custom ERP around your factory at our cost. You run it on your real floor for 30 days. If it doesn't move the business, you walk. We earn nothing.</p>
-          <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-lg btn-primary">Book a call with the founder</a>
+          <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-lg btn-primary">Book a call</a>
           <p className="note">Founder-led. Limited slots each quarter. We onboard selectively - only when we know we can win for you.</p>
         </Reveal>
       </div>

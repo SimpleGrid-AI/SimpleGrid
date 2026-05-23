@@ -12,7 +12,7 @@ const TIERS = [
       'All your data migrated for you',
       'If it doesn\'t move the business, you walk. No invoice.',
     ],
-    cta: 'Book a call with the founder',
+    cta: 'Book a call',
     ctaHref: 'https://cal.com/simplegrid-ai',
     highlight: true,
   },
@@ -184,11 +184,11 @@ function PricingPage() {
           {[
             { q: 'How much does SimpleGrid cost after the 30 days?', a: 'We agree on a number together that fits the operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items, no per-seat fees.' },
             { q: 'Is there a setup or build fee?', a: 'No. The build, the modeling sessions, the data migration, the senior-led onboarding and the 30 days running on your real floor are all on us. You owe nothing until you decide it works.' },
-            { q: 'Why aren\'t you cheap?', a: 'Because we carry the build, the deployment risk, and the 30-day trial - and senior engineers and a founder are on every project. Cheap ERP exists. It will not show up on day one with a working version of your factory. We will. We price for what that takes.' },
+            { q: 'Why aren\'t you cheap?', a: 'Because we carry the build, the deployment risk, and the 30-day trial - and senior engineers, deployment experts, and founder engagement on every project. Cheap ERP exists. It will not show up on day one with a working version of your factory. We will. We price for what that takes.' },
             { q: 'What does "you walk if it doesn\'t work" actually mean?', a: 'At the end of 30 days you decide. If the system is being used daily by your floor staff and your dashboards match the floor, it works. If not, you walk. No invoice. No clawback. No data ransom - you get a clean export.' },
             { q: 'Do you charge for changes to the ERP - today or tomorrow?', a: 'No. New approval rule, new production stage, new QC gate, new report, new integration - every change is included, at go-live and forever. Most ERPs charge $8K–$20K per change order. We never do.' },
             { q: 'Are there feature tiers or add-on fees?', a: 'No. Every customer gets every feature. No Pro plan, no Enterprise tier, no per-feature licensing. When we ship something new, it is automatically yours.' },
-            { q: 'Why are you so selective about who you onboard?', a: 'Senior engineers and a founder are on every deployment. We have limited capacity each quarter. We only take on customers we know we can win for - because we only get paid when you succeed, and we don\'t want to set anyone up to lose.' },
+            { q: 'Why are you so selective about who you onboard?', a: 'Senior engineers, deployment experts, and founder engagement on every deployment. We have limited capacity each quarter. We only take on customers we know we can win for - because we only get paid when you succeed, and we don\'t want to set anyone up to lose.' },
             { q: 'Do I get new features as you ship them?', a: 'Yes. We ship new products and features regularly, and they roll out to every customer at no extra cost. Your subscription includes everything we have built and everything we are about to build.' },
           ].map((f, i) => (
             <div key={i} style={{background:'#fff', border:'1px solid var(--border)', borderRadius:'var(--radius-lg)', padding:'22px 24px'}}>
@@ -205,7 +205,7 @@ function PricingPage() {
       <div className="container">
         <h2 className="h2">You carry nothing until you see it run.</h2>
         <p className="sub">Custom ERP, built at our risk. Paid for after it works. Founder-led onboarding, limited capacity each quarter.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-lg btn-primary">Book a call with the founder</a>
+        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-lg btn-primary">Book a call</a>
       </div>
     </section>
     </main>

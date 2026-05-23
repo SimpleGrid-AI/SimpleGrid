@@ -226,7 +226,7 @@ function Footer() {
     external: true
   }, {
     kind: 'calendar',
-    l: 'Book a call with the founder',
+    l: 'Book a call',
     href: 'https://cal.com/simplegrid-ai',
     external: true
   }];

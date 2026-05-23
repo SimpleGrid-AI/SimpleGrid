@@ -44,7 +44,7 @@ function AboutPage() {
         <div style={{marginTop:28, display:'flex', justifyContent:'center'}}>
           <button type="button" onClick={() => setShowInvite(true)} className="btn btn-lg btn-invite" style={{animation:'sgBuildPulse 1.8s ease-in-out infinite'}}>Request an Invite →</button>
         </div>
-        <p className="note" style={{color:'rgba(255,255,255,0.5)', marginTop:14}}>Senior engineers and a founder on every deployment · We reply within 48 hours</p>
+        <p className="note" style={{color:'rgba(255,255,255,0.5)', marginTop:14}}>Senior engineers, deployment experts, and founder engagement on every deployment · We reply within 48 hours</p>
         <div style={{marginTop:20,textAlign:'center'}}>
           <a href="product.html" style={{fontSize:14,fontWeight:600,color:'rgba(255,255,255,0.85)',textDecoration:'none'}}>See how the system actually works →</a>
         </div>

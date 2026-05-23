@@ -5,7 +5,7 @@ const TIERS = [{
   priceUnit: 'For the build. For the migration. For the 30 days on your real floor.',
   accent: 'var(--sg-blue)',
   features: ['We build a custom ERP modelled on your factory', 'Live in 7–21 days, at our cost and our risk', 'You run it on your real floor for 30 days', 'All your data migrated for you', 'If it doesn\'t move the business, you walk. No invoice.'],
-  cta: 'Book a call with the founder',
+  cta: 'Book a call',
   ctaHref: 'https://cal.com/simplegrid-ai',
   highlight: true
 }, {
@@ -340,7 +340,7 @@ function PricingPage() {
     a: 'No. The build, the modeling sessions, the data migration, the senior-led onboarding and the 30 days running on your real floor are all on us. You owe nothing until you decide it works.'
   }, {
     q: 'Why aren\'t you cheap?',
-    a: 'Because we carry the build, the deployment risk, and the 30-day trial - and senior engineers and a founder are on every project. Cheap ERP exists. It will not show up on day one with a working version of your factory. We will. We price for what that takes.'
+    a: 'Because we carry the build, the deployment risk, and the 30-day trial - and senior engineers, deployment experts, and founder engagement on every project. Cheap ERP exists. It will not show up on day one with a working version of your factory. We will. We price for what that takes.'
   }, {
     q: 'What does "you walk if it doesn\'t work" actually mean?',
     a: 'At the end of 30 days you decide. If the system is being used daily by your floor staff and your dashboards match the floor, it works. If not, you walk. No invoice. No clawback. No data ransom - you get a clean export.'
@@ -352,7 +352,7 @@ function PricingPage() {
     a: 'No. Every customer gets every feature. No Pro plan, no Enterprise tier, no per-feature licensing. When we ship something new, it is automatically yours.'
   }, {
     q: 'Why are you so selective about who you onboard?',
-    a: 'Senior engineers and a founder are on every deployment. We have limited capacity each quarter. We only take on customers we know we can win for - because we only get paid when you succeed, and we don\'t want to set anyone up to lose.'
+    a: 'Senior engineers, deployment experts, and founder engagement on every deployment. We have limited capacity each quarter. We only take on customers we know we can win for - because we only get paid when you succeed, and we don\'t want to set anyone up to lose.'
   }, {
     q: 'Do I get new features as you ship them?',
     a: 'Yes. We ship new products and features regularly, and they roll out to every customer at no extra cost. Your subscription includes everything we have built and everything we are about to build.'
@@ -392,7 +392,7 @@ function PricingPage() {
     target: "_blank",
     rel: "noopener noreferrer",
     className: "btn btn-lg btn-primary"
-  }, "Book a call with the founder")))), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
+  }, "Book a call")))), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)

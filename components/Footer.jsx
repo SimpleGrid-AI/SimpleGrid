@@ -79,7 +79,7 @@ function Footer() {
   const contact = [
     { kind: 'mail',     l: 'hello@simplegrid.ai', href: 'mailto:hello@simplegrid.ai' },
     { kind: 'linkedin', l: 'LinkedIn',            href: 'https://www.linkedin.com/company/simplegridai', external: true },
-    { kind: 'calendar', l: 'Book a call with the founder',         href: 'https://cal.com/simplegrid-ai', external: true },
+    { kind: 'calendar', l: 'Book a call',         href: 'https://cal.com/simplegrid-ai', external: true },
   ];
 
   return (

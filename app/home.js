@@ -27,6 +27,6 @@ function App() {
     rel: "noopener noreferrer",
     "data-cta": "mobile_sticky",
     className: "btn btn-invite"
-  }, "Book a call with the founder")));
+  }, "Book a call")));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
