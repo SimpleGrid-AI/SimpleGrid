@@ -61,6 +61,18 @@
   </div></section>
 
   <section class="tool-app"><div class="container-sm">
+
+    <div class="tool-card" style="padding:14px 18px;margin-bottom:14px">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg3)">Mode</span>
+        <div role="tablist" aria-label="Diagnostic mode" style="display:inline-flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden">
+          <button type="button" role="tab" aria-selected="true" id="mode-quick" data-mode="quick" style="padding:8px 16px;border:none;background:var(--sg-blue);color:#fff;font-size:14px;font-weight:600;cursor:pointer">Quick · 8 Q · 3 min</button>
+          <button type="button" role="tab" aria-selected="false" id="mode-deep" data-mode="deep" style="padding:8px 16px;border:none;background:#fff;color:var(--fg2);font-size:14px;font-weight:600;cursor:pointer">Deep Diagnostic · 25 Q · 10 min</button>
+        </div>
+        <span id="mode-hint" style="font-size:13px;color:var(--fg3);flex:1;min-width:200px">Quick mode gives you a single score + the dollar cost of operating without a system.</span>
+      </div>
+    </div>
+
     <form id="diag-form">
       <div class="q-card"><div class="q-num">Question 1 of 8</div><div class="q-text">Annual revenue</div>
         <div class="q-options" data-q="rev">
@@ -142,6 +154,78 @@
       </div>
     </form>
 
+    <form id="deep-form" style="display:none">
+      <div class="q-card"><h2 style="margin:0 0 14px;font-size:18px">Dimension 1 of 5 · Operational Complexity</h2>
+        <div class="q-num">Q1.1 · Distinct production stages per order</div>
+        <div class="q-options" data-q="d1q1"><label class="q-option"><input type="radio" name="d1q1" value="5">1-2</label><label class="q-option"><input type="radio" name="d1q1" value="10">3-5</label><label class="q-option"><input type="radio" name="d1q1" value="20">6-10</label><label class="q-option"><input type="radio" name="d1q1" value="25">10+</label></div>
+        <div class="q-num" style="margin-top:14px">Q1.2 · Do you manage subcontractors / outsourced processes?</div>
+        <div class="q-options" data-q="d1q2"><label class="q-option"><input type="radio" name="d1q2" value="0">No</label><label class="q-option"><input type="radio" name="d1q2" value="10">1-2 vendors</label><label class="q-option"><input type="radio" name="d1q2" value="15">3-5 vendors</label><label class="q-option"><input type="radio" name="d1q2" value="25">5+ vendors</label></div>
+        <div class="q-num" style="margin-top:14px">Q1.3 · How many distinct raw materials do you source?</div>
+        <div class="q-options" data-q="d1q3"><label class="q-option"><input type="radio" name="d1q3" value="5">Under 10</label><label class="q-option"><input type="radio" name="d1q3" value="10">10-50</label><label class="q-option"><input type="radio" name="d1q3" value="15">50-200</label><label class="q-option"><input type="radio" name="d1q3" value="25">200+</label></div>
+        <div class="q-num" style="margin-top:14px">Q1.4 · Make-to-order, make-to-stock, or both?</div>
+        <div class="q-options" data-q="d1q4"><label class="q-option"><input type="radio" name="d1q4" value="5">MTO only</label><label class="q-option"><input type="radio" name="d1q4" value="5">MTS only</label><label class="q-option"><input type="radio" name="d1q4" value="15">Both</label><label class="q-option"><input type="radio" name="d1q4" value="25">Both + engineer-to-order</label></div>
+        <div class="q-num" style="margin-top:14px">Q1.5 · Active customer orders at any given time?</div>
+        <div class="q-options" data-q="d1q5"><label class="q-option"><input type="radio" name="d1q5" value="5">Under 10</label><label class="q-option"><input type="radio" name="d1q5" value="10">10-50</label><label class="q-option"><input type="radio" name="d1q5" value="20">50-200</label><label class="q-option"><input type="radio" name="d1q5" value="25">200+</label></div>
+      </div>
+
+      <div class="q-card"><h2 style="margin:0 0 14px;font-size:18px">Dimension 2 of 5 · Data Fragmentation</h2>
+        <div class="q-num">Q2.1 · Different spreadsheets / systems holding operational data?</div>
+        <div class="q-options" data-q="d2q1"><label class="q-option"><input type="radio" name="d2q1" value="5">1-3</label><label class="q-option"><input type="radio" name="d2q1" value="10">4-8</label><label class="q-option"><input type="radio" name="d2q1" value="20">9-15</label><label class="q-option"><input type="radio" name="d2q1" value="30">15+</label></div>
+        <div class="q-num" style="margin-top:14px">Q2.2 · When a customer asks for order status, how long to answer?</div>
+        <div class="q-options" data-q="d2q2"><label class="q-option"><input type="radio" name="d2q2" value="0">Instant</label><label class="q-option"><input type="radio" name="d2q2" value="5">Under 5 min</label><label class="q-option"><input type="radio" name="d2q2" value="15">5-30 min</label><label class="q-option"><input type="radio" name="d2q2" value="30">Over 30 min / "I'll get back to you"</label></div>
+        <div class="q-num" style="margin-top:14px">Q2.3 · How often does inventory count not match records?</div>
+        <div class="q-options" data-q="d2q3"><label class="q-option"><input type="radio" name="d2q3" value="0">Rarely</label><label class="q-option"><input type="radio" name="d2q3" value="10">Quarterly discrepancies</label><label class="q-option"><input type="radio" name="d2q3" value="20">Monthly</label><label class="q-option"><input type="radio" name="d2q3" value="30">Every count is off</label></div>
+        <div class="q-num" style="margin-top:14px">Q2.4 · Can you generate a profitability report by product/customer in under 10 min?</div>
+        <div class="q-options" data-q="d2q4"><label class="q-option"><input type="radio" name="d2q4" value="0">Yes</label><label class="q-option"><input type="radio" name="d2q4" value="5">With some effort</label><label class="q-option"><input type="radio" name="d2q4" value="15">Need to compile from multiple places</label><label class="q-option"><input type="radio" name="d2q4" value="30">Can't do it</label></div>
+        <div class="q-num" style="margin-top:14px">Q2.5 · Does accounting connect to production tracking?</div>
+        <div class="q-options" data-q="d2q5"><label class="q-option"><input type="radio" name="d2q5" value="0">Fully integrated</label><label class="q-option"><input type="radio" name="d2q5" value="5">Partial</label><label class="q-option"><input type="radio" name="d2q5" value="15">Manual sync</label><label class="q-option"><input type="radio" name="d2q5" value="25">Completely separate</label></div>
+      </div>
+
+      <div class="q-card"><h2 style="margin:0 0 14px;font-size:18px">Dimension 3 of 5 · Growth Pressure</h2>
+        <div class="q-num">Q3.1 · Revenue growth rate last 12 months</div>
+        <div class="q-options" data-q="d3q1"><label class="q-option"><input type="radio" name="d3q1" value="5">Under 5%</label><label class="q-option"><input type="radio" name="d3q1" value="10">5-15%</label><label class="q-option"><input type="radio" name="d3q1" value="20">15-30%</label><label class="q-option"><input type="radio" name="d3q1" value="25">30%+</label></div>
+        <div class="q-num" style="margin-top:14px">Q3.2 · Adding new product lines or customer segments in next 12 months?</div>
+        <div class="q-options" data-q="d3q2"><label class="q-option"><input type="radio" name="d3q2" value="0">No</label><label class="q-option"><input type="radio" name="d3q2" value="5">Possibly</label><label class="q-option"><input type="radio" name="d3q2" value="15">Yes, 1-2</label><label class="q-option"><input type="radio" name="d3q2" value="25">Yes, 3+</label></div>
+        <div class="q-num" style="margin-top:14px">Q3.3 · Turned down orders because you couldn't manage the complexity?</div>
+        <div class="q-options" data-q="d3q3"><label class="q-option"><input type="radio" name="d3q3" value="0">Never</label><label class="q-option"><input type="radio" name="d3q3" value="10">Once or twice</label><label class="q-option"><input type="radio" name="d3q3" value="20">Several times</label><label class="q-option"><input type="radio" name="d3q3" value="30">Regularly</label></div>
+        <div class="q-num" style="margin-top:14px">Q3.4 · Adding a shift, facility, or significant equipment soon?</div>
+        <div class="q-options" data-q="d3q4"><label class="q-option"><input type="radio" name="d3q4" value="0">No</label><label class="q-option"><input type="radio" name="d3q4" value="5">Considering</label><label class="q-option"><input type="radio" name="d3q4" value="15">Within 6 months</label><label class="q-option"><input type="radio" name="d3q4" value="25">Already underway</label></div>
+        <div class="q-num" style="margin-top:14px">Q3.5 · Dependence on 1-2 key people's knowledge?</div>
+        <div class="q-options" data-q="d3q5"><label class="q-option"><input type="radio" name="d3q5" value="0">Low - anyone can step in</label><label class="q-option"><input type="radio" name="d3q5" value="10">Moderate</label><label class="q-option"><input type="radio" name="d3q5" value="20">High</label><label class="q-option"><input type="radio" name="d3q5" value="30">Critical - stops if they leave</label></div>
+      </div>
+
+      <div class="q-card"><h2 style="margin:0 0 14px;font-size:18px">Dimension 4 of 5 · Financial Visibility</h2>
+        <div class="q-num">Q4.1 · Do you know true cost per unit including overhead?</div>
+        <div class="q-options" data-q="d4q1"><label class="q-option"><input type="radio" name="d4q1" value="0">Yes, precisely</label><label class="q-option"><input type="radio" name="d4q1" value="5">Approximately</label><label class="q-option"><input type="radio" name="d4q1" value="20">Not really</label><label class="q-option"><input type="radio" name="d4q1" value="30">No</label></div>
+        <div class="q-num" style="margin-top:14px">Q4.2 · Confidence in your pricing?</div>
+        <div class="q-options" data-q="d4q2"><label class="q-option"><input type="radio" name="d4q2" value="0">Very - margin-validated</label><label class="q-option"><input type="radio" name="d4q2" value="5">Mostly - cost-plus</label><label class="q-option"><input type="radio" name="d4q2" value="20">Guessing - market-based</label><label class="q-option"><input type="radio" name="d4q2" value="30">Not confident</label></div>
+        <div class="q-num" style="margin-top:14px">Q4.3 · Can you identify most and least profitable products?</div>
+        <div class="q-options" data-q="d4q3"><label class="q-option"><input type="radio" name="d4q3" value="0">Yes, with data</label><label class="q-option"><input type="radio" name="d4q3" value="5">I think I know</label><label class="q-option"><input type="radio" name="d4q3" value="15">Not sure</label><label class="q-option"><input type="radio" name="d4q3" value="25">No</label></div>
+        <div class="q-num" style="margin-top:14px">Q4.4 · How do you track WIP (work in progress) value?</div>
+        <div class="q-options" data-q="d4q4"><label class="q-option"><input type="radio" name="d4q4" value="0">Real-time system</label><label class="q-option"><input type="radio" name="d4q4" value="10">Periodic estimates</label><label class="q-option"><input type="radio" name="d4q4" value="20">Rough guesses</label><label class="q-option"><input type="radio" name="d4q4" value="30">Don't track</label></div>
+        <div class="q-num" style="margin-top:14px">Q4.5 · How often are you surprised by cash flow gaps?</div>
+        <div class="q-options" data-q="d4q5"><label class="q-option"><input type="radio" name="d4q5" value="0">Never</label><label class="q-option"><input type="radio" name="d4q5" value="10">Occasionally</label><label class="q-option"><input type="radio" name="d4q5" value="20">Quarterly</label><label class="q-option"><input type="radio" name="d4q5" value="30">Monthly</label></div>
+      </div>
+
+      <div class="q-card"><h2 style="margin:0 0 14px;font-size:18px">Dimension 5 of 5 · Quality &amp; Compliance</h2>
+        <div class="q-num">Q5.1 · Can you trace a finished product to raw material batch?</div>
+        <div class="q-options" data-q="d5q1"><label class="q-option"><input type="radio" name="d5q1" value="0">Full traceability</label><label class="q-option"><input type="radio" name="d5q1" value="10">Partial</label><label class="q-option"><input type="radio" name="d5q1" value="20">Only if we dig</label><label class="q-option"><input type="radio" name="d5q1" value="30">No</label></div>
+        <div class="q-num" style="margin-top:14px">Q5.2 · Scrap / rework rate?</div>
+        <div class="q-options" data-q="d5q2"><label class="q-option"><input type="radio" name="d5q2" value="0">Under 2%</label><label class="q-option"><input type="radio" name="d5q2" value="10">2-5%</label><label class="q-option"><input type="radio" name="d5q2" value="20">5-10%</label><label class="q-option"><input type="radio" name="d5q2" value="30">Over 10% or "I don't know"</label></div>
+        <div class="q-num" style="margin-top:14px">Q5.3 · Quality certifications (ISO, IATF, FDA, etc.)?</div>
+        <div class="q-options" data-q="d5q3"><label class="q-option"><input type="radio" name="d5q3" value="0">Yes and maintained digitally</label><label class="q-option"><input type="radio" name="d5q3" value="10">Yes but paper-based</label><label class="q-option"><input type="radio" name="d5q3" value="15">In process</label><label class="q-option"><input type="radio" name="d5q3" value="5">No</label></div>
+        <div class="q-num" style="margin-top:14px">Q5.4 · How do you handle customer complaints / returns?</div>
+        <div class="q-options" data-q="d5q4"><label class="q-option"><input type="radio" name="d5q4" value="0">Logged, tracked, root-caused</label><label class="q-option"><input type="radio" name="d5q4" value="10">Logged but not analyzed</label><label class="q-option"><input type="radio" name="d5q4" value="20">Ad hoc</label><label class="q-option"><input type="radio" name="d5q4" value="30">Ignored until critical</label></div>
+        <div class="q-num" style="margin-top:14px">Q5.5 · Preventive maintenance on a schedule, or wait for breakdowns?</div>
+        <div class="q-options" data-q="d5q5"><label class="q-option"><input type="radio" name="d5q5" value="0">Scheduled PM program</label><label class="q-option"><input type="radio" name="d5q5" value="10">Some scheduling</label><label class="q-option"><input type="radio" name="d5q5" value="20">Mostly reactive</label><label class="q-option"><input type="radio" name="d5q5" value="30">Fully reactive</label></div>
+
+        <div class="tool-form-grid cols-2" style="margin-top:18px">
+          <div class="tool-field"><label for="deep-rev">Annual revenue ($) <span class="hint">used for cost estimate</span></label><input id="deep-rev" type="number" data-clamp="0,10000000000" step="100000" value="10000000"></div>
+          <div class="tool-field"><label for="deep-hrs">Hours/week your team spends on data entry <span class="hint">for cost estimate</span></label><input id="deep-hrs" type="number" data-clamp="0,500" step="1" value="20"></div>
+        </div>
+      </div>
+    </form>
+
     <div class="results-hero" id="diag-hero" style="display:none"></div>
     <div class="tool-card" id="diag-detail" style="display:none;margin-top:24px"></div>
 
@@ -212,7 +296,18 @@
 
 <script defer>
 document.addEventListener('DOMContentLoaded',()=>{
+  let mode = 'quick';
   const fields = ['rev','emp','sku','track','otd','inv','data','lost'];
+  // Deep diagnostic field names by dimension
+  const DEEP_DIM = {
+    'Operational Complexity': ['d1q1','d1q2','d1q3','d1q4','d1q5'],
+    'Data Fragmentation':     ['d2q1','d2q2','d2q3','d2q4','d2q5'],
+    'Growth Pressure':        ['d3q1','d3q2','d3q3','d3q4','d3q5'],
+    'Financial Visibility':   ['d4q1','d4q2','d4q3','d4q4','d4q5'],
+    'Quality & Compliance':   ['d5q1','d5q2','d5q3','d5q4','d5q5']
+  };
+  const DEEP_FIELDS = Object.values(DEEP_DIM).flat();
+  const DEEP_DIM_MAX = { 'Operational Complexity': 125, 'Data Fragmentation': 145, 'Growth Pressure': 135, 'Financial Visibility': 145, 'Quality & Compliance': 145 };
   function fmt$(n){return '$' + Math.round(n||0).toLocaleString();}
   function fmt$K(n){
     if (!isFinite(n) || n<=0) return '$0';
@@ -220,6 +315,34 @@ document.addEventListener('DOMContentLoaded',()=>{
     if (n >= 10000) return '$' + Math.round(n/1000) + 'K';
     return '$' + Math.round(n);
   }
+
+  // Mode toggle
+  const quickForm = document.getElementById('diag-form');
+  const deepForm = document.getElementById('deep-form');
+  const modeQuick = document.getElementById('mode-quick');
+  const modeDeep = document.getElementById('mode-deep');
+  const modeHint = document.getElementById('mode-hint');
+  function setMode(m){
+    mode = m;
+    const onQuick = m==='quick';
+    quickForm.style.display = onQuick ? '' : 'none';
+    deepForm.style.display = onQuick ? 'none' : '';
+    modeQuick.style.background = onQuick ? 'var(--sg-blue)' : '#fff';
+    modeQuick.style.color = onQuick ? '#fff' : 'var(--fg2)';
+    modeQuick.setAttribute('aria-selected', onQuick);
+    modeDeep.style.background = onQuick ? '#fff' : 'var(--sg-blue)';
+    modeDeep.style.color = onQuick ? 'var(--fg2)' : '#fff';
+    modeDeep.setAttribute('aria-selected', !onQuick);
+    modeHint.textContent = onQuick
+      ? 'Quick mode gives you a single score + the dollar cost of operating without a system.'
+      : 'Deep mode scores you on 5 dimensions with a radar chart, peer comparison, and a personalized roadmap.';
+    document.getElementById('diag-hero').style.display = 'none';
+    document.getElementById('diag-detail').style.display = 'none';
+    document.getElementById('generate-pdf').disabled = true;
+    recalc();
+  }
+  modeQuick.addEventListener('click', ()=>setMode('quick'));
+  modeDeep.addEventListener('click', ()=>setMode('deep'));
 
   // Wire option selection styling
   document.querySelectorAll('.q-options').forEach(group=>{
@@ -230,6 +353,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         setTimeout(recalc, 50);
       });
     });
+  });
+  ['deep-rev','deep-hrs'].forEach(id=>{
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', ()=>{ if (mode==='deep') recalc(); });
   });
 
   function answered(){
@@ -247,7 +374,159 @@ document.addEventListener('DOMContentLoaded',()=>{
     return Math.max(0, parseFloat(document.getElementById('rev-exact').value) || 0);
   }
 
+  function deepAnswered(){
+    return DEEP_FIELDS.every(f => document.querySelector('input[name="'+f+'"]:checked'));
+  }
+  function deepVal(f){
+    const el = document.querySelector('input[name="'+f+'"]:checked');
+    return el ? parseInt(el.value) : 0;
+  }
+  function recalcDeep(){
+    if (!deepAnswered()){
+      document.getElementById('diag-hero').style.display = 'none';
+      document.getElementById('diag-detail').style.display = 'none';
+      document.getElementById('generate-pdf').disabled = true;
+      return null;
+    }
+    // Per-dimension scores (raw) and normalized 0-100
+    const dimScores = {};
+    let totalRaw = 0, totalMax = 0;
+    for (const [dim, fldList] of Object.entries(DEEP_DIM)){
+      const raw = fldList.reduce((s,f)=>s+deepVal(f), 0);
+      const max = DEEP_DIM_MAX[dim];
+      dimScores[dim] = { raw, max, normalized: Math.round((raw / max) * 100) };
+      totalRaw += raw; totalMax += max;
+    }
+    const overall = Math.round((totalRaw / totalMax) * 100);
+    const revenue = Math.max(0, parseFloat(document.getElementById('deep-rev').value) || 0);
+    const hrs = Math.max(0, parseFloat(document.getElementById('deep-hrs').value) || 0);
+    // Cost-of-not-having-ERP — 5 buckets per spec
+    const dataEntryWaste = hrs * 38 * 52;
+    const otdGap = (dimScores['Quality & Compliance'].normalized + dimScores['Operational Complexity'].normalized) / 200 * 10; // ~0-10 pts
+    const missedDeliveryCost = revenue * otdGap * 0.02;
+    const invInaccuracy = dimScores['Data Fragmentation'].normalized / 100 * 0.20; // 0-20%
+    const inventoryCost = revenue * 0.05 * invInaccuracy * 0.15;
+    const scrapCost = revenue * (dimScores['Quality & Compliance'].normalized / 100) * 0.04; // up to 4% of revenue
+    const keyPersonRisk = revenue * (dimScores['Growth Pressure'].normalized / 100) * 0.025;
+    const totalAnnualCost = dataEntryWaste + missedDeliveryCost + inventoryCost + scrapCost + keyPersonRisk;
+    // Band
+    let band, bandCls, summary;
+    if (overall <= 25)      { band='Green: spreadsheets still working'; bandCls='green'; summary="At this maturity level, formal systems would create more overhead than they save. Focus on documenting processes and tightening data hygiene."; }
+    else if (overall <= 50) { band='Yellow: transition zone'; bandCls='gold'; summary="You're in the band where ERP starts to pay back. Address the lowest-scoring dimension(s) first - those are where the operational cost is concentrated."; }
+    else if (overall <= 75) { band='Orange: an ERP would pay for itself within 12 months'; bandCls='gold'; summary="The annual cost shown below is real and visible on your P&L (as expedites, concessions, OT, write-downs). ERP at this scale typically pays back in 9-15 months."; }
+    else                    { band='Red: every month without a system is costing you'; bandCls='red'; summary="You're past the inflection point. Operational cost is large and growing. Focus is no longer 'should we' - it's 'which one and how do we avoid the 55-75% failure rate.'"; }
+    // Peer line by revenue
+    let peerLine;
+    if (revenue < 8000000)        peerLine = "About 35% of manufacturers your size use a real ERP.";
+    else if (revenue < 25000000)  peerLine = "About 65% of manufacturers your size use a real ERP (Panorama Consulting 2023). Median time to ROI: 23 months.";
+    else if (revenue < 80000000)  peerLine = "About 88% of manufacturers your size use a real ERP. You're in the minority if you don't.";
+    else                          peerLine = "Over 95% of manufacturers your size run on an ERP. Functionally mandatory at your complexity.";
+    // Build radar chart SVG
+    const dims = Object.keys(DEEP_DIM);
+    const W = 380, H = 380, cx = W/2, cy = H/2, R = 130;
+    const angle = i => (Math.PI*2*i/dims.length) - Math.PI/2;
+    function ptStr(scoreArr){
+      return scoreArr.map((s,i)=>{
+        const r = (s/100) * R;
+        return (cx + r*Math.cos(angle(i))).toFixed(1) + ',' + (cy + r*Math.sin(angle(i))).toFixed(1);
+      }).join(' ');
+    }
+    let svg = '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;max-width:420px;height:auto;display:block;margin:0 auto" aria-label="Radar chart of 5 dimensions">';
+    // Grid rings
+    for (let k=1;k<=5;k++){
+      const r = R * k/5;
+      let poly = '';
+      for (let i=0;i<dims.length;i++){
+        const a = angle(i);
+        poly += (cx + r*Math.cos(a)).toFixed(1)+','+(cy + r*Math.sin(a)).toFixed(1)+' ';
+      }
+      svg += '<polygon points="'+poly+'" fill="none" stroke="#e2e8f0" stroke-width="1"/>';
+    }
+    // Axes
+    for (let i=0;i<dims.length;i++){
+      const a = angle(i);
+      svg += '<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+R*Math.cos(a)).toFixed(1)+'" y2="'+(cy+R*Math.sin(a)).toFixed(1)+'" stroke="#cbd5e1" stroke-width="1"/>';
+    }
+    // Median (industry-typical 50)
+    const median = ptStr(dims.map(()=>50));
+    svg += '<polygon points="'+median+'" fill="rgba(148,163,184,0.18)" stroke="#94a3b8" stroke-dasharray="4 3" stroke-width="1"/>';
+    // Their score
+    const own = ptStr(dims.map(d=>dimScores[d].normalized));
+    svg += '<polygon points="'+own+'" fill="rgba(52,97,224,0.30)" stroke="#3461E0" stroke-width="2"/>';
+    dims.forEach((d,i)=>{
+      const s = dimScores[d].normalized;
+      const r = (s/100) * R;
+      svg += '<circle cx="'+(cx+r*Math.cos(angle(i))).toFixed(1)+'" cy="'+(cy+r*Math.sin(angle(i))).toFixed(1)+'" r="4" fill="#3461E0"/>';
+    });
+    // Labels
+    dims.forEach((d,i)=>{
+      const a = angle(i);
+      const lx = cx + (R+22)*Math.cos(a);
+      const ly = cy + (R+22)*Math.sin(a);
+      const anchor = Math.abs(Math.cos(a))<0.2 ? 'middle' : (Math.cos(a)>0?'start':'end');
+      const label = d.length>22 ? d.replace(' & ',' & ').replace(' ',' ',1) : d;
+      svg += '<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="'+anchor+'" font-size="11" font-weight="600" fill="#1f2937" dominant-baseline="middle">'+d+' <tspan font-weight="700" fill="#3461E0">'+dimScores[d].normalized+'</tspan></text>';
+    });
+    svg += '</svg>';
+    document.getElementById('diag-hero').style.display = 'block';
+    document.getElementById('diag-detail').style.display = 'block';
+    document.getElementById('generate-pdf').disabled = false;
+    document.getElementById('diag-hero').innerHTML = `
+      <div class="big-label">Overall ERP Need Score</div>
+      <div class="big-number ${bandCls}">${overall} <span style="font-size:24px;color:var(--fg3);font-weight:500">/ 100</span></div>
+      <div class="big-caption"><strong>${band}.</strong> ${summary}</div>
+      <div class="results-grid" style="margin-top:24px">
+        <div class="results-stat"><div class="label">Estimated annual cost</div><div class="value ${bandCls}">${fmt$K(totalAnnualCost)}</div><div class="sub">of operating without a system</div></div>
+        <div class="results-stat"><div class="label">3-year cost</div><div class="value">${fmt$K(totalAnnualCost*3.15)}</div><div class="sub">5%/yr inflation</div></div>
+        <div class="results-stat"><div class="label">% of revenue</div><div class="value">${revenue>0?((totalAnnualCost/revenue)*100).toFixed(1):0}%</div><div class="sub">lost to operational drag</div></div>
+      </div>
+    `;
+    // Next steps by band + weakest dim
+    const weakest = dims.reduce((w,d)=>dimScores[d].normalized > dimScores[w].normalized ? d : w, dims[0]);
+    const nextStepsByDim = {
+      'Operational Complexity': 'Map your top 5 processes (order-to-cash first). Document approval workflows. Reduce process exceptions by defining standard rules.',
+      'Data Fragmentation': 'Consolidate your 3 most-used spreadsheets into a single source of truth. Define one item master. Integrate accounting with production tracking even at a basic level.',
+      'Growth Pressure': 'Build redundancy: cross-train your 2 most critical employees. Document tribal knowledge. Plan capacity before you have to scramble for it.',
+      'Financial Visibility': 'Implement job costing - even a simple spreadsheet beats nothing. Establish monthly close discipline. Identify top/bottom 10% of products by margin.',
+      'Quality & Compliance': 'Add lot/batch traceability for top 5 SKUs. Set up a basic NCR log. Move at least your top 3 SOPs from "in someone’s head" to written.'
+    };
+    document.getElementById('diag-detail').innerHTML = `
+      <h2 style="margin-bottom:14px">Your 5-dimension profile</h2>
+      ${svg}
+      <p class="tool-note" style="text-align:center;margin-top:6px">Blue = your score · Gray dashed = industry median (50). Source: Gartner Postmodern ERP framework, Aberdeen mid-market manufacturing benchmarks.</p>
+
+      <h2 style="margin-top:32px;margin-bottom:12px">Dimension breakdown</h2>
+      <table class="results-table">
+        <thead><tr><th>Dimension</th><th class="num">Score (0-100)</th><th>Status</th></tr></thead>
+        <tbody>
+          ${dims.map(d=>{
+            const s = dimScores[d].normalized;
+            const cls = s<=25?'green':s<=50?'gold':s<=75?'gold':'red';
+            const label = s<=25?'Strong':s<=50?'Watch':s<=75?'Painful':'Critical';
+            return '<tr><td>'+d+'</td><td class="num"><strong style="color:'+(cls==='green'?'#047857':cls==='gold'?'#B45309':'#B91C1C')+'">'+s+'</strong></td><td>'+label+'</td></tr>';
+          }).join('')}
+        </tbody>
+      </table>
+
+      <h2 style="margin-top:32px;margin-bottom:14px">Where the cost is</h2>
+      <div class="bar-row"><span class="bar-label">Data-entry waste</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, dataEntryWaste/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(dataEntryWaste)}</span></div>
+      <div class="bar-row"><span class="bar-label">Missed deliveries</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, missedDeliveryCost/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(missedDeliveryCost)}</span></div>
+      <div class="bar-row"><span class="bar-label">Inventory inaccuracy</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, inventoryCost/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(inventoryCost)}</span></div>
+      <div class="bar-row"><span class="bar-label">Scrap / rework</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, scrapCost/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(scrapCost)}</span></div>
+      <div class="bar-row"><span class="bar-label">Key-person risk</span><div class="bar-track"><div class="bar-fill ${bandCls}" style="width:${Math.min(100, keyPersonRisk/Math.max(1,totalAnnualCost)*100)}%"></div></div><span class="bar-value">${fmt$K(keyPersonRisk)}</span></div>
+
+      <h2 style="margin-top:32px;margin-bottom:12px">Peer comparison</h2>
+      <p style="font-size:15px;color:var(--fg1);line-height:1.6">${peerLine}</p>
+
+      <h2 style="margin-top:32px;margin-bottom:12px">Where to start</h2>
+      <p style="font-size:15px;color:var(--fg1);line-height:1.6"><strong>Your weakest dimension is ${weakest}</strong> (${dimScores[weakest].normalized}/100). ${nextStepsByDim[weakest]}</p>
+      <p style="font-size:14px;color:var(--fg3);margin-top:10px">Source: McKinsey Global Institute (automation), APICS/ASCM (inventory carrying cost), Aberdeen Group (delivery-cost coefficient), Deloitte Manufacturing Survey (key-person risk).</p>
+    `;
+    return {mode:'deep', overall, band, summary, dimScores, totalAnnualCost, dataEntryWaste, missedDeliveryCost, inventoryCost, scrapCost, keyPersonRisk, revenue, weakest};
+  }
+
   function recalc(){
+    if (mode === 'deep') return recalcDeep();
     if (!answered()) {
       document.getElementById('diag-hero').style.display = 'none';
       document.getElementById('diag-detail').style.display = 'none';
@@ -317,7 +596,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         "You're past the evaluation stage. Talk to vendors. Critical question to ask each: 'How do you handle the 55-75% implementation failure rate in mid-market manufacturing?' Their answer tells you everything."
       }</p>
     `;
-    return {score, band, summary, totalAnnualCost, dataEntryWaste, missedDeliveryCost, inventoryCost, lostCustomerCost, revenue};
+    return {mode:'quick', score, band, summary, totalAnnualCost, dataEntryWaste, missedDeliveryCost, inventoryCost, lostCustomerCost, revenue};
   }
 
   document.getElementById('rev-exact').addEventListener('input', recalc);
@@ -325,7 +604,26 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   document.getElementById('generate-pdf').addEventListener('click',()=>{
     const r = recalc();
-    if (!r) { if (typeof sgToast==='function') sgToast('Answer all 8 questions first.', { type:'error' }); return; }
+    if (!r) {
+      const msg = mode==='deep' ? 'Answer all 25 questions first.' : 'Answer all 8 questions first.';
+      if (typeof sgToast==='function') sgToast(msg, { type:'error' });
+      return;
+    }
+    if (r.mode === 'deep') {
+      const dimRows = Object.entries(r.dimScores).map(([d, s])=>[d, s.normalized + ' / 100']);
+      sgBuildPdf({
+        title:'Do I Need an ERP? - Deep Diagnostic Result', docNumberLabel:'Score', docNumber: r.overall + ' / 100',
+        date: todayISO(),
+        fromLabel:'BAND', from:[r.band, 'Weakest dimension: ' + r.weakest],
+        toLabel:'ANNUAL COST', to:['Total: '+fmt$(r.totalAnnualCost), 'Data-entry: '+fmt$(r.dataEntryWaste), 'Missed deliveries: '+fmt$(r.missedDeliveryCost), 'Inventory: '+fmt$(r.inventoryCost), 'Scrap / rework: '+fmt$(r.scrapCost), 'Key-person risk: '+fmt$(r.keyPersonRisk)],
+        itemColumns:['Dimension','Score'],
+        items: dimRows,
+        itemRowMapper: x=>x,
+        notes: r.summary + '\n\nMethodology: Gartner Postmodern ERP, Aberdeen mid-market manufacturing benchmarks, McKinsey Global Institute, APICS/ASCM carrying cost, Deloitte Manufacturing Survey (key-person risk).',
+        filename:'erp-deep-diagnostic-'+todayISO()+'.pdf'
+      });
+      return;
+    }
     sgBuildPdf({
       title:'Do I Need an ERP? - Diagnostic Result', docNumberLabel:'Score', docNumber:r.score + ' / 185',
       date: todayISO(),
