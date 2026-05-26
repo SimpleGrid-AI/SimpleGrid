@@ -324,7 +324,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 /* ===== FOUNDER v2 ===== */
 .founder-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: center; }
 .founder-photo { border-radius: var(--radius-lg); aspect-ratio: 4/5; object-fit: cover; background: var(--sg-off-white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--fg3); font-size: 15px; }
-.founder-text { max-width: 960px; }
+.founder-text { max-width: none; }
 .founder-text blockquote { margin: 0; font-family: var(--font-heading); font-size: 25px; font-weight: 600; color: var(--fg1); line-height: 1.35; letter-spacing: -0.015em; }
 .founder-text .body { font-size: 18px; color: var(--fg2); line-height: 1.65; margin: 16px 0; }
 .founder-text .attr { font-size: 16px; color: var(--fg3); }
