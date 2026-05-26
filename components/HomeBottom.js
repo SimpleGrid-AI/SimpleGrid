@@ -789,7 +789,7 @@ function HomeFAQ() {
     a: "Senior engineers, deployment experts, and founder engagement. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You work directly with the team that builds the system."
   }, {
     q: "What's the catch?",
-    a: "We onboard selectively each quarter because we can only succeed when our customers succeed. If we don't think we can win for you, we'll say so on the call. That's the catch."
+    a: "We onboard selectively each quarter because we can only succeed when our customers succeed. If we don't think we can win for you, we'll say so on the call. The other catch: you spend real time with us building what you want. Your time is the investment."
   }];
   const [open, setOpen] = React.useState(0);
   return /*#__PURE__*/React.createElement("section", {
