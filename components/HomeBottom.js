@@ -507,9 +507,9 @@ function Integrations() {
   const items = [
     { name: 'Gmail', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg>' },
     { name: 'QuickBooks', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M7.5 8a2 2 0 00-2 2v4a2 2 0 002 2h1V8h-1zm3-1v10h1a4 4 0 004-4v-2a4 4 0 00-4-4h-1zm2 2.5a1.5 1.5 0 011.5 1.5v2a1.5 1.5 0 01-1.5 1.5V9.5z" fill="#fff"/></svg>' },
-    { name: 'Excel', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#107C41"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="11">XL</text></svg>' },
-    { name: 'Google Sheets', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" fill="#0F9D58"/></svg>' },
-    { name: 'Shopify', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#96BF48"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="11">S</text></svg>' },
+    { name: 'Excel', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#107C41"/><path d="M14 5h6v3h-6V5zm0 4h6v3h-6V9zm0 4h6v3h-6v-3zm0 4h6v2h-6v-2z" fill="#fff" opacity="0.5"/><text x="8" y="17" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-weight="700" font-size="12" letter-spacing="-1">X</text></svg>' },
+    { name: 'Google Sheets', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" fill="#0F9D58"/><path d="M14 2v6h6l-6-6z" fill="#0B7E47"/><rect x="7" y="11" width="10" height="7" fill="#fff"/><line x1="7" y1="13.5" x2="17" y2="13.5" stroke="#0F9D58" stroke-width="0.8"/><line x1="7" y1="15.8" x2="17" y2="15.8" stroke="#0F9D58" stroke-width="0.8"/><line x1="10.3" y1="11" x2="10.3" y2="18" stroke="#0F9D58" stroke-width="0.8"/><line x1="13.7" y1="11" x2="13.7" y2="18" stroke="#0F9D58" stroke-width="0.8"/></svg>' },
+    { name: 'Shopify', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M19.6 6.1c0-.1-.1-.2-.2-.2l-1.7-.1s-1.1-1.1-1.2-1.2c-.1-.1-.3-.1-.4-.1l-.6.2c-.4-1.1-1-2.1-2.2-2.1h-.1c-.3-.4-.7-.6-1-.6-2.6 0-3.9 3.3-4.3 5l-1.7.5c-.5.2-.5.2-.6.7L4 21.8 16.5 24 23 22.6S19.6 6.3 19.6 6.1z" fill="#95BF47"/><path d="M19.4 5.9c-.1 0-1.7-.1-1.7-.1s-1.1-1.1-1.2-1.2c-.1 0-.1-.1-.2-.1L15.4 24 23 22.6S19.6 6.1 19.6 6c0-.1-.1-.1-.2-.1z" fill="#5E8E3E"/><path d="M14 8.8l-.9 2.8s-.8-.4-1.8-.4c-1.4 0-1.5.9-1.5 1.1 0 1.2 3.2 1.7 3.2 4.6 0 2.3-1.5 3.7-3.4 3.7-2.3 0-3.5-1.5-3.5-1.5l.6-2s1.2 1.1 2.3 1.1c.7 0 1-.5 1-1 0-1.6-2.7-1.7-2.7-4.3 0-2.2 1.6-4.4 4.9-4.4 1.3 0 1.8.4 1.8.4z" fill="#fff"/></svg>' },
     { name: 'ShipStation', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0099FF"/><path d="M6 9 L12 6.5 L18 9 L18 15.5 L12 18 L6 15.5 Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>' },
     { name: 'Outlook', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0078D4"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">O</text></svg>' },
     { name: 'Tally', status: 'request', svg: '<svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg>' },
@@ -520,7 +520,7 @@ function Integrations() {
     { name: 'Mailchimp', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FFE01B"/><text x="12" y="16" text-anchor="middle" fill="#241C15" font-family="sans-serif" font-weight="700" font-size="13">M</text></svg>' },
     { name: 'Klaviyo', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">K</text></svg>' },
     { name: 'PostgreSQL', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#336791"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="10">Pg</text></svg>' },
-    { name: 'Amazon', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#232F3E"/><text x="12" y="14" text-anchor="middle" fill="#FF9900" font-family="sans-serif" font-weight="700" font-size="11">a</text></svg>' },
+    { name: 'Amazon', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#fff"/><text x="2" y="14" fill="#252F3E" font-family="Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="-0.5">amazon</text><path d="M3 17.5c2.5 2 6 3 9 3s6.5-1 9-3" stroke="#FF9900" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M20 17l1.5-1.2L21 18z" fill="#FF9900"/></svg>' },
     { name: 'Braze', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FE5832"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">B</text></svg>' },
     { name: 'Bill.com', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#006FFF"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">BILL</text></svg>' },
     { name: 'TikTok Shop', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#FE2C55" font-family="sans-serif" font-weight="700" font-size="11">TT</text></svg>' },
@@ -541,13 +541,8 @@ function Integrations() {
         .int-marquee .int-card{flex:0 0 150px;position:relative}
         .int-marquee .int-card-custom{border:1px dashed var(--sg-blue);background:rgba(74,123,247,0.04)}
         .int-marquee .int-card-custom .int-name{color:var(--sg-blue)}
-        .int-badge{position:absolute;top:6px;right:6px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 6px;border-radius:999px;line-height:1.2}
-        .int-badge-live{background:rgba(16,185,129,0.12);color:#0f8f6a}
-        .int-badge-request{background:rgba(156,163,175,0.16);color:#5a6373}
         @keyframes int-roll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
         @media(prefers-reduced-motion:reduce){.int-track{animation:none}}
-        .int-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--fg2);margin-top:14px}
-        .int-legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
       `
     }
   }), /*#__PURE__*/React.createElement("div", {
@@ -558,17 +553,7 @@ function Integrations() {
     className: "h2"
   }, "Works with what you already use."), /*#__PURE__*/React.createElement("p", {
     className: "lead"
-  }, "Live integrations are deployed today. \"On request\" means we have the spec and will build it as part of your custom ERP - included in the build cost, not an upgrade."),
-    /*#__PURE__*/React.createElement("div", { className: "int-legend", "aria-label": "Integration status legend" },
-      /*#__PURE__*/React.createElement("span", null,
-        /*#__PURE__*/React.createElement("span", { className: "int-legend-dot", style: { background: '#0f8f6a' } }),
-        "Live today"
-      ),
-      /*#__PURE__*/React.createElement("span", null,
-        /*#__PURE__*/React.createElement("span", { className: "int-legend-dot", style: { background: '#9CA3AF' } }),
-        "Built on request, included in your build"
-      )
-    )
+  }, "Out-of-the-box and on-request integrations - all included in your custom ERP build, not an upgrade.")
   )), /*#__PURE__*/React.createElement(Reveal, {
     delay: 200
   }, /*#__PURE__*/React.createElement("div", {
@@ -579,10 +564,8 @@ function Integrations() {
     key: i,
     className: 'int-card' + (ig.custom ? ' int-card-custom' : ''),
     "aria-hidden": i >= items.length ? 'true' : undefined,
-    title: ig.status === 'live' ? 'Live today' : (ig.status === 'request' ? 'Built on request' : '')
+    title: ig.name
   },
-    ig.status === 'live' && /*#__PURE__*/React.createElement("span", { className: "int-badge int-badge-live" }, "Live"),
-    ig.status === 'request' && /*#__PURE__*/React.createElement("span", { className: "int-badge int-badge-request" }, "Request"),
     /*#__PURE__*/React.createElement("div", { className: "int-icon", dangerouslySetInnerHTML: { __html: ig.svg } }),
     /*#__PURE__*/React.createElement("div", { className: "int-name" }, ig.name)
   ))))), /*#__PURE__*/React.createElement("div", {

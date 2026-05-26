@@ -24,6 +24,8 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 .ig-marquee:hover .ig-track { animation-play-state: paused; }
 .ig-item { display: inline-flex; align-items: center; gap: 8px; color: var(--fg2); font-family: var(--font-heading); font-size: 16px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; flex: 0 0 auto; }
 .ig-item svg { flex: 0 0 auto; }
+.ig-icon { display: inline-flex; align-items: center; flex: 0 0 auto; line-height: 0; }
+.ig-icon svg { display: block; }
 @keyframes ig-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .ig-track { animation: none; } }
 @media (max-width: 640px) { .ig-bar { flex-direction: column; gap: 10px; padding: 12px 0; } .ig-label { padding: 0 16px; } }
