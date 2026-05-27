@@ -74,7 +74,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     {key:'c10',name:'Clause 10: Improvement',qs:['c1025','c1026','c1027','c1028']}
   ];
   const allQs = clauses.flatMap(c=>c.qs);
-  document.querySelectorAll('.q-options').forEach(g=>{g.querySelectorAll('label.q-option').forEach(l=>{l.addEventListener('click',()=>{g.querySelectorAll('label.q-option').forEach(x=>x.classList.remove('selected'));l.classList.add('selected');setTimeout(recalc,30);});});});
+  // Listen on the radio inputs (covers click, tap, and keyboard) so score updates on every selection.
+  document.querySelectorAll('.q-options').forEach(g=>{
+    g.querySelectorAll('input[type="radio"]').forEach(input=>{
+      input.addEventListener('change',()=>{
+        const chosen = input.closest('label.q-option');
+        g.querySelectorAll('label.q-option').forEach(x=>x.classList.remove('selected'));
+        if (chosen) chosen.classList.add('selected');
+        recalc();
+      });
+    });
+  });
   function answered(){return allQs.every(q=>document.querySelector('input[name="'+q+'"]:checked'));}
   function val(q){const el=document.querySelector('input[name="'+q+'"]:checked');return el?parseInt(el.value):0;}
   function recalc(){

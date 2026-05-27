@@ -119,11 +119,14 @@ document.addEventListener('DOMContentLoaded',()=>{
       cum += cf;
       yrs.push({y, rev:r_y, v, ebitda, ebit, ni, cf, pvCf, cum});
     }
-    // Terminal value at year 5
-    const tv = yrs[4].cf * 1.02 / (r - 0.02);
+    // Terminal value at year 5 - Gordon Growth requires discount rate > 2% perpetual growth.
+    // When the user's discount rate is at/below 2%, the formula blows up; fall back to a
+    // 10x cash-flow multiple so the result stays finite.
+    const tvSafe = (rate, cf5) => (rate > 0.025) ? cf5 * 1.02 / (rate - 0.02) : cf5 * 10;
+    const tv = tvSafe(r, yrs[4].cf);
     npv += tv / Math.pow(1+r, 5);
     // Simple IRR (binary search)
-    function npvAt(rate){let n=-inv; for(let y=1;y<=5;y++){n += yrs[y-1].cf/Math.pow(1+rate,y);} n+=yrs[4].cf*1.02/(rate-0.02)/Math.pow(1+rate,5); return n;}
+    function npvAt(rate){let n=-inv; for(let y=1;y<=5;y++){n += yrs[y-1].cf/Math.pow(1+rate,y);} n+=tvSafe(rate, yrs[4].cf)/Math.pow(1+rate,5); return n;}
     let lo=0.01, hi=2.0, irr=0;
     for (let i=0; i<60; i++){const mid=(lo+hi)/2; if (npvAt(mid)>0) lo=mid; else hi=mid;}
     irr = (lo+hi)/2 * 100;

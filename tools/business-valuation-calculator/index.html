@@ -178,8 +178,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     let revCheck = '';
     if (revMult > 1.0) revCheck = ' <span style="color:#B91C1C">(>1.0x revenue - check inputs)</span>';
     else if (revMult < 0.2) revCheck = ' <span style="color:var(--fg3)">(low revenue multiple - may be undervalued)</span>';
+    // Invariant checks. Profit shouldn't exceed revenue, EBITDA shouldn't
+    // exceed revenue, and SDE (net profit + owner comp) shouldn't either.
+    const _profitWarns = [];
+    if (rev > 0 && np > rev) _profitWarns.push('Net profit (' + fmt$(np) + ') exceeds revenue (' + fmt$(rev) + '). Profit cannot exceed revenue - double-check the net-profit figure.');
+    if (rev > 0 && ebitda > rev) _profitWarns.push('EBITDA (' + fmt$(ebitda) + ') exceeds revenue (' + fmt$(rev) + '). EBITDA cannot exceed revenue.');
+    if (rev > 0 && sde > rev) _profitWarns.push('SDE (net profit + owner comp = ' + fmt$(sde) + ') exceeds revenue (' + fmt$(rev) + '). The valuation is mathematically possible but commercially implausible.');
+    if (rev === 0 && (np > 0 || ebitda > 0)) _profitWarns.push('Revenue is $0 but profit/EBITDA is positive. Enter a non-zero revenue for a defensible valuation.');
 
     document.getElementById('hero').innerHTML = `
+      <div data-sg-warn></div>
       <div class="big-label">Estimated business value</div>
       <div class="big-number">${fmt$M(valMid)}</div>
       <div class="big-caption"><strong>${fmt$M(valLow)} - ${fmt$M(valHigh)}</strong> range based on ${earningsLabel} of ${fmt$(earnings)} × ${adjusted.toFixed(2)}× multiple. ${revMult.toFixed(2)}× revenue${revCheck}.${useEbitda ? ' <em style="color:var(--fg3);font-style:normal;font-size:13px">EBITDA-multiple methodology applied (EBITDA &gt; $5M).</em>' : ''}</div>
@@ -214,6 +222,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       ${unlockHtml}
       <p class="tool-note" style="margin-top:14px">Source: BizBuySell Transaction Database, IBBA Market Pulse, Pepperdine Private Capital Markets Project. Manufacturing businesses with documented SOPs and ERP systems sell at 0.5-1.0x higher multiples than those without (IBBA).</p>
     `;
+    if (typeof sgWarnPanel === 'function') sgWarnPanel(document.getElementById('hero'), _profitWarns);
     return {rev,np,ow,sde,ebitda,useEbitda,earnings,earningsLabel,vert,base,adj,adjusted,valLow,valMid,valHigh,revMult,factors,totalUnlock,assetFloor};
   }
   document.querySelectorAll('input, select').forEach(el=>el.addEventListener('input', recalc));

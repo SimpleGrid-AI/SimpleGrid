@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded',()=>{
           <tr><td><strong>Total</strong></td><td class="num"><strong>${Math.round(totalLossUnits)}</strong></td>${price>0?'<td class="num"><strong>'+fmt$(totalLossUnits*price)+'</strong></td><td class="num"><strong style="color:#B91C1C">'+fmt$(totalLossUnits*price*250)+'</strong></td>':''}</tr>
         </tbody>
       </table>
-      <p class="tool-note" style="margin-top:14px">Producing ${good} good units out of a theoretical max of ${Math.round(theoMax)} (${(good/theoMax*100).toFixed(1)}% utilization of theoretical capacity).</p>
+      <p class="tool-note" style="margin-top:14px">Producing ${good} good units out of a theoretical max of ${Math.round(theoMax)} (${theoMax>0?(good/theoMax*100).toFixed(1)+'%':'N/A'} utilization of theoretical capacity).</p>
     `;
     return {oee,availability,performance,quality,availLossUnits,perfLossUnits,qualLossUnits,totalLossUnits,price,rating};
   }

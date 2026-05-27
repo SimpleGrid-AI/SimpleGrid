@@ -137,10 +137,19 @@ document.addEventListener('DOMContentLoaded',()=>{
     else if (composite>=40) { grade='D'; gradeCls='red'; gradeBand='Below Average - gaps likely costing customers and margin'; }
     else { grade='F'; gradeCls='red'; gradeBand='Critical - operations are a business risk'; }
     document.getElementById('hero').innerHTML = `
+      <div data-sg-warn></div>
       <div class="big-label">Manufacturing Operations Health Score</div>
       <div class="big-number ${gradeCls}">${composite} <span style="font-size:24px;color:var(--fg3);font-weight:500">/ 100</span></div>
       <div class="big-caption"><strong>Grade ${grade}: ${gradeBand}.</strong></div>
     `;
+    // Surface mathematically impossible invariants. A unit cannot be
+    // simultaneously scrapped, reworked, AND returned, so the three rates
+    // shouldn't sum above 100%. Same idea: good output can't exceed actual.
+    const warns = [];
+    if (scrap + rework + returns > 100) warns.push('Scrap + rework + returns sum to ' + (scrap+rework+returns).toFixed(1) + '%. A unit can only fall into one of these buckets; the sum cannot exceed 100%.');
+    if (nn('good') > actual && actual > 0) warns.push('Good output (' + nn('good') + ') exceeds actual output (' + actual + '). Good output cannot exceed actual.');
+    if (otd > 100) warns.push('On-time delivery is ' + otd.toFixed(1) + '% - cannot exceed 100%.');
+    if (typeof sgWarnPanel === 'function') sgWarnPanel(document.getElementById('hero'), warns);
     const dims = [
       {name:'Production Efficiency (OEE)', short:'Production', score: Math.round(oeeScore), w:25, detail: 'OEE: '+oee.toFixed(1)+'% vs 85% target'},
       {name:'Quality Performance', short:'Quality', score: Math.round(qScore), w:25, detail: 'First-pass yield '+fpy.toFixed(1)+'%'},

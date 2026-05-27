@@ -115,10 +115,20 @@ document.addEventListener('DOMContentLoaded',()=>{
     const cCls = composite>=70?'green':composite>=40?'gold':'red';
     const cBand = composite>=80?'Best-in-class':composite>=65?'Above average':composite>=45?'Average':composite>=25?'Below average':'Critical';
     document.getElementById('hero').innerHTML = `
+      <div data-sg-warn></div>
       <div class="big-label">Operations Score</div>
       <div class="big-number ${cCls}">${composite} <span style="font-size:24px;color:var(--fg3);font-weight:500">/ 100</span></div>
       <div class="big-caption"><strong>${cBand}.</strong> Weighted composite of 5 essential manufacturing KPIs vs. industry benchmarks.</div>
     `;
+    // Sanity warnings on commercially implausible inputs. RPE above ~$2M/FTE is
+    // outside the entire BLS manufacturing distribution; OTD/scrap/gross margin
+    // can't be above 100%.
+    const _kpiWarns = [];
+    if (rpe > 2000) _kpiWarns.push('Revenue per Employee is $' + Math.round(rpe).toLocaleString() + 'K - this is implausibly high for manufacturing. Check the revenue and employee counts.');
+    if (vals.otd > 100) _kpiWarns.push('On-time delivery is ' + vals.otd.toFixed(1) + '% - cannot exceed 100%.');
+    if (vals.scrap > 100) _kpiWarns.push('Scrap rate is ' + vals.scrap.toFixed(1) + '% - cannot exceed 100%.');
+    if (vals.gm > 100) _kpiWarns.push('Gross margin is ' + vals.gm.toFixed(1) + '% - cannot exceed 100%.');
+    if (typeof sgWarnPanel === 'function') sgWarnPanel(document.getElementById('hero'), _kpiWarns);
     let bench = '<h2 style="margin-bottom:14px">KPI scorecard</h2><table class="results-table"><thead><tr><th>KPI</th><th class="num">You</th><th class="num">Industry median</th><th class="num">Top quartile</th><th class="num">Rating</th></tr></thead><tbody>';
     rows.forEach(r=>{
       bench += `<tr><td><strong>${r.b.name}</strong><div style="font-size:11px;color:var(--fg3)">Source: ${r.b.src}</div></td><td class="num ${r.cls}">${r.display}</td><td class="num">${r.medDisp}</td><td class="num">${r.topDisp}</td><td class="num">${star(r.s)}</td></tr>`;

@@ -13,6 +13,29 @@ function sgLoad(key, fallback) {
     return raw ? JSON.parse(raw) : (fallback ?? null);
   } catch (e) { return fallback ?? null; }
 }
+// Like sgLoad, but each loaded item is run through validate(item). Items that
+// fail validation are dropped; if the loaded value is not an array, fallback
+// is returned. Defends against localStorage poisoning (CWE-915 / stored XSS
+// vectors) by enforcing a schema at read time.
+function sgLoadArray(key, validate, fallback) {
+  const fb = Array.isArray(fallback) ? fallback : [];
+  let raw;
+  try { raw = localStorage.getItem(SG_NS + key); } catch (e) { return fb; }
+  if (!raw) return fb;
+  let parsed;
+  try { parsed = JSON.parse(raw); } catch (e) { return fb; }
+  if (!Array.isArray(parsed)) return fb;
+  const fn = typeof validate === 'function' ? validate : () => true;
+  const out = [];
+  for (let i = 0; i < parsed.length && i < 1000; i++) {
+    try { if (fn(parsed[i])) out.push(parsed[i]); } catch (e) { /* drop */ }
+  }
+  return out;
+}
+// Schema-validator factories used by tools that persist row arrays.
+const sgIsStr = v => typeof v === 'string' && v.length <= 5000;
+const sgIsISODate = v => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !isNaN(new Date(v).getTime());
+const sgIsEnum = (allowed) => v => typeof v === 'string' && allowed.indexOf(v) !== -1;
 
 // ----- formatting -----
 const USD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
@@ -203,9 +226,15 @@ function sgBuildPdf(spec) {
 }
 
 // ----- CSV export helper -----
+// Defends against CSV / formula injection (OWASP / CWE-1236): any cell whose
+// raw value starts with =, +, -, @, tab, or CR could be interpreted as a
+// formula by Excel/Sheets/Numbers. Prefix those cells with a leading apostrophe
+// so the spreadsheet treats them as literal text.
 function sgDownloadCSV(filename, rows) {
+  const FORMULA_PREFIX = /^[=+\-@\t\r]/;
   const escape = v => {
-    const s = String(v == null ? '' : v);
+    let s = String(v == null ? '' : v);
+    if (FORMULA_PREFIX.test(s)) s = "'" + s;
     return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
   };
   const csv = rows.map(r => r.map(escape).join(',')).join('\n');
@@ -360,8 +389,11 @@ function sgWireNumericClamps(scope) {
     }
     el.addEventListener('blur', () => sgClampInput(el, min, max));
     // Also clamp on input so values entered without a subsequent blur (mouse
-    // straight to submit button) cannot pass through unbounded.
-    el.addEventListener('input', () => sgClampInput(el, min, max, { silent: true }));
+    // straight to submit button) cannot pass through unbounded. Use capture
+    // phase so the clamp lands BEFORE any tool-specific recalc listener reads
+    // the value - otherwise listeners fire in registration order and recalc
+    // can see an unclamped value on the very first input event.
+    el.addEventListener('input', () => sgClampInput(el, min, max, { silent: true }), true);
   });
 }
 
@@ -403,6 +435,24 @@ function sgValidateDateOrder(startEl, endEl, label) {
   }
   return true;
 }
+
+// Apply a sensible maxlength cap to any free-text input that doesn't already
+// have one. Defends against pathological pastes (100k-char strings into a
+// company-name field) that would bloat localStorage or produce malformed PDFs.
+// Number inputs are handled by sgWireNumericClamps; this targets text/textarea.
+function sgGuardFreeText(scope) {
+  scope = scope || document;
+  const TEXT_DEFAULT = 1000;
+  scope.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input:not([type])').forEach(el => {
+    if (!el.hasAttribute('maxlength')) el.setAttribute('maxlength', String(TEXT_DEFAULT));
+  });
+  scope.querySelectorAll('textarea').forEach(el => {
+    if (!el.hasAttribute('maxlength')) el.setAttribute('maxlength', '5000');
+  });
+}
+// Run once at DOM ready so every tool gets the cap without needing per-page
+// wiring. Idempotent: if a field already has a maxlength, it's left alone.
+document.addEventListener('DOMContentLoaded', () => { try { sgGuardFreeText(document); } catch (e) {} });
 
 // ----- Reusable: hook up "Save my company" pattern -----
 function sgBindFields(fieldIdsToStorageKey) {

@@ -326,8 +326,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const itemsBody = document.getElementById('items-body'), itemsFoot = document.getElementById('items-foot');
   function addItem(p) {
     p=p||{};const tr=document.createElement('tr');
-    tr.innerHTML=`<td><input type="text" data-f="sku" value="${p.sku||''}"></td>
-      <td><input type="text" data-f="desc" placeholder="Description" value="${p.desc||''}"></td>
+    // sku/desc are free-text; escape so persisted/pasted values can't break out of value="".
+    const esc = (typeof sgEscapeHtml === 'function') ? sgEscapeHtml : (s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    tr.innerHTML=`<td><input type="text" data-f="sku" value="${esc(p.sku||'')}"></td>
+      <td><input type="text" data-f="desc" placeholder="Description" value="${esc(p.desc||'')}"></td>
       <td><input data-clamp="0,10000000" type="number" class="num" data-f="qty" step="0.01" min="0" value="${p.qty!=null?p.qty:''}" placeholder="0"></td>
       <td><input data-clamp="0,10000000" type="number" class="num" data-f="price" step="0.01" min="0" value="${p.price!=null?p.price:''}" placeholder="0.00"></td>
       <td class="col-line-total" data-f="line">$0.00</td>

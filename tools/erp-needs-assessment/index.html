@@ -371,7 +371,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     return el && el.getAttribute('data-hrs') ? parseInt(el.getAttribute('data-hrs')) : 0;
   }
   function valRev(){
-    return Math.max(0, parseFloat(document.getElementById('rev-exact').value) || 0);
+    // Defense in depth: clamp at read time too. The data-clamp wiring also
+    // clamps on input/blur, but the recalc listener can read the raw value
+    // before that listener fires (listeners run in registration order).
+    const raw = parseFloat(document.getElementById('rev-exact').value);
+    if (!Number.isFinite(raw)) return 0;
+    return Math.min(10000000000, Math.max(0, raw));
   }
 
   function deepAnswered(){

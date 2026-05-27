@@ -292,11 +292,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   const SKEY='psched_jobs';
   function addRow(p={}){
     const tr=document.createElement('tr');
-    tr.innerHTML=`<td><input type="text" data-f="name" placeholder="J-0042 Northwoods table run" value="${p.name||''}"></td>
-      <td><input type="date" data-f="start" value="${p.start||''}"></td>
-      <td><input type="date" data-f="end" value="${p.end||''}"></td>
+    // Restored values come from localStorage so they must be escaped before innerHTML interpolation.
+    const escA = (typeof sgEscapeHtml === 'function') ? sgEscapeHtml : (s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    tr.innerHTML=`<td><input type="text" data-f="name" placeholder="J-0042 Northwoods table run" value="${escA(p.name||'')}"></td>
+      <td><input type="date" data-f="start" value="${escA(p.start||'')}"></td>
+      <td><input type="date" data-f="end" value="${escA(p.end||'')}"></td>
       <td><select data-f="status">${['Planned','In progress','Done','Delayed'].map(s=>`<option ${p.status===s?'selected':''}>${s}</option>`).join('')}</select></td>
-      <td><input type="text" data-f="who" placeholder="Mike / Cell 2" value="${p.who||''}"></td>
+      <td><input type="text" data-f="who" placeholder="Mike / Cell 2" value="${escA(p.who||'')}"></td>
       <td class="col-actions"><button type="button" class="row-del">×</button></td>`;
     tbody.appendChild(tr);
     tr.querySelector('.row-del').addEventListener('click',()=>{tr.remove();renderGantt();save();});
@@ -322,13 +324,16 @@ document.addEventListener('DOMContentLoaded',()=>{
   function renderGantt(){
     const wrap=document.getElementById('gantt-wrap');
     const all=jobs().filter(j=>j.name&&j.start&&j.end);
+    // Job name/owner come from text inputs that are stored in localStorage, so they must
+    // be escaped before being interpolated into innerHTML.
+    const esc = (typeof sgEscapeHtml === 'function') ? sgEscapeHtml : (s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     // Separate valid jobs (end >= start) from invalid - invalid jobs are still
     // listed but called out with a warning instead of silently dropped.
     const invalid = all.filter(j => j.end < j.start);
     const js = all.filter(j => j.end >= j.start);
     let invalidBanner = '';
     if (invalid.length) {
-      invalidBanner = `<div role="alert" style="margin-bottom:12px;padding:10px 12px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.30);border-radius:8px;color:#B91C1C;font-size:14px;font-weight:600">⚠ ${invalid.length} job${invalid.length>1?'s have':' has'} an end date before the start date and ${invalid.length>1?'are':'is'} not shown on the chart: ${invalid.map(j=>'<em style="font-style:normal;font-weight:400">' + (j.name||'(unnamed)') + ' (' + j.start + ' → ' + j.end + ')</em>').join(', ')}. Fix the dates to include ${invalid.length>1?'them':'it'}.</div>`;
+      invalidBanner = `<div role="alert" style="margin-bottom:12px;padding:10px 12px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.30);border-radius:8px;color:#B91C1C;font-size:14px;font-weight:600">⚠ ${invalid.length} job${invalid.length>1?'s have':' has'} an end date before the start date and ${invalid.length>1?'are':'is'} not shown on the chart: ${invalid.map(j=>'<em style="font-style:normal;font-weight:400">' + esc(j.name||'(unnamed)') + ' (' + esc(j.start) + ' → ' + esc(j.end) + ')</em>').join(', ')}. Fix the dates to include ${invalid.length>1?'them':'it'}.</div>`;
     }
     if(js.length===0){wrap.innerHTML=invalidBanner+'<div style="padding:32px;color:var(--fg3);font-size:14px;text-align:center">Add at least one job with start and end dates.</div>';return;}
     const minStart=js.reduce((a,j)=>a<j.start?a:j.start,js[0].start);
@@ -349,9 +354,9 @@ document.addEventListener('DOMContentLoaded',()=>{
       const w=dur*dayPx;
       // Bar shows status as colored block; job name lives in the sticky first column
       // (avoids white-on-light-status contrast failures: gold/red barely pass AA at 11px).
-      rowsHtml+=`<tr><td class="job-name">${j.name}${j.who?'<div style="font-size:11px;font-weight:400;color:var(--fg3);margin-top:2px">'+j.who+'</div>':''}</td>
+      rowsHtml+=`<tr><td class="job-name">${esc(j.name)}${j.who?'<div style="font-size:11px;font-weight:400;color:var(--fg3);margin-top:2px">'+esc(j.who)+'</div>':''}</td>
         <td colspan="${colspan}" style="position:relative;padding:8px 4px;background:repeating-linear-gradient(90deg,#fff,#fff ${dayPx*step-1}px,#f3f5f8 ${dayPx*step-1}px,#f3f5f8 ${dayPx*step}px)">
-          <div class="bar ${statusColor[j.status]||''}" role="img" aria-label="${j.name} - ${j.status}" style="position:absolute;left:${left+4}px;top:8px;width:${w}px"></div>
+          <div class="bar ${statusColor[j.status]||''}" role="img" aria-label="${esc(j.name)} - ${esc(j.status)}" style="position:absolute;left:${left+4}px;top:8px;width:${w}px"></div>
         </td></tr>`;
     });
     wrap.innerHTML=invalidBanner+`<table class="gantt"><thead><tr>${headHtml}</tr></thead><tbody>${rowsHtml}</tbody></table>`;
@@ -394,9 +399,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 
-  // Restore saved jobs or seed demo data
-  const saved=sgLoad(SKEY,null);
-  if(saved && saved.length>0){
+  // Restore saved jobs or seed demo data. sgLoadArray drops rows that don't
+  // pass the schema (defends against poisoned localStorage values - prototype
+  // pollution keys, oversized strings, non-ISO dates, unknown statuses).
+  const STATUSES = ['Planned','In progress','Done','Delayed'];
+  const saved = sgLoadArray(SKEY, j => j && typeof j === 'object'
+    && (j.name == null || sgIsStr(j.name))
+    && (j.start == null || j.start === '' || sgIsISODate(j.start))
+    && (j.end == null || j.end === '' || sgIsISODate(j.end))
+    && (j.status == null || STATUSES.indexOf(j.status) !== -1)
+    && (j.who == null || sgIsStr(j.who))
+  );
+  if(saved.length>0){
     saved.forEach(j=>addRow(j));
   } else {
     const t=todayISO();

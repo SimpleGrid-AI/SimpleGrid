@@ -75,9 +75,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     {key:'me',name:'Maintenance & Equipment',qs:['me22','me23','me24']}
   ];
   const allQs = dims.flatMap(d=>d.qs);
+  // Listen on the radio inputs (covers click, tap, and keyboard) so score updates on every selection.
   document.querySelectorAll('.q-options').forEach(g=>{
-    g.querySelectorAll('label.q-option').forEach(l=>{
-      l.addEventListener('click',()=>{g.querySelectorAll('label.q-option').forEach(x=>x.classList.remove('selected'));l.classList.add('selected');setTimeout(recalc,30);});
+    g.querySelectorAll('input[type="radio"]').forEach(input=>{
+      input.addEventListener('change',()=>{
+        const chosen = input.closest('label.q-option');
+        g.querySelectorAll('label.q-option').forEach(x=>x.classList.remove('selected'));
+        if (chosen) chosen.classList.add('selected');
+        recalc();
+      });
     });
   });
   function answered(){return allQs.every(q=>document.querySelector('input[name="'+q+'"]:checked'));}

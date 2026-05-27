@@ -303,11 +303,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   function addRow(p={}){
     itemNum++;
     const tr=document.createElement('tr');
-    tr.innerHTML=`<td><input type="text" data-f="num" value="${p.num||itemNum}" style="text-align:center"></td>
-      <td><input type="text" data-f="sku" placeholder="LEG-OAK-30" value="${p.sku||''}"></td>
-      <td><input type="text" data-f="desc" placeholder="Solid oak table leg 30in" value="${p.desc||''}"></td>
+    // Free-text fields are persisted; escape before innerHTML interpolation.
+    const esc = (typeof sgEscapeHtml === 'function') ? sgEscapeHtml : (s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    tr.innerHTML=`<td><input type="text" data-f="num" value="${esc(p.num||itemNum)}" style="text-align:center"></td>
+      <td><input type="text" data-f="sku" placeholder="LEG-OAK-30" value="${esc(p.sku||'')}"></td>
+      <td><input type="text" data-f="desc" placeholder="Solid oak table leg 30in" value="${esc(p.desc||'')}"></td>
       <td><input type="number" class="num" data-f="qty" data-clamp="0,1000000" step="0.01" value="${p.qty!=null?p.qty:''}" placeholder="0"></td>
-      <td><input type="text" data-f="uom" value="${p.uom||''}" placeholder="each"></td>
+      <td><input type="text" data-f="uom" value="${esc(p.uom||'')}" placeholder="each"></td>
       <td><input type="number" class="num" data-f="price" data-clamp="0,1000000" step="0.01" value="${p.price!=null?p.price:''}" placeholder="0.00"></td>
       <td class="col-line-total" data-f="line">$0.00</td>
       <td class="col-actions"><button type="button" class="row-del">×</button></td>`;

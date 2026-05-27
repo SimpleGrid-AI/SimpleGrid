@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div class="results-grid" style="margin-top:24px">
         <div class="results-stat"><div class="label">Waste as % of revenue</div><div class="value ${wastePctRev<2?'green':wastePctRev<5?'gold':'red'}">${wastePctRev.toFixed(1)}%</div><div class="sub">World-class: &lt;1%</div></div>
         <div class="results-stat"><div class="label">Waste as % of COGS</div><div class="value">${wastePctCOGS.toFixed(1)}%</div></div>
-        <div class="results-stat"><div class="label">True margin after waste</div><div class="value ${trueMargin>=25?'green':trueMargin>=15?'gold':'red'}">${trueMargin.toFixed(1)}%</div><div class="sub">Reported: ${reportedMargin.toFixed(1)}%</div></div>
+        <div class="results-stat"><div class="label">True margin after waste</div><div class="value ${trueMargin>=25?'green':trueMargin>=15?'gold':'red'}">${price<=0?'N/A':(trueMargin<-999?'<-999%':trueMargin>999?'>999%':trueMargin.toFixed(1)+'%')}</div><div class="sub">Reported: ${price<=0?'N/A':(reportedMargin<-999?'<-999%':reportedMargin>999?'>999%':reportedMargin.toFixed(1)+'%')}</div></div>
       </div>
     `;
     sgWarnPanel(swHero, warns);
