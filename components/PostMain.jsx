@@ -172,7 +172,7 @@ function BlogPost() {
 
     <section className="post-header">
       <div className="container-sm">
-        <a href="/blog.html" style={{ fontSize: 13, color: 'var(--sg-blue)', textDecoration: 'none', border: 'none' }}>← Back to blog</a>
+        <a href="/blog.html" style={{ fontSize: 'var(--fs-caption)', color: 'var(--sg-blue)', textDecoration: 'none', border: 'none' }}>← Back to blog</a>
         <h1>{blog.title}</h1>
         <div className="post-meta">
           {blog.datePublished && (
@@ -194,7 +194,7 @@ function BlogPost() {
 
         {/* CTA */}
         <div style={{ background: 'var(--sg-blue-light)', borderRadius: 'var(--radius-lg)', padding: '32px', marginTop: 40, textAlign: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-heading)', fontSize: 18, fontWeight: 700, color: 'var(--fg1)', margin: '0 0 12px' }}>See how this works for your operation.</p>
+          <p style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--fs-body)', fontWeight: 700, color: 'var(--fg1)', margin: '0 0 12px' }}>See how this works for your operation.</p>
           <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a demo</a>
         </div>
 

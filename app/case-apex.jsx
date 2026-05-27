@@ -56,7 +56,7 @@ function BarsInfographic() {
           ))}
           <div style={{marginTop:18,paddingTop:14,borderTop:'1px solid var(--border)',display:'flex',justifyContent:'space-between',alignItems:'baseline'}}>
             <div style={{fontSize:11,fontWeight:700,letterSpacing:'0.12em',color:'var(--fg3)'}}>TOTAL SHIRTS / MONTH</div>
-            <div style={{fontFamily:'var(--font-heading)',fontSize:24,fontWeight:700,color:'var(--sg-blue)',letterSpacing:'-0.02em'}}>80,000 – 100,000</div>
+            <div style={{fontFamily:'var(--font-heading)',fontSize:24,fontWeight:700,color:'var(--sg-blue)',letterSpacing:'-0.02em'}}>80,000 - 100,000</div>
           </div>
         </div>
 
@@ -168,13 +168,13 @@ function ApexCaseStudy() {
     <section className="case-hero">
       <div className="container">
         <div className="tag">CASE STUDY · APPAREL MANUFACTURING</div>
-        <h1>An apparel manufacturer running 80,000–100,000 shirts a month - without a factory of his own.</h1>
+        <h1>An apparel manufacturer running 80,000-100,000 shirts a month - without a factory of his own.</h1>
         <p className="case-hook">Two years. Two failed ERPs. Over $100,000 spent with nothing to show for it. The company runs three interconnected businesses through 20+ job workers and stores inventory at its logistics partners' warehouses - 30+ locations in total. Every generic ERP assumed a factory model. This operation does not have a factory.</p>
         <div className="confidential-banner">
           🔒 Client name withheld for confidentiality. We refer to them as "Apex Apparel" throughout this case study.
         </div>
         <div className="case-strip">
-          <div className="case-strip-item"><div className="label">Monthly volume</div><div className="value">80k–100k shirts</div></div>
+          <div className="case-strip-item"><div className="label">Monthly volume</div><div className="value">80k-100k shirts</div></div>
           <div className="case-strip-item"><div className="label">Operating model</div><div className="value">100% job work</div></div>
           <div className="case-strip-item"><div className="label">Inventory locations</div><div className="value">30+ tracked live</div></div>
           <div className="case-strip-item"><div className="label">Deployed in</div><div className="value">12 days</div></div>
@@ -191,7 +191,7 @@ function ApexCaseStudy() {
 
         <div className="stat-row">
           <div className="stat-cell">
-            <div className="stat-num">80–100<span className="unit">k</span></div>
+            <div className="stat-num">80-100<span className="unit">k</span></div>
             <div className="stat-label">Shirts manufactured per month, across all three streams</div>
           </div>
           <div className="stat-cell">
@@ -256,9 +256,9 @@ function ApexCaseStudy() {
 
       <section className="case-section">
         <h2>What we built</h2>
-        <p>We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a <strong>working demo in 24 hours</strong>: 60–70% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams.</p>
+        <p>We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a <strong>working demo in 24 hours</strong>: 60-70% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams.</p>
         <p>Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case.</p>
-        <p style={{fontFamily:'var(--font-heading)',fontSize:18,fontWeight:700,color:'var(--sg-blue)',margin:'24px 0'}}>Day 12: live. 34 things tracked end-to-end. 44 automatic triggers. Inventory visible across 30+ locations in real time.</p>
+        <p style={{fontFamily:'var(--font-heading)',fontSize:'var(--fs-body)',fontWeight:700,color:'var(--sg-blue)',margin:'24px 0'}}>Day 12: live. 34 things tracked end-to-end. 44 automatic triggers. Inventory visible across 30+ locations in real time.</p>
       </section>
 
       <section className="case-section">
@@ -298,7 +298,7 @@ function ApexCaseStudy() {
       </section>
 
       <div className="testimonial-block">
-        <blockquote>"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60–70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check."</blockquote>
+        <blockquote>"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60-70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check."</blockquote>
         <div className="attr">- Founder, Apex Apparel <span style={{color:'var(--fg3)',fontWeight:400}}>(name withheld for confidentiality)</span></div>
       </div>
 

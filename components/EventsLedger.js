@@ -260,7 +260,7 @@ function EventsLedger() {
     className: "ledger-callout-tag"
   }, "WHAT THIS GIVES YOU"), /*#__PURE__*/React.createElement("h3", {
     className: "ledger-callout-h"
-  }, "Time travel for your business."), /*#__PURE__*/React.createElement("p", {
+  }, "Replay any day to see exactly what happened."), /*#__PURE__*/React.createElement("p", {
     className: "ledger-callout-p"
   }, "Pick any moment in your factory", '’', "s past - March 14th at 3:42 PM, last Tuesday morning, the day before that big dispatch - and see exactly what was true. Who approved what. Where the order was. What inventory you had. The system replays it for you, with the names and the timestamps still attached."))), /*#__PURE__*/React.createElement("div", {
     className: "ledger-benefits"
@@ -463,7 +463,7 @@ function ArchitectureNew() {
     className: "arch-outcome-box"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
+      fontSize: 'var(--fs-caption)',
       fontWeight: 700,
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
@@ -497,7 +497,7 @@ function ArchitectureNew() {
     }
   }, x.t), /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
+      fontSize: 'var(--fs-caption)',
       color: 'var(--fg2)',
       lineHeight: 1.6
     }
@@ -511,7 +511,7 @@ function ArchitectureNew() {
     }
   }, /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 15,
+      fontSize: 'var(--fs-small)',
       color: 'var(--fg2)',
       lineHeight: 1.7,
       margin: 0,
@@ -519,7 +519,7 @@ function ArchitectureNew() {
     }
   }, "\"This is not AI. AI is the surface. Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know.\""), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 13,
+      fontSize: 'var(--fs-caption)',
       color: 'var(--fg3)',
       lineHeight: 1.5,
       margin: '6px 0 0',
@@ -670,7 +670,7 @@ function ProductHeroNew() {
       display: 'flex',
       gap: 32,
       flexWrap: 'wrap',
-      fontSize: 13,
+      fontSize: 'var(--fs-caption)',
       color: noteColor
     }
   }, /*#__PURE__*/React.createElement("span", null, "\u25CF Built at our risk"), /*#__PURE__*/React.createElement("span", null, "\u25CF Live in 7\u201321 days"), /*#__PURE__*/React.createElement("span", null, "\u25CF Paid for only after it works"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {

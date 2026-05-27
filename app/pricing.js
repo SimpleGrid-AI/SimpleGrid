@@ -100,7 +100,7 @@ function PricingPage() {
     style: {
       maxWidth: '100%'
     }
-  }, "Every other ERP vendor charges you to find out if it works. We don't. SimpleGrid builds a custom ERP around your factory at our cost. You run it on your real floor for 30 days. If it doesn't move the business, you walk. We earn nothing."), /*#__PURE__*/React.createElement("p", {
+  }, "Other ERPs charge up front to find out if they'll work. We don't charge until it's run on your floor for 30 days. SimpleGrid builds a custom ERP around your factory at our cost. You run it on your real floor for 30 days. If it doesn't move the business, you walk. We earn nothing."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
       maxWidth: '100%',
@@ -161,7 +161,7 @@ function PricingPage() {
     }
   }, t.name), /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
+      fontSize: 'var(--fs-caption)',
       color: 'var(--fg3)'
     }
   }, t.sub)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -175,7 +175,7 @@ function PricingPage() {
     }
   }, t.price), t.priceUnit && /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 12,
+      fontSize: 'var(--fs-tag)',
       color: 'var(--fg3)',
       marginTop: 6
     }
@@ -311,7 +311,7 @@ function PricingPage() {
     }
   }, r.us), /*#__PURE__*/React.createElement("td", null, r.sap), /*#__PURE__*/React.createElement("td", null, r.netsuite), /*#__PURE__*/React.createElement("td", null, r.qbe)))))), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 12,
+      fontSize: 'var(--fs-tag)',
       color: 'var(--fg3)',
       marginTop: 14,
       fontStyle: 'italic'

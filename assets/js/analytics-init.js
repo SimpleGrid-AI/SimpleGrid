@@ -1,8 +1,19 @@
-// SimpleGrid analytics init - shared across every page.
-// - PostHog + GA4 are both deferred until first user interaction or 30s timeout
-//   (matches the privacy posture: nothing fires until the visitor does something).
-// - The cookie banner sets localStorage `sg_ph_opt_out=1` to permanently disable.
-// - The same flag controls both PostHog and GA4 so opt-out is one click.
+// SimpleGrid analytics init — shared across every page.
+//
+// Consent gate:
+//   PostHog and GA4 only load AFTER the visitor has clicked "Accept" on the
+//   cookie banner (which sets localStorage.sg_consent = 'accepted'). They do
+//   NOT load on first mouse-move / scroll / touch — that pattern fires
+//   analytics before the visitor sees a banner, which fails GDPR-strict
+//   regulators (UK ICO has cracked down on implicit consent). CCPA is fine
+//   either way; this is the safer common denominator for US + EU/UK + India.
+//
+// On every page load, this script:
+//   1. Checks localStorage.sg_consent.
+//      - 'accepted' → loads PostHog + GA4 immediately.
+//      - 'declined' or sg_ph_opt_out=1 → loads nothing.
+//      - unset → waits for `sg:consent-accepted` window event from cookie-consent.js.
+//   2. Also exposes window.sgPostHogOptOut(true|false) for manual opt-in/out.
 (function () {
   if (typeof window === 'undefined') return;
 
@@ -36,29 +47,35 @@
   function load() {
     try {
       if (localStorage.getItem('sg_ph_opt_out') === '1') return;
-    } catch (e) { /* ignore */ }
+    } catch (e) { /* localStorage blocked — be safe, don't load */ return; }
     loadPostHog();
     loadGA4();
   }
 
-  // Defer until first user interaction (privacy-friendlier + faster TBT).
-  // Fallback to 30s for passive readers.
-  var loaded = false;
-  var events = ['mousemove', 'scroll', 'click', 'touchstart', 'keydown'];
-  function trigger() {
-    if (loaded) return;
-    loaded = true;
-    load();
-    events.forEach(function (e) { document.removeEventListener(e, trigger, true); });
+  function consentStatus() {
+    try { return localStorage.getItem('sg_consent') || ''; }
+    catch (e) { return ''; }
   }
-  events.forEach(function (e) { document.addEventListener(e, trigger, { once: true, passive: true, capture: true }); });
-  setTimeout(trigger, 30000);
 
-  // Console helper for users to opt out manually.
+  // Explicit consent gate. No analytics fires until the user clicks Accept.
+  if (consentStatus() === 'accepted') {
+    load();
+  } else {
+    window.addEventListener('sg:consent-accepted', load, { once: true });
+  }
+
+  // Console helper for users to opt out / opt back in manually.
   window.sgPostHogOptOut = function (out) {
     try {
-      if (out === false) localStorage.removeItem('sg_ph_opt_out');
-      else { localStorage.setItem('sg_ph_opt_out', '1'); console.log('SimpleGrid: analytics opted out on this device.'); }
+      if (out === false) {
+        localStorage.removeItem('sg_ph_opt_out');
+        localStorage.setItem('sg_consent', 'accepted');
+        load();
+      } else {
+        localStorage.setItem('sg_ph_opt_out', '1');
+        localStorage.setItem('sg_consent', 'declined');
+        console.log('SimpleGrid: analytics opted out on this device.');
+      }
     } catch (e) { /* ignore */ }
   };
 })();

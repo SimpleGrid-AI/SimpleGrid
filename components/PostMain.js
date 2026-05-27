@@ -227,7 +227,7 @@ function BlogPost() {
   }, /*#__PURE__*/React.createElement("a", {
     href: "/blog.html",
     style: {
-      fontSize: 13,
+      fontSize: 'var(--fs-caption)',
       color: 'var(--sg-blue)',
       textDecoration: 'none',
       border: 'none'
@@ -256,7 +256,7 @@ function BlogPost() {
   }, /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'var(--font-heading)',
-      fontSize: 18,
+      fontSize: 'var(--fs-body)',
       fontWeight: 700,
       color: 'var(--fg1)',
       margin: '0 0 12px'

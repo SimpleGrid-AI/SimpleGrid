@@ -22,13 +22,13 @@ function ProductionFlow() {
     id: 'order',
     label: 'Sales order received',
     icon: '📋',
-    detail: 'Buyer PO arrives. AI parses it instantly.',
+    detail: 'Buyer PO arrives. Parsed and routed in seconds.',
     color: '#3461E0'
   }, {
     id: 'plan',
     label: 'Planning & allocation',
     icon: '📐',
-    detail: 'Planner allocates: in-house vs vendor. Auto-calculated.',
+    detail: 'Planner allocates in-house vs contractor. Labor cost calculated per option.',
     color: '#7C3AED'
   }, {
     id: 'procure',
@@ -115,7 +115,7 @@ function ProductionFlow() {
     style: {
       fontSize: 28
     }
-  }, "From the first PO to the final dispatch, we cover every step in between.")), /*#__PURE__*/React.createElement("div", {
+  }, "Eight stages. One ledger. PO to dispatch - every step logged.")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -237,7 +237,7 @@ function ProductionFlow() {
     }
   }, stages[activeStage].label), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 15,
+      fontSize: 'var(--fs-small)',
       color: 'var(--fg2)',
       lineHeight: 1.6,
       margin: '0 0 16px'
@@ -265,7 +265,7 @@ function ProductionFlow() {
     style: {
       textAlign: 'center',
       marginTop: 32,
-      fontSize: 12,
+      fontSize: 'var(--fs-tag)',
       color: 'var(--fg3)',
       animation: 'sg-float 2s ease-in-out infinite'
     }

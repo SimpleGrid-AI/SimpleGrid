@@ -3,13 +3,11 @@
 <head>
 <meta charset="utf-8">
 <!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
 
 <title>About SimpleGrid - Built by an Operator Who's Been on Your Floor</title>
-<meta name="description" content="SimpleGrid was built by a founder who ran a $30M manufacturing business, watched two ERP implementations fail, and ended up running operations on Google Sheets. Now we ship the ERP we needed.">
+<meta name="description" content="SimpleGrid was built by a founder who ran a $30M factory and survived two ERP failures. Now we ship the ERP we needed.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#3461E0">
 <meta name="robots" content="index, follow">
@@ -18,7 +16,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
 <link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
+<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
 <link rel="stylesheet" href="colors_and_type.css">
 <link rel="stylesheet" href="styles.css">
 
@@ -73,7 +71,7 @@
 }
 </script>
 <!-- No-flash boot: fade #root in once React replaces the seed (or after 1.2s failsafe) -->
-<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}</style>
+<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}@media (prefers-reduced-motion: reduce){html.js #root,html.js #root.sg-mounted{opacity:1;transition:none}}</style>
 <script>(function(){var h=document.documentElement;h.classList.add('js');function s(){var r=document.getElementById('root');if(!r)return;var m=new MutationObserver(function(){r.classList.add('sg-mounted');m.disconnect()});m.observe(r,{childList:true});setTimeout(function(){r.classList.add('sg-mounted');m.disconnect()},1200)}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',s)}else{s()}})();</script>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
@@ -103,11 +101,19 @@
       <a href="https://cal.com/simplegrid-ai" rel="noopener noreferrer">Book a demo</a>
     </nav>
   </header>
-  <main id="main" style="padding:60px 32px;max-width:920px;margin:0 auto">
-    <h1 style="font-size:44px;line-height:1.1;letter-spacing:-0.025em;margin:0 0 18px">Built by an operator who's been on your floor.</h1>
-    <p style="font-size:18px;line-height:1.55;color:#3b4250;margin:0 0 28px">Mukund built and ran a $30M manufacturing business before SimpleGrid. Two ERP implementations failed on him. He has lived through the 2 AM WhatsApp from the plant manager, the month-end reconciliation marathons, the contractor settlement disputes, the export PO that arrived as a PDF and had to be re-keyed by hand.</p>
-    <p style="font-size:16px;line-height:1.6;color:#3b4250;margin:0 0 32px">SimpleGrid was not designed by software engineers asking factories what they needed. It was designed by the factory owner. You work directly with the team that builds it - senior engineers, deployment experts, and the founder, not a sales rep, not a chatbot. We onboard selectively each quarter because we only succeed when our customers succeed. If we're not a match in the first 15-minute call, we say so and you keep your morning.</p>
-    <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3461e0;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600">Book a demo</a>
+  <main id="main">
+    <section style="position:relative;background-image:url(assets/team_photo.jpeg);background-size:cover;background-position:center;color:#fff;overflow:hidden;min-height:78vh;display:flex;align-items:center;padding:160px 32px">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:rgba(8,10,14,0.85);z-index:0"></div>
+      <div style="position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:24px">ABOUT US</div>
+        <h1 style="font-family:var(--font-heading);font-weight:700;letter-spacing:-0.03em;line-height:1.05;font-size:clamp(44px, 6.5vw, 72px);color:#fff;margin:0 0 28px;max-width:1100px">Built by an operator who's been on your floor.</h1>
+        <p style="font-size:clamp(18px, 1.7vw, 22px);line-height:1.55;color:rgba(255,255,255,0.85);margin:0;max-width:920px">Mukund built and ran a $30M manufacturing business before SimpleGrid. Two ERP implementations failed on him. SimpleGrid was not designed by software engineers asking factories what they needed - it was designed by the factory owner.</p>
+      </div>
+    </section>
+    <section style="padding:60px 32px;max-width:920px;margin:0 auto">
+      <p style="font-size:16px;line-height:1.6;color:#3b4250;margin:0 0 32px">You work directly with the team that builds SimpleGrid - senior engineers, deployment experts, and the founder, not a sales rep, not a chatbot. We onboard selectively each quarter because we only succeed when our customers succeed.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3461e0;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600">Book a demo</a>
+    </section>
   </main>
 </div>
 <script src="components/Nav.js" defer></script>

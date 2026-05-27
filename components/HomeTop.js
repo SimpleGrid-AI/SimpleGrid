@@ -663,19 +663,19 @@ function ProblemSection() {
       y: 36,
       l1: 'No usable',
       l2: 'system',
-      color: '#DC2A3D',
+      color: '#374151',
       sub: 'project shelved'
     }, {
       y: 100,
       l1: 'Half-working',
       l2: 'system',
-      color: '#F59E0B',
+      color: '#374151',
       sub: 'forced into modules'
     }, {
       y: 164,
       l1: 'Fully working',
       l2: 'system',
-      color: '#10B981',
+      color: '#374151',
       sub: 'rare, slow, expensive'
     }].map((o, i) => /*#__PURE__*/React.createElement("g", {
       key: i
@@ -747,7 +747,7 @@ function ProblemSection() {
       width: "360",
       height: "20",
       rx: "10",
-      fill: "#10B981",
+      fill: "#3461E0",
       style: {
         transformOrigin: '20px 72px',
         animation: 'sg-grow-b 3s ease-out infinite'
@@ -782,7 +782,7 @@ function ProblemSection() {
       width: "180",
       height: "20",
       rx: "10",
-      fill: "#DC2A3D",
+      fill: "#9CA3AF",
       style: {
         transformOrigin: '20px 146px',
         animation: 'sg-grow-c 3s ease-out infinite'
@@ -791,7 +791,7 @@ function ProblemSection() {
       x: "214",
       y: "150",
       fontSize: "11",
-      fill: "#DC2A3D",
+      fill: "#6B7280",
       fontWeight: "700"
     }, "\u2190 Growth Stalls"), /*#__PURE__*/React.createElement("style", null, `@keyframes sg-grow-b{0%{transform:scaleX(0)}60%,100%{transform:scaleX(1)}}@keyframes sg-grow-c{0%{transform:scaleX(0)}50%,100%{transform:scaleX(1)}}@keyframes sg-fade-b{0%,60%{opacity:0}75%,100%{opacity:1}}`))
   }, {
@@ -952,7 +952,7 @@ function ProblemSection() {
       fontFamily: 'var(--font-heading)',
       fontSize: 22,
       fontWeight: 700,
-      color: 'var(--sg-red)',
+      color: 'var(--sg-blue)',
       letterSpacing: '-0.02em'
     }
   }, p.n), /*#__PURE__*/React.createElement("h3", {

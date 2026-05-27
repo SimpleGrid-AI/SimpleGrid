@@ -28,7 +28,6 @@ const PAGE_SLUGS = {
   'about.html':        'about',
   'blog.html':         'blog',
   'case-studies.html': 'case-studies',
-  'case-elite.html':   'case-elite',
   'case-apex.html':    'case-apex',
   'hiring.html':       'hiring',
   'privacy.html':      'privacy',

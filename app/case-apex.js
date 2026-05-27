@@ -514,7 +514,7 @@ function ApexCaseStudy() {
   }, /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a ", /*#__PURE__*/React.createElement("strong", null, "working demo in 24 hours"), ": 60\u201370% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams."), /*#__PURE__*/React.createElement("p", null, "Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'var(--font-heading)',
-      fontSize: 18,
+      fontSize: 'var(--fs-body)',
       fontWeight: 700,
       color: 'var(--sg-blue)',
       margin: '24px 0'

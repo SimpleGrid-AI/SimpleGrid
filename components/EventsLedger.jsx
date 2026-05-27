@@ -135,7 +135,7 @@ function EventsLedger() {
         <Reveal>
           <div className="ledger-callout">
             <div className="ledger-callout-tag">WHAT THIS GIVES YOU</div>
-            <h3 className="ledger-callout-h">Time travel for your business.</h3>
+            <h3 className="ledger-callout-h">Replay any day to see exactly what happened.</h3>
             <p className="ledger-callout-p">
               Pick any moment in your factory{'’'}s past - March 14th at 3:42 PM, last Tuesday morning, the day before that big dispatch - and see exactly what was true. Who approved what. Where the order was. What inventory you had. The system replays it for you, with the names and the timestamps still attached.
             </p>
@@ -265,7 +265,7 @@ function ArchitectureNew() {
 
         {/* The "why this matters" outcome row */}
         <div className="arch-outcome-box">
-          <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg3)', marginBottom: 18 }}>What this combination unlocks</div>
+          <div style={{ fontSize: 'var(--fs-caption)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg3)', marginBottom: 18 }}>What this combination unlocks</div>
           <div className="arch-outcome-grid">
             {[
               { t: '7-day deploys', p: 'New operation → new system, generated from your SG Schema. No new codebase per customer.' },
@@ -275,7 +275,7 @@ function ArchitectureNew() {
             ].map((x, i) => (
               <div key={i} className="arch-outcome-cell">
                 <div style={{ fontFamily: 'var(--font-heading)', fontSize: 16, fontWeight: 700, color: 'var(--fg1)', marginBottom: 6 }}>{x.t}</div>
-                <div style={{ fontSize: 13, color: 'var(--fg2)', lineHeight: 1.6 }}>{x.p}</div>
+                <div style={{ fontSize: 'var(--fs-caption)', color: 'var(--fg2)', lineHeight: 1.6 }}>{x.p}</div>
               </div>
             ))}
           </div>
@@ -284,10 +284,10 @@ function ArchitectureNew() {
         {/* The honest line */}
         <Reveal delay={200}>
           <div style={{ marginTop: 40, padding: '24px 0', borderTop: '1px solid var(--border)' }}>
-            <p style={{ fontSize: 15, color: 'var(--fg2)', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+            <p style={{ fontSize: 'var(--fs-small)', color: 'var(--fg2)', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
               "This is not AI. AI is the surface. Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know."
             </p>
-            <p style={{ fontSize: 13, color: 'var(--fg3)', lineHeight: 1.5, margin: '6px 0 0', fontStyle: 'normal', fontWeight: 600 }}>
+            <p style={{ fontSize: 'var(--fs-caption)', color: 'var(--fg3)', lineHeight: 1.5, margin: '6px 0 0', fontStyle: 'normal', fontWeight: 600 }}>
               - The founding team
             </p>
             <p style={{ fontSize: 14, color: 'var(--fg2)', lineHeight: 1.7, margin: '14px 0 0' }}>
@@ -366,9 +366,9 @@ function ProductHeroNew() {
         <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <button type="button" onClick={() => setShowInvite(true)} className="btn btn-lg btn-invite" style={{animation:'sgBuildPulse 1.8s ease-in-out infinite'}}>Request an Invite →</button>
         </div>
-        <div style={{ marginTop: 36, display: 'flex', gap: 32, flexWrap: 'wrap', fontSize: 13, color: noteColor }}>
+        <div style={{ marginTop: 36, display: 'flex', gap: 32, flexWrap: 'wrap', fontSize: 'var(--fs-caption)', color: noteColor }}>
           <span>● Built at our risk</span>
-          <span>● Live in 7–21 days</span>
+          <span>● Live in 7-21 days</span>
           <span>● Paid for only after it works</span>
         </div>
       </div>
@@ -411,7 +411,7 @@ function HankChat() {
   const conversation = [
     { role: 'user', day: 'Monday 9:14 AM', text: 'Hank, how much did we ship last week?' },
     { role: 'hank', body: [
-      { line: 'Mar 31 – Apr 6: ', strong: '47 dispatches · $480k invoiced.' },
+      { line: 'Mar 31 - Apr 6: ', strong: '47 dispatches · $480k invoiced.' },
       { line: 'Top buyer: ', strong: 'Hampton Co', after: ' - 12 dispatches, $115k.' },
       { line: '2 disputes pending: INV-2207, INV-2189.' },
     ], cta: 'See the dispatch log →' },
@@ -483,7 +483,7 @@ function HankChat() {
       { line: '· ', strong: '3 mm steel sheet - 4 days', after: ' at current draw' },
       { line: '· M8 hex bolts - 5 days' },
       { line: '· Walnut veneer - 6 days' },
-      { line: 'All 3 auto-reordered Apr 24. Vendor ETA Apr 29 – May 1.' },
+      { line: 'All 3 auto-reordered Apr 24. Vendor ETA Apr 29 - May 1.' },
     ] },
 
     { role: 'user', day: 'Thursday 4:02 PM', text: 'Where are we bleeding margin this month?' },

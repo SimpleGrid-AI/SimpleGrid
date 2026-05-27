@@ -541,7 +541,7 @@
         <div className="pi-rule-compare">
           <div className="pi-rule-compare-card pi-rule-compare-bad">
             <div className="pi-rule-compare-h">Traditional ERP</div>
-            <div className="pi-rule-compare-v">$8K–$20K · 3–6 weeks</div>
+            <div className="pi-rule-compare-v">$8K-$20K · 3-6 weeks</div>
           </div>
           <div className="pi-rule-compare-card pi-rule-compare-good">
             <div className="pi-rule-compare-h">SimpleGrid</div>
@@ -781,7 +781,7 @@
         <div className={'pi-mm-tier pi-mm-mid' + (pulse === 2 ? ' active' : '')}>
           <div className="pi-mm-tier-label pi-mm-here">YOU ARE HERE</div>
           <div className="pi-mm-tier-h">Mid-market manufacturer</div>
-          <div className="pi-mm-tier-sub">50–1,500 employees · diverse operations · founder buys, not CIO</div>
+          <div className="pi-mm-tier-sub">50-1,500 employees · diverse operations · founder buys, not CIO</div>
           <div className="pi-mm-needs">
             <span>Deploy in days</span>
             <span>Match how we work</span>
@@ -822,7 +822,7 @@
       <div className="pi-ss">
         <div className={'pi-ss-stage pi-ss-' + phase}>
           {phase === 'chaos' && tabs.map((t, i) => {
-            // Position tabs by their CENTER inside a safe inner box (10% – 90% × 12% – 78%)
+            // Position tabs by their CENTER inside a safe inner box (10% - 90% × 12% - 78%)
             // so the 110×78px card never clips the right or bottom edge.
             const cx = 10 + ((i * 47 + shake * 11) % 80);
             const cy = 12 + ((i * 31 + shake * 7) % 66);
@@ -851,7 +851,7 @@
           )}
         </div>
         <div className="pi-ss-caption">
-          {phase === 'chaos' ? 'Most factories run on 12–20 interlocking spreadsheets.' : 'One live system. Same data. Without the chaos.'}
+          {phase === 'chaos' ? 'Most factories run on 12-20 interlocking spreadsheets.' : 'One live system. Same data. Without the chaos.'}
         </div>
       </div>
     );
@@ -927,7 +927,7 @@
     return (
       <div className="pi-pc">
         <div className="pi-pc-h">
-          <div className="pi-pc-old">28–52 weeks</div>
+          <div className="pi-pc-old">28-52 weeks</div>
           <div className="pi-pc-arrow">{shrink === 0 ? '→' : '⟶ AI-compressed ⟶'}</div>
           <div className="pi-pc-neu">days</div>
         </div>
@@ -957,7 +957,7 @@
   // ===== Blog 15 - ERP decay stages =====
   function ERPDecayDemo() {
     const stages = [
-      { n: 1, h: 'Workarounds begin',         color: 'gold',   detail: '5–10 manual processes outside the ERP' },
+      { n: 1, h: 'Workarounds begin',         color: 'gold',   detail: '5-10 manual processes outside the ERP' },
       { n: 2, h: 'Spreadsheets come back',    color: 'gold',   detail: 'ERP handles 70% · Excel handles 30%' },
       { n: 3, h: 'Change orders pile up',     color: 'red',    detail: '$65K, 12 weeks, conflicts with phase 1' },
       { n: 4, h: 'Trust erodes',              color: 'red',    detail: 'Founder calls the floor for real numbers' },
@@ -1269,7 +1269,7 @@
   // 14 - AI changed deployment
   POST[14] = {
     mid: (
-      <Block tag="Live demo · the compression" h="28–52 weeks → days" sub="Watch the deployment phases collapse. Same six phases - AI compresses the translation step in each one.">
+      <Block tag="Live demo · the compression" h="28-52 weeks → days" sub="Watch the deployment phases collapse. Same six phases - AI compresses the translation step in each one.">
         <PhaseCompress />
       </Block>
     ),

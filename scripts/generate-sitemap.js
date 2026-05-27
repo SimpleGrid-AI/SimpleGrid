@@ -21,7 +21,6 @@ const META = {
   'product.html':      { priority: 0.9, changefreq: 'weekly'  },
   'pricing.html':      { priority: 0.9, changefreq: 'weekly'  },
   'case-studies.html': { priority: 0.9, changefreq: 'monthly' },
-  'case-elite.html':   { priority: 0.8, changefreq: 'monthly' },
   'case-apex.html':    { priority: 0.8, changefreq: 'monthly' },
   'blog.html':         { priority: 0.8, changefreq: 'weekly'  },
   'about.html':        { priority: 0.7, changefreq: 'monthly' },

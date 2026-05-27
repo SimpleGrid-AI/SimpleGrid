@@ -54,7 +54,7 @@ function HiringHero() {
       maxWidth: 760,
       marginTop: 16
     }
-  }, "Lean team. Senior engineers, deployment experts, and founder engagement on every customer. We carry the build cost and the risk of every deployment - and we win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved."), /*#__PURE__*/React.createElement("div", {
+  }, "Lean team. Founder and senior engineers on every customer. We carry the build cost and the risk of every deployment. We win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved."), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28,
       display: 'flex',
@@ -91,7 +91,7 @@ function WhyThis() {
     b: 'Every customer is built at our cost and only paid for after it works. That commitment runs through the company - tight loops, visible work, no 9-month roadmaps.'
   }, {
     t: 'Small by design',
-    b: 'We will stay under 25 people for as long as we can. Everyone ships. Everyone talks to customers. Senior engineers, deployment experts, and founder engagement on every deployment.'
+    b: 'We will stay under 25 people for as long as we can. Everyone ships. Everyone talks to customers. Senior people on every deployment, including the founder.'
   }].map((c, i) => /*#__PURE__*/React.createElement(Reveal, {
     key: i,
     delay: i * 100
@@ -168,7 +168,7 @@ function RoleSummary({
     }
   }, r.loc), /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
+      fontSize: 'var(--fs-caption)',
       color: 'var(--sg-blue)',
       fontWeight: 600,
       marginBottom: 8
@@ -234,7 +234,7 @@ function RoleDetail({
   }, items.map((it, i) => /*#__PURE__*/React.createElement("li", {
     key: i,
     style: {
-      fontSize: 15,
+      fontSize: 'var(--fs-small)',
       color: 'var(--fg2)',
       lineHeight: 1.6,
       display: 'flex',
@@ -293,7 +293,7 @@ function RoleDetail({
     }
   }, r.loc), /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 15,
+      fontSize: 'var(--fs-small)',
       color: 'var(--sg-blue)',
       fontWeight: 700
     }
@@ -316,7 +316,7 @@ function RoleDetail({
   }, r.about.map((p, i) => /*#__PURE__*/React.createElement("p", {
     key: i,
     style: {
-      fontSize: 15,
+      fontSize: 'var(--fs-small)',
       color: 'var(--fg2)',
       lineHeight: 1.7,
       margin: '0 0 14px',

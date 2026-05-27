@@ -19,12 +19,28 @@ function AboutPage() {
 
   const h = React.createElement;
 
-  // (a) Operator hook - $30M / two ERP failures / Google Sheets - said once
-  const hero = h('section', { className: 'section', style: { paddingBottom: 24 } },
-    h('div', { className: 'container', style: { maxWidth: 'none' } },
-      h('div', { className: 'tag' }, 'ABOUT US'),
-      h('h1', { className: 'h2 ink' }, "Built by an operator who's been on your floor."),
-      h('p', { className: 'lead', style: { maxWidth: 'none' } },
+  // (a) Operator hook - hero-style with team photo bg + black overlay, founder portrait on the left
+  const hero = h('section', {
+    className: 'section',
+    style: {
+      position: 'relative',
+      backgroundImage: 'url(assets/team_photo.jpeg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      color: '#fff',
+      overflow: 'hidden',
+      minHeight: '78vh',
+      display: 'flex',
+      alignItems: 'center',
+      paddingTop: 160,
+      paddingBottom: 160,
+    }
+  },
+    h('div', { 'aria-hidden': 'true', style: { position: 'absolute', inset: 0, background: 'rgba(8,10,14,0.85)', zIndex: 0 } }),
+    h('div', { className: 'container', style: { maxWidth: 'none', position: 'relative', zIndex: 1, width: '100%' } },
+      h('div', { className: 'tag', style: { color: 'rgba(255,255,255,0.7)', marginBottom: 24 } }, 'ABOUT US'),
+      h('h1', { style: { fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.05, fontSize: 'clamp(44px, 6.5vw, 72px)', color: '#fff', margin: '0 0 28px', maxWidth: 1100 } }, "Built by an operator who's been on your floor."),
+      h('p', { style: { fontSize: 'clamp(18px, 1.7vw, 22px)', lineHeight: 1.55, color: 'rgba(255,255,255,0.85)', margin: 0, maxWidth: 920 } },
         "SimpleGrid was not designed in a boardroom. It was designed on a shop floor that was already running on Excel and group chats - and not working. Our founder built a $30M manufacturing business with multiple factories and a 400-person workforce, survived two ERP failures, and ended up on Google Sheets. SimpleGrid is the system he wished he had. We were the customer first - we know exactly what breaks when the system can't keep up with the floor."
       )
     )
@@ -79,15 +95,15 @@ function AboutPage() {
 
       // (e) Unlock tiles - moved BEFORE event-sourcing card.
       h('div', { className: 'arch-outcome-box' },
-        h('div', { style: { fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg3)', marginBottom: 8 } }, 'What this combination unlocks'),
-        h('p', { style: { fontSize: 15, color: 'var(--fg2)', lineHeight: 1.6, margin: '0 0 18px' } },
+        h('div', { style: { fontSize: 'var(--fs-caption)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg3)', marginBottom: 8 } }, 'What this combination unlocks'),
+        h('p', { style: { fontSize: 'var(--fs-small)', color: 'var(--fg2)', lineHeight: 1.6, margin: '0 0 18px' } },
           'The rest of the industry measures ERP rollouts in quarters and years. We measure ours in days.'
         ),
         h('div', { className: 'arch-outcome-grid' },
           unlockTiles.map((x, i) =>
             h('div', { key: i, className: 'arch-outcome-cell' },
               h('div', { style: { fontFamily: 'var(--font-heading)', fontSize: 16, fontWeight: 700, color: 'var(--fg1)', marginBottom: 6 } }, x.t),
-              h('div', { style: { fontSize: 13, color: 'var(--fg2)', lineHeight: 1.6 } }, x.p)
+              h('div', { style: { fontSize: 'var(--fs-caption)', color: 'var(--fg2)', lineHeight: 1.6 } }, x.p)
             )
           )
         )
@@ -141,10 +157,10 @@ function AboutPage() {
       // (f) Founder quote with "This is not AI. AI is the surface." removed (now in section intro).
       h(Reveal, { delay: 200 },
         h('div', { style: { marginTop: 40, padding: '24px 0', borderTop: '1px solid var(--border)' } },
-          h('p', { style: { fontSize: 15, color: 'var(--fg2)', lineHeight: 1.7, margin: 0, fontStyle: 'italic' } },
+          h('p', { style: { fontSize: 'var(--fs-small)', color: 'var(--fg2)', lineHeight: 1.7, margin: 0, fontStyle: 'italic' } },
             '"Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know."'
           ),
-          h('p', { style: { fontSize: 13, color: 'var(--fg3)', lineHeight: 1.5, margin: '6px 0 0', fontStyle: 'normal', fontWeight: 600 } },
+          h('p', { style: { fontSize: 'var(--fs-caption)', color: 'var(--fg3)', lineHeight: 1.5, margin: '6px 0 0', fontStyle: 'normal', fontWeight: 600 } },
             '- The founding team'
           )
         )
@@ -187,7 +203,7 @@ function AboutPage() {
       hero,
       offer,
       underTheHood,
-      h(ProductionFlow, null),
+      h('div', { style: { paddingTop: 48 } }, h(ProductionFlow, null)),
       finalCta
     ),
     h(Footer, null),

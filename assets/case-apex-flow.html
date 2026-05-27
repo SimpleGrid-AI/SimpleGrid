@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apex Apparel · Production Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0E1116;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: rgba(255,255,255,0.7);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Base font-size scales with the smaller viewport axis, so the figure
+     stays readable in a small thumbnail and grows when previewed standalone. */
+  body {
+    font-size: clamp(8.5px, min(1.7vw, 4.6vh), 18px);
+  }
+
+  /* The figure fills the entire iframe - no transform, no letterbox.
+     Every internal size is in em so the whole composition scales together. */
+  .figure {
+    width: 100%;
+    height: 100%;
+    padding: 1.5em 2.5em 1.3em;
+    display: flex;
+    flex-direction: column;
+    background:
+      radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 1.6em 1.6em,
+      #0E1116;
+    overflow: hidden;
+  }
+
+  /* Top bar */
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    flex-shrink: 0;
+  }
+  .top .dot {
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    background: #4A7BF7;
+    box-shadow: 0 0 0.65em rgba(74,123,247,0.7);
+  }
+  .top .label {
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+  }
+
+  /* Stages row */
+  .stages {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: relative;
+    align-items: center;
+    padding: 0 0.5em;
+  }
+
+  /* Connector - dashed line + arrow, pure CSS so it stretches naturally */
+  .track {
+    position: absolute;
+    left: 9%;
+    right: 9%;
+    top: 50%;
+    height: 1.2px;
+    background-image: linear-gradient(to right, rgba(74,123,247,0.55) 50%, transparent 50%);
+    background-size: 0.55em 1.2px;
+    background-repeat: repeat-x;
+    pointer-events: none;
+    transform: translateY(-0.6em);
+  }
+  .track::after {
+    content: '';
+    position: absolute;
+    right: -0.35em;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 0.55em solid #4A7BF7;
+    border-top: 0.36em solid transparent;
+    border-bottom: 0.36em solid transparent;
+    filter: drop-shadow(0 0 0.35em rgba(74,123,247,0.65));
+  }
+
+  .stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .stage-label {
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 0.95em;
+  }
+
+  /* Circle + rotating ring */
+  .node {
+    width: 4.6em;
+    height: 4.6em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1em;
+  }
+  .node .circle {
+    width: 3.3em;
+    height: 3.3em;
+    border-radius: 50%;
+    background: #14181F;
+    border: 1.4px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.92);
+    box-shadow: 0 0.35em 1em rgba(0,0,0,0.45);
+    position: relative;
+    z-index: 1;
+  }
+  .node .circle svg {
+    width: 1.4em;
+    height: 1.4em;
+    display: block;
+  }
+
+  /* Conic sweep masked to a thin band, blurred via drop-shadow for the glow */
+  .ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      #4A7BF7 70deg,
+      transparent 140deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(circle, transparent 64%, #000 66%, #000 78%, transparent 80%);
+            mask: radial-gradient(circle, transparent 64%, #000 66%, #000 78%, transparent 80%);
+    filter: drop-shadow(0 0 0.28em rgba(74,123,247,0.6)) drop-shadow(0 0 0.7em rgba(74,123,247,0.35));
+  }
+
+  /* Single rule - every ring shares the same animation, so they stay in sync. */
+  .ring {
+    animation: spin 4s linear infinite;
+    animation-delay: 0s;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .stage-name {
+    font-size: 0.92em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.4em;
+  }
+  .stage-sub {
+    font-size: 0.72em;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.4;
+    text-align: center;
+    max-width: 14em;
+    padding: 0 0.3em;
+  }
+
+  /* Bottom bar */
+  .bot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    font-size: 0.72em;
+    color: rgba(255,255,255,0.42);
+    gap: 1em;
+  }
+  .bot .left strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+  .bot .right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92em;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="figure">
+
+  <div class="top">
+    <span class="dot"></span>
+    <span class="label">The Flow · 12 Days to Live</span>
+  </div>
+
+  <div class="stages">
+
+    <div class="track"></div>
+
+    <div class="stage">
+      <div class="stage-label">Stage 01</div>
+      <div class="node">
+        <span class="ring"></span>
+        <span class="circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="5" width="16" height="14" rx="1.5"/>
+            <line x1="4" y1="9" x2="20" y2="9"/>
+            <line x1="4" y1="13" x2="20" y2="13"/>
+            <line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+        </span>
+      </div>
+      <div class="stage-name">Fabric</div>
+      <div class="stage-sub">Procured · 30+ locations checked</div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-label">Stage 02</div>
+      <div class="node">
+        <span class="ring"></span>
+        <span class="circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 L21 7.5 L21 16.5 L12 21 L3 16.5 L3 7.5 Z"/>
+            <path d="M3 7.5 L12 12 L21 7.5"/>
+            <line x1="12" y1="12" x2="12" y2="21"/>
+          </svg>
+        </span>
+      </div>
+      <div class="stage-name">Issued</div>
+      <div class="stage-sub">Fabric + trims → job worker</div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-label">Stage 03</div>
+      <div class="node">
+        <span class="ring"></span>
+        <span class="circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 4 L9 6.5 C10 7.5 14 7.5 15 6.5 L16 4 L20 6 L18 10 L16 9 L16 20 L8 20 L8 9 L6 10 L4 6 Z"/>
+          </svg>
+        </span>
+      </div>
+      <div class="stage-name">Produced</div>
+      <div class="stage-sub">20+ workers · cut · stitch · finish</div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-label">Stage 04</div>
+      <div class="node">
+        <span class="ring"></span>
+        <span class="circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M8 12.5 L11 15.5 L16.5 9.5"/>
+          </svg>
+        </span>
+      </div>
+      <div class="stage-name">Reconciled</div>
+      <div class="stage-sub">Returned · QC · yield</div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-label">Stage 05</div>
+      <div class="node">
+        <span class="ring"></span>
+        <span class="circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="8" width="11" height="9" rx="1"/>
+            <path d="M13 11 L18 11 L21 14 L21 17 L13 17 Z"/>
+            <circle cx="7" cy="18" r="1.8"/>
+            <circle cx="17" cy="18" r="1.8"/>
+          </svg>
+        </span>
+      </div>
+      <div class="stage-name">Dispatch</div>
+      <div class="stage-sub">Iron · pack · ship</div>
+    </div>
+
+  </div>
+
+  <div class="bot">
+    <div class="left"><strong>80-100k shirts / month</strong> &nbsp;·&nbsp; zero factories owned</div>
+    <div class="right">fig.02 - production flow</div>
+  </div>
+
+</div>
+
+</body>
+</html>

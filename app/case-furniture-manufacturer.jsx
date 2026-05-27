@@ -81,10 +81,10 @@ function ManufacturingProcessSection() {
 
   // Stage A/B/C/D framework (right column)
   const stages = [
-    { letter:'A', title:'Components', range:'01–06', color:'var(--sg-blue)',   desc:'Wood in, machined parts out. Tracking is per component, per SKU.' },
-    { letter:'B', title:'Assembly',   range:'07–09', color:'var(--sg-purple)', desc:'Components merge into a SKU. From here, tracking is per SKU.' },
-    { letter:'C', title:'Finishing',  range:'10–15', color:'var(--sg-gold)',   desc:'Sand, finish, hardware. The most error-prone window.' },
-    { letter:'D', title:'Dispatch',   range:'16–19', color:'var(--sg-green)',  desc:'Final QC, pack, ship. Buyer-spec compliance enforced.' },
+    { letter:'A', title:'Components', range:'01-06', color:'var(--sg-blue)',   desc:'Wood in, machined parts out. Tracking is per component, per SKU.' },
+    { letter:'B', title:'Assembly',   range:'07-09', color:'var(--sg-purple)', desc:'Components merge into a SKU. From here, tracking is per SKU.' },
+    { letter:'C', title:'Finishing',  range:'10-15', color:'var(--sg-gold)',   desc:'Sand, finish, hardware. The most error-prone window.' },
+    { letter:'D', title:'Dispatch',   range:'16-19', color:'var(--sg-green)',  desc:'Final QC, pack, ship. Buyer-spec compliance enforced.' },
   ];
 
   // Contractor settlement matrix (full width below)
@@ -234,10 +234,10 @@ function EliteCaseStudy() {
       <div className="container">
         <div className="tag">CASE STUDY · FURNITURE EXPORT</div>
         <h1>How a furniture exporter with 800 employees went from Excel to a live ERP in 21 days</h1>
-        <p className="case-hook">Over four years, a furniture manufacturer and exporter - 12+ countries across North America, Europe, and Asia - lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600–800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around.</p>
+        <p className="case-hook">Over four years, a furniture manufacturer and exporter - 12+ countries across North America, Europe, and Asia - lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600-800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around.</p>
         <div className="case-strip">
           <div className="case-strip-item"><div className="label">Industry</div><div className="value">Furniture export</div></div>
-          <div className="case-strip-item"><div className="label">Employees</div><div className="value">600–800</div></div>
+          <div className="case-strip-item"><div className="label">Employees</div><div className="value">600-800</div></div>
           <div className="case-strip-item"><div className="label">Facilities</div><div className="value">~1,000,000 sqft</div></div>
           <div className="case-strip-item"><div className="label">Deployed in</div><div className="value">21 days</div></div>
         </div>
@@ -253,7 +253,7 @@ function EliteCaseStudy() {
       <section className="case-section">
         <h2>The operation</h2>
         <p style={{maxWidth:920}}>
-          The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600–800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit <strong>19 tracked stages, four quality gates, and six contractor types</strong> - each paid by a different formula. The catalog runs to <strong>550 active SKUs</strong>, each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame.
+          The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600-800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit <strong>19 tracked stages, four quality gates, and six contractor types</strong> - each paid by a different formula. The catalog runs to <strong>550 active SKUs</strong>, each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame.
         </p>
         <p style={{maxWidth:920}}>
           Work happens at two levels and they cross over at assembly. Wood issuance and machining track at the <strong>component level</strong> - every cubic foot attaches to a specific SKU + component. Once all components for a SKU are machined and QC&rsquo;d they merge; from there, tracking is at the <strong>SKU level</strong> through sanding, finishing, hardware, final QC, packaging, and dispatch. Six contractor types each bill on their own formula - machining per-sqft for panels and per-running-foot for frames with rates changing on wood thickness; assembly per SKU; sanding and finishing per sqft of finished surface for 90% of products; hardware fitting on a fittings × screw-size matrix; packaging on CBM of packed material. Every one of those formulas is a row in a config table - not code.
@@ -268,7 +268,7 @@ function EliteCaseStudy() {
         <h2>What was breaking</h2>
         <p><strong>The company was profitable. Nobody knew which products were.</strong> The founder knew the business made money. But could he tell you whether the 6-seater dining table was more profitable than the bookshelf? No.</p>
         <ul className="pain-list">
-          <li><strong>Planning was a 20-hour weekly grind.</strong> The planner spent the better part of every week aggregating component-level wood needs across 30–40 active orders in Excel. When the planner was out, planning stopped.</li>
+          <li><strong>Planning was a 20-hour weekly grind.</strong> The planner spent the better part of every week aggregating component-level wood needs across 30-40 active orders in Excel. When the planner was out, planning stopped.</li>
           <li><strong>Material tracking was manual.</strong> Wood arrived at the store. The storekeeper wrote it in a register. How much was issued to which job, in which thickness, for which SKU? Nobody knew in real time.</li>
           <li><strong>Production stages were untracked.</strong> If 600 components entered sanding and 580 came out, nobody caught the 20-component gap until final count. Over 4 years, these gaps added up to nearly $200,000 - about 1.5% wastage compounding silently.</li>
           <li><strong>Contractor costing was reconciled monthly.</strong> Six contractor types, six settlement formulas, multiple jobs and stages each. Settlement required cross-referencing handwritten logs with the planner's memory.</li>
@@ -283,7 +283,7 @@ function EliteCaseStudy() {
         <h2>What we built</h2>
         <p>We did multiple calls with the founder over 14 days. Mapped how work actually moves: every order type, every approval rule, every handoff between contractors, every contractor pricing formula, every exception that only the founder knew about.</p>
         <p>After the first call, the founder saw a <strong>working demo within 24 hours</strong>. Not a slideshow. A working system reflecting how his factory actually runs - wood aggregation, two-level tracking, six contractor settlement formulas, four QC gates. 21 days total from first conversation to live system.</p>
-        <p style={{fontFamily:'var(--font-heading)',fontSize:18,fontWeight:700,color:'var(--sg-blue)',margin:'24px 0'}}>64 things tracked end-to-end. 72 automatic triggers. 6 contractor settlement formulas. 4 QC gates.</p>
+        <p style={{fontFamily:'var(--font-heading)',fontSize:'var(--fs-body)',fontWeight:700,color:'var(--sg-blue)',margin:'24px 0'}}>64 things tracked end-to-end. 72 automatic triggers. 6 contractor settlement formulas. 4 QC gates.</p>
       </section>
 
       {/* Rules */}

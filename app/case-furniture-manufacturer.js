@@ -551,7 +551,7 @@ function EliteCaseStudy() {
   }, /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We did multiple calls with the founder over 14 days. Mapped how work actually moves: every order type, every approval rule, every handoff between contractors, every contractor pricing formula, every exception that only the founder knew about."), /*#__PURE__*/React.createElement("p", null, "After the first call, the founder saw a ", /*#__PURE__*/React.createElement("strong", null, "working demo within 24 hours"), ". Not a slideshow. A working system reflecting how his factory actually runs - wood aggregation, two-level tracking, six contractor settlement formulas, four QC gates. 21 days total from first conversation to live system."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'var(--font-heading)',
-      fontSize: 18,
+      fontSize: 'var(--fs-body)',
       fontWeight: 700,
       color: 'var(--sg-blue)',
       margin: '24px 0'

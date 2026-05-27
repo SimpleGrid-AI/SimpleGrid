@@ -1,5 +1,17 @@
+# Cloudflare Pages / Netlify response-header syntax.
+#
+# !!! THIS FILE IS NOT HONORED BY GITHUB PAGES. !!!
+# It is kept here so that if the deploy target is migrated to Cloudflare
+# Pages or Netlify, the header posture is already declared. Today, GitHub
+# Pages ignores `_headers` silently. See CRITICAL_DASHBOARD_ACTIONS.md for
+# the workarounds available while still on GitHub Pages.
+#
+# Microsoft Clarity references removed (we are not loading clarity.ms).
+# If Clarity is added later, re-add `https://www.clarity.ms` to script-src
+# and `https://*.clarity.ms` to connect-src.
+
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://www.google-analytics.com https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://www.google-analytics.com https://www.googletagmanager.com https://formsubmit.co; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
@@ -15,4 +27,7 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /blog/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/vendor/*
   Cache-Control: public, max-age=31536000, immutable

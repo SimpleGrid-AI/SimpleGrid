@@ -20,12 +20,25 @@ function AboutPage() {
     <Nav page="about" onLoginClick={() => setShowLogin(true)} />
     <main id="main">
 
-    {/* (a) Operator hook - $30M / two ERP failures / Google Sheets - said once */}
-    <section className="section" style={{paddingBottom:24}}>
-      <div className="container" style={{maxWidth:'none'}}>
-        <div className="tag">ABOUT US</div>
-        <h1 className="h2 ink">Built by an operator who's been on your floor.</h1>
-        <p className="lead" style={{maxWidth:'none'}}>
+    {/* (a) Operator hook - hero-style with team photo bg + black overlay, founder portrait on the left */}
+    <section className="section" style={{
+      position:'relative',
+      backgroundImage:'url(assets/team_photo.jpeg)',
+      backgroundSize:'cover',
+      backgroundPosition:'center',
+      color:'#fff',
+      overflow:'hidden',
+      minHeight:'78vh',
+      display:'flex',
+      alignItems:'center',
+      paddingTop:160,
+      paddingBottom:160,
+    }}>
+      <div aria-hidden="true" style={{position:'absolute',inset:0,background:'rgba(8,10,14,0.85)',zIndex:0}} />
+      <div className="container" style={{maxWidth:'none', position:'relative', zIndex:1, width:'100%'}}>
+        <div className="tag" style={{color:'rgba(255,255,255,0.7)',marginBottom:24}}>ABOUT US</div>
+        <h1 style={{fontFamily:'var(--font-heading)',fontWeight:700,letterSpacing:'-0.03em',lineHeight:1.05,fontSize:'clamp(44px, 6.5vw, 72px)',color:'#fff',margin:'0 0 28px',maxWidth:1100}}>Built by an operator who's been on your floor.</h1>
+        <p style={{fontSize:'clamp(18px, 1.7vw, 22px)',lineHeight:1.55,color:'rgba(255,255,255,0.85)',margin:0,maxWidth:920}}>
           SimpleGrid was not designed in a boardroom. It was designed on a shop floor that was already running on Excel and group chats - and not working. Our founder built a $30M manufacturing business with multiple factories and a 400-person workforce, survived two ERP failures, and ended up on Google Sheets. SimpleGrid is the system he wished he had. We were the customer first - we know exactly what breaks when the system can't keep up with the floor.
         </p>
       </div>
@@ -63,8 +76,8 @@ function AboutPage() {
 
         {/* (e) Unlock tiles - moved BEFORE the event-sourcing card. The "days vs quarters" line sits next to the 7-day-deploys tile (the first tile). */}
         <div className="arch-outcome-box">
-          <div style={{fontSize:13, fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--fg3)', marginBottom:8}}>What this combination unlocks</div>
-          <p style={{fontSize:15, color:'var(--fg2)', lineHeight:1.6, margin:'0 0 18px'}}>
+          <div style={{fontSize:'var(--fs-caption)', fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--fg3)', marginBottom:8}}>What this combination unlocks</div>
+          <p style={{fontSize:'var(--fs-small)', color:'var(--fg2)', lineHeight:1.6, margin:'0 0 18px'}}>
             The rest of the industry measures ERP rollouts in quarters and years. We measure ours in days.
           </p>
           <div className="arch-outcome-grid">
@@ -76,7 +89,7 @@ function AboutPage() {
             ].map((x, i) => (
               <div key={i} className="arch-outcome-cell">
                 <div style={{fontFamily:'var(--font-heading)', fontSize:16, fontWeight:700, color:'var(--fg1)', marginBottom:6}}>{x.t}</div>
-                <div style={{fontSize:13, color:'var(--fg2)', lineHeight:1.6}}>{x.p}</div>
+                <div style={{fontSize:'var(--fs-caption)', color:'var(--fg2)', lineHeight:1.6}}>{x.p}</div>
               </div>
             ))}
           </div>
@@ -123,10 +136,10 @@ function AboutPage() {
         {/* (f) Founder quote (rest of quote, with "This is not AI. AI is the surface." removed since it moved up to the section intro) */}
         <Reveal delay={200}>
           <div style={{marginTop:40, padding:'24px 0', borderTop:'1px solid var(--border)'}}>
-            <p style={{fontSize:15, color:'var(--fg2)', lineHeight:1.7, margin:0, fontStyle:'italic'}}>
+            <p style={{fontSize:'var(--fs-small)', color:'var(--fg2)', lineHeight:1.7, margin:0, fontStyle:'italic'}}>
               "Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know."
             </p>
-            <p style={{fontSize:13, color:'var(--fg3)', lineHeight:1.5, margin:'6px 0 0', fontStyle:'normal', fontWeight:600}}>
+            <p style={{fontSize:'var(--fs-caption)', color:'var(--fg3)', lineHeight:1.5, margin:'6px 0 0', fontStyle:'normal', fontWeight:600}}>
               - The founding team
             </p>
           </div>
@@ -135,7 +148,9 @@ function AboutPage() {
     </section>
 
     {/* (g) "From the first PO to the final dispatch" animation - header preserved, animation untouched */}
-    <ProductionFlow />
+    <div style={{paddingTop:48}}>
+      <ProductionFlow />
+    </div>
 
     <section className="section section-dark final-cta">
       <div className="container">

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apex Apparel · Inventory Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #0E1116;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: rgba(255,255,255,0.7);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+  }
+
+  /* Scale the 1200×480 hero to fit the viewport - preserves the
+     design at natural size for standalone preview, and lets the
+     same file be embedded in any-size iframe without distortion. */
+  .hero {
+    width: 1200px;
+    height: 480px;
+    flex-shrink: 0;
+    transform-origin: center center;
+    transform: scale(min(calc(100vw / 1200), calc(100vh / 480)));
+    position: relative;
+    background:
+      radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 24px 24px,
+      #0E1116;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow:
+      0 30px 80px rgba(0,0,0,0.55),
+      0 8px 24px rgba(0,0,0,0.35),
+      inset 0 0 0 1px rgba(255,255,255,0.04);
+    overflow: hidden;
+  }
+
+  .window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #14181F;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .header {
+    flex: 0 0 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .wordmark {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .wordmark .accent { color: #4A7BF7; }
+
+  .crumb-sep {
+    width: 1px;
+    height: 14px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .breadcrumb {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+  }
+  .breadcrumb .muted { color: rgba(255,255,255,0.35); margin: 0 6px; }
+  .breadcrumb .here { color: #fff; }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .live-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #10B981;
+  }
+
+  /* Body */
+  .body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .left {
+    flex: 0 0 62%;
+    padding: 14px 18px 16px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .right {
+    flex: 1;
+    padding: 14px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  /* SYNC RING - 14px ring + 8px dot.
+     All rings share one animation rule below so they stay in lockstep. */
+  .sync-ring {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sync-ring::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      var(--c) 60deg,
+      transparent 120deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(circle, transparent 60%, #000 62%);
+            mask: radial-gradient(circle, transparent 60%, #000 62%);
+  }
+  .sync-ring::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--c);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--c) 60%, transparent);
+  }
+
+  /* SINGLE rule - every ring in the file animates from the same start. */
+  .sync-ring::before,
+  .header .sync-ring::before,
+  .pill .sync-ring::before,
+  .kpi .sync-ring::before {
+    animation: spin 4s linear infinite;
+    animation-delay: 0s;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Table */
+  .col-head {
+    display: flex;
+    align-items: center;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    padding: 6px 0 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-weight: 600;
+  }
+
+  .c-loc    { flex: 0 0 96px; }
+  .c-type   { flex: 1 1 auto; min-width: 0; padding-right: 12px; }
+  .c-stock  { flex: 0 0 96px; text-align: right; padding-right: 14px; }
+  .c-stage  { flex: 0 0 132px; }
+  .c-status { flex: 0 0 156px; }
+
+  .row {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.045);
+  }
+
+  .loc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .type {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.72);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 12px;
+  }
+
+  .stock {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #fff;
+    text-align: right;
+    padding-right: 14px;
+    font-weight: 500;
+  }
+  .stock .unit { color: rgba(255,255,255,0.45); margin-left: 2px; font-weight: 400; }
+
+  .stage {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 10px 4px 5px;
+    border-radius: 999px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.06);
+    line-height: 1;
+  }
+  .pill.live     { color: #10B981; background: rgba(16,185,129,0.06);  border-color: rgba(16,185,129,0.18); }
+  .pill.prod     { color: #4A7BF7; background: rgba(74,123,247,0.06);  border-color: rgba(74,123,247,0.20); }
+  .pill.awaiting { color: #F59E0B; background: rgba(245,158,11,0.06);  border-color: rgba(245,158,11,0.20); }
+  .pill.tracked  { color: #0EA5E9; background: rgba(14,165,233,0.06);  border-color: rgba(14,165,233,0.20); }
+
+  .more {
+    font-style: italic;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    padding-top: 12px;
+  }
+
+  /* Right panel */
+  .map-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.45);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .map-label .static-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 6px rgba(16,185,129,0.6);
+  }
+
+  .map {
+    width: 100%;
+    height: 120px;
+    background:
+      radial-gradient(ellipse at 50% 55%, rgba(74,123,247,0.08), transparent 65%),
+      rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .map svg { display: block; width: 100%; height: 100%; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .kpi {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .kpi-top {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .kpi-num {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .kpi-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.45);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="window">
+
+      <!-- HEADER -->
+      <div class="header">
+        <div class="header-left">
+          <div class="wordmark">Simple<span class="accent">Grid</span></div>
+          <div class="crumb-sep"></div>
+          <div class="breadcrumb">
+            <span class="muted">/</span>Apparel Ops<span class="muted">/</span><span class="here">Inventory Ledger</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <span class="sync-ring" style="--c:#10B981"></span>
+          <span class="live-tag">LIVE</span>
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="body">
+
+        <!-- LEFT: TABLE -->
+        <div class="left">
+          <div class="col-head">
+            <div class="c-loc">Location</div>
+            <div class="c-type">Type</div>
+            <div class="c-stock">Stock on hand</div>
+            <div class="c-stage">Stage</div>
+            <div class="c-status">Status</div>
+          </div>
+
+          <div class="row">
+            <div class="c-loc"><span class="loc">WH-MUM-01</span></div>
+            <div class="c-type"><span class="type">Logistics partner</span></div>
+            <div class="c-stock"><span class="stock">12,440<span class="unit">m</span></span></div>
+            <div class="c-stage"><span class="stage">fabric</span></div>
+            <div class="c-status">
+              <span class="pill live"><span class="sync-ring" style="--c:#10B981"></span>LIVE</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="c-loc"><span class="loc">JW-DAD-03</span></div>
+            <div class="c-type"><span class="type">Job worker · stitch</span></div>
+            <div class="c-stock"><span class="stock">1,840</span></div>
+            <div class="c-stage"><span class="stage">shirts WIP</span></div>
+            <div class="c-status">
+              <span class="pill prod"><span class="sync-ring" style="--c:#4A7BF7"></span>IN&nbsp;PRODUCTION</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="c-loc"><span class="loc">WH-KUR-02</span></div>
+            <div class="c-type"><span class="type">Logistics partner</span></div>
+            <div class="c-stock"><span class="stock">8,210</span></div>
+            <div class="c-stage"><span class="stage">shirts finished</span></div>
+            <div class="c-status">
+              <span class="pill live"><span class="sync-ring" style="--c:#10B981"></span>LIVE</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="c-loc"><span class="loc">JW-AND-07</span></div>
+            <div class="c-type"><span class="type">Job worker · cut</span></div>
+            <div class="c-stock"><span class="stock">640</span></div>
+            <div class="c-stage"><span class="stage">shirts cut</span></div>
+            <div class="c-status">
+              <span class="pill prod"><span class="sync-ring" style="--c:#4A7BF7"></span>IN&nbsp;PRODUCTION</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="c-loc"><span class="loc">WH-BHI-04</span></div>
+            <div class="c-type"><span class="type">Logistics partner</span></div>
+            <div class="c-stock"><span class="stock">5,920<span class="unit">m</span></span></div>
+            <div class="c-stage"><span class="stage">fabric</span></div>
+            <div class="c-status">
+              <span class="pill live"><span class="sync-ring" style="--c:#10B981"></span>LIVE</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="c-loc"><span class="loc">JW-MAL-12</span></div>
+            <div class="c-type"><span class="type">Job worker · finish</span></div>
+            <div class="c-stock"><span class="stock">2,310</span></div>
+            <div class="c-stage"><span class="stage">shirts QC</span></div>
+            <div class="c-status">
+              <span class="pill awaiting"><span class="sync-ring" style="--c:#F59E0B"></span>AWAITING</span>
+            </div>
+          </div>
+
+          <div class="row" style="border-bottom: none;">
+            <div class="c-loc"><span class="loc">TR-N-HUB</span></div>
+            <div class="c-type"><span class="type">In-transit</span></div>
+            <div class="c-stock"><span class="stock">1,200</span></div>
+            <div class="c-stage"><span class="stage">shirts moving</span></div>
+            <div class="c-status">
+              <span class="pill tracked"><span class="sync-ring" style="--c:#0EA5E9"></span>TRACKED</span>
+            </div>
+          </div>
+
+          <div class="more">+ 23 more locations</div>
+        </div>
+
+        <!-- RIGHT: MAP + KPIs -->
+        <div class="right">
+          <div class="map-label">
+            <span class="static-dot"></span>
+            LOCATIONS · LIVE
+          </div>
+
+          <div class="map">
+            <svg viewBox="0 0 280 120" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%"   stop-color="#4A7BF7" stop-opacity="0.55"/>
+                  <stop offset="50%"  stop-color="#4A7BF7" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#4A7BF7" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- subtle grid -->
+              <g stroke="rgba(255,255,255,0.04)" stroke-width="0.5">
+                <line x1="0"   y1="30"  x2="280" y2="30"/>
+                <line x1="0"   y1="60"  x2="280" y2="60"/>
+                <line x1="0"   y1="90"  x2="280" y2="90"/>
+                <line x1="70"  y1="0"   x2="70"  y2="120"/>
+                <line x1="140" y1="0"   x2="140" y2="120"/>
+                <line x1="210" y1="0"   x2="210" y2="120"/>
+              </g>
+
+              <!-- connection curves hub -> outer nodes -->
+              <g fill="none" stroke="#4A7BF7" stroke-width="0.6" opacity="0.25">
+                <path d="M140,60 Q 95,35 40,25"/>
+                <path d="M140,60 Q 190,30 240,18"/>
+                <path d="M140,60 Q 90,80 45,90"/>
+                <path d="M140,60 Q 200,90 250,95"/>
+                <path d="M140,60 Q 215,55 255,40"/>
+              </g>
+
+              <!-- job worker dots (blue circles) -->
+              <g fill="#4A7BF7">
+                <circle cx="40"  cy="25"  r="1.8"/>
+                <circle cx="70"  cy="18"  r="1.8"/>
+                <circle cx="95"  cy="35"  r="1.8"/>
+                <circle cx="50"  cy="50"  r="1.8"/>
+                <circle cx="75"  cy="55"  r="1.8"/>
+                <circle cx="110" cy="45"  r="1.8"/>
+                <circle cx="25"  cy="70"  r="1.8"/>
+                <circle cx="60"  cy="80"  r="1.8"/>
+                <circle cx="85"  cy="92"  r="1.8"/>
+                <circle cx="175" cy="22"  r="1.8"/>
+                <circle cx="210" cy="30"  r="1.8"/>
+                <circle cx="240" cy="18"  r="1.8"/>
+                <circle cx="195" cy="48"  r="1.8"/>
+                <circle cx="225" cy="58"  r="1.8"/>
+                <circle cx="255" cy="42"  r="1.8"/>
+                <circle cx="185" cy="78"  r="1.8"/>
+                <circle cx="220" cy="88"  r="1.8"/>
+                <circle cx="250" cy="98"  r="1.8"/>
+              </g>
+
+              <!-- warehouse markers (amber diamonds) -->
+              <g fill="#F59E0B">
+                <rect x="34"  y="40"  width="3.2" height="3.2" transform="rotate(45 35.6 41.6)"/>
+                <rect x="89"  y="60"  width="3.2" height="3.2" transform="rotate(45 90.6 61.6)"/>
+                <rect x="114" y="75"  width="3.2" height="3.2" transform="rotate(45 115.6 76.6)"/>
+                <rect x="44"  y="92"  width="3.2" height="3.2" transform="rotate(45 45.6 93.6)"/>
+                <rect x="129" y="20"  width="3.2" height="3.2" transform="rotate(45 130.6 21.6)"/>
+                <rect x="159" y="55"  width="3.2" height="3.2" transform="rotate(45 160.6 56.6)"/>
+                <rect x="200" y="72"  width="3.2" height="3.2" transform="rotate(45 201.6 73.6)"/>
+                <rect x="244" y="65"  width="3.2" height="3.2" transform="rotate(45 245.6 66.6)"/>
+                <rect x="170" y="95"  width="3.2" height="3.2" transform="rotate(45 171.6 96.6)"/>
+                <rect x="234" y="25"  width="3.2" height="3.2" transform="rotate(45 235.6 26.6)"/>
+                <rect x="208" y="100" width="3.2" height="3.2" transform="rotate(45 209.6 101.6)"/>
+                <rect x="154" y="35"  width="3.2" height="3.2" transform="rotate(45 155.6 36.6)"/>
+                <rect x="180" y="103" width="3.2" height="3.2" transform="rotate(45 181.6 104.6)"/>
+                <rect x="260" y="78"  width="3.2" height="3.2" transform="rotate(45 261.6 79.6)"/>
+              </g>
+
+              <!-- central hub: blue glow halo + dark dot -->
+              <circle cx="140" cy="60" r="18" fill="url(#hubGlow)"/>
+              <circle cx="140" cy="60" r="4.5" fill="#0E1116" stroke="#4A7BF7" stroke-width="1"/>
+              <circle cx="140" cy="60" r="1.6" fill="#4A7BF7"/>
+            </svg>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi">
+              <div class="kpi-top">
+                <span class="sync-ring" style="--c:#10B981"></span>
+                <span class="kpi-num">30+</span>
+              </div>
+              <div class="kpi-label">Locations</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-top">
+                <span class="sync-ring" style="--c:#4A7BF7"></span>
+                <span class="kpi-num">20+</span>
+              </div>
+              <div class="kpi-label">Job workers</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-top">
+                <span class="sync-ring" style="--c:#7C3AED"></span>
+                <span class="kpi-num">80-100k</span>
+              </div>
+              <div class="kpi-label">Shirts / mo</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-top">
+                <span class="sync-ring" style="--c:#F59E0B"></span>
+                <span class="kpi-num">44</span>
+              </div>
+              <div class="kpi-label">Triggers</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

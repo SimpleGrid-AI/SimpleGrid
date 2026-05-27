@@ -1,116 +1,13 @@
 function ApparelVisual() {
   return (
-    <div style={{position:'relative',width:'100%',height:'100%',background:'linear-gradient(135deg, #0E0E10 0%, #181f2e 60%, #1A2540 100%)',overflow:'hidden'}}>
-      <svg viewBox="0 0 400 220" style={{position:'absolute',inset:0,width:'100%',height:'100%'}} aria-hidden="true">
-        <defs>
-          <pattern id="apxWeave" width="6" height="6" patternUnits="userSpaceOnUse">
-            <path d="M0 3 H6 M3 0 V6" stroke="rgba(255,255,255,0.04)" strokeWidth="0.6"/>
-          </pattern>
-          <linearGradient id="apxThread" x1="0" x2="1">
-            <stop offset="0" stopColor="#3461E0" stopOpacity="0"/>
-            <stop offset="0.5" stopColor="#3461E0"/>
-            <stop offset="1" stopColor="#3461E0" stopOpacity="0"/>
-          </linearGradient>
-          <linearGradient id="apxFabric" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#3461E0" stopOpacity="0.45"/>
-            <stop offset="1" stopColor="#3461E0" stopOpacity="0.05"/>
-          </linearGradient>
-          <linearGradient id="apxFabric2" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#F59E0B" stopOpacity="0.4"/>
-            <stop offset="1" stopColor="#F59E0B" stopOpacity="0.05"/>
-          </linearGradient>
-          <linearGradient id="apxFabric3" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#A78BFA" stopOpacity="0.4"/>
-            <stop offset="1" stopColor="#A78BFA" stopOpacity="0.05"/>
-          </linearGradient>
-          <clipPath id="shirtClip">
-            <path d="M 0 0 L 14 -12 L 26 -16 L 28 -10 L 38 -16 L 50 -12 L 64 0 L 56 8 L 50 4 L 50 36 L 14 36 L 14 4 L 8 8 Z"/>
-          </clipPath>
-        </defs>
-        <rect width="400" height="220" fill="url(#apxWeave)"/>
-
-        {/* Animated stitch lines (sewing machine feel) */}
-        <line x1="0" y1="36" x2="400" y2="36" stroke="url(#apxThread)" strokeWidth="1" strokeDasharray="4 4">
-          <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1.2s" repeatCount="indefinite"/>
-        </line>
-        <line x1="0" y1="184" x2="400" y2="184" stroke="url(#apxThread)" strokeWidth="1" strokeDasharray="4 4">
-          <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1.6s" repeatCount="indefinite"/>
-        </line>
-
-        {/* Fabric bolts unrolling on left */}
-        <g transform="translate(28, 76)">
-          <rect width="56" height="68" rx="3" fill="url(#apxFabric)" stroke="rgba(74,123,247,0.4)" strokeWidth="1"/>
-          <line x1="0" y1="14" x2="56" y2="14" stroke="rgba(74,123,247,0.3)"/>
-          <line x1="0" y1="28" x2="56" y2="28" stroke="rgba(74,123,247,0.3)"/>
-          <line x1="0" y1="42" x2="56" y2="42" stroke="rgba(74,123,247,0.3)"/>
-          <line x1="0" y1="56" x2="56" y2="56" stroke="rgba(74,123,247,0.3)"/>
-          <text x="28" y="82" textAnchor="middle" fontSize="7" fill="rgba(255,255,255,0.4)" fontWeight="700" letterSpacing="0.1em">FABRIC</text>
-        </g>
-        <g transform="translate(92, 86)">
-          <rect width="48" height="58" rx="3" fill="url(#apxFabric2)" stroke="rgba(245,158,11,0.4)" strokeWidth="1"/>
-          <line x1="0" y1="12" x2="48" y2="12" stroke="rgba(245,158,11,0.3)"/>
-          <line x1="0" y1="24" x2="48" y2="24" stroke="rgba(245,158,11,0.3)"/>
-          <line x1="0" y1="36" x2="48" y2="36" stroke="rgba(245,158,11,0.3)"/>
-          <line x1="0" y1="48" x2="48" y2="48" stroke="rgba(245,158,11,0.3)"/>
-        </g>
-        <g transform="translate(148, 96)">
-          <rect width="40" height="48" rx="3" fill="url(#apxFabric3)" stroke="rgba(167,139,250,0.4)" strokeWidth="1"/>
-          <line x1="0" y1="10" x2="40" y2="10" stroke="rgba(167,139,250,0.3)"/>
-          <line x1="0" y1="20" x2="40" y2="20" stroke="rgba(167,139,250,0.3)"/>
-          <line x1="0" y1="30" x2="40" y2="30" stroke="rgba(167,139,250,0.3)"/>
-        </g>
-
-        {/* Thread lines flowing from fabrics to shirts (production flow) */}
-        <g stroke="#3461E0" strokeWidth="0.8" fill="none" opacity="0.45">
-          <path d="M 188 110 Q 230 90 270 78" strokeDasharray="3 3">
-            <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1.5s" repeatCount="indefinite"/>
-          </path>
-          <path d="M 188 120 Q 240 130 290 130" strokeDasharray="3 3">
-            <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1.8s" repeatCount="indefinite"/>
-          </path>
-          <path d="M 188 130 Q 250 160 300 178" strokeDasharray="3 3">
-            <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1.4s" repeatCount="indefinite"/>
-          </path>
-        </g>
-
-        {/* Three finished shirts on hangers (representing 3 streams) */}
-        {[
-          { x: 264, y: 60, color: '#3461E0', label: 'CMT' },
-          { x: 286, y: 116, color: '#F59E0B', label: 'BRAND' },
-          { x: 296, y: 162, color: '#A78BFA', label: 'TRADE' },
-        ].map((s, i) => (
-          <g key={i} transform={`translate(${s.x}, ${s.y})`}>
-            {/* hanger hook */}
-            <line x1="32" y1="-4" x2="32" y2="-12" stroke="rgba(255,255,255,0.4)" strokeWidth="1"/>
-            <circle cx="32" cy="-14" r="2" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1"/>
-            {/* shirt */}
-            <g>
-              <path d="M 0 0 L 14 -12 L 26 -16 L 28 -10 L 38 -16 L 50 -12 L 64 0 L 56 8 L 50 4 L 50 36 L 14 36 L 14 4 L 8 8 Z" fill={s.color} fillOpacity="0.75" stroke={s.color} strokeWidth="1"/>
-              <path d="M 22 -10 Q 32 -6 42 -10" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="0.8"/>
-              {/* button placket */}
-              <line x1="32" y1="-4" x2="32" y2="32" stroke="rgba(255,255,255,0.35)" strokeWidth="0.6"/>
-              <circle cx="32" cy="6"  r="0.8" fill="rgba(255,255,255,0.6)"/>
-              <circle cx="32" cy="14" r="0.8" fill="rgba(255,255,255,0.6)"/>
-              <circle cx="32" cy="22" r="0.8" fill="rgba(255,255,255,0.6)"/>
-              <text x="32" y="52" textAnchor="middle" fontSize="6" fill="rgba(255,255,255,0.55)" fontWeight="700" letterSpacing="0.12em">{s.label}</text>
-            </g>
-          </g>
-        ))}
-
-        {/* Top label */}
-        <g transform="translate(20, 18)">
-          <text fontSize="9" fontWeight="700" letterSpacing="0.16em" fill="rgba(255,255,255,0.55)">APPAREL MANUFACTURING · CONFIDENTIAL</text>
-        </g>
-
-        {/* Bottom stats strip */}
-        <g transform="translate(0, 200)">
-          <rect width="400" height="20" fill="rgba(0,0,0,0.4)"/>
-          <text x="20" y="13" fontSize="10" fontWeight="700" fill="#fff">80–100k<tspan fill="rgba(255,255,255,0.5)" fontWeight="400"> shirts/mo</tspan></text>
-          <text x="140" y="13" fontSize="10" fontWeight="700" fill="#fff">30+<tspan fill="rgba(255,255,255,0.5)" fontWeight="400"> locations</tspan></text>
-          <text x="240" y="13" fontSize="10" fontWeight="700" fill="#fff">3<tspan fill="rgba(255,255,255,0.5)" fontWeight="400"> streams</tspan></text>
-          <text x="320" y="13" fontSize="10" fontWeight="700" fill="#fff">20+<tspan fill="rgba(255,255,255,0.5)" fontWeight="400"> job workers</tspan></text>
-        </g>
-      </svg>
+    <div style={{position:'relative',width:'100%',height:'100%',background:'#0E1116',overflow:'hidden'}}>
+      <iframe
+        src="assets/case-apex-flow.html"
+        title="Apex Apparel - production flow, 5 stages"
+        loading="lazy"
+        scrolling="no"
+        style={{position:'absolute',inset:0,width:'100%',height:'100%',border:0,display:'block',pointerEvents:'none'}}
+      />
     </div>
   );
 }
@@ -146,8 +43,8 @@ function ProofSection() {
         </Reveal>
         <div className="proof-grid">
           {[
-            { kind: 'image', img: 'url(assets/elite-factory.jpeg) center/cover', name: 'Furniture Manufacturer & Exporter', desc: '12+ countries (NA, Europe, Asia). 600–800 employees. ~1 million sq ft. Excel + group chats → live ERP.', stats: '64 tracked · 72 triggers · 21 days', quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."', attr: '- The founder', link: 'case-furniture-manufacturer.html', anchor: 'How they deployed in 21 days' },
-            { kind: 'apparel', name: 'Apparel Contract Manufacturer', desc: 'Apparel manufacturer · 80–100k shirts/mo. 3 streams. 20+ job workers. 30+ inventory locations. Live in 12 days.', stats: '34 tracked · 44 triggers · 12 days', quote: '"Working demo in 24 hours - 60–70% accurate. No vendor we\'ve worked with has done that."', attr: '- Founder (reference available on request)', link: 'case-apex.html', anchor: 'How they went live in 12 days' },
+            { kind: 'image', img: 'url(assets/elite-factory.jpeg) center/cover', name: 'Furniture Manufacturer & Exporter', desc: '12+ countries (NA, Europe, Asia). 600-800 employees. ~1 million sq ft. Excel + group chats → live ERP.', stats: '64 tracked · 72 triggers · 21 days', quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."', attr: '- The founder', link: 'case-furniture-manufacturer.html', anchor: 'How they deployed in 21 days' },
+            { kind: 'apparel', name: 'Apparel Contract Manufacturer', desc: 'Apparel manufacturer · 80-100k shirts/mo. 3 streams. 20+ job workers. 30+ inventory locations. Live in 12 days.', stats: '34 tracked · 44 triggers · 12 days', quote: '"Working demo in 24 hours - 60-70% accurate. No vendor we\'ve worked with has done that."', attr: '- Founder (reference available on request)', link: 'case-apex.html', anchor: 'How they went live in 12 days' },
           ].map((c,i) => (
             <Reveal key={i} delay={i * 150}>
               <a href={c.link} className="proof-card" style={{height:'100%',display:'block',textDecoration:'none',color:'inherit',transition:'all 160ms var(--ease-standard)'}}
@@ -320,8 +217,8 @@ function ComparisonTable() {
   const rows = [
     { label: 'Built for', sap: 'F500 finance, multi-country tax, public-co close', epicor: 'Discrete manufacturers with mature IT teams', qb: 'Small businesses that need bookkeeping', sg: 'Mid-market manufacturers who don\'t want to be a software project' },
     { label: 'What they do well', sap: 'Deep finance, global compliance, scale to billions', epicor: 'Strong shop-floor MRP, mature manufacturing modules', qb: 'Easy accounting, every accountant knows it', sg: 'Model your factory, ship in days, prove value before you pay' },
-    { label: 'Time to value', sap: '12–18+ months', epicor: '9–12 months', qb: 'Same day for books - but breaks as you scale ops', sg: 'Live in 7–21 days on your real data' },
-    { label: 'Up-front cost', sap: '$500K+', epicor: '$150K–$300K', qb: 'Low monthly fee', sg: '$0. You pay only after it works.' },
+    { label: 'Time to value', sap: '12-18+ months', epicor: '9-12 months', qb: 'Same day for books - but breaks as you scale ops', sg: 'Live in 7-21 days on your real data' },
+    { label: 'Up-front cost', sap: '$500K+', epicor: '$150K-$300K', qb: 'Low monthly fee', sg: '$0. You pay only after it works.' },
     { label: 'Change a workflow', sap: 'Consulting engagement', epicor: 'Dev sprint', qb: 'Build it in spreadsheets outside the system', sg: 'Configure live, often on the same call' },
     { label: 'Floor-staff UX', sap: 'Built for accountants and analysts', epicor: 'Built for planners and IT', qb: 'Built for bookkeepers', sg: 'Built for the warehouse manager - plain English, same habit as texting' },
     { label: 'Try before paying', sap: 'Sandbox demos', epicor: 'Sandbox demos', qb: 'Free tier', sg: '30 days running on your real floor, your real orders' },
@@ -452,7 +349,7 @@ function HomeFAQ() {
                   <span aria-hidden="true" style={{flexShrink:0,color:'var(--sg-blue)',fontSize:22,fontWeight:300,transform:open===i?'rotate(45deg)':'none',transition:'transform 180ms ease'}}>+</span>
                 </button>
                 {open === i && (
-                  <div id={`home-faq-${i}`} style={{padding:'0 22px 18px',fontSize:15,lineHeight:1.65,color:'var(--fg2)'}}>{it.a}</div>
+                  <div id={`home-faq-${i}`} style={{padding:'0 22px 18px',fontSize:'var(--fs-small)',lineHeight:1.65,color:'var(--fg2)'}}>{it.a}</div>
                 )}
               </div>
             </Reveal>

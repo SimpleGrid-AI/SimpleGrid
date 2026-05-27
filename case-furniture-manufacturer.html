@@ -3,13 +3,11 @@
 <head>
 <meta charset="utf-8">
 <!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
 
 <title>Furniture Exporter - 600 Employees, ERP in 21 Days | SimpleGrid</title>
-<meta name="description" content="600-employee furniture exporter with 550 SKUs, 22 components per SKU, component-level wood tracking in cubic feet, and stage-based contractor settlements. Custom ERP shipped in 21 days at our risk.">
+<meta name="description" content="600-employee furniture exporter, 550 SKUs, component-level wood tracking, contractor settlements. Custom ERP shipped in 21 days.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#3461E0">
 <meta name="robots" content="index, follow">
@@ -18,7 +16,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
 <link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
+<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
 <link rel="stylesheet" href="colors_and_type.css">
 <link rel="stylesheet" href="styles.css">
 
@@ -78,7 +76,7 @@
 }
 </script>
 <!-- No-flash boot: fade #root in once React replaces the seed (or after 1.2s failsafe) -->
-<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}</style>
+<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}@media (prefers-reduced-motion: reduce){html.js #root,html.js #root.sg-mounted{opacity:1;transition:none}}</style>
 <script>(function(){var h=document.documentElement;h.classList.add('js');function s(){var r=document.getElementById('root');if(!r)return;var m=new MutationObserver(function(){r.classList.add('sg-mounted');m.disconnect()});m.observe(r,{childList:true});setTimeout(function(){r.classList.add('sg-mounted');m.disconnect()},1200)}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',s)}else{s()}})();</script>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>

@@ -19,8 +19,8 @@ function ProductionFlow() {
   }, []);
 
   const stages = [
-    { id: 'order', label: 'Sales order received', icon: '📋', detail: 'Buyer PO arrives. AI parses it instantly.', color: '#3461E0' },
-    { id: 'plan', label: 'Planning & allocation', icon: '📐', detail: 'Planner allocates: in-house vs vendor. Auto-calculated.', color: '#7C3AED' },
+    { id: 'order', label: 'Sales order received', icon: '📋', detail: 'Buyer PO arrives. Parsed and routed in seconds.', color: '#3461E0' },
+    { id: 'plan', label: 'Planning & allocation', icon: '📐', detail: 'Planner allocates in-house vs contractor. Labor cost calculated per option.', color: '#7C3AED' },
     { id: 'procure', label: 'Material procurement', icon: '📦', detail: 'POs auto-generated. Consolidated by species/type.', color: '#0EA5E9' },
     { id: 'receive', label: 'Material received', icon: '🏭', detail: 'Warehouse logs receipt. Inventory updates live.', color: '#10B981' },
     { id: 'produce', label: 'Production', icon: '⚙️', detail: 'Material moves through stages. Each tracked.', color: '#F59E0B' },
@@ -50,7 +50,7 @@ function ProductionFlow() {
           {/* Title */}
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <div className="tag">WHERE WE COVER</div>
-            <h2 className="h2" style={{ fontSize: 28 }}>From the first PO to the final dispatch, we cover every step in between.</h2>
+            <h2 className="h2">Eight stages. One ledger. PO to dispatch - every step logged.</h2>
           </div>
 
           {/* Stage pipeline */}
@@ -129,7 +129,7 @@ function ProductionFlow() {
                 fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 700,
                 color: 'var(--fg1)', margin: '0 0 10px', letterSpacing: '-0.015em',
               }}>{stages[activeStage].label}</h3>
-              <p style={{ fontSize: 15, color: 'var(--fg2)', lineHeight: 1.6, margin: '0 0 16px' }}>
+              <p style={{ fontSize: 'var(--fs-small)', color: 'var(--fg2)', lineHeight: 1.6, margin: '0 0 16px' }}>
                 {stages[activeStage].detail}
               </p>
               {/* Mini event log for current stage */}
@@ -150,7 +150,7 @@ function ProductionFlow() {
           {/* Scroll hint */}
           {progress < 0.05 && (
             <div style={{
-              textAlign: 'center', marginTop: 32, fontSize: 12, color: 'var(--fg3)',
+              textAlign: 'center', marginTop: 32, fontSize: 'var(--fs-tag)', color: 'var(--fg3)',
               animation: 'sg-float 2s ease-in-out infinite',
             }}>
               ↓ Scroll to see the full flow

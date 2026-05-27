@@ -242,7 +242,7 @@ function DemoVideo() {
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 15,
+      fontSize: 'var(--fs-small)',
       color: 'var(--fg2)',
       marginBottom: 20
     }
@@ -330,13 +330,13 @@ function WhatYourTeamSees() {
     className: "tag"
   }, "WHAT YOUR TEAM ACTUALLY DOES"), /*#__PURE__*/React.createElement("h2", {
     className: "h2"
-  }, "No training needed. Your team already knows how."), /*#__PURE__*/React.createElement("p", {
+  }, "No training day. Day one, your floor is logging in."), /*#__PURE__*/React.createElement("p", {
     className: "lead"
-  }, "The biggest reason ERPs fail isn't technology - it's adoption. Your floor staff can't use complex software. They don't need to. They type what happened, like sending a message. The system does everything else.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "ERPs fail because the floor doesn't use them. Ours gets used because it talks like they do. Your floor staff type what happened, like sending a message. The system does everything else.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 100
   }, /*#__PURE__*/React.createElement("div", {
     className: "feature-row"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Talk to your factory like you'd text your team"), /*#__PURE__*/React.createElement("p", null, "Your warehouse manager types what happened - the same way he'd send a text, a Slack message, or a Teams chat. The system finds the PO, checks the quantity, updates inventory, fires all triggers, and confirms. One sentence in. Seven steps done.")), /*#__PURE__*/React.createElement(TypingDemo, {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Talk to your factory like you'd text your team"), /*#__PURE__*/React.createElement("p", null, "Your warehouse manager types what happened. Same habit as texting. No codes. No menus. The system finds the PO, checks the quantity, updates inventory, fires all triggers, and confirms. One sentence in. Seven steps done.")), /*#__PURE__*/React.createElement(TypingDemo, {
     lines: hankLines
   }))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 100

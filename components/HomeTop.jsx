@@ -1,11 +1,11 @@
 function RadialBurst({ theme = 'dark' }) {
   // Visual spec (strict):
   //   - Background: radial gradient #D6E4FF (inner, bottom-center) → #FFFFFF (outer)
-  //   - 100 thin lines (1–1.5px) radiating from bottom-center in upper 180° arc
+  //   - 100 thin lines (1-1.5px) radiating from bottom-center in upper 180° arc
   //   - All lines blue: lerp from #2956C4 (deep) to #3461E0 (SimpleGrid blue)
-  //   - Per-line opacity 30–80%, with shorter lines more opaque, longer more transparent
-  //   - Tip nodes 2–4px, #2956C4 at 60–90% opacity
-  //   - Animation: subtle "breathing" - opacity oscillates over a 4–8s period
+  //   - Per-line opacity 30-80%, with shorter lines more opaque, longer more transparent
+  //   - Tip nodes 2-4px, #2956C4 at 60-90% opacity
+  //   - Animation: subtle "breathing" - opacity oscillates over a 4-8s period
   //   - No particles, no fireworks, no orange/purple/yellow
   //   - <5% CPU, requestAnimationFrame
   const canvasRef = React.useRef(null);
@@ -39,24 +39,24 @@ function RadialBurst({ theme = 'dark' }) {
       for (let i = 0; i < COUNT; i++) {
         // Angle in upper 180° arc: -π (left) to 0 (right), with -π/2 = straight up
         const a = -Math.PI + Math.random() * Math.PI;
-        // Length: 40–90% of canvas height
+        // Length: 40-90% of canvas height
         const lenRatio = 0.4 + Math.random() * 0.5;
         // tone 0 = deep blue #2956C4, 1 = SimpleGrid blue #3461E0
         const tone = Math.random();
-        // shorter lines are more opaque (depth effect) - bumped from 0.3–0.8
-        // to 0.45–0.95 so the burst reads as eye-catching, not whispery.
-        const baseAlpha = 0.95 - (lenRatio - 0.4) * 0.5 / 0.5 * 0.5; // ~0.45–0.95
+        // shorter lines are more opaque (depth effect) - bumped from 0.3-0.8
+        // to 0.45-0.95 so the burst reads as eye-catching, not whispery.
+        const baseAlpha = 0.95 - (lenRatio - 0.4) * 0.5 / 0.5 * 0.5; // ~0.45-0.95
 
-        // Breathing oscillation: opacity sways over a 3–6s period
+        // Breathing oscillation: opacity sways over a 3-6s period
         const phase = Math.random() * Math.PI * 2;
         const period = 3 + Math.random() * 3;
         const freq = (Math.PI * 2) / (period * 60);
 
-        // Angle sway: gently rotate this line by ±0.04 rad (~2.3°) over 8–14s
+        // Angle sway: gently rotate this line by ±0.04 rad (~2.3°) over 8-14s
         const swayPhase = Math.random() * Math.PI * 2;
         const swayPeriod = 8 + Math.random() * 6;
         const swayFreq = (Math.PI * 2) / (swayPeriod * 60);
-        const swayAmp = 0.025 + Math.random() * 0.025; // 0.025–0.05 rad
+        const swayAmp = 0.025 + Math.random() * 0.025; // 0.025-0.05 rad
 
         // Length sway: lines also extend/contract by ±2% over a slow period
         const lenPhase = Math.random() * Math.PI * 2;
@@ -484,9 +484,9 @@ function ProblemSection() {
               Two-line labels (line 1 + "system" on line 2) keep "system" readable
               inside the 400-wide viewBox even with the longest sub. */}
           {[
-            { y: 36,  l1: 'No usable',     l2: 'system', color: '#DC2A3D', sub: 'project shelved' },
-            { y: 100, l1: 'Half-working',  l2: 'system', color: '#F59E0B', sub: 'forced into modules' },
-            { y: 164, l1: 'Fully working', l2: 'system', color: '#10B981', sub: 'rare, slow, expensive' },
+            { y: 36,  l1: 'No usable',     l2: 'system', color: '#374151', sub: 'project shelved' },
+            { y: 100, l1: 'Half-working',  l2: 'system', color: '#374151', sub: 'forced into modules' },
+            { y: 164, l1: 'Fully working', l2: 'system', color: '#374151', sub: 'rare, slow, expensive' },
           ].map((o, i) => (
             <g key={i}>
               {/* Branching dashed arrow from hole right edge to flat tail */}
@@ -517,12 +517,12 @@ function ProblemSection() {
         <svg viewBox="0 0 400 200" style={{width:'100%',height:'auto',display:'block'}} aria-hidden="true">
           <text x="20" y="50" fontSize="13" fill="var(--fg1)" fontWeight="600">Your business with a fluid ERP</text>
           <rect x="20" y="62" width="360" height="20" rx="10" fill="#E5E8ED"/>
-          <rect x="20" y="62" width="360" height="20" rx="10" fill="#10B981" style={{transformOrigin:'20px 72px',animation:'sg-grow-b 3s ease-out infinite'}}/>
+          <rect x="20" y="62" width="360" height="20" rx="10" fill="#3461E0" style={{transformOrigin:'20px 72px',animation:'sg-grow-b 3s ease-out infinite'}}/>
           <text x="370" y="76" fontSize="11" fill="#fff" fontWeight="700" textAnchor="end" style={{opacity:0,animation:'sg-fade-b 3s ease-out infinite'}}>Scales</text>
           <text x="20" y="124" fontSize="13" fill="var(--fg1)" fontWeight="600">Your business with a rigid ERP</text>
           <rect x="20" y="136" width="360" height="20" rx="10" fill="#E5E8ED"/>
-          <rect x="20" y="136" width="180" height="20" rx="10" fill="#DC2A3D" style={{transformOrigin:'20px 146px',animation:'sg-grow-c 3s ease-out infinite'}}/>
-          <text x="214" y="150" fontSize="11" fill="#DC2A3D" fontWeight="700">← Growth Stalls</text>
+          <rect x="20" y="136" width="180" height="20" rx="10" fill="#9CA3AF" style={{transformOrigin:'20px 146px',animation:'sg-grow-c 3s ease-out infinite'}}/>
+          <text x="214" y="150" fontSize="11" fill="#6B7280" fontWeight="700">← Growth Stalls</text>
           <style>{`@keyframes sg-grow-b{0%{transform:scaleX(0)}60%,100%{transform:scaleX(1)}}@keyframes sg-grow-c{0%{transform:scaleX(0)}50%,100%{transform:scaleX(1)}}@keyframes sg-fade-b{0%,60%{opacity:0}75%,100%{opacity:1}}`}</style>
         </svg>
       )
@@ -582,7 +582,7 @@ function ProblemSection() {
             <Reveal key={p.n} delay={i * 100}>
               <div style={{background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',padding:24,height:'100%',display:'flex',flexDirection:'column'}}>
                 <div style={{display:'flex',alignItems:'baseline',gap:12,marginBottom:14}}>
-                  <div style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,color:'var(--sg-red)',letterSpacing:'-0.02em'}}>{p.n}</div>
+                  <div style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,color:'var(--sg-blue)',letterSpacing:'-0.02em'}}>{p.n}</div>
                   <h3 style={{fontFamily:'var(--font-heading)',fontSize:17,fontWeight:700,color:'var(--fg1)',margin:0,letterSpacing:'-0.01em',lineHeight:1.3}}>{p.t}</h3>
                 </div>
                 <p style={{fontSize:13,color:'var(--fg2)',lineHeight:1.5,margin:'0 0 14px'}}>{p.b}</p>
@@ -956,7 +956,7 @@ function HowItWorks() {
         { kind: 'p', text: "Within 24 hours of the call, we send you a private link. It's not slides, not a sandbox - it's a working version of your ERP, generated from the call." },
         { kind: 'p', text: "Your products, your stages, your approval rules, and your buyers are modeled in. You and your team click around: create a PO, run an order through, log a receipt, see the inventory move." },
         { kind: 'list', items: [
-          "60–70% accuracy on the first pass is typical - the rest gets fixed in step 3.",
+          "60-70% accuracy on the first pass is typical - the rest gets fixed in step 3.",
           "Private URL, sign-in protected. Only your team sees it.",
           "Works in any browser. No app installs needed.",
           "This is the moment most operators tell us, “I've never seen a vendor do this.”",

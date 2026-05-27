@@ -84,7 +84,7 @@ function HiringHero() {
         <div className="tag" style={{color:'rgba(255,255,255,0.45)'}}>HIRING</div>
         <h1 className="h1" style={{color:'#fff',maxWidth:880}}>Build a custom ERP at our risk. Get paid only when it works.</h1>
         <p className="lead" style={{color:'rgba(255,255,255,0.7)',maxWidth:760,marginTop:16}}>
-          Lean team. Senior engineers, deployment experts, and founder engagement on every customer. We carry the build cost and the risk of every deployment - and we win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved.
+          Lean team. Founder and senior engineers on every customer. We carry the build cost and the risk of every deployment. We win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved.
         </p>
         <div style={{marginTop:28,display:'flex',gap:12,flexWrap:'wrap'}}>
           <a href="#roles" className="btn btn-lg btn-primary">See open roles</a>
@@ -106,7 +106,7 @@ function WhyThis() {
           {[
             { t: 'Operator-grounded', b: 'Our founder ran a $30M manufacturing business and survived two ERP failures before building this. We design for the floor. Every feature is tested against a real plant.' },
             { t: 'We carry the risk', b: 'Every customer is built at our cost and only paid for after it works. That commitment runs through the company - tight loops, visible work, no 9-month roadmaps.' },
-            { t: 'Small by design', b: 'We will stay under 25 people for as long as we can. Everyone ships. Everyone talks to customers. Senior engineers, deployment experts, and founder engagement on every deployment.' },
+            { t: 'Small by design', b: 'We will stay under 25 people for as long as we can. Everyone ships. Everyone talks to customers. Senior people on every deployment, including the founder.' },
           ].map((c,i) => (
             <Reveal key={i} delay={i * 100}>
               <div style={{background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',padding:24,height:'100%'}}>
@@ -131,7 +131,7 @@ function RoleSummary({ r, onOpen }) {
       <div>
         <h3 style={{fontFamily:'var(--font-heading)',fontSize:20,fontWeight:700,margin:'0 0 4px',color:'var(--fg1)',letterSpacing:'-0.01em'}}>{r.t}</h3>
         <div style={{fontSize:12,color:'var(--fg3)',marginBottom:4}}>{r.loc}</div>
-        <div style={{fontSize:13,color:'var(--sg-blue)',fontWeight:600,marginBottom:8}}>{r.comp}</div>
+        <div style={{fontSize:'var(--fs-caption)',color:'var(--sg-blue)',fontWeight:600,marginBottom:8}}>{r.comp}</div>
         <p style={{fontSize:14,color:'var(--fg2)',lineHeight:1.55,margin:0,maxWidth:680}}>{r.summary}</p>
       </div>
       <div style={{display:'flex',flexDirection:'column',gap:8,alignItems:'stretch'}}>
@@ -148,7 +148,7 @@ function RoleDetail({ r }) {
       <div style={{fontSize:11,textTransform:'uppercase',letterSpacing:'0.12em',color: color || 'var(--fg3)',fontWeight:700,marginBottom:10}}>{title}</div>
       <ul style={{listStyle:'none',padding:0,margin:0,display:'flex',flexDirection:'column',gap:10}}>
         {items.map((it,i) => (
-          <li key={i} style={{fontSize:15,color:'var(--fg2)',lineHeight:1.6,display:'flex',gap:10,alignItems:'flex-start'}}>
+          <li key={i} style={{fontSize:'var(--fs-small)',color:'var(--fg2)',lineHeight:1.6,display:'flex',gap:10,alignItems:'flex-start'}}>
             <span style={{color: color || 'var(--sg-blue)',fontWeight:700,marginTop:1,flexShrink:0}}>-</span>
             <span>{it}</span>
           </li>
@@ -163,14 +163,14 @@ function RoleDetail({ r }) {
           <div style={{fontSize:11,textTransform:'uppercase',letterSpacing:'0.12em',color:'var(--fg3)',fontWeight:700,marginBottom:8}}>{r.team} · {r.type}</div>
           <h2 style={{fontFamily:'var(--font-heading)',fontSize:30,fontWeight:700,margin:'0 0 8px',color:'var(--fg1)',letterSpacing:'-0.02em',lineHeight:1.15}}>{r.t}</h2>
           <div style={{fontSize:14,color:'var(--fg3)',marginBottom:6}}>{r.loc}</div>
-          <div style={{fontSize:15,color:'var(--sg-blue)',fontWeight:700}}>{r.comp}</div>
+          <div style={{fontSize:'var(--fs-small)',color:'var(--sg-blue)',fontWeight:700}}>{r.comp}</div>
         </div>
         <a href={'mailto:hello@simplegrid.ai?subject=Application:%20' + encodeURIComponent(r.t)} className="btn btn-primary">Apply</a>
       </div>
       <p style={{fontSize:17,color:'var(--fg1)',lineHeight:1.55,margin:'24px 0 0',fontWeight:500,maxWidth:740}}>{r.summary}</p>
       <div style={{marginTop:24}}>
         {r.about.map((p,i) => (
-          <p key={i} style={{fontSize:15,color:'var(--fg2)',lineHeight:1.7,margin:'0 0 14px',maxWidth:740}}>{p}</p>
+          <p key={i} style={{fontSize:'var(--fs-small)',color:'var(--fg2)',lineHeight:1.7,margin:'0 0 14px',maxWidth:740}}>{p}</p>
         ))}
       </div>
       <Sec title="What you will do" items={r.what} />

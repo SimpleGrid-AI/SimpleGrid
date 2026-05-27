@@ -41,6 +41,30 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 .nav-link.active { color: var(--sg-blue); }
 .nav-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 
+/* Resources dropdown — CSS-only <details>/<summary> pattern used in static page navs
+   (competitors.html, blog.html, tool pages). Mirrors the React Nav's "Resources ▾". */
+.nav-resources { position: relative; }
+.nav-resources > summary {
+  list-style: none; cursor: pointer; user-select: none;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.nav-resources > summary::-webkit-details-marker { display: none; }
+.nav-resources > summary svg { transition: transform 0.15s; }
+.nav-resources[open] > summary svg { transform: rotate(180deg); }
+.nav-resources-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg, 12px);
+  padding: 8px; min-width: 280px; box-shadow: 0 12px 32px rgba(0,0,0,0.08); z-index: 100;
+}
+.nav-resources-menu a {
+  display: block; padding: 12px 14px; border-radius: 8px; text-decoration: none;
+  color: var(--fg1); font-size: 14px; font-weight: 600; transition: background 0.15s;
+}
+.nav-resources-menu a span {
+  display: block; font-size: 12px; font-weight: 400; color: var(--fg3); margin-top: 2px;
+}
+.nav-resources-menu a:hover { background: var(--sg-off-white); }
+
 /* mobile burger button (hidden on desktop) */
 .nav-burger { display: none; background: none; border: 1px solid var(--border); width: 44px; height: 44px; border-radius: 8px; padding: 0; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: background 160ms; }
 .nav-burger:hover { background: var(--sg-off-white); }

@@ -1,10 +1,10 @@
-// SimpleGrid minimal cookie banner.
-// - Shows once until accepted or declined.
-// - Decline sets sg_ph_opt_out=1 (shared with the analytics deferred-load
-//   guard so PostHog + GA4 never load on this device).
-// - Accept sets sg_consent=accepted and removes any opt_out flag.
-// - GDPR/CCPA-friendly: analytics is already deferred to first user
-//   interaction, so until the user clicks anything no cookies fire.
+// SimpleGrid cookie banner — opt-in consent (GDPR-strict friendly).
+// - Shows once until the user accepts or declines.
+// - Accept sets localStorage.sg_consent='accepted' and dispatches a
+//   `sg:consent-accepted` window event so analytics-init.js can load
+//   PostHog + GA4. Until then, NO analytics fires.
+// - Decline sets sg_consent='declined' + sg_ph_opt_out='1' (permanent).
+// - The banner persists across page loads until the user makes a choice.
 (function () {
   if (typeof window === 'undefined' || !document.body) {
     document.addEventListener('DOMContentLoaded', init);
@@ -53,6 +53,8 @@
         localStorage.setItem('sg_consent', 'accepted');
         localStorage.removeItem('sg_ph_opt_out');
       } catch (e) {}
+      // Signal analytics-init.js that it can now load PostHog + GA4.
+      try { window.dispatchEvent(new Event('sg:consent-accepted')); } catch (e) {}
       close();
     });
     document.getElementById('sg-cc-decline').addEventListener('click', function () {

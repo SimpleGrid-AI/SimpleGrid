@@ -7,7 +7,7 @@ const TIERS = [
     accent: 'var(--sg-blue)',
     features: [
       'We build a custom ERP modeled on your factory',
-      'Live in 7–21 days, at our cost and our risk',
+      'Live in 7-21 days, at our cost and our risk',
       'You run it on your real floor for 30 days',
       'All your data migrated for you',
       'If it doesn\'t move the business, you walk. No invoice.',
@@ -37,9 +37,9 @@ const TIERS = [
 
 const COMPARE = [
   { metric: 'What they\'re built for',     us: 'Mid-market manufacturers who don\'t want to be a software project', sap: 'F500 finance, multi-country tax, public-co close', netsuite: 'Mid-to-large multi-entity ops', qbe: 'Bookkeeping for small businesses' },
-  { metric: 'Time to value',               us: 'Live in 7–21 days',     sap: '12–18 months',  netsuite: '6–12 months',                qbe: 'Same day for books - breaks as ops scale' },
-  { metric: 'Up-front cost',               us: '$0',                    sap: '$150K–$500K+',  netsuite: '$25K–$100K implementation',  qbe: '$1.7K/yr/user + add-ons' },
-  { metric: 'Change-order fees',           us: 'None. Ever.',           sap: '$8K–$20K each', netsuite: '$200+/hr consultant',        qbe: 'Per add-on / SuiteApp' },
+  { metric: 'Time to value',               us: 'Live in 7-21 days',     sap: '12-18 months',  netsuite: '6-12 months',                qbe: 'Same day for books - breaks as ops scale' },
+  { metric: 'Up-front cost',               us: '$0',                    sap: '$150K-$500K+',  netsuite: '$25K-$100K implementation',  qbe: '$1.7K/yr/user + add-ons' },
+  { metric: 'Change-order fees',           us: 'None. Ever.',           sap: '$8K-$20K each', netsuite: '$200+/hr consultant',        qbe: 'Per add-on / SuiteApp' },
   { metric: 'Built for the factory floor', us: 'Yes - same habit as texting', sap: 'Built for accountants',    netsuite: 'Built for analysts',          qbe: 'Built for bookkeepers' },
   { metric: 'Try-before-you-buy',          us: '30 days on your real floor, real orders',  sap: 'Sandbox demos',  netsuite: 'Sandbox demos', qbe: 'Free tier' },
 ];
@@ -67,7 +67,7 @@ function PricingPage() {
         <div className="tag">PRICING</div>
         <h1 className="h2" style={{maxWidth:1200}}>You carry nothing until you see it run.</h1>
         <p className="lead" style={{maxWidth:'100%'}}>
-          Every other ERP vendor charges you to find out if it works. We don't. SimpleGrid builds a custom ERP around your factory at our cost. You run it on your real floor for 30 days. If it doesn't move the business, you walk. We earn nothing.
+          Other ERPs charge up front to find out if they'll work. We don't charge until it's run on your floor for 30 days. SimpleGrid builds a custom ERP around your factory at our cost. You run it on your real floor for 30 days. If it doesn't move the business, you walk. We earn nothing.
         </p>
         <p className="lead" style={{maxWidth:'100%', marginTop:12, fontWeight:600, color:'var(--fg1)'}}>
           We are not free. We are not cheap. We're priced like an operator who has carried the build for you - and earned the right to charge for what it does.
@@ -94,11 +94,11 @@ function PricingPage() {
             }}>
               <div>
                 <div style={{fontSize:11,fontWeight:700,letterSpacing:'0.14em',textTransform:'uppercase',color:t.accent,marginBottom:4}}>{t.name}</div>
-                <div style={{fontSize:13,color:'var(--fg3)'}}>{t.sub}</div>
+                <div style={{fontSize:'var(--fs-caption)',color:'var(--fg3)'}}>{t.sub}</div>
               </div>
               <div>
                 <div style={{fontFamily:'var(--font-heading)', fontSize:38, fontWeight:700, color:'var(--fg1)', letterSpacing:'-0.025em', lineHeight:1}}>{t.price}</div>
-                {t.priceUnit && <div style={{fontSize:12, color:'var(--fg3)', marginTop:6}}>{t.priceUnit}</div>}
+                {t.priceUnit && <div style={{fontSize:'var(--fs-tag)', color:'var(--fg3)', marginTop:6}}>{t.priceUnit}</div>}
               </div>
               <ul style={{listStyle:'none', padding:0, margin:'4px 0 12px', display:'flex', flexDirection:'column', gap:8, flex:1}}>
                 {t.features.map((f, j) => (
@@ -169,8 +169,8 @@ function PricingPage() {
             </tbody>
           </table>
         </div>
-        <p style={{fontSize:12, color:'var(--fg3)', marginTop:14, fontStyle:'italic'}}>
-          Competitor figures are ranges based on publicly available implementation data for mid-market manufacturers (200–1,500 employees). Your quote may differ.
+        <p style={{fontSize:'var(--fs-tag)', color:'var(--fg3)', marginTop:14, fontStyle:'italic'}}>
+          Competitor figures are ranges based on publicly available implementation data for mid-market manufacturers (200-1,500 employees). Your quote may differ.
         </p>
       </div>
     </section>
@@ -186,7 +186,7 @@ function PricingPage() {
             { q: 'Is there a setup or build fee?', a: 'No. The build, the modeling sessions, the data migration, the senior-led onboarding and the 30 days running on your real floor are all on us. You owe nothing until you decide it works.' },
             { q: 'Why aren\'t you cheap?', a: 'Because we carry the build, the deployment risk, and the 30-day trial - and senior engineers, deployment experts, and founder engagement on every project. Cheap ERP exists. It will not show up on day one with a working version of your factory. We will. We price for what that takes.' },
             { q: 'What does "you walk if it doesn\'t work" actually mean?', a: 'At the end of 30 days you decide. If the system is being used daily by your floor staff and your dashboards match the floor, it works. If not, you walk. No invoice. No clawback. No data ransom - you get a clean export.' },
-            { q: 'Do you charge for changes to the ERP - today or tomorrow?', a: 'No. New approval rule, new production stage, new QC gate, new report, new integration - every change is included, at go-live and forever. Most ERPs charge $8K–$20K per change order. We never do.' },
+            { q: 'Do you charge for changes to the ERP - today or tomorrow?', a: 'No. New approval rule, new production stage, new QC gate, new report, new integration - every change is included, at go-live and forever. Most ERPs charge $8K-$20K per change order. We never do.' },
             { q: 'Are there feature tiers or add-on fees?', a: 'No. Every customer gets every feature. No Pro plan, no Enterprise tier, no per-feature licensing. When we ship something new, it is automatically yours.' },
             { q: 'Why are you so selective about who you onboard?', a: 'Senior engineers, deployment experts, and founder engagement on every deployment. We have limited capacity each quarter. We only take on customers we know we can win for - because we only get paid when you succeed, and we don\'t want to set anyone up to lose.' },
             { q: 'Do I get new features as you ship them?', a: 'Yes. We ship new products and features regularly, and they roll out to every customer at no extra cost. Your subscription includes everything we have built and everything we are about to build.' },

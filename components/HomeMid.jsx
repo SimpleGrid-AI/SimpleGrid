@@ -66,7 +66,7 @@ function DemoVideo() {
     <section className="section-sm">
       <div className="container" style={{textAlign:'center'}}>
         <Reveal>
-          <p style={{fontSize:15,color:'var(--fg2)',marginBottom:20}}>Watch one complete transaction. Start to finish. 60 seconds.</p>
+          <p style={{fontSize:'var(--fs-small)',color:'var(--fg2)',marginBottom:20}}>Watch one complete transaction. Start to finish. 60 seconds.</p>
           <div className="video-wrap">
             <div className="play-btn">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polygon points="6,3 20,12 6,21" fill="currentColor"/></svg>
@@ -125,15 +125,15 @@ function WhatYourTeamSees() {
       <div className="container">
         <Reveal>
           <div className="tag">WHAT YOUR TEAM ACTUALLY DOES</div>
-          <h2 className="h2">No training needed. Your team already knows how.</h2>
-          <p className="lead">The biggest reason ERPs fail isn't technology - it's adoption. Your floor staff can't use complex software. They don't need to. They type what happened, like sending a message. The system does everything else.</p>
+          <h2 className="h2">No training day. Day one, your floor is logging in.</h2>
+          <p className="lead">ERPs fail because the floor doesn't use them. Ours gets used because it talks like they do. Your floor staff type what happened, like sending a message. The system does everything else.</p>
         </Reveal>
 
         <Reveal delay={100}>
           <div className="feature-row">
             <div>
               <h3>Talk to your factory like you'd text your team</h3>
-              <p>Your warehouse manager types what happened - the same way he'd send a text, a Slack message, or a Teams chat. The system finds the PO, checks the quantity, updates inventory, fires all triggers, and confirms. One sentence in. Seven steps done.</p>
+              <p>Your warehouse manager types what happened. Same habit as texting. No codes. No menus. The system finds the PO, checks the quantity, updates inventory, fires all triggers, and confirms. One sentence in. Seven steps done.</p>
             </div>
             <TypingDemo lines={hankLines} />
           </div>
