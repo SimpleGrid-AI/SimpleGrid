@@ -6,3 +6,14 @@ node_modules/
 audit-artifacts/
 _site/
 favicon-32.png
+
+# Local-only audits and dashboard memos — never push to GH Pages.
+AUDIT_SIMPLEGRID.md
+AUDIT_SIMPLEGRID-*.md
+AUDIT_FIXES_TODO.md
+SEO_STRATEGY_SIMPLEGRID.md
+SEO_STRATEGY.md
+CRITICAL_DASHBOARD_ACTIONS.md
+audit-*.md
+seo-research/
+seo-audit/
