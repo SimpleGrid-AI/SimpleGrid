@@ -1,19 +1,26 @@
 // SimpleGrid analytics init — shared across every page.
 //
 // Consent gate:
-//   PostHog and GA4 only load AFTER the visitor has clicked "Accept" on the
-//   cookie banner (which sets localStorage.sg_consent = 'accepted'). They do
-//   NOT load on first mouse-move / scroll / touch — that pattern fires
-//   analytics before the visitor sees a banner, which fails GDPR-strict
-//   regulators (UK ICO has cracked down on implicit consent). CCPA is fine
-//   either way; this is the safer common denominator for US + EU/UK + India.
+//   PostHog, GA4, and GTM only load AFTER the visitor has clicked "Accept"
+//   on the cookie banner (which sets localStorage.sg_consent = 'accepted').
+//   They do NOT load on first mouse-move / scroll / touch — that pattern
+//   fires analytics before the visitor sees a banner, which fails
+//   GDPR-strict regulators (UK ICO has cracked down on implicit consent).
+//   CCPA is fine either way; this is the safer common denominator for
+//   US + EU/UK + India.
 //
 // On every page load, this script:
 //   1. Checks localStorage.sg_consent.
-//      - 'accepted' → loads PostHog + GA4 immediately.
+//      - 'accepted' → loads PostHog + GA4 + GTM immediately.
 //      - 'declined' or sg_ph_opt_out=1 → loads nothing.
 //      - unset → waits for `sg:consent-accepted` window event from cookie-consent.js.
 //   2. Also exposes window.sgPostHogOptOut(true|false) for manual opt-in/out.
+//
+// Why GTM in addition to GA4:
+//   GTM lets us add ad-platform conversion pixels (Google Ads, Meta, LinkedIn)
+//   without redeploying the site. The GTM container GTM-KDDX6XX3 currently
+//   holds a Google Ads Conversion Tracking tag that fires on `lead_captured`
+//   and `demo_booked` dataLayer events (pushed by tracking.js).
 (function () {
   if (typeof window === 'undefined') return;
 
@@ -44,12 +51,24 @@
     document.head.appendChild(s);
   }
 
+  function loadGTM() {
+    if (window.__sgGTMLoaded) return;
+    window.__sgGTMLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KDDX6XX3';
+    document.head.appendChild(s);
+  }
+
   function load() {
     try {
       if (localStorage.getItem('sg_ph_opt_out') === '1') return;
     } catch (e) { /* localStorage blocked — be safe, don't load */ return; }
     loadPostHog();
     loadGA4();
+    loadGTM();
   }
 
   function consentStatus() {

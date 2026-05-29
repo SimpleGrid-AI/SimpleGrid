@@ -1,6 +1,12 @@
 // SimpleGrid lightweight conversion-event tracking.
-// Fires the same event to both PostHog and GA4 if they're loaded.
-// Safe to call before either is initialised - the call is queued.
+// Fires the same event to PostHog, GA4, AND the GTM dataLayer if any are
+// loaded. Safe to call before any are initialised — calls are queued.
+//
+// Note on the GTM dataLayer push: gtag('event', ...) only pushes an
+// arguments-array entry to dataLayer (which GA4 reads but GTM's custom-event
+// triggers ignore). To fire a GTM custom-event trigger on the event name,
+// we ALSO push { event: name, ...props } explicitly. No double-counting
+// because GTM treats the two push formats as separate signals.
 (function () {
   function trackEvent(name, props) {
     props = props || {};
@@ -14,6 +20,15 @@
         window.gtag('event', name, props);
       }
     } catch (e) { /* gtag not ready yet */ }
+    try {
+      if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+        var payload = { event: name };
+        for (var k in props) {
+          if (Object.prototype.hasOwnProperty.call(props, k)) payload[k] = props[k];
+        }
+        window.dataLayer.push(payload);
+      }
+    } catch (e) { /* dataLayer not ready */ }
   }
 
   // Expose a single global hook.
