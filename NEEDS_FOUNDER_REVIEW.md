@@ -71,3 +71,9 @@ Added a one-paragraph citable lead (formula/number first) so featured snippets +
 **T5.5 competitor re-angle:** added a "right-sized for under $X / vertical" section + a `/replace-your-erp/` link to the NetSuite, SAP Business One, and Acumatica pages. Confirm the revenue thresholds ($50M/$30M/$50M).
 
 **Internal linking:** added a "Guides for manufacturers" block to the tools hub; valuation/ERP tools now link up to their pillar; GP blog links to the migration landing. 88 pages, 0 orphans.
+
+---
+
+## TIER 4b — Remaining tool leads + metas
+- All 25 remaining tools now have a `.tool-lead` paragraph (formula or definition). Verify the formulas/definitions match each tool's methodology; reword in your voice.
+- 5 metas expanded (automation-roi-estimator, expansion-roi-calculator, cost-of-poor-quality, hire-vs-overtime, case-studies.html). Confirm the case-studies proof numbers (12-day / 21-day).

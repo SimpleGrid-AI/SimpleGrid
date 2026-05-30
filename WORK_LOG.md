@@ -116,3 +116,13 @@ Per the prompt's priority order (T1-T4 first, T5 can follow up) and the quality-
 - **T3.3 linking:** tools-hub "Guides" block (5 links); valuation(6)+erp(4) tools link up to pillars; GP blog -> gp-migration. Via `scripts/_t5_links.py`.
 - **Sitemap:** generator updated to include the 9 landing dirs; regenerated to **87 URLs**, valid XML.
 - **Verify:** 88 shipped pages, **0 orphans**, 0 broken internal links on new pages, all 9 structurally complete. DoD ✓.
+
+---
+
+## TIER 4b — Remaining front-load + meta expansion (finishing pass)
+- Added `.tool-lead` citable blocks to the remaining **25 tools** (calculators get the formula; checklists/scorecards/generators get a definition + what-it-produces). **All 35/35 tools now front-load a citable block.** Via `scripts/_t4b_leads.py`.
+- Expanded 5 shortest non-legal metas to ~150 chars (automation-roi 115->146, expansion-roi 124->152, cost-of-poor-quality 128->160, hire-vs-overtime 132->155, case-studies 112->160).
+- Verify: 88 pages, 0 JSON-LD errors, 35/35 leads, 0 orphans, no em dashes. DoD ✓.
+
+## FINAL STATE
+88 shipped pages. All copy in NEEDS_FOUNDER_REVIEW.md. Remaining short metas (130-140, mostly fine) + the borderline 61-64 titles are optional and listed for founder discretion. Nothing pushed.
