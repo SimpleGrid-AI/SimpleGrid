@@ -43,6 +43,13 @@ exclude:
   - audit-artifacts/
   - seo-research/
   - seo-audit/
+  - seo-audit-data/
+  - SEO_GROUND_TRUTH_AUDIT.md
+  - WORK_LOG.md
+  - NEEDS_FOUNDER_REVIEW.md
+  - OFF_CODE_HANDOFF.md
+  - ENTITY_SUBMISSION_PACK.md
+  - OUTREACH_PACK.md
   - .claude/
   - README.md
   - BUILD.md
