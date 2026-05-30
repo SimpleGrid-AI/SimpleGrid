@@ -119,6 +119,7 @@ function RadialBurst({
       threshold: 0
     });
     if (canvas) observer.observe(canvas);
+
     // Start the splatter 5s into its cycle - the first ~5s reads as the burst
     // "growing in"; skipping past it means it opens already settled and dense.
     let frame = 300;
@@ -141,7 +142,6 @@ function RadialBurst({
 
         // Sway: angle drifts ±swayAmp over the sway period
         const angleNow = l.a + l.swayAmp * Math.sin(frame * l.swayFreq + l.swayPhase);
-
         const lenMul = 1 + 0.03 * Math.sin(frame * l.lenFreq + l.lenPhase);
         const len = reach * l.lenRatio * lenMul;
         const x = cx + Math.cos(angleNow) * len;
@@ -215,26 +215,79 @@ window.RadialBurst = RadialBurst;
 // Nature presets for the splatter. `deep`/`bright` are the ray gradient
 // endpoints and `bg` is the band background - white for all but Night, which
 // goes dark with a blue burst.
-const BURST_PALETTES = [
-  { name: 'Ocean',    deep: [36, 76, 173],   bright: [46, 86, 198],   bg: '#fff',    icon: '<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1C7 13 7 11 9.5 11c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1C7 19 7 17 9.5 17c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>' },
-  { name: 'Sky',      deep: [14, 116, 200],  bright: [56, 189, 248],  bg: '#fff',    icon: '<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>' },
-  { name: 'Lagoon',   deep: [15, 118, 110],  bright: [45, 212, 191],  bg: '#fff',    icon: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>' },
-  { name: 'Forest',   deep: [6, 59, 40],     bright: [21, 128, 61],   bg: '#fff',    icon: '<path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7Z"/><path d="M12 22v-3"/>' },
-  { name: 'Sunset',   deep: [194, 65, 12],   bright: [251, 146, 60],  bg: '#fff',    icon: '<path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m16 6-4 4-4-4"/><path d="M16 18a4 4 0 0 0-8 0"/>' },
-  { name: 'Sunrise',  deep: [180, 83, 9],    bright: [251, 191, 36],  bg: '#fff',    icon: '<path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/>' },
-  { name: 'Mountain', deep: [51, 65, 85],    bright: [148, 163, 184], bg: '#fff',    icon: '<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>' },
-  { name: 'Night',    deep: [29, 78, 240],   bright: [80, 150, 255],  bg: '#000', dark: true, icon: '<path d="M12 3a6.4 6.4 0 0 0 9 9 9 9 0 1 1-9-9Z"/><path d="M18.5 3.5v3"/><path d="M17 5h3"/>' }
-];
+const BURST_PALETTES = [{
+  name: 'Ocean',
+  deep: [36, 76, 173],
+  bright: [46, 86, 198],
+  bg: '#fff',
+  icon: '<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1C7 13 7 11 9.5 11c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1C7 19 7 17 9.5 17c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>'
+}, {
+  name: 'Sky',
+  deep: [14, 116, 200],
+  bright: [56, 189, 248],
+  bg: '#fff',
+  icon: '<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>'
+}, {
+  name: 'Lagoon',
+  deep: [15, 118, 110],
+  bright: [45, 212, 191],
+  bg: '#fff',
+  icon: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>'
+}, {
+  name: 'Forest',
+  deep: [6, 59, 40],
+  bright: [21, 128, 61],
+  bg: '#fff',
+  icon: '<path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7Z"/><path d="M12 22v-3"/>'
+}, {
+  name: 'Sunset',
+  deep: [194, 65, 12],
+  bright: [251, 146, 60],
+  bg: '#fff',
+  icon: '<path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m16 6-4 4-4-4"/><path d="M16 18a4 4 0 0 0-8 0"/>'
+}, {
+  name: 'Sunrise',
+  deep: [180, 83, 9],
+  bright: [251, 191, 36],
+  bg: '#fff',
+  icon: '<path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/>'
+}, {
+  name: 'Mountain',
+  deep: [51, 65, 85],
+  bright: [148, 163, 184],
+  bg: '#fff',
+  icon: '<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>'
+}, {
+  name: 'Night',
+  deep: [29, 78, 240],
+  bright: [80, 150, 255],
+  bg: '#000',
+  dark: true,
+  icon: '<path d="M12 3a6.4 6.4 0 0 0 9 9 9 9 0 1 1-9-9Z"/><path d="M18.5 3.5v3"/><path d="M17 5h3"/>'
+}];
 
 // A small nature icon (waves, pine, sun...) in the palette's own colour, used
 // both on the picker button and in each menu row.
-function BurstIcon(p, size) {
+function BurstIcon({
+  p,
+  size
+}) {
   return /*#__PURE__*/React.createElement("svg", {
-    width: size, height: size, viewBox: "0 0 24 24", fill: "none",
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    fill: "none",
     stroke: `rgb(${p.bright[0]},${p.bright[1]},${p.bright[2]})`,
-    strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": "true",
-    style: { flexShrink: 0 },
-    dangerouslySetInnerHTML: { __html: p.icon }
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true",
+    style: {
+      flexShrink: 0
+    },
+    dangerouslySetInnerHTML: {
+      __html: p.icon
+    }
   });
 }
 
@@ -257,55 +310,215 @@ function BurstBand() {
   }, [open]);
   return /*#__PURE__*/React.createElement("section", {
     className: "burst-band",
-    style: { position: 'relative', overflow: 'hidden', height: 'calc(85dvh - 52px)', minHeight: 'calc(85vh - 52px)', background: pal.bg, transition: 'background 200ms ease' }
-  }, /*#__PURE__*/React.createElement(RadialBurst, { palette: pal }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'relative',
+      overflow: 'hidden',
+      height: 'calc(85dvh - 52px)',
+      minHeight: 'calc(85vh - 52px)',
+      background: pal.bg,
+      transition: 'background 200ms ease'
+    }
+  }, /*#__PURE__*/React.createElement(RadialBurst, {
+    palette: pal
+  }), /*#__PURE__*/React.createElement("div", {
     "aria-hidden": "true",
     className: "burst-fade-top",
-    style: { position: 'absolute', left: 0, right: 0, top: 0, height: '46%', background: `linear-gradient(180deg, ${pal.bg} 0%, color-mix(in srgb, ${pal.bg} 85%, transparent) 28%, color-mix(in srgb, ${pal.bg} 40%, transparent) 62%, transparent 100%)`, pointerEvents: 'none', zIndex: 1 }
+    style: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      height: '46%',
+      background: `linear-gradient(180deg, ${pal.bg} 0%, color-mix(in srgb, ${pal.bg} 85%, transparent) 28%, color-mix(in srgb, ${pal.bg} 40%, transparent) 62%, transparent 100%)`,
+      pointerEvents: 'none',
+      zIndex: 1
+    }
   }), /*#__PURE__*/React.createElement("div", {
     "aria-hidden": "true",
     className: "burst-fade-bottom",
-    style: { position: 'absolute', left: 0, right: 0, bottom: 0, height: '46%', background: `linear-gradient(0deg, ${pal.bg} 0%, color-mix(in srgb, ${pal.bg} 85%, transparent) 28%, color-mix(in srgb, ${pal.bg} 40%, transparent) 62%, transparent 100%)`, pointerEvents: 'none', zIndex: 1 }
+    style: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      height: '46%',
+      background: `linear-gradient(0deg, ${pal.bg} 0%, color-mix(in srgb, ${pal.bg} 85%, transparent) 28%, color-mix(in srgb, ${pal.bg} 40%, transparent) 62%, transparent 100%)`,
+      pointerEvents: 'none',
+      zIndex: 1
+    }
   }), /*#__PURE__*/React.createElement("div", {
     ref: menuRef,
     className: "burst-picker",
-    style: { position: 'absolute', top: 18, right: 18, zIndex: 4 }
+    style: {
+      position: 'absolute',
+      top: 18,
+      right: 18,
+      zIndex: 4
+    }
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
     onClick: () => setOpen(o => !o),
     "aria-haspopup": "listbox",
     "aria-expanded": open,
     "aria-label": `Splatter colour: ${pal.name}`,
-    style: { display: 'inline-flex', alignItems: 'center', gap: 9, padding: '8px 12px', borderRadius: 10, cursor: 'pointer', background: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '1px solid var(--border)', boxShadow: '0 6px 20px rgba(15,20,25,0.08)', fontSize: 13, fontWeight: 600, color: 'var(--fg1)' }
-  }, BurstIcon(pal, 16), /*#__PURE__*/React.createElement("span", {
-    style: { minWidth: 60, textAlign: 'left' }
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 9,
+      padding: '8px 12px',
+      borderRadius: 10,
+      cursor: 'pointer',
+      background: 'rgba(255,255,255,0.82)',
+      backdropFilter: 'blur(8px)',
+      WebkitBackdropFilter: 'blur(8px)',
+      border: '1px solid var(--border)',
+      boxShadow: '0 6px 20px rgba(15,20,25,0.08)',
+      fontSize: 13,
+      fontWeight: 600,
+      color: 'var(--fg1)'
+    }
+  }, /*#__PURE__*/React.createElement(BurstIcon, {
+    p: pal,
+    size: 16
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      minWidth: 60,
+      textAlign: 'left'
+    }
   }, pal.name), /*#__PURE__*/React.createElement("svg", {
-    width: "12", height: "12", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.4", strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": "true",
-    style: { transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 160ms' }
-  }, /*#__PURE__*/React.createElement("path", { d: "M6 9l6 6 6-6" }))), open && /*#__PURE__*/React.createElement("ul", {
+    width: "12",
+    height: "12",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.4",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true",
+    style: {
+      transform: open ? 'rotate(180deg)' : 'none',
+      transition: 'transform 160ms'
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M6 9l6 6 6-6"
+  }))), open && /*#__PURE__*/React.createElement("ul", {
     role: "listbox",
     "aria-label": "Splatter colour",
-    style: { position: 'absolute', top: 'calc(100% + 6px)', right: 0, margin: 0, padding: 6, listStyle: 'none', minWidth: 170, borderRadius: 12, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid var(--border)', boxShadow: '0 14px 36px rgba(15,20,25,0.16)' }
+    style: {
+      position: 'absolute',
+      top: 'calc(100% + 6px)',
+      right: 0,
+      margin: 0,
+      padding: 6,
+      listStyle: 'none',
+      minWidth: 170,
+      borderRadius: 12,
+      background: 'rgba(255,255,255,0.96)',
+      backdropFilter: 'blur(10px)',
+      WebkitBackdropFilter: 'blur(10px)',
+      border: '1px solid var(--border)',
+      boxShadow: '0 14px 36px rgba(15,20,25,0.16)'
+    }
   }, BURST_PALETTES.map((p, i) => /*#__PURE__*/React.createElement("li", {
     key: p.name,
     role: "option",
     "aria-selected": i === idx,
-    onClick: () => { setIdx(i); setOpen(false); },
+    onClick: () => {
+      setIdx(i);
+      setOpen(false);
+    },
     onMouseEnter: () => setHover(i),
     onMouseLeave: () => setHover(-1),
-    style: { display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 8, cursor: 'pointer', fontSize: 13, fontWeight: i === idx ? 700 : 500, color: 'var(--fg1)', background: i === idx ? 'var(--bg-alt)' : i === hover ? 'rgba(0,0,0,0.04)' : 'transparent' }
-  }, BurstIcon(p, 16), /*#__PURE__*/React.createElement("span", {
-    style: { flex: 1 }
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10,
+      padding: '8px 10px',
+      borderRadius: 8,
+      cursor: 'pointer',
+      fontSize: 13,
+      fontWeight: i === idx ? 700 : 500,
+      color: 'var(--fg1)',
+      background: i === idx ? 'var(--bg-alt)' : i === hover ? 'rgba(0,0,0,0.04)' : 'transparent'
+    }
+  }, /*#__PURE__*/React.createElement(BurstIcon, {
+    p: p,
+    size: 16
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1
+    }
   }, p.name), i === idx && /*#__PURE__*/React.createElement("svg", {
-    width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "var(--sg-blue)", strokeWidth: "2.6", strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("path", { d: "M20 6L9 17l-5-5" })))))));
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "var(--sg-blue)",
+    strokeWidth: "2.6",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M20 6L9 17l-5-5"
+  })))))));
 }
 window.BurstBand = BurstBand;
 function CycleHeadline() {
-  // Static hero headline - no rotation.
-  return /*#__PURE__*/React.createElement("h1", {
+  const HEADLINES = [
+  /*#__PURE__*/
+  // index 0 is the primary; held longer than the others.
+  React.createElement(React.Fragment, {
+    key: "b"
+  }, "Custom ERP. Built at our risk.", /*#__PURE__*/React.createElement("br", null), "Paid for after it works."), /*#__PURE__*/React.createElement(React.Fragment, {
+    key: "e"
+  }, "The only ERP you", /*#__PURE__*/React.createElement("br", null), "try on before you buy"), /*#__PURE__*/React.createElement(React.Fragment, {
+    key: "c"
+  }, "We build it. You run it", /*#__PURE__*/React.createElement("br", null), "30 days on your real floor.", /*#__PURE__*/React.createElement("br", null), "If it doesn't move the business, you walk.")];
+  // Each tile fades smoothly; staggering them by (x+y)*delay gives a diagonal
+  // sweep that visually "breaks" the headline into checkboxes and reassembles.
+  const TX = 8,
+    TY = 3;
+  const TILES = React.useMemo(() => Array.from({
+    length: TX * TY
+  }, (_, idx) => {
+    const x = idx % TX,
+      y = Math.floor(idx / TX);
+    return {
+      idx,
+      delay: (x + y) * 70
+    };
+  }), []);
+  // Primary (index 0) holds 10s; the rest hold 3s each.
+  const holdFor = idx => idx === 0 ? 10000 : 3000;
+  const TRANSITION = 1300; // tile sweep duration
+  const [i, setI] = React.useState(0);
+  const [phase, setPhase] = React.useState('reveal'); // 'reveal' = tiles transparent (text visible), 'cover' = tiles opaque (text hidden)
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cover = setTimeout(() => setPhase('cover'), holdFor(i));
+    const swap = setTimeout(() => {
+      setI(x => (x + 1) % HEADLINES.length);
+      setPhase('reveal');
+    }, holdFor(i) + TRANSITION);
+    return () => {
+      clearTimeout(cover);
+      clearTimeout(swap);
+    };
+  }, [i]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: 'hero-title-stage hero-title-' + phase
+  }, /*#__PURE__*/React.createElement("h1", {
     className: "hero-title"
-  }, "Custom ERP. Built at our risk.", /*#__PURE__*/React.createElement("br", null), "Paid for after it works.");
+  }, HEADLINES[i]), /*#__PURE__*/React.createElement("div", {
+    className: "hero-title-tiles",
+    "aria-hidden": "true"
+  }, TILES.map(t => /*#__PURE__*/React.createElement("span", {
+    key: t.idx,
+    className: "hero-title-tile",
+    style: {
+      transitionDelay: t.delay + 'ms'
+    }
+  }))));
 }
 function Hero() {
   const count = 7;
@@ -338,7 +551,8 @@ function Hero() {
     stroke: "currentColor",
     strokeWidth: "2",
     strokeLinecap: "round",
-    strokeLinejoin: "round"
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("circle", {
     cx: "12",
     cy: "12",
@@ -351,7 +565,8 @@ function Hero() {
     stroke: "currentColor",
     strokeWidth: "2",
     strokeLinecap: "round",
-    strokeLinejoin: "round"
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
   }))), /*#__PURE__*/React.createElement("div", {
@@ -362,7 +577,7 @@ function Hero() {
     delay: 200
   }, /*#__PURE__*/React.createElement("p", {
     className: "hero-sub"
-  }, "We don't sell software. We build a custom ERP that fits how your factory actually runs - your stages, your contractors, your approvals, your costing logic.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "We don't sell software. We build a custom ERP that fits how your factory actually runs - your stages, your contractors, your approvals, your costing logic. We carry the cost and the risk of the build. You run it for 30 days on your real floor. If it doesn't move the business, you walk. We earn nothing.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 400
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-cta"
@@ -377,7 +592,9 @@ function Hero() {
     },
     onClick: () => {
       setShowInvite(true);
-      if (window.sgTrack) window.sgTrack('cta_clicked', {location: 'hero'});
+      window.sgTrack && window.sgTrack('cta_clicked', {
+        location: 'hero'
+      });
     }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "16",
@@ -421,7 +638,7 @@ function Hero() {
       letterSpacing: '-0.04em',
       position: 'relative'
     }
-  }, /*#__PURE__*/React.createElement("span", null, 30), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", null, "30"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 24,
       color: 'var(--fg3)',
@@ -478,19 +695,51 @@ window.Hero = Hero;
 // problem section. Single-color brand glyphs (Simple Icons paths,
 // CC0) + label, list duplicated so the CSS keyframe loops seamlessly.
 function IntegrationsBar() {
-  // Brand SVGs use full inline markup so multi-color marks (Slack, Gmail, Amazon, Google Sheets) render accurately.
-  const items = [
-    { name: 'WhatsApp', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#25D366" d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0c3.181 0 6.167 1.24 8.413 3.488a11.821 11.821 0 0 1 3.48 8.414c-.003 6.556-5.338 11.891-11.893 11.891-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.711.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>' },
-    { name: 'Slack', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z" fill="#E01E5A"/><path d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z" fill="#36C5F0"/><path d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z" fill="#2EB67D"/><path d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#ECB22E"/></svg>' },
-    { name: 'Gmail', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M22.288 1.5H1.712C.768 1.5 0 2.268 0 3.212v17.575C0 21.732.768 22.5 1.712 22.5H4.5V10.045L12 14.795l7.5-4.75V22.5h2.788c.944 0 1.712-.768 1.712-1.712V3.212c0-.944-.768-1.712-1.712-1.712z" fill="#FFFFFF"/><path d="M4.5 22.5V10.045L0 7.045v13.742C0 21.732.768 22.5 1.712 22.5H4.5z" fill="#4285F4"/><path d="M22.288 1.5L12 8.045 1.712 1.5C.768 1.5 0 2.268 0 3.212v3.833l12 7.75 12-7.75V3.212c0-.944-.768-1.712-1.712-1.712z" fill="#EA4335"/><path d="M19.5 22.5h2.788c.944 0 1.712-.768 1.712-1.712V7.045L19.5 10.045V22.5z" fill="#34A853"/><path d="M0 7.045v.001l4.5 3v-.001L0 7.045zM24 7.045v.001l-4.5 3v-.001L24 7.045z" fill="#C5221F"/><path d="M24 3.212v3.833l-4.5 3V10.045L12 14.795 4.5 10.045 0 7.045V3.212C0 2.268.768 1.5 1.712 1.5h.788L12 8.045 21.5 1.5h.788C23.232 1.5 24 2.268 24 3.212z" fill="#FBBC04"/></svg>' },
-    { name: 'Excel', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect width="24" height="24" rx="3" fill="#107C41"/><path d="M14 5h6v3h-6V5zm0 4h6v3h-6V9zm0 4h6v3h-6v-3zm0 4h6v2h-6v-2z" fill="#fff" opacity="0.6"/><text x="8" y="16.5" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-weight="700" font-size="10">X</text></svg>' },
-    { name: 'Google Sheets', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" fill="#0F9D58"/><path d="M14 2v6h6l-6-6z" fill="#0B7E47"/><rect x="7" y="11" width="10" height="7" fill="#fff"/><line x1="7" y1="13.5" x2="17" y2="13.5" stroke="#0F9D58" stroke-width="0.8"/><line x1="7" y1="15.8" x2="17" y2="15.8" stroke="#0F9D58" stroke-width="0.8"/><line x1="10.3" y1="11" x2="10.3" y2="18" stroke="#0F9D58" stroke-width="0.8"/><line x1="13.7" y1="11" x2="13.7" y2="18" stroke="#0F9D58" stroke-width="0.8"/></svg>' },
-    { name: 'QuickBooks', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M8.4 7.2h.6v8.16h-.6a4.08 4.08 0 1 1 0-8.16zm6.6 1.44H15a4.08 4.08 0 1 1 0 8.16h-.6V8.64zM15 9.84v6.96h0a3 3 0 0 0 0-6.96zM8.4 8.4a3 3 0 0 0 0 6h.6v-6h-.6z" fill="#fff"/></svg>' },
-    { name: 'Tally', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect width="24" height="24" rx="3" fill="#263238"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-weight="700" font-size="10">Tally</text></svg>' },
-    { name: 'Shopify', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15.337 2.072c-.022-.16-.163-.246-.282-.255-.117-.01-2.336-.166-2.336-.166s-1.545-1.532-1.71-1.701c-.165-.169-.488-.118-.614-.082-.018.005-.328.1-.84.258-.515-1.49-1.41-2.84-3-2.84-.041 0-.085.002-.13.005C6.025-3.27 5.49-3.5 5.025-3.5c-3.582 0-5.31 4.486-5.85 6.766C-2.219 3.7-3.2 4.006-3.32 4.043c-.785.247-.81.27-.913 1.012C-4.31 5.61-6.4 21.6-6.4 21.6L9.7 24.5l8.736-1.886S15.358 2.232 15.337 2.072z" fill="#95BF47" transform="translate(6 0)"/><path d="M21.337 1.817c-.022-.16-.163-.246-.282-.255-.117-.01-2.336-.166-2.336-.166s-1.545-1.532-1.71-1.701c-.06-.062-.146-.094-.235-.108v24.05l9.16-1.978S21.358 1.977 21.337 1.817z" fill="#5E8E3E"/><path d="M14.97 7.026l-1.119.346s-.5-1.486-1.762-1.486c-.029 0-.06.001-.09.003-.346-.456-.776-.673-1.158-.673-2.917 0-4.31 3.65-4.748 5.501l-2.34.726c-.726.227-.749.25-.844.935C2.81 12.89.4 22.094.4 22.094L13.7 24.5V6.97c-.243-.005-.487.003-.73.057zm-2.7 5.42c-.4.124-.853.262-1.31.4 0-.927-.05-2.135-.455-3.165 1.234.232 1.85 1.625 2.155 2.764h-.39zm-2.156-2.948c.65 1.215.794 2.766.794 3.756l-2.535.785c.347-1.83.917-3.36 1.74-4.541zm-1.115-1.038c.245 0 .482.083.71.245-1.01 1.474-1.535 3.6-1.866 5.45-.626.194-1.236.382-1.802.556.477-1.687 1.748-6.25 2.958-6.25z" fill="#fff"/></svg>' },
-    { name: 'Amazon', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M16.66 13.83c-.42 0-.78.13-1.05.4-.27.27-.4.62-.4 1.04 0 .42.13.77.4 1.04.27.27.62.4 1.05.4.42 0 .77-.13 1.04-.4.27-.27.4-.62.4-1.04 0-.42-.13-.77-.4-1.04-.27-.27-.62-.4-1.04-.4z" fill="#FF9900" opacity="0.001"/><text x="2" y="14" fill="#252F3E" font-family="Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="-0.5">amazon</text><path d="M3 17.5c2.5 2 6 3 9 3s6.5-1 9-3" stroke="#FF9900" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M20 17l1.5-1.2L21 18z" fill="#FF9900"/></svg>' },
-    { name: 'ShipStation', svg: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect width="24" height="24" rx="3" fill="#0099FF"/><path d="M6 9l6-2.5 6 2.5v6.5L12 18l-6-2.5V9z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/><line x1="12" y1="6.5" x2="12" y2="18" stroke="#fff" stroke-width="1.2"/><line x1="6" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.2"/><line x1="18" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.2"/></svg>' },
-  ];
+  // Brand-color SVGs from Simple Icons (CC0). The Amazon glyph was previously
+  // just the smile arc - replaced with the full Simple Icons Amazon path so the
+  // wordmark + smile both render.
+  const items = [{
+    name: 'WhatsApp',
+    color: '#25D366',
+    path: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413'
+  }, {
+    name: 'Slack',
+    color: '#4A154B',
+    path: 'M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z'
+  }, {
+    name: 'Gmail',
+    color: '#EA4335',
+    path: 'M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z'
+  }, {
+    name: 'Excel',
+    color: '#217346',
+    path: 'M23.546 1.785H7.93v3.43H0v13.572h7.93v3.428h15.616A.45.45 0 0 0 24 21.764V2.236a.45.45 0 0 0-.454-.451zm-12.16 14.193l-1.998-3.51-1.7 3.255H4.992l3.103-4.937L5.027 5.85h2.768l1.764 3.337L11.357 5.85h2.696l-2.999 5.06 3.108 4.94zm10.875 1.85h-7.95V13.51h2.997v-1.78h-2.997V9.95h2.997V8.16h-2.997V6.376h7.95z'
+  }, {
+    name: 'Google Sheets',
+    color: '#34A853',
+    path: 'M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6zm-3.41 8.727H7.91v1.909h3.41V8.727zm1.227 3.818v-1.909h3.41v1.91zm0-3.818v1.909h3.41V8.727zM19.5 24H4.5C3.12 24 2 22.88 2 21.5v-19C2 1.12 3.12 0 4.5 0H14v6h6v15.5c0 1.38-1.12 2.5-2.5 2.5zM18 7.5H6v9h12z'
+  }, {
+    name: 'QuickBooks',
+    color: '#2CA01C',
+    path: 'M0 12c0 6.624 5.376 12 12 12s12-5.376 12-12S18.624 0 12 0 0 5.376 0 12zm12-9.6c5.302 0 9.6 4.298 9.6 9.6s-4.298 9.6-9.6 9.6S2.4 17.302 2.4 12 6.698 2.4 12 2.4zM7.2 8.4h2.4v7.2H7.2c-1.99 0-3.6-1.61-3.6-3.6S5.21 8.4 7.2 8.4zm9.6 7.2h-2.4V8.4h2.4c1.99 0 3.6 1.61 3.6 3.6s-1.61 3.6-3.6 3.6z'
+  }, {
+    name: 'Tally',
+    color: '#D43A2F',
+    path: 'M3 3h3v18H3zM10 3h3v18h-3zM17 3h4v18h-4z'
+  }, {
+    name: 'Shopify',
+    color: '#95BF47',
+    path: 'M15.337 23.979 23.879 22.115S20.794 1.281 20.775 1.139C20.756.997 20.628.916 20.523.91c-.105-.006-2.328-.166-2.328-.166s-1.523-1.483-1.673-1.633c-.151-.151-.444-.105-.557-.073-.017.005-.331.103-.831.255-.503-1.422-1.401-2.736-2.965-2.736-.043 0-.087.002-.131.005C11.594-3.875 11.052-4.1 10.585-4.1c-3.581 0-5.295 4.479-5.834 6.756-1.394.432-2.385.738-2.508.776-.78.244-.808.27-.91 1.005-.077.553-2.116 16.353-2.116 16.353l14.65 2.747 1.47-.058z'
+  }, {
+    name: 'Amazon',
+    color: '#FF9900',
+    path: 'M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.123-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.262.567-.55.582l-3.064-.33c-.259-.056-.548-.262-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.348 1.392 5.428v4.911c0 1.479.616 2.127 1.192 2.929.204.286.247.629-.01.843-.647.541-1.794 1.539-2.423 2.097l-.008-.007zm3.561 1.554c-3.585 2.642-8.782 4.05-13.255 4.05-6.272 0-11.916-2.319-16.187-6.176-.336-.304-.036-.717.367-.484 4.61 2.682 10.31 4.295 16.193 4.295 3.97 0 8.337-.823 12.354-2.526.607-.258 1.114.398.528.842zm1.49-1.704c-.46-.587-3.045-.278-4.205-.14-.351.044-.404-.264-.087-.483 2.058-1.45 5.434-1.032 5.825-.546.392.485-.106 3.865-2.034 5.482-.296.249-.578.115-.446-.211.428-1.084 1.395-3.512.943-4.102z'
+  }, {
+    name: 'ShipStation',
+    color: '#0099FF',
+    path: 'M3 16.2c0-.4.3-.7.7-.7H22c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7zM3 19.4h19c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7v-.5c0-.4.3-.7.7-.7zM3 12.3c0-.4.3-.7.7-.7h13.6c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7zM3 8.4c0-.4.3-.7.7-.7h10c.4 0 .7.3.7.7v.5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7zM3 4.5c0-.4.3-.7.7-.7H22c.4 0 .7.3.7.7V5c0 .4-.3.7-.7.7H3.7c-.4 0-.7-.3-.7-.7z'
+  }];
+  // Two copies of the list so the CSS marquee loops seamlessly.
   const list = [...items, ...items];
   return /*#__PURE__*/React.createElement("section", {
     className: "ig-bar",
@@ -504,37 +753,111 @@ function IntegrationsBar() {
   }, list.map((it, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: "ig-item",
-    title: it.name,
-    "aria-hidden": i >= items.length ? 'true' : undefined
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "ig-icon",
-    dangerouslySetInnerHTML: { __html: it.svg }
-  }), /*#__PURE__*/React.createElement("span", null, it.name))))));
+    title: it.name
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: it.path,
+    fill: it.color
+  })), /*#__PURE__*/React.createElement("span", null, it.name))))));
 }
 window.IntegrationsBar = IntegrationsBar;
-
 function TrustStrip() {
-  var prefix = (typeof window !== 'undefined' && window.__SG_BLOG_ASSET_PREFIX__) || '';
+  // Slim "Recognized by" strip - lives just below the hero so above-fold
+  // visitors see real third-party validation. Duplicated in the footer
+  // (intentional - footer is the catalog, this is the hero proof).
+  const prefix = typeof window !== 'undefined' && window.__SG_BLOG_ASSET_PREFIX__ || '';
   return /*#__PURE__*/React.createElement("div", {
     "aria-label": "Recognized by",
-    style: { display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 24, padding: '14px 24px', flexWrap: 'wrap', borderBottom: '1px solid var(--border)', background: 'var(--bg-alt)' }
-  },
-    /*#__PURE__*/React.createElement("span", { style: { fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--fg3)' } }, "Recognized by"),
-    /*#__PURE__*/React.createElement("a", { href: "https://www.nvidia.com/en-us/startups/", target: "_blank", rel: "noopener noreferrer", title: "NVIDIA Inception Program member", "data-cta": "trust_nvidia", style: { display: 'inline-flex', alignItems: 'center', height: 40, opacity: 0.85 } },
-      /*#__PURE__*/React.createElement("img", { src: prefix + "assets/nvidia-inception.png", alt: "NVIDIA Inception Program member", width: "130", height: "40", loading: "lazy", decoding: "async", style: { display: 'block', height: 40, width: 'auto' } })
-    ),
-    /*#__PURE__*/React.createElement("a", { href: "https://aws.amazon.com/startups/", target: "_blank", rel: "noopener noreferrer", title: "AWS Activate Startups member", "data-cta": "trust_aws", style: { display: 'inline-flex', alignItems: 'center', gap: 10, height: 40, opacity: 0.85, textDecoration: 'none' } },
-      /*#__PURE__*/React.createElement("svg", { width: "60", height: "36", viewBox: "0 0 304 182", "aria-hidden": "true", style: { display: 'block' } },
-        /*#__PURE__*/React.createElement("path", { fill: "#252F3E", d: "M86.4 66.4c0 3.7.4 6.7 1.1 8.9.8 2.2 1.8 4.6 3.2 7.2.5.8.7 1.6.7 2.3 0 1-.6 2-1.9 3l-6.3 4.2c-.9.6-1.8.9-2.6.9-1 0-2-.5-3-1.4C76.2 90 75 88.4 74 86.8c-1-1.7-2-3.6-3.1-5.9-7.8 9.2-17.6 13.8-29.4 13.8-8.4 0-15.1-2.4-20-7.2-4.9-4.8-7.4-11.2-7.4-19.2 0-8.5 3-15.4 9.1-20.6 6.1-5.2 14.2-7.8 24.5-7.8 3.4 0 6.9.3 10.6.8 3.7.5 7.5 1.3 11.5 2.2v-7.3c0-7.6-1.6-12.9-4.7-16-3.2-3.1-8.6-4.6-16.3-4.6-3.5 0-7.1.4-10.8 1.3-3.7.9-7.3 2-10.8 3.4-1.6.7-2.8 1.1-3.5 1.3-.7.2-1.2.3-1.6.3-1.4 0-2.1-1-2.1-3.1v-4.9c0-1.6.2-2.8.7-3.5.5-.7 1.4-1.4 2.8-2.1 3.5-1.8 7.7-3.3 12.6-4.5C41 1.9 46.2 1.3 51.7 1.3c11.9 0 20.6 2.7 26.2 8.1 5.5 5.4 8.3 13.6 8.3 24.6v32.4h.2zM45.8 81.6c3.3 0 6.7-.6 10.3-1.8 3.6-1.2 6.8-3.4 9.5-6.4 1.6-1.9 2.8-4 3.4-6.4.6-2.4 1-5.3 1-8.7v-4.2c-2.9-.7-6-1.3-9.2-1.7-3.2-.4-6.3-.6-9.4-.6-6.7 0-11.6 1.3-14.9 4-3.3 2.7-4.9 6.5-4.9 11.5 0 4.7 1.2 8.2 3.7 10.6 2.4 2.5 5.9 3.7 10.5 3.7zm80.3 10.8c-1.8 0-3-.3-3.8-1-.8-.6-1.5-2-2.1-3.9L96.7 10.2c-.6-2-.9-3.3-.9-4 0-1.6.8-2.5 2.4-2.5h9.8c1.9 0 3.2.3 3.9 1 .8.6 1.4 2 2 3.9l16.8 66.2 15.6-66.2c.5-2 1.1-3.3 1.9-3.9.8-.6 2.2-1 4-1h8c1.9 0 3.2.3 4 1 .8.6 1.5 2 1.9 3.9l15.8 67 17.3-67c.6-2 1.3-3.3 2-3.9.8-.6 2.1-1 3.9-1h9.3c1.6 0 2.5.8 2.5 2.5 0 .5-.1 1-.2 1.6-.1.6-.3 1.4-.7 2.5l-24.1 77.3c-.6 2-1.3 3.3-2.1 3.9-.8.6-2.1 1-3.8 1h-8.6c-1.9 0-3.2-.3-4-1-.8-.7-1.5-2-1.9-4L156 23l-15.4 64.4c-.5 2-1.1 3.3-1.9 4-.8.7-2.2 1-4 1h-8.6zm128.5 2.7c-5.2 0-10.4-.6-15.4-1.8-5-1.2-8.9-2.5-11.5-4-1.6-.9-2.7-1.9-3.1-2.8-.4-.9-.6-1.9-.6-2.8v-5.1c0-2.1.8-3.1 2.3-3.1.6 0 1.2.1 1.8.3.6.2 1.5.6 2.5 1 3.4 1.5 7.1 2.7 11 3.5 4 .8 7.9 1.2 11.9 1.2 6.3 0 11.2-1.1 14.6-3.3 3.4-2.2 5.2-5.4 5.2-9.5 0-2.8-.9-5.1-2.7-7-1.8-1.9-5.2-3.6-10.1-5.2L246 52c-7.3-2.3-12.7-5.7-16-10.2-3.3-4.4-5-9.3-5-14.5 0-4.2.9-7.9 2.7-11.1 1.8-3.2 4.2-6 7.2-8.2 3-2.3 6.4-4 10.4-5.2 4-1.2 8.2-1.7 12.6-1.7 2.2 0 4.5.1 6.7.4 2.3.3 4.4.7 6.5 1.1 2 .5 3.9 1 5.7 1.6 1.8.6 3.2 1.2 4.2 1.8 1.4.8 2.4 1.6 3 2.5.6.8.9 1.9.9 3.3v4.7c0 2.1-.8 3.2-2.3 3.2-.8 0-2.1-.4-3.8-1.2-5.7-2.6-12.1-3.9-19.2-3.9-5.7 0-10.2.9-13.3 2.8-3.1 1.9-4.7 4.8-4.7 8.9 0 2.8 1 5.2 3 7.1 2 1.9 5.7 3.8 11 5.5l14.2 4.5c7.2 2.3 12.4 5.5 15.5 9.6 3.1 4.1 4.6 8.8 4.6 14 0 4.3-.9 8.2-2.6 11.6-1.8 3.4-4.2 6.4-7.3 8.8-3.1 2.5-6.8 4.3-11.1 5.6-4.5 1.4-9.2 2.1-14.3 2.1z" }),
-        /*#__PURE__*/React.createElement("path", { fill: "#FF9900", fillRule: "evenodd", clipRule: "evenodd", d: "M273.5 143.7c-32.9 24.3-80.7 37.2-121.8 37.2-57.6 0-109.5-21.3-148.7-56.7-3.1-2.8-.3-6.6 3.4-4.4 42.4 24.6 94.7 39.5 148.8 39.5 36.5 0 76.6-7.6 113.5-23.2 5.5-2.5 10.2 3.6 4.8 7.6z" }),
-        /*#__PURE__*/React.createElement("path", { fill: "#FF9900", fillRule: "evenodd", clipRule: "evenodd", d: "M287.2 128.1c-4.2-5.4-27.8-2.6-38.5-1.3-3.2.4-3.7-2.4-.8-4.5 18.8-13.2 49.7-9.4 53.3-5 3.6 4.5-1 35.4-18.6 50.2-2.7 2.3-5.3 1.1-4.1-1.9 4-9.9 12.9-32.2 8.7-37.5z" })
-      ),
-      /*#__PURE__*/React.createElement("span", { style: { fontSize: 13, fontWeight: 600, color: 'var(--fg2)', letterSpacing: '-0.005em' } }, "Activate Startups")
-    )
-  );
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 24,
+      padding: '14px 24px',
+      flexWrap: 'wrap',
+      borderBottom: '1px solid var(--border)',
+      background: 'var(--bg-alt)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      letterSpacing: '0.16em',
+      textTransform: 'uppercase',
+      color: 'var(--fg3)'
+    }
+  }, "Recognized by"), /*#__PURE__*/React.createElement("a", {
+    href: "https://www.nvidia.com/en-us/startups/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    title: "NVIDIA Inception Program member",
+    "data-cta": "trust_nvidia",
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      height: 28,
+      opacity: 0.85
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: prefix + 'assets/nvidia-inception.png',
+    alt: "NVIDIA Inception Program member",
+    width: "84",
+    height: "26",
+    loading: "lazy",
+    decoding: "async",
+    style: {
+      display: 'block',
+      height: 26,
+      width: 'auto'
+    }
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "https://aws.amazon.com/startups/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    title: "AWS Activate Startups member",
+    "data-cta": "trust_aws",
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 8,
+      height: 28,
+      opacity: 0.85,
+      textDecoration: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "44",
+    height: "26",
+    viewBox: "0 0 304 182",
+    "aria-hidden": "true",
+    style: {
+      display: 'block'
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    fill: "#252F3E",
+    d: "M86.4 66.4c0 3.7.4 6.7 1.1 8.9.8 2.2 1.8 4.6 3.2 7.2.5.8.7 1.6.7 2.3 0 1-.6 2-1.9 3l-6.3 4.2c-.9.6-1.8.9-2.6.9-1 0-2-.5-3-1.4C76.2 90 75 88.4 74 86.8c-1-1.7-2-3.6-3.1-5.9-7.8 9.2-17.6 13.8-29.4 13.8-8.4 0-15.1-2.4-20-7.2-4.9-4.8-7.4-11.2-7.4-19.2 0-8.5 3-15.4 9.1-20.6 6.1-5.2 14.2-7.8 24.5-7.8 3.4 0 6.9.3 10.6.8 3.7.5 7.5 1.3 11.5 2.2v-7.3c0-7.6-1.6-12.9-4.7-16-3.2-3.1-8.6-4.6-16.3-4.6-3.5 0-7.1.4-10.8 1.3-3.7.9-7.3 2-10.8 3.4-1.6.7-2.8 1.1-3.5 1.3-.7.2-1.2.3-1.6.3-1.4 0-2.1-1-2.1-3.1v-4.9c0-1.6.2-2.8.7-3.5.5-.7 1.4-1.4 2.8-2.1 3.5-1.8 7.7-3.3 12.6-4.5C41 1.9 46.2 1.3 51.7 1.3c11.9 0 20.6 2.7 26.2 8.1 5.5 5.4 8.3 13.6 8.3 24.6v32.4h.2zM45.8 81.6c3.3 0 6.7-.6 10.3-1.8 3.6-1.2 6.8-3.4 9.5-6.4 1.6-1.9 2.8-4 3.4-6.4.6-2.4 1-5.3 1-8.7v-4.2c-2.9-.7-6-1.3-9.2-1.7-3.2-.4-6.3-.6-9.4-.6-6.7 0-11.6 1.3-14.9 4-3.3 2.7-4.9 6.5-4.9 11.5 0 4.7 1.2 8.2 3.7 10.6 2.4 2.5 5.9 3.7 10.5 3.7zm80.3 10.8c-1.8 0-3-.3-3.8-1-.8-.6-1.5-2-2.1-3.9L96.7 10.2c-.6-2-.9-3.3-.9-4 0-1.6.8-2.5 2.4-2.5h9.8c1.9 0 3.2.3 3.9 1 .8.6 1.4 2 2 3.9l16.8 66.2 15.6-66.2c.5-2 1.1-3.3 1.9-3.9.8-.6 2.2-1 4-1h8c1.9 0 3.2.3 4 1 .8.6 1.5 2 1.9 3.9l15.8 67 17.3-67c.6-2 1.3-3.3 2-3.9.8-.6 2.1-1 3.9-1h9.3c1.6 0 2.5.8 2.5 2.5 0 .5-.1 1-.2 1.6-.1.6-.3 1.4-.7 2.5l-24.1 77.3c-.6 2-1.3 3.3-2.1 3.9-.8.6-2.1 1-3.8 1h-8.6c-1.9 0-3.2-.3-4-1-.8-.7-1.5-2-1.9-4L156 23l-15.4 64.4c-.5 2-1.1 3.3-1.9 4-.8.7-2.2 1-4 1h-8.6zm128.5 2.7c-5.2 0-10.4-.6-15.4-1.8-5-1.2-8.9-2.5-11.5-4-1.6-.9-2.7-1.9-3.1-2.8-.4-.9-.6-1.9-.6-2.8v-5.1c0-2.1.8-3.1 2.3-3.1.6 0 1.2.1 1.8.3.6.2 1.5.6 2.5 1 3.4 1.5 7.1 2.7 11 3.5 4 .8 7.9 1.2 11.9 1.2 6.3 0 11.2-1.1 14.6-3.3 3.4-2.2 5.2-5.4 5.2-9.5 0-2.8-.9-5.1-2.7-7-1.8-1.9-5.2-3.6-10.1-5.2L246 52c-7.3-2.3-12.7-5.7-16-10.2-3.3-4.4-5-9.3-5-14.5 0-4.2.9-7.9 2.7-11.1 1.8-3.2 4.2-6 7.2-8.2 3-2.3 6.4-4 10.4-5.2 4-1.2 8.2-1.7 12.6-1.7 2.2 0 4.5.1 6.7.4 2.3.3 4.4.7 6.5 1.1 2 .5 3.9 1 5.7 1.6 1.8.6 3.2 1.2 4.2 1.8 1.4.8 2.4 1.6 3 2.5.6.8.9 1.9.9 3.3v4.7c0 2.1-.8 3.2-2.3 3.2-.8 0-2.1-.4-3.8-1.2-5.7-2.6-12.1-3.9-19.2-3.9-5.7 0-10.2.9-13.3 2.8-3.1 1.9-4.7 4.8-4.7 8.9 0 2.8 1 5.2 3 7.1 2 1.9 5.7 3.8 11 5.5l14.2 4.5c7.2 2.3 12.4 5.5 15.5 9.6 3.1 4.1 4.6 8.8 4.6 14 0 4.3-.9 8.2-2.6 11.6-1.8 3.4-4.2 6.4-7.3 8.8-3.1 2.5-6.8 4.3-11.1 5.6-4.5 1.4-9.2 2.1-14.3 2.1z"
+  }), /*#__PURE__*/React.createElement("path", {
+    fill: "#FF9900",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M273.5 143.7c-32.9 24.3-80.7 37.2-121.8 37.2-57.6 0-109.5-21.3-148.7-56.7-3.1-2.8-.3-6.6 3.4-4.4 42.4 24.6 94.7 39.5 148.8 39.5 36.5 0 76.6-7.6 113.5-23.2 5.5-2.5 10.2 3.6 4.8 7.6z"
+  }), /*#__PURE__*/React.createElement("path", {
+    fill: "#FF9900",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M287.2 128.1c-4.2-5.4-27.8-2.6-38.5-1.3-3.2.4-3.7-2.4-.8-4.5 18.8-13.2 49.7-9.4 53.3-5 3.6 4.5-1 35.4-18.6 50.2-2.7 2.3-5.3 1.1-4.1-1.9 4-9.9 12.9-32.2 8.7-37.5z"
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      fontWeight: 600,
+      color: 'var(--fg2)'
+    }
+  }, "Activate Startups")));
 }
 window.TrustStrip = TrustStrip;
-
 function ProblemSection() {
   const [activeChatStep, setActiveChatStep] = React.useState(0);
   const chatRef = React.useRef(null);
@@ -566,7 +889,8 @@ function ProblemSection() {
         width: '100%',
         height: 'auto',
         display: 'block'
-      }
+      },
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("radialGradient", {
       id: "sgHoleCore",
       cx: "50%",
@@ -797,7 +1121,8 @@ function ProblemSection() {
         width: '100%',
         height: 'auto',
         display: 'block'
-      }
+      },
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("text", {
       x: "20",
       y: "50",
@@ -875,7 +1200,8 @@ function ProblemSection() {
         width: '100%',
         height: 'auto',
         display: 'block'
-      }
+      },
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("rect", {
       x: "10",
       y: "10",
@@ -998,7 +1324,9 @@ function ProblemSection() {
     style: {
       marginBottom: 0
     }
-  }, "WHY ERP KEEPS FAILING MID-MARKET")), /*#__PURE__*/React.createElement("div", {
+  }, "WHY ERP KEEPS FAILING MID-MARKET"), /*#__PURE__*/React.createElement("h2", {
+    className: "h2"
+  }, "Every ERP vendor makes you pay first and hope it works. We flipped it. Why are you buying ERP that way?")), /*#__PURE__*/React.createElement("div", {
     className: "problem-grid",
     style: {
       marginTop: 14
@@ -1596,7 +1924,8 @@ function HowItWorks() {
         width: '100%',
         height: '100%'
       },
-      preserveAspectRatio: "xMidYMid meet"
+      preserveAspectRatio: "xMidYMid meet",
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("circle", {
       cx: "22",
       cy: "36",
@@ -1687,7 +2016,8 @@ function HowItWorks() {
         width: '100%',
         height: '100%'
       },
-      preserveAspectRatio: "xMidYMid meet"
+      preserveAspectRatio: "xMidYMid meet",
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("rect", {
       x: "14",
       y: "14",
@@ -1845,7 +2175,8 @@ function HowItWorks() {
         width: '100%',
         height: '100%'
       },
-      preserveAspectRatio: "xMidYMid meet"
+      preserveAspectRatio: "xMidYMid meet",
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("rect", {
       x: "14",
       y: "14",
@@ -1967,7 +2298,8 @@ function HowItWorks() {
         width: '100%',
         height: '100%'
       },
-      preserveAspectRatio: "xMidYMid meet"
+      preserveAspectRatio: "xMidYMid meet",
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("line", {
       x1: "14",
       y1: "138",
@@ -2042,7 +2374,8 @@ function HowItWorks() {
         width: '100%',
         height: '100%'
       },
-      preserveAspectRatio: "xMidYMid meet"
+      preserveAspectRatio: "xMidYMid meet",
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("rect", {
       x: "64",
       y: "8",
@@ -2232,7 +2565,8 @@ function HowItWorks() {
     stroke: "var(--fg3)",
     strokeWidth: "2.5",
     strokeLinecap: "round",
-    strokeLinejoin: "round"
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("polyline", {
     points: "3 9 3 3 9 3"
   }), /*#__PURE__*/React.createElement("polyline", {

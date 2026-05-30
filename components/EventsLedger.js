@@ -39,7 +39,7 @@ function EventsLedger() {
     t: '11:46:31',
     actor: 'James · Owner',
     verb: 'APPROVE',
-    entity: 'PO-8819 · $17,000',
+    entity: 'PO-8819 · ₹ 14.2 L',
     from: 'Pending',
     to: 'Approved',
     impact: 'Vendor notified · Funds reserved'
@@ -55,7 +55,7 @@ function EventsLedger() {
     t: '11:46:05',
     actor: 'System',
     verb: 'RECONCILE',
-    entity: 'Bank · Chase 4421',
+    entity: 'Bank · ICICI 4421',
     from: '-',
     to: 'Matched',
     impact: '37 receipts matched · 2 flagged'
@@ -66,7 +66,7 @@ function EventsLedger() {
     entity: 'GRN-3320 · 200 sheets',
     from: '-',
     to: 'In stock',
-    impact: 'Inventory +200 · AP +$17,000'
+    impact: 'Inventory +200 · AP +₹ 14.2 L'
   }];
   const [count, setCount] = React.useState(0);
   const [paused, setPaused] = React.useState(false);
@@ -609,7 +609,8 @@ function ProductHeroNew() {
     stroke: "currentColor",
     strokeWidth: "2",
     strokeLinecap: "round",
-    strokeLinejoin: "round"
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("circle", {
     cx: "12",
     cy: "12",
@@ -622,7 +623,8 @@ function ProductHeroNew() {
     stroke: "currentColor",
     strokeWidth: "2",
     strokeLinecap: "round",
-    strokeLinejoin: "round"
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
   }))), /*#__PURE__*/React.createElement("div", {
@@ -682,7 +684,7 @@ function ProductHeroNew() {
       fontSize: 'var(--fs-caption)',
       color: noteColor
     }
-  }, /*#__PURE__*/React.createElement("span", null, "\u25CF Built at our risk"), /*#__PURE__*/React.createElement("span", null, "\u25CF Live in 7\u201321 days"), /*#__PURE__*/React.createElement("span", null, "\u25CF Paid for only after it works"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
+  }, /*#__PURE__*/React.createElement("span", null, "\u25CF Built at our risk"), /*#__PURE__*/React.createElement("span", null, "\u25CF Live in 7-21 days"), /*#__PURE__*/React.createElement("span", null, "\u25CF Paid for only after it works"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)
   }));
 }
@@ -1300,7 +1302,7 @@ function AbilitySection() {
     text: '> received 200 sheets 16-gauge from Midwest, PO-4521'
   }, {
     type: 'response',
-    text: '✓ Matched to PO-4521.\n  Inventory +200 · AP +$17,000\n  Reorder rule R-204 paused.\n  Logged at 11:46:05 by Hank.'
+    text: '✓ Matched to PO-4521.\n  Inventory +200 · AP +₹14.2L\n  Reorder rule R-204 paused.\n  Logged at 11:46:05 by Hank.'
   }];
   return /*#__PURE__*/React.createElement("section", {
     className: "section",

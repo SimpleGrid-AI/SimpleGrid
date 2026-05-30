@@ -195,14 +195,13 @@ function AnimatedNumber({
   const [display, setDisplay] = React.useState('0');
   const [started, setStarted] = React.useState(false);
   React.useEffect(() => {
-    let timer = null;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !started) {
         setStarted(true);
         const numVal = parseFloat(value.toString().replace(/[^0-9.]/g, ''));
         const isDecimal = value.toString().includes('.');
         const startTime = Date.now();
-        timer = setInterval(() => {
+        const timer = setInterval(() => {
           const progress = Math.min((Date.now() - startTime) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = numVal * eased;
@@ -214,10 +213,7 @@ function AnimatedNumber({
       threshold: 0.5
     });
     if (ref.current) observer.observe(ref.current);
-    return () => {
-      observer.disconnect();
-      if (timer) clearInterval(timer);
-    };
+    return () => observer.disconnect();
   }, [started]);
   return /*#__PURE__*/React.createElement("span", {
     ref: ref
@@ -329,7 +325,8 @@ function FlowLine({
   }, /*#__PURE__*/React.createElement("svg", {
     width: "20",
     height: "12",
-    viewBox: "0 0 20 12"
+    viewBox: "0 0 20 12",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M0 6h16M12 1l5 5-5 5",
     fill: "none",

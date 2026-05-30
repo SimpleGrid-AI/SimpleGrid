@@ -254,7 +254,8 @@ function DemoVideo() {
     width: "24",
     height: "24",
     viewBox: "0 0 24 24",
-    fill: "none"
+    fill: "none",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("polygon", {
     points: "6,3 20,12 6,21",
     fill: "currentColor"

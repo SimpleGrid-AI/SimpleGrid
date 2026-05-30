@@ -111,10 +111,7 @@ function ProductionFlow() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag"
   }, "WHERE WE COVER"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2",
-    style: {
-      fontSize: 28
-    }
+    className: "h2"
   }, "Eight stages. One ledger. PO to dispatch - every step logged.")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -290,7 +287,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("rect", {
     x: "60",
     y: "40",
@@ -363,7 +361,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, [0, 1, 2].map(r => [0, 1, 2].map(c => {
     const filled = r * 3 + c < Math.ceil(progress * 9);
     return /*#__PURE__*/React.createElement("rect", {
@@ -394,7 +393,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, [0, 1, 2, 3].map(i => {
     const x = 30 + i * 70;
     const arrived = i < Math.ceil(progress * 4);
@@ -443,7 +443,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("rect", {
     x: "60",
     y: "50",
@@ -502,7 +503,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("rect", {
     x: "20",
     y: beltY - 5,
@@ -556,7 +558,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, [0, 1, 2, 3, 4, 5].map(i => {
     const col = i % 3,
       row = Math.floor(i / 3);
@@ -596,7 +599,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, [0, 1, 2].map(i => {
     const x = 40 + i * 85;
     const sealed = i < Math.ceil(progress * 3);
@@ -650,7 +654,8 @@ function FactoryScene({
     viewBox: "0 0 300 200",
     style: {
       width: '100%'
-    }
+    },
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("g", {
     style: {
       transform: `translateX(${-80 + progress * 200}px)`,

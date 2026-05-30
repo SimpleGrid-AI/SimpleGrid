@@ -7,19 +7,25 @@ function parseBlogBody(body, title, images, blogId) {
   const lines = body.split('\n');
   const elements = [];
 
+  // Parse markdown-style [text](href) inline links into a React children
+  // array. Used for in-body cross-linking between related posts.
   function inline(text) {
     const out = [];
     const re = /\[([^\]]+)\]\(([^)]+)\)/g;
-    let last = 0, m, k = 0;
+    let last = 0,
+      m,
+      k = 0;
     while ((m = re.exec(text)) !== null) {
       if (m.index > last) out.push(text.slice(last, m.index));
-      out.push(/*#__PURE__*/React.createElement("a", { key: 'a-' + k++, href: m[2] }, m[1]));
+      out.push(/*#__PURE__*/React.createElement("a", {
+        key: 'a-' + k++,
+        href: m[2]
+      }, m[1]));
       last = m.index + m[0].length;
     }
     if (last < text.length) out.push(text.slice(last));
     return out.length ? out : text;
   }
-
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
@@ -234,14 +240,13 @@ function BlogPost() {
     }
   }, "\u2190 Back to blog"), /*#__PURE__*/React.createElement("h1", null, blog.title), /*#__PURE__*/React.createElement("div", {
     className: "post-meta"
-  },
-    blog.datePublished && /*#__PURE__*/React.createElement("time", { dateTime: blog.datePublished }, (function(){
-      const parts = blog.datePublished.split('-').map(n => parseInt(n, 10));
-      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      return months[parts[1] - 1] + ' ' + parts[2] + ', ' + parts[0];
-    })()),
-    /*#__PURE__*/React.createElement("span", null, blog.cat),
-    /*#__PURE__*/React.createElement("span", null, blog.readTime, " read")))), /*#__PURE__*/React.createElement("section", {
+  }, blog.datePublished && /*#__PURE__*/React.createElement("time", {
+    dateTime: blog.datePublished
+  }, function () {
+    const [y, m, d] = blog.datePublished.split('-').map(n => parseInt(n, 10));
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[m - 1] + ' ' + d + ', ' + y;
+  }()), /*#__PURE__*/React.createElement("span", null, blog.cat), /*#__PURE__*/React.createElement("span", null, blog.readTime, " read")))), /*#__PURE__*/React.createElement("section", {
     className: "post-content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container-sm"

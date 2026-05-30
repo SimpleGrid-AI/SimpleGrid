@@ -1380,7 +1380,8 @@ function EliteFactoryRoad({
       display: 'block',
       width: '100%',
       height: 'auto'
-    }
+    },
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("linearGradient", {
     id: "vsky",
     x1: "0",
@@ -1659,7 +1660,8 @@ function EliteFactoryRoad({
     width: "13",
     height: "13",
     viewBox: "0 0 24 24",
-    fill: "currentColor"
+    fill: "currentColor",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("rect", {
     x: "6",
     y: "5",
@@ -1676,7 +1678,8 @@ function EliteFactoryRoad({
     width: "13",
     height: "13",
     viewBox: "0 0 24 24",
-    fill: "currentColor"
+    fill: "currentColor",
+    "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("polygon", {
     points: "6,4 20,12 6,20"
   }))), /*#__PURE__*/React.createElement("input", {

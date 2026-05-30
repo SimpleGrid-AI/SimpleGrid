@@ -132,7 +132,7 @@ function BarsInfographic() {
       color: 'var(--sg-blue)',
       letterSpacing: '-0.02em'
     }
-  }, "80,000 \u2013 100,000"))), /*#__PURE__*/React.createElement("div", {
+  }, "80,000 - 100,000"))), /*#__PURE__*/React.createElement("div", {
     className: "btn-locations"
   }, /*#__PURE__*/React.createElement("h4", {
     style: {
@@ -392,13 +392,15 @@ function ApexCaseStudy() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
     page: "cases",
     onLoginClick: () => setShowLogin(true)
-  }), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement("section", {
+  }), /*#__PURE__*/React.createElement("main", {
+    id: "main"
+  }, /*#__PURE__*/React.createElement("section", {
     className: "case-hero"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "CASE STUDY \xB7 APPAREL MANUFACTURING"), /*#__PURE__*/React.createElement("h1", null, "An apparel manufacturer running 80,000\u2013100,000 shirts a month - without a factory of his own."), /*#__PURE__*/React.createElement("p", {
+  }, "CASE STUDY \xB7 APPAREL MANUFACTURING"), /*#__PURE__*/React.createElement("h1", null, "An apparel manufacturer running 80,000-100,000 shirts a month - without a factory of his own."), /*#__PURE__*/React.createElement("p", {
     className: "case-hook"
   }, "Two years. Two failed ERPs. Over $100,000 spent with nothing to show for it. The company runs three interconnected businesses through 20+ job workers and stores inventory at its logistics partners' warehouses - 30+ locations in total. Every generic ERP assumed a factory model. This operation does not have a factory."), /*#__PURE__*/React.createElement("div", {
     className: "confidential-banner"
@@ -410,7 +412,7 @@ function ApexCaseStudy() {
     className: "label"
   }, "Monthly volume"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "80k\u2013100k shirts")), /*#__PURE__*/React.createElement("div", {
+  }, "80k-100k shirts")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
@@ -442,7 +444,7 @@ function ApexCaseStudy() {
     className: "stat-cell"
   }, /*#__PURE__*/React.createElement("div", {
     className: "stat-num"
-  }, "80\u2013100", /*#__PURE__*/React.createElement("span", {
+  }, "80-100", /*#__PURE__*/React.createElement("span", {
     className: "unit"
   }, "k")), /*#__PURE__*/React.createElement("div", {
     className: "stat-label"
@@ -511,7 +513,7 @@ function ApexCaseStudy() {
     className: "pain-list"
   }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Generic ERPs could not model the operation."), " Two attempts over two years. Both failed. Every off-the-shelf ERP is built for manufacturers who make things in-house. Apex doesn't."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Inventory visibility collapsed across 30+ locations."), " Fabric, trims, and finished goods were spread across 20+ job worker units and 10+ logistics partner warehouses. When a brand asked \"where is our order?\" answering meant phone calls to three to five places."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Secondary material tracking was unmanageable."), " Every work order required its own bill of materials: specific buttons, hang tags, wash care labels, thread color. All purchased per work order, issued to job workers, reconciled at the end."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Three businesses collided in one spreadsheet."), " CMT, own brand, fabric trading: all tracked in overlapping Excel files. A fabric roll might belong to Brand A's order, their own stock, or a trading customer."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Job worker reconciliation was chaos."), " Each of 20+ workers received fabric AND trims for each work order, returned finished garments. Reconciling consumed hours every day."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Profitability by stream was a mystery."), " Was CMT making money or being subsidized by fabric trading? Impossible to tell."))), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a ", /*#__PURE__*/React.createElement("strong", null, "working demo in 24 hours"), ": 60\u201370% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams."), /*#__PURE__*/React.createElement("p", null, "Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case."), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a ", /*#__PURE__*/React.createElement("strong", null, "working demo in 24 hours"), ": 60-70% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams."), /*#__PURE__*/React.createElement("p", null, "Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'var(--font-heading)',
       fontSize: 'var(--fs-body)',
@@ -568,7 +570,7 @@ function ApexCaseStudy() {
     className: "rules-list"
   }, /*#__PURE__*/React.createElement("li", null, "Can't issue fabric to a job worker without an active work order."), /*#__PURE__*/React.createElement("li", null, "Can't receive finished goods exceeding the work order quantity."), /*#__PURE__*/React.createElement("li", null, "Secondary materials must be fully issued before production starts."), /*#__PURE__*/React.createElement("li", null, "Job worker settlement blocked until all returns are reconciled."), /*#__PURE__*/React.createElement("li", null, "Fabric roll tracking: defective rolls quarantined, can't enter production."), /*#__PURE__*/React.createElement("li", null, "Brand-specific packaging specs enforced at dispatch - wrong label format blocks shipment."))), /*#__PURE__*/React.createElement("div", {
     className: "testimonial-block"
-  }, /*#__PURE__*/React.createElement("blockquote", null, "\"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60\u201370% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check.\""), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("blockquote", null, "\"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60-70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check.\""), /*#__PURE__*/React.createElement("div", {
     className: "attr"
   }, "- Founder, Apex Apparel ", /*#__PURE__*/React.createElement("span", {
     style: {
@@ -599,7 +601,11 @@ function ApexCaseStudy() {
       fontWeight: 600,
       textDecoration: 'none'
     }
-  }, "See a furniture manufacturer's deployment - live in 21 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, { title: "Want a result like Apex?", body: "We'll build a custom ERP modelled on how your floor actually runs, put it in your hands, and carry the risk for 30 days. You pay only once it's already running the business.", note: "Limited slots each quarter. We onboard selectively." }), React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
+  }, "See a furniture manufacturer's deployment - live in 21 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, {
+    title: "Want a result like Apex?",
+    body: "We'll build a custom ERP modelled on how your floor actually runs, put it in your hands, and carry the risk for 30 days. You pay only once it's already running the business.",
+    note: "Limited slots each quarter. We onboard selectively."
+  }), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }));
 }

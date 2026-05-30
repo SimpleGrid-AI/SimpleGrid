@@ -310,7 +310,7 @@ function ManufacturingProcessSection() {
     }
   }, "By the time a product ships, the system knows exactly what it cost. SKU-level profitability - for the first time in the company's history.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(EliteFactoryRoad, {
     compact: true
-  })), /*#__PURE__*/null), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("div", {
     className: "contractor-table",
     style: {
       marginTop: 32
@@ -349,7 +349,9 @@ function EliteCaseStudy() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
     page: "cases",
     onLoginClick: () => setShowLogin(true)
-  }), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement("section", {
+  }), /*#__PURE__*/React.createElement("main", {
+    id: "main"
+  }, /*#__PURE__*/React.createElement("section", {
     className: "case-hero"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
@@ -357,7 +359,7 @@ function EliteCaseStudy() {
     className: "tag"
   }, "CASE STUDY \xB7 FURNITURE EXPORT"), /*#__PURE__*/React.createElement("h1", null, "How a furniture exporter stopped losing $200,000 a year to gaps nobody could see"), /*#__PURE__*/React.createElement("p", {
     className: "case-hook"
-  }, "Over four years, a furniture manufacturer and exporter - 12+ countries across North America, Europe, and Asia - lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600\u2013800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around."), /*#__PURE__*/React.createElement("div", {
+  }, "Over four years, a furniture manufacturer and exporter - 12+ countries across North America, Europe, and Asia - lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600-800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around."), /*#__PURE__*/React.createElement("div", {
     className: "case-strip"
   }, /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
@@ -371,7 +373,7 @@ function EliteCaseStudy() {
     className: "label"
   }, "Employees"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "600\u2013800")), /*#__PURE__*/React.createElement("div", {
+  }, "600-800")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
@@ -391,7 +393,7 @@ function EliteCaseStudy() {
     style: {
       maxWidth: 920
     }
-  }, "The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600\u2013800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit ", /*#__PURE__*/React.createElement("strong", null, "19 tracked stages, four quality gates, and six contractor types"), " - each paid by a different formula. The catalog runs to ", /*#__PURE__*/React.createElement("strong", null, "550 active SKUs"), ", each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame."), /*#__PURE__*/React.createElement("p", {
+  }, "The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600-800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit ", /*#__PURE__*/React.createElement("strong", null, "19 tracked stages, four quality gates, and six contractor types"), " - each paid by a different formula. The catalog runs to ", /*#__PURE__*/React.createElement("strong", null, "550 active SKUs"), ", each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 920
     }
@@ -399,7 +401,7 @@ function EliteCaseStudy() {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("h2", null, "What was breaking"), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "The company was profitable. Nobody knew which products were."), " The founder knew the business made money. But could he tell you whether the 6-seater dining table was more profitable than the bookshelf? No."), /*#__PURE__*/React.createElement("ul", {
     className: "pain-list"
-  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Planning was a 20-hour weekly grind."), " The planner spent the better part of every week aggregating component-level wood needs across 30\u201340 active orders in Excel. When the planner was out, planning stopped."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Material tracking was manual."), " Wood arrived at the store. The storekeeper wrote it in a register. How much was issued to which job, in which thickness, for which SKU? Nobody knew in real time."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Production stages were untracked."), " If 600 components entered sanding and 580 came out, nobody caught the 20-component gap until final count. Over 4 years, these gaps added up to nearly $200,000 - about 1.5% wastage compounding silently."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Contractor costing was reconciled monthly."), " Six contractor types, six settlement formulas, multiple jobs and stages each. Settlement required cross-referencing handwritten logs with the planner's memory."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "30+ floor staff could not use any ERP."), " The company had tried before. Storekeepers, QC inspectors, supervisors - too many menus, too many dropdowns. Everyone went back to texting."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "The founder had no dashboard."), " To answer \"where are we on the West Elm order?\" required 3 phone calls and 20 minutes."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Delivery slippage hid in the gaps."), " Without stage-level visibility, nobody saw a sanding bottleneck or a finishing delay until the dispatch deadline missed."))), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Planning was a 20-hour weekly grind."), " The planner spent the better part of every week aggregating component-level wood needs across 30-40 active orders in Excel. When the planner was out, planning stopped."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Material tracking was manual."), " Wood arrived at the store. The storekeeper wrote it in a register. How much was issued to which job, in which thickness, for which SKU? Nobody knew in real time."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Production stages were untracked."), " If 600 components entered sanding and 580 came out, nobody caught the 20-component gap until final count. Over 4 years, these gaps added up to nearly $200,000 - about 1.5% wastage compounding silently."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Contractor costing was reconciled monthly."), " Six contractor types, six settlement formulas, multiple jobs and stages each. Settlement required cross-referencing handwritten logs with the planner's memory."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "30+ floor staff could not use any ERP."), " The company had tried before. Storekeepers, QC inspectors, supervisors - too many menus, too many dropdowns. Everyone went back to texting."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "The founder had no dashboard."), " To answer \"where are we on the West Elm order?\" required 3 phone calls and 20 minutes."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Delivery slippage hid in the gaps."), " Without stage-level visibility, nobody saw a sanding bottleneck or a finishing delay until the dispatch deadline missed."))), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We did multiple calls with the founder over 14 days. Mapped how work actually moves: every order type, every approval rule, every handoff between contractors, every contractor pricing formula, every exception that only the founder knew about."), /*#__PURE__*/React.createElement("p", null, "After the first call, the founder saw a ", /*#__PURE__*/React.createElement("strong", null, "working demo within 24 hours"), ". Not a slideshow. A working system reflecting how his factory actually runs - wood aggregation, two-level tracking, six contractor settlement formulas, four QC gates. 21 days total from first conversation to live system."), /*#__PURE__*/React.createElement("p", {
     style: {
@@ -451,7 +453,11 @@ function EliteCaseStudy() {
       fontWeight: 600,
       textDecoration: 'none'
     }
-  }, "See an apparel manufacturer's deployment - live in 12 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, { title: "Want a result like this?", body: "We'll build a custom ERP modelled on how your floor actually runs, put it in your hands, and carry the risk for 30 days. You pay only once it's already running the business.", note: "Limited slots each quarter. We onboard selectively." }), React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
+  }, "See an apparel manufacturer's deployment - live in 12 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, {
+    title: "Want a result like this?",
+    body: "We'll build a custom ERP modelled on how your floor actually runs, put it in your hands, and carry the risk for 30 days. You pay only once it's already running the business.",
+    note: "Limited slots each quarter. We onboard selectively."
+  }), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }));
 }

@@ -548,7 +548,8 @@
     }, /*#__PURE__*/React.createElement("svg", {
       viewBox: "0 0 440 260",
       preserveAspectRatio: "none",
-      className: "pi-agg-svg"
+      className: "pi-agg-svg",
+      "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("ellipse", {
       cx: "220",
       cy: "135",
@@ -758,7 +759,7 @@
       className: "pi-rule-compare-h"
     }, "Traditional ERP"), /*#__PURE__*/React.createElement("div", {
       className: "pi-rule-compare-v"
-    }, "$8K\u2013$20K \xB7 3\u20136 weeks")), /*#__PURE__*/React.createElement("div", {
+    }, "$8K-$20K \xB7 3-6 weeks")), /*#__PURE__*/React.createElement("div", {
       className: "pi-rule-compare-card pi-rule-compare-good"
     }, /*#__PURE__*/React.createElement("div", {
       className: "pi-rule-compare-h"
@@ -835,7 +836,7 @@
       className: "pi-mvd-col pi-mvd-col-good"
     }, /*#__PURE__*/React.createElement("div", {
       className: "pi-mvd-col-h"
-    }, "SG Schema"), /*#__PURE__*/React.createElement("div", {
+    }, "SG Schema (SimpleGrid)"), /*#__PURE__*/React.createElement("div", {
       className: "pi-mvd-steps"
     }, domainSteps.map((s, i) => /*#__PURE__*/React.createElement("div", {
       key: i,
@@ -1069,7 +1070,7 @@
       className: "pi-mm-tier-h"
     }, "Mid-market manufacturer"), /*#__PURE__*/React.createElement("div", {
       className: "pi-mm-tier-sub"
-    }, "50\u20131,500 employees \xB7 diverse operations \xB7 founder buys, not CIO"), /*#__PURE__*/React.createElement("div", {
+    }, "50-1,500 employees \xB7 diverse operations \xB7 founder buys, not CIO"), /*#__PURE__*/React.createElement("div", {
       className: "pi-mm-needs"
     }, /*#__PURE__*/React.createElement("span", null, "Deploy in days"), /*#__PURE__*/React.createElement("span", null, "Match how we work"), /*#__PURE__*/React.createElement("span", null, "Floor staff usable"), /*#__PURE__*/React.createElement("span", null, "See before paying"), /*#__PURE__*/React.createElement("span", null, "No change-order tax"))), /*#__PURE__*/React.createElement("div", {
       className: "pi-mm-arrow pi-mm-arrow-up"
@@ -1268,7 +1269,7 @@
       className: "pi-pc-h"
     }, /*#__PURE__*/React.createElement("div", {
       className: "pi-pc-old"
-    }, "28\u201352 weeks"), /*#__PURE__*/React.createElement("div", {
+    }, "28-52 weeks"), /*#__PURE__*/React.createElement("div", {
       className: "pi-pc-arrow"
     }, shrink === 0 ? '→' : '⟶ AI-compressed ⟶'), /*#__PURE__*/React.createElement("div", {
       className: "pi-pc-neu"
@@ -1742,7 +1743,7 @@
   POST[14] = {
     mid: /*#__PURE__*/React.createElement(Block, {
       tag: "Live demo \xB7 the compression",
-      h: "28\u201352 weeks \u2192 days",
+      h: "28-52 weeks \u2192 days",
       sub: "Watch the deployment phases collapse. Same six phases - AI compresses the translation step in each one."
     }, /*#__PURE__*/React.createElement(PhaseCompress, null)),
     end: /*#__PURE__*/React.createElement(Bottom, {

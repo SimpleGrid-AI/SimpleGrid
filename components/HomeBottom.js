@@ -38,7 +38,9 @@ function FounderStory() {
     className: "body"
   }, "SimpleGrid exists because we were the customer first - multiple factories, 400-person workforce. We bought the same enterprise systems you're being pitched today. We watched them fail. We know exactly what breaks when the system can't keep up with the floor."), /*#__PURE__*/React.createElement("p", {
     className: "body"
-  }, "That's why we built SimpleGrid the only way that makes sense to an operator: model it on your factory, run it on your real floor for 30 days, and only charge when it earns its keep.")))));
+  }, "That's why we built SimpleGrid the only way that makes sense to an operator: model it on your factory, run it on your real floor for 30 days, and only charge when it earns its keep."), /*#__PURE__*/React.createElement("p", {
+    className: "body"
+  }, "Senior engineers and deployment experts on every deployment. No sales reps. No SDRs. No chatbot. You deal with the people who'll actually build your system.")))));
 }
 window.FounderStory = FounderStory;
 function ProofSection() {
@@ -151,29 +153,96 @@ function ProofSection() {
 }
 window.ProofSection = ProofSection;
 function Integrations() {
-  const items = [
-    { name: 'Gmail', status: 'live', svg: '<svg viewBox="0 -31.5 256 256" width="24" height="24" aria-hidden="true"><path fill="#4285F4" d="M58.18 192.05V93.14L27.5 65.08 0 49.5v125.1c0 9.66 7.83 17.45 17.45 17.45z"/><path fill="#34A853" d="M197.82 192.05h40.73c9.66 0 17.45-7.83 17.45-17.45V49.5l-31.16 17.84-27.02 25.8z"/><path fill="#FBBC04" d="M197.82 17.5v75.64L256 49.5V26.23c0-21.58-24.64-33.89-41.89-20.94z"/><path fill="#C5221F" d="M0 49.5l58.18 43.64V17.5L41.89 5.29C24.61-7.66 0 4.65 0 26.23z"/><path fill="#EA4335" d="M58.18 93.14L128 145.5l69.82-52.36v-75.64L128 69.87 58.18 17.5z"/></svg>' },
-    { name: 'QuickBooks', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg>' },
-    { name: 'Excel', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#107C41"/><path d="M14 5h6v3h-6V5zm0 4h6v3h-6V9zm0 4h6v3h-6v-3zm0 4h6v2h-6v-2z" fill="#fff" opacity="0.5"/><text x="8" y="17" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-weight="700" font-size="12" letter-spacing="-1">X</text></svg>' },
-    { name: 'Google Sheets', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" fill="#0F9D58"/><path d="M14 2v6h6l-6-6z" fill="#0B7E47"/><rect x="7" y="11" width="10" height="7" fill="#fff"/><line x1="7" y1="13.5" x2="17" y2="13.5" stroke="#0F9D58" stroke-width="0.8"/><line x1="7" y1="15.8" x2="17" y2="15.8" stroke="#0F9D58" stroke-width="0.8"/><line x1="10.3" y1="11" x2="10.3" y2="18" stroke="#0F9D58" stroke-width="0.8"/><line x1="13.7" y1="11" x2="13.7" y2="18" stroke="#0F9D58" stroke-width="0.8"/></svg>' },
-    { name: 'Shopify', status: 'live', svg: '<svg viewBox="-7.5 0 124.5 124.5" width="24" height="24" aria-hidden="true"><path fill="#95BF47" d="M95.9 23.9c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.7-.7-2.2-.5-2.7-.3 0 0-1.4.4-3.7 1.1-.4-1.3-1-2.8-1.8-4.4-2.6-5-6.5-7.7-11.1-7.7-.3 0-.6 0-1 .1-.1-.2-.3-.3-.4-.5C53.7 1.5 51.1.4 48 .5c-6 .2-12 4.5-16.8 12.2-3.4 5.4-6 12.2-6.7 17.5-6.9 2.1-11.7 3.6-11.8 3.7-3.5 1.1-3.6 1.2-4 4.5C8.3 40.9 0 105.6 0 105.6l69.4 12 30.1-7.5S96 24.5 95.9 23.9zM68.2 17.1c-1.7.5-3.7 1.1-5.8 1.8 0-3-.4-7.2-1.8-10.8 4.5.8 6.7 5.9 7.6 9zm-9.7 3c-3.9 1.2-8.2 2.5-12.5 3.8 1.2-4.6 3.5-9.2 6.3-12.2 1-1.1 2.5-2.3 4.2-3 1.7 3.5 2.1 8.4 2 11.4zM48.2 4.5c1.4 0 2.6.3 3.6.9-1.6.8-3.2 2.1-4.7 3.7-3.7 4-6.5 10.2-7.7 16.2-3.6 1.1-7.1 2.2-10.3 3.2C31.4 19.3 39.2 4.8 48.2 4.5z"/><path fill="#5E8E3E" d="M94.8 22.9c-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.3-.3-.6-.4-1-.5l-5.2 106.3 30.1-7.5S96 24.5 95.9 23.9c-.1-.6-.6-1-1.1-1z"/><path fill="#fff" d="M58.4 38.4l-3.5 13.1s-3.9-1.8-8.5-1.5c-6.8.4-6.8 4.7-6.8 5.7.4 5.7 15.4 7 16.3 20.4.7 10.5-5.6 17.7-14.6 18.3-10.9.6-16.9-5.8-16.9-5.8l2.3-9.8s6 4.6 10.9 4.3c3.2-.2 4.3-2.8 4.2-4.6-.5-7.5-12.7-7.1-13.5-19.4-.7-10.3 6.1-20.7 21-21.6 5.8-.4 8.8 1.1 8.8 1.1z"/></svg>' },
-    { name: 'ShipStation', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0099FF"/><path d="M6 9 L12 6.5 L18 9 L18 15.5 L12 18 L6 15.5 Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>' },
-    { name: 'Outlook', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0078D4"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">O</text></svg>' },
-    { name: 'Tally', status: 'request', svg: '<svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg>' },
-    { name: 'Xero', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg>' },
-    { name: 'Stripe', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#635BFF"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">S</text></svg>' },
-    { name: 'Zoho', status: 'request', svg: '<svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#D0312D"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="12">ZOHO</text></svg>' },
-    { name: 'WooCommerce', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#7F54B3"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">WC</text></svg>' },
-    { name: 'Mailchimp', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FFE01B"/><text x="12" y="16" text-anchor="middle" fill="#241C15" font-family="sans-serif" font-weight="700" font-size="13">M</text></svg>' },
-    { name: 'Klaviyo', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">K</text></svg>' },
-    { name: 'PostgreSQL', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#336791"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="10">Pg</text></svg>' },
-    { name: 'Amazon', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#fff"/><text x="12" y="13" text-anchor="middle" fill="#232F3E" font-family="Arial, sans-serif" font-weight="700" font-size="6.2" letter-spacing="-0.4">amazon</text><path d="M5 16.4c4.2 2.8 9.8 2.8 14 .2" fill="none" stroke="#FF9900" stroke-width="1.7" stroke-linecap="round"/><path d="M19 16.6l-2.7-.5 1.4 2.4z" fill="#FF9900"/></svg>' },
-    { name: 'Braze', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FE5832"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">B</text></svg>' },
-    { name: 'Bill.com', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#006FFF"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">BILL</text></svg>' },
-    { name: 'TikTok Shop', status: 'request', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#FE2C55" font-family="sans-serif" font-weight="700" font-size="11">TT</text></svg>' },
-    { name: 'SFTP', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#4A5568"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">SFTP</text></svg>' },
-    { name: '+ Build custom', status: 'custom', custom: true, svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="none" stroke="#3461E0" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="12" y1="7" x2="12" y2="17" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/><line x1="7" y1="12" x2="17" y2="12" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/></svg>' }
-  ];
+  // Status legend:
+  //   'live'    - shipped on >=1 deployment, can demo today
+  //   'request' - we have the integration spec and will build on contract sign
+  //   'custom'  - the placeholder card inviting custom requests
+  const items = [{
+    name: 'Gmail',
+    status: 'live',
+    svg: '<svg viewBox="0 -31.5 256 256" width="24" height="24" aria-hidden="true"><path fill="#4285F4" d="M58.18 192.05V93.14L27.5 65.08 0 49.5v125.1c0 9.66 7.83 17.45 17.45 17.45z"/><path fill="#34A853" d="M197.82 192.05h40.73c9.66 0 17.45-7.83 17.45-17.45V49.5l-31.16 17.84-27.02 25.8z"/><path fill="#FBBC04" d="M197.82 17.5v75.64L256 49.5V26.23c0-21.58-24.64-33.89-41.89-20.94z"/><path fill="#C5221F" d="M0 49.5l58.18 43.64V17.5L41.89 5.29C24.61-7.66 0 4.65 0 26.23z"/><path fill="#EA4335" d="M58.18 93.14L128 145.5l69.82-52.36v-75.64L128 69.87 58.18 17.5z"/></svg>'
+  }, {
+    name: 'QuickBooks',
+    status: 'live',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg>'
+  }, {
+    name: 'Excel',
+    status: 'live',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#107C41"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="11">XL</text></svg>'
+  }, {
+    name: 'Google Sheets',
+    status: 'live',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" fill="#0F9D58"/><path d="M14 2v6h6" fill="#0B7B47"/><rect x="7" y="11" width="10" height="8" rx="1" fill="#fff"/><line x1="7" y1="14" x2="17" y2="14" stroke="#0F9D58" stroke-width="0.8"/><line x1="7" y1="17" x2="17" y2="17" stroke="#0F9D58" stroke-width="0.8"/><line x1="10.5" y1="11" x2="10.5" y2="19" stroke="#0F9D58" stroke-width="0.8"/><line x1="14" y1="11" x2="14" y2="19" stroke="#0F9D58" stroke-width="0.8"/></svg>'
+  }, {
+    name: 'Shopify',
+    status: 'live',
+    svg: '<svg viewBox="-7.5 0 124.5 124.5" width="24" height="24" aria-hidden="true"><path fill="#95BF47" d="M95.9 23.9c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.7-.7-2.2-.5-2.7-.3 0 0-1.4.4-3.7 1.1-.4-1.3-1-2.8-1.8-4.4-2.6-5-6.5-7.7-11.1-7.7-.3 0-.6 0-1 .1-.1-.2-.3-.3-.4-.5C53.7 1.5 51.1.4 48 .5c-6 .2-12 4.5-16.8 12.2-3.4 5.4-6 12.2-6.7 17.5-6.9 2.1-11.7 3.6-11.8 3.7-3.5 1.1-3.6 1.2-4 4.5C8.3 40.9 0 105.6 0 105.6l69.4 12 30.1-7.5S96 24.5 95.9 23.9zM68.2 17.1c-1.7.5-3.7 1.1-5.8 1.8 0-3-.4-7.2-1.8-10.8 4.5.8 6.7 5.9 7.6 9zm-9.7 3c-3.9 1.2-8.2 2.5-12.5 3.8 1.2-4.6 3.5-9.2 6.3-12.2 1-1.1 2.5-2.3 4.2-3 1.7 3.5 2.1 8.4 2 11.4zM48.2 4.5c1.4 0 2.6.3 3.6.9-1.6.8-3.2 2.1-4.7 3.7-3.7 4-6.5 10.2-7.7 16.2-3.6 1.1-7.1 2.2-10.3 3.2C31.4 19.3 39.2 4.8 48.2 4.5z"/><path fill="#5E8E3E" d="M94.8 22.9c-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.3-.3-.6-.4-1-.5l-5.2 106.3 30.1-7.5S96 24.5 95.9 23.9c-.1-.6-.6-1-1.1-1z"/><path fill="#fff" d="M58.4 38.4l-3.5 13.1s-3.9-1.8-8.5-1.5c-6.8.4-6.8 4.7-6.8 5.7.4 5.7 15.4 7 16.3 20.4.7 10.5-5.6 17.7-14.6 18.3-10.9.6-16.9-5.8-16.9-5.8l2.3-9.8s6 4.6 10.9 4.3c3.2-.2 4.3-2.8 4.2-4.6-.5-7.5-12.7-7.1-13.5-19.4-.7-10.3 6.1-20.7 21-21.6 5.8-.4 8.8 1.1 8.8 1.1z"/></svg>'
+  }, {
+    name: 'ShipStation',
+    status: 'live',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0099FF"/><path d="M6 9 L12 6.5 L18 9 L18 15.5 L12 18 L6 15.5 Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/><line x1="6" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="18" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="12" y1="11.5" x2="12" y2="18" stroke="#fff" stroke-width="1.4"/></svg>'
+  }, {
+    name: 'Outlook',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0078D4"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">O</text></svg>'
+  }, {
+    name: 'Tally',
+    status: 'request',
+    svg: '<svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg>'
+  }, {
+    name: 'Xero',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg>'
+  }, {
+    name: 'Stripe',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#635BFF"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">S</text></svg>'
+  }, {
+    name: 'Zoho',
+    status: 'request',
+    svg: '<svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#D0312D"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="12">ZOHO</text></svg>'
+  }, {
+    name: 'WooCommerce',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#7F54B3"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">WC</text></svg>'
+  }, {
+    name: 'Mailchimp',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FFE01B"/><text x="12" y="16" text-anchor="middle" fill="#241C15" font-family="sans-serif" font-weight="700" font-size="13">M</text></svg>'
+  }, {
+    name: 'Klaviyo',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">K</text></svg>'
+  }, {
+    name: 'PostgreSQL',
+    status: 'live',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#336791"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="10">Pg</text></svg>'
+  }, {
+    name: 'Amazon',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#fff"/><text x="12" y="13" text-anchor="middle" fill="#232F3E" font-family="Arial, sans-serif" font-weight="700" font-size="6.2" letter-spacing="-0.4">amazon</text><path d="M5 16.4c4.2 2.8 9.8 2.8 14 .2" fill="none" stroke="#FF9900" stroke-width="1.7" stroke-linecap="round"/><path d="M19 16.6l-2.7-.5 1.4 2.4z" fill="#FF9900"/></svg>'
+  }, {
+    name: 'Braze',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FE5832"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">B</text></svg>'
+  }, {
+    name: 'Bill.com',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#006FFF"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">BILL</text></svg>'
+  }, {
+    name: 'TikTok Shop',
+    status: 'request',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="11">TT</text></svg>'
+  }, {
+    name: 'SFTP',
+    status: 'live',
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#4A5568"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">SFTP</text></svg>'
+  }, {
+    name: '+ Build custom',
+    status: 'custom',
+    custom: true,
+    svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="none" stroke="#3461E0" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="12" y1="7" x2="12" y2="17" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/><line x1="7" y1="12" x2="17" y2="12" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/></svg>'
+  }];
   // Duplicate the list so the loop is seamless when the track translates by -50%.
   const doubled = [...items, ...items];
   return /*#__PURE__*/React.createElement("section", {
@@ -196,8 +265,13 @@ function Integrations() {
         .int-marquee .int-card{flex:0 0 150px;position:relative}
         .int-marquee .int-card-custom{border:1px dashed var(--sg-blue);background:rgba(74,123,247,0.04)}
         .int-marquee .int-card-custom .int-name{color:var(--sg-blue)}
+        .int-badge{position:absolute;top:6px;right:6px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 6px;border-radius:999px;line-height:1.2}
+        .int-badge-live{background:rgba(16,185,129,0.12);color:#0f8f6a}
+        .int-badge-request{background:rgba(156,163,175,0.16);color:#5a6373}
         @keyframes int-roll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
         @media(prefers-reduced-motion:reduce){.int-track{animation:none}}
+        .int-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--fg2);margin-top:14px}
+        .int-legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
       `
     }
   }), /*#__PURE__*/React.createElement("div", {
@@ -208,8 +282,20 @@ function Integrations() {
     className: "h2"
   }, "Works with what you already use."), /*#__PURE__*/React.createElement("p", {
     className: "lead"
-  }, "Out-of-the-box and on-request integrations - all included in your custom ERP build, not an upgrade.")
-  )), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Live integrations are deployed today. \"On request\" means we have the spec and will build it as part of your custom ERP - included in the build cost, not an upgrade."), /*#__PURE__*/React.createElement("div", {
+    className: "int-legend",
+    "aria-label": "Integration status legend"
+  }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
+    className: "int-legend-dot",
+    style: {
+      background: '#0f8f6a'
+    }
+  }), "Live today"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
+    className: "int-legend-dot",
+    style: {
+      background: '#9CA3AF'
+    }
+  }), "Built on request, included in your build")))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 200
   }, /*#__PURE__*/React.createElement("div", {
     className: "int-marquee"
@@ -219,11 +305,19 @@ function Integrations() {
     key: i,
     className: 'int-card' + (ig.custom ? ' int-card-custom' : ''),
     "aria-hidden": i >= items.length ? 'true' : undefined,
-    title: ig.name
-  },
-    /*#__PURE__*/React.createElement("div", { className: "int-icon", dangerouslySetInnerHTML: { __html: ig.svg } }),
-    /*#__PURE__*/React.createElement("div", { className: "int-name" }, ig.name)
-  ))))), /*#__PURE__*/React.createElement("div", {
+    title: ig.status === 'live' ? 'Live today' : ig.status === 'request' ? 'Built on request' : ''
+  }, ig.status === 'live' && /*#__PURE__*/React.createElement("span", {
+    className: "int-badge int-badge-live"
+  }, "Live"), ig.status === 'request' && /*#__PURE__*/React.createElement("span", {
+    className: "int-badge int-badge-request"
+  }, "Request"), /*#__PURE__*/React.createElement("div", {
+    className: "int-icon",
+    dangerouslySetInnerHTML: {
+      __html: ig.svg
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "int-name"
+  }, ig.name)))))), /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -236,7 +330,7 @@ function Integrations() {
       margin: '24px auto 0'
     }
   }, "Don't see yours? Email ", /*#__PURE__*/React.createElement("a", {
-    href: "mailto:hello@simplegrid.ai?subject=Integration%20request%20-%20SimpleGrid&body=Hi%20SimpleGrid%2C%0D%0A%0D%0AWe%27d%20like%20SimpleGrid%20to%20integrate%20with%3A%20%5Btool%20name%5D%0D%0A%0D%0ABrief%20note%20on%20what%20we%20need%3A%0D%0A%5BWhat%20it%20syncs%2C%20how%20often%2C%20any%20auth%20notes%5D%0D%0A%0D%0AThanks%21",
+    href: "mailto:hello@simplegrid.ai?subject=Integration%20request%20%E2%80%94%20SimpleGrid&body=Hi%20SimpleGrid%2C%0D%0A%0D%0AWe%27d%20like%20SimpleGrid%20to%20integrate%20with%3A%20%5Btool%20name%5D%0D%0A%0D%0ABrief%20note%20on%20what%20we%20need%3A%0D%0A%5BWhat%20it%20syncs%2C%20how%20often%2C%20any%20auth%20notes%5D%0D%0A%0D%0AThanks%21",
     style: {
       color: 'var(--sg-blue)',
       fontWeight: 600,
@@ -385,7 +479,9 @@ function ComparisonTable() {
     className: "h2"
   }, "When is SimpleGrid the right call?"), /*#__PURE__*/React.createElement("p", {
     className: "lead",
-    style: { maxWidth: 780 }
+    style: {
+      maxWidth: 780
+    }
   }, "SAP, Oracle NetSuite, Epicor and QuickBooks are excellent at what they were built for. SimpleGrid was built for a specific shape of customer: mid-market manufacturers who run differently from everyone, can't afford a 12-month rip-and-replace, and want to see the system run before they pay.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 200
   }, /*#__PURE__*/React.createElement("div", {
@@ -405,43 +501,122 @@ function ComparisonTable() {
 }
 window.ComparisonTable = ComparisonTable;
 function FromTheField() {
-  const posts = [
-    { slug: 'why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying', cat: 'OPERATOR ECONOMICS', title: "Why your ERP vendor charges you for every change - and how to stop paying.", desc: "Most ERPs price post-launch changes at $8K-$20K per change order. Here's the architecture trick that lets us include every change, forever, in one subscription." },
-    { slug: 'why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software', cat: 'MARKET', title: "Why mid-market manufacturers are the most underserved businesses in enterprise software.", desc: "QuickBooks is too small. NetSuite is too big. Why the $6M-$180M factory has been stuck between two bad options for 20 years - and what changed." },
-    { slug: 'event-sourcing-why-simplegrid-stores-everything-that-ever-happened', cat: 'ARCHITECTURE', title: "Event sourcing: why SimpleGrid stores every action forever.", desc: "Your audit trail isn't a feature we turned on. It's how the system is built - every event is permanent, the current state is just a query." }
-  ];
-  return React.createElement('section', { className: 'section', id: 'from-the-field', 'aria-label': 'From the field' },
-    React.createElement('div', { className: 'container' },
-      React.createElement(Reveal, null,
-        React.createElement('div', { className: 'tag', style: { textAlign: 'center' } }, 'FROM THE FIELD'),
-        React.createElement('h2', { className: 'h2', style: { textAlign: 'center' } }, 'Field notes from operators building a custom ERP.')
-      ),
-      React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginTop: 32 } },
-        posts.map(function (p, i) {
-          return React.createElement(Reveal, { key: p.slug, delay: i * 80 },
-            React.createElement('a', {
-              href: 'blog/' + p.slug + '/',
-              'data-cta': 'from_the_field_' + i,
-              style: { display: 'block', textDecoration: 'none', color: 'inherit', padding: '24px', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', background: '#fff', height: '100%', transition: 'all 160ms var(--ease-standard)' },
-              onMouseEnter: function (e) { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.06)'; },
-              onMouseLeave: function (e) { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }
-            },
-              React.createElement('div', { style: { fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--sg-blue)', marginBottom: 10 } }, p.cat),
-              React.createElement('h3', { style: { fontFamily: 'var(--font-heading)', fontSize: 17, fontWeight: 700, color: 'var(--fg1)', margin: '0 0 10px', lineHeight: 1.3, letterSpacing: '-0.005em' } }, p.title),
-              React.createElement('p', { style: { fontSize: 14, color: 'var(--fg2)', lineHeight: 1.55, margin: 0 } }, p.desc),
-              React.createElement('span', { style: { display: 'inline-block', marginTop: 14, fontSize: 13, fontWeight: 600, color: 'var(--sg-blue)' } }, 'Read →')
-            )
-          );
-        })
-      ),
-      React.createElement('div', { style: { textAlign: 'center', marginTop: 28 } },
-        React.createElement('a', { href: 'blog.html', style: { fontSize: 14, fontWeight: 600, color: 'var(--sg-blue)', textDecoration: 'none' } }, 'See all 17 field notes →')
-      )
-    )
-  );
+  // Hand-picked: the three strongest field-notes for an ERP buyer.
+  // Title/slug/desc are kept in sync with /blog/<slug>/ manually here so
+  // the home doesn't need to load BLOG_DATA.
+  const posts = [{
+    slug: 'why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying',
+    cat: 'OPERATOR ECONOMICS',
+    title: "Why your ERP vendor charges you for every change - and how to stop paying.",
+    desc: "Most ERPs price post-launch changes at $8K-$20K per change order. Here's the architecture trick that lets us include every change, forever, in one subscription."
+  }, {
+    slug: 'why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software',
+    cat: 'MARKET',
+    title: "Why mid-market manufacturers are the most underserved businesses in enterprise software.",
+    desc: "QuickBooks is too small. NetSuite is too big. Why the $6M-$180M factory has been stuck between two bad options for 20 years - and what changed."
+  }, {
+    slug: 'event-sourcing-why-simplegrid-stores-everything-that-ever-happened',
+    cat: 'ARCHITECTURE',
+    title: "Event sourcing: why SimpleGrid stores every action forever.",
+    desc: "Your audit trail isn't a feature we turned on. It's how the system is built - every event is permanent, the current state is just a query."
+  }];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "from-the-field",
+    "aria-label": "From the field"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      textAlign: 'center'
+    }
+  }, "FROM THE FIELD"), /*#__PURE__*/React.createElement("h2", {
+    className: "h2",
+    style: {
+      textAlign: 'center'
+    }
+  }, "Field notes from operators building a custom ERP.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: 20,
+      marginTop: 32
+    }
+  }, posts.map((p, i) => /*#__PURE__*/React.createElement(Reveal, {
+    key: p.slug,
+    delay: i * 80
+  }, /*#__PURE__*/React.createElement("a", {
+    href: 'blog/' + p.slug + '/',
+    "data-cta": 'from_the_field_' + i,
+    style: {
+      display: 'block',
+      textDecoration: 'none',
+      color: 'inherit',
+      padding: '24px',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--radius-lg)',
+      background: '#fff',
+      height: '100%',
+      transition: 'all 160ms var(--ease-standard)'
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.transform = 'translateY(-2px)';
+      e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.06)';
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.transform = '';
+      e.currentTarget.style.boxShadow = '';
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      letterSpacing: '0.14em',
+      color: 'var(--sg-blue)',
+      marginBottom: 10
+    }
+  }, p.cat), /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontFamily: 'var(--font-heading)',
+      fontSize: 17,
+      fontWeight: 700,
+      color: 'var(--fg1)',
+      margin: '0 0 10px',
+      lineHeight: 1.3,
+      letterSpacing: '-0.005em'
+    }
+  }, p.title), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: 'var(--fg2)',
+      lineHeight: 1.55,
+      margin: 0
+    }
+  }, p.desc), /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: 'inline-block',
+      marginTop: 14,
+      fontSize: 13,
+      fontWeight: 600,
+      color: 'var(--sg-blue)'
+    }
+  }, "Read \u2192"))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: 'center',
+      marginTop: 28
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "blog.html",
+    style: {
+      fontSize: 14,
+      fontWeight: 600,
+      color: 'var(--sg-blue)',
+      textDecoration: 'none'
+    }
+  }, "See all 17 field notes \u2192"))));
 }
 window.FromTheField = FromTheField;
-
 function HomeFAQ() {
   const items = [{
     q: "What happens if it doesn't work after 30 days?",
@@ -451,13 +626,13 @@ function HomeFAQ() {
     a: "No. We do the migration. Whatever you're running on - QuickBooks, spreadsheets, paper, group chats, an old ERP - we pull it out, clean it, structure it, and load it. Migration is included in the build, not a separate line item. You don't touch the data."
   }, {
     q: "How much does it cost after the 30-day trial?",
-    a: "Before you decide, we agree on a number together based on the size of your operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items, no per-seat fees. We are priced like an operator who has carried the build for you."
+    a: "Before you decide, we agree on a number together based on the size of your operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items, no per-seat fees. We are not free and not cheap. We are priced like an operator who has carried the build for you."
   }, {
     q: "Who runs the deployment - sales reps, or actual engineers?",
     a: "Senior engineers and deployment experts who've worked on factory floors. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You work directly with the team that builds the system."
   }, {
     q: "What's the catch?",
-    a: "We onboard selectively each quarter because we can only succeed when our customers succeed. If we don't think we can win for you, we'll say so on the call. We're built for mid-market manufacturers, roughly $5M-$250M in revenue - below that, spreadsheets or QuickBooks still win; above that, SAP or Oracle make more sense. The other catch: you spend real time with us building what you want. Your time is the investment."
+    a: "We onboard selectively each quarter because we can only succeed when our customers succeed. If we don't think we can win for you, we'll say so on the call. We're built for mid-market manufacturers, roughly $5M-$250M in revenue - below that, spreadsheets or QuickBooks still win; above that, SAP or Oracle make more sense. That's the catch."
   }];
   const [open, setOpen] = React.useState(0);
   return /*#__PURE__*/React.createElement("section", {
@@ -466,42 +641,84 @@ function HomeFAQ() {
     "aria-label": "Frequently asked questions"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container",
-    style: { maxWidth: 880 }
+    style: {
+      maxWidth: 880
+    }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
     className: "tag",
-    style: { textAlign: 'center' }
+    style: {
+      textAlign: 'center'
+    }
   }, "BEFORE YOU DECIDE"), /*#__PURE__*/React.createElement("h2", {
     className: "h2",
-    style: { textAlign: 'center' }
+    style: {
+      textAlign: 'center'
+    }
   }, "Five questions every buyer asks us.")), /*#__PURE__*/React.createElement("div", {
-    style: { marginTop: 32, display: 'flex', flexDirection: 'column', gap: 12 }
-  }, items.map(function (it, i) {
-    return /*#__PURE__*/React.createElement(Reveal, { key: i, delay: i * 80 },
-      /*#__PURE__*/React.createElement("div", {
-        style: { background: '#fff', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }
-      },
-      /*#__PURE__*/React.createElement("button", {
-        type: "button",
-        onClick: function () { setOpen(open === i ? -1 : i); },
-        "aria-expanded": open === i,
-        "aria-controls": "home-faq-" + i,
-        style: { width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: '18px 22px', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit', textAlign: 'left' }
-      },
-        /*#__PURE__*/React.createElement("span", {
-          style: { fontFamily: 'var(--font-heading)', fontSize: 17, fontWeight: 700, color: 'var(--fg1)', letterSpacing: '-0.005em' }
-        }, it.q),
-        /*#__PURE__*/React.createElement("span", {
-          "aria-hidden": "true",
-          style: { flexShrink: 0, color: 'var(--sg-blue)', fontSize: 22, fontWeight: 300, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 180ms ease' }
-        }, "+")
-      ),
-      open === i && /*#__PURE__*/React.createElement("div", {
-        id: "home-faq-" + i,
-        style: { padding: '0 22px 18px', fontSize: 'var(--fs-small)', lineHeight: 1.65, color: 'var(--fg2)' }
-      }, it.a))
-    );
-  }))));
+    style: {
+      marginTop: 32,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12
+    }
+  }, items.map((it, i) => /*#__PURE__*/React.createElement(Reveal, {
+    key: i,
+    delay: i * 80
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: '#fff',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--radius-lg)',
+      overflow: 'hidden'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: () => setOpen(open === i ? -1 : i),
+    "aria-expanded": open === i,
+    "aria-controls": `home-faq-${i}`,
+    style: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      gap: 16,
+      padding: '18px 22px',
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      font: 'inherit',
+      color: 'inherit',
+      textAlign: 'left'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'var(--font-heading)',
+      fontSize: 17,
+      fontWeight: 700,
+      color: 'var(--fg1)',
+      letterSpacing: '-0.005em'
+    }
+  }, it.q), /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true",
+    style: {
+      flexShrink: 0,
+      color: 'var(--sg-blue)',
+      fontSize: 22,
+      fontWeight: 300,
+      transform: open === i ? 'rotate(45deg)' : 'none',
+      transition: 'transform 180ms ease'
+    }
+  }, "+")), open === i && /*#__PURE__*/React.createElement("div", {
+    id: `home-faq-${i}`,
+    style: {
+      padding: '0 22px 18px',
+      fontSize: 'var(--fs-small)',
+      lineHeight: 1.65,
+      color: 'var(--fg2)'
+    }
+  }, it.a)))))));
 }
 window.HomeFAQ = HomeFAQ;
-// FinalCTA now lives in its own shared component (components/FinalCTA.js) so it
+
+// FinalCTA now lives in its own shared component (components/FinalCTA.jsx) so it
 // can be reused with per-page copy across every page.

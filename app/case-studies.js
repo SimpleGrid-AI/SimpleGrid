@@ -3,7 +3,9 @@ function CaseStudiesPage() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
     page: "cases",
     onLoginClick: () => setShowLogin(true)
-  }), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement("section", {
+  }), /*#__PURE__*/React.createElement("main", {
+    id: "main"
+  }, /*#__PURE__*/React.createElement("section", {
     className: "section",
     style: {
       paddingBottom: 48
@@ -62,7 +64,7 @@ function CaseStudiesPage() {
       margin: '0 0 10px',
       letterSpacing: '-0.015em'
     }
-  }, "Furniture Manufacturer & Exporter"), /*#__PURE__*/React.createElement("p", null, "600\u2013800 employees. ~1 million sq ft. Multi-stage production. Deployed in 21 days."), /*#__PURE__*/React.createElement("div", {
+  }, "Furniture Manufacturer & Exporter"), /*#__PURE__*/React.createElement("p", null, "600-800 employees. ~1 million sq ft. Multi-stage production. Deployed in 21 days."), /*#__PURE__*/React.createElement("div", {
     className: "proof-stats"
   }, "$200K in silent material losses, found and stopped."), /*#__PURE__*/React.createElement("div", {
     className: "proof-quote"
@@ -103,11 +105,11 @@ function CaseStudiesPage() {
       color: 'var(--fg3)',
       fontWeight: 400
     }
-  }, "(reference on request)")), /*#__PURE__*/React.createElement("p", null, "80\u2013100k shirts/month. 3 streams: CMT, own brand, fabric trading. 20+ job workers. 30+ inventory locations. Live in 12 days."), /*#__PURE__*/React.createElement("div", {
+  }, "(reference on request)")), /*#__PURE__*/React.createElement("p", null, "80-100k shirts/month. 3 streams: CMT, own brand, fabric trading. 20+ job workers. 30+ inventory locations. Live in 12 days."), /*#__PURE__*/React.createElement("div", {
     className: "proof-stats"
   }, "Two failed ERPs, then live in 12 days - every order in one view."), /*#__PURE__*/React.createElement("div", {
     className: "proof-quote"
-  }, "\"They sent a working demo in 24 hours - 60\u201370% accurate. No other vendor we've worked with has done that.\"", /*#__PURE__*/React.createElement("div", {
+  }, "\"They sent a working demo in 24 hours - 60-70% accurate. No other vendor we've worked with has done that.\"", /*#__PURE__*/React.createElement("div", {
     className: "proof-attr"
   }, "- Founder, Apex Apparel (name withheld)"))))), /*#__PURE__*/React.createElement("p", {
     style: {
@@ -118,7 +120,11 @@ function CaseStudiesPage() {
       color: 'var(--fg1)',
       marginTop: 40
     }
-  }, "Two industries. Two completely different operations. One platform.")))), /*#__PURE__*/React.createElement(FinalCTA, { title: "Your factory could be the next one.", body: "The operators above run SimpleGrid on their real floors today. We build at our cost, you run it for 30 days, and you pay only when it's already moving the business.", note: "Limited slots each quarter. We onboard selectively." }), React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
+  }, "Two industries. Two completely different operations. One platform.")))), /*#__PURE__*/React.createElement(FinalCTA, {
+    title: "Your factory could be the next one.",
+    body: "The operators above run SimpleGrid on their real floors today. We build at our cost, you run it for 30 days, and you pay only when it's already moving the business.",
+    note: "Limited slots each quarter. We onboard selectively."
+  }), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }));
 }

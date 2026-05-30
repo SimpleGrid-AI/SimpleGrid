@@ -12,7 +12,7 @@ const TIERS = [{
   name: 'After it works',
   sub: 'Monthly subscription · one number, all in',
   price: 'Custom-quoted',
-  priceUnit: 'Priced like an operator who has carried the build for you.',
+  priceUnit: 'We are not free and we are not cheap. We are priced like an operator who has carried the build for you.',
   accent: 'var(--sg-purple)',
   features: ['One monthly subscription. That is the entire bill.', 'All features included. No tiers. No add-ons. No per-seat fees.', 'Every change to your ERP, now and forever, included.', 'New features ship regularly - yours automatically.', 'Direct line to the team that builds it. No account-manager middle layer.'],
   cta: 'Book a demo',
@@ -64,7 +64,7 @@ const INCLUDED = [{
   p: 'Your team types what happened the way they would on WhatsApp. The training is the conversation.'
 }, {
   h: 'Senior-led onboarding',
-  p: 'Every deployment is led personally - not by a sales engineer or an account manager.'
+  p: 'Every deployment is led personally by senior engineers - not by a sales engineer or an account manager.'
 }, {
   h: 'All future rule changes',
   p: 'New approval rule. New production stage. New QC gate. All configuration, not code. No change orders.'
@@ -75,7 +75,9 @@ function PricingPage() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
     page: "pricing",
     onLoginClick: () => setShowLogin(true)
-  }), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement("section", {
+  }), /*#__PURE__*/React.createElement("main", {
+    id: "main"
+  }, /*#__PURE__*/React.createElement("section", {
     className: "section",
     style: {
       paddingBottom: 32
@@ -102,7 +104,7 @@ function PricingPage() {
       fontWeight: 600,
       color: 'var(--fg1)'
     }
-  }, "We're priced like an operator who has carried the build for you - and earned the right to charge for what it does."))), /*#__PURE__*/React.createElement("section", {
+  }, "We are not free. We are not cheap. We're priced like an operator who has carried the build for you - and earned the right to charge for what it does."))), /*#__PURE__*/React.createElement("section", {
     className: "section section-alt",
     style: {
       paddingTop: 48
@@ -265,12 +267,12 @@ function PricingPage() {
     style: {
       maxWidth: 760
     }
-  }, "When is SimpleGrid the right call?"), /*#__PURE__*/React.createElement("p", {
+  }, "How we compare on the line items that actually move money."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
       maxWidth: 960
     }
-  }, "SAP, Oracle NetSuite, Epicor and QuickBooks are excellent at what they were built for. SimpleGrid was built for a specific shape of customer: mid-market manufacturers who run differently from everyone, can't afford a 12-month rip-and-replace, and want to see the system run before they pay."), /*#__PURE__*/React.createElement("div", {
+  }, "Sticker pricing rarely tells the truth. The line items below are where ERP budgets quietly inflate."), /*#__PURE__*/React.createElement("div", {
     style: {
       overflowX: 'auto',
       marginTop: 28
@@ -310,7 +312,7 @@ function PricingPage() {
       marginTop: 14,
       fontStyle: 'italic'
     }
-  }, "Competitor figures are ranges based on publicly available implementation data for mid-market manufacturers (200\u20131,500 employees). Your quote may differ."))), /*#__PURE__*/React.createElement("section", {
+  }, "Competitor figures are ranges based on publicly available implementation data for mid-market manufacturers (200-1,500 employees). Your quote may differ."))), /*#__PURE__*/React.createElement("section", {
     className: "section section-alt"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
@@ -373,7 +375,11 @@ function PricingPage() {
       color: 'var(--fg2)',
       lineHeight: 1.6
     }
-  }, f.a))))))), /*#__PURE__*/React.createElement(FinalCTA, { title: "The price is simple: nothing until it works.", body: "We carry the build cost and the risk. You run it for 30 days on your real floor, with your real team and real orders. You pay only once it's already running your business - not a cent before.", note: "Limited slots each quarter. We onboard selectively." }), React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
+  }, f.a))))))), /*#__PURE__*/React.createElement(FinalCTA, {
+    title: "The price is simple: nothing until it works.",
+    body: "We carry the build cost and the risk. You run it for 30 days on your real floor, with your real team and real orders. You pay only once it's already running your business - not a cent before.",
+    note: "Limited slots each quarter. We onboard selectively."
+  }), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)

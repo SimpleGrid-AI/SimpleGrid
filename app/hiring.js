@@ -442,7 +442,9 @@ function HiringPage() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
     page: "hiring",
     onLoginClick: () => setShowLogin(true)
-  }), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement(HiringHero, null), /*#__PURE__*/React.createElement(WhyThis, null), /*#__PURE__*/React.createElement("section", {
+  }), /*#__PURE__*/React.createElement("main", {
+    id: "main"
+  }, /*#__PURE__*/React.createElement(HiringHero, null), /*#__PURE__*/React.createElement(WhyThis, null), /*#__PURE__*/React.createElement("section", {
     className: "section section-alt",
     id: "roles"
   }, /*#__PURE__*/React.createElement("div", {

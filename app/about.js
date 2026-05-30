@@ -9,19 +9,23 @@ function AboutPage() {
       const el = document.getElementById(id);
       if (el) {
         const top = el.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
+        window.scrollTo({
+          top,
+          behavior: 'smooth'
+        });
       } else if (tries++ < 20) {
         setTimeout(tryScroll, 100);
       }
     };
     setTimeout(tryScroll, 150);
   }, []);
-
-  const h = React.createElement;
-
-  // (a) Operator hook - hero-style with team photo bg + black overlay, founder portrait on the left
-  const hero = h('section', {
-    className: 'section',
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
+    page: "about",
+    onLoginClick: () => setShowLogin(true)
+  }), /*#__PURE__*/React.createElement("main", {
+    id: "main"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "section",
     style: {
       position: 'relative',
       backgroundImage: 'url(assets/team_photo.jpeg)',
@@ -33,182 +37,327 @@ function AboutPage() {
       display: 'flex',
       alignItems: 'center',
       paddingTop: 160,
-      paddingBottom: 160,
+      paddingBottom: 160
     }
-  },
-    h('div', { 'aria-hidden': 'true', style: { position: 'absolute', inset: 0, background: 'rgba(8,10,14,0.85)', zIndex: 0 } }),
-    h('div', { className: 'container', style: { maxWidth: 'none', position: 'relative', zIndex: 1, width: '100%' } },
-      h('div', { className: 'tag', style: { color: 'rgba(255,255,255,0.7)', marginBottom: 24 } }, 'ABOUT US'),
-      h('h1', { style: { fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.05, fontSize: 'clamp(44px, 6.5vw, 72px)', color: '#fff', margin: '0 0 28px', maxWidth: 1100 } }, "Built by operators who've been on your floor."),
-      h('p', { style: { fontSize: 'clamp(18px, 1.7vw, 22px)', lineHeight: 1.55, color: 'rgba(255,255,255,0.85)', margin: 0, maxWidth: 920 } },
-        "SimpleGrid was not designed in a boardroom. It was designed on a shop floor that was already running on Excel and group chats - and not working. The people who built SimpleGrid have run multi-stage factories with hundreds of workers, survived two ERP failures, and ended up on Google Sheets. SimpleGrid is the system we wished we had. We were the customer first - we know exactly what breaks when the system can't keep up with the floor."
-      )
-    )
-  );
-
-  // (b) + (c) Pain + failure stat + pay-only-if-kept offer + proof line
-  const offer = h('section', { className: 'section section-alt' },
-    h('div', { className: 'container' },
-      h(Reveal, null,
-        h('div', { className: 'tag' }, 'THE OFFER'),
-        h('p', { className: 'lead', style: { maxWidth: 'none', margin: '12px 0 0' } },
-          "Here's what no software vendor will tell you: 75% of mid-market ERP projects fail or get abandoned. We lived two of them ourselves. Every ERP vendor makes you pay first and hope it works - we refuse to let the risk sit with you. We model SimpleGrid on your factory, run it on your real floor for 30 days, and you pay only if you keep it. If it doesn't earn its place, you owe us nothing. That's not a discount. It's the only honest way to sell into an industry that fails three customers out of four."
-        )
-      )
-    )
-  );
-
-  // (d) Under the hood - SG Schema / SG Engine / Event Sourcing.
-  // Intro line "This is not AI. AI is the surface." pulled from the bottom founder quote.
-  // (e) Unlock tiles moved BEFORE the event-sourcing card.
-
-  const unlockTiles = [
-    { t: '7-day deploys', p: 'New operation → new system, generated from your SG Schema. No new codebase per customer.' },
-    { t: 'Audit by design', p: "You don't add audit logs. The audit is the system. Every regulator question already has an answer." },
-    { t: 'Rules without releases', p: 'Change a rule, the system changes. No deploy cycle. No IT ticket. No version migration.' },
-    { t: 'Disputes resolved', p: 'Vendor said 500. Log says 450, by Mike, 4:13 PM Tuesday. Argument over.' },
-  ];
-
-  const underTheHood = h('section', { className: 'section', id: 'architecture', style: { background: '#fff' } },
-    h('div', { className: 'container' },
-      h(Reveal, null,
-        h('div', { className: 'tag', style: { color: 'var(--sg-purple)' } }, 'UNDER THE HOOD'),
-        h('p', {
-          className: 'lead',
-          style: { maxWidth: 960, fontStyle: 'italic', fontWeight: 600, color: 'var(--fg1)', margin: '4px 0 14px' }
-        }, 'This is not AI. AI is the surface.'),
-        h('h2', { className: 'h2 ink', style: { color: 'var(--fg1)' } },
-          'SG Schema ',
-          h('span', { style: { color: 'var(--fg3)', fontWeight: 400 } }, '×'),
-          ' SG Engine ',
-          h('span', { style: { color: 'var(--fg3)', fontWeight: 400 } }, '×'),
-          ' Event Sourcing.'
-        ),
-        h('p', { className: 'lead', style: { maxWidth: 960 } },
-          'Most ERPs are data-entry apps wearing a suit - tables, forms, overwrites. SimpleGrid is built on two ideas no other business platform ships at the core: an ',
-          h('strong', null, 'SG Schema'),
-          " that captures one factory's complete operational blueprint, and an ",
-          h('strong', null, 'event-sourced'),
-          ' ledger that stores every change. SG Engine reads the SG Schema and runs your factory from it. The result is a system that bends to your business instead of the other way around.'
-        )
-      ),
-
-      // (e) Unlock tiles - moved BEFORE event-sourcing card.
-      h('div', { className: 'arch-outcome-box' },
-        h('div', { style: { fontSize: 'var(--fs-caption)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg3)', marginBottom: 8 } }, 'What this combination unlocks'),
-        h('p', { style: { fontSize: 'var(--fs-small)', color: 'var(--fg2)', lineHeight: 1.6, margin: '0 0 18px' } },
-          'The rest of the industry measures ERP rollouts in quarters and years. We measure ours in days.'
-        ),
-        h('div', { className: 'arch-outcome-grid' },
-          unlockTiles.map((x, i) =>
-            h('div', { key: i, className: 'arch-outcome-cell' },
-              h('div', { style: { fontFamily: 'var(--font-heading)', fontSize: 16, fontWeight: 700, color: 'var(--fg1)', marginBottom: 6 } }, x.t),
-              h('div', { style: { fontSize: 'var(--fs-caption)', color: 'var(--fg2)', lineHeight: 1.6 } }, x.p)
-            )
-          )
-        )
-      ),
-
-      // SG Schema + Event Sourcing cards (event-sourcing explanation now appears AFTER the tiles).
-      h('div', { className: 'arch-ddd-grid' },
-        h(Reveal, null,
-          h('div', {
-            className: 'arch-ddd-card',
-            style: {
-              border: '1px solid var(--border)', borderRadius: 12, padding: 32, height: '100%',
-              borderLeft: '4px solid var(--sg-purple)'
-            }
-          },
-            h('div', { style: { fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--sg-purple)', marginBottom: 8 } }, 'SG SCHEMA'),
-            h('h3', {
-              style: { fontFamily: 'var(--font-heading)', fontSize: 22, fontWeight: 700, margin: '0 0 14px', color: 'var(--fg1)', letterSpacing: '-0.015em' }
-            }, 'Your business has a language. The system speaks it.'),
-            h('p', { style: { fontSize: 14, color: 'var(--fg2)', lineHeight: 1.7, margin: '0 0 14px' } },
-              'A "Job Order" in your factory is not the same thing as a "Work Order" in someone else\'s. A "rejection" in fabric is different from a "rejection" in plywood. Generic ERPs flatten that - every customer fits the same forms.'
-            ),
-            h('p', { style: { fontSize: 14, color: 'var(--fg2)', lineHeight: 1.7, margin: 0 } },
-              'Your SG Schema captures ',
-              h('em', null, 'your'),
-              ' entities, your states, your transitions, your invariants, your chain reactions. AI writes it, the operator validates it, SG Engine runs it. The vocabulary on every screen is yours, because the spec underneath is yours.'
-            )
-          )
-        ),
-        h(Reveal, { delay: 100 },
-          h('div', {
-            style: {
-              border: '1px solid var(--border)', borderRadius: 12, padding: 32, height: '100%',
-              borderLeft: '4px solid var(--sg-blue)'
-            }
-          },
-            h('div', { style: { fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--sg-blue)', marginBottom: 8 } }, 'EVENT SOURCING'),
-            h('h3', {
-              style: { fontFamily: 'var(--font-heading)', fontSize: 22, fontWeight: 700, margin: '0 0 14px', color: 'var(--fg1)', letterSpacing: '-0.015em' }
-            }, 'The log is the database. The state is a projection.'),
-            h('p', { style: { fontSize: 14, color: 'var(--fg2)', lineHeight: 1.7, margin: '0 0 14px' } },
-              "Instead of storing the current row and losing the past, we store every event that ever changed your business. Inventory is not a number - it's the sum of every receipt and issuance. An order's status is not a flag - it's the latest state in a chain of recorded transitions."
-            ),
-            h('p', { style: { fontSize: 14, color: 'var(--fg2)', lineHeight: 1.7, margin: 0 } },
-              'Banks have run on this idea for centuries - a ledger, never erased. Almost no ERP does. We do.'
-            )
-          )
-        )
-      ),
-
-      // (f) Founder quote with "This is not AI. AI is the surface." removed (now in section intro).
-      h(Reveal, { delay: 200 },
-        h('div', { style: { marginTop: 40, padding: '24px 0', borderTop: '1px solid var(--border)' } },
-          h('p', { style: { fontSize: 'var(--fs-small)', color: 'var(--fg2)', lineHeight: 1.7, margin: 0, fontStyle: 'italic' } },
-            '"Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know."'
-          ),
-          h('p', { style: { fontSize: 'var(--fs-caption)', color: 'var(--fg3)', lineHeight: 1.5, margin: '6px 0 0', fontStyle: 'normal', fontWeight: 600 } },
-            '- The founding team'
-          )
-        )
-      )
-    )
-  );
-
-  // (g) ProductionFlow - "From the first PO to the final dispatch" animation (unchanged).
-
-  const finalCta = h('section', { className: 'section section-dark final-cta' },
-    h('div', { className: 'container' },
-      h('div', { className: 'tag', style: { color: 'rgba(255,255,255,0.5)' } }, 'SELECTIVE ONBOARDING'),
-      h('h2', { className: 'h2', style: { color: '#fff', maxWidth: 760, margin: '0 auto' } }, 'We are not for everyone.'),
-      h('p', { className: 'sub', style: { color: 'rgba(255,255,255,0.75)', maxWidth: 680, margin: '18px auto 0' } },
-        'Limited capacity each quarter. We only take on customers we know we can win for - because we carry the cost and the risk of the build, and we only get paid when you succeed. We are built for mid-market manufacturers, roughly $5M-$250M in revenue - below that, spreadsheets or QuickBooks still win; above that, SAP or Oracle make more sense.'
-      ),
-      h('div', { style: { marginTop: 28, display: 'flex', justifyContent: 'center' } },
-        h('button', {
-          type: 'button',
-          onClick: () => setShowInvite(true),
-          className: 'btn btn-lg btn-invite',
-          style: { animation: 'sgBuildPulse 1.8s ease-in-out infinite' }
-        }, 'Book a demo')
-      ),
-      h('p', { className: 'note', style: { color: 'rgba(255,255,255,0.5)', marginTop: 14 } },
-        'Senior engineers and deployment experts on every deployment · We reply within 48 hours'
-      ),
-      h('div', { style: { marginTop: 20, textAlign: 'center' } },
-        h('a', {
-          href: 'product.html',
-          style: { fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }
-        }, 'See how the system actually works →')
-      )
-    )
-  );
-
-  return h(React.Fragment, null,
-    h(Nav, { page: 'about', onLoginClick: () => setShowLogin(true) }),
-    h('main', { id: 'main' },
-      hero,
-      offer,
-      underTheHood,
-      h('div', { style: { paddingTop: 48 } }, h(ProductionFlow, null)),
-      finalCta
-    ),
-    h(FinalCTA, { title: "Built by people who've run the floor.", body: "We ran multi-stage factories to $30M and survived two ERP failures before building SimpleGrid. We're on every deployment. We carry the cost and the risk - you run it for 30 days and pay only once it earns its keep.", note: "Limited slots each quarter. We onboard selectively." }), h(Footer, null),
-    showLogin && h(LoginModal, { onClose: () => setShowLogin(false) }),
-    showInvite && h(InviteModal, { onClose: () => setShowInvite(false) })
-  );
+  }, /*#__PURE__*/React.createElement("div", {
+    "aria-hidden": "true",
+    style: {
+      position: 'absolute',
+      inset: 0,
+      background: 'rgba(8,10,14,0.85)',
+      zIndex: 0
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "container",
+    style: {
+      maxWidth: 'none',
+      position: 'relative',
+      zIndex: 1,
+      width: '100%'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      color: 'rgba(255,255,255,0.7)',
+      marginBottom: 24
+    }
+  }, "ABOUT US"), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontFamily: 'var(--font-heading)',
+      fontWeight: 700,
+      letterSpacing: '-0.03em',
+      lineHeight: 1.05,
+      fontSize: 'clamp(44px, 6.5vw, 72px)',
+      color: '#fff',
+      margin: '0 0 28px',
+      maxWidth: 1100
+    }
+  }, "Built by operators who've been on your floor."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 'clamp(18px, 1.7vw, 22px)',
+      lineHeight: 1.55,
+      color: 'rgba(255,255,255,0.85)',
+      margin: 0,
+      maxWidth: 920
+    }
+  }, "SimpleGrid was not designed in a boardroom. It was designed on a shop floor that was already running on Excel and group chats - and not working. The people who built SimpleGrid have run multi-stage factories with hundreds of workers, survived two ERP failures, and ended up on Google Sheets. SimpleGrid is the system we wished we had. We were the customer first - we know exactly what breaks when the system can't keep up with the floor."))), /*#__PURE__*/React.createElement("section", {
+    className: "section section-alt"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, "THE OFFER"), /*#__PURE__*/React.createElement("p", {
+    className: "lead",
+    style: {
+      maxWidth: 'none',
+      margin: '12px 0 0'
+    }
+  }, "Here's what no software vendor will tell you: 75% of mid-market ERP projects fail or get abandoned. We lived two of them ourselves. Every ERP vendor makes you pay first and hope it works - we refuse to let the risk sit with you. We model SimpleGrid on your factory, run it on your real floor for 30 days, and you pay only if you keep it. If it doesn't earn its place, you owe us nothing. That's not a discount. It's the only honest way to sell into an industry that fails three customers out of four.")))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "architecture",
+    style: {
+      background: '#fff'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      color: 'var(--sg-purple)'
+    }
+  }, "UNDER THE HOOD"), /*#__PURE__*/React.createElement("p", {
+    className: "lead",
+    style: {
+      maxWidth: 960,
+      fontStyle: 'italic',
+      fontWeight: 600,
+      color: 'var(--fg1)',
+      margin: '4px 0 14px'
+    }
+  }, "This is not AI. AI is the surface."), /*#__PURE__*/React.createElement("h2", {
+    className: "h2 ink",
+    style: {
+      color: 'var(--fg1)'
+    }
+  }, "SG Schema ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--fg3)',
+      fontWeight: 400
+    }
+  }, "\xD7"), " SG Engine ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--fg3)',
+      fontWeight: 400
+    }
+  }, "\xD7"), " Event Sourcing."), /*#__PURE__*/React.createElement("p", {
+    className: "lead",
+    style: {
+      maxWidth: 960
+    }
+  }, "Most ERPs are data-entry apps wearing a suit - tables, forms, overwrites. SimpleGrid is built on two ideas no other business platform ships at the core: an ", /*#__PURE__*/React.createElement("strong", null, "SG Schema"), " that captures one factory's complete operational blueprint, and an ", /*#__PURE__*/React.createElement("strong", null, "event-sourced"), " ledger that stores every change. SG Engine reads the SG Schema and runs your factory from it. The result is a system that bends to your business instead of the other way around.")), /*#__PURE__*/React.createElement("div", {
+    className: "arch-outcome-box"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 'var(--fs-caption)',
+      fontWeight: 700,
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase',
+      color: 'var(--fg3)',
+      marginBottom: 8
+    }
+  }, "What this combination unlocks"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 'var(--fs-small)',
+      color: 'var(--fg2)',
+      lineHeight: 1.6,
+      margin: '0 0 18px'
+    }
+  }, "The rest of the industry measures ERP rollouts in quarters and years. We measure ours in days."), /*#__PURE__*/React.createElement("div", {
+    className: "arch-outcome-grid"
+  }, [{
+    t: '7-day deploys',
+    p: 'New operation → new system, generated from your SG Schema. No new codebase per customer.'
+  }, {
+    t: 'Audit by design',
+    p: 'You don\'t add audit logs. The audit is the system. Every regulator question already has an answer.'
+  }, {
+    t: 'Rules without releases',
+    p: 'Change a rule, the system changes. No deploy cycle. No IT ticket. No version migration.'
+  }, {
+    t: 'Disputes resolved',
+    p: 'Vendor said 500. Log says 450, by Mike, 4:13 PM Tuesday. Argument over.'
+  }].map((x, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "arch-outcome-cell"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-heading)',
+      fontSize: 16,
+      fontWeight: 700,
+      color: 'var(--fg1)',
+      marginBottom: 6
+    }
+  }, x.t), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 'var(--fs-caption)',
+      color: 'var(--fg2)',
+      lineHeight: 1.6
+    }
+  }, x.p))))), /*#__PURE__*/React.createElement("div", {
+    className: "arch-ddd-grid"
+  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
+    className: "arch-ddd-card",
+    style: {
+      border: '1px solid var(--border)',
+      borderRadius: 12,
+      padding: 32,
+      height: '100%',
+      borderLeft: '4px solid var(--sg-purple)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      letterSpacing: '0.16em',
+      color: 'var(--sg-purple)',
+      marginBottom: 8
+    }
+  }, "SG SCHEMA"), /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontFamily: 'var(--font-heading)',
+      fontSize: 22,
+      fontWeight: 700,
+      margin: '0 0 14px',
+      color: 'var(--fg1)',
+      letterSpacing: '-0.015em'
+    }
+  }, "Your business has a language. The system speaks it."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: 'var(--fg2)',
+      lineHeight: 1.7,
+      margin: '0 0 14px'
+    }
+  }, "A \"Job Order\" in your factory is not the same thing as a \"Work Order\" in someone else's. A \"rejection\" in fabric is different from a \"rejection\" in plywood. Generic ERPs flatten that - every customer fits the same forms."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: 'var(--fg2)',
+      lineHeight: 1.7,
+      margin: 0
+    }
+  }, "Your SG Schema captures ", /*#__PURE__*/React.createElement("em", null, "your"), " entities, your states, your transitions, your invariants, your chain reactions. AI writes it, the operator validates it, SG Engine runs it. The vocabulary on every screen is yours, because the spec underneath is yours."))), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 100
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      border: '1px solid var(--border)',
+      borderRadius: 12,
+      padding: 32,
+      height: '100%',
+      borderLeft: '4px solid var(--sg-blue)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      letterSpacing: '0.16em',
+      color: 'var(--sg-blue)',
+      marginBottom: 8
+    }
+  }, "EVENT SOURCING"), /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontFamily: 'var(--font-heading)',
+      fontSize: 22,
+      fontWeight: 700,
+      margin: '0 0 14px',
+      color: 'var(--fg1)',
+      letterSpacing: '-0.015em'
+    }
+  }, "The log is the database. The state is a projection."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: 'var(--fg2)',
+      lineHeight: 1.7,
+      margin: '0 0 14px'
+    }
+  }, "Instead of storing the current row and losing the past, we store every event that ever changed your business. Inventory is not a number - it's the sum of every receipt and issuance. An order's status is not a flag - it's the latest state in a chain of recorded transitions."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: 'var(--fg2)',
+      lineHeight: 1.7,
+      margin: 0
+    }
+  }, "Banks have run on this idea for centuries - a ledger, never erased. Almost no ERP does. We do.")))), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 200
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 40,
+      padding: '24px 0',
+      borderTop: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 'var(--fs-small)',
+      color: 'var(--fg2)',
+      lineHeight: 1.7,
+      margin: 0,
+      fontStyle: 'italic'
+    }
+  }, "\"Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know.\""), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 'var(--fs-caption)',
+      color: 'var(--fg3)',
+      lineHeight: 1.5,
+      margin: '6px 0 0',
+      fontStyle: 'normal',
+      fontWeight: 600
+    }
+  }, "- The founding team"))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      paddingTop: 48
+    }
+  }, /*#__PURE__*/React.createElement(ProductionFlow, null)), /*#__PURE__*/React.createElement("section", {
+    className: "section section-dark final-cta"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      color: 'rgba(255,255,255,0.5)'
+    }
+  }, "SELECTIVE ONBOARDING"), /*#__PURE__*/React.createElement("h2", {
+    className: "h2",
+    style: {
+      color: '#fff',
+      maxWidth: 760,
+      margin: '0 auto'
+    }
+  }, "We are not for everyone."), /*#__PURE__*/React.createElement("p", {
+    className: "sub",
+    style: {
+      color: 'rgba(255,255,255,0.75)',
+      maxWidth: 680,
+      margin: '18px auto 0'
+    }
+  }, "Limited capacity each quarter. We only take on customers we know we can win for - because we carry the cost and the risk of the build, and we only get paid when you succeed. We are built for mid-market manufacturers, roughly $5M-$250M in revenue - below that, spreadsheets or QuickBooks still win; above that, SAP or Oracle make more sense."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 28,
+      display: 'flex',
+      justifyContent: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: () => setShowInvite(true),
+    className: "btn btn-lg btn-invite",
+    style: {
+      animation: 'sgBuildPulse 1.8s ease-in-out infinite'
+    }
+  }, "Book a demo")), /*#__PURE__*/React.createElement("p", {
+    className: "note",
+    style: {
+      color: 'rgba(255,255,255,0.5)',
+      marginTop: 14
+    }
+  }, "Senior engineers and deployment experts on every deployment \xB7 We reply within 48 hours"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 20,
+      textAlign: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "product.html",
+    style: {
+      fontSize: 14,
+      fontWeight: 600,
+      color: 'rgba(255,255,255,0.85)',
+      textDecoration: 'none'
+    }
+  }, "See how the system actually works \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, {
+    title: "Built by people who've run the floor.",
+    body: "We ran multi-stage factories to $30M and survived two ERP failures before building SimpleGrid. We're on every deployment. We carry the cost and the risk - you run it for 30 days and pay only once it earns its keep.",
+    note: "Limited slots each quarter. We onboard selectively."
+  }), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
+    onClose: () => setShowLogin(false)
+  }), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
+    onClose: () => setShowInvite(false)
+  }));
 }
-ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(AboutPage, null));
+ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(AboutPage, null));

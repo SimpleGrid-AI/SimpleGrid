@@ -856,21 +856,23 @@ function BlogGraphic({
 function fmtBlogDate(iso) {
   if (!iso) return '';
   const [y, m, d] = iso.split('-').map(n => parseInt(n, 10));
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return months[m - 1] + ' ' + d + ', ' + y;
 }
 function BlogPage() {
   const [showLogin, setShowLogin] = React.useState(false);
   const [filter, setFilter] = React.useState('All');
-  const sorted = [...BLOG_DATA].sort((a, b) =>
-    (b.datePublished || '').localeCompare(a.datePublished || '')
-  );
+
+  // Most recent first by datePublished (ISO yyyy-mm-dd sorts lexicographically).
+  const sorted = [...BLOG_DATA].sort((a, b) => (b.datePublished || '').localeCompare(a.datePublished || ''));
   const cats = ['All', ...new Set(sorted.map(b => b.cat))];
   const filtered = filter === 'All' ? sorted : sorted.filter(b => b.cat === filter);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, {
     page: "blog",
     onLoginClick: () => setShowLogin(true)
-  }), /*#__PURE__*/React.createElement("main", { id: "main" }, /*#__PURE__*/React.createElement("section", {
+  }), /*#__PURE__*/React.createElement("main", {
+    id: "main"
+  }, /*#__PURE__*/React.createElement("section", {
     className: "section",
     style: {
       paddingBottom: 48
@@ -950,11 +952,11 @@ function BlogPage() {
       className: "blog-card-title"
     }, b.title), /*#__PURE__*/React.createElement("div", {
       className: "meta"
-    },
-      b.datePublished && /*#__PURE__*/React.createElement("time", { dateTime: b.datePublished }, fmtBlogDate(b.datePublished)),
-      b.datePublished && b.readTime && /*#__PURE__*/React.createElement("span", { "aria-hidden": "true" }, " · "),
-      b.readTime && /*#__PURE__*/React.createElement("span", null, b.readTime, " read")
-    ));
+    }, b.datePublished && /*#__PURE__*/React.createElement("time", {
+      dateTime: b.datePublished
+    }, fmtBlogDate(b.datePublished)), b.datePublished && b.readTime && /*#__PURE__*/React.createElement("span", {
+      "aria-hidden": "true"
+    }, " \xB7 "), b.readTime && /*#__PURE__*/React.createElement("span", null, b.readTime, " read"))));
   }))))), /*#__PURE__*/React.createElement(Footer, null), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }));
