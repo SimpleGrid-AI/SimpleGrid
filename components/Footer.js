@@ -16,7 +16,9 @@ function FIcon({
       marginTop: 2
     }
   };
-  if (kind === 'mail') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+  if (kind === 'mail') return /*#__PURE__*/React.createElement("svg", _extends({}, common, {
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("rect", {
     x: "3",
     y: "5",
     width: "18",
@@ -25,16 +27,21 @@ function FIcon({
   }), /*#__PURE__*/React.createElement("path", {
     d: "M3 7l9 6 9-6"
   }));
-  if (kind === 'phone') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+  if (kind === 'phone') return /*#__PURE__*/React.createElement("svg", _extends({}, common, {
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("path", {
     d: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"
   }));
   if (kind === 'linkedin') return /*#__PURE__*/React.createElement("svg", _extends({}, common, {
     fill: "currentColor",
-    stroke: "none"
+    stroke: "none",
+    "aria-hidden": "true"
   }), /*#__PURE__*/React.createElement("path", {
     d: "M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.04h4.56V23H.22V8.04zm7.42 0h4.37v2.05h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.62c0-1.58-.03-3.61-2.2-3.61-2.2 0-2.54 1.72-2.54 3.5V23H7.64V8.04z"
   }));
-  if (kind === 'calendar') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+  if (kind === 'calendar') return /*#__PURE__*/React.createElement("svg", _extends({}, common, {
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("rect", {
     x: "3",
     y: "4",
     width: "18",
@@ -43,7 +50,9 @@ function FIcon({
   }), /*#__PURE__*/React.createElement("path", {
     d: "M16 2v4M8 2v4M3 10h18"
   }));
-  if (kind === 'pin') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+  if (kind === 'pin') return /*#__PURE__*/React.createElement("svg", _extends({}, common, {
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("path", {
     d: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
   }), /*#__PURE__*/React.createElement("circle", {
     cx: "12",
@@ -245,14 +254,18 @@ function Footer() {
     className: "footer-cols",
     style: {
       gridTemplateColumns: '1fr 1fr 1fr 1.5fr',
-      gap: 20
+      gap: 24
     }
   }, cols.map(c => /*#__PURE__*/React.createElement("div", {
     key: c.h
   }, c.hHref ? /*#__PURE__*/React.createElement("a", {
     className: "footer-h",
     href: px(c.hHref),
-    style: { textDecoration: 'none', color: 'inherit', display: 'block' }
+    style: {
+      textDecoration: 'none',
+      color: 'inherit',
+      display: 'block'
+    }
   }, c.h) : /*#__PURE__*/React.createElement("div", {
     className: "footer-h"
   }, c.h), c.links.map(x => /*#__PURE__*/React.createElement("a", {
@@ -278,7 +291,7 @@ function Footer() {
     kind: x.kind
   }), /*#__PURE__*/React.createElement("span", null, x.l)))))), /*#__PURE__*/React.createElement("div", {
     className: "footer-bottom"
-  }, /*#__PURE__*/React.createElement("div", null, "\xA9 2026 Valaya AI Technologies"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, "SimpleGrid, an AI-native ERP for US manufacturers, by Valaya AI Technologies Pvt. Ltd. \xA9 2026"), /*#__PURE__*/React.createElement("div", {
     className: "footer-legal"
   }, /*#__PURE__*/React.createElement("a", {
     href: px('privacy.html')

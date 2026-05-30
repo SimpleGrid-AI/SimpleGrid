@@ -148,6 +148,17 @@ def main() -> None:
                 "priority": 0.75,
             })
 
+    # 4b) Vertical / landing directories served as <dir>/index.html.
+    for vdir in ("furniture-erp",):
+        idx = REPO / vdir / "index.html"
+        if idx.is_file():
+            entries.append({
+                "url": f"{ROOT}/{vdir}/",
+                "lastmod": datetime.fromtimestamp(idx.stat().st_mtime).strftime("%Y-%m-%d"),
+                "changefreq": "monthly",
+                "priority": 0.8,
+            })
+
     # 5) write sitemap.xml. Dedupe by URL.
     seen = set()
     deduped = []

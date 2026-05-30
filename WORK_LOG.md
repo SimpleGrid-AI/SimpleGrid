@@ -81,3 +81,25 @@ Verify: 0 tool pages missing the block; all related-link targets resolve; 0 orph
 - T4.1: added `.tool-lead` (formula + benchmark + CTA-to-enter) after H1 on 10 highest-snippet-potential tools (oee, job-cost, burden-rate, break-even, reorder-point, markup-vs-margin, ebitda, scrap-waste, downtime, revenue-per-employee). Standard formulas, no em dashes. Remaining 25 tools logged for follow-up.
 - T4.2: added `.post-lead` "Key takeaway" citable block to all 5 procedural blogs (spreadsheets-cost, landed-cost, erp-customization, warehouse-first, dynamics-gp-sunset).
 - Files via `scripts/_t4_frontload.py`. New copy -> NEEDS_FOUNDER_REVIEW.md. DoD ✓ (10/35 tools + 5/5 blogs this session).
+
+---
+
+## TIER 6 — Build, regen, handoff
+### T6.1 Build + sitemap
+- Compiled `components/Footer.jsx -> components/Footer.js` (TARGETED single-file babel, via local `.node/bin/node`) so the T2.3 disambiguation footer ships. Deliberately did NOT run full `npm run build` to avoid colliding with concurrent in-flight edits to `app/privacy.js` + `app/case-furniture-manufacturer.js` (another session). Verified Footer.js contains the new line; app/* untouched.
+- Regenerated sitemap. **Caught + fixed a regression:** the generator omitted `/furniture-erp/` (dropped 78->77). Patched `scripts/generate-sitemap.py` to include vertical landing dirs; sitemap back to 78 URLs, valid XML, parity restored, lastmods refreshed to today on edited pages.
+### T6.2 ENTITY_SUBMISSION_PACK.md — paste-ready Crunchbase/Wikidata/G2/Capterra/GetApp/SoftwareAdvice/TrustRadius/ProductHunt + canonical NAP + 3 descriptions + disambiguation note. DoD ✓.
+### T6.3 OUTREACH_PACK.md — tool-as-resource pitch emails (A/B) + target-type list + tool->audience mapping. DoD ✓.
+### T6.4 OFF_CODE_HANDOFF.md — Demo-booked conversion fix (embed+listener code), Cloudflare/DNS items, entity/outreach pointers, orphan founder PNG, CONCURRENT-CHANGES warning, full build+push sequence, and full T5 page specs (deferred). NEEDS_FOUNDER_REVIEW.md holds all new copy. DoD ✓.
+
+## TIER 5 — NEW PAGES: deferred to follow-up (fully specced in OFF_CODE_HANDOFF.md section 7c)
+Per the prompt's priority order (T1-T4 first, T5 can follow up) and the quality-over-volume guardrail, the 10+ new pages were NOT shipped half-built. Detailed build specs (URLs, schema, internal links, proof set) are in the handoff so a follow-up session builds them cleanly.
+
+---
+
+## SUMMARY OF COMMITS (local, not pushed)
+- T1 661222c — HowTo x35, schema x10, llms.txt, social x46, SRI x18, CSP, titles x10, image
+- T2 101e16a — Organization + founder Person + 20 Article authors + footer disambiguation
+- T3 5eba4dc — tool x35 + blog x8 cross-links (edges 1620->1786, tool inbound 3->6)
+- T4 a345117 — front-load citable blocks (10 tools + 5 blogs)
+- T6 (this) — Footer build, sitemap fix, handoff packs
