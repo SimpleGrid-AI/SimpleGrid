@@ -24,12 +24,31 @@ const SG_FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + SG_INVITE_TO;
 // ---------------------------------------------------------------------------
 function trackConversion(payload) {
   payload = payload || {};
+
+  // Identify the visitor in PostHog using their email so every past + future
+  // session from this browser links to a real person, not an anonymous UUID.
+  // After this, PostHog's "Persons" tab shows hello@simplegrid.ai by name and
+  // session replays are searchable by email. Run BEFORE sgTrack so the
+  // lead_captured event lands on the identified person, not the anon shell.
+  try {
+    if (window.posthog && typeof window.posthog.identify === 'function' && payload.email) {
+      window.posthog.identify(payload.email, {
+        email:                payload.email,
+        name:                 payload.name || '',
+        first_lead_page:      window.SG_PAGE || '',
+        first_lead_campaign:  window.SG_CAMPAIGN || '',
+        first_lead_at:        new Date().toISOString(),
+      });
+    }
+  } catch (e) {}
+
   if (typeof window.sgTrack !== 'function') return;
   try {
     window.sgTrack('lead_captured', {
       page:        window.SG_PAGE || '',
       campaign:    window.SG_CAMPAIGN || '',
       email:       payload.email || '',
+      name:        payload.name || '',
       // Pain text truncated — useful for cohort building, full text still
       // lands in the email + FormSubmit dashboard.
       description: (payload.description || '').slice(0, 200),
@@ -170,6 +189,7 @@ function trackConversion(payload) {
 
       // Success — hide form, show confirmation, fire conversion
       trackConversion({
+        name:        fields.name.value.trim(),
         email:       fields.email.value.trim(),
         description: fields.description.value.trim(),
       });
