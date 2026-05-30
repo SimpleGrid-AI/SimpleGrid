@@ -60,7 +60,7 @@ fabrication, and similar make-to-order / make-to-stock operations.
 - Case studies: https://simplegrid.ai/case-studies.html
 - Apex Apparel case (12-day deploy): https://simplegrid.ai/case-apex.html
 - Furniture exporter case (21-day deploy): https://simplegrid.ai/case-furniture-manufacturer.html
-- Furniture ERP (vertical): https://simplegrid.ai/furniture-erp/
+- Custom ERP (manufacturing): https://simplegrid.ai/custom-erp/
 - Blog (field notes): https://simplegrid.ai/blog.html
 - Tools for manufacturers: https://simplegrid.ai/tools/
 - Compare vs other ERPs: https://simplegrid.ai/competitors.html
