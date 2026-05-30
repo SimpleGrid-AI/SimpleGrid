@@ -209,10 +209,12 @@ function Nav({
     onClick: onLoginClick
   }, "Log in"), /*#__PURE__*/React.createElement("button", {
     type: "button",
-    onClick: () => setShowInvite(true),
-    className: "btn btn-sm btn-primary" + (page === 'home' ? ' nav-demo-home' : ''),
-    title: "Book a SimpleGrid demo"
-  }, "Book a demo"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      if (window.sgOpenTryErp) window.sgOpenTryErp();else setShowInvite(true);
+    },
+    className: 'btn btn-sm btn-primary' + (page === 'home' ? ' nav-demo-home' : ''),
+    title: "Try a live SimpleGrid ERP"
+  }, "Try our ERP"), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: 'nav-burger' + (openMenu ? ' is-open' : ''),
     "aria-label": openMenu ? 'Close menu' : 'Open menu',
