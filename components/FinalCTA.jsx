@@ -22,6 +22,7 @@ function FinalCTA({
               href="https://cal.com/simplegrid-ai"
               rel="noopener noreferrer"
               data-cta="final_cta"
+              data-sg-invite
               className="btn btn-lg btn-primary final-cta-btn"
             >
               {ctaLabel}

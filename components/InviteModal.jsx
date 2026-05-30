@@ -16,6 +16,19 @@ function InviteModal({ onClose }) {
   // Modal a11y: focus trap + return focus + Escape to close + body scroll lock.
   React.useEffect(() => {
     lastReturnEl.current = document.activeElement;
+    // Hide background content from assistive tech while the dialog is open.
+    // Only touch body children that do NOT contain the modal, and restore
+    // exactly what we changed (never clobber a pre-existing aria-hidden).
+    const overlayEl = document.querySelector('.modal-overlay');
+    const bgHidden = [];
+    if (overlayEl) {
+      Array.prototype.forEach.call(document.body.children, (el) => {
+        if (el !== overlayEl && !el.contains(overlayEl) && !el.hasAttribute('aria-hidden')) {
+          el.setAttribute('aria-hidden', 'true');
+          bgHidden.push(el);
+        }
+      });
+    }
     // Move focus into the modal once mounted.
     requestAnimationFrame(() => {
       if (firstFieldRef.current) firstFieldRef.current.focus();
@@ -38,6 +51,7 @@ function InviteModal({ onClose }) {
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
+      bgHidden.forEach((el) => el.removeAttribute('aria-hidden'));
       if (lastReturnEl.current && lastReturnEl.current.focus) lastReturnEl.current.focus();
     };
   }, []);

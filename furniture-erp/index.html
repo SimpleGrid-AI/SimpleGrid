@@ -4,574 +4,28 @@
   <!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing).
        Note: this page uses Google Fonts (fonts.googleapis.com/gstatic.com), unlike the
        self-hosted-font marketing pages, so those hosts are allowlisted here. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://us-assets.i.posthog.com https://www.googletagmanager.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#3461E0">
+  <meta name="theme-color" content="#1A1A1A">
 
-  <title>An ERP that actually knows furniture | SimpleGrid</title>
-  <meta name="description" content="Custom ERP for furniture and cabinet manufacturers, built at our risk. Run it free for 30 days on your real floor; pay only if you keep it. Live in 7–14 days.">
+  <title>Custom ERP for manufacturers, built around your floor | SimpleGrid</title>
+  <meta name="description" content="A custom ERP shaped to the way your plant actually runs. We put it on your floor, working, before you pay a cent. Live in seven days.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://simplegrid.ai/furniture-erp/">
 
-  <!-- Favicon: omitted for standalone build -->
-
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="An ERP that actually knows furniture | SimpleGrid">
-  <meta property="og:description" content="Custom ERP for furniture and cabinet manufacturers, built at our risk. Run it free for 30 days on your real floor; pay only if you keep it. Live in 7–14 days.">
+  <meta property="og:title" content="Custom ERP for manufacturers, built around your floor | SimpleGrid">
+  <meta property="og:description" content="A custom ERP shaped to the way your plant actually runs. We put it on your floor, working, before you pay a cent. Live in seven days.">
   <meta property="og:url" content="https://simplegrid.ai/furniture-erp/">
   <meta property="og:site_name" content="SimpleGrid">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="An ERP that actually knows furniture | SimpleGrid">
-  <meta name="twitter:description" content="Custom ERP for furniture and cabinet manufacturers, built at our risk. Run it free for 30 days on your real floor; pay only if you keep it. Live in 7–14 days."><style>/* =========================================================================
-   SimpleGrid · Landing Page Styles
-   White theme + blue particle burst behind the hero.
-   Shared across all 7 paid-traffic pages.
-   ========================================================================= */
+  <meta name="twitter:title" content="Custom ERP for manufacturers, built around your floor | SimpleGrid">
+  <meta name="twitter:description" content="A custom ERP shaped to the way your plant actually runs. We put it on your floor, working, before you pay a cent. Live in seven days.">
 
-:root {
-  --bg:            #ffffff;
-  --bg-alt:        #fafbfc;
-  --bg-card:       #ffffff;
-  --border:        #e5e8ed;
-  --border-strong: #d3d8e0;
-  --fg:            #1a1a1a;
-  --fg-body:       #4a5568;
-  --fg-muted:      #9ca3af;
-  --accent:        #3461E0;
-  --accent-hover:  #2A52BD;
-  --accent-bg:     #EBF0FF;
-  --error:         #ef4444;
-  --success:       #10b981;
-
-  --font:          'Inter', Calibri, -apple-system, 'Segoe UI', sans-serif;
-
-  --r-sm: 6px;
-  --r-md: 10px;
-  --r-lg: 14px;
-
-  --ease:          cubic-bezier(0.16, 1, 0.3, 1);
-  --dur:           180ms;
-}
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg-body);
-  font-family: var(--font);
-  font-size: 16px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  min-height: 100vh;
-}
-
-main, header, footer { position: relative; z-index: 1; }
-
-/* ------------------ LAYOUT ------------------ */
-
-.container {
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ------------------ HEADER ------------------ */
-
-.site-header {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(180%) blur(8px);
-  -webkit-backdrop-filter: saturate(180%) blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-/* Center the wordmark on every breakpoint.
-   Landing page has no nav, so a centered logo reads as a focused
-   single-CTA page rather than "the nav got deleted". */
-.site-header .container {
-  display: flex;
-  justify-content: center;
-}
-
-.wordmark {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: var(--fg);
-}
-
-.wordmark img {
-  display: block;
-  height: 28px;
-  width: auto;
-}
-
-/* ------------------ HERO + BURST ------------------ */
-
-.hero {
-  position: relative;
-  padding: 96px 0 80px;
-  overflow: hidden;
-  isolation: isolate;
-  min-height: calc(100vh - 64px);
-  min-height: calc(100dvh - 64px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #FCFCFD;
-}
-
-/* Drifting grid pattern behind the burst — matches the home page hero. */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(26,26,26,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26,26,26,0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  pointer-events: none;
-  animation: sg-grid-drift 14s linear infinite;
-  z-index: 0;
-}
-
-@keyframes sg-grid-drift {
-  from { background-position: 0 0, 0 0; }
-  to   { background-position: 56px 56px, 56px 56px; }
-}
-
-.hero > .container { position: relative; z-index: 2; }
-
-.hero-burst {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  /* Match the home page's linear fade-from-top mask so the burst dominates
-     the section without a visible cut/ellipse boundary. */
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,1) 88%);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,1) 88%);
-  /* (legacy mask kept commented in case we want to revert to the ellipse look)
-     -webkit-mask-image: radial-gradient(ellipse 75% 80% at 50% 95%, #000 35%, transparent 78%);
-          mask-image: radial-gradient(ellipse 75% 80% at 50% 95%, #000 35%, transparent 78%); */
-}
-
-.hero-burst img,
-.hero-burst svg,
-.hero-burst canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: bottom center;
-}
-
-.hero h1 {
-  font-family: var(--font);
-  font-weight: 700;
-  font-size: clamp(38px, 6.4vw, 60px);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-  color: var(--fg);
-  margin: 0 0 20px;
-  text-wrap: balance;
-}
-
-.hero h1 .accent { color: var(--accent); }
-
-.hero .subhead {
-  font-size: clamp(17px, 2.1vw, 19px);
-  line-height: 1.5;
-  color: var(--fg-body);
-  margin: 0 0 32px;
-  max-width: 600px;
-  text-wrap: pretty;
-}
-
-/* ------------------ BUTTON ------------------ */
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--accent);
-  color: #ffffff;
-  font-family: var(--font);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  padding: 15px 28px;
-  border: none;
-  border-radius: var(--r-md);
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 6px 20px -6px rgba(74,123,247,0.55);
-  -webkit-tap-highlight-color: transparent;
-}
-
-.btn-primary:hover,
-.btn-primary:focus-visible {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 10px 26px -8px rgba(74,123,247,0.65);
-  outline: none;
-}
-
-.btn-primary:active { transform: translateY(0); }
-
-.btn-primary[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.btn-primary .arrow { transition: transform var(--dur) var(--ease); }
-.btn-primary:hover .arrow { transform: translateX(3px); }
-
-/* ------------------ SECTIONS ------------------ */
-
-.section { padding: 56px 0; }
-
-.section + .section {
-  border-top: 1px solid var(--border);
-}
-
-.section h2 {
-  font-family: var(--font);
-  font-weight: 700;
-  font-size: clamp(24px, 3.6vw, 30px);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: var(--fg);
-  margin: 0 0 28px;
-  text-wrap: balance;
-}
-
-/* ------------------ PAIN LIST ------------------ */
-
-.pain-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 20px;
-}
-
-.pain-list li {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 14px;
-  align-items: start;
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--fg-body);
-  text-wrap: pretty;
-}
-
-.pain-list li::before {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  margin-top: 11px;
-  margin-left: 9px;
-  background: var(--fg);
-  border-radius: 50%;
-  opacity: 0.85;
-}
-
-/* ------------------ BODY BLOCK (used on /compare) ------------------ */
-
-.body-block {
-  display: grid;
-  gap: 18px;
-}
-
-.body-block p {
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--fg-body);
-  margin: 0;
-  text-wrap: pretty;
-}
-
-/* ------------------ VALUE PROP / HOW IT WORKS ------------------ */
-
-.value-prop {
-  position: relative;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: 28px 24px;
-  overflow: hidden;
-}
-
-.value-prop::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 3px;
-  background: var(--accent);
-}
-
-.value-prop .tag {
-  display: inline-block;
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 18px;
-}
-
-.how-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 16px;
-}
-
-.how-list li {
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  gap: 14px;
-  align-items: start;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--fg-body);
-  text-wrap: pretty;
-}
-
-.how-list li svg {
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  color: var(--fg);
-  flex-shrink: 0;
-}
-
-.how-list li strong {
-  color: var(--fg);
-  font-weight: 600;
-}
-
-.value-prop .note {
-  font-size: 14px;
-  color: var(--fg-muted);
-  margin: 20px 0 0;
-  padding-top: 18px;
-  border-top: 1px dashed var(--border);
-  line-height: 1.5;
-}
-
-/* ------------------ FORM ------------------ */
-
-.form-wrap {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: 32px 28px;
-  box-shadow: 0 2px 6px rgba(26,26,26,0.03), 0 12px 32px -12px rgba(26,26,26,0.06);
-}
-
-.form-wrap h2 {
-  margin-bottom: 6px;
-  font-size: clamp(22px, 3vw, 26px);
-}
-
-.form-wrap .form-intro {
-  font-size: 15px;
-  color: var(--fg-body);
-  margin: 0 0 24px;
-}
-
-.field { display: block; margin-bottom: 18px; }
-
-.field label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--fg);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.field input,
-.field textarea {
-  display: block;
-  width: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--r-sm);
-  color: var(--fg);
-  font-family: var(--font);
-  font-size: 16px; /* 16px on mobile prevents iOS zoom */
-  line-height: 1.45;
-  padding: 12px 14px;
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.field input::placeholder,
-.field textarea::placeholder { color: #b8bcc4; }
-
-.field input:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(74,123,247,0.18);
-}
-
-.field textarea { min-height: 110px; resize: vertical; }
-
-.field.has-error input,
-.field.has-error textarea { border-color: var(--error); }
-
-.field-error {
-  display: none;
-  font-size: 13px;
-  color: var(--error);
-  margin-top: 6px;
-}
-
-.field.has-error .field-error { display: block; }
-
-.form-actions { margin-top: 24px; }
-.form-actions .btn-primary { width: 100%; padding: 16px 28px; }
-
-.form-meta {
-  font-size: 13px;
-  color: var(--fg-muted);
-  margin-top: 14px;
-  text-align: center;
-  line-height: 1.4;
-}
-
-.form-error {
-  display: none;
-  background: rgba(239,68,68,0.06);
-  border: 1px solid rgba(239,68,68,0.35);
-  color: #b91c1c;
-  font-size: 14px;
-  padding: 12px 14px;
-  border-radius: var(--r-sm);
-  margin-top: 16px;
-}
-.form-error.show { display: block; }
-
-/* Success state */
-.form-success {
-  display: none;
-  text-align: left;
-  padding: 20px 0;
-}
-
-.form-success.show { display: block; }
-
-.form-success .check {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(16,185,129,0.12);
-  color: var(--success);
-  margin-bottom: 16px;
-}
-
-.form-success h3 {
-  font-family: var(--font);
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: -0.02em;
-  color: var(--fg);
-  margin: 0 0 8px;
-}
-
-.form-success p {
-  font-size: 16px;
-  color: var(--fg-body);
-  margin: 0;
-}
-
-/* ------------------ FOOTER ------------------ */
-
-.site-footer {
-  margin-top: 64px;
-  padding: 28px 0 36px;
-  border-top: 1px solid var(--border);
-  font-size: 14px;
-  color: var(--fg-muted);
-}
-
-.site-footer .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.site-footer a {
-  color: var(--fg-muted);
-  text-decoration: none;
-  transition: color var(--dur) var(--ease);
-}
-.site-footer a:hover { color: var(--fg); }
-
-/* ------------------ RESPONSIVE ------------------ */
-
-@media (min-width: 768px) {
-  .container { padding: 0 32px; }
-  .hero { padding: 100px 0 120px; }
-  .section { padding: 72px 0; }
-  .value-prop { padding: 36px 32px; }
-  .form-wrap { padding: 40px 36px; }
-}
-
-/* Skip link for accessibility */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 8px;
-  background: var(--accent);
-  color: white;
-  padding: 8px 14px;
-  border-radius: var(--r-sm);
-  z-index: 100;
-}
-.skip-link:focus { left: 8px; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-}
-</style>
   <script>
     window.SG_PAGE     = "furniture";
     window.SG_CAMPAIGN = "Vertical-Furniture";
@@ -585,182 +39,546 @@ main, header, footer { position: relative; z-index: 1; }
 
   <!-- Sitewide analytics stack — same three scripts every other page loads.
        Consent-gated: analytics-init.js does nothing until cookie-consent.js
-       fires the `sg:consent-accepted` window event. tracking.js exposes
-       window.sgTrack and auto-instruments [data-cta] / form submissions. -->
+       fires the consent event. tracking.js exposes window.sgTrack and
+       auto-instruments [data-cta] / form submissions. -->
   <script src="../assets/js/analytics-init.js" defer></script>
   <script src="../assets/js/tracking.js" defer></script>
   <script src="../assets/js/cookie-consent.js" defer></script>
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://simplegrid.ai/furniture-erp/#webpage","url":"https://simplegrid.ai/furniture-erp/","name":"An ERP that actually knows furniture | SimpleGrid","description":"Custom ERP for furniture and cabinet manufacturers, built at our risk. Run it free for 30 days on your real floor; pay only if you keep it. Live in 7–14 days.","isPartOf":{"@id":"https://simplegrid.ai/#website"},"about":{"@id":"https://simplegrid.ai/#org"},"inLanguage":"en-US","publisher":{"@id":"https://simplegrid.ai/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Furniture ERP","item":"https://simplegrid.ai/furniture-erp/"}]}]}
-</script>
-  <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <style>
+  /* ==========================================================================
+     SimpleGrid · Furniture ERP landing page
+     Dark grid hero + bright form card + contrast rows + proof + black close.
+     The form itself (#lead-form, name/email/description, form.js) is the
+     campaign-wired form — only its copy and position change here.
+     ========================================================================== */
+
+  :root {
+    --sg-black:      #1A1A1A;
+    --sg-blue:       #3461E0;
+    --sg-blue-dark:  #2A52BD;
+    --sg-blue-light: #EBF0FF;
+    --sg-white:      #FFFFFF;
+    --sg-off-white:  #FAFBFC;
+    --sg-charcoal:   #2D2D2D;
+    --sg-dark-gray:  #3B4250;
+    --sg-mid-gray:   #6B7280;
+    --sg-light-gray: #E5E8ED;
+    --sg-green-dark: #047857;
+    --sg-red-dark:   #B91C1C;
+
+    --font-heading: 'Inter', Calibri, 'Trebuchet MS', -apple-system, sans-serif;
+    --font-body:    'Inter', Calibri, -apple-system, 'Segoe UI', sans-serif;
+
+    --maxw: 1180px;
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --shadow-sm: 0 1px 3px rgba(26,26,26,0.06), 0 1px 2px rgba(26,26,26,0.04);
+    --shadow-md: 0 4px 16px rgba(26,26,26,0.07), 0 2px 4px rgba(26,26,26,0.04);
+    --shadow-lg: 0 18px 48px rgba(26,26,26,0.12), 0 6px 14px rgba(26,26,26,0.06);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--sg-dark-gray);
+    background: var(--sg-white);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--sg-black);
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    margin: 0;
+    text-wrap: balance;
+  }
+  p { margin: 0; }
+  a { color: var(--sg-blue); text-decoration: none; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+  /* ----- Section eyebrow ----- */
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--sg-blue);
+    margin: 0 0 18px;
+  }
+  .eyebrow.on-dark { color: #fff; opacity: 0.78; }
+
+  /* ----- Skip link (a11y) ----- */
+  .skip-link {
+    position: absolute; left: -9999px; top: 8px;
+    background: var(--sg-blue); color: #fff;
+    padding: 8px 14px; border-radius: 8px; z-index: 100;
+  }
+  .skip-link:focus { left: 8px; }
+
+  /* ==========================================================================
+     HEADER (sticky)
+     ========================================================================== */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.86);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--sg-light-gray);
+  }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between; height: 70px;
+  }
+  .brand { display: inline-flex; align-items: center; text-decoration: none; }
+  .brand img { display: block; height: 28px; width: auto; }
+
+  .head-right { display: flex; align-items: center; gap: 16px; }
+  .slots { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--sg-black); }
+  .slots .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--sg-blue); box-shadow: 0 0 0 0 rgba(52,97,224,0.5); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(52,97,224,0.45);} 70%{box-shadow:0 0 0 8px rgba(52,97,224,0);} 100%{box-shadow:0 0 0 0 rgba(52,97,224,0);} }
+  @media (max-width: 640px){ .slots .txt { display: none; } }
+
+  /* ==========================================================================
+     BUTTONS
+     ========================================================================== */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--font-body); font-size: 17px; font-weight: 600; line-height: 1;
+    padding: 15px 26px; border-radius: 8px; border: 1px solid transparent;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+    transition: background .18s var(--ease), transform .12s var(--ease), box-shadow .18s var(--ease);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary { background: var(--sg-blue); color: #fff; box-shadow: 0 2px 0 var(--sg-blue-dark); }
+  .btn-primary:hover, .btn-primary:focus-visible { background: var(--sg-blue-dark); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(52,97,224,0.32); outline: none; }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-sm { padding: 11px 18px; font-size: 15px; }
+  .btn-block { width: 100%; }
+  .btn-lg { padding: 18px 30px; font-size: 19px; }
+  .btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn .arrow { transition: transform .18s var(--ease); }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ==========================================================================
+     STAT CHIPS
+     ========================================================================== */
+  .chips { display: flex; gap: 14px; flex-wrap: wrap; }
+  .chip { flex: 1 1 0; min-width: 118px; padding: 16px 18px; border: 1px solid var(--sg-light-gray); border-radius: 12px; background: var(--sg-white); }
+  .chip .num { font-family: var(--font-heading); font-weight: 700; font-size: 30px; letter-spacing: -0.03em; color: var(--sg-black); line-height: 1; }
+  .chip .lbl { display: block; margin-top: 6px; font-size: 13px; color: var(--sg-mid-gray); font-weight: 500; }
+  .chip.on-dark { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.14); }
+  .chip.on-dark .num { color: #fff; }
+  .chip.on-dark .lbl { color: rgba(255,255,255,0.6); }
+
+  /* ==========================================================================
+     LEAD FORM (campaign-wired — markup/IDs/names preserved for form.js)
+     ========================================================================== */
+  .lead-form { display: flex; flex-direction: column; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field label { font-size: 14px; font-weight: 600; color: var(--sg-black); letter-spacing: -0.01em; }
+  .field input,
+  .field textarea {
+    font-family: var(--font-body); font-size: 16px; color: var(--sg-black);
+    background: var(--sg-white); border: 1.5px solid var(--sg-light-gray);
+    border-radius: 9px; padding: 14px 15px; width: 100%;
+    transition: border-color .15s var(--ease), box-shadow .15s var(--ease); resize: vertical;
+    -webkit-appearance: none; appearance: none;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: #9AA1AD; }
+  .field input:focus, .field textarea:focus {
+    outline: none; border-color: var(--sg-blue); box-shadow: 0 0 0 4px rgba(52,97,224,0.14);
+  }
+  .field textarea { min-height: 96px; line-height: 1.45; }
+  .field.has-error input, .field.has-error textarea { border-color: var(--sg-red-dark); }
+  .field-error { display: none; font-size: 13px; color: var(--sg-red-dark); }
+  .field.has-error .field-error { display: block; }
+
+  .trust { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--sg-mid-gray); margin: 2px 0 0; }
+  .trust svg { flex: none; width: 15px; height: 15px; color: var(--sg-green-dark); }
+
+  /* honeypot */
+  .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+
+  /* inline form error (network/server) */
+  .form-error {
+    display: none; background: rgba(185,28,28,0.06); border: 1px solid rgba(185,28,28,0.35);
+    color: var(--sg-red-dark); font-size: 14px; padding: 12px 14px; border-radius: 9px; margin-top: 2px;
+  }
+  .form-error.show { display: block; }
+
+  /* Success state */
+  .form-success { display: none; text-align: left; padding: 6px 0; }
+  .form-success.show { display: block; }
+  .form-success .ok-badge { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(4,120,87,0.10); margin: 0 0 18px; }
+  .form-success .ok-badge svg { width: 28px; height: 28px; color: var(--sg-green-dark); }
+  .form-success h3 { font-size: 26px; margin: 0 0 10px; }
+  .form-success p { color: var(--sg-dark-gray); font-size: 16px; line-height: 1.6; }
+
+  /* ==========================================================================
+     DARK GRID BAND (signature) — hero + closing
+     ========================================================================== */
+  .dark-band { position: relative; background: var(--sg-black); color: #fff; overflow: hidden; }
+  .dark-band::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 48px 48px; z-index: 0; pointer-events: none;
+  }
+  .dark-band > * { position: relative; z-index: 1; }
+  .dark-band h1, .dark-band h2, .dark-band h3 { color: #fff; }
+
+  /* ==========================================================================
+     HERO
+     ========================================================================== */
+  .hero { padding: 62px 0 86px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: start; }
+  .hero-head { font-size: 56px; font-weight: 700; line-height: 1.04; letter-spacing: -0.03em; margin: 22px 0 26px; }
+  .hero-head .l2 { color: #fff; }
+  .hero-head .live { color: #8FB0FF; }
+  .hero-sub { font-size: 19px; line-height: 1.62; color: rgba(255,255,255,0.72); max-width: 540px; margin: 0 0 34px; }
+  .hero-sub strong { color: #fff; font-weight: 600; }
+  .hero .chips { max-width: 540px; }
+
+  /* FORM card — bright on the dark band */
+  .form-card { position: relative; background: #fff; border-radius: 18px; padding: 32px 30px; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.08); }
+  .form-flag { position: absolute; top: -13px; left: 24px; background: var(--sg-blue); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; padding: 6px 13px; border-radius: 999px; box-shadow: 0 4px 12px rgba(52,97,224,0.32); }
+  .ease-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--sg-off-white); border: 1px solid var(--sg-light-gray); border-radius: 999px; padding: 7px 14px 7px 11px; font-size: 13px; font-weight: 600; color: var(--sg-black); margin: 4px 0 14px; }
+  .ease-pill .d { width: 8px; height: 8px; border-radius: 50%; background: var(--sg-green-dark); }
+  .fc-head { font-size: 23px; font-weight: 700; line-height: 1.2; color: var(--sg-black); margin: 0 0 10px; }
+  .fc-sub { font-size: 14.5px; line-height: 1.52; color: var(--sg-mid-gray); margin: 0 0 18px; }
+
+  /* ==========================================================================
+     CONTRAST (light)
+     ========================================================================== */
+  .contrast { padding: 96px 0; background: var(--sg-off-white); }
+  .contrast-head { max-width: 760px; }
+  .contrast-head h2 { font-size: 40px; font-weight: 700; margin: 0 0 18px; }
+  .contrast-lead { font-size: 19px; line-height: 1.62; color: var(--sg-dark-gray); max-width: 700px; margin: 0 0 42px; }
+  .contrast-lead strong { color: var(--sg-black); }
+  .contrast-list { display: flex; flex-direction: column; gap: 14px; }
+  .contrast-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; padding: 20px 24px; border: 1px solid var(--sg-light-gray); border-radius: 12px; background: var(--sg-white); }
+  .contrast-old { color: var(--sg-mid-gray); text-decoration: line-through; text-decoration-color: rgba(185,28,28,0.55); text-decoration-thickness: 2px; font-size: 17px; }
+  .contrast-arrow { color: var(--sg-blue); display: flex; }
+  .contrast-arrow svg { width: 24px; height: 24px; }
+  .contrast-new { color: var(--sg-black); font-weight: 600; font-size: 18px; }
+  .cta-prompt { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 38px; }
+  .cta-prompt .lead-in { font-size: 16px; color: var(--sg-mid-gray); }
+  .cta-prompt .lead-in strong { color: var(--sg-black); font-weight: 600; }
+
+  /* ==========================================================================
+     PROOF (light, big quote)
+     ========================================================================== */
+  .proof { padding: 84px 0; }
+  .proof .wrap { max-width: 940px; }
+  .proof-q { font-family: var(--font-heading); font-size: 30px; line-height: 1.36; letter-spacing: -0.02em; font-weight: 600; color: var(--sg-black); text-wrap: pretty; }
+  .proof-q .hl { color: var(--sg-blue); }
+  .proof-meta { margin-top: 22px; display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--sg-mid-gray); flex-wrap: wrap; }
+  .proof-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sg-light-gray); }
+
+  /* ==========================================================================
+     CLOSING (BLACK grid band — risk reversal)
+     ========================================================================== */
+  .closing { padding: 98px 0; text-align: center; }
+  .closing h2 { font-size: 46px; font-weight: 700; line-height: 1.06; margin: 0 auto 20px; max-width: 720px; }
+  .closing p { font-size: 19px; line-height: 1.62; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0 auto 32px; }
+  .closing p strong { color: #fff; }
+  .closing .micro { margin-top: 16px; font-size: 13.5px; color: rgba(255,255,255,0.6); }
+
+  /* ==========================================================================
+     FOOTER
+     ========================================================================== */
+  .site-footer { border-top: 1px solid var(--sg-light-gray); background: var(--sg-off-white); padding: 36px 0; }
+  .site-footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .footer-links { display: flex; gap: 22px; flex-wrap: wrap; font-size: 15px; }
+  .footer-links a { color: var(--sg-mid-gray); }
+  .footer-links a:hover { color: var(--sg-black); }
+
+  /* ==========================================================================
+     FLOATING NUDGE (Trigger)
+     ========================================================================== */
+  .nudge { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; transform: translateY(140%); transition: transform .4s var(--ease); pointer-events: none; }
+  .nudge.show { transform: translateY(0); }
+  .nudge-inner { pointer-events: auto; max-width: var(--maxw); margin: 0 auto; padding: 0 32px 18px; display: flex; justify-content: center; }
+  .nudge-bar { width: 100%; background: var(--sg-black); color: #fff; border-radius: 14px; padding: 14px 16px 14px 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; box-shadow: var(--shadow-lg); }
+  .nudge-bar .nb-text { font-size: 15.5px; line-height: 1.3; }
+  .nudge-bar .nb-text strong { color: #fff; font-weight: 600; }
+  .nudge-bar .nb-text .sub { display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  .nudge-bar .btn { flex: none; }
+
+  /* ==========================================================================
+     UTIL
+     ========================================================================== */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 38px; }
+    .hero-head { font-size: 46px; }
+    .hero .chips, .hero-sub { max-width: none; }
+  }
+  @media (max-width: 860px) {
+    .wrap { padding: 0 22px; }
+    .contrast-row { grid-template-columns: 1fr; gap: 10px; text-align: left; }
+    .contrast-arrow { transform: rotate(90deg); }
+  }
+  @media (max-width: 600px) {
+    .hero-head { font-size: 38px; }
+    .contrast-head h2, .closing h2 { font-size: 32px; }
+    .proof-q { font-size: 24px; }
+    .nudge-bar { flex-direction: column; align-items: stretch; text-align: center; gap: 12px; }
+    .nudge-bar .btn { width: 100%; }
+  }
+  </style>
 </head>
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- ============ HEADER ============ -->
   <header class="site-header">
-    <div class="container">
-      <a class="wordmark" href="../" aria-label="SimpleGrid home">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="SimpleGrid home">
         <img src="../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid" width="128" height="28">
       </a>
+      <div class="head-right">
+        <span class="slots"><span class="pulse"></span><span class="txt">A few build slots open this quarter</span></span>
+        <a class="btn btn-primary btn-sm" href="#lead" data-cta="furniture_header">See it working</a>
+      </div>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- HERO with animated particle burst (vanilla JS port of components/HomeTop.jsx RadialBurst) -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-burst" data-sg-burst data-theme="light" aria-hidden="true"></div>
-      <div class="container">
-        <h1 id="hero-heading">An ERP that actually knows <span class="accent">furniture</span>.</h1>
-        <p class="subhead">Every ERP vendor makes you pay first and hope it works. We flipped it. We build your ERP at our cost and our risk - you run it free for 30 days on your real floor, and pay only if you keep it. Built for furniture and cabinet manufacturers. Live in 7–14 days.</p>
-        <a class="btn-primary" href="#lead-form" data-cta="furniture_hero">
-          <span class="label">Book a demo</span>
-          <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- PROBLEM (pain list or body block) -->
-    <section class="section" aria-labelledby="pain-heading">
-      <div class="container">
-        <h2 id="pain-heading">If this is your shop:</h2>
-        <ul class="pain-list">
-          <li>Jobs move from cutting to finishing to assembly, and you’re tracking them on a whiteboard and three spreadsheets.</li>
-          <li>You don’t know the real cost of a job until it’s already shipped.</li>
-          <li>Contractor payments are a monthly guessing game.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- VALUE PROPOSITION (identical on all 7) -->
-    <section class="section" aria-labelledby="value-heading">
-      <div class="container">
-        <h2 id="value-heading">How it works.</h2>
-        <div class="value-prop">
-          <span class="tag">The process</span>
-          <ul class="how-list">
-            <li>
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <div><strong>60-minute scoping call.</strong> We learn how your operation actually runs. Your stages, your contractors, your costing logic.</div>
-            </li>
-            <li>
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <div><strong>Fixed quote.</strong> You know exactly what it costs before we write a line of code.</div>
-            </li>
-            <li>
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <div><strong>Built and deployed in 7–14 days.</strong> At our cost. At our risk.</div>
-            </li>
-            <li>
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <div><strong>30 days on your real floor.</strong> Real team. Real orders. Real data.</div>
-            </li>
-            <li>
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <div><strong>Keep it or walk.</strong> You only pay the quote if you decide to keep it.</div>
-            </li>
-          </ul>
-          <p class="note">The quote is fixed at day one. Nothing changes on day 31.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FORM -->
-    <section class="section" id="lead-form-section" aria-labelledby="form-heading">
-      <div class="container">
-        <div class="form-wrap">
-          <h2 id="form-heading">The risk is ours until the value is yours.</h2>
-          <p class="form-intro">Tell us about your shop. We onboard selectively each quarter and only take on the ones we know we can win for - we'll reach out either way.</p>
-
-          <form id="lead-form" novalidate="">
-            <!-- Honeypot: hidden from humans, filled by bots, checked in form.js -->
-            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" aria-hidden="true">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required="">
-              <div class="field-error" role="alert"></div>
+    <!-- ============ HERO (dark) ============ -->
+    <section class="dark-band hero" id="top" aria-labelledby="hero-heading">
+      <div class="wrap">
+        <div class="hero-grid">
+          <!-- LEFT: message -->
+          <div>
+            <span class="eyebrow on-dark">Custom ERP for manufacturers</span>
+            <h1 class="hero-head" id="hero-heading">
+              Built around your floor.<br>
+              <span class="l2">Not the other way around.</span><br>
+              <span class="live">Live in seven days.</span>
+            </h1>
+            <p class="hero-sub">
+              We build an ERP shaped to the way your plant actually runs: your stages, your hand-offs, your costing.
+              Then we put it on your floor, <strong>working, before a single invoice.</strong>
+              You keep it only if it pulls its weight.
+            </p>
+            <div class="chips">
+              <div class="chip on-dark"><span class="num">7 days</span><span class="lbl">Handshake to live</span></div>
+              <div class="chip on-dark"><span class="num">$0</span><span class="lbl">To get it built</span></div>
+              <div class="chip on-dark"><span class="num">You first</span><span class="lbl">Run it before you pay</span></div>
             </div>
+          </div>
 
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required="">
-              <div class="field-error" role="alert"></div>
-            </div>
+          <!-- RIGHT: the campaign-wired form (only copy + position changed) -->
+          <div class="form-card" id="lead">
+            <span class="form-flag">Start here</span>
 
-            <div class="field">
-              <label for="description">In a sentence or two, what’s the messiest part of running your shop right now?</label>
-              <textarea id="description" name="description" rows="4" required=""></textarea>
-              <div class="field-error" role="alert"></div>
-            </div>
+            <form class="lead-form" id="lead-form" novalidate="">
+              <span class="ease-pill"><span class="d"></span>3 fields · about 60 seconds</span>
+              <h2 class="fc-head">See it running on your floor, before you owe us anything.</h2>
+              <p class="fc-sub">Name the one process that breaks most. We'll show you exactly what SimpleGrid looks like running your business. No call. No pitch. No commitment.</p>
 
-            <div class="form-actions">
-              <button type="submit" class="btn-primary">
-                <span class="label">Book a demo</span>
+              <!-- Honeypot: hidden from humans, filled by bots, checked in form.js -->
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name" required="">
+                <div class="field-error" role="alert"></div>
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" inputmode="email" required="">
+                <div class="field-error" role="alert"></div>
+              </div>
+
+              <div class="field">
+                <label for="description">What's breaking?</label>
+                <textarea id="description" name="description" rows="4" placeholder="e.g. We lose track of jobs across 3 stages and month-end never reconciles." required=""></textarea>
+                <div class="field-error" role="alert"></div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg">
+                <span class="label">Show me what ours would look like</span>
                 <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
               </button>
+
+              <div id="form-error" class="form-error" role="alert" aria-live="polite"></div>
+
+              <p class="trust">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v5c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                A real reply within one business day. Your details never leave us.
+              </p>
+            </form>
+
+            <div class="form-success" id="form-success" aria-live="polite">
+              <div class="ok-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+              <h3>Got it, we're already on it.</h3>
+              <p>We'll study your workflow and come back inside one business day with what your SimpleGrid build looks like. Keep an eye on your inbox.</p>
             </div>
-
-            <div id="form-error" class="form-error" role="alert" aria-live="polite"></div>
-
-            <p class="form-meta">We reply within 48 hours.</p>
-          </form>
-
-          <div id="form-success" class="form-success" aria-live="polite">
-            <div class="check" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M5 10.5l3.5 3.5L15 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </div>
-            <h3>Got it.</h3>
-            <p>We’ll review and get back to you within 48 hours.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHAT CHANGES (concrete outcomes — reads after the form to reward
-         visitors who didn't convert with a clear "what you get" preview).
-         Each <li>'s content is wrapped in a single <span> so .pain-list's
-         2-column grid (bullet + 1fr text) doesn't push subsequent text
-         into the narrow bullet column. -->
-    <section class="section" aria-labelledby="changes-heading">
-      <div class="container">
-        <h2 id="changes-heading">What changes:</h2>
-        <ul class="pain-list">
-          <li><span><strong>Job stages match your shop.</strong> Cutting, machining, sanding, finishing, hardware, packaging — whatever you actually do, in your order.</span></li>
-          <li><span><strong>Materials drop from inventory the moment a stage consumes them.</strong> No end-of-month reconciliation.</span></li>
-          <li><span><strong>Contractor pay is what they earned this week,</strong> computed off completed jobs. No more spreadsheet guesswork.</span></li>
-          <li><span><strong>You see real cost-per-piece while the job is still on the floor.</strong></span></li>
-        </ul>
+    <!-- ============ CONTRAST ============ -->
+    <section class="contrast" aria-labelledby="contrast-heading">
+      <div class="wrap">
+        <div class="contrast-head reveal">
+          <span class="eyebrow">Where off-the-shelf breaks down</span>
+          <h2 id="contrast-heading">You bought software to run the plant. Now you spend the day running the software.</h2>
+        </div>
+        <p class="contrast-lead reveal">
+          Generic ERP makes you bend to its rules. SimpleGrid bends to yours: <strong>your stages, your approvals, your floor.</strong>
+          No code to write, no consultants to host, no year-long rollout.
+        </p>
+        <div class="contrast-list">
+          <div class="contrast-row reveal">
+            <div class="contrast-old">A rigid template you fight for a year</div>
+            <div class="contrast-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <div class="contrast-new">Shaped to the way you actually work</div>
+          </div>
+          <div class="contrast-row reveal">
+            <div class="contrast-old">A 12 to 18 month implementation slog</div>
+            <div class="contrast-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <div class="contrast-new">Working on your floor in a week</div>
+          </div>
+          <div class="contrast-row reveal">
+            <div class="contrast-old">Six figures up front, results maybe</div>
+            <div class="contrast-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <div class="contrast-new">Proven on your floor before you pay</div>
+          </div>
+        </div>
+        <div class="cta-prompt reveal">
+          <span class="lead-in"><strong>See your own floor in there?</strong> Point us at the one that hurts most.</span>
+          <a class="btn btn-primary" href="#lead" data-cta="furniture_contrast">
+            <span>Show me what ours would look like</span>
+            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROOF ============ -->
+    <section class="proof" aria-labelledby="proof-heading">
+      <div class="wrap reveal">
+        <span class="eyebrow" id="proof-heading">We've done this already</span>
+        <p class="proof-q">
+          We built it for a <span class="hl">600-person furniture exporter spread across four factories</span>:
+          19 production stages, live in a matter of weeks. The enterprise vendor they'd called had quoted six months.
+        </p>
+        <div class="proof-meta">
+          <span>Mid-market manufacturing</span><span class="dot"></span>
+          <span>4 factories · 19 stages</span><span class="dot"></span>
+          <span>Weeks, not quarters</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING (BLACK risk-reversal band) ============ -->
+    <section class="dark-band closing" aria-labelledby="closing-heading">
+      <div class="wrap">
+        <span class="eyebrow on-dark">The risk is ours</span>
+        <h2 id="closing-heading">If it doesn't earn its place, walk.</h2>
+        <p>
+          You've been let down by software before. This time you watch it run on your own operation first.
+          <strong>The risk of the build sits with us, never with you.</strong>
+        </p>
+        <a class="btn btn-primary btn-lg" href="#lead" data-cta="furniture_closing">
+          <span>Put it on my floor</span>
+          <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+        <p class="micro">3 fields · about 60 seconds · no call required</p>
       </div>
     </section>
 
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="row">
-        <div><a href="https://simplegrid.ai">simplegrid.ai</a></div>
-        <div><a href="../privacy.html">Privacy</a> · © 2026 SimpleGrid</div>
-      </div>
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="SimpleGrid home">
+        <img src="../assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid" width="118" height="26">
+      </a>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#lead" data-cta="furniture_footer">See it working</a>
+        <a href="mailto:hello@simplegrid.ai">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="https://simplegrid.ai">simplegrid.ai</a>
+      </nav>
     </div>
   </footer>
 
+  <!-- ============ FLOATING NUDGE ============ -->
+  <div class="nudge" id="nudge" aria-hidden="true">
+    <div class="nudge-inner">
+      <div class="nudge-bar">
+        <div class="nb-text">
+          <strong>Still reading? Tell us the one process that breaks most.</strong>
+          <span class="sub">3 fields · reply within one business day · a few slots open this quarter</span>
+        </div>
+        <a class="btn btn-primary btn-sm" href="#lead" data-cta="furniture_nudge">Show me what ours would look like</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page chrome only: scroll-reveal + floating nudge. The form is handled
+       entirely by form.js (unchanged) — this script never touches it. -->
+  <script>
+  (function () {
+    // Scroll reveal
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Floating nudge — show once the hero AND the form card are both out of view,
+    // hide permanently once the form reports success.
+    var nudge = document.getElementById('nudge');
+    var formCard = document.getElementById('lead');
+    var hero = document.getElementById('top');
+    var success = document.getElementById('form-success');
+    if (!nudge || !formCard || !hero) return;
+
+    var formVisible = true, heroVisible = true, submitted = false;
+    function render() { nudge.classList.toggle('show', !formVisible && !heroVisible && !submitted); }
+
+    new IntersectionObserver(function (es) { formVisible = es[0].isIntersecting; render(); }, { threshold: 0.2 }).observe(formCard);
+    new IntersectionObserver(function (es) { heroVisible = es[0].isIntersecting; render(); }, { threshold: 0.15 }).observe(hero);
+
+    if (success) {
+      new MutationObserver(function () {
+        if (success.classList.contains('show')) { submitted = true; render(); }
+      }).observe(success, { attributes: true, attributeFilter: ['class'] });
+    }
+  })();
+  </script>
+
   <script src="form.js" defer=""></script>
-  <script src="../assets/landing/radial-burst.js" defer></script>
-
-  <!-- Splash thumbnail used by the bundler while assets unpack and as a no-JS fallback -->
-  
-
-
 
 </body></html>

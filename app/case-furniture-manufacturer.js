@@ -357,7 +357,7 @@ function EliteCaseStudy() {
     className: "tag"
   }, "CASE STUDY \xB7 FURNITURE EXPORT"), /*#__PURE__*/React.createElement("h1", null, "How a furniture exporter stopped losing $200,000 a year to gaps nobody could see"), /*#__PURE__*/React.createElement("p", {
     className: "case-hook"
-  }, "Over four years, a furniture manufacturer and exporter \u2014 12+ countries across North America, Europe, and Asia \u2014 lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600\u2013800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around."), /*#__PURE__*/React.createElement("div", {
+  }, "Over four years, a furniture manufacturer and exporter - 12+ countries across North America, Europe, and Asia - lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600\u2013800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live ERP - built around their process, not the other way around."), /*#__PURE__*/React.createElement("div", {
     className: "case-strip"
   }, /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"

@@ -129,10 +129,13 @@
     }
 
     // ------ Animation loop ------
+    // Respect prefers-reduced-motion: render one static frame, no rAF loop.
+    const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    const reduceMotion = () => !!(motionQuery && motionQuery.matches);
     let frame = 0;
     function draw() {
       if (!isVisible || !isTabActive) {
-        animFrame = requestAnimationFrame(draw);
+        if (!reduceMotion()) animFrame = requestAnimationFrame(draw);
         return;
       }
       const w = W(), h = H();
@@ -186,7 +189,14 @@
       }
 
       frame++;
-      animFrame = requestAnimationFrame(draw);
+      // Only schedule the next frame when motion is allowed.
+      if (!reduceMotion()) animFrame = requestAnimationFrame(draw);
+    }
+    // If the user toggles reduced-motion mid-session, stop or resume the loop.
+    if (motionQuery) {
+      const onMotionPref = () => { cancelAnimationFrame(animFrame); draw(); };
+      if (motionQuery.addEventListener) motionQuery.addEventListener('change', onMotionPref);
+      else if (motionQuery.addListener) motionQuery.addListener(onMotionPref);
     }
     draw();
 

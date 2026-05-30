@@ -30,6 +30,7 @@ function InviteModal({ onClose }) {
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
+      bgHidden.forEach((el) => el.removeAttribute('aria-hidden'));
       if (lastReturnEl.current && lastReturnEl.current.focus) lastReturnEl.current.focus();
     };
   }, []);
