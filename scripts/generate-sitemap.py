@@ -149,7 +149,11 @@ def main() -> None:
             })
 
     # 4b) Vertical / landing directories served as <dir>/index.html.
-    for vdir in ("furniture-erp",):
+    for vdir in ("furniture-erp",
+                 "manufacturing-valuation", "erp-readiness",
+                 "quickbooks-manufacturing-limits", "quickbooks-inventory-wip-limits",
+                 "quickbooks-job-costing-limits", "quickbooks-multi-entity-limits",
+                 "replace-your-erp", "dynamics-gp-migration", "quickbooks-desktop-sunset"):
         idx = REPO / vdir / "index.html"
         if idx.is_file():
             entries.append({

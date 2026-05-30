@@ -103,3 +103,16 @@ Per the prompt's priority order (T1-T4 first, T5 can follow up) and the quality-
 - T3 5eba4dc — tool x35 + blog x8 cross-links (edges 1620->1786, tool inbound 3->6)
 - T4 a345117 — front-load citable blocks (10 tools + 5 blogs)
 - T6 (this) — Footer build, sitemap fix, handoff packs
+
+---
+
+## TIER 5 — New high-intent pages (BUILT)
+- **9 new static pages** via `scripts/_t5_pages.py` + `scripts/t5_configs.py` (config-driven generator; full head/CSP/og/twitter, WebPage+Breadcrumb+FAQPage JSON-LD, nav, hero+CTA, content sections, related-links, FAQ, final CTA, footer with disambiguation line). All titles <=54, metas <=159, 0 em dashes, all parse.
+  - T5.1 pillars: /manufacturing-valuation/, /erp-readiness/
+  - T5.2: /quickbooks-manufacturing-limits/ (hub) + 3 clusters (inventory-wip, job-costing, multi-entity)
+  - T5.3: /replace-your-erp/
+  - T5.4: /dynamics-gp-migration/ landing + /quickbooks-desktop-sunset/ (second angle)
+- **T5.5 re-angle:** netsuite, sap-business-one, acumatica got a right-sized vertical/revenue section + /replace-your-erp/ link.
+- **T3.3 linking:** tools-hub "Guides" block (5 links); valuation(6)+erp(4) tools link up to pillars; GP blog -> gp-migration. Via `scripts/_t5_links.py`.
+- **Sitemap:** generator updated to include the 9 landing dirs; regenerated to **87 URLs**, valid XML.
+- **Verify:** 88 shipped pages, **0 orphans**, 0 broken internal links on new pages, all 9 structurally complete. DoD ✓.

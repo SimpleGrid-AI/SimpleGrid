@@ -55,3 +55,19 @@ Added a one-paragraph citable lead (formula/number first) so featured snippets +
 - The Dynamics GP lead is deliberately general about dates; confirm it matches the article body.
 
 **Remaining 25 tools:** not yet front-loaded (kept to high-confidence formulas this session). Template = a 2-3 sentence lead: [formula] = [definition]. [benchmark/number]. [what to enter]. Listed for a follow-up pass.
+
+---
+
+## TIER 5 — NEW PAGES (all new copy — review/replace)
+
+9 new pages built (static, full schema, internal links, demo CTA). **All copy is a functional draft in plain operator voice, no em dashes. Verify claims and rewrite as you like.** Each page: WebPage + BreadcrumbList + FAQPage schema, og/twitter, "Book a demo" CTA (BookDemoModal).
+1. `/manufacturing-valuation/` (pillar) — links the 6 valuation tools. Confirm: SDE 2.5x-4x, EBITDA 4x-7x ranges (industry-typical, ESTIMATED).
+2. `/erp-readiness/` (pillar) — links the 4 readiness tools.
+3. `/quickbooks-manufacturing-limits/` (hub) + 3 clusters: `/quickbooks-inventory-wip-limits/`, `/quickbooks-job-costing-limits/`, `/quickbooks-multi-entity-limits/`.
+4. `/replace-your-erp/` — links competitor pages + furniture case.
+5. `/dynamics-gp-migration/` (landing) — links the GP blog. **Confirm the GP end-of-life framing is accurate** (kept deliberately general about exact dates).
+6. `/quickbooks-desktop-sunset/` (second angle) — **verify the QuickBooks Desktop subscription/sunset claim is current** before publishing.
+
+**T5.5 competitor re-angle:** added a "right-sized for under $X / vertical" section + a `/replace-your-erp/` link to the NetSuite, SAP Business One, and Acumatica pages. Confirm the revenue thresholds ($50M/$30M/$50M).
+
+**Internal linking:** added a "Guides for manufacturers" block to the tools hub; valuation/ERP tools now link up to their pillar; GP blog links to the migration landing. 88 pages, 0 orphans.
