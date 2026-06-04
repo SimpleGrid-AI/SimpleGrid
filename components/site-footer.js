@@ -65,8 +65,8 @@
               '<a href="' + pf + 'product.html#hank" class="footer-link">Meet Hank</a>' +
               '<a href="' + pf + 'product.html#integrations" class="footer-link">Integrations</a>' +
               '<a href="' + pf + 'product.html#security" class="footer-link">Data security</a>' +
-              '<a href="' + pf + 'product.html#ledger" class="footer-link">Events ledger</a>' +
-              '<a href="' + pf + 'product.html#ability" class="footer-link">Adoption</a>' +
+              '<a href="' + pf + 'product.html#ledger" class="footer-link">Activity ledger</a>' +
+              '<a href="' + pf + 'product.html#ability" class="footer-link">Easy Adoption</a>' +
               '<a href="' + pf + 'product.html#rules" class="footer-link">Your process, enforced</a>' +
             '</div>' +
             '<div>' +
@@ -98,5 +98,14 @@
           '</div>' +
         '</div>' +
       '</div>' +
-    '</footer>';
+    '</footer>' +
+    '<section class="footer-wordmark">' +
+      '<svg class="footer-wordmark-svg" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="SimpleGrid">' +
+        '<text x="500" y="150" text-anchor="middle" textLength="1000" lengthAdjust="spacingAndGlyphs">SimpleGrid</text>' +
+      '</svg>' +
+      '<a class="footer-wordmark-cta" href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="wordmark_book_demo">' +
+        '<span>Book a demo</span>' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>' +
+      '</a>' +
+    '</section>';
 })();

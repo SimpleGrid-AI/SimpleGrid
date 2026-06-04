@@ -121,7 +121,7 @@ function EventsLedger() {
     style: {
       color: 'rgba(255,255,255,0.5)'
     }
-  }, "THE EVENTS LEDGER"), /*#__PURE__*/React.createElement("h2", {
+  }, "THE ACTIVITY LEDGER"), /*#__PURE__*/React.createElement("h2", {
     className: "h2",
     style: {
       color: '#fff',
@@ -1044,7 +1044,7 @@ function HankChat() {
       background: '#10B981',
       boxShadow: '0 0 0 3px rgba(16,185,129,0.18)'
     }
-  }), "online \xB7 reads from the events ledger")), /*#__PURE__*/React.createElement("div", {
+  }), "online \xB7 reads from the activity ledger")), /*#__PURE__*/React.createElement("div", {
     style: {
       marginLeft: 'auto',
       display: 'flex',
@@ -1244,7 +1244,7 @@ function AbilitySection() {
     className: "container"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "ADOPTION · FOR THE PEOPLE WHO ACTUALLY DO THE WORK"), /*#__PURE__*/React.createElement("h2", {
+  }, "EASY ADOPTION · FOR THE PEOPLE WHO ACTUALLY DO THE WORK"), /*#__PURE__*/React.createElement("h2", {
     className: "h2 ink",
     style: {
       maxWidth: 1200

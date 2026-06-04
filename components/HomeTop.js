@@ -471,7 +471,7 @@ function CycleHeadline() {
   // Single headline; rotation removed by request.
   React.createElement(React.Fragment, {
     key: "b"
-  }, "Custom ERP. Built at our risk.", /*#__PURE__*/React.createElement("br", null), "Paid for after it works.")];
+  }, "Custom ERP,", /*#__PURE__*/React.createElement("br", null), "built for manufacturers, D2C brands & inventory-based businesses.")];
   // Each tile fades smoothly; staggering them by (x+y)*delay gives a diagonal
   // sweep that visually "breaks" the headline into checkboxes and reassembles.
   const TX = 8,

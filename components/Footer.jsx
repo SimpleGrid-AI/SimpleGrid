@@ -23,8 +23,8 @@ function Footer() {
       { l: 'Meet Hank', href: 'product.html#hank' },
       { l: 'Integrations', href: 'product.html#integrations' },
       { l: 'Data security', href: 'product.html#security' },
-      { l: 'Events ledger', href: 'product.html#ledger' },
-      { l: 'Adoption', href: 'product.html#ability' },
+      { l: 'Activity ledger', href: 'product.html#ledger' },
+      { l: 'Easy Adoption', href: 'product.html#ability' },
       { l: 'Your process, enforced', href: 'product.html#rules' },
     ]},
     { h: 'Resources', links: [

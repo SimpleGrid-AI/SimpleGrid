@@ -83,10 +83,10 @@ function Footer() {
       l: 'Data security',
       href: 'product.html#security'
     }, {
-      l: 'Events ledger',
+      l: 'Activity ledger',
       href: 'product.html#ledger'
     }, {
-      l: 'Adoption',
+      l: 'Easy Adoption',
       href: 'product.html#ability'
     }, {
       l: 'Your process, enforced',

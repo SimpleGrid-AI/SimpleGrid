@@ -271,7 +271,7 @@ window.BurstBand = BurstBand;
 
 function CycleHeadline() {
   const HEADLINES = [
-    <>Custom ERP. Built at our risk.<br/>Paid for after it works.</>
+    <>Custom ERP,<br/>built for manufacturers, D2C brands & inventory-based businesses.</>
   ];
   // Each tile fades smoothly; staggering them by (x+y)*delay gives a diagonal
   // sweep that visually "breaks" the headline into checkboxes and reassembles.

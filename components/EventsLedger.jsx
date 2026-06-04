@@ -54,7 +54,7 @@ function EventsLedger() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <Reveal>
-          <div className="tag" style={{ color: 'rgba(255,255,255,0.5)' }}>THE EVENTS LEDGER</div>
+          <div className="tag" style={{ color: 'rgba(255,255,255,0.5)' }}>THE ACTIVITY LEDGER</div>
           <h2 className="h2" style={{ color: '#fff', maxWidth: 880 }}>
             Your enterprise, alive - every action recorded, every decision traceable, every state replayable.
           </h2>
@@ -588,7 +588,7 @@ function HankChat() {
           </div>
           <div style={{ fontSize: 11, color: 'var(--fg3)', display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 0 3px rgba(16,185,129,0.18)' }}></span>
-            online · reads from the events ledger
+            online · reads from the activity ledger
           </div>
         </div>
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 6 }}>
@@ -747,7 +747,7 @@ function AbilitySection() {
     <section className="section" id="ability" style={{ background: '#fff' }}>
       <div className="container">
         <Reveal>
-          <div className="tag">ADOPTION · FOR THE PEOPLE WHO ACTUALLY DO THE WORK</div>
+          <div className="tag">EASY ADOPTION · FOR THE PEOPLE WHO ACTUALLY DO THE WORK</div>
           <h2 className="h2 ink" style={{ maxWidth: 1200 }}>
             If your warehouse manager can send a text, he can run your ERP.
           </h2>
