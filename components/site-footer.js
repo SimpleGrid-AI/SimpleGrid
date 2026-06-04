@@ -101,7 +101,14 @@
     '</footer>' +
     '<section class="footer-wordmark">' +
       '<svg class="footer-wordmark-svg" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="SimpleGrid">' +
-        '<text x="500" y="150" text-anchor="middle" textLength="1000" lengthAdjust="spacingAndGlyphs">SimpleGrid</text>' +
+        '<g class="wm-mark" transform="translate(5,12.5) scale(4.1667)" fill="none" aria-hidden="true">' +
+          '<rect x="3" y="3" width="36" height="36" rx="5" ry="5" stroke="currentColor" stroke-width="2.5"></rect>' +
+          '<line x1="15" y1="5" x2="15" y2="37" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>' +
+          '<line x1="27" y1="5" x2="27" y2="37" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>' +
+          '<line x1="5" y1="15" x2="37" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>' +
+          '<line x1="5" y1="27" x2="37" y2="27" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>' +
+        '</g>' +
+        '<text x="210" y="153" textLength="790" lengthAdjust="spacingAndGlyphs">SimpleGrid</text>' +
       '</svg>' +
       '<a class="footer-wordmark-cta" href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="wordmark_book_demo">' +
         '<span>Book a demo</span>' +
