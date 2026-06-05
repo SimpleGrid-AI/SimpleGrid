@@ -87,24 +87,24 @@
     var email = (emailInput.value || '').trim();
     if (window.sgTrack) window.sgTrack('try_erp_submitted', { form: 'try-erp' });
 
-    // Fire-and-forget the lead POST, then redirect immediately. The critical
-    // bit is keepalive:true — without it the navigation below cancels the
-    // in-flight request mid-preflight and only the OPTIONS lands at the
-    // backend, never the POST. keepalive keeps the request alive past the
-    // page transition (browser commits to completing it in the background).
-    // application/json forces a CORS preflight, so vader's CORS config must
-    // allow OPTIONS + Origin: https://simplegrid.ai.
-    try {
-      fetch(SG_LEAD_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'try-erp-nav' }),
-        keepalive: true
+    // Wait for the lead POST to finish, THEN redirect. This eliminates the
+    // fetch-vs-navigate race (previously: window.location fired before the
+    // POST left, browser canceled the request mid-preflight, only OPTIONS
+    // reached the backend). Trade-off: visitor sees "Opening your ERP..."
+    // for the round-trip duration. .catch() swallows any error so the
+    // visitor never gets stranded on a stuck loading state.
+    // application/json forces a CORS preflight, so vader's CORS config
+    // must allow OPTIONS + Origin: https://simplegrid.ai.
+    fetch(SG_LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'try-erp-nav' })
+    })
+      .catch(function () { /* network/CORS error — still redirect below */ })
+      .then(function () {
+        if (window.sgTrack) window.sgTrack('try_erp_redirected', { form: 'try-erp' });
+        redirectToSandbox(email);
       });
-    } catch (err) { /* fire-and-forget */ }
-
-    if (window.sgTrack) window.sgTrack('try_erp_redirected', { form: 'try-erp' });
-    redirectToSandbox(email);
   }
 
   function setBackgroundHidden(hidden) {
