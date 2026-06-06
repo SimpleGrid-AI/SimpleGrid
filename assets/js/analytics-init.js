@@ -32,7 +32,7 @@
       api_host: 'https://us.i.posthog.com',
       defaults: '2026-01-30',
       person_profiles: 'identified_only',
-      disable_session_recording: true,
+      disable_session_recording: false,
       disable_surveys: true,
       opt_out_capturing_by_default: false
     });
