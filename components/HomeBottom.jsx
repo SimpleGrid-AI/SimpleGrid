@@ -171,22 +171,16 @@ function Integrations() {
       `}}/>
       <div className="container">
         <Reveal>
-          <div className="tag">INTEGRATIONS</div>
+          <div className="tag">SYNCS WITH</div>
           <h2 className="h2">Works with what you already use.</h2>
-          <p className="lead">Live integrations are deployed today. "On request" means we have the spec and will build it as part of your custom ERP - included in the build cost, not an upgrade.</p>
-          <div className="int-legend" aria-label="Integration status legend">
-            <span><span className="int-legend-dot" style={{background:'#0f8f6a'}}></span>Live today</span>
-            <span><span className="int-legend-dot" style={{background:'#9CA3AF'}}></span>Built on request, included in your build</span>
-          </div>
+          <p className="lead">SimpleGrid connects to the tools you already run - accounting, spreadsheets, sales channels, messaging and shipping. New connectors are built as part of your ERP, included in the build. <a href="syncs.html" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'underline'}}>See all syncs &rarr;</a></p>
         </Reveal>
       </div>
       <Reveal delay={200}>
         <div className="int-marquee">
           <div className="int-track" ref={intTrackRef}>
             {doubled.map((ig,i) => (
-              <div key={i} className={'int-card' + (ig.custom ? ' int-card-custom' : '')} aria-hidden={i >= items.length ? 'true' : undefined} title={ig.status === 'live' ? 'Live today' : ig.status === 'request' ? 'Built on request' : ''}>
-                {ig.status === 'live' && <span className="int-badge int-badge-live">Live</span>}
-                {ig.status === 'request' && <span className="int-badge int-badge-request">Request</span>}
+              <div key={i} className={'int-card' + (ig.custom ? ' int-card-custom' : '')} aria-hidden={i >= items.length ? 'true' : undefined} title={ig.name}>
                 <div className="int-icon" dangerouslySetInnerHTML={{__html: ig.svg}}></div>
                 <div className="int-name">{ig.name}</div>
               </div>

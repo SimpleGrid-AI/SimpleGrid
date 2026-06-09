@@ -9,7 +9,7 @@
    How a page opts in:
      1. Put an empty placeholder where the nav should go (top of <body>):
           <div id="sg-nav" data-page="home"></div>
-        data-page is one of: home | product | tools | cases | blog | competitors
+        data-page is one of: home | product | solutions | syncs | tools | cases | blog | competitors
         (omit / leave blank on pages that aren't in the nav, e.g. legal pages).
      2. Load this script with the correct relative path for the page's depth:
           <script src="components/site-nav.js" defer></script>        (root page)
@@ -73,6 +73,79 @@
     return '<a href="' + homeHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
   }).join('');
 
+  // "Product" is also a section-jump dropdown: hover/focus opens it and the
+  // trigger still links to product.html. On the product page the links scroll
+  // in-page; elsewhere they point at product.html#section so they navigate +
+  // land. Section ids live in the product page components (app/product.js).
+  var productSections = [
+    ['hank', 'Built around your factory'],
+    ['integrations', 'Integrations'],
+    ['security', 'Data security'],
+    ['ledger', 'Activity ledger'],
+    ['ability', 'Easy adoption'],
+    ['rules', 'Custom rules']
+  ];
+  var productHref = function (id) { return (page === 'product') ? ('#' + id) : (p('product.html') + '#' + id); };
+  var productMenuLinks = productSections.map(function (s) {
+    return '<a href="' + productHref(s[0]) + '">' + s[1] + '</a>';
+  }).join('');
+  var productNavDesktop =
+    '<div class="nav-product">' +
+      '<a href="' + p('product.html') + '" class="nav-link' + on('product') + ' nav-product-trigger" aria-haspopup="true">Product ' + chevron + '</a>' +
+      '<div class="nav-product-menu" role="menu">' + productMenuLinks + '</div>' +
+    '</div>';
+  var productMobileSub = productSections.map(function (s) {
+    return '<a href="' + productHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
+  }).join('');
+
+  // "Solutions" is a section-jump dropdown over the solutions.html page
+  // (organised by operational pain point). Same hover/focus behaviour as
+  // Product; section ids live in solutions.html.
+  var solutionsSections = [
+    ['visibility', 'Real-time floor visibility'],
+    ['planning', 'Production planning & scheduling'],
+    ['connected', 'One connected system'],
+    ['costing', 'Costing & margins'],
+    ['adoption', 'Built for your floor staff'],
+    ['evolve', 'Built for you, evolves with you']
+  ];
+  var solutionsHref = function (id) { return (page === 'solutions') ? ('#' + id) : (p('solutions.html') + '#' + id); };
+  var solutionsMenuLinks = solutionsSections.map(function (s) {
+    return '<a href="' + solutionsHref(s[0]) + '">' + s[1] + '</a>';
+  }).join('');
+  var solutionsNavDesktop =
+    '<div class="nav-solutions">' +
+      '<a href="' + p('solutions.html') + '" class="nav-link' + on('solutions') + ' nav-solutions-trigger" aria-haspopup="true">Solutions ' + chevron + '</a>' +
+      '<div class="nav-solutions-menu" role="menu">' + solutionsMenuLinks + '</div>' +
+    '</div>';
+  var solutionsMobileSub = solutionsSections.map(function (s) {
+    return '<a href="' + solutionsHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
+  }).join('');
+
+  // "Syncs" is a section-jump dropdown over the placeholder syncs.html page
+  // (what SimpleGrid connects to). Categories mirror the homepage "Integrates
+  // with" strip; section ids live in syncs.html.
+  var syncsSections = [
+    ['accounting', 'Accounting & books'],
+    ['spreadsheets', 'Spreadsheets'],
+    ['commerce', 'Sales & e-commerce'],
+    ['messaging', 'Messaging & marketing'],
+    ['shipping', 'Shipping & logistics'],
+    ['data', 'Data & files']
+  ];
+  var syncsHref = function (id) { return (page === 'syncs') ? ('#' + id) : (p('syncs.html') + '#' + id); };
+  var syncsMenuLinks = syncsSections.map(function (s) {
+    return '<a href="' + syncsHref(s[0]) + '">' + s[1] + '</a>';
+  }).join('');
+  var syncsNavDesktop =
+    '<div class="nav-syncs">' +
+      '<a href="' + p('syncs.html') + '" class="nav-link' + on('syncs') + ' nav-syncs-trigger" aria-haspopup="true">Syncs ' + chevron + '</a>' +
+      '<div class="nav-syncs-menu" role="menu">' + syncsMenuLinks + '</div>' +
+    '</div>';
+  var syncsMobileSub = syncsSections.map(function (s) {
+    return '<a href="' + syncsHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
+  }).join('');
+
   mount.outerHTML =
     '<a href="#main" class="skip-link">Skip to main content</a>' +
     '<header class="nav" role="banner">' +
@@ -84,7 +157,9 @@
             'fetchpriority="high" decoding="async"></a>' +
         '<nav class="nav-links" aria-label="Main navigation">' +
           homeNavDesktop +
-          '<a href="' + p('product.html') + '" class="nav-link' + on('product') + '">Product</a>' +
+          productNavDesktop +
+          solutionsNavDesktop +
+          syncsNavDesktop +
           '<div class="nav-resources">' +
             '<button type="button" class="nav-link' + resourcesActive + ' nav-resources-trigger" aria-haspopup="true">Resources ' + chevron + '</button>' +
             '<div class="nav-resources-menu">' +
@@ -106,6 +181,11 @@
         '<a href="' + p('index.html') + '" class="nav-mobile-link' + on('home') + '">Home</a>' +
         homeMobileSub +
         '<a href="' + p('product.html') + '" class="nav-mobile-link' + on('product') + '">Product</a>' +
+        productMobileSub +
+        '<a href="' + p('solutions.html') + '" class="nav-mobile-link' + on('solutions') + '">Solutions</a>' +
+        solutionsMobileSub +
+        '<a href="' + p('syncs.html') + '" class="nav-mobile-link' + on('syncs') + '">Syncs</a>' +
+        syncsMobileSub +
         '<div class="nav-mobile-section">Resources</div>' +
         '<a href="' + p('tools/') + '" class="nav-mobile-link nav-mobile-sub' + on('tools') + '">Productive Tools</a>' +
         '<a href="' + p('case-studies.html') + '" class="nav-mobile-link nav-mobile-sub' + on('cases') + '">Case studies</a>' +

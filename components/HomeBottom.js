@@ -320,24 +320,18 @@ function Integrations() {
     className: "container"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "INTEGRATIONS"), /*#__PURE__*/React.createElement("h2", {
+  }, "SYNCS WITH"), /*#__PURE__*/React.createElement("h2", {
     className: "h2"
   }, "Works with what you already use."), /*#__PURE__*/React.createElement("p", {
     className: "lead"
-  }, "Live integrations are deployed today. \"On request\" means we have the spec and will build it as part of your custom ERP - included in the build cost, not an upgrade."), /*#__PURE__*/React.createElement("div", {
-    className: "int-legend",
-    "aria-label": "Integration status legend"
-  }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
-    className: "int-legend-dot",
+  }, "SimpleGrid connects to the tools you already run - accounting, spreadsheets, sales channels, messaging and shipping. New connectors are built as part of your ERP, included in the build. ", /*#__PURE__*/React.createElement("a", {
+    href: "syncs.html",
     style: {
-      background: '#0f8f6a'
+      color: 'var(--sg-blue)',
+      fontWeight: 600,
+      textDecoration: 'underline'
     }
-  }), "Live today"), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
-    className: "int-legend-dot",
-    style: {
-      background: '#9CA3AF'
-    }
-  }), "Built on request, included in your build")))), /*#__PURE__*/React.createElement(Reveal, {
+  }, "See all syncs \u2192")))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 200
   }, /*#__PURE__*/React.createElement("div", {
     className: "int-marquee"
@@ -348,12 +342,8 @@ function Integrations() {
     key: i,
     className: 'int-card' + (ig.custom ? ' int-card-custom' : ''),
     "aria-hidden": i >= items.length ? 'true' : undefined,
-    title: ig.status === 'live' ? 'Live today' : ig.status === 'request' ? 'Built on request' : ''
-  }, ig.status === 'live' && /*#__PURE__*/React.createElement("span", {
-    className: "int-badge int-badge-live"
-  }, "Live"), ig.status === 'request' && /*#__PURE__*/React.createElement("span", {
-    className: "int-badge int-badge-request"
-  }, "Request"), /*#__PURE__*/React.createElement("div", {
+    title: ig.name
+  }, /*#__PURE__*/React.createElement("div", {
     className: "int-icon",
     dangerouslySetInnerHTML: {
       __html: ig.svg

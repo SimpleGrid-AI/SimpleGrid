@@ -485,7 +485,7 @@ function CycleHeadline() {
   // Single headline; rotation removed by request.
   React.createElement(React.Fragment, {
     key: "b"
-  }, "Custom ERP,", /*#__PURE__*/React.createElement("br", null), "built for manufacturers, D2C brands & inventory-based businesses.")];
+  }, "The Operations ERP", /*#__PURE__*/React.createElement("br", null), "for manufacturers.")];
   // Each tile fades smoothly; staggering them by (x+y)*delay gives a diagonal
   // sweep that visually "breaks" the headline into checkboxes and reassembles.
   const TX = 8,
@@ -534,8 +534,6 @@ function CycleHeadline() {
   }))));
 }
 function Hero() {
-  const count = 7;
-  const cost = 0;
   const [showInvite, setShowInvite] = React.useState(false);
   const [theme, setTheme] = React.useState(() => {
     try {
@@ -590,7 +588,7 @@ function Hero() {
     delay: 200
   }, /*#__PURE__*/React.createElement("p", {
     className: "hero-sub"
-  }, "We don't sell software. We build a custom ERP that fits how your factory actually runs - your stages, your contractors, your approvals, your costing logic.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Built for how your factory actually runs \u2014 your floor, your costing, your process. Not a thousand others. Live in days, not months.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 400
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-cta"
@@ -641,6 +639,46 @@ function Hero() {
       color: 'var(--fg2)',
       marginBottom: 10
     }
+  }, "Execution Speed"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-heading)',
+      fontSize: 80,
+      fontWeight: 700,
+      color: 'var(--sg-blue)',
+      lineHeight: 1,
+      letterSpacing: '-0.04em',
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React.createElement("span", null, "1\u20133"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 24,
+      color: 'var(--fg3)',
+      marginLeft: 14,
+      fontWeight: 500,
+      letterSpacing: 'normal'
+    }
+  }, "Weeks")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 14,
+      color: 'var(--fg2)',
+      marginTop: 14,
+      lineHeight: 1.5
+    }
+  }, "From kickoff to live on your real floor."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 32,
+      paddingTop: 28,
+      borderTop: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '0.16em',
+      color: 'var(--fg2)',
+      marginBottom: 10
+    }
   }, "Try Before You Buy"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: 'var(--font-heading)',
@@ -666,39 +704,7 @@ function Hero() {
       marginTop: 14,
       lineHeight: 1.5
     }
-  }, "On your real floor. Real team. Real orders."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 32,
-      paddingTop: 28,
-      borderTop: '1px solid var(--border)'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      fontWeight: 700,
-      textTransform: 'uppercase',
-      letterSpacing: '0.16em',
-      color: 'var(--fg2)',
-      marginBottom: 10
-    }
-  }, "You Carry"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 80,
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      lineHeight: 1,
-      letterSpacing: '-0.04em',
-      position: 'relative'
-    }
-  }, "$", cost.toLocaleString()), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      marginTop: 14,
-      lineHeight: 1.5
-    }
-  }, "Until you see it run. If it doesn't move the business, you walk."))))))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
+  }, "On your real floor. Real team. Real orders."))))))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)
   }));
 }
@@ -759,7 +765,7 @@ function IntegrationsBar() {
     "aria-label": "Integration partners"
   }, /*#__PURE__*/React.createElement("span", {
     className: "ig-label"
-  }, "Integrates with"), /*#__PURE__*/React.createElement("div", {
+  }, "Syncs with"), /*#__PURE__*/React.createElement("div", {
     className: "ig-marquee"
   }, /*#__PURE__*/React.createElement("div", {
     className: "ig-track"
@@ -1367,7 +1373,7 @@ function ProblemSection() {
     className: "tag"
   }, "WHY ERP KEEPS FAILING MID-MARKET"), /*#__PURE__*/React.createElement("h2", {
     className: "h2"
-  }, "Every ERP vendor makes you pay first and hope it works. We flipped it. Why are you buying ERP that way?")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Every ERP was built for the enterprise and scaled down to fit you. That's why it never quite fits. We built SimpleGrid for your floor first.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 100
   }, /*#__PURE__*/React.createElement("div", {
     className: "problem-marquee"

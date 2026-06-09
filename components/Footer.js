@@ -77,8 +77,8 @@ function Footer() {
       l: 'Meet Hank',
       href: 'product.html#hank'
     }, {
-      l: 'Integrations',
-      href: 'product.html#integrations'
+      l: 'Syncs with',
+      href: 'syncs.html'
     }, {
       l: 'Data security',
       href: 'product.html#security'

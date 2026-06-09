@@ -64,7 +64,7 @@
             '<div>' +
               '<div class="footer-h"><a href="' + pf + 'product.html" style="color:inherit;text-decoration:none">Product</a></div>' +
               '<a href="' + pf + 'product.html#hank" class="footer-link">Meet Hank</a>' +
-              '<a href="' + pf + 'product.html#integrations" class="footer-link">Integrations</a>' +
+              '<a href="' + pf + 'syncs.html" class="footer-link">Syncs with</a>' +
               '<a href="' + pf + 'product.html#security" class="footer-link">Data security</a>' +
               '<a href="' + pf + 'product.html#ledger" class="footer-link">Activity ledger</a>' +
               '<a href="' + pf + 'product.html#ability" class="footer-link">Easy Adoption</a>' +

@@ -21,7 +21,7 @@ function Footer() {
   const cols = [
     { h: 'Product', hHref: 'product.html', links: [
       { l: 'Meet Hank', href: 'product.html#hank' },
-      { l: 'Integrations', href: 'product.html#integrations' },
+      { l: 'Syncs with', href: 'syncs.html' },
       { l: 'Data security', href: 'product.html#security' },
       { l: 'Activity ledger', href: 'product.html#ledger' },
       { l: 'Easy Adoption', href: 'product.html#ability' },

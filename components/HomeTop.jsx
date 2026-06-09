@@ -273,7 +273,7 @@ window.BurstBand = BurstBand;
 
 function CycleHeadline() {
   const HEADLINES = [
-    <>Custom ERP,<br/>built for manufacturers, D2C brands & inventory-based businesses.</>
+    <>The Operations ERP<br/>for manufacturers.</>
   ];
   // Each tile fades smoothly; staggering them by (x+y)*delay gives a diagonal
   // sweep that visually "breaks" the headline into checkboxes and reassembles.
@@ -308,8 +308,6 @@ function CycleHeadline() {
 }
 
 function Hero() {
-  const count = 7;
-  const cost = 0;
   const [showInvite, setShowInvite] = React.useState(false);
   const [theme, setTheme] = React.useState(() => {
     try { return localStorage.getItem('sg_hero_theme') || 'light'; } catch { return 'light'; }
@@ -347,7 +345,7 @@ function Hero() {
               <CycleHeadline />
             </Reveal>
             <Reveal delay={200}>
-              <p className="hero-sub">We don't sell software. We build a custom ERP that fits how your factory actually runs - your stages, your contractors, your approvals, your costing logic.</p>
+              <p className="hero-sub">Built for how your factory actually runs &mdash; your floor, your costing, your process. Not a thousand others. Live in days, not months.</p>
             </Reveal>
             <Reveal delay={400}>
               <div className="hero-cta">
@@ -362,18 +360,19 @@ function Hero() {
           </div>
           <Reveal delay={300}>
             <div className="hero-stat-box" style={{background:'rgba(255,255,255,0.7)',border:'1px solid var(--border)',borderRadius:16,padding:32,textAlign:'center'}}>
-              <div style={{fontSize:12,fontWeight:700,textTransform:'uppercase',letterSpacing:'0.16em',color:'var(--fg2)',marginBottom:10}}>Try Before You Buy</div>
-              <div style={{fontFamily:'var(--font-heading)',fontSize:80,fontWeight:700,color:'var(--fg1)',lineHeight:1,letterSpacing:'-0.04em',position:'relative'}}>
-                <span>30</span>
-                <span style={{fontSize:24,color:'var(--fg3)',marginLeft:14,fontWeight:500,letterSpacing:'normal'}}>Days</span>
+              <div style={{fontSize:12,fontWeight:700,textTransform:'uppercase',letterSpacing:'0.16em',color:'var(--fg2)',marginBottom:10}}>Execution Speed</div>
+              <div style={{fontFamily:'var(--font-heading)',fontSize:80,fontWeight:700,color:'var(--sg-blue)',lineHeight:1,letterSpacing:'-0.04em',position:'relative'}}>
+                <span>1&ndash;3</span>
+                <span style={{fontSize:24,color:'var(--fg3)',marginLeft:14,fontWeight:500,letterSpacing:'normal'}}>Weeks</span>
               </div>
-              <div style={{fontSize:14,color:'var(--fg2)',marginTop:14,lineHeight:1.5}}>On your real floor. Real team. Real orders.</div>
+              <div style={{fontSize:14,color:'var(--fg2)',marginTop:14,lineHeight:1.5}}>From kickoff to live on your real floor.</div>
               <div style={{marginTop:32,paddingTop:28,borderTop:'1px solid var(--border)'}}>
-                <div style={{fontSize:12,fontWeight:700,textTransform:'uppercase',letterSpacing:'0.16em',color:'var(--fg2)',marginBottom:10}}>You Carry</div>
-                <div style={{fontFamily:'var(--font-heading)',fontSize:80,fontWeight:700,color:'var(--sg-blue)',lineHeight:1,letterSpacing:'-0.04em',position:'relative'}}>
-                  ${cost.toLocaleString()}
+                <div style={{fontSize:12,fontWeight:700,textTransform:'uppercase',letterSpacing:'0.16em',color:'var(--fg2)',marginBottom:10}}>Try Before You Buy</div>
+                <div style={{fontFamily:'var(--font-heading)',fontSize:80,fontWeight:700,color:'var(--fg1)',lineHeight:1,letterSpacing:'-0.04em',position:'relative'}}>
+                  <span>30</span>
+                  <span style={{fontSize:24,color:'var(--fg3)',marginLeft:14,fontWeight:500,letterSpacing:'normal'}}>Days</span>
                 </div>
-                <div style={{fontSize:14,color:'var(--fg2)',marginTop:14,lineHeight:1.5}}>Until you see it run. If it doesn't move the business, you walk.</div>
+                <div style={{fontSize:14,color:'var(--fg2)',marginTop:14,lineHeight:1.5}}>On your real floor. Real team. Real orders.</div>
               </div>
             </div>
           </Reveal>
@@ -409,7 +408,7 @@ function IntegrationsBar() {
   const list = [...items, ...items];
   return (
     <section className="ig-bar" aria-label="Integration partners">
-      <span className="ig-label">Integrates with</span>
+      <span className="ig-label">Syncs with</span>
       <div className="ig-marquee">
         <div className="ig-track">
           {list.map((it, i) => (
@@ -662,7 +661,7 @@ function ProblemSection() {
       <div className="container">
         <Reveal>
           <div className="tag">WHY ERP KEEPS FAILING MID-MARKET</div>
-          <h2 className="h2">Every ERP vendor makes you pay first and hope it works. We flipped it. Why are you buying ERP that way?</h2>
+          <h2 className="h2">Every ERP was built for the enterprise and scaled down to fit you. That's why it never quite fits. We built SimpleGrid for your floor first.</h2>
         </Reveal>
         <Reveal delay={100}>
           <div className="problem-marquee">

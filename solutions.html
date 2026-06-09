@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<title>Solutions | SimpleGrid - Custom ERP for How You Make Things</title>
+<meta name="description" content="SimpleGrid is built around how your factory actually runs - real-time floor visibility, live production planning, one connected system, and costing modeled on your operation.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://simplegrid.ai/solutions.html">
+<link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
+<link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://simplegrid.ai/solutions.html">
+<meta property="og:title" content="Solutions | SimpleGrid - Custom ERP for How You Make Things">
+<meta property="og:description" content="Real-time floor visibility, live production planning, one connected system, and costing modeled on your operation - not standard accounting.">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<meta property="og:image:alt" content="SimpleGrid solutions for manufacturers">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@simplegridai">
+<meta name="twitter:title" content="Solutions | SimpleGrid">
+<meta name="twitter:description" content="Real-time floor visibility, live production planning, one connected system, and costing modeled on your operation.">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/solutions.html#webpage",
+      "url": "https://simplegrid.ai/solutions.html",
+      "name": "Solutions | SimpleGrid",
+      "isPartOf": { "@id": "https://simplegrid.ai/#website" },
+      "publisher": { "@id": "https://simplegrid.ai/#org" },
+      "description": "SimpleGrid is built around how your factory actually runs - real-time floor visibility, live production planning, one connected system, and costing modeled on your operation.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://simplegrid.ai/solutions.html" }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Solutions page styles. The section ids (visibility / planning / connected /
+     costing / adoption / evolve) are what the "Solutions" nav dropdown jumps to,
+     so keep those in sync with components/site-nav.js. -->
+<style>
+.sol-hero { max-width: 1080px; margin: 0 auto; padding: 76px 32px 8px; }
+.sol-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 0 0 14px; }
+.sol-hero h1 { font-family: var(--font-heading); font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--fg1); margin: 0 0 18px; max-width: 780px; }
+.sol-hero .lead { font-size: 19px; line-height: 1.55; color: var(--fg2); margin: 0 0 26px; max-width: 700px; }
+.sol-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--sg-blue); color: #fff; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
+.sol-cta:hover { filter: brightness(0.95); }
+.sol-cta-ghost { display: inline-block; margin-left: 18px; color: var(--fg2); text-decoration: none; font-weight: 600; font-size: 15px; }
+.sol-cta-ghost:hover { color: var(--sg-blue); }
+
+/* Promise tiles (top-line value props) */
+.sol-tiles { max-width: 1080px; margin: 44px auto 12px; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.sol-tile { border-top: 2px solid var(--sg-blue); padding-top: 16px; }
+.sol-tile h3 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--fg1); margin: 0 0 6px; letter-spacing: -0.02em; }
+.sol-tile p { font-size: 15px; color: var(--fg2); line-height: 1.5; margin: 0; }
+
+/* Pain-point -> solution blocks */
+.sol-block { border-top: 1px solid var(--border); }
+.sol-block.tint { background: var(--sg-off-white, #faf9f7); }
+.sol-inner { max-width: 1080px; margin: 0 auto; padding: 58px 32px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; scroll-margin-top: 84px; }
+.sol-block h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 31px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; color: var(--fg1); margin: 0 0 14px; }
+.sol-lead { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0 0 20px; }
+.sol-ask { border-left: 3px solid var(--border); padding-left: 16px; }
+.sol-ask-h { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); margin: 0 0 12px; }
+.sol-ask ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.sol-ask li { font-size: 14.5px; line-height: 1.5; color: var(--fg2); font-style: italic; }
+.sol-inline { display: inline-block; margin-top: 18px; font-size: 14.5px; font-weight: 600; color: var(--sg-blue); text-decoration: none; }
+.sol-inline:hover { text-decoration: underline; }
+
+.sol-answer { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 26px 28px; box-shadow: 0 6px 24px rgba(15,23,42,0.04); }
+.sol-answer-h { font-family: var(--font-heading); font-size: 14px; font-weight: 700; letter-spacing: 0.02em; color: var(--fg1); margin: 0 0 16px; text-transform: uppercase; }
+.sol-check { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
+.sol-check li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; color: var(--fg1); }
+.sol-check li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--sg-blue); font-weight: 800; font-size: 15px; }
+
+/* Proof / case-study strip */
+.sol-proof { max-width: 1080px; margin: 0 auto; padding: 64px 32px; scroll-margin-top: 84px; }
+.sol-proof .sol-eyebrow { color: var(--sg-blue); }
+.sol-proof h2 { font-family: var(--font-heading); font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 10px; }
+.sol-proof .sub { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0 0 28px; max-width: 640px; }
+.sol-proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.sol-proof-card { display: block; border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: #fff; text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
+.sol-proof-card:hover { border-color: var(--sg-blue); transform: translateY(-2px); }
+.sol-proof-card .name { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--fg1); margin: 0 0 8px; }
+.sol-proof-card .desc { font-size: 14.5px; line-height: 1.55; color: var(--fg2); margin: 0; }
+.sol-proof-card .go { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--sg-blue); }
+.sol-proof-all { display: inline-block; margin-top: 24px; font-size: 15px; font-weight: 600; color: var(--fg1); text-decoration: none; }
+.sol-proof-all:hover { color: var(--sg-blue); }
+
+/* Final CTA */
+.sol-final { border-top: 1px solid var(--border); background: var(--sg-off-white, #faf9f7); }
+.sol-final-inner { max-width: 760px; margin: 0 auto; padding: 72px 32px; text-align: center; }
+.sol-final h2 { font-family: var(--font-heading); font-size: clamp(26px, 3.6vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 12px; }
+.sol-final p { font-size: 17px; line-height: 1.6; color: var(--fg2); margin: 0 0 26px; }
+
+@media (max-width: 820px) {
+  .sol-tiles { grid-template-columns: 1fr; gap: 22px; }
+  .sol-inner { grid-template-columns: 1fr; gap: 28px; padding: 44px 24px; }
+  .sol-proof-grid { grid-template-columns: 1fr; }
+  .sol-hero { padding-top: 56px; }
+  .sol-cta-ghost { display: block; margin-left: 0; margin-top: 14px; }
+}
+</style>
+
+<!-- Analytics (PostHog + GA4) - deferred to first user interaction. -->
+<script src="assets/js/analytics-init.js" defer></script>
+<script src="assets/js/tracking.js" defer></script>
+<script src="assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
+<div id="sg-nav" data-page="solutions"></div>
+
+<main id="main">
+  <section class="sol-hero">
+    <p class="sol-eyebrow">Solutions</p>
+    <h1>Built for how your floor actually runs.</h1>
+    <p class="lead">Most ERPs make you bend your operation to fit their modules. SimpleGrid is modeled on your real floor - your stages, your BOMs, your costing, your people - so the software works the way you already do.</p>
+    <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-cta" data-cta="solutions_hero">Book a demo</a>
+    <a href="#proof" class="sol-cta-ghost">See real factories &rarr;</a>
+  </section>
+
+  <!-- Top-line promise tiles -->
+  <div class="sol-tiles">
+    <div class="sol-tile">
+      <h3>Real-time</h3>
+      <p>Your floor as it happens - not last week's spreadsheet.</p>
+    </div>
+    <div class="sol-tile">
+      <h3>One system</h3>
+      <p>Sales, procurement, production and scheduling on the same live data.</p>
+    </div>
+    <div class="sol-tile">
+      <h3>Your costing</h3>
+      <p>Actual margin by order, customer and SKU - your formulas, not standard overhead.</p>
+    </div>
+  </div>
+
+  <!-- 1. Real-time floor visibility & accountability -->
+  <section id="visibility" class="sol-block">
+    <div class="sol-inner">
+      <div class="sol-pain">
+        <p class="sol-eyebrow">Real-time visibility</p>
+        <h2>See your floor as it actually runs</h2>
+        <p class="sol-lead">If your technical staff won't touch the ERP, your data is always late - and every decision is a guess. SimpleGrid captures what happens where the work happens, so the floor, the office and the owner see the same live picture.</p>
+        <div class="sol-ask">
+          <p class="sol-ask-h">Sound familiar?</p>
+          <ul>
+            <li>How are you making production decisions - off spreadsheets and manual BOMs?</li>
+            <li>Your floor staff won't use the ERP, so is there a time lag, leakage and no accountability?</li>
+            <li>Are decisions ever really real-time, or always a step behind?</li>
+            <li>Has material been wasted because the operator didn't have the right information?</li>
+            <li>Can you see who did what and when - the product's journey, which QC approved which material, at what time?</li>
+          </ul>
+        </div>
+        <a href="case-apex.html" class="sol-inline">See it on a real floor: Apex Apparel runs 30+ locations on one live system &rarr;</a>
+      </div>
+      <div class="sol-answer">
+        <p class="sol-answer-h">With SimpleGrid</p>
+        <ul class="sol-check">
+          <li>Live floor data captured at the point of work - receipts, stage completions, QC, issues - with no separate data-entry step.</li>
+          <li>One shared picture for the floor, the office and the owner. No re-keying, no end-of-day catch-up.</li>
+          <li>A complete activity ledger: every action timestamped and attributed to a person - full traceability, not buried in paper.</li>
+          <li>Catch leakage and waste at the source, because the information reaches the operator in time.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Production planning & scheduling -->
+  <section id="planning" class="sol-block tint">
+    <div class="sol-inner">
+      <div class="sol-pain">
+        <p class="sol-eyebrow">Planning &amp; scheduling</p>
+        <h2>Plan production against live inventory - in minutes</h2>
+        <p class="sol-lead">Scheduling shouldn't take hours, and committing a date shouldn't take three phone calls. SimpleGrid plans on a live window that already knows your stock, your reservations and your BOMs.</p>
+        <div class="sol-ask">
+          <p class="sol-ask-h">Sound familiar?</p>
+          <ul>
+            <li>Is scheduling and planning still taking hours?</li>
+            <li>Can you plan on a window that shows current inventory, already-reserved and on-order - then knocks it down to planned production and the materials required, on your own BOM?</li>
+            <li>A customer calls - can you commit a timeline without making a few calls first?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sol-answer">
+        <p class="sol-answer-h">With SimpleGrid</p>
+        <ul class="sol-check">
+          <li>A live planning window: on-hand, reserved and on-order stock - netted down by <em>your</em> BOM to exactly what to make and what to buy.</li>
+          <li>Schedule in minutes, not hours - the system aggregates and proposes; you approve.</li>
+          <li>Commit accurate delivery dates on the spot, because availability and capacity are already in front of you.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. One connected system -->
+  <section id="connected" class="sol-block">
+    <div class="sol-inner">
+      <div class="sol-pain">
+        <p class="sol-eyebrow">One system</p>
+        <h2>Sales, procurement, production and scheduling - one shared system</h2>
+        <p class="sol-lead">When every team works in a separate module, coordination becomes a meeting. SimpleGrid puts them on the same data, so procurement sees what sales sees.</p>
+        <div class="sol-ask">
+          <p class="sol-ask-h">Sound familiar?</p>
+          <ul>
+            <li>How does your sales team decide what to push - by calling someone who keeps the data in a spreadsheet?</li>
+            <li>How is coordination handled between procurement, production, scheduling and sales?</li>
+            <li>Does procurement see the same data as sales - or does your software split them into separate modules?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sol-answer">
+        <p class="sol-answer-h">With SimpleGrid</p>
+        <ul class="sol-check">
+          <li>One operational model across sales, procurement, production and scheduling - not bolted-together modules.</li>
+          <li>Sales plans what to push from live availability and margin, not a stale spreadsheet.</li>
+          <li>Procurement, production and scheduling all react to the same demand signal, in real time.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Costing & margins -->
+  <section id="costing" class="sol-block tint">
+    <div class="sol-inner">
+      <div class="sol-pain">
+        <p class="sol-eyebrow">Costing &amp; margins</p>
+        <h2>Costing modeled on your operation - actuals, not standards</h2>
+        <p class="sol-lead">NetSuite and Acumatica can absorb an unmeasured consumable into a pre-defined overhead rate. What they can't do is allocate that consumable directly against a basis you define. SimpleGrid does.</p>
+        <div class="sol-ask">
+          <p class="sol-ask-h">Sound familiar?</p>
+          <ul>
+            <li>Is your ERP built for standard accounting - or for your system?</li>
+            <li>Do you know your actual margin (not standard) by sales order, by customer, by SKU?</li>
+            <li>Do quotes take time to put together?</li>
+          </ul>
+        </div>
+        <a href="case-furniture-manufacturer.html" class="sol-inline">A 600-employee furniture exporter gets SKU-level profitability with wood, contractor and rejection costs on every item &rarr;</a>
+      </div>
+      <div class="sol-answer">
+        <p class="sol-answer-h">With SimpleGrid</p>
+        <ul class="sol-check">
+          <li>Allocate any cost - including consumables - against whatever basis <em>you</em> define, not a fixed overhead rate.</li>
+          <li>Actual margin by sales order, customer and SKU - built from what really happened on the floor.</li>
+          <li>Fast, accurate quotes priced from your real costs.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Adoption / built for your people -->
+  <section id="adoption" class="sol-block">
+    <div class="sol-inner">
+      <div class="sol-pain">
+        <p class="sol-eyebrow">Adoption</p>
+        <h2>Simple enough that your floor staff actually use it</h2>
+        <p class="sol-lead">An ERP only works if the people on the floor use it. If yours is too complex, you're paying for report-builders and living with stale data.</p>
+        <div class="sol-ask">
+          <p class="sol-ask-h">Sound familiar?</p>
+          <ul>
+            <li>Can your technical and floor staff actually use your ERP - or is it too complex for them?</li>
+            <li>If they can't use it, how are they told what's happening - are they working in the dark?</li>
+            <li>Are you relying on someone to build a report every time you need to make a decision?</li>
+          </ul>
+        </div>
+        <a href="case-furniture-manufacturer.html" class="sol-inline">30 floor staff who rejected every previous ERP now use SimpleGrid daily &rarr;</a>
+      </div>
+      <div class="sol-answer">
+        <p class="sol-answer-h">With SimpleGrid</p>
+        <ul class="sol-check">
+          <li>Built for how the floor already works - type or talk to it in plain language. No menus, no training manual.</li>
+          <li>Floor staff log receipts, QC and stage completions themselves, so the data is current - they're the ones entering it.</li>
+          <li>No report-builder middlemen - answers are live, with a timestamp and a name attached.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Built for you, evolves with you -->
+  <section id="evolve" class="sol-block tint">
+    <div class="sol-inner">
+      <div class="sol-pain">
+        <p class="sol-eyebrow">Built for you</p>
+        <h2>An ERP that's a competitive edge - and keeps up with you</h2>
+        <p class="sol-lead">Generic software pushes you toward a generic process. If all your differentiation is in brand and product placement, your operation is just like everyone else's. SimpleGrid turns how you run into an advantage - and changes as fast as you do.</p>
+        <div class="sol-ask">
+          <p class="sol-ask-h">Sound familiar?</p>
+          <ul>
+            <li>Have you flattened into a standard process with no operational differentiation from your competitors?</li>
+            <li>Is all your innovation in brand and product placement - and none in cost efficiency?</li>
+            <li>Is your business evolving faster than your software can keep up?</li>
+            <li>How long will you keep using software designed for an enterprise and scaled down for you?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sol-answer">
+        <p class="sol-answer-h">With SimpleGrid</p>
+        <ul class="sol-check">
+          <li>Built around your operation - not an enterprise template scaled down to fit.</li>
+          <li>Changes as your process changes - weeks, not a multi-quarter change request.</li>
+          <li>Operational efficiency becomes a moat, not just your brand.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof / case studies -->
+  <section id="proof" class="sol-proof">
+    <p class="sol-eyebrow">Proof</p>
+    <h2>Built at our risk. Kept after 30 days.</h2>
+    <p class="sub">We model your operation, ship it to your real floor, and you run it for 30 days before paying. Here's what that looked like.</p>
+    <div class="sol-proof-grid">
+      <a href="case-apex.html" class="sol-proof-card">
+        <p class="name">Apex Apparel</p>
+        <p class="desc">Apparel maker - 80-100k shirts/month, 30+ locations, 20+ job workers. Custom ERP modeled to the operation, live in 12 days.</p>
+        <span class="go">Read the story &rarr;</span>
+      </a>
+      <a href="case-furniture-manufacturer.html" class="sol-proof-card">
+        <p class="name">Furniture exporter</p>
+        <p class="desc">600 employees, 550 SKUs, component-level wood tracking and contractor settlements. Custom ERP shipped in 21 days.</p>
+        <span class="go">Read the story &rarr;</span>
+      </a>
+    </div>
+    <a href="case-studies.html" class="sol-proof-all">See all case studies &rarr;</a>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="sol-final">
+    <div class="sol-final-inner">
+      <h2>See it modeled on your floor.</h2>
+      <p>Book a demo and we'll show you SimpleGrid running on a factory like yours.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-cta" data-cta="solutions_final">Book a demo</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer rendered by the shared component (components/site-footer.js). -->
+<div id="sg-footer"></div>
+<script src="components/site-nav.js" defer></script>
+<script src="components/site-footer.js" defer></script>
+<script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
+</html>

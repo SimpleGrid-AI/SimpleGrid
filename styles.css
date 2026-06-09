@@ -30,26 +30,32 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 @media (prefers-reduced-motion: reduce) { .ig-track { animation: none; } }
 @media (max-width: 640px) { .ig-bar { flex-direction: column; gap: 10px; padding: 12px 0; } .ig-label { padding: 0 16px; } }
 
-/* "Home" section-jump dropdown (home page only). Opens on hover OR click
-   (focus-within). Mirrors the Resources dropdown styling. */
-.nav-home { position: relative; display: inline-flex; }
-.nav-home-trigger { background: none; border: none; font: inherit; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 4px; }
-.nav-home-trigger svg { transition: transform 0.15s; }
-.nav-home:hover .nav-home-trigger svg, .nav-home:focus-within .nav-home-trigger svg { transform: rotate(180deg); }
-.nav-home-menu {
+/* "Home", "Product", "Solutions" and "Syncs" section-jump dropdowns. Open on
+   hover OR click (focus-within). Mirror the Resources dropdown styling. */
+.nav-home, .nav-product, .nav-solutions, .nav-syncs { position: relative; display: inline-flex; }
+.nav-home-trigger, .nav-product-trigger, .nav-solutions-trigger, .nav-syncs-trigger { background: none; border: none; font: inherit; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 4px; }
+.nav-home-trigger svg, .nav-product-trigger svg, .nav-solutions-trigger svg, .nav-syncs-trigger svg { transition: transform 0.15s; }
+.nav-home:hover .nav-home-trigger svg, .nav-home:focus-within .nav-home-trigger svg,
+.nav-product:hover .nav-product-trigger svg, .nav-product:focus-within .nav-product-trigger svg,
+.nav-solutions:hover .nav-solutions-trigger svg, .nav-solutions:focus-within .nav-solutions-trigger svg,
+.nav-syncs:hover .nav-syncs-trigger svg, .nav-syncs:focus-within .nav-syncs-trigger svg { transform: rotate(180deg); }
+.nav-home-menu, .nav-product-menu, .nav-solutions-menu, .nav-syncs-menu {
   position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg, 12px);
   padding: 8px; min-width: 230px; box-shadow: 0 12px 32px rgba(0,0,0,0.08); z-index: 100;
   display: none;
 }
 /* invisible bridge so the cursor can cross the gap without losing :hover */
-.nav-home-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
-.nav-home:hover .nav-home-menu, .nav-home:focus-within .nav-home-menu { display: block; }
-.nav-home-menu a {
+.nav-home-menu::before, .nav-product-menu::before, .nav-solutions-menu::before, .nav-syncs-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+.nav-home:hover .nav-home-menu, .nav-home:focus-within .nav-home-menu,
+.nav-product:hover .nav-product-menu, .nav-product:focus-within .nav-product-menu,
+.nav-solutions:hover .nav-solutions-menu, .nav-solutions:focus-within .nav-solutions-menu,
+.nav-syncs:hover .nav-syncs-menu, .nav-syncs:focus-within .nav-syncs-menu { display: block; }
+.nav-home-menu a, .nav-product-menu a, .nav-solutions-menu a, .nav-syncs-menu a {
   display: block; padding: 9px 14px; border-radius: 8px; text-decoration: none;
   color: var(--fg1); font-size: 14px; font-weight: 600; transition: background 0.15s;
 }
-.nav-home-menu a:hover { background: var(--sg-off-white); }
+.nav-home-menu a:hover, .nav-product-menu a:hover, .nav-solutions-menu a:hover, .nav-syncs-menu a:hover { background: var(--sg-off-white); }
 
 /* ===== NAV ===== */
 .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); }
