@@ -2,7 +2,7 @@
 
 Internal doc (excluded from publishing via `_config.yml`). Every change, file, verification, and commit. Session start commit: `6078b44`.
 
-> Deploy note: all work is **committed locally only**. Nothing has been pushed to `origin/main`, so the live site is unchanged until the founder approves a push.
+> Deploy note: all work is **committed locally only**. Nothing has been pushed to `origin/main`, so the live site is unchanged until the founder approves a push ...
 
 ---
 
