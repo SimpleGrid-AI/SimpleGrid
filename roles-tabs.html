@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpleGrid — Role switcher</title>
+<style>
+  :root { --bg:#0B0F17; --fg:rgba(255,255,255,0.85); --muted:#6B7280; --accent:#3B82F6; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: Inter, Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .rt-section {
+    padding: 120px 24px; position: relative;
+    /* very faint grid texture */
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .rt-wrap { max-width: 1080px; margin: 0 auto; position: relative; }
+
+  /* TAB BAR — one horizontal, left-aligned row */
+  .rt-tabs {
+    display: flex; flex-wrap: nowrap; gap: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .rt-tabs::-webkit-scrollbar { display: none; }
+  .rt-tab {
+    flex: 0 0 auto; background: none; border: 0; padding: 0 0 18px; margin: 0;
+    text-align: left; cursor: pointer; position: relative; font-family: inherit;
+  }
+  .rt-role { display: block; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--muted); transition: color 0.18s ease; white-space: nowrap; }
+  .rt-desc { display: block; font-size: 13px; font-weight: 500; color: var(--muted); opacity: 0.65; margin-top: 5px; white-space: nowrap; }
+  .rt-tab:hover .rt-role { color: rgba(255,255,255,0.75); }
+  .rt-tab.active .rt-role { color: #fff; }
+  .rt-tab.active::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+    background: #fff; border-radius: 2px;
+  }
+
+  /* CONTENT PANEL */
+  .rt-panel { padding-top: 52px; max-width: 760px; }
+  .rt-stmt {
+    margin: 0 0 30px; font-size: 30px; line-height: 1.4; font-weight: 500;
+    letter-spacing: -0.01em; color: var(--fg); transition: opacity 0.22s ease;
+  }
+  .rt-see { color: var(--accent); text-decoration: none; font-size: 16px; font-weight: 600; }
+  .rt-see:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .rt-section { padding: 80px 18px; }
+    .rt-tabs { gap: 28px; }
+    .rt-stmt { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+  <section class="rt-section">
+    <div class="rt-wrap">
+      <div class="rt-tabs" role="tablist" aria-label="Roles">
+        <button class="rt-tab active" role="tab" aria-selected="true"><span class="rt-role">Owner / MD</span><span class="rt-desc">see before you commit</span></button>
+        <button class="rt-tab" role="tab" aria-selected="false"><span class="rt-role">COO / VP Operations</span><span class="rt-desc">one source of truth</span></button>
+        <button class="rt-tab" role="tab" aria-selected="false"><span class="rt-role">CFO / Finance Head</span><span class="rt-desc">costing, your way</span></button>
+        <button class="rt-tab" role="tab" aria-selected="false"><span class="rt-role">Plant Manager</span><span class="rt-desc">the floor, live</span></button>
+        <button class="rt-tab" role="tab" aria-selected="false"><span class="rt-role">Sales Head</span><span class="rt-desc">promise with proof</span></button>
+      </div>
+      <div class="rt-panel">
+        <p class="rt-stmt" id="rt-stmt">See what you can build today, what you're short on, and what it'll cost, before you commit to a customer.</p>
+        <a class="rt-see" href="#">See how &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const DATA = [
+      "See what you can build today, what you're short on, and what it'll cost, before you commit to a customer.",
+      "One system, every team, the same data. No one working off yesterday's numbers.",
+      "Your costing logic, your way. Not the way an enterprise template thinks you should run it.",
+      "Your floor staff log it. Everyone sees it live. No lag, no leakage, no one working in the dark.",
+      "Before you promise a customer a date, you'll know if production can actually hit it."
+    ];
+    const tabs = document.querySelectorAll('.rt-tab');
+    const stmt = document.getElementById('rt-stmt');
+    tabs.forEach((t, i) => t.addEventListener('click', () => {
+      tabs.forEach(x => { x.classList.remove('active'); x.setAttribute('aria-selected', 'false'); });
+      t.classList.add('active'); t.setAttribute('aria-selected', 'true');
+      stmt.style.opacity = '0';
+      setTimeout(() => { stmt.textContent = DATA[i]; stmt.style.opacity = '1'; }, 160);
+    }));
+  </script>
+</body>
+</html>

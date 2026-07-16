@@ -55,27 +55,84 @@
 
   var p = function (href) { return prefix + href; };
   var on = function (key) { return page === key ? ' active' : ''; };
-  var resourcesActive = (page === 'tools' || page === 'cases' || page === 'blog') ? ' active' : '';
+  var resourcesActive = (page === 'tools' || page === 'cases' || page === 'blog' || page === 'story' || page === 'about' || page === 'competitors' || page === 'careers') ? ' active' : '';
 
   var chevron =
     '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">' +
     '<path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
 
+  // ---- Rich dropdown items: an icon tile + label + one-liner. Applied to the
+  // FIRST layer of every top dropdown only; the nested side flyouts stay plain.
+  function ic(inner) {
+    return '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>';
+  }
+  var ICONS = {
+    'why-erp': ic('<path d="M2.5 10S5.5 5 10 5s7.5 5 7.5 5-3 5-7.5 5-7.5-5-7.5-5Z"/><circle cx="10" cy="10" r="2.3"/>'),
+    'onboarding': ic('<path d="M3.5 4.5h13l-5 6v5l-3 1.5v-6.5z"/>'),
+    'how-it-works': ic('<circle cx="10" cy="10" r="7.5"/><path d="M8.5 7l4.5 3-4.5 3z"/>'),
+    'not-an-erp': ic('<path d="M10 2.5l6 2.2v4.5c0 4-2.7 6.8-6 8.3-3.3-1.5-6-4.3-6-8.3V4.7z"/>'),
+    'who-its-for': ic('<circle cx="10" cy="10" r="7.5"/><circle cx="10" cy="10" r="3"/>'),
+    'case-studies': ic('<path d="M3.5 3v13.5h13"/><path d="M7 13.5v-3.5M11 13.5v-6.5M15 13.5v-5"/>'),
+    'founder': ic('<circle cx="10" cy="7" r="3"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/>'),
+    'home-faq': ic('<path d="M4 4.5h12v8.5H8.5L5 16.5V13H4z"/>'),
+    'hank': ic('<path d="M3.5 16.5V9l4 2.4V9l4 2.4V9l4 2.4v5.1z"/>'),
+    'integrations': ic('<path d="M8.3 11.7l-1.8 1.8a2.7 2.7 0 01-3.8-3.8l1.8-1.8M11.7 8.3l1.8-1.8a2.7 2.7 0 013.8 3.8l-1.8 1.8M7.8 12.2l4.4-4.4"/>'),
+    'security': ic('<rect x="4.5" y="9" width="11" height="7.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 016 0V9"/>'),
+    'ledger': ic('<path d="M4.5 6h2M4.5 10h2M4.5 14h2M8.5 6h7M8.5 10h7M8.5 14h7"/>'),
+    'ability': ic('<path d="M5.5 5l8.5 3.4-3.6 1.4-1.4 3.6z"/><path d="M11.5 11.5l3 3"/>'),
+    'rules': ic('<path d="M4 7h6M14 7h2M4 13h2M10 13h6"/><circle cx="11.5" cy="7" r="1.6"/><circle cx="8" cy="13" r="1.6"/>'),
+    'roles': ic('<rect x="3.5" y="4.5" width="13" height="11" rx="2"/><circle cx="7.5" cy="9.2" r="1.7"/><path d="M5 13c0-1.3 1.1-2.1 2.5-2.1s2.5.8 2.5 2.1"/><path d="M11.5 8.5h3M11.5 11h3"/>'),
+    'visibility': ic('<path d="M2.5 10S5.5 5 10 5s7.5 5 7.5 5-3 5-7.5 5-7.5-5-7.5-5Z"/><circle cx="10" cy="10" r="2.3"/>'),
+    'planning': ic('<rect x="3.5" y="5" width="13" height="11" rx="1.8"/><path d="M3.5 8.5h13M7 3.5v3M13 3.5v3"/>'),
+    'connected': ic('<circle cx="5" cy="10" r="2"/><circle cx="15" cy="5.5" r="2"/><circle cx="15" cy="14.5" r="2"/><path d="M6.8 9l6.4-2.6M6.8 11l6.4 2.6"/>'),
+    'costing': ic('<circle cx="10" cy="10" r="7.5"/><path d="M10 5.8v8.4M12.2 7.5c-.5-.8-1.3-1.1-2.2-1.1-1.2 0-2.2.6-2.2 1.7 0 2.3 4.4 1 4.4 3.5 0 1.1-1 1.8-2.2 1.8-1 0-1.9-.4-2.4-1.2"/>'),
+    'adoption': ic('<circle cx="7.5" cy="8" r="2.2"/><circle cx="13.8" cy="8" r="1.9"/><path d="M3.5 15.5c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6M12.3 11.9c2 0 3.9 1.2 3.9 3.6"/>'),
+    'evolve': ic('<path d="M10 3l1.6 4.4L16 9l-4.4 1.6L10 15l-1.6-4.4L4 9l4.4-1.6z"/>'),
+    'tools': ic('<rect x="4" y="4" width="5" height="5" rx="1.2"/><rect x="11" y="4" width="5" height="5" rx="1.2"/><rect x="4" y="11" width="5" height="5" rx="1.2"/><rect x="11" y="11" width="5" height="5" rx="1.2"/>'),
+    'cases': ic('<path d="M5.5 3.5h6l3.5 3.5v9.5h-9.5z"/><path d="M11.5 3.5V7h3.5M7.5 11h5M7.5 13.5h5"/>'),
+    'blog': ic('<path d="M13.4 4.6l2 2-8 8-2.6.6.6-2.6z"/><path d="M12 6l2 2"/>'),
+    'building': ic('<path d="M10 6c-1.2-1-3-1.3-4.5-1.3H4v9.5h1.5c1.5 0 3.3.3 4.5 1.3 1.2-1 3-1.3 4.5-1.3H16V4.7h-1.5c-1.5 0-3.3.3-4.5 1.3z"/><path d="M10 6v7.5"/>'),
+    'about': ic('<circle cx="10" cy="10" r="7.5"/><path d="M10 9.2v4M10 6.4h.01"/>'),
+    'competitors': ic('<path d="M10 4v12"/><path d="M4 7h12"/><path d="M4 7l-1.6 3.6h3.2zM16 7l-1.6 3.6h3.2"/><path d="M5 16h10"/>'),
+    'careers': ic('<rect x="3.5" y="7" width="13" height="8.5" rx="1.5"/><path d="M7.5 7V5.6A1.6 1.6 0 0 1 9.1 4h1.8A1.6 1.6 0 0 1 12.5 5.6V7"/><path d="M3.5 10.5h13"/>'),
+    'scorecard': ic('<rect x="5" y="3.8" width="10" height="12.4" rx="1.5"/><path d="M8 3.8h4v1.8H8z"/><path d="M7.6 9h4.8M7.6 12h4.8"/>'),
+    'po': ic('<path d="M5.5 3.5h6l3.5 3.5v9.5h-9.5z"/><path d="M11.5 3.5V7h3.5"/><path d="M7.8 11h4.4M7.8 13.3h3"/>'),
+    'gauge': ic('<path d="M3.5 14a6.5 6.5 0 0 1 13 0"/><path d="M10 14l3.2-3.4"/><circle cx="10" cy="14" r="1.1"/>')
+  };
+  function richItem(href, title, desc, iconKey) {
+    return '<a href="' + href + '" class="nav-mi" role="menuitem">' +
+      '<span class="nav-mi-ic">' + (ICONS[iconKey] || '') + '</span>' +
+      '<span class="nav-mi-tx"><span class="nav-mi-t">' + title + '</span><span class="nav-mi-d">' + desc + '</span></span></a>';
+  }
+  function richTrigger(href, title, desc, iconKey, cls) {
+    return '<a href="' + href + '" class="nav-mi ' + cls + '" aria-haspopup="true">' +
+      '<span class="nav-mi-ic">' + (ICONS[iconKey] || '') + '</span>' +
+      '<span class="nav-mi-tx"><span class="nav-mi-t">' + title + '</span><span class="nav-mi-d">' + desc + '</span></span>' +
+      '<span class="nav-mi-chev">' + chevronRight + '</span></a>';
+  }
+  // Group items into a DualEntry-style category: an uppercase label + a grid of tiles.
+  function byId(list, id) { for (var bi = 0; bi < list.length; bi++) { if (list[bi][0] === id) return list[bi]; } return null; }
+  function itemById(list, hrefFn, id) { var s = byId(list, id); return s ? richItem(hrefFn(s[0]), s[1], s[2], s[3]) : ''; }
+  function catBlock(label, inner) { return '<div class="nav-cat"><p class="nav-cat-label">' + label + '</p><div class="nav-cat-grid">' + inner + '</div></div>'; }
+  function catFromIds(label, list, hrefFn, ids) { var h = ''; for (var ci = 0; ci < ids.length; ci++) { h += itemById(list, hrefFn, ids[ci]); } return catBlock(label, h); }
+
   // "Home" is a section-jump dropdown on EVERY page: hover (or focus) opens it,
   // and the chevron is always shown. On the home page the links scroll in-page;
   // on other pages they point at index.html#section so they navigate home + land.
   var homeSections = [
-    ['why-erp', 'Why ERP keeps failing'],
-    ['onboarding', 'Selective onboarding'],
-    ['how-it-works', 'How it works'],
-    ['case-studies', 'Case studies'],
-    ['founder', 'Built by operators'],
-    ['home-faq', 'FAQ']
+    ['why-erp', 'The visibility problem', 'Why your floor data is always behind.', 'why-erp'],
+    ['onboarding', 'Selective onboarding', 'We set up only what your floor needs.', 'onboarding'],
+    ['how-it-works', 'How it works', 'From first call to live in weeks.', 'how-it-works'],
+    ['not-an-erp', "Why this isn't another ERP", 'An ops layer, not another ERP.', 'not-an-erp'],
+    ['who-its-for', "Who it's for", 'Made for manufacturers like you.', 'who-its-for'],
+    ['case-studies', 'Case studies', 'Real deployments, real numbers.', 'case-studies'],
+    ['founder', 'Built by operators', "Made by people who've run a floor.", 'founder'],
+    ['home-faq', 'Before you decide', 'Answers before you commit.', 'home-faq']
   ];
   var homeHref = function (id) { return (page === 'home') ? ('#' + id) : (p('index.html') + '#' + id); };
-  var homeMenuLinks = homeSections.map(function (s) {
-    return '<a href="' + homeHref(s[0]) + '">' + s[1] + '</a>';
-  }).join('');
+  var homeMenuLinks =
+    catFromIds('Why SimpleGrid', homeSections, homeHref, ['why-erp', 'not-an-erp', 'who-its-for', 'founder']) +
+    catFromIds('How it works', homeSections, homeHref, ['onboarding', 'how-it-works', 'case-studies', 'home-faq']);
   var homeNavDesktop =
     '<div class="nav-home">' +
       '<a href="' + p('index.html') + '" class="nav-link' + on('home') + ' nav-home-trigger" aria-haspopup="true">Home ' + chevron + '</a>' +
@@ -89,54 +146,12 @@
   // trigger still links to product.html. On the product page the links scroll
   // in-page; elsewhere they point at product.html#section so they navigate +
   // land. Section ids live in the product page components (app/product.js).
-  var productSections = [
-    ['hank', 'Built around your factory'],
-    ['integrations', 'Integrations'],
-    ['security', 'Data security'],
-    ['ledger', 'Activity ledger'],
-    ['ability', 'Easy adoption'],
-    ['rules', 'Custom rules']
-  ];
-  var productHref = function (id) { return (page === 'product') ? ('#' + id) : (p('product.html') + '#' + id); };
-  var productMenuLinks = productSections.map(function (s) {
-    return '<a href="' + productHref(s[0]) + '">' + s[1] + '</a>';
-  }).join('');
-  var productNavDesktop =
-    '<div class="nav-product">' +
-      '<a href="' + p('product.html') + '" class="nav-link' + on('product') + ' nav-product-trigger" aria-haspopup="true">Product ' + chevron + '</a>' +
-      '<div class="nav-product-menu" role="menu">' + productMenuLinks + '</div>' +
-    '</div>';
-  var productMobileSub = productSections.map(function (s) {
-    return '<a href="' + productHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
-  }).join('');
-
-  // "Solutions" is a section-jump dropdown over the solutions.html page
-  // (organised by operational pain point). Same hover/focus behaviour as
-  // Product; section ids live in solutions.html.
-  var solutionsSections = [
-    ['visibility', 'Real-time floor visibility'],
-    ['planning', 'Production planning & scheduling'],
-    ['connected', 'One connected system'],
-    ['costing', 'Costing & margins'],
-    ['adoption', 'Built for your floor staff'],
-    ['evolve', 'Built for you, evolves with you']
-  ];
-  var solutionsHref = function (id) { return (page === 'solutions') ? ('#' + id) : (p('solutions.html') + '#' + id); };
-  var solutionsMenuLinks = solutionsSections.map(function (s) {
-    return '<a href="' + solutionsHref(s[0]) + '">' + s[1] + '</a>';
-  }).join('');
-  var solutionsNavDesktop =
-    '<div class="nav-solutions">' +
-      '<a href="' + p('solutions.html') + '" class="nav-link' + on('solutions') + ' nav-solutions-trigger" aria-haspopup="true">Solutions ' + chevron + '</a>' +
-      '<div class="nav-solutions-menu" role="menu">' + solutionsMenuLinks + '</div>' +
-    '</div>';
-  var solutionsMobileSub = solutionsSections.map(function (s) {
-    return '<a href="' + solutionsHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
-  }).join('');
-
-  // "Syncs" is a section-jump dropdown over the placeholder syncs.html page
-  // (what SimpleGrid connects to). Categories mirror the homepage "Integrates
-  // with" strip; section ids live in syncs.html.
+  // Right-pointing chevron for the nested side-flyout (Compatibility -> Syncs).
+  var chevronRight =
+    '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">' +
+    '<path d="M3.5 2L6.5 5L3.5 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  // Syncs (what SimpleGrid connects to) - surfaced as a side flyout under the
+  // Product dropdown's "Compatibility" item (no longer its own top-level tab).
   var syncsSections = [
     ['accounting', 'Accounting & books'],
     ['spreadsheets', 'Spreadsheets'],
@@ -146,16 +161,99 @@
     ['data', 'Data & files']
   ];
   var syncsHref = function (id) { return (page === 'syncs') ? ('#' + id) : (p('syncs.html') + '#' + id); };
-  var syncsMenuLinks = syncsSections.map(function (s) {
+  var compatibilitySubMenu = syncsSections.map(function (s) {
     return '<a href="' + syncsHref(s[0]) + '">' + s[1] + '</a>';
   }).join('');
-  var syncsNavDesktop =
-    '<div class="nav-syncs">' +
-      '<a href="' + p('syncs.html') + '" class="nav-link' + on('syncs') + ' nav-syncs-trigger" aria-haspopup="true">Syncs ' + chevron + '</a>' +
-      '<div class="nav-syncs-menu" role="menu">' + syncsMenuLinks + '</div>' +
+  var productSections = [
+    ['hank', 'Meet Hank', 'The AI assistant for your shop floor.', 'hank'],
+    ['integrations', 'Integrations', 'Connects to the tools you run.', 'integrations'],
+    ['ledger', 'Activity ledger', 'Every action, timestamped.', 'ledger'],
+    ['security', 'Data security', 'Your data, locked down.', 'security'],
+    ['rules', 'Custom rules', 'Your logic, your way.', 'rules'],
+    ['ability', 'Adoption', 'Floor-ready on day one - no training.', 'adoption']
+  ];
+  var productHref = function (id) { return (page === 'product') ? ('#' + id) : (p('product.html') + '#' + id); };
+  // Compatibility is the one item with a nested flyout - render it full-width at
+  // the top so its side flyout opens cleanly to the right of the panel.
+  var productMenuLinks =
+    catBlock('The platform',
+      itemById(productSections, productHref, 'hank') +
+      '<div class="nav-product-sub nav-mi-wide">' +
+        richTrigger(p('syncs.html'), 'Compatibility', 'Connects to the tools you run.', 'integrations', 'nav-product-sub-trigger') +
+        '<div class="nav-product-sub-menu" role="menu">' + compatibilitySubMenu + '</div>' +
+      '</div>' +
+      itemById(productSections, productHref, 'ledger')
+    ) +
+    catFromIds('Configured &amp; adopted', productSections, productHref, ['security', 'rules', 'ability']);
+  var productNavDesktop =
+    '<div class="nav-product">' +
+      '<a href="' + p('product.html') + '" class="nav-link' + on('product') + ' nav-product-trigger" aria-haspopup="true">Platform ' + chevron + '</a>' +
+      '<div class="nav-product-menu" role="menu">' + productMenuLinks + '</div>' +
     '</div>';
-  var syncsMobileSub = syncsSections.map(function (s) {
-    return '<a href="' + syncsHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
+  var productMobileSub = productSections.map(function (s) {
+    if (s[0] === 'integrations') {
+      var compatSubs = syncsSections.map(function (ss) {
+        return '<a href="' + syncsHref(ss[0]) + '" class="nav-mobile-link nav-mobile-sub">' + ss[1] + '</a>';
+      }).join('');
+      return '<a href="' + p('syncs.html') + '" class="nav-mobile-link nav-mobile-sub">Compatibility</a>' + compatSubs;
+    }
+    return '<a href="' + productHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
+  }).join('');
+
+  // "Solutions" is a section-jump dropdown over the solutions.html page
+  // (organised by operational pain point). Same hover/focus behaviour as
+  // Product; section ids live in solutions.html.
+  // Order mirrors the on-page section order (the role hub now sits at the top).
+  var solutionsSections = [
+    ['roles', 'Built for your role', 'See it from your seat.', 'roles'],
+    ['visibility', 'Real-time floor visibility', 'Your floor, live.', 'visibility'],
+    ['planning', 'Planning & scheduling', 'Plan in minutes, not hours.', 'planning'],
+    ['connected', 'One connected system', 'Every team on one system.', 'connected'],
+    ['costing', 'Costing & margins', 'Real margin, your way.', 'costing'],
+    ['adoption', 'Adoption on the floor', 'Simple enough the floor uses it.', 'adoption'],
+    ['evolve', 'Built for you', 'Built for you, evolves with you.', 'evolve']
+  ];
+  // The five role deep-dive pages, surfaced as a side flyout under the
+  // "Built for your role" item (mirrors Platform -> Compatibility -> Syncs).
+  var roleDesignations = [
+    ['solutions-owner.html', 'Owner / MD'],
+    ['solutions-coo.html', 'COO / Ops head'],
+    ['solutions-cfo.html', 'CFO / Finance'],
+    ['solutions-sales-head.html', 'Sales head'],
+    ['solutions-plant-manager.html', 'Plant manager']
+  ];
+  var rolesSubMenu = roleDesignations.map(function (r) {
+    return '<a href="' + p(r[0]) + '">' + r[1] + '</a>';
+  }).join('');
+  // Use in-page anchors only when literally on solutions.html. The role pages
+  // also carry data-page="solutions" (to keep the Solutions tab highlighted),
+  // but they don't contain these sections - so their dropdown links must
+  // navigate to solutions.html#section instead of a dead in-page #anchor.
+  var onSolutionsHtml = /(^|\/)solutions\.html(?:[?#]|$)/.test(location.pathname);
+  var solutionsHref = function (id) { return onSolutionsHtml ? ('#' + id) : (p('solutions.html') + '#' + id); };
+  // "Built for your role" carries the nested flyout - render it full-width at the
+  // top so its side flyout opens cleanly to the right of the panel.
+  var solutionsMenuLinks =
+    catBlock('By role',
+      '<div class="nav-solutions-sub nav-mi-wide">' +
+        richTrigger(solutionsHref('roles'), 'Built for your role', 'See it from your seat.', 'roles', 'nav-solutions-sub-trigger') +
+        '<div class="nav-solutions-sub-menu" role="menu">' + rolesSubMenu + '</div>' +
+      '</div>'
+    ) +
+    catFromIds('By capability', solutionsSections, solutionsHref, ['visibility', 'planning', 'connected', 'costing', 'adoption', 'evolve']);
+  var solutionsNavDesktop =
+    '<div class="nav-solutions">' +
+      '<a href="' + p('solutions.html') + '" class="nav-link' + on('solutions') + ' nav-solutions-trigger" aria-haspopup="true">Solutions ' + chevron + '</a>' +
+      '<div class="nav-solutions-menu" role="menu">' + solutionsMenuLinks + '</div>' +
+    '</div>';
+  var solutionsMobileSub = solutionsSections.map(function (s) {
+    if (s[0] === 'roles') {
+      var roleSubs = roleDesignations.map(function (r) {
+        return '<a href="' + p(r[0]) + '" class="nav-mobile-link nav-mobile-sub">' + r[1] + '</a>';
+      }).join('');
+      return '<a href="' + solutionsHref('roles') + '" class="nav-mobile-link nav-mobile-sub">Built for your role</a>' + roleSubs;
+    }
+    return '<a href="' + solutionsHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
   }).join('');
 
   mount.outerHTML =
@@ -171,14 +269,32 @@
           homeNavDesktop +
           productNavDesktop +
           solutionsNavDesktop +
-          syncsNavDesktop +
           '<a href="' + p('pricing.html') + '" class="nav-link' + on('pricing') + '">Pricing</a>' +
           '<div class="nav-resources">' +
             '<button type="button" class="nav-link' + resourcesActive + ' nav-resources-trigger" aria-haspopup="true">Resources ' + chevron + '</button>' +
-            '<div class="nav-resources-menu">' +
-              '<a href="' + p('tools/') + '">Productive Tools <span>35 productive tools &amp; calculators for manufacturers.</span></a>' +
-              '<a href="' + p('case-studies.html') + '">Case studies <span>Real deployments. Real numbers.</span></a>' +
-              '<a href="' + p('blog.html') + '">Blog <span>Field notes on ERP and ops.</span></a>' +
+            '<div class="nav-resources-menu" role="menu">' +
+              '<div class="nav-res-cols">' +
+                catBlock('Resources',
+                  richItem(p('case-studies.html'), 'Case studies', 'Real deployments. Real numbers.', 'cases') +
+                  richItem(p('blog.html'), 'Blog', 'Field notes on ERP and ops.', 'blog') +
+                  richItem(p('building-simplegrid.html'), 'Building SimpleGrid', 'The story behind SimpleGrid.', 'building')
+                ) +
+                catBlock('About',
+                  richItem(p('about.html'), 'About Us', "Operators who've run the floor.", 'about') +
+                  richItem(p('competitors.html'), 'Competitors', 'How we compare, honestly.', 'competitors') +
+                  richItem(p('hiring.html'), 'Careers', 'Build the Factory Ops Cloud with us.', 'careers')
+                ) +
+                '<div class="nav-cat">' +
+                  '<p class="nav-cat-label">Tools</p>' +
+                  '<div class="nav-cat-grid">' +
+                    richItem(p('tools/erp-readiness-scorecard/'), 'ERP Readiness Scorecard', 'Are you ready to switch?', 'scorecard') +
+                    richItem(p('tools/erp-needs-assessment/'), 'ERP Needs Assessment', 'Find the right ERP fit.', 'home-faq') +
+                    richItem(p('tools/purchase-order-generator/'), 'Purchase Order Generator', 'Clean POs in seconds.', 'po') +
+                    richItem(p('tools/oee-calculator/'), 'OEE Calculator', 'Measure equipment effectiveness.', 'gauge') +
+                  '</div>' +
+                  '<a class="nav-cat-foot" href="' + p('tools/') + '" role="menuitem">View all 35+ tools <span aria-hidden="true">&rarr;</span></a>' +
+                '</div>' +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</nav>' +
@@ -193,17 +309,25 @@
       '<nav class="nav-mobile-panel" aria-label="Mobile navigation">' +
         '<a href="' + p('index.html') + '" class="nav-mobile-link' + on('home') + '">Home</a>' +
         homeMobileSub +
-        '<a href="' + p('product.html') + '" class="nav-mobile-link' + on('product') + '">Product</a>' +
+        '<a href="' + p('product.html') + '" class="nav-mobile-link' + on('product') + '">Platform</a>' +
         productMobileSub +
         '<a href="' + p('solutions.html') + '" class="nav-mobile-link' + on('solutions') + '">Solutions</a>' +
         solutionsMobileSub +
-        '<a href="' + p('syncs.html') + '" class="nav-mobile-link' + on('syncs') + '">Syncs</a>' +
-        syncsMobileSub +
         '<a href="' + p('pricing.html') + '" class="nav-mobile-link' + on('pricing') + '">Pricing</a>' +
         '<div class="nav-mobile-section">Resources</div>' +
-        '<a href="' + p('tools/') + '" class="nav-mobile-link nav-mobile-sub' + on('tools') + '">Productive Tools</a>' +
         '<a href="' + p('case-studies.html') + '" class="nav-mobile-link nav-mobile-sub' + on('cases') + '">Case studies</a>' +
         '<a href="' + p('blog.html') + '" class="nav-mobile-link nav-mobile-sub' + on('blog') + '">Blog</a>' +
+        '<a href="' + p('building-simplegrid.html') + '" class="nav-mobile-link nav-mobile-sub' + on('story') + '">Building SimpleGrid</a>' +
+        '<div class="nav-mobile-section">About</div>' +
+        '<a href="' + p('about.html') + '" class="nav-mobile-link nav-mobile-sub' + on('about') + '">About Us</a>' +
+        '<a href="' + p('competitors.html') + '" class="nav-mobile-link nav-mobile-sub' + on('competitors') + '">Competitors</a>' +
+        '<a href="' + p('hiring.html') + '" class="nav-mobile-link nav-mobile-sub' + on('careers') + '">Careers</a>' +
+        '<div class="nav-mobile-section">Tools</div>' +
+        '<a href="' + p('tools/erp-readiness-scorecard/') + '" class="nav-mobile-link nav-mobile-sub">ERP Readiness Scorecard</a>' +
+        '<a href="' + p('tools/erp-needs-assessment/') + '" class="nav-mobile-link nav-mobile-sub">ERP Needs Assessment</a>' +
+        '<a href="' + p('tools/purchase-order-generator/') + '" class="nav-mobile-link nav-mobile-sub">Purchase Order Generator</a>' +
+        '<a href="' + p('tools/oee-calculator/') + '" class="nav-mobile-link nav-mobile-sub">OEE Calculator</a>' +
+        '<a href="' + p('tools/') + '" class="nav-mobile-link nav-mobile-sub' + on('tools') + '">View all 35+ tools &rarr;</a>' +
         '<div class="nav-mobile-sep"></div>' +
         '<a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>' +
       '</nav>' +
@@ -230,6 +354,51 @@
     }
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && burger.classList.contains('is-open')) burger.click();
+    });
+  }
+
+  // --- Resources dropdown: click the trigger to toggle (open AND close) -----
+  // It opens on hover/focus too, but clicking the trigger a second time used to
+  // do nothing (hover/focus kept it open). is-shut forcibly closes it; is-open
+  // forcibly opens it; both are cleared when the pointer leaves so hover resets.
+  var resWrap = document.querySelector('.nav-resources');
+  var resTrigger = resWrap && resWrap.querySelector('.nav-resources-trigger');
+  var resMenu = resWrap && resWrap.querySelector('.nav-resources-menu');
+  if (resWrap && resTrigger && resMenu) {
+    var closeRes = function () {
+      resWrap.classList.remove('is-open');
+      resWrap.classList.add('is-shut');
+      resTrigger.setAttribute('aria-expanded', 'false');
+      resTrigger.blur();
+    };
+    var openRes = function () {
+      resWrap.classList.remove('is-shut');
+      resWrap.classList.add('is-open');
+      resTrigger.setAttribute('aria-expanded', 'true');
+    };
+    resTrigger.setAttribute('aria-expanded', 'false');
+    resTrigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      // getClientRects() is non-empty only when the menu is actually displayed
+      // (covers hover-open, focus-open and class-open in one check).
+      if (resMenu.getClientRects().length > 0) closeRes(); else openRes();
+    });
+    // Leaving the trigger area resets the click state so the next hover works.
+    resWrap.addEventListener('mouseleave', function () {
+      resWrap.classList.remove('is-open');
+      resWrap.classList.remove('is-shut');
+      resTrigger.setAttribute('aria-expanded', 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!resWrap.contains(e.target)) {
+        resWrap.classList.remove('is-open');
+        resWrap.classList.remove('is-shut');
+        resTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && resWrap.classList.contains('is-open')) closeRes();
     });
   }
 })();

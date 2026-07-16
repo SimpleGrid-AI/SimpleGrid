@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  348,
+        "company":  "Schupan \u0026 Sons Inc",
+        "website":  "schupan.com",
+        "industry":  "Recyclers",
+        "existingName":  "Phillip Haan",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  352,
+        "company":  "Base Plastics",
+        "website":  "baseplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  353,
+        "company":  "IKS - International Knife \u0026 Saw, Inc.",
+        "website":  "iks-saw.com",
+        "industry":  "Recyclers",
+        "existingName":  "Terry Isaacs",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  362,
+        "company":  "Chemical Solvents Inc.",
+        "website":  "chemicalsolvents.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ed Pavlish",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  364,
+        "company":  "Chemical Solvents Inc.",
+        "website":  "chemicalsolvents.com",
+        "industry":  "Recyclers",
+        "existingName":  "Rob Kramer",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  365,
+        "company":  "Toter, Inc.",
+        "website":  "toter.com",
+        "industry":  "Recyclers",
+        "existingName":  "Marty Bryant",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  366,
+        "company":  "ODC Inc.",
+        "website":  "odcdoors.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  367,
+        "company":  "Oregon Pallet",
+        "website":  "oregonpallet.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bryce \u0026 Carly Taylor",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  368,
+        "company":  "KW Plastics",
+        "website":  "kwplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "Kenny Campbell \u0026 Wiley Sanders",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  370,
+        "company":  "KW Plastics",
+        "website":  "kwplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "Christopher Campbell",
+        "existingDesig":  "Plant Head/Operations Head",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  372,
+        "company":  "Paul Leibinger Inc.",
+        "website":  "leibinger-group.com",
+        "industry":  "Recyclers",
+        "existingName":  "Christina Leibinger",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  374,
+        "company":  "MODRoto",
+        "website":  "modroto.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bob Dunne",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  375,
+        "company":  "MODRoto",
+        "website":  "modroto.com",
+        "industry":  "Recyclers",
+        "existingName":  "J.R. Ryan",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  376,
+        "company":  "Williams Patent Crusher \u0026 Pulverizer Co.",
+        "website":  "williamscrusher.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert M. Williams Jr.",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  381,
+        "company":  "Morbark, Inc.",
+        "website":  "morbark.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  382,
+        "company":  "Wilkinson HI-Rise, LLC",
+        "website":  "wilkinsonhirise.com",
+        "industry":  "Recyclers",
+        "existingName":  "Chad George",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  387,
+        "company":  "Harris",
+        "website":  "harriswaste.com",
+        "industry":  "Recyclers",
+        "existingName":  "D.J. VanDeusen",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  389,
+        "company":  "Aluf Plastics, Inc.",
+        "website":  "alufplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "David Anderson",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  390,
+        "company":  "Kester, an ITW company",
+        "website":  "kester.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  391,
+        "company":  "Phenomenex Inc.",
+        "website":  "phenomenex.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  392,
+        "company":  "Huron Valley Steel Corporation",
+        "website":  "hvsc.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    }
+]

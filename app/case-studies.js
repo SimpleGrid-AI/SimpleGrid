@@ -67,7 +67,11 @@ function CaseStudiesPage() {
     className: "proof-quote"
   }, "\"SimpleGrid feels like our system. My stores manager was comfortable on day one.\"", /*#__PURE__*/React.createElement("div", {
     className: "proof-attr"
-  }, "- The founder")))), /*#__PURE__*/React.createElement("a", {
+  }, "- The founder"))), /*#__PURE__*/React.createElement("span", {
+    className: "proof-detail-btn"
+  }, "See in detail ", /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "→"))), /*#__PURE__*/React.createElement("a", {
     href: "case-apex.html",
     className: "proof-card case-row",
     style: {
@@ -108,7 +112,11 @@ function CaseStudiesPage() {
     className: "proof-quote"
   }, "\"They sent a working demo in 24 hours - 60-70% accurate. No other vendor we've worked with has done that.\"", /*#__PURE__*/React.createElement("div", {
     className: "proof-attr"
-  }, "- Founder, Apex Apparel (name withheld)"))))), /*#__PURE__*/React.createElement("p", {
+  }, "- Founder, Apex Apparel (name withheld)"))), /*#__PURE__*/React.createElement("span", {
+    className: "proof-detail-btn"
+  }, "See in detail ", /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "→")))), /*#__PURE__*/React.createElement("p", {
     style: {
       textAlign: 'center',
       fontFamily: 'var(--font-heading)',

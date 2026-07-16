@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  51,
+        "company":  "Canadel",
+        "website":  "https://www.canadel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Guy Deveault",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  54,
+        "company":  "Hancock \u0026 Moore Inc",
+        "website":  "https://www.hancockandmoore.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Phil Brown",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  55,
+        "company":  "Amini Innovation",
+        "website":  "https://www.amini.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Michael Amini",
+        "existingDesig":  "Founder, Chairman \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  57,
+        "company":  "Bauhaus USA Inc",
+        "website":  "https://www.bauhausfurnituregroup.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Daniel Lim",
+        "existingDesig":  "President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  58,
+        "company":  "Vanguard Furniture",
+        "website":  "https://www.vanguardfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Andy Bray",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  62,
+        "company":  "Ac Coin \u0026 Slot",
+        "website":  "https://www.ac-coin.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mac Seelig",
+        "existingDesig":  "Founder, President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  63,
+        "company":  "Ac Coin \u0026 Slot",
+        "website":  "https://www.ac-coin.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jerry Seelig",
+        "existingDesig":  "General Manager, Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  67,
+        "company":  "Quoizel Inc",
+        "website":  "https://www.quoizel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ed Clark",
+        "existingDesig":  "VP of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  68,
+        "company":  "Kincaid Furniture Company Inc",
+        "website":  "https://www.kincaidfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Melinda Whittington",
+        "existingDesig":  "President \u0026 CEO, La-Z-Boy Inc.",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  69,
+        "company":  "Khoury Inc",
+        "website":  "https://www.khouryfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  72,
+        "company":  "Hitchock Chair Co Ltd",
+        "website":  "https://hitchcockchair.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Gary Hath",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  76,
+        "company":  "Smith Brothers of Berna Inc",
+        "website":  "https://smithbrothersfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Lehman",
+        "existingDesig":  "President \u0026 CEO/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  79,
+        "company":  "Stickley",
+        "website":  "https://www.stickley.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Aminy Audi",
+        "existingDesig":  "CEO \u0026 Chair/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  84,
+        "company":  "Flextrude Aluminium Shapes LLC",
+        "website":  "https://www.flextrude.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dan Knight",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  86,
+        "company":  "Kent Moore Cabinets Ltd",
+        "website":  "https://www.kmc.net",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Casey Moore",
+        "existingDesig":  "President \u0026 CEO/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  87,
+        "company":  "Kent Moore Cabinets Ltd",
+        "website":  "https://www.kmc.net",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Kent Moore",
+        "existingDesig":  "COO/Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  90,
+        "company":  "Style Nations",
+        "website":  "https://www.stylenations.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  94,
+        "company":  "E-Systems Group",
+        "website":  "https://www.e-systemsgroup.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  96,
+        "company":  "Currey \u0026 Company Inc",
+        "website":  "https://www.curreyandcompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ross Bradford",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  98,
+        "company":  "Foliot Furniture",
+        "website":  "https://www.foliot.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Francis Arseneault",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  99,
+        "company":  "Foliot Furniture",
+        "website":  "https://www.foliot.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Daniel Foliot",
+        "existingDesig":  "Founder \u0026 President/Co-Owner",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

@@ -121,10 +121,12 @@ function NetworkInfographic() {
     const angle = (i / 30) * Math.PI * 2 - Math.PI / 2;
     return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r, i };
   });
+  // Honest categories (not arbitrary modulo): 20 job worker units, ~8 logistics
+  // partner warehouses, 2 in-house (iron + pack) - matching the real counts.
   const colorOf = (i) => {
-    if (i % 5 === 0) return 'var(--sg-purple)';
-    if (i % 3 === 0) return 'var(--sg-gold)';
-    return 'var(--sg-blue)';
+    if (i >= 28) return 'var(--sg-purple)';  // in-house (iron · pack)
+    if (i >= 20) return 'var(--sg-gold)';    // logistics partner warehouses
+    return 'var(--sg-blue)';                  // job worker units
   };
   return (
     <svg viewBox="0 0 800 480" className="network-svg">
@@ -152,7 +154,7 @@ function NetworkInfographic() {
         <circle cx="280" cy="6" r="5" fill="var(--sg-gold)" />
         <text x="292" y="10" fontSize="11" fill="var(--fg2)">Logistics partner warehouses</text>
         <circle cx="540" cy="6" r="5" fill="var(--sg-purple)" />
-        <text x="552" y="10" fontSize="11" fill="var(--fg2)">In-transit hubs</text>
+        <text x="552" y="10" fontSize="11" fill="var(--fg2)">In-house (iron · pack)</text>
       </g>
       <text x={cx} y="40" textAnchor="middle" fontSize="11" fontWeight="700" letterSpacing="0.14em" fill="var(--fg3)">30+ INVENTORY LOCATIONS · ALL VISIBLE IN ONE LEDGER</text>
     </svg>
@@ -235,25 +237,35 @@ function ApexCaseStudy() {
       <BarsInfographic />
 
       <section className="case-section">
-        <h2>The operation</h2>
-        <p>Apex runs three interconnected businesses under one roof. Contract manufacturing for external brand principals. Their own brand: taking orders and manufacturing for retail. And fabric trading: buying fabric in volume and reselling to other manufacturers.</p>
-        <p>The production model is <strong>job work</strong>. They do not cut. They do not sew. Every piece of production happens at one of 20+ job worker facilities across the city. Each job worker is a complete production unit. Only two things happen in-house: ironing and packaging.</p>
-        <p>And the inventory is not even theirs to hold. Fabric, trims, finished goods all sit at their <strong>logistics partner's warehouses</strong> - multiple locations, depending on which buyer or job worker is closest. Add the 20+ job worker facilities, and at any given moment Apex has stock across <strong>30+ live inventory locations</strong>.</p>
+        <div className="tag" style={{marginBottom:10}}>THE OPERATION</div>
+        <h2>Three businesses, no factory of their own.</h2>
+        <p style={{maxWidth:780}}>Apex runs <strong>three interconnected businesses</strong> on one inventory ledger: contract manufacturing for external brands, their own retail label, and high-volume fabric trading.</p>
+        <p style={{maxWidth:780}}>The production model is <strong>100% job work</strong> - they don't cut and don't sew. Every garment is made at one of <strong>20+ job worker units</strong> across the city; only ironing and packaging happen in-house.</p>
+        <p style={{maxWidth:780}}>And the stock isn't theirs to hold. Fabric, trims and finished goods sit at their <strong>logistics partners' warehouses</strong>. Add the job worker units, and at any moment Apex has inventory across <strong>30+ live locations</strong>.</p>
       </section>
 
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>THE PROBLEM</div>
         <h2>What was breaking</h2>
-        <ul className="pain-list">
-          <li><strong>Generic ERPs could not model the operation.</strong> Two attempts over two years. Both failed. Every off-the-shelf ERP is built for manufacturers who make things in-house. Apex doesn't.</li>
-          <li><strong>Inventory visibility collapsed across 30+ locations.</strong> Fabric, trims, and finished goods were spread across 20+ job worker units and 10+ logistics partner warehouses. When a brand asked "where is our order?" answering meant phone calls to three to five places.</li>
-          <li><strong>Secondary material tracking was unmanageable.</strong> Every work order required its own bill of materials: specific buttons, hang tags, wash care labels, thread color. All purchased per work order, issued to job workers, reconciled at the end.</li>
-          <li><strong>Three businesses collided in one spreadsheet.</strong> CMT, own brand, fabric trading: all tracked in overlapping Excel files. A fabric roll might belong to Brand A's order, their own stock, or a trading customer.</li>
-          <li><strong>Job worker reconciliation was chaos.</strong> Each of 20+ workers received fabric AND trims for each work order, returned finished garments. Reconciling consumed hours every day.</li>
-          <li><strong>Profitability by stream was a mystery.</strong> Was CMT making money or being subsidized by fabric trading? Impossible to tell.</li>
-        </ul>
+        <p style={{maxWidth:780}}><strong>Two ERPs, two years, $100,000+ spent - and nothing that fit.</strong> Every off-the-shelf system assumed a factory. Apex doesn't have one, so each one broke on contact.</p>
+        <div className="prob-grid">
+          {[
+            {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>', t:'Inventory scattered everywhere', d:'Fabric, trims and goods across 20+ workers and 10+ warehouses - finding an order meant five phone calls.'},
+            {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>', t:'A BOM per work order', d:'Buttons, tags, labels and thread - all bought per order, issued, and reconciled by hand.'},
+            {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>', t:'Three businesses, one sheet', d:'A single fabric roll might be a CMT order, own stock, or a trading sale - nobody could tell.'},
+            {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>', t:'Reconciliation ate the day', d:'20+ workers issued fabric and trims and returning garments - all matched by hand, for hours.'},
+            {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M7 14l3-3 3 2 4-5"/></svg>', t:'Profit by stream: a guess', d:'Was CMT earning, or quietly subsidized by fabric trading? No way to know.'},
+          ].map((p,i)=>(
+            <div key={i} className="prob-card">
+              <span className="prob-ic" dangerouslySetInnerHTML={{__html:p.icon}} />
+              <div><div className="t">{p.t}</div><p className="d">{p.d}</p></div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>THE BUILD</div>
         <h2>What we built</h2>
         <p>We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a <strong>working demo in 24 hours</strong>: 60-70% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams.</p>
         <p>Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case.</p>
@@ -261,43 +273,78 @@ function ApexCaseStudy() {
       </section>
 
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>THE PROCESS</div>
         <h2>The full CMT flow</h2>
-        <div className="flow-steps">
+        <p style={{maxWidth:780}}>One contract order, end to end - from the brand's work order to job worker settlement.</p>
+        <div className="proc-pipe proc-anim">
           {[
-            {s:'Brand sends a work order.',b:'Style, sizes, quantities, fabric specs, trim requirements, production specs, dispatch deadline. System auto-generates SKUs.'},
-            {s:'Bill of materials built.',b:'Main fabric, secondary fabrics, buttons, hang tags, wash care labels, thread colors, packaging specs. Every item tracked.'},
-            {s:'Specifications attached.',b:'Cutting pattern reference, stitch types per seam, wash instructions - digitized and linked to the work order.'},
-            {s:'Fabric and trims procured.',b:'Auto-generated POs to fabric vendors and trim suppliers. Stock checked first across all 30+ locations, only shortfall procured.'},
-            {s:'Materials received at logistics warehouse.',b:'Fabric inspected for defects. System tracks by roll, not just total meters. Trims received against their POs.'},
-            {s:'Issued to job worker.',b:'Fabric + all secondary materials issued together. Every item tracked per work order, per job worker.'},
-            {s:'Job worker produces.',b:'Cutting, stitching, finishing. Job worker is hands. Specifications are Apex\u2019s.'},
-            {s:'Finished goods returned.',b:'Received at warehouse. System reconciles: fabric sent vs garments returned vs expected yield.'},
-            {s:'Iron and packaging.',b:'In-house. Each garment ironed, tagged, packed to buyer specs.'},
-            {s:'QC at multiple gates.',b:'Pre-dispatch quality check against buyer standards. Rejects sent back to job worker.'},
-            {s:'Dispatch to brand.',b:'Packed per buyer specs. System generates packing list, invoice, tracks partial shipments.'},
-            {s:'Job worker settlement.',b:'Auto-calculated: garments received minus rejects times piece rate. Per job worker, per work order.'},
-          ].map((step,i) => (
-            <div key={i} className="flow-step">
-              <p><strong>{step.s}</strong> {step.b}</p>
+            {t:'Work order received', d:'Specs in; SKUs auto-generated.'},
+            {t:'BOM & specs built', d:'Fabric, trims, labels, patterns linked.'},
+            {t:'Fabric & trims procured', d:'Stock checked first; only the shortfall ordered.'},
+            {t:'Received & inspected', d:'Checked for defects, tracked by roll.'},
+            {t:'Issued to job worker', d:'Fabric and trims go out together, tracked.'},
+            {t:'Produced & returned', d:'Returns reconciled against expected yield.'},
+            {t:'Ironed, packed, QC', d:'In-house finishing, pre-dispatch gate.'},
+            {t:'Dispatched & settled', d:'Invoice out; worker auto-settled.'},
+          ].map((s,i)=>(
+            <div key={i} className="proc-node">
+              <span className="proc-n" style={{animationDelay:(i*0.5)+'s'}}>{String(i+1).padStart(2,'0')}</span>
+              <div className="t">{s.t}</div>
+              <p className="d">{s.d}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>GUARDRAILS</div>
         <h2>Rules the system enforces</h2>
-        <ul className="rules-list">
-          <li>Can't issue fabric to a job worker without an active work order.</li>
-          <li>Can't receive finished goods exceeding the work order quantity.</li>
-          <li>Secondary materials must be fully issued before production starts.</li>
-          <li>Job worker settlement blocked until all returns are reconciled.</li>
-          <li>Fabric roll tracking: defective rolls quarantined, can't enter production.</li>
-          <li>Brand-specific packaging specs enforced at dispatch - wrong label format blocks shipment.</li>
-        </ul>
+        <p style={{maxWidth:780}}>Not suggestions - the system physically blocks the action.</p>
+        <div className="guard-grid">
+          {[
+            "Can't issue fabric without an active work order.",
+            "Can't receive more goods than the work order quantity.",
+            "Can't start production until every trim is issued.",
+            "Can't settle a job worker until returns are reconciled.",
+            "Defective fabric rolls are quarantined from production.",
+            "Wrong packaging or label format blocks the dispatch.",
+          ].map((r,i)=>(
+            <div key={i} className="guard-card">
+              <span className="guard-badge" dangerouslySetInnerHTML={{__html:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.5v5c0 4.3-2.9 7.3-7 8.5-4.1-1.2-7-4.2-7-8.5v-5z"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>'}} />
+              <p className="r">{r}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>RESULTS</div>
+        <h2>What changed</h2>
+        <div className="res-rows">
+          <div className="res-row" style={{marginBottom:2,fontSize:11,fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase'}}>
+            <div style={{color:'var(--sg-red)'}}>Before SimpleGrid</div>
+            <div></div>
+            <div style={{color:'var(--sg-green)'}}>After SimpleGrid</div>
+          </div>
+          {[
+            {b:'Two failed ERPs in two years; $100K+ spent', a:'Live in 12 days, modeled to the operation'},
+            {b:'Finding an order meant 3-5 phone calls', a:'30+ locations in one live ledger'},
+            {b:'Three businesses tangled in one spreadsheet', a:'Three clean P&Ls: CMT, own brand, trading'},
+            {b:'Job worker reconciliation ate hours a day', a:'Issued vs. returned reconciled automatically'},
+            {b:'Trims tracked by hand, per order', a:'Every button, tag and label on its own BOM'},
+            {b:'Profit by stream was guesswork', a:'Margin visible per stream and per work order'},
+          ].map((r,i)=>(
+            <div key={i} className="res-row">
+              <div className="res-cell res-before">{r.b}</div>
+              <div className="res-arrow" dangerouslySetInnerHTML={{__html:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'}} />
+              <div className="res-cell res-after">{r.a}</div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <div className="testimonial-block">
-        <blockquote>"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60-70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check."</blockquote>
+        <RevealQuote text={`"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60-70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check."`} />
         <div className="attr">- Founder, Apex Apparel <span style={{color:'var(--fg3)',fontWeight:400}}>(name withheld for confidentiality)</span></div>
       </div>
 

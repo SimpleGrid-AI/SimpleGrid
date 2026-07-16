@@ -19,9 +19,9 @@ function ValueInfographic() {
     })),
     h: 'Planning time',
     from: '20 hrs',
-    to: '2 hrs',
-    delta: '−90%',
-    desc: 'A week of planner-only spreadsheet work compressed into a single morning. The system aggregates wood requirements across orders automatically.'
+    to: '30 min',
+    delta: '−98%',
+    desc: 'A week of planner-only spreadsheet work compressed into well under an hour. The system aggregates wood requirements across orders automatically.'
   }, {
     cls: 'b',
     icon: /*#__PURE__*/React.createElement("svg", {
@@ -57,8 +57,8 @@ function ValueInfographic() {
     })),
     h: 'On-time delivery',
     from: 'baseline',
-    to: '+15%',
-    delta: '+15%',
+    to: '+25%',
+    delta: '+25%',
     desc: 'Full-stage visibility plus contractor accountability surfaced delays days earlier. Buyers ship on schedule.'
   }, {
     cls: 'd',
@@ -386,21 +386,36 @@ function EliteCaseStudy() {
     className: "container"
   }, /*#__PURE__*/React.createElement(ValueInfographic, null), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "The operation"), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
     style: {
-      maxWidth: 920
+      marginBottom: 10
     }
-  }, "The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600-800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit ", /*#__PURE__*/React.createElement("strong", null, "19 tracked stages, four quality gates, and six contractor types"), " - each paid by a different formula. The catalog runs to ", /*#__PURE__*/React.createElement("strong", null, "550 active SKUs"), ", each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame."), /*#__PURE__*/React.createElement("p", {
+  }, "THE OPERATION"), /*#__PURE__*/React.createElement("h2", null, "One floor, 19 stages, six pricing formulas."), /*#__PURE__*/React.createElement("p", {
     style: {
-      maxWidth: 920
+      maxWidth: 780
     }
-  }, "Work happens at two levels and they cross over at assembly. Wood issuance and machining track at the ", /*#__PURE__*/React.createElement("strong", null, "component level"), " - every cubic foot attaches to a specific SKU + component. Once all components for a SKU are machined and QC\u2019d they merge; from there, tracking is at the ", /*#__PURE__*/React.createElement("strong", null, "SKU level"), " through sanding, finishing, hardware, final QC, packaging, and dispatch. Six contractor types each bill on their own formula - machining per-sqft for panels and per-running-foot for frames with rates changing on wood thickness; assembly per SKU; sanding and finishing per sqft of finished surface for 90% of products; hardware fitting on a fittings \xD7 screw-size matrix; packaging on CBM of packed material. Every one of those formulas is a row in a config table - not code.")), /*#__PURE__*/React.createElement(ManufacturingProcessSection, null), /*#__PURE__*/React.createElement("section", {
+  }, "A furniture manufacturer and exporter (kept confidential) selling into 12+ countries - 600-800 people across ~1 million sq ft. Raw wood enters one end; finished furniture leaves the other in 40-ft containers. In between sit ", /*#__PURE__*/React.createElement("strong", null, "19 tracked stages, 4 quality gates, and 6 contractor types"), " - each paid on a different formula - across ", /*#__PURE__*/React.createElement("strong", null, "550 active SKUs"), " that average 20+ components, every component cut from a specific wood species at a specific dimension."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 780
+    }
+  }, "Tracking runs at two levels that meet at assembly: ", /*#__PURE__*/React.createElement("strong", null, "component-level"), " through wood issuance and machining, then ", /*#__PURE__*/React.createElement("strong", null, "SKU-level"), " through finishing, QC, packaging and dispatch. Each of the six contractor formulas - per-sqft, per-running-foot, per-SKU, per-fitting, per-CBM - is a row in a config table, not code.")), /*#__PURE__*/React.createElement(ManufacturingProcessSection, null), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "What was breaking"), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "The company was profitable. Nobody knew which products were."), " The founder knew the business made money. But could he tell you whether the 6-seater dining table was more profitable than the bookshelf? No."), /*#__PURE__*/React.createElement("ul", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "THE PROBLEM"), /*#__PURE__*/React.createElement("h2", null, "What was breaking"), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "The company was profitable. Nobody knew which products were."), " The founder knew the business made money. But could he tell you whether the 6-seater dining table was more profitable than the bookshelf? No."), /*#__PURE__*/React.createElement("ul", {
     className: "pain-list"
   }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Planning was a 20-hour weekly grind."), " The planner spent the better part of every week aggregating component-level wood needs across 30-40 active orders in Excel. When the planner was out, planning stopped."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Material tracking was manual."), " Wood arrived at the store. The storekeeper wrote it in a register. How much was issued to which job, in which thickness, for which SKU? Nobody knew in real time."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Production stages were untracked."), " If 600 components entered sanding and 580 came out, nobody caught the 20-component gap until final count. Over 4 years, these gaps added up to nearly $200,000 - about 1.5% wastage compounding silently."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Contractor costing was reconciled monthly."), " Six contractor types, six settlement formulas, multiple jobs and stages each. Settlement required cross-referencing handwritten logs with the planner's memory."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "30+ floor staff could not use any ERP."), " The company had tried before. Storekeepers, QC inspectors, supervisors - too many menus, too many dropdowns. Everyone went back to texting."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "The founder had no dashboard."), " To answer \"where are we on the West Elm order?\" required 3 phone calls and 20 minutes."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Delivery slippage hid in the gaps."), " Without stage-level visibility, nobody saw a sanding bottleneck or a finishing delay until the dispatch deadline missed."))), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We did multiple calls with the founder over 14 days. Mapped how work actually moves: every order type, every approval rule, every handoff between contractors, every contractor pricing formula, every exception that only the founder knew about."), /*#__PURE__*/React.createElement("p", null, "After the first call, the founder saw a ", /*#__PURE__*/React.createElement("strong", null, "working demo within 24 hours"), ". Not a slideshow. A working system reflecting how his factory actually runs - wood aggregation, two-level tracking, six contractor settlement formulas, four QC gates. 21 days total from first conversation to live system."), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "THE BUILD"), /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We did multiple calls with the founder over 14 days. Mapped how work actually moves: every order type, every approval rule, every handoff between contractors, every contractor pricing formula, every exception that only the founder knew about."), /*#__PURE__*/React.createElement("p", null, "After the first call, the founder saw a ", /*#__PURE__*/React.createElement("strong", null, "working demo within 24 hours"), ". Not a slideshow. A working system reflecting how his factory actually runs - wood aggregation, two-level tracking, six contractor settlement formulas, four QC gates. 21 days total from first conversation to live system."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'var(--font-heading)',
       fontSize: 'var(--fs-body)',
@@ -410,7 +425,12 @@ function EliteCaseStudy() {
     }
   }, "By day 21 it was live on the floor - and for the first time, the founder could see which products actually made money and where the wood was going.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "Rules the system enforces"), /*#__PURE__*/React.createElement("p", null, "These are not suggestions. The system physically rejects the action."), /*#__PURE__*/React.createElement("ul", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "GUARDRAILS"), /*#__PURE__*/React.createElement("h2", null, "Rules the system enforces"), /*#__PURE__*/React.createElement("p", null, "These are not suggestions. The system physically rejects the action."), /*#__PURE__*/React.createElement("ul", {
     className: "rules-list"
   }, /*#__PURE__*/React.createElement("li", null, "Can't receive more material than the PO ordered. System rejects: \"Maximum you can receive: 500.\""), /*#__PURE__*/React.createElement("li", null, "Can't issue unseasoned wood to machining. Routed to seasoning yard automatically."), /*#__PURE__*/React.createElement("li", null, "Can't dispatch more than planned quantity. Blocked."), /*#__PURE__*/React.createElement("li", null, "Final QC must approve before dispatch. System-enforced, not process-dependent."), /*#__PURE__*/React.createElement("li", null, "Contractor locked once assigned. Prevents cost manipulation across stages."), /*#__PURE__*/React.createElement("li", null, "Can't issue wood to a completed job. Prevents inventory leakage."), /*#__PURE__*/React.createElement("li", null, "Wood inventory can't go negative."), /*#__PURE__*/React.createElement("li", null, "Component count must reconcile before assembly. The $200K problem: caught at the source."), /*#__PURE__*/React.createElement("li", null, "Hardware-fitting settlement blocked until every fitting + screw size is logged."), /*#__PURE__*/React.createElement("li", null, "Packaging settlement blocked until CBM is captured at pack-out.")), /*#__PURE__*/React.createElement("p", {
     style: {
@@ -418,19 +438,31 @@ function EliteCaseStudy() {
     }
   }, "When your process changes, the rule changes with it - usually the same day.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "The floor staff problem, solved"), /*#__PURE__*/React.createElement("p", null, "The client's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. ", /*#__PURE__*/React.createElement("strong", null, "30 non-technical staff"), " who wouldn't touch the old system."), /*#__PURE__*/React.createElement("p", null, "With SimpleGrid, they talk to ", /*#__PURE__*/React.createElement("strong", null, "Hank"), ", the AI assistant. The storekeeper types: \"Received 300 mango planks from Shree Timber.\" Hank identifies the PO, checks the quantity, updates inventory, and confirms. No menus. No dropdowns. No training manual."), /*#__PURE__*/React.createElement("p", null, "Today all 30 use the system daily. Storekeepers log receipts. QC inspectors record pass/fail per stage. Supervisors close production tickets. The same 30 people who refused the previous ERP.")), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "ADOPTION"), /*#__PURE__*/React.createElement("h2", null, "The floor staff problem, solved"), /*#__PURE__*/React.createElement("p", null, "The client's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. ", /*#__PURE__*/React.createElement("strong", null, "30 non-technical staff"), " who wouldn't touch the old system."), /*#__PURE__*/React.createElement("p", null, "With SimpleGrid, they talk to ", /*#__PURE__*/React.createElement("strong", null, "Hank"), ", the AI assistant. The storekeeper types: \"Received 300 mango planks from Shree Timber.\" Hank identifies the PO, checks the quantity, updates inventory, and confirms. No menus. No dropdowns. No training manual."), /*#__PURE__*/React.createElement("p", null, "Today all 30 use the system daily. Storekeepers log receipts. QC inspectors record pass/fail per stage. Supervisors close production tickets. The same 30 people who refused the previous ERP.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("table", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "RESULTS"), /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("table", {
     className: "ba-table"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Before SimpleGrid"), /*#__PURE__*/React.createElement("th", null, "After SimpleGrid"))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "No view into which SKUs made money"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "SKU-level profitability visible"), " per product - wood, contractor, and rejection costs attached to every SKU")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "SKU production timeline was opaque"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "SKU production timeline visible"), " end-to-end - every stage time-stamped from PO to dispatch")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\"Where's the order?\" = 3 phone calls + 20 min"), /*#__PURE__*/React.createElement("td", null, "One dashboard. Real-time. Founder sees everything.")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "20 hours of planning per week, by one person"), /*#__PURE__*/React.createElement("td", null, "2 hours per week - the system aggregates and proposes")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "~1.5% material wastage (~$50K/yr)"), /*#__PURE__*/React.createElement("td", null, "Negligible - component-level reconciliation catches gaps at the source")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Delivery deadlines slipping invisibly"), /*#__PURE__*/React.createElement("td", null, "+15% on-time delivery from full-stage visibility")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Wood inventory reconciled monthly"), /*#__PURE__*/React.createElement("td", null, "Live inventory. Every receipt and issuance tracked, by species + thickness")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "6 contractor settlements took days each month"), /*#__PURE__*/React.createElement("td", null, "Auto-calculated on each contractor's own formula")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "30 floor staff rejected previous ERP"), /*#__PURE__*/React.createElement("td", null, "Same 30 staff use Hank daily. Zero training overhead."))))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Before SimpleGrid"), /*#__PURE__*/React.createElement("th", null, "After SimpleGrid"))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "No view into which SKUs made money"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "SKU-level profitability visible"), " per product - wood, contractor, and rejection costs attached to every SKU")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "SKU production timeline was opaque"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "SKU production timeline visible"), " end-to-end - every stage time-stamped from PO to dispatch")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\"Where's the order?\" = 3 phone calls + 20 min"), /*#__PURE__*/React.createElement("td", null, "One dashboard. Real-time. Founder sees everything.")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "20 hours of planning per week, by one person"), /*#__PURE__*/React.createElement("td", null, "~30 minutes per week - the system aggregates and proposes")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "~1.5% material wastage (~$50K/yr)"), /*#__PURE__*/React.createElement("td", null, "Negligible - component-level reconciliation catches gaps at the source")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Delivery deadlines slipping invisibly"), /*#__PURE__*/React.createElement("td", null, "+25% on-time delivery from full-stage visibility")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Wood inventory reconciled monthly"), /*#__PURE__*/React.createElement("td", null, "Live inventory. Every receipt and issuance tracked, by species + thickness")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "6 contractor settlements took days each month"), /*#__PURE__*/React.createElement("td", null, "Auto-calculated on each contractor's own formula")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "30 floor staff rejected previous ERP"), /*#__PURE__*/React.createElement("td", null, "Same 30 staff use Hank daily. Zero training overhead."))))), /*#__PURE__*/React.createElement("div", {
     className: "testimonial-block"
-  }, /*#__PURE__*/React.createElement("blockquote", null, "\"We have our own way of doing things: vendor consolidation by wood species, component-level QC, six different contractor settlement formulas that nobody else understands. We needed an ERP that was made for us, not one we'd have to change our process for. SimpleGrid feels like our system. Our Excel and texting habits didn't go away - the AI chatbot just replaced them. My stores manager was comfortable on day one because it works the way he already works.\""), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(RevealQuote, {
+    text: "\"We have our own way of doing things: vendor consolidation by wood species, component-level QC, six different contractor settlement formulas that nobody else understands. We needed an ERP that was made for us, not one we'd have to change our process for. SimpleGrid feels like our system. Our Excel and texting habits didn't go away - the AI chatbot just replaced them. My stores manager was comfortable on day one because it works the way he already works.\""
+  }), /*#__PURE__*/React.createElement("div", {
     className: "attr"
   }, "- The founder")), /*#__PURE__*/React.createElement("div", {
     className: "case-bottom-line"
   }, /*#__PURE__*/React.createElement("div", {
     className: "big"
-  }, "The $200K leak, closed. Planning cut from 20 hours a week to 2. 30 floor staff who'd rejected every ERP, now on this one daily. Live in 21 days."), /*#__PURE__*/React.createElement("p", null, "Before SimpleGrid, the founder knew the company made money. Now he knows which products make money, and which ones do not. Planning dropped from 20 hours to 2. Wastage dropped to negligible. Delivery improved 15%. And 30 floor staff who had rejected every previous ERP now use this one daily."), /*#__PURE__*/React.createElement("a", {
+  }, "The $200K leak, closed. Planning cut from 20 hours a week to 30 minutes. 30 floor staff who'd rejected every ERP, now on this one daily. Live in 21 days."), /*#__PURE__*/React.createElement("p", null, "Before SimpleGrid, the founder knew the company made money. Now he knows which products make money, and which ones do not. Planning dropped from 20 hours to 30 minutes. Wastage dropped to negligible. Delivery improved 25%. And 30 floor staff who had rejected every previous ERP now use this one daily."), /*#__PURE__*/React.createElement("a", {
     href: "https://cal.com/simplegrid-ai",
     target: "_blank",
     rel: "noopener noreferrer",

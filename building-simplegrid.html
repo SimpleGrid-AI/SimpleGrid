@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Building SimpleGrid - The Story Behind the Factory Ops Cloud</title>
+<meta name="description" content="The founder ran a $30M factory, survived two failed ERP implementations, and ended up on Google Sheets. SimpleGrid is the system he wished he had - now he's building it.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://simplegrid.ai/building-simplegrid.html">
+<link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
+<link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://simplegrid.ai/building-simplegrid.html">
+<meta property="og:title" content="Building SimpleGrid - The Story Behind the Factory Ops Cloud">
+<meta property="og:description" content="The founder ran a $30M factory, survived two failed ERP implementations, and ended up on Google Sheets. SimpleGrid is the system he wished he had - now he's building it.">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+
+<style>
+  .story-hero { position: relative; overflow: hidden; min-height: 52vh; display: flex; align-items: center; padding: 150px 24px 110px; background: linear-gradient(165deg, #131A2B 0%, #0B0F17 65%); color: #fff; }
+  .story-hero > .container { position: relative; z-index: 1; }
+  .story-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #9DBEFD; background: rgba(52,97,224,0.18); border: 1px solid rgba(52,97,224,0.42); padding: 7px 15px; border-radius: 10px; margin-bottom: 22px; }
+  .story-hero h1 { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; font-size: clamp(40px, 6vw, 66px); margin: 0 0 24px; max-width: 880px; }
+  .story-hero p { font-size: clamp(17px, 1.6vw, 21px); line-height: 1.55; color: rgba(255,255,255,0.82); margin: 0; max-width: 760px; }
+
+  .story { padding: 96px 24px; }
+  .story .container { max-width: 760px; }
+  .chapter { display: grid; grid-template-columns: 88px 1fr; gap: 8px 28px; padding: 40px 0; border-top: 1px solid var(--border); }
+  .chapter:first-of-type { border-top: 0; padding-top: 8px; }
+  .chapter-num { font-family: var(--font-heading); font-size: 40px; font-weight: 800; line-height: 1; color: var(--sg-blue); opacity: 0.28; letter-spacing: -0.02em; }
+  .chapter-body h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: var(--fg1); margin: 0 0 16px; }
+  .chapter-body p { font-size: 17px; line-height: 1.72; color: var(--fg2); margin: 0 0 16px; }
+  .chapter-body p:last-child { margin-bottom: 0; }
+  .chapter-body strong { color: var(--fg1); font-weight: 700; }
+  .pull { font-family: var(--font-heading); font-size: clamp(22px, 3vw, 28px); font-weight: 700; line-height: 1.32; letter-spacing: -0.015em; color: var(--fg1); border-left: 3px solid var(--sg-blue); padding-left: 22px; margin: 6px 0 0; }
+
+  .story-cta { background: #0B0F17; color: #fff; padding: 96px 24px; text-align: center; }
+  .story-cta h2 { font-family: var(--font-heading); font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 14px; }
+  .story-cta p { font-size: 18px; color: rgba(255,255,255,0.7); margin: 0 0 30px; }
+  .story-cta .btn-line { display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .story-cta a.primary { display: inline-block; background: var(--sg-blue); color: #fff; padding: 14px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px; }
+  .story-cta a.ghost { display: inline-block; color: #9DBEFD; padding: 14px 18px; text-decoration: none; font-weight: 600; font-size: 16px; }
+
+  @media (max-width: 640px) {
+    .chapter { grid-template-columns: 1fr; gap: 12px; }
+    .chapter-num { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+<div id="sg-nav" data-page="story"></div>
+
+<main id="main">
+  <section class="story-hero">
+    <div class="container">
+      <span class="story-eyebrow">The story</span>
+      <h1>Building SimpleGrid.</h1>
+      <p>How a factory that survived two failed ERPs became the blueprint for a system that finally fits the floor.</p>
+    </div>
+  </section>
+
+  <section class="story section-alt">
+    <div class="container">
+
+      <article class="chapter">
+        <div class="chapter-num">01</div>
+        <div class="chapter-body">
+          <h2>A factory that ran on memory.</h2>
+          <p>Before SimpleGrid, our founder ran a <strong>$30M manufacturing business</strong> - multi-stage production, hundreds of workers, jobs moving across the floor every hour of every day. On paper, the books were clean. On the floor, no one could answer a simple question: <em>where is job 4521 right now, and will it ship on time?</em></p>
+          <p>The real status lived in one person's head, a spreadsheet version nobody fully trusted, and a dozen WhatsApp threads. It worked - until that one person was on leave, or a buyer called, or month-end arrived and the numbers didn't match the floor.</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-num">02</div>
+        <div class="chapter-body">
+          <h2>The first ERP.</h2>
+          <p>So we did exactly what everyone tells you to do: we bought an ERP. Months of implementation. A six-figure bill. A consultant who had never set foot on a factory floor.</p>
+          <p>The system was built for a thousand businesses, not ours. Every small change - a new approval rule, a buyer-specific QC gate - became a multi-week change request. And the people who actually do the work never logged in. Within a year it was a very expensive database that nobody updated.</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-num">03</div>
+        <div class="chapter-body">
+          <h2>The second ERP.</h2>
+          <p>We told ourselves we'd simply picked the wrong vendor. So we tried again - a different platform, a bigger promise, a fresh implementation. Same months. Same bill. Same result.</p>
+          <p>Two ERP implementations. Both failed. We weren't unlucky: <strong>roughly 75% of mid-market ERP projects fail or get quietly abandoned.</strong> We were the rule, not the exception.</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-num">04</div>
+        <div class="chapter-body">
+          <h2>Back to spreadsheets.</h2>
+          <p>With two failures behind us, we ran a multi-stage factory the only way that actually worked: <strong>Google Sheets and group chats.</strong> Fragile, manual, and entirely dependent on one person remembering everything.</p>
+          <p>But here's the thing - the floor <em>used</em> it. Because it spoke their language. No menus, no codes, no eight-tab forms. Just type what happened.</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-num">05</div>
+        <div class="chapter-body">
+          <h2>The problem, in one sentence.</h2>
+          <p>That contradiction was the whole answer. ERPs don't fail because they're too simple. They fail because they're built for the enterprise, not your floor - <strong>and the floor never adopts them.</strong></p>
+          <p class="pull">The books were never the problem. The floor was invisible.</p>
+          <p style="margin-top:18px">We didn't need a bigger system. We needed an operations layer that sat on top of the accounting we already used, and that the floor would actually pick up on day one.</p>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-num">06</div>
+        <div class="chapter-body">
+          <h2>So we're building it ourselves.</h2>
+          <p>The problem we lived is the one we now solve. <strong>SimpleGrid is the Factory Ops Cloud</strong> - jobs, batches, BOMs, QC checkpoints and costing, live in one place, sitting on top of the QuickBooks or Tally you already run. No migration. No rip-and-replace.</p>
+          <p>And because we were the customer first, we prove it before we ask you to commit: we configure it to your floor at our cost, you run it live for 30 days, and you pay only when it works.</p>
+          <p>It's the system we wished we had. Now it's yours.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="story-cta">
+    <h2>Want to see your floor in it?</h2>
+    <p>We'll configure SimpleGrid to your process and show you - on your data.</p>
+    <div class="btn-line">
+      <a class="primary" href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="story_book_demo">Book a demo</a>
+      <a class="ghost" href="about.html">Read more about us &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<div id="sg-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous" defer></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous" defer></script>
+<script src="components/site-nav.js" defer></script>
+<script src="components/site-footer.js" defer></script>
+<script src="components/BookDemoModal.js" defer></script>
+<script src="components/TryErpModal.js" defer></script>
+</body>
+</html>

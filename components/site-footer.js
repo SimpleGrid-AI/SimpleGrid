@@ -66,6 +66,7 @@
               '<a href="' + pf + 'tools/" class="footer-link">Productive Tools</a>' +
               '<a href="' + pf + 'case-studies.html" class="footer-link">Case studies</a>' +
               '<a href="' + pf + 'blog.html" class="footer-link">Blog</a>' +
+              '<a href="' + pf + 'building-simplegrid.html" class="footer-link">Inside the Build</a>' +
             '</div>' +
             '<div>' +
               '<div class="footer-h">Company</div>' +

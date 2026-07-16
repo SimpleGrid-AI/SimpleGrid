@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  187,
+        "company":  "High Point Furniture Industries, Inc.",
+        "website":  "https://www.hpfi.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Spencer W. O\u0027Meara",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  188,
+        "company":  "High Point Furniture Industries, Inc.",
+        "website":  "https://www.hpfi.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joe Cheek",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  189,
+        "company":  "Tempkold",
+        "website":  "https://tempkold.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  190,
+        "company":  "Troutman Chair Company",
+        "website":  "https://troutmanchairs.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Champ Land \u0026 Jean Land",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  192,
+        "company":  "McKinley Leather",
+        "website":  "https://www.mckinleyleatherfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Lewis N. Mitchell",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  193,
+        "company":  "Custom Contract Furnishings",
+        "website":  "https://www.customcontract.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  196,
+        "company":  "Designmaster Furniture, Inc.",
+        "website":  "https://www.designmasterfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Theodore S. Corwin Jr.",
+        "existingDesig":  "Founder \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  197,
+        "company":  "J.Kitchen Inc. (Torva Kitchens)",
+        "website":  "https://torvakitchens.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  198,
+        "company":  "Fezibo",
+        "website":  "https://www.fezibo.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  199,
+        "company":  "Insalco Corporation",
+        "website":  "https://insalco.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  206,
+        "company":  "Custom Seats, Inc.",
+        "website":  "https://customseatsinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  208,
+        "company":  "DuraLife-USA",
+        "website":  "https://www.duralifedecking.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jean desAutels",
+        "existingDesig":  "President, Barrette Outdoor Living",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  209,
+        "company":  "Ch Equip, Inc.",
+        "website":  "https://www.chequipinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bob Whiteside",
+        "existingDesig":  "Principal",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  213,
+        "company":  "Holland Bar Stool",
+        "website":  "https://hollandbarstool.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Larry O. Bensink",
+        "existingDesig":  "Treasurer",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  214,
+        "company":  "Picnic Time",
+        "website":  "https://www.picnictime.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul Cosaro",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  215,
+        "company":  "Heritage Home Group",
+        "website":  "(no standalone site â€” Heritage Home Group dissolved 2018; brands sold)",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  216,
+        "company":  "Sleep Innovations, Inc.",
+        "website":  "https://www.sleepinnovations.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Carol Eicher",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  217,
+        "company":  "Brunschwig \u0026 Fils",
+        "website":  "https://www.kravet.com/brunschwig-fils",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Cary Kravet",
+        "existingDesig":  "President \u0026 CEO, Kravet Inc.",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  218,
+        "company":  "National Public Seating Corp.",
+        "website":  "https://www.nationalpublicseating.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Barry Stauber",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  219,
+        "company":  "Sedia, Inc.",
+        "website":  "https://www.sediainc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  223,
+        "company":  "Norix Group, Inc.",
+        "website":  "https://norix.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Shane Edwards",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

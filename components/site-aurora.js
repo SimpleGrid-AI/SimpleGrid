@@ -51,7 +51,7 @@
                               // between crossings instead of swinging apart
     BREATHE: { amp: 0.020, waves: 1.4 }, // slight de-attachments: a small gap opens
                               // gently ~1-2x per page, then they re-attach
-    TAPER: { from: 3.45, to: 1.0, span: 1.0 }, // GRAND opening: the ribbon spans
+    TAPER: { from: 2.93, to: 1.0, span: 1.0 }, // GRAND opening: the ribbon spans
                               // ~50% of the screen at the very top, tapering down
                               // through the hero to its body size, constant after
     ENTRY45: { amp: 0.16, span: 0.55 }, // the top expands INTO the top-right corner
@@ -78,7 +78,7 @@
     LEFT_PIN: 0.595,          // the ribbon's leftmost edge starts just under the
                               // Resources nav item and falls STRAIGHT during the
                               // entry (only the right side flares to the corner)
-    END_FADE: { span: 1.05, hold: 0.02 }, // the tail FADES into the SIMPLEGRID
+    END_FADE: { span: 1.05, hold: 0.13 }, // the tail FADES into the SIMPLEGRID
                               // wordmark at the page bottom (no abrupt cut) and is
                               // fully gone by the document end - also prevents the
                               // ribbon from showing in the overscroll rubber-band

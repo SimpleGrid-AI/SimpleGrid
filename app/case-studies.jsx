@@ -23,11 +23,9 @@ function CaseStudiesPage() {
               <h2 style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,margin:'0 0 10px',letterSpacing:'-0.015em'}}>Furniture Manufacturer &amp; Exporter</h2>
               <p>600-800 employees. ~1 million sq ft. Multi-stage production. Deployed in 21 days.</p>
               <div className="proof-stats">$200K in silent material losses, found and stopped.</div>
-              <div className="proof-quote">
-                "SimpleGrid feels like our system. My stores manager was comfortable on day one."
-                <div className="proof-attr">- The founder</div>
-              </div>
+              <div className="proof-quote">"SimpleGrid feels like our system. My stores manager was comfortable on day one."<div className="proof-attr">- The founder</div></div>
             </div>
+            <span className="proof-detail-btn">See in detail <span aria-hidden="true">→</span></span>
           </a>
 
           <a href="case-apex.html" className="proof-card case-row" style={{textDecoration:'none',color:'inherit',transition:'all 160ms var(--ease-standard)'}}>
@@ -39,11 +37,9 @@ function CaseStudiesPage() {
               <h2 style={{fontFamily:'var(--font-heading)',fontSize:22,fontWeight:700,margin:'0 0 10px',letterSpacing:'-0.015em'}}>Apparel Contract Manufacturer <span style={{fontSize:12,color:'var(--fg3)',fontWeight:400}}>(reference on request)</span></h2>
               <p>80-100k shirts/month. 3 streams: CMT, own brand, fabric trading. 20+ job workers. 30+ inventory locations. Live in 12 days.</p>
               <div className="proof-stats">Two failed ERPs, then live in 12 days - every order in one view.</div>
-              <div className="proof-quote">
-                "They sent a working demo in 24 hours - 60-70% accurate. No other vendor we've worked with has done that."
-                <div className="proof-attr">- Founder, Apex Apparel (name withheld)</div>
-              </div>
+              <div className="proof-quote">"They sent a working demo in 24 hours - 60-70% accurate. No other vendor we've worked with has done that."<div className="proof-attr">- Founder, Apex Apparel (name withheld)</div></div>
             </div>
+            <span className="proof-detail-btn">See in detail <span aria-hidden="true">→</span></span>
           </a>
 
         </div>

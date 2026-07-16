@@ -298,40 +298,36 @@ function CustomRules() {
   }, "Every factory has rules that only the people inside it understand."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
-      maxWidth: 960,
-      color: 'rgba(255,255,255,0.62)'
+      maxWidth: 820,
+      color: 'rgba(255,255,255,0.6)'
     }
-  }, "Approval chains. Vendor exceptions. QC gates that differ per buyer. These rules live in your head, in messaging apps, in notebooks. In our system, they live in configuration - and the system enforces them automatically.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Approval chains, vendor exceptions, per-buyer QC gates. Today they live in someone's head. With us, they live in configuration - enforced automatically.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 100
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pr-rows"
-  }, scenarios.map((s, i) => /*#__PURE__*/React.createElement("div", {
-    className: "pr-row",
+    className: "pr-table-wrap"
+  }, /*#__PURE__*/React.createElement("table", {
+    className: "pr-table"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Your rule"), /*#__PURE__*/React.createElement("th", null, "Your reality"), /*#__PURE__*/React.createElement("th", null, "With SimpleGrid"))), /*#__PURE__*/React.createElement("tbody", null, scenarios.map((s, i) => /*#__PURE__*/React.createElement("tr", {
     key: i
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pr-left"
-  }, /*#__PURE__*/React.createElement("h3", {
-    className: "pr-head"
-  }, s.t), /*#__PURE__*/React.createElement("p", {
-    className: "pr-cond"
-  }, s.cond)), /*#__PURE__*/React.createElement("div", {
-    className: "pr-arrow",
-    "aria-hidden": "true"
-  }, "\u2192"), /*#__PURE__*/React.createElement("p", {
-    className: "pr-out"
-  }, s.out)))))), /*#__PURE__*/React.createElement("style", null, `
-        .pr-rows { margin-top: 40px; }
-        .pr-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.08); }
-        .pr-row:first-child { border-top: 0; padding-top: 8px; }
-        .pr-head { position: relative; padding-left: 16px; font-family: var(--font-heading); font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: rgba(255,255,255,0.96); margin: 0 0 10px; }
-        .pr-head::before { content: ''; position: absolute; left: 0; top: 3px; bottom: 3px; width: 3px; border-radius: 2px; background: var(--sg-blue); }
-        .pr-cond { padding-left: 16px; font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.55; margin: 0; }
-        .pr-arrow { font-size: 40px; line-height: 1; color: var(--sg-blue); justify-self: center; }
-        .pr-out { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
-        @media (max-width: 820px) {
-          .pr-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
-          .pr-arrow { transform: rotate(90deg); font-size: 30px; justify-self: start; margin: 2px 0; }
-        }
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "pr-rule"
+  }, s.t), /*#__PURE__*/React.createElement("td", {
+    className: "pr-reality"
+  }, s.cond), /*#__PURE__*/React.createElement("td", {
+    className: "pr-result"
+  }, s.out)))))))), /*#__PURE__*/React.createElement("style", null, `
+        .pr-table-wrap { margin-top: 40px; overflow-x: auto; }
+        .pr-table { width: 100%; min-width: 720px; border-collapse: collapse; }
+        .pr-table thead th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.42); padding: 0 22px 14px; border-bottom: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+        .pr-table thead th:last-child { color: var(--sg-blue); }
+        .pr-table tbody td { padding: 22px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+        .pr-table tbody tr:last-child td { border-bottom: 0; }
+        .pr-table tbody tr:hover td { background: rgba(255,255,255,0.015); }
+        .pr-rule { font-family: var(--font-heading); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: rgba(255,255,255,0.96); width: 27%; }
+        .pr-reality { font-size: 14.5px; font-style: italic; color: rgba(255,255,255,0.52); line-height: 1.55; width: 35%; }
+        .pr-result { font-size: 14.5px; color: rgba(255,255,255,0.84); line-height: 1.6; width: 38%; }
+        .pr-table th:last-child, .pr-table td.pr-result { border-left: 1px solid rgba(59,130,246,0.28); background: rgba(59,130,246,0.05); }
+        @media (max-width: 640px) { .pr-table tbody td { padding: 16px; } }
       `));
 }
 window.CustomRules = CustomRules;

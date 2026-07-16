@@ -5,9 +5,9 @@ function ValueInfographic() {
       icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
       h: 'Planning time',
       from: '20 hrs',
-      to: '2 hrs',
-      delta: '−90%',
-      desc: 'A week of planner-only spreadsheet work compressed into a single morning. The system aggregates wood requirements across orders automatically.',
+      to: '30 min',
+      delta: '−98%',
+      desc: 'A week of planner-only spreadsheet work compressed into well under an hour. The system aggregates wood requirements across orders automatically.',
     },
     {
       cls: 'b',
@@ -23,8 +23,8 @@ function ValueInfographic() {
       icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>,
       h: 'On-time delivery',
       from: 'baseline',
-      to: '+15%',
-      delta: '+15%',
+      to: '+25%',
+      delta: '+25%',
       desc: 'Full-stage visibility plus contractor accountability surfaced delays days earlier. Buyers ship on schedule.',
     },
     {
@@ -204,12 +204,13 @@ function EliteCaseStudy() {
 
       {/* The Operation */}
       <section className="case-section">
-        <h2>The operation</h2>
-        <p style={{maxWidth:920}}>
-          The client (kept confidential at their request) is a furniture manufacturer and exporter with presence in 12+ countries across North America, Europe, and Asia, running 600-800 people across nearly 1 million square feet of production space - raw wood comes in at one end, finished furniture leaves the other in 40-foot containers bound for international buyers. Between those two events sit <strong>19 tracked stages, four quality gates, and six contractor types</strong> - each paid by a different formula. The catalog runs to <strong>550 active SKUs</strong>, each with an average of 20+ unique components, each component cut from a specific wood species at a specific dimension and cubic footage. A single dining table might need mango wood for the top, sheesham for the legs, and a third species for the frame.
+        <div className="tag" style={{marginBottom:10}}>THE OPERATION</div>
+        <h2>One floor, 19 stages, six pricing formulas.</h2>
+        <p style={{maxWidth:780}}>
+          A furniture manufacturer and exporter (kept confidential) selling into 12+ countries - 600-800 people across ~1 million sq ft. Raw wood enters one end; finished furniture leaves the other in 40-ft containers. In between sit <strong>19 tracked stages, 4 quality gates, and 6 contractor types</strong> - each paid on a different formula - across <strong>550 active SKUs</strong> that average 20+ components, every component cut from a specific wood species at a specific dimension.
         </p>
-        <p style={{maxWidth:920}}>
-          Work happens at two levels and they cross over at assembly. Wood issuance and machining track at the <strong>component level</strong> - every cubic foot attaches to a specific SKU + component. Once all components for a SKU are machined and QC&rsquo;d they merge; from there, tracking is at the <strong>SKU level</strong> through sanding, finishing, hardware, final QC, packaging, and dispatch. Six contractor types each bill on their own formula - machining per-sqft for panels and per-running-foot for frames with rates changing on wood thickness; assembly per SKU; sanding and finishing per sqft of finished surface for 90% of products; hardware fitting on a fittings × screw-size matrix; packaging on CBM of packed material. Every one of those formulas is a row in a config table - not code.
+        <p style={{maxWidth:780}}>
+          Tracking runs at two levels that meet at assembly: <strong>component-level</strong> through wood issuance and machining, then <strong>SKU-level</strong> through finishing, QC, packaging and dispatch. Each of the six contractor formulas - per-sqft, per-running-foot, per-SKU, per-fitting, per-CBM - is a row in a config table, not code.
         </p>
       </section>
 
@@ -218,6 +219,7 @@ function EliteCaseStudy() {
 
       {/* What Was Breaking */}
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>THE PROBLEM</div>
         <h2>What was breaking</h2>
         <p><strong>The company was profitable. Nobody knew which products were.</strong> The founder knew the business made money. But could he tell you whether the 6-seater dining table was more profitable than the bookshelf? No.</p>
         <ul className="pain-list">
@@ -233,6 +235,7 @@ function EliteCaseStudy() {
 
       {/* What We Built */}
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>THE BUILD</div>
         <h2>What we built</h2>
         <p>We did multiple calls with the founder over 14 days. Mapped how work actually moves: every order type, every approval rule, every handoff between contractors, every contractor pricing formula, every exception that only the founder knew about.</p>
         <p>After the first call, the founder saw a <strong>working demo within 24 hours</strong>. Not a slideshow. A working system reflecting how his factory actually runs - wood aggregation, two-level tracking, six contractor settlement formulas, four QC gates. 21 days total from first conversation to live system.</p>
@@ -241,6 +244,7 @@ function EliteCaseStudy() {
 
       {/* Rules */}
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>GUARDRAILS</div>
         <h2>Rules the system enforces</h2>
         <p>These are not suggestions. The system physically rejects the action.</p>
         <ul className="rules-list">
@@ -260,6 +264,7 @@ function EliteCaseStudy() {
 
       {/* Floor Staff */}
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>ADOPTION</div>
         <h2>The floor staff problem, solved</h2>
         <p>The client's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. <strong>30 non-technical staff</strong> who wouldn't touch the old system.</p>
         <p>With SimpleGrid, they talk to <strong>Hank</strong>, the AI assistant. The storekeeper types: "Received 300 mango planks from Shree Timber." Hank identifies the PO, checks the quantity, updates inventory, and confirms. No menus. No dropdowns. No training manual.</p>
@@ -268,6 +273,7 @@ function EliteCaseStudy() {
 
       {/* Before/After */}
       <section className="case-section">
+        <div className="tag" style={{marginBottom:10}}>RESULTS</div>
         <h2>What changed</h2>
         <table className="ba-table">
           <thead><tr><th>Before SimpleGrid</th><th>After SimpleGrid</th></tr></thead>
@@ -275,9 +281,9 @@ function EliteCaseStudy() {
             <tr><td>No view into which SKUs made money</td><td><strong>SKU-level profitability visible</strong> per product - wood, contractor, and rejection costs attached to every SKU</td></tr>
             <tr><td>SKU production timeline was opaque</td><td><strong>SKU production timeline visible</strong> end-to-end - every stage time-stamped from PO to dispatch</td></tr>
             <tr><td>"Where's the order?" = 3 phone calls + 20 min</td><td>One dashboard. Real-time. Founder sees everything.</td></tr>
-            <tr><td>20 hours of planning per week, by one person</td><td>2 hours per week - the system aggregates and proposes</td></tr>
+            <tr><td>20 hours of planning per week, by one person</td><td>~30 minutes per week - the system aggregates and proposes</td></tr>
             <tr><td>~1.5% material wastage (~$50K/yr)</td><td>Negligible - component-level reconciliation catches gaps at the source</td></tr>
-            <tr><td>Delivery deadlines slipping invisibly</td><td>+15% on-time delivery from full-stage visibility</td></tr>
+            <tr><td>Delivery deadlines slipping invisibly</td><td>+25% on-time delivery from full-stage visibility</td></tr>
             <tr><td>Wood inventory reconciled monthly</td><td>Live inventory. Every receipt and issuance tracked, by species + thickness</td></tr>
             <tr><td>6 contractor settlements took days each month</td><td>Auto-calculated on each contractor's own formula</td></tr>
             <tr><td>30 floor staff rejected previous ERP</td><td>Same 30 staff use Hank daily. Zero training overhead.</td></tr>
@@ -287,14 +293,14 @@ function EliteCaseStudy() {
 
       {/* Testimonial */}
       <div className="testimonial-block">
-        <blockquote>"We have our own way of doing things: vendor consolidation by wood species, component-level QC, six different contractor settlement formulas that nobody else understands. We needed an ERP that was made for us, not one we'd have to change our process for. SimpleGrid feels like our system. Our Excel and texting habits didn't go away - the AI chatbot just replaced them. My stores manager was comfortable on day one because it works the way he already works."</blockquote>
+        <RevealQuote text={`"We have our own way of doing things: vendor consolidation by wood species, component-level QC, six different contractor settlement formulas that nobody else understands. We needed an ERP that was made for us, not one we'd have to change our process for. SimpleGrid feels like our system. Our Excel and texting habits didn't go away - the AI chatbot just replaced them. My stores manager was comfortable on day one because it works the way he already works."`} />
         <div className="attr">- The founder</div>
       </div>
 
       {/* Bottom Line */}
       <div className="case-bottom-line">
-        <div className="big">The $200K leak, closed. Planning cut from 20 hours a week to 2. 30 floor staff who'd rejected every ERP, now on this one daily. Live in 21 days.</div>
-        <p>Before SimpleGrid, the founder knew the company made money. Now he knows which products make money, and which ones do not. Planning dropped from 20 hours to 2. Wastage dropped to negligible. Delivery improved 15%. And 30 floor staff who had rejected every previous ERP now use this one daily.</p>
+        <div className="big">The $200K leak, closed. Planning cut from 20 hours a week to 30 minutes. 30 floor staff who'd rejected every ERP, now on this one daily. Live in 21 days.</div>
+        <p>Before SimpleGrid, the founder knew the company made money. Now he knows which products make money, and which ones do not. Planning dropped from 20 hours to 30 minutes. Wastage dropped to negligible. Delivery improved 25%. And 30 floor staff who had rejected every previous ERP now use this one daily.</p>
         <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{marginTop:16}}>Book a demo - See how we'd model your operations</a>
         <div style={{marginTop:20,fontSize:14}}>
           <a href="case-apex.html" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'none'}}>See an apparel manufacturer's deployment - live in 12 days →</a>

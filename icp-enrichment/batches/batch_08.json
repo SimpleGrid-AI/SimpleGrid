@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  305,
+        "company":  "Worden Co., The",
+        "website":  "https://www.wordencompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Taylor deRoo",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  306,
+        "company":  "Romweber",
+        "website":  "Defunct â€” Romweber Furniture Co (Batesville, IN) ceased furniture production; factory repurposed as \u0027Romweber Marketplace\u0027 (antiques/event venue) from 2009. No active manufacturer website.",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  309,
+        "company":  "Lesro",
+        "website":  "https://www.lesro.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ed Leshem",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  312,
+        "company":  "Dauphin \u0027Eddy\u0027 Chairs",
+        "website":  "https://www.dauphin.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Matthew Negron",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  316,
+        "company":  "Commercial Casework",
+        "website":  "https://commercialcasework.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Laura Martin",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  318,
+        "company":  "Buckstaff",
+        "website":  "https://buckstaff.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Marty Cowie",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  320,
+        "company":  "Keller Products, Inc.",
+        "website":  "https://kellerproducts.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "John Hudson",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  321,
+        "company":  "Tri-Boro Shelving \u0026 Partition Corp.",
+        "website":  "https://triboroshelving.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Toni",
+        "existingDesig":  "Antoinette",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  322,
+        "company":  "Tri-Boro Shelving \u0026 Partition Corp.",
+        "website":  "https://triboroshelving.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Randy Myers",
+        "existingDesig":  "COO/President of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  324,
+        "company":  "Nucraft Furniture Company",
+        "website":  "https://www.nucraft.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Matt Schad",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  325,
+        "company":  "Nucraft Furniture Company",
+        "website":  "https://www.nucraft.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tim Schad",
+        "existingDesig":  "Chairman; former CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  327,
+        "company":  "Wittrock Woodworking \u0026 Manufacturing Co., Inc.",
+        "website":  "https://www.wittrockinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Chris Wittrock",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  328,
+        "company":  "Hamilton Sorter",
+        "website":  "https://hamiltoncs.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Thaddeus Jaroszewicz",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  333,
+        "company":  "Miller Desk, Inc.",
+        "website":  "https://milleratwork.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Felix Miller III",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  335,
+        "company":  "KUROTANI NORTH AMERICA INC.",
+        "website":  "kurotani-north-america.business.site",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  339,
+        "company":  "CPM Corp.",
+        "website":  "cpm.net",
+        "industry":  "Recyclers",
+        "existingName":  "David Webster",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  340,
+        "company":  "Galbreath LLC",
+        "website":  "galbreathproducts.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  341,
+        "company":  "Ditch Witch",
+        "website":  "ditchwitch.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  343,
+        "company":  "Keywell LLC",
+        "website":  "keywell.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  344,
+        "company":  "Calgon Carbon Corporation",
+        "website":  "calgoncarbon.com",
+        "industry":  "Recyclers",
+        "existingName":  "Steve Schott",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  345,
+        "company":  "Calgon Carbon Corporation",
+        "website":  "calgoncarbon.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert Fortwangler",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

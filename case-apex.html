@@ -171,6 +171,62 @@
   .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
   .stat-cell:last-child { border-bottom: none; }
 }
+
+/* ===== THE PROBLEM - pain cards ===== */
+.prob-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 12px; }
+.prob-card { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--sg-red); border-radius: 12px; padding: 18px 20px; transition: transform .15s ease, box-shadow .15s ease; }
+.prob-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(20,28,46,0.07); }
+.prob-ic { flex: 0 0 40px; width: 40px; height: 40px; border-radius: 10px; background: rgba(239,68,68,0.09); color: var(--sg-red); display: flex; align-items: center; justify-content: center; }
+.prob-ic svg { width: 20px; height: 20px; display: block; }
+.prob-card .t { font-family: var(--font-heading); font-size: 15.5px; font-weight: 700; color: var(--fg1); margin: 1px 0 4px; letter-spacing: -0.01em; }
+.prob-card .d { font-size: 13.5px; line-height: 1.5; color: var(--fg2); margin: 0; }
+
+/* ===== THE PROCESS - pipeline flow chart ===== */
+.proc-pipe { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 12px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; }
+.proc-node { position: relative; padding: 18px 16px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.proc-node:nth-child(4n) { border-right: none; }
+.proc-node:nth-last-child(-n+4) { border-bottom: none; }
+.proc-n { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 999px; background: color-mix(in srgb, var(--sg-blue) 10%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 24%, transparent); color: var(--sg-blue); font-family: var(--font-mono); font-size: 12px; font-weight: 700; margin-bottom: 11px; }
+.proc-node .t { font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: var(--fg1); margin: 0 0 4px; line-height: 1.25; letter-spacing: -0.01em; }
+.proc-node .d { font-size: 12.5px; line-height: 1.45; color: var(--fg3); margin: 0; }
+.proc-node::after { content: '\2192'; position: absolute; right: -9px; top: 50%; transform: translateY(-50%); z-index: 2; width: 18px; height: 18px; background: #fff; border-radius: 50%; color: var(--sg-blue); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.proc-node:nth-child(4n)::after, .proc-node:last-child::after { display: none; }
+@keyframes procRipple { 0%, 58%, 100% { background: color-mix(in srgb, var(--sg-blue) 10%, transparent); color: var(--sg-blue); box-shadow: none; } 9% { background: var(--sg-blue); color: #fff; box-shadow: 0 0 0 4px rgba(52,97,224,0.16); } }
+.proc-anim .proc-n { animation-name: procRipple; animation-duration: 7s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+
+/* ===== GUARDRAILS - blocked-action cards ===== */
+.guard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
+.guard-card { display: flex; gap: 13px; align-items: center; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+.guard-badge { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 10px; background: rgba(239,68,68,0.09); color: var(--sg-red); display: flex; align-items: center; justify-content: center; position: relative; }
+.guard-badge svg { width: 19px; height: 19px; display: block; }
+.guard-badge::before { content: ''; position: absolute; inset: 0; border-radius: 10px; border: 2px solid var(--sg-red); opacity: 0; animation: guardRing 3s ease-out infinite; }
+@keyframes guardRing { 0% { transform: scale(1); opacity: 0.55; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
+.guard-card .r { font-size: 13.5px; line-height: 1.45; color: var(--fg2); margin: 0; }
+
+/* ===== RESULTS - before -> after ===== */
+.res-rows { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.res-row { display: grid; grid-template-columns: 1fr 46px 1fr; gap: 6px; align-items: stretch; }
+.res-cell { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; font-size: 14px; line-height: 1.45; }
+.res-before { background: rgba(239,68,68,0.035); border-color: rgba(239,68,68,0.18); color: var(--fg2); }
+.res-after { background: rgba(16,185,129,0.045); border-color: rgba(16,185,129,0.22); color: var(--fg1); font-weight: 600; }
+.res-arrow { display: flex; align-items: center; justify-content: center; color: var(--sg-blue); }
+.res-arrow svg { width: 22px; height: 22px; animation: resArrow 1.8s ease-in-out infinite; }
+@keyframes resArrow { 0%, 100% { transform: translateX(-3px); opacity: .45; } 50% { transform: translateX(3px); opacity: 1; } }
+
+@media (max-width: 760px) {
+  .prob-grid { grid-template-columns: 1fr; }
+  .proc-pipe { grid-template-columns: 1fr; }
+  .proc-node { border-right: none !important; }
+  .proc-node:not(:last-child) { border-bottom: 1px solid var(--border); }
+  .proc-node::after { content: '\2193'; right: 50%; top: auto; bottom: -9px; transform: translateX(50%); }
+  .guard-grid { grid-template-columns: 1fr; }
+  .res-row { grid-template-columns: 1fr; gap: 4px; }
+  .res-arrow { height: 26px; transform: rotate(90deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proc-anim .proc-n, .guard-badge::before, .res-arrow svg { animation: none; }
+  .prob-card { transition: none; }
+}
 </style>
 
 <!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
@@ -199,6 +255,7 @@
 <script src="components/site-footer.js" defer></script>
 <script src="components/LoginModal.js" defer></script>
 <script src="components/InviteModal.js" defer></script>
+<script src="components/Interactive.js" defer></script>
 <script src="components/FinalCTA.js" defer></script>
 <script src="app/case-apex.js" defer></script><script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
 </html>

@@ -91,30 +91,14 @@
 /* ====== Value-delivered infographic ====== */
 .value-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
 .value-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden; }
-.value-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; }
-.value-card.a::before { background: var(--sg-blue); }
-.value-card.b::before { background: var(--sg-green); }
-.value-card.c::before { background: var(--sg-gold); }
-.value-card.d::before { background: var(--sg-purple); }
-.value-card .icon-box { width: 36px; height: 36px; border-radius: 8px; display:flex; align-items:center; justify-content:center; margin-bottom: 14px; color: #fff; }
-.value-card.a .icon-box { background: var(--sg-blue); }
-.value-card.b .icon-box { background: var(--sg-green); }
-.value-card.c .icon-box { background: var(--sg-gold); }
-.value-card.d .icon-box { background: var(--sg-purple); }
+.value-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background: var(--sg-blue); }
+.value-card .icon-box { width: 36px; height: 36px; border-radius: 8px; display:flex; align-items:center; justify-content:center; margin-bottom: 14px; color: #fff; background: var(--sg-blue); }
 .value-card h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--fg1); margin: 0 0 12px; letter-spacing: 0.005em; }
 .value-card .ba { display:flex; align-items:baseline; gap:8px; margin: 0; font-family: var(--font-heading); }
 .value-card .ba .from { font-size: 18px; color: var(--fg3); text-decoration: line-through; }
 .value-card .ba .arrow { color: var(--fg3); font-size: 15px; }
-.value-card .ba .to { font-size: 33px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
-.value-card.a .ba .to { color: var(--sg-blue); }
-.value-card.b .ba .to { color: var(--sg-green); }
-.value-card.c .ba .to { color: var(--sg-gold); }
-.value-card.d .ba .to { color: var(--sg-purple); }
-.value-card .delta { display:inline-block; margin-top: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; padding: 4px 8px; border-radius: 999px; }
-.value-card.a .delta { background: rgba(74,123,247,0.1); color: var(--sg-blue); }
-.value-card.b .delta { background: rgba(16,185,129,0.1); color: var(--sg-green); }
-.value-card.c .delta { background: rgba(245,158,11,0.1); color: var(--sg-gold); }
-.value-card.d .delta { background: rgba(167,139,250,0.12); color: var(--sg-purple); }
+.value-card .ba .to { font-size: 33px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; color: var(--sg-blue); }
+.value-card .delta { display:inline-block; margin-top: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; padding: 4px 8px; border-radius: 999px; background: rgba(74,123,247,0.1); color: var(--sg-blue); }
 .value-card .desc { font-size: 14px; color: var(--fg3); line-height: 1.55; margin: 12px 0 0; }
 
 /* ====== Manufacturing process infographic ====== */
@@ -208,6 +192,7 @@
 <script src="components/LoginModal.js" defer></script>
 <script src="components/InviteModal.js" defer></script>
 <script src="components/EliteFactoryRoad.js" defer></script>
+<script src="components/Interactive.js" defer></script>
 <script src="components/FinalCTA.js" defer></script>
 <script src="app/case-furniture-manufacturer.js" defer></script><script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
 </html>

@@ -24,18 +24,20 @@ function ProductPage() {
       {/* MOTIVATION - Fogg M: pain in operator voice */}
       <MotivationSection />
 
-      {/* INTEGRATIONS + SECURITY - supporting pillars */}
+      {/* INTEGRATIONS - supporting pillar */}
       <Integrations />
-      <DataSecurity />
 
-      {/* THE BIG IDEA - Events Ledger (flagship section) */}
+      {/* THE BIG IDEA - Activity Ledger (flagship section) */}
       <EventsLedger />
 
-      {/* ABILITY - adoption is easy */}
-      <AbilitySection />
+      {/* SECURITY - supporting pillar */}
+      <DataSecurity />
 
       {/* RULES - your process, enforced */}
       <CustomRules />
+
+      {/* ABILITY - adoption is easy */}
+      <AbilitySection />
 
       {/* TRIGGER - final CTA */}
       <FinalCTA title="One integrated system for your whole floor." body="Orders, inventory, costing, QC, contractors, approvals, dispatch - every feature modelled on your exact workflow, in one place. No bolted-on modules, no template to bend around. And because your team types the way they already text, there's nothing to train. See it running on your own operation." note="We configure it to your floor at our cost. Run it live for 30 days. You pay only when it works." ctaLabel="See a live demo" />

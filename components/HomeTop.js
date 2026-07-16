@@ -480,7 +480,7 @@ function BurstBand() {
 }
 window.BurstBand = BurstBand;
 function CycleHeadline() {
-  const HEADLINES = [/*#__PURE__*/React.createElement(React.Fragment, null, "The Factory", /*#__PURE__*/React.createElement("br", null), "Ops Cloud.")];
+  const HEADLINES = [/*#__PURE__*/React.createElement(React.Fragment, null, "The Operational Layer", /*#__PURE__*/React.createElement("br", null), "for your floor.")];
   // Each tile fades smoothly; staggering them by (x+y)*delay gives a diagonal
   // sweep that visually "breaks" the headline into checkboxes and reassembles.
   const TX = 8,
@@ -532,7 +532,25 @@ function Hero() {
   const [showInvite, setShowInvite] = React.useState(false);
   // light-only hero: dark mode + toggle removed so the silk ribbon always
   // reads as the front element against the light page
-
+  const HERO_SVG = `<svg viewBox="0 0 380 320" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SimpleGrid is a live operations layer added on top of the accounting software you already run">
+  <ellipse cx="190" cy="312" rx="118" ry="16" fill="rgba(20,28,46,0.10)"/>
+  <path d="M190 180 L290 230 L190 280 L90 230 Z" fill="#EAF0F8"/>
+  <path d="M90 230 L190 280 L190 308 L90 258 Z" fill="#CFD9E8"/>
+  <path d="M290 230 L190 280 L190 308 L290 258 Z" fill="#BAC6D8"/>
+  <path d="M190 180 L290 230 L190 280 L90 230 Z" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="1"/>
+  <text x="190" y="236" text-anchor="middle" font-family="Geist, Calibri, sans-serif" font-size="14" font-weight="700" fill="#56627A">Your accounting</text>
+  <path d="M190 40 L290 90 L190 140 L90 90 Z" fill="#4A7BF7"/>
+  <path d="M90 90 L190 140 L190 168 L90 118 Z" fill="#2F58D0"/>
+  <path d="M290 90 L190 140 L190 168 L290 118 Z" fill="#264AB8"/>
+  <path d="M190 40 L290 90 L190 140 L90 90 Z" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1"/>
+  <text x="190" y="96" text-anchor="middle" font-family="Geist, Calibri, sans-serif" font-size="16" font-weight="700" fill="#ffffff">SimpleGrid</text>
+  <circle cx="190" cy="176" r="3.4" fill="#3461E0"><animate attributeName="opacity" values="0.15;1;0.15" dur="1.8s" repeatCount="indefinite"/></circle>
+  <circle cx="168" cy="172" r="2.4" fill="#7AA5FF"><animate attributeName="opacity" values="0.15;1;0.15" dur="1.8s" begin="0.35s" repeatCount="indefinite"/></circle>
+  <circle cx="212" cy="172" r="2.4" fill="#7AA5FF"><animate attributeName="opacity" values="0.15;1;0.15" dur="1.8s" begin="0.7s" repeatCount="indefinite"/></circle>
+  <rect x="248" y="18" width="76" height="26" rx="13" fill="#0B1220"/>
+  <circle cx="264" cy="31" r="4" fill="#34D399"><animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/></circle>
+  <text x="276" y="35" font-family="Geist, Calibri, sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">LIVE</text>
+</svg>`;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("section", {
     className: "hero hero-light"
   }, /*#__PURE__*/React.createElement("div", {
@@ -543,7 +561,7 @@ function Hero() {
     delay: 200
   }, /*#__PURE__*/React.createElement("p", {
     className: "hero-sub"
-  }, "Configured to your floor. Live in 21 days. Live control of your factory floor, synced to the QuickBooks or Tally you already run \u2014 no migration, no 12-month implementation.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "SimpleGrid is the operations platform that adds a live, intelligent layer over the accounting software you already run. It's the ERP your floor actually uses, configured to your operation and live in 21 days. No migration, no rip-and-replace.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 400
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-cta"
@@ -574,92 +592,68 @@ function Hero() {
   }, /*#__PURE__*/React.createElement("path", {
     d: "M12 2l2.39 5.84L20 10l-5.61 2.16L12 18l-2.39-5.84L4 10l5.61-2.16L12 2z",
     fill: "currentColor"
-  })), "Book a demo")))), /*#__PURE__*/React.createElement(Reveal, {
+  })), "Book a demo"))), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 500
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-proof-strip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hps-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hps-v"
+  }, "1-3 wks"), /*#__PURE__*/React.createElement("span", {
+    className: "hps-l"
+  }, "to go live")), /*#__PURE__*/React.createElement("div", {
+    className: "hps-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hps-v"
+  }, "30-day"), /*#__PURE__*/React.createElement("span", {
+    className: "hps-l"
+  }, "live trial")), /*#__PURE__*/React.createElement("div", {
+    className: "hps-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hps-v"
+  }, "$0"), /*#__PURE__*/React.createElement("span", {
+    className: "hps-l"
+  }, "up front"))))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 300
   }, /*#__PURE__*/React.createElement("div", {
-    className: "hero-stat-box",
-    style: {
-      background: 'rgba(255,255,255,0.42)',
-      border: '1px solid var(--border)',
-      borderRadius: 16,
-      padding: 32,
-      textAlign: 'center'
-    }
+    className: "hero-ledger",
+    role: "img",
+    "aria-label": "SimpleGrid captures every floor action live - each with a name and a timestamp - and posts it straight to your books."
   }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      fontWeight: 700,
-      textTransform: 'uppercase',
-      letterSpacing: '0.16em',
-      color: 'var(--fg2)',
-      marginBottom: 10
-    }
-  }, "Execution Speed"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 80,
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      lineHeight: 1,
-      letterSpacing: '-0.04em',
-      position: 'relative'
-    }
-  }, /*#__PURE__*/React.createElement("span", null, "1\u20133"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 24,
-      color: 'var(--fg3)',
-      marginLeft: 14,
-      fontWeight: 500,
-      letterSpacing: 'normal'
-    }
-  }, "Weeks")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      marginTop: 14,
-      lineHeight: 1.5
-    }
-  }, "From kickoff to live on your real floor."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 32,
-      paddingTop: 28,
-      borderTop: '1px solid var(--border)'
-    }
+    className: "hl-head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hl-title"
+  }, "Floor activity"), /*#__PURE__*/React.createElement("span", {
+    className: "hl-live"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hl-live-dot"
+  }), "Live")), /*#__PURE__*/React.createElement("div", {
+    className: "hl-feed"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "hl-track"
+  }, [{c:'var(--sg-blue)',src:'Stores',t:'09:42',x:'Received 300 planks · PO 1182'}, {c:'var(--sg-green)',src:'QC',t:'09:43',x:'Batch B-77 passed · 580/600'}, {c:'var(--sg-purple)',src:'Assembly',t:'09:44',x:'SKU DT-6 → finishing'}, {c:'var(--sg-gold)',src:'Dispatch',t:'09:45',x:'Container loaded · 18 CBM'}, {c:'var(--sg-blue)',src:'Books',t:'09:45',x:'Invoice posted → QuickBooks'}, {c:'var(--sg-blue)',src:'Floor',t:'09:46',x:'Issued 40 hinges to Cell 3'}, {c:'var(--sg-green)',src:'Costing',t:'09:47',x:'Job J-204 margin updated'}, {c:'var(--sg-blue)',src:'Stores',t:'09:42',x:'Received 300 planks · PO 1182'}, {c:'var(--sg-green)',src:'QC',t:'09:43',x:'Batch B-77 passed · 580/600'}, {c:'var(--sg-purple)',src:'Assembly',t:'09:44',x:'SKU DT-6 → finishing'}, {c:'var(--sg-gold)',src:'Dispatch',t:'09:45',x:'Container loaded · 18 CBM'}, {c:'var(--sg-blue)',src:'Books',t:'09:45',x:'Invoice posted → QuickBooks'}, {c:'var(--sg-blue)',src:'Floor',t:'09:46',x:'Issued 40 hinges to Cell 3'}, {c:'var(--sg-green)',src:'Costing',t:'09:47',x:'Job J-204 margin updated'}].map((e, i) => /*#__PURE__*/React.createElement("div", {
+    className: "hl-row",
+    key: i
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hl-dot",
     style: {
-      fontSize: 12,
-      fontWeight: 700,
-      textTransform: 'uppercase',
-      letterSpacing: '0.16em',
-      color: 'var(--fg2)',
-      marginBottom: 10
+      background: e.c
     }
-  }, "On Your Real Floor"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 80,
-      fontWeight: 700,
-      color: 'var(--fg1)',
-      lineHeight: 1,
-      letterSpacing: '-0.04em',
-      position: 'relative'
-    }
-  }, /*#__PURE__*/React.createElement("span", null, "30"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 24,
-      color: 'var(--fg3)',
-      marginLeft: 14,
-      fontWeight: 500,
-      letterSpacing: 'normal'
-    }
-  }, "Days")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      marginTop: 14,
-      lineHeight: 1.5
-    }
-  }, "Real jobs. Real team. Real orders. Then you decide."))))))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hl-body"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hl-meta"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "hl-src"
+  }, e.src), /*#__PURE__*/React.createElement("span", {
+    className: "hl-time"
+  }, e.t)), /*#__PURE__*/React.createElement("div", {
+    className: "hl-txt"
+  }, e.x)))))), /*#__PURE__*/React.createElement("a", {
+    className: "hl-foot",
+    href: "syncs.html"
+  }, "Posts to QuickBooks, Tally & 20+ more →")))))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)
   }));
 }
@@ -753,7 +747,8 @@ function TrustStrip() {
       gap: 24,
       padding: '14px 24px',
       flexWrap: 'wrap',
-      borderBottom: '1px solid var(--border)',
+      borderTop: '1px solid #1a1a1a',
+      borderBottom: '1px solid #1a1a1a',
       background: 'var(--bg-alt)'
     }
   }, /*#__PURE__*/React.createElement("span", {
@@ -854,306 +849,60 @@ function ProblemSection() {
         display: 'block'
       },
       "aria-hidden": "true"
-    }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("radialGradient", {
-      id: "sgHoleCore",
-      cx: "50%",
-      cy: "50%",
-      r: "50%"
-    }, /*#__PURE__*/React.createElement("stop", {
-      offset: "0%",
-      stopColor: "#000",
-      stopOpacity: "1"
-    }), /*#__PURE__*/React.createElement("stop", {
-      offset: "55%",
-      stopColor: "#0F1419",
-      stopOpacity: "1"
-    }), /*#__PURE__*/React.createElement("stop", {
-      offset: "100%",
-      stopColor: "#1F2937",
-      stopOpacity: "0"
-    })), /*#__PURE__*/React.createElement("radialGradient", {
-      id: "sgHoleHalo",
-      cx: "50%",
-      cy: "50%",
-      r: "50%"
-    }, /*#__PURE__*/React.createElement("stop", {
-      offset: "40%",
-      stopColor: "#DC2A3D",
-      stopOpacity: "0"
-    }), /*#__PURE__*/React.createElement("stop", {
-      offset: "80%",
-      stopColor: "#DC2A3D",
-      stopOpacity: "0.2"
-    }), /*#__PURE__*/React.createElement("stop", {
-      offset: "100%",
-      stopColor: "#DC2A3D",
-      stopOpacity: "0"
-    }))), [{
-      y: 18,
-      label: 'WhatsApp threads',
-      dy: 76,
-      delay: '0s'
+    }, [{
+      y: 44,
+      label: 'Spreadsheets'
     }, {
-      y: 50,
-      label: 'Spreadsheet v7',
-      dy: 44,
-      delay: '1.5s'
+      y: 86,
+      label: 'WhatsApp'
     }, {
-      y: 82,
-      label: 'Walk the floor',
-      dy: 12,
-      delay: '3s'
-    }, {
-      y: 114,
-      label: 'Phone calls',
-      dy: -20,
-      delay: '4.5s'
-    }, {
-      y: 146,
-      label: 'End-of-day report',
-      dy: -52,
-      delay: '6s'
-    }].map((it, i) => /*#__PURE__*/React.createElement("g", {
+      y: 128,
+      label: 'Phone calls'
+    }].map((s, i) => /*#__PURE__*/React.createElement("g", {
       key: i
     }, /*#__PURE__*/React.createElement("path", {
-      d: `M 32 ${it.y + 6} Q 90 ${it.y + 6} 178 100`,
+      d: `M 140 ${s.y + 15} C 192 ${s.y + 15} 214 100 246 100`,
       fill: "none",
-      stroke: "#DC2A3D",
-      strokeWidth: "1",
-      strokeDasharray: "2 4",
-      strokeOpacity: "0.3"
+      stroke: "#D8DEE7",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "16",
+      y: s.y,
+      width: "124",
+      height: "30",
+      rx: "8",
+      fill: "#F8FAFC",
+      stroke: "#E5E7EB"
     }), /*#__PURE__*/React.createElement("text", {
-      x: "38",
-      y: it.y - 2,
-      fontSize: "10.5",
+      x: "78",
+      y: s.y + 19,
+      fontSize: "12.5",
+      fill: "#475569",
+      fontWeight: "600",
+      textAnchor: "middle"
+    }, s.label))), /*#__PURE__*/React.createElement("circle", {
+      cx: "290",
+      cy: "100",
+      r: "44",
+      fill: "#1F2937"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "290",
+      cy: "86",
+      r: "11",
+      fill: "#fff"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M 272 118 Q 272 98 290 98 Q 308 98 308 118 Z",
+      fill: "#fff"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "290",
+      y: "168",
+      fontSize: "12",
       fill: "#374151",
-      fontWeight: "600"
-    }, it.label), /*#__PURE__*/React.createElement("g", {
-      style: {
-        animation: `sg-suck-${i} 20s ${it.delay} ease-in infinite`,
-        transformOrigin: '0 0'
-      }
-    }, /*#__PURE__*/React.createElement("rect", {
-      x: "10",
-      y: it.y,
-      width: "22",
-      height: "14",
-      rx: "3",
-      fill: "#DC2A3D"
-    }), /*#__PURE__*/React.createElement("text", {
-      x: "21",
-      y: it.y + 11,
-      fontSize: "10",
-      fill: "#fff",
       fontWeight: "700",
       textAnchor: "middle"
-    }, "?")))), /*#__PURE__*/React.createElement("circle", {
-      cx: "178",
-      cy: "100",
-      r: "62",
-      fill: "url(#sgHoleHalo)",
-      style: {
-        animation: 'sg-halo 3s ease-in-out infinite'
-      }
-    }), /*#__PURE__*/React.createElement("g", {
-      style: {
-        transformOrigin: '178px 100px',
-        animation: 'sg-spin 9s linear infinite'
-      }
-    }, /*#__PURE__*/React.createElement("ellipse", {
-      cx: "178",
-      cy: "100",
-      rx: "46",
-      ry: "11",
-      fill: "none",
-      stroke: "rgba(220,42,61,0.35)",
-      strokeWidth: "1"
-    }), /*#__PURE__*/React.createElement("ellipse", {
-      cx: "178",
-      cy: "100",
-      rx: "46",
-      ry: "11",
-      fill: "none",
-      stroke: "rgba(220,42,61,0.22)",
-      strokeWidth: "1",
-      transform: "rotate(45 178 100)"
-    }), /*#__PURE__*/React.createElement("ellipse", {
-      cx: "178",
-      cy: "100",
-      rx: "46",
-      ry: "11",
-      fill: "none",
-      stroke: "rgba(220,42,61,0.18)",
-      strokeWidth: "1",
-      transform: "rotate(90 178 100)"
-    }), /*#__PURE__*/React.createElement("ellipse", {
-      cx: "178",
-      cy: "100",
-      rx: "46",
-      ry: "11",
-      fill: "none",
-      stroke: "rgba(220,42,61,0.18)",
-      strokeWidth: "1",
-      transform: "rotate(135 178 100)"
-    })), /*#__PURE__*/React.createElement("circle", {
-      cx: "178",
-      cy: "100",
-      r: "36",
-      fill: "url(#sgHoleCore)"
-    }), /*#__PURE__*/React.createElement("text", {
-      x: "178",
-      y: "98",
-      fontSize: "12",
-      fill: "#fff",
-      fontWeight: "700",
-      textAnchor: "middle",
-      letterSpacing: "0.02em"
-    }, "ONE PERSON"), /*#__PURE__*/React.createElement("text", {
-      x: "178",
-      y: "112",
-      fontSize: "8.5",
-      fill: "rgba(255,255,255,0.55)",
-      fontWeight: "700",
-      textAnchor: "middle",
-      letterSpacing: "0.18em"
-    }, "KNOWS"), [{
-      y: 36,
-      l1: 'Owner waits',
-      l2: 'for the report',
-      color: '#374151',
-      sub: 'plans off yesterday'
-    }, {
-      y: 100,
-      l1: 'Orders get',
-      l2: 'miscosted',
-      color: '#374151',
-      sub: 'caught at month-end'
-    }, {
-      y: 164,
-      l1: 'QC issues',
-      l2: 'surface late',
-      color: '#374151',
-      sub: 'customer finds out first'
-    }].map((o, i) => /*#__PURE__*/React.createElement("g", {
-      key: i
-    }, /*#__PURE__*/React.createElement("path", {
-      d: `M 214 100 Q 232 ${(100 + o.y) / 2} 244 ${o.y} L 268 ${o.y}`,
-      fill: "none",
-      stroke: o.color,
-      strokeWidth: "1.5",
-      strokeDasharray: "3 3",
-      strokeOpacity: "0.85"
-    }), /*#__PURE__*/React.createElement("polygon", {
-      points: `274,${o.y} 266,${o.y - 4} 266,${o.y + 4}`,
-      fill: o.color
-    }), /*#__PURE__*/React.createElement("text", {
-      x: "280",
-      y: o.y - 4,
-      fontSize: "11",
-      fill: o.color,
-      fontWeight: "700"
-    }, o.l1), /*#__PURE__*/React.createElement("text", {
-      x: "280",
-      y: o.y + 8,
-      fontSize: "11",
-      fill: o.color,
-      fontWeight: "700"
-    }, o.l2), /*#__PURE__*/React.createElement("text", {
-      x: "280",
-      y: o.y + 20,
-      fontSize: "9",
-      fill: "#6B7280",
-      fontStyle: "italic"
-    }, o.sub))), /*#__PURE__*/React.createElement("style", null, `
-            @keyframes sg-suck-0 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,76px) scale(0.3);opacity:0} 100%{transform:translate(146px,76px) scale(0.3);opacity:0} }
-            @keyframes sg-suck-1 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,44px) scale(0.3);opacity:0} 100%{transform:translate(146px,44px) scale(0.3);opacity:0} }
-            @keyframes sg-suck-2 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,12px) scale(0.3);opacity:0} 100%{transform:translate(146px,12px) scale(0.3);opacity:0} }
-            @keyframes sg-suck-3 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,-20px) scale(0.3);opacity:0} 100%{transform:translate(146px,-20px) scale(0.3);opacity:0} }
-            @keyframes sg-suck-4 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,-52px) scale(0.3);opacity:0} 100%{transform:translate(146px,-52px) scale(0.3);opacity:0} }
-            @keyframes sg-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-            @keyframes sg-halo { 0%,100%{opacity:0.55} 50%{opacity:1} }
-          `))
+    }, "One person knows"))
   }, {
     n: '02',
-    t: "Your ERP can't keep up",
-    b: 'Every small change becomes a six-week project.',
-    footer: 'SimpleGrid bends to your process.',
-    visual: /*#__PURE__*/React.createElement("svg", {
-      viewBox: "0 0 400 200",
-      style: {
-        width: '100%',
-        height: 'auto',
-        display: 'block'
-      },
-      "aria-hidden": "true"
-    }, /*#__PURE__*/React.createElement("text", {
-      x: "20",
-      y: "50",
-      fontSize: "13",
-      fill: "var(--fg1)",
-      fontWeight: "600"
-    }, "Your business with a fluid ops layer"), /*#__PURE__*/React.createElement("rect", {
-      x: "20",
-      y: "62",
-      width: "360",
-      height: "20",
-      rx: "10",
-      fill: "#E5E8ED"
-    }), /*#__PURE__*/React.createElement("rect", {
-      x: "20",
-      y: "62",
-      width: "360",
-      height: "20",
-      rx: "10",
-      fill: "#3461E0",
-      style: {
-        transformOrigin: '20px 72px',
-        animation: 'sg-grow-b 8.5s ease-out infinite'
-      }
-    }), /*#__PURE__*/React.createElement("text", {
-      x: "370",
-      y: "76",
-      fontSize: "11",
-      fill: "#fff",
-      fontWeight: "700",
-      textAnchor: "end",
-      style: {
-        opacity: 0,
-        animation: 'sg-fade-b 8.5s ease-out infinite'
-      }
-    }, "Scales"), /*#__PURE__*/React.createElement("text", {
-      x: "20",
-      y: "124",
-      fontSize: "13",
-      fill: "var(--fg1)",
-      fontWeight: "600"
-    }, "Your business with a rigid ERP"), /*#__PURE__*/React.createElement("rect", {
-      x: "20",
-      y: "136",
-      width: "360",
-      height: "20",
-      rx: "10",
-      fill: "#E5E8ED"
-    }), /*#__PURE__*/React.createElement("rect", {
-      x: "20",
-      y: "136",
-      width: "180",
-      height: "20",
-      rx: "10",
-      fill: "#9CA3AF",
-      style: {
-        transformOrigin: '20px 146px',
-        animation: 'sg-grow-c 8.5s ease-out infinite'
-      }
-    }), /*#__PURE__*/React.createElement("text", {
-      x: "214",
-      y: "150",
-      fontSize: "11",
-      fill: "#6B7280",
-      fontWeight: "700"
-    }, "\u2190 Growth Stalls"), /*#__PURE__*/React.createElement("style", null, `@keyframes sg-grow-b{0%{transform:scaleX(0)}60%,100%{transform:scaleX(1)}}@keyframes sg-grow-c{0%{transform:scaleX(0)}50%,100%{transform:scaleX(1)}}@keyframes sg-fade-b{0%,60%{opacity:0}75%,100%{opacity:1}}`))
-  }, {
-    n: '03',
     t: 'Too complex to use',
     b: 'Built for a thousand businesses, not your floor.',
     footer: 'Yours shows only what you need.',
@@ -1267,6 +1016,85 @@ function ProblemSection() {
       }
     }, "\uD83D\uDE35"), /*#__PURE__*/React.createElement("style", null, `@keyframes sg-conf{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}`))
   }, {
+    n: '03',
+    t: "Your ERP can't keep up",
+    b: 'Every small change becomes a six-week project.',
+    footer: 'SimpleGrid bends to your process.',
+    visual: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 400 200",
+      style: {
+        width: '100%',
+        height: 'auto',
+        display: 'block'
+      },
+      "aria-hidden": "true"
+    }, /*#__PURE__*/React.createElement("text", {
+      x: "20",
+      y: "50",
+      fontSize: "13",
+      fill: "var(--fg1)",
+      fontWeight: "600"
+    }, "Your business with a fluid ops layer"), /*#__PURE__*/React.createElement("rect", {
+      x: "20",
+      y: "62",
+      width: "360",
+      height: "20",
+      rx: "10",
+      fill: "#E5E8ED"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "20",
+      y: "62",
+      width: "360",
+      height: "20",
+      rx: "10",
+      fill: "#3461E0",
+      style: {
+        transformOrigin: '20px 72px',
+        animation: 'sg-grow-b 8.5s ease-out infinite'
+      }
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "370",
+      y: "76",
+      fontSize: "11",
+      fill: "#fff",
+      fontWeight: "700",
+      textAnchor: "end",
+      style: {
+        opacity: 0,
+        animation: 'sg-fade-b 8.5s ease-out infinite'
+      }
+    }, "Scales"), /*#__PURE__*/React.createElement("text", {
+      x: "20",
+      y: "124",
+      fontSize: "13",
+      fill: "var(--fg1)",
+      fontWeight: "600"
+    }, "Your business with a rigid ERP"), /*#__PURE__*/React.createElement("rect", {
+      x: "20",
+      y: "136",
+      width: "360",
+      height: "20",
+      rx: "10",
+      fill: "#E5E8ED"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "20",
+      y: "136",
+      width: "180",
+      height: "20",
+      rx: "10",
+      fill: "#9CA3AF",
+      style: {
+        transformOrigin: '20px 146px',
+        animation: 'sg-grow-c 8.5s ease-out infinite'
+      }
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "214",
+      y: "150",
+      fontSize: "11",
+      fill: "#6B7280",
+      fontWeight: "700"
+    }, "\u2190 Growth Stalls"), /*#__PURE__*/React.createElement("style", null, `@keyframes sg-grow-b{0%{transform:scaleX(0)}60%,100%{transform:scaleX(1)}}@keyframes sg-grow-c{0%{transform:scaleX(0)}50%,100%{transform:scaleX(1)}}@keyframes sg-fade-b{0%,60%{opacity:0}75%,100%{opacity:1}}`))
+  }, {
     n: '04',
     t: "You can't retrain everyone",
     b: 'So it works the way they already do.',
@@ -1274,160 +1102,121 @@ function ProblemSection() {
     visual: null,
     isChatDemo: true
   }];
-  const trackRef = React.useRef(null);
-  // Auto-scroll the row at a calm pace; drag to bring back a card that passed.
-  // Click a card to pause; click again (or scroll it off-screen) to resume.
-  React.useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let raf = 0,
-      offset = 0,
-      last = 0,
-      dragging = false,
-      hoverPaused = false,
-      clickPaused = false,
-      onScreen = true,
-      moved = false,
-      startX = 0,
-      startOffset = 0;
-    let setW = (track.scrollWidth || 2) / 2;
-    const measure = () => {
-      const w = (track.scrollWidth || 0) / 2;
-      if (w > 0) setW = w;
-    };
-    measure();
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
-    if (ro) ro.observe(track);
-    const io = typeof IntersectionObserver !== 'undefined' ? new IntersectionObserver(es => {
-      onScreen = es[0].isIntersecting;
-      if (!onScreen) clickPaused = false;
-    }, {
-      threshold: 0
-    }) : null;
-    if (io) io.observe(track);
-    const wrap = x => {
-      while (x <= -setW) x += setW;
-      while (x > 0) x -= setW;
-      return x;
-    };
-    const apply = () => {
-      track.style.transform = 'translateX(' + offset + 'px)';
-    };
-    const down = e => {
-      dragging = true;
-      moved = false;
-      startX = e.clientX;
-      startOffset = offset;
-      if (track.setPointerCapture) {
-        try {
-          track.setPointerCapture(e.pointerId);
-        } catch (err) {}
-      }
-    };
-    const move = e => {
-      if (!dragging) return;
-      if (Math.abs(e.clientX - startX) > 4) moved = true;
-      offset = wrap(startOffset + (e.clientX - startX));
-      apply();
-    };
-    const up = () => {
-      if (!dragging) return;
-      dragging = false;
-      if (!moved) clickPaused = !clickPaused;
-    };
-    const enter = () => {
-      hoverPaused = true;
-    };
-    const leave = () => {
-      hoverPaused = false;
-    };
-    track.addEventListener('pointerdown', down);
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-    track.addEventListener('mouseenter', enter);
-    track.addEventListener('mouseleave', leave);
-    const loop = t => {
-      raf = requestAnimationFrame(loop);
-      if (!last) last = t;
-      const dt = Math.min((t - last) / 1000, 0.05);
-      last = t;
-      if (!dragging && !hoverPaused && !clickPaused && onScreen) {
-        offset = wrap(offset - setW / 120 * dt);
-        apply();
-      }
-    };
-    raf = requestAnimationFrame(loop);
-    return () => {
-      cancelAnimationFrame(raf);
-      track.removeEventListener('pointerdown', down);
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-      track.removeEventListener('mouseenter', enter);
-      track.removeEventListener('mouseleave', leave);
-      if (ro) ro.disconnect();
-      if (io) io.disconnect();
-    };
-  }, []);
+  const [active, setActive] = React.useState(0);
+  const cur = problems[active];
+  const n = problems.length;
+  const [dir, setDir] = React.useState(1);
+  const touchX = React.useRef(null);
+  const go = d => {
+    setDir(d);
+    setActive(a => (a + d + n) % n);
+  };
+  const onTouchStart = e => {
+    touchX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = e => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > 45) go(dx < 0 ? 1 : -1);
+  };
+  const tabMeta = [{
+    label: 'On memory',
+    desc: 'spreadsheets + chats'
+  }, {
+    label: 'Too complex',
+    desc: 'built for the enterprise'
+  }, {
+    label: 'Too rigid',
+    desc: 'every change is a project'
+  }, {
+    label: 'No adoption',
+    desc: "the floor won't log in"
+  }];
   return /*#__PURE__*/React.createElement("section", {
-    className: "section",
+    className: "section section-dark",
     id: "why-erp",
     style: {
-      paddingTop: 28,
-      paddingBottom: 44
+      background: '#0B0F17',
+      paddingTop: 56,
+      paddingBottom: 64
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
     className: "tag"
   }, "THE VISIBILITY PROBLEM"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2"
-  }, "Your books are fine. Your floor is invisible. And every ERP pitched to fix that was built for the enterprise, then scaled down \u2014 that's why it never quite fits.")), /*#__PURE__*/React.createElement(Reveal, {
+    className: "h2",
+    style: {
+      color: '#fff'
+    }
+  }, "Accounting got the software. Operations got spreadsheets.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 100
   }, /*#__PURE__*/React.createElement("div", {
-    className: "problem-marquee"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "problem-track",
-    ref: trackRef
-  }, [...problems, ...problems].map((p, i) => /*#__PURE__*/React.createElement("div", {
-    className: "problem-card",
+    className: "vp-tabs",
+    role: "tablist",
+    "aria-label": "Why ERPs fail mid-market"
+  }, problems.map((x, i) => /*#__PURE__*/React.createElement("button", {
     key: i,
-    "aria-hidden": i >= problems.length
+    className: 'vp-tab' + (active === i ? ' on' : ''),
+    role: "tab",
+    "aria-selected": active === i,
+    onClick: () => {
+      setDir(i >= active ? 1 : -1);
+      setActive(i);
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "vp-tab-label"
+  }, tabMeta[i].label), /*#__PURE__*/React.createElement("span", {
+    className: "vp-tab-desc"
+  }, tabMeta[i].desc)))), /*#__PURE__*/React.createElement("div", {
+    className: "vp-stage"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "vp-arrow vp-arrow-prev",
+    onClick: () => go(-1),
+    "aria-label": "Previous problem"
+  }, "‹"), /*#__PURE__*/React.createElement("div", {
+    className: 'vp-card ' + (dir < 0 ? 'vp-prev' : 'vp-next'),
+    key: active,
+    onTouchStart: onTouchStart,
+    onTouchEnd: onTouchEnd
   }, /*#__PURE__*/React.createElement("div", {
+    className: "vp-card-head",
     style: {
       display: 'flex',
       alignItems: 'baseline',
       gap: 12,
-      marginBottom: 8
+      marginBottom: 10
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: 'var(--font-heading)',
-      fontSize: 25,
+      fontSize: 26,
       fontWeight: 700,
       color: 'var(--sg-blue)',
       letterSpacing: '-0.02em'
     }
-  }, p.n), /*#__PURE__*/React.createElement("h3", {
+  }, cur.n), /*#__PURE__*/React.createElement("h3", {
     style: {
       fontFamily: 'var(--font-heading)',
-      fontSize: 19.5,
+      fontSize: 22,
       fontWeight: 700,
       color: 'var(--fg1)',
       margin: 0,
       letterSpacing: '-0.01em',
-      lineHeight: 1.28
+      lineHeight: 1.25
     }
-  }, p.t)), /*#__PURE__*/React.createElement("p", {
+  }, cur.t)), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 15,
+      fontSize: 15.5,
       color: 'var(--fg1)',
       lineHeight: 1.55,
-      margin: '0 0 12px'
+      margin: '0 0 16px'
     }
-  }, p.b), /*#__PURE__*/React.createElement("div", {
-    className: 'problem-visual' + (p.isChatDemo ? ' problem-visual-chat' : ' problem-visual-svg')
-  }, p.isChatDemo ? /*#__PURE__*/React.createElement("div", {
+  }, cur.b), /*#__PURE__*/React.createElement("div", {
+    className: 'problem-visual' + (cur.isChatDemo ? ' problem-visual-chat' : ' problem-visual-svg')
+  }, cur.isChatDemo ? /*#__PURE__*/React.createElement("div", {
     className: "hank-demo"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hank-terminal"
@@ -1465,13 +1254,9 @@ function ProblemSection() {
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("i", null), /*#__PURE__*/React.createElement("i", null), /*#__PURE__*/React.createElement("i", null))), /*#__PURE__*/React.createElement("div", {
     className: "hank-think-cap"
-  }, "Hank is thinking\u2026")))) : p.visual), p.footer && /*#__PURE__*/React.createElement("div", {
+  }, "Hank is thinking\u2026")))) : cur.visual), cur.footer && /*#__PURE__*/React.createElement("div", {
     style: {
-      marginTop: 'auto'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 14,
+      marginTop: 16,
       paddingTop: 14,
       borderTop: '1px solid var(--border)',
       fontFamily: 'var(--font-body)',
@@ -1480,7 +1265,47 @@ function ProblemSection() {
       color: 'var(--sg-blue)',
       lineHeight: 1.4
     }
-  }, p.footer)))))))));
+  }, cur.footer)), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "vp-arrow vp-arrow-next",
+    onClick: () => go(1),
+    "aria-label": "Next problem"
+  }, "›")))), /*#__PURE__*/React.createElement("style", null, `
+        .vp-tabs { display: flex; flex-wrap: nowrap; justify-content: safe center; gap: 40px; max-width: 820px; margin: 36px auto 0; border-bottom: 1px solid rgba(255,255,255,0.12); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .vp-tabs::-webkit-scrollbar { display: none; }
+        .vp-tab { flex: 0 0 auto; background: none; border: 0; padding: 0 0 16px; text-align: left; cursor: pointer; position: relative; font-family: inherit; }
+        .vp-tab-label { display: block; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: #6B7280; transition: color 0.18s ease; white-space: nowrap; }
+        .vp-tab-desc { display: block; font-size: 13.5px; font-weight: 500; color: #6B7280; opacity: 0.65; margin-top: 5px; white-space: nowrap; }
+        .vp-tab:hover .vp-tab-label { color: rgba(255,255,255,0.7); }
+        .vp-tab.on .vp-tab-label { color: #fff; }
+        .vp-tab.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: #fff; border-radius: 2px; }
+        .vp-stage { position: relative; max-width: 820px; margin: 36px auto 0; }
+        .vp-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 58px; height: 28px; display: flex; align-items: center; padding: 0; font-size: 0; background: none; border: 0; cursor: pointer; transition: transform .15s ease, opacity .15s ease; }
+        .vp-arrow::before { content: ''; width: 100%; height: 100%; }
+        .vp-arrow:hover { transform: translateY(-50%) scale(1.08); opacity: 0.85; }
+        .vp-arrow-prev { left: clamp(-150px, calc((820px - 100vw) / 4), -14px); }
+        .vp-arrow-prev::before { clip-path: polygon(100% 35%, 42% 35%, 42% 12%, 0% 50%, 42% 88%, 42% 65%, 100% 65%); background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.1)); }
+        .vp-arrow-next { right: clamp(-150px, calc((820px - 100vw) / 4), -14px); }
+        .vp-arrow-next::before { clip-path: polygon(0% 35%, 58% 35%, 58% 12%, 100% 50%, 58% 88%, 58% 65%, 0% 65%); background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.9)); }
+        #why-erp { overflow: hidden; }
+        .vp-card { background: #fff; border-radius: 16px; padding: 30px 32px; margin: 0 auto; max-width: 820px; box-shadow: 0 24px 60px rgba(0,0,0,0.32); text-align: center; }
+        .vp-card.vp-next { animation: vpcNext 0.36s cubic-bezier(0.4,0,0.2,1); }
+        .vp-card.vp-prev { animation: vpcPrev 0.36s cubic-bezier(0.4,0,0.2,1); }
+        @keyframes vpcNext { from { opacity: 0; transform: translateX(44px); } to { opacity: 1; transform: none; } }
+        @keyframes vpcPrev { from { opacity: 0; transform: translateX(-44px); } to { opacity: 1; transform: none; } }
+        .vp-card-head { display: flex; align-items: baseline; justify-content: center; gap: 12px; }
+        .vp-card .problem-visual { max-width: 600px; margin-left: auto; margin-right: auto; }
+        @keyframes vpc-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        @media (max-width: 700px) { .vp-tabs { gap: 26px; } .vp-card { padding: 22px; } }
+        @media (max-width: 760px) {
+          .vp-arrow { width: 50px; height: 24px; }
+          .vp-arrow-prev::before { background: linear-gradient(90deg, rgba(20,28,46,0.8), rgba(20,28,46,0.12)); }
+          .vp-arrow-next::before { background: linear-gradient(90deg, rgba(20,28,46,0.12), rgba(20,28,46,0.8)); }
+          .vp-arrow-prev { left: 4px; }
+          .vp-arrow-next { right: 4px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .vp-arrow { transition: none; } .vp-card.vp-next, .vp-card.vp-prev { animation: none; } }
+      `));
 }
 window.ProblemSection = ProblemSection;
 function WhatWeDo() {
@@ -1790,7 +1615,7 @@ function WhatWeDo() {
       margin: '0 auto 18px'
     }
   }, [{
-    n: '7–21d',
+    n: '7-21d',
     l: 'Time to live'
   }, {
     n: '30d',

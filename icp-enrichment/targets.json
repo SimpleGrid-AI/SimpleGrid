@@ -1,0 +1,2462 @@
+﻿[
+    {
+        "line":  10,
+        "company":  "Open Plan Systems",
+        "website":  "https://openplan.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Pamela Williams",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  11,
+        "company":  "Open Plan Systems",
+        "website":  "https://openplan.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dean Williams",
+        "existingDesig":  "Managing Partner \u0026 COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  12,
+        "company":  "Ac Furniture COmpany Inc",
+        "website":  "https://acfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Van Whitlow",
+        "existingDesig":  "Sales \u0026 Marketing Executive",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  14,
+        "company":  "Best Home Furnishings",
+        "website":  "https://www.besthf.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Glenn Lange",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  16,
+        "company":  "Best Home Furnishings",
+        "website":  "https://www.besthf.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Stuart Curtis",
+        "existingDesig":  "VP of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  17,
+        "company":  "Mendocino Forest Products Co LLC",
+        "website":  "https://www.mfp.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bob Mertz",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  20,
+        "company":  "Lloyd/Flander Indsutries",
+        "website":  "https://www.lloydflanders.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Warren Juliano",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  23,
+        "company":  "Humanscale",
+        "website":  "https://www.humanscale.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Alex Russell",
+        "existingDesig":  "President, COO \u0026 Global CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  24,
+        "company":  "The Step2 Company LLC",
+        "website":  "https://www.step2.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Nick Osiecki",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  26,
+        "company":  "Tropitone Furniture Company Inc",
+        "website":  "https://www.tropitone.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Frank Verna",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  27,
+        "company":  "Tropitone Furniture Company Inc",
+        "website":  "https://www.tropitone.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Louis Frasche",
+        "existingDesig":  "VP of Operations \u0026 Quality",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  28,
+        "company":  "Riverside Furniture",
+        "website":  "https://www.riversidefurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Fred Henjes",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  29,
+        "company":  "Escalade Sports",
+        "website":  "https://www.escaladesports.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Armin Boehm",
+        "existingDesig":  "CEO \u0026 President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  31,
+        "company":  "Fairfield Chair Company",
+        "website":  "https://www.fairfieldchair.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dixon Mitchell",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  35,
+        "company":  "Crenlo Engineered Cabs",
+        "website":  "https://www.engineeredcabs.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tina Phang",
+        "existingDesig":  "Plant Director",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  42,
+        "company":  "Jersey Shore Steel Co",
+        "website":  "https://jssteel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "David Schultz",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  43,
+        "company":  "Jersey Shore Steel Co",
+        "website":  "https://jssteel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mark Scheffey",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  44,
+        "company":  "Chromcraft Revingston Douglas Inc",
+        "website":  "https://www.chromcraft-revington.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  47,
+        "company":  "Blockhouse Contract Furniture Inc",
+        "website":  "https://www.blockhouse.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Perko",
+        "existingDesig":  "President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  49,
+        "company":  "Correction Enterprises",
+        "website":  "https://www.correctionenterprises.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "John Coleman",
+        "existingDesig":  "Director / CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  50,
+        "company":  "Correction Enterprises",
+        "website":  "https://www.correctionenterprises.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Phillip Sykes",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  51,
+        "company":  "Canadel",
+        "website":  "https://www.canadel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Guy Deveault",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  54,
+        "company":  "Hancock \u0026 Moore Inc",
+        "website":  "https://www.hancockandmoore.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Phil Brown",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  55,
+        "company":  "Amini Innovation",
+        "website":  "https://www.amini.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Michael Amini",
+        "existingDesig":  "Founder, Chairman \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  57,
+        "company":  "Bauhaus USA Inc",
+        "website":  "https://www.bauhausfurnituregroup.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Daniel Lim",
+        "existingDesig":  "President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  58,
+        "company":  "Vanguard Furniture",
+        "website":  "https://www.vanguardfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Andy Bray",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  62,
+        "company":  "Ac Coin \u0026 Slot",
+        "website":  "https://www.ac-coin.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mac Seelig",
+        "existingDesig":  "Founder, President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  63,
+        "company":  "Ac Coin \u0026 Slot",
+        "website":  "https://www.ac-coin.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jerry Seelig",
+        "existingDesig":  "General Manager, Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  67,
+        "company":  "Quoizel Inc",
+        "website":  "https://www.quoizel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ed Clark",
+        "existingDesig":  "VP of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  68,
+        "company":  "Kincaid Furniture Company Inc",
+        "website":  "https://www.kincaidfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Melinda Whittington",
+        "existingDesig":  "President \u0026 CEO, La-Z-Boy Inc.",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  69,
+        "company":  "Khoury Inc",
+        "website":  "https://www.khouryfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  72,
+        "company":  "Hitchock Chair Co Ltd",
+        "website":  "https://hitchcockchair.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Gary Hath",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  76,
+        "company":  "Smith Brothers of Berna Inc",
+        "website":  "https://smithbrothersfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Lehman",
+        "existingDesig":  "President \u0026 CEO/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  79,
+        "company":  "Stickley",
+        "website":  "https://www.stickley.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Aminy Audi",
+        "existingDesig":  "CEO \u0026 Chair/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  84,
+        "company":  "Flextrude Aluminium Shapes LLC",
+        "website":  "https://www.flextrude.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dan Knight",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  86,
+        "company":  "Kent Moore Cabinets Ltd",
+        "website":  "https://www.kmc.net",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Casey Moore",
+        "existingDesig":  "President \u0026 CEO/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  87,
+        "company":  "Kent Moore Cabinets Ltd",
+        "website":  "https://www.kmc.net",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Kent Moore",
+        "existingDesig":  "COO/Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  90,
+        "company":  "Style Nations",
+        "website":  "https://www.stylenations.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  94,
+        "company":  "E-Systems Group",
+        "website":  "https://www.e-systemsgroup.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  96,
+        "company":  "Currey \u0026 Company Inc",
+        "website":  "https://www.curreyandcompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ross Bradford",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  98,
+        "company":  "Foliot Furniture",
+        "website":  "https://www.foliot.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Francis Arseneault",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  99,
+        "company":  "Foliot Furniture",
+        "website":  "https://www.foliot.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Daniel Foliot",
+        "existingDesig":  "Founder \u0026 President/Co-Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  102,
+        "company":  "Cuisines Laurier",
+        "website":  "https://www.cuisineslaurier.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  107,
+        "company":  "SitOnIt Seating",
+        "website":  "https://www.sitonit.net",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul DeVries",
+        "existingDesig":  "CEO \u0026 Founder, Exemplis",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  109,
+        "company":  "Bassett Mirror Co., Inc.",
+        "website":  "https://www.bassettmirror.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Spencer Morten III",
+        "existingDesig":  "Chairman/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  111,
+        "company":  "Aamerica",
+        "website":  "https://www.a-america.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Fred Rohrbach",
+        "existingDesig":  "President \u0026 Co-Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  113,
+        "company":  "Comfort Research LLC",
+        "website":  "https://comfortresearch.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Matt Jung",
+        "existingDesig":  "Co-Founders/Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  119,
+        "company":  "Cabot Wrenn",
+        "website":  "https://www.cabotwrenn.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  125,
+        "company":  "JTB Furniture",
+        "website":  "https://www.jtbfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  126,
+        "company":  "University Loft Co.",
+        "website":  "https://www.uloft.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "James Jannetides",
+        "existingDesig":  "Founder, CEO \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  129,
+        "company":  "E.J. Victor",
+        "website":  "https://www.ejvictor.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "James Kennedy",
+        "existingDesig":  "VP of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  130,
+        "company":  "Pulaski Furniture Corp.",
+        "website":  "https://www.pulaskifurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul B. Toms Jr.",
+        "existingDesig":  "Chairman \u0026 CEO, Hooker Furnishings",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  131,
+        "company":  "Pulaski Furniture Corp.",
+        "website":  "https://www.pulaskifurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Page Wilson",
+        "existingDesig":  "former President, Pulaski",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  135,
+        "company":  "Pearson Company",
+        "website":  "https://www.pearsoncompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Brand of Hickory Chair",
+        "existingDesig":  "Rock House Farm Family of Brands",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  136,
+        "company":  "Pembrook Chair",
+        "website":  "https://www.pembrookchair.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joe Kaylor",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  137,
+        "company":  "Hickory White",
+        "website":  "https://hickorywhite.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "H.W. \"Buddy\" Sherrill",
+        "existingDesig":  "CEO \u0026 President, Sherrill Furniture/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  138,
+        "company":  "Takara Belmont USA Inc.",
+        "website":  "https://store.takarabelmont.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  139,
+        "company":  "Rockett, Inc.",
+        "website":  "rockettinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Hulbert \"Bucky\" Crystal",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  140,
+        "company":  "Rialto Furniture Co.",
+        "website":  "rialtofurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ted Hovivian",
+        "existingDesig":  "Principals",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  141,
+        "company":  "Rialto Furniture Co.",
+        "website":  "rialtofurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Marianne Hovivian",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  142,
+        "company":  "Prestolam Inc.",
+        "website":  "prestolam.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  143,
+        "company":  "Midwest Folding Products, Inc.",
+        "website":  "https://www.midwestfolding.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  145,
+        "company":  "Lancer Inc.",
+        "website":  "https://www.lancerfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  147,
+        "company":  "Kindel Furniture Company",
+        "website":  "https://kindelfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Gretchen Keith",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  150,
+        "company":  "Indiana Furniture Industries, Inc",
+        "website":  "https://indianafurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Lori Klem",
+        "existingDesig":  "CFO \u0026 VP Finance",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  152,
+        "company":  "Homecrest",
+        "website":  "https://www.homecrest.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mike Bullinger",
+        "existingDesig":  "Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  153,
+        "company":  "Henkel Harris",
+        "website":  "https://www.henkelharris.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "David Gum",
+        "existingDesig":  "Chairman \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  159,
+        "company":  "Carsons Incorporated",
+        "website":  "https://app.makersrow.com/carsons-incorporated",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "TJ Stout",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  160,
+        "company":  "Carolina Furniture Works, Inc.",
+        "website":  "https://www.carolinafurnitureworks.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Cray Weeks",
+        "existingDesig":  "President \u0026 CEO/Owner family",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  162,
+        "company":  "Bradington-Young",
+        "website":  "bradington-young.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul B. Toms Jr.",
+        "existingDesig":  "Chairman \u0026 CEO, Hooker Furnishings",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  164,
+        "company":  "Fraenkel Company Inc.",
+        "website":  "http://www.fraenkel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Larry Lamb",
+        "existingDesig":  "VP of Manufacturing",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  165,
+        "company":  "Martin Furniture",
+        "website":  "martinfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Nicolas Gaviria",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  167,
+        "company":  "Postal Products Unlimited, Inc.",
+        "website":  "https://www.postalproducts.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  169,
+        "company":  "Tuohy Furniture Corporation",
+        "website":  "tuohyfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Michael Tuohy",
+        "existingDesig":  "COO/Co-Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  171,
+        "company":  "Interkal",
+        "website":  "https://www.interkal.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Hal Thomas",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  172,
+        "company":  "Fabcon, Inc.",
+        "website":  "https://fabcon.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  173,
+        "company":  "Fabrica",
+        "website":  "https://www.fabrica.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Taline Isberian Dirkes",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  175,
+        "company":  "Borkholder",
+        "website":  "https://www.borkholderfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ola Yoder",
+        "existingDesig":  "Owner \u0026 CEO, Kountry Wood Products",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  176,
+        "company":  "Borkholder",
+        "website":  "https://www.borkholderfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tom Halvorsen",
+        "existingDesig":  "VP",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  177,
+        "company":  "Moultrie Manufacturing Co.",
+        "website":  "https://www.moultriemanufacturing.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "William Edward Smith",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  180,
+        "company":  "Sintel, Inc.",
+        "website":  "https://www.sintelinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  181,
+        "company":  "Stylex Inc.",
+        "website":  "https://www.stylexdesign.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bruce Golden",
+        "existingDesig":  "CEO/Owner family",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  183,
+        "company":  "Brayton International",
+        "website":  "https://paulbraytondesigns.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul Brayton",
+        "existingDesig":  "Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  186,
+        "company":  "Carolina Cabinet Company, Inc.",
+        "website":  "https://www.carolinacabinetcompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tony Daniel",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  187,
+        "company":  "High Point Furniture Industries, Inc.",
+        "website":  "https://www.hpfi.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Spencer W. O\u0027Meara",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  188,
+        "company":  "High Point Furniture Industries, Inc.",
+        "website":  "https://www.hpfi.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joe Cheek",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  189,
+        "company":  "Tempkold",
+        "website":  "https://tempkold.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  190,
+        "company":  "Troutman Chair Company",
+        "website":  "https://troutmanchairs.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Champ Land \u0026 Jean Land",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  192,
+        "company":  "McKinley Leather",
+        "website":  "https://www.mckinleyleatherfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Lewis N. Mitchell",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  193,
+        "company":  "Custom Contract Furnishings",
+        "website":  "https://www.customcontract.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  196,
+        "company":  "Designmaster Furniture, Inc.",
+        "website":  "https://www.designmasterfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Theodore S. Corwin Jr.",
+        "existingDesig":  "Founder \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  197,
+        "company":  "J.Kitchen Inc. (Torva Kitchens)",
+        "website":  "https://torvakitchens.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  198,
+        "company":  "Fezibo",
+        "website":  "https://www.fezibo.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  199,
+        "company":  "Insalco Corporation",
+        "website":  "https://insalco.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  206,
+        "company":  "Custom Seats, Inc.",
+        "website":  "https://customseatsinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  208,
+        "company":  "DuraLife-USA",
+        "website":  "https://www.duralifedecking.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jean desAutels",
+        "existingDesig":  "President, Barrette Outdoor Living",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  209,
+        "company":  "Ch Equip, Inc.",
+        "website":  "https://www.chequipinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bob Whiteside",
+        "existingDesig":  "Principal",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  213,
+        "company":  "Holland Bar Stool",
+        "website":  "https://hollandbarstool.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Larry O. Bensink",
+        "existingDesig":  "Treasurer",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  214,
+        "company":  "Picnic Time",
+        "website":  "https://www.picnictime.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul Cosaro",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  215,
+        "company":  "Heritage Home Group",
+        "website":  "(no standalone site â€” Heritage Home Group dissolved 2018; brands sold)",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  216,
+        "company":  "Sleep Innovations, Inc.",
+        "website":  "https://www.sleepinnovations.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Carol Eicher",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  217,
+        "company":  "Brunschwig \u0026 Fils",
+        "website":  "https://www.kravet.com/brunschwig-fils",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Cary Kravet",
+        "existingDesig":  "President \u0026 CEO, Kravet Inc.",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  218,
+        "company":  "National Public Seating Corp.",
+        "website":  "https://www.nationalpublicseating.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Barry Stauber",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  219,
+        "company":  "Sedia, Inc.",
+        "website":  "https://www.sediainc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  223,
+        "company":  "Norix Group, Inc.",
+        "website":  "https://norix.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Shane Edwards",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  224,
+        "company":  "Rapp Productions, Inc.",
+        "website":  "https://furniturelab.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Gregory Rapp",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  225,
+        "company":  "This End Up Furniture Co.",
+        "website":  "https://thisendup.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bert K. Kelly",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  229,
+        "company":  "BenchPro, Inc.",
+        "website":  "https://benchpro.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jay Lissner",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  233,
+        "company":  "Wesley Allen",
+        "website":  "https://wesleyallen.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Victor Sawan",
+        "existingDesig":  "Founder \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  235,
+        "company":  "Johnston Casuals Furniture",
+        "website":  "https://johnstoncasuals.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Yossi Majer",
+        "existingDesig":  "",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  238,
+        "company":  "Old Hickory Tannery",
+        "website":  "https://www.ohtfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Willard G. Black",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  239,
+        "company":  "Old Hickory Tannery",
+        "website":  "https://www.ohtfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Sharee Huffman",
+        "existingDesig":  "Secretary",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  240,
+        "company":  "Spectrum Industries, Inc",
+        "website":  "https://www.spectrumfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "David Hancock",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  243,
+        "company":  "Aleco Seating Inc.",
+        "website":  "https://www.myseatss.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Andy Roche",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  244,
+        "company":  "Plas-Tec Corp.",
+        "website":  "https://plasteccorp.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "John Cuddeback",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  245,
+        "company":  "Aanes, Greg, Furniture, Inc.",
+        "website":  "https://gregaanesfurniture.org",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Greg Aanes",
+        "existingDesig":  "Founder \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  246,
+        "company":  "Avis Furniture Company",
+        "website":  "https://www.avisfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ross Donnell",
+        "existingDesig":  "Vice President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  247,
+        "company":  "DuMor, Inc.",
+        "website":  "https://www.dumor.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "M. Richard Rudy",
+        "existingDesig":  "Co-Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  248,
+        "company":  "DuMor, Inc.",
+        "website":  "https://www.dumor.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Donald E. Saner",
+        "existingDesig":  "Co-Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  251,
+        "company":  "Superior Recreational Products",
+        "website":  "https://superiorrecreationalproducts.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Roger Posacki",
+        "existingDesig":  "President \u0026 CEO, PlayCore",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  254,
+        "company":  "TRS Furniture, Inc.",
+        "website":  "https://www.theodorealexander.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Sumner Finch",
+        "existingDesig":  "President, former",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  255,
+        "company":  "TRS Furniture, Inc.",
+        "website":  "https://www.theodorealexander.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Thomas Woller",
+        "existingDesig":  "President, Theodore Alexander Upholstery Division",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  259,
+        "company":  "Wood Goods Industries, Inc",
+        "website":  "https://woodgoods.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dan Fischer",
+        "existingDesig":  "Vice President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  260,
+        "company":  "Woerner Industries, LLC",
+        "website":  "https://www.woernerfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Philip Collins",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  262,
+        "company":  "R.J. Thomas Manufacturing Co., Inc.",
+        "website":  "https://pilotrock.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Donna Lucas",
+        "existingDesig":  "Controller",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  267,
+        "company":  "Perdues, Inc./Perdue Woodworks",
+        "website":  "https://www.perduefurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Richard Perdue",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  268,
+        "company":  "Perdues, Inc./Perdue Woodworks",
+        "website":  "https://www.perduefurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Lori Perdue",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  272,
+        "company":  "Modern of Marshfield, Inc.",
+        "website":  "https://www.marshfieldfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "William J. Mork",
+        "existingDesig":  "President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  273,
+        "company":  "Karges Furniture Co.",
+        "website":  "https://kindelfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joan Karges Rogier",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  274,
+        "company":  "Jamison Bedding Inc.",
+        "website":  "https://www.jamisonbedding.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Kevin Sisson",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  276,
+        "company":  "Hunt Country Furniture, Inc",
+        "website":  "https://www.huntcountryfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Hormazdyor S. Dastoor",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  277,
+        "company":  "Hi-Lo Industries, Inc.",
+        "website":  "https://www.bridgewoodcabinets.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  279,
+        "company":  "Dreamline Mfg. Inc.",
+        "website":  "https://www.dreamlinebedding.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Tipton",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  281,
+        "company":  "Cresent",
+        "website":  "https://www.cresent.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Taylor Condra",
+        "existingDesig":  "President \u0026 COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  282,
+        "company":  "Airtex",
+        "website":  "https://www.airtexinteriors.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mike Miller",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  283,
+        "company":  "Airtex",
+        "website":  "https://www.airtexinteriors.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Michael Noer",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  285,
+        "company":  "Charles Inc.",
+        "website":  "No website found â€” Charles Inc., Council Bluffs, IA (upholstered furniture mfr, founded 1988, 50-99 employees per ThomasNet). Phone (712) 328-2603.",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  287,
+        "company":  "WB Manufacturing",
+        "website":  "https://wbmfg.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Burgess",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  288,
+        "company":  "EF + LM",
+        "website":  "https://ferrellmittman.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  290,
+        "company":  "Leonard Peterson \u0026 Company, Inc",
+        "website":  "https://www.lpco.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  293,
+        "company":  "Root River Hardwoods",
+        "website":  "https://www.rootriverhardwoods.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jon Summers",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  294,
+        "company":  "Crestwood, Inc.",
+        "website":  "https://crestwood-inc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  295,
+        "company":  "AFC Industries, Inc.",
+        "website":  "https://afcindustries.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joseph Piana",
+        "existingDesig":  "President \u0026 COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  297,
+        "company":  "Kloppenberg \u0026 Co.",
+        "website":  "https://www.kloppenberg.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  298,
+        "company":  "Columbia Manufacturing Inc.",
+        "website":  "https://www.columbiamfginc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ali Salehi",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  302,
+        "company":  "APC",
+        "website":  "https://www.automationplastics.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  304,
+        "company":  "Great Lakes Case \u0026 Cabinet Co., Inc",
+        "website":  "https://greatcabinets.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jonathan Markley",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  305,
+        "company":  "Worden Co., The",
+        "website":  "https://www.wordencompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Taylor deRoo",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  306,
+        "company":  "Romweber",
+        "website":  "Defunct â€” Romweber Furniture Co (Batesville, IN) ceased furniture production; factory repurposed as \u0027Romweber Marketplace\u0027 (antiques/event venue) from 2009. No active manufacturer website.",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  309,
+        "company":  "Lesro",
+        "website":  "https://www.lesro.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ed Leshem",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  312,
+        "company":  "Dauphin \u0027Eddy\u0027 Chairs",
+        "website":  "https://www.dauphin.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Matthew Negron",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  316,
+        "company":  "Commercial Casework",
+        "website":  "https://commercialcasework.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Laura Martin",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  318,
+        "company":  "Buckstaff",
+        "website":  "https://buckstaff.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Marty Cowie",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  320,
+        "company":  "Keller Products, Inc.",
+        "website":  "https://kellerproducts.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "John Hudson",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  321,
+        "company":  "Tri-Boro Shelving \u0026 Partition Corp.",
+        "website":  "https://triboroshelving.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Toni",
+        "existingDesig":  "Antoinette",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  322,
+        "company":  "Tri-Boro Shelving \u0026 Partition Corp.",
+        "website":  "https://triboroshelving.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Randy Myers",
+        "existingDesig":  "COO/President of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  324,
+        "company":  "Nucraft Furniture Company",
+        "website":  "https://www.nucraft.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Matt Schad",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  325,
+        "company":  "Nucraft Furniture Company",
+        "website":  "https://www.nucraft.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tim Schad",
+        "existingDesig":  "Chairman; former CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  327,
+        "company":  "Wittrock Woodworking \u0026 Manufacturing Co., Inc.",
+        "website":  "https://www.wittrockinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Chris Wittrock",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  328,
+        "company":  "Hamilton Sorter",
+        "website":  "https://hamiltoncs.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Thaddeus Jaroszewicz",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  333,
+        "company":  "Miller Desk, Inc.",
+        "website":  "https://milleratwork.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Felix Miller III",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  335,
+        "company":  "KUROTANI NORTH AMERICA INC.",
+        "website":  "kurotani-north-america.business.site",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  339,
+        "company":  "CPM Corp.",
+        "website":  "cpm.net",
+        "industry":  "Recyclers",
+        "existingName":  "David Webster",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  340,
+        "company":  "Galbreath LLC",
+        "website":  "galbreathproducts.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  341,
+        "company":  "Ditch Witch",
+        "website":  "ditchwitch.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  343,
+        "company":  "Keywell LLC",
+        "website":  "keywell.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  344,
+        "company":  "Calgon Carbon Corporation",
+        "website":  "calgoncarbon.com",
+        "industry":  "Recyclers",
+        "existingName":  "Steve Schott",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  345,
+        "company":  "Calgon Carbon Corporation",
+        "website":  "calgoncarbon.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert Fortwangler",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  348,
+        "company":  "Schupan \u0026 Sons Inc",
+        "website":  "schupan.com",
+        "industry":  "Recyclers",
+        "existingName":  "Phillip Haan",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  352,
+        "company":  "Base Plastics",
+        "website":  "baseplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  353,
+        "company":  "IKS - International Knife \u0026 Saw, Inc.",
+        "website":  "iks-saw.com",
+        "industry":  "Recyclers",
+        "existingName":  "Terry Isaacs",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  362,
+        "company":  "Chemical Solvents Inc.",
+        "website":  "chemicalsolvents.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ed Pavlish",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  364,
+        "company":  "Chemical Solvents Inc.",
+        "website":  "chemicalsolvents.com",
+        "industry":  "Recyclers",
+        "existingName":  "Rob Kramer",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  365,
+        "company":  "Toter, Inc.",
+        "website":  "toter.com",
+        "industry":  "Recyclers",
+        "existingName":  "Marty Bryant",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  366,
+        "company":  "ODC Inc.",
+        "website":  "odcdoors.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  367,
+        "company":  "Oregon Pallet",
+        "website":  "oregonpallet.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bryce \u0026 Carly Taylor",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  368,
+        "company":  "KW Plastics",
+        "website":  "kwplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "Kenny Campbell \u0026 Wiley Sanders",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  370,
+        "company":  "KW Plastics",
+        "website":  "kwplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "Christopher Campbell",
+        "existingDesig":  "Plant Head/Operations Head",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  372,
+        "company":  "Paul Leibinger Inc.",
+        "website":  "leibinger-group.com",
+        "industry":  "Recyclers",
+        "existingName":  "Christina Leibinger",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  374,
+        "company":  "MODRoto",
+        "website":  "modroto.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bob Dunne",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  375,
+        "company":  "MODRoto",
+        "website":  "modroto.com",
+        "industry":  "Recyclers",
+        "existingName":  "J.R. Ryan",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  376,
+        "company":  "Williams Patent Crusher \u0026 Pulverizer Co.",
+        "website":  "williamscrusher.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert M. Williams Jr.",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  381,
+        "company":  "Morbark, Inc.",
+        "website":  "morbark.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  382,
+        "company":  "Wilkinson HI-Rise, LLC",
+        "website":  "wilkinsonhirise.com",
+        "industry":  "Recyclers",
+        "existingName":  "Chad George",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  387,
+        "company":  "Harris",
+        "website":  "harriswaste.com",
+        "industry":  "Recyclers",
+        "existingName":  "D.J. VanDeusen",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  389,
+        "company":  "Aluf Plastics, Inc.",
+        "website":  "alufplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "David Anderson",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  390,
+        "company":  "Kester, an ITW company",
+        "website":  "kester.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  391,
+        "company":  "Phenomenex Inc.",
+        "website":  "phenomenex.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  392,
+        "company":  "Huron Valley Steel Corporation",
+        "website":  "hvsc.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  394,
+        "company":  "ANDRITZ Separation Inc.",
+        "website":  "andritz.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  395,
+        "company":  "Porvair Filtration Group",
+        "website":  "porvairfiltration.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  398,
+        "company":  "Enerpat America",
+        "website":  "enerpatgroup.com",
+        "industry":  "Recyclers",
+        "existingName":  "Jack Qian",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  399,
+        "company":  "Arca",
+        "website":  "arca.com",
+        "industry":  "Recyclers",
+        "existingName":  "Jack Cameron",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  400,
+        "company":  "DS Smith",
+        "website":  "dssmith.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  403,
+        "company":  "SIRS Industries",
+        "website":  "sirsplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  407,
+        "company":  "FabCorp, Inc.",
+        "website":  "fabcorpinc.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  408,
+        "company":  "SSI Shredding Systems, Inc.",
+        "website":  "ssiworld.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  409,
+        "company":  "Cram-A-Lot /JV Manufacturing, Inc.",
+        "website":  "cram-a-lot.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  411,
+        "company":  "Precision Husky Corporation",
+        "website":  "precisionhusky.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bob Smith",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  412,
+        "company":  "Midland Iron \u0026 Steel Corp.",
+        "website":  "midlandironandsteel.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  413,
+        "company":  "Lummus Corp.",
+        "website":  "lummus.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ben Hinnen",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  415,
+        "company":  "Gala Industries, Inc.",
+        "website":  "maag.com",
+        "industry":  "Recyclers",
+        "existingName":  "Paul Merich",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  418,
+        "company":  "KANN Manufacturing Corporation",
+        "website":  "kannmfg.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  419,
+        "company":  "Wahlco DW Tool, Inc.",
+        "website":  "wahlco-dwtool.com",
+        "industry":  "Recyclers",
+        "existingName":  "Don Wahlers",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  421,
+        "company":  "The Plastics Group of America",
+        "website":  "plasticsgroup.com",
+        "industry":  "Recyclers",
+        "existingName":  "Mike Rosenthal",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  422,
+        "company":  "Hi-Grade Materials Co.",
+        "website":  "hi-grade.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  423,
+        "company":  "State Metal Industries",
+        "website":  "statemetal.com",
+        "industry":  "Recyclers",
+        "existingName":  "Andrew Dorfman",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  424,
+        "company":  "State Metal Industries",
+        "website":  "statemetal.com",
+        "industry":  "Recyclers",
+        "existingName":  "John Mullin",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  425,
+        "company":  "Nu-Life Environmental, Inc.",
+        "website":  "nu-life.com",
+        "industry":  "Recyclers",
+        "existingName":  "Tim Hendricks",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  428,
+        "company":  "Office Paper Systems",
+        "website":  "officepapersystems.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  434,
+        "company":  "Production Control Units Inc.",
+        "website":  "pcu-inc.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  435,
+        "company":  "American Baler",
+        "website":  "americanbaler.com",
+        "industry":  "Recyclers",
+        "existingName":  "David Kowaleski",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  436,
+        "company":  "American Baler",
+        "website":  "americanbaler.com",
+        "industry":  "Recyclers",
+        "existingName":  "Nate Kuhl",
+        "existingDesig":  "Plant Head/Operations Head",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  438,
+        "company":  "MacDermid Envio Solutions (formerly DMP Corporation)",
+        "website":  "macdermidenvio.com",
+        "industry":  "Recyclers",
+        "existingName":  "Benjamin Gliklich",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  440,
+        "company":  "Farco Plastics Supply, Inc.",
+        "website":  "farcoplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  441,
+        "company":  "Elgin Separation Solutions",
+        "website":  "elginseparation.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  442,
+        "company":  "Boretech Resource Recovery Engineering",
+        "website":  "boretech.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  445,
+        "company":  "Allredi",
+        "website":  "allredi.com",
+        "industry":  "Recyclers",
+        "existingName":  "Matt Molumby",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  448,
+        "company":  "Builtrite Handlers \u0026 Attachments (Northshore Manufacturing Inc)",
+        "website":  "builtritehandlers.com",
+        "industry":  "Recyclers",
+        "existingName":  "Tom Cavallin",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  449,
+        "company":  "Triple Diamond Plastics",
+        "website":  "triplediamondplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "Roger Norden",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  452,
+        "company":  "ENCON Evaporators",
+        "website":  "evaporator.com",
+        "industry":  "Recyclers",
+        "existingName":  "Mark Fregeau",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  453,
+        "company":  "Glass Recyclers, Ltd.",
+        "website":  "glassrecyclers.net",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  454,
+        "company":  "Trans-American Trading Co.",
+        "website":  "trans-americantrading.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  455,
+        "company":  "Standard Change-Makers",
+        "website":  "standardchange.com",
+        "industry":  "Recyclers",
+        "existingName":  "Rob Unterborn",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  456,
+        "company":  "Appleton Mfg. Div., Productive Solutions, Inc.",
+        "website":  "appletonmfg.com",
+        "industry":  "Recyclers",
+        "existingName":  "Kyle Willis",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  457,
+        "company":  "GranuTech Saturn Systems",
+        "website":  "granutech.com",
+        "industry":  "Recyclers",
+        "existingName":  "Matthew Morrison",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  459,
+        "company":  "Hustler Conveyor Company",
+        "website":  "hustlerconveyor.com",
+        "industry":  "Recyclers",
+        "existingName":  "Chris \u0026 Paul Griesedieck",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  460,
+        "company":  "RMC",
+        "website":  "rmcwoodchippers.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  461,
+        "company":  "Environmental Protection Services",
+        "website":  "epsorlando.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  463,
+        "company":  "Ameriglobe Fibc Solutions",
+        "website":  "ameriglobe.com",
+        "industry":  "Recyclers",
+        "existingName":  "Daniel Schnaars Sr.",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  465,
+        "company":  "LANDA",
+        "website":  "landa.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  467,
+        "company":  "Koppern Equipment, Inc.",
+        "website":  "koppern.com",
+        "industry":  "Recyclers",
+        "existingName":  "James McClaskey",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  470,
+        "company":  "Cousineau, Inc.",
+        "website":  "cousineaus.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  473,
+        "company":  "Work Training Center, Inc.",
+        "website":  "wtcinc.org",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  475,
+        "company":  "Prab",
+        "website":  "prab.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ned Thompson",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  476,
+        "company":  "Phoenix Technologies International, LLC",
+        "website":  "phoenixtechnologies.net",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  477,
+        "company":  "United Pallet, Inc.",
+        "website":  "unitedpallet.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  478,
+        "company":  "Libra Industries, Inc.",
+        "website":  "libraind.com",
+        "industry":  "Recyclers",
+        "existingName":  "Andrew Williams",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  479,
+        "company":  "Lippmann",
+        "website":  "lippmann-milwaukee.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  481,
+        "company":  "Ellis Corporation",
+        "website":  "elliscorp.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  482,
+        "company":  "Vacuum Instrument Corp.",
+        "website":  "vacuum-instrument.com",
+        "industry":  "Recyclers",
+        "existingName":  "Jeffrey Plante",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  483,
+        "company":  "CP Manufacturing, Inc.",
+        "website":  "cpmfg.com",
+        "industry":  "Recyclers",
+        "existingName":  "John Willis",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  487,
+        "company":  "Morris Iron \u0026 Steel Co., Inc.",
+        "website":  "morrisironandsteel.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ron Greller",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  489,
+        "company":  "Ransohoff",
+        "website":  "ransohoff.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bernard A. Bosse Jr.",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  490,
+        "company":  "B.A.G. Corp.",
+        "website":  "bagcorp.com",
+        "industry":  "Recyclers",
+        "existingName":  "Kevin Ashton",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  492,
+        "company":  "Waukesha-Pearce Industries, Inc. (WPI)",
+        "website":  "wpihou.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert Shaffer",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

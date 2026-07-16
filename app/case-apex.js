@@ -273,10 +273,12 @@ function NetworkInfographic() {
       i
     };
   });
+  // Honest categories (not arbitrary modulo): 20 job worker units, ~8 logistics
+  // partner warehouses, 2 in-house (iron + pack) - matching the real counts.
   const colorOf = i => {
-    if (i % 5 === 0) return 'var(--sg-purple)';
-    if (i % 3 === 0) return 'var(--sg-gold)';
-    return 'var(--sg-blue)';
+    if (i >= 28) return 'var(--sg-purple)'; // in-house (iron · pack)
+    if (i >= 20) return 'var(--sg-gold)'; // logistics partner warehouses
+    return 'var(--sg-blue)'; // job worker units
   };
   return /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 800 480",
@@ -377,7 +379,7 @@ function NetworkInfographic() {
     y: "10",
     fontSize: "11",
     fill: "var(--fg2)"
-  }, "In-transit hubs")), /*#__PURE__*/React.createElement("text", {
+  }, "In-house (iron \xB7 pack)")), /*#__PURE__*/React.createElement("text", {
     x: cx,
     y: "40",
     textAnchor: "middle",
@@ -504,13 +506,56 @@ function ApexCaseStudy() {
     className: "vol"
   }, "High-volume fabric"), /*#__PURE__*/React.createElement("h4", null, "Fabric wholesale"), /*#__PURE__*/React.createElement("p", null, "Buying fabric in bulk and reselling to other manufacturers - a separate P&L on the same inventory ledger.")))), /*#__PURE__*/React.createElement(BarsInfographic, null), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "The operation"), /*#__PURE__*/React.createElement("p", null, "Apex runs three interconnected businesses under one roof. Contract manufacturing for external brand principals. Their own brand: taking orders and manufacturing for retail. And fabric trading: buying fabric in volume and reselling to other manufacturers."), /*#__PURE__*/React.createElement("p", null, "The production model is ", /*#__PURE__*/React.createElement("strong", null, "job work"), ". They do not cut. They do not sew. Every piece of production happens at one of 20+ job worker facilities across the city. Each job worker is a complete production unit. Only two things happen in-house: ironing and packaging."), /*#__PURE__*/React.createElement("p", null, "And the inventory is not even theirs to hold. Fabric, trims, finished goods all sit at their ", /*#__PURE__*/React.createElement("strong", null, "logistics partner's warehouses"), " - multiple locations, depending on which buyer or job worker is closest. Add the 20+ job worker facilities, and at any given moment Apex has stock across ", /*#__PURE__*/React.createElement("strong", null, "30+ live inventory locations"), ".")), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "THE OPERATION"), /*#__PURE__*/React.createElement("h2", null, "Three businesses, no factory of their own."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 780
+    }
+  }, "Apex runs ", /*#__PURE__*/React.createElement("strong", null, "three interconnected businesses"), " on one inventory ledger: contract manufacturing for external brands, their own retail label, and high-volume fabric trading."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 780
+    }
+  }, "The production model is ", /*#__PURE__*/React.createElement("strong", null, "100% job work"), " - they don't cut and don't sew. Every garment is made at one of ", /*#__PURE__*/React.createElement("strong", null, "20+ job worker units"), " across the city; only ironing and packaging happen in-house."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 780
+    }
+  }, "And the stock isn't theirs to hold. Fabric, trims and finished goods sit at their ", /*#__PURE__*/React.createElement("strong", null, "logistics partners' warehouses"), ". Add the job worker units, and at any moment Apex has inventory across ", /*#__PURE__*/React.createElement("strong", null, "30+ live locations"), ".")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "What was breaking"), /*#__PURE__*/React.createElement("ul", {
-    className: "pain-list"
-  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Generic ERPs could not model the operation."), " Two attempts over two years. Both failed. Every off-the-shelf ERP is built for manufacturers who make things in-house. Apex doesn't."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Inventory visibility collapsed across 30+ locations."), " Fabric, trims, and finished goods were spread across 20+ job worker units and 10+ logistics partner warehouses. When a brand asked \"where is our order?\" answering meant phone calls to three to five places."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Secondary material tracking was unmanageable."), " Every work order required its own bill of materials: specific buttons, hang tags, wash care labels, thread color. All purchased per work order, issued to job workers, reconciled at the end."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Three businesses collided in one spreadsheet."), " CMT, own brand, fabric trading: all tracked in overlapping Excel files. A fabric roll might belong to Brand A's order, their own stock, or a trading customer."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Job worker reconciliation was chaos."), " Each of 20+ workers received fabric AND trims for each work order, returned finished garments. Reconciling consumed hours every day."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Profitability by stream was a mystery."), " Was CMT making money or being subsidized by fabric trading? Impossible to tell."))), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "THE PROBLEM"), /*#__PURE__*/React.createElement("h2", null, "What was breaking"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 780
+    }
+  }, /*#__PURE__*/React.createElement("strong", null, "Two ERPs, two years, $100,000+ spent - and nothing that fit."), " Every off-the-shelf system assumed a factory. Apex doesn't have one, so each one broke on contact."), /*#__PURE__*/React.createElement("div", {
+    className: "prob-grid"
+  }, [{icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>', t:'Inventory scattered everywhere', d:'Fabric, trims and goods across 20+ workers and 10+ warehouses - finding an order meant five phone calls.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>', t:'A BOM per work order', d:'Buttons, tags, labels and thread - all bought per order, issued, and reconciled by hand.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>', t:'Three businesses, one sheet', d:'A single fabric roll might be a CMT order, own stock, or a trading sale - nobody could tell.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>', t:'Reconciliation ate the day', d:'20+ workers issued fabric and trims and returning garments - all matched by hand, for hours.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M7 14l3-3 3 2 4-5"/></svg>', t:'Profit by stream: a guess', d:'Was CMT earning, or quietly subsidized by fabric trading? No way to know.'}].map((p, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "prob-card"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "prob-ic",
+    dangerouslySetInnerHTML: {
+      __html: p.icon
+    }
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "t"
+  }, p.t), /*#__PURE__*/React.createElement("p", {
+    className: "d"
+  }, p.d)))))), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a ", /*#__PURE__*/React.createElement("strong", null, "working demo in 24 hours"), ": 60-70% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams."), /*#__PURE__*/React.createElement("p", null, "Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case."), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "THE BUILD"), /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a ", /*#__PURE__*/React.createElement("strong", null, "working demo in 24 hours"), ": 60-70% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams."), /*#__PURE__*/React.createElement("p", null, "Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'var(--font-heading)',
       fontSize: 'var(--fs-body)',
@@ -520,54 +565,95 @@ function ApexCaseStudy() {
     }
   }, "Day 12: live. For the first time, every order across 30+ locations sat in one view - and the founder could finally see which of his three businesses made money.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "The full CMT flow"), /*#__PURE__*/React.createElement("div", {
-    className: "flow-steps"
-  }, [{
-    s: 'Brand sends a work order.',
-    b: 'Style, sizes, quantities, fabric specs, trim requirements, production specs, dispatch deadline. System auto-generates SKUs.'
-  }, {
-    s: 'Bill of materials built.',
-    b: 'Main fabric, secondary fabrics, buttons, hang tags, wash care labels, thread colors, packaging specs. Every item tracked.'
-  }, {
-    s: 'Specifications attached.',
-    b: 'Cutting pattern reference, stitch types per seam, wash instructions - digitized and linked to the work order.'
-  }, {
-    s: 'Fabric and trims procured.',
-    b: 'Auto-generated POs to fabric vendors and trim suppliers. Stock checked first across all 30+ locations, only shortfall procured.'
-  }, {
-    s: 'Materials received at logistics warehouse.',
-    b: 'Fabric inspected for defects. System tracks by roll, not just total meters. Trims received against their POs.'
-  }, {
-    s: 'Issued to job worker.',
-    b: 'Fabric + all secondary materials issued together. Every item tracked per work order, per job worker.'
-  }, {
-    s: 'Job worker produces.',
-    b: 'Cutting, stitching, finishing. Job worker is hands. Specifications are Apex\u2019s.'
-  }, {
-    s: 'Finished goods returned.',
-    b: 'Received at warehouse. System reconciles: fabric sent vs garments returned vs expected yield.'
-  }, {
-    s: 'Iron and packaging.',
-    b: 'In-house. Each garment ironed, tagged, packed to buyer specs.'
-  }, {
-    s: 'QC at multiple gates.',
-    b: 'Pre-dispatch quality check against buyer standards. Rejects sent back to job worker.'
-  }, {
-    s: 'Dispatch to brand.',
-    b: 'Packed per buyer specs. System generates packing list, invoice, tracks partial shipments.'
-  }, {
-    s: 'Job worker settlement.',
-    b: 'Auto-calculated: garments received minus rejects times piece rate. Per job worker, per work order.'
-  }].map((step, i) => /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "THE PROCESS"), /*#__PURE__*/React.createElement("h2", null, "The full CMT flow"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 780
+    }
+  }, "One contract order, end to end - from the brand's work order to job worker settlement."), /*#__PURE__*/React.createElement("div", {
+    className: "proc-pipe proc-anim"
+  }, [{t:'Work order received', d:'Specs in; SKUs auto-generated.'}, {t:'BOM & specs built', d:'Fabric, trims, labels, patterns linked.'}, {t:'Fabric & trims procured', d:'Stock checked first; only the shortfall ordered.'}, {t:'Received & inspected', d:'Checked for defects, tracked by roll.'}, {t:'Issued to job worker', d:'Fabric and trims go out together, tracked.'}, {t:'Produced & returned', d:'Returns reconciled against expected yield.'}, {t:'Ironed, packed, QC', d:'In-house finishing, pre-dispatch gate.'}, {t:'Dispatched & settled', d:'Invoice out; worker auto-settled.'}].map((s, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
-    className: "flow-step"
-  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, step.s), " ", step.b))))), /*#__PURE__*/React.createElement("section", {
+    className: "proc-node"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "proc-n",
+    style: {
+      animationDelay: i * 0.5 + 's'
+    }
+  }, String(i + 1).padStart(2, '0')), /*#__PURE__*/React.createElement("div", {
+    className: "t"
+  }, s.t), /*#__PURE__*/React.createElement("p", {
+    className: "d"
+  }, s.d))))), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "Rules the system enforces"), /*#__PURE__*/React.createElement("ul", {
-    className: "rules-list"
-  }, /*#__PURE__*/React.createElement("li", null, "Can't issue fabric to a job worker without an active work order."), /*#__PURE__*/React.createElement("li", null, "Can't receive finished goods exceeding the work order quantity."), /*#__PURE__*/React.createElement("li", null, "Secondary materials must be fully issued before production starts."), /*#__PURE__*/React.createElement("li", null, "Job worker settlement blocked until all returns are reconciled."), /*#__PURE__*/React.createElement("li", null, "Fabric roll tracking: defective rolls quarantined, can't enter production."), /*#__PURE__*/React.createElement("li", null, "Brand-specific packaging specs enforced at dispatch - wrong label format blocks shipment."))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "GUARDRAILS"), /*#__PURE__*/React.createElement("h2", null, "Rules the system enforces"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 780
+    }
+  }, "Not suggestions - the system physically blocks the action."), /*#__PURE__*/React.createElement("div", {
+    className: "guard-grid"
+  }, ["Can't issue fabric without an active work order.", "Can't receive more goods than the work order quantity.", "Can't start production until every trim is issued.", "Can't settle a job worker until returns are reconciled.", "Defective fabric rolls are quarantined from production.", "Wrong packaging or label format blocks the dispatch."].map((r, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "guard-card"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "guard-badge",
+    dangerouslySetInnerHTML: {
+      __html: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.5v5c0 4.3-2.9 7.3-7 8.5-4.1-1.2-7-4.2-7-8.5v-5z"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>'
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "r"
+  }, r))))), /*#__PURE__*/React.createElement("section", {
+    className: "case-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "RESULTS"), /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("div", {
+    className: "res-rows"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "res-row",
+    style: {
+      marginBottom: 2,
+      fontSize: 11,
+      fontWeight: 700,
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--sg-red)'
+    }
+  }, "Before SimpleGrid"), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--sg-green)'
+    }
+  }, "After SimpleGrid")), [{b:'Two failed ERPs in two years; $100K+ spent', a:'Live in 12 days, modeled to the operation'}, {b:'Finding an order meant 3-5 phone calls', a:'30+ locations in one live ledger'}, {b:'Three businesses tangled in one spreadsheet', a:'Three clean P&Ls: CMT, own brand, trading'}, {b:'Job worker reconciliation ate hours a day', a:'Issued vs. returned reconciled automatically'}, {b:'Trims tracked by hand, per order', a:'Every button, tag and label on its own BOM'}, {b:'Profit by stream was guesswork', a:'Margin visible per stream and per work order'}].map((r, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "res-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "res-cell res-before"
+  }, r.b), /*#__PURE__*/React.createElement("div", {
+    className: "res-arrow",
+    dangerouslySetInnerHTML: {
+      __html: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "res-cell res-after"
+  }, r.a))))), /*#__PURE__*/React.createElement("div", {
     className: "testimonial-block"
-  }, /*#__PURE__*/React.createElement("blockquote", null, "\"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60-70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check.\""), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(RevealQuote, {
+    text: "\"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60-70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check.\""
+  }), /*#__PURE__*/React.createElement("div", {
     className: "attr"
   }, "- Founder, Apex Apparel ", /*#__PURE__*/React.createElement("span", {
     style: {

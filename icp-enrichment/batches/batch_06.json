@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  224,
+        "company":  "Rapp Productions, Inc.",
+        "website":  "https://furniturelab.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Gregory Rapp",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  225,
+        "company":  "This End Up Furniture Co.",
+        "website":  "https://thisendup.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bert K. Kelly",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  229,
+        "company":  "BenchPro, Inc.",
+        "website":  "https://benchpro.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jay Lissner",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  233,
+        "company":  "Wesley Allen",
+        "website":  "https://wesleyallen.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Victor Sawan",
+        "existingDesig":  "Founder \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  235,
+        "company":  "Johnston Casuals Furniture",
+        "website":  "https://johnstoncasuals.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Yossi Majer",
+        "existingDesig":  "",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  238,
+        "company":  "Old Hickory Tannery",
+        "website":  "https://www.ohtfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Willard G. Black",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  239,
+        "company":  "Old Hickory Tannery",
+        "website":  "https://www.ohtfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Sharee Huffman",
+        "existingDesig":  "Secretary",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  240,
+        "company":  "Spectrum Industries, Inc",
+        "website":  "https://www.spectrumfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "David Hancock",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  243,
+        "company":  "Aleco Seating Inc.",
+        "website":  "https://www.myseatss.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Andy Roche",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  244,
+        "company":  "Plas-Tec Corp.",
+        "website":  "https://plasteccorp.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "John Cuddeback",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  245,
+        "company":  "Aanes, Greg, Furniture, Inc.",
+        "website":  "https://gregaanesfurniture.org",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Greg Aanes",
+        "existingDesig":  "Founder \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  246,
+        "company":  "Avis Furniture Company",
+        "website":  "https://www.avisfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ross Donnell",
+        "existingDesig":  "Vice President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  247,
+        "company":  "DuMor, Inc.",
+        "website":  "https://www.dumor.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "M. Richard Rudy",
+        "existingDesig":  "Co-Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  248,
+        "company":  "DuMor, Inc.",
+        "website":  "https://www.dumor.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Donald E. Saner",
+        "existingDesig":  "Co-Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  251,
+        "company":  "Superior Recreational Products",
+        "website":  "https://superiorrecreationalproducts.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Roger Posacki",
+        "existingDesig":  "President \u0026 CEO, PlayCore",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  254,
+        "company":  "TRS Furniture, Inc.",
+        "website":  "https://www.theodorealexander.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Sumner Finch",
+        "existingDesig":  "President, former",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  255,
+        "company":  "TRS Furniture, Inc.",
+        "website":  "https://www.theodorealexander.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Thomas Woller",
+        "existingDesig":  "President, Theodore Alexander Upholstery Division",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  259,
+        "company":  "Wood Goods Industries, Inc",
+        "website":  "https://woodgoods.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dan Fischer",
+        "existingDesig":  "Vice President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  260,
+        "company":  "Woerner Industries, LLC",
+        "website":  "https://www.woernerfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Philip Collins",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  262,
+        "company":  "R.J. Thomas Manufacturing Co., Inc.",
+        "website":  "https://pilotrock.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Donna Lucas",
+        "existingDesig":  "Controller",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  267,
+        "company":  "Perdues, Inc./Perdue Woodworks",
+        "website":  "https://www.perduefurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Richard Perdue",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

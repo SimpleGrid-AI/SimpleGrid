@@ -16,6 +16,7 @@
 <link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
 <link rel="stylesheet" href="colors_and_type.css">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="solutions-role.css">
 
 <meta property="og:site_name" content="SimpleGrid">
 <meta property="og:type" content="website">
@@ -57,11 +58,14 @@
 </script>
 
 <!-- Solutions page styles. The section ids (visibility / planning / connected /
-     costing / adoption / evolve) are what the "Solutions" nav dropdown jumps to,
-     so keep those in sync with components/site-nav.js. -->
+     costing / adoption / evolve / roles) are what the "Solutions" nav dropdown
+     jumps to, so keep those in sync with components/site-nav.js. The role hub
+     and role pages share solutions-role.css. -->
 <style>
 .sol-hero { max-width: 1080px; margin: 0 auto; padding: 76px 32px 8px; }
-.sol-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 0 0 14px; }
+.sol-eyebrow { display: inline-block; position: relative; overflow: hidden; isolation: isolate; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 0 0 14px; padding: 7px 15px; border-radius: 10px; background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); box-shadow: 0 2px 18px color-mix(in srgb, var(--sg-blue) 15%, transparent); }
+.sol-eyebrow::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(115deg, transparent 36%, color-mix(in srgb, var(--sg-blue) 34%, transparent) 50%, transparent 64%); background-size: 250% 250%; animation: sgTagGlow 5s ease-in-out infinite; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .sol-eyebrow::before { animation: none; } }
 .sol-hero h1 { font-family: var(--font-heading); font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--fg1); margin: 0 0 18px; max-width: 780px; }
 .sol-hero .lead { font-size: 19px; line-height: 1.55; color: var(--fg2); margin: 0 0 26px; max-width: 700px; }
 .sol-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--sg-blue); color: #fff; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
@@ -69,16 +73,44 @@
 .sol-cta-ghost { display: inline-block; margin-left: 18px; color: var(--fg2); text-decoration: none; font-weight: 600; font-size: 15px; }
 .sol-cta-ghost:hover { color: var(--sg-blue); }
 
-/* Promise tiles (top-line value props) */
-.sol-tiles { max-width: 1080px; margin: 44px auto 12px; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.sol-tile { border-top: 2px solid var(--sg-blue); padding-top: 16px; }
-.sol-tile h3 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--fg1); margin: 0 0 6px; letter-spacing: -0.02em; }
-.sol-tile p { font-size: 15px; color: var(--fg2); line-height: 1.5; margin: 0; }
+/* Sticky role-selector dropdown (mirrors the compatibility page's jump bar);
+   each option navigates straight to that role's deep-dive page. */
+.sol-jump { position: sticky; top: 52px; z-index: 30; margin-top: 26px; background: rgba(255,255,255,0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.sol-jump-inner { max-width: 1080px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.sol-jump label { font-size: 13px; font-weight: 600; color: var(--fg2); }
+.sol-jump select { font: inherit; font-size: 15px; color: var(--fg1); background-color: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 11px 40px 11px 15px; cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5L6 8l3.5-3.5' stroke='%23475569' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; min-width: 260px; }
+.sol-jump select:hover { border-color: var(--sg-blue); }
+.sol-jump select:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
+
+/* Interactive highlight metrics: three tabs -> an animated KPI panel. */
+.sol-metrics { max-width: 1080px; margin: 56px auto; padding: 0 32px; }
+.sol-metrics-head { max-width: 700px; margin: 0 0 24px; }
+.sol-metrics-head h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: var(--fg1); margin: 12px 0 8px; }
+.sol-metrics-head p { font-size: 16.5px; line-height: 1.55; color: var(--fg2); margin: 0; }
+.sol-metrics-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+.sol-metric-tab { text-align: left; background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--border); border-radius: 16px; padding: 18px 20px; cursor: pointer; font: inherit; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.sol-metric-tab:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(15,23,42,0.08); }
+.sol-metric-tab:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
+.sol-metric-tab.is-active { border-color: color-mix(in srgb, var(--sg-blue) 35%, var(--border)); border-top-color: var(--sg-blue); box-shadow: 0 14px 34px rgba(37,71,184,0.13); }
+.m-tab-k { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-heading); font-size: 21px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); }
+.sol-metric-tab.is-active .m-tab-k { color: var(--sg-blue); }
+.m-tab-k::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--border); transition: background .15s ease; }
+.sol-metric-tab.is-active .m-tab-k::after { background: var(--sg-blue); }
+.m-tab-d { display: block; font-size: 14px; line-height: 1.5; color: var(--fg2); margin-top: 6px; }
+.sol-metrics-panel { position: relative; background: linear-gradient(150deg, #F4F8FF 0%, #E8F0FE 100%); border: 1px solid #DCE8F8; border-radius: 20px; padding: 40px; overflow: hidden; }
+.sol-metric-pane { display: none; }
+.sol-metric-pane.is-active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; animation: solFade .45s ease; }
+@keyframes solFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.kpi-v { display: block; font-family: var(--font-heading); font-size: clamp(34px, 4.4vw, 50px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--sg-blue); }
+.kpi-l { display: block; margin-top: 10px; font-size: 14.5px; line-height: 1.5; color: var(--fg2); }
 
 /* Pain-point -> solution blocks */
 .sol-block { border-top: 1px solid var(--border); }
-.sol-block.tint { background: var(--sg-off-white, #faf9f7); }
-.sol-inner { max-width: 1080px; margin: 0 auto; padding: 58px 32px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; scroll-margin-top: 84px; }
+.sol-block.tint { background: #F7F8FA; border-top-color: var(--border); }
+.sol-inner { max-width: 1080px; margin: 0 auto; padding: 78px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; scroll-margin-top: 84px; }
+/* Alternating sides: tinted blocks put the answer card on the left, narrative on the right. */
+.sol-block.tint .sol-pain { order: 2; }
+.sol-block.tint .sol-answer { order: 1; }
 .sol-block h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 31px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; color: var(--fg1); margin: 0 0 14px; }
 .sol-lead { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0 0 20px; }
 .sol-ask { border-left: 3px solid var(--border); padding-left: 16px; }
@@ -88,9 +120,10 @@
 .sol-inline { display: inline-block; margin-top: 18px; font-size: 14.5px; font-weight: 600; color: var(--sg-blue); text-decoration: none; }
 .sol-inline:hover { text-decoration: underline; }
 
-.sol-answer { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 26px 28px; box-shadow: 0 6px 24px rgba(15,23,42,0.04); }
-.sol-answer-h { font-family: var(--font-heading); font-size: 14px; font-weight: 700; letter-spacing: 0.02em; color: var(--fg1); margin: 0 0 16px; text-transform: uppercase; }
-.sol-check { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
+.sol-answer { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 30px 32px; box-shadow: 0 6px 22px rgba(15,23,42,0.05); transition: transform .18s ease, box-shadow .18s ease; }
+.sol-answer:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(15,23,42,0.09); }
+.sol-answer-h { font-family: var(--font-heading); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--sg-blue); margin: 0 0 18px; text-transform: uppercase; }
+.sol-check { list-style: none; margin: 0; padding: 0; display: grid; gap: 15px; }
 .sol-check li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; color: var(--fg1); }
 .sol-check li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--sg-blue); font-weight: 800; font-size: 15px; }
 
@@ -100,26 +133,39 @@
 .sol-proof h2 { font-family: var(--font-heading); font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 10px; }
 .sol-proof .sub { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0 0 28px; max-width: 640px; }
 .sol-proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.sol-proof-card { display: block; border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: #fff; text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
-.sol-proof-card:hover { border-color: var(--sg-blue); transform: translateY(-2px); }
+.sol-proof-card { display: block; border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: #fff; text-decoration: none; box-shadow: 0 10px 30px rgba(15,23,42,0.05); transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
+.sol-proof-card:hover { border-color: var(--sg-blue); transform: translateY(-3px); box-shadow: 0 20px 44px rgba(15,23,42,0.10); }
 .sol-proof-card .name { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--fg1); margin: 0 0 8px; }
 .sol-proof-card .desc { font-size: 14.5px; line-height: 1.55; color: var(--fg2); margin: 0; }
 .sol-proof-card .go { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--sg-blue); }
+.sol-proof-card .sol-quote { font-family: var(--font-heading); font-size: 18px; font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; color: var(--fg1); margin: 0 0 14px; }
+.sol-proof-card .sol-attr { font-size: 13.5px; font-weight: 600; color: var(--fg3); margin: 0; }
 .sol-proof-all { display: inline-block; margin-top: 24px; font-size: 15px; font-weight: 600; color: var(--fg1); text-decoration: none; }
 .sol-proof-all:hover { color: var(--sg-blue); }
 
-/* Final CTA */
-.sol-final { border-top: 1px solid var(--border); background: var(--sg-off-white, #faf9f7); }
-.sol-final-inner { max-width: 760px; margin: 0 auto; padding: 72px 32px; text-align: center; }
-.sol-final h2 { font-family: var(--font-heading); font-size: clamp(26px, 3.6vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 12px; }
-.sol-final p { font-size: 17px; line-height: 1.6; color: var(--fg2); margin: 0 0 26px; }
+/* Final CTA - gradient panel, a themed bookend with the role hub. */
+.sol-final { padding: 0 32px; }
+.sol-final-inner { position: relative; overflow: hidden; max-width: 1080px; margin: 64px auto; padding: 66px 40px; text-align: center; border-radius: 28px; background: linear-gradient(135deg, #1B347E 0%, #3461E0 54%, #5C8AF5 100%); box-shadow: 0 34px 80px rgba(37,71,184,0.30); }
+.sol-final-inner::before { content: ""; position: absolute; top: -42%; right: -6%; width: 460px; height: 460px; background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0) 62%); pointer-events: none; }
+.sol-final h2 { position: relative; font-family: var(--font-heading); font-size: clamp(26px, 3.6vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: #fff; margin: 0 0 12px; }
+.sol-final p { position: relative; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.86); margin: 0 0 26px; }
+.sol-final .sol-cta { position: relative; background: #fff; color: var(--sg-blue); }
+.sol-final .sol-cta:hover { filter: none; background: rgba(255,255,255,0.9); }
 
 @media (max-width: 820px) {
-  .sol-tiles { grid-template-columns: 1fr; gap: 22px; }
-  .sol-inner { grid-template-columns: 1fr; gap: 28px; padding: 44px 24px; }
+  .sol-metrics-tabs { grid-template-columns: 1fr; }
+  .sol-metric-pane.is-active { grid-template-columns: 1fr; gap: 22px; }
+  .sol-metrics-panel { padding: 28px 22px; }
+  .sol-inner { grid-template-columns: 1fr; gap: 30px; padding: 48px 24px; }
+  .sol-block.tint .sol-pain, .sol-block.tint .sol-answer { order: 0; }
   .sol-proof-grid { grid-template-columns: 1fr; }
   .sol-hero { padding-top: 56px; }
   .sol-cta-ghost { display: block; margin-left: 0; margin-top: 14px; }
+  .sol-final-inner { padding: 48px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sol-metric-tab, .sol-answer, .sol-proof-card { transition: none; }
+  .sol-metric-pane.is-active { animation: none; }
 }
 </style>
 
@@ -141,48 +187,122 @@
     <a href="#proof" class="sol-cta-ghost">See real factories &rarr;</a>
   </section>
 
-  <!-- Top-line promise tiles -->
-  <div class="sol-tiles">
-    <div class="sol-tile">
-      <h3>Real-time</h3>
-      <p>Your floor as it happens - not last week's spreadsheet.</p>
-    </div>
-    <div class="sol-tile">
-      <h3>One system</h3>
-      <p>Sales, procurement, production and scheduling on the same live data.</p>
-    </div>
-    <div class="sol-tile">
-      <h3>Your costing</h3>
-      <p>Actual margin by order, customer and SKU - your formulas, not standard overhead.</p>
+  <!-- Sticky role selector: jump straight to any designation's deep-dive page. -->
+  <div class="sol-jump">
+    <div class="sol-jump-inner">
+      <label for="sol-role-select">Go to your role</label>
+      <select id="sol-role-select" aria-label="Go to a role page">
+        <option value="">Choose your role</option>
+        <option value="solutions-owner.html">Owner / MD</option>
+        <option value="solutions-coo.html">COO / Ops head</option>
+        <option value="solutions-cfo.html">CFO / Finance</option>
+        <option value="solutions-sales-head.html">Sales head</option>
+        <option value="solutions-plant-manager.html">Plant manager</option>
+      </select>
     </div>
   </div>
+
+  <!-- Built for your role: vibrant hub linking to the five role deep-dives.
+       Moved to the top of the page. Each card opens a personalised page
+       (solutions-*.html) styled by solutions-role.css (.role-hub*). Keep the
+       #roles id in sync with site-nav.js. -->
+  <section id="roles" class="role-hub">
+    <div class="role-hub-panel">
+      <div class="role-hub-head">
+        <p class="role-hub-eyebrow">By role</p>
+        <h2>Built for your role</h2>
+        <p>Same system, a different day depending on where you sit. Pick your seat to see the exact problems SimpleGrid takes off your plate - and how it solves them.</p>
+      </div>
+      <div class="role-hub-grid">
+        <a class="role-hub-card" href="solutions-owner.html">
+          <span class="role-hub-num">01</span>
+          <span class="role-hub-name">Owner / MD</span>
+          <span class="role-hub-tag">See the whole floor without living on it.</span>
+          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a class="role-hub-card" href="solutions-coo.html">
+          <span class="role-hub-num">02</span>
+          <span class="role-hub-name">COO / Ops head</span>
+          <span class="role-hub-tag">Run operations without the meetings.</span>
+          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a class="role-hub-card" href="solutions-cfo.html">
+          <span class="role-hub-num">03</span>
+          <span class="role-hub-name">CFO / Finance</span>
+          <span class="role-hub-tag">Costing on actuals, not standards.</span>
+          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a class="role-hub-card" href="solutions-sales-head.html">
+          <span class="role-hub-num">04</span>
+          <span class="role-hub-name">Sales head</span>
+          <span class="role-hub-tag">Promise delivery dates you can hit.</span>
+          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a class="role-hub-card" href="solutions-plant-manager.html">
+          <span class="role-hub-num">05</span>
+          <span class="role-hub-name">Plant manager</span>
+          <span class="role-hub-tag">The floor, captured as it happens.</span>
+          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive highlights: the three value props as tabs over an animated
+       KPI panel. Numbers count up on first view and on each tab switch. -->
+  <section class="sol-metrics" id="highlights">
+    <div class="sol-metrics-head">
+      <p class="sol-eyebrow">What changes</p>
+      <h2>The levers - and what they move</h2>
+      <p>Tap a lever to see what it does on a real floor.</p>
+    </div>
+    <div class="sol-metrics-tabs" role="tablist" aria-label="Solution highlights">
+      <button type="button" class="sol-metric-tab is-active" data-metric="realtime" role="tab" aria-selected="true" aria-controls="pane-realtime">
+        <span class="m-tab-k">Real-time</span>
+        <span class="m-tab-d">Your floor as it happens - not last week's spreadsheet.</span>
+      </button>
+      <button type="button" class="sol-metric-tab" data-metric="onesystem" role="tab" aria-selected="false" aria-controls="pane-onesystem">
+        <span class="m-tab-k">One system</span>
+        <span class="m-tab-d">Every team on the same live data.</span>
+      </button>
+      <button type="button" class="sol-metric-tab" data-metric="costing" role="tab" aria-selected="false" aria-controls="pane-costing">
+        <span class="m-tab-k">Your costing</span>
+        <span class="m-tab-d">Actual margin - your formulas, not standard overhead.</span>
+      </button>
+    </div>
+    <div class="sol-metrics-panel">
+      <div class="sol-metric-pane is-active" id="pane-realtime" data-pane="realtime" role="tabpanel">
+        <div class="kpi"><span class="kpi-v" data-count="100" data-suffix="%">0%</span><span class="kpi-l">of floor actions captured with a name and a timestamp.</span></div>
+        <div class="kpi"><span class="kpi-v" data-count="1">0</span><span class="kpi-l">live picture shared by the floor, the office and the owner.</span></div>
+        <div class="kpi"><span class="kpi-v" data-count="0">0</span><span class="kpi-l">end-of-day re-keying or catch-up entry.</span></div>
+      </div>
+      <div class="sol-metric-pane" id="pane-onesystem" data-pane="onesystem" role="tabpanel">
+        <div class="kpi"><span class="kpi-v" data-count="4">0</span><span class="kpi-l">core functions on one live model: sales, procurement, production, scheduling.</span></div>
+        <div class="kpi"><span class="kpi-v" data-count="1">0</span><span class="kpi-l">shared demand signal every team works from.</span></div>
+        <div class="kpi"><span class="kpi-v" data-count="0">0</span><span class="kpi-l">modules to reconcile or re-key between.</span></div>
+      </div>
+      <div class="sol-metric-pane" id="pane-costing" data-pane="costing" role="tabpanel">
+        <div class="kpi"><span class="kpi-v" data-count="3">0</span><span class="kpi-l">levels of true margin: by order, by customer, by SKU.</span></div>
+        <div class="kpi"><span class="kpi-v" data-count="100" data-suffix="%">0%</span><span class="kpi-l">of costs allocated on a basis you define, not standard overhead.</span></div>
+        <div class="kpi"><span class="kpi-v" data-count="0">0</span><span class="kpi-l">guesswork in a quote - it's priced from real costs.</span></div>
+      </div>
+    </div>
+  </section>
 
   <!-- 1. Real-time floor visibility & accountability -->
   <section id="visibility" class="sol-block">
     <div class="sol-inner">
       <div class="sol-pain">
-        <p class="sol-eyebrow">For the owner / MD &middot; Real-time visibility</p>
-        <h2>See your floor as it actually runs</h2>
-        <p class="sol-lead">The plant manager knows where every job stands - nobody else does. SimpleGrid captures what happens where the work happens, so the floor, the office and the owner see the same live picture. See what you can build today, what you're short on, and what it'll cost - before you commit to a customer.</p>
-        <div class="sol-ask">
-          <p class="sol-ask-h">Sound familiar?</p>
-          <ul>
-            <li>How are you making production decisions - off spreadsheets and manual BOMs?</li>
-            <li>Your floor staff won't use the ERP, so is there a time lag, leakage and no accountability?</li>
-            <li>Are decisions ever really real-time, or always a step behind?</li>
-            <li>Has material been wasted because the operator didn't have the right information?</li>
-            <li>Can you see who did what and when - the product's journey, which QC approved which material, at what time?</li>
-          </ul>
-        </div>
-        <a href="case-apex.html" class="sol-inline">See it on a real floor: Apex Apparel runs 30+ locations on one live system &rarr;</a>
+        <p class="sol-eyebrow">Real-time floor visibility</p>
+        <h2>See your floor as it runs</h2>
+        <p class="sol-lead">Everyone works from one live picture - the floor, the office and you.</p>
       </div>
       <div class="sol-answer">
         <p class="sol-answer-h">With SimpleGrid</p>
         <ul class="sol-check">
-          <li>Live floor data captured at the point of work - receipts, stage completions, QC, issues - with no separate data-entry step.</li>
-          <li>One shared picture for the floor, the office and the owner. No re-keying, no end-of-day catch-up.</li>
-          <li>A complete activity ledger: every action timestamped and attributed to a person - full traceability, not buried in paper.</li>
-          <li>Catch leakage and waste at the source, because the information reaches the operator in time.</li>
+          <li>Work is logged where it happens.</li>
+          <li>No re-keying, no end-of-day catch-up.</li>
+          <li>Every action has a name and a time.</li>
         </ul>
       </div>
     </div>
@@ -192,24 +312,16 @@
   <section id="planning" class="sol-block tint">
     <div class="sol-inner">
       <div class="sol-pain">
-        <p class="sol-eyebrow">For the sales head &amp; owner &middot; Planning &amp; scheduling</p>
-        <h2>Plan production against live inventory - in minutes</h2>
-        <p class="sol-lead">Scheduling shouldn't take hours, and committing a date shouldn't take three phone calls. SimpleGrid plans on a live window that already knows your stock, your reservations and your BOMs. Before you promise a customer a date, you'll know if production can actually hit it.</p>
-        <div class="sol-ask">
-          <p class="sol-ask-h">Sound familiar?</p>
-          <ul>
-            <li>Is scheduling and planning still taking hours?</li>
-            <li>Can you plan on a window that shows current inventory, already-reserved and on-order - then knocks it down to planned production and the materials required, on your own BOM?</li>
-            <li>A customer calls - can you commit a timeline without making a few calls first?</li>
-          </ul>
-        </div>
+        <p class="sol-eyebrow">Planning &amp; scheduling</p>
+        <h2>Plan in minutes, not hours</h2>
+        <p class="sol-lead">Schedule against live stock and capacity, then commit dates you can keep.</p>
       </div>
       <div class="sol-answer">
         <p class="sol-answer-h">With SimpleGrid</p>
         <ul class="sol-check">
-          <li>A live planning window: on-hand, reserved and on-order stock - netted down by <em>your</em> BOM to exactly what to make and what to buy.</li>
-          <li>Schedule in minutes, not hours - the system aggregates and proposes; you approve.</li>
-          <li>Commit accurate delivery dates on the spot, because availability and capacity are already in front of you.</li>
+          <li>See on-hand, reserved and on-order stock.</li>
+          <li>The system proposes a plan; you approve.</li>
+          <li>Promise accurate dates on the spot.</li>
         </ul>
       </div>
     </div>
@@ -219,24 +331,16 @@
   <section id="connected" class="sol-block">
     <div class="sol-inner">
       <div class="sol-pain">
-        <p class="sol-eyebrow">For the COO &middot; One system</p>
-        <h2>Sales, procurement, production and scheduling - one shared system</h2>
-        <p class="sol-lead">When every team works in a separate module, coordination becomes a meeting. SimpleGrid puts them on the same data, so procurement sees what sales sees. One system, every team, the same data - no one's working off yesterday's numbers.</p>
-        <div class="sol-ask">
-          <p class="sol-ask-h">Sound familiar?</p>
-          <ul>
-            <li>How does your sales team decide what to push - by calling someone who keeps the data in a spreadsheet?</li>
-            <li>How is coordination handled between procurement, production, scheduling and sales?</li>
-            <li>Does procurement see the same data as sales - or does your software split them into separate modules?</li>
-          </ul>
-        </div>
+        <p class="sol-eyebrow">One connected system</p>
+        <h2>One system, every team</h2>
+        <p class="sol-lead">Sales, procurement, production and scheduling on the same live data.</p>
       </div>
       <div class="sol-answer">
         <p class="sol-answer-h">With SimpleGrid</p>
         <ul class="sol-check">
-          <li>One operational model across sales, procurement, production and scheduling - not bolted-together modules.</li>
-          <li>Sales plans what to push from live availability and margin, not a stale spreadsheet.</li>
-          <li>Procurement, production and scheduling all react to the same demand signal, in real time.</li>
+          <li>One model, not bolted-on modules.</li>
+          <li>Everyone reacts to one demand signal.</li>
+          <li>No one works off yesterday's numbers.</li>
         </ul>
       </div>
     </div>
@@ -246,25 +350,16 @@
   <section id="costing" class="sol-block tint">
     <div class="sol-inner">
       <div class="sol-pain">
-        <p class="sol-eyebrow">For the CFO &middot; Costing &amp; margins</p>
-        <h2>Costing modeled on your operation - actuals, not standards</h2>
-        <p class="sol-lead">NetSuite and Acumatica can absorb an unmeasured consumable into a pre-defined overhead rate. What they can't do is allocate that consumable directly against a basis you define. SimpleGrid does. Your costing logic, your way - not the way an enterprise template thinks you should run it.</p>
-        <div class="sol-ask">
-          <p class="sol-ask-h">Sound familiar?</p>
-          <ul>
-            <li>Is your ERP built for standard accounting - or for your system?</li>
-            <li>Do you know your actual margin (not standard) by sales order, by customer, by SKU?</li>
-            <li>Do quotes take time to put together?</li>
-          </ul>
-        </div>
-        <a href="case-furniture-manufacturer.html" class="sol-inline">A 600-employee furniture exporter gets SKU-level profitability with wood, contractor and rejection costs on every item &rarr;</a>
+        <p class="sol-eyebrow">Costing &amp; margins</p>
+        <h2>Costing done your way</h2>
+        <p class="sol-lead">Allocate costs the way you actually work - and see your real margin.</p>
       </div>
       <div class="sol-answer">
         <p class="sol-answer-h">With SimpleGrid</p>
         <ul class="sol-check">
-          <li>Allocate any cost - including consumables - against whatever basis <em>you</em> define, not a fixed overhead rate.</li>
-          <li>Actual margin by sales order, customer and SKU - built from what really happened on the floor.</li>
-          <li>Fast, accurate quotes priced from your real costs.</li>
+          <li>Allocate any cost on a basis you define.</li>
+          <li>Real margin by order, customer and SKU.</li>
+          <li>Quote from your real costs.</li>
         </ul>
       </div>
     </div>
@@ -274,25 +369,16 @@
   <section id="adoption" class="sol-block">
     <div class="sol-inner">
       <div class="sol-pain">
-        <p class="sol-eyebrow">For the plant manager &middot; Adoption</p>
-        <h2>Simple enough that your floor staff actually use it</h2>
-        <p class="sol-lead">Floor software only works if the people on the floor use it. If your ERP is too complex for them, you're paying for report-builders and living with stale data. Your floor staff log it. Everyone sees it live. No lag, no leakage, no one working in the dark.</p>
-        <div class="sol-ask">
-          <p class="sol-ask-h">Sound familiar?</p>
-          <ul>
-            <li>Can your technical and floor staff actually use your ERP - or is it too complex for them?</li>
-            <li>If they can't use it, how are they told what's happening - are they working in the dark?</li>
-            <li>Are you relying on someone to build a report every time you need to make a decision?</li>
-          </ul>
-        </div>
-        <a href="case-furniture-manufacturer.html" class="sol-inline">30 floor staff who rejected every previous ERP now use SimpleGrid daily &rarr;</a>
+        <p class="sol-eyebrow">Adoption on the floor</p>
+        <h2>Simple enough that the floor uses it</h2>
+        <p class="sol-lead">Type or talk to it in plain language - no training manual.</p>
       </div>
       <div class="sol-answer">
         <p class="sol-answer-h">With SimpleGrid</p>
         <ul class="sol-check">
-          <li>Built for how the floor already works - type or talk to it in plain language. No menus, no training manual.</li>
-          <li>Floor staff log receipts, QC and stage completions themselves, so the data is current - they're the ones entering it.</li>
-          <li>No report-builder middlemen - answers are live, with a timestamp and a name attached.</li>
+          <li>Floor staff log their own work.</li>
+          <li>No menus, no report-builders.</li>
+          <li>Answers are live and attributed.</li>
         </ul>
       </div>
     </div>
@@ -303,24 +389,15 @@
     <div class="sol-inner">
       <div class="sol-pain">
         <p class="sol-eyebrow">Built for you</p>
-        <h2>An operations layer that's a competitive edge - and keeps up with you</h2>
-        <p class="sol-lead">Generic software pushes you toward a generic process. If all your differentiation is in brand and product placement, your operation is just like everyone else's. SimpleGrid turns how you run into an advantage - and changes as fast as you do.</p>
-        <div class="sol-ask">
-          <p class="sol-ask-h">Sound familiar?</p>
-          <ul>
-            <li>Have you flattened into a standard process with no operational differentiation from your competitors?</li>
-            <li>Is all your innovation in brand and product placement - and none in cost efficiency?</li>
-            <li>Is your business evolving faster than your software can keep up?</li>
-            <li>How long will you keep using software designed for an enterprise and scaled down for you?</li>
-          </ul>
-        </div>
+        <h2>Built for you, evolves with you</h2>
+        <p class="sol-lead">Modeled on how you run - and changed as fast as you do.</p>
       </div>
       <div class="sol-answer">
         <p class="sol-answer-h">With SimpleGrid</p>
         <ul class="sol-check">
-          <li>Built around your operation - not an enterprise template scaled down to fit.</li>
-          <li>Changes as your process changes - weeks, not a multi-quarter change request.</li>
-          <li>Operational efficiency becomes a moat, not just your brand.</li>
+          <li>Built around your operation, not a template.</li>
+          <li>Changes in weeks, not quarters.</li>
+          <li>Your way of working becomes an edge.</li>
         </ul>
       </div>
     </div>
@@ -329,17 +406,17 @@
   <!-- Proof / case studies -->
   <section id="proof" class="sol-proof">
     <p class="sol-eyebrow">Proof</p>
-    <h2>Run live for 30 days. Both factories kept it.</h2>
-    <p class="sub">We configure SimpleGrid to your floor at our cost. Run it live for 30 days. You pay only when it works. Here's what that looked like.</p>
+    <h2>Both factories ran it live for 30 days. Both kept it.</h2>
+    <p class="sub">We configure SimpleGrid to your floor at our cost. Run it live for 30 days. You pay only when it works. Here's what they told us.</p>
     <div class="sol-proof-grid">
       <a href="case-apex.html" class="sol-proof-card">
-        <p class="name">Apex Apparel</p>
-        <p class="desc">Apparel maker - 80-100k shirts/month, 30+ locations, 20+ job workers. SimpleGrid modeled to the operation, live in 12 days.</p>
+        <p class="sol-quote">"Working demo in 24 hours - 60-70% accurate. No vendor we've worked with has done that."</p>
+        <p class="sol-attr">Founder, Apex Apparel · reference available on request</p>
         <span class="go">Read the story &rarr;</span>
       </a>
       <a href="case-furniture-manufacturer.html" class="sol-proof-card">
-        <p class="name">Furniture exporter</p>
-        <p class="desc">600 employees, 550 SKUs, component-level wood tracking and contractor settlements. SimpleGrid setup live in 21 days.</p>
+        <p class="sol-quote">"SimpleGrid feels like our system. My stores manager was comfortable on day one."</p>
+        <p class="sol-attr">The founder, Furniture exporter</p>
         <span class="go">Read the story &rarr;</span>
       </a>
     </div>
@@ -360,5 +437,83 @@
 <div id="sg-footer"></div>
 <script src="components/site-nav.js" defer></script>
 <script src="components/site-footer.js" defer></script>
-<script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
+<script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script>
+
+<!-- Role selector: navigate straight to the chosen role page. -->
+<script>
+(function () {
+  var sel = document.getElementById('sol-role-select');
+  if (!sel) return;
+  sel.addEventListener('change', function () {
+    if (sel.value) window.location.href = sel.value;
+  });
+})();
+</script>
+
+<!-- Interactive highlight metrics: tab switching + KPI count-up animation. -->
+<script>
+(function () {
+  var section = document.querySelector('.sol-metrics');
+  if (!section) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tabs = section.querySelectorAll('.sol-metric-tab');
+  var panes = section.querySelectorAll('.sol-metric-pane');
+
+  function render(el, val) {
+    var pre = el.getAttribute('data-prefix') || '';
+    var suf = el.getAttribute('data-suffix') || '';
+    el.textContent = pre + val + suf;
+  }
+  function countUp(pane) {
+    var vals = pane.querySelectorAll('.kpi-v');
+    for (var i = 0; i < vals.length; i++) {
+      (function (el) {
+        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        if (reduce || target === 0) { render(el, target); return; }
+        var start = null, dur = 950;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          render(el, Math.round(eased * target));
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      })(vals[i]);
+    }
+  }
+  function activate(key) {
+    for (var i = 0; i < tabs.length; i++) {
+      var on = tabs[i].getAttribute('data-metric') === key;
+      tabs[i].classList.toggle('is-active', on);
+      tabs[i].setAttribute('aria-selected', on ? 'true' : 'false');
+    }
+    for (var j = 0; j < panes.length; j++) {
+      var paneOn = panes[j].getAttribute('data-pane') === key;
+      panes[j].classList.toggle('is-active', paneOn);
+      if (paneOn) countUp(panes[j]);
+    }
+  }
+  for (var t = 0; t < tabs.length; t++) {
+    (function (tab) {
+      tab.addEventListener('click', function () { activate(tab.getAttribute('data-metric')); });
+    })(tabs[t]);
+  }
+  // Count up the initially-active pane the first time the section is seen.
+  var firstPane = section.querySelector('.sol-metric-pane.is-active');
+  if (firstPane) {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        for (var k = 0; k < entries.length; k++) {
+          if (entries[k].isIntersecting) { countUp(firstPane); io.disconnect(); break; }
+        }
+      }, { threshold: 0.4 });
+      io.observe(section);
+    } else {
+      countUp(firstPane);
+    }
+  }
+})();
+</script>
+</body>
 </html>

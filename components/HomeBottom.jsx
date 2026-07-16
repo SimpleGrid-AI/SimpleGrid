@@ -15,7 +15,7 @@ window.ApparelVisual = ApparelVisual;
 
 function FounderStory() {
   return (
-    <section className="section section-alt" id="founder">
+    <section className="section section-dark" id="founder" style={{background:'#0B0F17'}}>
       <div className="container">
         <Reveal>
           <div className="founder-text">
@@ -33,46 +33,154 @@ function FounderStory() {
 window.FounderStory = FounderStory;
 
 function ProofSection() {
+  const CASES = [
+    {
+      label: 'Furniture exporter',
+      headline: 'How a furniture exporter stopped $200K in silent losses.',
+      poster: 'assets/elite-factory.jpeg',
+      shot: true,
+      video: 'https://youtu.be/9-OTYmUJe8U',
+      link: 'case-furniture-manufacturer.html',
+      stats: [
+        { v: 'Furniture export', l: 'industry' },
+        { v: '$200K', l: 'silent losses found' },
+        { v: '21 days', l: 'to go live' },
+      ],
+    },
+    {
+      label: 'Apparel maker',
+      headline: 'How an apparel maker went live in 12 days after two failed ERPs.',
+      apparel: true,
+      video: null,
+      link: 'case-apex.html',
+      stats: [
+        { v: 'Apparel CMT', l: 'industry' },
+        { v: '30+', l: 'locations unified' },
+        { v: '12 days', l: 'to go live' },
+      ],
+    },
+  ];
+  const [active, setActive] = React.useState(0);
+  const [playing, setPlaying] = React.useState(false);
+  const n = CASES.length;
+  const c = CASES[active];
+  const touchX = React.useRef(null);
+  const go = (dir) => { setPlaying(false); setActive((a) => (a + dir + n) % n); };
+  const onTouchStart = (e) => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > 45) go(dx < 0 ? 1 : -1);
+  };
+  const ytEmbed = (url) => 'https://www.youtube-nocookie.com/embed/' + url.split('/').pop().split('?')[0] + '?autoplay=1&rel=0';
   return (
     <section className="section" id="case-studies">
       <div className="container">
         <Reveal>
-          <div className="tag" style={{textAlign:'center'}}>CASE STUDIES</div>
-          <h2 className="h2" style={{textAlign:'center'}}>Manufacturers running on SimpleGrid today.</h2>
-          <p className="lead" style={{maxWidth:920,margin:'0 auto 40px',textAlign:'center'}}>Two public deployments below. More running confidentially - names available on request.</p>
+          <div className="tag">CASE STUDIES</div>
+          <h2 className="h2">Manufacturers running on SimpleGrid today.</h2>
+          <p className="lead" style={{maxWidth:920,margin:'0 0 28px'}}>Two live deployments. More running confidentially.</p>
         </Reveal>
-        <div className="proof-grid">
-          {[
-            { kind: 'image', img: 'url(assets/elite-factory.jpeg) center/cover', name: 'Furniture Manufacturer & Exporter', desc: '12+ countries (USA, Europe, Asia). 600-800 employees. ~1 million sq ft. Excel + group chats → one live floor view.', stats: '$200K leak stopped · planning 20h → 2h · live in 21 days', quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."', attr: '- The founder', link: 'case-furniture-manufacturer.html', anchor: 'How they deployed in 21 days' },
-            { kind: 'apparel', name: 'Apparel Contract Manufacturer', desc: 'Apparel manufacturer · 80-100k shirts/mo. 3 streams. 20+ job workers. 30+ inventory locations. Live in 12 days.', stats: '2 failed ERPs → live in 12 days · 30+ locations, one view', quote: '"Working demo in 24 hours - 60-70% accurate. No vendor we\'ve worked with has done that."', attr: '- Founder (reference available on request)', link: 'case-apex.html', anchor: 'How they went live in 12 days' },
-          ].map((c,i) => (
-            <Reveal key={i} delay={i * 150}>
-              <a href={c.link} className="proof-card" style={{height:'100%',display:'block',textDecoration:'none',color:'inherit',transition:'transform 160ms var(--ease-standard)'}}
-                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                 onMouseLeave={(e) => { e.currentTarget.style.transform = ''; }}>
-                <div className="proof-img" style={c.kind === 'image' ? {background:c.img,height:220, position:'relative'} : {height:220, padding: 0, overflow: 'hidden'}}>
-                  {c.kind === 'image' && (
-                    <span style={{
-                      position:'absolute', top:10, left:10,
-                      background:'rgba(0,0,0,0.65)', color:'#fff',
-                      fontSize:10, fontWeight:700, letterSpacing:'0.14em', textTransform:'uppercase',
-                      padding:'4px 8px', borderRadius:4, backdropFilter:'blur(4px)',
-                    }}>● Actual shot</span>
-                  )}
-                  {c.kind === 'apparel' && <ApparelVisual />}
-                </div>
-                <div className="proof-body">
-                  <h3>{c.name}</h3>
-                  <p>{c.desc}</p>
-                  <div className="proof-stats">{c.stats}</div>
-                  <div className="proof-quote">{c.quote}<div className="proof-attr">{c.attr}</div></div>
-                  <span className="btn btn-ghost btn-sm" style={{paddingLeft:0,color:'var(--sg-blue)',fontWeight:600,pointerEvents:'none'}}>{c.anchor} →</span>
-                </div>
-              </a>
-            </Reveal>
-          ))}
-        </div>
       </div>
+      <Reveal delay={100}>
+        <div className="cs-fullbleed">
+          <div className="cs-showcase">
+            <div className={"cs-media" + (c.apparel ? " cs-media-diagram" : "")} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+              {playing && c.video ? (
+                <iframe className="cs-video" src={ytEmbed(c.video)} title={c.headline} frameBorder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen></iframe>
+              ) : (
+                <>
+                  {c.apparel ? <ApparelVisual /> : <div className="cs-poster" style={{backgroundImage:'url(' + c.poster + ')'}} />}
+                  {c.shot && <span className="cs-shot">● Actual shot</span>}
+                  {!c.apparel && (
+                    <>
+                      <div className="cs-scrim" aria-hidden="true" />
+                      <h3 className="cs-headline">{c.headline}</h3>
+                      <div className="cs-actions">
+                        {c.video && <button type="button" className="btn cs-btn-watch" onClick={() => setPlaying(true)} data-cta="case_watch_video"><svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor" aria-hidden="true"><path d="M0 0l11 6.5L0 13z"/></svg> Watch video</button>}
+                        <a className="btn cs-btn-case" href={c.link} data-cta="case_see_study">See case study <span aria-hidden="true">&rarr;</span></a>
+                      </div>
+                    </>
+                  )}
+                </>
+              )}
+              {playing && <button type="button" className="cs-close" onClick={() => setPlaying(false)} aria-label="Close video">×</button>}
+              {playing && <a className="cs-play-case" href={c.link} data-cta="case_see_study_overlay">See case study <span aria-hidden="true">&rarr;</span></a>}
+              <button type="button" className="cs-float cs-float-prev" onClick={() => go(-1)} aria-label="Previous case study">&lsaquo;</button>
+              <button type="button" className="cs-float cs-float-next" onClick={() => go(1)} aria-label="Next case study">&rsaquo;</button>
+            </div>
+            {c.apparel && (
+              <div className="cs-caption">
+                <h3 className="cs-cap-h">{c.headline}</h3>
+                <div className="cs-cap-actions">
+                  {c.video && <button type="button" className="btn cs-btn-watch" onClick={() => setPlaying(true)} data-cta="case_watch_video"><svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor" aria-hidden="true"><path d="M0 0l11 6.5L0 13z"/></svg> Watch video</button>}
+                  <a className="btn cs-btn-case" href={c.link} data-cta="case_see_study">See case study <span aria-hidden="true">&rarr;</span></a>
+                </div>
+              </div>
+            )}
+            <div className="cs-stats">
+              {c.stats.map((s, i) => (
+                <div key={i} className="cs-stat">
+                  <div className="cs-stat-v">{s.v}</div>
+                  <div className="cs-stat-l">{s.l}</div>
+                </div>
+              ))}
+            </div>
+            <div className="cs-dots" role="tablist" aria-label="Case studies">
+              {CASES.map((cc, i) => (
+                <button type="button" key={i} role="tab" aria-selected={i === active} className={'cs-dot' + (i === active ? ' is-active' : '')} onClick={() => { setPlaying(false); setActive(i); }}>{cc.label}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Reveal>
+      <style>{`
+        .cs-fullbleed { margin-top: 8px; }
+        .cs-showcase { position: relative; background: #0E1116; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .cs-media { position: relative; width: 100%; height: min(56.25vw, 74vh); min-height: 340px; overflow: hidden; background: #000; touch-action: pan-y; }
+        .cs-poster { position: absolute; inset: 0; background-size: cover; background-position: center; }
+        .cs-video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; z-index: 4; background: #000; }
+        .cs-shot { position: absolute; top: 18px; left: 18px; z-index: 2; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 9px; border-radius: 5px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+        .cs-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.82) 100%); }
+        .cs-headline { position: absolute; left: 6vw; right: 6vw; bottom: 118px; z-index: 2; font-family: var(--font-heading); font-size: clamp(26px, 3.6vw, 48px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; color: #fff; margin: 0; max-width: 820px; }
+        .cs-actions { position: absolute; left: 6vw; bottom: 42px; z-index: 2; display: flex; gap: 12px; flex-wrap: wrap; }
+        .cs-btn-watch { background: #fff; color: #1A1A1A; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; }
+        .cs-btn-watch:hover { background: rgba(255,255,255,0.88); }
+        .cs-btn-case { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.28); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+        .cs-btn-case:hover { background: rgba(255,255,255,0.2); }
+        .cs-float { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; font-size: 28px; line-height: 1; color: #fff; background: rgba(0,0,0,0.42); border: 1px solid rgba(255,255,255,0.28); border-radius: 50%; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background .15s ease, transform .15s ease; }
+        .cs-float:hover { background: rgba(0,0,0,0.64); transform: translateY(-50%) scale(1.08); }
+        .cs-float-prev { left: 22px; }
+        .cs-float-next { right: 22px; }
+        .cs-close { position: absolute; top: 64px; right: 16px; z-index: 6; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; color: #fff; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.32); cursor: pointer; }
+        .cs-close:hover { background: rgba(0,0,0,0.82); }
+        .cs-play-case { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 6; display: inline-flex; align-items: center; gap: 6px; padding: 8px 15px; border-radius: 999px; background: rgba(255,255,255,0.95); color: #1A1A1A; font-weight: 600; font-size: 10px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.5); transition: background .15s ease, transform .15s ease; }
+        .cs-play-case:hover { background: #fff; transform: translateX(-50%) translateY(-2px); }
+        .cs-caption { padding: 30px 6vw 32px; background: #0E1116; border-top: 1px solid rgba(255,255,255,0.08); }
+        .cs-cap-h { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: #fff; margin: 0 0 18px; max-width: 820px; }
+        .cs-cap-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .cs-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.08); }
+        .cs-stat { padding: 26px 32px; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
+        .cs-stat:last-child { border-right: none; }
+        .cs-stat-v { font-family: var(--font-heading); font-size: 30px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1.1; }
+        .cs-stat-l { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 5px; }
+        .cs-dots { display: flex; justify-content: center; gap: 8px; padding: 14px 16px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
+        .cs-dot { font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.03em; color: rgba(255,255,255,0.45); background: none; border: 0; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: color .15s ease, background .15s ease; }
+        .cs-dot:hover { color: #fff; }
+        .cs-dot.is-active { color: #fff; background: rgba(255,255,255,0.10); }
+        @media (max-width: 760px) {
+          .cs-headline { left: 22px; right: 22px; bottom: 104px; }
+          .cs-actions { left: 22px; bottom: 24px; }
+          .cs-stats { grid-template-columns: 1fr; }
+          .cs-stat { border-right: none; border-top: 1px solid rgba(255,255,255,0.08); padding: 18px 24px; }
+          .cs-caption { padding: 22px 22px 24px; }
+          .cs-float { width: 44px; height: 44px; font-size: 24px; }
+          .cs-float-prev { left: 10px; }
+          .cs-float-next { right: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .cs-float, .cs-btn-watch, .cs-btn-case, .cs-dot { transition: none; } }
+      `}</style>
     </section>
   );
 }
@@ -199,6 +307,14 @@ function Integrations() {
 window.Integrations = Integrations;
 
 function DataSecurity() {
+  const lock = '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>';
+  const db = '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/><path d="M5 12v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-6"/></svg>';
+  const shield = '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9v-5z"/><path d="M9 11.8l2 2 4-4"/></svg>';
+  const items = [
+    { badge: 'In place', icon: lock, t: 'Encryption & data export', p: 'AES-256 at rest, TLS 1.3 in transit. Export all your data on request - no clawback, no ransom.' },
+    { badge: 'Architecture', icon: db, t: 'Your own database', p: "Every client gets an isolated database. Shared platform, fully separate data - no one ever sees another's." },
+    { badge: 'On the roadmap', icon: shield, t: 'SOC 2 Type II · Q4 2026', p: 'An independent audit of our security controls, due Q4 2026. Ask for our current security questionnaire today.' },
+  ];
   return (
     <section className="section section-alt" id="security" style={{ minHeight: 'calc((100vh - 64px) / 2.6)', paddingTop: 40, paddingBottom: 40, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <div className="container">
@@ -206,22 +322,29 @@ function DataSecurity() {
           <div className="tag">DATA SECURITY</div>
           <h2 className="h2">Your data stays yours.</h2>
         </Reveal>
-        <div className="sec-grid">
-          {[
-            { badge: 'ARCHITECTURE', color: 'var(--sg-purple)', t: 'Multi-tenant isolation', p: 'Every client gets their own database. Shared platform, completely separate data. Like an apartment building - shared infrastructure, your own lock, your own walls. No client can ever see another\'s data.' },
-            { badge: 'ON THE ROADMAP', color: 'var(--sg-blue)', t: 'SOC 2 Type II audit · Q3 2026', p: 'Independent auditors verifying our security controls, data handling, and availability. Engagement letter signed; report expected in Q3 2026. Ask us for a copy of our current security questionnaire today.' },
-            { badge: 'IN PLACE', color: 'var(--sg-green)', t: 'Encryption + data export', p: 'AES-256 at rest, TLS 1.3 in transit. You control what\'s stored. Full export of your data on request - no clawback, no data ransom.' },
-          ].map((s,i) => (
+        <div className="ds-grid">
+          {items.map((s, i) => (
             <Reveal key={i} delay={i * 100}>
-              <div className="sec-card" style={{height:'100%'}}>
-                <div className="sec-badge" style={{color:s.color}}>{s.badge}</div>
-                <h3>{s.t}</h3>
-                <p>{s.p}</p>
+              <div className="ds-card">
+                <span className="ds-ic" aria-hidden="true" dangerouslySetInnerHTML={{ __html: s.icon }} />
+                <span className="ds-badge">{s.badge}</span>
+                <h3 className="ds-t">{s.t}</h3>
+                <p className="ds-p">{s.p}</p>
               </div>
             </Reveal>
           ))}
         </div>
       </div>
+      <style>{`
+        .ds-grid { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .ds-card { height: 100%; display: flex; flex-direction: column; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; box-shadow: 0 6px 22px rgba(15,23,42,0.05); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+        .ds-card:hover { border-color: color-mix(in srgb, var(--sg-blue) 40%, var(--border)); box-shadow: 0 14px 36px rgba(15,23,42,0.10); transform: translateY(-3px); }
+        .ds-ic { width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--sg-blue) 10%, #fff); color: var(--sg-blue); }
+        .ds-badge { display: inline-block; margin: 16px 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-blue); background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); padding: 4px 11px; border-radius: 999px; }
+        .ds-t { font-family: var(--font-heading); font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); margin: 0 0 8px; }
+        .ds-p { font-size: 14px; line-height: 1.55; color: var(--fg2); margin: 0; }
+        @media (max-width: 820px) { .ds-grid { grid-template-columns: 1fr; } }
+      `}</style>
     </section>
   );
 }
@@ -367,10 +490,10 @@ function HomeFAQ() {
   const [open, setOpen] = React.useState(0);
   return (
     <section className="section section-alt" id="home-faq" aria-label="Frequently asked questions">
-      <div className="container" style={{maxWidth:880}}>
+      <div className="container">
         <Reveal>
-          <div className="tag" style={{textAlign:'center'}}>BEFORE YOU DECIDE</div>
-          <h2 className="h2" style={{textAlign:'center'}}>Five questions every buyer asks us.</h2>
+          <div className="tag">BEFORE YOU DECIDE</div>
+          <h2 className="h2">Five questions every buyer asks us.</h2>
         </Reveal>
         <div style={{marginTop:32,display:'flex',flexDirection:'column',gap:12}}>
           {items.map((it,i) => (
@@ -407,6 +530,7 @@ function WhyNotERP() {
     { badge: 'ADAPT FREELY', color: 'var(--sg-purple)', t: 'Software that mirrors your floor, not a template.', p: 'Your ops managers change routing steps, BOM logic, and QC checklists themselves. No developer, no ticket, no downtime.' },
     { badge: 'INTEGRATE CLEANLY', color: 'var(--sg-green)', t: 'Keep your accounting ledger. Upgrade your operational reality.', p: 'A layer, not a replacement. SimpleGrid handles the fast, messy reality of the floor and pushes clean financial data into QuickBooks or Tally automatically.' },
   ];
+  const [open, setOpen] = React.useState([0]);
   return (
     <section className="section" id="not-an-erp">
       <div className="container">
@@ -414,18 +538,44 @@ function WhyNotERP() {
           <div className="tag">WHY THIS ISN'T ANOTHER ERP</div>
           <h2 className="h2">A layer on top of the books you already run. Not a rip-and-replace.</h2>
         </Reveal>
-        <div className="sec-grid">
-          {cards.map((c,i) => (
-            <Reveal key={i} delay={i * 100}>
-              <div className="sec-card" style={{height:'100%'}}>
-                <div className="sec-badge" style={{color:c.color}}>{c.badge}</div>
-                <h3>{c.t}</h3>
-                <p>{c.p}</p>
+        <Reveal delay={100}>
+          <div className="erp-acc">
+            {cards.map((c,i) => (
+              <div className={'erp-row' + (open.includes(i) ? ' open' : '')} key={i}>
+                <button className="erp-bar" onClick={() => setOpen(o => o.includes(i) ? o.filter(x => x !== i) : [...o, i])} aria-expanded={open.includes(i)}>
+                  <span className="erp-bar-text">
+                    <span className="erp-kicker" style={{color:c.color}}>{c.badge}</span>
+                    <span className="erp-head">{c.t}</span>
+                  </span>
+                  <span className="erp-chev" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+                </button>
+                <div className="erp-body"><div className="erp-body-inner"><p>{c.p}</p></div></div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
+      <style>{`
+        .erp-acc { margin-top: 34px; display: flex; flex-direction: column; gap: 14px; }
+        .erp-row { border-radius: 14px; overflow: hidden; background: #EAF4FE; border: 1px solid #D6E8FB; transition: background 0.2s ease, border-color 0.2s ease; }
+        .erp-row:hover { background: #E2EEFE; }
+        .erp-row.open { background: #E5F0FE; border-color: #C4DDFA; }
+        .erp-bar { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 28px; background: none; border: 0; cursor: pointer; text-align: left; font-family: inherit; }
+        .erp-bar-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+        .erp-kicker { font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+        .erp-head { font-family: var(--font-heading); font-size: 21px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); line-height: 1.25; }
+        .erp-chev { flex: 0 0 auto; color: var(--sg-blue); display: inline-flex; transition: transform 0.25s ease; }
+        .erp-row.open .erp-chev { transform: rotate(180deg); }
+        .erp-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s ease; }
+        .erp-row.open .erp-body { grid-template-rows: 1fr; }
+        .erp-body-inner { overflow: hidden; }
+        .erp-body p { margin: 0; padding: 0 28px 26px; font-size: 16px; line-height: 1.62; color: var(--fg2); max-width: 820px; }
+        @media (max-width: 640px) {
+          .erp-bar { padding: 18px 20px; }
+          .erp-head { font-size: 18px; }
+          .erp-body p { padding: 0 20px 20px; font-size: 15px; }
+        }
+      `}</style>
     </section>
   );
 }
@@ -435,33 +585,52 @@ window.WhyNotERP = WhyNotERP;
 // block on solutions.html. Card style mirrors the FromTheField link cards.
 function WhoItsFor() {
   const personas = [
-    { role: 'Owner / MD', line: "See what you can build today, what you're short on, and what it'll cost - before you commit to a customer.", href: 'solutions.html#visibility', cta: 'persona_owner' },
-    { role: 'COO / VP Operations', line: "One system, every team, the same data - no one's working off yesterday's numbers.", href: 'solutions.html#connected', cta: 'persona_coo' },
-    { role: 'CFO / Finance Head', line: 'Your costing logic, your way - not the way an enterprise template thinks you should run it.', href: 'solutions.html#costing', cta: 'persona_cfo' },
-    { role: 'Plant Manager', line: 'Your floor staff log it. Everyone sees it live. No lag, no leakage, no one working in the dark.', href: 'solutions.html#adoption', cta: 'persona_plant_manager' },
-    { role: 'Sales Head', line: "Before you promise a customer a date, you'll know if production can actually hit it.", href: 'solutions.html#planning', cta: 'persona_sales_head' },
+    { role: 'Owner / MD', desc: 'see before you commit', line: "See what you can build today, what you're short on, and what it'll cost, before you commit to a customer.", href: 'solutions-owner.html', cta: 'persona_owner' },
+    { role: 'COO / VP Operations', desc: 'one source of truth', line: "One system, every team, the same data. No one working off yesterday's numbers.", href: 'solutions-coo.html', cta: 'persona_coo' },
+    { role: 'CFO / Finance Head', desc: 'costing, your way', line: 'Your costing logic, your way. Not the way an enterprise template thinks you should run it.', href: 'solutions-cfo.html', cta: 'persona_cfo' },
+    { role: 'Plant Manager', desc: 'the floor, live', line: 'Your floor staff log it. Everyone sees it live. No lag, no leakage, no one working in the dark.', href: 'solutions-plant-manager.html', cta: 'persona_plant_manager' },
+    { role: 'Sales Head', desc: 'promise with proof', line: "Before you promise a customer a date, you'll know if production can actually hit it.", href: 'solutions-sales-head.html', cta: 'persona_sales_head' },
   ];
+  const [active, setActive] = React.useState(0);
+  const p = personas[active];
   return (
-    <section className="section section-alt" id="who-its-for">
+    <section className="section section-dark" id="who-its-for" style={{background:'#0B0F17'}}>
       <div className="container">
         <Reveal>
           <div className="tag">WHO IT'S FOR</div>
-          <h2 className="h2">Built for the people who run the floor - and the ones who answer for it.</h2>
+          <h2 className="h2" style={{color:'#fff'}}>From the floor to the founder.</h2>
         </Reveal>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))',gap:16,marginTop:32}}>
-          {personas.map((p,i) => (
-            <Reveal key={i} delay={i * 70}>
-              <a href={p.href} data-cta={p.cta} style={{display:'block',textDecoration:'none',color:'inherit',padding:'22px',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',background:'#fff',height:'100%',transition:'all 160ms var(--ease-standard)'}}
-                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.06)'; }}
-                 onMouseLeave={(e) => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                <div style={{fontSize:10,fontWeight:700,letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--sg-blue)',marginBottom:10}}>{p.role}</div>
-                <p style={{fontFamily:'var(--font-heading)',fontSize:15.5,fontWeight:700,color:'var(--fg1)',margin:0,lineHeight:1.45,letterSpacing:'-0.005em'}}>{p.line}</p>
-                <span style={{display:'inline-block',marginTop:14,fontSize:13,fontWeight:600,color:'var(--sg-blue)'}}>See how &rarr;</span>
-              </a>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={100}>
+          <div className="rt-tabs" role="tablist" aria-label="Roles">
+            {personas.map((x,i) => (
+              <button key={i} className={'rt-tab' + (i === active ? ' active' : '')} role="tab" aria-selected={i === active} onClick={() => setActive(i)}>
+                <span className="rt-role">{x.role}</span>
+                <span className="rt-desc">{x.desc}</span>
+              </button>
+            ))}
+          </div>
+          <div className="rt-panel">
+            <p className="rt-stmt" key={active}>{p.line}</p>
+            <a className="rt-see" href={p.href} data-cta={p.cta}>See how &rarr;</a>
+          </div>
+        </Reveal>
       </div>
+      <style>{`
+        .rt-tabs { display: flex; flex-wrap: nowrap; gap: 48px; margin-top: 44px; border-bottom: 1px solid rgba(255,255,255,0.1); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .rt-tabs::-webkit-scrollbar { display: none; }
+        .rt-tab { flex: 0 0 auto; background: none; border: 0; padding: 0 0 18px; margin: 0; text-align: left; cursor: pointer; position: relative; font-family: inherit; }
+        .rt-role { display: block; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: #6B7280; transition: color 0.18s ease; white-space: nowrap; }
+        .rt-desc { display: block; font-size: 13px; font-weight: 500; color: #6B7280; opacity: 0.65; margin-top: 5px; white-space: nowrap; }
+        .rt-tab:hover .rt-role { color: rgba(255,255,255,0.75); }
+        .rt-tab.active .rt-role { color: #fff; }
+        .rt-tab.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: #fff; border-radius: 2px; }
+        .rt-panel { padding-top: 52px; max-width: 760px; }
+        .rt-stmt { margin: 0 0 30px; font-size: 30px; line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; color: rgba(255,255,255,0.85); animation: rt-fade 0.3s ease; }
+        .rt-see { color: #3B82F6; text-decoration: none; font-size: 16px; font-weight: 600; }
+        .rt-see:hover { text-decoration: underline; }
+        @keyframes rt-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+        @media (max-width: 700px) { .rt-tabs { gap: 28px; } .rt-stmt { font-size: 22px; } }
+      `}</style>
     </section>
   );
 }
