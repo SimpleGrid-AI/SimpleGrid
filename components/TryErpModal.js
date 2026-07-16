@@ -1,173 +1,41 @@
-// "Try our ERP" sandbox modal. Self-mounts on DOM ready. Triggered explicitly
-// via window.sgOpenTryErp() (nav button calls it directly) or by any element
-// carrying [data-sg-try-erp]. Submits the email to vader /sandbox/leads, then
-// redirects the visitor into peralta with ?sandbox=true&email=... so peralta
+// "Try our ERP" — direct jump. Self-mounts on DOM ready. Triggered via
+// window.sgOpenTryErp() (React Nav calls it directly) or by any element
+// carrying [data-sg-try-erp]. No email gate: clicking sends the visitor
+// straight into peralta with ?sandbox=true&email=<guest> so peralta
 // auto-logs them into the shared sandbox tenant.
-//
-// Endpoint + redirect URL live as constants at the top - swap them when CF
-// fronts vader/peralta. Lead capture is fire-and-forget from the visitor's
-// perspective: we redirect even if the POST fails (the email matters to us,
-// not to the user's demo experience).
 (function () {
   if (window.sgTryErpInit) return;
   window.sgTryErpInit = true;
 
-  // Vader /sandbox/leads behind CloudFront — HTTPS-fronted, so the browser
-  // accepts the cross-origin POST from simplegrid.ai (no more mixed content).
-  // Requires the CORS allowlist on vader to include https://simplegrid.ai.
-  var SG_LEAD_ENDPOINT =
-    'https://d1i6y7ff3hcohx.cloudfront.net/sandbox/leads';
-  var SG_SANDBOX_URL =
-    'https://d3jqpu6j7k2gxu.cloudfront.net/';
+  var SG_SANDBOX_URL = "https://erp.simplegrid.ai/?sandbox=true";
+  // Peralta's auto-login reads an email from the URL; a fixed guest identity
+  // keeps that working without asking the visitor for anything.
 
-  var overlay = null;
-  var form = null;
-  var errorBox = null;
-  var submitBtn = null;
-  var emailInput = null;
-  var lastFocus = null;
-  var state = 'idle';
-
-  function buildModal() {
-    if (overlay) return;
-    overlay = document.createElement('div');
-    overlay.className = 'modal-overlay';
-    overlay.setAttribute('hidden', '');
-    overlay.style.display = 'none';
-    overlay.innerHTML = ''
-      + '<form class="modal" role="dialog" aria-modal="true" aria-labelledby="sg-try-h" data-form-name="try-erp" style="position:relative">'
-      +   '<button type="button" class="sg-try-close" aria-label="Close" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;color:var(--fg3);cursor:pointer;line-height:1">×</button>'
-      +   '<h2 id="sg-try-h">Try SimpleGrid live</h2>'
-      +   '<p class="sub">Drop your work email - we\'ll drop you straight into a live system shaped like a real factory. Click around. No setup, no sales call.</p>'
-      +   '<div class="field">'
-      +     '<label for="sg-try-email">Work email <span aria-hidden="true" style="color:var(--sg-red)">*</span></label>'
-      +     '<input id="sg-try-email" type="email" name="email" placeholder="you@company.com" required aria-required="true" autocomplete="email" inputmode="email">'
-      +   '</div>'
-      +   '<div class="sg-try-err" role="status" aria-live="polite" style="display:none;padding:10px 12px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:var(--radius-md);color:#B91C1C;font-size:13px;margin-bottom:12px;line-height:1.45"></div>'
-      +   '<button type="submit" class="btn btn-primary sg-try-submit" style="width:100%;justify-content:center;margin-top:4px">Take me to the demo →</button>'
-      +   '<p style="font-size:11px;color:var(--fg3);text-align:center;margin-top:14px;letter-spacing:0.04em">Shared demo tenant. Data resets nightly. By continuing you agree to our <a href="/privacy.html" style="color:var(--sg-blue)">Privacy</a>.</p>'
-      + '</form>';
-
-    document.body.appendChild(overlay);
-
-    form = overlay.querySelector('form');
-    errorBox = overlay.querySelector('.sg-try-err');
-    submitBtn = overlay.querySelector('.sg-try-submit');
-    emailInput = overlay.querySelector('#sg-try-email');
-
-    overlay.addEventListener('click', function (e) {
-      if (e.target === overlay) close();
-    });
-    overlay.querySelector('.sg-try-close').addEventListener('click', close);
-    form.addEventListener('submit', onSubmit);
+  function go() {
+    if (window.sgTrack)
+      window.sgTrack("try_erp_redirected", { form: "try-erp" });
+    window.location.href = SG_SANDBOX_URL;
   }
 
-  function showError(msg) {
-    errorBox.textContent = msg;
-    errorBox.style.display = 'block';
-  }
-  function clearError() {
-    errorBox.textContent = '';
-    errorBox.style.display = 'none';
-  }
+  document.addEventListener(
+    "click",
+    function (e) {
+      if (
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        e.altKey
+      )
+        return;
+      var target = e.target.closest("[data-sg-try-erp]");
+      if (!target) return;
+      e.preventDefault();
+      go();
+    },
+    true,
+  );
 
-  function redirectToSandbox(email) {
-    var url = SG_SANDBOX_URL + '?sandbox=true&email=' + encodeURIComponent(email);
-    window.location.href = url;
-  }
-
-  function onSubmit(e) {
-    e.preventDefault();
-    if (state === 'submitting') return;
-    state = 'submitting';
-    clearError();
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = 0.7;
-    submitBtn.textContent = 'Opening your demo…';
-    var email = (emailInput.value || '').trim();
-    if (window.sgTrack) window.sgTrack('try_erp_submitted', { form: 'try-erp' });
-
-    // Wait for the lead POST to finish, THEN redirect. This eliminates the
-    // fetch-vs-navigate race (previously: window.location fired before the
-    // POST left, browser canceled the request mid-preflight, only OPTIONS
-    // reached the backend). Trade-off: visitor sees "Opening your ERP..."
-    // for the round-trip duration. .catch() swallows any error so the
-    // visitor never gets stranded on a stuck loading state.
-    // application/json forces a CORS preflight, so vader's CORS config
-    // must allow OPTIONS + Origin: https://simplegrid.ai.
-    fetch(SG_LEAD_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, source: 'try-erp-nav' })
-    })
-      .catch(function () { /* network/CORS error — still redirect below */ })
-      .then(function () {
-        if (window.sgTrack) window.sgTrack('try_erp_redirected', { form: 'try-erp' });
-        redirectToSandbox(email);
-      });
-  }
-
-  function setBackgroundHidden(hidden) {
-    var kids = document.body.children;
-    for (var i = 0; i < kids.length; i++) {
-      var el = kids[i];
-      if (el === overlay) continue;
-      if (hidden) {
-        if (!el.hasAttribute('aria-hidden')) { el.setAttribute('aria-hidden', 'true'); el.setAttribute('data-sg-try-hid', ''); }
-      } else if (el.hasAttribute('data-sg-try-hid')) {
-        el.removeAttribute('aria-hidden'); el.removeAttribute('data-sg-try-hid');
-      }
-    }
-  }
-
-  function open() {
-    buildModal();
-    lastFocus = document.activeElement;
-    overlay.removeAttribute('hidden');
-    overlay.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    setBackgroundHidden(true);
-    document.addEventListener('keydown', onKey);
-    requestAnimationFrame(function () { if (emailInput) emailInput.focus(); });
-    if (window.sgTrack) window.sgTrack('try_erp_opened', { form: 'try-erp' });
-  }
-
-  function close() {
-    if (!overlay) return;
-    setBackgroundHidden(false);
-    overlay.setAttribute('hidden', '');
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
-    document.removeEventListener('keydown', onKey);
-    state = 'idle';
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = 1;
-      submitBtn.textContent = 'Take me to the demo →';
-    }
-    if (lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch (e) {}
-  }
-
-  function onKey(e) {
-    if (e.key === 'Escape') { close(); return; }
-    if (e.key !== 'Tab' || !overlay) return;
-    var focusables = overlay.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])');
-    if (!focusables.length) return;
-    var first = focusables[0], last = focusables[focusables.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  }
-
-  // Any element opting in via [data-sg-try-erp] (the new nav button on static
-  // HTML pages) opens the modal. The React Nav calls window.sgOpenTryErp()
-  // directly so it doesn't depend on the data-attribute.
-  document.addEventListener('click', function (e) {
-    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    var target = e.target.closest('[data-sg-try-erp]');
-    if (!target) return;
-    e.preventDefault();
-    open();
-  }, true);
-
-  window.sgOpenTryErp = open;
+  window.sgOpenTryErp = go;
 })();
