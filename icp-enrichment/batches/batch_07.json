@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  268,
+        "company":  "Perdues, Inc./Perdue Woodworks",
+        "website":  "https://www.perduefurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Lori Perdue",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  272,
+        "company":  "Modern of Marshfield, Inc.",
+        "website":  "https://www.marshfieldfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "William J. Mork",
+        "existingDesig":  "President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  273,
+        "company":  "Karges Furniture Co.",
+        "website":  "https://kindelfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joan Karges Rogier",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  274,
+        "company":  "Jamison Bedding Inc.",
+        "website":  "https://www.jamisonbedding.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Kevin Sisson",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  276,
+        "company":  "Hunt Country Furniture, Inc",
+        "website":  "https://www.huntcountryfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Hormazdyor S. Dastoor",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  277,
+        "company":  "Hi-Lo Industries, Inc.",
+        "website":  "https://www.bridgewoodcabinets.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  279,
+        "company":  "Dreamline Mfg. Inc.",
+        "website":  "https://www.dreamlinebedding.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Tipton",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  281,
+        "company":  "Cresent",
+        "website":  "https://www.cresent.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Taylor Condra",
+        "existingDesig":  "President \u0026 COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  282,
+        "company":  "Airtex",
+        "website":  "https://www.airtexinteriors.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mike Miller",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  283,
+        "company":  "Airtex",
+        "website":  "https://www.airtexinteriors.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Michael Noer",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  285,
+        "company":  "Charles Inc.",
+        "website":  "No website found â€” Charles Inc., Council Bluffs, IA (upholstered furniture mfr, founded 1988, 50-99 employees per ThomasNet). Phone (712) 328-2603.",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  287,
+        "company":  "WB Manufacturing",
+        "website":  "https://wbmfg.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Burgess",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  288,
+        "company":  "EF + LM",
+        "website":  "https://ferrellmittman.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  290,
+        "company":  "Leonard Peterson \u0026 Company, Inc",
+        "website":  "https://www.lpco.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  293,
+        "company":  "Root River Hardwoods",
+        "website":  "https://www.rootriverhardwoods.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jon Summers",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  294,
+        "company":  "Crestwood, Inc.",
+        "website":  "https://crestwood-inc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  295,
+        "company":  "AFC Industries, Inc.",
+        "website":  "https://afcindustries.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joseph Piana",
+        "existingDesig":  "President \u0026 COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  297,
+        "company":  "Kloppenberg \u0026 Co.",
+        "website":  "https://www.kloppenberg.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  298,
+        "company":  "Columbia Manufacturing Inc.",
+        "website":  "https://www.columbiamfginc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ali Salehi",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  302,
+        "company":  "APC",
+        "website":  "https://www.automationplastics.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  304,
+        "company":  "Great Lakes Case \u0026 Cabinet Co., Inc",
+        "website":  "https://greatcabinets.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Jonathan Markley",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

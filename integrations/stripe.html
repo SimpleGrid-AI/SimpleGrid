@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<title>Stripe integration | SimpleGrid</title>
+<meta name="description" content="Stripe + SimpleGrid: Match Stripe payments and payouts to the orders they belong to.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://simplegrid.ai/integrations/stripe.html">
+<link rel="icon" type="image/svg+xml" href="../assets/simplegrid-logomark.svg">
+<link rel="apple-touch-icon" href="../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../integrations.css">
+
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://simplegrid.ai/integrations/stripe.html">
+<meta property="og:title" content="Stripe integration | SimpleGrid">
+<meta property="og:description" content="Stripe + SimpleGrid: Match Stripe payments and payouts to the orders they belong to.">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@simplegridai">
+<meta name="twitter:title" content="Stripe integration | SimpleGrid">
+<meta name="twitter:description" content="Stripe + SimpleGrid: Match Stripe payments and payouts to the orders they belong to.">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/integrations/stripe.html#webpage",
+      "url": "https://simplegrid.ai/integrations/stripe.html",
+      "name": "Stripe integration | SimpleGrid",
+      "isPartOf": { "@id": "https://simplegrid.ai/#website" },
+      "publisher": { "@id": "https://simplegrid.ai/#org" },
+      "description": "Stripe + SimpleGrid: Match Stripe payments and payouts to the orders they belong to.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Syncs", "item": "https://simplegrid.ai/syncs.html" },
+        { "@type": "ListItem", "position": 3, "name": "Stripe", "item": "https://simplegrid.ai/integrations/stripe.html" }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Analytics (PostHog + GA4) - deferred to first user interaction. -->
+<script src="../assets/js/analytics-init.js" defer></script>
+<script src="../assets/js/tracking.js" defer></script>
+<script src="../assets/js/cookie-consent.js" defer></script>
+</head>
+<body class="intg-page" style="--intg-accent: #635BFF;">
+<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
+<div id="sg-nav" data-page="syncs"></div>
+
+<main id="main">
+  <section class="intg-hero">
+    <a class="intg-back" href="../syncs.html">&larr; All syncs</a>
+    <div class="intg-hero-marks">
+      <span class="intg-logo-big"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#635BFF"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">S</text></svg></span>
+      <span class="intg-plus">+</span>
+      <span class="intg-logo-big intg-logo-sg"><img src="../assets/simplegrid-logomark.svg" alt="SimpleGrid" width="34" height="34"></span>
+    </div>
+    <div class="intg-badges">
+      <span class="tag">Sales &amp; e-commerce</span>
+      <span class="intg-dir">Orders in, stock back</span>
+    </div>
+    <h1>SimpleGrid&nbsp;+&nbsp;Stripe</h1>
+    <p class="lead">Match Stripe payments and payouts to the orders they belong to.</p>
+    <p class="intg-what">One operational view across every channel you sell on.</p>
+    <div class="intg-hero-cta">
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_stripe_demo">Book a demo</a>
+      <a href="../syncs.html" class="intg-cta-ghost">See all syncs &rarr;</a>
+    </div>
+  </section>
+
+  <section class="intg-section">
+    <div class="intg-inner">
+      <div class="tag">What syncs</div>
+      <h2>Data moves both ways &mdash; automatically.</h2>
+      <div class="intg-flows">
+        <div class="intg-col">
+          <p class="intg-col-h"><span class="intg-arrow">&rarr;</span> Into SimpleGrid</p>
+          <ul>
+            <li>Orders drop in as jobs and fulfilment</li>
+            <li>Customers and payments pulled in</li>
+          </ul>
+        </div>
+        <div class="intg-col">
+          <p class="intg-col-h"><span class="intg-arrow">&larr;</span> Back to Stripe</p>
+          <ul>
+            <li>Inventory levels pushed back</li>
+            <li>Fulfilment and tracking updated</li>
+          </ul>
+        </div>
+      </div>
+      <p class="intg-detail">Match Stripe payments and payouts to the orders they belong to.</p>
+    </div>
+  </section>
+
+  <section class="intg-section intg-alt">
+    <div class="intg-inner">
+      <div class="tag">Use it to</div>
+      <h2>What teams do with Stripe &amp; SimpleGrid</h2>
+      <div class="intg-uses">
+        <div class="intg-use">Fulfil every channel from one place</div>
+        <div class="intg-use">Keep stock in sync across channels</div>
+        <div class="intg-use">Reconcile payouts to their orders</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intg-section">
+    <div class="intg-inner">
+      <div class="tag">How it works</div>
+      <h2>Live with the rest of your floor.</h2>
+      <ol class="intg-steps">
+        <li><span class="intg-step-n">1</span><div><p class="intg-step-h">Connect once</p><p>We link Stripe during your setup &mdash; you authorise it, we handle the wiring.</p></div></li>
+        <li><span class="intg-step-n">2</span><div><p class="intg-step-h">Map to your floor</p><p>Your fields, codes and naming are mapped to SimpleGrid one time, so records match instead of duplicating.</p></div></li>
+        <li><span class="intg-step-n">3</span><div><p class="intg-step-h">Runs on its own</p><p>From then on the sync runs in the background &mdash; no exports, no re-keying, nothing for your team to remember.</p></div></li>
+      </ol>
+      <p class="intg-note">Don&rsquo;t see a field you need? We build the connector around how you actually work &mdash; it goes live with the rest of your floor, not as an upgrade later.</p>
+    </div>
+  </section>
+
+  <section class="intg-section intg-alt">
+    <div class="intg-inner">
+      <div class="tag">FAQ</div>
+      <h2>Stripe &amp; SimpleGrid, in short</h2>
+      <div class="intg-faq">
+        <div class="intg-faq-item"><p class="intg-q">More than one channel?</p><p class="intg-a">Yes &mdash; Stripe lands in the same pipeline as every other channel.</p></div>
+        <div class="intg-faq-item"><p class="intg-q">Does stock sync back?</p><p class="intg-a">Yes &mdash; inventory pushes back to Stripe as it moves.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intg-section">
+    <div class="intg-inner">
+      <div class="tag">More integrations</div>
+      <h2>Works with the rest of your stack</h2>
+      <div class="intg-rel-grid">
+        <a class="intg-rel-card" href="shopify.html"><span class="intg-rel-logo"><svg viewBox="-7.5 0 124.5 124.5" width="24" height="24" aria-hidden="true"><path fill="#95BF47" d="M95.9 23.9c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.7-.7-2.2-.5-2.7-.3 0 0-1.4.4-3.7 1.1-.4-1.3-1-2.8-1.8-4.4-2.6-5-6.5-7.7-11.1-7.7-.3 0-.6 0-1 .1-.1-.2-.3-.3-.4-.5C53.7 1.5 51.1.4 48 .5c-6 .2-12 4.5-16.8 12.2-3.4 5.4-6 12.2-6.7 17.5-6.9 2.1-11.7 3.6-11.8 3.7-3.5 1.1-3.6 1.2-4 4.5C8.3 40.9 0 105.6 0 105.6l69.4 12 30.1-7.5S96 24.5 95.9 23.9zM68.2 17.1c-1.7.5-3.7 1.1-5.8 1.8 0-3-.4-7.2-1.8-10.8 4.5.8 6.7 5.9 7.6 9zm-9.7 3c-3.9 1.2-8.2 2.5-12.5 3.8 1.2-4.6 3.5-9.2 6.3-12.2 1-1.1 2.5-2.3 4.2-3 1.7 3.5 2.1 8.4 2 11.4zM48.2 4.5c1.4 0 2.6.3 3.6.9-1.6.8-3.2 2.1-4.7 3.7-3.7 4-6.5 10.2-7.7 16.2-3.6 1.1-7.1 2.2-10.3 3.2C31.4 19.3 39.2 4.8 48.2 4.5z"/><path fill="#5E8E3E" d="M94.8 22.9c-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.3-.3-.6-.4-1-.5l-5.2 106.3 30.1-7.5S96 24.5 95.9 23.9c-.1-.6-.6-1-1.1-1z"/><path fill="#fff" d="M58.4 38.4l-3.5 13.1s-3.9-1.8-8.5-1.5c-6.8.4-6.8 4.7-6.8 5.7.4 5.7 15.4 7 16.3 20.4.7 10.5-5.6 17.7-14.6 18.3-10.9.6-16.9-5.8-16.9-5.8l2.3-9.8s6 4.6 10.9 4.3c3.2-.2 4.3-2.8 4.2-4.6-.5-7.5-12.7-7.1-13.5-19.4-.7-10.3 6.1-20.7 21-21.6 5.8-.4 8.8 1.1 8.8 1.1z"/></svg></span><span class="intg-rel-name">Shopify</span></a>
+        <a class="intg-rel-card" href="amazon.html"><span class="intg-rel-logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#fff"/><text x="12" y="13" text-anchor="middle" fill="#232F3E" font-family="Arial, sans-serif" font-weight="700" font-size="6.2" letter-spacing="-0.4">amazon</text><path d="M5 16.4c4.2 2.8 9.8 2.8 14 .2" fill="none" stroke="#FF9900" stroke-width="1.7" stroke-linecap="round"/><path d="M19 16.6l-2.7-.5 1.4 2.4z" fill="#FF9900"/></svg></span><span class="intg-rel-name">Amazon</span></a>
+        <a class="intg-rel-card" href="woocommerce.html"><span class="intg-rel-logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#7F54B3"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">WC</text></svg></span><span class="intg-rel-name">WooCommerce</span></a>
+        <a class="intg-rel-card" href="tiktok-shop.html"><span class="intg-rel-logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="11">TT</text></svg></span><span class="intg-rel-name">TikTok Shop</span></a>
+      </div>
+      <a class="intg-rel-all" href="../syncs.html">View all integrations &rarr;</a>
+    </div>
+  </section>
+
+  <section class="intg-final">
+    <div class="intg-final-inner">
+      <h2>Connect Stripe to your floor.</h2>
+      <p>Book a demo and we&rsquo;ll show SimpleGrid wired into Stripe with your data, not a sample set.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_stripe_final">Book a demo</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer rendered by the shared component (components/site-footer.js). -->
+<div id="sg-footer"></div>
+<script src="../components/site-nav.js" defer></script>
+<script src="../components/site-footer.js" defer></script>
+<script src="../components/BookDemoModal.js" defer></script><script src="../components/TryErpModal.js" defer></script>
+</body>
+</html>

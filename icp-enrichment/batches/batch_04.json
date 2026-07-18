@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  147,
+        "company":  "Kindel Furniture Company",
+        "website":  "https://kindelfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Gretchen Keith",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  150,
+        "company":  "Indiana Furniture Industries, Inc",
+        "website":  "https://indianafurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Lori Klem",
+        "existingDesig":  "CFO \u0026 VP Finance",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  152,
+        "company":  "Homecrest",
+        "website":  "https://www.homecrest.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mike Bullinger",
+        "existingDesig":  "Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  153,
+        "company":  "Henkel Harris",
+        "website":  "https://www.henkelharris.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "David Gum",
+        "existingDesig":  "Chairman \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  159,
+        "company":  "Carsons Incorporated",
+        "website":  "https://app.makersrow.com/carsons-incorporated",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "TJ Stout",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  160,
+        "company":  "Carolina Furniture Works, Inc.",
+        "website":  "https://www.carolinafurnitureworks.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Cray Weeks",
+        "existingDesig":  "President \u0026 CEO/Owner family",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  162,
+        "company":  "Bradington-Young",
+        "website":  "bradington-young.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul B. Toms Jr.",
+        "existingDesig":  "Chairman \u0026 CEO, Hooker Furnishings",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  164,
+        "company":  "Fraenkel Company Inc.",
+        "website":  "http://www.fraenkel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Larry Lamb",
+        "existingDesig":  "VP of Manufacturing",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  165,
+        "company":  "Martin Furniture",
+        "website":  "martinfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Nicolas Gaviria",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  167,
+        "company":  "Postal Products Unlimited, Inc.",
+        "website":  "https://www.postalproducts.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  169,
+        "company":  "Tuohy Furniture Corporation",
+        "website":  "tuohyfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Michael Tuohy",
+        "existingDesig":  "COO/Co-Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  171,
+        "company":  "Interkal",
+        "website":  "https://www.interkal.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Hal Thomas",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  172,
+        "company":  "Fabcon, Inc.",
+        "website":  "https://fabcon.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  173,
+        "company":  "Fabrica",
+        "website":  "https://www.fabrica.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Taline Isberian Dirkes",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  175,
+        "company":  "Borkholder",
+        "website":  "https://www.borkholderfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ola Yoder",
+        "existingDesig":  "Owner \u0026 CEO, Kountry Wood Products",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  176,
+        "company":  "Borkholder",
+        "website":  "https://www.borkholderfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tom Halvorsen",
+        "existingDesig":  "VP",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  177,
+        "company":  "Moultrie Manufacturing Co.",
+        "website":  "https://www.moultriemanufacturing.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "William Edward Smith",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  180,
+        "company":  "Sintel, Inc.",
+        "website":  "https://www.sintelinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  181,
+        "company":  "Stylex Inc.",
+        "website":  "https://www.stylexdesign.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bruce Golden",
+        "existingDesig":  "CEO/Owner family",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  183,
+        "company":  "Brayton International",
+        "website":  "https://paulbraytondesigns.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul Brayton",
+        "existingDesig":  "Founder",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  186,
+        "company":  "Carolina Cabinet Company, Inc.",
+        "website":  "https://www.carolinacabinetcompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tony Daniel",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

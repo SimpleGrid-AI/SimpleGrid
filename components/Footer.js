@@ -91,8 +91,8 @@ function Footer() {
       l: 'Pricing',
       href: 'pricing.html'
     }, {
-      l: 'Architecture',
-      href: 'about.html#architecture'
+      l: 'Partners',
+      href: 'partnerships.html'
     }, {
       l: 'Competitors',
       href: 'competitors.html'
@@ -116,7 +116,7 @@ function Footer() {
     href: 'https://cal.com/simplegrid-ai',
     external: true
   }];
-  return /*#__PURE__*/React.createElement("footer", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("footer", {
     className: "footer",
     role: "contentinfo"
   }, /*#__PURE__*/React.createElement("div", {
@@ -125,7 +125,7 @@ function Footer() {
     className: "footer-top"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
     src: prefix + 'assets/simplegrid-logo-horizontal.svg',
-    alt: "SimpleGrid - Factory Ops Cloud for manufacturers logo",
+    alt: "SimpleGrid - Adaptive ERP and operations cloud logo",
     className: "footer-logo",
     width: "160",
     height: "32",
@@ -133,7 +133,7 @@ function Footer() {
     decoding: "async"
   }), /*#__PURE__*/React.createElement("p", {
     className: "footer-tagline"
-  }, "The Factory Ops Cloud. Configured to your floor. Live in 21 days."), /*#__PURE__*/React.createElement("div", {
+  }, "The Adaptive ERP. Built around your business. Live in 3 weeks or less."), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28
     }
@@ -234,7 +234,7 @@ function Footer() {
   }, "Activate", /*#__PURE__*/React.createElement("br", null), "Startups"))))), /*#__PURE__*/React.createElement("div", {
     className: "footer-cols",
     style: {
-      gridTemplateColumns: '1fr 1fr 1fr 1.5fr',
+      gridTemplateColumns: '1fr 1fr 1.5fr',
       gap: 24
     }
   }, cols.map(c => /*#__PURE__*/React.createElement("div", {
@@ -270,14 +270,106 @@ function Footer() {
     }
   }, /*#__PURE__*/React.createElement(FIcon, {
     kind: x.kind
-  }), /*#__PURE__*/React.createElement("span", null, x.l)))))), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("span", null, x.l))), /*#__PURE__*/React.createElement("address", {
+    className: "footer-link",
+    style: {
+      display: 'flex',
+      gap: 8,
+      alignItems: 'flex-start',
+      fontStyle: 'normal',
+      marginTop: 6
+    }
+  }, /*#__PURE__*/React.createElement(FIcon, {
+    kind: "pin"
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      lineHeight: 1.5
+    }
+  }, "2810 N Church St STE 88778", /*#__PURE__*/React.createElement("br", null), "Wilmington, DE 19802"))))), /*#__PURE__*/React.createElement("div", {
     className: "footer-bottom"
-  }, /*#__PURE__*/React.createElement("div", null, "SimpleGrid, the Factory Ops Cloud for manufacturers, by SimpleGrid Inc \xA9 2026"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, "SimpleGrid, the Adaptive ERP for CPG brands, manufacturers and inventory-led businesses, by SimpleGrid Inc \xA9 2026"), /*#__PURE__*/React.createElement("div", {
     className: "footer-legal"
   }, /*#__PURE__*/React.createElement("a", {
     href: px('privacy.html')
   }, "Privacy Policy"), /*#__PURE__*/React.createElement("a", {
     href: px('terms.html')
-  }, "Terms")))));
+  }, "Terms"))))), /*#__PURE__*/React.createElement("section", {
+    className: "footer-wordmark"
+  }, /*#__PURE__*/React.createElement("svg", {
+    className: "footer-wordmark-svg",
+    viewBox: "0 0 1000 200",
+    preserveAspectRatio: "xMidYMid meet",
+    role: "img",
+    "aria-label": "SimpleGrid"
+  }, /*#__PURE__*/React.createElement("g", {
+    className: "wm-mark",
+    transform: "translate(5,12.5) scale(4.1667)",
+    fill: "none",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("rect", {
+    x: "3",
+    y: "3",
+    width: "36",
+    height: "36",
+    rx: "5",
+    ry: "5",
+    stroke: "currentColor",
+    strokeWidth: "2.5"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "15",
+    y1: "5",
+    x2: "15",
+    y2: "37",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "27",
+    y1: "5",
+    x2: "27",
+    y2: "37",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "5",
+    y1: "15",
+    x2: "37",
+    y2: "15",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "5",
+    y1: "27",
+    x2: "37",
+    y2: "27",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  })), /*#__PURE__*/React.createElement("text", {
+    x: "210",
+    y: "153",
+    textLength: "790",
+    lengthAdjust: "spacingAndGlyphs"
+  }, "SimpleGrid")), /*#__PURE__*/React.createElement("a", {
+    className: "footer-wordmark-cta",
+    href: "https://cal.com/simplegrid-ai",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    "data-cta": "wordmark_book_demo"
+  }, /*#__PURE__*/React.createElement("span", null, "Book a demo"), /*#__PURE__*/React.createElement("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M7 17L17 7M7 7h10v10"
+  })))));
 }
 window.Footer = Footer;

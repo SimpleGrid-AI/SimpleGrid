@@ -14,7 +14,7 @@ function App() {
   }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("main", {
     id: "main"
-  }, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(TrustStrip, null), /*#__PURE__*/React.createElement(IntegrationsBar, null), /*#__PURE__*/React.createElement(ProblemSection, null), /*#__PURE__*/React.createElement(BurstBand, null), /*#__PURE__*/React.createElement(WhatWeDo, null), /*#__PURE__*/React.createElement(HowItWorks, null), /*#__PURE__*/React.createElement(WhyNotERP, null), /*#__PURE__*/React.createElement(WhoItsFor, null), /*#__PURE__*/React.createElement(ProofSection, null), /*#__PURE__*/React.createElement(FounderStory, null), /*#__PURE__*/React.createElement(HomeFAQ, null), /*#__PURE__*/React.createElement(FinalCTA, null)), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
+  }, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(TrustStrip, null), /*#__PURE__*/React.createElement(IntegrationsBar, null), /*#__PURE__*/React.createElement(PainsJourney, null), /*#__PURE__*/React.createElement(ProofSection, null), /*#__PURE__*/React.createElement(MeetHankHome, null), /*#__PURE__*/React.createElement(HowItWorks, null), /*#__PURE__*/React.createElement(FinalCTA, null)), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }), /*#__PURE__*/React.createElement("div", {
     className: "mobile-cta"

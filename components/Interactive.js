@@ -143,7 +143,7 @@ function ParticleCloud({
       ctx.clearRect(0, 0, w, h);
       arcs.forEach(arc => {
         const alpha = 0.10 + 0.05 * Math.sin(frame * 0.003 + arc.phase);
-        ctx.strokeStyle = `rgba(74,123,247,${alpha})`;
+        ctx.strokeStyle = `rgba(52,97,224,${alpha})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(arc.x1, arc.y1);
@@ -466,3 +466,69 @@ function ProgressCompare({
   })))));
 }
 window.ProgressCompare = ProgressCompare;
+
+// DualEntry-style scroll-reveal quote: each word brightens from dim to full as
+// the block scrolls up through the reading zone. Opacity-driven, so it works on
+// any background - set the text colour per use. Reduced-motion = fully lit.
+function RevealQuote({
+  text,
+  cite,
+  className,
+  style
+}) {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const spans = el.querySelectorAll('.rq-w');
+    if (!spans.length) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for (let i = 0; i < spans.length; i++) spans[i].style.opacity = '1';
+      return;
+    }
+    let raf = null;
+    const update = () => {
+      raf = null;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const start = vh * 0.82,
+        end = vh * 0.42;
+      const denom = start - end + r.height;
+      let p = (start - r.top) / (denom <= 0 ? 1 : denom);
+      p = p < 0 ? 0 : p > 1 ? 1 : p;
+      const N = spans.length;
+      const spread = Math.max(5, N * 0.4);
+      const head = p * (N + spread);
+      for (let i = 0; i < N; i++) {
+        let o = (head - i) / spread;
+        o = o < 0 ? 0 : o > 1 ? 1 : o;
+        spans[i].style.opacity = (0.16 + 0.84 * o).toFixed(3);
+      }
+    };
+    const onScroll = () => {
+      if (raf == null) raf = requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', onScroll, {
+      passive: true
+    });
+    window.addEventListener('resize', onScroll);
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [text]);
+  const tokens = String(text).split(/(\s+)/);
+  return /*#__PURE__*/React.createElement("blockquote", {
+    ref: ref,
+    className: 'rq' + (className ? ' ' + className : ''),
+    style: style
+  }, tokens.map((tk, i) => /^\s+$/.test(tk) || tk === '' ? tk : /*#__PURE__*/React.createElement("span", {
+    key: i,
+    className: "rq-w"
+  }, tk)), cite ? /*#__PURE__*/React.createElement("span", {
+    className: "rq-cite"
+  }, cite) : null);
+}
+window.RevealQuote = RevealQuote;

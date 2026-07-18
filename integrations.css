@@ -1,0 +1,83 @@
+/* ============================================================================
+   Per-integration landing pages (/integrations/*.html). Generated content, but
+   this stylesheet is hand-maintainable. Uses the site tokens from
+   colors_and_type.css (--fg1/2/3, --sg-blue, --border, --font-heading).
+   --intg-accent is set per page (the brand colour of that integration).
+   ========================================================================== */
+.intg-hero { max-width: 1080px; margin: 0 auto; padding: 60px 32px 8px; }
+.intg-back { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--fg3); text-decoration: none; margin: 0 0 26px; }
+.intg-back:hover { color: var(--sg-blue); }
+.intg-hero-marks { display: flex; align-items: center; gap: 16px; margin: 0 0 22px; }
+.intg-logo-big { width: 58px; height: 58px; border-radius: 14px; background: #fff; border: 1px solid var(--border); box-shadow: 0 6px 18px rgba(20,28,46,0.08); display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+.intg-logo-big svg { width: 34px; height: 34px; display: block; }
+.intg-logo-sg { border-color: color-mix(in srgb, var(--sg-blue) 26%, var(--border)); }
+.intg-plus { font-family: var(--font-heading); font-size: 24px; font-weight: 400; color: var(--fg3); }
+.intg-badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.intg-badges .tag { margin: 0; }
+.intg-dir { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; padding: 6px 13px; border-radius: 999px; color: var(--intg-accent, var(--sg-blue)); background: color-mix(in srgb, var(--intg-accent, var(--sg-blue)) 10%, #fff); border: 1px solid color-mix(in srgb, var(--intg-accent, var(--sg-blue)) 30%, transparent); }
+.intg-dir::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--intg-accent, var(--sg-blue)); }
+.intg-hero h1 { font-family: var(--font-heading); font-size: clamp(34px, 5.4vw, 54px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.04; color: var(--fg1); margin: 0 0 18px; }
+.intg-hero .lead { font-size: 19px; line-height: 1.55; color: var(--fg2); margin: 0 0 14px; max-width: 720px; }
+.intg-what { font-size: 14.5px; line-height: 1.6; color: var(--fg3); margin: 0 0 26px; max-width: 660px; }
+.intg-hero-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.intg-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--sg-blue); color: #fff; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
+.intg-cta:hover { filter: brightness(0.95); }
+.intg-cta-ghost { color: var(--fg2); text-decoration: none; font-weight: 600; font-size: 15px; }
+.intg-cta-ghost:hover { color: var(--sg-blue); }
+
+.intg-section { border-top: 1px solid var(--border); background: rgba(250,251,252,0.5); }
+.intg-section.intg-alt { background: rgba(248,250,253,0.7); }
+.intg-inner { max-width: 1080px; margin: 0 auto; padding: 54px 32px; }
+.intg-inner .tag { margin-bottom: 14px; }
+.intg-inner h2 { font-family: var(--font-heading); font-size: clamp(24px, 3.2vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: var(--fg1); margin: 0 0 28px; }
+
+.intg-flows { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 24px; }
+.intg-col { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 24px 24px 22px; }
+.intg-col-h { display: flex; align-items: center; gap: 9px; font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--fg1); margin: 0 0 14px; letter-spacing: -0.01em; }
+.intg-arrow { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 7px; font-size: 14px; font-weight: 700; color: var(--intg-accent, var(--sg-blue)); background: color-mix(in srgb, var(--intg-accent, var(--sg-blue)) 12%, #fff); }
+.intg-col ul { list-style: none; margin: 0; padding: 0; }
+.intg-col li { position: relative; padding: 0 0 0 24px; font-size: 14.5px; line-height: 1.5; color: var(--fg2); margin: 0 0 11px; }
+.intg-col li:last-child { margin-bottom: 0; }
+.intg-col li::before { content: ""; position: absolute; left: 4px; top: 8px; width: 7px; height: 7px; border-radius: 2px; background: var(--intg-accent, var(--sg-blue)); }
+.intg-detail { font-size: 15px; line-height: 1.65; color: var(--fg2); margin: 0; max-width: 820px; }
+
+.intg-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.intg-steps li { display: flex; gap: 14px; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 22px 22px 20px; }
+.intg-step-n { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 999px; background: color-mix(in srgb, var(--sg-blue) 10%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 22%, transparent); color: var(--sg-blue); font-family: var(--font-mono); font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.intg-step-h { font-family: var(--font-heading); font-size: 15.5px; font-weight: 700; color: var(--fg1); margin: 3px 0 6px; letter-spacing: -0.01em; }
+.intg-steps p { font-size: 13.5px; line-height: 1.55; color: var(--fg2); margin: 0; }
+.intg-note { font-size: 14.5px; line-height: 1.6; color: var(--fg2); margin: 24px 0 0; padding: 16px 18px; border: 1px dashed color-mix(in srgb, var(--sg-blue) 34%, var(--border)); border-radius: 12px; background: rgba(74,123,247,0.04); max-width: 820px; }
+
+.intg-uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.intg-use { position: relative; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 20px 20px 20px 50px; font-size: 14.5px; line-height: 1.5; color: var(--fg1); font-weight: 500; }
+.intg-use::before { content: '\2713'; position: absolute; left: 18px; top: 18px; width: 22px; height: 22px; border-radius: 7px; background: color-mix(in srgb, var(--intg-accent, var(--sg-blue)) 14%, #fff); color: var(--intg-accent, var(--sg-blue)); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+
+.intg-faq { display: flex; flex-direction: column; gap: 12px; max-width: 820px; }
+.intg-faq-item { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; }
+.intg-q { font-family: var(--font-heading); font-size: 15.5px; font-weight: 700; color: var(--fg1); margin: 0 0 6px; letter-spacing: -0.01em; }
+.intg-a { font-size: 14px; line-height: 1.6; color: var(--fg2); margin: 0; }
+
+.intg-rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 0 0 22px; }
+.intg-rel-card { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; text-decoration: none; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.intg-rel-card:hover { border-color: color-mix(in srgb, var(--sg-blue) 38%, var(--border)); box-shadow: 0 6px 18px rgba(20,28,46,0.07); transform: translateY(-2px); }
+.intg-rel-logo { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 9px; background: #fff; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+.intg-rel-logo svg { width: 22px; height: 22px; display: block; }
+.intg-rel-name { font-family: var(--font-heading); font-size: 14.5px; font-weight: 700; color: var(--fg1); }
+.intg-rel-all { font-size: 15px; font-weight: 600; color: var(--sg-blue); text-decoration: none; }
+.intg-rel-all:hover { text-decoration: underline; }
+
+.intg-final { border-top: 1px solid var(--border); background: rgba(250,251,252,0.4); }
+.intg-final-inner { max-width: 760px; margin: 0 auto; padding: 68px 32px; text-align: center; }
+.intg-final h2 { font-family: var(--font-heading); font-size: clamp(26px, 3.6vw, 34px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 12px; }
+.intg-final p { font-size: 17px; line-height: 1.6; color: var(--fg2); margin: 0 auto 24px; max-width: 560px; }
+
+@media (max-width: 820px) {
+  .intg-flows { grid-template-columns: 1fr; }
+  .intg-steps { grid-template-columns: 1fr; }
+  .intg-uses { grid-template-columns: 1fr; }
+  .intg-rel-grid { grid-template-columns: 1fr 1fr; }
+  .intg-inner { padding: 40px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intg-rel-card { transition: none; }
+}

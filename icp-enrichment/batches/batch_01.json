@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  10,
+        "company":  "Open Plan Systems",
+        "website":  "https://openplan.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Pamela Williams",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  11,
+        "company":  "Open Plan Systems",
+        "website":  "https://openplan.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dean Williams",
+        "existingDesig":  "Managing Partner \u0026 COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  12,
+        "company":  "Ac Furniture COmpany Inc",
+        "website":  "https://acfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Van Whitlow",
+        "existingDesig":  "Sales \u0026 Marketing Executive",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  14,
+        "company":  "Best Home Furnishings",
+        "website":  "https://www.besthf.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Glenn Lange",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  16,
+        "company":  "Best Home Furnishings",
+        "website":  "https://www.besthf.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Stuart Curtis",
+        "existingDesig":  "VP of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  17,
+        "company":  "Mendocino Forest Products Co LLC",
+        "website":  "https://www.mfp.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Bob Mertz",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  20,
+        "company":  "Lloyd/Flander Indsutries",
+        "website":  "https://www.lloydflanders.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Warren Juliano",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  23,
+        "company":  "Humanscale",
+        "website":  "https://www.humanscale.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Alex Russell",
+        "existingDesig":  "President, COO \u0026 Global CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  24,
+        "company":  "The Step2 Company LLC",
+        "website":  "https://www.step2.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Nick Osiecki",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  26,
+        "company":  "Tropitone Furniture Company Inc",
+        "website":  "https://www.tropitone.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Frank Verna",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  27,
+        "company":  "Tropitone Furniture Company Inc",
+        "website":  "https://www.tropitone.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Louis Frasche",
+        "existingDesig":  "VP of Operations \u0026 Quality",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  28,
+        "company":  "Riverside Furniture",
+        "website":  "https://www.riversidefurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Fred Henjes",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  29,
+        "company":  "Escalade Sports",
+        "website":  "https://www.escaladesports.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Armin Boehm",
+        "existingDesig":  "CEO \u0026 President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  31,
+        "company":  "Fairfield Chair Company",
+        "website":  "https://www.fairfieldchair.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Dixon Mitchell",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  35,
+        "company":  "Crenlo Engineered Cabs",
+        "website":  "https://www.engineeredcabs.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Tina Phang",
+        "existingDesig":  "Plant Director",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  42,
+        "company":  "Jersey Shore Steel Co",
+        "website":  "https://jssteel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "David Schultz",
+        "existingDesig":  "President \u0026 CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  43,
+        "company":  "Jersey Shore Steel Co",
+        "website":  "https://jssteel.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Mark Scheffey",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  44,
+        "company":  "Chromcraft Revingston Douglas Inc",
+        "website":  "https://www.chromcraft-revington.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  47,
+        "company":  "Blockhouse Contract Furniture Inc",
+        "website":  "https://www.blockhouse.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Steve Perko",
+        "existingDesig":  "President \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  49,
+        "company":  "Correction Enterprises",
+        "website":  "https://www.correctionenterprises.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "John Coleman",
+        "existingDesig":  "Director / CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  50,
+        "company":  "Correction Enterprises",
+        "website":  "https://www.correctionenterprises.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Phillip Sykes",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

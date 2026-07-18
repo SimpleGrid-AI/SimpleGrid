@@ -18,32 +18,34 @@ function ProductPage() {
   }, []);
   return (<>
     <main id="main">
-      {/* HOOK - set the stage */}
+      {/* HERO */}
       <ProductHeroNew />
 
-      {/* MOTIVATION - Fogg M: pain in operator voice */}
+      {/* MEET HANK */}
       <MotivationSection />
 
-      {/* INTEGRATIONS + SECURITY - supporting pillars */}
+      {/* INTEGRATIONS */}
       <Integrations />
-      <DataSecurity />
 
-      {/* THE BIG IDEA - Events Ledger (flagship section) */}
-      <EventsLedger />
-
-      {/* ABILITY - adoption is easy */}
+      {/* YOUR LANGUAGE - the software speaks your terms */}
       <AbilitySection />
+
+      {/* CAPABILITIES - specific feature tiles, each links to a detail page */}
+      <PlatformCapabilities />
 
       {/* RULES - your process, enforced */}
       <CustomRules />
 
-      {/* TRIGGER - final CTA */}
-      <FinalCTA title="One integrated system for your whole floor." body="Orders, inventory, costing, QC, contractors, approvals, dispatch - every feature modelled on your exact workflow, in one place. No bolted-on modules, no template to bend around. And because your team types the way they already text, there's nothing to train. See it running on your own operation." note="We configure it to your floor at our cost. Run it live for 30 days. You pay only when it works." ctaLabel="See a live demo" />
+      {/* SECURITY - slim strip */}
+      <DataSecurity />
+
+      {/* FINAL CTA */}
+      <FinalCTA title="One system for your whole operation." body="Orders, inventory, production and costing in one place, synced to the books you already run. See it working on your own operation before you pay anything." note="$0 up front. Live in 3 weeks or less. 30-day trial." ctaLabel="See a live demo" />
     </main>
     {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     {showInvite && <InviteModal onClose={() => setShowInvite(false)} />}
     <div className="mobile-cta">
-      <button type="button" onClick={() => setShowInvite(true)} className="btn btn-invite">Book a demo</button>
+      <button type="button" onClick={() => setShowInvite(true)} data-cta="mobile_demo" className="btn btn-invite">Book a demo</button>
     </div>
   </>);
 }

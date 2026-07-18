@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  434,
+        "company":  "Production Control Units Inc.",
+        "website":  "pcu-inc.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  435,
+        "company":  "American Baler",
+        "website":  "americanbaler.com",
+        "industry":  "Recyclers",
+        "existingName":  "David Kowaleski",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  436,
+        "company":  "American Baler",
+        "website":  "americanbaler.com",
+        "industry":  "Recyclers",
+        "existingName":  "Nate Kuhl",
+        "existingDesig":  "Plant Head/Operations Head",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  438,
+        "company":  "MacDermid Envio Solutions (formerly DMP Corporation)",
+        "website":  "macdermidenvio.com",
+        "industry":  "Recyclers",
+        "existingName":  "Benjamin Gliklich",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  440,
+        "company":  "Farco Plastics Supply, Inc.",
+        "website":  "farcoplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  441,
+        "company":  "Elgin Separation Solutions",
+        "website":  "elginseparation.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  442,
+        "company":  "Boretech Resource Recovery Engineering",
+        "website":  "boretech.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  445,
+        "company":  "Allredi",
+        "website":  "allredi.com",
+        "industry":  "Recyclers",
+        "existingName":  "Matt Molumby",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  448,
+        "company":  "Builtrite Handlers \u0026 Attachments (Northshore Manufacturing Inc)",
+        "website":  "builtritehandlers.com",
+        "industry":  "Recyclers",
+        "existingName":  "Tom Cavallin",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  449,
+        "company":  "Triple Diamond Plastics",
+        "website":  "triplediamondplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "Roger Norden",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  452,
+        "company":  "ENCON Evaporators",
+        "website":  "evaporator.com",
+        "industry":  "Recyclers",
+        "existingName":  "Mark Fregeau",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  453,
+        "company":  "Glass Recyclers, Ltd.",
+        "website":  "glassrecyclers.net",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  454,
+        "company":  "Trans-American Trading Co.",
+        "website":  "trans-americantrading.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  455,
+        "company":  "Standard Change-Makers",
+        "website":  "standardchange.com",
+        "industry":  "Recyclers",
+        "existingName":  "Rob Unterborn",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  456,
+        "company":  "Appleton Mfg. Div., Productive Solutions, Inc.",
+        "website":  "appletonmfg.com",
+        "industry":  "Recyclers",
+        "existingName":  "Kyle Willis",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  457,
+        "company":  "GranuTech Saturn Systems",
+        "website":  "granutech.com",
+        "industry":  "Recyclers",
+        "existingName":  "Matthew Morrison",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  459,
+        "company":  "Hustler Conveyor Company",
+        "website":  "hustlerconveyor.com",
+        "industry":  "Recyclers",
+        "existingName":  "Chris \u0026 Paul Griesedieck",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  460,
+        "company":  "RMC",
+        "website":  "rmcwoodchippers.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  461,
+        "company":  "Environmental Protection Services",
+        "website":  "epsorlando.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  463,
+        "company":  "Ameriglobe Fibc Solutions",
+        "website":  "ameriglobe.com",
+        "industry":  "Recyclers",
+        "existingName":  "Daniel Schnaars Sr.",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  465,
+        "company":  "LANDA",
+        "website":  "landa.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    }
+]

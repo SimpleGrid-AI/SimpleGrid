@@ -43,18 +43,17 @@
     X0: 0.82,                 // rope zone's horizontal home (fraction of width)
     DRIFT: 0.03,              // gentle serpentine of the whole rope
     DRIFT_WAVES: 0.45,        // drift waves per viewport
-    BLUE_W: 0.058,            // BLUE cord half-width - 4x the grey (50% of the old top size)
-    GREY_W: 0.0145,           // GREY cord half-width (1/4 of blue)
+    BLUE_W: 0.032,            // BLUE cord half-width - slim, elegant silk line
+    GREY_W: 0.011,            // GREY cord half-width
     ATTACH: { overlap: 0.80, k: 2.6 }, // cords ride ATTACHED: center distance pinned
                               // so edges just touch (0.94 = slight tuck, no white
                               // sliver); k saturates the crossing curve so they hug
                               // between crossings instead of swinging apart
     BREATHE: { amp: 0.020, waves: 1.4 }, // slight de-attachments: a small gap opens
                               // gently ~1-2x per page, then they re-attach
-    TAPER: { from: 3.45, to: 1.0, span: 1.0 }, // GRAND opening: the ribbon spans
-                              // ~50% of the screen at the very top, tapering down
-                              // through the hero to its body size, constant after
-    ENTRY45: { amp: 0.16, span: 0.55 }, // the top expands INTO the top-right corner
+    TAPER: { from: 1.35, to: 1.0, span: 1.0 }, // quiet opening: slightly fuller at
+                              // the top, settling to its body size through the hero
+    ENTRY45: { amp: 0.07, span: 0.55 }, // gentle drift toward the top-right corner
                               // of the page (the mouth spans from above the stat
                               // box to the corner), then turns ~45 degrees and
                               // straightens to vertical - parabolic bend, steepest
@@ -62,9 +61,9 @@
     // THE crossing: the two cords intertwine exactly ONCE over the WHOLE page
     // (phase runs over total document height via u_pages - no DNA repetition)
 
-    OPACITY: 0.95,            // cord body opacity (solid silk, not a wash)
-    EDGE: 0.14,               // feathered edge width (fraction of half-width)
-    SHEEN: 0.34,              // glossy highlight streak strength
+    OPACITY: 0.72,            // cord body opacity - present but understated
+    EDGE: 0.22,               // feathered edge width (softer sides)
+    SHEEN: 0.22,              // glossy highlight streak strength
     SHADE: 0.30,              // cylinder shading depth at the cord's edges
     TWIST: { waves: 0.35, depth: 0.12, speed: 0.10 }, // the ribbon slowly TURNS in
                               // space: width breathes, highlight sweeps across,
@@ -75,18 +74,18 @@
                               // like a snake" - rejected): the cords keep their
                               // FULL body size to the very end of the page and
                               // simply dissolve into the wordmark via END_FADE
-    LEFT_PIN: 0.595,          // the ribbon's leftmost edge starts just under the
-                              // Resources nav item and falls STRAIGHT during the
-                              // entry (only the right side flares to the corner)
-    END_FADE: { span: 1.05, hold: 0.02 }, // the tail FADES into the SIMPLEGRID
+    LEFT_PIN: 0.72,           // the ribbon's leftmost edge during the entry - kept
+                              // well right of center so the top stays slim and the
+                              // headline area breathes
+    END_FADE: { span: 1.05, hold: 0.13 }, // the tail FADES into the SIMPLEGRID
                               // wordmark at the page bottom (no abrupt cut) and is
                               // fully gone by the document end - also prevents the
                               // ribbon from showing in the overscroll rubber-band
                               // gap below the footer
     LANES_BLUE: 96,           // merged fiber lanes across the wide blue cord
     LANES_GREY: 40,           // lanes across the grey cord
-    LANE_VAR: 0.20,           // lane-to-lane brightness relief (above/below)
-    GRAIN: { along: 2.4, across: 240.0, strength: 0.10 }, // lengthwise micro-grain
+    LANE_VAR: 0.12,           // lane-to-lane brightness relief (calmer weave)
+    GRAIN: { along: 2.4, across: 240.0, strength: 0.06 }, // lengthwise micro-grain
     FLOW: { waves: 0.9, mix: 1.0 },    // shade gradient flowing along the cord
     BACK_DIM: 0.93,           // the cord passing behind dims slightly
 

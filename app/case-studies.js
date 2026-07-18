@@ -13,9 +13,9 @@ function CaseStudiesPage() {
     className: "tag"
   }, "CASE STUDIES"), /*#__PURE__*/React.createElement("h1", {
     className: "h2"
-  }, "Two factories. Two problems nobody could see. Live in 12 and 21 days."), /*#__PURE__*/React.createElement("p", {
+  }, "Real operations. Live in 12 and 21 days."), /*#__PURE__*/React.createElement("p", {
     className: "section-lead"
-  }, "A furniture exporter was losing $200,000 a year to material gaps nobody could see. An apparel maker ran three businesses across 30+ locations on overlapping spreadsheets. SimpleGrid was configured to each floor and went live in 21 days and 12. Both teams ran it live for 30 days. Both kept it. Real factories. Real numbers. Real floor staff using the system every day. The two below are public - more are running confidentially."), /*#__PURE__*/React.createElement("div", {
+  }, "Elite Arts & Crafts found $200K in silent losses and went live in 21 days. An apparel maker went live in 12. Both ran SimpleGrid free for 30 days. Both kept it."), /*#__PURE__*/React.createElement("div", {
     className: "case-list"
   }, /*#__PURE__*/React.createElement("a", {
     href: "case-furniture-manufacturer.html",
@@ -53,7 +53,7 @@ function CaseStudiesPage() {
     style: {
       marginBottom: 8
     }
-  }, "FURNITURE EXPORT"), /*#__PURE__*/React.createElement("h2", {
+  }, "FURNITURE & HOME DECOR EXPORT"), /*#__PURE__*/React.createElement("h2", {
     style: {
       fontFamily: 'var(--font-heading)',
       fontSize: 22,
@@ -61,13 +61,17 @@ function CaseStudiesPage() {
       margin: '0 0 10px',
       letterSpacing: '-0.015em'
     }
-  }, "Furniture Manufacturer & Exporter"), /*#__PURE__*/React.createElement("p", null, "600-800 employees. ~1 million sq ft. Multi-stage production. Deployed in 21 days."), /*#__PURE__*/React.createElement("div", {
+  }, "Elite Arts & Crafts"), /*#__PURE__*/React.createElement("p", null, "600+ people. 1 million sq ft. 12+ export countries. Live in 21 days."), /*#__PURE__*/React.createElement("div", {
     className: "proof-stats"
-  }, "$200K in silent material losses, found and stopped."), /*#__PURE__*/React.createElement("div", {
+  }, "$200K in silent losses, found and stopped."), /*#__PURE__*/React.createElement("div", {
     className: "proof-quote"
-  }, "\"SimpleGrid feels like our system. My stores manager was comfortable on day one.\"", /*#__PURE__*/React.createElement("div", {
+  }, "\"They modeled our whole operation in three weeks. We found $200K in losses we could never see.\"", /*#__PURE__*/React.createElement("div", {
     className: "proof-attr"
-  }, "- The founder")))), /*#__PURE__*/React.createElement("a", {
+  }, "- Chirag, Founder, Elite Arts & Crafts"))), /*#__PURE__*/React.createElement("span", {
+    className: "proof-detail-btn"
+  }, "See in detail ", /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\u2192"))), /*#__PURE__*/React.createElement("a", {
     href: "case-apex.html",
     className: "proof-card case-row",
     style: {
@@ -88,7 +92,7 @@ function CaseStudiesPage() {
     style: {
       marginBottom: 8
     }
-  }, "APPAREL CMT"), /*#__PURE__*/React.createElement("h2", {
+  }, "APPAREL MANUFACTURING"), /*#__PURE__*/React.createElement("h2", {
     style: {
       fontFamily: 'var(--font-heading)',
       fontSize: 22,
@@ -96,31 +100,26 @@ function CaseStudiesPage() {
       margin: '0 0 10px',
       letterSpacing: '-0.015em'
     }
-  }, "Apparel Contract Manufacturer ", /*#__PURE__*/React.createElement("span", {
+  }, "Apex Apparel ", /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 12,
       color: 'var(--fg3)',
       fontWeight: 400
     }
-  }, "(reference on request)")), /*#__PURE__*/React.createElement("p", null, "80-100k shirts/month. 3 streams: CMT, own brand, fabric trading. 20+ job workers. 30+ inventory locations. Live in 12 days."), /*#__PURE__*/React.createElement("div", {
+  }, "(name withheld - reference on request)")), /*#__PURE__*/React.createElement("p", null, "80-100k shirts a month. 20+ job workers. 30+ stock locations. Live in 12 days."), /*#__PURE__*/React.createElement("div", {
     className: "proof-stats"
-  }, "Two failed ERPs, then live in 12 days - every order in one view."), /*#__PURE__*/React.createElement("div", {
+  }, "The first ERP they selected never went live. SimpleGrid did, in 12 days."), /*#__PURE__*/React.createElement("div", {
     className: "proof-quote"
-  }, "\"They sent a working demo in 24 hours - 60-70% accurate. No other vendor we've worked with has done that.\"", /*#__PURE__*/React.createElement("div", {
+  }, "\"They sent a working demo in 72 hours and it was 60-70% right already.\"", /*#__PURE__*/React.createElement("div", {
     className: "proof-attr"
-  }, "- Founder, Apex Apparel (name withheld)"))))), /*#__PURE__*/React.createElement("p", {
-    style: {
-      textAlign: 'center',
-      fontFamily: 'var(--font-heading)',
-      fontSize: 17,
-      fontWeight: 600,
-      color: 'var(--fg1)',
-      marginTop: 40
-    }
-  }, "Two industries. Two completely different operations. One platform.")))), /*#__PURE__*/React.createElement(FinalCTA, {
-    title: "Your factory could be the next one.",
-    body: "The operators above run SimpleGrid on their real floors today. We configure it to your floor at our cost, you run it live for 30 days, and you pay only when it works.",
-    note: "Limited slots each quarter. We onboard selectively."
+  }, "- Founder, Apex Apparel"))), /*#__PURE__*/React.createElement("span", {
+    className: "proof-detail-btn"
+  }, "See in detail ", /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\u2192"))))))), /*#__PURE__*/React.createElement(FinalCTA, {
+    title: "Your operation could be next.",
+    body: "We model SimpleGrid around how you already work. Run it live for 30 days, free. Pay only when it works.",
+    note: "$0 up front. Working demo in 72 hours."
   }), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }));

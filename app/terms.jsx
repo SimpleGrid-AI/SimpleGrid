@@ -41,7 +41,7 @@ function TermsPage() {
       </ul>
 
       <h2>4. Onboarding and Implementation</h2>
-      <p>Deployment timelines (e.g., 7 days) are estimates and may vary based on workflow complexity and your team's responsiveness. You are responsible for providing accurate workflow information and reviewing configurations before go-live.</p>
+      <p>Deployment timelines (e.g., 21 days) are estimates and may vary based on workflow complexity and your team's responsiveness. You are responsible for providing accurate workflow information and reviewing configurations before go-live.</p>
 
       <h2>5. Your Data</h2>
       <p><strong>5.1 Ownership:</strong> You retain full ownership of all data you upload or input ("Customer Data"). SimpleGrid claims no ownership over Customer Data.</p>

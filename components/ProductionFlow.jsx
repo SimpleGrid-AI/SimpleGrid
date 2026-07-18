@@ -186,9 +186,9 @@ function FactoryScene({ stage, progress, color }) {
     <svg key="1" viewBox="0 0 300 200" style={{width:'100%'}} aria-hidden="true">
       {[0,1,2].map(r => [0,1,2].map(c => {
         const filled = (r * 3 + c) < Math.ceil(progress * 9);
-        return <rect key={`${r}-${c}`} x={50+c*75} y={30+r*55} width="65" height="45" rx="6" fill={filled ? color+'22' : '#FAFBFC'} stroke={filled ? color : '#E5E8ED'} strokeWidth="1.5" style={{transition:'all 0.3s'}}/>;
+        return <rect key={`${r}-${c}`} x={43+c*75} y={20+r*48} width="65" height="42" rx="6" fill={filled ? color+'22' : '#FAFBFC'} stroke={filled ? color : '#E5E8ED'} strokeWidth="1.5" style={{transition:'all 0.3s'}}/>;
       }))}
-      <text x="150" y="190" textAnchor="middle" fill="var(--fg3)" fontSize="10">Allocating across production lines</text>
+      <text x="150" y="180" textAnchor="middle" fill="var(--fg3)" fontSize="10">Allocating across production lines</text>
     </svg>,
     // 2: Procure - boxes arriving
     <svg key="2" viewBox="0 0 300 200" style={{width:'100%'}} aria-hidden="true">

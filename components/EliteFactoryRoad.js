@@ -1605,8 +1605,8 @@ function EliteFactoryRoad({
     }
   }, cur.p), cur.pricing ? /*#__PURE__*/React.createElement("div", {
     style: {
-      background: 'rgba(74,123,247,0.06)',
-      border: '1px solid rgba(74,123,247,0.18)',
+      background: 'rgba(52,97,224,0.06)',
+      border: '1px solid rgba(52,97,224,0.18)',
       borderRadius: 8,
       padding: '8px 12px'
     }
@@ -1891,8 +1891,8 @@ function EliteFactoryRoad({
     }
   }, cur.p), cur.pricing ? /*#__PURE__*/React.createElement("div", {
     style: {
-      background: 'rgba(74,123,247,0.06)',
-      border: '1px solid rgba(74,123,247,0.18)',
+      background: 'rgba(52,97,224,0.06)',
+      border: '1px solid rgba(52,97,224,0.18)',
       borderRadius: 8,
       padding: '10px 14px',
       marginBottom: 12

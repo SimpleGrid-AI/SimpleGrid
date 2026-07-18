@@ -1,0 +1,152 @@
+﻿[
+    {
+        "line":  467,
+        "company":  "Koppern Equipment, Inc.",
+        "website":  "koppern.com",
+        "industry":  "Recyclers",
+        "existingName":  "James McClaskey",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  470,
+        "company":  "Cousineau, Inc.",
+        "website":  "cousineaus.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  473,
+        "company":  "Work Training Center, Inc.",
+        "website":  "wtcinc.org",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  475,
+        "company":  "Prab",
+        "website":  "prab.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ned Thompson",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  476,
+        "company":  "Phoenix Technologies International, LLC",
+        "website":  "phoenixtechnologies.net",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  477,
+        "company":  "United Pallet, Inc.",
+        "website":  "unitedpallet.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  478,
+        "company":  "Libra Industries, Inc.",
+        "website":  "libraind.com",
+        "industry":  "Recyclers",
+        "existingName":  "Andrew Williams",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  479,
+        "company":  "Lippmann",
+        "website":  "lippmann-milwaukee.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  481,
+        "company":  "Ellis Corporation",
+        "website":  "elliscorp.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  482,
+        "company":  "Vacuum Instrument Corp.",
+        "website":  "vacuum-instrument.com",
+        "industry":  "Recyclers",
+        "existingName":  "Jeffrey Plante",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  483,
+        "company":  "CP Manufacturing, Inc.",
+        "website":  "cpmfg.com",
+        "industry":  "Recyclers",
+        "existingName":  "John Willis",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  487,
+        "company":  "Morris Iron \u0026 Steel Co., Inc.",
+        "website":  "morrisironandsteel.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ron Greller",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  489,
+        "company":  "Ransohoff",
+        "website":  "ransohoff.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bernard A. Bosse Jr.",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  490,
+        "company":  "B.A.G. Corp.",
+        "website":  "bagcorp.com",
+        "industry":  "Recyclers",
+        "existingName":  "Kevin Ashton",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  492,
+        "company":  "Waukesha-Pearce Industries, Inc. (WPI)",
+        "website":  "wpihou.com",
+        "industry":  "Recyclers",
+        "existingName":  "Robert Shaffer",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    }
+]

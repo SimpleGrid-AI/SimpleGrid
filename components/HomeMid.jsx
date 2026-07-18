@@ -56,7 +56,7 @@ function LedgerVisual() {
           ))}
         </tbody>
       </table>
-      <div style={{padding:'8px 12px',fontSize:10,color:'var(--fg3)',borderTop:'1px solid var(--border)',textAlign:'center'}}>Immutable. Append-only. Every action permanent.</div>
+      <div style={{padding:'8px 12px',fontSize:10,color:'var(--fg3)',borderTop:'1px solid var(--border)',textAlign:'center'}}>Every action recorded, with a name and a time.</div>
     </div>
   );
 }
@@ -81,47 +81,54 @@ window.DemoVideo = DemoVideo;
 
 function CustomRules() {
   const scenarios = [
-    { t: 'Your approval chain has exceptions', cond: '"POs over $10K need founder sign-off, but 3 trusted vendors get a higher limit"', out: 'Both rules enforced automatically. No multi-week change order, no consultant fees.' },
-    { t: 'Your QC works differently per buyer', cond: '"Retailer A needs 75% shelf life, Retailer B accepts 60%"', out: 'One rule per buyer. System blocks dispatch automatically if the product is too old for that buyer.' },
+    { t: 'Your approval chain has exceptions', cond: '"POs over $10K need founder sign-off, but 3 trusted vendors get a higher limit"', out: 'Both rules enforced automatically. No change order, no consultant fees.' },
+    { t: 'Your QC works differently per buyer', cond: '"Retailer A needs 75% shelf life, Retailer B accepts 60%"', out: 'One rule per buyer. Dispatch is blocked if the product is too old for that buyer.' },
     { t: 'Your rework goes to the original contractor', cond: '"QC fails 40 pieces; original contractor redoes it at no cost"', out: 'Rework auto-routes to the same contractor. Rate = $0. Done.' },
-    { t: 'Your shipments have size limits', cond: '"Buyer\'s dock handles 40 CBM, order is 55 CBM"', out: 'System splits into two shipments, generates two packing lists, updates the order. No manual work.' },
   ];
   return (
-    <section className="section section-dark" id="rules" style={{background:'#0B0F17'}}>
+    <section className="section section-roomy" id="rules" style={{background:'rgba(255,255,255,0.4)'}}>
       <div className="container">
         <Reveal>
           <div className="tag">YOUR PROCESS, ENFORCED</div>
-          <h2 className="h2" style={{color:'#fff'}}>Every factory has rules that only the people inside it understand.</h2>
-          <p className="lead" style={{maxWidth: 960, color:'rgba(255,255,255,0.62)'}}>Approval chains. Vendor exceptions. QC gates that differ per buyer. These rules live in your head, in messaging apps, in notebooks. In our system, they live in configuration - and the system enforces them automatically.</p>
+          <h2 className="h2 ink">Every operation has rules only your people know.</h2>
+          <p className="lead" style={{maxWidth: 820}}>Approval chains, vendor exceptions, per-buyer QC gates. Today they live in someone's head. SimpleGrid enforces them automatically.</p>
         </Reveal>
         <Reveal delay={100}>
-          <div className="pr-rows">
-            {scenarios.map((s,i) => (
-              <div className="pr-row" key={i}>
-                <div className="pr-left">
-                  <h3 className="pr-head">{s.t}</h3>
-                  <p className="pr-cond">{s.cond}</p>
-                </div>
-                <div className="pr-arrow" aria-hidden="true">→</div>
-                <p className="pr-out">{s.out}</p>
-              </div>
-            ))}
+          <div className="pr-table-wrap">
+            <table className="pr-table">
+              <thead>
+                <tr>
+                  <th>Your rule</th>
+                  <th>Your reality</th>
+                  <th>With SimpleGrid</th>
+                </tr>
+              </thead>
+              <tbody>
+                {scenarios.map((s,i) => (
+                  <tr key={i}>
+                    <td className="pr-rule">{s.t}</td>
+                    <td className="pr-reality">{s.cond}</td>
+                    <td className="pr-result">{s.out}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </Reveal>
       </div>
       <style>{`
-        .pr-rows { margin-top: 40px; }
-        .pr-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.08); }
-        .pr-row:first-child { border-top: 0; padding-top: 8px; }
-        .pr-head { position: relative; padding-left: 16px; font-family: var(--font-heading); font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: rgba(255,255,255,0.96); margin: 0 0 10px; }
-        .pr-head::before { content: ''; position: absolute; left: 0; top: 3px; bottom: 3px; width: 3px; border-radius: 2px; background: var(--sg-blue); }
-        .pr-cond { padding-left: 16px; font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.55; margin: 0; }
-        .pr-arrow { font-size: 40px; line-height: 1; color: var(--sg-blue); justify-self: center; }
-        .pr-out { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
-        @media (max-width: 820px) {
-          .pr-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
-          .pr-arrow { transform: rotate(90deg); font-size: 30px; justify-self: start; margin: 2px 0; }
-        }
+        .pr-table-wrap { margin-top: 40px; overflow-x: auto; }
+        .pr-table { width: 100%; min-width: 720px; border-collapse: collapse; }
+        .pr-table thead th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg3); padding: 0 22px 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        .pr-table thead th:last-child { color: var(--sg-blue); }
+        .pr-table tbody td { padding: 22px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .pr-table tbody tr:last-child td { border-bottom: 0; }
+        .pr-table tbody tr:hover td { background: var(--sg-off-white); }
+        .pr-rule { font-family: var(--font-heading); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); width: 27%; }
+        .pr-reality { font-size: 14.5px; font-style: italic; color: var(--fg3); line-height: 1.55; width: 35%; }
+        .pr-result { font-size: 14.5px; color: var(--fg1); line-height: 1.6; width: 38%; }
+        .pr-table th:last-child, .pr-table td.pr-result { border-left: 1px solid rgba(59,130,246,0.28); background: rgba(59,130,246,0.05); }
+        @media (max-width: 640px) { .pr-table tbody td { padding: 16px; } }
       `}</style>
     </section>
   );

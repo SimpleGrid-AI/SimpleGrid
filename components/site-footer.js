@@ -50,8 +50,8 @@
       '<div class="container">' +
         '<div class="footer-top">' +
           '<div>' +
-            '<img src="' + pf + 'assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid - Factory Ops Cloud for manufacturers logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">' +
-            '<p class="footer-tagline">The Factory Ops Cloud. Configured to your floor. Live in 21 days.</p>' +
+            '<img src="' + pf + 'assets/simplegrid-logo-horizontal.svg" alt="SimpleGrid - Adaptive ERP and operations cloud logo" class="footer-logo" width="160" height="32" loading="lazy" decoding="async">' +
+            '<p class="footer-tagline">The Adaptive ERP. Built around your business. Live in 3 weeks or less.</p>' +
             '<div style="margin-top:28px">' +
               '<div style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px">Trusted partners</div>' +
               '<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">' +
@@ -71,7 +71,7 @@
               '<div class="footer-h">Company</div>' +
               '<a href="' + pf + 'about.html" class="footer-link">About</a>' +
               '<a href="' + pf + 'pricing.html" class="footer-link">Pricing</a>' +
-              '<a href="' + pf + 'about.html#architecture" class="footer-link">Architecture</a>' +
+              '<a href="' + pf + 'partnerships.html" class="footer-link">Partners</a>' +
               '<a href="' + pf + 'competitors.html" class="footer-link">Competitors</a>' +
               '<a href="' + pf + 'hiring.html" class="footer-link">Careers</a>' +
             '</div>' +
@@ -85,7 +85,7 @@
           '</div>' +
         '</div>' +
         '<div class="footer-bottom">' +
-          '<div>SimpleGrid, the Factory Ops Cloud for manufacturers, by SimpleGrid Inc &copy; 2026</div>' +
+          '<div>SimpleGrid, the Adaptive ERP for CPG brands, manufacturers and inventory-led businesses, by SimpleGrid Inc &copy; 2026</div>' +
           '<div class="footer-legal">' +
             '<a href="' + pf + 'privacy.html">Privacy Policy</a><a href="' + pf + 'terms.html">Terms</a>' +
           '</div>' +

@@ -75,8 +75,12 @@
     gap: 18px;
     padding: 26px 0;
     border-top: 1px solid var(--hair);   /* faint hairline divider */
+    transition: opacity 0.45s ease;
   }
   .feature:first-child { border-top: 0; padding-top: 0; }
+  /* When JS is active, spotlight the row crossing the viewport centre, dim the rest. */
+  .features.js-dim .feature { opacity: 0.4; }
+  .features.js-dim .feature.in-view { opacity: 1; }
   .feature__icon {
     color: var(--accent);                /* accent used only on icons + active row */
     width: 24px; height: 24px;
@@ -96,7 +100,7 @@
   }
 
   /* ---- Right: live event-ledger demo ------------------------------------ */
-  .demo { position: sticky; top: 40px; }
+  .demo { position: sticky; top: 120px; }
   .panel {
     background: var(--panel);
     border: 1px solid var(--hair);
@@ -175,7 +179,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .evt, .evt.is-enter { transition: none; transform: none; }
+    .feature, .evt, .evt.is-enter { transition: none; transform: none; }
     .dot::after { animation: none; }
   }
 </style>
@@ -273,13 +277,13 @@
       if (!feed) return;
 
       var EVENTS = [
-        { t: '8:03 AM',  who: 'Mike',   act: 'opened the floor — shift A' },
+        { t: '8:03 AM',  who: 'Mike',   act: 'opened the floor, shift A' },
         { t: '9:21 AM',  who: 'Priya',  act: 'approved PO #4471' },
         { t: '11:46 AM', who: 'Mike',   act: 'received 450 sheets' },
         { t: '12:30 PM', who: 'System', act: 'inventory recomputed' },
-        { t: '2:14 PM',  who: 'QC',     act: 'dispatch held — QC fail' },
+        { t: '2:14 PM',  who: 'QC',     act: 'dispatch held, QC fail' },
         { t: '2:15 PM',  who: 'Dana',   act: 'corrective event logged' },
-        { t: '3:02 PM',  who: 'Mike',   act: '12 units scrapped — reason noted' },
+        { t: '3:02 PM',  who: 'Mike',   act: '12 units scrapped, reason noted' },
         { t: '4:20 PM',  who: 'Priya',  act: 'invoice matched to receipt' }
       ];
 
@@ -322,7 +326,23 @@
       // Pre-fill so the panel reads as a populated log immediately.
       for (var k = 0; k < 4; k++) pushEvent(false);
 
-      if (!reduce) setInterval(function () { pushEvent(true); }, 2100);
+      if (!reduce) setInterval(function () { pushEvent(true); }, 2500);
+
+      // Left features: spotlight the row crossing the viewport centre, dim the rest.
+      var featuresWrap = document.querySelector('.features');
+      var features = featuresWrap ? featuresWrap.querySelectorAll('.feature') : [];
+      if (features.length && !reduce && 'IntersectionObserver' in window) {
+        featuresWrap.classList.add('js-dim');
+        features[0].classList.add('in-view');
+        var fio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            for (var j = 0; j < features.length; j++) features[j].classList.remove('in-view');
+            en.target.classList.add('in-view');
+          });
+        }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+        for (var k2 = 0; k2 < features.length; k2++) fio.observe(features[k2]);
+      }
     })();
   </script>
 </body>

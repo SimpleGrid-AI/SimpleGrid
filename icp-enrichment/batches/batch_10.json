@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  394,
+        "company":  "ANDRITZ Separation Inc.",
+        "website":  "andritz.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  395,
+        "company":  "Porvair Filtration Group",
+        "website":  "porvairfiltration.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  398,
+        "company":  "Enerpat America",
+        "website":  "enerpatgroup.com",
+        "industry":  "Recyclers",
+        "existingName":  "Jack Qian",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  399,
+        "company":  "Arca",
+        "website":  "arca.com",
+        "industry":  "Recyclers",
+        "existingName":  "Jack Cameron",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  400,
+        "company":  "DS Smith",
+        "website":  "dssmith.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  403,
+        "company":  "SIRS Industries",
+        "website":  "sirsplastics.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  407,
+        "company":  "FabCorp, Inc.",
+        "website":  "fabcorpinc.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  408,
+        "company":  "SSI Shredding Systems, Inc.",
+        "website":  "ssiworld.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  409,
+        "company":  "Cram-A-Lot /JV Manufacturing, Inc.",
+        "website":  "cram-a-lot.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  411,
+        "company":  "Precision Husky Corporation",
+        "website":  "precisionhusky.com",
+        "industry":  "Recyclers",
+        "existingName":  "Bob Smith",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  412,
+        "company":  "Midland Iron \u0026 Steel Corp.",
+        "website":  "midlandironandsteel.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  413,
+        "company":  "Lummus Corp.",
+        "website":  "lummus.com",
+        "industry":  "Recyclers",
+        "existingName":  "Ben Hinnen",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  415,
+        "company":  "Gala Industries, Inc.",
+        "website":  "maag.com",
+        "industry":  "Recyclers",
+        "existingName":  "Paul Merich",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  418,
+        "company":  "KANN Manufacturing Corporation",
+        "website":  "kannmfg.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  419,
+        "company":  "Wahlco DW Tool, Inc.",
+        "website":  "wahlco-dwtool.com",
+        "industry":  "Recyclers",
+        "existingName":  "Don Wahlers",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  421,
+        "company":  "The Plastics Group of America",
+        "website":  "plasticsgroup.com",
+        "industry":  "Recyclers",
+        "existingName":  "Mike Rosenthal",
+        "existingDesig":  "COO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  422,
+        "company":  "Hi-Grade Materials Co.",
+        "website":  "hi-grade.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  423,
+        "company":  "State Metal Industries",
+        "website":  "statemetal.com",
+        "industry":  "Recyclers",
+        "existingName":  "Andrew Dorfman",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  424,
+        "company":  "State Metal Industries",
+        "website":  "statemetal.com",
+        "industry":  "Recyclers",
+        "existingName":  "John Mullin",
+        "existingDesig":  "CFO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  425,
+        "company":  "Nu-Life Environmental, Inc.",
+        "website":  "nu-life.com",
+        "industry":  "Recyclers",
+        "existingName":  "Tim Hendricks",
+        "existingDesig":  "CEO",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  428,
+        "company":  "Office Paper Systems",
+        "website":  "officepapersystems.com",
+        "industry":  "Recyclers",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    }
+]

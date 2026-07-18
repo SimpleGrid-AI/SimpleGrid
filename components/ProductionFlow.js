@@ -367,10 +367,10 @@ function FactoryScene({
     const filled = r * 3 + c < Math.ceil(progress * 9);
     return /*#__PURE__*/React.createElement("rect", {
       key: `${r}-${c}`,
-      x: 50 + c * 75,
-      y: 30 + r * 55,
+      x: 43 + c * 75,
+      y: 20 + r * 48,
       width: "65",
-      height: "45",
+      height: "42",
       rx: "6",
       fill: filled ? color + '22' : '#FAFBFC',
       stroke: filled ? color : '#E5E8ED',
@@ -381,7 +381,7 @@ function FactoryScene({
     });
   })), /*#__PURE__*/React.createElement("text", {
     x: "150",
-    y: "190",
+    y: "180",
     textAnchor: "middle",
     fill: "var(--fg3)",
     fontSize: "10"

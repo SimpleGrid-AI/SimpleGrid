@@ -27,7 +27,7 @@ function Footer() {
     { h: 'Company', links: [
       { l: 'About', href: 'about.html' },
       { l: 'Pricing', href: 'pricing.html' },
-      { l: 'Architecture', href: 'about.html#architecture' },
+      { l: 'Partners', href: 'partnerships.html' },
       { l: 'Competitors', href: 'competitors.html' },
       { l: 'Careers', href: 'hiring.html' },
     ]},
@@ -39,13 +39,13 @@ function Footer() {
     { kind: 'calendar', l: 'Book a call',         href: 'https://cal.com/simplegrid-ai', external: true },
   ];
 
-  return (
+  return (<>
     <footer className="footer" role="contentinfo">
       <div className="container">
         <div className="footer-top">
           <div>
-            <img src={prefix + 'assets/simplegrid-logo-horizontal.svg'} alt="SimpleGrid - Factory Ops Cloud for manufacturers logo" className="footer-logo" width="160" height="32" loading="lazy" decoding="async" />
-            <p className="footer-tagline">The Factory Ops Cloud. Configured to your floor. Live in 21 days.</p>
+            <img src={prefix + 'assets/simplegrid-logo-horizontal.svg'} alt="SimpleGrid - Adaptive ERP and operations cloud logo" className="footer-logo" width="160" height="32" loading="lazy" decoding="async" />
+            <p className="footer-tagline">The Adaptive ERP. Built around your business. Live in 3 weeks or less.</p>
 
             {/* Trusted partner badges */}
             <div style={{ marginTop: 28 }}>
@@ -77,7 +77,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className="footer-cols" style={{gridTemplateColumns: '1fr 1fr 1fr 1.5fr', gap: 24}}>
+          <div className="footer-cols" style={{gridTemplateColumns: '1fr 1fr 1.5fr', gap: 24}}>
             {cols.map(c => (
               <div key={c.h}>
                 {c.hHref
@@ -98,17 +98,37 @@ function Footer() {
                   <span>{x.l}</span>
                 </a>
               ))}
+              <address className="footer-link" style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontStyle: 'normal', marginTop: 6 }}>
+                <FIcon kind="pin" />
+                <span style={{ lineHeight: 1.5 }}>2810 N Church St STE 88778<br/>Wilmington, DE 19802</span>
+              </address>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <div>SimpleGrid, the Factory Ops Cloud for manufacturers, by SimpleGrid Inc © 2026</div>
+          <div>SimpleGrid, the Adaptive ERP for CPG brands, manufacturers and inventory-led businesses, by SimpleGrid Inc © 2026</div>
           <div className="footer-legal">
             <a href={px('privacy.html')}>Privacy Policy</a><a href={px('terms.html')}>Terms</a>
           </div>
         </div>
       </div>
     </footer>
-  );
+    <section className="footer-wordmark">
+      <svg className="footer-wordmark-svg" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="SimpleGrid">
+        <g className="wm-mark" transform="translate(5,12.5) scale(4.1667)" fill="none" aria-hidden="true">
+          <rect x="3" y="3" width="36" height="36" rx="5" ry="5" stroke="currentColor" strokeWidth="2.5" />
+          <line x1="15" y1="5" x2="15" y2="37" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <line x1="27" y1="5" x2="27" y2="37" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <line x1="5" y1="15" x2="37" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <line x1="5" y1="27" x2="37" y2="27" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </g>
+        <text x="210" y="153" textLength="790" lengthAdjust="spacingAndGlyphs">SimpleGrid</text>
+      </svg>
+      <a className="footer-wordmark-cta" href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="wordmark_book_demo">
+        <span>Book a demo</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </section>
+  </>);
 }
 window.Footer = Footer;

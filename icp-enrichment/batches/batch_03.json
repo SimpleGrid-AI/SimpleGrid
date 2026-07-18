@@ -1,0 +1,212 @@
+﻿[
+    {
+        "line":  102,
+        "company":  "Cuisines Laurier",
+        "website":  "https://www.cuisineslaurier.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  107,
+        "company":  "SitOnIt Seating",
+        "website":  "https://www.sitonit.net",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul DeVries",
+        "existingDesig":  "CEO \u0026 Founder, Exemplis",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  109,
+        "company":  "Bassett Mirror Co., Inc.",
+        "website":  "https://www.bassettmirror.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Spencer Morten III",
+        "existingDesig":  "Chairman/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  111,
+        "company":  "Aamerica",
+        "website":  "https://www.a-america.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Fred Rohrbach",
+        "existingDesig":  "President \u0026 Co-Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  113,
+        "company":  "Comfort Research LLC",
+        "website":  "https://comfortresearch.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Matt Jung",
+        "existingDesig":  "Co-Founders/Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  119,
+        "company":  "Cabot Wrenn",
+        "website":  "https://www.cabotwrenn.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  125,
+        "company":  "JTB Furniture",
+        "website":  "https://www.jtbfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  126,
+        "company":  "University Loft Co.",
+        "website":  "https://www.uloft.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "James Jannetides",
+        "existingDesig":  "Founder, CEO \u0026 Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  129,
+        "company":  "E.J. Victor",
+        "website":  "https://www.ejvictor.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "James Kennedy",
+        "existingDesig":  "VP of Operations",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  130,
+        "company":  "Pulaski Furniture Corp.",
+        "website":  "https://www.pulaskifurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Paul B. Toms Jr.",
+        "existingDesig":  "Chairman \u0026 CEO, Hooker Furnishings",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  131,
+        "company":  "Pulaski Furniture Corp.",
+        "website":  "https://www.pulaskifurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Page Wilson",
+        "existingDesig":  "former President, Pulaski",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  135,
+        "company":  "Pearson Company",
+        "website":  "https://www.pearsoncompany.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Brand of Hickory Chair",
+        "existingDesig":  "Rock House Farm Family of Brands",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  136,
+        "company":  "Pembrook Chair",
+        "website":  "https://www.pembrookchair.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Joe Kaylor",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  137,
+        "company":  "Hickory White",
+        "website":  "https://hickorywhite.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "H.W. \"Buddy\" Sherrill",
+        "existingDesig":  "CEO \u0026 President, Sherrill Furniture/Owner",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  138,
+        "company":  "Takara Belmont USA Inc.",
+        "website":  "https://store.takarabelmont.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  139,
+        "company":  "Rockett, Inc.",
+        "website":  "rockettinc.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Hulbert \"Bucky\" Crystal",
+        "existingDesig":  "President",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  140,
+        "company":  "Rialto Furniture Co.",
+        "website":  "rialtofurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Ted Hovivian",
+        "existingDesig":  "Principals",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  141,
+        "company":  "Rialto Furniture Co.",
+        "website":  "rialtofurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "Marianne Hovivian",
+        "existingDesig":  "Owners",
+        "needName":  false,
+        "needEmail":  true
+    },
+    {
+        "line":  142,
+        "company":  "Prestolam Inc.",
+        "website":  "prestolam.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  143,
+        "company":  "Midwest Folding Products, Inc.",
+        "website":  "https://www.midwestfolding.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    },
+    {
+        "line":  145,
+        "company":  "Lancer Inc.",
+        "website":  "https://www.lancerfurniture.com",
+        "industry":  "Furniture Manufacturer",
+        "existingName":  "",
+        "existingDesig":  "",
+        "needName":  true,
+        "needEmail":  true
+    }
+]

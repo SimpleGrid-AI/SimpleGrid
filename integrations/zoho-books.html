@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<title>Zoho Books integration | SimpleGrid</title>
+<meta name="description" content="Zoho Books + SimpleGrid: A two-way sync keeps invoices, bills and customer / vendor records aligned with Zoho Books, with payment status flowing back to the floor.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://simplegrid.ai/integrations/zoho-books.html">
+<link rel="icon" type="image/svg+xml" href="../assets/simplegrid-logomark.svg">
+<link rel="apple-touch-icon" href="../assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../integrations.css">
+
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://simplegrid.ai/integrations/zoho-books.html">
+<meta property="og:title" content="Zoho Books integration | SimpleGrid">
+<meta property="og:description" content="Zoho Books + SimpleGrid: A two-way sync keeps invoices, bills and customer / vendor records aligned with Zoho Books, with payment status flowing back to the floor.">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@simplegridai">
+<meta name="twitter:title" content="Zoho Books integration | SimpleGrid">
+<meta name="twitter:description" content="Zoho Books + SimpleGrid: A two-way sync keeps invoices, bills and customer / vendor records aligned with Zoho Books, with payment status flowing back to the floor.">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/integrations/zoho-books.html#webpage",
+      "url": "https://simplegrid.ai/integrations/zoho-books.html",
+      "name": "Zoho Books integration | SimpleGrid",
+      "isPartOf": { "@id": "https://simplegrid.ai/#website" },
+      "publisher": { "@id": "https://simplegrid.ai/#org" },
+      "description": "Zoho Books + SimpleGrid: A two-way sync keeps invoices, bills and customer / vendor records aligned with Zoho Books, with payment status flowing back to the floor.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Syncs", "item": "https://simplegrid.ai/syncs.html" },
+        { "@type": "ListItem", "position": 3, "name": "Zoho Books", "item": "https://simplegrid.ai/integrations/zoho-books.html" }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Analytics (PostHog + GA4) - deferred to first user interaction. -->
+<script src="../assets/js/analytics-init.js" defer></script>
+<script src="../assets/js/tracking.js" defer></script>
+<script src="../assets/js/cookie-consent.js" defer></script>
+</head>
+<body class="intg-page" style="--intg-accent: #D0312D;">
+<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
+<div id="sg-nav" data-page="syncs"></div>
+
+<main id="main">
+  <section class="intg-hero">
+    <a class="intg-back" href="../syncs.html">&larr; All syncs</a>
+    <div class="intg-hero-marks">
+      <span class="intg-logo-big"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#D0312D"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="12">ZOHO</text></svg></span>
+      <span class="intg-plus">+</span>
+      <span class="intg-logo-big intg-logo-sg"><img src="../assets/simplegrid-logomark.svg" alt="SimpleGrid" width="34" height="34"></span>
+    </div>
+    <div class="intg-badges">
+      <span class="tag">Accounting &amp; books</span>
+      <span class="intg-dir">Two-way sync</span>
+    </div>
+    <h1>SimpleGrid&nbsp;+&nbsp;Zoho Books</h1>
+    <p class="lead">A two-way sync keeps invoices, bills and customer / vendor records aligned with Zoho Books, with payment status flowing back to the floor.</p>
+    <p class="intg-what">Zoho Books is the cloud accounting app in the Zoho suite.</p>
+    <div class="intg-hero-cta">
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_zoho-books_demo">Book a demo</a>
+      <a href="../syncs.html" class="intg-cta-ghost">See all syncs &rarr;</a>
+    </div>
+  </section>
+
+  <section class="intg-section">
+    <div class="intg-inner">
+      <div class="tag">What syncs</div>
+      <h2>Data moves both ways - automatically.</h2>
+      <div class="intg-flows">
+        <div class="intg-col">
+          <p class="intg-col-h"><span class="intg-arrow">&rarr;</span> Into SimpleGrid</p>
+          <ul>
+            <li>Customer and vendor records kept aligned both ways</li>
+            <li>Payment status pulled back so the floor sees the real money position</li>
+          </ul>
+        </div>
+        <div class="intg-col">
+          <p class="intg-col-h"><span class="intg-arrow">&larr;</span> Back to Zoho Books</p>
+          <ul>
+            <li>Invoices and bills created from floor activity</li>
+            <li>Records matched to existing Zoho Books entries</li>
+          </ul>
+        </div>
+      </div>
+      <p class="intg-detail">A two-way sync keeps invoices, bills, and customer and vendor records aligned with Zoho Books. Payment status flows back so the floor sees the real money position.</p>
+    </div>
+  </section>
+
+  <section class="intg-section intg-alt">
+    <div class="intg-inner">
+      <div class="tag">Use it to</div>
+      <h2>What teams do with Zoho Books &amp; SimpleGrid</h2>
+      <div class="intg-uses">
+        <div class="intg-use">Keep invoices and bills aligned both ways</div>
+        <div class="intg-use">Sync customer and vendor records automatically</div>
+        <div class="intg-use">See real payment status back on the floor</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intg-section">
+    <div class="intg-inner">
+      <div class="tag">How it works</div>
+      <h2>Live with the rest of your floor.</h2>
+      <ol class="intg-steps">
+        <li><span class="intg-step-n">1</span><div><p class="intg-step-h">Connect once</p><p>We link Zoho Books during your setup - you authorise it, we handle the wiring.</p></div></li>
+        <li><span class="intg-step-n">2</span><div><p class="intg-step-h">Map to your floor</p><p>Your fields, codes and naming are mapped to SimpleGrid one time, so records match instead of duplicating.</p></div></li>
+        <li><span class="intg-step-n">3</span><div><p class="intg-step-h">Runs on its own</p><p>From then on the sync runs in the background - no exports, no re-keying, nothing for your team to remember.</p></div></li>
+      </ol>
+      <p class="intg-note">Don't see a field you need? We build the connector around how you actually work - it goes live with the rest of your floor, not as an upgrade later.</p>
+    </div>
+  </section>
+
+  <section class="intg-section intg-alt">
+    <div class="intg-inner">
+      <div class="tag">FAQ</div>
+      <h2>Zoho Books &amp; SimpleGrid, in short</h2>
+      <div class="intg-faq">
+        <div class="intg-faq-item"><p class="intg-q">Do we keep using Zoho Books?</p><p class="intg-a">Yes. It stays your book of record; SimpleGrid keeps it and the floor in sync.</p></div>
+        <div class="intg-faq-item"><p class="intg-q">Does payment status come back?</p><p class="intg-a">Yes - paid and pending status flows back so the floor sees the real money position.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intg-section">
+    <div class="intg-inner">
+      <div class="tag">More integrations</div>
+      <h2>Works with the rest of your stack</h2>
+      <div class="intg-rel-grid">
+        <a class="intg-rel-card" href="quickbooks.html">
+          <span class="intg-rel-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="intg-rel-name">QuickBooks</span>
+        </a>
+        <a class="intg-rel-card" href="xero.html">
+          <span class="intg-rel-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg></span>
+          <span class="intg-rel-name">Xero</span>
+        </a>
+        <a class="intg-rel-card" href="tally.html">
+          <span class="intg-rel-logo"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg></span>
+          <span class="intg-rel-name">Tally</span>
+        </a>
+        <a class="intg-rel-card" href="bill-com.html">
+          <span class="intg-rel-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#006FFF"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">BILL</text></svg></span>
+          <span class="intg-rel-name">Bill.com</span>
+        </a>
+      </div>
+      <a class="intg-rel-all" href="../syncs.html">View all integrations &rarr;</a>
+    </div>
+  </section>
+
+  <section class="intg-final">
+    <div class="intg-final-inner">
+      <h2>Connect Zoho Books to your floor.</h2>
+      <p>Book a demo and we'll show SimpleGrid wired into Zoho Books with your data, not a sample set.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_zoho-books_final">Book a demo</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer rendered by the shared component (components/site-footer.js). -->
+<div id="sg-footer"></div>
+<script src="../components/site-nav.js" defer></script>
+<script src="../components/site-footer.js" defer></script>
+<script src="../components/BookDemoModal.js" defer></script><script src="../components/TryErpModal.js" defer></script>
+</body>
+</html>

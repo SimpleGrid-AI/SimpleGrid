@@ -16,15 +16,10 @@ function App() {
       <Hero />
       <TrustStrip />
       <IntegrationsBar />
-      <ProblemSection />
-      <BurstBand />
-      <WhatWeDo />
-      <HowItWorks />
-      <WhyNotERP />
-      <WhoItsFor />
+      <PainsJourney />
       <ProofSection />
-      <FounderStory />
-      <HomeFAQ />
+      <MeetHankHome />
+      <HowItWorks />
       <FinalCTA />
     </main>
     {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}

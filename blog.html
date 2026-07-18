@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-<title>SimpleGrid Blog - Operators Building the Factory Ops Cloud</title>
-<meta name="description" content="Field notes from the team building SimpleGrid, the Factory Ops Cloud: why legacy ERP rollouts fail manufacturers, and what a live operations layer changes.">
+<title>SimpleGrid Blog - Building the Adaptive ERP</title>
+<meta name="description" content="Field notes from the team building SimpleGrid, the Adaptive ERP: why legacy ERP rollouts fail manufacturers, and what a live operations layer changes.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#3461E0">
 <meta name="robots" content="index, follow">
@@ -21,16 +21,16 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://simplegrid.ai/blog.html">
-<meta property="og:title" content="SimpleGrid Blog - Operators Building the Factory Ops Cloud">
-<meta property="og:description" content="Field notes from the team building SimpleGrid, the Factory Ops Cloud - why legacy ERP rollouts fail, why mid-market manufacturers get a generic system that fits no one, and what changes when the operations layer is configured around the factory instead of the other way around.">
+<meta property="og:title" content="SimpleGrid Blog - Building the Adaptive ERP">
+<meta property="og:description" content="Field notes from the team building SimpleGrid, the Adaptive ERP - why legacy ERP rollouts fail, why mid-market manufacturers get a generic system that fits no one, and what changes when the operations layer is configured around the factory instead of the other way around.">
 <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta property="og:image:alt" content="SimpleGrid blog - factory operations field notes">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@simplegridai">
 <meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="SimpleGrid Blog - Operators Building the Factory Ops Cloud">
-<meta name="twitter:description" content="Field notes from the team building SimpleGrid, the Factory Ops Cloud - why legacy ERP rollouts fail, why mid-market manufacturers get a generic system that fits no one, and what changes when the operations layer is configured around the factory instead of the other way around.">
+<meta name="twitter:title" content="SimpleGrid Blog - Building the Adaptive ERP">
+<meta name="twitter:description" content="Field notes from the team building SimpleGrid, the Adaptive ERP - why legacy ERP rollouts fail, why mid-market manufacturers get a generic system that fits no one, and what changes when the operations layer is configured around the factory instead of the other way around.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
 
 <script type="application/ld+json">
@@ -41,10 +41,10 @@
       "@type": "WebPage",
       "@id": "https://simplegrid.ai/blog.html#webpage",
       "url": "https://simplegrid.ai/blog.html",
-      "name": "SimpleGrid Blog - Operators Building the Factory Ops Cloud",
+      "name": "SimpleGrid Blog - Building the Adaptive ERP",
       "isPartOf": { "@id": "https://simplegrid.ai/#website" },
       "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "description": "Field notes from the team building SimpleGrid, the Factory Ops Cloud - why legacy ERP rollouts fail mid-market manufacturers, and what changes when the operations layer is configured around your factory.",
+      "description": "Field notes from the team building SimpleGrid, the Adaptive ERP - why legacy ERP rollouts fail mid-market manufacturers, and what changes when the operations layer is configured around your factory.",
       "inLanguage": "en"
     },
     {
@@ -66,14 +66,20 @@
 </script>
 
 <style>
-  .blog-filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 28px; }
-  .blog-filter { background: #fff; color: var(--fg2); border: 1px solid var(--border); padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 120ms ease; }
-  .blog-filter:hover { border-color: var(--sg-blue); color: var(--sg-blue); }
-  .blog-filter.active { background: var(--sg-blue); color: #fff; border-color: var(--sg-blue); }
-  @media (max-width: 720px) {
-    .blog-filter-row { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
-    .blog-filter { flex-shrink: 0; }
-  }
+  /* Category jump dropdown (sticky) */
+  .blog-jump { position: sticky; top: 52px; z-index: 30; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 36px; padding: 12px 0; background: rgba(255,255,255,0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .blog-jump label { font-size: var(--fs-caption); font-weight: 600; color: var(--fg2); }
+  .blog-jump select { font: inherit; font-size: 15px; color: var(--fg1); background-color: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 11px 40px 11px 15px; cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5L6 8l3.5-3.5' stroke='%23475569' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; min-width: 260px; }
+  .blog-jump select:hover { border-color: var(--sg-blue); }
+  .blog-jump select:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
+  /* Category sections */
+  .blog-cat { scroll-margin-top: 130px; margin: 0 0 48px; }
+  .blog-cat-head { margin: 0 0 22px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .blog-cat-h { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--fg1); letter-spacing: -0.02em; margin: 0; }
+  .blog-cat-h .count { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--sg-blue); margin-left: 10px; letter-spacing: 0; }
+  .blog-cat-intro { font-size: 15px; line-height: 1.5; color: var(--fg2); margin: 8px 0 0; max-width: 760px; }
+  /* Soft resting elevation so each card reads as a distinct object over the silk ribbon. */
+  .blog-card, .blog-featured { box-shadow: 0 1px 3px rgba(20,28,46,0.07); }
 </style>
 
 <!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
@@ -127,14 +133,6 @@
           </div>
         </a>
 <!-- BLOG_CARDS_START -->
-        <div class="blog-filter-row" role="toolbar" aria-label="Filter posts by category">
-          <button type="button" class="blog-filter active" data-filter="All">All</button>
-          <button type="button" class="blog-filter" data-filter="Build in Public">Build in Public</button>
-          <button type="button" class="blog-filter" data-filter="Culture">Culture</button>
-          <button type="button" class="blog-filter" data-filter="Industry Critique">Industry Critique</button>
-          <button type="button" class="blog-filter" data-filter="Operator Insights">Operator Insights</button>
-          <button type="button" class="blog-filter" data-filter="Product Deep-Dive">Product Deep-Dive</button>
-        </div>
         <div class="blog-grid" id="blog-grid">
         <a class="blog-card" href="blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/" data-cat="Industry Critique">
           <div class="blog-cover" style="background:#1A1A1A;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;position:relative">
@@ -331,19 +329,76 @@
 <div id="sg-footer"></div>
 
 <script>
-// Vanilla JS filter - no React.
+// Group posts into category sections and add a jump-to dropdown (no React).
 (function(){
-  var buttons = document.querySelectorAll('.blog-filter');
-  var cards = document.querySelectorAll('#blog-grid .blog-card, .blog-featured');
-  buttons.forEach(function(b){
-    b.addEventListener('click', function(){
-      var f = b.getAttribute('data-filter');
-      buttons.forEach(function(x){ x.classList.toggle('active', x === b); });
-      cards.forEach(function(c){
-        var cat = c.getAttribute('data-cat') || '';
-        c.style.display = (f === 'All' || cat === f) ? '' : 'none';
-      });
-    });
+  var grid = document.getElementById('blog-grid');
+  if (!grid) return;
+  var CATS = [
+    ['cat-product-deep-dive', 'Product Deep-Dive', 'How SimpleGrid is built, under the hood.'],
+    ['cat-operator-insights', 'Operator Insights', 'Lessons from running a real factory floor.'],
+    ['cat-industry-critique', 'Industry Critique', 'Where legacy ERP falls short for manufacturers.'],
+    ['cat-culture', 'Culture', 'How we think and work at SimpleGrid.'],
+    ['cat-build-in-public', 'Build in Public', 'Notes from building the product in the open.']
+  ];
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.blog-card'));
+  // A cover counts as vivid-blue when its inline background is exactly var(--sg-blue)
+  // (not --sg-blue-light, not the dark covers).
+  function isBlueCover(card){
+    var cv = card.querySelector('.blog-cover');
+    return cv ? (cv.getAttribute('style') || '').indexOf('var(--sg-blue)') !== -1 : false;
+  }
+
+  var jump = document.createElement('div');
+  jump.className = 'blog-jump';
+  var label = document.createElement('label');
+  label.setAttribute('for', 'blog-jump-select');
+  label.textContent = 'Jump to a category';
+  var sel = document.createElement('select');
+  sel.id = 'blog-jump-select';
+  sel.setAttribute('aria-label', 'Jump to a blog category');
+  var opt0 = document.createElement('option');
+  opt0.value = ''; opt0.textContent = 'Choose a category';
+  sel.appendChild(opt0);
+  jump.appendChild(label); jump.appendChild(sel);
+
+  var frag = document.createDocumentFragment();
+  frag.appendChild(jump);
+
+  CATS.forEach(function(c){
+    var matched = cards.filter(function(card){ return (card.getAttribute('data-cat') || '') === c[1]; });
+    if (!matched.length) return;
+    // Keep vivid-blue covers in the left columns, away from the blue silk ribbon on the right.
+    matched.sort(function(a, b){ return (isBlueCover(a) ? 0 : 1) - (isBlueCover(b) ? 0 : 1); });
+    var opt = document.createElement('option');
+    opt.value = c[0]; opt.textContent = c[1] + ' (' + matched.length + ')';
+    sel.appendChild(opt);
+    var section = document.createElement('div');
+    section.className = 'blog-cat';
+    section.id = c[0];
+    var head = document.createElement('div');
+    head.className = 'blog-cat-head';
+    var h2 = document.createElement('h2');
+    h2.className = 'blog-cat-h';
+    h2.innerHTML = c[1] + ' <span class="count">' + matched.length + (matched.length === 1 ? ' post' : ' posts') + '</span>';
+    var p = document.createElement('p');
+    p.className = 'blog-cat-intro';
+    p.textContent = c[2];
+    head.appendChild(h2); head.appendChild(p);
+    section.appendChild(head);
+    var g = document.createElement('div');
+    g.className = 'blog-grid';
+    matched.forEach(function(card){ g.appendChild(card); });
+    section.appendChild(g);
+    frag.appendChild(section);
+  });
+
+  grid.parentNode.insertBefore(frag, grid);
+  grid.parentNode.removeChild(grid);
+
+  sel.addEventListener('change', function(){
+    var el = sel.value && document.getElementById(sel.value);
+    if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   });
 })();
 </script>

@@ -36,8 +36,8 @@ function Nav({ page = 'home', onLoginClick }) {
   }, [openMenu]);
 
   const links = [
-    { id: 'home', label: 'Home', href: 'index.html', title: 'SimpleGrid home - the Factory Ops Cloud for manufacturers' },
-    { id: 'product', label: 'Product', href: 'product.html', title: 'How the SimpleGrid Factory Ops Cloud works' },
+    { id: 'home', label: 'Home', href: 'index.html', title: 'SimpleGrid home - the Adaptive ERP' },
+    { id: 'product', label: 'Product', href: 'product.html', title: 'How the SimpleGrid Adaptive ERP works' },
   ];
   const resourceLinks = [
     { id: 'tools', label: 'Productive Tools', href: 'tools/', desc: '35 productive tools & calculators for manufacturers.', title: 'Productive tools for manufacturers' },
@@ -61,8 +61,8 @@ function Nav({ page = 'home', onLoginClick }) {
     <a href="#main" className="skip-link">Skip to main content</a>
     <header className="nav" role="banner">
       <div className="nav-inner">
-        <a className="nav-logo" href={px('index.html')} aria-label="SimpleGrid home" title="SimpleGrid — The Factory Ops Cloud. Configured to your floor.">
-          <img src={prefix + 'assets/simplegrid-logo-horizontal.svg'} alt="SimpleGrid - Factory Ops Cloud for manufacturers logo" width="160" height="32" fetchpriority="high" decoding="async" />
+        <a className="nav-logo" href={px('index.html')} aria-label="SimpleGrid home" title="SimpleGrid - The Adaptive ERP. Built around your business.">
+          <img src={prefix + 'assets/simplegrid-logo-horizontal.svg'} alt="SimpleGrid - Adaptive ERP and operations cloud logo" width="160" height="32" fetchpriority="high" decoding="async" />
         </a>
         <nav className="nav-links" aria-label="Main navigation">
           {links.map(l => (

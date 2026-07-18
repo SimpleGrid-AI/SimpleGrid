@@ -24,131 +24,186 @@ function ApparelVisual() {
   }));
 }
 window.ApparelVisual = ApparelVisual;
-function FounderStory() {
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section section-alt",
-    id: "founder"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "founder-text"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tag"
-  }, "BUILT BY PEOPLE WHO'VE RUN A FACTORY FLOOR"), /*#__PURE__*/React.createElement("blockquote", null, "We ran multi-stage factories to $30M annual revenue. We survived two ERP failures. We ended up back on Google Sheets."), /*#__PURE__*/React.createElement("p", {
-    className: "body"
-  }, "SimpleGrid exists because we were the customer first - multiple factories, 400-person workforce. We bought the same enterprise systems you're being pitched today. We watched them fail. We know exactly what breaks when the system can't keep up with the floor."), /*#__PURE__*/React.createElement("p", {
-    className: "body"
-  }, "That's why we built SimpleGrid the only way that makes sense to an operator: model it on your factory, run it on your real floor for 30 days, and only charge when it earns its keep."), /*#__PURE__*/React.createElement("p", {
-    className: "body"
-  }, "Senior engineers and deployment experts on every deployment. No sales reps. No SDRs. No chatbot. You deal with the people who'll actually build your system.")))));
-}
-window.FounderStory = FounderStory;
 function ProofSection() {
+  const CASES = [{
+    label: 'Elite Arts & Crafts',
+    headline: 'Elite Arts & Crafts stopped $200K in silent losses.',
+    poster: 'assets/elite-factory.jpeg',
+    clip: 'assets/elite-clip.mp4',
+    shot: true,
+    link: 'case-furniture-manufacturer.html',
+    stats: [{
+      v: '$200K',
+      l: 'silent losses stopped'
+    }, {
+      v: '90%',
+      l: 'less planning time'
+    }, {
+      v: '21 days',
+      l: 'to go live'
+    }],
+    quote: 'They modeled our whole operation in three weeks. We found $200K in losses we could never see.',
+    attrib: 'Chirag, Founder, Elite Arts & Crafts'
+  }, {
+    label: 'Apex Apparel',
+    headline: 'Live in 12 days. Three businesses on one system.',
+    apparel: true,
+    link: 'case-apex.html',
+    stats: [{
+      v: '30+',
+      l: 'locations in one view'
+    }, {
+      v: '12 days',
+      l: 'to go live'
+    }],
+    quote: 'They sent a working demo in 72 hours and it was 60-70% right already. No other vendor showed us a working system before asking for money.',
+    attrib: 'Founder, Apex Apparel'
+  }];
+  const [active, setActive] = React.useState(0);
+  const n = CASES.length;
+  const c = CASES[active];
+  const touchX = React.useRef(null);
+  const go = dir => {
+    setActive(a => (a + dir + n) % n);
+  };
+  const onTouchStart = e => {
+    touchX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = e => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > 45) go(dx < 0 ? 1 : -1);
+  };
   return /*#__PURE__*/React.createElement("section", {
-    className: "section",
+    className: "section section-roomy",
     id: "case-studies"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      textAlign: 'center'
-    }
+    className: "tag"
   }, "CASE STUDIES"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2",
-    style: {
-      textAlign: 'center'
-    }
-  }, "Manufacturers running on SimpleGrid today."), /*#__PURE__*/React.createElement("p", {
+    className: "h2"
+  }, "Proof, not promises."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
       maxWidth: 920,
-      margin: '0 auto 40px',
-      textAlign: 'center'
+      margin: '0 0 28px'
     }
-  }, "Two public deployments below. More running confidentially - names available on request.")), /*#__PURE__*/React.createElement("div", {
-    className: "proof-grid"
-  }, [{
-    kind: 'image',
-    img: 'url(assets/elite-factory.jpeg) center/cover',
-    name: 'Furniture Manufacturer & Exporter',
-    desc: '12+ countries (USA, Europe, Asia). 600-800 employees. ~1 million sq ft. Excel + group chats → one live floor view.',
-    stats: '$200K leak stopped · planning 20h → 2h · live in 21 days',
-    quote: '"SimpleGrid feels like our system. My stores manager was comfortable on day one."',
-    attr: '- The founder',
-    link: 'case-furniture-manufacturer.html',
-    anchor: 'How they deployed in 21 days'
-  }, {
-    kind: 'apparel',
-    name: 'Apparel Contract Manufacturer',
-    desc: 'Apparel manufacturer · 80-100k shirts/mo. 3 streams. 20+ job workers. 30+ inventory locations. Live in 12 days.',
-    stats: '2 failed ERPs → live in 12 days · 30+ locations, one view',
-    quote: '"Working demo in 24 hours - 60-70% accurate. No vendor we\'ve worked with has done that."',
-    attr: '- Founder (reference available on request)',
-    link: 'case-apex.html',
-    anchor: 'How they went live in 12 days'
-  }].map((c, i) => /*#__PURE__*/React.createElement(Reveal, {
-    key: i,
-    delay: i * 150
-  }, /*#__PURE__*/React.createElement("a", {
-    href: c.link,
-    className: "proof-card",
-    style: {
-      height: '100%',
-      display: 'block',
-      textDecoration: 'none',
-      color: 'inherit',
-      transition: 'transform 160ms var(--ease-standard)'
-    },
-    onMouseEnter: e => {
-      e.currentTarget.style.transform = 'translateY(-3px)';
-    },
-    onMouseLeave: e => {
-      e.currentTarget.style.transform = '';
-    }
+  }, "Live deployments. Real numbers. More running confidentially."))), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 100
   }, /*#__PURE__*/React.createElement("div", {
-    className: "proof-img",
-    style: c.kind === 'image' ? {
-      background: c.img,
-      height: 220,
-      position: 'relative'
-    } : {
-      height: 220,
-      padding: 0,
-      overflow: 'hidden'
-    }
-  }, c.kind === 'image' && /*#__PURE__*/React.createElement("span", {
-    style: {
-      position: 'absolute',
-      top: 10,
-      left: 10,
-      background: 'rgba(0,0,0,0.65)',
-      color: '#fff',
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: '0.14em',
-      textTransform: 'uppercase',
-      padding: '4px 8px',
-      borderRadius: 4,
-      backdropFilter: 'blur(4px)'
-    }
-  }, "\u25CF Actual shot"), c.kind === 'apparel' && /*#__PURE__*/React.createElement(ApparelVisual, null)), /*#__PURE__*/React.createElement("div", {
-    className: "proof-body"
-  }, /*#__PURE__*/React.createElement("h3", null, c.name), /*#__PURE__*/React.createElement("p", null, c.desc), /*#__PURE__*/React.createElement("div", {
-    className: "proof-stats"
-  }, c.stats), /*#__PURE__*/React.createElement("div", {
-    className: "proof-quote"
-  }, c.quote, /*#__PURE__*/React.createElement("div", {
-    className: "proof-attr"
-  }, c.attr)), /*#__PURE__*/React.createElement("span", {
-    className: "btn btn-ghost btn-sm",
-    style: {
-      paddingLeft: 0,
-      color: 'var(--sg-blue)',
-      fontWeight: 600,
-      pointerEvents: 'none'
-    }
-  }, c.anchor, " \u2192"))))))));
+    className: "cs-fullbleed"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cs-showcase"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cs-media" + (c.apparel ? " cs-media-diagram" : ""),
+    onTouchStart: onTouchStart,
+    onTouchEnd: onTouchEnd
+  }, c.apparel ? /*#__PURE__*/React.createElement(ApparelVisual, null) : /*#__PURE__*/React.createElement("video", {
+    className: "cs-clip",
+    src: c.clip,
+    poster: c.poster,
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    preload: "metadata",
+    "aria-label": "Inside the Elite Arts & Crafts factory"
+  }), c.shot && /*#__PURE__*/React.createElement("span", {
+    className: "cs-shot"
+  }, "\u25CF Actual shot"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "cs-float cs-float-prev",
+    onClick: () => go(-1),
+    "aria-label": "Previous case study"
+  }, "\u2039"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "cs-float cs-float-next",
+    onClick: () => go(1),
+    "aria-label": "Next case study"
+  }, "\u203A")), /*#__PURE__*/React.createElement("div", {
+    className: "cs-caption"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "cs-cap-h"
+  }, c.headline), /*#__PURE__*/React.createElement("div", {
+    className: "cs-cap-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn cs-btn-case",
+    href: c.link,
+    "data-cta": "case_see_study"
+  }, "See case study ", /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\u2192")))), /*#__PURE__*/React.createElement("div", {
+    className: "cs-stats"
+  }, c.stats.map((s, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "cs-stat"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "cs-stat-v"
+  }, s.v), /*#__PURE__*/React.createElement("div", {
+    className: "cs-stat-l"
+  }, s.l)))), /*#__PURE__*/React.createElement("div", {
+    className: "cs-dots",
+    role: "tablist",
+    "aria-label": "Case studies"
+  }, CASES.map((cc, i) => /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    key: i,
+    role: "tab",
+    "aria-selected": i === active,
+    className: 'cs-dot' + (i === active ? ' is-active' : ''),
+    onClick: () => setActive(i)
+  }, cc.label)))))), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 150
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("figure", {
+    className: "cs-quote",
+    key: active
+  }, /*#__PURE__*/React.createElement("blockquote", null, "\"", c.quote, "\""), /*#__PURE__*/React.createElement("figcaption", null, c.attrib)))), /*#__PURE__*/React.createElement("style", null, `
+        /* Boxed showcase: the case study sits inside a contained card, not edge to edge. */
+        .cs-fullbleed { margin-top: 8px; max-width: 1040px; margin-left: auto; margin-right: auto; padding: 0 32px; }
+        .cs-showcase { position: relative; background: #fff; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 24px 60px rgba(20,28,46,0.08); }
+        /* Clean 16:9 media - the 1080p clip fills it exactly, so no black bars. */
+        .cs-media { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; touch-action: pan-y; }
+        @media (max-width: 700px) { .cs-fullbleed { padding: 0 20px; } }
+        .cs-clip { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        .cs-shot { position: absolute; top: 18px; left: 18px; z-index: 2; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 9px; border-radius: 5px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+        .cs-btn-case { font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+        .cs-float { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; font-size: 28px; line-height: 1; color: #fff; background: rgba(0,0,0,0.42); border: 1px solid rgba(255,255,255,0.28); border-radius: 50%; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background .15s ease, transform .15s ease; }
+        .cs-float:hover { background: rgba(0,0,0,0.64); transform: translateY(-50%) scale(1.08); }
+        .cs-float-prev { left: 22px; }
+        .cs-float-next { right: 22px; }
+        .cs-caption { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 26px 32px; background: #fff; border-top: 1px solid var(--border); }
+        .cs-cap-h { font-family: var(--font-heading); font-size: clamp(21px, 2.4vw, 30px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--fg1); margin: 0; max-width: 680px; }
+        .cs-cap-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .cs-caption .cs-btn-case { background: rgba(15,23,42,0.05); color: var(--fg1); border: 1px solid var(--border); }
+        .cs-caption .cs-btn-case:hover { background: rgba(15,23,42,0.10); }
+        .cs-stats { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border-top: 1px solid var(--border); }
+        .cs-stat { padding: 26px 32px; border-right: 1px solid var(--border); text-align: center; }
+        .cs-stat:last-child { border-right: none; }
+        .cs-stat-v { font-family: var(--font-heading); font-size: 30px; font-weight: 700; color: var(--fg1); letter-spacing: -0.02em; line-height: 1.1; }
+        .cs-stat-l { font-size: 13px; color: var(--fg2); margin-top: 5px; }
+        .cs-dots { display: flex; justify-content: center; gap: 8px; padding: 14px 16px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+        .cs-dot { font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.03em; color: var(--fg2); background: none; border: 0; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: color .15s ease, background .15s ease; }
+        .cs-dot:hover { color: var(--fg1); }
+        .cs-dot.is-active { color: var(--fg1); background: rgba(15,23,42,0.07); }
+        .cs-quote { max-width: 720px; margin: 40px auto 0; text-align: center; animation: csQuoteFade 0.3s ease; }
+        @keyframes csQuoteFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .cs-quote { animation: none; } }
+        .cs-quote blockquote { margin: 0; font-family: var(--font-heading); font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; color: var(--fg1); }
+        .cs-quote figcaption { margin-top: 14px; font-size: 14px; color: var(--fg2); }
+        @media (max-width: 760px) {
+          .cs-stats { grid-auto-flow: row; grid-auto-columns: unset; grid-template-columns: 1fr; }
+          .cs-stat { border-right: none; border-top: 1px solid var(--border); padding: 18px 24px; }
+          .cs-caption { padding: 22px 22px 24px; }
+          .cs-float { width: 44px; height: 44px; font-size: 24px; }
+          .cs-float-prev { left: 10px; }
+          .cs-float-next { right: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .cs-float, .cs-btn-case, .cs-dot { transition: none; } }
+      `));
 }
 window.ProofSection = ProofSection;
 function Integrations() {
@@ -242,266 +297,114 @@ function Integrations() {
     custom: true,
     svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="none" stroke="#3461E0" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="12" y1="7" x2="12" y2="17" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/><line x1="7" y1="12" x2="17" y2="12" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/></svg>'
   }];
-  // Duplicate the list so the loop is seamless when the track translates by -50%.
-  const doubled = [...items, ...items];
-  const intTrackRef = React.useRef(null);
-  // Auto-scroll the logo strip at a calm pace, but let the viewer grab and drag it. Wraps seamlessly.
-  React.useEffect(() => {
-    const track = intTrackRef.current;
-    if (!track) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let raf = 0,
-      offset = 0,
-      last = 0,
-      dragging = false,
-      hoverPaused = false,
-      onScreen = true,
-      startX = 0,
-      startOffset = 0;
-    let setW = 1;
-    const measure = () => {
-      const sw = track.scrollWidth || 0;
-      if (sw > 0) setW = sw / 2 + 7;
-    };
-    measure();
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
-    if (ro) ro.observe(track);
-    const io = typeof IntersectionObserver !== 'undefined' ? new IntersectionObserver(es => {
-      onScreen = es[0].isIntersecting;
-    }, {
-      threshold: 0
-    }) : null;
-    if (io) io.observe(track);
-    const wrap = x => {
-      while (x <= -setW) x += setW;
-      while (x > 0) x -= setW;
-      return x;
-    };
-    const apply = () => {
-      track.style.transform = 'translateX(' + offset + 'px)';
-    };
-    const down = e => {
-      dragging = true;
-      startX = e.clientX;
-      startOffset = offset;
-      if (track.setPointerCapture) {
-        try {
-          track.setPointerCapture(e.pointerId);
-        } catch (err) {}
-      }
-    };
-    const move = e => {
-      if (!dragging) return;
-      offset = wrap(startOffset + (e.clientX - startX));
-      apply();
-    };
-    const up = () => {
-      dragging = false;
-    };
-    const enter = () => {
-      hoverPaused = true;
-    };
-    const leave = () => {
-      hoverPaused = false;
-    };
-    track.addEventListener('pointerdown', down);
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-    track.addEventListener('mouseenter', enter);
-    track.addEventListener('mouseleave', leave);
-    const loop = t => {
-      raf = requestAnimationFrame(loop);
-      if (!last) last = t;
-      const dt = Math.min((t - last) / 1000, 0.05);
-      last = t;
-      if (!dragging && !hoverPaused && onScreen) {
-        offset = wrap(offset - setW / 200 * dt);
-        apply();
-      }
-    };
-    raf = requestAnimationFrame(loop);
-    return () => {
-      cancelAnimationFrame(raf);
-      track.removeEventListener('pointerdown', down);
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-      track.removeEventListener('mouseenter', enter);
-      track.removeEventListener('mouseleave', leave);
-      if (ro) ro.disconnect();
-      if (io) io.disconnect();
-    };
-  }, []);
+  const byName = {};
+  items.forEach(function (it) { byName[it.name] = it; });
+  const CATS = [
+    { label: 'Accounting & books', desc: 'We post to your ledger — never replace it.', tools: ['QuickBooks', 'Tally', 'Zoho', 'Xero', 'Bill.com'] },
+    { label: 'Spreadsheets', desc: 'Keep working in the sheets your team lives in.', tools: ['Excel', 'Google Sheets'] },
+    { label: 'Sales & e-commerce', desc: 'Orders and payments from every channel you sell on.', tools: ['Shopify', 'Amazon', 'WooCommerce', 'TikTok Shop', 'Stripe'] },
+    { label: 'Messaging & marketing', desc: 'Reach customers straight from live data.', tools: ['Gmail', 'Outlook', 'Mailchimp', 'Klaviyo', 'Braze'] },
+    { label: 'Shipping & logistics', desc: 'Labels and tracking, in sync with orders.', tools: ['ShipStation'] },
+    { label: 'Data & files', desc: 'Direct database and file pipes for anything custom.', tools: ['PostgreSQL', 'SFTP'] }
+  ];
+  const VPS = [
+    { t: 'Adapts to your stack', d: 'SimpleGrid is shaped around the tools you already run — not the other way around.' },
+    { t: 'No rip and replace', d: 'Keep your books, channels and spreadsheets. Nothing gets torn out.' },
+    { t: 'Built for your problem', d: 'Need a connector we don’t list yet? We build it around your problem as part of setup.' }
+  ];
+  const mailto = 'mailto:hello@simplegrid.ai?subject=Integration%20request%20%E2%80%94%20SimpleGrid&body=Hi%20SimpleGrid%2C%0D%0A%0D%0AWe%27d%20like%20SimpleGrid%20to%20integrate%20with%3A%20%5Btool%20name%5D%0D%0A%0D%0AThanks%21';
+  function syncChip(name) {
+    const it = byName[name] || {};
+    const live = it.status === 'live';
+    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const inner = '<span class="sync-chip-ic">' + (it.svg || '') + '</span>' + name + (live ? '<span class="sync-chip-dot" aria-hidden="true"></span>' : '');
+    const cls = 'sync-chip' + (live ? ' is-live' : '');
+    return '<a class="' + cls + '" href="integrations/' + slug + '.html" title="' + name + ' + SimpleGrid">' + inner + '</a>';
+  }
+  const vpHtml = VPS.map(function (v) {
+    return '<div class="sync-vp"><div class="sync-vp-t">' + v.t + '</div><div class="sync-vp-d">' + v.d + '</div></div>';
+  }).join('');
+  const catHtml = CATS.map(function (c) {
+    return '<div class="sync-cat"><div class="sync-cat-head"><span class="sync-cat-label">' + c.label + '</span><span class="sync-cat-n">' + c.tools.length + '</span></div><p class="sync-cat-desc">' + c.desc + '</p><div class="sync-chips">' + c.tools.map(syncChip).join('') + '</div></div>';
+  }).join('');
+  const html =
+    '<style>' +
+    '.sync-head{max-width:760px}' +
+    '.sync-vps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 6px}' +
+    '.sync-vp{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px}' +
+    '.sync-vp-t{font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--fg1);letter-spacing:-0.01em;margin-bottom:6px;padding-left:24px;position:relative}' +
+    '.sync-vp-t::before{content:"";position:absolute;left:0;top:1px;width:15px;height:15px;border-radius:5px;background:color-mix(in srgb,var(--sg-blue) 14%,transparent);border:1px solid color-mix(in srgb,var(--sg-blue) 40%,transparent)}' +
+    '.sync-vp-t::after{content:"";position:absolute;left:5px;top:3.5px;width:4px;height:7px;border:solid var(--sg-blue);border-width:0 2px 2px 0;transform:rotate(45deg)}' +
+    '.sync-vp-d{font-size:13px;line-height:1.55;color:var(--fg2)}' +
+    '.sync-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}' +
+    '.sync-cat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 8px 26px rgba(15,23,42,0.04)}' +
+    '.sync-cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}' +
+    '.sync-cat-label{font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--fg1);letter-spacing:-0.01em}' +
+    '.sync-cat-n{font-size:11px;font-weight:700;color:var(--fg3);background:var(--sg-beige);border:1px solid var(--sg-beige-line);border-radius:999px;padding:2px 8px}' +
+    '.sync-cat-desc{font-size:12.5px;line-height:1.5;color:var(--fg2);margin:0 0 13px}' +
+    '.sync-chips{display:flex;flex-wrap:wrap;gap:8px}' +
+    '.sync-chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--fg1);background:#FAFBFC;border:1px solid var(--border);border-radius:999px;padding:5px 12px 5px 6px;text-decoration:none;transition:border-color .14s ease, box-shadow .14s ease, transform .14s ease}' +
+    'a.sync-chip:hover{border-color:color-mix(in srgb,var(--sg-blue) 45%,var(--border));box-shadow:0 3px 10px rgba(20,28,46,0.08);transform:translateY(-1px)}' +
+    '.sync-chip-ic{display:inline-flex;width:18px;height:18px;flex:0 0 18px}' +
+    '.sync-chip-ic svg{width:18px;height:18px;display:block;border-radius:4px}' +
+    '.sync-chip-dot{width:6px;height:6px;border-radius:50%;background:#10b981;margin-left:1px}' +
+    '.sync-foot{text-align:center;font-size:13px;color:var(--fg2);line-height:1.6;max-width:600px;margin:26px auto 0}' +
+    '.sync-legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--fg3);margin-top:12px}' +
+    '.sync-legend-i{display:inline-flex;align-items:center;gap:6px}' +
+    '@media(max-width:900px){.sync-vps{grid-template-columns:1fr}.sync-grid{grid-template-columns:1fr 1fr}}' +
+    '@media(max-width:600px){.sync-grid{grid-template-columns:1fr}}' +
+    '</style>' +
+    '<div class="sync-head"><div class="tag">WORKS WITH YOUR STACK</div>' +
+    '<h2 class="h2">We adapt to your stack. No rip and replace.</h2>' +
+    '<p class="lead">SimpleGrid wraps around the tools you already run — your books, your sales channels, your spreadsheets. Where a connector doesn’t exist yet, we build it around your problem as part of setup. <a href="syncs.html" style="color:var(--sg-blue);font-weight:600;text-decoration:underline">See all syncs &rarr;</a></p></div>' +
+    '<div class="sync-vps">' + vpHtml + '</div>' +
+    '<div class="sync-grid">' + catHtml + '</div>' +
+    '<div class="sync-foot">Don’t see yours? Email <a href="' + mailto + '" style="color:var(--sg-blue);font-weight:600;text-decoration:underline">hello@simplegrid.ai</a> with a brief note on what you need — we’ll build it around your problem.</div>' +
+    '<div class="sync-legend"><span class="sync-legend-i"><span class="sync-chip-dot"></span>Live today</span><span class="sync-legend-i">Everything else built during your setup</span></div>';
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "integrations",
-    style: {
-      minHeight: 'calc((100vh - 64px) / 2.6)',
-      paddingTop: 40,
-      paddingBottom: 40,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("style", {
-    dangerouslySetInnerHTML: {
-      __html: `
-        .int-marquee{overflow:hidden;padding:6px 0;mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);margin-top:24px}
-        .int-track{display:flex;gap:14px;width:max-content;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;will-change:transform}
-        .int-track:active{cursor:grabbing}
-        .int-marquee .int-card{flex:0 0 150px;position:relative}
-        .int-marquee .int-card-custom{border:1px dashed var(--sg-blue);background:rgba(74,123,247,0.04)}
-        .int-marquee .int-card-custom .int-name{color:var(--sg-blue)}
-        .int-badge{position:absolute;top:6px;right:6px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 6px;border-radius:999px;line-height:1.2}
-        .int-badge-live{background:rgba(16,185,129,0.12);color:#0f8f6a}
-        .int-badge-request{background:rgba(156,163,175,0.16);color:#5a6373}
-        @keyframes int-roll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
-        @media(prefers-reduced-motion:reduce){.int-track{animation:none}}
-        .int-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--fg2);margin-top:14px}
-        .int-legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
-      `
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag"
-  }, "SYNCS WITH"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2"
-  }, "Works with what you already use."), /*#__PURE__*/React.createElement("p", {
-    className: "lead"
-  }, "SimpleGrid connects to the tools you already run - accounting, spreadsheets, sales channels, messaging and shipping. New connectors are built as part of your SimpleGrid setup, included in the configuration. ", /*#__PURE__*/React.createElement("a", {
-    href: "syncs.html",
-    style: {
-      color: 'var(--sg-blue)',
-      fontWeight: 600,
-      textDecoration: 'underline'
-    }
-  }, "See all syncs \u2192")))), /*#__PURE__*/React.createElement(Reveal, {
-    delay: 200
+    style: { paddingTop: 56, paddingBottom: 56 }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "int-marquee"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "int-track",
-    ref: intTrackRef
-  }, doubled.map((ig, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: 'int-card' + (ig.custom ? ' int-card-custom' : ''),
-    "aria-hidden": i >= items.length ? 'true' : undefined,
-    title: ig.name
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "int-icon",
-    dangerouslySetInnerHTML: {
-      __html: ig.svg
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "int-name"
-  }, ig.name)))))), /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      textAlign: 'center',
-      marginTop: 24,
-      fontSize: 13,
-      color: 'var(--fg2)',
-      lineHeight: 1.6,
-      maxWidth: 560,
-      margin: '24px auto 0'
-    }
-  }, "Don't see yours? Email ", /*#__PURE__*/React.createElement("a", {
-    href: "mailto:hello@simplegrid.ai?subject=Integration%20request%20%E2%80%94%20SimpleGrid&body=Hi%20SimpleGrid%2C%0D%0A%0D%0AWe%27d%20like%20SimpleGrid%20to%20integrate%20with%3A%20%5Btool%20name%5D%0D%0A%0D%0ABrief%20note%20on%20what%20we%20need%3A%0D%0A%5BWhat%20it%20syncs%2C%20how%20often%2C%20any%20auth%20notes%5D%0D%0A%0D%0AThanks%21",
-    style: {
-      color: 'var(--sg-blue)',
-      fontWeight: 600,
-      textDecoration: 'underline'
-    }
-  }, "hello@simplegrid.ai"), " with a brief note on what you need - we'll add it.")));
+    className: "container",
+    dangerouslySetInnerHTML: { __html: html }
+  }));
 }
 window.Integrations = Integrations;
 function DataSecurity() {
+  const chips = ['AES-256 at rest', 'TLS 1.3 in transit', 'SOC 2 Type II in progress'];
   return /*#__PURE__*/React.createElement("section", {
     className: "section section-alt",
     id: "security",
     style: {
-      minHeight: 'calc((100vh - 64px) / 2.6)',
-      paddingTop: 40,
-      paddingBottom: 40,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center'
+      paddingTop: 36,
+      paddingBottom: 36
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
+    className: "ds-strip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ds-copy"
+  }, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "DATA SECURITY"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2"
-  }, "Your data stays yours.")), /*#__PURE__*/React.createElement("div", {
-    className: "sec-grid"
-  }, [{
-    badge: 'ARCHITECTURE',
-    color: 'var(--sg-purple)',
-    t: 'Multi-tenant isolation',
-    p: 'Every client gets their own database. Shared platform, completely separate data. Like an apartment building - shared infrastructure, your own lock, your own walls. No client can ever see another\'s data.'
-  }, {
-    badge: 'ON THE ROADMAP',
-    color: 'var(--sg-blue)',
-    t: 'SOC 2 Type II audit · Q3 2026',
-    p: 'Independent auditors verifying our security controls, data handling, and availability. Engagement letter signed; report expected in Q3 2026. Ask us for a copy of our current security questionnaire today.'
-  }, {
-    badge: 'IN PLACE',
-    color: 'var(--sg-green)',
-    t: 'Encryption + data export',
-    p: 'AES-256 at rest, TLS 1.3 in transit. You control what\'s stored. Full export of your data on request - no clawback, no data ransom.'
-  }].map((s, i) => /*#__PURE__*/React.createElement(Reveal, {
+  }, "DATA SECURITY"), /*#__PURE__*/React.createElement("p", {
+    className: "ds-line"
+  }, "Your data stays yours. Encrypted at rest (AES-256) and in transit (TLS 1.3). Your own isolated database. SOC 2 Type II in progress.")), /*#__PURE__*/React.createElement("div", {
+    className: "ds-chips"
+  }, chips.map((c, i) => /*#__PURE__*/React.createElement("span", {
     key: i,
-    delay: i * 100
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "sec-card",
-    style: {
-      height: '100%'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "sec-badge",
-    style: {
-      color: s.color
-    }
-  }, s.badge), /*#__PURE__*/React.createElement("h3", null, s.t), /*#__PURE__*/React.createElement("p", null, s.p)))))));
+    className: "ds-chip"
+  }, c)))))), /*#__PURE__*/React.createElement("style", null, `
+        .ds-strip { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+        .ds-copy { max-width: 640px; }
+        .ds-line { margin: 0; font-size: 15px; line-height: 1.55; color: var(--fg2); }
+        .ds-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+        .ds-chip { font-size: 12px; font-weight: 600; color: var(--fg1); background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 13px; white-space: nowrap; }
+        @media (max-width: 700px) { .ds-strip { flex-direction: column; align-items: flex-start; } }
+      `));
 }
 window.DataSecurity = DataSecurity;
-function Architecture() {
-  const cols = [{
-    t: 'One permanent record',
-    b: 'Every action recorded once. Can never be changed. Your audit trail isn\'t a feature - it\'s how the system is built.'
-  }, {
-    t: 'Configuration, not code',
-    b: 'AI writes a configuration. Platform reads it and generates forms, workflows, rules, dashboards. Change config, system changes instantly.'
-  }, {
-    t: 'Every rule is a row',
-    b: 'Approval above $10K? One row. QC before dispatch? One row. No code. No deployment cycle.'
-  }];
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section section-dark"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      color: 'rgba(255,255,255,0.4)'
-    }
-  }, "WHY WE CAN CONFIGURE IN DAYS"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2"
-  }, "The architecture that lets us configure to your floor.")), /*#__PURE__*/React.createElement("div", {
-    className: "arch-grid",
-    style: {
-      marginTop: 28
-    }
-  }, cols.map((c, i) => /*#__PURE__*/React.createElement(Reveal, {
-    key: i,
-    delay: i * 100
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "arch-col"
-  }, /*#__PURE__*/React.createElement("h3", null, c.t), /*#__PURE__*/React.createElement("p", null, c.b)))))));
-}
-window.Architecture = Architecture;
 function ComparisonTable() {
   const rows = [{
     label: 'Built for',
@@ -697,13 +600,13 @@ window.FromTheField = FromTheField;
 function HomeFAQ() {
   const items = [{
     q: "What happens if it doesn't work after 30 days?",
-    a: "You walk. No invoice. No clawback. We've still done the configuration and the data work at our cost. You get a clean data export and your spreadsheets back. That's the point of the 30-day run - you only pay for something you've already watched work on your real floor."
+    a: "You walk. No invoice, no clawback, and you get a clean export of your data."
   }, {
     q: "Do we have to migrate our data ourselves?",
-    a: "No - and your QuickBooks or Tally stays exactly where it is. SimpleGrid syncs to it. Whatever your floor runs on - spreadsheets, paper, group chats, an old ERP - we pull it in, clean it, structure it, and load it. Data work is included in the configuration, not a separate line item. You don't touch the data."
+    a: "No. Your books stay where they are, and we move in whatever you run on today - spreadsheets, group chats, an old ERP."
   }, {
     q: "How much does it cost after the 30-day trial?",
-    a: /*#__PURE__*/React.createElement(React.Fragment, null, "Before you decide, we agree on a number together based on the size of your operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items, no per-seat fees. We are not free and not cheap - we configure at our cost because we're confident in what 30 days on your floor will show. Full details on the ", /*#__PURE__*/React.createElement("a", {
+    a: /*#__PURE__*/React.createElement(React.Fragment, null, "We agree on a number before you decide, then it's one monthly subscription. No setup fees, no per-seat fees - full details on the ", /*#__PURE__*/React.createElement("a", {
       href: "pricing.html",
       style: {
         color: 'var(--sg-blue)',
@@ -712,10 +615,10 @@ function HomeFAQ() {
     }, "pricing page"), ".")
   }, {
     q: "Who runs the deployment - sales reps, or actual engineers?",
-    a: "Senior engineers and deployment experts who've worked on factory floors. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You work directly with the team that builds the system."
+    a: "Senior engineers and deployment experts. No sales reps, no chatbot, no implementation partner you also have to pay."
   }, {
     q: "What's the catch?",
-    a: "We onboard selectively each quarter because we can only succeed when our customers succeed. If we don't think we can win for you, we'll say so on the call. We're built for mid-market manufacturers, roughly $5M-$250M in revenue - below that, spreadsheets or QuickBooks still win; above that, SAP or Oracle make more sense. That's the catch."
+    a: "No catch. SimpleGrid is built for CPG brands, manufacturers and inventory-led businesses doing $5M-$250M in revenue. If that is you, it will fit."
   }];
   const [open, setOpen] = React.useState(0);
   return /*#__PURE__*/React.createElement("section", {
@@ -723,20 +626,11 @@ function HomeFAQ() {
     id: "home-faq",
     "aria-label": "Frequently asked questions"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "container",
-    style: {
-      maxWidth: 880
-    }
+    className: "container"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      textAlign: 'center'
-    }
+    className: "tag"
   }, "BEFORE YOU DECIDE"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2",
-    style: {
-      textAlign: 'center'
-    }
+    className: "h2"
   }, "Five questions every buyer asks us.")), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 32,
@@ -822,6 +716,7 @@ function WhyNotERP() {
     t: 'Keep your accounting ledger. Upgrade your operational reality.',
     p: 'A layer, not a replacement. SimpleGrid handles the fast, messy reality of the floor and pushes clean financial data into QuickBooks or Tally automatically.'
   }];
+  const [open, setOpen] = React.useState([0]);
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "not-an-erp"
@@ -831,56 +726,109 @@ function WhyNotERP() {
     className: "tag"
   }, "WHY THIS ISN'T ANOTHER ERP"), /*#__PURE__*/React.createElement("h2", {
     className: "h2"
-  }, "A layer on top of the books you already run. Not a rip-and-replace.")), /*#__PURE__*/React.createElement("div", {
-    className: "sec-grid"
-  }, cards.map((c, i) => /*#__PURE__*/React.createElement(Reveal, {
-    key: i,
-    delay: i * 100
+  }, "A layer on top of the books you already run. Not a rip-and-replace.")), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 100
   }, /*#__PURE__*/React.createElement("div", {
-    className: "sec-card",
-    style: {
-      height: '100%'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "sec-badge",
+    className: "erp-acc"
+  }, cards.map((c, i) => /*#__PURE__*/React.createElement("div", {
+    className: 'erp-row' + (open.includes(i) ? ' open' : ''),
+    key: i
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "erp-bar",
+    onClick: () => setOpen(o => o.includes(i) ? o.filter(x => x !== i) : [...o, i]),
+    "aria-expanded": open.includes(i)
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "erp-bar-text"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "erp-kicker",
     style: {
       color: c.color
     }
-  }, c.badge), /*#__PURE__*/React.createElement("h3", null, c.t), /*#__PURE__*/React.createElement("p", null, c.p)))))));
+  }, c.badge), /*#__PURE__*/React.createElement("span", {
+    className: "erp-head"
+  }, c.t)), /*#__PURE__*/React.createElement("span", {
+    className: "erp-chev",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M6 9l6 6 6-6"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "erp-body"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "erp-body-inner"
+  }, /*#__PURE__*/React.createElement("p", null, c.p)))))))), /*#__PURE__*/React.createElement("style", null, `
+        .erp-acc { margin-top: 34px; display: flex; flex-direction: column; gap: 14px; }
+        .erp-row { border-radius: 14px; overflow: hidden; background: #EAF4FE; border: 1px solid #D6E8FB; transition: background 0.2s ease, border-color 0.2s ease; }
+        .erp-row:hover { background: #E2EEFE; }
+        .erp-row.open { background: #E5F0FE; border-color: #C4DDFA; }
+        .erp-bar { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 28px; background: none; border: 0; cursor: pointer; text-align: left; font-family: inherit; }
+        .erp-bar-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+        .erp-kicker { font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+        .erp-head { font-family: var(--font-heading); font-size: 21px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); line-height: 1.25; }
+        .erp-chev { flex: 0 0 auto; color: var(--sg-blue); display: inline-flex; transition: transform 0.25s ease; }
+        .erp-row.open .erp-chev { transform: rotate(180deg); }
+        .erp-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s ease; }
+        .erp-row.open .erp-body { grid-template-rows: 1fr; }
+        .erp-body-inner { overflow: hidden; }
+        .erp-body p { margin: 0; padding: 0 28px 26px; font-size: 16px; line-height: 1.62; color: var(--fg2); max-width: 820px; }
+        @media (max-width: 640px) {
+          .erp-bar { padding: 18px 20px; }
+          .erp-head { font-size: 18px; }
+          .erp-body p { padding: 0 20px 20px; font-size: 15px; }
+        }
+      `));
 }
 window.WhyNotERP = WhyNotERP;
 
-// "Who it's for" - five persona cards, each deep-linking into the matching
-// block on solutions.html. Card style mirrors the FromTheField link cards.
+// "Who it's for" - five role cards in a clean grid, each deep-linking into
+// the matching role page. Same card language as solutions.html.
 function WhoItsFor() {
   const personas = [{
+    n: '01',
     role: 'Owner / MD',
-    line: "See what you can build today, what you're short on, and what it'll cost - before you commit to a customer.",
-    href: 'solutions.html#visibility',
+    pain: 'You chase three people to know what happened today.',
+    outcome: 'See the whole business live, without chasing anyone.',
+    href: 'solutions.html#roles',
     cta: 'persona_owner'
   }, {
+    n: '02',
     role: 'COO / VP Operations',
-    line: "One system, every team, the same data - no one's working off yesterday's numbers.",
-    href: 'solutions.html#connected',
+    pain: 'Every team runs on its own version of the numbers.',
+    outcome: 'One source of truth. No status meetings.',
+    href: 'solutions.html#roles',
     cta: 'persona_coo'
   }, {
+    n: '03',
     role: 'CFO / Finance Head',
-    line: 'Your costing logic, your way - not the way an enterprise template thinks you should run it.',
-    href: 'solutions.html#costing',
+    pain: 'Margin is a guess until the books close.',
+    outcome: 'Costing follows your formulas, so margin is real.',
+    href: 'solutions.html#roles',
     cta: 'persona_cfo'
   }, {
+    n: '04',
     role: 'Plant Manager',
-    line: 'Your floor staff log it. Everyone sees it live. No lag, no leakage, no one working in the dark.',
-    href: 'solutions.html#adoption',
+    pain: 'You are the status board for the whole floor.',
+    outcome: 'The floor logs work as it happens. You get your day back.',
+    href: 'solutions.html#roles',
     cta: 'persona_plant_manager'
   }, {
+    n: '05',
     role: 'Sales Head',
-    line: "Before you promise a customer a date, you'll know if production can actually hit it.",
-    href: 'solutions.html#planning',
+    pain: 'You promise dates without seeing stock or capacity.',
+    outcome: 'Promise dates you can actually hit.',
+    href: 'solutions.html#roles',
     cta: 'persona_sales_head'
   }];
   return /*#__PURE__*/React.createElement("section", {
-    className: "section section-alt",
+    className: "section section-roomy",
     id: "who-its-for"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
@@ -888,66 +836,43 @@ function WhoItsFor() {
     className: "tag"
   }, "WHO IT'S FOR"), /*#__PURE__*/React.createElement("h2", {
     className: "h2"
-  }, "Built for the people who run the floor - and the ones who answer for it.")), /*#__PURE__*/React.createElement("div", {
+  }, "Built for every seat at the table."), /*#__PURE__*/React.createElement("p", {
+    className: "lead",
     style: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-      gap: 16,
-      marginTop: 32
+      maxWidth: 620
     }
+  }, "Five roles, one live system. Find your seat.")), /*#__PURE__*/React.createElement("div", {
+    className: "wif-grid"
   }, personas.map((p, i) => /*#__PURE__*/React.createElement(Reveal, {
     key: i,
     delay: i * 70
-  }, /*#__PURE__*/React.createElement("a", {
-    href: p.href,
-    "data-cta": p.cta,
-    style: {
-      display: 'block',
-      textDecoration: 'none',
-      color: 'inherit',
-      padding: '22px',
-      border: '1px solid var(--border)',
-      borderRadius: 'var(--radius-lg)',
-      background: '#fff',
-      height: '100%',
-      transition: 'all 160ms var(--ease-standard)'
-    },
-    onMouseEnter: e => {
-      e.currentTarget.style.transform = 'translateY(-2px)';
-      e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.06)';
-    },
-    onMouseLeave: e => {
-      e.currentTarget.style.transform = '';
-      e.currentTarget.style.boxShadow = '';
-    }
   }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: '0.14em',
-      textTransform: 'uppercase',
-      color: 'var(--sg-blue)',
-      marginBottom: 10
-    }
+    className: "wif-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "wif-num"
+  }, p.n), /*#__PURE__*/React.createElement("h3", {
+    className: "wif-role"
   }, p.role), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 15.5,
-      fontWeight: 700,
-      color: 'var(--fg1)',
-      margin: 0,
-      lineHeight: 1.45,
-      letterSpacing: '-0.005em'
-    }
-  }, p.line), /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'inline-block',
-      marginTop: 14,
-      fontSize: 13,
-      fontWeight: 600,
-      color: 'var(--sg-blue)'
-    }
-  }, "See how \u2192")))))));
+    className: "wif-pain"
+  }, p.pain), /*#__PURE__*/React.createElement("p", {
+    className: "wif-outcome"
+  }, p.outcome), /*#__PURE__*/React.createElement("a", {
+    className: "wif-link",
+    href: p.href,
+    "data-cta": p.cta
+  }, "See how \u2192")))))), /*#__PURE__*/React.createElement("style", null, `
+        .wif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 44px; }
+        .wif-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; height: 100%; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        .wif-card:hover { box-shadow: 0 14px 36px rgba(15,20,25,0.09); transform: translateY(-2px); }
+        .wif-num { font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--sg-blue); letter-spacing: 0.08em; margin-bottom: 12px; }
+        .wif-role { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--fg1); letter-spacing: -0.01em; margin: 0 0 10px; }
+        .wif-pain { font-size: 14.5px; line-height: 1.55; color: var(--fg3); margin: 0 0 8px; }
+        .wif-outcome { font-size: 14.5px; line-height: 1.55; color: var(--fg1); font-weight: 600; margin: 0 0 16px; }
+        .wif-link { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--sg-blue); text-decoration: none; }
+        .wif-link:hover { text-decoration: underline; }
+        @media (max-width: 700px) { .wif-grid { grid-template-columns: 1fr; } }
+        @media (prefers-reduced-motion: reduce) { .wif-card { transition: none; } }
+      `));
 }
 window.WhoItsFor = WhoItsFor;
 

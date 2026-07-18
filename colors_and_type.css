@@ -18,6 +18,8 @@
   --sg-blue:         #3461E0;  /* CTAs, links, tags, interactive (darkened to pass WCAG AA contrast on white - was #4A7BF7) */
   --sg-white:        #FFFFFF;  /* Page + card backgrounds */
   --sg-off-white:    #FAFBFC;  /* Alt backgrounds, table headers */
+  --sg-beige:        #F6F3EC;  /* Warm alt background - light checkered sections */
+  --sg-beige-line:   #E7E1D4;  /* Grid/check lines on light sections */
 
   /* ----- SUPPORTING COLORS ----- */
   --sg-blue-dark:    #2A52BD;  /* Hover / pressed buttons */

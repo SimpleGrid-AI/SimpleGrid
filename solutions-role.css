@@ -1,0 +1,302 @@
+/* ============================================================================
+   Solutions - role switcher + role deep-dive pages.
+
+   Shared by solutions.html (the "Built for your role" section) and the five
+   role pages: solutions-owner.html, solutions-sales-head.html,
+   solutions-coo.html, solutions-cfo.html, solutions-plant-manager.html.
+
+   Uses the site tokens from colors_and_type.css (--fg1/2/3, --sg-blue,
+   --border, --font-heading). No build step - plain CSS.
+   ========================================================================== */
+
+/* --- Horizontal role switcher (mirrors the look of the syncs jump bar) ---- */
+.role-switch { max-width: 1080px; margin: 0 auto; padding: 8px 32px 8px; scroll-margin-top: 84px; }
+.role-switch--section { padding-top: 56px; padding-bottom: 8px; }
+.role-switch-head { max-width: 680px; margin: 0 0 22px; }
+.role-switch-head .sol-eyebrow,
+.role-switch-head .role-eyebrow { margin-bottom: 12px; }
+.role-switch-head h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 31px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; color: var(--fg1); margin: 0 0 10px; }
+.role-switch-head p { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0; }
+
+/* The bar itself: a horizontal, wrapping row of role tiles. */
+.role-switch-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.role-tab { display: flex; flex-direction: column; gap: 7px; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; text-decoration: none; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.role-tab:hover { border-color: color-mix(in srgb, var(--sg-blue) 42%, var(--border)); box-shadow: 0 6px 20px rgba(20,28,46,0.07); transform: translateY(-2px); }
+.role-tab:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
+.role-tab-name { font-family: var(--font-heading); font-size: 15.5px; font-weight: 700; color: var(--fg1); letter-spacing: -0.01em; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.role-tab-name::after { content: "\2192"; color: var(--sg-blue); font-weight: 700; opacity: 0; transform: translateX(-4px); transition: opacity .15s ease, transform .15s ease; }
+.role-tab:hover .role-tab-name::after { opacity: 1; transform: translateX(0); }
+.role-tab-tag { font-size: 13px; line-height: 1.45; color: var(--fg2); }
+
+/* The tile for the role you're already on (rendered as a non-link span). */
+.role-tab.is-current { background: color-mix(in srgb, var(--sg-blue) 7%, #fff); border-color: color-mix(in srgb, var(--sg-blue) 32%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sg-blue) 20%, transparent); cursor: default; }
+.role-tab.is-current .role-tab-name { color: var(--sg-blue); }
+.role-tab.is-current .role-tab-name::after { content: "\2022"; opacity: 1; transform: none; }
+.role-tab.is-current:hover { transform: none; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sg-blue) 20%, transparent); }
+
+/* On a role page the switcher sits in a slim bar under the hero. */
+.role-switch--bar { padding-top: 4px; padding-bottom: 4px; }
+.role-switch--bar .role-switch-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); margin: 0 0 12px; }
+
+/* ============================ Role page layout ============================ */
+
+.role-hero { max-width: 1080px; margin: 0 auto; padding: 40px 32px 8px; }
+.role-back { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--fg3); text-decoration: none; margin: 0 0 22px; }
+.role-back:hover { color: var(--sg-blue); }
+.role-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 0 0 14px; padding: 7px 15px; border-radius: 10px; background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); }
+.role-hero h1 { font-family: var(--font-heading); font-size: clamp(33px, 5vw, 50px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--fg1); margin: 0 0 18px; max-width: 760px; }
+.role-hero .lead { font-size: 19px; line-height: 1.55; color: var(--fg2); margin: 0 0 26px; max-width: 700px; }
+.role-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--sg-blue); color: #fff; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
+.role-cta:hover { filter: brightness(0.95); }
+.role-cta-ghost { display: inline-block; margin-left: 18px; color: var(--fg2); text-decoration: none; font-weight: 600; font-size: 15px; }
+.role-cta-ghost:hover { color: var(--sg-blue); }
+
+/* "A day in your seat" stat strip (optional, top of the role body). */
+/* Frosted veil so the value props stay readable over the site aurora ribbon. */
+.role-strip { max-width: 1016px; margin: 36px auto 10px; padding: 24px 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; background: rgba(250,251,253,0.85); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 18px; }
+.role-strip .item { border-top: 2px solid var(--sg-blue); padding-top: 14px; }
+.role-strip .item h3 { font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: var(--fg1); margin: 0 0 5px; letter-spacing: -0.01em; }
+.role-strip .item p { font-size: 14.5px; line-height: 1.5; color: var(--fg2); margin: 0; }
+
+/* Problem -> solution mapping (the heart of each role page). */
+.role-map-wrap { max-width: 1080px; margin: 0 auto; padding: 56px 32px; }
+.role-map-head { max-width: 680px; margin: 0 0 28px; }
+.role-map-head h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 31px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; color: var(--fg1); margin: 0 0 10px; }
+.role-map-head p { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0; }
+.role-map { display: grid; gap: 16px; }
+.role-map-row { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 8px 28px rgba(15,23,42,0.05); }
+.role-pain { padding: 26px 28px; background: var(--sg-beige); border-right: 1px solid var(--border); }
+.role-fix { padding: 26px 28px; }
+/* Uniform column headers - rendered once, above the stack of rows
+   (replaces the per-row "Today" / "With SimpleGrid" labels). */
+.role-map-headrow { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 6px; }
+.role-map-col { justify-self: start; margin-left: 29px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 13px; border-radius: 999px; }
+.role-map-col--pain { color: var(--sg-red-dark); background: color-mix(in srgb, var(--sg-red-dark) 10%, transparent); border: 1px solid color-mix(in srgb, var(--sg-red-dark) 22%, transparent); }
+.role-map-col--fix { color: var(--sg-blue); background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); }
+.role-pain h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); margin: 0 0 8px; line-height: 1.3; }
+.role-pain p { font-size: 14.5px; line-height: 1.55; color: var(--fg2); margin: 0; }
+.role-fix p { position: relative; padding-left: 26px; font-size: 14.5px; line-height: 1.55; color: var(--fg1); margin: 0; }
+.role-fix p::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--sg-blue); font-weight: 700; }
+
+/* Closing proof / case link. */
+/* Translucent so the site silk-ribbon (fixed #sg-aurora canvas behind the page)
+   shows through and continues into the proof section. */
+.role-proof { border-top: 1px solid var(--border); background: rgba(237,243,252,0.5); }
+.role-proof-inner { max-width: 1080px; margin: 0 auto; padding: 56px 32px; }
+.role-proof .role-eyebrow { background: color-mix(in srgb, var(--sg-blue) 12%, transparent); }
+.role-proof h2 { font-family: var(--font-heading); font-size: clamp(22px, 2.8vw, 28px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin: 14px 0 18px; max-width: 720px; line-height: 1.2; }
+.role-proof-card { display: block; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; max-width: 720px; transition: border-color .15s ease, transform .15s ease; }
+.role-proof-card:hover { border-color: var(--sg-blue); transform: translateY(-2px); }
+.role-proof-card .q { font-family: var(--font-heading); font-size: 18px; font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; color: var(--fg1); margin: 0 0 12px; }
+.role-proof-card .a { font-size: 13.5px; font-weight: 600; color: var(--fg3); margin: 0; }
+.role-proof-card .go { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--sg-blue); }
+
+/* Closing CTA = the standard dark .final-cta-band (styled in styles.css).
+   The role pages use the same markup as every other page - no bespoke rules. */
+
+@media (max-width: 920px) {
+  .role-switch-bar { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 820px) {
+  .role-strip { grid-template-columns: 1fr; gap: 20px; }
+  .role-map-row { grid-template-columns: 1fr; }
+  .role-pain { border-right: none; border-bottom: 1px solid var(--border); }
+  .role-map-wrap, .role-proof-inner { padding: 44px 24px; }
+  .role-hero { padding-top: 28px; }
+  .role-cta-ghost { display: block; margin-left: 0; margin-top: 14px; }
+  /* Stacked layout: the single column header no longer maps, so label each
+     card directly (generated, not repeated in the markup). */
+  .role-map-headrow { display: none; }
+  .role-pain::before { content: "Today"; display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-red-dark); background: color-mix(in srgb, var(--sg-red-dark) 10%, transparent); border: 1px solid color-mix(in srgb, var(--sg-red-dark) 22%, transparent); padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+  .role-fix::before { content: "With SimpleGrid"; display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-blue); background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
+}
+@media (max-width: 560px) {
+  .role-switch-bar { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .role-tab, .role-tab-name::after, .role-proof-card { transition: none; }
+}
+
+/* ============================================================================
+   "Built for your role" hub (#roles) - shared by solutions.html and the five
+   role pages. A transparent section (the site checks and silk ribbon show
+   through) holding a clean grid of white cards. Tokens only, no gradients.
+   ========================================================================== */
+.role-hub { max-width: 1200px; margin: 0 auto; padding: 130px 32px; scroll-margin-top: 84px; }
+/* On the role pages the hub sits at the very top, so it stays compact there. */
+.role-page .role-hub { padding: 28px 32px 16px; }
+/* .role-hub-panel is now a plain wrapper - no gradient, no glow, no shadow. */
+.role-hub-panel { position: relative; background: none; border-radius: 0; padding: 0; box-shadow: none; }
+.role-hub-panel::before, .role-hub-panel::after { content: none; }
+.role-hub-head { position: relative; max-width: 720px; margin: 0 0 34px; }
+.role-hub-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 0 0 14px; padding: 7px 15px; border-radius: 10px; background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); }
+.role-hub-head h2 { font-family: var(--font-heading); font-size: clamp(28px, 3.6vw, 40px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; color: var(--fg1); margin: 0 0 12px; }
+.role-hub-head p { font-size: 17px; line-height: 1.55; color: var(--fg2); margin: 0; }
+.role-hub-grid { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.role-hub-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 24px 22px; min-height: 212px; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.role-hub-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--sg-blue) 38%, var(--border)); box-shadow: 0 14px 32px rgba(15,23,42,0.09); }
+.role-hub-card:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
+/* The card for the role whose page you're on (rendered as a non-link span). */
+.role-hub-card.is-current { cursor: default; border-color: color-mix(in srgb, var(--sg-blue) 40%, var(--border)); background: color-mix(in srgb, var(--sg-blue) 4%, #fff); }
+.role-hub-card.is-current:hover { transform: none; box-shadow: none; }
+.role-hub-card.is-current .role-hub-num { color: var(--sg-blue); }
+.role-hub-card.is-current .role-hub-name { color: var(--sg-blue); }
+.role-hub-here { color: var(--fg3); font-weight: 700; }
+.role-hub-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--fg3); margin-bottom: 16px; }
+.role-hub-name { font-family: var(--font-heading); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); line-height: 1.18; margin-bottom: 9px; }
+.role-hub-tag { font-size: 14px; line-height: 1.5; color: var(--fg2); flex: 1 1 auto; }
+.role-hub-go { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; font-size: 13.5px; font-weight: 700; color: var(--sg-blue); }
+.role-hub-go svg { transition: transform .18s ease; }
+.role-hub-card:hover .role-hub-go svg { transform: translateX(4px); }
+@media (max-width: 1080px) {
+  .role-hub-grid { grid-template-columns: repeat(3, 1fr); }
+  .role-hub { padding-top: 96px; padding-bottom: 96px; }
+  .role-page .role-hub { padding-top: 28px; padding-bottom: 16px; }
+}
+@media (max-width: 720px) {
+  .role-hub { padding-left: 16px; padding-right: 16px; }
+  .role-hub-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .role-hub-grid { grid-template-columns: 1fr; }
+  .role-hub-card { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .role-hub-card, .role-hub-go svg { transition: none; }
+}
+
+/* ============================================================================
+   Role page only: horizontally-swipeable, role-specific KPI metrics
+   (replaces the all-roles hub on the individual designation pages). Numbers
+   count up on first view via solutions-role.js.
+   ========================================================================== */
+.role-metrics { max-width: 1080px; margin: 4px auto 8px; padding: 8px 32px 0; }
+.role-metrics-head { margin: 0 0 18px; }
+.role-metrics-head .role-eyebrow { margin-bottom: 12px; }
+.role-metrics-head h2 { font-family: var(--font-heading); font-size: clamp(23px, 2.8vw, 29px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; color: var(--fg1); margin: 0; }
+.role-metrics-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 16px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+.role-metrics-track::-webkit-scrollbar { height: 8px; }
+.role-metrics-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+.role-metric { flex: 0 0 280px; scroll-snap-align: start; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 28px 26px; box-shadow: 0 8px 26px rgba(15,23,42,0.05); }
+.role-metric-v { display: block; font-family: var(--font-heading); font-size: clamp(40px, 5vw, 54px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--sg-blue); }
+.role-metric-l { display: block; margin-top: 12px; font-size: 14.5px; line-height: 1.5; color: var(--fg2); }
+.role-metrics-all { display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 600; color: var(--fg3); text-decoration: none; }
+.role-metrics-all:hover { color: var(--sg-blue); }
+@media (max-width: 560px) { .role-metric { flex-basis: 80%; } }
+
+/* ============================================================================
+   Designation-page hub extras: a single role-specific KPI in the header, and a
+   prev/next pager that steps through the five designation pages. Sits on the
+   shared .role-hub layout (the all-roles cards stay for direct navigation).
+   ========================================================================== */
+.role-hub-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 30px; }
+.role-hub-top .role-hub-head { margin-bottom: 0; }
+.role-hub-kpi { flex: 0 0 auto; text-align: right; }
+.role-hub-kpi-v { display: block; font-family: var(--font-heading); font-size: clamp(46px, 6vw, 66px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--sg-blue); }
+.role-hub-kpi-l { display: block; margin: 8px 0 0 auto; font-size: 13px; line-height: 1.4; color: var(--fg2); max-width: 230px; }
+.role-hub-nav { display: flex; align-items: center; gap: 14px; }
+.role-hub-nav .role-hub-grid { flex: 1 1 auto; min-width: 0; }
+.role-hub-arrow { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid var(--border); color: var(--fg2); text-decoration: none; transition: border-color .15s ease, color .15s ease, transform .15s ease; }
+.role-hub-arrow:hover { border-color: var(--sg-blue); color: var(--sg-blue); transform: scale(1.06); }
+.role-hub-arrow:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
+.role-hub-arrow svg { width: 11px; height: 16px; display: block; }
+@media (max-width: 720px) {
+  .role-hub-kpi { text-align: left; }
+  .role-hub-kpi-l { margin-left: 0; }
+  .role-hub-nav { flex-wrap: wrap; }
+  .role-hub-nav .role-hub-grid { flex-basis: 100%; order: 1; }
+  .role-hub-arrow { order: 2; }
+}
+@media (max-width: 560px) { .role-hub-arrow { width: 40px; height: 40px; } }
+@media (prefers-reduced-motion: reduce) { .role-hub-arrow { transition: none; } }
+
+/* On the individual designation pages only (body.role-page), lift "Built for
+   your role" to the very top so the hero heading/paragraph flows straight into
+   the rest of the content instead of being split by the hub. Scoped here so
+   solutions.html (no .role-page) keeps its own order. */
+.role-page main { display: flex; flex-direction: column; }
+.role-page .role-hub { order: 1; }
+.role-page .role-hero { order: 2; }
+.role-page .role-strip { order: 3; }
+.role-page .role-shift-wrap { order: 4; }
+.role-page .role-proof { order: 5; }
+.role-page .final-cta-band { order: 6; }
+
+/* ============================================================================
+   Smooth page-to-page switching (cross-document View Transitions). Moving
+   between the designation pages - via the hub cards or the prev/next arrows -
+   cross-fades instead of hard-reloading. Progressive enhancement: browsers
+   without support just navigate normally.
+   ========================================================================== */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 0.001s; }
+}
+
+/* ---- "You're on a new page" cues for the in-place designation swap -------
+   Switching designation swaps the page content in place. Without a clear
+   signal it looked like only the top-right metric changed. These three cues
+   make a swap read as a real page change: a top progress bar sweeps while the
+   next page loads, the view scrolls up to the new hero, and the new content
+   rises + fades in. (The scroll-to-top is wired in solutions-role.js.) */
+#role-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 2000;
+  transform-origin: left center; transform: scaleX(0); opacity: 0;
+  background: linear-gradient(90deg, var(--sg-blue), color-mix(in srgb, var(--sg-blue) 60%, white));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--sg-blue) 50%, transparent); pointer-events: none;
+}
+.role-leaving { opacity: 0; transform: translateY(-10px); transition: opacity 0.17s ease, transform 0.17s ease; }
+@keyframes roleSwapIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.role-swap-in { animation: roleSwapIn 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* The "Now viewing · <Role>" pill that confirms which page you switched to. */
+#role-announce {
+  position: fixed; top: 78px; left: 50%; transform: translate(-50%, -14px);
+  z-index: 1999; padding: 9px 18px; border-radius: 999px;
+  background: var(--sg-blue); color: #fff; font-weight: 600; font-size: 13.5px;
+  letter-spacing: 0.01em; white-space: nowrap;
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--sg-blue) 36%, transparent);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+#role-announce.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  #role-progress { display: none; }
+  .role-swap-in, .role-leaving { animation: none; transition: none; }
+  #role-announce { transition: opacity 0.01s; }
+}
+
+/* ============================================================================
+   "The shift" - a light beige two-keyword-column before/after on each
+   designation page (Today vs With SimpleGrid). Short, precise pairs per role.
+   (Dark is reserved for the page-bottom final CTA band only.)
+   ========================================================================== */
+.role-shift-wrap { background: transparent; }
+.role-shift { max-width: 1080px; margin: 0 auto; padding: 66px 32px; }
+.role-shift-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); padding: 7px 15px; border-radius: 10px; margin: 0 0 16px; }
+.role-shift h2 { font-family: var(--font-heading); font-size: clamp(25px, 3.2vw, 34px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: var(--fg1); margin: 0 0 30px; }
+.role-shift-row { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; align-items: baseline; }
+.role-shift-row + .role-shift-row { border-top: 1px solid var(--sg-beige-line); }
+.role-shift-row--head { padding-bottom: 6px; }
+.role-shift-h { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
+.role-shift-h--a { color: var(--fg3); }
+.role-shift-h--b { color: var(--sg-blue); }
+.role-shift-a, .role-shift-b { font-family: var(--font-heading); font-size: clamp(18px, 2.1vw, 23px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; padding: 18px 0; }
+.role-shift-a { color: var(--fg3); }
+.role-shift-b { color: var(--sg-blue); display: flex; align-items: baseline; gap: 11px; }
+.role-shift-b::before { content: "\2713"; flex: 0 0 auto; font-size: 0.82em; }
+@media (max-width: 600px) {
+  .role-shift { padding: 44px 22px; }
+  .role-shift-row { column-gap: 20px; }
+  .role-shift-a, .role-shift-b { font-size: 16px; padding: 14px 0; }
+}
