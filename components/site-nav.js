@@ -49,13 +49,48 @@
     document.head.appendChild(auroraScript);
   }
 
+  // --- site-wide checks: ONE continuous graph-paper layer behind every page.
+  // It sits behind the silk ribbon, runs the full page, and fades out as the
+  // footer wordmark approaches so it never collides with the SimpleGrid mark.
+  if (!document.getElementById('sg-checks') && document.body) {
+    var checksEl = document.createElement('div');
+    checksEl.id = 'sg-checks';
+    checksEl.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(checksEl);
+    var checksCss = document.createElement('style');
+    checksCss.textContent =
+      '#sg-checks{position:fixed;inset:0;z-index:-2;pointer-events:none;' +
+      'background-image:linear-gradient(rgba(167,151,117,0.11) 1px,transparent 1px),' +
+      'linear-gradient(90deg,rgba(167,151,117,0.11) 1px,transparent 1px);' +
+      'background-size:56px 56px;opacity:1;transition:opacity 700ms ease;' +
+      'animation:sg-checks-drift 18s linear infinite;}' +
+      '@keyframes sg-checks-drift{from{background-position:0 0,0 0}to{background-position:56px 56px,56px 56px}}' +
+      '@media (prefers-reduced-motion: reduce){#sg-checks{animation:none}}';
+    document.head.appendChild(checksCss);
+    if ('IntersectionObserver' in window) {
+      var checksIO = new IntersectionObserver(function (entries) {
+        for (var ei = 0; ei < entries.length; ei++) {
+          checksEl.style.opacity = entries[ei].isIntersecting ? '0' : '1';
+        }
+      }, { threshold: 0 });
+      var checksTarget = null;
+      var checksTries = 0;
+      var checksTimer = setInterval(function () {
+        checksTarget = document.querySelector('.footer-wordmark') || document.querySelector('.footer');
+        checksTries++;
+        if (checksTarget) { checksIO.observe(checksTarget); clearInterval(checksTimer); }
+        else if (checksTries > 16) { clearInterval(checksTimer); }
+      }, 500);
+    }
+  }
+
   var mount = document.getElementById('sg-nav');
   if (!mount) return;
   var page = mount.getAttribute('data-page') || '';
 
   var p = function (href) { return prefix + href; };
   var on = function (key) { return page === key ? ' active' : ''; };
-  var resourcesActive = (page === 'tools' || page === 'cases' || page === 'blog' || page === 'story' || page === 'about' || page === 'competitors' || page === 'careers') ? ' active' : '';
+  var resourcesActive = (page === 'tools' || page === 'cases' || page === 'blog' || page === 'about' || page === 'competitors' || page === 'careers') ? ' active' : '';
 
   var chevron =
     '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">' +
@@ -91,7 +126,6 @@
     'tools': ic('<rect x="4" y="4" width="5" height="5" rx="1.2"/><rect x="11" y="4" width="5" height="5" rx="1.2"/><rect x="4" y="11" width="5" height="5" rx="1.2"/><rect x="11" y="11" width="5" height="5" rx="1.2"/>'),
     'cases': ic('<path d="M5.5 3.5h6l3.5 3.5v9.5h-9.5z"/><path d="M11.5 3.5V7h3.5M7.5 11h5M7.5 13.5h5"/>'),
     'blog': ic('<path d="M13.4 4.6l2 2-8 8-2.6.6.6-2.6z"/><path d="M12 6l2 2"/>'),
-    'building': ic('<path d="M10 6c-1.2-1-3-1.3-4.5-1.3H4v9.5h1.5c1.5 0 3.3.3 4.5 1.3 1.2-1 3-1.3 4.5-1.3H16V4.7h-1.5c-1.5 0-3.3.3-4.5 1.3z"/><path d="M10 6v7.5"/>'),
     'about': ic('<circle cx="10" cy="10" r="7.5"/><path d="M10 9.2v4M10 6.4h.01"/>'),
     'competitors': ic('<path d="M10 4v12"/><path d="M4 7h12"/><path d="M4 7l-1.6 3.6h3.2zM16 7l-1.6 3.6h3.2"/><path d="M5 16h10"/>'),
     'careers': ic('<rect x="3.5" y="7" width="13" height="8.5" rx="1.5"/><path d="M7.5 7V5.6A1.6 1.6 0 0 1 9.1 4h1.8A1.6 1.6 0 0 1 12.5 5.6V7"/><path d="M3.5 10.5h13"/>'),
@@ -120,19 +154,15 @@
   // and the chevron is always shown. On the home page the links scroll in-page;
   // on other pages they point at index.html#section so they navigate home + land.
   var homeSections = [
-    ['why-erp', 'The visibility problem', 'Why your floor data is always behind.', 'why-erp'],
-    ['onboarding', 'Selective onboarding', 'We set up only what your floor needs.', 'onboarding'],
-    ['how-it-works', 'How it works', 'From first call to live in weeks.', 'how-it-works'],
-    ['not-an-erp', "Why this isn't another ERP", 'An ops layer, not another ERP.', 'not-an-erp'],
-    ['who-its-for', "Who it's for", 'Made for manufacturers like you.', 'who-its-for'],
-    ['case-studies', 'Case studies', 'Real deployments, real numbers.', 'case-studies'],
-    ['founder', 'Built by operators', "Made by people who've run a floor.", 'founder'],
-    ['home-faq', 'Before you decide', 'Answers before you commit.', 'home-faq']
+    ['why-erp', 'Why ERPs are broken', 'The problems we remove, one by one.', 'why-erp'],
+    ['how-it-works', 'How it goes live', 'Your 3 weeks with us, step by step.', 'how-it-works'],
+    ['hank', 'Meet Hank', 'The AI assistant your team texts.', 'hank'],
+    ['case-studies', 'Case studies', 'Real deployments, real numbers.', 'case-studies']
   ];
   var homeHref = function (id) { return (page === 'home') ? ('#' + id) : (p('index.html') + '#' + id); };
   var homeMenuLinks =
-    catFromIds('Why SimpleGrid', homeSections, homeHref, ['why-erp', 'not-an-erp', 'who-its-for', 'founder']) +
-    catFromIds('How it works', homeSections, homeHref, ['onboarding', 'how-it-works', 'case-studies', 'home-faq']);
+    catFromIds('Why SimpleGrid', homeSections, homeHref, ['why-erp']) +
+    catFromIds('See it', homeSections, homeHref, ['how-it-works', 'hank', 'case-studies']);
   var homeNavDesktop =
     '<div class="nav-home">' +
       '<a href="' + p('index.html') + '" class="nav-link' + on('home') + ' nav-home-trigger" aria-haspopup="true">Home ' + chevron + '</a>' +
@@ -146,12 +176,12 @@
   // trigger still links to product.html. On the product page the links scroll
   // in-page; elsewhere they point at product.html#section so they navigate +
   // land. Section ids live in the product page components (app/product.js).
-  // Right-pointing chevron for the nested side-flyout (Compatibility -> Syncs).
+  // Right-pointing chevron for the nested side-flyout (Syncs with -> Syncs).
   var chevronRight =
     '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">' +
     '<path d="M3.5 2L6.5 5L3.5 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
   // Syncs (what SimpleGrid connects to) - surfaced as a side flyout under the
-  // Product dropdown's "Compatibility" item (no longer its own top-level tab).
+  // Product dropdown's "Syncs with" item (no longer its own top-level tab).
   var syncsSections = [
     ['accounting', 'Accounting & books'],
     ['spreadsheets', 'Spreadsheets'],
@@ -161,28 +191,23 @@
     ['data', 'Data & files']
   ];
   var syncsHref = function (id) { return (page === 'syncs') ? ('#' + id) : (p('syncs.html') + '#' + id); };
-  var compatibilitySubMenu = syncsSections.map(function (s) {
+  var syncsSubMenu = syncsSections.map(function (s) {
     return '<a href="' + syncsHref(s[0]) + '">' + s[1] + '</a>';
   }).join('');
   var productSections = [
-    ['hank', 'Meet Hank', 'The AI assistant for your shop floor.', 'hank'],
+    ['hank', 'Meet Hank', 'The AI assistant your team texts.', 'hank'],
     ['integrations', 'Integrations', 'Connects to the tools you run.', 'integrations'],
-    ['ledger', 'Activity ledger', 'Every action, timestamped.', 'ledger'],
     ['security', 'Data security', 'Your data, locked down.', 'security'],
-    ['rules', 'Custom rules', 'Your logic, your way.', 'rules'],
-    ['ability', 'Adoption', 'Floor-ready on day one - no training.', 'adoption']
+    ['rules', 'Your process', 'Built around how you already run.', 'rules'],
+    ['ability', 'Your language', 'We use your words - nothing new to learn.', 'adoption']
   ];
   var productHref = function (id) { return (page === 'product') ? ('#' + id) : (p('product.html') + '#' + id); };
-  // Compatibility is the one item with a nested flyout - render it full-width at
+  // "Syncs with" is the one item with a nested flyout - render it full-width at
   // the top so its side flyout opens cleanly to the right of the panel.
   var productMenuLinks =
     catBlock('The platform',
       itemById(productSections, productHref, 'hank') +
-      '<div class="nav-product-sub nav-mi-wide">' +
-        richTrigger(p('syncs.html'), 'Compatibility', 'Connects to the tools you run.', 'integrations', 'nav-product-sub-trigger') +
-        '<div class="nav-product-sub-menu" role="menu">' + compatibilitySubMenu + '</div>' +
-      '</div>' +
-      itemById(productSections, productHref, 'ledger')
+      richItem(p('syncs.html'), 'Syncs with', 'Connects to the tools you run.', 'integrations')
     ) +
     catFromIds('Configured &amp; adopted', productSections, productHref, ['security', 'rules', 'ability']);
   var productNavDesktop =
@@ -192,10 +217,7 @@
     '</div>';
   var productMobileSub = productSections.map(function (s) {
     if (s[0] === 'integrations') {
-      var compatSubs = syncsSections.map(function (ss) {
-        return '<a href="' + syncsHref(ss[0]) + '" class="nav-mobile-link nav-mobile-sub">' + ss[1] + '</a>';
-      }).join('');
-      return '<a href="' + p('syncs.html') + '" class="nav-mobile-link nav-mobile-sub">Compatibility</a>' + compatSubs;
+      return '<a href="' + p('syncs.html') + '" class="nav-mobile-link nav-mobile-sub">Syncs with</a>';
     }
     return '<a href="' + productHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
   }).join('');
@@ -206,25 +228,14 @@
   // Order mirrors the on-page section order (the role hub now sits at the top).
   var solutionsSections = [
     ['roles', 'Built for your role', 'See it from your seat.', 'roles'],
-    ['visibility', 'Real-time floor visibility', 'Your floor, live.', 'visibility'],
-    ['planning', 'Planning & scheduling', 'Plan in minutes, not hours.', 'planning'],
-    ['connected', 'One connected system', 'Every team on one system.', 'connected'],
-    ['costing', 'Costing & margins', 'Real margin, your way.', 'costing'],
-    ['adoption', 'Adoption on the floor', 'Simple enough the floor uses it.', 'adoption'],
-    ['evolve', 'Built for you', 'Built for you, evolves with you.', 'evolve']
+    ['built-for-you', 'Built for you', "Nothing your team doesn't need.", 'evolve'],
+    ['costing', 'Costing & margins', 'Your formulas. Real margin.', 'costing'],
+    ['visibility', 'Real-time visibility', 'Live numbers, on a simple app.', 'visibility'],
+    ['planning', 'Planning', 'One live plan, not five spreadsheets.', 'planning'],
+    ['pay-before', 'See it before you pay', '$0 up front. 30-day trial.', 'evolve']
   ];
-  // The five role deep-dive pages, surfaced as a side flyout under the
-  // "Built for your role" item (mirrors Platform -> Compatibility -> Syncs).
-  var roleDesignations = [
-    ['solutions-owner.html', 'Owner / MD'],
-    ['solutions-coo.html', 'COO / Ops head'],
-    ['solutions-cfo.html', 'CFO / Finance'],
-    ['solutions-sales-head.html', 'Sales head'],
-    ['solutions-plant-manager.html', 'Plant manager']
-  ];
-  var rolesSubMenu = roleDesignations.map(function (r) {
-    return '<a href="' + p(r[0]) + '">' + r[1] + '</a>';
-  }).join('');
+  // The role deep-dive pages were removed - role detail now lives in an in-page
+  // popup on solutions.html (#roles). "Built for your role" just jumps there.
   // Use in-page anchors only when literally on solutions.html. The role pages
   // also carry data-page="solutions" (to keep the Solutions tab highlighted),
   // but they don't contain these sections - so their dropdown links must
@@ -235,24 +246,15 @@
   // top so its side flyout opens cleanly to the right of the panel.
   var solutionsMenuLinks =
     catBlock('By role',
-      '<div class="nav-solutions-sub nav-mi-wide">' +
-        richTrigger(solutionsHref('roles'), 'Built for your role', 'See it from your seat.', 'roles', 'nav-solutions-sub-trigger') +
-        '<div class="nav-solutions-sub-menu" role="menu">' + rolesSubMenu + '</div>' +
-      '</div>'
+      richItem(solutionsHref('roles'), 'Built for your role', 'See it from your seat.', 'roles')
     ) +
-    catFromIds('By capability', solutionsSections, solutionsHref, ['visibility', 'planning', 'connected', 'costing', 'adoption', 'evolve']);
+    catFromIds('What we fix', solutionsSections, solutionsHref, ['built-for-you', 'costing', 'visibility', 'planning', 'pay-before']);
   var solutionsNavDesktop =
     '<div class="nav-solutions">' +
-      '<a href="' + p('solutions.html') + '" class="nav-link' + on('solutions') + ' nav-solutions-trigger" aria-haspopup="true">Solutions ' + chevron + '</a>' +
+      '<a href="' + p('solutions.html') + '" class="nav-link' + on('solutions') + ' nav-solutions-trigger" aria-haspopup="true">Why SimpleGrid ' + chevron + '</a>' +
       '<div class="nav-solutions-menu" role="menu">' + solutionsMenuLinks + '</div>' +
     '</div>';
   var solutionsMobileSub = solutionsSections.map(function (s) {
-    if (s[0] === 'roles') {
-      var roleSubs = roleDesignations.map(function (r) {
-        return '<a href="' + p(r[0]) + '" class="nav-mobile-link nav-mobile-sub">' + r[1] + '</a>';
-      }).join('');
-      return '<a href="' + solutionsHref('roles') + '" class="nav-mobile-link nav-mobile-sub">Built for your role</a>' + roleSubs;
-    }
     return '<a href="' + solutionsHref(s[0]) + '" class="nav-mobile-link nav-mobile-sub">' + s[1] + '</a>';
   }).join('');
 
@@ -261,9 +263,9 @@
     '<header class="nav" role="banner">' +
       '<div class="nav-inner">' +
         '<a class="nav-logo" href="' + p('index.html') + '" aria-label="SimpleGrid home" ' +
-          'title="SimpleGrid — The Factory Ops Cloud. Configured to your floor.">' +
+          'title="SimpleGrid - The Adaptive ERP. Built around your business.">' +
           '<img src="' + p('assets/simplegrid-logo-horizontal.svg') + '" ' +
-            'alt="SimpleGrid - Factory Ops Cloud for manufacturers logo" width="160" height="32" ' +
+            'alt="SimpleGrid - Adaptive ERP and operations cloud logo" width="160" height="32" ' +
             'fetchpriority="high" decoding="async"></a>' +
         '<nav class="nav-links" aria-label="Main navigation">' +
           homeNavDesktop +
@@ -276,13 +278,12 @@
               '<div class="nav-res-cols">' +
                 catBlock('Resources',
                   richItem(p('case-studies.html'), 'Case studies', 'Real deployments. Real numbers.', 'cases') +
-                  richItem(p('blog.html'), 'Blog', 'Field notes on ERP and ops.', 'blog') +
-                  richItem(p('building-simplegrid.html'), 'Building SimpleGrid', 'The story behind SimpleGrid.', 'building')
+                  richItem(p('blog.html'), 'Blog', 'Field notes on ERP and ops.', 'blog')
                 ) +
                 catBlock('About',
                   richItem(p('about.html'), 'About Us', "Operators who've run the floor.", 'about') +
                   richItem(p('competitors.html'), 'Competitors', 'How we compare, honestly.', 'competitors') +
-                  richItem(p('hiring.html'), 'Careers', 'Build the Factory Ops Cloud with us.', 'careers')
+                  richItem(p('hiring.html'), 'Careers', 'Build the Adaptive ERP with us.', 'careers')
                 ) +
                 '<div class="nav-cat">' +
                   '<p class="nav-cat-label">Tools</p>' +
@@ -311,13 +312,12 @@
         homeMobileSub +
         '<a href="' + p('product.html') + '" class="nav-mobile-link' + on('product') + '">Platform</a>' +
         productMobileSub +
-        '<a href="' + p('solutions.html') + '" class="nav-mobile-link' + on('solutions') + '">Solutions</a>' +
+        '<a href="' + p('solutions.html') + '" class="nav-mobile-link' + on('solutions') + '">Why SimpleGrid</a>' +
         solutionsMobileSub +
         '<a href="' + p('pricing.html') + '" class="nav-mobile-link' + on('pricing') + '">Pricing</a>' +
         '<div class="nav-mobile-section">Resources</div>' +
         '<a href="' + p('case-studies.html') + '" class="nav-mobile-link nav-mobile-sub' + on('cases') + '">Case studies</a>' +
         '<a href="' + p('blog.html') + '" class="nav-mobile-link nav-mobile-sub' + on('blog') + '">Blog</a>' +
-        '<a href="' + p('building-simplegrid.html') + '" class="nav-mobile-link nav-mobile-sub' + on('story') + '">Building SimpleGrid</a>' +
         '<div class="nav-mobile-section">About</div>' +
         '<a href="' + p('about.html') + '" class="nav-mobile-link nav-mobile-sub' + on('about') + '">About Us</a>' +
         '<a href="' + p('competitors.html') + '" class="nav-mobile-link nav-mobile-sub' + on('competitors') + '">Competitors</a>' +

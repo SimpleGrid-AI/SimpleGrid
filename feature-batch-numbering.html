@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<title>Custom batch numbering | SimpleGrid</title>
+<meta name="description" content="Build SKU and batch codes from your own logic - price code, brand, batch, design, colour, pack, size. One string that carries every attribute.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3461E0">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://simplegrid.ai/feature-batch-numbering.html">
+<link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
+<link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://simplegrid.ai/feature-batch-numbering.html">
+<meta property="og:title" content="Custom batch numbering | SimpleGrid">
+<meta property="og:description" content="Build SKU and batch codes from your own logic - price code, brand, batch, design, colour, pack, size. One string that carries every attribute.">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<meta property="og:image:alt" content="SimpleGrid - Custom batch numbering">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@simplegridai">
+<meta name="twitter:creator" content="@simplegridai">
+<meta name="twitter:title" content="Custom batch numbering | SimpleGrid">
+<meta name="twitter:description" content="Build SKU and batch codes from your own logic - price code, brand, batch, design, colour, pack, size. One string that carries every attribute.">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/feature-batch-numbering.html#webpage",
+      "url": "https://simplegrid.ai/feature-batch-numbering.html",
+      "name": "Custom batch numbering | SimpleGrid",
+      "isPartOf": { "@id": "https://simplegrid.ai/#website" },
+      "publisher": { "@id": "https://simplegrid.ai/#org" },
+      "description": "Build SKU and batch codes from your own logic - price code, brand, batch, design, colour, pack, size. One string that carries every attribute.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Platform", "item": "https://simplegrid.ai/product.html" },
+        { "@type": "ListItem", "position": 3, "name": "Custom batch numbering", "item": "https://simplegrid.ai/feature-batch-numbering.html" }
+      ]
+    }
+  ]
+}
+</script>
+
+<script src="assets/js/analytics-init.js" defer></script>
+<script src="assets/js/tracking.js" defer></script>
+<script src="assets/js/cookie-consent.js" defer></script>
+</head>
+<body>
+<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
+<div id="sg-nav" data-page="product"></div>
+
+<main id="main" class="feature-page">
+<style>
+.bn-crumb{font-size:13px;color:var(--fg3);margin-bottom:18px}
+.bn-crumb a{color:var(--sg-blue);text-decoration:none;font-weight:600}
+.bn-crumb span{margin:0 8px;color:var(--fg3)}
+.bn-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.bn-stage{background:#fff;border:1px solid var(--border);border-radius:18px;padding:30px 28px;box-shadow:0 10px 34px rgba(15,23,42,0.06)}
+.bn-lbl{font-size:11px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:var(--fg3);margin-bottom:20px}
+.bn-decomp{display:flex;flex-wrap:wrap;gap:0;align-items:flex-start;justify-content:center}
+.bn-seg{display:flex;flex-direction:column;align-items:center;position:relative}
+.bn-seg + .bn-seg::before{content:"";position:absolute;left:-1px;top:9px;height:20px;width:1px;background:var(--border)}
+.bn-chip{font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--fg1);padding:8px 14px}
+.bn-bracket{width:calc(100% - 12px);height:7px;border:1px solid var(--border);border-top:none;border-radius:0 0 6px 6px;margin-top:2px}
+.bn-seglbl{font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--fg3);margin-top:8px;text-align:center;line-height:1.4}
+.bn-rule{margin-top:30px;padding-top:24px;border-top:1px dashed var(--border);text-align:center}
+.bn-formula{font-family:var(--font-mono);font-size:13px;color:var(--fg3);margin:0 0 14px;line-height:1.7}
+.bn-formula b{color:var(--sg-blue);font-weight:700}
+.bn-result{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.bn-code{font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--sg-blue);background:color-mix(in srgb,var(--sg-blue) 8%,#fff);border:1px solid color-mix(in srgb,var(--sg-blue) 24%,transparent);border-radius:10px;padding:9px 14px}
+.bn-gen{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#0f9d58}
+.bn-cap{font-size:13px;color:var(--fg3);margin:16px 2px 0;text-align:center}
+.bn-ben{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.bn-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 8px 26px rgba(15,23,42,0.04)}
+.bn-card-ico{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--sg-blue) 9%,#fff);border:1px solid color-mix(in srgb,var(--sg-blue) 22%,transparent);margin-bottom:14px}
+.bn-card h3{font-family:var(--font-heading);font-size:17px;font-weight:700;color:var(--fg1);margin:0 0 8px}
+.bn-card p{font-size:14px;line-height:1.6;color:var(--fg2);margin:0}
+.bn-card a{color:var(--sg-blue);text-decoration:none;font-weight:600}
+.bn-close{background:var(--sg-black);border-radius:22px;padding:52px 40px;text-align:center;color:#fff}
+.bn-close h2{font-family:var(--font-heading);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.02em;color:#fff;margin:0 0 12px}
+.bn-close p{color:rgba(255,255,255,0.72);font-size:16px;line-height:1.6;max-width:560px;margin:0 auto 26px}
+@media (max-width:760px){.bn-ben{grid-template-columns:1fr}.bn-decomp{gap:4px}.bn-seg + .bn-seg::before{display:none}}
+</style>
+<section class="section" style="padding-top:120px;padding-bottom:64px">
+  <div class="container">
+    <nav class="bn-crumb" aria-label="Breadcrumb"><a href="product.html">Platform</a><span>/</span>Custom batch numbering</nav>
+    <div class="tag">CODES</div>
+    <h1 class="h1" style="max-width:840px;margin:6px 0 16px">One code. Every attribute your team reads.</h1>
+    <p class="lead" style="max-width:720px">Auto-increment numbers mean nothing on the floor. SimpleGrid builds SKU and batch codes from segments you define &mdash; price code, brand, batch, design, colour, pack, size &mdash; so the string itself tells the story.</p>
+    <div class="bn-cta">
+      <a class="btn btn-primary" href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="feature_batch_demo">Book a demo</a>
+      <a class="btn btn-secondary" href="product.html#capabilities">All capabilities</a>
+    </div>
+  </div>
+</section>
+<section class="section section-alt" style="padding-top:64px;padding-bottom:64px">
+  <div class="container">
+    <div class="bn-stage">
+      <div class="bn-lbl">SKU decomposition &middot; Everyday Tee</div>
+      <div class="bn-decomp">
+        <div class="bn-seg"><div class="bn-chip">420</div><div class="bn-bracket"></div><div class="bn-seglbl">Price<br>code</div></div>
+        <div class="bn-seg"><div class="bn-chip">KN</div><div class="bn-bracket"></div><div class="bn-seglbl">Brand</div></div>
+        <div class="bn-seg"><div class="bn-chip">0003</div><div class="bn-bracket"></div><div class="bn-seglbl">Batch</div></div>
+        <div class="bn-seg"><div class="bn-chip">A</div><div class="bn-bracket"></div><div class="bn-seglbl">Design</div></div>
+        <div class="bn-seg"><div class="bn-chip">Maroon</div><div class="bn-bracket"></div><div class="bn-seglbl">Colour</div></div>
+        <div class="bn-seg"><div class="bn-chip">SML</div><div class="bn-bracket"></div><div class="bn-seglbl">Pack</div></div>
+        <div class="bn-seg"><div class="bn-chip">S</div><div class="bn-bracket"></div><div class="bn-seglbl">Size</div></div>
+      </div>
+      <div class="bn-rule">
+        <p class="bn-formula"><b>Price</b> + <b>Brand</b> + <b>Batch</b> + <b>Design</b> + <b>Colour</b> + <b>Pack</b> + <b>Size</b> &rarr;</p>
+        <div class="bn-result">
+          <span class="bn-code">420KN-0003-A-Maroon-SML-S</span>
+          <span class="bn-gen">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            generated automatically on save
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="bn-cap">You define the segments once; every code writes itself.</p>
+  </div>
+</section>
+<section class="section" style="padding-top:64px">
+  <div class="container">
+    <h2 class="h2 ink" style="max-width:760px">A code your floor can read &mdash; and your systems can route on.</h2>
+    <div class="bn-ben">
+      <div class="bn-card">
+        <div class="bn-card-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sg-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+        </div>
+        <h3>Segments you define</h3>
+        <p>Price code, brand, batch, design, colour, pack, size &mdash; or whatever your product actually needs. It's your rule, not ours. Set the order and format once and every new SKU follows it.</p>
+      </div>
+      <div class="bn-card">
+        <div class="bn-card-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sg-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </div>
+        <h3>Readable at a glance</h3>
+        <p>A picker on the floor decodes 420KN-0003-A-Maroon-SML-S without opening a lookup. The maroon small Everyday Tee from batch three &mdash; it's all right there in the string.</p>
+      </div>
+      <div class="bn-card">
+        <div class="bn-card-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sg-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <h3>Feeds routing &amp; reports</h3>
+        <p>Because the code carries attributes, you can <a href="feature-routing.html">route</a> and <a href="feature-reports.html">report</a> on any segment &mdash; every maroon run, every batch, every brand &mdash; with no separate tagging step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="padding-top:20px;padding-bottom:96px">
+  <div class="container">
+    <div class="bn-close">
+      <h2>See your own numbering scheme, live.</h2>
+      <p>Bring the way you already code your products. We'll show you the exact string writing itself on save.</p>
+      <a class="btn btn-primary btn-lg" href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="feature_batch_demo_close">Book a demo</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Footer rendered by the shared component (components/site-footer.js). -->
+<div id="sg-footer"></div>
+<script src="components/site-nav.js" defer></script>
+<script src="components/site-footer.js" defer></script>
+<script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
+</html>

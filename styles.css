@@ -211,10 +211,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 .btn-ghost:hover { background: var(--sg-blue-light); }
 .btn-lg { padding: 14px 32px; font-size: 18px; }
 
-/* Outline "Request an Invite" CTA - transparent fill, blue border + text.
-   Pairs with the sgBuildPulse animation for the same alive feel as the
-   filled primary, without the heavy solid color. Used everywhere the
-   "Request an Invite" CTA appears. */
 .btn-invite {
   background: transparent;
   color: var(--sg-blue);
@@ -229,12 +225,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 .section-dark .btn-invite { background: transparent; }
 .section-dark .btn-invite:hover { background: color-mix(in srgb, var(--sg-blue) 14%, transparent); }
 
-/* Soft brand-blue pulse halo for the Request-an-Invite CTA. Applied
-   inline as `animation: sgBuildPulse 1.8s ease-in-out infinite`. */
-@keyframes sgBuildPulse {
-  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-blue) 45%, transparent), 0 6px 20px color-mix(in srgb, var(--sg-blue) 18%, transparent); }
-  70%  { box-shadow: 0 0 0 12px color-mix(in srgb, var(--sg-blue) 0%, transparent), 0 6px 20px color-mix(in srgb, var(--sg-blue) 22%, transparent); }
-  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--sg-blue) 0%, transparent), 0 6px 20px color-mix(in srgb, var(--sg-blue) 18%, transparent); }
 }
 
 /* ===== BUILD-ERP HERO BUTTON (PLG entry point) ===== */
@@ -297,9 +287,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
    matched glow so it reads as the section label without hurting legibility. */
 .tag { display: inline-block; position: relative; overflow: hidden; isolation: isolate; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sg-blue); margin-bottom: 16px; padding: 7px 15px; border-radius: 10px; background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); box-shadow: 0 2px 18px color-mix(in srgb, var(--sg-blue) 15%, transparent); }
 /* Live diagonal glow sweeping behind the eyebrow text, site-wide. */
-.tag::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(115deg, transparent 36%, color-mix(in srgb, var(--sg-blue) 34%, transparent) 50%, transparent 64%); background-size: 250% 250%; animation: sgTagGlow 5s ease-in-out infinite; pointer-events: none; }
-@keyframes sgTagGlow { 0% { background-position: 135% 135%; } 100% { background-position: -35% -35%; } }
-@media (prefers-reduced-motion: reduce) { .tag::before { animation: none; } }
+/* Tags and buttons stay still - no shimmer/glow sweeps (founder: keep buttons simple). */
 /* Same rounded-rect badge on dark sections, retuned for a dark background. */
 .section-dark .tag, .hero .tag { color: #9DBEFD !important; background: color-mix(in srgb, var(--sg-blue) 18%, transparent); border-color: color-mix(in srgb, var(--sg-blue) 42%, transparent); box-shadow: 0 2px 20px color-mix(in srgb, var(--sg-blue) 20%, transparent); }
 
@@ -308,7 +296,13 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 .section-sm { padding: 64px 0; }
 /* white sections are translucent SITE-WIDE - the silk ribbon shows through
    every light section on every page (black sections stay solid) */
-.section-alt { background: rgba(250, 251, 252, 0.40); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section-alt { background: rgba(246, 243, 236, 0.22); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+/* Beige band - translucent so the silk ribbon and checks read through. */
+.section-beige { background: rgba(246, 243, 236, 0.30); border-top: 1px solid var(--sg-beige-line); border-bottom: 1px solid var(--sg-beige-line); }
+/* Roomy sections: the homepage journey gives each idea its own space. */
+.section-roomy { padding: 150px 0; }
+.section-screen { min-height: 86vh; min-height: 86dvh; display: flex; flex-direction: column; justify-content: center; }
+@media (max-width: 760px) { .section-roomy { padding: 96px 0; } .section-screen { min-height: 0; } }
 .section-dark { background: var(--sg-black); color: #fff; }
 .section-dark .tag { color: rgba(255,255,255,0.5); }
 .section-dark p { color: rgba(255,255,255,0.7); }
@@ -319,38 +313,16 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 .lead { font-size: 18px; color: var(--fg2); max-width: 100%; margin: 0 0 40px; line-height: 1.6; }
 .section-dark .lead { color: rgba(255,255,255,0.6); }
 
-/* ===== SITE-WIDE ANIMATED GRID ===== */
+/* ===== SITE-WIDE ANIMATED GRID =====
+   The light checks are ONE continuous fixed layer (#sg-checks, injected by
+   site-nav.js) that runs behind the whole page and fades out before the
+   footer wordmark. Sections stay transparent so both the checks and the silk
+   ribbon read through. Dark checks exist only inside .final-cta-gridbg. */
 @keyframes sg-grid-drift {
   from { background-position: 0 0, 0 0; }
   to   { background-position: 56px 56px, 56px 56px; }
 }
 .hero, .section { position: relative; }
-.hero::before, .section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(26,26,26,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26,26,26,0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  pointer-events: none;
-  animation: sg-grid-drift 14s linear infinite;
-  z-index: 0;
-}
-.section-dark::before, .hero::before {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-}
-.hero.hero-light::before {
-  background-image:
-    linear-gradient(rgba(26,26,26,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26,26,26,0.05) 1px, transparent 1px);
-}
-.section-blue::before { background-image: none; animation: none; }
-/* these dark sections draw their OWN grid layer - suppress the global grid so
-   only one checkered pattern shows (no doubled "checks") */
-#onboarding.section-dark::before, #ledger.section-dark::before { background-image: none; animation: none; }
 /* Every section's content uses one fixed width, centered, so all sections share the
    exact same left/right margin from the screen edge (matching the How-it-works look).
    width:100% forces flex sections (which would otherwise shrink-to-fit and indent more)
@@ -368,7 +340,9 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 @media (min-width: 768px) {
   .hero-stat-box { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 }
+/* Two columns: message left, frosted stat card right (floats over the ribbon). */
 .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; gap: 40px; } }
 .hero-title { font-family: var(--font-heading); font-size: 56px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 22px; color: #fff; min-height: 3.15em; }
 .hero.hero-light .hero-title { color: var(--fg1); }
 /* Cycling-headline tile mask: 8×3 grid of tiles, each fades smoothly with a
@@ -422,26 +396,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
    software & tools it connects to. */
 /* Hero live activity ledger (right column): a frosted panel floating over the
    silk ribbon, showing floor events streaming in live and posting to the books. */
-.hero-ledger { position: relative; max-width: 440px; margin: 0 auto; background: rgba(255,255,255,0.85); border: 1px solid var(--border); border-radius: 18px; padding: 16px 18px 14px; box-shadow: 0 30px 70px rgba(20,28,46,0.13); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
-.hl-head { display: flex; align-items: center; justify-content: space-between; padding: 2px 4px 12px; border-bottom: 1px solid var(--border); }
-.hl-title { font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: var(--fg1); letter-spacing: -0.01em; }
-.hl-live { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sg-green); }
-.hl-live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sg-green); animation: hlPulse 1.8s ease-out infinite; }
-@keyframes hlPulse { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.55); } 70%, 100% { box-shadow: 0 0 0 7px rgba(16,185,129,0); } }
-.hl-feed { position: relative; height: 234px; overflow: hidden; margin-top: 2px; -webkit-mask-image: linear-gradient(180deg, transparent, #000 14%, #000 84%, transparent); mask-image: linear-gradient(180deg, transparent, #000 14%, #000 84%, transparent); }
-.hl-track { display: flex; flex-direction: column; animation: hlScroll 24s linear infinite; }
-.hero-ledger:hover .hl-track { animation-play-state: paused; }
-@keyframes hlScroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-.hl-row { display: flex; gap: 11px; align-items: flex-start; padding: 11px 4px; border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent); }
-.hl-dot { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; }
-.hl-body { flex: 1; min-width: 0; }
-.hl-meta { display: flex; align-items: baseline; gap: 8px; margin-bottom: 2px; }
-.hl-src { font-family: var(--font-heading); font-size: 12.5px; font-weight: 700; color: var(--fg1); }
-.hl-time { font-family: var(--font-mono); font-size: 10.5px; color: var(--fg3); }
-.hl-txt { font-size: 12.5px; line-height: 1.4; color: var(--fg2); }
-.hl-foot { display: block; text-align: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; font-weight: 600; color: var(--sg-blue); text-decoration: none; }
-.hl-foot:hover { text-decoration: underline; }
-@media (prefers-reduced-motion: reduce) { .hl-track, .hl-live-dot { animation: none; } }
 /* Hero proof strip (fills the left column under the CTA) */
 .hero-proof-strip { display: flex; margin-top: 36px; max-width: 460px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.5); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .hps-item { flex: 1; padding: 15px 16px; border-right: 1px solid var(--border); text-align: center; }

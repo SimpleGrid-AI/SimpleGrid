@@ -9,13 +9,13 @@ const ROLES = [
     comp: 'Stipend - discussed on the call',
     summary: 'Be the engineer on an AI-native ERP that compresses 18-month implementations into days. Your code ships to real clients in week one, working directly with the founder - no layers.',
     about: [
-      'We do not ship predefined modules. We map how a business runs and configure the system around it - approvals, handoffs, quality checks - all as configuration, not a development cycle. Under the hood: a schema engine, an immutable append-only event ledger as the single source of truth, and an AI layer that turns messy PDFs and plain-language instructions into structured events. The protocol is strict - AI interprets, the system validates, a human confirms, the event commits. AI never writes directly to the ledger.',
-      'Our first live client is a 500+ employee furniture exporter across nearly 1 million sq ft, drowning in 550 Excel files and WhatsApp coordination. SAP quoted 18 months. We deployed in 21 days, and more manufacturers are in the pipeline.',
+      'We do not ship predefined modules. We map how a business runs and configure the system around it - approvals, handoffs, quality checks - all as configuration, not a development cycle. Under the hood: a schema engine, a permanent record of every action as the single source of truth, and an AI layer that turns messy PDFs and plain-language instructions into structured records. The protocol is strict - AI interprets, the system validates, a human confirms, the record commits. AI never writes directly to the record.',
+      'Our first live client, Elite Arts & Crafts, is a furniture and home decor exporter with 600+ people across nearly 1 million sq ft, previously drowning in 550 Excel files and WhatsApp coordination. SAP quoted 18 months. We deployed in 21 days, and more brands and manufacturers are in the pipeline.',
       'The founder built and scaled a manufacturing business to 200 employees and $30M+ in revenue, and managed $5M in debt as a solo founder, all repaid. He is building the system he wished existed, and you work directly with him.',
     ],
     what: [
       'Ship production code to live customers from week one - features, fixes, and integrations.',
-      'Work on the core: the schema engine, the append-only event ledger, and the AI layer that turns PDFs and plain language into structured events.',
+      'Work on the core: the schema engine, the permanent action record, and the AI layer that turns PDFs and plain language into structured records.',
       'Configure the system around how each business actually runs, as configuration rather than a development cycle.',
       'Sit on real deployments with the founder and senior engineers, and turn floor problems into working software.',
     ],
@@ -23,8 +23,8 @@ const ROLES = [
       'In your final or pre-final year.',
       'You have built something real - a hackathon project, a side project with actual users, or an open-source contribution - and can explain the decisions behind it.',
       'You write TypeScript or Python and can pick up the other quickly.',
-      'You understand databases beyond SELECT and know what an index does. Bonus if you have thought about event sourcing, append-only logs, or JSONB.',
-      'You are curious about systems and want to understand schema-driven architecture, not glaze over it.',
+      'You understand databases beyond SELECT and know what an index does. Bonus if you have thought about audit logs, versioned data, or JSONB.',
+      'You are curious about systems and want to understand architecture that configures itself from a schema, not glaze over it.',
     ],
     not: [
       'A tutorial-grade internship. You ship real code to real factories, not toy projects.',
@@ -51,7 +51,7 @@ const ROLES = [
     ],
     what: [
       'Design intuitive interfaces for product screens, dashboards, forms, and data-heavy workflows that solve real customer problems.',
-      'Map user journeys for operators, supervisors, and business owners, and translate them into seamless product experiences.',
+      'Map user journeys for operators, supervisors, and business owners, and translate them into clear product experiences.',
       'Turn complex business processes such as inventory management, costing, and approval workflows into clear wireframes, user flows, and interactive prototypes.',
       'Join user research and usability testing, identify friction points, and improve the experience through iterative design.',
       'Contribute to the design system - components, interaction patterns, and visual standards that keep the product consistent.',
@@ -118,12 +118,12 @@ const ROLES = [
 
 function HiringHero() {
   return (
-    <section className="section section-dark" style={{paddingTop:80,paddingBottom:48,background:'var(--sg-black)'}}>
+    <section className="section" style={{paddingTop:80,paddingBottom:48}}>
       <div className="container">
-        <div className="tag" style={{color:'rgba(255,255,255,0.45)'}}>HIRING</div>
-        <h1 className="h1" style={{color:'#fff',maxWidth:880}}>Build the operations layer factories actually use.</h1>
-        <p className="lead" style={{color:'rgba(255,255,255,0.7)',maxWidth:760,marginTop:16}}>
-          Lean team. Senior engineers on every customer. We're building the Factory Ops Cloud - the operations layer that runs factory floors still managed on spreadsheets and WhatsApp. We win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved.
+        <div className="tag">HIRING</div>
+        <h1 className="h1" style={{maxWidth:880}}>Build the operations layer factories actually use.</h1>
+        <p className="lead" style={{maxWidth:760,marginTop:16}}>
+          Lean team. Senior engineers on every customer. We're building the Adaptive ERP - the operations cloud for businesses still run on spreadsheets and WhatsApp. We win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved.
         </p>
         <div style={{marginTop:28,display:'flex',gap:12,flexWrap:'wrap'}}>
           <a href="#roles" className="btn btn-lg btn-primary">See open roles</a>

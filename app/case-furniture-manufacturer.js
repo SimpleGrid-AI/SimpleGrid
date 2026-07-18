@@ -1,349 +1,3 @@
-function ValueInfographic() {
-  const items = [{
-    cls: 'a',
-    icon: /*#__PURE__*/React.createElement("svg", {
-      width: "18",
-      height: "18",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }, /*#__PURE__*/React.createElement("circle", {
-      cx: "12",
-      cy: "12",
-      r: "10"
-    }), /*#__PURE__*/React.createElement("polyline", {
-      points: "12 6 12 12 16 14"
-    })),
-    h: 'Planning time',
-    from: '20 hrs',
-    to: '30 min',
-    delta: '−98%',
-    desc: 'A week of planner-only spreadsheet work compressed into well under an hour. The system aggregates wood requirements across orders automatically.'
-  }, {
-    cls: 'b',
-    icon: /*#__PURE__*/React.createElement("svg", {
-      width: "18",
-      height: "18",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }, /*#__PURE__*/React.createElement("path", {
-      d: "M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m1 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6h14z"
-    })),
-    h: 'Material wastage',
-    from: '1.5%',
-    to: '<0.1%',
-    delta: 'Near zero',
-    desc: 'Component-level reconciliation catches gaps at the source. The $50K/yr leakage that hid in monthly reconciliations is gone.'
-  }, {
-    cls: 'c',
-    icon: /*#__PURE__*/React.createElement("svg", {
-      width: "18",
-      height: "18",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }, /*#__PURE__*/React.createElement("path", {
-      d: "M3 12h4l3-9 4 18 3-9h4"
-    })),
-    h: 'On-time delivery',
-    from: 'baseline',
-    to: '+25%',
-    delta: '+25%',
-    desc: 'Full-stage visibility plus contractor accountability surfaced delays days earlier. Buyers ship on schedule.'
-  }, {
-    cls: 'd',
-    icon: /*#__PURE__*/React.createElement("svg", {
-      width: "18",
-      height: "18",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }, /*#__PURE__*/React.createElement("path", {
-      d: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
-    }), /*#__PURE__*/React.createElement("circle", {
-      cx: "9",
-      cy: "7",
-      r: "4"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M23 21v-2a4 4 0 0 0-3-3.87"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M16 3.13a4 4 0 0 1 0 7.75"
-    })),
-    h: 'Floor adoption',
-    from: '0 users',
-    to: '30 users',
-    delta: '30 of 30 staff onboarded',
-    desc: '30 non-technical floor staff who rejected every previous ERP now work the system daily - by chatting with Hank, not navigating menus.'
-  }];
-  return /*#__PURE__*/React.createElement("div", {
-    className: "infographic"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "infographic-title"
-  }, "VALUE DELIVERED"), /*#__PURE__*/React.createElement("div", {
-    className: "infographic-h",
-    role: "heading",
-    "aria-level": "3"
-  }, "What changed, in numbers."), /*#__PURE__*/React.createElement("p", {
-    className: "infographic-sub"
-  }, "Four years of operational drag, undone in 21 days. These are the deltas the founder reads off his dashboard now."), /*#__PURE__*/React.createElement("div", {
-    className: "value-grid"
-  }, items.map(it => /*#__PURE__*/React.createElement("div", {
-    key: it.h,
-    className: 'value-card ' + it.cls
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "icon-box"
-  }, it.icon), /*#__PURE__*/React.createElement("h4", null, it.h), /*#__PURE__*/React.createElement("div", {
-    className: "ba"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "from"
-  }, it.from), /*#__PURE__*/React.createElement("span", {
-    className: "arrow"
-  }, "\u2192"), /*#__PURE__*/React.createElement("span", {
-    className: "to"
-  }, it.to)), /*#__PURE__*/React.createElement("span", {
-    className: "delta"
-  }, it.delta), /*#__PURE__*/React.createElement("p", {
-    className: "desc"
-  }, it.desc)))));
-}
-function ManufacturingProcessSection() {
-  // 13-step abbreviated production flow (left column)
-  const flow = [{
-    h: 'Buyer PO arrives',
-    b: 'AI parses any PDF format. Sales order created with line items.'
-  }, {
-    h: 'SO approved',
-    b: 'Cost snapshot freezes. Planning unlocks.'
-  }, {
-    h: 'Planner allocates',
-    b: 'Per SKU: in-house vs. vendor splits. Tracked automatically.'
-  }, {
-    h: 'Wood needs aggregated',
-    b: 'All component-level wood requirements rolled up across orders.'
-  }, {
-    h: 'Wood PO consolidated',
-    b: 'One PO per species + thickness. Multi-vendor quoted.'
-  }, {
-    h: 'Wood received',
-    b: 'Seasoned/unseasoned check at receipt. Inventory + AP update live.'
-  }, {
-    h: 'Issued to machining',
-    b: 'Each cubic foot attaches to a SKU + component.'
-  }, {
-    h: 'QC + components stocked',
-    b: 'Pass enters component stock; fail returns or scraps.'
-  }, {
-    h: 'Assembly',
-    b: 'Components merge into a SKU. Tracking shifts component → SKU.'
-  }, {
-    h: 'Sand · finish · hardware',
-    b: 'Per-sqft, per-sqft, per-fitting × screw size. QC at every gate.'
-  }, {
-    h: 'Final QC',
-    b: 'Buyer-spec gate. Photo, moisture, dimensions. Block on fail.'
-  }, {
-    h: 'Packaging + dispatch',
-    b: 'CBM auto-calculated. Container loaded.'
-  }, {
-    h: 'Invoice + settlement',
-    b: "Buyer billed. Six contractors auto-settled, each on its own formula."
-  }];
-
-  // Stage A/B/C/D framework (right column)
-  const stages = [{
-    letter: 'A',
-    title: 'Components',
-    range: '01-06',
-    color: 'var(--sg-blue)',
-    desc: 'Wood in, machined parts out. Tracking is per component, per SKU.'
-  }, {
-    letter: 'B',
-    title: 'Assembly',
-    range: '07-09',
-    color: 'var(--sg-purple)',
-    desc: 'Components merge into a SKU. From here, tracking is per SKU.'
-  }, {
-    letter: 'C',
-    title: 'Finishing',
-    range: '10-15',
-    color: 'var(--sg-gold)',
-    desc: 'Sand, finish, hardware. The most error-prone window.'
-  }, {
-    letter: 'D',
-    title: 'Dispatch',
-    range: '16-19',
-    color: 'var(--sg-green)',
-    desc: 'Final QC, pack, ship. Buyer-spec compliance enforced.'
-  }];
-
-  // Contractor settlement matrix (full width below)
-  const pricing = [{
-    color: 'var(--sg-blue)',
-    stage: 'Machining',
-    rate: 'Per sqft (panels) · per running ft (frames)',
-    detail: 'Rate varies by wood thickness. System reads the issuance ticket and applies the right matrix.'
-  }, {
-    color: 'var(--sg-purple)',
-    stage: 'Assembly',
-    rate: 'Per SKU',
-    detail: "Each assembled unit GRN'd from the contractor settles on the SKU rate card."
-  }, {
-    color: 'var(--sg-blue)',
-    stage: 'Sanding',
-    rate: 'Per sqft of finished surface (90%)',
-    detail: 'For irregular profiles, rate falls back to per-SKU. System holds both rate types.'
-  }, {
-    color: 'var(--sg-green)',
-    stage: 'Finishing',
-    rate: 'Per sqft of finished surface (90%)',
-    detail: 'Multi-coat sequences priced as one unit per pass. Coat count tracked, rate is per surface.'
-  }, {
-    color: 'var(--sg-gold)',
-    stage: 'Hardware fitting',
-    rate: 'Per fitting × screw-size matrix',
-    detail: 'Each hinge, slide, handle, screw priced individually. Larger screws → higher labor rate.'
-  }, {
-    color: 'var(--sg-green)',
-    stage: 'Packaging',
-    rate: 'Per CBM of packed material',
-    detail: 'CBM auto-calculated from carton dimensions at pack-out. Settles to packing contractor on dispatch.'
-  }];
-  return /*#__PURE__*/React.createElement("section", {
-    className: "case-section"
-  }, /*#__PURE__*/React.createElement("h2", null, "The manufacturing process"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      maxWidth: 920
-    }
-  }, "Wood arrives. Furniture leaves. Here's how one order actually moves across the floor - and where the money used to leak."), /*#__PURE__*/React.createElement("div", {
-    className: "elite-mfg-grid",
-    style: {
-      display: 'grid',
-      gridTemplateColumns: 'minmax(240px, 1fr) minmax(520px, 2fr)',
-      gap: 20,
-      marginTop: 24,
-      alignItems: 'start'
-    }
-  }, /*#__PURE__*/React.createElement("aside", {
-    style: {
-      position: 'sticky',
-      top: 16,
-      alignSelf: 'start'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: '#fff',
-      border: '1px solid var(--border)',
-      borderRadius: 12,
-      padding: 18
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: '0.14em',
-      color: 'var(--sg-blue)',
-      textTransform: 'uppercase',
-      marginBottom: 10
-    }
-  }, "The flow, end-to-end"), /*#__PURE__*/React.createElement("ol", {
-    style: {
-      listStyle: 'none',
-      padding: 0,
-      margin: 0
-    }
-  }, flow.map((f, i) => /*#__PURE__*/React.createElement("li", {
-    key: i,
-    style: {
-      position: 'relative',
-      paddingLeft: 26,
-      paddingBottom: i < flow.length - 1 ? 9 : 0,
-      marginBottom: i < flow.length - 1 ? 9 : 0,
-      borderBottom: i < flow.length - 1 ? '1px dashed var(--border)' : 'none'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      position: 'absolute',
-      left: 0,
-      top: 1,
-      fontSize: 9.5,
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      fontFamily: 'var(--font-mono)'
-    }
-  }, String(i + 1).padStart(2, '0')), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 12.5,
-      fontWeight: 700,
-      color: 'var(--fg1)',
-      marginBottom: 2,
-      lineHeight: 1.3
-    }
-  }, f.h), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11.5,
-      color: 'var(--fg2)',
-      lineHeight: 1.45
-    }
-  }, f.b))))), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 12,
-      color: 'var(--fg3)',
-      lineHeight: 1.5,
-      marginTop: 12,
-      marginBottom: 0,
-      fontStyle: 'italic',
-      maxWidth: 'none'
-    }
-  }, "By the time a product ships, the system knows exactly what it cost. SKU-level profitability - for the first time in the company's history.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(EliteFactoryRoad, {
-    compact: true
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "contractor-table",
-    style: {
-      marginTop: 32
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ct-h"
-  }, /*#__PURE__*/React.createElement("h4", null, "Contractor settlement, by stage"), /*#__PURE__*/React.createElement("span", {
-    className: "note"
-  }, "Each rate logic is configuration, not custom code.")), pricing.map(p => /*#__PURE__*/React.createElement("div", {
-    key: p.stage,
-    className: "ct-row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ct-stage"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "dot",
-    style: {
-      background: p.color
-    }
-  }), p.stage), /*#__PURE__*/React.createElement("div", {
-    className: "ct-rate"
-  }, p.rate), /*#__PURE__*/React.createElement("div", {
-    className: "ct-detail"
-  }, p.detail)))), /*#__PURE__*/React.createElement("style", null, `
-        @media (max-width: 1080px) {
-          .elite-mfg-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .elite-mfg-grid aside {
-            position: static !important;
-          }
-        }
-      `));
-}
 function EliteCaseStudy() {
   const [showLogin, setShowLogin] = React.useState(false);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("main", {
@@ -354,123 +8,140 @@ function EliteCaseStudy() {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "CASE STUDY \xB7 FURNITURE EXPORT"), /*#__PURE__*/React.createElement("h1", null, "How a furniture exporter stopped losing $200,000 a year to gaps nobody could see"), /*#__PURE__*/React.createElement("p", {
-    className: "case-hook"
-  }, "Over four years, a furniture manufacturer and exporter - 12+ countries across North America, Europe, and Asia - lost nearly $200,000 to material gaps they could not explain. Not theft. Not fraud. Just an operation running at 600-800 employees across 1 million sqft, tracked on Excel and group chats. Today the same operation runs on a live operations layer - built around their process, not the other way around."), /*#__PURE__*/React.createElement("div", {
+  }, "CASE STUDY - FURNITURE & HOME DECOR EXPORT"), /*#__PURE__*/React.createElement("h1", null, "Elite Arts & Crafts found $200K in silent losses. Live in 21 days."), /*#__PURE__*/React.createElement("div", {
     className: "case-strip"
   }, /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Industry"), /*#__PURE__*/React.createElement("div", {
+  }, "Silent losses stopped"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "Furniture export")), /*#__PURE__*/React.createElement("div", {
+  }, "$200K")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Employees"), /*#__PURE__*/React.createElement("div", {
+  }, "To live"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "600-800")), /*#__PURE__*/React.createElement("div", {
+  }, "21 days")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Facilities"), /*#__PURE__*/React.createElement("div", {
+  }, "Weekly planning"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "~1,000,000 sqft")), /*#__PURE__*/React.createElement("div", {
+  }, "20 hrs \u2192 30 min")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Deployed in"), /*#__PURE__*/React.createElement("div", {
+  }, "Floor staff daily users"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "21 days"))))), /*#__PURE__*/React.createElement("div", {
+  }, "30 of 30"))))), /*#__PURE__*/React.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/React.createElement(ValueInfographic, null), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag",
     style: {
       marginBottom: 10
     }
-  }, "THE OPERATION"), /*#__PURE__*/React.createElement("h2", null, "One floor, 19 stages, six pricing formulas."), /*#__PURE__*/React.createElement("p", {
+  }, "BACKGROUND"), /*#__PURE__*/React.createElement("h2", null, "600 people. Excel and WhatsApp."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 780
     }
-  }, "A furniture manufacturer and exporter (kept confidential) selling into 12+ countries - 600-800 people across ~1 million sq ft. Raw wood enters one end; finished furniture leaves the other in 40-ft containers. In between sit ", /*#__PURE__*/React.createElement("strong", null, "19 tracked stages, 4 quality gates, and 6 contractor types"), " - each paid on a different formula - across ", /*#__PURE__*/React.createElement("strong", null, "550 active SKUs"), " that average 20+ components, every component cut from a specific wood species at a specific dimension."), /*#__PURE__*/React.createElement("p", {
+  }, "Elite Arts & Crafts is Chirag's furniture and home decor export house. 600+ people across 1 million sq ft, shipping to 12+ countries, including a major US retailer. Raw wood in one end, finished furniture out the other. The whole operation ran on Excel sheets and WhatsApp groups.")), /*#__PURE__*/React.createElement("section", {
+    className: "case-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "CHALLENGE"), /*#__PURE__*/React.createElement("h2", null, "Losses nobody could see."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 780
     }
-  }, "Tracking runs at two levels that meet at assembly: ", /*#__PURE__*/React.createElement("strong", null, "component-level"), " through wood issuance and machining, then ", /*#__PURE__*/React.createElement("strong", null, "SKU-level"), " through finishing, QC, packaging and dispatch. Each of the six contractor formulas - per-sqft, per-running-foot, per-SKU, per-fitting, per-CBM - is a row in a config table, not code.")), /*#__PURE__*/React.createElement(ManufacturingProcessSection, null), /*#__PURE__*/React.createElement("section", {
+  }, "If 600 components entered sanding and 580 came out, nobody caught the gap until final count. Over four years those gaps cost about $200K. Planning ate 20 hours of one person's week. And the floor staff could not use any ERP. They had tried one. Everyone went back to texting.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag",
     style: {
       marginBottom: 10
     }
-  }, "THE PROBLEM"), /*#__PURE__*/React.createElement("h2", null, "What was breaking"), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "The company was profitable. Nobody knew which products were."), " The founder knew the business made money. But could he tell you whether the 6-seater dining table was more profitable than the bookshelf? No."), /*#__PURE__*/React.createElement("ul", {
-    className: "pain-list"
-  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Planning was a 20-hour weekly grind."), " The planner spent the better part of every week aggregating component-level wood needs across 30-40 active orders in Excel. When the planner was out, planning stopped."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Material tracking was manual."), " Wood arrived at the store. The storekeeper wrote it in a register. How much was issued to which job, in which thickness, for which SKU? Nobody knew in real time."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Production stages were untracked."), " If 600 components entered sanding and 580 came out, nobody caught the 20-component gap until final count. Over 4 years, these gaps added up to nearly $200,000 - about 1.5% wastage compounding silently."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Contractor costing was reconciled monthly."), " Six contractor types, six settlement formulas, multiple jobs and stages each. Settlement required cross-referencing handwritten logs with the planner's memory."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "30+ floor staff could not use any ERP."), " The company had tried before. Storekeepers, QC inspectors, supervisors - too many menus, too many dropdowns. Everyone went back to texting."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "The founder had no dashboard."), " To answer \"where are we on the West Elm order?\" required 3 phone calls and 20 minutes."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Delivery slippage hid in the gaps."), " Without stage-level visibility, nobody saw a sanding bottleneck or a finishing delay until the dispatch deadline missed."))), /*#__PURE__*/React.createElement("section", {
-    className: "case-section"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
+  }, "WHAT WE BUILT"), /*#__PURE__*/React.createElement("h2", null, "Their process, modeled as-is."), /*#__PURE__*/React.createElement("p", {
     style: {
-      marginBottom: 10
+      maxWidth: 780
     }
-  }, "THE BUILD"), /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We did multiple calls with the founder over 14 days. Mapped how work actually moves: every order type, every approval rule, every handoff between contractors, every contractor pricing formula, every exception that only the founder knew about."), /*#__PURE__*/React.createElement("p", null, "After the first call, the founder saw a ", /*#__PURE__*/React.createElement("strong", null, "working demo within 24 hours"), ". Not a slideshow. A working system reflecting how his factory actually runs - wood aggregation, two-level tracking, six contractor settlement formulas, four QC gates. 21 days total from first conversation to live system."), /*#__PURE__*/React.createElement("p", {
+  }, "SimpleGrid modeled the operation the way it already runs: 19 stages, 4 QC gates, and 6 contractor payment formulas. No process change. Chirag saw a working demo in 72 hours. The system was live on the floor in 21 days. The floor team runs it by chatting with Hank, not navigating menus."), /*#__PURE__*/React.createElement(EliteFactoryRoad, {
+    compact: true
+  }), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 'var(--fs-body)',
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      margin: '24px 0'
+      maxWidth: 780,
+      marginTop: 24
     }
-  }, "By day 21 it was live on the floor - and for the first time, the founder could see which products actually made money and where the wood was going.")), /*#__PURE__*/React.createElement("section", {
-    className: "case-section"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      marginBottom: 10
-    }
-  }, "GUARDRAILS"), /*#__PURE__*/React.createElement("h2", null, "Rules the system enforces"), /*#__PURE__*/React.createElement("p", null, "These are not suggestions. The system physically rejects the action."), /*#__PURE__*/React.createElement("ul", {
+  }, "Three of the rules it enforces on the floor:"), /*#__PURE__*/React.createElement("ul", {
     className: "rules-list"
-  }, /*#__PURE__*/React.createElement("li", null, "Can't receive more material than the PO ordered. System rejects: \"Maximum you can receive: 500.\""), /*#__PURE__*/React.createElement("li", null, "Can't issue unseasoned wood to machining. Routed to seasoning yard automatically."), /*#__PURE__*/React.createElement("li", null, "Can't dispatch more than planned quantity. Blocked."), /*#__PURE__*/React.createElement("li", null, "Final QC must approve before dispatch. System-enforced, not process-dependent."), /*#__PURE__*/React.createElement("li", null, "Contractor locked once assigned. Prevents cost manipulation across stages."), /*#__PURE__*/React.createElement("li", null, "Can't issue wood to a completed job. Prevents inventory leakage."), /*#__PURE__*/React.createElement("li", null, "Wood inventory can't go negative."), /*#__PURE__*/React.createElement("li", null, "Component count must reconcile before assembly. The $200K problem: caught at the source."), /*#__PURE__*/React.createElement("li", null, "Hardware-fitting settlement blocked until every fitting + screw size is logged."), /*#__PURE__*/React.createElement("li", null, "Packaging settlement blocked until CBM is captured at pack-out.")), /*#__PURE__*/React.createElement("p", {
-    style: {
-      marginTop: 16
-    }
-  }, "When your process changes, the rule changes with it - usually the same day.")), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("li", null, "Can't receive more material than the PO ordered. The system rejects it."), /*#__PURE__*/React.createElement("li", null, "Component counts must reconcile before assembly. The $200K problem, caught at the source."), /*#__PURE__*/React.createElement("li", null, "Final QC must approve before dispatch. No exceptions."))), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag",
     style: {
       marginBottom: 10
     }
-  }, "ADOPTION"), /*#__PURE__*/React.createElement("h2", null, "The floor staff problem, solved"), /*#__PURE__*/React.createElement("p", null, "The client's floor supervisors, QC inspectors, and storekeepers had rejected a previous ERP. Too complex. Too far from how they actually work. ", /*#__PURE__*/React.createElement("strong", null, "30 non-technical staff"), " who wouldn't touch the old system."), /*#__PURE__*/React.createElement("p", null, "With SimpleGrid, they talk to ", /*#__PURE__*/React.createElement("strong", null, "Hank"), ", the AI assistant. The storekeeper types: \"Received 300 mango planks from Shree Timber.\" Hank identifies the PO, checks the quantity, updates inventory, and confirms. No menus. No dropdowns. No training manual."), /*#__PURE__*/React.createElement("p", null, "Today all 30 use the system daily. Storekeepers log receipts. QC inspectors record pass/fail per stage. Supervisors close production tickets. The same 30 people who refused the previous ERP.")), /*#__PURE__*/React.createElement("section", {
-    className: "case-section"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      marginBottom: 10
-    }
-  }, "RESULTS"), /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("table", {
+  }, "IMPACT"), /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("table", {
     className: "ba-table"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Before SimpleGrid"), /*#__PURE__*/React.createElement("th", null, "After SimpleGrid"))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "No view into which SKUs made money"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "SKU-level profitability visible"), " per product - wood, contractor, and rejection costs attached to every SKU")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "SKU production timeline was opaque"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "SKU production timeline visible"), " end-to-end - every stage time-stamped from PO to dispatch")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "\"Where's the order?\" = 3 phone calls + 20 min"), /*#__PURE__*/React.createElement("td", null, "One dashboard. Real-time. Founder sees everything.")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "20 hours of planning per week, by one person"), /*#__PURE__*/React.createElement("td", null, "~30 minutes per week - the system aggregates and proposes")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "~1.5% material wastage (~$50K/yr)"), /*#__PURE__*/React.createElement("td", null, "Negligible - component-level reconciliation catches gaps at the source")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Delivery deadlines slipping invisibly"), /*#__PURE__*/React.createElement("td", null, "+25% on-time delivery from full-stage visibility")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Wood inventory reconciled monthly"), /*#__PURE__*/React.createElement("td", null, "Live inventory. Every receipt and issuance tracked, by species + thickness")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "6 contractor settlements took days each month"), /*#__PURE__*/React.createElement("td", null, "Auto-calculated on each contractor's own formula")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "30 floor staff rejected previous ERP"), /*#__PURE__*/React.createElement("td", null, "Same 30 staff use Hank daily. Zero training overhead."))))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Before SimpleGrid"), /*#__PURE__*/React.createElement("th", null, "After SimpleGrid"))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Planning took 20 hours a week"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "30 minutes."), " The system aggregates and proposes.")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "~1.5% material wastage"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "Under 0.1%."), " Gaps caught at the source.")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "Delivery dates slipped invisibly"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "On-time delivery up 25%."))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "0 floor staff on any system"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("strong", null, "30 of 30 use it daily.")))))), /*#__PURE__*/React.createElement("section", {
+    className: "case-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag",
+    style: {
+      marginBottom: 10
+    }
+  }, "THE FACTORY"), /*#__PURE__*/React.createElement("h2", null, "Walk the floor"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      maxWidth: 640
+    }
+  }, "The full tour of the Elite Arts & Crafts factory, running on SimpleGrid."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'relative',
+      width: '100%',
+      aspectRatio: '16 / 9',
+      borderRadius: 16,
+      overflow: 'hidden',
+      border: '1px solid var(--border)',
+      background: '#000'
+    }
+  }, /*#__PURE__*/React.createElement("iframe", {
+    src: "https://www.youtube-nocookie.com/embed/9-OTYmUJe8U?rel=0",
+    title: "Inside the Elite Arts & Crafts factory - full tour",
+    loading: "lazy",
+    frameBorder: "0",
+    allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen",
+    allowFullScreen: true,
+    style: {
+      position: 'absolute',
+      inset: 0,
+      width: '100%',
+      height: '100%',
+      border: 0
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
     className: "testimonial-block"
   }, /*#__PURE__*/React.createElement(RevealQuote, {
-    text: "\"We have our own way of doing things: vendor consolidation by wood species, component-level QC, six different contractor settlement formulas that nobody else understands. We needed an ERP that was made for us, not one we'd have to change our process for. SimpleGrid feels like our system. Our Excel and texting habits didn't go away - the AI chatbot just replaced them. My stores manager was comfortable on day one because it works the way he already works.\""
+    text: `"SimpleGrid felt like our own system from day one. They modeled our whole operation - our stages, our contractors, our costing formulas - in three weeks. My stores manager was comfortable the first morning. We found $200K in losses we could never see before. I have recommended it to every founder I know."`
   }), /*#__PURE__*/React.createElement("div", {
     className: "attr"
-  }, "- The founder")), /*#__PURE__*/React.createElement("div", {
+  }, "- Chirag, Founder, Elite Arts & Crafts")), /*#__PURE__*/React.createElement("div", {
     className: "case-bottom-line"
   }, /*#__PURE__*/React.createElement("div", {
     className: "big"
-  }, "The $200K leak, closed. Planning cut from 20 hours a week to 30 minutes. 30 floor staff who'd rejected every ERP, now on this one daily. Live in 21 days."), /*#__PURE__*/React.createElement("p", null, "Before SimpleGrid, the founder knew the company made money. Now he knows which products make money, and which ones do not. Planning dropped from 20 hours to 30 minutes. Wastage dropped to negligible. Delivery improved 25%. And 30 floor staff who had rejected every previous ERP now use this one daily."), /*#__PURE__*/React.createElement("a", {
+  }, "The $200K leak is closed. Planning takes 30 minutes. The whole floor uses it."), /*#__PURE__*/React.createElement("a", {
     href: "https://cal.com/simplegrid-ai",
     target: "_blank",
     rel: "noopener noreferrer",
     className: "btn btn-primary",
+    "data-cta": "case_elite_body",
     style: {
       marginTop: 16
     }
-  }, "Book a demo - See how we'd model your operations"), /*#__PURE__*/React.createElement("div", {
+  }, "Book a demo"), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 20,
       fontSize: 14
@@ -482,10 +153,10 @@ function EliteCaseStudy() {
       fontWeight: 600,
       textDecoration: 'none'
     }
-  }, "See an apparel manufacturer's deployment - live in 12 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, {
+  }, "Next: an apparel maker, live in 12 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, {
     title: "Want a result like this?",
-    body: "We'll configure SimpleGrid to how your floor actually runs, put it in your hands, and you run it live for 30 days. You pay only when it works.",
-    note: "Limited slots each quarter. We onboard selectively."
+    body: "We model SimpleGrid around how your floor already runs. Run it live for 30 days, free. Pay only when it works.",
+    note: "$0 up front. Working demo in 72 hours."
   }), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }));

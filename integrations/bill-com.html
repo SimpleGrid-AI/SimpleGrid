@@ -7,7 +7,7 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
 <title>Bill.com integration | SimpleGrid</title>
-<meta name="description" content="Bill.com + SimpleGrid: Send approved payables to Bill.com for payment and pull status back automatically - the approvals you set in SimpleGrid carry through, so nothing pays without sign-off.">
+<meta name="description" content="Bill.com + SimpleGrid: Push payable bills and payment status between SimpleGrid and Bill.com.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#3461E0">
 <meta name="robots" content="index, follow">
@@ -23,12 +23,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://simplegrid.ai/integrations/bill-com.html">
 <meta property="og:title" content="Bill.com integration | SimpleGrid">
-<meta property="og:description" content="Bill.com + SimpleGrid: Send approved payables to Bill.com for payment and pull status back automatically - the approvals you set in SimpleGrid carry through, so nothing pays without sign-off.">
+<meta property="og:description" content="Bill.com + SimpleGrid: Push payable bills and payment status between SimpleGrid and Bill.com.">
 <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@simplegridai">
 <meta name="twitter:title" content="Bill.com integration | SimpleGrid">
-<meta name="twitter:description" content="Bill.com + SimpleGrid: Send approved payables to Bill.com for payment and pull status back automatically - the approvals you set in SimpleGrid carry through, so nothing pays without sign-off.">
+<meta name="twitter:description" content="Bill.com + SimpleGrid: Push payable bills and payment status between SimpleGrid and Bill.com.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
 
 <script type="application/ld+json">
@@ -42,7 +42,7 @@
       "name": "Bill.com integration | SimpleGrid",
       "isPartOf": { "@id": "https://simplegrid.ai/#website" },
       "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "description": "Bill.com + SimpleGrid: Send approved payables to Bill.com for payment and pull status back automatically - the approvals you set in SimpleGrid carry through, so nothing pays without sign-off.",
+      "description": "Bill.com + SimpleGrid: Push payable bills and payment status between SimpleGrid and Bill.com.",
       "inLanguage": "en"
     },
     {
@@ -62,7 +62,7 @@
 <script src="../assets/js/tracking.js" defer></script>
 <script src="../assets/js/cookie-consent.js" defer></script>
 </head>
-<body class="intg-page" style="--intg-accent: #006FFF;">
+<body class="intg-page" style="--intg-accent: #0C7BDC;">
 <!-- Top navigation rendered by the shared component (components/site-nav.js). -->
 <div id="sg-nav" data-page="syncs"></div>
 
@@ -70,17 +70,17 @@
   <section class="intg-hero">
     <a class="intg-back" href="../syncs.html">&larr; All syncs</a>
     <div class="intg-hero-marks">
-      <span class="intg-logo-big"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#006FFF"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">BILL</text></svg></span>
+      <span class="intg-logo-big"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#006FFF"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">BILL</text></svg></span>
       <span class="intg-plus">+</span>
       <span class="intg-logo-big intg-logo-sg"><img src="../assets/simplegrid-logomark.svg" alt="SimpleGrid" width="34" height="34"></span>
     </div>
     <div class="intg-badges">
       <span class="tag">Accounting &amp; books</span>
-      <span class="intg-dir">Push &amp; status</span>
+      <span class="intg-dir">Posts to your ledger</span>
     </div>
     <h1>SimpleGrid&nbsp;+&nbsp;Bill.com</h1>
-    <p class="lead">Send approved payables to Bill.com for payment and pull status back automatically - the approvals you set in SimpleGrid carry through, so nothing pays without sign-off.</p>
-    <p class="intg-what">Bill.com automates accounts payable and bill payments.</p>
+    <p class="lead">Push payable bills and payment status between SimpleGrid and Bill.com.</p>
+    <p class="intg-what">Bill.com stays your book of record &mdash; SimpleGrid just posts to it.</p>
     <div class="intg-hero-cta">
       <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_bill-com_demo">Book a demo</a>
       <a href="../syncs.html" class="intg-cta-ghost">See all syncs &rarr;</a>
@@ -90,24 +90,25 @@
   <section class="intg-section">
     <div class="intg-inner">
       <div class="tag">What syncs</div>
-      <h2>Data moves both ways - automatically.</h2>
+      <h2>Data moves both ways &mdash; automatically.</h2>
       <div class="intg-flows">
         <div class="intg-col">
           <p class="intg-col-h"><span class="intg-arrow">&rarr;</span> Into SimpleGrid</p>
           <ul>
-            <li>Payment status synced back to each payable</li>
-            <li>Paid, pending and failed states visible on the floor</li>
+            <li>Chart of accounts and tax codes pulled in</li>
+            <li>Customer and vendor records matched</li>
           </ul>
         </div>
         <div class="intg-col">
           <p class="intg-col-h"><span class="intg-arrow">&larr;</span> Back to Bill.com</p>
           <ul>
-            <li>Approved payables pushed for payment</li>
-            <li>Your SimpleGrid approval chain enforced before anything pays</li>
+            <li>Sales invoices posted as they&rsquo;re raised</li>
+            <li>Purchase bills and payments posted</li>
+            <li>Reconciled both ways &mdash; no double entry</li>
           </ul>
         </div>
       </div>
-      <p class="intg-detail">Approved payables flow into Bill.com for payment and the payment status syncs back automatically. The approvals you set in SimpleGrid carry through, so nothing pays without sign-off.</p>
+      <p class="intg-detail">Push payable bills and payment status between SimpleGrid and Bill.com.</p>
     </div>
   </section>
 
@@ -116,9 +117,9 @@
       <div class="tag">Use it to</div>
       <h2>What teams do with Bill.com &amp; SimpleGrid</h2>
       <div class="intg-uses">
-        <div class="intg-use">Send approved payables straight to Bill.com</div>
-        <div class="intg-use">Pull payment status back automatically</div>
-        <div class="intg-use">Enforce your approval chain before anything pays</div>
+        <div class="intg-use">Post invoices without re-keying</div>
+        <div class="intg-use">Keep your book of record where it is</div>
+        <div class="intg-use">Reconcile payments automatically</div>
       </div>
     </div>
   </section>
@@ -128,11 +129,11 @@
       <div class="tag">How it works</div>
       <h2>Live with the rest of your floor.</h2>
       <ol class="intg-steps">
-        <li><span class="intg-step-n">1</span><div><p class="intg-step-h">Connect once</p><p>We link Bill.com during your setup - you authorise it, we handle the wiring.</p></div></li>
+        <li><span class="intg-step-n">1</span><div><p class="intg-step-h">Connect once</p><p>We link Bill.com during your setup &mdash; you authorise it, we handle the wiring.</p></div></li>
         <li><span class="intg-step-n">2</span><div><p class="intg-step-h">Map to your floor</p><p>Your fields, codes and naming are mapped to SimpleGrid one time, so records match instead of duplicating.</p></div></li>
-        <li><span class="intg-step-n">3</span><div><p class="intg-step-h">Runs on its own</p><p>From then on the sync runs in the background - no exports, no re-keying, nothing for your team to remember.</p></div></li>
+        <li><span class="intg-step-n">3</span><div><p class="intg-step-h">Runs on its own</p><p>From then on the sync runs in the background &mdash; no exports, no re-keying, nothing for your team to remember.</p></div></li>
       </ol>
-      <p class="intg-note">Don't see a field you need? We build the connector around how you actually work - it goes live with the rest of your floor, not as an upgrade later.</p>
+      <p class="intg-note">Don&rsquo;t see a field you need? We build the connector around how you actually work &mdash; it goes live with the rest of your floor, not as an upgrade later.</p>
     </div>
   </section>
 
@@ -141,8 +142,8 @@
       <div class="tag">FAQ</div>
       <h2>Bill.com &amp; SimpleGrid, in short</h2>
       <div class="intg-faq">
-        <div class="intg-faq-item"><p class="intg-q">Can a bill pay without approval?</p><p class="intg-a">No. Your SimpleGrid approvals carry through, so nothing pays without sign-off.</p></div>
-        <div class="intg-faq-item"><p class="intg-q">Does paid status sync back?</p><p class="intg-a">Yes - payment status flows back onto each payable automatically.</p></div>
+        <div class="intg-faq-item"><p class="intg-q">Does it replace Bill.com?</p><p class="intg-a">No &mdash; SimpleGrid posts to Bill.com. It stays your book of record.</p></div>
+        <div class="intg-faq-item"><p class="intg-q">Do I re-enter anything?</p><p class="intg-a">No. Invoices, bills and payments post automatically as you work.</p></div>
       </div>
     </div>
   </section>
@@ -152,22 +153,10 @@
       <div class="tag">More integrations</div>
       <h2>Works with the rest of your stack</h2>
       <div class="intg-rel-grid">
-        <a class="intg-rel-card" href="quickbooks.html">
-          <span class="intg-rel-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-          <span class="intg-rel-name">QuickBooks</span>
-        </a>
-        <a class="intg-rel-card" href="xero.html">
-          <span class="intg-rel-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg></span>
-          <span class="intg-rel-name">Xero</span>
-        </a>
-        <a class="intg-rel-card" href="tally.html">
-          <span class="intg-rel-logo"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg></span>
-          <span class="intg-rel-name">Tally</span>
-        </a>
-        <a class="intg-rel-card" href="zoho-books.html">
-          <span class="intg-rel-logo"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#D0312D"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="12">ZOHO</text></svg></span>
-          <span class="intg-rel-name">Zoho Books</span>
-        </a>
+        <a class="intg-rel-card" href="quickbooks.html"><span class="intg-rel-logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="intg-rel-name">QuickBooks</span></a>
+        <a class="intg-rel-card" href="tally.html"><span class="intg-rel-logo"><svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg></span><span class="intg-rel-name">Tally</span></a>
+        <a class="intg-rel-card" href="zoho.html"><span class="intg-rel-logo"><svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#D0312D"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="12">ZOHO</text></svg></span><span class="intg-rel-name">Zoho</span></a>
+        <a class="intg-rel-card" href="xero.html"><span class="intg-rel-logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg></span><span class="intg-rel-name">Xero</span></a>
       </div>
       <a class="intg-rel-all" href="../syncs.html">View all integrations &rarr;</a>
     </div>
@@ -176,7 +165,7 @@
   <section class="intg-final">
     <div class="intg-final-inner">
       <h2>Connect Bill.com to your floor.</h2>
-      <p>Book a demo and we'll show SimpleGrid wired into Bill.com with your data, not a sample set.</p>
+      <p>Book a demo and we&rsquo;ll show SimpleGrid wired into Bill.com with your data, not a sample set.</p>
       <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_bill-com_final">Book a demo</a>
     </div>
   </section>

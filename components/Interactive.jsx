@@ -109,7 +109,7 @@ function ParticleCloud({ density, showArcs = true }) {
 
       arcs.forEach(arc => {
         const alpha = 0.10 + 0.05 * Math.sin(frame * 0.003 + arc.phase);
-        ctx.strokeStyle = `rgba(74,123,247,${alpha})`;
+        ctx.strokeStyle = `rgba(52,97,224,${alpha})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(arc.x1, arc.y1);

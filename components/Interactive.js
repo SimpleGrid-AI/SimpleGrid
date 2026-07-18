@@ -143,7 +143,7 @@ function ParticleCloud({
       ctx.clearRect(0, 0, w, h);
       arcs.forEach(arc => {
         const alpha = 0.10 + 0.05 * Math.sin(frame * 0.003 + arc.phase);
-        ctx.strokeStyle = `rgba(74,123,247,${alpha})`;
+        ctx.strokeStyle = `rgba(52,97,224,${alpha})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(arc.x1, arc.y1);
@@ -467,7 +467,9 @@ function ProgressCompare({
 }
 window.ProgressCompare = ProgressCompare;
 
-// DualEntry-style scroll-reveal quote (opacity-driven; colour set per use).
+// DualEntry-style scroll-reveal quote: each word brightens from dim to full as
+// the block scrolls up through the reading zone. Opacity-driven, so it works on
+// any background - set the text colour per use. Reduced-motion = fully lit.
 function RevealQuote({
   text,
   cite,

@@ -13,59 +13,41 @@ function ApparelVisual() {
 }
 window.ApparelVisual = ApparelVisual;
 
-function FounderStory() {
-  return (
-    <section className="section section-dark" id="founder" style={{background:'#0B0F17'}}>
-      <div className="container">
-        <Reveal>
-          <div className="founder-text">
-            <div className="tag">BUILT BY PEOPLE WHO'VE RUN A FACTORY FLOOR</div>
-            <blockquote>We ran multi-stage factories to $30M annual revenue. We survived two ERP failures. We ended up back on Google Sheets.</blockquote>
-            <p className="body">SimpleGrid exists because we were the customer first - multiple factories, 400-person workforce. We bought the same enterprise systems you're being pitched today. We watched them fail. We know exactly what breaks when the system can't keep up with the floor.</p>
-            <p className="body">That's why we built SimpleGrid the only way that makes sense to an operator: model it on your factory, run it on your real floor for 30 days, and only charge when it earns its keep.</p>
-            <p className="body">Senior engineers and deployment experts on every deployment. No sales reps. No SDRs. No chatbot. You deal with the people who'll actually build your system.</p>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-window.FounderStory = FounderStory;
-
 function ProofSection() {
   const CASES = [
     {
-      label: 'Furniture exporter',
-      headline: 'How a furniture exporter stopped $200K in silent losses.',
+      label: 'Elite Arts & Crafts',
+      headline: 'Elite Arts & Crafts stopped $200K in silent losses.',
       poster: 'assets/elite-factory.jpeg',
+      clip: 'assets/elite-clip.mp4',
       shot: true,
-      video: 'https://youtu.be/9-OTYmUJe8U',
       link: 'case-furniture-manufacturer.html',
       stats: [
-        { v: 'Furniture export', l: 'industry' },
-        { v: '$200K', l: 'silent losses found' },
+        { v: '$200K', l: 'silent losses stopped' },
+        { v: '90%', l: 'less planning time' },
         { v: '21 days', l: 'to go live' },
       ],
+      quote: 'They modeled our whole operation in three weeks. We found $200K in losses we could never see.',
+      attrib: 'Chirag, Founder, Elite Arts & Crafts',
     },
     {
-      label: 'Apparel maker',
-      headline: 'How an apparel maker went live in 12 days after two failed ERPs.',
+      label: 'Apex Apparel',
+      headline: 'Live in 12 days. Three businesses on one system.',
       apparel: true,
-      video: null,
       link: 'case-apex.html',
       stats: [
-        { v: 'Apparel CMT', l: 'industry' },
-        { v: '30+', l: 'locations unified' },
+        { v: '30+', l: 'locations in one view' },
         { v: '12 days', l: 'to go live' },
       ],
+      quote: 'They sent a working demo in 72 hours and it was 60-70% right already. No other vendor showed us a working system before asking for money.',
+      attrib: 'Founder, Apex Apparel',
     },
   ];
   const [active, setActive] = React.useState(0);
-  const [playing, setPlaying] = React.useState(false);
   const n = CASES.length;
   const c = CASES[active];
   const touchX = React.useRef(null);
-  const go = (dir) => { setPlaying(false); setActive((a) => (a + dir + n) % n); };
+  const go = (dir) => { setActive((a) => (a + dir + n) % n); };
   const onTouchStart = (e) => { touchX.current = e.touches[0].clientX; };
   const onTouchEnd = (e) => {
     if (touchX.current == null) return;
@@ -73,52 +55,34 @@ function ProofSection() {
     touchX.current = null;
     if (Math.abs(dx) > 45) go(dx < 0 ? 1 : -1);
   };
-  const ytEmbed = (url) => 'https://www.youtube-nocookie.com/embed/' + url.split('/').pop().split('?')[0] + '?autoplay=1&rel=0';
   return (
-    <section className="section" id="case-studies">
+    <section className="section section-roomy" id="case-studies">
       <div className="container">
         <Reveal>
           <div className="tag">CASE STUDIES</div>
-          <h2 className="h2">Manufacturers running on SimpleGrid today.</h2>
-          <p className="lead" style={{maxWidth:920,margin:'0 0 28px'}}>Two live deployments. More running confidentially.</p>
+          <h2 className="h2">Proof, not promises.</h2>
+          <p className="lead" style={{maxWidth:920,margin:'0 0 28px'}}>Live deployments. Real numbers. More running confidentially.</p>
         </Reveal>
       </div>
       <Reveal delay={100}>
         <div className="cs-fullbleed">
           <div className="cs-showcase">
             <div className={"cs-media" + (c.apparel ? " cs-media-diagram" : "")} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-              {playing && c.video ? (
-                <iframe className="cs-video" src={ytEmbed(c.video)} title={c.headline} frameBorder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen></iframe>
+              {c.apparel ? (
+                <ApparelVisual />
               ) : (
-                <>
-                  {c.apparel ? <ApparelVisual /> : <div className="cs-poster" style={{backgroundImage:'url(' + c.poster + ')'}} />}
-                  {c.shot && <span className="cs-shot">● Actual shot</span>}
-                  {!c.apparel && (
-                    <>
-                      <div className="cs-scrim" aria-hidden="true" />
-                      <h3 className="cs-headline">{c.headline}</h3>
-                      <div className="cs-actions">
-                        {c.video && <button type="button" className="btn cs-btn-watch" onClick={() => setPlaying(true)} data-cta="case_watch_video"><svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor" aria-hidden="true"><path d="M0 0l11 6.5L0 13z"/></svg> Watch video</button>}
-                        <a className="btn cs-btn-case" href={c.link} data-cta="case_see_study">See case study <span aria-hidden="true">&rarr;</span></a>
-                      </div>
-                    </>
-                  )}
-                </>
+                <video className="cs-clip" src={c.clip} poster={c.poster} autoPlay muted loop playsInline preload="metadata" aria-label="Inside the Elite Arts & Crafts factory" />
               )}
-              {playing && <button type="button" className="cs-close" onClick={() => setPlaying(false)} aria-label="Close video">×</button>}
-              {playing && <a className="cs-play-case" href={c.link} data-cta="case_see_study_overlay">See case study <span aria-hidden="true">&rarr;</span></a>}
+              {c.shot && <span className="cs-shot">● Actual shot</span>}
               <button type="button" className="cs-float cs-float-prev" onClick={() => go(-1)} aria-label="Previous case study">&lsaquo;</button>
               <button type="button" className="cs-float cs-float-next" onClick={() => go(1)} aria-label="Next case study">&rsaquo;</button>
             </div>
-            {c.apparel && (
-              <div className="cs-caption">
-                <h3 className="cs-cap-h">{c.headline}</h3>
-                <div className="cs-cap-actions">
-                  {c.video && <button type="button" className="btn cs-btn-watch" onClick={() => setPlaying(true)} data-cta="case_watch_video"><svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor" aria-hidden="true"><path d="M0 0l11 6.5L0 13z"/></svg> Watch video</button>}
-                  <a className="btn cs-btn-case" href={c.link} data-cta="case_see_study">See case study <span aria-hidden="true">&rarr;</span></a>
-                </div>
+            <div className="cs-caption">
+              <h3 className="cs-cap-h">{c.headline}</h3>
+              <div className="cs-cap-actions">
+                <a className="btn cs-btn-case" href={c.link} data-cta="case_see_study">See case study <span aria-hidden="true">&rarr;</span></a>
               </div>
-            )}
+            </div>
             <div className="cs-stats">
               {c.stats.map((s, i) => (
                 <div key={i} className="cs-stat">
@@ -129,57 +93,62 @@ function ProofSection() {
             </div>
             <div className="cs-dots" role="tablist" aria-label="Case studies">
               {CASES.map((cc, i) => (
-                <button type="button" key={i} role="tab" aria-selected={i === active} className={'cs-dot' + (i === active ? ' is-active' : '')} onClick={() => { setPlaying(false); setActive(i); }}>{cc.label}</button>
+                <button type="button" key={i} role="tab" aria-selected={i === active} className={'cs-dot' + (i === active ? ' is-active' : '')} onClick={() => setActive(i)}>{cc.label}</button>
               ))}
             </div>
           </div>
         </div>
       </Reveal>
+      <Reveal delay={150}>
+        <div className="container">
+          <figure className="cs-quote" key={active}>
+            <blockquote>"{c.quote}"</blockquote>
+            <figcaption>{c.attrib}</figcaption>
+          </figure>
+        </div>
+      </Reveal>
       <style>{`
-        .cs-fullbleed { margin-top: 8px; }
-        .cs-showcase { position: relative; background: #0E1116; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
-        .cs-media { position: relative; width: 100%; height: min(56.25vw, 74vh); min-height: 340px; overflow: hidden; background: #000; touch-action: pan-y; }
-        .cs-poster { position: absolute; inset: 0; background-size: cover; background-position: center; }
-        .cs-video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; z-index: 4; background: #000; }
+        /* Boxed showcase: the case study sits inside a contained card, not edge to edge. */
+        .cs-fullbleed { margin-top: 8px; max-width: 1040px; margin-left: auto; margin-right: auto; padding: 0 32px; }
+        .cs-showcase { position: relative; background: #fff; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 24px 60px rgba(20,28,46,0.08); }
+        /* Clean 16:9 media - the 1080p clip fills it exactly, so no black bars. */
+        .cs-media { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; touch-action: pan-y; }
+        @media (max-width: 700px) { .cs-fullbleed { padding: 0 20px; } }
+        .cs-clip { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
         .cs-shot { position: absolute; top: 18px; left: 18px; z-index: 2; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 9px; border-radius: 5px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
-        .cs-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.82) 100%); }
-        .cs-headline { position: absolute; left: 6vw; right: 6vw; bottom: 118px; z-index: 2; font-family: var(--font-heading); font-size: clamp(26px, 3.6vw, 48px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; color: #fff; margin: 0; max-width: 820px; }
-        .cs-actions { position: absolute; left: 6vw; bottom: 42px; z-index: 2; display: flex; gap: 12px; flex-wrap: wrap; }
-        .cs-btn-watch { background: #fff; color: #1A1A1A; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; }
-        .cs-btn-watch:hover { background: rgba(255,255,255,0.88); }
-        .cs-btn-case { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.28); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
-        .cs-btn-case:hover { background: rgba(255,255,255,0.2); }
+        .cs-btn-case { font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
         .cs-float { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; font-size: 28px; line-height: 1; color: #fff; background: rgba(0,0,0,0.42); border: 1px solid rgba(255,255,255,0.28); border-radius: 50%; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background .15s ease, transform .15s ease; }
         .cs-float:hover { background: rgba(0,0,0,0.64); transform: translateY(-50%) scale(1.08); }
         .cs-float-prev { left: 22px; }
         .cs-float-next { right: 22px; }
-        .cs-close { position: absolute; top: 64px; right: 16px; z-index: 6; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; color: #fff; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.32); cursor: pointer; }
-        .cs-close:hover { background: rgba(0,0,0,0.82); }
-        .cs-play-case { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 6; display: inline-flex; align-items: center; gap: 6px; padding: 8px 15px; border-radius: 999px; background: rgba(255,255,255,0.95); color: #1A1A1A; font-weight: 600; font-size: 10px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.5); transition: background .15s ease, transform .15s ease; }
-        .cs-play-case:hover { background: #fff; transform: translateX(-50%) translateY(-2px); }
-        .cs-caption { padding: 30px 6vw 32px; background: #0E1116; border-top: 1px solid rgba(255,255,255,0.08); }
-        .cs-cap-h { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: #fff; margin: 0 0 18px; max-width: 820px; }
+        .cs-caption { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 26px 32px; background: #fff; border-top: 1px solid var(--border); }
+        .cs-cap-h { font-family: var(--font-heading); font-size: clamp(21px, 2.4vw, 30px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--fg1); margin: 0; max-width: 680px; }
         .cs-cap-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-        .cs-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.08); }
-        .cs-stat { padding: 26px 32px; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
+        .cs-caption .cs-btn-case { background: rgba(15,23,42,0.05); color: var(--fg1); border: 1px solid var(--border); }
+        .cs-caption .cs-btn-case:hover { background: rgba(15,23,42,0.10); }
+        .cs-stats { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border-top: 1px solid var(--border); }
+        .cs-stat { padding: 26px 32px; border-right: 1px solid var(--border); text-align: center; }
         .cs-stat:last-child { border-right: none; }
-        .cs-stat-v { font-family: var(--font-heading); font-size: 30px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1.1; }
-        .cs-stat-l { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 5px; }
-        .cs-dots { display: flex; justify-content: center; gap: 8px; padding: 14px 16px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
-        .cs-dot { font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.03em; color: rgba(255,255,255,0.45); background: none; border: 0; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: color .15s ease, background .15s ease; }
-        .cs-dot:hover { color: #fff; }
-        .cs-dot.is-active { color: #fff; background: rgba(255,255,255,0.10); }
+        .cs-stat-v { font-family: var(--font-heading); font-size: 30px; font-weight: 700; color: var(--fg1); letter-spacing: -0.02em; line-height: 1.1; }
+        .cs-stat-l { font-size: 13px; color: var(--fg2); margin-top: 5px; }
+        .cs-dots { display: flex; justify-content: center; gap: 8px; padding: 14px 16px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+        .cs-dot { font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.03em; color: var(--fg2); background: none; border: 0; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: color .15s ease, background .15s ease; }
+        .cs-dot:hover { color: var(--fg1); }
+        .cs-dot.is-active { color: var(--fg1); background: rgba(15,23,42,0.07); }
+        .cs-quote { max-width: 720px; margin: 40px auto 0; text-align: center; animation: csQuoteFade 0.3s ease; }
+        @keyframes csQuoteFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .cs-quote { animation: none; } }
+        .cs-quote blockquote { margin: 0; font-family: var(--font-heading); font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; color: var(--fg1); }
+        .cs-quote figcaption { margin-top: 14px; font-size: 14px; color: var(--fg2); }
         @media (max-width: 760px) {
-          .cs-headline { left: 22px; right: 22px; bottom: 104px; }
-          .cs-actions { left: 22px; bottom: 24px; }
-          .cs-stats { grid-template-columns: 1fr; }
-          .cs-stat { border-right: none; border-top: 1px solid rgba(255,255,255,0.08); padding: 18px 24px; }
+          .cs-stats { grid-auto-flow: row; grid-auto-columns: unset; grid-template-columns: 1fr; }
+          .cs-stat { border-right: none; border-top: 1px solid var(--border); padding: 18px 24px; }
           .cs-caption { padding: 22px 22px 24px; }
           .cs-float { width: 44px; height: 44px; font-size: 24px; }
           .cs-float-prev { left: 10px; }
           .cs-float-next { right: 10px; }
         }
-        @media (prefers-reduced-motion: reduce) { .cs-float, .cs-btn-watch, .cs-btn-case, .cs-dot { transition: none; } }
+        @media (prefers-reduced-motion: reduce) { .cs-float, .cs-btn-case, .cs-dot { transition: none; } }
       `}</style>
     </section>
   );
@@ -214,165 +183,107 @@ function Integrations() {
     { name: 'SFTP', status: 'live', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#4A5568"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="9">SFTP</text></svg>' },
     { name: '+ Build custom', status: 'custom', custom: true, svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="none" stroke="#3461E0" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="12" y1="7" x2="12" y2="17" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/><line x1="7" y1="12" x2="17" y2="12" stroke="#3461E0" stroke-width="2" stroke-linecap="round"/></svg>' },
   ];
-  // Duplicate the list so the loop is seamless when the track translates by -50%.
-  const doubled = [...items, ...items];
-  const intTrackRef = React.useRef(null);
-  // Auto-scroll the logo strip at a calm pace, but let the viewer grab and drag it. Wraps seamlessly.
-  React.useEffect(() => {
-    const track = intTrackRef.current;
-    if (!track) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let raf = 0, offset = 0, last = 0, dragging = false, hoverPaused = false, onScreen = true, startX = 0, startOffset = 0;
-    let setW = 1;
-    const measure = () => { const sw = track.scrollWidth || 0; if (sw > 0) setW = sw / 2 + 7; };
-    measure();
-    const ro = (typeof ResizeObserver !== 'undefined') ? new ResizeObserver(measure) : null;
-    if (ro) ro.observe(track);
-    const io = (typeof IntersectionObserver !== 'undefined') ? new IntersectionObserver((es) => { onScreen = es[0].isIntersecting; }, { threshold: 0 }) : null;
-    if (io) io.observe(track);
-    const wrap = (x) => { while (x <= -setW) x += setW; while (x > 0) x -= setW; return x; };
-    const apply = () => { track.style.transform = 'translateX(' + offset + 'px)'; };
-    const down = (e) => { dragging = true; startX = e.clientX; startOffset = offset; if (track.setPointerCapture) { try { track.setPointerCapture(e.pointerId); } catch (err) {} } };
-    const move = (e) => { if (!dragging) return; offset = wrap(startOffset + (e.clientX - startX)); apply(); };
-    const up = () => { dragging = false; };
-    const enter = () => { hoverPaused = true; };
-    const leave = () => { hoverPaused = false; };
-    track.addEventListener('pointerdown', down);
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-    track.addEventListener('mouseenter', enter);
-    track.addEventListener('mouseleave', leave);
-    const loop = (t) => {
-      raf = requestAnimationFrame(loop);
-      if (!last) last = t;
-      const dt = Math.min((t - last) / 1000, 0.05); last = t;
-      if (!dragging && !hoverPaused && onScreen) { offset = wrap(offset - (setW / 200) * dt); apply(); }
-    };
-    raf = requestAnimationFrame(loop);
-    return () => {
-      cancelAnimationFrame(raf);
-      track.removeEventListener('pointerdown', down);
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-      track.removeEventListener('mouseenter', enter);
-      track.removeEventListener('mouseleave', leave);
-      if (ro) ro.disconnect();
-      if (io) io.disconnect();
-    };
-  }, []);
+  const byName = {};
+  items.forEach(function (it) { byName[it.name] = it; });
+  const CATS = [
+    { label: 'Accounting & books', desc: 'We post to your ledger — never replace it.', tools: ['QuickBooks', 'Tally', 'Zoho', 'Xero', 'Bill.com'] },
+    { label: 'Spreadsheets', desc: 'Keep working in the sheets your team lives in.', tools: ['Excel', 'Google Sheets'] },
+    { label: 'Sales & e-commerce', desc: 'Orders and payments from every channel you sell on.', tools: ['Shopify', 'Amazon', 'WooCommerce', 'TikTok Shop', 'Stripe'] },
+    { label: 'Messaging & marketing', desc: 'Reach customers straight from live data.', tools: ['Gmail', 'Outlook', 'Mailchimp', 'Klaviyo', 'Braze'] },
+    { label: 'Shipping & logistics', desc: 'Labels and tracking, in sync with orders.', tools: ['ShipStation'] },
+    { label: 'Data & files', desc: 'Direct database and file pipes for anything custom.', tools: ['PostgreSQL', 'SFTP'] }
+  ];
+  const VPS = [
+    { t: 'Adapts to your stack', d: 'SimpleGrid is shaped around the tools you already run — not the other way around.' },
+    { t: 'No rip and replace', d: 'Keep your books, channels and spreadsheets. Nothing gets torn out.' },
+    { t: 'Built for your problem', d: 'Need a connector we don’t list yet? We build it around your problem as part of setup.' }
+  ];
+  const mailto = 'mailto:hello@simplegrid.ai?subject=Integration%20request%20%E2%80%94%20SimpleGrid&body=Hi%20SimpleGrid%2C%0D%0A%0D%0AWe%27d%20like%20SimpleGrid%20to%20integrate%20with%3A%20%5Btool%20name%5D%0D%0A%0D%0AThanks%21';
+  function syncChip(name) {
+    const it = byName[name] || {};
+    const live = it.status === 'live';
+    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const inner = '<span class="sync-chip-ic">' + (it.svg || '') + '</span>' + name + (live ? '<span class="sync-chip-dot" aria-hidden="true"></span>' : '');
+    const cls = 'sync-chip' + (live ? ' is-live' : '');
+    return '<a class="' + cls + '" href="integrations/' + slug + '.html" title="' + name + ' + SimpleGrid">' + inner + '</a>';
+  }
+  const vpHtml = VPS.map(function (v) {
+    return '<div class="sync-vp"><div class="sync-vp-t">' + v.t + '</div><div class="sync-vp-d">' + v.d + '</div></div>';
+  }).join('');
+  const catHtml = CATS.map(function (c) {
+    return '<div class="sync-cat"><div class="sync-cat-head"><span class="sync-cat-label">' + c.label + '</span><span class="sync-cat-n">' + c.tools.length + '</span></div><p class="sync-cat-desc">' + c.desc + '</p><div class="sync-chips">' + c.tools.map(syncChip).join('') + '</div></div>';
+  }).join('');
+  const html =
+    '<style>' +
+    '.sync-head{max-width:760px}' +
+    '.sync-vps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 6px}' +
+    '.sync-vp{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px}' +
+    '.sync-vp-t{font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--fg1);letter-spacing:-0.01em;margin-bottom:6px;padding-left:24px;position:relative}' +
+    '.sync-vp-t::before{content:"";position:absolute;left:0;top:1px;width:15px;height:15px;border-radius:5px;background:color-mix(in srgb,var(--sg-blue) 14%,transparent);border:1px solid color-mix(in srgb,var(--sg-blue) 40%,transparent)}' +
+    '.sync-vp-t::after{content:"";position:absolute;left:5px;top:3.5px;width:4px;height:7px;border:solid var(--sg-blue);border-width:0 2px 2px 0;transform:rotate(45deg)}' +
+    '.sync-vp-d{font-size:13px;line-height:1.55;color:var(--fg2)}' +
+    '.sync-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}' +
+    '.sync-cat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 8px 26px rgba(15,23,42,0.04)}' +
+    '.sync-cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}' +
+    '.sync-cat-label{font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--fg1);letter-spacing:-0.01em}' +
+    '.sync-cat-n{font-size:11px;font-weight:700;color:var(--fg3);background:var(--sg-beige);border:1px solid var(--sg-beige-line);border-radius:999px;padding:2px 8px}' +
+    '.sync-cat-desc{font-size:12.5px;line-height:1.5;color:var(--fg2);margin:0 0 13px}' +
+    '.sync-chips{display:flex;flex-wrap:wrap;gap:8px}' +
+    '.sync-chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--fg1);background:#FAFBFC;border:1px solid var(--border);border-radius:999px;padding:5px 12px 5px 6px;text-decoration:none;transition:border-color .14s ease, box-shadow .14s ease, transform .14s ease}' +
+    'a.sync-chip:hover{border-color:color-mix(in srgb,var(--sg-blue) 45%,var(--border));box-shadow:0 3px 10px rgba(20,28,46,0.08);transform:translateY(-1px)}' +
+    '.sync-chip-ic{display:inline-flex;width:18px;height:18px;flex:0 0 18px}' +
+    '.sync-chip-ic svg{width:18px;height:18px;display:block;border-radius:4px}' +
+    '.sync-chip-dot{width:6px;height:6px;border-radius:50%;background:#10b981;margin-left:1px}' +
+    '.sync-foot{text-align:center;font-size:13px;color:var(--fg2);line-height:1.6;max-width:600px;margin:26px auto 0}' +
+    '.sync-legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--fg3);margin-top:12px}' +
+    '.sync-legend-i{display:inline-flex;align-items:center;gap:6px}' +
+    '@media(max-width:900px){.sync-vps{grid-template-columns:1fr}.sync-grid{grid-template-columns:1fr 1fr}}' +
+    '@media(max-width:600px){.sync-grid{grid-template-columns:1fr}}' +
+    '</style>' +
+    '<div class="sync-head"><div class="tag">WORKS WITH YOUR STACK</div>' +
+    '<h2 class="h2">We adapt to your stack. No rip and replace.</h2>' +
+    '<p class="lead">SimpleGrid wraps around the tools you already run — your books, your sales channels, your spreadsheets. Where a connector doesn’t exist yet, we build it around your problem as part of setup. <a href="syncs.html" style="color:var(--sg-blue);font-weight:600;text-decoration:underline">See all syncs &rarr;</a></p></div>' +
+    '<div class="sync-vps">' + vpHtml + '</div>' +
+    '<div class="sync-grid">' + catHtml + '</div>' +
+    '<div class="sync-foot">Don’t see yours? Email <a href="' + mailto + '" style="color:var(--sg-blue);font-weight:600;text-decoration:underline">hello@simplegrid.ai</a> with a brief note on what you need — we’ll build it around your problem.</div>' +
+    '<div class="sync-legend"><span class="sync-legend-i"><span class="sync-chip-dot"></span>Live today</span><span class="sync-legend-i">Everything else built during your setup</span></div>';
   return (
-    <section className="section" id="integrations" style={{ minHeight: 'calc((100vh - 64px) / 2.6)', paddingTop: 40, paddingBottom: 40, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-      <style dangerouslySetInnerHTML={{__html:`
-        .int-marquee{overflow:hidden;padding:6px 0;mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);margin-top:24px}
-        .int-track{display:flex;gap:14px;width:max-content;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;will-change:transform}
-        .int-track:active{cursor:grabbing}
-        .int-marquee .int-card{flex:0 0 150px;position:relative}
-        .int-marquee .int-card-custom{border:1px dashed var(--sg-blue);background:rgba(74,123,247,0.04)}
-        .int-marquee .int-card-custom .int-name{color:var(--sg-blue)}
-        .int-badge{position:absolute;top:6px;right:6px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 6px;border-radius:999px;line-height:1.2}
-        .int-badge-live{background:rgba(16,185,129,0.12);color:#0f8f6a}
-        .int-badge-request{background:rgba(156,163,175,0.16);color:#5a6373}
-        @keyframes int-roll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 7px))}}
-        @media(prefers-reduced-motion:reduce){.int-track{animation:none}}
-        .int-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--fg2);margin-top:14px}
-        .int-legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
-      `}}/>
-      <div className="container">
-        <Reveal>
-          <div className="tag">SYNCS WITH</div>
-          <h2 className="h2">Works with what you already use.</h2>
-          <p className="lead">SimpleGrid connects to the tools you already run - accounting, spreadsheets, sales channels, messaging and shipping. New connectors are built as part of your SimpleGrid setup, included in the configuration. <a href="syncs.html" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'underline'}}>See all syncs &rarr;</a></p>
-        </Reveal>
-      </div>
-      <Reveal delay={200}>
-        <div className="int-marquee">
-          <div className="int-track" ref={intTrackRef}>
-            {doubled.map((ig,i) => (
-              <div key={i} className={'int-card' + (ig.custom ? ' int-card-custom' : '')} aria-hidden={i >= items.length ? 'true' : undefined} title={ig.name}>
-                <div className="int-icon" dangerouslySetInnerHTML={{__html: ig.svg}}></div>
-                <div className="int-name">{ig.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Reveal>
-      <div className="container">
-        <div style={{textAlign:'center',marginTop:24,fontSize:13,color:'var(--fg2)',lineHeight:1.6,maxWidth:560,margin:'24px auto 0'}}>
-          Don't see yours? Email <a href="mailto:hello@simplegrid.ai?subject=Integration%20request%20%E2%80%94%20SimpleGrid&body=Hi%20SimpleGrid%2C%0D%0A%0D%0AWe%27d%20like%20SimpleGrid%20to%20integrate%20with%3A%20%5Btool%20name%5D%0D%0A%0D%0ABrief%20note%20on%20what%20we%20need%3A%0D%0A%5BWhat%20it%20syncs%2C%20how%20often%2C%20any%20auth%20notes%5D%0D%0A%0D%0AThanks%21" style={{color:'var(--sg-blue)',fontWeight:600,textDecoration:'underline'}}>hello@simplegrid.ai</a> with a brief note on what you need - we'll add it.
-        </div>
-      </div>
+    <section className="section" id="integrations" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="container" dangerouslySetInnerHTML={{ __html: html }} />
     </section>
   );
 }
 window.Integrations = Integrations;
 
 function DataSecurity() {
-  const lock = '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>';
-  const db = '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/><path d="M5 12v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-6"/></svg>';
-  const shield = '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9v-5z"/><path d="M9 11.8l2 2 4-4"/></svg>';
-  const items = [
-    { badge: 'In place', icon: lock, t: 'Encryption & data export', p: 'AES-256 at rest, TLS 1.3 in transit. Export all your data on request - no clawback, no ransom.' },
-    { badge: 'Architecture', icon: db, t: 'Your own database', p: "Every client gets an isolated database. Shared platform, fully separate data - no one ever sees another's." },
-    { badge: 'On the roadmap', icon: shield, t: 'SOC 2 Type II · Q4 2026', p: 'An independent audit of our security controls, due Q4 2026. Ask for our current security questionnaire today.' },
-  ];
+  const chips = ['AES-256 at rest', 'TLS 1.3 in transit', 'SOC 2 Type II in progress'];
   return (
-    <section className="section section-alt" id="security" style={{ minHeight: 'calc((100vh - 64px) / 2.6)', paddingTop: 40, paddingBottom: 40, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <section className="section section-alt" id="security" style={{ paddingTop: 36, paddingBottom: 36 }}>
       <div className="container">
         <Reveal>
-          <div className="tag">DATA SECURITY</div>
-          <h2 className="h2">Your data stays yours.</h2>
+          <div className="ds-strip">
+            <div className="ds-copy">
+              <div className="tag">DATA SECURITY</div>
+              <p className="ds-line">Your data stays yours. Encrypted at rest (AES-256) and in transit (TLS 1.3). Your own isolated database. SOC 2 Type II in progress.</p>
+            </div>
+            <div className="ds-chips">
+              {chips.map((c, i) => <span key={i} className="ds-chip">{c}</span>)}
+            </div>
+          </div>
         </Reveal>
-        <div className="ds-grid">
-          {items.map((s, i) => (
-            <Reveal key={i} delay={i * 100}>
-              <div className="ds-card">
-                <span className="ds-ic" aria-hidden="true" dangerouslySetInnerHTML={{ __html: s.icon }} />
-                <span className="ds-badge">{s.badge}</span>
-                <h3 className="ds-t">{s.t}</h3>
-                <p className="ds-p">{s.p}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
       <style>{`
-        .ds-grid { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .ds-card { height: 100%; display: flex; flex-direction: column; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; box-shadow: 0 6px 22px rgba(15,23,42,0.05); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
-        .ds-card:hover { border-color: color-mix(in srgb, var(--sg-blue) 40%, var(--border)); box-shadow: 0 14px 36px rgba(15,23,42,0.10); transform: translateY(-3px); }
-        .ds-ic { width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--sg-blue) 10%, #fff); color: var(--sg-blue); }
-        .ds-badge { display: inline-block; margin: 16px 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-blue); background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); padding: 4px 11px; border-radius: 999px; }
-        .ds-t { font-family: var(--font-heading); font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); margin: 0 0 8px; }
-        .ds-p { font-size: 14px; line-height: 1.55; color: var(--fg2); margin: 0; }
-        @media (max-width: 820px) { .ds-grid { grid-template-columns: 1fr; } }
+        .ds-strip { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+        .ds-copy { max-width: 640px; }
+        .ds-line { margin: 0; font-size: 15px; line-height: 1.55; color: var(--fg2); }
+        .ds-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+        .ds-chip { font-size: 12px; font-weight: 600; color: var(--fg1); background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 13px; white-space: nowrap; }
+        @media (max-width: 700px) { .ds-strip { flex-direction: column; align-items: flex-start; } }
       `}</style>
     </section>
   );
 }
 window.DataSecurity = DataSecurity;
-
-function Architecture() {
-  const cols = [
-    { t: 'One permanent record', b: 'Every action recorded once. Can never be changed. Your audit trail isn\'t a feature - it\'s how the system is built.' },
-    { t: 'Configuration, not code', b: 'AI writes a configuration. Platform reads it and generates forms, workflows, rules, dashboards. Change config, system changes instantly.' },
-    { t: 'Every rule is a row', b: 'Approval above $10K? One row. QC before dispatch? One row. No code. No deployment cycle.' },
-  ];
-  return (
-    <section className="section section-dark">
-      <div className="container">
-        <Reveal>
-          <div className="tag" style={{color:'rgba(255,255,255,0.4)'}}>WHY WE CAN CONFIGURE IN DAYS</div>
-          <h2 className="h2">The architecture that lets us configure to your floor.</h2>
-        </Reveal>
-        <div className="arch-grid" style={{marginTop:28}}>
-          {cols.map((c,i) => (
-            <Reveal key={i} delay={i * 100}><div className="arch-col"><h3>{c.t}</h3><p>{c.b}</p></div></Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-window.Architecture = Architecture;
 
 function ComparisonTable() {
   const rows = [
@@ -468,23 +379,23 @@ function HomeFAQ() {
   const items = [
     {
       q: "What happens if it doesn't work after 30 days?",
-      a: "You walk. No invoice. No clawback. We've still done the configuration and the data work at our cost. You get a clean data export and your spreadsheets back. That's the point of the 30-day run - you only pay for something you've already watched work on your real floor."
+      a: "You walk. No invoice, no clawback, and you get a clean export of your data."
     },
     {
       q: "Do we have to migrate our data ourselves?",
-      a: "No - and your QuickBooks or Tally stays exactly where it is. SimpleGrid syncs to it. Whatever your floor runs on - spreadsheets, paper, group chats, an old ERP - we pull it in, clean it, structure it, and load it. Data work is included in the configuration, not a separate line item. You don't touch the data."
+      a: "No. Your books stay where they are, and we move in whatever you run on today - spreadsheets, group chats, an old ERP."
     },
     {
       q: "How much does it cost after the 30-day trial?",
-      a: <>Before you decide, we agree on a number together based on the size of your operation. After that, you pay one monthly subscription. That is the entire bill - no setup, no add-ons, no surprise line items, no per-seat fees. We are not free and not cheap - we configure at our cost because we're confident in what 30 days on your floor will show. Full details on the <a href="pricing.html" style={{color:'var(--sg-blue)',fontWeight:600}}>pricing page</a>.</>
+      a: <>We agree on a number before you decide, then it's one monthly subscription. No setup fees, no per-seat fees - full details on the <a href="pricing.html" style={{color:'var(--sg-blue)',fontWeight:600}}>pricing page</a>.</>
     },
     {
       q: "Who runs the deployment - sales reps, or actual engineers?",
-      a: "Senior engineers and deployment experts who've worked on factory floors. No SDRs, no sales reps, no chatbot, no offshored implementation partner you also have to pay. You work directly with the team that builds the system."
+      a: "Senior engineers and deployment experts. No sales reps, no chatbot, no implementation partner you also have to pay."
     },
     {
       q: "What's the catch?",
-      a: "We onboard selectively each quarter because we can only succeed when our customers succeed. If we don't think we can win for you, we'll say so on the call. We're built for mid-market manufacturers, roughly $5M-$250M in revenue - below that, spreadsheets or QuickBooks still win; above that, SAP or Oracle make more sense. That's the catch."
+      a: "No catch. SimpleGrid is built for CPG brands, manufacturers and inventory-led businesses doing $5M-$250M in revenue. If that is you, it will fit."
     },
   ];
   const [open, setOpen] = React.useState(0);
@@ -581,55 +492,50 @@ function WhyNotERP() {
 }
 window.WhyNotERP = WhyNotERP;
 
-// "Who it's for" - five persona cards, each deep-linking into the matching
-// block on solutions.html. Card style mirrors the FromTheField link cards.
+// "Who it's for" - five role cards in a clean grid, each deep-linking into
+// the matching role page. Same card language as solutions.html.
 function WhoItsFor() {
   const personas = [
-    { role: 'Owner / MD', desc: 'see before you commit', line: "See what you can build today, what you're short on, and what it'll cost, before you commit to a customer.", href: 'solutions-owner.html', cta: 'persona_owner' },
-    { role: 'COO / VP Operations', desc: 'one source of truth', line: "One system, every team, the same data. No one working off yesterday's numbers.", href: 'solutions-coo.html', cta: 'persona_coo' },
-    { role: 'CFO / Finance Head', desc: 'costing, your way', line: 'Your costing logic, your way. Not the way an enterprise template thinks you should run it.', href: 'solutions-cfo.html', cta: 'persona_cfo' },
-    { role: 'Plant Manager', desc: 'the floor, live', line: 'Your floor staff log it. Everyone sees it live. No lag, no leakage, no one working in the dark.', href: 'solutions-plant-manager.html', cta: 'persona_plant_manager' },
-    { role: 'Sales Head', desc: 'promise with proof', line: "Before you promise a customer a date, you'll know if production can actually hit it.", href: 'solutions-sales-head.html', cta: 'persona_sales_head' },
+    { n: '01', role: 'Owner / MD', pain: 'You chase three people to know what happened today.', outcome: 'See the whole business live, without chasing anyone.', href: 'solutions.html#roles', cta: 'persona_owner' },
+    { n: '02', role: 'COO / VP Operations', pain: 'Every team runs on its own version of the numbers.', outcome: 'One source of truth. No status meetings.', href: 'solutions.html#roles', cta: 'persona_coo' },
+    { n: '03', role: 'CFO / Finance Head', pain: 'Margin is a guess until the books close.', outcome: 'Costing follows your formulas, so margin is real.', href: 'solutions.html#roles', cta: 'persona_cfo' },
+    { n: '04', role: 'Plant Manager', pain: 'You are the status board for the whole floor.', outcome: 'The floor logs work as it happens. You get your day back.', href: 'solutions.html#roles', cta: 'persona_plant_manager' },
+    { n: '05', role: 'Sales Head', pain: 'You promise dates without seeing stock or capacity.', outcome: 'Promise dates you can actually hit.', href: 'solutions.html#roles', cta: 'persona_sales_head' },
   ];
-  const [active, setActive] = React.useState(0);
-  const p = personas[active];
   return (
-    <section className="section section-dark" id="who-its-for" style={{background:'#0B0F17'}}>
+    <section className="section section-roomy" id="who-its-for">
       <div className="container">
         <Reveal>
           <div className="tag">WHO IT'S FOR</div>
-          <h2 className="h2" style={{color:'#fff'}}>From the floor to the founder.</h2>
+          <h2 className="h2">Built for every seat at the table.</h2>
+          <p className="lead" style={{maxWidth:620}}>Five roles, one live system. Find your seat.</p>
         </Reveal>
-        <Reveal delay={100}>
-          <div className="rt-tabs" role="tablist" aria-label="Roles">
-            {personas.map((x,i) => (
-              <button key={i} className={'rt-tab' + (i === active ? ' active' : '')} role="tab" aria-selected={i === active} onClick={() => setActive(i)}>
-                <span className="rt-role">{x.role}</span>
-                <span className="rt-desc">{x.desc}</span>
-              </button>
-            ))}
-          </div>
-          <div className="rt-panel">
-            <p className="rt-stmt" key={active}>{p.line}</p>
-            <a className="rt-see" href={p.href} data-cta={p.cta}>See how &rarr;</a>
-          </div>
-        </Reveal>
+        <div className="wif-grid">
+          {personas.map((p, i) => (
+            <Reveal key={i} delay={i * 70}>
+              <div className="wif-card">
+                <div className="wif-num">{p.n}</div>
+                <h3 className="wif-role">{p.role}</h3>
+                <p className="wif-pain">{p.pain}</p>
+                <p className="wif-outcome">{p.outcome}</p>
+                <a className="wif-link" href={p.href} data-cta={p.cta}>See how &rarr;</a>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
       <style>{`
-        .rt-tabs { display: flex; flex-wrap: nowrap; gap: 48px; margin-top: 44px; border-bottom: 1px solid rgba(255,255,255,0.1); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-        .rt-tabs::-webkit-scrollbar { display: none; }
-        .rt-tab { flex: 0 0 auto; background: none; border: 0; padding: 0 0 18px; margin: 0; text-align: left; cursor: pointer; position: relative; font-family: inherit; }
-        .rt-role { display: block; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: #6B7280; transition: color 0.18s ease; white-space: nowrap; }
-        .rt-desc { display: block; font-size: 13px; font-weight: 500; color: #6B7280; opacity: 0.65; margin-top: 5px; white-space: nowrap; }
-        .rt-tab:hover .rt-role { color: rgba(255,255,255,0.75); }
-        .rt-tab.active .rt-role { color: #fff; }
-        .rt-tab.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: #fff; border-radius: 2px; }
-        .rt-panel { padding-top: 52px; max-width: 760px; }
-        .rt-stmt { margin: 0 0 30px; font-size: 30px; line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; color: rgba(255,255,255,0.85); animation: rt-fade 0.3s ease; }
-        .rt-see { color: #3B82F6; text-decoration: none; font-size: 16px; font-weight: 600; }
-        .rt-see:hover { text-decoration: underline; }
-        @keyframes rt-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-        @media (max-width: 700px) { .rt-tabs { gap: 28px; } .rt-stmt { font-size: 22px; } }
+        .wif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 44px; }
+        .wif-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; height: 100%; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        .wif-card:hover { box-shadow: 0 14px 36px rgba(15,20,25,0.09); transform: translateY(-2px); }
+        .wif-num { font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--sg-blue); letter-spacing: 0.08em; margin-bottom: 12px; }
+        .wif-role { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--fg1); letter-spacing: -0.01em; margin: 0 0 10px; }
+        .wif-pain { font-size: 14.5px; line-height: 1.55; color: var(--fg3); margin: 0 0 8px; }
+        .wif-outcome { font-size: 14.5px; line-height: 1.55; color: var(--fg1); font-weight: 600; margin: 0 0 16px; }
+        .wif-link { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--sg-blue); text-decoration: none; }
+        .wif-link:hover { text-decoration: underline; }
+        @media (max-width: 700px) { .wif-grid { grid-template-columns: 1fr; } }
+        @media (prefers-reduced-motion: reduce) { .wif-card { transition: none; } }
       `}</style>
     </section>
   );

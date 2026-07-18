@@ -1,263 +1,3 @@
-function BarsInfographic() {
-  const [animate, setAnimate] = React.useState(false);
-  const ref = React.useRef(null);
-  React.useEffect(() => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          setAnimate(true);
-          obs.disconnect();
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-
-  // Volume share: CMT 55k, Brand 25k, Trading is fabric (different unit) -> shown as separate bar in meters or rolls
-  const bars = [{
-    cls: 'cmt',
-    label: 'CMT (contract)',
-    value: 55000,
-    max: 60000,
-    display: '55,000',
-    unit: 'shirts/mo'
-  }, {
-    cls: 'brand',
-    label: 'Own brand',
-    value: 25000,
-    max: 60000,
-    display: '25,000',
-    unit: 'shirts/mo'
-  }, {
-    cls: 'trade',
-    label: 'Fabric trading',
-    value: 38000,
-    max: 60000,
-    display: '~40,000',
-    unit: 'meters/mo'
-  }];
-  const locs = [{
-    cls: 'a',
-    count: '20+',
-    h: 'Job worker units',
-    s: 'Cut · stitch · finish - across the city'
-  }, {
-    cls: 'b',
-    count: '10+',
-    h: 'Logistics warehouses',
-    s: 'Partner-operated, fabric & finished goods'
-  }, {
-    cls: 'c',
-    count: '2',
-    h: 'In-house operations',
-    s: 'Ironing & packaging only'
-  }];
-  const flow = [{
-    n: '01',
-    h: 'Fabric procured',
-    p: 'PO raised, stock checked across all 30+ locations first'
-  }, {
-    n: '02',
-    h: 'Issued to job worker',
-    p: 'Fabric + trims sent together, tracked per work order'
-  }, {
-    n: '03',
-    h: 'Production',
-    p: '20+ independent job workers, full cut-make-trim'
-  }, {
-    n: '04',
-    h: 'Returned & QC',
-    p: 'Reconciled against issued: yield, rejects, settlement'
-  }, {
-    n: '05',
-    h: 'Iron · pack · dispatch',
-    p: 'In-house finishing, packed to buyer specs'
-  }];
-  return /*#__PURE__*/React.createElement("div", {
-    className: "btn-info",
-    ref: ref
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "infographic-title"
-  }, "BY THE NUMBERS"), /*#__PURE__*/React.createElement("h2", {
-    className: "infographic-h"
-  }, "Three streams. One inventory. Thirty-plus locations."), /*#__PURE__*/React.createElement("div", {
-    className: "btn-info-grid"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "btn-bars"
-  }, /*#__PURE__*/React.createElement("h4", null, "Monthly throughput by stream"), bars.map(b => /*#__PURE__*/React.createElement("div", {
-    key: b.label,
-    className: "bar-row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "bar-label"
-  }, b.label), /*#__PURE__*/React.createElement("div", {
-    className: "bar-track"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: 'bar-fill ' + b.cls,
-    style: {
-      width: animate ? `${b.value / b.max * 100}%` : '0%'
-    }
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "bar-value"
-  }, b.display, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 10,
-      fontWeight: 500,
-      color: 'var(--fg3)',
-      letterSpacing: '0.05em'
-    }
-  }, b.unit)))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 18,
-      paddingTop: 14,
-      borderTop: '1px solid var(--border)',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'baseline'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: '0.12em',
-      color: 'var(--fg3)'
-    }
-  }, "TOTAL SHIRTS / MONTH"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 24,
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      letterSpacing: '-0.02em'
-    }
-  }, "80,000 - 100,000"))), /*#__PURE__*/React.createElement("div", {
-    className: "btn-locations"
-  }, /*#__PURE__*/React.createElement("h4", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 14,
-      fontWeight: 700,
-      margin: '0 0 4px'
-    }
-  }, "Where the inventory lives"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 12,
-      color: 'var(--fg3)',
-      margin: '0 0 8px',
-      lineHeight: 1.5
-    }
-  }, "Stock sits with partners and producers - not in a single factory. SimpleGrid tracks every roll, trim, and garment across all 30+ live locations."), locs.map(l => /*#__PURE__*/React.createElement("div", {
-    key: l.h,
-    className: "loc-row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: 'loc-icon ' + l.cls
-  }, l.count), /*#__PURE__*/React.createElement("div", {
-    className: "meta"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "h"
-  }, l.h), /*#__PURE__*/React.createElement("div", {
-    className: "s"
-  }, l.s)), /*#__PURE__*/React.createElement("div", {
-    className: "ct",
-    style: {
-      color: l.cls === 'a' ? 'var(--sg-blue)' : l.cls === 'b' ? 'var(--sg-gold)' : 'var(--sg-purple)'
-    }
-  }, "\u25CF"))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'baseline',
-      marginTop: 6,
-      paddingTop: 14,
-      borderTop: '1px solid var(--border)'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: '0.12em',
-      color: 'var(--fg3)'
-    }
-  }, "LIVE INVENTORY POINTS"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 24,
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      letterSpacing: '-0.02em'
-    }
-  }, "30+")))), /*#__PURE__*/React.createElement("div", {
-    className: "btn-flow"
-  }, flow.map(f => /*#__PURE__*/React.createElement("div", {
-    key: f.n,
-    className: "flow-cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "step-n"
-  }, f.n), /*#__PURE__*/React.createElement("div", {
-    className: "step-h"
-  }, f.h), /*#__PURE__*/React.createElement("div", {
-    className: "step-p"
-  }, f.p)))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 28,
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4,1fr)',
-      gap: 0,
-      border: '1px solid var(--sg-blue)',
-      borderRadius: 12,
-      overflow: 'hidden',
-      background: 'linear-gradient(135deg, rgba(74,123,247,0.04), rgba(74,123,247,0.08))'
-    }
-  }, [{
-    n: '24',
-    u: 'hours',
-    l: 'Working demo delivered'
-  }, {
-    n: '12',
-    u: 'days',
-    l: 'From kickoff to live'
-  }, {
-    n: '34',
-    u: '',
-    l: 'Domain entities tracked'
-  }, {
-    n: '44',
-    u: '',
-    l: 'Automatic triggers wired'
-  }].map((s, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      padding: '22px 20px',
-      borderRight: i < 3 ? '1px solid rgba(74,123,247,0.25)' : 'none',
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 38,
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      letterSpacing: '-0.02em',
-      lineHeight: 1
-    }
-  }, s.n, s.u && /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg3)',
-      fontWeight: 500,
-      marginLeft: 4
-    }
-  }, s.u)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: 'var(--fg2)',
-      marginTop: 8,
-      letterSpacing: '0.04em'
-    }
-  }, s.l)))));
-}
 function NetworkInfographic() {
   // Hub-and-spoke: central warehouse → 30 dots around (job workers + logistics warehouses)
   const cx = 400,
@@ -387,7 +127,7 @@ function NetworkInfographic() {
     fontWeight: "700",
     letterSpacing: "0.14em",
     fill: "var(--fg3)"
-  }, "30+ INVENTORY LOCATIONS \xB7 ALL VISIBLE IN ONE LEDGER"));
+  }, "30+ STOCK LOCATIONS \xB7 ALL IN ONE VIEW"));
 }
 function ApexCaseStudy() {
   const [showLogin, setShowLogin] = React.useState(false);
@@ -399,209 +139,80 @@ function ApexCaseStudy() {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "CASE STUDY \xB7 APPAREL MANUFACTURING"), /*#__PURE__*/React.createElement("h1", null, "An apparel manufacturer running 80,000-100,000 shirts a month - without a factory of his own."), /*#__PURE__*/React.createElement("p", {
-    className: "case-hook"
-  }, "Two years. Two failed ERPs. Over $100,000 spent with nothing to show for it. The company runs three interconnected businesses through 20+ job workers and stores inventory at its logistics partners' warehouses - 30+ locations in total. Every generic ERP assumed a factory model. This operation does not have a factory."), /*#__PURE__*/React.createElement("div", {
-    className: "confidential-banner"
-  }, "\uD83D\uDD12 Client name withheld for confidentiality. We refer to them as \"Apex Apparel\" throughout this case study."), /*#__PURE__*/React.createElement("div", {
+  }, "CASE STUDY - APPAREL MANUFACTURING"), /*#__PURE__*/React.createElement("h1", null, "An apparel maker went live in 12 days."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: 'var(--fg3)',
+      margin: '0 0 18px'
+    }
+  }, "Name withheld - reference on request."), /*#__PURE__*/React.createElement("div", {
     className: "case-strip"
   }, /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Monthly volume"), /*#__PURE__*/React.createElement("div", {
+  }, "To live"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "80k-100k shirts")), /*#__PURE__*/React.createElement("div", {
+  }, "12 days")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Operating model"), /*#__PURE__*/React.createElement("div", {
+  }, "Business lines, one system"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "100% job work")), /*#__PURE__*/React.createElement("div", {
+  }, "3")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Inventory locations"), /*#__PURE__*/React.createElement("div", {
+  }, "Stock locations, one view"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "30+ tracked live")), /*#__PURE__*/React.createElement("div", {
+  }, "30+")), /*#__PURE__*/React.createElement("div", {
     className: "case-strip-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label"
-  }, "Deployed in"), /*#__PURE__*/React.createElement("div", {
+  }, "Working demo"), /*#__PURE__*/React.createElement("div", {
     className: "value"
-  }, "12 days"))))), /*#__PURE__*/React.createElement("div", {
+  }, "72 hrs"))))), /*#__PURE__*/React.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "infographic"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "infographic-title"
-  }, "THE OPERATION AT A GLANCE"), /*#__PURE__*/React.createElement("h2", {
-    className: "infographic-h"
-  }, "A factoryless apparel business, by the numbers."), /*#__PURE__*/React.createElement("div", {
-    className: "stat-row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "stat-cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "stat-num"
-  }, "80-100", /*#__PURE__*/React.createElement("span", {
-    className: "unit"
-  }, "k")), /*#__PURE__*/React.createElement("div", {
-    className: "stat-label"
-  }, "Shirts manufactured per month, across all three streams")), /*#__PURE__*/React.createElement("div", {
-    className: "stat-cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "stat-num"
-  }, "3"), /*#__PURE__*/React.createElement("div", {
-    className: "stat-label"
-  }, "Business streams: CMT, own brand, fabric trading")), /*#__PURE__*/React.createElement("div", {
-    className: "stat-cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "stat-num"
-  }, "20", /*#__PURE__*/React.createElement("span", {
-    className: "unit"
-  }, "+")), /*#__PURE__*/React.createElement("div", {
-    className: "stat-label"
-  }, "Independent job workers across the city")), /*#__PURE__*/React.createElement("div", {
-    className: "stat-cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "stat-num"
-  }, "30", /*#__PURE__*/React.createElement("span", {
-    className: "unit"
-  }, "+")), /*#__PURE__*/React.createElement("div", {
-    className: "stat-label"
-  }, "Inventory locations including logistics partner warehouses"))), /*#__PURE__*/React.createElement(NetworkInfographic, null), /*#__PURE__*/React.createElement("div", {
-    className: "split-row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "split-card"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: '0.12em',
-      color: 'var(--sg-blue)'
-    }
-  }, "STREAM 01 \xB7 CMT"), /*#__PURE__*/React.createElement("div", {
-    className: "vol"
-  }, "~55,000 / mo"), /*#__PURE__*/React.createElement("h4", null, "Contract manufacturing"), /*#__PURE__*/React.createElement("p", null, "Cut-make-trim for external brand principals. Brand owns the IP, Apex owns the supply chain.")), /*#__PURE__*/React.createElement("div", {
-    className: "split-card alt"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: '0.12em',
-      color: 'var(--sg-purple)'
-    }
-  }, "STREAM 02 \xB7 OWN BRAND"), /*#__PURE__*/React.createElement("div", {
-    className: "vol"
-  }, "~25,000 / mo"), /*#__PURE__*/React.createElement("h4", null, "Own-label retail"), /*#__PURE__*/React.createElement("p", null, "Their own designs, manufactured through the same job worker network, sold to retail buyers.")), /*#__PURE__*/React.createElement("div", {
-    className: "split-card alt2"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: '0.12em',
-      color: 'var(--sg-gold)'
-    }
-  }, "STREAM 03 \xB7 TRADING"), /*#__PURE__*/React.createElement("div", {
-    className: "vol"
-  }, "High-volume fabric"), /*#__PURE__*/React.createElement("h4", null, "Fabric wholesale"), /*#__PURE__*/React.createElement("p", null, "Buying fabric in bulk and reselling to other manufacturers - a separate P&L on the same inventory ledger.")))), /*#__PURE__*/React.createElement(BarsInfographic, null), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag",
     style: {
       marginBottom: 10
     }
-  }, "THE OPERATION"), /*#__PURE__*/React.createElement("h2", null, "Three businesses, no factory of their own."), /*#__PURE__*/React.createElement("p", {
+  }, "BACKGROUND"), /*#__PURE__*/React.createElement("h2", null, "Three businesses. No factory."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 780
     }
-  }, "Apex runs ", /*#__PURE__*/React.createElement("strong", null, "three interconnected businesses"), " on one inventory ledger: contract manufacturing for external brands, their own retail label, and high-volume fabric trading."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      maxWidth: 780
-    }
-  }, "The production model is ", /*#__PURE__*/React.createElement("strong", null, "100% job work"), " - they don't cut and don't sew. Every garment is made at one of ", /*#__PURE__*/React.createElement("strong", null, "20+ job worker units"), " across the city; only ironing and packaging happen in-house."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      maxWidth: 780
-    }
-  }, "And the stock isn't theirs to hold. Fabric, trims and finished goods sit at their ", /*#__PURE__*/React.createElement("strong", null, "logistics partners' warehouses"), ". Add the job worker units, and at any moment Apex has inventory across ", /*#__PURE__*/React.createElement("strong", null, "30+ live locations"), ".")), /*#__PURE__*/React.createElement("section", {
+  }, "Apex Apparel makes 80,000 to 100,000 shirts a month without a factory of its own. Production runs through 20+ job workers across the city. Stock sits in partner warehouses. Three streams share one inventory: contract manufacturing, an own brand, and fabric trading."), /*#__PURE__*/React.createElement(NetworkInfographic, null)), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag",
     style: {
       marginBottom: 10
     }
-  }, "THE PROBLEM"), /*#__PURE__*/React.createElement("h2", null, "What was breaking"), /*#__PURE__*/React.createElement("p", {
+  }, "CHALLENGE"), /*#__PURE__*/React.createElement("h2", null, "Every ERP assumed a factory."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 780
     }
-  }, /*#__PURE__*/React.createElement("strong", null, "Two ERPs, two years, $100,000+ spent - and nothing that fit."), " Every off-the-shelf system assumed a factory. Apex doesn't have one, so each one broke on contact."), /*#__PURE__*/React.createElement("div", {
-    className: "prob-grid"
-  }, [{icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>', t:'Inventory scattered everywhere', d:'Fabric, trims and goods across 20+ workers and 10+ warehouses - finding an order meant five phone calls.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>', t:'A BOM per work order', d:'Buttons, tags, labels and thread - all bought per order, issued, and reconciled by hand.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>', t:'Three businesses, one sheet', d:'A single fabric roll might be a CMT order, own stock, or a trading sale - nobody could tell.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>', t:'Reconciliation ate the day', d:'20+ workers issued fabric and trims and returning garments - all matched by hand, for hours.'}, {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M7 14l3-3 3 2 4-5"/></svg>', t:'Profit by stream: a guess', d:'Was CMT earning, or quietly subsidized by fabric trading? No way to know.'}].map((p, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: "prob-card"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "prob-ic",
-    dangerouslySetInnerHTML: {
-      __html: p.icon
-    }
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "t"
-  }, p.t), /*#__PURE__*/React.createElement("p", {
-    className: "d"
-  }, p.d)))))), /*#__PURE__*/React.createElement("section", {
+  }, "Two rollouts failed over two years and cost more than $100,000. Finding one order meant five phone calls across 30+ locations. Job worker reconciliation ate hours every day. Nobody could say which of the three businesses made money.")), /*#__PURE__*/React.createElement("section", {
     className: "case-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag",
     style: {
       marginBottom: 10
     }
-  }, "THE BUILD"), /*#__PURE__*/React.createElement("h2", null, "What we built"), /*#__PURE__*/React.createElement("p", null, "We offered to build it free. The founder's first reaction was that we must be overconfident. Then we sent him a ", /*#__PURE__*/React.createElement("strong", null, "working demo in 24 hours"), ": 60-70% accurate to how his operation actually runs, including the distributed job worker network, secondary material procurement, and three separate business streams."), /*#__PURE__*/React.createElement("p", null, "Over the next 11 days we did 4 working sessions with the founder and his operations head. Walked through every edge case."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 'var(--fs-body)',
-      fontWeight: 700,
-      color: 'var(--sg-blue)',
-      margin: '24px 0'
-    }
-  }, "Day 12: live. For the first time, every order across 30+ locations sat in one view - and the founder could finally see which of his three businesses made money.")), /*#__PURE__*/React.createElement("section", {
-    className: "case-section"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      marginBottom: 10
-    }
-  }, "THE PROCESS"), /*#__PURE__*/React.createElement("h2", null, "The full CMT flow"), /*#__PURE__*/React.createElement("p", {
+  }, "WHAT WE BUILT"), /*#__PURE__*/React.createElement("h2", null, "Modeled as-is. Live on day 12."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 780
     }
-  }, "One contract order, end to end - from the brand's work order to job worker settlement."), /*#__PURE__*/React.createElement("div", {
-    className: "proc-pipe proc-anim"
-  }, [{t:'Work order received', d:'Specs in; SKUs auto-generated.'}, {t:'BOM & specs built', d:'Fabric, trims, labels, patterns linked.'}, {t:'Fabric & trims procured', d:'Stock checked first; only the shortfall ordered.'}, {t:'Received & inspected', d:'Checked for defects, tracked by roll.'}, {t:'Issued to job worker', d:'Fabric and trims go out together, tracked.'}, {t:'Produced & returned', d:'Returns reconciled against expected yield.'}, {t:'Ironed, packed, QC', d:'In-house finishing, pre-dispatch gate.'}, {t:'Dispatched & settled', d:'Invoice out; worker auto-settled.'}].map((s, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: "proc-node"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "proc-n",
-    style: {
-      animationDelay: i * 0.5 + 's'
-    }
-  }, String(i + 1).padStart(2, '0')), /*#__PURE__*/React.createElement("div", {
-    className: "t"
-  }, s.t), /*#__PURE__*/React.createElement("p", {
-    className: "d"
-  }, s.d))))), /*#__PURE__*/React.createElement("section", {
-    className: "case-section"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      marginBottom: 10
-    }
-  }, "GUARDRAILS"), /*#__PURE__*/React.createElement("h2", null, "Rules the system enforces"), /*#__PURE__*/React.createElement("p", {
+  }, "We sent a working demo in 72 hours. It already covered the job worker network and all three streams. Four working sessions later, the system went live on day 12. Every order and every roll of fabric now sits in one view."), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: 780
     }
-  }, "Not suggestions - the system physically blocks the action."), /*#__PURE__*/React.createElement("div", {
+  }, "Three of the rules it enforces:"), /*#__PURE__*/React.createElement("div", {
     className: "guard-grid"
-  }, ["Can't issue fabric without an active work order.", "Can't receive more goods than the work order quantity.", "Can't start production until every trim is issued.", "Can't settle a job worker until returns are reconciled.", "Defective fabric rolls are quarantined from production.", "Wrong packaging or label format blocks the dispatch."].map((r, i) => /*#__PURE__*/React.createElement("div", {
+  }, ["Can't issue fabric without an active work order.", "Can't settle a job worker until returns are reconciled.", "Wrong packaging or label format blocks the dispatch."].map((r, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: "guard-card"
   }, /*#__PURE__*/React.createElement("span", {
@@ -618,7 +229,7 @@ function ApexCaseStudy() {
     style: {
       marginBottom: 10
     }
-  }, "RESULTS"), /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("div", {
+  }, "IMPACT"), /*#__PURE__*/React.createElement("h2", null, "What changed"), /*#__PURE__*/React.createElement("div", {
     className: "res-rows"
   }, /*#__PURE__*/React.createElement("div", {
     className: "res-row",
@@ -637,7 +248,19 @@ function ApexCaseStudy() {
     style: {
       color: 'var(--sg-green)'
     }
-  }, "After SimpleGrid")), [{b:'Two failed ERPs in two years; $100K+ spent', a:'Live in 12 days, modeled to the operation'}, {b:'Finding an order meant 3-5 phone calls', a:'30+ locations in one live ledger'}, {b:'Three businesses tangled in one spreadsheet', a:'Three clean P&Ls: CMT, own brand, trading'}, {b:'Job worker reconciliation ate hours a day', a:'Issued vs. returned reconciled automatically'}, {b:'Trims tracked by hand, per order', a:'Every button, tag and label on its own BOM'}, {b:'Profit by stream was guesswork', a:'Margin visible per stream and per work order'}].map((r, i) => /*#__PURE__*/React.createElement("div", {
+  }, "After SimpleGrid")), [{
+    b: 'The first ERP they selected and decided to work with never reached the floor; $100K+ spent over two years',
+    a: 'Live in 12 days, modeled to the operation'
+  }, {
+    b: 'Finding an order meant 3-5 phone calls',
+    a: '30+ stock locations in one live view'
+  }, {
+    b: 'Three businesses tangled in one spreadsheet',
+    a: 'Three clean P&Ls: CMT, own brand, trading'
+  }, {
+    b: 'Job worker reconciliation ate hours a day',
+    a: 'Issued vs. returned reconciled automatically'
+  }].map((r, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: "res-row"
   }, /*#__PURE__*/React.createElement("div", {
@@ -652,7 +275,7 @@ function ApexCaseStudy() {
   }, r.a))))), /*#__PURE__*/React.createElement("div", {
     className: "testimonial-block"
   }, /*#__PURE__*/React.createElement(RevealQuote, {
-    text: "\"When they said they'd deploy for free, I honestly thought it was overconfidence. Then I got a working demo in 24 hours - and it was 60-70% accurate to how we actually operate. That's when I knew these guys understood manufacturing. No other vendor we've worked with has shown me a working system before asking me to sign a check.\""
+    text: `"They sent a working demo in 72 hours and it was 60-70% right already. No other vendor showed us a working system before asking for money."`
   }), /*#__PURE__*/React.createElement("div", {
     className: "attr"
   }, "- Founder, Apex Apparel ", /*#__PURE__*/React.createElement("span", {
@@ -660,19 +283,20 @@ function ApexCaseStudy() {
       color: 'var(--fg3)',
       fontWeight: 400
     }
-  }, "(name withheld for confidentiality)"))), /*#__PURE__*/React.createElement("div", {
+  }, "(name withheld)"))), /*#__PURE__*/React.createElement("div", {
     className: "case-bottom-line"
   }, /*#__PURE__*/React.createElement("div", {
     className: "big"
-  }, "Two years and two failed ERPs - then live in 12 days. 30+ locations in one ledger. Three businesses, three clear P&Ls."), /*#__PURE__*/React.createElement("p", null, "Two years and two failed ERPs. Then 12 days with SimpleGrid. Inventory visible across 20+ job worker facilities and 10+ logistics partner warehouses, all in one live ledger."), /*#__PURE__*/React.createElement("a", {
+  }, "The first ERP they selected never went live. SimpleGrid did, in 12 days. 30+ locations in one view."), /*#__PURE__*/React.createElement("a", {
     href: "https://cal.com/simplegrid-ai",
     target: "_blank",
     rel: "noopener noreferrer",
     className: "btn btn-primary",
+    "data-cta": "case_apex_body",
     style: {
       marginTop: 16
     }
-  }, "Book a demo - See how we'd model your operations"), /*#__PURE__*/React.createElement("div", {
+  }, "Book a demo"), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 20,
       fontSize: 14
@@ -684,10 +308,10 @@ function ApexCaseStudy() {
       fontWeight: 600,
       textDecoration: 'none'
     }
-  }, "See a furniture manufacturer's deployment - live in 21 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, {
-    title: "Want a result like Apex?",
-    body: "We'll configure SimpleGrid to how your floor actually runs, put it in your hands, and you run it live for 30 days. You pay only when it works.",
-    note: "Limited slots each quarter. We onboard selectively."
+  }, "Next: Elite Arts & Crafts, live in 21 days \u2192"))))), /*#__PURE__*/React.createElement(FinalCTA, {
+    title: "Want a result like this?",
+    body: "We model SimpleGrid around how your operation already runs. Run it live for 30 days, free. Pay only when it works.",
+    note: "$0 up front. Working demo in 72 hours."
   }), showLogin && /*#__PURE__*/React.createElement(LoginModal, {
     onClose: () => setShowLogin(false)
   }));

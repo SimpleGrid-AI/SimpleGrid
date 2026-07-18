@@ -1,20 +1,12 @@
 // SimpleGrid analytics init - shared across every page.
 //
-// Consent gate:
-//   PostHog, GA4, and GTM only load AFTER the visitor has clicked "Accept"
-//   on the cookie banner (which sets localStorage.sg_consent = 'accepted').
-//   They do NOT load on first mouse-move / scroll / touch - that pattern
-//   fires analytics before the visitor sees a banner, which fails
-//   GDPR-strict regulators (UK ICO has cracked down on implicit consent).
-//   CCPA is fine either way; this is the safer common denominator for
-//   US + EU/UK + India.
+// No consent banner. PostHog, GA4, and GTM load for every visitor on page
+// load (US default: no cookie banner required). The only exception is a
+// manual opt-out: if localStorage.sg_ph_opt_out === '1', nothing loads.
 //
 // On every page load, this script:
-//   1. Checks localStorage.sg_consent.
-//      - 'accepted' → loads PostHog + GA4 + GTM immediately.
-//      - 'declined' or sg_ph_opt_out=1 → loads nothing.
-//      - unset → waits for `sg:consent-accepted` window event from cookie-consent.js.
-//   2. Also exposes window.sgPostHogOptOut(true|false) for manual opt-in/out.
+//   1. Loads PostHog + GA4 + GTM immediately, unless sg_ph_opt_out=1.
+//   2. Exposes window.sgPostHogOptOut(true|false) for manual opt-in/out.
 //
 // Why GTM in addition to GA4:
 //   GTM lets us add ad-platform conversion pixels (Google Ads, Meta, LinkedIn)
@@ -76,12 +68,11 @@
     catch (e) { return ''; }
   }
 
-  // Explicit consent gate. No analytics fires until the user clicks Accept.
-  if (consentStatus() === 'accepted') {
-    load();
-  } else {
-    window.addEventListener('sg:consent-accepted', load, { once: true });
-  }
+  // Analytics loads for every visitor on page load. No consent banner.
+  // (US default: no banner required. Manual opt-out still honored via the
+  // sg_ph_opt_out flag checked inside load() and sgPostHogOptOut() below.)
+  consentStatus(); // referenced for backward compat; no longer gates loading
+  load();
 
   // Console helper for users to opt out / opt back in manually.
   window.sgPostHogOptOut = function (out) {

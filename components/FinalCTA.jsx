@@ -6,8 +6,8 @@
 // tailored per page via props; the defaults are the canonical home copy.
 function FinalCTA({
   title = 'Try it on. Then decide.',
-  body = "We configure SimpleGrid to your floor at our cost - your jobs, your routing steps, your QC checkpoints, your costing logic. Run it live for 30 days with your real team and your real orders. You pay only when it works.",
-  note = 'Limited slots each quarter. We onboard selectively - only when we know we can win for you.',
+  body = "We set SimpleGrid up around your operation at our cost - your products, your process, your costing formulas. Run it live for 30 days, free. You pay only when it works.",
+  note = 'Working demo in 72 hours. Live in 3 weeks or less. $0 up front.',
   ctaLabel = 'Book a demo',
 } = {}) {
   return (

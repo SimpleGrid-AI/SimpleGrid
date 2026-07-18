@@ -7,9 +7,9 @@ const ROLES = [{
   datePosted: '2026-06-15',
   comp: 'Stipend - discussed on the call',
   summary: 'Be the engineer on an AI-native ERP that compresses 18-month implementations into days. Your code ships to real clients in week one, working directly with the founder - no layers.',
-  about: ['We do not ship predefined modules. We map how a business runs and configure the system around it - approvals, handoffs, quality checks - all as configuration, not a development cycle. Under the hood: a schema engine, an immutable append-only event ledger as the single source of truth, and an AI layer that turns messy PDFs and plain-language instructions into structured events. The protocol is strict - AI interprets, the system validates, a human confirms, the event commits. AI never writes directly to the ledger.', 'Our first live client is a 500+ employee furniture exporter across nearly 1 million sq ft, drowning in 550 Excel files and WhatsApp coordination. SAP quoted 18 months. We deployed in 21 days, and more manufacturers are in the pipeline.', 'The founder built and scaled a manufacturing business to 200 employees and $30M+ in revenue, and managed $5M in debt as a solo founder, all repaid. He is building the system he wished existed, and you work directly with him.'],
-  what: ['Ship production code to live customers from week one - features, fixes, and integrations.', 'Work on the core: the schema engine, the append-only event ledger, and the AI layer that turns PDFs and plain language into structured events.', 'Configure the system around how each business actually runs, as configuration rather than a development cycle.', 'Sit on real deployments with the founder and senior engineers, and turn floor problems into working software.'],
-  you: ['In your final or pre-final year.', 'You have built something real - a hackathon project, a side project with actual users, or an open-source contribution - and can explain the decisions behind it.', 'You write TypeScript or Python and can pick up the other quickly.', 'You understand databases beyond SELECT and know what an index does. Bonus if you have thought about event sourcing, append-only logs, or JSONB.', 'You are curious about systems and want to understand schema-driven architecture, not glaze over it.'],
+  about: ['We do not ship predefined modules. We map how a business runs and configure the system around it - approvals, handoffs, quality checks - all as configuration, not a development cycle. Under the hood: a schema engine, a permanent record of every action as the single source of truth, and an AI layer that turns messy PDFs and plain-language instructions into structured records. The protocol is strict - AI interprets, the system validates, a human confirms, the record commits. AI never writes directly to the record.', 'Our first live client, Elite Arts & Crafts, is a furniture and home decor exporter with 600+ people across nearly 1 million sq ft, previously drowning in 550 Excel files and WhatsApp coordination. SAP quoted 18 months. We deployed in 21 days, and more brands and manufacturers are in the pipeline.', 'The founder built and scaled a manufacturing business to 200 employees and $30M+ in revenue, and managed $5M in debt as a solo founder, all repaid. He is building the system he wished existed, and you work directly with him.'],
+  what: ['Ship production code to live customers from week one - features, fixes, and integrations.', 'Work on the core: the schema engine, the permanent action record, and the AI layer that turns PDFs and plain language into structured records.', 'Configure the system around how each business actually runs, as configuration rather than a development cycle.', 'Sit on real deployments with the founder and senior engineers, and turn floor problems into working software.'],
+  you: ['In your final or pre-final year.', 'You have built something real - a hackathon project, a side project with actual users, or an open-source contribution - and can explain the decisions behind it.', 'You write TypeScript or Python and can pick up the other quickly.', 'You understand databases beyond SELECT and know what an index does. Bonus if you have thought about audit logs, versioned data, or JSONB.', 'You are curious about systems and want to understand architecture that configures itself from a schema, not glaze over it.'],
   not: ['A tutorial-grade internship. You ship real code to real factories, not toy projects.', 'A role behind layers. You work directly with the founder and own what you build.'],
   process: ['Send your resume and a link to something you have built - a GitHub repo or a deployed app.', 'Complete the assessment at https://bit.ly/3Ncb7HJ.', 'Email hello@simplegrid.ai. If your work is interesting, you hear from the founder within 48 hours.']
 }, {
@@ -22,7 +22,7 @@ const ROLES = [{
   comp: 'Stipend - discussed on the call',
   summary: 'Make something powerful feel genuinely simple. SimpleGrid is an AI-native ERP that adapts to how a factory actually works, goes live in days, and is simple enough to use by typing in plain language. The hard part is the simplicity, and that is where you come in.',
   about: ['Most factories run on rigid, decades-old software so slow and confusing that staff abandon it for Excel and WhatsApp. We build the opposite: software that adapts to how a business actually works, goes live in days instead of months, and is simple enough to use by just typing in plain language.', 'The hard part is not the technology. It is making something powerful feel genuinely simple, and that is where you come in. Your designs ship to real customers, with direct mentorship from the founder and engineering team and no layers in between.'],
-  what: ['Design intuitive interfaces for product screens, dashboards, forms, and data-heavy workflows that solve real customer problems.', 'Map user journeys for operators, supervisors, and business owners, and translate them into seamless product experiences.', 'Turn complex business processes such as inventory management, costing, and approval workflows into clear wireframes, user flows, and interactive prototypes.', 'Join user research and usability testing, identify friction points, and improve the experience through iterative design.', 'Contribute to the design system - components, interaction patterns, and visual standards that keep the product consistent.', 'Collaborate with product managers, developers, and stakeholders to turn requirements into user-centered design.', 'Support the end-to-end design process, from research and ideation to prototyping, testing, and implementation.'],
+  what: ['Design intuitive interfaces for product screens, dashboards, forms, and data-heavy workflows that solve real customer problems.', 'Map user journeys for operators, supervisors, and business owners, and translate them into clear product experiences.', 'Turn complex business processes such as inventory management, costing, and approval workflows into clear wireframes, user flows, and interactive prototypes.', 'Join user research and usability testing, identify friction points, and improve the experience through iterative design.', 'Contribute to the design system - components, interaction patterns, and visual standards that keep the product consistent.', 'Collaborate with product managers, developers, and stakeholders to turn requirements into user-centered design.', 'Support the end-to-end design process, from research and ideation to prototyping, testing, and implementation.'],
   you: ['A portfolio (student, personal, or professional) showing clean, usable interface work. How you think matters more than how long your resume is.', 'Working knowledge of Figma: wireframes, prototypes, and components.', 'A strong eye for simplicity - you notice clutter and know how to fix it.', 'Genuine curiosity about how real businesses run, not just making things look good.', 'A self-starter who can take a rough problem, ask sharp questions, and move without hand-holding.', 'Bonus: front-end basics (HTML/CSS), or experience designing data-heavy or B2B products.'],
   not: ['A pixel-pushing role. You design how the product actually works, not just how it looks.', 'A remote internship. This is on-site in Bangalore, in the room with the team.'],
   process: ['Apply through our form: https://tally.so/r/1ARqeM.', 'Have your portfolio and a short note on why this interests you ready.', 'We review applications on a rolling basis and onboard selectively.']
@@ -43,33 +43,27 @@ const ROLES = [{
 }];
 function HiringHero() {
   return /*#__PURE__*/React.createElement("section", {
-    className: "section section-dark",
+    className: "section",
     style: {
       paddingTop: 80,
-      paddingBottom: 48,
-      background: 'var(--sg-black)'
+      paddingBottom: 48
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      color: 'rgba(255,255,255,0.45)'
-    }
+    className: "tag"
   }, "HIRING"), /*#__PURE__*/React.createElement("h1", {
     className: "h1",
     style: {
-      color: '#fff',
       maxWidth: 880
     }
   }, "Build the operations layer factories actually use."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
-      color: 'rgba(255,255,255,0.7)',
       maxWidth: 760,
       marginTop: 16
     }
-  }, "Lean team. Senior engineers on every customer. We're building the Factory Ops Cloud - the operations layer that runs factory floors still managed on spreadsheets and WhatsApp. We win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved."), /*#__PURE__*/React.createElement("div", {
+  }, "Lean team. Senior engineers on every customer. We're building the Adaptive ERP - the operations cloud for businesses still run on spreadsheets and WhatsApp. We win only when the customer wins. We're hiring engineers, operators, and go-to-market hires who want to ship a system that gets used on the floor, not bought and shelved."), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28,
       display: 'flex',

@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-<title>Solutions | SimpleGrid - Operations Layer for Your Floor</title>
-<meta name="description" content="SimpleGrid is the Factory Ops Cloud - live floor visibility, production planning and costing on top of the QuickBooks or Tally you already use.">
+<title>Why SimpleGrid | SimpleGrid Adaptive ERP</title>
+<meta name="description" content="Five reasons big ERPs fail - too complex, guesswork costing, no visibility, spreadsheet planning, and paying before it works - and exactly how SimpleGrid fixes each.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#3461E0">
 <meta name="robots" content="index, follow">
@@ -22,14 +22,14 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://simplegrid.ai/solutions.html">
-<meta property="og:title" content="Solutions | SimpleGrid - Operations Layer for Your Floor">
-<meta property="og:description" content="Live floor visibility, production planning, one connected system, and costing modeled on your operation - on top of QuickBooks or Tally.">
+<meta property="og:title" content="Why SimpleGrid | SimpleGrid Adaptive ERP">
+<meta property="og:description" content="Five reasons big ERPs fail - and exactly how SimpleGrid fixes each. Built for you, costing your way, real-time visibility, one live plan, and pay only when it works.">
 <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
-<meta property="og:image:alt" content="SimpleGrid solutions for manufacturers">
+<meta property="og:image:alt" content="Why SimpleGrid - the five ERP failures we fixed">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:title" content="Solutions | SimpleGrid">
-<meta name="twitter:description" content="Live floor visibility, production planning, one connected system, and costing modeled on your operation - on top of QuickBooks or Tally.">
+<meta name="twitter:title" content="Why SimpleGrid | SimpleGrid Adaptive ERP">
+<meta name="twitter:description" content="Five reasons big ERPs fail - and exactly how SimpleGrid fixes each.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
 
 <script type="application/ld+json">
@@ -40,133 +40,182 @@
       "@type": "WebPage",
       "@id": "https://simplegrid.ai/solutions.html#webpage",
       "url": "https://simplegrid.ai/solutions.html",
-      "name": "Solutions | SimpleGrid",
+      "name": "Why SimpleGrid | SimpleGrid Adaptive ERP",
       "isPartOf": { "@id": "https://simplegrid.ai/#website" },
       "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "description": "SimpleGrid is the Factory Ops Cloud - live floor visibility, production planning and costing on top of the QuickBooks or Tally you already use.",
+      "description": "Five reasons big ERPs fail - and exactly how SimpleGrid fixes each.",
       "inLanguage": "en"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://simplegrid.ai/solutions.html" }
+        { "@type": "ListItem", "position": 2, "name": "Why SimpleGrid", "item": "https://simplegrid.ai/solutions.html" }
       ]
     }
   ]
 }
 </script>
 
-<!-- Solutions page styles. The section ids (visibility / planning / connected /
-     costing / adoption / evolve / roles) are what the "Solutions" nav dropdown
-     jumps to, so keep those in sync with components/site-nav.js. The role hub
-     and role pages share solutions-role.css. -->
+<!-- Why SimpleGrid page. Each section answers one of the five homepage pains,
+     so the section ids (built-for-you / costing / visibility / planning /
+     pay-before) are what the homepage pains AND the "Why SimpleGrid" nav
+     dropdown jump to - keep them in sync with components/HomeTop.jsx and
+     components/site-nav.js. The role hub (#roles) shares solutions-role.css. -->
 <style>
-.sol-hero { max-width: 1080px; margin: 0 auto; padding: 76px 32px 8px; }
-.sol-eyebrow { display: inline-block; position: relative; overflow: hidden; isolation: isolate; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 0 0 14px; padding: 7px 15px; border-radius: 10px; background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); box-shadow: 0 2px 18px color-mix(in srgb, var(--sg-blue) 15%, transparent); }
-.sol-eyebrow::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(115deg, transparent 36%, color-mix(in srgb, var(--sg-blue) 34%, transparent) 50%, transparent 64%); background-size: 250% 250%; animation: sgTagGlow 5s ease-in-out infinite; pointer-events: none; }
-@media (prefers-reduced-motion: reduce) { .sol-eyebrow::before { animation: none; } }
-.sol-hero h1 { font-family: var(--font-heading); font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--fg1); margin: 0 0 18px; max-width: 780px; }
-.sol-hero .lead { font-size: 19px; line-height: 1.55; color: var(--fg2); margin: 0 0 26px; max-width: 700px; }
+/* --- Hero -------------------------------------------------------------- */
+.sol-hero { max-width: 1080px; margin: 0 auto; padding: 40px 32px; width: 100%; }
+.sol-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 0 0 14px; padding: 7px 15px; border-radius: 10px; background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); }
+.sol-hero h1 { font-family: var(--font-heading); font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--fg1); margin: 0 0 18px; max-width: 820px; }
+.sol-hero .lead { font-size: 19px; line-height: 1.55; color: var(--fg2); margin: 0 0 28px; max-width: 720px; }
 .sol-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--sg-blue); color: #fff; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
 .sol-cta:hover { filter: brightness(0.95); }
-.sol-cta-ghost { display: inline-block; margin-left: 18px; color: var(--fg2); text-decoration: none; font-weight: 600; font-size: 15px; }
-.sol-cta-ghost:hover { color: var(--sg-blue); }
+/* Quiet in-page anchor row under the hero button. */
+.sol-hero-anchors { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 30px 0 0; font-size: 14.5px; color: var(--fg3); }
+.sol-hero-anchors a { color: var(--fg2); text-decoration: none; font-weight: 600; }
+.sol-hero-anchors a:hover { color: var(--sg-blue); }
 
-/* Sticky role-selector dropdown (mirrors the compatibility page's jump bar);
-   each option navigates straight to that role's deep-dive page. */
-.sol-jump { position: sticky; top: 52px; z-index: 30; margin-top: 26px; background: rgba(255,255,255,0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.sol-jump-inner { max-width: 1080px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.sol-jump label { font-size: 13px; font-weight: 600; color: var(--fg2); }
-.sol-jump select { font: inherit; font-size: 15px; color: var(--fg1); background-color: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 11px 40px 11px 15px; cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5L6 8l3.5-3.5' stroke='%23475569' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; min-width: 260px; }
-.sol-jump select:hover { border-color: var(--sg-blue); }
-.sol-jump select:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
+/* --- Pain -> fix sections ---------------------------------------------- */
+.cap { border-top: 1px solid var(--border); scroll-margin-top: 84px; min-height: 72vh; min-height: 72dvh; display: flex; align-items: center; padding: 84px 0; }
+.cap.tint { background: rgba(246, 243, 236, 0.55); border-top-color: var(--sg-beige-line); }
+.cap-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; width: 100%; }
+.cap h2 { font-family: var(--font-heading); font-size: clamp(26px, 3.4vw, 36px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: var(--fg1); margin: 6px 0 12px; }
+.cap-pain { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0; max-width: 520px; }
 
-/* Interactive highlight metrics: three tabs -> an animated KPI panel. */
-.sol-metrics { max-width: 1080px; margin: 56px auto; padding: 0 32px; }
-.sol-metrics-head { max-width: 700px; margin: 0 0 24px; }
-.sol-metrics-head h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: var(--fg1); margin: 12px 0 8px; }
-.sol-metrics-head p { font-size: 16.5px; line-height: 1.55; color: var(--fg2); margin: 0; }
-.sol-metrics-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
-.sol-metric-tab { text-align: left; background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--border); border-radius: 16px; padding: 18px 20px; cursor: pointer; font: inherit; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
-.sol-metric-tab:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(15,23,42,0.08); }
-.sol-metric-tab:focus-visible { outline: 2px solid var(--sg-blue); outline-offset: 2px; }
-.sol-metric-tab.is-active { border-color: color-mix(in srgb, var(--sg-blue) 35%, var(--border)); border-top-color: var(--sg-blue); box-shadow: 0 14px 34px rgba(37,71,184,0.13); }
-.m-tab-k { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-heading); font-size: 21px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); }
-.sol-metric-tab.is-active .m-tab-k { color: var(--sg-blue); }
-.m-tab-k::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--border); transition: background .15s ease; }
-.sol-metric-tab.is-active .m-tab-k::after { background: var(--sg-blue); }
-.m-tab-d { display: block; font-size: 14px; line-height: 1.5; color: var(--fg2); margin-top: 6px; }
-.sol-metrics-panel { position: relative; background: linear-gradient(150deg, #F4F8FF 0%, #E8F0FE 100%); border: 1px solid #DCE8F8; border-radius: 20px; padding: 40px; overflow: hidden; }
-.sol-metric-pane { display: none; }
-.sol-metric-pane.is-active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; animation: solFade .45s ease; }
-@keyframes solFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-.kpi-v { display: block; font-family: var(--font-heading); font-size: clamp(34px, 4.4vw, 50px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--sg-blue); }
-.kpi-l { display: block; margin-top: 10px; font-size: 14.5px; line-height: 1.5; color: var(--fg2); }
+/* Two-column split: message + fix on one side, graphic on the other. */
+.cap-split { display: grid; grid-template-columns: 1.02fr 1fr; gap: 56px; align-items: center; }
+.cap-flip .cap-body { order: 2; }
+.cap-flip .cap-visual { order: 1; }
 
-/* Pain-point -> solution blocks */
-.sol-block { border-top: 1px solid var(--border); }
-.sol-block.tint { background: #F7F8FA; border-top-color: var(--border); }
-.sol-inner { max-width: 1080px; margin: 0 auto; padding: 78px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; scroll-margin-top: 84px; }
-/* Alternating sides: tinted blocks put the answer card on the left, narrative on the right. */
-.sol-block.tint .sol-pain { order: 2; }
-.sol-block.tint .sol-answer { order: 1; }
-.sol-block h2 { font-family: var(--font-heading); font-size: clamp(24px, 3vw, 31px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; color: var(--fg1); margin: 0 0 14px; }
-.sol-lead { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0 0 20px; }
-.sol-ask { border-left: 3px solid var(--border); padding-left: 16px; }
-.sol-ask-h { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); margin: 0 0 12px; }
-.sol-ask ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.sol-ask li { font-size: 14.5px; line-height: 1.5; color: var(--fg2); font-style: italic; }
-.sol-inline { display: inline-block; margin-top: 18px; font-size: 14.5px; font-weight: 600; color: var(--sg-blue); text-decoration: none; }
+.cap-points { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 13px; max-width: 520px; }
+.cap-points li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; color: var(--fg2); }
+.cap-points li strong { color: var(--fg1); font-weight: 700; }
+.cap-points li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 5px; background: color-mix(in srgb, var(--sg-blue) 12%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 38%, transparent); }
+.cap-points li::after { content: ""; position: absolute; left: 5.5px; top: 5.5px; width: 4px; height: 8px; border: solid var(--sg-blue); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+
+.sol-inline { display: inline-block; margin-top: 24px; font-size: 14.5px; font-weight: 600; color: var(--sg-blue); text-decoration: none; }
 .sol-inline:hover { text-decoration: underline; }
 
-.sol-answer { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 30px 32px; box-shadow: 0 6px 22px rgba(15,23,42,0.05); transition: transform .18s ease, box-shadow .18s ease; }
-.sol-answer:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(15,23,42,0.09); }
-.sol-answer-h { font-family: var(--font-heading); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--sg-blue); margin: 0 0 18px; text-transform: uppercase; }
-.sol-check { list-style: none; margin: 0; padding: 0; display: grid; gap: 15px; }
-.sol-check li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; color: var(--fg1); }
-.sol-check li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--sg-blue); font-weight: 800; font-size: 15px; }
+/* Graphic frame. */
+.cap-visual { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; box-shadow: 0 18px 48px rgba(20,28,46,0.08); }
+.cap-visual svg { display: block; width: 100%; height: auto; }
+.cap-visual.plain { background: transparent; border: 0; box-shadow: none; padding: 0; }
+.cap-fig-cap { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--fg3); margin: 0 0 10px; }
 
-/* Proof / case-study strip */
-.sol-proof { max-width: 1080px; margin: 0 auto; padding: 64px 32px; scroll-margin-top: 84px; }
-.sol-proof .sol-eyebrow { color: var(--sg-blue); }
+/* Before/after two-up (pain 1). */
+.cap-compare { display: grid; gap: 16px; }
+.cap-compare figure { margin: 0; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; box-shadow: 0 10px 30px rgba(20,28,46,0.06); }
+.cap-compare figcaption { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin: 0 0 8px; }
+.cap-compare .is-bad figcaption { color: #B4232F; }
+.cap-compare .is-good figcaption { color: #137A43; }
+.cap-compare svg { display: block; width: 100%; height: auto; }
+
+/* --- Role hub (#roles): centered with a screen of room on this page. ---- */
+.role-hub { min-height: 72vh; min-height: 72dvh; display: flex; flex-direction: column; justify-content: center; }
+.role-hub-head .sol-eyebrow { font-size: 12px; color: var(--sg-blue); margin: 0 0 14px; }
+
+/* --- Proof / case-study strip ------------------------------------------- */
+.sol-proof { max-width: 1080px; margin: 0 auto; padding: 64px 32px; width: 100%; scroll-margin-top: 84px; }
 .sol-proof h2 { font-family: var(--font-heading); font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg1); margin: 0 0 10px; }
 .sol-proof .sub { font-size: 16.5px; line-height: 1.6; color: var(--fg2); margin: 0 0 28px; max-width: 640px; }
 .sol-proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .sol-proof-card { display: block; border: 1px solid var(--border); border-radius: 16px; padding: 26px; background: #fff; text-decoration: none; box-shadow: 0 10px 30px rgba(15,23,42,0.05); transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
 .sol-proof-card:hover { border-color: var(--sg-blue); transform: translateY(-3px); box-shadow: 0 20px 44px rgba(15,23,42,0.10); }
-.sol-proof-card .name { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--fg1); margin: 0 0 8px; }
-.sol-proof-card .desc { font-size: 14.5px; line-height: 1.55; color: var(--fg2); margin: 0; }
 .sol-proof-card .go { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--sg-blue); }
 .sol-proof-card .sol-quote { font-family: var(--font-heading); font-size: 18px; font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; color: var(--fg1); margin: 0 0 14px; }
 .sol-proof-card .sol-attr { font-size: 13.5px; font-weight: 600; color: var(--fg3); margin: 0; }
 .sol-proof-all { display: inline-block; margin-top: 24px; font-size: 15px; font-weight: 600; color: var(--fg1); text-decoration: none; }
 .sol-proof-all:hover { color: var(--sg-blue); }
 
-/* Final CTA - gradient panel, a themed bookend with the role hub. */
-.sol-final { padding: 0 32px; }
-.sol-final-inner { position: relative; overflow: hidden; max-width: 1080px; margin: 64px auto; padding: 66px 40px; text-align: center; border-radius: 28px; background: linear-gradient(135deg, #1B347E 0%, #3461E0 54%, #5C8AF5 100%); box-shadow: 0 34px 80px rgba(37,71,184,0.30); }
-.sol-final-inner::before { content: ""; position: absolute; top: -42%; right: -6%; width: 460px; height: 460px; background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0) 62%); pointer-events: none; }
-.sol-final h2 { position: relative; font-family: var(--font-heading); font-size: clamp(26px, 3.6vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: #fff; margin: 0 0 12px; }
-.sol-final p { position: relative; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.86); margin: 0 0 26px; }
-.sol-final .sol-cta { position: relative; background: #fff; color: var(--sg-blue); }
-.sol-final .sol-cta:hover { filter: none; background: rgba(255,255,255,0.9); }
+/* Rich two-up proof cards (photo + live production-flow) - mirrors the home case-studies design. */
+.sgp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 6px; }
+.sgp-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 10px 30px rgba(15,23,42,0.05); transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
+.sgp-card:hover { border-color: color-mix(in srgb, var(--sg-blue) 40%, var(--border)); transform: translateY(-3px); box-shadow: 0 20px 44px rgba(15,23,42,0.10); }
+.sgp-media { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }
+.sgp-media-dark { background: #0E1116; }
+.sgp-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; }
+.sgp-shot { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.65); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 9px; border-radius: 5px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.sgp-body { display: flex; flex-direction: column; flex: 1 1 auto; padding: 22px 24px 24px; }
+.sgp-title { font-family: var(--font-heading); font-size: 21px; font-weight: 700; letter-spacing: -0.015em; color: var(--fg1); margin: 0 0 8px; }
+.sgp-desc { font-size: 14px; line-height: 1.55; color: var(--fg2); margin: 0 0 12px; }
+.sgp-metric { font-size: 14px; font-weight: 700; color: var(--sg-blue); margin: 0 0 14px; }
+.sgp-quote { font-family: var(--font-heading); font-size: 15.5px; font-weight: 600; line-height: 1.45; color: var(--fg1); margin: 0 0 6px; }
+.sgp-attr { font-size: 13px; font-weight: 600; color: var(--fg3); margin: 0 0 16px; }
+.sgp-go { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--sg-blue); }
+@media (max-width: 820px) { .sgp-grid { grid-template-columns: 1fr; } }
 
-@media (max-width: 820px) {
-  .sol-metrics-tabs { grid-template-columns: 1fr; }
-  .sol-metric-pane.is-active { grid-template-columns: 1fr; gap: 22px; }
-  .sol-metrics-panel { padding: 28px 22px; }
-  .sol-inner { grid-template-columns: 1fr; gap: 30px; padding: 48px 24px; }
-  .sol-block.tint .sol-pain, .sol-block.tint .sol-answer { order: 0; }
+@media (max-width: 860px) {
+  .cap { min-height: 0; padding: 60px 0; }
+  .cap-inner { padding: 0 24px; }
+  .cap-split { grid-template-columns: 1fr; gap: 30px; }
+  .cap-flip .cap-body, .cap-flip .cap-visual { order: 0; }
+  .role-hub { min-height: 0; }
   .sol-proof-grid { grid-template-columns: 1fr; }
-  .sol-hero { padding-top: 56px; }
-  .sol-cta-ghost { display: block; margin-left: 0; margin-top: 14px; }
-  .sol-final-inner { padding: 48px 24px; }
+  .sol-hero { padding: 40px 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sol-metric-tab, .sol-answer, .sol-proof-card { transition: none; }
-  .sol-metric-pane.is-active { animation: none; }
+  .sol-proof-card { transition: none; }
 }
+
+/* --- Costing section (moved from the Platform page) -------------------- */
+#costing { scroll-margin-top: 84px; }
+.costing-story { margin-top: 40px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+.costing-story-copy h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--fg1); letter-spacing: -0.01em; margin: 0 0 14px; }
+.costing-story-copy p { font-size: 15px; line-height: 1.65; color: var(--fg2); margin: 0 0 14px; }
+.costing-hl { color: var(--sg-blue); font-weight: 600; }
+.fb-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; box-shadow: 0 18px 48px rgba(20,28,46,0.08); }
+.fb-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+.fb-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg3); }
+.fb-open { font-size: 12px; font-weight: 700; color: var(--sg-green-dark); display: inline-flex; align-items: center; gap: 6px; }
+.fb-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sg-green); display: inline-block; }
+.fb-expr { display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: 13px; color: var(--fg1); flex-wrap: wrap; }
+.fb-lhs { white-space: nowrap; }
+.fb-frac { display: inline-flex; flex-direction: column; gap: 6px; }
+.fb-num { padding-bottom: 8px; border-bottom: 1.5px solid var(--fg1); }
+.fb-den { color: var(--fg2); }
+.fb-chip { display: inline-block; background: color-mix(in srgb, var(--sg-blue) 8%, #fff); border: 1px solid color-mix(in srgb, var(--sg-blue) 30%, transparent); color: var(--sg-blue); border-radius: 7px; padding: 3px 9px; font-size: 12px; font-weight: 600; }
+.fb-note { margin: 16px 0 14px; padding-top: 14px; border-top: 1px dashed var(--border); font-family: var(--font-mono); font-size: 11.5px; color: var(--fg3); }
+.fb-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.fb-table th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.fb-table td { padding: 9px 10px; color: var(--fg2); border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent); }
+.fb-table td:last-child { color: var(--fg1); font-weight: 600; text-align: right; }
+.fb-table th:last-child { text-align: right; }
+@media (max-width: 900px) { .costing-story { grid-template-columns: 1fr; gap: 28px; } }
+.costing-grid { margin-top: 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.costing-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 26px; }
+.costing-t { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--fg1); letter-spacing: -0.01em; margin-bottom: 8px; }
+.costing-p { font-size: 14px; color: var(--fg2); line-height: 1.6; margin: 0; }
+@media (max-width: 860px) { .costing-grid { grid-template-columns: 1fr; } }
+
+/* --- Role peek modal: opened from the role hub cards (#roles) instead of
+       navigating to the full role page. Problem + before/after fix, in place. */
+.role-hub-card[data-role] { cursor: pointer; }
+button.role-hub-card { width: 100%; text-align: left; font: inherit; color: inherit; -webkit-appearance: none; appearance: none; }
+.rolemodal-overlay { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(15,20,32,0.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); opacity: 0; transition: opacity .2s ease; }
+.rolemodal-overlay.is-open { display: flex; opacity: 1; }
+.rolemodal { position: relative; width: 100%; max-width: 560px; max-height: 88vh; overflow-y: auto; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 30px 32px 28px; box-shadow: 0 30px 80px rgba(15,23,42,0.28); transform: translateY(12px) scale(.985); transition: transform .2s ease; }
+.rolemodal-overlay.is-open .rolemodal { transform: none; }
+.rolemodal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 9px; border: 1px solid var(--border); background: #fff; color: var(--fg2); font-size: 20px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.rolemodal-close:hover { color: var(--sg-blue); border-color: var(--sg-blue); }
+.rolemodal-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sg-blue); background: color-mix(in srgb, var(--sg-blue) 9%, transparent); border: 1px solid color-mix(in srgb, var(--sg-blue) 20%, transparent); padding: 6px 13px; border-radius: 9px; margin: 0 0 14px; }
+.rolemodal h3 { font-family: var(--font-heading); font-size: clamp(21px, 3vw, 26px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; color: var(--fg1); margin: 0 0 12px; padding-right: 34px; }
+.rolemodal-problem { font-size: 15.5px; line-height: 1.6; color: var(--fg2); margin: 0 0 22px; }
+.rolemodal-shift-head { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 2px; }
+.rolemodal-shift-head span { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.rolemodal-shift-head .a { color: var(--sg-red-dark); }
+.rolemodal-shift-head .b { color: var(--sg-blue); }
+.rolemodal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: baseline; padding: 11px 0; }
+.rolemodal-row + .rolemodal-row { border-top: 1px solid var(--sg-beige-line); }
+.rolemodal-a { font-size: 15px; line-height: 1.35; color: var(--fg3); }
+.rolemodal-b { font-size: 15px; line-height: 1.35; font-weight: 600; color: var(--fg1); display: flex; gap: 8px; align-items: baseline; }
+.rolemodal-b::before { content: "\2713"; color: var(--sg-blue); font-size: 0.85em; flex: 0 0 auto; }
+.rolemodal-foot { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 24px; }
+.rolemodal-foot a.primary { display: inline-flex; align-items: center; gap: 8px; background: var(--sg-blue); color: #fff; padding: 11px 20px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14.5px; }
+.rolemodal-foot a.primary:hover { filter: brightness(0.95); }
+.rolemodal-foot a.ghost { font-size: 14px; font-weight: 600; color: var(--fg2); text-decoration: none; }
+.rolemodal-foot a.ghost:hover { color: var(--sg-blue); }
+@media (max-width: 480px) { .rolemodal { padding: 24px 20px; } }
+@media (prefers-reduced-motion: reduce) { .rolemodal-overlay, .rolemodal { transition: none; } }
 </style>
 
 <!-- Analytics (PostHog + GA4) - deferred to first user interaction. -->
@@ -179,258 +228,394 @@
 <div id="sg-nav" data-page="solutions"></div>
 
 <main id="main">
-  <section class="sol-hero">
-    <p class="sol-eyebrow">Solutions</p>
-    <h1>Built for how your floor actually runs.</h1>
-    <p class="lead">Most ERPs make you bend your operation to fit their modules. SimpleGrid is the operations layer that runs on top of the QuickBooks or Tally you already use - modeled on your real floor, your stages, your BOMs, your costing, your people. Not another ERP to migrate to.</p>
-    <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-cta" data-cta="solutions_hero">Book a demo</a>
-    <a href="#proof" class="sol-cta-ghost">See real factories &rarr;</a>
+  <!-- Hero -->
+  <section class="sol-hero section-screen">
+    <div>
+      <p class="sol-eyebrow">Why SimpleGrid</p>
+      <h1>Five reasons ERPs fail. Five things we fixed.</h1>
+      <p class="lead">Every problem that makes a big ERP painful - and exactly how SimpleGrid removes it. The same five we name on the homepage, each with its fix.</p>
+      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-cta" data-cta="solutions_hero">Book a demo</a>
+      <p class="sol-hero-anchors">
+        <a href="#built-for-you">Start reading &darr;</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="#roles">By role &darr;</a>
+      </p>
+    </div>
   </section>
 
-  <!-- Sticky role selector: jump straight to any designation's deep-dive page. -->
-  <div class="sol-jump">
-    <div class="sol-jump-inner">
-      <label for="sol-role-select">Go to your role</label>
-      <select id="sol-role-select" aria-label="Go to a role page">
-        <option value="">Choose your role</option>
-        <option value="solutions-owner.html">Owner / MD</option>
-        <option value="solutions-coo.html">COO / Ops head</option>
-        <option value="solutions-cfo.html">CFO / Finance</option>
-        <option value="solutions-sales-head.html">Sales head</option>
-        <option value="solutions-plant-manager.html">Plant manager</option>
-      </select>
+  <!-- ===== Pain 1: Too complex to use -> Built for you ===== -->
+  <section id="built-for-you" class="cap">
+    <div class="cap-inner cap-split">
+      <div class="cap-body">
+        <p class="sol-eyebrow">Too complex to use</p>
+        <h2>Built for you, not a thousand others</h2>
+        <p class="cap-pain">Big ERPs are built for a thousand companies. You get a hundred screens your team never uses.</p>
+        <ul class="cap-points">
+          <li><strong>Every screen is yours.</strong> Your stages, your words, your rules.</li>
+          <li><strong>One system.</strong> Sales, stock, production and costing on the same live data.</li>
+          <li><strong>No field walls.</strong> Your team enters only what actually matters.</li>
+        </ul>
+        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-inline" data-cta="solutions_builtforyou_demo">Book a demo &rarr;</a>
+      </div>
+      <div class="cap-visual plain">
+        <div class="cap-compare">
+          <figure class="is-bad">
+            <figcaption>A legacy ERP screen</figcaption>
+            <svg viewBox="0 0 400 200" role="img" aria-label="A crowded legacy ERP screen: seven tabs and a wall of required fields">
+              <rect x="10" y="10" width="380" height="180" rx="6" fill="#fff" stroke="#E5E8ED" stroke-width="1.5"/>
+              <rect x="14" y="14" width="48" height="20" rx="3" fill="#F59E0B22" stroke="#E5E8ED" stroke-width="0.8"/><text x="38" y="27" font-size="10" fill="#B45309" text-anchor="middle" font-weight="600">Orders</text>
+              <rect x="66" y="14" width="48" height="20" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="90" y="27" font-size="10" fill="var(--fg2)" text-anchor="middle" font-weight="600">Items</text>
+              <rect x="118" y="14" width="48" height="20" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="142" y="27" font-size="10" fill="var(--fg2)" text-anchor="middle" font-weight="600">Stock</text>
+              <rect x="170" y="14" width="48" height="20" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="194" y="27" font-size="10" fill="var(--fg2)" text-anchor="middle" font-weight="600">Vendor</text>
+              <rect x="222" y="14" width="48" height="20" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="246" y="27" font-size="10" fill="var(--fg2)" text-anchor="middle" font-weight="600">QC</text>
+              <rect x="274" y="14" width="48" height="20" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="298" y="27" font-size="10" fill="var(--fg2)" text-anchor="middle" font-weight="600">Tax</text>
+              <rect x="326" y="14" width="48" height="20" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="350" y="27" font-size="10" fill="var(--fg2)" text-anchor="middle" font-weight="600">GL</text>
+              <text x="20" y="52" font-size="10" fill="var(--fg3)" font-weight="600">REQUIRED FIELDS *</text>
+              <rect x="20" y="60" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><rect x="205" y="60" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="26" y="71" font-size="9" fill="#9CA3AF">GL Acct *</text><text x="211" y="71" font-size="9" fill="#9CA3AF">HTS Code *</text>
+              <rect x="20" y="82" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><rect x="205" y="82" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="26" y="93" font-size="9" fill="#9CA3AF">Cost Center *</text><text x="211" y="93" font-size="9" fill="#9CA3AF">Tax Class *</text>
+              <rect x="20" y="104" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><rect x="205" y="104" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="26" y="115" font-size="9" fill="#9CA3AF">Profit Center *</text><text x="211" y="115" font-size="9" fill="#9CA3AF">Doc Ref *</text>
+              <rect x="20" y="126" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><rect x="205" y="126" width="175" height="16" rx="3" fill="#FAFBFC" stroke="#E5E8ED" stroke-width="0.8"/><text x="26" y="137" font-size="9" fill="#9CA3AF">UOM *</text><text x="211" y="137" font-size="9" fill="#9CA3AF">Ledger *</text>
+              <rect x="20" y="154" width="80" height="22" rx="4" fill="#3461E0"/><text x="60" y="168" font-size="10" fill="#fff" text-anchor="middle" font-weight="600">Submit</text>
+              <rect x="108" y="154" width="80" height="22" rx="4" fill="#fff" stroke="#E5E8ED"/><text x="148" y="168" font-size="10" fill="var(--fg2)" text-anchor="middle" font-weight="600">Cancel</text>
+              <text x="372" y="172" font-size="24" text-anchor="end" style="animation:sg-conf 1.5s ease-in-out infinite">&#128565;</text>
+              <style>@keyframes sg-conf{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}</style>
+            </svg>
+          </figure>
+          <figure class="is-good">
+            <figcaption>The same job in SimpleGrid</figcaption>
+            <svg viewBox="0 0 400 200" role="img" aria-label="A clean SimpleGrid screen: one clear entry and one button">
+              <rect x="10" y="10" width="380" height="180" rx="8" fill="#fff" stroke="#E5E8ED" stroke-width="1.5"/>
+              <rect x="11" y="11" width="378" height="28" rx="7" fill="#F1F7F3"/>
+              <text x="24" y="30" font-size="12.5" fill="#137A43" font-weight="700">Log production</text>
+              <circle cx="346" cy="25" r="3.5" fill="#22C55E"><animate attributeName="opacity" values="1;0.35;1" dur="1.8s" repeatCount="indefinite"/></circle>
+              <text x="355" y="29" font-size="9.5" fill="#137A43" font-weight="600">Live</text>
+              <text x="24" y="68" font-size="10" fill="var(--fg3)" font-weight="700" letter-spacing="0.06em">WHAT DID YOU MAKE?</text>
+              <rect x="24" y="76" width="352" height="32" rx="7" fill="#FAFBFC" stroke="#E5E8ED"/>
+              <text x="36" y="96" font-size="12.5" fill="var(--fg1)" font-weight="600">Dining table DT-6</text>
+              <text x="364" y="96" font-size="12.5" fill="var(--fg2)" text-anchor="end">&#215; 12</text>
+              <rect x="24" y="126" width="150" height="36" rx="9" fill="#3461E0"/>
+              <text x="99" y="149" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">Log it &#10003;</text>
+              <text x="188" y="141" font-size="10.5" fill="var(--fg3)">One field. One tap.</text>
+              <text x="188" y="155" font-size="10.5" fill="var(--fg3)">No required-field wall.</text>
+            </svg>
+          </figure>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Built for your role: vibrant hub linking to the five role deep-dives.
-       Moved to the top of the page. Each card opens a personalised page
-       (solutions-*.html) styled by solutions-role.css (.role-hub*). Keep the
-       #roles id in sync with site-nav.js. -->
+  <!-- ===== Costing: custom formula builder (moved from the Platform page) ===== -->
+  <section id="costing" class="section section-alt section-roomy">
+    <div class="container">
+      <div class="tag">COSTING</div>
+      <h2 class="h2 ink">Costing that is actually yours.</h2>
+      <p class="lead" style="max-width:820px">Most systems force one costing method on everyone. SimpleGrid has a custom formula builder, so every cost is calculated your way - the most accurate method there is.</p>
+      <div class="costing-story">
+        <div class="costing-story-copy">
+          <h3>Costing that thinks like you do.</h3>
+          <p>Your <strong>$10,000/month glue bill</strong> isn't worth tracking per product - but a flat percentage is wrong too (a stool isn't a dining table).</p>
+          <p>In SimpleGrid, split it your way: <span class="costing-hl">components &times; length &times; width</span>. Every product gets its true share. No one measures a drop.</p>
+          <p style="margin-bottom:0">Any bill, any driver - hours, wood content, surface area, machine time. Built in minutes.</p>
+        </div>
+        <div class="fb-card" role="img" aria-label="SimpleGrid custom formula builder: a surface-area driver allocating a glue bill across products">
+          <div class="fb-head">
+            <span class="fb-label">Share expression</span>
+            <span class="fb-open">Surface-area driver <span class="fb-dot" aria-hidden="true"></span> ACTIVE</span>
+          </div>
+          <div class="fb-expr">
+            <span class="fb-lhs">Share<sub>SKU</sub> =</span>
+            <span class="fb-frac">
+              <span class="fb-num"><span class="fb-chip">Components</span> &times; <span class="fb-chip">Length</span> &times; <span class="fb-chip">Width</span></span>
+              <span class="fb-den">&Sigma; ( <span class="fb-chip">Components</span> &times; <span class="fb-chip">Length</span> &times; <span class="fb-chip">Width</span> ) across all SKUs</span>
+            </span>
+          </div>
+          <div class="fb-note">Allocation<sub>SKU</sub> = Pool &times; Share<sub>SKU</sub> &middot; pool: Titebond, $10,000</div>
+          <table class="fb-table">
+            <thead><tr><th>SKU</th><th>Driver</th><th>Share</th><th>Allocated</th></tr></thead>
+            <tbody>
+              <tr><td>Dining table DT-6</td><td>30.0</td><td>35.7%</td><td>$3,570</td></tr>
+              <tr><td>Bookshelf BS-2</td><td>24.0</td><td>28.6%</td><td>$2,860</td></tr>
+              <tr><td>Side table ST-4</td><td>12.0</td><td>14.3%</td><td>$1,430</td></tr>
+              <tr><td>Stool SL-1</td><td>9.0</td><td>10.7%</td><td>$1,070</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="costing-grid">
+        <div class="costing-card"><div class="costing-t">Your formulas</div><p class="costing-p">Cost by product, batch, channel or contractor - whatever basis you use today.</p></div>
+        <div class="costing-card"><div class="costing-t">Everything counted</div><p class="costing-p">Materials, job work, wastage, freight - landed cost included.</p></div>
+        <div class="costing-card"><div class="costing-t">Margin, live</div><p class="costing-p">Profit by order, SKU and customer, in real time.</p></div>
+      </div>
+      <div style="margin-top:28px">
+        <a href="pricing.html" data-cta="costing_pricing" style="font-size:14px;font-weight:600;color:var(--sg-blue);text-decoration:none">See pricing &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pain 3: No one can see what's happening -> Real-time visibility ===== -->
+  <section id="visibility" class="cap">
+    <div class="cap-inner cap-split">
+      <div class="cap-body">
+        <p class="sol-eyebrow">No one can see what's happening</p>
+        <h2>See it as it runs</h2>
+        <p class="cap-pain">The numbers sit with one person. And they're already a day old.</p>
+        <ul class="cap-points">
+          <li><strong>A simple app.</strong> If your team can text, they can use it.</li>
+          <li><strong>Logged at the source.</strong> Every entry has a name and a time.</li>
+          <li><strong>Always current.</strong> No end-of-day catch-up - the numbers are already in.</li>
+        </ul>
+        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-inline" data-cta="solutions_visibility_demo">Book a demo &rarr;</a>
+      </div>
+      <div class="cap-visual">
+        <p class="cap-fig-cap">Live floor numbers, on any phone</p>
+        <svg viewBox="0 0 400 200" role="img" aria-label="Live shop-floor numbers on a phone, updated as work is logged">
+          <text x="20" y="42" font-size="12.5" fill="var(--fg1)" font-weight="700">Live, on any phone</text>
+          <text x="20" y="61" font-size="10.5" fill="var(--fg3)">Updated the moment work is logged</text>
+          <text x="20" y="96" font-size="10.5" fill="var(--fg2)">Made today</text><text x="180" y="96" font-size="12" fill="var(--fg1)" font-weight="700" text-anchor="end">128</text>
+          <text x="20" y="120" font-size="10.5" fill="var(--fg2)">In stock</text><text x="180" y="120" font-size="12" fill="var(--fg1)" font-weight="700" text-anchor="end">1,240</text>
+          <text x="20" y="144" font-size="10.5" fill="var(--fg2)">Open orders</text><text x="180" y="144" font-size="12" fill="var(--fg1)" font-weight="700" text-anchor="end">36</text>
+          <rect x="250" y="20" width="110" height="160" rx="16" fill="#fff" stroke="#E5E8ED" stroke-width="1.5"/>
+          <rect x="250" y="20" width="110" height="30" rx="16" fill="#F1F7F3"/>
+          <rect x="250" y="42" width="110" height="8" fill="#F1F7F3"/>
+          <circle cx="268" cy="35" r="3.5" fill="#22C55E"><animate attributeName="opacity" values="1;0.35;1" dur="1.8s" repeatCount="indefinite"/></circle>
+          <text x="278" y="39" font-size="9.5" fill="#137A43" font-weight="700">Live floor</text>
+          <rect x="262" y="60" width="86" height="24" rx="6" fill="#FAFBFC" stroke="#EEF0F3"/>
+          <text x="270" y="75" font-size="9" fill="var(--fg2)">Made today</text><text x="340" y="75" font-size="10" fill="#3461E0" font-weight="700" text-anchor="end">128</text>
+          <rect x="262" y="90" width="86" height="24" rx="6" fill="#FAFBFC" stroke="#EEF0F3"/>
+          <text x="270" y="105" font-size="9" fill="var(--fg2)">In stock</text><text x="340" y="105" font-size="10" fill="#3461E0" font-weight="700" text-anchor="end">1,240</text>
+          <rect x="262" y="120" width="86" height="42" rx="6" fill="#EEF4FF" stroke="#D7E2FB"/>
+          <text x="270" y="135" font-size="8.5" fill="var(--fg3)">@Ravi logged</text>
+          <text x="270" y="149" font-size="9" fill="var(--fg1)" font-weight="700">40 units &#183; DT-6 &#10003;</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pain 4: Planning lives in spreadsheets -> One live plan ===== -->
+  <section id="planning" class="cap tint">
+    <div class="cap-inner cap-split cap-flip">
+      <div class="cap-body">
+        <p class="sol-eyebrow">Planning lives in spreadsheets</p>
+        <h2>One live plan, not five</h2>
+        <p class="cap-pain">Five versions of the plan. Nobody knows which one is real.</p>
+        <ul class="cap-points">
+          <li><strong>One live plan.</strong> Stock, orders and capacity in one place.</li>
+          <li><strong>You stay in charge.</strong> The system proposes, you approve.</li>
+          <li><strong>Dates you can keep.</strong> Backed by real stock and capacity.</li>
+        </ul>
+        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-inline" data-cta="solutions_planning_demo">Book a demo &rarr;</a>
+      </div>
+      <div class="cap-visual">
+        <p class="cap-fig-cap">Five spreadsheets become one source</p>
+        <svg viewBox="0 0 400 200" role="img" aria-label="Five conflicting spreadsheets replaced by one live plan">
+          <rect x="34" y="52" width="96" height="120" rx="6" fill="#fff" stroke="#E5E8ED" transform="rotate(-9 82 112)"/>
+          <rect x="30" y="46" width="96" height="120" rx="6" fill="#fff" stroke="#E5E8ED" transform="rotate(-4 78 106)"/>
+          <rect x="26" y="40" width="96" height="120" rx="6" fill="#fff" stroke="#E5E8ED" transform="rotate(3 74 100)"/>
+          <rect x="22" y="36" width="96" height="120" rx="6" fill="#fff" stroke="#D7DBE2"/>
+          <line x1="30" y1="52" x2="110" y2="52" stroke="#EDEFF2"/><line x1="30" y1="66" x2="110" y2="66" stroke="#EDEFF2"/><line x1="30" y1="80" x2="110" y2="80" stroke="#EDEFF2"/><line x1="30" y1="94" x2="110" y2="94" stroke="#EDEFF2"/><line x1="30" y1="108" x2="110" y2="108" stroke="#EDEFF2"/><line x1="30" y1="122" x2="110" y2="122" stroke="#EDEFF2"/><line x1="30" y1="136" x2="110" y2="136" stroke="#EDEFF2"/>
+          <circle cx="70" cy="96" r="15" fill="#fff" stroke="#B4232F" stroke-width="1.5"/><text x="70" y="103" font-size="18" fill="#B4232F" text-anchor="middle" font-weight="700">?</text>
+          <text x="70" y="188" font-size="10" fill="#B4232F" text-anchor="middle" font-weight="700">5 versions</text>
+          <path d="M150 100 h58" stroke="var(--fg3)" stroke-width="2" stroke-dasharray="4 4"/><polygon points="216,100 208,95 208,105" fill="var(--fg3)"/>
+          <rect x="238" y="40" width="140" height="120" rx="10" fill="#fff" stroke="#3461E0" stroke-width="1.5"/>
+          <rect x="238" y="40" width="140" height="26" rx="10" fill="#EEF4FF"/><rect x="238" y="56" width="140" height="10" fill="#EEF4FF"/>
+          <text x="252" y="58" font-size="11" fill="#3461E0" font-weight="700">Live plan</text>
+          <circle cx="360" cy="53" r="8" fill="#22A85A"/><path d="M356 53 l3 3 5 -6" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="252" y="90" font-size="10" fill="var(--fg2)">Stock</text><text x="364" y="90" font-size="10" fill="var(--fg1)" font-weight="700" text-anchor="end">1,240</text>
+          <text x="252" y="112" font-size="10" fill="var(--fg2)">Orders</text><text x="364" y="112" font-size="10" fill="var(--fg1)" font-weight="700" text-anchor="end">36</text>
+          <text x="252" y="134" font-size="10" fill="var(--fg2)">Capacity</text><text x="364" y="134" font-size="10" fill="var(--fg1)" font-weight="700" text-anchor="end">82%</text>
+          <text x="252" y="153" font-size="9" fill="var(--fg3)">One source. Everyone sees it.</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pain 5: Paying before it works -> See it run first ===== -->
+  <section id="pay-before" class="cap">
+    <div class="cap-inner cap-split">
+      <div class="cap-body">
+        <p class="sol-eyebrow">Paying before it works</p>
+        <h2>See it run before you pay</h2>
+        <p class="cap-pain">Legacy ERPs charge you up front to find out if they fit - six figures sunk before you see it work.</p>
+        <ul class="cap-points">
+          <li><strong>$0 up front.</strong> Nothing to pay to get started.</li>
+          <li><strong>30-day trial on your real operation.</strong> Running on your own data.</li>
+          <li><strong>Pay only when it works.</strong> Keep it if it earns its place.</li>
+        </ul>
+        <a href="pricing.html" class="sol-inline" data-cta="solutions_paybefore_pricing">See pricing &rarr;</a>
+      </div>
+      <div class="cap-visual">
+        <p class="cap-fig-cap">Where an up-front ERP bill goes</p>
+        <svg viewBox="0 0 400 200" role="img" aria-label="Money labelled consultants, integrations, licensing, delays and change requests being pulled into a black hole marked 500K sunk">
+          <defs>
+            <radialGradient id="sgHoleCore" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#000" stop-opacity="1"/>
+              <stop offset="55%" stop-color="#0F1419" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#1F2937" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="sgHoleHalo" cx="50%" cy="50%" r="50%">
+              <stop offset="40%" stop-color="#DC2A3D" stop-opacity="0"/>
+              <stop offset="80%" stop-color="#DC2A3D" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#DC2A3D" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <path d="M 32 24 Q 90 24 178 100" fill="none" stroke="#DC2A3D" stroke-width="1" stroke-dasharray="2 4" stroke-opacity="0.3"/>
+          <text x="38" y="16" font-size="10.5" fill="#374151" font-weight="600">Consultants</text>
+          <g style="animation:sg-suck-0 20s 0s ease-in infinite;transform-origin:0 0"><rect x="10" y="18" width="22" height="14" rx="3" fill="#DC2A3D"/><text x="21" y="29" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">$</text></g>
+          <path d="M 32 56 Q 90 56 178 100" fill="none" stroke="#DC2A3D" stroke-width="1" stroke-dasharray="2 4" stroke-opacity="0.3"/>
+          <text x="38" y="48" font-size="10.5" fill="#374151" font-weight="600">Integrations</text>
+          <g style="animation:sg-suck-1 20s 1.5s ease-in infinite;transform-origin:0 0"><rect x="10" y="50" width="22" height="14" rx="3" fill="#DC2A3D"/><text x="21" y="61" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">$</text></g>
+          <path d="M 32 88 Q 90 88 178 100" fill="none" stroke="#DC2A3D" stroke-width="1" stroke-dasharray="2 4" stroke-opacity="0.3"/>
+          <text x="38" y="80" font-size="10.5" fill="#374151" font-weight="600">Licensing cost</text>
+          <g style="animation:sg-suck-2 20s 3s ease-in infinite;transform-origin:0 0"><rect x="10" y="82" width="22" height="14" rx="3" fill="#DC2A3D"/><text x="21" y="93" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">$</text></g>
+          <path d="M 32 120 Q 90 120 178 100" fill="none" stroke="#DC2A3D" stroke-width="1" stroke-dasharray="2 4" stroke-opacity="0.3"/>
+          <text x="38" y="112" font-size="10.5" fill="#374151" font-weight="600">Delays</text>
+          <g style="animation:sg-suck-3 20s 4.5s ease-in infinite;transform-origin:0 0"><rect x="10" y="114" width="22" height="14" rx="3" fill="#DC2A3D"/><text x="21" y="125" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">$</text></g>
+          <path d="M 32 152 Q 90 152 178 100" fill="none" stroke="#DC2A3D" stroke-width="1" stroke-dasharray="2 4" stroke-opacity="0.3"/>
+          <text x="38" y="144" font-size="10.5" fill="#374151" font-weight="600">Change requests</text>
+          <g style="animation:sg-suck-4 20s 6s ease-in infinite;transform-origin:0 0"><rect x="10" y="146" width="22" height="14" rx="3" fill="#DC2A3D"/><text x="21" y="157" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">$</text></g>
+          <circle cx="178" cy="100" r="62" fill="url(#sgHoleHalo)" style="animation:sg-halo 3s ease-in-out infinite"/>
+          <g style="transform-origin:178px 100px;animation:sg-spin 9s linear infinite">
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.35)" stroke-width="1"/>
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.22)" stroke-width="1" transform="rotate(45 178 100)"/>
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.18)" stroke-width="1" transform="rotate(90 178 100)"/>
+            <ellipse cx="178" cy="100" rx="46" ry="11" fill="none" stroke="rgba(220,42,61,0.18)" stroke-width="1" transform="rotate(135 178 100)"/>
+          </g>
+          <circle cx="178" cy="100" r="36" fill="url(#sgHoleCore)"/>
+          <text x="178" y="98" font-size="13" fill="#fff" font-weight="700" text-anchor="middle" letter-spacing="0.02em">$500K+</text>
+          <text x="178" y="112" font-size="8.5" fill="rgba(255,255,255,0.55)" font-weight="700" text-anchor="middle" letter-spacing="0.18em">SUNK</text>
+          <path d="M 214 100 Q 232 68 244 36 L 268 36" fill="none" stroke="#374151" stroke-width="1.5" stroke-dasharray="3 3" stroke-opacity="0.85"/>
+          <polygon points="274,36 266,32 266,40" fill="#374151"/>
+          <text x="280" y="32" font-size="11" fill="#374151" font-weight="700">No usable</text><text x="280" y="44" font-size="11" fill="#374151" font-weight="700">system</text><text x="280" y="56" font-size="9" fill="#6B7280" font-style="italic">project shelved</text>
+          <path d="M 214 100 Q 232 100 244 100 L 268 100" fill="none" stroke="#374151" stroke-width="1.5" stroke-dasharray="3 3" stroke-opacity="0.85"/>
+          <polygon points="274,100 266,96 266,104" fill="#374151"/>
+          <text x="280" y="96" font-size="11" fill="#374151" font-weight="700">Half-working</text><text x="280" y="108" font-size="11" fill="#374151" font-weight="700">system</text><text x="280" y="120" font-size="9" fill="#6B7280" font-style="italic">forced into modules</text>
+          <path d="M 214 100 Q 232 132 244 164 L 268 164" fill="none" stroke="#374151" stroke-width="1.5" stroke-dasharray="3 3" stroke-opacity="0.85"/>
+          <polygon points="274,164 266,160 266,168" fill="#374151"/>
+          <text x="280" y="160" font-size="11" fill="#374151" font-weight="700">Fully working</text><text x="280" y="172" font-size="11" fill="#374151" font-weight="700">system</text><text x="280" y="184" font-size="9" fill="#6B7280" font-style="italic">rare, slow, expensive</text>
+          <style>
+            @keyframes sg-suck-0 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,76px) scale(0.3);opacity:0} 100%{transform:translate(146px,76px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-1 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,44px) scale(0.3);opacity:0} 100%{transform:translate(146px,44px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-2 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,12px) scale(0.3);opacity:0} 100%{transform:translate(146px,12px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-3 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,-20px) scale(0.3);opacity:0} 100%{transform:translate(146px,-20px) scale(0.3);opacity:0} }
+            @keyframes sg-suck-4 { 0%,5%{transform:translate(0,0);opacity:1} 70%{transform:translate(146px,-52px) scale(0.3);opacity:0} 100%{transform:translate(146px,-52px) scale(0.3);opacity:0} }
+            @keyframes sg-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+            @keyframes sg-halo { 0%,100%{opacity:0.55} 50%{opacity:1} }
+          </style>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Built for your seat: the five role deep-dives (solutions-*.html),
+       styled by solutions-role.css (.role-hub*). Keep the #roles id in sync
+       with site-nav.js. -->
   <section id="roles" class="role-hub">
-    <div class="role-hub-panel">
-      <div class="role-hub-head">
-        <p class="role-hub-eyebrow">By role</p>
-        <h2>Built for your role</h2>
-        <p>Same system, a different day depending on where you sit. Pick your seat to see the exact problems SimpleGrid takes off your plate - and how it solves them.</p>
-      </div>
-      <div class="role-hub-grid">
-        <a class="role-hub-card" href="solutions-owner.html">
-          <span class="role-hub-num">01</span>
-          <span class="role-hub-name">Owner / MD</span>
-          <span class="role-hub-tag">See the whole floor without living on it.</span>
-          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
-        <a class="role-hub-card" href="solutions-coo.html">
-          <span class="role-hub-num">02</span>
-          <span class="role-hub-name">COO / Ops head</span>
-          <span class="role-hub-tag">Run operations without the meetings.</span>
-          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
-        <a class="role-hub-card" href="solutions-cfo.html">
-          <span class="role-hub-num">03</span>
-          <span class="role-hub-name">CFO / Finance</span>
-          <span class="role-hub-tag">Costing on actuals, not standards.</span>
-          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
-        <a class="role-hub-card" href="solutions-sales-head.html">
-          <span class="role-hub-num">04</span>
-          <span class="role-hub-name">Sales head</span>
-          <span class="role-hub-tag">Promise delivery dates you can hit.</span>
-          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
-        <a class="role-hub-card" href="solutions-plant-manager.html">
-          <span class="role-hub-num">05</span>
-          <span class="role-hub-name">Plant manager</span>
-          <span class="role-hub-tag">The floor, captured as it happens.</span>
-          <span class="role-hub-go">Explore <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
-      </div>
+    <div class="role-hub-head">
+      <p class="sol-eyebrow">By role</p>
+      <h2>Built for your seat</h2>
+      <p>Same system, a different day depending on where you sit. Pick your seat.</p>
     </div>
-  </section>
-
-  <!-- Interactive highlights: the three value props as tabs over an animated
-       KPI panel. Numbers count up on first view and on each tab switch. -->
-  <section class="sol-metrics" id="highlights">
-    <div class="sol-metrics-head">
-      <p class="sol-eyebrow">What changes</p>
-      <h2>The levers - and what they move</h2>
-      <p>Tap a lever to see what it does on a real floor.</p>
-    </div>
-    <div class="sol-metrics-tabs" role="tablist" aria-label="Solution highlights">
-      <button type="button" class="sol-metric-tab is-active" data-metric="realtime" role="tab" aria-selected="true" aria-controls="pane-realtime">
-        <span class="m-tab-k">Real-time</span>
-        <span class="m-tab-d">Your floor as it happens - not last week's spreadsheet.</span>
+    <div class="role-hub-grid">
+      <button type="button" class="role-hub-card" data-role="owner">
+        <span class="role-hub-num">01</span>
+        <span class="role-hub-name">Owner / MD</span>
+        <span class="role-hub-tag">See the whole business without living on it.</span>
+        <span class="role-hub-go">See how <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
-      <button type="button" class="sol-metric-tab" data-metric="onesystem" role="tab" aria-selected="false" aria-controls="pane-onesystem">
-        <span class="m-tab-k">One system</span>
-        <span class="m-tab-d">Every team on the same live data.</span>
+      <button type="button" class="role-hub-card" data-role="coo">
+        <span class="role-hub-num">02</span>
+        <span class="role-hub-name">COO / Ops head</span>
+        <span class="role-hub-tag">Run operations without the meetings.</span>
+        <span class="role-hub-go">See how <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
-      <button type="button" class="sol-metric-tab" data-metric="costing" role="tab" aria-selected="false" aria-controls="pane-costing">
-        <span class="m-tab-k">Your costing</span>
-        <span class="m-tab-d">Actual margin - your formulas, not standard overhead.</span>
+      <button type="button" class="role-hub-card" data-role="cfo">
+        <span class="role-hub-num">03</span>
+        <span class="role-hub-name">CFO / Finance</span>
+        <span class="role-hub-tag">Costing on actuals, not standards.</span>
+        <span class="role-hub-go">See how <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
-    </div>
-    <div class="sol-metrics-panel">
-      <div class="sol-metric-pane is-active" id="pane-realtime" data-pane="realtime" role="tabpanel">
-        <div class="kpi"><span class="kpi-v" data-count="100" data-suffix="%">0%</span><span class="kpi-l">of floor actions captured with a name and a timestamp.</span></div>
-        <div class="kpi"><span class="kpi-v" data-count="1">0</span><span class="kpi-l">live picture shared by the floor, the office and the owner.</span></div>
-        <div class="kpi"><span class="kpi-v" data-count="0">0</span><span class="kpi-l">end-of-day re-keying or catch-up entry.</span></div>
-      </div>
-      <div class="sol-metric-pane" id="pane-onesystem" data-pane="onesystem" role="tabpanel">
-        <div class="kpi"><span class="kpi-v" data-count="4">0</span><span class="kpi-l">core functions on one live model: sales, procurement, production, scheduling.</span></div>
-        <div class="kpi"><span class="kpi-v" data-count="1">0</span><span class="kpi-l">shared demand signal every team works from.</span></div>
-        <div class="kpi"><span class="kpi-v" data-count="0">0</span><span class="kpi-l">modules to reconcile or re-key between.</span></div>
-      </div>
-      <div class="sol-metric-pane" id="pane-costing" data-pane="costing" role="tabpanel">
-        <div class="kpi"><span class="kpi-v" data-count="3">0</span><span class="kpi-l">levels of true margin: by order, by customer, by SKU.</span></div>
-        <div class="kpi"><span class="kpi-v" data-count="100" data-suffix="%">0%</span><span class="kpi-l">of costs allocated on a basis you define, not standard overhead.</span></div>
-        <div class="kpi"><span class="kpi-v" data-count="0">0</span><span class="kpi-l">guesswork in a quote - it's priced from real costs.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 1. Real-time floor visibility & accountability -->
-  <section id="visibility" class="sol-block">
-    <div class="sol-inner">
-      <div class="sol-pain">
-        <p class="sol-eyebrow">Real-time floor visibility</p>
-        <h2>See your floor as it runs</h2>
-        <p class="sol-lead">Everyone works from one live picture - the floor, the office and you.</p>
-      </div>
-      <div class="sol-answer">
-        <p class="sol-answer-h">With SimpleGrid</p>
-        <ul class="sol-check">
-          <li>Work is logged where it happens.</li>
-          <li>No re-keying, no end-of-day catch-up.</li>
-          <li>Every action has a name and a time.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. Production planning & scheduling -->
-  <section id="planning" class="sol-block tint">
-    <div class="sol-inner">
-      <div class="sol-pain">
-        <p class="sol-eyebrow">Planning &amp; scheduling</p>
-        <h2>Plan in minutes, not hours</h2>
-        <p class="sol-lead">Schedule against live stock and capacity, then commit dates you can keep.</p>
-      </div>
-      <div class="sol-answer">
-        <p class="sol-answer-h">With SimpleGrid</p>
-        <ul class="sol-check">
-          <li>See on-hand, reserved and on-order stock.</li>
-          <li>The system proposes a plan; you approve.</li>
-          <li>Promise accurate dates on the spot.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. One connected system -->
-  <section id="connected" class="sol-block">
-    <div class="sol-inner">
-      <div class="sol-pain">
-        <p class="sol-eyebrow">One connected system</p>
-        <h2>One system, every team</h2>
-        <p class="sol-lead">Sales, procurement, production and scheduling on the same live data.</p>
-      </div>
-      <div class="sol-answer">
-        <p class="sol-answer-h">With SimpleGrid</p>
-        <ul class="sol-check">
-          <li>One model, not bolted-on modules.</li>
-          <li>Everyone reacts to one demand signal.</li>
-          <li>No one works off yesterday's numbers.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Costing & margins -->
-  <section id="costing" class="sol-block tint">
-    <div class="sol-inner">
-      <div class="sol-pain">
-        <p class="sol-eyebrow">Costing &amp; margins</p>
-        <h2>Costing done your way</h2>
-        <p class="sol-lead">Allocate costs the way you actually work - and see your real margin.</p>
-      </div>
-      <div class="sol-answer">
-        <p class="sol-answer-h">With SimpleGrid</p>
-        <ul class="sol-check">
-          <li>Allocate any cost on a basis you define.</li>
-          <li>Real margin by order, customer and SKU.</li>
-          <li>Quote from your real costs.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Adoption / built for your people -->
-  <section id="adoption" class="sol-block">
-    <div class="sol-inner">
-      <div class="sol-pain">
-        <p class="sol-eyebrow">Adoption on the floor</p>
-        <h2>Simple enough that the floor uses it</h2>
-        <p class="sol-lead">Type or talk to it in plain language - no training manual.</p>
-      </div>
-      <div class="sol-answer">
-        <p class="sol-answer-h">With SimpleGrid</p>
-        <ul class="sol-check">
-          <li>Floor staff log their own work.</li>
-          <li>No menus, no report-builders.</li>
-          <li>Answers are live and attributed.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Built for you, evolves with you -->
-  <section id="evolve" class="sol-block tint">
-    <div class="sol-inner">
-      <div class="sol-pain">
-        <p class="sol-eyebrow">Built for you</p>
-        <h2>Built for you, evolves with you</h2>
-        <p class="sol-lead">Modeled on how you run - and changed as fast as you do.</p>
-      </div>
-      <div class="sol-answer">
-        <p class="sol-answer-h">With SimpleGrid</p>
-        <ul class="sol-check">
-          <li>Built around your operation, not a template.</li>
-          <li>Changes in weeks, not quarters.</li>
-          <li>Your way of working becomes an edge.</li>
-        </ul>
-      </div>
+      <button type="button" class="role-hub-card" data-role="sales">
+        <span class="role-hub-num">04</span>
+        <span class="role-hub-name">Sales head</span>
+        <span class="role-hub-tag">Promise delivery dates you can hit.</span>
+        <span class="role-hub-go">See how <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <button type="button" class="role-hub-card" data-role="plant">
+        <span class="role-hub-num">05</span>
+        <span class="role-hub-name">Plant manager</span>
+        <span class="role-hub-tag">The floor, captured as it happens.</span>
+        <span class="role-hub-go">See how <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6h11M8 2l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
     </div>
   </section>
 
   <!-- Proof / case studies -->
-  <section id="proof" class="sol-proof">
-    <p class="sol-eyebrow">Proof</p>
-    <h2>Both factories ran it live for 30 days. Both kept it.</h2>
-    <p class="sub">We configure SimpleGrid to your floor at our cost. Run it live for 30 days. You pay only when it works. Here's what they told us.</p>
-    <div class="sol-proof-grid">
-      <a href="case-apex.html" class="sol-proof-card">
-        <p class="sol-quote">"Working demo in 24 hours - 60-70% accurate. No vendor we've worked with has done that."</p>
-        <p class="sol-attr">Founder, Apex Apparel · reference available on request</p>
-        <span class="go">Read the story &rarr;</span>
-      </a>
-      <a href="case-furniture-manufacturer.html" class="sol-proof-card">
-        <p class="sol-quote">"SimpleGrid feels like our system. My stores manager was comfortable on day one."</p>
-        <p class="sol-attr">The founder, Furniture exporter</p>
-        <span class="go">Read the story &rarr;</span>
-      </a>
+  <section id="proof" class="sol-proof section-screen">
+    <div>
+      <p class="sol-eyebrow">Case studies</p>
+      <h2>Manufacturers running on SimpleGrid today.</h2>
+      <p class="sub">Two public deployments below. More running confidentially - names available on request.</p>
+      <div class="sgp-grid">
+        <a href="case-furniture-manufacturer.html" class="sgp-card" data-cta="solutions_proof_furniture">
+          <div class="sgp-media" style="background:url(assets/elite-factory.jpeg) center/cover">
+            <span class="sgp-shot">&#9679; Actual shot</span>
+          </div>
+          <div class="sgp-body">
+            <h3 class="sgp-title">Furniture Manufacturer &amp; Exporter</h3>
+            <p class="sgp-desc">12+ countries (USA, Europe, Asia). 600-800 employees. ~1 million sq ft. Excel + group chats &rarr; one live floor view.</p>
+            <p class="sgp-metric">$200K leak stopped &middot; planning 20h &rarr; 2h &middot; live in 21 days</p>
+            <p class="sgp-quote">"SimpleGrid feels like our system. My stores manager was comfortable on day one."</p>
+            <p class="sgp-attr">- Chirag, Founder, Elite Arts &amp; Crafts</p>
+            <span class="sgp-go">How they deployed in 21 days <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a href="case-apex.html" class="sgp-card" data-cta="solutions_proof_apparel">
+          <div class="sgp-media sgp-media-dark">
+            <iframe src="assets/case-apex-flow.html" title="Apex Apparel - production flow, 5 stages" loading="lazy" scrolling="no" class="sgp-frame"></iframe>
+          </div>
+          <div class="sgp-body">
+            <h3 class="sgp-title">Apparel Contract Manufacturer</h3>
+            <p class="sgp-desc">80-100k shirts/mo. 3 streams. 20+ job workers. 30+ inventory locations. Live in 12 days.</p>
+            <p class="sgp-metric">2 failed ERPs &rarr; live in 12 days &middot; 30+ locations, one view</p>
+            <p class="sgp-quote">"Working demo in 24 hours - 60-70% accurate. No vendor we've worked with has done that."</p>
+            <p class="sgp-attr">- Founder (reference available on request)</p>
+            <span class="sgp-go">How they went live in 12 days <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+      <a href="case-studies.html" class="sol-proof-all">See all case studies &rarr;</a>
     </div>
-    <a href="case-studies.html" class="sol-proof-all">See all case studies &rarr;</a>
   </section>
 
-  <!-- Final CTA -->
-  <section class="sol-final">
-    <div class="sol-final-inner">
-      <h2>See it modeled on your floor.</h2>
-      <p>Book a demo and we'll show you SimpleGrid running on a factory like yours.</p>
-      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="sol-cta" data-cta="solutions_final">Book a demo</a>
+  <!-- Final CTA - the only dark band on the page. -->
+  <section class="final-cta-band">
+    <div class="final-cta-gridbg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="final-cta-inner">
+        <h2 class="final-cta-head">See it built around you.</h2>
+        <div class="final-cta-col">
+          <p class="final-cta-text">We set SimpleGrid up around your operation - your products, your process, your costing formulas.</p>
+          <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-primary final-cta-btn" data-cta="solutions_final">Book a demo</a>
+          <p class="final-cta-note">Working demo in 72 hours. Live in 3 weeks or less. $0 up front.</p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Role peek modal: filled + toggled by the inline script below. -->
+  <div class="rolemodal-overlay" id="roleModal" role="dialog" aria-modal="true" aria-labelledby="roleModalTitle" hidden>
+    <div class="rolemodal">
+      <button type="button" class="rolemodal-close" aria-label="Close">&times;</button>
+      <p class="rolemodal-eyebrow" id="roleModalEyebrow"></p>
+      <h3 id="roleModalTitle"></h3>
+      <p class="rolemodal-problem" id="roleModalProblem"></p>
+      <div class="rolemodal-shift-head"><span class="a">Today</span><span class="b">With SimpleGrid</span></div>
+      <div id="roleModalRows"></div>
+      <div class="rolemodal-foot">
+        <a class="primary" href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="solutions_rolemodal_demo">Book a demo</a>
+      </div>
+    </div>
+  </div>
 </main>
 
 <!-- Footer rendered by the shared component (components/site-footer.js). -->
@@ -438,81 +623,89 @@
 <script src="components/site-nav.js" defer></script>
 <script src="components/site-footer.js" defer></script>
 <script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script>
-
-<!-- Role selector: navigate straight to the chosen role page. -->
+<!-- Role hub cards open an in-page problem->fix modal instead of navigating. -->
 <script>
 (function () {
-  var sel = document.getElementById('sol-role-select');
-  if (!sel) return;
-  sel.addEventListener('change', function () {
-    if (sel.value) window.location.href = sel.value;
+  var ROLES = {
+    owner: {
+      eyebrow: 'Owner / MD',
+      title: 'Run the whole business without living on it.',
+      problem: 'You carry the whole business but see it through other people’s summaries. SimpleGrid puts the real operation in front of you, live.',
+      pairs: [['Secondhand view', 'One live picture'], ['Locked in one head', 'On the record'], ['Leakage found late', 'Caught at the source'], ['Margins by guess', 'Margin by SKU'], ['Decisions wait', 'Answers on demand']]
+    },
+    coo: {
+      eyebrow: 'COO / Ops head',
+      title: 'Stop running operations through meetings.',
+      problem: 'Every team works in its own tool, so your day is meetings and follow-ups. SimpleGrid puts everyone on the same live data.',
+      pairs: [['Separate systems', 'One operational model'], ['Hours to update', 'Real time, everywhere'], ['Different numbers', 'One live number'], ['Chasing status', 'Managing exceptions'], ['Caught too late', 'Caught in time']]
+    },
+    cfo: {
+      eyebrow: 'CFO / Finance',
+      title: 'Costing that matches how you actually make things.',
+      problem: 'Your real costs live in spreadsheets, buried under one blended overhead rate. SimpleGrid costs every order your way and feeds the books you already keep.',
+      pairs: [['Costs in a blended rate', 'Costs on your basis'], ['Template-driven costing', 'Costing your way'], ['Margin weeks later', 'Margin as work clears'], ['Quotes off averages', 'Quotes off real costs'], ['Books vs the floor', 'One reconciled view']]
+    },
+    sales: {
+      eyebrow: 'Sales head',
+      title: 'Promise dates you can actually hit.',
+      problem: 'Every quote is a gamble on a date you cannot see. SimpleGrid shows live stock, capacity and margin before you commit.',
+      pairs: [['Dates promised blind', 'Dates you can hit'], ['Paper stock', 'Sellable stock'], ['Answers come late', 'Availability up front'], ['Margin after the sale', 'Margin before you commit'], ['Orders scattered', 'One order pipeline']]
+    },
+    plant: {
+      eyebrow: 'Plant manager',
+      title: 'The floor’s reality, captured as it happens.',
+      problem: 'You’re the only one who knows where every job stands. SimpleGrid is simple enough that your floor logs its own work.',
+      pairs: [['Status in your head', 'Live on the board'], ['Too heavy for the floor', 'Type or talk to it'], ['Re-keying all day', 'The floor logs itself'], ['Issues surface late', 'Caught at the source'], ['Planning takes hours', 'Plan in minutes']]
+    }
+  };
+  var overlay = document.getElementById('roleModal');
+  if (!overlay) return;
+  var elEye = document.getElementById('roleModalEyebrow');
+  var elTitle = document.getElementById('roleModalTitle');
+  var elProblem = document.getElementById('roleModalProblem');
+  var elRows = document.getElementById('roleModalRows');
+  var closeBtn = overlay.querySelector('.rolemodal-close');
+  var lastFocus = null;
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  function openModal(key) {
+    var r = ROLES[key];
+    if (!r) return;
+    elEye.textContent = r.eyebrow;
+    elTitle.textContent = r.title;
+    elProblem.textContent = r.problem;
+    var html = '';
+    for (var i = 0; i < r.pairs.length; i++) {
+      html += '<div class="rolemodal-row"><div class="rolemodal-a">' + esc(r.pairs[i][0]) + '</div><div class="rolemodal-b">' + esc(r.pairs[i][1]) + '</div></div>';
+    }
+    elRows.innerHTML = html;
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    void overlay.offsetWidth; // reflow so the transition runs
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    window.setTimeout(function () { overlay.hidden = true; }, 200);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  var cards = document.querySelectorAll('.role-hub-card[data-role]');
+  for (var c = 0; c < cards.length; c++) {
+    cards[c].addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal(this.getAttribute('data-role'));
+    });
+  }
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+  closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
   });
-})();
-</script>
-
-<!-- Interactive highlight metrics: tab switching + KPI count-up animation. -->
-<script>
-(function () {
-  var section = document.querySelector('.sol-metrics');
-  if (!section) return;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var tabs = section.querySelectorAll('.sol-metric-tab');
-  var panes = section.querySelectorAll('.sol-metric-pane');
-
-  function render(el, val) {
-    var pre = el.getAttribute('data-prefix') || '';
-    var suf = el.getAttribute('data-suffix') || '';
-    el.textContent = pre + val + suf;
-  }
-  function countUp(pane) {
-    var vals = pane.querySelectorAll('.kpi-v');
-    for (var i = 0; i < vals.length; i++) {
-      (function (el) {
-        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-        if (reduce || target === 0) { render(el, target); return; }
-        var start = null, dur = 950;
-        function step(ts) {
-          if (!start) start = ts;
-          var p = Math.min((ts - start) / dur, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          render(el, Math.round(eased * target));
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      })(vals[i]);
-    }
-  }
-  function activate(key) {
-    for (var i = 0; i < tabs.length; i++) {
-      var on = tabs[i].getAttribute('data-metric') === key;
-      tabs[i].classList.toggle('is-active', on);
-      tabs[i].setAttribute('aria-selected', on ? 'true' : 'false');
-    }
-    for (var j = 0; j < panes.length; j++) {
-      var paneOn = panes[j].getAttribute('data-pane') === key;
-      panes[j].classList.toggle('is-active', paneOn);
-      if (paneOn) countUp(panes[j]);
-    }
-  }
-  for (var t = 0; t < tabs.length; t++) {
-    (function (tab) {
-      tab.addEventListener('click', function () { activate(tab.getAttribute('data-metric')); });
-    })(tabs[t]);
-  }
-  // Count up the initially-active pane the first time the section is seen.
-  var firstPane = section.querySelector('.sol-metric-pane.is-active');
-  if (firstPane) {
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        for (var k = 0; k < entries.length; k++) {
-          if (entries[k].isIntersecting) { countUp(firstPane); io.disconnect(); break; }
-        }
-      }, { threshold: 0.4 });
-      io.observe(section);
-    } else {
-      countUp(firstPane);
-    }
-  }
 })();
 </script>
 </body>

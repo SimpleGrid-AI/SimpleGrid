@@ -7,7 +7,7 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
 <title>ShipStation integration | SimpleGrid</title>
-<meta name="description" content="ShipStation + SimpleGrid: Fulfilled orders become ShipStation shipments automatically, and tracking numbers pull back onto each order.">
+<meta name="description" content="ShipStation + SimpleGrid: Create labels and pull tracking, tied to the order in SimpleGrid.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#3461E0">
 <meta name="robots" content="index, follow">
@@ -23,12 +23,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://simplegrid.ai/integrations/shipstation.html">
 <meta property="og:title" content="ShipStation integration | SimpleGrid">
-<meta property="og:description" content="ShipStation + SimpleGrid: Fulfilled orders become ShipStation shipments automatically, and tracking numbers pull back onto each order.">
+<meta property="og:description" content="ShipStation + SimpleGrid: Create labels and pull tracking, tied to the order in SimpleGrid.">
 <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@simplegridai">
 <meta name="twitter:title" content="ShipStation integration | SimpleGrid">
-<meta name="twitter:description" content="ShipStation + SimpleGrid: Fulfilled orders become ShipStation shipments automatically, and tracking numbers pull back onto each order.">
+<meta name="twitter:description" content="ShipStation + SimpleGrid: Create labels and pull tracking, tied to the order in SimpleGrid.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
 
 <script type="application/ld+json">
@@ -42,7 +42,7 @@
       "name": "ShipStation integration | SimpleGrid",
       "isPartOf": { "@id": "https://simplegrid.ai/#website" },
       "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "description": "ShipStation + SimpleGrid: Fulfilled orders become ShipStation shipments automatically, and tracking numbers pull back onto each order.",
+      "description": "ShipStation + SimpleGrid: Create labels and pull tracking, tied to the order in SimpleGrid.",
       "inLanguage": "en"
     },
     {
@@ -62,7 +62,7 @@
 <script src="../assets/js/tracking.js" defer></script>
 <script src="../assets/js/cookie-consent.js" defer></script>
 </head>
-<body class="intg-page" style="--intg-accent: #0099FF;">
+<body class="intg-page" style="--intg-accent: #0B4C8C;">
 <!-- Top navigation rendered by the shared component (components/site-nav.js). -->
 <div id="sg-nav" data-page="syncs"></div>
 
@@ -70,17 +70,17 @@
   <section class="intg-hero">
     <a class="intg-back" href="../syncs.html">&larr; All syncs</a>
     <div class="intg-hero-marks">
-      <span class="intg-logo-big"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0099FF"/><path d="M6 9 L12 6.5 L18 9 L18 15.5 L12 18 L6 15.5 Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/><line x1="6" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="18" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="12" y1="11.5" x2="12" y2="18" stroke="#fff" stroke-width="1.4"/></svg></span>
+      <span class="intg-logo-big"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0099FF"/><path d="M6 9 L12 6.5 L18 9 L18 15.5 L12 18 L6 15.5 Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/><line x1="6" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="18" y1="9" x2="12" y2="11.5" stroke="#fff" stroke-width="1.4"/><line x1="12" y1="11.5" x2="12" y2="18" stroke="#fff" stroke-width="1.4"/></svg></span>
       <span class="intg-plus">+</span>
       <span class="intg-logo-big intg-logo-sg"><img src="../assets/simplegrid-logomark.svg" alt="SimpleGrid" width="34" height="34"></span>
     </div>
     <div class="intg-badges">
       <span class="tag">Shipping &amp; logistics</span>
-      <span class="intg-dir">Orders out, tracking in</span>
+      <span class="intg-dir">Labels out, tracking back</span>
     </div>
     <h1>SimpleGrid&nbsp;+&nbsp;ShipStation</h1>
-    <p class="lead">Fulfilled orders become ShipStation shipments automatically, and tracking numbers pull back onto each order.</p>
-    <p class="intg-what">ShipStation creates shipping labels and manages shipments.</p>
+    <p class="lead">Create labels and pull tracking, tied to the order in SimpleGrid.</p>
+    <p class="intg-what">Every shipment tied to the order it belongs to.</p>
     <div class="intg-hero-cta">
       <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_shipstation_demo">Book a demo</a>
       <a href="../syncs.html" class="intg-cta-ghost">See all syncs &rarr;</a>
@@ -90,24 +90,23 @@
   <section class="intg-section">
     <div class="intg-inner">
       <div class="tag">What syncs</div>
-      <h2>Data moves both ways - automatically.</h2>
+      <h2>Data moves both ways &mdash; automatically.</h2>
       <div class="intg-flows">
         <div class="intg-col">
           <p class="intg-col-h"><span class="intg-arrow">&rarr;</span> Into SimpleGrid</p>
           <ul>
-            <li>Tracking numbers pulled back onto each order</li>
-            <li>Shipping status visible to team and customers</li>
+            <li>Rates and tracking numbers come back</li>
           </ul>
         </div>
         <div class="intg-col">
           <p class="intg-col-h"><span class="intg-arrow">&larr;</span> Back to ShipStation</p>
           <ul>
-            <li>Fulfilled orders pushed as shipments</li>
-            <li>Labels created without re-entering details</li>
+            <li>Orders sent for labels</li>
+            <li>Tracking lands on the order</li>
           </ul>
         </div>
       </div>
-      <p class="intg-detail">Fulfilled orders become ShipStation shipments automatically, and tracking numbers pull back onto each order. Your team and customers see shipping status in one place.</p>
+      <p class="intg-detail">Create labels and pull tracking, tied to the order in SimpleGrid.</p>
     </div>
   </section>
 
@@ -116,9 +115,9 @@
       <div class="tag">Use it to</div>
       <h2>What teams do with ShipStation &amp; SimpleGrid</h2>
       <div class="intg-uses">
-        <div class="intg-use">Turn fulfilled orders into ShipStation shipments</div>
-        <div class="intg-use">Pull tracking numbers back onto each order</div>
-        <div class="intg-use">Show shipping status in one place</div>
+        <div class="intg-use">Buy labels straight from the order</div>
+        <div class="intg-use">Sync tracking back automatically</div>
+        <div class="intg-use">Keep shipping tied to orders</div>
       </div>
     </div>
   </section>
@@ -128,11 +127,11 @@
       <div class="tag">How it works</div>
       <h2>Live with the rest of your floor.</h2>
       <ol class="intg-steps">
-        <li><span class="intg-step-n">1</span><div><p class="intg-step-h">Connect once</p><p>We link ShipStation during your setup - you authorise it, we handle the wiring.</p></div></li>
+        <li><span class="intg-step-n">1</span><div><p class="intg-step-h">Connect once</p><p>We link ShipStation during your setup &mdash; you authorise it, we handle the wiring.</p></div></li>
         <li><span class="intg-step-n">2</span><div><p class="intg-step-h">Map to your floor</p><p>Your fields, codes and naming are mapped to SimpleGrid one time, so records match instead of duplicating.</p></div></li>
-        <li><span class="intg-step-n">3</span><div><p class="intg-step-h">Runs on its own</p><p>From then on the sync runs in the background - no exports, no re-keying, nothing for your team to remember.</p></div></li>
+        <li><span class="intg-step-n">3</span><div><p class="intg-step-h">Runs on its own</p><p>From then on the sync runs in the background &mdash; no exports, no re-keying, nothing for your team to remember.</p></div></li>
       </ol>
-      <p class="intg-note">Don't see a field you need? We build the connector around how you actually work - it goes live with the rest of your floor, not as an upgrade later.</p>
+      <p class="intg-note">Don&rsquo;t see a field you need? We build the connector around how you actually work &mdash; it goes live with the rest of your floor, not as an upgrade later.</p>
     </div>
   </section>
 
@@ -141,8 +140,8 @@
       <div class="tag">FAQ</div>
       <h2>ShipStation &amp; SimpleGrid, in short</h2>
       <div class="intg-faq">
-        <div class="intg-faq-item"><p class="intg-q">Do I re-enter shipment details?</p><p class="intg-a">No - fulfilled orders become shipments automatically, no re-keying.</p></div>
-        <div class="intg-faq-item"><p class="intg-q">Where does tracking go?</p><p class="intg-a">Tracking pulls back onto each order so team and customers can see it.</p></div>
+        <div class="intg-faq-item"><p class="intg-q">Which carriers?</p><p class="intg-a">Whatever ShipStation supports &mdash; SimpleGrid just feeds it the orders.</p></div>
+        <div class="intg-faq-item"><p class="intg-q">Tracking?</p><p class="intg-a">Yes &mdash; tracking numbers post back onto the order.</p></div>
       </div>
     </div>
   </section>
@@ -152,18 +151,10 @@
       <div class="tag">More integrations</div>
       <h2>Works with the rest of your stack</h2>
       <div class="intg-rel-grid">
-        <a class="intg-rel-card" href="quickbooks.html">
-          <span class="intg-rel-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-          <span class="intg-rel-name">QuickBooks</span>
-        </a>
-        <a class="intg-rel-card" href="xero.html">
-          <span class="intg-rel-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg></span>
-          <span class="intg-rel-name">Xero</span>
-        </a>
-        <a class="intg-rel-card" href="tally.html">
-          <span class="intg-rel-logo"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg></span>
-          <span class="intg-rel-name">Tally</span>
-        </a>
+        <a class="intg-rel-card" href="quickbooks.html"><span class="intg-rel-logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="intg-rel-name">QuickBooks</span></a>
+        <a class="intg-rel-card" href="tally.html"><span class="intg-rel-logo"><svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="16">T</text></svg></span><span class="intg-rel-name">Tally</span></a>
+        <a class="intg-rel-card" href="zoho.html"><span class="intg-rel-logo"><svg viewBox="0 0 40 40" width="24" height="24" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#D0312D"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="12">ZOHO</text></svg></span><span class="intg-rel-name">Zoho</span></a>
+        <a class="intg-rel-card" href="xero.html"><span class="intg-rel-logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13">X</text></svg></span><span class="intg-rel-name">Xero</span></a>
       </div>
       <a class="intg-rel-all" href="../syncs.html">View all integrations &rarr;</a>
     </div>
@@ -172,7 +163,7 @@
   <section class="intg-final">
     <div class="intg-final-inner">
       <h2>Connect ShipStation to your floor.</h2>
-      <p>Book a demo and we'll show SimpleGrid wired into ShipStation with your data, not a sample set.</p>
+      <p>Book a demo and we&rsquo;ll show SimpleGrid wired into ShipStation with your data, not a sample set.</p>
       <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" class="intg-cta" data-cta="intg_shipstation_final">Book a demo</a>
     </div>
   </section>

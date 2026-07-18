@@ -42,12 +42,12 @@ function Nav({
     id: 'home',
     label: 'Home',
     href: 'index.html',
-    title: 'SimpleGrid home - the Factory Ops Cloud for manufacturers'
+    title: 'SimpleGrid home - the Adaptive ERP'
   }, {
     id: 'product',
     label: 'Product',
     href: 'product.html',
-    title: 'How the SimpleGrid Factory Ops Cloud works'
+    title: 'How the SimpleGrid Adaptive ERP works'
   }];
   const resourceLinks = [{
     id: 'tools',
@@ -108,10 +108,10 @@ function Nav({
     className: "nav-logo",
     href: px('index.html'),
     "aria-label": "SimpleGrid home",
-    title: "SimpleGrid \u2014 The Factory Ops Cloud. Configured to your floor."
+    title: "SimpleGrid - The Adaptive ERP. Built around your business."
   }, /*#__PURE__*/React.createElement("img", {
     src: prefix + 'assets/simplegrid-logo-horizontal.svg',
-    alt: "SimpleGrid - Factory Ops Cloud for manufacturers logo",
+    alt: "SimpleGrid - Adaptive ERP and operations cloud logo",
     width: "160",
     height: "32",
     fetchpriority: "high",

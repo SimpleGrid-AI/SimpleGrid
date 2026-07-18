@@ -1747,7 +1747,7 @@
       sub: "Watch the deployment phases collapse. Same six phases - AI compresses the translation step in each one."
     }, /*#__PURE__*/React.createElement(PhaseCompress, null)),
     end: /*#__PURE__*/React.createElement(Bottom, {
-      big: "Working demo in 24 hours. Production-ready in 2 weeks.",
+      big: "Working demo in 72 hours. Live in 3 weeks or less.",
       p: "Deployment is no longer a project. It is a conversation. AI writes the configuration. The platform generates the system. The founder reviews. Iteration is continuous."
     })
   };

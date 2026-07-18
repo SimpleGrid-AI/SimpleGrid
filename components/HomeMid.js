@@ -230,7 +230,7 @@ function LedgerVisual() {
       borderTop: '1px solid var(--border)',
       textAlign: 'center'
     }
-  }, "Immutable. Append-only. Every action permanent."));
+  }, "Every action recorded, with a name and a time."));
 }
 function DemoVideo() {
   return /*#__PURE__*/React.createElement("section", {
@@ -266,42 +266,34 @@ function CustomRules() {
   const scenarios = [{
     t: 'Your approval chain has exceptions',
     cond: '"POs over $10K need founder sign-off, but 3 trusted vendors get a higher limit"',
-    out: 'Both rules enforced automatically. No multi-week change order, no consultant fees.'
+    out: 'Both rules enforced automatically. No change order, no consultant fees.'
   }, {
     t: 'Your QC works differently per buyer',
     cond: '"Retailer A needs 75% shelf life, Retailer B accepts 60%"',
-    out: 'One rule per buyer. System blocks dispatch automatically if the product is too old for that buyer.'
+    out: 'One rule per buyer. Dispatch is blocked if the product is too old for that buyer.'
   }, {
     t: 'Your rework goes to the original contractor',
     cond: '"QC fails 40 pieces; original contractor redoes it at no cost"',
     out: 'Rework auto-routes to the same contractor. Rate = $0. Done.'
-  }, {
-    t: 'Your shipments have size limits',
-    cond: '"Buyer\'s dock handles 40 CBM, order is 55 CBM"',
-    out: 'System splits into two shipments, generates two packing lists, updates the order. No manual work.'
   }];
   return /*#__PURE__*/React.createElement("section", {
-    className: "section section-dark",
+    className: "section section-roomy",
     id: "rules",
     style: {
-      background: '#0B0F17'
+      background: 'rgba(255,255,255,0.4)'
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
     className: "tag"
   }, "YOUR PROCESS, ENFORCED"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2",
-    style: {
-      color: '#fff'
-    }
-  }, "Every factory has rules that only the people inside it understand."), /*#__PURE__*/React.createElement("p", {
+    className: "h2 ink"
+  }, "Every operation has rules only your people know."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
-      maxWidth: 820,
-      color: 'rgba(255,255,255,0.6)'
+      maxWidth: 820
     }
-  }, "Approval chains, vendor exceptions, per-buyer QC gates. Today they live in someone's head. With us, they live in configuration - enforced automatically.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Approval chains, vendor exceptions, per-buyer QC gates. Today they live in someone's head. SimpleGrid enforces them automatically.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 100
   }, /*#__PURE__*/React.createElement("div", {
     className: "pr-table-wrap"
@@ -318,14 +310,14 @@ function CustomRules() {
   }, s.out)))))))), /*#__PURE__*/React.createElement("style", null, `
         .pr-table-wrap { margin-top: 40px; overflow-x: auto; }
         .pr-table { width: 100%; min-width: 720px; border-collapse: collapse; }
-        .pr-table thead th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.42); padding: 0 22px 14px; border-bottom: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+        .pr-table thead th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg3); padding: 0 22px 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
         .pr-table thead th:last-child { color: var(--sg-blue); }
-        .pr-table tbody td { padding: 22px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+        .pr-table tbody td { padding: 22px; border-bottom: 1px solid var(--border); vertical-align: top; }
         .pr-table tbody tr:last-child td { border-bottom: 0; }
-        .pr-table tbody tr:hover td { background: rgba(255,255,255,0.015); }
-        .pr-rule { font-family: var(--font-heading); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: rgba(255,255,255,0.96); width: 27%; }
-        .pr-reality { font-size: 14.5px; font-style: italic; color: rgba(255,255,255,0.52); line-height: 1.55; width: 35%; }
-        .pr-result { font-size: 14.5px; color: rgba(255,255,255,0.84); line-height: 1.6; width: 38%; }
+        .pr-table tbody tr:hover td { background: var(--sg-off-white); }
+        .pr-rule { font-family: var(--font-heading); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg1); width: 27%; }
+        .pr-reality { font-size: 14.5px; font-style: italic; color: var(--fg3); line-height: 1.55; width: 35%; }
+        .pr-result { font-size: 14.5px; color: var(--fg1); line-height: 1.6; width: 38%; }
         .pr-table th:last-child, .pr-table td.pr-result { border-left: 1px solid rgba(59,130,246,0.28); background: rgba(59,130,246,0.05); }
         @media (max-width: 640px) { .pr-table tbody td { padding: 16px; } }
       `));

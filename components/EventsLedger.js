@@ -1,633 +1,17 @@
-// Events Ledger - flagship section. SG Schema + Event Sourcing.
-// Animated streaming feed + the architecture behind it.
-
-// Compact, looping event-ledger feed for the "what this gives you" block:
-// timestamped, named events animate in; only the newest row carries the blue accent.
-function ActivityFeed() {
-  const EVENTS = [{
-    t: '8:03 AM',
-    who: 'Mike',
-    act: 'opened the floor — shift A'
-  }, {
-    t: '9:21 AM',
-    who: 'Priya',
-    act: 'approved PO #4471'
-  }, {
-    t: '11:46 AM',
-    who: 'Mike',
-    act: 'received 450 sheets'
-  }, {
-    t: '12:30 PM',
-    who: 'System',
-    act: 'inventory recomputed'
-  }, {
-    t: '2:14 PM',
-    who: 'QC',
-    act: 'dispatch held — QC fail'
-  }, {
-    t: '2:15 PM',
-    who: 'Dana',
-    act: 'corrective event logged'
-  }, {
-    t: '3:02 PM',
-    who: 'Mike',
-    act: '12 units scrapped — reason noted'
-  }, {
-    t: '4:20 PM',
-    who: 'Priya',
-    act: 'invoice matched to receipt'
-  }];
-  const MAX = 6;
-  const ref = React.useRef(null);
-  const counter = React.useRef(4);
-  const [inView, setInView] = React.useState(false);
-  const [feed, setFeed] = React.useState(() => EVENTS.slice(0, 4).map((e, i) => ({
-    ...e,
-    key: i
-  })));
-  React.useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), {
-      threshold: 0.2
-    });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  React.useEffect(() => {
-    if (!inView) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const id = setInterval(() => {
-      setFeed(prev => {
-        const k = counter.current;
-        counter.current = k + 1;
-        const e = EVENTS[k % EVENTS.length];
-        return [...prev, {
-          ...e,
-          key: k
-        }].slice(-MAX);
-      });
-    }, 2100);
-    return () => clearInterval(id);
-  }, [inView]);
-  return /*#__PURE__*/React.createElement("div", {
-    ref: ref,
-    className: "al-panel",
-    role: "img",
-    "aria-label": "A live event ledger feed of timestamped, named actions"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "al-panel-top"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "al-panel-label"
-  }, "Event ledger \xB7 Today"), /*#__PURE__*/React.createElement("span", {
-    className: "al-live"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "al-dot"
-  }), " live")), /*#__PURE__*/React.createElement("div", {
-    className: "al-feed",
-    "aria-hidden": "true"
-  }, feed.map((e, i) => /*#__PURE__*/React.createElement("div", {
-    key: e.key,
-    className: 'al-evt' + (i === feed.length - 1 ? ' is-active' : '')
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "al-t"
-  }, e.t), /*#__PURE__*/React.createElement("span", {
-    className: "al-who"
-  }, e.who), /*#__PURE__*/React.createElement("span", {
-    className: "al-act"
-  }, e.act)))));
-}
-function EventsLedger() {
-  // Realistic event stream that types in over time
-  const allEvents = [{
-    t: '11:47:02',
-    actor: 'Sarah · Sales',
-    verb: 'CANCEL_LINE',
-    entity: 'SO-4521 · Line 3',
-    from: 'In Production',
-    to: 'Canceled',
-    impact: 'WIP returned · Buyer notified'
-  }, {
-    t: '11:46:58',
-    actor: 'System',
-    verb: 'TRIGGER_FIRED',
-    entity: 'Inventory rule R-204',
-    from: '-',
-    to: 'Reorder draft',
-    impact: 'PO-8821 prepared for approval'
-  }, {
-    t: '11:46:51',
-    actor: 'Mike · Floor',
-    verb: 'START_STAGE',
-    entity: 'JO-KEN-MIRROR · Assembly',
-    from: 'Issued',
-    to: 'In progress',
-    impact: 'Stage clock started'
-  }, {
-    t: '11:46:44',
-    actor: 'Raj · QC',
-    verb: 'REJECT_BATCH',
-    entity: 'Batch B-7710 · 12 pcs',
-    from: 'Pending',
-    to: 'Rejected',
-    impact: 'Auto-routed to original contractor'
-  }, {
-    t: '11:46:31',
-    actor: 'James · Owner',
-    verb: 'APPROVE',
-    entity: 'PO-8819 · ₹ 14.2 L',
-    from: 'Pending',
-    to: 'Approved',
-    impact: 'Vendor notified · Funds reserved'
-  }, {
-    t: '11:46:18',
-    actor: 'Bruce · Disp.',
-    verb: 'SHIP_DISPATCH',
-    entity: 'HACO-Dispatch-441',
-    from: 'Packed',
-    to: 'Shipped',
-    impact: 'Invoice INV-2207 generated'
-  }, {
-    t: '11:46:05',
-    actor: 'System',
-    verb: 'RECONCILE',
-    entity: 'Bank · ICICI 4421',
-    from: '-',
-    to: 'Matched',
-    impact: '37 receipts matched · 2 flagged'
-  }, {
-    t: '11:45:52',
-    actor: 'Hank · Whse',
-    verb: 'RECEIVE_GOODS',
-    entity: 'GRN-3320 · 200 sheets',
-    from: '-',
-    to: 'In stock',
-    impact: 'Inventory +200 · AP +₹ 14.2 L'
-  }];
-  const [count, setCount] = React.useState(0);
-  const [paused, setPaused] = React.useState(false);
-  const containerRef = React.useRef(null);
-  const [inView, setInView] = React.useState(false);
-  React.useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), {
-      threshold: 0.2
-    });
-    if (containerRef.current) obs.observe(containerRef.current);
-    return () => obs.disconnect();
-  }, []);
-  React.useEffect(() => {
-    if (!inView || paused) return;
-    if (count >= allEvents.length) return;
-    const id = setTimeout(() => setCount(c => c + 1), count === 0 ? 350 : 750);
-    return () => clearTimeout(id);
-  }, [count, inView, paused]);
-  const visible = allEvents.slice(0, count);
-  const total = 12987 + count; // running counter
-
-  const verbColor = v => {
-    if (v.startsWith('REJECT') || v.startsWith('CANCEL')) return 'var(--sg-red)';
-    if (v.startsWith('APPROVE') || v.startsWith('SHIP') || v.startsWith('RECEIVE') || v.startsWith('RECONCILE')) return 'var(--sg-green)';
-    if (v.startsWith('TRIGGER')) return 'var(--sg-purple)';
-    return 'var(--sg-blue)';
-  };
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section section-dark",
-    id: "ledger",
-    ref: containerRef,
-    style: {
-      position: 'relative',
-      overflow: 'hidden'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: 'absolute',
-      inset: 0,
-      backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
-      backgroundSize: '48px 48px',
-      maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 80%)'
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "container",
-    style: {
-      position: 'relative',
-      zIndex: 1
-    }
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      color: 'rgba(255,255,255,0.5)'
-    }
-  }, "THE ACTIVITY LEDGER"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2",
-    style: {
-      color: '#fff',
-      maxWidth: 880
-    }
-  }, "Your enterprise, alive - every action recorded, every decision traceable, every state replayable.")), /*#__PURE__*/React.createElement(Reveal, {
-    delay: 120
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 36,
-      background: '#0E0E10',
-      border: '1px solid rgba(255,255,255,0.08)',
-      borderRadius: 14,
-      overflow: 'hidden',
-      boxShadow: '0 30px 80px rgba(0,0,0,0.4)'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ledger-headbar"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 6
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 10,
-      height: 10,
-      borderRadius: '50%',
-      background: '#FF5F57'
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 10,
-      height: 10,
-      borderRadius: '50%',
-      background: '#FEBC2E'
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 10,
-      height: 10,
-      borderRadius: '50%',
-      background: '#28C840'
-    }
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-mono)',
-      fontSize: 12,
-      color: 'rgba(255,255,255,0.6)'
-    }
-  }, "events.simplegrid \xB7 live tail"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginLeft: 'auto',
-      display: 'flex',
-      alignItems: 'center',
-      gap: 14
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      color: 'rgba(255,255,255,0.5)',
-      fontFamily: 'var(--font-mono)'
-    }
-  }, total.toLocaleString(), " events"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 6,
-      fontSize: 11,
-      color: '#10B981',
-      fontWeight: 600
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      width: 7,
-      height: 7,
-      borderRadius: '50%',
-      background: '#10B981',
-      boxShadow: '0 0 0 4px rgba(16,185,129,0.18)'
-    }
-  }), "LIVE"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => {
-      if (count >= allEvents.length) {
-        setCount(0);
-        setPaused(false);
-      } else {
-        setPaused(p => !p);
-      }
-    },
-    style: {
-      background: 'transparent',
-      border: '1px solid rgba(255,255,255,0.18)',
-      color: 'rgba(255,255,255,0.7)',
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
-      padding: '5px 10px',
-      borderRadius: 4,
-      cursor: 'pointer',
-      fontFamily: 'var(--font-body)'
-    }
-  }, count >= allEvents.length ? '⟲ Replay' : paused ? 'Resume' : 'Pause'))), /*#__PURE__*/React.createElement("div", {
-    className: "ledger-cols"
-  }, /*#__PURE__*/React.createElement("div", null, "Time"), /*#__PURE__*/React.createElement("div", null, "Actor"), /*#__PURE__*/React.createElement("div", null, "Event"), /*#__PURE__*/React.createElement("div", null, "Entity"), /*#__PURE__*/React.createElement("div", null, "Transition"), /*#__PURE__*/React.createElement("div", null, "Downstream effect")), /*#__PURE__*/React.createElement("div", {
-    className: "ledger-rows"
-  }, visible.map((e, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: "ledger-row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "lr-time"
-  }, e.t), /*#__PURE__*/React.createElement("div", {
-    className: "lr-actor"
-  }, e.actor), /*#__PURE__*/React.createElement("div", {
-    className: "lr-verb",
-    style: {
-      color: verbColor(e.verb)
-    }
-  }, e.verb), /*#__PURE__*/React.createElement("div", {
-    className: "lr-entity"
-  }, e.entity), /*#__PURE__*/React.createElement("div", {
-    className: "lr-transition"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "lr-from"
-  }, e.from), /*#__PURE__*/React.createElement("span", {
-    className: "lr-arrow"
-  }, "\u2192"), /*#__PURE__*/React.createElement("span", {
-    className: "lr-to"
-  }, e.to)), /*#__PURE__*/React.createElement("div", {
-    className: "lr-impact"
-  }, e.impact)))), /*#__PURE__*/React.createElement("div", {
-    className: "ledger-foot"
-  }, /*#__PURE__*/React.createElement("span", null, "\u25CF append-only"), /*#__PURE__*/React.createElement("span", null, "\u25CF cryptographically ordered"), /*#__PURE__*/React.createElement("span", null, "\u25CF replayable to any point in time"), /*#__PURE__*/React.createElement("span", null, "\u25CF regulator-ready"))))), /*#__PURE__*/React.createElement("style", null, `
-        @keyframes sgLedgerIn {
-          from { opacity: 0; transform: translateY(-8px); background: rgba(74,123,247,0.08); }
-          to   { opacity: 1; transform: translateY(0);    background: transparent; }
-        }
-        .ledger-row:hover { background: rgba(255,255,255,0.02); }
-
-        /* "What this gives you" - borderless rows + live ledger feed */
-        .al-callout-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sg-blue); margin: 56px 0 22px; }
-        .al-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: start; }
-        .al-rows { display: flex; flex-direction: column; }
-        .al-row { display: grid; grid-template-columns: 26px 1fr; gap: 16px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.08); }
-        .al-row:first-child { border-top: 0; padding-top: 2px; }
-        .al-ico { color: var(--sg-blue); width: 24px; height: 24px; margin-top: 3px; }
-        .al-ico svg { width: 24px; height: 24px; display: block; }
-        .al-h { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.92); margin: 0; letter-spacing: -0.01em; }
-        .al-p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.55; margin: 6px 0 0; }
-        .al-panel { position: relative; background: #0E0E10; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px 16px 6px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
-        .al-panel-top { display: flex; align-items: center; justify-content: space-between; padding: 4px 6px 14px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-        .al-panel-label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-        .al-live { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: rgba(255,255,255,0.5); }
-        .al-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sg-blue); position: relative; }
-        .al-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--sg-blue); opacity: 0; animation: alPulse 2.1s ease-out infinite; }
-        @keyframes alPulse { 0% { transform: scale(0.6); opacity: 0.7; } 100% { transform: scale(1.85); opacity: 0; } }
-        .al-feed { height: 300px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; overflow: hidden; padding: 8px 0 6px; -webkit-mask: linear-gradient(180deg, transparent 0, #000 14%, #000 100%); mask: linear-gradient(180deg, transparent 0, #000 14%, #000 100%); }
-        .al-evt { display: grid; grid-template-columns: 76px 58px 1fr; align-items: baseline; gap: 10px; padding: 10px 12px; border-radius: 8px; border-left: 2px solid transparent; animation: alIn 420ms ease both; }
-        .al-t { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.4); white-space: nowrap; }
-        .al-who { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); }
-        .al-act { font-size: 13px; color: rgba(255,255,255,0.5); }
-        .al-evt.is-active { background: rgba(74,123,247,0.12); border-left-color: var(--sg-blue); }
-        .al-evt.is-active .al-t { color: var(--sg-blue); }
-        .al-evt.is-active .al-who { color: #fff; }
-        .al-evt.is-active .al-act { color: rgba(255,255,255,0.88); }
-        @keyframes alIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 880px) { .al-grid { grid-template-columns: 1fr; gap: 36px; } }
-        @media (prefers-reduced-motion: reduce) { .al-evt { animation: none; } .al-dot::after { animation: none; } }
-      `));
-}
-window.EventsLedger = EventsLedger;
-
-// ----- Architecture explainer (SG Schema + Event Sourcing) -----
-function ArchitectureNew() {
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section",
-    id: "architecture",
-    style: {
-      background: '#fff'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      color: 'var(--sg-purple)'
-    }
-  }, "UNDER THE HOOD"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2 ink",
-    style: {
-      color: 'var(--fg1)'
-    }
-  }, "SG Schema ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--fg3)',
-      fontWeight: 400
-    }
-  }, "\xD7"), " SG Engine ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--fg3)',
-      fontWeight: 400
-    }
-  }, "\xD7"), " Event Sourcing."), /*#__PURE__*/React.createElement("p", {
-    className: "lead",
-    style: {
-      maxWidth: 960
-    }
-  }, "Most ERPs are data-entry apps wearing a suit - tables, forms, overwrites. SimpleGrid is built on two ideas no other business platform ships at the core: an ", /*#__PURE__*/React.createElement("strong", null, "SG Schema"), " that captures one factory's complete operational blueprint, and an ", /*#__PURE__*/React.createElement("strong", null, "event-sourced"), " ledger that stores every change. SG Engine reads the SG Schema and runs your factory from it. The result is a system that bends to your business instead of the other way around.")), /*#__PURE__*/React.createElement("div", {
-    className: "arch-ddd-grid"
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "arch-ddd-card",
-    style: {
-      border: '1px solid var(--border)',
-      borderRadius: 12,
-      padding: 32,
-      height: '100%',
-      borderLeft: '4px solid var(--sg-purple)'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: '0.16em',
-      color: 'var(--sg-purple)',
-      marginBottom: 8
-    }
-  }, "SG SCHEMA"), /*#__PURE__*/React.createElement("h3", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 22,
-      fontWeight: 700,
-      margin: '0 0 14px',
-      color: 'var(--fg1)',
-      letterSpacing: '-0.015em'
-    }
-  }, "Your business has a language. The system speaks it."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      lineHeight: 1.7,
-      margin: '0 0 14px'
-    }
-  }, "A \"Job Order\" in your factory is not the same thing as a \"Work Order\" in someone else's. A \"rejection\" in fabric is different from a \"rejection\" in plywood. Generic ERPs flatten that - every customer fits the same forms."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      lineHeight: 1.7,
-      margin: 0
-    }
-  }, "Your SG Schema captures ", /*#__PURE__*/React.createElement("em", null, "your"), " entities, your states, your transitions, your invariants, your chain reactions. AI writes it, the operator validates it, SG Engine runs it. The vocabulary on every screen is yours, because the spec underneath is yours."))), /*#__PURE__*/React.createElement(Reveal, {
-    delay: 100
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      border: '1px solid var(--border)',
-      borderRadius: 12,
-      padding: 32,
-      height: '100%',
-      borderLeft: '4px solid var(--sg-blue)'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: '0.16em',
-      color: 'var(--sg-blue)',
-      marginBottom: 8
-    }
-  }, "EVENT SOURCING"), /*#__PURE__*/React.createElement("h3", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 22,
-      fontWeight: 700,
-      margin: '0 0 14px',
-      color: 'var(--fg1)',
-      letterSpacing: '-0.015em'
-    }
-  }, "The log is the database. The state is a projection."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      lineHeight: 1.7,
-      margin: '0 0 14px'
-    }
-  }, "Instead of storing the current row and losing the past, we store every event that ever changed your business. Inventory is not a number - it's the sum of every receipt and issuance. An order's status is not a flag - it's the latest state in a chain of recorded transitions."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      lineHeight: 1.7,
-      margin: 0
-    }
-  }, "Banks have run on this idea for centuries - a ledger, never erased. Almost no ERP does. We do.")))), /*#__PURE__*/React.createElement("div", {
-    className: "arch-outcome-box"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 'var(--fs-caption)',
-      fontWeight: 700,
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
-      color: 'var(--fg3)',
-      marginBottom: 18
-    }
-  }, "What this combination unlocks"), /*#__PURE__*/React.createElement("div", {
-    className: "arch-outcome-grid"
-  }, [{
-    t: '7-day deploys',
-    p: 'New operation → new system, generated from your SG Schema. No new codebase per customer.'
-  }, {
-    t: 'Audit by design',
-    p: 'You don\'t add audit logs. The audit is the system. Every regulator question already has an answer.'
-  }, {
-    t: 'Rules without releases',
-    p: 'Change a rule, the system changes. No deploy cycle. No IT ticket. No version migration.'
-  }, {
-    t: 'Disputes resolved',
-    p: 'Vendor said 500. Log says 450, by Mike, 4:13 PM Tuesday. Argument over.'
-  }].map((x, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    className: "arch-outcome-cell"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: 'var(--font-heading)',
-      fontSize: 16,
-      fontWeight: 700,
-      color: 'var(--fg1)',
-      marginBottom: 6
-    }
-  }, x.t), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 'var(--fs-caption)',
-      color: 'var(--fg2)',
-      lineHeight: 1.6
-    }
-  }, x.p))))), /*#__PURE__*/React.createElement(Reveal, {
-    delay: 200
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 40,
-      padding: '24px 0',
-      borderTop: '1px solid var(--border)'
-    }
-  }, /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 'var(--fs-small)',
-      color: 'var(--fg2)',
-      lineHeight: 1.7,
-      margin: 0,
-      fontStyle: 'italic'
-    }
-  }, "\"This is not AI. AI is the surface. Underneath is an architecture so unusual that even seasoned engineers ask us to draw it twice. Most ERPs are 1990s thinking dressed in 2020s UI. SimpleGrid is what an enterprise system looks like if you started today, with what we now know.\""), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 'var(--fs-caption)',
-      color: 'var(--fg3)',
-      lineHeight: 1.5,
-      margin: '6px 0 0',
-      fontStyle: 'normal',
-      fontWeight: 600
-    }
-  }, "- The founding team"), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 14,
-      color: 'var(--fg2)',
-      lineHeight: 1.7,
-      margin: '14px 0 0'
-    }
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "about.html",
-    style: {
-      color: 'var(--sg-blue)',
-      fontWeight: 600,
-      textDecoration: 'none'
-    }
-  }, "Built by operators who ran a $30M factory"), " - not by software vendors who watched one from the outside.")))));
-}
-window.ArchitectureNew = ArchitectureNew;
+// Product page sections: hero, Meet Hank (+ chat), adoption.
 
 // ----- Fogg-aligned hero, motivation, ability, trigger sections -----
 
 function ProductHeroNew() {
   const [showInvite, setShowInvite] = React.useState(false);
-  const [theme, setTheme] = React.useState(() => {
-    try {
-      return localStorage.getItem('sg_product_hero_theme') || 'dark';
-    } catch {
-      return 'dark';
-    }
-  });
-  const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    try {
-      localStorage.setItem('sg_product_hero_theme', next);
-    } catch {}
-  };
-  const isDark = theme === 'dark';
-
-  // Theme-driven colors
-  const bgClass = isDark ? 'section section-dark' : 'section';
-  // Match the home page hero height: full viewport minus the nav, content centered.
+  // Light hero - matches the home page hero height, content centered.
   const heroSize = {
     minHeight: 'calc(100vh - 64px)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'
   };
-  const bgStyle = isDark ? {
-    paddingTop: 88,
-    paddingBottom: 64,
-    position: 'relative',
-    overflow: 'hidden',
-    background: 'var(--sg-black)',
-    ...heroSize
-  } : {
+  const bgStyle = {
     paddingTop: 88,
     paddingBottom: 64,
     position: 'relative',
@@ -635,47 +19,11 @@ function ProductHeroNew() {
     background: 'rgba(252,252,253,0.30)',
     ...heroSize
   };
-  // Dark mode: no radial tint, so the hero reads as the same #1A1A1A as the
-  // other section-dark blocks (FinalCTA, EventsLedger dark variant). Light
-  // mode keeps the subtle blue/purple radial for visual interest.
-  const overlayBg = isDark ? 'none' : 'radial-gradient(circle at 80% 20%, rgba(74,123,247,0.10), transparent 50%), radial-gradient(circle at 20% 80%, rgba(124,58,237,0.06), transparent 50%)';
-  const tagColor = isDark ? 'rgba(255,255,255,0.5)' : 'var(--fg3)';
-  const h1Color = isDark ? '#fff' : 'var(--fg1)';
-  const leadColor = isDark ? 'rgba(255,255,255,0.78)' : 'var(--fg2)';
-  const noteColor = isDark ? 'rgba(255,255,255,0.5)' : 'var(--fg3)';
+  const overlayBg = 'radial-gradient(circle at 80% 20%, rgba(52,97,224,0.10), transparent 50%), radial-gradient(circle at 20% 80%, rgba(124,58,237,0.06), transparent 50%)';
   return /*#__PURE__*/React.createElement("section", {
-    className: bgClass,
+    className: "section",
     style: bgStyle
-  }, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: 'hero-theme-toggle' + (isDark ? '' : ' is-light'),
-    onClick: toggleTheme,
-    "aria-label": isDark ? 'Switch to light mode' : 'Switch to dark mode'
-  }, isDark ? /*#__PURE__*/React.createElement("svg", {
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("circle", {
-    cx: "12",
-    cy: "12",
-    r: "4"
-  }), /*#__PURE__*/React.createElement("path", {
-    d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-  })) : /*#__PURE__*/React.createElement("svg", {
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("path", {
-    d: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-  }))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     style: {
       position: 'absolute',
       inset: 0,
@@ -690,24 +38,24 @@ function ProductHeroNew() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag",
     style: {
-      color: tagColor
+      color: 'var(--fg3)'
     }
-  }, "THE PRODUCT"), /*#__PURE__*/React.createElement("h1", {
+  }, "PLATFORM"), /*#__PURE__*/React.createElement("h1", {
     className: "h1",
     style: {
-      color: h1Color,
+      color: 'var(--fg1)',
       maxWidth: 980,
       fontSize: 48,
       lineHeight: 1.1
     }
-  }, "The operations layer for your factory floor."), /*#__PURE__*/React.createElement("p", {
+  }, "One system for orders, inventory, production and costing."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
-      color: leadColor,
+      color: 'var(--fg2)',
       maxWidth: 760,
       marginTop: 18
     }
-  }, "Your stages, your contractors, your approvals, your costing logic - modeled on how the floor actually runs, not how a generic ERP wants it to run. One live system that replaces the fourteen Slack channels, six spreadsheets, and the approval lost in DMs - synced to the QuickBooks or Tally you already use. Your books stay where they are."), /*#__PURE__*/React.createElement("div", {
+  }, "SimpleGrid is the Adaptive ERP for CPG brands, manufacturers and inventory-led businesses. Shaped around your operation, synced to the QuickBooks, Tally or Zoho you already run. Live in 3 weeks or less."), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28,
       display: 'flex',
@@ -717,10 +65,8 @@ function ProductHeroNew() {
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
     onClick: () => setShowInvite(true),
-    className: "btn btn-lg btn-invite",
-    style: {
-      animation: 'sgBuildPulse 1.8s ease-in-out infinite'
-    }
+    "data-cta": "product_hero_demo",
+    className: "btn btn-lg btn-invite"
   }, "Book a demo \u2192")), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 36,
@@ -728,9 +74,9 @@ function ProductHeroNew() {
       gap: 32,
       flexWrap: 'wrap',
       fontSize: 'var(--fs-caption)',
-      color: noteColor
+      color: 'var(--fg3)'
     }
-  }, /*#__PURE__*/React.createElement("span", null, "\u25CF Configured to your floor"), /*#__PURE__*/React.createElement("span", null, "\u25CF Live in 7-21 days"), /*#__PURE__*/React.createElement("span", null, "\u25CF Synced to QuickBooks & Tally"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
+  }, /*#__PURE__*/React.createElement("span", null, "\u25CF Built for you"), /*#__PURE__*/React.createElement("span", null, "\u25CF Live in \u22643 weeks"), /*#__PURE__*/React.createElement("span", null, "\u25CF 30-day trial"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
     onClose: () => setShowInvite(false)
   }));
 }
@@ -744,7 +90,7 @@ function MotivationSection() {
     className: "section",
     id: "hank",
     style: {
-      background: 'var(--sg-off-white)',
+      background: 'rgba(250,251,252,0.4)',
       minHeight: 'calc(100vh - 64px)',
       paddingTop: 48,
       paddingBottom: 48,
@@ -760,13 +106,13 @@ function MotivationSection() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "tag"
-  }, "PRODUCT FEATURE"), /*#__PURE__*/React.createElement("h2", {
+  }, "MEET HANK"), /*#__PURE__*/React.createElement("h2", {
     className: "h2 ink",
     style: {
       maxWidth: 760,
       margin: '0 auto'
     }
-  }, "Meet Hank - the AI assistant for your shop floor."))), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Meet Hank - the AI assistant for your operation."))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 150
   }, /*#__PURE__*/React.createElement("div", {
     className: "hank-stage",
@@ -807,107 +153,58 @@ function MotivationSection() {
 }
 window.MotivationSection = MotivationSection;
 
-// Hank - interactive AI chatbot answering the same Friday-night questions,
-// from the events ledger.
+// Hank - interactive AI chatbot answering everyday questions from live data,
+// each answer with a name and a timestamp.
 function HankChat() {
   const conversation = [{
     role: 'user',
     day: 'Monday 9:14 AM',
-    text: 'Hank, how much did we ship last week?'
+    text: 'Hank, what goes out today?'
   }, {
     role: 'hank',
     body: [{
-      line: 'Mar 31 - Apr 6: ',
-      strong: '47 dispatches · $480k invoiced.'
+      line: 'Today: ',
+      strong: '5 dispatches · $52k invoiced.'
     }, {
-      line: 'Top buyer: ',
+      line: 'Biggest: ',
       strong: 'Hampton Co',
-      after: ' - 12 dispatches, $115k.'
+      after: ' - 2 trucks, $28k.'
     }, {
-      line: '2 disputes pending: INV-2207, INV-2189.'
-    }],
-    cta: 'See the dispatch log →'
-  }, {
-    role: 'user',
-    day: 'Monday 11:02 AM',
-    text: 'Which SKU moves fastest through production right now?'
-  }, {
-    role: 'hank',
-    body: [{
-      line: 'Throughput, last 30 days:'
-    }, {
-      line: '· B118 sideboards (15 cft): ',
-      strong: '3.0 cft/day · 5-day cycle'
-    }, {
-      line: '· A203 tables (10 cft): ',
-      strong: '1.0 cft/day · 10-day cycle'
-    }, {
-      line: '· C040 chairs (8 cft): ',
-      strong: '0.6 cft/day · 14-day cycle'
-    }, {
-      line: 'Fastest: ',
-      strong: 'B118 - 3× the throughput of C040.'
-    }, {
-      line: 'If you ramp B118, you ship 3× the volume in the same window.'
-    }],
-    cta: 'See line throughput →'
+      line: 'All 5 packed. QC cleared by Raj, 8:40 AM.'
+    }]
   }, {
     role: 'user',
     day: 'Tuesday 9:24 AM',
-    text: "What's slowing the plant this week?"
+    text: 'Which orders are running late?'
   }, {
     role: 'hank',
     body: [{
-      line: 'Top constraint: ',
-      strong: 'QC inspection - 38 hr backlog',
-      after: ' (vs 12 hr avg).'
+      line: '3 orders past promise date:'
     }, {
-      line: 'Cause: 2 of 3 inspectors on leave Apr 22-25.'
+      line: '· ',
+      strong: 'SO-4521 · Hampton Co - 2 days late',
+      after: ' (QC backlog)'
     }, {
-      line: 'Stuck: ',
-      strong: '14 batches',
-      after: ' pre-dispatch · $105k locked.'
+      line: '· SO-4533 - 1 day late, packs today'
     }, {
-      line: 'Suggestion: rotate Akhil (QC-certified) from procurement.'
-    }],
-    cta: 'Open the bottleneck view →'
+      line: '· SO-4540 - at risk, ships tomorrow'
+    }]
   }, {
     role: 'user',
     day: 'Tuesday 2:33 PM',
-    text: 'Why is PO-4521 higher than what we quoted?'
+    text: "What's my margin on the Hampton order?"
   }, {
     role: 'hank',
     body: [{
-      line: 'Edited ',
-      strong: 'Tue 4:13 PM by Mike (Floor).'
+      line: 'SO-4521: quoted ',
+      strong: '$16,200',
+      after: ' · landed cost $12,900.'
     }, {
-      line: '$16,200 → ',
-      strong: '$17,800',
-      after: '.'
+      line: 'Margin: ',
+      strong: '20.4%',
+      after: ' - 1.8 pts below plan.'
     }, {
-      line: 'Reason logged: “rate revision per vendor email, Mar 18.”'
-    }],
-    cta: 'Open the audit trail →'
-  }, {
-    role: 'user',
-    day: 'Wednesday 10:11 AM',
-    text: 'If I take a 200-unit Apex order, when can I deliver?'
-  }, {
-    role: 'hank',
-    body: [{
-      line: 'Apex pattern = sideboards (B118 family).'
-    }, {
-      line: 'Volume: ',
-      strong: '200 × 15 cft = 3,000 cft.'
-    }, {
-      line: 'Current load: 1 line free, 1 line at 92%.'
-    }, {
-      line: 'Earliest start: ',
-      strong: 'May 6',
-      after: ' (after current backlog).'
-    }, {
-      line: 'Earliest delivery: ',
-      strong: 'May 25.'
+      line: 'Cause: rework on batch B-7710, logged by Raj, Apr 22.'
     }]
   }, {
     role: 'user',
@@ -925,53 +222,7 @@ function HankChat() {
       line: '2. Westwood Mfg - 4.1%'
     }, {
       line: '3. Acme Fab - 2.7%'
-    }, {
-      line: 'Driver: ',
-      strong: 'weld defects on 3 mm sheet',
-      after: ', started Mar 20.'
-    }],
-    cta: 'See contractor scorecards →'
-  }, {
-    role: 'user',
-    day: 'Wednesday 6:41 PM',
-    text: 'Did the QC reject for Hampton go back to the contractor?'
-  }, {
-    role: 'hank',
-    body: [{
-      line: 'Yes. ',
-      strong: 'Batch B-7710',
-      after: ' - 12 pcs, rejected by Raj at 11:46:44.'
-    }, {
-      line: 'Auto-routed back to Sunrise Steel.'
-    }, {
-      line: 'Replacement ETA: Apr 27 · cost recovery: $1,700 claimed.'
     }]
-  }, {
-    role: 'user',
-    day: 'Thursday 8:30 AM',
-    text: 'Can we commit to ramping output 30% next month?'
-  }, {
-    role: 'hank',
-    body: [{
-      line: 'Current: ',
-      strong: '47 dispatches/wk · 517 cft/wk.'
-    }, {
-      line: '+30% target: ',
-      strong: '672 cft/wk.'
-    }, {
-      line: 'Bottlenecks at +30%:'
-    }, {
-      line: '· Cutting line - 92% util · needs +1 shift'
-    }, {
-      line: '· Steel supply - 2-wk lead · PO by May 1'
-    }, {
-      line: '· QC - clears May 6'
-    }, {
-      line: 'Verdict: ',
-      strong: 'feasible from week of May 12',
-      after: ' with the shift add.'
-    }],
-    cta: 'Run the ramp scenario →'
   }, {
     role: 'user',
     day: 'Thursday 11:15 AM',
@@ -993,33 +244,12 @@ function HankChat() {
     }]
   }, {
     role: 'user',
-    day: 'Thursday 4:02 PM',
-    text: 'Where are we bleeding margin this month?'
-  }, {
-    role: 'hank',
-    body: [{
-      line: 'Margin slip vs April plan:'
-    }, {
-      line: '· Sideboards (B118): ',
-      strong: '-4.2 pts',
-      after: ' - rework on Sunrise batches'
-    }, {
-      line: '· Tables (A203): -1.8 pts - wood scrap up 6%'
-    }, {
-      line: '· Chairs (C040): on plan'
-    }, {
-      line: 'Combined hit: ',
-      strong: '$7,700 vs plan.'
-    }],
-    cta: 'Open the margin tree →'
-  }, {
-    role: 'user',
     day: 'Friday 8:52 PM',
     text: "What's our cash position by buyer?"
   }, {
     role: 'hank',
     body: [{
-      line: 'As of 11:48 AM today:'
+      line: 'As of 8:52 PM today:'
     }, {
       line: '· Hampton Co: ',
       strong: '$145k',
@@ -1036,28 +266,6 @@ function HankChat() {
       line: 'Total AR: ',
       strong: '$552k · DSO 42 days.'
     }]
-  }, {
-    role: 'user',
-    day: 'Friday 9:22 PM',
-    text: 'Which buyer is actually most profitable?'
-  }, {
-    role: 'hank',
-    body: [{
-      line: 'Net margin, last 90 days:'
-    }, {
-      line: '· Elite Motors: ',
-      strong: '22.3%',
-      after: ' · $290k top-line'
-    }, {
-      line: '· Hampton Co: 18.6% · $490k - best volume'
-    }, {
-      line: '· Apex Mfg: 11.4% · $215k - eroded by 3 disputes'
-    }, {
-      line: 'Hold capacity for ',
-      strong: 'Hampton + Elite',
-      after: ' first.'
-    }],
-    cta: 'See buyer P&L →'
   }];
   const ref = React.useRef(null);
   const scrollRef = React.useRef(null);
@@ -1135,7 +343,7 @@ function HankChat() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      boxShadow: '0 4px 12px rgba(74,123,247,0.25)'
+      boxShadow: '0 4px 12px rgba(52,97,224,0.25)'
     }
   }, /*#__PURE__*/React.createElement("span", {
     "aria-hidden": "true",
@@ -1164,7 +372,7 @@ function HankChat() {
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
       color: 'var(--sg-blue)',
-      background: 'rgba(74,123,247,0.12)',
+      background: 'rgba(52,97,224,0.12)',
       padding: '2px 6px',
       borderRadius: 999
     }
@@ -1184,7 +392,7 @@ function HankChat() {
       background: '#10B981',
       boxShadow: '0 0 0 3px rgba(16,185,129,0.18)'
     }
-  }), "online \xB7 reads from the activity ledger")), /*#__PURE__*/React.createElement("div", {
+  }), "online \xB7 answers from live data")), /*#__PURE__*/React.createElement("div", {
     style: {
       marginLeft: 'auto',
       display: 'flex',
@@ -1365,136 +573,47 @@ function HankTyping() {
   }))));
 }
 
-// ABILITY - make adoption stupid easy
+// LANGUAGE - the software speaks the customer's own words (adoption made easy)
 function AbilitySection() {
-  const lines = [{
-    type: 'prompt',
-    text: '> Received 200 sheets of 16-gauge steel from Midwest'
-  }, {
-    type: 'response',
-    text: '✓ Matched to PO-4521.\n  Inventory +200 · Payables +$14,200\n  Logged by Hank · 11:46.'
-  }];
+  const html =
+    '<style>' +
+    '.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}' +
+    '.lang-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 26px;box-shadow:0 8px 26px rgba(15,23,42,0.04)}' +
+    '.lang-card-wide{grid-column:1 / -1}' +
+    '.lang-cap{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg3);margin-bottom:14px}' +
+    '.lang-terms{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}' +
+    '.lang-terms span{font-family:var(--font-heading);font-size:16px;font-weight:700;letter-spacing:-0.01em;color:var(--sg-blue);background:color-mix(in srgb,var(--sg-blue) 8%,#fff);border:1px solid color-mix(in srgb,var(--sg-blue) 24%,transparent);border-radius:10px;padding:8px 14px}' +
+    '.lang-note{font-size:14px;line-height:1.6;color:var(--fg2);margin:0}' +
+    '.lang-foot{margin-top:28px;border-top:1px solid var(--border);padding-top:24px;max-width:760px}' +
+    '.lang-foot-line{font-family:var(--font-heading);font-size:clamp(18px,2.2vw,22px);font-weight:700;letter-spacing:-0.01em;color:var(--fg1);line-height:1.35;margin:0}' +
+    '.lang-echo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;margin-top:18px;background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px 24px;box-shadow:0 8px 26px rgba(15,23,42,0.04)}' +
+    '.lang-echo-k{display:block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg3);margin-bottom:8px}' +
+    '.lang-echo-v{font-family:var(--font-heading);font-size:16px;font-weight:600;color:var(--fg1);line-height:1.4}' +
+    '.lang-echo-mid{font-size:22px;color:var(--sg-blue);font-weight:700;text-align:center}' +
+    '.lang-echo-chip{display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--sg-blue);background:color-mix(in srgb,var(--sg-blue) 8%,#fff);border:1px solid color-mix(in srgb,var(--sg-blue) 26%,transparent);border-radius:9px;padding:8px 14px}' +
+    '@media (max-width:620px){.lang-echo{grid-template-columns:1fr;text-align:center;gap:12px}.lang-echo-mid{transform:rotate(90deg)}}' +
+    '@media (max-width:780px){.lang-grid{grid-template-columns:1fr}}' +
+    '</style>' +
+    '<div class="tag">Why Adoption is Easier</div>' +
+    '<h2 class="h2 ink" style="max-width:1000px">Your team already knows how to use it.</h2>' +
+    '<p class="lead" style="max-width:820px">Every company has its own words for the same thing. SimpleGrid uses yours - the exact terms your team already says. Nothing new to learn: we learn your language.</p>' +
+    '<div class="lang-grid">' +
+      '<div class="lang-card"><div class="lang-cap">Goods coming in</div><div class="lang-terms"><span>Receiving</span><span>Goods Receipt</span><span>Receiving Report</span><span>Inbound / ASN</span><span>Putaway</span></div><p class="lang-note">One warehouse logs a &ldquo;goods receipt,&rdquo; another just calls it &ldquo;receiving.&rdquo; Your screen shows the words your team uses.</p></div>' +
+      '<div class="lang-card"><div class="lang-cap">Goods going out</div><div class="lang-terms"><span>Packing Slip</span><span>Packing List</span><span>Bill of Lading</span><span>Pick Ticket</span><span>Shipment</span></div><p class="lang-note">Packing slip, bill of lading, pick ticket - same shipment, different names. You keep the one your team already says.</p></div>' +
+      '<div class="lang-card lang-card-wide"><div class="lang-cap">Job Order</div><div class="lang-terms"><span>Job Order</span><span>Work Order</span><span>Subcontract PO</span></div><p class="lang-note">For one company it is work sent out to a vendor for value-added services. For a make-to-order shop it is an internal work order, tracked process by process. Same feature - it takes on your meaning.</p></div>' +
+    '</div>' +
+    '<div class="lang-echo">' +
+      '<div class="lang-echo-col"><span class="lang-echo-k">You call it</span><span class="lang-echo-v">&ldquo;Pick ticket&rdquo;</span></div>' +
+      '<div class="lang-echo-mid" aria-hidden="true">&rarr;</div>' +
+      '<div class="lang-echo-col"><span class="lang-echo-k">So that is the label</span><span class="lang-echo-chip">Pick Ticket</span></div>' +
+    '</div>';
   return /*#__PURE__*/React.createElement("section", {
     className: "section",
     id: "ability",
-    style: {
-      background: '#fff',
-      paddingTop: 140,
-      paddingBottom: 140
-    }
+    style: { background: 'rgba(255,255,255,0.4)', paddingTop: 110, paddingBottom: 110 }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag"
-  }, "EARLY ADOPTION"), /*#__PURE__*/React.createElement("h2", {
-    className: "h2 ink",
-    style: {
-      maxWidth: 1200
-    }
-  }, "Floor-ready on day one.", /*#__PURE__*/React.createElement("br", null), "As simple as texting."), /*#__PURE__*/React.createElement("p", {
-    className: "lead",
-    style: {
-      maxWidth: '100%'
-    }
-  }, "Adoption is where ERPs go to die. We removed the menus, the codes, the training manual. Your team types what happened - the system does the rest.")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 36,
-      display: 'grid',
-      gridTemplateColumns: '1.1fr 1fr',
-      gap: 36,
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(TypingDemo, {
-    lines: lines
-  })), /*#__PURE__*/React.createElement(Reveal, {
-    delay: 120
-  }, /*#__PURE__*/React.createElement("ol", {
-    className: "adopt-flow"
-  }, [{
-    t: 'Type it',
-    p: 'Your team types what happened, in plain language - like a text.'
-  }, {
-    t: 'Hank reads it',
-    p: 'No SKU codes, no menus, no forms. It understands what you mean.'
-  }, {
-    t: 'Matched & logged',
-    p: 'Linked to the PO, inventory and your rules - a permanent event with a name and time.'
-  }, {
-    t: 'Live everywhere',
-    p: 'Floor, office and books update on the spot. Nothing lost in a chat thread.'
-  }].map((x, i) => /*#__PURE__*/React.createElement("li", {
-    key: i,
-    className: "adopt-step"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "adopt-node"
-  }, i + 1), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "adopt-t"
-  }, x.t), /*#__PURE__*/React.createElement("p", {
-    className: "adopt-p"
-  }, x.p)))))))), /*#__PURE__*/React.createElement("style", null, `
-        .adopt-flow { list-style: none; margin: 0; padding: 0; }
-        .adopt-step { position: relative; display: grid; grid-template-columns: 36px 1fr; gap: 16px; padding-bottom: 24px; }
-        .adopt-step:last-child { padding-bottom: 0; }
-        .adopt-step:not(:last-child)::before { content: ''; position: absolute; left: 17px; top: 38px; bottom: 2px; width: 2px; background: linear-gradient(var(--sg-blue), color-mix(in srgb, var(--sg-blue) 22%, transparent)); }
-        .adopt-node { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--sg-blue) 10%, #fff); border: 1.5px solid color-mix(in srgb, var(--sg-blue) 38%, transparent); color: var(--sg-blue); font-family: var(--font-heading); font-weight: 700; font-size: 14px; position: relative; z-index: 1; }
-        .adopt-t { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--fg1); margin: 6px 0 3px; letter-spacing: -0.01em; }
-        .adopt-p { font-size: 14px; color: var(--fg2); line-height: 1.55; margin: 0; }
-        @media (max-width: 860px) { .adopt-step { padding-bottom: 20px; } }
-      `));
-}
-window.AbilitySection = AbilitySection;
-
-// TRIGGER - final CTA, friction-free
-function TriggerCTA() {
-  const [showInvite, setShowInvite] = React.useState(false);
-  return /*#__PURE__*/React.createElement("section", {
-    className: "section section-dark final-cta",
-    style: {
-      paddingTop: 80,
-      paddingBottom: 88
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
-    className: "tag",
-    style: {
-      color: 'rgba(255,255,255,0.5)'
-    }
-  }, "TRY IT ON. THEN DECIDE."), /*#__PURE__*/React.createElement("h2", {
-    className: "h2",
-    style: {
-      color: '#fff',
-      maxWidth: 880,
-      margin: '0 auto'
-    }
-  }, "Three hours with us. Thirty days on your real floor. Then decide."), /*#__PURE__*/React.createElement("p", {
-    className: "sub",
-    style: {
-      color: 'rgba(255,255,255,0.75)',
-      maxWidth: 720,
-      margin: '18px auto 0'
-    }
-  }, "We configure SimpleGrid to your floor at our cost. Your team runs it live on real orders for 30 days. You pay only when it works. If by day 30 it hasn", '\u2019', "t moved the business, you walk. No invoice. No clawback."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 28,
-      display: 'flex',
-      justifyContent: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    onClick: () => setShowInvite(true),
-    className: "btn btn-lg btn-invite",
-    style: {
-      animation: 'sgBuildPulse 1.8s ease-in-out infinite'
-    }
-  }, "Book a demo \u2192")), /*#__PURE__*/React.createElement("p", {
-    className: "note",
-    style: {
-      color: 'rgba(255,255,255,0.5)',
-      marginTop: 14
-    }
-  }, "Migration included \xB7 Limited capacity each quarter"))), showInvite && /*#__PURE__*/React.createElement(InviteModal, {
-    onClose: () => setShowInvite(false)
+    className: "container",
+    dangerouslySetInnerHTML: { __html: html }
   }));
 }
-window.TriggerCTA = TriggerCTA;
+window.AbilitySection = AbilitySection;

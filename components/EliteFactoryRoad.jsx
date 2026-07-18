@@ -500,7 +500,7 @@ function EliteFactoryRoad({ compact = false } = {}) {
       <p style={{ fontSize: 12.5, color: 'var(--fg2)', lineHeight: 1.55, margin: '0 0 12px' }}>{cur.p}</p>
       {cur.pricing ? (
         <div style={{
-          background: 'rgba(74,123,247,0.06)', border: '1px solid rgba(74,123,247,0.18)',
+          background: 'rgba(52,97,224,0.06)', border: '1px solid rgba(52,97,224,0.18)',
           borderRadius: 8, padding: '8px 12px',
         }}>
           <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--sg-blue)', textTransform: 'uppercase', marginBottom: 2 }}>
@@ -597,7 +597,7 @@ function EliteFactoryRoad({ compact = false } = {}) {
             <p style={{ fontSize: 13, color: 'var(--fg2)', lineHeight: 1.55, margin: '0 0 14px' }}>{cur.p}</p>
             {cur.pricing ? (
               <div style={{
-                background: 'rgba(74,123,247,0.06)', border: '1px solid rgba(74,123,247,0.18)',
+                background: 'rgba(52,97,224,0.06)', border: '1px solid rgba(52,97,224,0.18)',
                 borderRadius: 8, padding: '10px 14px', marginBottom: 12,
               }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--sg-blue)', textTransform: 'uppercase', marginBottom: 3 }}>
