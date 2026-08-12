@@ -2053,6 +2053,9 @@ sg-footer { display: contents; }
 }
 
 .footer__copy { font-size: var(--fs-body); color: var(--fg-muted); }
+.footer__legal { display: flex; gap: 24px; }
+.footer__legal a { font-size: var(--fs-body); color: var(--fg-muted); }
+.footer__legal a:hover { color: var(--accent); }
 
 /* Oversized wordmark washed in behind the columns, bled to the card's edges
    and clipped by it. Anchored to the divider above the bottom row. */

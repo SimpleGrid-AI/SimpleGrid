@@ -376,10 +376,12 @@
                 '</div>' +
                 columns + contact +
               '</div>' +
-              /* Copyright alone on the bottom row — the legal links pointed at
-                 pages that do not exist on this site. */
               '<div class="footer__bottom">' +
                 '<p class="footer__copy">© 2026 SimpleGrid. All rights reserved.</p>' +
+                '<span class="footer__legal">' +
+                  '<a href="privacy.html">Privacy Policy</a>' +
+                  '<a href="terms.html">Terms of Service</a>' +
+                '</span>' +
               '</div>' +
             '</div>' +
           '</div>' +
