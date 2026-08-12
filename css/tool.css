@@ -1,0 +1,648 @@
+/* ==========================================================================
+   SimpleGrid — free tool pages (/tools/<slug>/)
+
+   Each tool is a form whose results are written back into the page by its own
+   inline script. That script hard-codes the class names below — .results-hero,
+   .results-grid, .tool-items, .sg-warn-box and the rest — so this file keeps
+   those names and restyles them in the v3 system rather than renaming
+   anything. The shared helpers in tools/tools.js emit the same names.
+
+   Page chrome (cards, buttons, type, grid field, cursor) comes from v3.css.
+   ========================================================================== */
+
+/* Result states. The brand palette is blue-only by design, so pass/warn/fail
+   are declared here as UI state colours and used nowhere else on the site. */
+:root {
+  --tool-ok:   #1F9E60;
+  --tool-warn: #B26B00;
+  --tool-bad:  #C2413A;
+  --tool-bad-soft: rgba(194, 65, 58, 0.06);
+}
+
+/* ------------------------------------------------------------------- hero */
+
+.tool-hero { display: grid; justify-items: start; padding-block: 56px; }
+
+.tool-hero__back {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 24px;
+}
+.tool-hero__back:hover { color: var(--accent); }
+
+.tool-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 24ch;
+  margin-bottom: 18px;
+}
+
+.tool-hero__sub { max-width: 72ch; }
+.tool-hero__sub + .tool-hero__sub { margin-top: 12px; }
+
+/* ------------------------------------------------------------- the tool */
+
+/* One panel per step of the form. It is a card inside the section card, so it
+   carries the softer inner hairline rather than the blue section edge. */
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  padding: 28px;
+}
+.tool-card + .tool-card { margin-top: 20px; }
+.tool-card h2 {
+  font-family: var(--font-body);
+  font-size: var(--fs-h6);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--fg);
+  margin-bottom: 18px;
+}
+.tool-card h3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--fg);
+  margin: 18px 0 8px;
+}
+
+/* ------------------------------------------------------------------ form */
+
+.tool-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 18px; }
+.tool-form-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.tool-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tool-field.full { grid-column: 1 / -1; }
+
+.tool-field label {
+  font-size: var(--fs-sub);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--fg-body);
+}
+.tool-field label .hint { font-weight: 400; color: var(--fg-muted); margin-left: 4px; }
+
+.tool-field input,
+.tool-field textarea,
+.tool-field select {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--fg);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+}
+.tool-field input:focus,
+.tool-field textarea:focus,
+.tool-field select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--sg-blue-15);
+}
+.tool-field textarea { resize: vertical; min-height: 78px; }
+
+/* Invalid state, set by js/tool-forms.js: a missing required answer, or an
+   email / phone number that cannot be right. It stays until the value is
+   fixed — unlike the flash-and-toast the tools raise on submit. */
+.tool-field.is-invalid label { color: var(--tool-bad); }
+.tool-field.is-invalid input,
+.tool-field.is-invalid textarea,
+.tool-field.is-invalid select,
+input.is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+  border-color: var(--tool-bad);
+  background: var(--tool-bad-soft);
+}
+.tool-field.is-invalid input:focus,
+.tool-field.is-invalid textarea:focus,
+.tool-field.is-invalid select:focus,
+input.is-invalid:focus {
+  border-color: var(--tool-bad);
+  box-shadow: 0 0 0 3px rgba(194, 65, 58, 0.18);
+}
+
+/* The line under the field saying what is wrong. */
+.tool-field__error {
+  font-size: var(--fs-sub);
+  line-height: 1.45;
+  color: var(--tool-bad);
+}
+/* Numbers read as a column, so they are set right-aligned on tabular figures. */
+.tool-field input[type='number'] { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------- line items */
+
+.tool-items { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.tool-items thead th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--fg-muted);
+  padding: 10px;
+  background: var(--bg-highlight-soft);
+  border-bottom: 1px solid var(--border);
+}
+.tool-items thead th.num { text-align: right; }
+.tool-items tbody td { padding: 6px 4px; vertical-align: top; border-bottom: 1px solid var(--sg-line-soft); }
+.tool-items input {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+}
+.tool-items input:focus { outline: none; border-color: var(--accent); background: var(--bg-card); }
+.tool-items input.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tool-items .col-line-total {
+  text-align: right;
+  padding-right: 8px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--fg);
+}
+.tool-items .col-actions { width: 36px; text-align: center; }
+.tool-items button.row-del {
+  padding: 6px 8px;
+  border-radius: var(--radius);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--fg-muted);
+}
+.tool-items button.row-del:hover { color: var(--tool-bad); background: var(--bg-highlight-soft); }
+.tool-items tr.totals td { padding: 8px 10px; border-top: 1px solid var(--border); }
+.tool-items tr.totals td.label { text-align: right; font-weight: 600; color: var(--fg-body); }
+.tool-items tr.totals td.value {
+  text-align: right;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+}
+.tool-items tr.grand-total td { padding-top: 10px; border-top: 2px solid var(--fg); font-size: var(--fs-h6); }
+
+/* --------------------------------------------------------------- actions */
+
+.tool-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+
+/* The inline scripts and tools.js write the old button names, so both spell
+   the v3 button here. */
+.btn-primary {
+  background: var(--accent);
+  color: var(--sg-logo-white);
+  border: 1px solid var(--accent);
+}
+.btn-primary:hover { background: var(--accent-hover); color: var(--sg-logo-white); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 20px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--fg);
+  cursor: pointer;
+}
+.btn-secondary:hover { border-color: var(--sg-blue-15); color: var(--accent); }
+
+/* Adds a row to a line-item table — dashed, because the row is not there
+   yet. */
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sub);
+  font-weight: 600;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-highlight-soft);
+  color: var(--fg);
+  cursor: pointer;
+}
+.btn-add:hover { border-color: var(--accent); color: var(--accent); }
+
+/* --------------------------------------------------------------- results */
+
+.results-hero {
+  margin-top: 24px;
+  padding: 36px 32px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--bg-highlight-soft);
+  text-align: center;
+}
+.results-hero .big-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.results-hero .big-number {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  margin: 10px 0 0;
+}
+.results-hero .big-number.green { color: var(--tool-ok); }
+.results-hero .big-number.gold  { color: var(--tool-warn); }
+.results-hero .big-number.red   { color: var(--tool-bad); }
+.results-hero .big-caption {
+  max-width: 640px;
+  margin: 14px auto 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-body);
+}
+
+.results-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+.results-stat {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  text-align: center;
+}
+.results-stat .label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 8px;
+}
+.results-stat .value {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+.results-stat .value.green { color: var(--tool-ok); }
+.results-stat .value.gold  { color: var(--tool-warn); }
+.results-stat .value.red   { color: var(--tool-bad); }
+.results-stat .sub { font-size: var(--fs-sub); color: var(--fg-muted); margin-top: 6px; }
+
+.results-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: var(--fs-body); }
+.results-table th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--fg-muted);
+  padding: 10px 12px;
+  background: var(--bg-highlight-soft);
+  border-bottom: 1px solid var(--border);
+}
+.results-table td { padding: 12px; border-bottom: 1px solid var(--sg-line-soft); color: var(--fg-body); }
+.results-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------- charts + gauges */
+
+.bar-row { display: grid; grid-template-columns: 160px minmax(0, 1fr) 110px; align-items: center; gap: 12px; padding: 6px 0; }
+.bar-row .bar-label { font-size: var(--fs-body); font-weight: 600; color: var(--fg); }
+.bar-row .bar-track { position: relative; height: 12px; overflow: hidden; background: var(--bg-highlight-soft); }
+.bar-row .bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); transition: width 600ms var(--ease); }
+.bar-row .bar-fill.green { background: var(--tool-ok); }
+.bar-row .bar-fill.gold  { background: var(--tool-warn); }
+.bar-row .bar-fill.red   { background: var(--tool-bad); }
+.bar-row .bar-value { text-align: right; font-weight: 600; font-size: var(--fs-body); font-variant-numeric: tabular-nums; }
+
+.score-gauge { display: flex; gap: 2px; margin-top: 16px; }
+.score-gauge .stop { flex: 1; height: 10px; background: var(--bg-highlight-soft); }
+.score-gauge .stop.active-1 { background: var(--tool-bad); }
+.score-gauge .stop.active-2 { background: var(--tool-warn); }
+.score-gauge .stop.active-3 { background: #D08A00; }
+.score-gauge .stop.active-4 { background: #5F9E36; }
+.score-gauge .stop.active-5 { background: var(--tool-ok); }
+
+/* ------------------------------------------------- schedule + inspection */
+
+.gantt-wrap { overflow-x: auto; border: 1px solid var(--border); background: var(--bg-card); }
+.gantt { width: 100%; border-collapse: collapse; font-size: var(--fs-sub); }
+.gantt th, .gantt td { padding: 6px 8px; border-right: 1px solid var(--sg-line-soft); }
+.gantt thead th {
+  background: var(--bg-highlight-soft);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--fg-muted);
+}
+.gantt thead th.job-col { position: sticky; left: 0; z-index: 2; min-width: 180px; text-align: left; background: var(--bg-highlight-soft); }
+.gantt tbody td.job-name { position: sticky; left: 0; z-index: 1; min-width: 180px; font-weight: 600; color: var(--fg); background: var(--bg-card); }
+.gantt .bar { display: inline-block; height: 22px; min-width: 8px; background: var(--accent); }
+.gantt .bar.done { background: var(--tool-ok); }
+.gantt .bar.delayed { background: var(--tool-bad); }
+.gantt .bar.planned { background: var(--tool-warn); }
+.gantt-legend { display: flex; gap: 16px; margin-top: 12px; font-size: var(--fs-sub); color: var(--fg-body); }
+.gantt-legend .swatch { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: middle; }
+
+.qc-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 130px 130px 130px 90px 40px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--sg-line-soft);
+}
+.qc-row.header {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border);
+}
+.qc-row select.pf { padding: 6px 8px; }
+.qc-row .pass { color: var(--tool-ok); font-weight: 700; }
+.qc-row .fail { color: var(--tool-bad); font-weight: 700; }
+
+/* --------------------------------------------------------------- notices */
+
+.tool-note { font-size: var(--fs-sub); color: var(--fg-muted); margin-top: 6px; }
+
+/* Written into a results panel by sgWarnPanel() when an input is out of
+   range — the numbers still calculate, this says what was capped. */
+.sg-warn-box {
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  text-align: left;
+  border: 1px solid var(--tool-warn);
+  border-left-width: 4px;
+  background: #FDF6E7;
+}
+.sg-warn-title { font-size: var(--fs-sub); font-weight: 700; color: var(--tool-warn); margin-bottom: 6px; }
+.sg-warn-list { margin: 0; padding-left: 18px; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-body); }
+.sg-warn-list li { margin: 2px 0; }
+
+/* Non-blocking toasts from sgToast(), in place of alert(). */
+#sg-toast-host {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 360px;
+  pointer-events: none;
+}
+.sg-toast {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--fg);
+  color: var(--sg-logo-white);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 180ms var(--ease), transform 180ms var(--ease);
+  pointer-events: auto;
+}
+.sg-toast.sg-toast-in { opacity: 1; transform: translateY(0); }
+.sg-toast-error { background: var(--tool-bad); }
+.sg-toast-success { background: var(--tool-ok); }
+.sg-toast-info { background: var(--fg); }
+
+/* ------------------------------------------------------------ soft CTA */
+
+.tool-cta { text-align: center; background: var(--bg-highlight-soft); border-color: var(--card-border); }
+.tool-cta .eyebrow { margin-bottom: 12px; }
+.tool-cta h2 { font-size: var(--fs-h5); color: var(--accent); margin-bottom: 12px; }
+.tool-cta p { max-width: 62ch; margin: 0 auto 24px; color: var(--fg-body); line-height: var(--lh-body); }
+
+/* ----------------------------------------------------------- SEO content */
+
+.tool-seo h2 {
+  font-family: var(--font-body);
+  font-size: var(--fs-h5);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin: 32px 0 12px;
+}
+.tool-seo > h2:first-child { margin-top: 0; }
+.tool-seo h3 { font-family: var(--font-body); font-size: var(--fs-h6); font-weight: 700; color: var(--fg); margin: 24px 0 8px; }
+.tool-seo p { max-width: 74ch; margin-bottom: 14px; color: var(--fg-body); line-height: var(--lh-body); }
+.tool-seo ul, .tool-seo ol { margin: 8px 0 18px; padding-left: 22px; }
+.tool-seo li { max-width: 72ch; margin-bottom: 6px; color: var(--fg-body); line-height: var(--lh-body); }
+
+/* The FAQ rows, in the same open/close idiom as the homepage FAQ. */
+.tool-seo details { border-top: 1px solid var(--border); padding: 16px 0; }
+.tool-seo details:last-of-type { border-bottom: 1px solid var(--border); }
+.tool-seo details summary {
+  position: relative;
+  padding-right: 26px;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--fg);
+  cursor: pointer;
+  list-style: none;
+}
+.tool-seo details summary::-webkit-details-marker { display: none; }
+.tool-seo details summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--accent);
+}
+.tool-seo details[open] summary::after { content: '\2212'; }
+.tool-seo details p { margin-top: 10px; margin-bottom: 0; }
+
+.related-tools-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0; margin: 0; }
+.related-tools-list li { margin: 0; }
+.related-tools-list a {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--accent);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+.related-tools-list a:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 900px) {
+  .tool-card { padding: 20px; }
+  .results-hero { padding: 28px 20px; }
+  .results-hero .big-number { font-size: 44px; }
+}
+@media (max-width: 720px) {
+  .tool-form-grid, .tool-form-grid.cols-3 { grid-template-columns: minmax(0, 1fr); }
+  .results-grid, .related-tools-list { grid-template-columns: minmax(0, 1fr); }
+  .bar-row { grid-template-columns: 120px minmax(0, 1fr) 90px; gap: 8px; }
+  .qc-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .qc-row > * { grid-column: 1 / -1; }
+  .qc-row.header { display: none; }
+}
+
+/* Printing a result should give the result, not the page around it. */
+@media print {
+  .site-header, .site-footer, .grid-field, .tool-cta, .tool-seo, .tool-actions, .to-top { display: none !important; }
+  .card { border: 0; padding: 0; }
+}
+
+/* ==========================================================================
+   Scored questionnaires
+
+   Seven tools ask a set of questions before they score. The rules lived
+   inline on six of those pages and were missing entirely from the seventh,
+   and they were written against tokens this site does not define
+   (--sg-blue, --fg1, --font-heading), so the selected state had no colour to
+   take. One set here, on the tokens that exist.
+   ========================================================================== */
+
+.q-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+.q-card .q-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.q-card .q-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  margin: 0 0 10px;
+}
+.q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.q-option {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  font-size: var(--fs-body);
+  color: var(--fg-body);
+  cursor: pointer;
+  transition: border-color 120ms var(--ease), background-color 120ms var(--ease),
+              color 120ms var(--ease);
+}
+.q-option:hover { border-color: var(--accent); }
+.q-option.selected {
+  background: var(--sg-blue-08);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+.q-option input { display: none; }
+
+@media (max-width: 600px) {
+  .q-options { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------- job cost readout */
+
+/* Written by the calculator, so it never had a rule of its own: a label on the
+   left, its figure on the right, with the total pulled out. */
+.cost-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--sg-line-soft);
+  font-size: var(--fs-body);
+  color: var(--fg-body);
+}
+.cost-row strong { font-variant-numeric: tabular-nums; color: var(--fg); }
+.cost-row.total {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+  font-weight: 600;
+  color: var(--fg);
+}
+.cost-row.total strong { font-size: var(--fs-h6); color: var(--accent); }
+
+.margin-stat {
+  display: grid;
+  gap: 4px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--sg-line-soft);
+}
+.margin-stat:last-child { border-bottom: 0; }
+.margin-stat .label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.margin-stat .value {
+  font-family: var(--font-display);
+  font-size: var(--fs-h6);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+}
+
+/* The job cost readout: a panel of rows written by the calculator, and the
+   margin card under it. Both were in the markup with no rules of their own. */
+.cost-summary:not(:empty),
+.margin-card {
+  margin-top: 20px;
+  padding: 22px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.margin-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px 28px;
+}
+
+/* Two columns is already the default; the class only exists so a form can say
+   so next to its cols-3 siblings. */
+.tool-form-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -1,0 +1,454 @@
+/* ==========================================================================
+   SimpleGrid — solutions / by role
+
+   A timeline of seats: the role on one side of a central rail, what changes
+   for them on the other, alternating down the page. Cards, type and colour
+   are the shared system; only the rail and the before/after table are new.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------- hero */
+
+/* The panel holds both halves of the page, so it takes the card's own top
+   offset and the hero inside it sits on the card's padding. */
+.role-panel { margin-top: var(--grid-cell); }
+
+.role-hero {
+  min-height: calc(var(--grid-block) * 3);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-content: center;
+  align-items: end;
+  margin-bottom: 56px;
+}
+
+.role-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 12ch;
+  margin: 0;
+}
+
+/* The rule under the headline, as in the design — a short blue underscore
+   rather than a full-width divider. */
+.role-hero__title::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin-top: 24px;
+  background: var(--accent);
+}
+
+.role-hero__sub { max-width: 44ch; margin: 0; }
+
+/* Eyebrow as a soft chip, matching the design's pill. */
+.eyebrow--pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: var(--bg-highlight-soft);
+  color: var(--accent);
+  text-transform: none;
+}
+.eyebrow--pill svg { width: 13px; height: 13px; fill: none; stroke: currentColor;
+  stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ------------------------------------------------------------------ seats */
+
+/* The rail runs the height of the list; each seat hangs a dot on it. */
+.seats { position: relative; display: grid; gap: 64px; }
+.seats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom, var(--sg-blue-15) 0 26px, transparent 26px 40px);
+}
+
+.seat {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+/* The dot sits on the rail, level with the top of the card. */
+.seat::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--bg-card);
+}
+
+/* Odd seats: label left, card right. Even seats swap sides, which is what
+   makes the column read as a timeline rather than two lists. */
+.seat__label { text-align: right; padding-top: 8px; }
+.seat:nth-child(even) .seat__label { order: 2; text-align: left; }
+.seat:nth-child(even) .seat__card { order: 1; }
+
+.seat__num {
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--fg-muted);
+  opacity: 0.55;
+  margin-bottom: 6px;
+}
+
+.seat__role {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 14px;
+}
+
+.seat__line {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--accent);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------- card */
+
+.seat__card {
+  padding: 28px 30px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  background: var(--bg-card);
+  box-shadow: 0 14px 34px rgba(26, 26, 26, 0.05);
+}
+
+.seat__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.seat__kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: #1F9E60;
+  margin-bottom: 12px;
+}
+
+.seat__blurb { display: flex; gap: 12px; margin-bottom: 22px; }
+.seat__blurb svg {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  fill: none;
+  stroke: #1F9E60;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.seat__blurb p { font-size: var(--fs-sub); line-height: 1.7; color: var(--fg-body); margin: 0; }
+
+/* Before and after, side by side — the whole argument of the page in two
+   columns, so they share one grid rather than sitting in separate boxes. */
+.seat__compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.seat__head {
+  font-family: var(--font-body);
+  font-size: var(--fs-sub);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.seat__head--now { color: #D8434F; }
+.seat__head--sg { color: var(--accent); }
+
+.seat__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.seat__list li { font-size: var(--fs-sub); line-height: 1.5; color: var(--fg-body); }
+
+@media (max-width: 900px) {
+  .role-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+  .seats::before { left: 5px; }
+  .seat { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-left: 30px; }
+  .seat::before { left: 5px; }
+  .seat__label,
+  .seat:nth-child(even) .seat__label { text-align: left; order: 0; }
+  .seat:nth-child(even) .seat__card { order: 0; }
+  .seat__compare { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+}
+
+/* ==========================================================================
+   One seat, one page — the detail behind each row of the Solutions menu.
+   ========================================================================== */
+
+.role-page { margin-top: var(--grid-cell); }
+
+.role-page__head { margin-bottom: 44px; }
+
+/* Every section heading on a role or partner page sits at one size. */
+.role-page__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  color: var(--accent);
+  margin-bottom: 14px;
+  max-width: 26ch;
+  text-wrap: balance;
+}
+
+/* The promise, set in mono at reading size — the one line the whole page is
+   an argument for. */
+.role-page__lead {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--fg-body);
+  margin: 0;
+  max-width: 30ch;
+}
+
+.role-page__body { max-width: 52ch; margin-bottom: 44px; }
+.role-page__claim {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+/* Before and after as one table: shared rows, so each pair reads across
+   rather than as two lists that happen to sit side by side. */
+.role-table { width: 100%; max-width: 620px; border-collapse: collapse; margin-bottom: 36px; }
+.role-table th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 0 12px;
+}
+.role-table th:first-child { color: #D8434F; }
+.role-table th:last-child { color: var(--accent); }
+
+.role-table td {
+  padding: 13px 0;
+  border-top: 1px solid var(--sg-line-soft);
+  font-size: var(--fs-body);
+  vertical-align: top;
+}
+.role-table td:first-child { color: var(--fg-muted); padding-right: 32px; }
+.role-table td:last-child { color: var(--fg); font-weight: 700; }
+
+/* The tick belongs to the claim beside it, so it is drawn in the cell rather
+   than in a column of its own. */
+.role-table td:last-child::before {
+  content: '\2713';
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 9px;
+}
+
+@media (max-width: 900px) {
+  .role-page__lead { font-size: 19px; }
+  .role-table td:first-child { padding-right: 16px; }
+}
+
+/* ==========================================================================
+   Role pages, second pass — hero screen, scenes, screens, proof
+
+   One reader per page. The claim opens with the screen that makes it, then
+   three moments they recognise, then what changes, then the screens they
+   would actually open.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------- hero */
+
+.role-hero-2 {
+  margin-top: var(--grid-cell);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.role-hero-2__copy { min-width: 0; }
+
+.role-hero-2__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 18ch;
+  margin-bottom: 20px;
+}
+.role-hero-2__sub { max-width: 56ch; }
+.role-hero-2__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+/* The screen itself, cropped by its frame rather than shrunk to fit — it is
+   real UI, and it should read at the size it is used. */
+.role-shot {
+  margin: 0;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: 0 18px 40px rgba(26, 26, 26, 0.08);
+  overflow: hidden;
+}
+.role-shot img { width: 100%; height: auto; display: block; }
+
+/* ----------------------------------------------------------------- scenes */
+
+.scenes__head { margin-bottom: 40px; }
+/* Same size, weight and measure as .role-page__title — two section headings
+   on one page should not read as two levels. */
+.scenes__title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  color: var(--accent);
+  max-width: 26ch;
+  text-wrap: balance;
+}
+
+.scenes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+
+/* No box and no icon: these are three sentences the reader already knows, and
+   a card each would dress them up as features. */
+.scene {
+  padding: 0 32px;
+  border-left: 1px solid var(--border);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-body);
+}
+.scene:first-child { padding-left: 0; border-left: 0; }
+.scene:last-child { padding-right: 0; }
+
+/* ---------------------------------------------------------------- screens */
+
+.role-screens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+
+/* Mark over name, nothing else — the same tile the product page's modules
+   use, since it opens the same dialog. A button, so the UA styling that comes
+   with that is reset back to a block of copy. */
+.role-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 132px;
+  width: 100%;
+  padding: 20px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+.role-screen:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
+
+.role-screen__name {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--accent);
+}
+.role-screen__icon {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ------------------------------------------------------------------ proof */
+
+.role-proof { display: grid; gap: 28px; justify-items: center; text-align: center; }
+
+.role-quote { margin: 0; max-width: 62ch; }
+.role-quote__words {
+  font-family: var(--font-display);
+  font-size: var(--fs-h6);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--accent);
+}
+.role-quote__by { display: grid; gap: 2px; margin-top: 20px; }
+.role-quote__name { font-size: var(--fs-body); font-weight: 700; color: var(--fg); }
+.role-quote__role {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: var(--fg-muted);
+}
+
+/* The number under the quote, in the metadata voice — a fact, not a headline. */
+.role-proof__stat {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  max-width: 62ch;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: var(--accent);
+}
+
+.role-objection__cta { margin-top: 24px; }
+
+@media (max-width: 900px) {
+  .role-hero-2 { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .role-hero-2__title { max-width: none; }
+  .scenes, .role-screens { grid-template-columns: minmax(0, 1fr); }
+  .scene { padding: 24px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+  .scene:first-child { padding-top: 0; border-top: 0; }
+}
+
+/* The worked example under the Today / With table — one paragraph, at the
+   card's own measure rather than the table's column. */
+.role-detail {
+  max-width: 84ch;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}

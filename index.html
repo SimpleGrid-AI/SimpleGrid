@@ -1,253 +1,1381 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-
-<title>SimpleGrid | Adaptive ERP &amp; Operations Cloud</title>
-<meta name="description" content="SimpleGrid is the adaptive ERP and operations cloud for CPG brands, manufacturers and inventory-led businesses. Live in 3 weeks or less. 30-day trial.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<link rel="canonical" href="https://simplegrid.ai/">
-<link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
-<link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
-<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
-<link rel="preconnect" href="https://us.i.posthog.com" crossorigin>
-<link rel="stylesheet" href="colors_and_type.css">
-<link rel="stylesheet" href="styles.css">
+<title>SimpleGrid | The operations cloud that fits how you run</title>
+<meta name="description" content="The operations cloud built around how your business already runs. Live in 3 weeks, your accounting stays where it is, nothing gets replaced.">
 
-<!-- Open Graph -->
-<meta property="og:site_name" content="SimpleGrid">
+<!-- Social preview: the card everyone sees before the page itself. -->
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:title" content="SimpleGrid | The operations cloud that fits how you run">
+<meta property="og:description" content="The operations cloud built around how your business already runs. Live in 3 weeks, your accounting stays where it is, nothing gets replaced.">
 <meta property="og:url" content="https://simplegrid.ai/">
-<meta property="og:title" content="SimpleGrid | Adaptive ERP &amp; Operations Cloud">
-<meta property="og:description" content="SimpleGrid is the adaptive ERP and operations cloud for CPG brands, manufacturers and inventory-led businesses. Live in 3 weeks or less. 30-day trial.">
 <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SimpleGrid - the Adaptive ERP for CPG brands, manufacturers and inventory-led businesses">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="SimpleGrid | Adaptive ERP &amp; Operations Cloud">
-<meta name="twitter:description" content="SimpleGrid is the adaptive ERP and operations cloud for CPG brands, manufacturers and inventory-led businesses. Live in 3 weeks or less. 30-day trial.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="canonical" href="https://simplegrid.ai/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- Structured data: Organization + WebSite + SoftwareApplication + WebPage -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
-  {
-   "@type": "Organization",
-   "@id": "https://simplegrid.ai/#org",
-   "name": "SimpleGrid",
-   "alternateName": [
-    "SimpleGrid AI",
-    "SimpleGrid.ai"
-   ],
-   "url": "https://simplegrid.ai/",
-   "logo": {
-    "@type": "ImageObject",
-    "url": "https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg",
-    "width": 240,
-    "height": 48
-   },
-   "sameAs": [
-    "https://www.linkedin.com/company/simplegridai",
-    "https://x.com/simplegridai",
-    "https://github.com/SimpleGridAI"
-   ],
-   "description": "The Adaptive ERP for CPG brands, manufacturers and inventory-led businesses - an operations cloud built around how your business already works.",
-   "foundingDate": "2025-01-01",
-   "knowsAbout": [
-    "Adaptive ERP Software",
-    "Operations Management Software",
-    "Inventory and Production Management",
-    "QuickBooks, Tally and Zoho Integration"
-   ],
-   "areaServed": [
-    {
-     "@type": "Country",
-     "name": "United States"
-    }
-   ],
-   "contactPoint": [
-    {
-     "@type": "ContactPoint",
-     "email": "hello@simplegrid.ai",
-     "contactType": "sales",
-     "availableLanguage": "English",
-     "areaServed": [
-      "US"
-     ]
-    }
-   ],
-   "legalName": "SimpleGrid Inc",
-   "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "2810 N Church St STE 88778",
-    "addressLocality": "Wilmington",
-    "addressRegion": "DE",
-    "postalCode": "19802",
-    "addressCountry": "US"
-   },
-   "founder": {
-    "@id": "https://simplegrid.ai/#mukund"
-   }
-  },
-  {
-   "@type": "WebSite",
-   "@id": "https://simplegrid.ai/#website",
-   "url": "https://simplegrid.ai/",
-   "name": "SimpleGrid",
-   "alternateName": [
-    "SimpleGrid AI"
-   ],
-   "publisher": {
-    "@id": "https://simplegrid.ai/#org"
-   },
-   "inLanguage": "en"
-  },
-  {
-   "@type": "SoftwareApplication",
-   "@id": "https://simplegrid.ai/#software",
-   "name": "SimpleGrid",
-   "alternateName": [
-    "SimpleGrid Adaptive ERP",
-    "SimpleGrid Operations Cloud"
-   ],
-   "applicationCategory": "BusinessApplication",
-   "applicationSubCategory": "ERP and Operations Management Software",
-   "operatingSystem": "Web",
-   "description": "The Adaptive ERP - an operations cloud that runs orders, inventory, production, planning and costing in one place, built around how you already work. Connects to QuickBooks, Tally, Zoho and 20+ tools. Live in 3 weeks or less with a 30-day trial.",
-   "url": "https://simplegrid.ai/product.html",
-   "publisher": {
-    "@id": "https://simplegrid.ai/#org"
-   },
-   "provider": {
-    "@id": "https://simplegrid.ai/#org"
-   },
-   "audience": {
-    "@type": "BusinessAudience",
-    "audienceType": "CPG Brands, Manufacturers, Inventory-Led Businesses",
-    "numberOfEmployees": {
-     "@type": "QuantitativeValue",
-     "minValue": 50,
-     "maxValue": 1500
-    }
-   },
-   "offers": {
-    "@type": "Offer",
-    "priceSpecification": {
-     "@type": "PriceSpecification",
-     "priceCurrency": "USD",
-     "description": "Contact for quote. $0 up front; billing starts only after a 30-day trial on the customer's real operation."
-    },
-    "availability": "https://schema.org/InStock",
-    "url": "https://simplegrid.ai/pricing.html"
-   },
-   "featureList": [
-    "Live in 3 weeks or less",
-    "30-day trial",
-    "Configured to your operation, not a template",
-    "Live QuickBooks, Tally and Zoho sync",
-    "Custom formula builder for costing",
-    "Custom to your process",
-    "Production tracking and job order management",
-    "Inventory and material inward tracking",
-    "Purchase order and vendor management",
-    "Sales order management",
-    "Quality control and inspection tracking",
-    "Bill of materials management",
-    "Role-based access control",
-    "Contractor and subcontractor management",
-    "Works on phone, tablet, and desktop"
-   ]
-  },
-  {
-   "@type": "WebPage",
-   "@id": "https://simplegrid.ai/#webpage",
-   "url": "https://simplegrid.ai/",
-   "name": "SimpleGrid | Adaptive ERP & Operations Cloud",
-   "description": "The adaptive ERP and operations cloud for CPG brands, manufacturers and inventory-led businesses. Live in 3 weeks or less. 30-day trial.",
-   "isPartOf": {
-    "@id": "https://simplegrid.ai/#website"
-   },
-   "about": {
-    "@id": "https://simplegrid.ai/#org"
-   },
-   "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://simplegrid.ai/assets/og-card.jpg"
-   },
-   "inLanguage": "en"
-  },
-  {
-   "@type": "Person",
-   "@id": "https://simplegrid.ai/#mukund",
-   "name": "Mukund Agarwal",
-   "jobTitle": "Founder",
-   "worksFor": {
-    "@id": "https://simplegrid.ai/#org"
-   },
-   "url": "https://simplegrid.ai/about.html",
-   "sameAs": [
-    "https://www.linkedin.com/in/mdagarwal/"
-   ]
-  }
- ]
-}
-</script>
-<!-- No-flash boot: fade #root in once React replaces the seed (or after 1.2s failsafe). Respects prefers-reduced-motion. -->
-<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}@media (prefers-reduced-motion: reduce){html.js #root,html.js #root.sg-mounted{opacity:1;transition:none}}</style>
-<script>(function(){var h=document.documentElement;h.classList.add('js');function s(){var r=document.getElementById('root');if(!r)return;var m=new MutationObserver(function(){r.classList.add('sg-mounted');m.disconnect()});m.observe(r,{childList:true});setTimeout(function(){r.classList.add('sg-mounted');m.disconnect()},1200)}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',s)}else{s()}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous" defer></script>
-
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="assets/js/cookie-consent.js" defer></script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/modules.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- Static seed content. Lives inside #root so React replaces it on mount -
-     crawlers + AI bots that don't run JS see this real content; humans see
-     the React app once it boots. Brand-spelling variants live in the
-     Organization schema's `alternateName` (above), not in body text. -->
-<!-- Static seed inside #root - React replaces on mount. Crawler + AI-bot visible. -->
-<!-- Top navigation is rendered by the shared component (components/site-nav.js), outside #root so React doesn't replace it. -->
-<div id="sg-nav" data-page="home"></div>
-<div id="root">
-  <main id="main" style="padding:60px 32px;max-width:920px;margin:0 auto">
-    <h1 style="font-size:44px;line-height:1.1;letter-spacing:-0.025em;margin:0 0 18px">The Operations Cloud that adapts to you.</h1>
-    <p style="font-size:18px;line-height:1.6;margin:0">SimpleGrid is the operations cloud for CPG brands, manufacturers, and inventory-led businesses. Built around how you already work.</p>
-  </main>
-</div>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script src="components/site-nav.js" defer></script>
-<script src="components/site-footer.js" defer></script>
-<script src="components/LoginModal.js" defer></script>
-<script src="components/InviteModal.js" defer></script>
-<script src="components/Interactive.js" defer></script>
-<script src="components/HomeTop.js" defer></script>
-<script src="components/HomeBottom.js" defer></script>
-<script src="components/FinalCTA.js" defer></script>
+<!-- Brand marks from Simple Icons (CC0), for the "your data" panel beside the
+     walkthrough. The paths carry no fill of their own, so each one is coloured
+     by the per-brand rules in v3.css. Excel is not in that set (Microsoft
+     product marks were withdrawn for trademark reasons), so it is set as a
+     wordmark tile. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo-googlesheets" viewBox="0 0 24 24"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></symbol>
+    <symbol id="logo-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="logo-gmail" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></symbol>
+    <symbol id="logo-quickbooks" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path d="M10.2 7.4a4.6 4.6 0 1 0 0 9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="10.2" y1="6.2" x2="10.2" y2="19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><path d="M13.8 16.6a4.6 4.6 0 1 0 0-9.2" fill="none" stroke="#fff" stroke-width="1.7"/><line x1="13.8" y1="17.8" x2="13.8" y2="4.8" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="logo-xero" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#13B5EA"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="Albert Sans, sans-serif" font-weight="700" font-size="13">X</text></symbol>
+    <symbol id="logo-tally" viewBox="0 0 40 40"><rect width="40" height="40" fill="#263238"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-family="Albert Sans, sans-serif" font-weight="700" font-size="16">T</text></symbol>
+    <symbol id="logo-excel" viewBox="0 0 24 24"><rect width="24" height="24" fill="#107C41"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="Albert Sans, sans-serif" font-weight="700" font-size="11">XL</text></symbol>
+    <symbol id="logo-google-sheets" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" fill="#0F9D58"/><path d="M14 2v6h6" fill="#0B7B47"/><rect x="7" y="11" width="10" height="8" fill="#fff"/><line x1="7" y1="14" x2="17" y2="14" stroke="#0F9D58" stroke-width="0.8"/><line x1="7" y1="17" x2="17" y2="17" stroke="#0F9D58" stroke-width="0.8"/><line x1="10.5" y1="11" x2="10.5" y2="19" stroke="#0F9D58" stroke-width="0.8"/><line x1="14" y1="11" x2="14" y2="19" stroke="#0F9D58" stroke-width="0.8"/></symbol>
+    <symbol id="logo-shopify" viewBox="-7.5 0 124.5 124.5"><path fill="#95BF47" d="M95.9 23.9c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.7-.7-2.2-.5-2.7-.3 0 0-1.4.4-3.7 1.1-.4-1.3-1-2.8-1.8-4.4-2.6-5-6.5-7.7-11.1-7.7-.3 0-.6 0-1 .1-.1-.2-.3-.3-.4-.5C53.7 1.5 51.1.4 48 .5c-6 .2-12 4.5-16.8 12.2-3.4 5.4-6 12.2-6.7 17.5-6.9 2.1-11.7 3.6-11.8 3.7-3.5 1.1-3.6 1.2-4 4.5C8.3 40.9 0 105.6 0 105.6l69.4 12 30.1-7.5S96 24.5 95.9 23.9zM68.2 17.1c-1.7.5-3.7 1.1-5.8 1.8 0-3-.4-7.2-1.8-10.8 4.5.8 6.7 5.9 7.6 9zm-9.7 3c-3.9 1.2-8.2 2.5-12.5 3.8 1.2-4.6 3.5-9.2 6.3-12.2 1-1.1 2.5-2.3 4.2-3 1.7 3.5 2.1 8.4 2 11.4zM48.2 4.5c1.4 0 2.6.3 3.6.9-1.6.8-3.2 2.1-4.7 3.7-3.7 4-6.5 10.2-7.7 16.2-3.6 1.1-7.1 2.2-10.3 3.2C31.4 19.3 39.2 4.8 48.2 4.5z"/><path fill="#5E8E3E" d="M94.8 22.9c-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.3-.3-.6-.4-1-.5l-5.2 106.3 30.1-7.5S96 24.5 95.9 23.9c-.1-.6-.6-1-1.1-1z"/><path fill="#fff" d="M58.4 38.4l-3.5 13.1s-3.9-1.8-8.5-1.5c-6.8.4-6.8 4.7-6.8 5.7.4 5.7 15.4 7 16.3 20.4.7 10.5-5.6 17.7-14.6 18.3-10.9.6-16.9-5.8-16.9-5.8l2.3-9.8s6 4.6 10.9 4.3c3.2-.2 4.3-2.8 4.2-4.6-.5-7.5-12.7-7.1-13.5-19.4-.7-10.3 6.1-20.7 21-21.6 5.8-.4 8.8 1.1 8.8 1.1z"/></symbol>
+    <symbol id="logo-amazon" viewBox="0 0 24 24"><rect width="24" height="24" fill="#fff"/><text x="12" y="13" text-anchor="middle" fill="#232F3E" font-family="Albert Sans, sans-serif" font-weight="700" font-size="6.2" letter-spacing="-0.4">amazon</text><path d="M5 16.4c4.2 2.8 9.8 2.8 14 .2" fill="none" stroke="#FF9900" stroke-width="1.7" stroke-linecap="round"/><path d="M19 16.6l-2.7-.5 1.4 2.4z" fill="#FF9900"/></symbol>
+    <symbol id="logo-slack" viewBox="0 0 24 24"><path fill="#4A154B" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></symbol>
+  </defs>
+</svg>
 
-<script src="app/home.js" defer></script><script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= HERO -->
+  <section class="section">
+    <div class="container container--wide">
+      <div class="card hero">
+        <div class="hero__inner">
+          <p class="eyebrow">Built for growing manufacturers and D2C brands</p>
+          <h1 class="hero__title">ERPs make you change how you run.
+            <span class="accent">SimpleGrid is built around how you already do.</span></h1>
+          <p class="lede hero__sub">We unify supply chain, production, costing and sales orders into
+            one AI-native operations cloud.
+            <strong class="accent hero__note">Your accounting stays where it is.</strong></p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#demo">Book a demo</a>
+          </div>
+        </div>
+
+        <!-- The grid as an isometric plane: SimpleGrid at the centre, the
+             tools it syncs with around it, and the flow of work between them.
+             Inline rather than an <img> so the labels resolve against the page's
+             own IBM Plex Mono. Decoration only, the tools are named beside the
+             walkthrough. -->
+        <!-- The box is cropped to the scene: the export was drawn on a 2910x1680
+             canvas with the blocks in one corner of it, which rendered them a
+             quarter of the size they should be. -->
+        <svg class="hero-art" viewBox="596 437 1025 675" fill="none" aria-hidden="true"
+             focusable="false" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="hero-fade" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                            gradientTransform="matrix(105.938 930.938 -1036.88 105.938 614.062 509.062)">
+              <stop/>
+              <stop offset="1" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="hero-mask" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                  x="207" y="120" width="2495" height="1440">
+              <rect width="1440" height="1440" transform="matrix(0.866025 -0.5 0.866025 0.5 207.846 840)" fill="url(#hero-fade)"/>
+            </mask>
+            <clipPath id="hero-clip">
+              <rect width="1920" height="1440" fill="white" transform="matrix(0.866025 -0.5 0.866025 0.5 0 960)"/>
+            </clipPath>
+          </defs>
+
+          <!-- the field itself, fading out as it runs away from the centre -->
+          <g opacity="0.5" mask="url(#hero-mask)">
+            <g clip-path="url(#hero-clip)">
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 69.2822 920)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 138.564 880)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 207.846 840)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 277.128 800)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 346.41 760)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 415.692 720)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 484.974 680)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 554.256 640)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 623.538 600)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 692.82 560)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 762.103 520)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 831.384 480)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 900.667 440)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 969.949 400)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1039.23 360)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1108.51 320)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1177.79 280)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1247.08 240)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1316.36 200)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1385.64 160)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1454.92 120)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1524.2 80)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1440" y2="-0.5" transform="matrix(0.866025 0.5 -0.866025 0.5 1593.49 40)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 69.2822 1000)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 138.564 1040)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 207.846 1080)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 277.128 1120)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 346.41 1160)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 415.692 1200)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 484.974 1240)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 554.256 1280)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 623.538 1320)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 692.82 1360)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 762.103 1400)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 831.384 1440)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 900.667 1480)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 969.948 1520)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 1039.23 1560)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 1108.51 1600)" stroke="#E3E3E9"/>
+              <line y1="-0.5" x2="1920" y2="-0.5" transform="matrix(0.866025 -0.5 0.866025 0.5 1177.79 1640)" stroke="#E3E3E9"/>
+            </g>
+          </g>
+
+          <!-- wires: the static rule, then the light travelling along it -->
+          <path d="M1211.48 575.065L1266.99 607.112C1274.99 611.73 1274.99 623.274 1266.99 627.895L1043.29 757.162" stroke="#D4D4DD" stroke-linecap="round"/><path class="flow flow2" d="M1211.48 575.065L1266.99 607.112C1274.99 611.73 1274.99 623.274 1266.99 627.895L1043.29 757.162" style="animation-delay:-0.00s"/><path class="flow" d="M1211.48 575.065L1266.99 607.112C1274.99 611.73 1274.99 623.274 1266.99 627.895L1043.29 757.162" style="animation-delay:-0.00s"/>
+          <path d="M1140.5 1054.5L1285.61 971.282C1293.61 966.699 1293.67 955.195 1285.73 950.527L1113 849.001" stroke="#D4D4DD" stroke-linecap="round"/><path class="flow flow2" d="M1140.5 1054.5L1285.61 971.282C1293.61 966.699 1293.67 955.195 1285.73 950.527L1113 849.001" style="animation-delay:-2.00s"/><path class="flow" d="M1140.5 1054.5L1285.61 971.282C1293.61 966.699 1293.67 955.195 1285.73 950.527L1113 849.001" style="animation-delay:-2.00s"/>
+          <path d="M1421 533.751L1445.8 548.072C1451.14 551.151 1451.14 558.849 1445.8 561.928L1075.76 775.573" stroke="#D4D4DD" stroke-linecap="round"/><path class="flow flow2" d="M1421 533.751L1445.8 548.072C1451.14 551.151 1451.14 558.849 1445.8 561.928L1075.76 775.573" style="animation-delay:-4.00s"/><path class="flow" d="M1421 533.751L1445.8 548.072C1451.14 551.151 1451.14 558.849 1445.8 561.928L1075.76 775.573" style="animation-delay:-4.00s"/>
+          <path d="M1360 738.71L1296.54 702.073C1290.36 698.5 1282.73 698.5 1276.54 702.073L1112.5 796.783" stroke="#D4D4DD" stroke-linecap="round"/><path class="flow flow2" d="M1360 738.71L1296.54 702.073C1290.36 698.5 1282.73 698.5 1276.54 702.073L1112.5 796.783" style="animation-delay:-6.00s"/><path class="flow" d="M1360 738.71L1296.54 702.073C1290.36 698.5 1282.73 698.5 1276.54 702.073L1112.5 796.783" style="animation-delay:-6.00s"/>
+          <path d="M1491.73 927L1382.36 990.145C1376.17 993.718 1368.55 993.718 1362.36 990.145L1117.33 848.674" stroke="#D4D4DD" stroke-linecap="round"/><path class="flow flow2" d="M1491.73 927L1382.36 990.145C1376.17 993.718 1368.55 993.718 1362.36 990.145L1117.33 848.674" style="animation-delay:-8.00s"/><path class="flow" d="M1491.73 927L1382.36 990.145C1376.17 993.718 1368.55 993.718 1362.36 990.145L1117.33 848.674" style="animation-delay:-8.00s"/>
+          <path d="M725.616 936.5L768.616 961.326C774.804 964.899 782.428 964.899 788.616 961.326L980.572 850.5" stroke="#D4D4DD" stroke-linecap="round"/><path class="flow flow2" d="M725.616 936.5L768.616 961.326C774.804 964.899 782.428 964.899 788.616 961.326L980.572 850.5" style="animation-delay:-10.00s"/><path class="flow" d="M725.616 936.5L768.616 961.326C774.804 964.899 782.428 964.899 788.616 961.326L980.572 850.5" style="animation-delay:-10.00s"/>
+          <path d="M799.5 616.088L764.022 636.571C756.017 641.193 756.023 652.749 764.032 657.362L1003 795" stroke="#D4D4DD" stroke-linecap="round"/><path class="flow flow2" d="M799.5 616.088L764.022 636.571C756.017 641.193 756.023 652.749 764.032 657.362L1003 795" style="animation-delay:-12.00s"/><path class="flow" d="M799.5 616.088L764.022 636.571C756.017 641.193 756.023 652.749 764.032 657.362L1003 795" style="animation-delay:-12.00s"/>
+
+          <!-- the tools sitting on the plane -->
+          <path d="M1373.29 477C1379.99 473.134 1390.84 473.134 1397.54 477L1441.71 502.5C1448.4 506.366 1448.4 512.634 1441.71 516.5L1397.54 542C1390.84 545.866 1379.99 545.866 1373.29 542L1329.12 516.5C1322.43 512.634 1322.43 506.366 1329.12 502.5L1373.29 477Z" fill="#E3E3E9"/>
+          <path d="M1373.29 542L1329.12 516.5C1326.02 514.709 1324.1 512.234 1324.1 509.5V519.5C1324.1 522.234 1326.02 524.709 1329.12 526.5L1373.29 552C1379.99 555.866 1390.84 555.866 1397.54 552L1441.71 526.5C1444.81 524.709 1446.73 522.234 1446.73 519.5V509.5C1446.73 512.234 1444.81 514.709 1441.71 516.5L1397.54 542C1390.84 545.866 1379.99 545.866 1373.29 542Z" fill="#E3E3E9"/>
+          <circle cx="3.11345" cy="3.11345" r="3.11345" transform="matrix(0.866025 -0.5 0 1 1418 532.113)" fill="#9999A8"/>
+          <path d="M680.292 878C686.988 874.134 697.844 874.134 704.54 878L748.708 903.5C755.404 907.366 755.404 913.634 748.708 917.5L704.54 943C697.844 946.866 686.988 946.866 680.292 943L636.124 917.5C629.428 913.634 629.428 907.366 636.124 903.5L680.292 878Z" fill="#F2F2F4"/>
+          <path d="M680.292 943L636.125 917.5C633.022 915.709 631.103 913.234 631.103 910.5V920.5C631.103 923.234 633.022 925.709 636.125 927.5L680.292 953C686.988 956.866 697.845 956.866 704.541 953L748.708 927.5C751.811 925.709 753.73 923.234 753.73 920.5V910.5C753.73 913.234 751.811 915.709 748.708 917.5L704.541 943C697.845 946.866 686.988 946.866 680.292 943Z" fill="#BABAC4"/>
+          <circle cx="3.11345" cy="3.11345" r="3.11345" transform="matrix(0.866025 -0.5 0 1 722.768 934.443)" fill="#9999A8"/>
+          <path d="M1165.29 517C1171.99 513.134 1182.84 513.134 1189.54 517L1233.71 542.5C1240.4 546.366 1240.4 552.634 1233.71 556.5L1189.54 582C1182.84 585.866 1171.99 585.866 1165.29 582L1121.12 556.5C1114.43 552.634 1114.43 546.366 1121.12 542.5L1165.29 517Z" fill="#E3E3E9"/>
+          <path d="M1165.29 582L1121.12 556.5C1118.02 554.709 1116.1 552.234 1116.1 549.5V559.5C1116.1 562.234 1118.02 564.709 1121.12 566.5L1165.29 592C1171.99 595.866 1182.84 595.866 1189.54 592L1233.71 566.5C1236.81 564.709 1238.73 562.234 1238.73 559.5V549.5C1238.73 552.234 1236.81 554.709 1233.71 556.5L1189.54 582C1182.84 585.866 1171.99 585.866 1165.29 582Z" fill="#BABAC4"/>
+          <circle cx="3.11345" cy="3.11345" r="3.11345" transform="matrix(0.866025 -0.5 0 1 1208 573.113)" fill="#9999A8"/>
+          <path d="M1512.29 867C1518.99 863.134 1529.84 863.134 1536.54 867L1580.71 892.5C1587.4 896.366 1587.4 902.634 1580.71 906.5L1536.54 932C1529.84 935.866 1518.99 935.866 1512.29 932L1468.12 906.5C1461.43 902.634 1461.43 896.366 1468.12 892.5L1512.29 867Z" fill="#E3E3E9"/>
+          <path d="M1512.29 932L1468.12 906.5C1465.02 904.709 1463.1 902.234 1463.1 899.5V909.5C1463.1 912.234 1465.02 914.709 1468.12 916.5L1512.29 942C1518.99 945.866 1529.84 945.866 1536.54 942L1580.71 916.5C1583.81 914.709 1585.73 912.234 1585.73 909.5V899.5C1585.73 902.234 1583.81 904.709 1580.71 906.5L1536.54 932C1529.84 935.866 1518.99 935.866 1512.29 932Z" fill="#BABAC4"/>
+          <circle cx="3.11345" cy="3.11345" r="3.11345" transform="matrix(0.866025 0.5 0 1 1490 921)" fill="#9999A8"/>
+          <path d="M1164.29 997C1170.99 993.134 1181.84 993.134 1188.54 997L1232.71 1022.5C1239.4 1026.37 1239.4 1032.63 1232.71 1036.5L1188.54 1062C1181.84 1065.87 1170.99 1065.87 1164.29 1062L1120.12 1036.5C1113.43 1032.63 1113.43 1026.37 1120.12 1022.5L1164.29 997Z" fill="#E3E3E9"/>
+          <path d="M1164.29 1062L1120.12 1036.5C1117.02 1034.71 1115.1 1032.23 1115.1 1029.5V1039.5C1115.1 1042.23 1117.02 1044.71 1120.12 1046.5L1164.29 1072C1170.99 1075.87 1181.84 1075.87 1188.54 1072L1232.71 1046.5C1235.81 1044.71 1237.73 1042.23 1237.73 1039.5V1029.5C1237.73 1032.23 1235.81 1034.71 1232.71 1036.5L1188.54 1062C1181.84 1065.87 1170.99 1065.87 1164.29 1062Z" fill="#BABAC4"/>
+          <path d="M1373.29 717C1379.99 713.134 1390.84 713.134 1397.54 717L1441.71 742.5C1448.4 746.366 1448.4 752.634 1441.71 756.5L1397.54 782C1390.84 785.866 1379.99 785.866 1373.29 782L1329.12 756.5C1322.43 752.634 1322.43 746.366 1329.12 742.5L1373.29 717Z" fill="#E3E3E9"/>
+          <path d="M1373.29 782L1329.12 756.5C1326.02 754.709 1324.1 752.234 1324.1 749.5V759.5C1324.1 762.234 1326.02 764.709 1329.12 766.5L1373.29 792C1379.99 795.866 1390.84 795.866 1397.54 792L1441.71 766.5C1444.81 764.709 1446.73 762.234 1446.73 759.5V749.5C1446.73 752.234 1444.81 754.709 1441.71 756.5L1397.54 782C1390.84 785.866 1379.99 785.866 1373.29 782Z" fill="#BABAC4"/>
+          <path d="M820.292 557C826.988 553.134 837.844 553.134 844.54 557L888.708 582.5C895.404 586.366 895.404 592.634 888.708 596.5L844.54 622C837.844 625.866 826.988 625.866 820.292 622L776.124 596.5C769.428 592.634 769.428 586.366 776.124 582.5L820.292 557Z" fill="#E3E3E9"/>
+          <path d="M820.291 622L776.124 596.5C773.021 594.709 771.102 592.234 771.102 589.5V599.5C771.102 602.234 773.021 604.709 776.124 606.5L820.291 632C826.988 635.866 837.844 635.866 844.54 632L888.707 606.5C891.81 604.709 893.73 602.234 893.73 599.5V589.5C893.73 592.234 891.81 594.709 888.707 596.5L844.54 622C837.844 625.866 826.988 625.866 820.291 622Z" fill="#BABAC4"/>
+          <circle cx="3.11345" cy="3.11345" r="3.11345" transform="matrix(0.866025 0.5 0 1 797 611)" fill="#9999A8"/>
+
+
+
+          <!-- the plates the plane carries -->
+          <rect width="79.1793" height="79.1793" transform="matrix(0.866025 0.5 -0.866025 0.5 1455.07 599.907)" fill="#F2F2F4"/>
+          <rect width="79.1793" height="79.1793" transform="matrix(0.866025 0.5 -0.866025 0.5 1316.57 840)" fill="#F2F2F4"/>
+          <rect width="79.1793" height="79.1793" transform="matrix(0.866025 0.5 -0.866025 0.5 970.571 960)" fill="white"/>
+
+          <!-- SimpleGrid at the centre, riding above the plane. Grouped so the
+               block, its shadow and its label all bob together. -->
+          <g class="cube">
+            <path d="M922.965 770.856C917.424 767.657 913.997 763.238 913.997 758.356L913.997 839.356C913.997 844.238 917.424 848.657 922.965 851.856L1018.23 906.856C1030.19 913.76 1049.57 913.76 1061.53 906.856L1156.79 851.856C1162.33 848.657 1165.76 844.238 1165.76 839.356V758.356C1165.76 763.238 1162.33 767.657 1156.79 770.856L1061.53 825.856C1049.57 832.76 1030.19 832.76 1018.23 825.856L922.965 770.856Z" fill="#E3E3E9"/>
+            <circle cx="4" cy="4" r="4" transform="matrix(0.866025 -0.5 0 1 1113.96 846.001)" fill="black" fill-opacity="0.09"/>
+            <circle cx="4" cy="4" r="4" transform="matrix(0.866025 0.5 0 1 977.997 844.001)" fill="black" fill-opacity="0.09"/>
+            <path d="M1018.35 691.5C1030.31 684.596 1049.69 684.596 1061.65 691.5L1156.91 746.5C1168.87 753.404 1168.87 764.596 1156.91 771.5L1061.65 826.5C1049.69 833.404 1030.31 833.404 1018.35 826.5L923.087 771.5C911.129 764.596 911.129 753.404 923.087 746.5L1018.35 691.5Z" fill="#3456D9"/>
+            <rect width="84.9787" height="84.9787" rx="16" transform="matrix(0.866025 0.5 -0.866025 0.5 1039.59 715)" stroke="white" stroke-opacity="0.88" stroke-width="5"/>
+            <rect width="83.2926" height="28.0256" transform="matrix(0.866025 0.5 -0.866025 0.5 1015.69 729.871)" stroke="white" stroke-opacity="0.88" stroke-width="5"/>
+            <rect width="25.8588" height="83.7357" transform="matrix(0.866025 0.5 -0.866025 0.5 1065.09 729.871)" stroke="white" stroke-opacity="0.88" stroke-width="5"/>
+            <g class="hero-art__label" fill="#3456D9">
+            <text transform="matrix(0.866025 0.5 0 1 923 771)" x="9" y="36">OPERATIONS</text>
+            <text transform="matrix(0.866025 0.5 0 1 923 771)" x="9" y="54">CLOUD</text>
+          </g>
+          </g>
+
+
+          <g transform="matrix(0.995929 0.575 -0.995929 0.575 1385.40 495.70)" stroke="#3456D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></g>
+          <g transform="matrix(0.995929 0.575 -0.995929 0.575 832.40 575.70)" stroke="#3456D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></g>
+          <g transform="matrix(0.995929 0.575 -0.995929 0.575 1177.40 535.70)" stroke="#3456D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></g>
+          <g transform="matrix(0.995929 0.575 -0.995929 0.575 1385.40 735.70)" stroke="#3456D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></g>
+          <g transform="matrix(0.995929 0.575 -0.995929 0.575 692.40 896.70)" stroke="#3456D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></g>
+          <g transform="matrix(0.995929 0.575 -0.995929 0.575 1524.40 885.70)" stroke="#3456D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="6.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="13.49"/></g>
+          <g transform="matrix(0.995929 0.575 -0.995929 0.575 1176.40 1015.70)" stroke="#3456D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== PROBLEM -->
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="card reveal">
+        <div class="split split--divided">
+          <div>
+            <p class="eyebrow">The Problem</p>
+            <h2 class="problem__title">ERPs were built to close the books. Not to run your
+              operation.</h2>
+            <p class="body-copy">There is a standard way to keep books. There is no standard way to
+              run an operation. ERP was designed for the first problem and sold to you for the
+              second.</p>
+          </div>
+          <!-- One at a time, advancing on its own: four symptoms of the same
+               thing, each with the piece of product that answers it. -->
+          <div class="pains" data-pains>
+            <div class="pain" data-pain>
+              <button class="pain__q" type="button" aria-expanded="false" aria-controls="pain-a-01">
+                <span class="pain__num">01</span>
+                <span class="pain__title">&ldquo;Let me check and call you back.&rdquo;</span>
+                <svg class="pain__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </button>
+              <div class="pain__a" id="pain-a-01">
+                <div>
+                  <p class="body-copy">A customer asks when their order ships and you go find out. SimpleGrid answers it from one screen: every order, its stage, its date.</p>
+            <div class="pain__art" aria-hidden="true">
+              <div class="pv-rows">
+                <div class="pv-row"><span class="pv-id">SO-4521</span><span class="pv-name">Dining tables</span><span class="pv-tag">Cutting</span><span class="pv-date">Ships 12 Jun</span></div>
+                <div class="pv-row"><span class="pv-id">SO-4522</span><span class="pv-name">Side chairs</span><span class="pv-tag pv-tag--ok">Packed</span><span class="pv-date">Ships 6 Jun</span></div>
+                <div class="pv-row"><span class="pv-id">SO-4523</span><span class="pv-name">Bookshelves</span><span class="pv-tag">Finishing</span><span class="pv-date">Ships 9 Jun</span></div>
+              </div>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="pain" data-pain>
+              <button class="pain__q" type="button" aria-expanded="false" aria-controls="pain-a-02">
+                <span class="pain__num">02</span>
+                <span class="pain__title">The margin looked fine. Then the month closed.</span>
+                <svg class="pain__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </button>
+              <div class="pain__a" id="pain-a-02">
+                <div>
+                  <p class="body-copy">Freight, rework: none of it hits the order while it is live. You quoted 18 points and made 9. SimpleGrid costs the order as the work happens, see it while you can still fix it.</p>
+            <div class="pain__art" aria-hidden="true">
+              <div class="pv-bars">
+                <div class="pv-bar"><span class="pv-bar__label">Quoted</span><span class="pv-bar__track"><span class="pv-bar__fill" style="--w:100%"></span></span><span class="pv-bar__val">18 pts</span></div>
+                <div class="pv-bar"><span class="pv-bar__label">Made</span><span class="pv-bar__track"><span class="pv-bar__fill pv-bar__fill--low" style="--w:50%"></span></span><span class="pv-bar__val">9 pts</span></div>
+              </div>
+              <p class="pv-note">Freight $1,240 &middot; Rework $860 &middot; Extra run $2,100</p>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="pain" data-pain>
+              <button class="pain__q" type="button" aria-expanded="false" aria-controls="pain-a-03">
+                <span class="pain__num">03</span>
+                <span class="pain__title">It could not hold your part numbers the way you write them.
+                  So inventory lives in Excel now.</span>
+                <svg class="pain__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </button>
+              <div class="pain__a" id="pain-a-03">
+                <div>
+                  <p class="body-copy">One field the system refuses, and a spreadsheet gets opened just for now. Two years later it runs part of your operation. SimpleGrid uses your fields, your naming, your steps.</p>
+            <div class="pain__art" aria-hidden="true">
+              <div class="pv-field">
+                <p class="pv-field__label">Part number</p>
+                <p class="pv-field__input">FL614-53x40x55-SEAS<span class="pv-caret"></span></p>
+              </div>
+              <p class="pv-note pv-note--ok">Accepted: your format, your field.</p>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="pain" data-pain>
+              <button class="pain__q" type="button" aria-expanded="false" aria-controls="pain-a-04">
+                <span class="pain__num">04</span>
+                <span class="pain__title">Production, procurement and sales, each on their own Excel
+                  sheet, none of them matching.</span>
+                <svg class="pain__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </button>
+              <div class="pain__a" id="pain-a-04">
+                <div>
+                  <p class="body-copy">Sales commits a date, production is already full, procurement lands the material in six weeks. Nobody was wrong. They were reading different files. SimpleGrid puts them on one.</p>
+            <div class="pain__art" aria-hidden="true">
+              <div class="pv-merge">
+                <ul class="pv-merge__from">
+                  <li>Sales &middot; committed 6 Jun</li>
+                  <li>Production &middot; full to 20 Jun</li>
+                  <li>Procurement &middot; material 18 Jun</li>
+                </ul>
+                <svg class="pv-merge__wires" viewBox="0 0 48 96" preserveAspectRatio="none" focusable="false">
+                  <path d="M0 16H24V48H48M0 48H48M0 80H24V48" pathLength="100"/>
+                </svg>
+                <p class="pv-merge__to">One plan<span>Commit 20 Jun</span></p>
+              </div>
+            </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= WHAT YOU GET -->
+  <!-- Answers the four pointers above it, one card each and two spare: the
+       reader has just been shown what is costing them money, and this is the
+       piece that stops it. Six cards on a 3×2 grid, the same tile rhythm the
+       modules use on the product page. -->
+  <section class="section" id="solution">
+    <div class="container">
+      <div class="card reveal">
+        <div class="gets__head">
+          <p class="eyebrow">The Product</p>
+          <h2 class="gets__title">SimpleGrid holds everything your ERP pushed into spreadsheets.</h2>
+          <p class="body-copy gets__lede">When the process changes, so does the system. Every other
+            ERP sells you the full suite and hopes you grow into it. We build the piece that is
+            costing you money right now. When you want more, it is the same system, not another
+            purchase.</p>
+        </div>
+        <div class="gets">
+          <button class="get" type="button" data-mod-open="inventory-management" aria-haspopup="dialog">
+            <svg class="get__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 5.5 8 2.5l6 3v6L8 14.5l-6-3z"/><path d="M2 5.5 8 8.5l6-3M8 8.5v6"/></svg>
+            <h3 class="get__title">Inventory Management<svg class="get__go" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+          </button>
+          <button class="get" type="button" data-mod-open="planning-sales-order" aria-haspopup="dialog">
+            <svg class="get__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2.5" width="10" height="11" rx="1.4"/><path d="M5.5 6h5M5.5 8.5h5M5.5 11h3"/></svg>
+            <h3 class="get__title">Sales Order Planning<svg class="get__go" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+          </button>
+          <button class="get" type="button" data-mod-open="production" aria-haspopup="dialog">
+            <svg class="get__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 13.5v-6l4 2.4V7.5l4 2.4V4.2l4 1.9v7.4z"/><path d="M2 13.5h12"/></svg>
+            <h3 class="get__title">Production<svg class="get__go" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+          </button>
+          <button class="get" type="button" data-mod-open="costing" aria-haspopup="dialog">
+            <svg class="get__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="1.8" width="10" height="12.4" rx="1.4"/><path d="M5.4 4.6h5.2M5.6 7.6h1M7.5 7.6h1M9.4 7.6h1M5.6 10.4h1M7.5 10.4h1M9.4 10.4h1"/></svg>
+            <h3 class="get__title">Costing<svg class="get__go" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+          </button>
+          <button class="get" type="button" data-mod-open="demand-forecast" aria-haspopup="dialog">
+            <svg class="get__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+            <h3 class="get__title">Demand Forecast<svg class="get__go" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+          </button>
+          <button class="get" type="button" data-mod-open="floor-operations" aria-haspopup="dialog">
+            <svg class="get__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.4" width="12" height="10.6" rx="1.4"/><path d="M2 6.6h12M5.4 1.8v3M10.6 1.8v3"/></svg>
+            <h3 class="get__title">Floor Operations<svg class="get__go" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+          </button>
+        </div>
+
+        <!-- Six of the twelve. The rest are on the product page, where the
+             same tiles open the same dialogs. -->
+        <a class="btn btn--primary gets__more" href="product.html#modules">Explore more</a>
+
+        <!-- The product above, what feeds it and what it looks like running
+             below, one rule between them rather than a second card. -->
+        <hr class="rule">
+
+        <!-- Where the data comes from, and what it looks like running, side by side, because they answer the same question. -->
+        <div class="duo">
+          <div class="duo__col">
+            <p class="eyebrow">Integrations</p>
+            <h3 class="duo__title">Bring data from the tools you already use.</h3>
+            <ul class="syncs__grid" data-stagger>
+              <li><span class="syncs__tile"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-quickbooks"/></svg><span class="sr-only">QuickBooks</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-xero"/></svg><span class="sr-only">Xero</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#logo-tally"/></svg><span class="sr-only">Tally</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-excel"/></svg><span class="sr-only">Excel</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-google-sheets"/></svg><span class="sr-only">Google Sheets</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="-7.5 0 124.5 124.5" aria-hidden="true"><use href="#logo-shopify"/></svg><span class="sr-only">Shopify</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-whatsapp"/></svg><span class="sr-only">WhatsApp</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 -31.5 256 256" aria-hidden="true"><use href="#logo-gmail"/></svg><span class="sr-only">Gmail</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-amazon"/></svg><span class="sr-only">Amazon</span></span></li>
+              <li><span class="syncs__tile"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#logo-slack"/></svg><span class="sr-only">Slack</span></span></li>
+            </ul>
+            <a class="btn btn--primary duo__cta" href="syncs.html">See how it syncs</a>
+          </div>
+
+          <div class="duo__col" id="see-it">
+            <p class="eyebrow">See it</p>
+            <h3 class="duo__title">Demo &amp; Interactive Preview</h3>
+            <!-- preload="none": the poster is all that loads until someone
+                 presses play, so scrolling past costs nothing. -->
+            <div class="player">
+              <video class="player__video" preload="none" playsinline controls
+                     poster="assets/demo-poster.webp"
+                     src="assets/product-demo-v1.mp4"
+                     aria-label="SimpleGrid product walkthrough"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== MID-PAGE BANNER -->
+  <!-- Closes the product section: the reader has just been shown the six
+       pieces, what feeds them and what they look like running. -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== WHY US -->
+  <!-- Follows the six pieces: the reader now knows what they would get, and
+       the next question is why this and not the ERP they were already quoted. -->
+  <section class="section" id="why-us">
+    <div class="container">
+      <div class="card reveal">
+        <div class="why__head">
+          <p class="eyebrow">Why us</p>
+          <h2 class="why__title">Three reasons operators pick us</h2>
+          <p class="body-copy why__lede">Three out of four ERP implementations fail. Rollouts run so
+            long the business changes underneath them. Changes need a quote and an approval. And the
+            money is paid at signature, so nobody is on the hook if it never works.</p>
+        </div>
+        <div class="why">
+          <div class="why__item">
+            <h3 class="why__name">Weeks, not quarters</h3>
+            <p class="body-copy">Live in 3 weeks. Changes in days.</p>
+          </div>
+          <div class="why__item">
+            <h3 class="why__name">Yours to change</h3>
+            <p class="body-copy">You call us, not a partner. Most changes are covered by what you
+              already pay. Anything substantial gets priced before we build it.</p>
+          </div>
+          <div class="why__item">
+            <h3 class="why__name">No ERP tax</h3>
+            <p class="body-copy">See it working before you spend a dollar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= THE TEAM -->
+  <!-- Seats are the quiet reason floors never see their own ERP, so the
+       claim is made here rather than buried in pricing. -->
+  <section class="section" id="the-team">
+    <div class="container">
+      <div class="card reveal">
+        <div class="team">
+          <div class="team__copy">
+            <p class="eyebrow">The whole team is on it</p>
+            <h2 class="team__title">The people on the floor can finally see the work.</h2>
+            <p class="body-copy team__lede">Every other ERP gets rationed by seat, office only, so
+              the floor works blind. Unlimited seats here. We do not price by licence, so everyone
+              who touches the operation gets it on a screen.</p>
+            <ul class="team__points">
+              <li>
+                <p class="team__point-title">Nothing to learn</p>
+                <p class="body-copy">Open it and see what is running, what is next, what is stuck.
+                  Ask a question the way you would say it and get the answer from live data. No
+                  training week, no manual.</p>
+              </li>
+              <li>
+                <p class="team__point-title">Everyone sees. You decide.</p>
+                <p class="body-copy">Access is open, approvals are not. Only the people you name can
+                  commit anything.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="team__side">
+            <p class="eyebrow">Ask Hank</p>
+            <!-- The same Hank panel the product page runs, minimised: it plays
+                 a week of questions an operator actually asks. -->
+            <div class="hchat hchat--mini" data-hank>
+              <div class="hchat__head">
+                <img class="hchat__avatar" src="assets/hank.svg" width="30" height="30" alt=""
+                     loading="lazy" decoding="async">
+                <div class="hchat__who">
+                  <p class="hchat__name">Hank <span class="hchat__tag">AI</span></p>
+                  <p class="hchat__status">online &middot; live data</p>
+                </div>
+                <div class="hchat__controls">
+                  <button class="hchat__btn" type="button" data-hank-pause>Pause</button>
+                  <button class="hchat__btn" type="button" data-hank-replay disabled>Replay</button>
+                </div>
+              </div>
+
+              <div class="hchat__log" data-hank-log role="log" aria-live="polite"
+                   aria-label="Hank conversation"></div>
+
+              <div class="hchat__bar">
+                <p class="hchat__input">Ask Hank anything&hellip;</p>
+                <span class="hchat__send">Send</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ OPERATORS + CUSTOMERS -->
+  <!-- Who built it and who runs it, on one card: the founding story, the
+       clients, and what those clients say. -->
+  <!-- ============================================ OPERATORS + THE FLOOR -->
+  <!-- Who built it, and the floor it runs on: the film sits above its own
+       caption, the way the case pages set a figure. -->
+  <section class="section" id="customers">
+    <div class="container">
+      <div class="card reveal">
+        <div class="lived">
+          <p class="eyebrow lived__eyebrow">Built by an operator, for operators</p>
+          <h2 class="lived__title">We didn&rsquo;t study this problem. We lived it.</h2>
+          <p class="body-copy lived__lede">Our founding team built a $30M manufacturing business from
+            scratch. We tried Enterprise ERP with a platinum partner, spent a lot of money, and it
+            still made us change how we worked. Accounting was never the issue. The floor was. So we
+            built the system we could not buy.</p>
+        </div>
+
+        <!-- Two clients, one frame. Elite runs as film; Apex asked not to be
+             shown, so its panel carries the numbers instead. -->
+        <div class="floorfilm" data-floor>
+          <div class="floorfilm__nav">
+            <button class="floorfilm__arrow" type="button" data-floor-prev aria-label="Previous client"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="floorfilm__arrow" type="button" data-floor-next aria-label="Next client"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+
+          <figure class="floorfilm__slide" data-floor-slide data-current>
+            <video class="floorfilm__video" src="assets/elite-clip.mp4"
+                   poster="assets/cases/elite-arts-crafts.webp"
+                   autoplay muted loop playsinline preload="metadata"
+                   aria-label="The production floor at Elite Arts &amp; Crafts, running on SimpleGrid."></video>
+            <figcaption class="floorfilm__cap">
+              <h3 class="floorfilm__title">On the floor<br class="break-lg">at Elite Arts &amp; Crafts</h3>
+              <div class="floorfilm__body">
+                <p class="body-copy">600+ people across nearly a million square feet, previously run
+                  on 550 spreadsheets and a group chat. SAP quoted 18 months; SimpleGrid was live in
+                  21 days, modelled around their stages, contractors and costing formulas.</p>
+                <a class="quote__link" href="case-furniture-manufacturer.html">Read the case <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="floorfilm__slide" data-floor-slide hidden>
+            <div class="floorfilm__plate" aria-hidden="true">
+              <p class="floorfilm__plate-name">Apex Apparel</p>
+              <ul class="floorfilm__stats">
+                <li><span>72 hours</span>to a working demo</li>
+                <li><span>60-70%</span>right on the first build</li>
+                <li><span>$0</span>before it proved itself</li>
+              </ul>
+              <p class="floorfilm__plate-note">Name withheld at the customer&rsquo;s request</p>
+            </div>
+            <figcaption class="floorfilm__cap">
+              <h3 class="floorfilm__title">A demo first,<br class="break-lg">then the conversation</h3>
+              <div class="floorfilm__body">
+                <p class="body-copy">&ldquo;They sent a working demo in 72 hours and it was 60-70%
+                  right already. No other vendor showed us a working system before asking for
+                  money.&rdquo;</p>
+                <a class="quote__link" href="case-apex.html">Read the case <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="card reveal">
+        <div class="split">
+          <div>
+            <h2 class="faq__title">Frequently asked questions</h2>
+            <p class="body-copy">The four we get asked most. Anything else, ask Hank or ask us.</p>
+          </div>
+          <div class="faq__list" data-faq>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-1">
+                What can I actually run on SimpleGrid?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-1"><div><p>Your whole operation on one grid, inventory and stock, orders and fulfillment, purchasing, production, costing, and forecasting. One live system, one set of numbers, no switching between tools.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-2">
+                How does SimpleGrid know how my business works?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-2"><div><p>We build it around your Schema (your products, your costing formulas, your process) during setup. It runs the way you actually operate, not off a generic template.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-3">
+                How fast can we Go Live?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-3"><div><p>Three weeks or less. One call to learn how you run, a working demo in 72 hours, then we Configure around your operation until it&rsquo;s live. No forms, no workshops.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-4">
+                Do we have to replace the tools we use now?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-4"><div><p>No. Keep Excel, Shopify, WhatsApp, Tally and the rest, SimpleGrid becomes the source of truth and syncs both ways. No one re-types anything.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= CLOSING CTA -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="card cta reveal" data-cursor="light">
+        <h2 class="cta__title">Start your operations cloud journey today.</h2>
+        <p class="cta__sub">Try it on. Then decide.</p>
+        <p class="meta cta__meta">≤3 weeks to Go Live · 30-day trial · $0 upfront</p>
+        <a class="btn btn--onblue" href="pricing.html#demo" data-sg-invite>Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================== MODULE DETAIL PANELS -->
+<!-- The same dialogs the product page opens, for the six cards above. Static
+     markup rather than rendered, so the copy is in the page for crawlers and
+     readable with JavaScript off. The product page carries the full twelve and
+     the "More to discover" rail between them; here the six cards are the rail,
+     so that block is left off. -->
+  <div class="mod-panel" id="mod-inventory-management" role="dialog" aria-modal="true"
+       aria-labelledby="mod-inventory-management-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Inventory Management">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-inventory-management-title">Inventory Management</h2>
+            <p class="mod-tagline">Know what you have. Right now.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Every item received, issued, moved or returned is recorded the moment it happens. Stock on the screen matches stock on the floor.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Waste cut from 1.5% to under 0.1%.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>30 of 30 operators use Hank daily.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Live stock. No month-end surprise.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/inventory.webp" alt="SimpleGrid inventory: total value and units on hand, costed and uncosted lines, and a live table of entities by location, pool, quantity, average cost and value." width="1600" height="1036" loading="lazy" decoding="async">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">One record of everything, in one place. Every movement carries a time, a place and a name. Find where a batch came from in seconds instead of the two to three days a manual search takes.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Set up in your units and your stores. Timber in cubic feet, fabric in metres, medicine in approved batch sizes. One plant runs 51 different item types this way.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">Go live in 3 weeks. No custom code. No consultants. Your first stock count runs in the same month.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+        <!-- The rest of the system. What this page cannot open in place
+             opens on the product page, which reads the module out of the hash. -->
+        <div class="mod-more">
+          <div class="mod-more__head">
+            <h3 class="mod-more__title">More to discover</h3>
+            <div class="mod-more__nav">
+              <button class="mod-more__arrow" type="button" data-mod-slide="prev" aria-label="Previous modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="mod-more__arrow" type="button" data-mod-slide="next" aria-label="Next modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+          <div class="mod-more__track" data-mod-track tabindex="0" role="group" aria-label="More modules">
+            <a class="mod-more__card" href="product.html#mod-procurement">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 2.5h2l1.6 7.5h7L13.5 5H4"/><circle cx="6.5" cy="13" r="1.1"/><circle cx="11.5" cy="13" r="1.1"/></svg>
+              <span class="module__name">Procurement</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="planning-sales-order" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2.5" width="10" height="11" rx="1.4"/><path d="M5.5 6h5M5.5 8.5h5M5.5 11h3"/></svg>
+              <span class="module__name">Sales orders and planning</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-finance">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.7"/><path d="M8 4.7v6.6M6.3 6.4h3a1.3 1.3 0 0 1 0 2.6h-2.6a1.3 1.3 0 0 0 0 2.6h3"/></svg>
+              <span class="module__name">Payments and receivables</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="costing" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="1.8" width="10" height="12.4" rx="1.4"/><path d="M5.4 4.6h5.2M5.6 7.6h1M7.5 7.6h1M9.4 7.6h1M5.6 10.4h1M7.5 10.4h1M9.4 10.4h1"/></svg>
+              <span class="module__name">Costing</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-routing">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.5" cy="4" r="1.6"/><circle cx="12.5" cy="12" r="1.6"/><path d="M3.5 5.6v3.2a2.6 2.6 0 0 0 2.6 2.6h4.8"/></svg>
+              <span class="module__name">Routing</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="production" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 13.5v-6l4 2.4V7.5l4 2.4V4.2l4 1.9v7.4z"/><path d="M2 13.5h12"/></svg>
+              <span class="module__name">Production</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-supply-chain-management">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.6" cy="8" r="1.7"/><circle cx="12.4" cy="4.6" r="1.7"/><circle cx="12.4" cy="11.4" r="1.7"/><path d="m5.2 7.3 5.6-2.1M5.2 8.7l5.6 2.1"/></svg>
+              <span class="module__name">Supply chain</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-custom-reports">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6" cy="5.6" r="2.2"/><path d="M2.2 13.4a3.9 3.9 0 0 1 7.6 0"/><path d="M10.7 4a2.2 2.2 0 0 1 0 4.2M11.6 13.4a3.9 3.9 0 0 0-1.1-2.7"/></svg>
+              <span class="module__name">Reports</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-analytics">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 13.5h11"/><path d="M4.6 13.5V9M7.6 13.5V5.4M10.6 13.5v-5M13 13.5V3.2"/></svg>
+              <span class="module__name">Analytics</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="floor-operations" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.4" width="12" height="10.6" rx="1.4"/><path d="M2 6.6h12M5.4 1.8v3M10.6 1.8v3"/></svg>
+              <span class="module__name">Floor operations</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="demand-forecast" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <span class="module__name">Demand forecast</span>
+            </button>
+          </div>
+          <a class="btn btn--primary mod-more__cta" href="product.html#modules">Explore more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="mod-panel" id="mod-planning-sales-order" role="dialog" aria-modal="true"
+       aria-labelledby="mod-planning-sales-order-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Planning Sales Order">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-planning-sales-order-title">Planning Sales Order</h2>
+            <p class="mod-tagline">Every order. One status. No arguments.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Customer orders, changes, dispatches and short shipments sit on one timeline. Sales and the floor read the same screen.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>On-time delivery up 15 points.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Ask Hank. Answer a customer fast.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Change an order. The plan moves too.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/planning.webp" alt="SimpleGrid planning: every sales-order line planned in-house or to a vendor, with planned and staged quantities, vendor, status and a plan-line dialog open over the list." width="1600" height="1039" loading="lazy" decoding="async">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">Order to dispatch is one unbroken chain. No handoff between a sales system and a plant system, so nothing is lost in the gap.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Delivery dates come from real capacity, not from hope. Most missed dates in mid-sized plants trace back to capacity nobody checked before promising.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">Set up order types, split shipments and customer terms yourself. A new order type is live the same day, not next quarter.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+        <!-- The rest of the system. What this page cannot open in place
+             opens on the product page, which reads the module out of the hash. -->
+        <div class="mod-more">
+          <div class="mod-more__head">
+            <h3 class="mod-more__title">More to discover</h3>
+            <div class="mod-more__nav">
+              <button class="mod-more__arrow" type="button" data-mod-slide="prev" aria-label="Previous modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="mod-more__arrow" type="button" data-mod-slide="next" aria-label="Next modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+          <div class="mod-more__track" data-mod-track tabindex="0" role="group" aria-label="More modules">
+            <a class="mod-more__card" href="product.html#mod-procurement">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 2.5h2l1.6 7.5h7L13.5 5H4"/><circle cx="6.5" cy="13" r="1.1"/><circle cx="11.5" cy="13" r="1.1"/></svg>
+              <span class="module__name">Procurement</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-finance">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.7"/><path d="M8 4.7v6.6M6.3 6.4h3a1.3 1.3 0 0 1 0 2.6h-2.6a1.3 1.3 0 0 0 0 2.6h3"/></svg>
+              <span class="module__name">Payments and receivables</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="costing" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="1.8" width="10" height="12.4" rx="1.4"/><path d="M5.4 4.6h5.2M5.6 7.6h1M7.5 7.6h1M9.4 7.6h1M5.6 10.4h1M7.5 10.4h1M9.4 10.4h1"/></svg>
+              <span class="module__name">Costing</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-routing">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.5" cy="4" r="1.6"/><circle cx="12.5" cy="12" r="1.6"/><path d="M3.5 5.6v3.2a2.6 2.6 0 0 0 2.6 2.6h4.8"/></svg>
+              <span class="module__name">Routing</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="production" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 13.5v-6l4 2.4V7.5l4 2.4V4.2l4 1.9v7.4z"/><path d="M2 13.5h12"/></svg>
+              <span class="module__name">Production</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-supply-chain-management">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.6" cy="8" r="1.7"/><circle cx="12.4" cy="4.6" r="1.7"/><circle cx="12.4" cy="11.4" r="1.7"/><path d="m5.2 7.3 5.6-2.1M5.2 8.7l5.6 2.1"/></svg>
+              <span class="module__name">Supply chain</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-custom-reports">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6" cy="5.6" r="2.2"/><path d="M2.2 13.4a3.9 3.9 0 0 1 7.6 0"/><path d="M10.7 4a2.2 2.2 0 0 1 0 4.2M11.6 13.4a3.9 3.9 0 0 0-1.1-2.7"/></svg>
+              <span class="module__name">Reports</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-analytics">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 13.5h11"/><path d="M4.6 13.5V9M7.6 13.5V5.4M10.6 13.5v-5M13 13.5V3.2"/></svg>
+              <span class="module__name">Analytics</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="floor-operations" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.4" width="12" height="10.6" rx="1.4"/><path d="M2 6.6h12M5.4 1.8v3M10.6 1.8v3"/></svg>
+              <span class="module__name">Floor operations</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="demand-forecast" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <span class="module__name">Demand forecast</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="inventory-management" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 5.5 8 2.5l6 3v6L8 14.5l-6-3z"/><path d="M2 5.5 8 8.5l6-3M8 8.5v6"/></svg>
+              <span class="module__name">Inventory</span>
+            </button>
+          </div>
+          <a class="btn btn--primary mod-more__cta" href="product.html#modules">Explore more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="mod-panel" id="mod-production" role="dialog" aria-modal="true"
+       aria-labelledby="mod-production-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Production">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-production-title">Production</h2>
+            <p class="mod-tagline">The floor reports itself.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Operators tell Hank, the AI assistant, what happened. Output, downtime, scrap, rework, by voice or text. No paperwork, no data entry clerk.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>30 of 30 operators use it daily.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Planning time down about 90%.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Live output by line and by shift.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/production.webp" alt="SimpleGrid production: record types for planning, contractor assignment, wood requirement and issue, floor operations, production orders and lines, seasoning batches, contractor jobs and material issues." width="1600" height="727" loading="lazy" decoding="async">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">Hank takes plain language, typed or spoken, in the words the operator already uses. In most plants, paper reaching a computer runs a full shift behind reality. That gap goes to zero.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Every entry carries a person, a time and a machine. You can rebuild yesterday&rsquo;s shift today, exactly as it happened.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">Go live across the floor in 3 weeks. No terminals to rebuild, no consultants on site.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+        <!-- The rest of the system. What this page cannot open in place
+             opens on the product page, which reads the module out of the hash. -->
+        <div class="mod-more">
+          <div class="mod-more__head">
+            <h3 class="mod-more__title">More to discover</h3>
+            <div class="mod-more__nav">
+              <button class="mod-more__arrow" type="button" data-mod-slide="prev" aria-label="Previous modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="mod-more__arrow" type="button" data-mod-slide="next" aria-label="Next modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+          <div class="mod-more__track" data-mod-track tabindex="0" role="group" aria-label="More modules">
+            <a class="mod-more__card" href="product.html#mod-procurement">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 2.5h2l1.6 7.5h7L13.5 5H4"/><circle cx="6.5" cy="13" r="1.1"/><circle cx="11.5" cy="13" r="1.1"/></svg>
+              <span class="module__name">Procurement</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="planning-sales-order" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2.5" width="10" height="11" rx="1.4"/><path d="M5.5 6h5M5.5 8.5h5M5.5 11h3"/></svg>
+              <span class="module__name">Sales orders and planning</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-finance">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.7"/><path d="M8 4.7v6.6M6.3 6.4h3a1.3 1.3 0 0 1 0 2.6h-2.6a1.3 1.3 0 0 0 0 2.6h3"/></svg>
+              <span class="module__name">Payments and receivables</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="costing" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="1.8" width="10" height="12.4" rx="1.4"/><path d="M5.4 4.6h5.2M5.6 7.6h1M7.5 7.6h1M9.4 7.6h1M5.6 10.4h1M7.5 10.4h1M9.4 10.4h1"/></svg>
+              <span class="module__name">Costing</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-routing">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.5" cy="4" r="1.6"/><circle cx="12.5" cy="12" r="1.6"/><path d="M3.5 5.6v3.2a2.6 2.6 0 0 0 2.6 2.6h4.8"/></svg>
+              <span class="module__name">Routing</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-supply-chain-management">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.6" cy="8" r="1.7"/><circle cx="12.4" cy="4.6" r="1.7"/><circle cx="12.4" cy="11.4" r="1.7"/><path d="m5.2 7.3 5.6-2.1M5.2 8.7l5.6 2.1"/></svg>
+              <span class="module__name">Supply chain</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-custom-reports">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6" cy="5.6" r="2.2"/><path d="M2.2 13.4a3.9 3.9 0 0 1 7.6 0"/><path d="M10.7 4a2.2 2.2 0 0 1 0 4.2M11.6 13.4a3.9 3.9 0 0 0-1.1-2.7"/></svg>
+              <span class="module__name">Reports</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-analytics">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 13.5h11"/><path d="M4.6 13.5V9M7.6 13.5V5.4M10.6 13.5v-5M13 13.5V3.2"/></svg>
+              <span class="module__name">Analytics</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="floor-operations" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.4" width="12" height="10.6" rx="1.4"/><path d="M2 6.6h12M5.4 1.8v3M10.6 1.8v3"/></svg>
+              <span class="module__name">Floor operations</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="demand-forecast" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <span class="module__name">Demand forecast</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="inventory-management" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 5.5 8 2.5l6 3v6L8 14.5l-6-3z"/><path d="M2 5.5 8 8.5l6-3M8 8.5v6"/></svg>
+              <span class="module__name">Inventory</span>
+            </button>
+          </div>
+          <a class="btn btn--primary mod-more__cta" href="product.html#modules">Explore more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="mod-panel" id="mod-costing" role="dialog" aria-modal="true"
+       aria-labelledby="mod-costing-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Costing">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-costing-title">Costing</h2>
+            <p class="mod-tagline">Know what a job cost. While it is still running.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Material, labour, machine time and overheads attach to the job as it moves. Job cost is live, not a post-mortem.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>$50K a year of leakage closed.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Live job cost, not a post-mortem.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Quote from history, not a guess.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--pair">
+          <figure class="mod-shot">
+            <img src="assets/modules/costing-formula.webp" alt="SimpleGrid formula library: a surface-area driver with its share expression built from Length and Width, the variables in use, and the rules that consume it." width="1400" height="911" loading="lazy" decoding="async">
+            <figcaption>Custom Formula Builder</figcaption>
+          </figure>
+          <figure class="mod-shot">
+            <img src="assets/modules/costing-allocation.webp" alt="SimpleGrid consumable allocation: total pool, SKUs covered, effective rate and variance, with each consumable rule distributing its pool across SKUs." width="1400" height="863" loading="lazy" decoding="async">
+            <figcaption>Accurate Allocation</figcaption>
+          </figure>
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">Every cost is tied to a job, a machine and an operator. Go from a number that looks wrong straight to the shift that caused it.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Planned against actual updates all day. Most mid-sized plants only see job cost 30 to 45 days after the job is done, long past the point of fixing anything.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">Costing rules are set up, not coded. Change how you load overheads and it applies from the next job.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+        <!-- The rest of the system. What this page cannot open in place
+             opens on the product page, which reads the module out of the hash. -->
+        <div class="mod-more">
+          <div class="mod-more__head">
+            <h3 class="mod-more__title">More to discover</h3>
+            <div class="mod-more__nav">
+              <button class="mod-more__arrow" type="button" data-mod-slide="prev" aria-label="Previous modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="mod-more__arrow" type="button" data-mod-slide="next" aria-label="Next modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+          <div class="mod-more__track" data-mod-track tabindex="0" role="group" aria-label="More modules">
+            <a class="mod-more__card" href="product.html#mod-procurement">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 2.5h2l1.6 7.5h7L13.5 5H4"/><circle cx="6.5" cy="13" r="1.1"/><circle cx="11.5" cy="13" r="1.1"/></svg>
+              <span class="module__name">Procurement</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="planning-sales-order" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2.5" width="10" height="11" rx="1.4"/><path d="M5.5 6h5M5.5 8.5h5M5.5 11h3"/></svg>
+              <span class="module__name">Sales orders and planning</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-finance">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.7"/><path d="M8 4.7v6.6M6.3 6.4h3a1.3 1.3 0 0 1 0 2.6h-2.6a1.3 1.3 0 0 0 0 2.6h3"/></svg>
+              <span class="module__name">Payments and receivables</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-routing">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.5" cy="4" r="1.6"/><circle cx="12.5" cy="12" r="1.6"/><path d="M3.5 5.6v3.2a2.6 2.6 0 0 0 2.6 2.6h4.8"/></svg>
+              <span class="module__name">Routing</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="production" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 13.5v-6l4 2.4V7.5l4 2.4V4.2l4 1.9v7.4z"/><path d="M2 13.5h12"/></svg>
+              <span class="module__name">Production</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-supply-chain-management">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.6" cy="8" r="1.7"/><circle cx="12.4" cy="4.6" r="1.7"/><circle cx="12.4" cy="11.4" r="1.7"/><path d="m5.2 7.3 5.6-2.1M5.2 8.7l5.6 2.1"/></svg>
+              <span class="module__name">Supply chain</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-custom-reports">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6" cy="5.6" r="2.2"/><path d="M2.2 13.4a3.9 3.9 0 0 1 7.6 0"/><path d="M10.7 4a2.2 2.2 0 0 1 0 4.2M11.6 13.4a3.9 3.9 0 0 0-1.1-2.7"/></svg>
+              <span class="module__name">Reports</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-analytics">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 13.5h11"/><path d="M4.6 13.5V9M7.6 13.5V5.4M10.6 13.5v-5M13 13.5V3.2"/></svg>
+              <span class="module__name">Analytics</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="floor-operations" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.4" width="12" height="10.6" rx="1.4"/><path d="M2 6.6h12M5.4 1.8v3M10.6 1.8v3"/></svg>
+              <span class="module__name">Floor operations</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="demand-forecast" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <span class="module__name">Demand forecast</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="inventory-management" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 5.5 8 2.5l6 3v6L8 14.5l-6-3z"/><path d="M2 5.5 8 8.5l6-3M8 8.5v6"/></svg>
+              <span class="module__name">Inventory</span>
+            </button>
+          </div>
+          <a class="btn btn--primary mod-more__cta" href="product.html#modules">Explore more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="mod-panel" id="mod-demand-forecast" role="dialog" aria-modal="true"
+       aria-labelledby="mod-demand-forecast-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Demand Forecast">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-demand-forecast-title">Demand Forecast</h2>
+            <p class="mod-tagline">Forecast from what happened. Not from a hunch.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Past orders, seasons and customer patterns feed a forecast that updates as new orders land.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Buy to demand, not to fear.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Feeds planning and buying direct.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>See demand shift as it starts.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/demand-forecast.webp" width="1600" height="1042" loading="lazy" decoding="async"
+               alt="SimpleGrid demand forecast: projected versus actual weekly demand, SKUs at risk inside the horizon, and forecast by SKU.">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">The forecast reads the same records the plant runs on. Every order, dispatch and cancellation is already there.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Forecast accuracy in mid-sized manufacturing commonly sits below 60% on spreadsheet methods. Updating continuously closes that gap.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">Set the horizon and the grouping you want, by product, customer or plant. Change it yourself, no rebuild.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+        <!-- The rest of the system. What this page cannot open in place
+             opens on the product page, which reads the module out of the hash. -->
+        <div class="mod-more">
+          <div class="mod-more__head">
+            <h3 class="mod-more__title">More to discover</h3>
+            <div class="mod-more__nav">
+              <button class="mod-more__arrow" type="button" data-mod-slide="prev" aria-label="Previous modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="mod-more__arrow" type="button" data-mod-slide="next" aria-label="Next modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+          <div class="mod-more__track" data-mod-track tabindex="0" role="group" aria-label="More modules">
+            <a class="mod-more__card" href="product.html#mod-procurement">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 2.5h2l1.6 7.5h7L13.5 5H4"/><circle cx="6.5" cy="13" r="1.1"/><circle cx="11.5" cy="13" r="1.1"/></svg>
+              <span class="module__name">Procurement</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="planning-sales-order" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2.5" width="10" height="11" rx="1.4"/><path d="M5.5 6h5M5.5 8.5h5M5.5 11h3"/></svg>
+              <span class="module__name">Sales orders and planning</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-finance">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.7"/><path d="M8 4.7v6.6M6.3 6.4h3a1.3 1.3 0 0 1 0 2.6h-2.6a1.3 1.3 0 0 0 0 2.6h3"/></svg>
+              <span class="module__name">Payments and receivables</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="costing" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="1.8" width="10" height="12.4" rx="1.4"/><path d="M5.4 4.6h5.2M5.6 7.6h1M7.5 7.6h1M9.4 7.6h1M5.6 10.4h1M7.5 10.4h1M9.4 10.4h1"/></svg>
+              <span class="module__name">Costing</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-routing">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.5" cy="4" r="1.6"/><circle cx="12.5" cy="12" r="1.6"/><path d="M3.5 5.6v3.2a2.6 2.6 0 0 0 2.6 2.6h4.8"/></svg>
+              <span class="module__name">Routing</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="production" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 13.5v-6l4 2.4V7.5l4 2.4V4.2l4 1.9v7.4z"/><path d="M2 13.5h12"/></svg>
+              <span class="module__name">Production</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-supply-chain-management">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.6" cy="8" r="1.7"/><circle cx="12.4" cy="4.6" r="1.7"/><circle cx="12.4" cy="11.4" r="1.7"/><path d="m5.2 7.3 5.6-2.1M5.2 8.7l5.6 2.1"/></svg>
+              <span class="module__name">Supply chain</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-custom-reports">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6" cy="5.6" r="2.2"/><path d="M2.2 13.4a3.9 3.9 0 0 1 7.6 0"/><path d="M10.7 4a2.2 2.2 0 0 1 0 4.2M11.6 13.4a3.9 3.9 0 0 0-1.1-2.7"/></svg>
+              <span class="module__name">Reports</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-analytics">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 13.5h11"/><path d="M4.6 13.5V9M7.6 13.5V5.4M10.6 13.5v-5M13 13.5V3.2"/></svg>
+              <span class="module__name">Analytics</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="floor-operations" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.4" width="12" height="10.6" rx="1.4"/><path d="M2 6.6h12M5.4 1.8v3M10.6 1.8v3"/></svg>
+              <span class="module__name">Floor operations</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="inventory-management" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 5.5 8 2.5l6 3v6L8 14.5l-6-3z"/><path d="M2 5.5 8 8.5l6-3M8 8.5v6"/></svg>
+              <span class="module__name">Inventory</span>
+            </button>
+          </div>
+          <a class="btn btn--primary mod-more__cta" href="product.html#modules">Explore more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="mod-panel" id="mod-floor-operations" role="dialog" aria-modal="true"
+       aria-labelledby="mod-floor-operations-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Floor Operations">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-floor-operations-title">Floor Operations</h2>
+            <p class="mod-tagline">Plan in minutes. Not weekends.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Orders, capacity, material and routes come together in one plan. Change an input and the plan rebuilds itself.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Planning time down about 90%.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>On-time delivery up 15 points.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Replan mid-week in one pass.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/floor-operations.webp" alt="SimpleGrid floor operations: each job on the floor as a card with its stage, contractor, quantity done and the components ready from the previous stage." width="1600" height="1042" loading="lazy" decoding="async">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">The plan runs on live stock, live capacity and live orders. No old sheet feeding a bad schedule.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Your limits, your rules. Shift patterns, machine capacity and material lead times are yours to set and change.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">The plan reaches the floor the moment it changes. No printed sheet from Monday still running Thursday.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+        <!-- The rest of the system. What this page cannot open in place
+             opens on the product page, which reads the module out of the hash. -->
+        <div class="mod-more">
+          <div class="mod-more__head">
+            <h3 class="mod-more__title">More to discover</h3>
+            <div class="mod-more__nav">
+              <button class="mod-more__arrow" type="button" data-mod-slide="prev" aria-label="Previous modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="mod-more__arrow" type="button" data-mod-slide="next" aria-label="Next modules"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+          <div class="mod-more__track" data-mod-track tabindex="0" role="group" aria-label="More modules">
+            <a class="mod-more__card" href="product.html#mod-procurement">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 2.5h2l1.6 7.5h7L13.5 5H4"/><circle cx="6.5" cy="13" r="1.1"/><circle cx="11.5" cy="13" r="1.1"/></svg>
+              <span class="module__name">Procurement</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="planning-sales-order" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2.5" width="10" height="11" rx="1.4"/><path d="M5.5 6h5M5.5 8.5h5M5.5 11h3"/></svg>
+              <span class="module__name">Sales orders and planning</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-finance">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.7"/><path d="M8 4.7v6.6M6.3 6.4h3a1.3 1.3 0 0 1 0 2.6h-2.6a1.3 1.3 0 0 0 0 2.6h3"/></svg>
+              <span class="module__name">Payments and receivables</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="costing" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="1.8" width="10" height="12.4" rx="1.4"/><path d="M5.4 4.6h5.2M5.6 7.6h1M7.5 7.6h1M9.4 7.6h1M5.6 10.4h1M7.5 10.4h1M9.4 10.4h1"/></svg>
+              <span class="module__name">Costing</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-routing">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.5" cy="4" r="1.6"/><circle cx="12.5" cy="12" r="1.6"/><path d="M3.5 5.6v3.2a2.6 2.6 0 0 0 2.6 2.6h4.8"/></svg>
+              <span class="module__name">Routing</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="production" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 13.5v-6l4 2.4V7.5l4 2.4V4.2l4 1.9v7.4z"/><path d="M2 13.5h12"/></svg>
+              <span class="module__name">Production</span>
+            </button>
+            <a class="mod-more__card" href="product.html#mod-supply-chain-management">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.6" cy="8" r="1.7"/><circle cx="12.4" cy="4.6" r="1.7"/><circle cx="12.4" cy="11.4" r="1.7"/><path d="m5.2 7.3 5.6-2.1M5.2 8.7l5.6 2.1"/></svg>
+              <span class="module__name">Supply chain</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-custom-reports">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6" cy="5.6" r="2.2"/><path d="M2.2 13.4a3.9 3.9 0 0 1 7.6 0"/><path d="M10.7 4a2.2 2.2 0 0 1 0 4.2M11.6 13.4a3.9 3.9 0 0 0-1.1-2.7"/></svg>
+              <span class="module__name">Reports</span>
+            </a>
+            <a class="mod-more__card" href="product.html#mod-analytics">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 13.5h11"/><path d="M4.6 13.5V9M7.6 13.5V5.4M10.6 13.5v-5M13 13.5V3.2"/></svg>
+              <span class="module__name">Analytics</span>
+            </a>
+            <button class="mod-more__card" type="button" data-mod-open="demand-forecast" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <span class="module__name">Demand forecast</span>
+            </button>
+            <button class="mod-more__card" type="button" data-mod-open="inventory-management" aria-haspopup="dialog">
+              <svg class="module__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 5.5 8 2.5l6 3v6L8 14.5l-6-3z"/><path d="M2 5.5 8 8.5l6-3M8 8.5v6"/></svg>
+              <span class="module__name">Inventory</span>
+            </button>
+          </div>
+          <a class="btn btn--primary mod-more__cta" href="product.html#modules">Explore more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/modules.js"></script>
+<script src="js/problem.js"></script>
+<script src="js/floor.js"></script>
+<script src="js/hank.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>
-
-<!-- cache-bust: 1777442223 -->

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42">
+  <!-- Blue Party #3456D9, guidelines 2026 p.007 -->
+  <g fill="none" stroke="#3456D9">
+    <rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/>
+    <path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/>
+  </g>
+</svg>

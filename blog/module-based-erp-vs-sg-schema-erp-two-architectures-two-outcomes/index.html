@@ -1,219 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>Module-Based ERP vs. SG Schema ERP | SimpleGrid Blog</title>
-<meta name="description" content="Module-based ERPs hardcode workflows and charge per change. SG Schema generates the system from your operation. Two architectures. Two outcomes.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<!-- The post lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>Module-Based ERP vs. SG Schema ERP | SimpleGrid</title>
+<meta name="description" content="Module-based ERPs hardcode workflows and charge per change. SG Schema generates the system from your operation. Two architectures. Two outcomes.">
 <link rel="canonical" href="https://simplegrid.ai/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta property="og:url" content="https://simplegrid.ai/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">
-<meta property="og:title" content="Module-Based ERP vs. SG Schema ERP">
+<meta property="og:title" content="Module-Based ERP vs. SG Schema ERP | SimpleGrid">
 <meta property="og:description" content="Module-based ERPs hardcode workflows and charge per change. SG Schema generates the system from your operation. Two architectures. Two outcomes.">
-<meta property="og:image" content="https://simplegrid.ai/assets/blog/blog6_module_vs_sg_schema_cover.jpg">
-<meta property="og:image:alt" content="Module-Based ERP vs. SG Schema ERP - SimpleGrid blog post">
-
-<!-- Twitter Card -->
+<meta property="og:url" content="https://simplegrid.ai/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="Module-Based ERP vs. SG Schema ERP">
-<meta name="twitter:description" content="Module-based ERPs hardcode workflows and charge per change. SG Schema generates the system from your operation. Two architectures. Two outcomes.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/blog/blog6_module_vs_sg_schema_cover.jpg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- JSON-LD: Article + BreadcrumbList (for crawlers that don't run JS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Module-Based ERP vs. SG Schema ERP",
-  "description": "Module-based ERPs hardcode workflows and charge per change. SG Schema generates the system from your operation. Two architectures. Two outcomes.",
-  "image": "https://simplegrid.ai/assets/blog/blog6_module_vs_sg_schema_cover.jpg",
-  "url": "https://simplegrid.ai/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/",
-  "mainEntityOfPage": "https://simplegrid.ai/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/",
-  "inLanguage": "en",
-  "isPartOf": { "@id": "https://simplegrid.ai/blog.html#blog" },
-  "publisher": { "@id": "https://simplegrid.ai/#org" },
-  "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-  "datePublished": "2026-04-12",
-  "dateModified": "2026-04-12"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simplegrid.ai/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "Module-Based ERP vs. SG Schema ERP", "item": "https://simplegrid.ai/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/" }
-  ]
-}
-</script>
-<script>
-  // Tells Nav to resolve root-relative paths with ../../ since this page is
-  // two levels deep, and tells blog-post.js which infographic to mount.
-  window.__SG_BLOG_ID__ = 6;
-  window.__SG_BLOG_ASSET_PREFIX__ = "../../";
-</script>
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="../../assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="../../assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- sg-static-chrome -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="blog"></div>
-<div class="nav-mobile" data-sg-mobile-menu hidden>
-  <nav class="nav-mobile-panel" aria-label="Mobile navigation">
-    <a href="../../index.html" class="nav-mobile-link">Home</a>
-    <a href="../../product.html" class="nav-mobile-link">Product</a>
-    <div class="nav-mobile-section">Resources</div>
-    <a href="../../tools/" class="nav-mobile-link nav-mobile-sub">Productive Tools</a>
-    <a href="../../case-studies.html" class="nav-mobile-link nav-mobile-sub">Case studies</a>
-    <a href="../../blog.html" class="nav-mobile-link nav-mobile-sub active">Blog</a>
-    <div class="nav-mobile-sep"></div>
-    <a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>
-  </nav>
-</div>
 
-<main id="main">
-<section class="post-header">
-  <div class="container-sm">
-    <a href="../../blog.html" style="font-size:15px;color:var(--sg-blue);text-decoration:none;border:none">← Back to blog</a>
-    <h1>Module-Based ERP vs. SG Schema ERP</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="2026-04-12">Apr 12, 2026</time>
-      <span>Product Deep-Dive</span>
-      <span>6 min read</span>
-    </div>
-  </div>
-</section>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
 
-<section class="post-content">
-  <div class="container-sm">
-    <p>Every ERP vendor sells modules. Inventory module. Procurement module. Production module. Finance module. You buy the ones you need. You configure them within their limits. You go live.</p>
-    <p>There is another way to build an ERP. Instead of pre-built modules with predefined workflows, you start with the business itself. You write down what exists, what states things can be in, what rules apply. The system generates itself from that specification.</p>
-    <p>The first approach is module-based architecture. The second is spec-driven architecture. Here is why the difference matters.</p>
-    <h2>How modules work</h2>
-    <p>A module is a pre-built application for a generic version of a business process. The Procurement module assumes: create a purchase order, send it to a vendor, receive goods, match the invoice, pay. That workflow is hardcoded into the module.</p>
-    <p>The problem starts when your procurement does not work that way.</p>
-    <p>What if your purchase orders consolidate per vendor across multiple production jobs? That is a customization. What if your receiving process measures in cubic feet instead of units? Customization. What if your approval chain differs for first-time vendors versus repeat vendors? Customization.</p>
-    <p>Each customization costs $10,000 to $50,000. Each one makes the system harder to upgrade. After 10 customizations, you are running a forked version of the software that nobody at the vendor fully understands.</p>
-    <h2>The module trap</h2>
-    <p><a href="/blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/">Modules create a perverse incentive</a>. The vendor wants you to buy more modules. You want each module to match your process. The gap between what the module does and what you need is the vendor's profit margin.</p>
-    <p>And here is what nobody says out loud: every module is a separate database structure with its own tables, its own logic, and its own assumptions. When you need data to flow from Procurement to Production to Finance, that flow has to be built. Often by a consultant. Often expensively. Cross-module consistency is not free. It is not even cheap.</p>
-    <h2>How SG Schema architecture works</h2>
-    <p>An SG Schema ERP does not have modules. It has a single specification of your business: the SG Schema.</p>
-    <p>The SG Schema defines what types of things exist (Sales Orders, Job Orders, Purchase Orders). What states each type can be in. What transitions are allowed. What rules must hold at each transition. What chain reactions fire when an event occurs.</p>
-    <figure class="post-figure">
-      <picture><source srcset="../../assets/blog/blog6_module_vs_sg_schema_cover.webp" type="image/webp"><img src="../../assets/blog/blog6_module_vs_sg_schema_cover.jpg" alt="Module-Based ERP vs SG Schema ERP. Left: rigid stacked modules (Procurement, Inventory, Production, Quality, Finance, Reports), $10K-$50K per change, 4 weeks per customization. Right: an organic SG Schema (entities, states, rules, events) that SG Engine reads and regenerates the system from in minutes." loading="lazy" decoding="async" width="1200" height="630" style="max-width:100%;height:auto;display:block"></picture>
-      <figcaption>Module-Based ERP vs SG Schema ERP. Left: rigid stacked modules (Procurement, Inventory, Production, Quality, Finance, Reports), $10K-$50K per change, 4 weeks per customization. Right: an organic SG Schema (entities, states, rules, events) that SG Engine reads and regenerates the system from in minutes.</figcaption>
-    </figure>
-    <div id="root-infographic-mid"></div>
-    <p>The SG Schema does not contain application code. It is a machine-readable specification. SG Engine reads the SG Schema and generates the application, including forms, workflows, validations, dashboards, and APIs. Automatically.</p>
-    <p>Change the SG Schema, the application changes instantly.</p>
-    <h2>The practical difference</h2>
-    <p>In a module-based system, adding "QC approval before dispatch" means modifying the Production module and the Dispatch module and the interface between them. Three code changes. One consultant. $20,000. 4 weeks.</p>
-    <p>In an SG Schema system, adding "QC approval before dispatch" means: add a QC state to the production flow. Add a transition rule: cannot move to Dispatch unless QC state is Passed. Add a chain reaction: QC Passed makes the item available for Dispatch.</p>
-    <p>Three rows in the SG Schema. Zero code changes. <a href="/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">Done in minutes</a>.</p>
-    <p>Why modules keep winning (commercially)</p>
-    <p>Modules are easier to sell. They have names. They have feature lists. They have demo environments. A sales rep can walk you through the Procurement module in 20 minutes and check a box on your requirements list.</p>
-    <p>SG Schema systems are harder to demo because they do not have pre-built screens to show. SG Engine generates screens from your spec. The demo IS the deployment. That is why SimpleGrid's sales process starts with a working system built from your actual operation, not a generic walkthrough.</p>
-    <p>The test</p>
-    <p>Next time an ERP vendor presents their modules, ask this question: "If I need to add a business rule that spans two of your modules, how long does that take and what does it cost?"</p>
-    <p>If the answer involves consultants, change orders, and weeks, you are buying modules.</p>
-    <p>If the answer is "we add a few lines to the spec and it takes effect immediately," you are buying an SG Schema system.</p>
-    <p>SimpleGrid does not sell modules. We write your SG Schema. Your rules. Your language. Your operation.</p>
+<sg-header></sg-header>
 
-    <div id="root-infographic-end"></div>
+<main>
 
-    <!-- Prev/Next -->
-    <div class="post-pager">
-      <a class="post-pager-link" href="/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">← ERP Customization in Minutes, Not Months</a>
-      <a class="post-pager-link post-pager-next" href="/blog/how-we-built-an-erp-chatbot-with-claude-no-rag-and-full-context/">Building an ERP Chatbot With Claude, No RAG →</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">No modules. Just your operation.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">SimpleGrid writes a schema from how your plant actually runs, so a new rule like QC-before-dispatch is a few rows in the spec, not a $20K change order and a four-week wait. The demo is a system built on your operation.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
+  <!-- ============================================================= POST -->
+  <!-- Title block and prose share one card: they are one piece of
+       reading, and a seam between them read as two. -->
+  <section class="section">
+    <div class="container">
+      <div class="card post-card">
+        <header class="post-hero">
+          <p class="eyebrow">Product Deep-Dive</p>
+          <h1 class="post-hero__title">Module-Based ERP vs. SG Schema ERP</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-12">Apr 12, 2026</time>
+            <span class="post-meta__cat">Product Deep-Dive</span>
+            <span>6 min</span>
+          </p>
+        </header>
+        <article class="post">
+          <p>Every ERP vendor sells modules. Inventory module. Procurement module. Production module. Finance module. You buy the ones you need. You configure them within their limits. You go live.</p>
+          <p>There is another way to build an ERP. Instead of pre-built modules with predefined workflows, you start with the business itself. You write down what exists, what states things can be in, what rules apply. The system generates itself from that specification.</p>
+          <p>The first approach is module-based architecture. The second is spec-driven architecture. Here is why the difference matters.</p>
+          <h2>How modules work</h2>
+          <p>A module is a pre-built application for a generic version of a business process. The Procurement module assumes: create a purchase order, send it to a vendor, receive goods, match the invoice, pay. That workflow is hardcoded into the module.</p>
+          <p>The problem starts when your procurement does not work that way.</p>
+          <p>What if your purchase orders consolidate per vendor across multiple production jobs? That is a customization. What if your receiving process measures in cubic feet instead of units? Customization. What if your approval chain differs for first-time vendors versus repeat vendors? Customization.</p>
+          <p>Each customization costs $10,000 to $50,000. Each one makes the system harder to upgrade. After 10 customizations, you are running a forked version of the software that nobody at the vendor fully understands.</p>
+          <h2>The module trap</h2>
+          <p><a href="/blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/">Modules create a perverse incentive</a>. The vendor wants you to buy more modules. You want each module to match your process. The gap between what the module does and what you need is the vendor's profit margin.</p>
+          <p>And here is what nobody says out loud: every module is a separate database structure with its own tables, its own logic, and its own assumptions. When you need data to flow from Procurement to Production to Finance, that flow has to be built. Often by a consultant. Often expensively. Cross-module consistency is not free. It is not even cheap.</p>
+          <h2>How SG Schema architecture works</h2>
+          <p>An SG Schema ERP does not have modules. It has a single specification of your business: the SG Schema.</p>
+          <p>The SG Schema defines what types of things exist (Sales Orders, Job Orders, Purchase Orders). What states each type can be in. What transitions are allowed. What rules must hold at each transition. What chain reactions fire when an event occurs.</p>
+          <figure>
+          <picture><source srcset="assets/blog/blog6_module_vs_sg_schema_cover.webp" type="image/webp"><img src="assets/blog/blog6_module_vs_sg_schema_cover.jpg" alt="Module-Based ERP vs SG Schema ERP. Left: rigid stacked modules (Procurement, Inventory, Production, Quality, Finance, Reports), $10K-$50K per change, 4 weeks per customization. Right: an organic SG Schema (entities, states, rules, events) that SG Engine reads and regenerates the system from in minutes." loading="lazy" decoding="async" width="1200" height="630"></picture>
+          <figcaption>Module-Based ERP vs SG Schema ERP. Left: rigid stacked modules (Procurement, Inventory, Production, Quality, Finance, Reports), $10K-$50K per change, 4 weeks per customization. Right: an organic SG Schema (entities, states, rules, events) that SG Engine reads and regenerates the system from in minutes.</figcaption>
+          </figure>
+          <div id="root-infographic-mid"></div>
+          <p>The SG Schema does not contain application code. It is a machine-readable specification. SG Engine reads the SG Schema and generates the application, including forms, workflows, validations, dashboards, and APIs. Automatically.</p>
+          <p>Change the SG Schema, the application changes instantly.</p>
+          <h2>The practical difference</h2>
+          <p>In a module-based system, adding "QC approval before dispatch" means modifying the Production module and the Dispatch module and the interface between them. Three code changes. One consultant. $20,000. 4 weeks.</p>
+          <p>In an SG Schema system, adding "QC approval before dispatch" means: add a QC state to the production flow. Add a transition rule: cannot move to Dispatch unless QC state is Passed. Add a chain reaction: QC Passed makes the item available for Dispatch.</p>
+          <p>Three rows in the SG Schema. Zero code changes. <a href="/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">Done in minutes</a>.</p>
+          <p>Why modules keep winning (commercially)</p>
+          <p>Modules are easier to sell. They have names. They have feature lists. They have demo environments. A sales rep can walk you through the Procurement module in 20 minutes and check a box on your requirements list.</p>
+          <p>SG Schema systems are harder to demo because they do not have pre-built screens to show. SG Engine generates screens from your spec. The demo IS the deployment. That is why SimpleGrid's sales process starts with a working system built from your actual operation, not a generic walkthrough.</p>
+          <p>The test</p>
+          <p>Next time an ERP vendor presents their modules, ask this question: "If I need to add a business rule that spans two of your modules, how long does that take and what does it cost?"</p>
+          <p>If the answer involves consultants, change orders, and weeks, you are buying modules.</p>
+          <p>If the answer is "we add a few lines to the spec and it takes effect immediately," you are buying an SG Schema system.</p>
+          <p>SimpleGrid does not sell modules. We write your SG Schema. Your rules. Your language. Your operation.</p>
+          <div id="root-infographic-end"></div>
+          <!-- Prev/Next -->
+          <div class="post-pager">
+          <a class="post-pager-link" href="/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">← ERP Customization in Minutes, Not Months</a>
+          <a class="post-pager-link post-pager-next" href="/blog/how-we-built-an-erp-chatbot-with-claude-no-rag-and-full-context/">Building an ERP Chatbot With Claude, No RAG →</a>
+          </div>
+          <div class="post-foot">
+            <a class="post-foot__back" href="blogs.html">&larr; All posts</a>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script>
-(function(){
-  // Top nav (burger + Resources dropdown) is handled by components/site-nav.js.
-  // Lazy-load React + PostInfographics only if there's an infographic on the page.
-  var mounts = document.querySelectorAll('[id^="root-infographic-"]');
-  if (!mounts.length) return;
-  var loaded = false;
-  function loadOnce(){
-    if (loaded) return;
-    loaded = true;
-    function add(src, cb){
-      var s = document.createElement('script');
-      s.src = src; s.async = false; var SRI={'https://unpkg.com/react@18.3.1/umd/react.production.min.js':'sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z','https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js':'sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1'};if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous';} s.onload = cb; document.head.appendChild(s);
-    }
-    add('https://unpkg.com/react@18.3.1/umd/react.production.min.js', function(){
-      add('https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js', function(){
-        add('../../components/PostInfographics.js', function(){
-          var id = window.__SG_BLOG_ID__;
-          var pi = id && window.PostInfographics && window.PostInfographics[id];
-          if (!pi) return;
-          mounts.forEach(function(el){
-            var which = el.id === 'root-infographic-mid' ? pi.mid : pi.end;
-            if (which) ReactDOM.createRoot(el).render(which);
-          });
-        });
-      });
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting) { loadOnce(); io.disconnect(); } });
-    }, { rootMargin: '600px 0px' });
-    mounts.forEach(function(m){ io.observe(m); });
-  } else {
-    loadOnce();
-  }
-})();
-</script>
-<script src="../../components/blog-post-chrome.js" defer></script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/post.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

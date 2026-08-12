@@ -1,0 +1,261 @@
+/* ==========================================================================
+   SimpleGrid — competitor comparison pages
+
+   One page per incumbent: what they are good at, where SimpleGrid sits, and
+   an honest table. Cards, type and colour are the shared system; the
+   positioning matrix and the comparison table are particular to these pages.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------- hero */
+
+.vs-hero {
+  margin-top: var(--grid-cell);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 48px;
+  /* The badge sits against the middle of the copy, not its first line. */
+  align-items: center;
+}
+
+.vs-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 24ch;
+  margin: 0 0 20px;
+}
+
+.vs-hero__body { max-width: 74ch; }
+.vs-hero__body p + p { margin-top: 14px; }
+
+/* The three commitments, as chips rather than a bulleted list — they are
+   claims, and a list would bury them under the paragraph above. */
+.vs-points { display: flex; flex-wrap: wrap; gap: 22px; margin: 24px 0 28px; }
+.vs-point {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-sub);
+  color: var(--fg-body);
+}
+.vs-point svg {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The incumbent, in the same tile the integrations band uses: a bordered white
+   cell with the name set in it. Their mark is their trademark, so the page
+   names them rather than borrowing the artwork — the same call the band makes
+   for Excel, NetSuite and ShipStation. */
+.vs-hero__mark {
+  /* No tile: the mark sits on the card itself, in a 360px square so logos of
+     different proportions all occupy the same footprint. */
+  display: grid;
+  place-items: center;
+  width: 360px;
+  height: 360px;
+  max-width: 100%;
+  justify-self: center;
+  text-align: center;
+}
+
+/* A brand's own mark. Width-led inside the square, so a wide lockup fills it
+   and a tall one is capped by the height. */
+.vs-hero__logo { width: 100%; height: auto; max-height: 360px; }
+
+/* -------------------------------------------------------------- position */
+
+.vs-head { text-align: center; margin-bottom: 40px; }
+.vs-head__title {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+  max-width: 22ch;
+  margin: 0 auto 16px;
+  text-wrap: balance;
+}
+.vs-head__sub { max-width: 66ch; margin: 0 auto; }
+
+/* Two axes, four quadrants, two markers. Dark so it reads as a diagram rather
+   than another card of copy. */
+.matrix {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 34px 34px 44px 52px;
+  border-radius: var(--card-radius);
+  background: #17181D;
+  color: var(--sg-logo-white);
+  overflow: hidden;
+}
+
+.matrix__field {
+  position: relative;
+  height: 100%;
+  border: 1px solid rgba(250, 250, 250, 0.10);
+  background:
+    linear-gradient(to right, rgba(250, 250, 250, 0.10) 1px, transparent 1px) 50% 0 / 50% 100%,
+    linear-gradient(to bottom, rgba(250, 250, 250, 0.10) 1px, transparent 1px) 0 50% / 100% 50%;
+}
+
+.matrix__quad {
+  position: absolute;
+  width: 42%;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: var(--tracking-sub);
+  color: rgba(250, 250, 250, 0.34);
+}
+.matrix__quad--tl { top: 16px; left: 4%; }
+.matrix__quad--tr { top: 16px; right: 4%; text-align: right; }
+
+/* Axis labels sit outside the field, along the edges they describe. */
+.matrix__axis {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-sub);
+  color: rgba(250, 250, 250, 0.45);
+}
+.matrix__axis--y {
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  text-align: center;
+  height: 62%;
+  display: flex;
+  justify-content: space-between;
+}
+.matrix__axis--x {
+  left: 52px;
+  right: 34px;
+  bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Markers: the incumbent quiet, SimpleGrid in the brand blue. */
+.matrix__pin {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+.matrix__pin--them {
+  background: rgba(250, 250, 250, 0.10);
+  color: rgba(250, 250, 250, 0.80);
+  font-family: var(--font-mono);
+  left: 27%;
+  top: 62%;
+}
+.matrix__pin--us {
+  background: var(--accent);
+  color: var(--sg-logo-white);
+  box-shadow: 0 10px 26px rgba(52, 86, 217, 0.45);
+  left: 74%;
+  top: 22%;
+}
+.matrix__pin--us::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sg-logo-white);
+}
+
+.matrix__note {
+  position: absolute;
+  left: 64%;
+  top: 40%;
+  max-width: 210px;
+  padding: 9px 11px;
+  border-radius: 7px;
+  background: rgba(250, 250, 250, 0.08);
+  font-size: 10px;
+  line-height: 1.5;
+  color: rgba(250, 250, 250, 0.70);
+}
+
+/* ---------------------------------------------------------------- table */
+
+.vs-table-title { font-size: var(--fs-h3); text-align: center; margin-bottom: 32px; }
+
+.vs-table { width: 100%; border-collapse: collapse; }
+.vs-table th,
+.vs-table td { padding: 16px 18px; text-align: left; vertical-align: top; font-size: var(--fs-sub); }
+.vs-table thead th {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--fg);
+  border-bottom: 1px solid var(--border);
+}
+.vs-table tbody th {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--accent);
+  width: 22%;
+}
+.vs-table tbody td { color: var(--fg-body); line-height: 1.6; }
+.vs-table tbody tr + tr th,
+.vs-table tbody tr + tr td { border-top: 1px solid var(--sg-line-soft); }
+/* The two comparison columns carry a tint so the eye can hold its place
+   across a wide row. */
+.vs-table td:nth-child(2) { background: var(--bg-highlight-soft); }
+
+.vs-mark { display: inline-block; width: 15px; margin-right: 8px; font-weight: 700; }
+.vs-mark--yes { color: #1F9E60; }
+.vs-mark--no  { color: #D8434F; }
+.vs-mark--mid { color: var(--fg-muted); }
+
+/* --------------------------------------------------------------- reasons */
+
+.vs-why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.vs-why__card {
+  padding: 22px 24px 26px;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+.vs-why__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+.vs-why__card p { font-size: var(--fs-sub); line-height: 1.65; color: var(--fg-body); margin: 0; }
+
+/* ------------------------------------------------------------ right-sized */
+
+.vs-fit { text-align: center; }
+.vs-fit__title { font-size: var(--fs-h3); margin: 0 auto 24px; max-width: 26ch; }
+.vs-fit__body { max-width: 70ch; margin: 0 auto; text-align: left; }
+.vs-fit__body p + p { margin-top: 16px; }
+
+@media (max-width: 900px) {
+  .vs-hero { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .vs-hero__mark { justify-self: start; width: 220px; height: 220px; }
+  .vs-why { grid-template-columns: minmax(0, 1fr); }
+  .matrix { aspect-ratio: 4 / 5; padding: 26px 20px 38px 44px; }
+  .vs-table th, .vs-table td { padding: 12px 10px; }
+  .vs-table tbody th { width: 30%; }
+}

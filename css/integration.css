@@ -1,0 +1,242 @@
+/* ==========================================================================
+   SimpleGrid — one integration page
+
+   The detail page behind every tile on syncs.html: what moves, what teams do
+   with it, how it goes live, two questions, and the neighbours. Structure,
+   cards, type and the closing CTA are the shared language from v3.css; this
+   file adds the lockup, the two-way flow columns and the step list.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------- hero */
+
+.intg-hero { display: grid; justify-items: start; padding-block: 64px; }
+
+/* Back to the index, above the lockup — the page is a leaf and the route out
+   should be the first thing on it. */
+.intg-back {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 28px;
+}
+.intg-back:hover { color: var(--accent); }
+
+/* The two marks with a + between them: the whole proposition of the page in
+   one line, before any words. */
+.intg-lockup { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+
+.intg-mark {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--sg-white);
+}
+.intg-mark svg,
+.intg-mark img { width: 30px; height: 30px; display: block; }
+
+.intg-plus { font-family: var(--font-mono); font-size: 18px; color: var(--fg-muted); }
+
+.intg-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 18px; }
+
+/* Category reads as the eyebrow; direction is the one-line summary of which
+   way the data actually travels. */
+.intg-badge {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+}
+.intg-badge--cat { background: var(--bg-highlight); color: var(--accent); }
+.intg-badge--dir { border: 1px solid var(--border); color: var(--fg-muted); }
+
+.intg-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+}
+
+.intg-hero__sub { max-width: 66ch; }
+
+/* The single sentence a reader should leave with, set apart from the lede by
+   a rule rather than a box. */
+.intg-what {
+  margin-top: 22px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg);
+  max-width: 62ch;
+}
+
+.intg-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+/* ---------------------------------------------------------------- section */
+
+.intg-head { max-width: 62ch; margin-bottom: 32px; }
+.intg-title { font-size: var(--fs-h5); color: var(--accent); margin-bottom: 10px; }
+
+/* ------------------------------------------------------------------ flows */
+
+/* Two columns, one per direction. Each is a tinted panel so the pair reads as
+   a there-and-back rather than as two unrelated lists. */
+.intg-flows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+.intg-col {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-highlight-soft);
+}
+
+.intg-col__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 16px;
+}
+.intg-col__arrow { font-family: var(--font-mono); color: var(--accent); }
+
+.intg-list { list-style: none; display: grid; gap: 10px; }
+.intg-list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-body);
+}
+/* A square bullet: the page system has no rounded corners in it anywhere. */
+.intg-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+
+.intg-detail { margin-top: 24px; max-width: 72ch; }
+
+/* ------------------------------------------------------------------- uses */
+
+.intg-uses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.intg-use {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  color: var(--fg);
+}
+
+/* ------------------------------------------------------------------ steps */
+
+.intg-steps { list-style: none; display: grid; gap: 2px; counter-reset: none; }
+.intg-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+.intg-step:last-child { border-bottom: 1px solid var(--border); }
+
+.intg-step__n {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--sg-logo-white);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  font-weight: 600;
+}
+.intg-step__head { font-size: var(--fs-body); font-weight: 700; color: var(--fg); margin-bottom: 6px; }
+.intg-step__body { max-width: 72ch; }
+
+.intg-note {
+  margin-top: 28px;
+  padding: 20px 24px;
+  background: var(--sg-blue-08);
+  border: 1px dashed var(--sg-blue-15);
+  max-width: 78ch;
+}
+
+/* -------------------------------------------------------------------- faq */
+
+.intg-faq { display: grid; gap: 2px; }
+.intg-faq__item { padding: 22px 0; border-top: 1px solid var(--border); }
+.intg-faq__item:last-child { border-bottom: 1px solid var(--border); }
+.intg-q { font-size: var(--fs-body); font-weight: 700; color: var(--fg); margin-bottom: 8px; }
+.intg-a { max-width: 72ch; }
+
+/* -------------------------------------------------------------- neighbours */
+
+.intg-rel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.intg-rel__card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--fg);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+.intg-rel__card:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
+
+.intg-rel__logo {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: var(--sg-white);
+}
+.intg-rel__logo svg { width: 20px; height: 20px; display: block; }
+
+.intg-rel__all {
+  display: inline-block;
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.intg-rel__all:hover { color: var(--accent-hover); }
+
+@media (max-width: 1100px) {
+  .intg-rel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 820px) {
+  .intg-flows, .intg-uses { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .intg-step { grid-template-columns: 40px 1fr; gap: 14px; }
+  .intg-rel { grid-template-columns: minmax(0, 1fr); }
+}

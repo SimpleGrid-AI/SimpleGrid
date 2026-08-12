@@ -1,208 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>Why Conversational UX Does Not Change Behavior | SimpleGrid Blog</title>
-<meta name="description" content="Conversational UX does not change how your team behaves. It captures the behavior that already exists. Three pillars of user behavior - and why forms always lose to a sentence.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<!-- The post lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>Why Conversational UX Does Not Change Behavior | SimpleGrid</title>
+<meta name="description" content="Conversational UX does not change how your team behaves. It captures the behavior that already exists, which is the whole point.">
 <link rel="canonical" href="https://simplegrid.ai/blog/why-conversational-ux-does-not-change-user-behavior-and-why-that-is-the-point/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Why Conversational UX Does Not Change Behavior | SimpleGrid">
+<meta property="og:description" content="Conversational UX does not change how your team behaves. It captures the behavior that already exists, which is the whole point.">
 <meta property="og:url" content="https://simplegrid.ai/blog/why-conversational-ux-does-not-change-user-behavior-and-why-that-is-the-point/">
-<meta property="og:title" content="Why Conversational UX Does Not Change Behavior">
-<meta property="og:description" content="Conversational UX does not change how your team behaves. It captures the behavior that already exists. Three pillars of user behavior - and why forms always lose to a sentence.">
-<meta property="og:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
-<meta property="og:image:alt" content="Why Conversational UX Does Not Change Behavior - SimpleGrid blog post">
-
-<!-- Twitter Card -->
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="Why Conversational UX Does Not Change Behavior">
-<meta name="twitter:description" content="Conversational UX does not change how your team behaves. It captures the behavior that already exists. Three pillars of user behavior - and why forms always lose to a sentence.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- JSON-LD: Article + BreadcrumbList (for crawlers that don't run JS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Why Conversational UX Does Not Change Behavior",
-  "description": "Conversational UX does not change how your team behaves. It captures the behavior that already exists. Three pillars of user behavior - and why forms always lose to a sentence.",
-  "image": "https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg",
-  "url": "https://simplegrid.ai/blog/why-conversational-ux-does-not-change-user-behavior-and-why-that-is-the-point/",
-  "mainEntityOfPage": "https://simplegrid.ai/blog/why-conversational-ux-does-not-change-user-behavior-and-why-that-is-the-point/",
-  "inLanguage": "en",
-  "isPartOf": { "@id": "https://simplegrid.ai/blog.html#blog" },
-  "publisher": { "@id": "https://simplegrid.ai/#org" },
-  "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-  "datePublished": "2026-04-19",
-  "dateModified": "2026-04-19"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simplegrid.ai/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "Why Conversational UX Does Not Change Behavior", "item": "https://simplegrid.ai/blog/why-conversational-ux-does-not-change-user-behavior-and-why-that-is-the-point/" }
-  ]
-}
-</script>
-<script>
-  // Tells Nav to resolve root-relative paths with ../../ since this page is
-  // two levels deep, and tells blog-post.js which infographic to mount.
-  window.__SG_BLOG_ID__ = 8;
-  window.__SG_BLOG_ASSET_PREFIX__ = "../../";
-</script>
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="../../assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="../../assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- sg-static-chrome -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="blog"></div>
-<div class="nav-mobile" data-sg-mobile-menu hidden>
-  <nav class="nav-mobile-panel" aria-label="Mobile navigation">
-    <a href="../../index.html" class="nav-mobile-link">Home</a>
-    <a href="../../product.html" class="nav-mobile-link">Product</a>
-    <div class="nav-mobile-section">Resources</div>
-    <a href="../../tools/" class="nav-mobile-link nav-mobile-sub">Productive Tools</a>
-    <a href="../../case-studies.html" class="nav-mobile-link nav-mobile-sub">Case studies</a>
-    <a href="../../blog.html" class="nav-mobile-link nav-mobile-sub active">Blog</a>
-    <div class="nav-mobile-sep"></div>
-    <a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>
-  </nav>
-</div>
 
-<main id="main">
-<section class="post-header">
-  <div class="container-sm">
-    <a href="../../blog.html" style="font-size:15px;color:var(--sg-blue);text-decoration:none;border:none">← Back to blog</a>
-    <h1>Why Conversational UX Does Not Change Behavior</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="2026-04-19">Apr 19, 2026</time>
-      <span>Operator Insights</span>
-      <span>5 min read</span>
-    </div>
-  </div>
-</section>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
 
-<section class="post-content">
-  <div class="container-sm">
-    <p>Every software vendor selling a chat interface makes the same promise: "It's so easy, your team will actually use it." The pitch is that conversational UX <em>changes user behavior</em> - that a friendly chatbox finally gets the warehouse manager to adopt the system.</p>
-    <p>That's the wrong way to think about it, and it's why most "conversational" ERP features still fail on the floor.</p>
-    <p>Conversational UX does not change behavior. It works precisely because it <em>doesn't</em> ask anyone to behave differently. It captures the behavior that already exists.</p>
-    <h2>The behavior was always there</h2>
-    <p>Walk any factory floor and you'll find the data is already being captured - just not in the ERP. The stores manager writes "200 sheets from Midwest, 20 rejected" in a notebook. The supervisor sends "Job 47 done, moving to finishing" on WhatsApp. The QC inspector calls out a number across the floor.</p>
-    <p>People are already describing what happened, in plain language, dozens of times a day. The information exists. It's just landing in a notebook or a chat thread instead of in your system. The adoption problem was never that people won't report what's happening. It's that the ERP made reporting it harder than writing it down.</p>
-    <h2>Three pillars of user behavior</h2>
-    <p>Whether a tool gets used on the floor comes down to three things. Traditional ERP fights all three. A conversational interface is aligned with all three - not because it's clever, but because it asks for nothing new.</p>
-    <p><strong>1. Effort.</strong> People take the lowest-friction path available, every time. A material receipt that takes seven taps - Procurement &gt; Purchase Orders &gt; Select PO &gt; Receive &gt; Quantity &gt; Unit &gt; Confirm - loses to a notebook before the second tap. One sentence wins because it costs almost nothing.</p>
-    <p><strong>2. Familiarity.</strong> People repeat what they already know how to do. Describing what just happened in words is something every adult has done their whole life. Learning a multi-screen form interface is not. Conversational UX rides on a skill the user mastered as a child instead of teaching a new one.</p>
-    <p><strong>3. Context.</strong> Behavior is bound to a moment and a place - the loading dock, a phone in one hand, a truck idling, twenty minutes before the next delivery. A tool that fits that moment gets used in that moment. A tool that requires walking to a desk and logging in gets deferred, batched, and eventually forgotten.</p>
-    <div id="root-infographic-mid"></div>
-    <p>Notice that none of these three is about motivation. The standard fix - "we need better training" or "we need to incentivize adoption" - tries to push people up a hill. Conversational UX removes the hill.</p>
-    <h2>Capture, don't convert</h2>
-    <p>The design goal is not to convert a human into an ERP operator. It's to capture the sentence they were already going to say and turn it into structured data behind the scenes.</p>
-    <p>"Got 200 sheets of steel from Midwest Supply, 20 rejected."</p>
-    <p>The user did exactly what they'd do anyway - reported what happened. The system did the work: it matched the open purchase order, validated the quantities, updated inventory, flagged the rejects, fired the downstream triggers, and confirmed. The behavior didn't change. The destination did. The message now lands in the system of record instead of a WhatsApp thread no one queries.</p>
-    <p>That's the whole point of conversational UX, and it's also its limit. A chatbox that still demands the user think in the software's categories - that asks "which warehouse? which cost center? which UoM?" - has just rebuilt the form one question at a time. It changes behavior again, and it dies again. The win only holds when the system absorbs the complexity instead of handing it back.</p>
-    <h2>Why this matters for adoption</h2>
-    <p>When you stop trying to change behavior, the adoption curve flattens out. There's no training period, because there's nothing to learn. There's no compliance problem, because using the system is easier than not using it. And the data quality goes up, not down, because the person reporting was there when it happened - not a back-office clerk transcribing a notebook four hours later.</p>
-    <p>One person describing what happened at the point of action is worth more than an entire data-entry team working retroactively. (This is the same reason <a href="/blog/why-your-warehouse-manager-should-be-your-erp-s-first-user/">your warehouse manager should be your ERP's first user</a>.)</p>
-    <p>SimpleGrid is built on this idea. We don't train your team to use an ERP. We listen to what they already say, and we turn it into the system of record. Same behavior. Better data. Real adoption.</p>
+<sg-header></sg-header>
 
-    <div id="root-infographic-end"></div>
+<main>
 
-    <!-- Prev/Next -->
-    <div class="post-pager">
-      <a class="post-pager-link" href="/blog/how-we-built-an-erp-chatbot-with-claude-no-rag-and-full-context/">← Building an ERP Chatbot With Claude, No RAG</a>
-      <a class="post-pager-link post-pager-next" href="/blog/how-to-calculate-true-landed-cost-per-sku-and-why-most-manufacturers-cannot/">True Landed Cost Per SKU →</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">We listen to what your floor already says.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">SimpleGrid captures the sentence your team was already going to say and turns it into the system of record - no forms to learn, no behavior to change. Put it in your operators' hands and watch the adoption problem disappear.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
+  <!-- ============================================================= POST -->
+  <!-- Title block and prose share one card: they are one piece of
+       reading, and a seam between them read as two. -->
+  <section class="section">
+    <div class="container">
+      <div class="card post-card">
+        <header class="post-hero">
+          <p class="eyebrow">Operator Insights</p>
+          <h1 class="post-hero__title">Why Conversational UX Does Not Change Behavior</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-19">Apr 19, 2026</time>
+            <span class="post-meta__cat">Operator Insights</span>
+            <span>5 min</span>
+          </p>
+        </header>
+        <article class="post">
+          <p>Every software vendor selling a chat interface makes the same promise: "It's so easy, your team will actually use it." The pitch is that conversational UX <em>changes user behavior</em> - that a friendly chatbox finally gets the warehouse manager to adopt the system.</p>
+          <p>That's the wrong way to think about it, and it's why most "conversational" ERP features still fail on the floor.</p>
+          <p>Conversational UX does not change behavior. It works precisely because it <em>doesn't</em> ask anyone to behave differently. It captures the behavior that already exists.</p>
+          <h2>The behavior was always there</h2>
+          <p>Walk any factory floor and you'll find the data is already being captured - just not in the ERP. The stores manager writes "200 sheets from Midwest, 20 rejected" in a notebook. The supervisor sends "Job 47 done, moving to finishing" on WhatsApp. The QC inspector calls out a number across the floor.</p>
+          <p>People are already describing what happened, in plain language, dozens of times a day. The information exists. It's just landing in a notebook or a chat thread instead of in your system. The adoption problem was never that people won't report what's happening. It's that the ERP made reporting it harder than writing it down.</p>
+          <h2>Three pillars of user behavior</h2>
+          <p>Whether a tool gets used on the floor comes down to three things. Traditional ERP fights all three. A conversational interface is aligned with all three - not because it's clever, but because it asks for nothing new.</p>
+          <p><strong>1. Effort.</strong> People take the lowest-friction path available, every time. A material receipt that takes seven taps - Procurement &gt; Purchase Orders &gt; Select PO &gt; Receive &gt; Quantity &gt; Unit &gt; Confirm - loses to a notebook before the second tap. One sentence wins because it costs almost nothing.</p>
+          <p><strong>2. Familiarity.</strong> People repeat what they already know how to do. Describing what just happened in words is something every adult has done their whole life. Learning a multi-screen form interface is not. Conversational UX rides on a skill the user mastered as a child instead of teaching a new one.</p>
+          <p><strong>3. Context.</strong> Behavior is bound to a moment and a place - the loading dock, a phone in one hand, a truck idling, twenty minutes before the next delivery. A tool that fits that moment gets used in that moment. A tool that requires walking to a desk and logging in gets deferred, batched, and eventually forgotten.</p>
+          <div id="root-infographic-mid"></div>
+          <p>Notice that none of these three is about motivation. The standard fix - "we need better training" or "we need to incentivize adoption" - tries to push people up a hill. Conversational UX removes the hill.</p>
+          <h2>Capture, don't convert</h2>
+          <p>The design goal is not to convert a human into an ERP operator. It's to capture the sentence they were already going to say and turn it into structured data behind the scenes.</p>
+          <p>"Got 200 sheets of steel from Midwest Supply, 20 rejected."</p>
+          <p>The user did exactly what they'd do anyway - reported what happened. The system did the work: it matched the open purchase order, validated the quantities, updated inventory, flagged the rejects, fired the downstream triggers, and confirmed. The behavior didn't change. The destination did. The message now lands in the system of record instead of a WhatsApp thread no one queries.</p>
+          <p>That's the whole point of conversational UX, and it's also its limit. A chatbox that still demands the user think in the software's categories - that asks "which warehouse? which cost center? which UoM?" - has just rebuilt the form one question at a time. It changes behavior again, and it dies again. The win only holds when the system absorbs the complexity instead of handing it back.</p>
+          <h2>Why this matters for adoption</h2>
+          <p>When you stop trying to change behavior, the adoption curve flattens out. There's no training period, because there's nothing to learn. There's no compliance problem, because using the system is easier than not using it. And the data quality goes up, not down, because the person reporting was there when it happened - not a back-office clerk transcribing a notebook four hours later.</p>
+          <p>One person describing what happened at the point of action is worth more than an entire data-entry team working retroactively. (This is the same reason <a href="/blog/why-your-warehouse-manager-should-be-your-erp-s-first-user/">your warehouse manager should be your ERP's first user</a>.)</p>
+          <p>SimpleGrid is built on this idea. We don't train your team to use an ERP. We listen to what they already say, and we turn it into the system of record. Same behavior. Better data. Real adoption.</p>
+          <div id="root-infographic-end"></div>
+          <!-- Prev/Next -->
+          <div class="post-pager">
+          <a class="post-pager-link" href="/blog/how-we-built-an-erp-chatbot-with-claude-no-rag-and-full-context/">← Building an ERP Chatbot With Claude, No RAG</a>
+          <a class="post-pager-link post-pager-next" href="/blog/how-to-calculate-true-landed-cost-per-sku-and-why-most-manufacturers-cannot/">True Landed Cost Per SKU →</a>
+          </div>
+          <div class="post-foot">
+            <a class="post-foot__back" href="blogs.html">&larr; All posts</a>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script>
-(function(){
-  // Top nav (burger + Resources dropdown) is handled by components/site-nav.js.
-  // Lazy-load React + PostInfographics only if there's an infographic on the page.
-  var mounts = document.querySelectorAll('[id^="root-infographic-"]');
-  if (!mounts.length) return;
-  var loaded = false;
-  function loadOnce(){
-    if (loaded) return;
-    loaded = true;
-    function add(src, cb){
-      var s = document.createElement('script');
-      s.src = src; s.async = false; var SRI={'https://unpkg.com/react@18.3.1/umd/react.production.min.js':'sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z','https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js':'sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1'};if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous';} s.onload = cb; document.head.appendChild(s);
-    }
-    add('https://unpkg.com/react@18.3.1/umd/react.production.min.js', function(){
-      add('https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js', function(){
-        add('../../components/PostInfographics.js', function(){
-          var id = window.__SG_BLOG_ID__;
-          var pi = id && window.PostInfographics && window.PostInfographics[id];
-          if (!pi) return;
-          mounts.forEach(function(el){
-            var which = el.id === 'root-infographic-mid' ? pi.mid : pi.end;
-            if (which) ReactDOM.createRoot(el).render(which);
-          });
-        });
-      });
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting) { loadOnce(); io.disconnect(); } });
-    }, { rootMargin: '600px 0px' });
-    mounts.forEach(function(m){ io.observe(m); });
-  } else {
-    loadOnce();
-  }
-})();
-</script>
-<script src="../../components/blog-post-chrome.js" defer></script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/post.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

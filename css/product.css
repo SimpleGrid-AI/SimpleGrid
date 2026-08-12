@@ -1,0 +1,588 @@
+/* ==========================================================================
+   SimpleGrid — Product page
+   Loads after css/v3.css and only on product.html. Everything shared with the
+   homepage — banner, case studies, FAQ, closing CTA, buttons, cards — comes
+   from v3.css; this file holds only what is new to this page.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Hero
+   -------------------------------------------------------------------------- */
+
+/* Breaks out past the sections under it, on the homepage hero's width — that
+   value is sized so the card's half-width is a whole number of grid blocks,
+   which is what keeps its edges on the field's major lines. */
+/* One grid cell under the header. The header is 79px + its 1px border = 80,
+   so 16 puts the hero's top edge on the 96px line. */
+.product-hero {
+  margin-top: var(--grid-cell);
+  /* Pinned to 7 whole blocks rather than nudged with padding: the top sits on
+     96, so 672 puts the bottom edge on 768. Driving it from the content's own
+     height always leaves a fraction and misses the line. */
+  min-height: calc(var(--grid-block) * 7);
+  /* Copy left, product right. The figure column is the wider one — the panels
+     inside it are real UI at readable type, not a decorative thumbnail. */
+  display: grid;
+  /* Copy takes the wider share — the headline sets in three lines here and
+     breaks to four if the column narrows. */
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+  /* Sky wash rising out of the page rather than a flat white card, so the
+     product panels sit in light instead of on a border. */
+  background: linear-gradient(180deg, #D9E1FB 0%, #E9EEFD 38%, var(--bg-card) 88%);
+  border-color: transparent;
+  overflow: hidden;
+}
+
+.product-hero__title {
+  font-family: var(--font-display);
+  /* 3px under the token: at the full h1 the new headline ran to four lines
+     beside the product panels, and "forecasting" needs to land on the third. */
+  font-size: calc(var(--fs-h1) - 3px);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  /* 17ch is what holds the headline to three lines beside the product
+     panels; the old 20 fitted the full-width card this hero used to be. */
+  max-width: 17ch;
+  margin: 0 0 24px;
+}
+
+.product-hero__sub { max-width: 560px; margin-bottom: 4px; }
+
+/* The stack and the note under it are one column, so the hero stays a
+   two-column grid. */
+.product-hero__figure {
+  justify-self: end;
+  display: grid;
+  justify-items: end;
+}
+
+.product-hero__caption { margin-top: 12px; }
+
+/* --------------------------------------------------------- hero UI stack */
+
+/* A fixed 620x420 stage the panels are positioned against, scaled as one
+   piece on narrower screens — laying them out in percentages instead would
+   let the type inside them drift out of proportion with the panels. */
+.ui-stack {
+  position: relative;
+  width: 620px;
+  height: 420px;
+  transform-origin: right center;
+  /* The panels read as windows behind the copy, so they sit a step under
+     full size — at 1:1 the chart competed with the headline. */
+  transform: scale(var(--ui-scale, 0.88));
+  font-family: var(--font-body);
+}
+
+.ui-panel {
+  position: absolute;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 18px 40px rgba(26, 26, 26, 0.10);
+}
+.ui-panel__title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-body);
+  margin: 0 0 10px;
+}
+
+/* Back: the grid, cropped by the stage as a window onto a bigger screen. */
+.ui-app { right: 0; bottom: 0; width: 420px; padding: 12px; }
+.ui-app__bar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.ui-app__dot { width: 12px; height: 12px; border-radius: 3px; background: var(--accent); flex: 0 0 auto; }
+.ui-app__crumb { font-family: var(--font-mono); font-size: 9px; color: var(--fg-muted); }
+
+.ui-app__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+.ui-stat {
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--bg-highlight-soft);
+  display: grid;
+  gap: 2px;
+}
+.ui-stat span { font-size: 8px; color: var(--fg-muted); letter-spacing: 0.02em; }
+.ui-stat strong { font-size: 13px; color: var(--fg); }
+
+.ui-rows { display: grid; gap: 4px; }
+.ui-row {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--sg-line-soft);
+  font-size: 9px;
+}
+.ui-row__id { font-family: var(--font-mono); color: var(--accent); }
+.ui-row__name { color: var(--fg-body); }
+.ui-row__tag {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--bg-highlight);
+  color: var(--accent);
+  font-size: 8px;
+}
+.ui-row__tag--ok { background: rgba(31, 158, 96, 0.12); color: #1F9E60; }
+
+/* Mid: the order book. */
+.ui-value { left: 0; top: 96px; width: 250px; padding: 14px; }
+.ui-tabs { display: inline-flex; gap: 2px; padding: 2px; border-radius: 7px; background: var(--bg-highlight-soft); margin-bottom: 14px; }
+.ui-tabs span { font-size: 9px; padding: 4px 8px; border-radius: 5px; color: var(--fg-muted); }
+.ui-tabs .is-on { background: var(--bg-card); color: var(--fg); box-shadow: 0 1px 2px rgba(26, 26, 26, 0.08); }
+.ui-value__figure { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg); margin: 0; }
+.ui-value__delta { font-size: 10px; font-weight: 600; color: #1F9E60; margin-left: 6px; }
+
+/* Front: buyers, the one panel carrying colour beyond the brand blue —
+   four buyers have to stay four distinguishable columns. */
+.ui-chart { right: 56px; top: 0; width: 250px; padding: 14px; }
+.ui-chart__plot {
+  position: relative;
+  height: 128px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding-left: 22px;
+  border-bottom: 1px solid var(--sg-line-soft);
+}
+.ui-chart__axis {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 24px;
+  color: var(--fg-muted);
+}
+.ui-bar { flex: 1 1 0; height: var(--h); border-radius: 3px 3px 0 0; }
+.ui-bar--1 { background: #2F9BF0; }
+.ui-bar--2 { background: #2FA96B; }
+.ui-bar--3 { background: #F0A32F; }
+.ui-bar--4 { background: #E4574C; }
+.ui-chart__labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding-left: 22px;
+  margin-top: 6px;
+  font-size: 7px;
+  color: var(--fg-muted);
+  text-align: center;
+}
+.ui-chart__labels span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/* The floating tiles: the app's own iconography, lifted off the panels. */
+.ui-chip {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--bg-card);
+  box-shadow: 0 10px 24px rgba(26, 26, 26, 0.10);
+}
+.ui-chip svg { width: 17px; height: 17px; fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.ui-chip--a { left: 14px; top: 34px; }
+.ui-chip--b { right: 0; top: 150px; }
+.ui-chip--c { left: 74px; bottom: 34px; }
+
+/* One stage, scaled — no reflow of the panels inside it. Each step also hands
+   the copy a larger share, since the headline needs ~660px to stay on three
+   lines and the card itself narrows with the viewport below 1584. */
+@media (max-width: 1500px) {
+  .product-hero { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+  /* The card itself narrows with the viewport below 1584, so the headline
+     steps down with it — three lines is the shape, not the size. */
+  .product-hero__title { font-size: 53px; }
+  .ui-stack { --ui-scale: 0.72; }
+}
+@media (max-width: 1400px) { .ui-stack { --ui-scale: 0.68; } }
+@media (max-width: 1280px) { .product-hero__title { font-size: 45px; } }
+@media (max-width: 1200px) { .ui-stack { --ui-scale: 0.66; } }
+@media (max-width: 900px) {
+  .product-hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .ui-stack { --ui-scale: 0.58; justify-self: start; transform-origin: left top; height: 280px; }
+}
+
+/* --------------------------------------------------------------------------
+   3. Integrations
+   -------------------------------------------------------------------------- */
+
+/* Centred on the card like the security block under it — the two read as a
+   pair of short answers between the modules and the closing ask. */
+.intg-promo { text-align: center; }
+
+.intg-promo__title { font-size: var(--fs-h2); color: var(--accent); margin-bottom: 16px; }
+/* One line: the sentence pair is 66 characters, so the measure is opened up
+   from 52ch and the balancing dropped — balance would split it in two. */
+.intg-promo__lede { max-width: none; margin: 0 auto 36px; }
+
+/* The band is the homepage marquee (.tools__band in v3.css), reused whole. It
+   only needs its own spacing here: the lede above it is shorter than the
+   homepage title, and the claim line and CTA follow it. */
+.intg-promo .tools__band { margin-top: 44px; }
+
+/* Under the button, as the answer to "what if mine is not up there?" */
+.intg-promo__cta { margin-top: 40px; }
+.intg-promo__claim { margin-top: 20px; }
+
+
+/* --------------------------------------------------------------------------
+   4. Data security
+   -------------------------------------------------------------------------- */
+
+.security { text-align: center; }
+
+.security__title { font-size: var(--fs-h2); color: var(--accent); margin-bottom: 16px; }
+.security__lede { max-width: 52ch; margin: 0 auto 32px; text-wrap: balance; }
+
+.security__badges {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 40px;
+}
+
+.security__badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: var(--accent);
+}
+
+.sec__icon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --------------------------------------------------------------------------
+   5. Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .security__badges { gap: 12px 24px; }
+}
+
+/* --------------------------------------------------------------------------
+   Hank
+
+   The assistant, played rather than described: the copy on the left, and on
+   the right a panel that runs through a week of questions an operator actually
+   asks. The bubbles follow the language the home page chat already set —
+   question in mono blue on a tint, answer solid in the accent.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   AI native operations — what Hank clears, builds and answers
+
+   Three claims, each paired with the piece of product that proves it. Copy on
+   one side, a drawn-in-markup mock on the other; alternate rows flip so the
+   page does not march down one edge.
+   -------------------------------------------------------------------------- */
+
+.ai__head { margin-bottom: 56px; }
+.ai__title {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+  max-width: 24ch;
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+.ai__lede { max-width: 74ch; }
+
+.shape {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 56px;
+  align-items: center;
+}
+.shape--flip > :first-child { order: 2; }
+
+.shape__copy { display: grid; gap: 14px; align-content: start; }
+.shape__title {
+  font-size: var(--fs-h5);
+  color: var(--accent);
+  max-width: 20ch;
+  margin-bottom: 4px;
+  text-wrap: balance;
+}
+.shape__copy .body-copy { max-width: 52ch; }
+
+/* Both mocks are authored in their finished state, so nothing here hides
+   anything until js/ai-mocks.js says it is driving them ([data-anim]). With
+   the script absent or reduced motion requested, both read as they do at the
+   end of the sequence. */
+
+/* ------------------------------------------------------ the task queue */
+
+/* What Hank cleared today, and the one thing it would not clear on its own.
+   Three ticks and an amber hold — the exception is the point of the mock. */
+.queue {
+  padding: 20px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: 0 18px 40px rgba(26, 26, 26, 0.08);
+}
+
+.queue__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.queue__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.queue__count { font-size: var(--fs-body); font-weight: 700; color: var(--accent); }
+
+.queue__track { height: 6px; margin: 12px 0 18px; background: var(--bg-highlight-soft); }
+.queue__fill { display: block; width: 90%; height: 100%; background: var(--accent); }
+.queue[data-anim='on'] .queue__fill { transition: width 900ms var(--ease); }
+
+/* Rows arrive one at a time, the tick landing with the line. */
+.queue[data-anim] .queue__row {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+}
+.queue[data-anim] .queue__row[data-in] { opacity: 1; transform: none; }
+.queue[data-anim] .queue__mark { transform: scale(0.6); transition: transform 320ms var(--ease); }
+.queue[data-anim] .queue__row[data-in] .queue__mark { transform: none; }
+
+.queue__list { list-style: none; display: grid; gap: 2px; margin: 0; padding: 0; }
+.queue__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-top: 1px solid var(--sg-line-soft);
+  font-size: var(--fs-body);
+  color: var(--fg-body);
+}
+.queue__row:first-child { border-top: 0; }
+
+/* Cleared is the house blue; held is the one amber on the page, and it is
+   carrying real meaning — a person still has to look at it. */
+.queue__mark {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+}
+.queue__mark svg { width: 13px; height: 13px; }
+.queue__mark[data-state='done'] { background: var(--bg-highlight); color: var(--accent); }
+.queue__mark[data-state='held'] { background: rgba(178, 107, 0, 0.12); color: #B26B00; }
+
+.queue__row--held { color: var(--fg); }
+.queue__state {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: #B26B00;
+}
+
+.board {
+  padding: 20px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: 0 18px 40px rgba(26, 26, 26, 0.08);
+}
+
+/* What was asked for, in the words it was asked in. */
+.board__prompt {
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border: 1px solid var(--sg-blue-15);
+  border-radius: var(--radius);
+  background: var(--sg-blue-08);
+  font-size: var(--fs-body);
+  color: var(--fg);
+}
+.board__caret {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.12em;
+  background: var(--accent);
+  animation: board-caret 1.1s steps(1, end) infinite;
+}
+@keyframes board-caret { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .board__caret { animation: none; } }
+
+.board__head {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* The same tag the production screen puts on a generated view. */
+/* The badge is what says the board was generated, so it arrives with it. */
+.board[data-anim] .board__badge {
+  opacity: 0;
+  transition: opacity 320ms var(--ease);
+}
+.board[data-anim] .board__badge[data-in] { opacity: 1; }
+
+.board[data-anim] tbody tr {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+}
+.board[data-anim] tbody tr[data-in] { opacity: 1; transform: none; }
+
+/* The prompt keeps its height while it is being typed, so the board below it
+   does not jump on the first character. */
+.board[data-anim] .board__prompt { min-height: calc(1em * var(--lh-body) + 20px); }
+
+.board__badge {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--sg-logo-white);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+}
+.board__stat { min-width: 0; }
+.board__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.board__figure {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-top: 4px;
+}
+
+.board__table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+.board__table th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--fg-muted);
+  padding: 12px 0 8px;
+}
+.board__table td {
+  padding: 10px 0;
+  border-top: 1px solid var(--sg-line-soft);
+  font-size: var(--fs-body);
+  color: var(--fg-body);
+}
+.board__table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.board__tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: var(--radius);
+  background: var(--bg-highlight);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+.board__tag--late { background: rgba(178, 107, 0, 0.12); color: #B26B00; }
+
+
+@media (max-width: 900px) {
+  .shape { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  /* Copy first in every row once they stack — a flipped row would otherwise
+     put the mock above the claim it illustrates. */
+  .shape--flip > :first-child { order: 0; }
+  .shape__title { max-width: none; }
+  .board__head { gap: 24px; }
+}
+
+/* --------------------------------------------------------------------------
+   The math — the two bills, side by side
+
+   The comparison table the competitor pages already use, on this page's own
+   head: label column, what a rollout normally costs, what this one does.
+   -------------------------------------------------------------------------- */
+
+.math__head { margin-bottom: 40px; }
+.math__title {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+  max-width: 20ch;
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+.math__lede { max-width: 62ch; }
+
+.math { width: 100%; border-collapse: collapse; }
+.math th,
+.math td {
+  padding: 18px 20px;
+  text-align: left;
+  vertical-align: top;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+/* Column headings name the two bills; the row headings name the line item. */
+.math thead th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border);
+}
+.math thead th:last-child { color: var(--accent); }
+
+.math tbody th {
+  width: 22%;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--fg);
+}
+.math tbody td { color: var(--fg-body); }
+.math tbody tr + tr th,
+.math tbody tr + tr td { border-top: 1px solid var(--sg-line-soft); }
+
+/* Ours carries the tint, so a long row still lands the eye in the right
+   column — the same device the competitor tables use. */
+.math__ours { background: var(--bg-highlight-soft); color: var(--fg); font-weight: 600; }
+
+@media (max-width: 700px) {
+  .math th, .math td { padding: 14px 12px; font-size: var(--fs-sub); }
+  .math tbody th { width: 30%; }
+}

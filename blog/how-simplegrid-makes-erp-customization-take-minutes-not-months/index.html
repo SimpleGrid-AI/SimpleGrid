@@ -1,220 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>ERP Customization in Minutes, Not Months | SimpleGrid Blog</title>
-<meta name="description" content="In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table. Here is the architecture that makes that possible.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<!-- The post lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>ERP Customization in Minutes, Not Months | SimpleGrid</title>
+<meta name="description" content="In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table. Here is the architecture that makes that possible.">
 <link rel="canonical" href="https://simplegrid.ai/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta property="og:url" content="https://simplegrid.ai/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">
-<meta property="og:title" content="ERP Customization in Minutes, Not Months">
+<meta property="og:title" content="ERP Customization in Minutes, Not Months | SimpleGrid">
 <meta property="og:description" content="In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table. Here is the architecture that makes that possible.">
-<meta property="og:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
-<meta property="og:image:alt" content="ERP Customization in Minutes, Not Months - SimpleGrid blog post">
-
-<!-- Twitter Card -->
+<meta property="og:url" content="https://simplegrid.ai/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="ERP Customization in Minutes, Not Months">
-<meta name="twitter:description" content="In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table. Here is the architecture that makes that possible.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- JSON-LD: Article + BreadcrumbList (for crawlers that don't run JS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "ERP Customization in Minutes, Not Months",
-  "description": "In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table. Here is the architecture that makes that possible.",
-  "image": "https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg",
-  "url": "https://simplegrid.ai/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/",
-  "mainEntityOfPage": "https://simplegrid.ai/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/",
-  "inLanguage": "en",
-  "isPartOf": { "@id": "https://simplegrid.ai/blog.html#blog" },
-  "publisher": { "@id": "https://simplegrid.ai/#org" },
-  "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-  "datePublished": "2026-04-08",
-  "dateModified": "2026-04-08"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simplegrid.ai/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "ERP Customization in Minutes, Not Months", "item": "https://simplegrid.ai/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/" }
-  ]
-}
-</script>
-<script>
-  // Tells Nav to resolve root-relative paths with ../../ since this page is
-  // two levels deep, and tells blog-post.js which infographic to mount.
-  window.__SG_BLOG_ID__ = 5;
-  window.__SG_BLOG_ASSET_PREFIX__ = "../../";
-</script>
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="../../assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="../../assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- sg-static-chrome -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="blog"></div>
-<div class="nav-mobile" data-sg-mobile-menu hidden>
-  <nav class="nav-mobile-panel" aria-label="Mobile navigation">
-    <a href="../../index.html" class="nav-mobile-link">Home</a>
-    <a href="../../product.html" class="nav-mobile-link">Product</a>
-    <div class="nav-mobile-section">Resources</div>
-    <a href="../../tools/" class="nav-mobile-link nav-mobile-sub">Productive Tools</a>
-    <a href="../../case-studies.html" class="nav-mobile-link nav-mobile-sub">Case studies</a>
-    <a href="../../blog.html" class="nav-mobile-link nav-mobile-sub active">Blog</a>
-    <div class="nav-mobile-sep"></div>
-    <a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>
-  </nav>
-</div>
 
-<main id="main">
-<section class="post-header">
-  <div class="container-sm">
-    <a href="../../blog.html" style="font-size:15px;color:var(--sg-blue);text-decoration:none;border:none">← Back to blog</a>
-    <h1>ERP Customization in Minutes, Not Months</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="2026-04-08">Apr 8, 2026</time>
-      <span>Product Deep-Dive</span>
-      <span>5 min read</span>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= POST -->
+  <!-- Title block and prose share one card: they are one piece of
+       reading, and a seam between them read as two. -->
+  <section class="section">
+    <div class="container">
+      <div class="card post-card">
+        <header class="post-hero">
+          <p class="eyebrow">Product Deep-Dive</p>
+          <h1 class="post-hero__title">ERP Customization in Minutes, Not Months</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-08">Apr 8, 2026</time>
+            <span class="post-meta__cat">Product Deep-Dive</span>
+            <span>5 min</span>
+          </p>
+        </header>
+        <article class="post">
+          <p>In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table.</p>
+          <p>That is not marketing language. It is literally how the system works. Here is the architecture behind it.</p>
+          <p>Two levels: knowledge and operations</p>
+          <p>Every SimpleGrid deployment has two distinct layers in its database.</p>
+          <p>The Knowledge Level defines what the business looks like. What types of things exist (Sales Orders, Purchase Orders, Job Orders). What states each type can be in (Draft, Approved, In Production, Dispatched). What transitions are allowed between states. What rules must hold. What happens automatically when an event occurs.</p>
+          <p>The Operational Level holds the actual data. The real Sales Order SO-4521. The real Purchase Order PO-0089. Their current states, their field values, their event histories.</p>
+          <p>The Knowledge Level is the blueprint. The Operational Level is the factory floor. The blueprint rarely changes. The floor changes every minute.</p>
+          <p>This separation is the key to everything.</p>
+          <h2>Three types of rules, three tables</h2>
+          <p>Every business rule in a manufacturing operation falls into one of three categories. Each lives in its own table.</p>
+          <p>Transition Guards. Rules that must be true BEFORE a state change happens. Stored in the invariants table.</p>
+          <p>Example: "received_qty cannot exceed ordered_qty." If a warehouse manager tries to receive 600 units against a PO for 500, the system checks this rule before committing anything. The action is rejected. No override. No workaround.</p>
+          <p>Approval Rules. Conditional permission escalations. Stored in the approval_rules table.</p>
+          <p>Example: "If PO amount exceeds $10,000, require founder approval." The planner creates a PO for $12,000. The system automatically routes it to the founder for approval instead of letting the planner approve it directly.</p>
+          <p>Role Permissions. Who can do what. Stored in the transitions table.</p>
+          <div id="root-infographic-mid"></div>
+          <p>Example: "Only warehouse supervisors can receive material." "Only the founder can skip a production stage." Each state transition specifies which roles can execute it.</p>
+          <h2>What a change looks like</h2>
+          <p>Your founder calls and says: "Starting next week, we need QC approval before any dispatch over $5,000."</p>
+          <p>In a traditional ERP, this goes through <a href="/blog/why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying/">a scoping call with the vendor</a>. A change order is written. A developer modifies the dispatch module. Testing. Staging. Deployment. 3 to 6 weeks. $8,000 to $20,000. A change order is written. A developer modifies the dispatch module. Testing. Staging. Deployment. 3 to 6 weeks. $8,000 to $20,000.</p>
+          <h2>In SimpleGrid, we open the approval_rules table and add one row:</h2>
+          <p>Done. The SG Engine reads this rule immediately. The next dispatch over $5,000 automatically routes to the QC head for approval. No code change. No deployment. No downtime.</p>
+          <h2>Real examples from live deployments</h2>
+          <p>Furniture manufacturer: "We need founder approval for the first PO to any new vendor." One row in approval_rules: if vendor is new (first PO), require founder approval. All subsequent POs to the same vendor go through normal channels.</p>
+          <p>Apparel contract manufacturer: "Dual size systems per brand. Brand A uses S/M/L. Brand B uses 38/40/42." One configuration per brand in the knowledge tables. System validates size entries against the brand's registered system automatically.</p>
+          <p>Pharma distributor: "Supplier offers have no formal expiry. Rank by recency." One configuration in the offer_rules table. No expiry field. Offers ranked by timestamp.</p>
+          <p>Each of these would be a multi-week customization project in a conventional ERP. In SimpleGrid, each is a row in a table.</p>
+          <h2>Why this matters over time</h2>
+          <p>After 6 months of operation, a typical SimpleGrid deployment has 40 to 60 invariants, 15 to 20 approval rules, and 30 to 40 permission configurations. All in tables. All readable. All changeable without a developer.</p>
+          <p>A traditional ERP with the same business logic has it scattered across 20 modules, 50 source files, and 3 consultant engagements worth of custom code. Nobody has a complete picture of all the rules. Changing one risks breaking another.</p>
+          <p>The Knowledge Level gives you something code never will: a single place to see every rule your business enforces. Your operations head can read it. Your founder can audit it. Your new planner can understand the rules on day one.</p>
+          <p>SimpleGrid stores every business rule in a table. Change a rule in minutes. See every rule in one place. No developer needed.</p>
+          <div id="root-infographic-end"></div>
+          <!-- Prev/Next -->
+          <div class="post-pager">
+          <a class="post-pager-link" href="/blog/multi-tenant-architecture-how-simplegrid-runs-100-clients-on-one-platform/">← Multi-Tenant Architecture: 100 Clients, One Platfo…</a>
+          <a class="post-pager-link post-pager-next" href="/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">Module-Based ERP vs. SG Schema ERP →</a>
+          </div>
+          <div class="post-foot">
+            <a class="post-foot__back" href="blogs.html">&larr; All posts</a>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="post-content">
-<p class="post-lead"><strong>Key takeaway: traditional ERP charges for every change because the change touches rigid, shared module code. SimpleGrid models your operation as an SG Schema, so a change is a configuration edit, not a software project, which is why it takes minutes instead of months.</strong></p>
-  <div class="container-sm">
-    <p>In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table.</p>
-    <p>That is not marketing language. It is literally how the system works. Here is the architecture behind it.</p>
-    <p>Two levels: knowledge and operations</p>
-    <p>Every SimpleGrid deployment has two distinct layers in its database.</p>
-    <p>The Knowledge Level defines what the business looks like. What types of things exist (Sales Orders, Purchase Orders, Job Orders). What states each type can be in (Draft, Approved, In Production, Dispatched). What transitions are allowed between states. What rules must hold. What happens automatically when an event occurs.</p>
-    <p>The Operational Level holds the actual data. The real Sales Order SO-4521. The real Purchase Order PO-0089. Their current states, their field values, their event histories.</p>
-    <p>The Knowledge Level is the blueprint. The Operational Level is the factory floor. The blueprint rarely changes. The floor changes every minute.</p>
-    <p>This separation is the key to everything.</p>
-    <h2>Three types of rules, three tables</h2>
-    <p>Every business rule in a manufacturing operation falls into one of three categories. Each lives in its own table.</p>
-    <p>Transition Guards. Rules that must be true BEFORE a state change happens. Stored in the invariants table.</p>
-    <p>Example: "received_qty cannot exceed ordered_qty." If a warehouse manager tries to receive 600 units against a PO for 500, the system checks this rule before committing anything. The action is rejected. No override. No workaround.</p>
-    <p>Approval Rules. Conditional permission escalations. Stored in the approval_rules table.</p>
-    <p>Example: "If PO amount exceeds $10,000, require founder approval." The planner creates a PO for $12,000. The system automatically routes it to the founder for approval instead of letting the planner approve it directly.</p>
-    <p>Role Permissions. Who can do what. Stored in the transitions table.</p>
-    <div id="root-infographic-mid"></div>
-    <p>Example: "Only warehouse supervisors can receive material." "Only the founder can skip a production stage." Each state transition specifies which roles can execute it.</p>
-    <h2>What a change looks like</h2>
-    <p>Your founder calls and says: "Starting next week, we need QC approval before any dispatch over $5,000."</p>
-    <p>In a traditional ERP, this goes through <a href="/blog/why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying/">a scoping call with the vendor</a>. A change order is written. A developer modifies the dispatch module. Testing. Staging. Deployment. 3 to 6 weeks. $8,000 to $20,000. A change order is written. A developer modifies the dispatch module. Testing. Staging. Deployment. 3 to 6 weeks. $8,000 to $20,000.</p>
-    <h2>In SimpleGrid, we open the approval_rules table and add one row:</h2>
-    <p>Done. The SG Engine reads this rule immediately. The next dispatch over $5,000 automatically routes to the QC head for approval. No code change. No deployment. No downtime.</p>
-    <h2>Real examples from live deployments</h2>
-    <p>Furniture manufacturer: "We need founder approval for the first PO to any new vendor." One row in approval_rules: if vendor is new (first PO), require founder approval. All subsequent POs to the same vendor go through normal channels.</p>
-    <p>Apparel contract manufacturer: "Dual size systems per brand. Brand A uses S/M/L. Brand B uses 38/40/42." One configuration per brand in the knowledge tables. System validates size entries against the brand's registered system automatically.</p>
-    <p>Pharma distributor: "Supplier offers have no formal expiry. Rank by recency." One configuration in the offer_rules table. No expiry field. Offers ranked by timestamp.</p>
-    <p>Each of these would be a multi-week customization project in a conventional ERP. In SimpleGrid, each is a row in a table.</p>
-    <h2>Why this matters over time</h2>
-    <p>After 6 months of operation, a typical SimpleGrid deployment has 40 to 60 invariants, 15 to 20 approval rules, and 30 to 40 permission configurations. All in tables. All readable. All changeable without a developer.</p>
-    <p>A traditional ERP with the same business logic has it scattered across 20 modules, 50 source files, and 3 consultant engagements worth of custom code. Nobody has a complete picture of all the rules. Changing one risks breaking another.</p>
-    <p>The Knowledge Level gives you something code never will: a single place to see every rule your business enforces. Your operations head can read it. Your founder can audit it. Your new planner can understand the rules on day one.</p>
-    <p>SimpleGrid stores every business rule in a table. Change a rule in minutes. See every rule in one place. No developer needed.</p>
-
-    <div id="root-infographic-end"></div>
-
-    <!-- Prev/Next -->
-    <div class="post-pager">
-      <a class="post-pager-link" href="/blog/multi-tenant-architecture-how-simplegrid-runs-100-clients-on-one-platform/">← Multi-Tenant Architecture: 100 Clients, One Platfo…</a>
-      <a class="post-pager-link post-pager-next" href="/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">Module-Based ERP vs. SG Schema ERP →</a>
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">Your next rule change in minutes.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">When your founder changes a rule mid-week, SimpleGrid adds a row to a table instead of a six-week change order. Bring us the rule your current ERP can't bend and we'll show you the row that does it.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<sg-footer></sg-footer>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script>
-(function(){
-  // Top nav (burger + Resources dropdown) is handled by components/site-nav.js.
-  // Lazy-load React + PostInfographics only if there's an infographic on the page.
-  var mounts = document.querySelectorAll('[id^="root-infographic-"]');
-  if (!mounts.length) return;
-  var loaded = false;
-  function loadOnce(){
-    if (loaded) return;
-    loaded = true;
-    function add(src, cb){
-      var s = document.createElement('script');
-      s.src = src; s.async = false; var SRI={'https://unpkg.com/react@18.3.1/umd/react.production.min.js':'sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z','https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js':'sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1'};if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous';} s.onload = cb; document.head.appendChild(s);
-    }
-    add('https://unpkg.com/react@18.3.1/umd/react.production.min.js', function(){
-      add('https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js', function(){
-        add('../../components/PostInfographics.js', function(){
-          var id = window.__SG_BLOG_ID__;
-          var pi = id && window.PostInfographics && window.PostInfographics[id];
-          if (!pi) return;
-          mounts.forEach(function(el){
-            var which = el.id === 'root-infographic-mid' ? pi.mid : pi.end;
-            if (which) ReactDOM.createRoot(el).render(which);
-          });
-        });
-      });
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting) { loadOnce(); io.disconnect(); } });
-    }, { rootMargin: '600px 0px' });
-    mounts.forEach(function(m){ io.observe(m); });
-  } else {
-    loadOnce();
-  }
-})();
-</script>
-<script src="../../components/blog-post-chrome.js" defer></script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/post.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

@@ -1,149 +1,277 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-
-<title>Apex Apparel Case Study | SimpleGrid</title>
-<meta name="description" content="An apparel maker went live on SimpleGrid, the adaptive ERP, in 12 days. 30+ stock locations in one view. Working demo in 72 hours.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<title>Apex Apparel | SimpleGrid case study</title>
+<meta name="description" content="An apparel maker making 80,000-100,000 shirts a month through 20+ job workers went live on SimpleGrid in 12 days, with 30+ stock locations in one view.">
 <link rel="canonical" href="https://simplegrid.ai/case-apex.html">
-<link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
-<link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
-<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
-<link rel="stylesheet" href="colors_and_type.css">
-<link rel="stylesheet" href="styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Apex Apparel | SimpleGrid case study">
+<meta property="og:description" content="An apparel maker making 80,000-100,000 shirts a month through 20+ job workers went live on SimpleGrid in 12 days, with 30+ stock locations in one view.">
 <meta property="og:url" content="https://simplegrid.ai/case-apex.html">
-<meta property="og:title" content="Apex Apparel Case Study | SimpleGrid">
-<meta property="og:description" content="An apparel maker went live on SimpleGrid, the adaptive ERP, in 12 days. 30+ stock locations in one view. Working demo in 72 hours.">
 <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
-<meta property="og:image:alt" content="Apex Apparel running SimpleGrid, the Adaptive ERP">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="Apex Apparel Case Study | SimpleGrid">
-<meta name="twitter:description" content="An apparel maker went live on SimpleGrid, the adaptive ERP, in 12 days. 30+ stock locations in one view. Working demo in 72 hours.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://simplegrid.ai/case-apex.html#webpage",
-      "url": "https://simplegrid.ai/case-apex.html",
-      "name": "Apex Apparel Case Study - Live in 12 Days",
-      "isPartOf": { "@id": "https://simplegrid.ai/#website" },
-      "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "description": "How an apparel maker went live on SimpleGrid in 12 days.",
-      "inLanguage": "en"
-    },
-    {
-      "@type": "Article",
-      "@id": "https://simplegrid.ai/case-apex.html#article",
-      "headline": "An apparel maker went live in 12 days.",
-      "description": "80-100k shirts a month, 30+ stock locations, 20+ job workers. Live on SimpleGrid, the adaptive ERP, in 12 days.",
-      "url": "https://simplegrid.ai/case-apex.html",
-      "mainEntityOfPage": "https://simplegrid.ai/case-apex.html",
-      "image": "https://simplegrid.ai/assets/og-card.jpg",
-      "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-      "about": ["Apparel manufacturing software", "Adaptive ERP for apparel manufacturers", "Manufacturing case study"]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-        { "@type": "ListItem", "position": 2, "name": "Case studies", "item": "https://simplegrid.ai/case-studies.html" },
-        { "@type": "ListItem", "position": 3, "name": "Apex Apparel", "item": "https://simplegrid.ai/case-apex.html" }
-      ]
-    }
-  ]
-}
-</script>
-<!-- No-flash boot: fade #root in once React replaces the seed (or after 1.2s failsafe) -->
-<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}@media (prefers-reduced-motion: reduce){html.js #root,html.js #root.sg-mounted{opacity:1;transition:none}}</style>
-<script>(function(){var h=document.documentElement;h.classList.add('js');function s(){var r=document.getElementById('root');if(!r)return;var m=new MutationObserver(function(){r.classList.add('sg-mounted');m.disconnect()});m.observe(r,{childList:true});setTimeout(function(){r.classList.add('sg-mounted');m.disconnect()},1200)}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',s)}else{s()}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous" defer></script>
-<style>
-/* ===== Hub-and-spoke network graphic ===== */
-.network-svg { width: 100%; height: auto; display: block; margin-top: 20px; }
-@keyframes apex-pulse { 0%, 100% { opacity: 0.3; r: 6; } 50% { opacity: 1; r: 9; } }
-@keyframes apex-flow { 0% { stroke-dashoffset: 60; } 100% { stroke-dashoffset: 0; } }
-.spoke-line { stroke-dasharray: 4 4; animation: apex-flow 3s linear infinite; }
-.spoke-dot { animation: apex-pulse 2.4s ease-in-out infinite; }
-
-/* ===== GUARDRAILS - blocked-action cards ===== */
-.guard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
-.guard-card { display: flex; gap: 13px; align-items: center; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
-.guard-badge { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 10px; background: rgba(239,68,68,0.09); color: var(--sg-red); display: flex; align-items: center; justify-content: center; position: relative; }
-.guard-badge svg { width: 19px; height: 19px; display: block; }
-.guard-badge::before { content: ''; position: absolute; inset: 0; border-radius: 10px; border: 2px solid var(--sg-red); opacity: 0; animation: guardRing 3s ease-out infinite; }
-@keyframes guardRing { 0% { transform: scale(1); opacity: 0.55; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
-.guard-card .r { font-size: 13.5px; line-height: 1.45; color: var(--fg2); margin: 0; }
-
-/* ===== RESULTS - before -> after ===== */
-.res-rows { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
-.res-row { display: grid; grid-template-columns: 1fr 46px 1fr; gap: 6px; align-items: stretch; }
-.res-cell { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; font-size: 14px; line-height: 1.45; }
-.res-before { background: rgba(239,68,68,0.035); border-color: rgba(239,68,68,0.18); color: var(--fg2); }
-.res-after { background: rgba(16,185,129,0.045); border-color: rgba(16,185,129,0.22); color: var(--fg1); font-weight: 600; }
-.res-arrow { display: flex; align-items: center; justify-content: center; color: var(--sg-blue); }
-.res-arrow svg { width: 22px; height: 22px; animation: resArrow 1.8s ease-in-out infinite; }
-@keyframes resArrow { 0%, 100% { transform: translateX(-3px); opacity: .45; } 50% { transform: translateX(3px); opacity: 1; } }
-
-@media (max-width: 760px) {
-  .guard-grid { grid-template-columns: 1fr; }
-  .res-row { grid-template-columns: 1fr; gap: 4px; }
-  .res-arrow { height: 26px; transform: rotate(90deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .guard-badge::before, .res-arrow svg, .spoke-line, .spoke-dot { animation: none; }
-}
-</style>
-
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="assets/js/cookie-consent.js" defer></script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/case.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- Static seed inside #root - React replaces on mount. -->
-<!-- Static seed inside #root - React replaces on mount. Crawler + AI-bot visible. -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js), outside #root. -->
-<div id="sg-nav" data-page="cases"></div>
-<div id="root">
-  <main id="main" style="padding:60px 32px;max-width:920px;margin:0 auto">
-    <h1 style="font-size:44px;line-height:1.1;letter-spacing:-0.025em;margin:0 0 18px">An apparel maker went live in 12 days.</h1>
-    <p style="font-size:18px;line-height:1.55;color:#3b4250;margin:0 0 28px">Apex Apparel makes 80,000 to 100,000 shirts a month through 20+ job workers, with no factory of its own. Two ERPs failed over two years. SimpleGrid sent a working demo in 72 hours and went live on day 12. Every order across 30+ stock locations now sits in one view.</p>
-    <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3461e0;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600">Book a demo</a>
-  </main>
-</div>
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script src="components/site-nav.js" defer></script>
-<script src="components/site-footer.js" defer></script>
-<script src="components/LoginModal.js" defer></script>
-<script src="components/InviteModal.js" defer></script>
-<script src="components/Interactive.js" defer></script>
-<script src="components/FinalCTA.js" defer></script>
-<script src="app/case-apex.js" defer></script><script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
+
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= HERO -->
+  <section class="section">
+    <div class="container container--wide">
+      <div class="card case-hero">
+        <p class="eyebrow">Case study, Apparel manufacturing</p>
+        <h1 class="case-hero__title">An apparel maker went live in 12 days.</h1>
+        <p class="lede case-hero__sub">Name withheld, reference on request. 80,000 to
+          100,000 shirts a month, made through 20+ job workers across the city, with stock in
+          partner warehouses and three business lines sharing one inventory.</p>
+        <div class="case-stats">
+          <div class="case-stat">
+            <p class="case-stat__label">To live</p>
+            <p class="case-stat__value">12 days</p>
+          </div>
+          <div class="case-stat">
+            <p class="case-stat__label">Business lines, one system</p>
+            <p class="case-stat__value">3</p>
+          </div>
+          <div class="case-stat">
+            <p class="case-stat__label">Stock locations, one view</p>
+            <p class="case-stat__value">30+</p>
+          </div>
+          <div class="case-stat">
+            <p class="case-stat__label">Working demo</p>
+            <p class="case-stat__value">72 hrs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= BACKGROUND -->
+  <section class="section" id="background">
+    <div class="container">
+      <div class="card reveal">
+        <p class="eyebrow">Background</p>
+        <h2 class="case-title">Three businesses. No factory.</h2>
+        <div class="body-copy case-body">
+          <p>Apex Apparel makes 80,000 to 100,000 shirts a month without a factory of its own.
+            Production runs through 20+ job workers across the city. Stock sits in partner
+            warehouses. Three streams share one inventory: contract manufacturing, an own brand,
+            and fabric trading.</p>
+        </div>
+
+        <!-- One hub, thirty places stock actually sits. -->
+        <div class="network">
+          <svg viewBox="0 0 800 480" role="img"
+               aria-label="One central warehouse connected to thirty stock locations: twenty job worker units, eight logistics partner warehouses and two in-house units.">
+            <defs>
+              <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(52,86,217,0.20)"/>
+                <stop offset="100%" stop-color="rgba(52,86,217,0)"/>
+              </radialGradient>
+            </defs>
+            <text class="network-title" x="400" y="40">30+ STOCK LOCATIONS &middot; ALL IN ONE VIEW</text>
+            <circle class="hub-glow" cx="400" cy="240" r="120"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="400.0" y2="60.0"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="437.4" y2="63.9"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="473.2" y2="75.6"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="505.8" y2="94.4"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="533.8" y2="119.6"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="555.9" y2="150.0"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="571.2" y2="184.4"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="579.0" y2="221.2"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="579.0" y2="258.8"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="571.2" y2="295.6"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="555.9" y2="330.0"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="533.8" y2="360.4"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="505.8" y2="385.6"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="473.2" y2="404.4"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="437.4" y2="416.1"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="400.0" y2="420.0"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="362.6" y2="416.1"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="326.8" y2="404.4"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="294.2" y2="385.6"/>
+      <line class="spoke node--worker" x1="400" y1="240" x2="266.2" y2="360.4"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="244.1" y2="330.0"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="228.8" y2="295.6"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="221.0" y2="258.8"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="221.0" y2="221.2"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="228.8" y2="184.4"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="244.1" y2="150.0"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="266.2" y2="119.6"/>
+      <line class="spoke node--logistics" x1="400" y1="240" x2="294.2" y2="94.4"/>
+      <line class="spoke node--house" x1="400" y1="240" x2="326.8" y2="75.6"/>
+      <line class="spoke node--house" x1="400" y1="240" x2="362.6" y2="63.9"/>
+      <circle class="node node--worker" cx="400.0" cy="60.0" r="7"/>
+      <circle class="node node--worker" cx="437.4" cy="63.9" r="7"/>
+      <circle class="node node--worker" cx="473.2" cy="75.6" r="7"/>
+      <circle class="node node--worker" cx="505.8" cy="94.4" r="7"/>
+      <circle class="node node--worker" cx="533.8" cy="119.6" r="7"/>
+      <circle class="node node--worker" cx="555.9" cy="150.0" r="7"/>
+      <circle class="node node--worker" cx="571.2" cy="184.4" r="7"/>
+      <circle class="node node--worker" cx="579.0" cy="221.2" r="7"/>
+      <circle class="node node--worker" cx="579.0" cy="258.8" r="7"/>
+      <circle class="node node--worker" cx="571.2" cy="295.6" r="7"/>
+      <circle class="node node--worker" cx="555.9" cy="330.0" r="7"/>
+      <circle class="node node--worker" cx="533.8" cy="360.4" r="7"/>
+      <circle class="node node--worker" cx="505.8" cy="385.6" r="7"/>
+      <circle class="node node--worker" cx="473.2" cy="404.4" r="7"/>
+      <circle class="node node--worker" cx="437.4" cy="416.1" r="7"/>
+      <circle class="node node--worker" cx="400.0" cy="420.0" r="7"/>
+      <circle class="node node--worker" cx="362.6" cy="416.1" r="7"/>
+      <circle class="node node--worker" cx="326.8" cy="404.4" r="7"/>
+      <circle class="node node--worker" cx="294.2" cy="385.6" r="7"/>
+      <circle class="node node--worker" cx="266.2" cy="360.4" r="7"/>
+      <circle class="node node--logistics" cx="244.1" cy="330.0" r="7"/>
+      <circle class="node node--logistics" cx="228.8" cy="295.6" r="7"/>
+      <circle class="node node--logistics" cx="221.0" cy="258.8" r="7"/>
+      <circle class="node node--logistics" cx="221.0" cy="221.2" r="7"/>
+      <circle class="node node--logistics" cx="228.8" cy="184.4" r="7"/>
+      <circle class="node node--logistics" cx="244.1" cy="150.0" r="7"/>
+      <circle class="node node--logistics" cx="266.2" cy="119.6" r="7"/>
+      <circle class="node node--logistics" cx="294.2" cy="94.4" r="7"/>
+      <circle class="node node--house" cx="326.8" cy="75.6" r="7"/>
+      <circle class="node node--house" cx="362.6" cy="63.9" r="7"/>
+            <circle class="hub" cx="400" cy="240" r="48"/>
+            <text class="hub-label" x="400" y="236">CENTRAL</text>
+            <text class="hub-label" x="400" y="252">WAREHOUSE</text>
+            <g class="legend" transform="translate(40, 430)">
+              <circle class="node node--worker" cx="6" cy="6" r="5"/>
+              <text x="18" y="10">Job worker units (cut &middot; stitch &middot; finish)</text>
+              <circle class="node node--logistics" cx="280" cy="6" r="5"/>
+              <text x="292" y="10">Logistics partner warehouses</text>
+              <circle class="node node--house" cx="540" cy="6" r="5"/>
+              <text x="552" y="10">In-house (iron &middot; pack)</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== CHALLENGE -->
+  <section class="section" id="challenge">
+    <div class="container">
+      <div class="card reveal">
+        <p class="eyebrow">Challenge</p>
+        <h2 class="case-title">Every ERP assumed a factory.</h2>
+        <div class="body-copy case-body">
+          <p>Two rollouts failed over two years and cost more than $100,000. Finding one order
+            meant five phone calls across 30+ locations. Job worker reconciliation ate hours every
+            day. Nobody could say which of the three businesses made money.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== WHAT WE BUILT -->
+  <section class="section" id="built">
+    <div class="container">
+      <div class="card reveal">
+        <p class="eyebrow">What we built</p>
+        <h2 class="case-title">Modeled as-is. Live on day 12.</h2>
+        <div class="body-copy case-body">
+          <p>We sent a working demo in 72 hours. It already covered the job worker network and all
+            three streams. Four working sessions later, the system went live on day 12. Every order
+            and every roll of fabric now sits in one view.</p>
+          <p>Three of the rules it enforces:</p>
+        </div>
+        <ul class="rules">
+          <li>Can&rsquo;t issue fabric without an active work order.</li>
+          <li>Can&rsquo;t settle a job worker until returns are reconciled.</li>
+          <li>Wrong packaging or label format blocks the dispatch.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== IMPACT -->
+  <section class="section" id="impact">
+    <div class="container">
+      <div class="card reveal">
+        <p class="eyebrow">Impact</p>
+        <h2 class="case-title">What changed</h2>
+        <table class="ba">
+          <thead>
+            <tr><th scope="col">Before SimpleGrid</th><th scope="col">After SimpleGrid</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>The first ERP they selected never reached the floor; $100K+ spent over two years</td><td><strong>Live in 12 days</strong>, modeled to the operation.</td></tr>
+            <tr><td>Finding an order meant 3-5 phone calls</td><td><strong>30+ stock locations</strong> in one live view.</td></tr>
+            <tr><td>Three businesses tangled in one spreadsheet</td><td><strong>Three clean P&amp;Ls:</strong> CMT, own brand, trading.</td></tr>
+            <tr><td>Job worker reconciliation ate hours a day</td><td><strong>Issued vs returned</strong> reconciled automatically.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== TESTIMONIAL -->
+  <section class="section" id="quote">
+    <div class="container">
+      <div class="card reveal">
+        <figure class="case-quote">
+          <blockquote>&ldquo;They sent a working demo in 72 hours and it was 60-70% right
+            already. No other vendor showed us a working system before asking for
+            money.&rdquo;</blockquote>
+          <figcaption>Founder, Apex Apparel (name withheld)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= BOTTOM LINE -->
+  <section class="section" id="close">
+    <div class="container">
+      <div class="card reveal case-close">
+        <p class="case-close__line">The first ERP they selected never went live. SimpleGrid did, in
+          12 days. 30+ locations in one view.</p>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+        <p class="case-close__next"><a href="case-furniture-manufacturer.html">Next: Elite Arts
+          &amp; Crafts, live in 21 days &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Want a result like this?</h2>
+          <p class="banner__sub">We model SimpleGrid around how your operation already runs. Run it
+            live for 30 days. Pay only when it works.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

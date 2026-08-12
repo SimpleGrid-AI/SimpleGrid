@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blogs | SimpleGrid</title>
+<meta name="description" content="ERP for manufacturers: field notes on schema, costing, deployment and the operations behind them.">
+<link rel="canonical" href="https://simplegrid.ai/blogs.html">
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:title" content="Blogs | SimpleGrid">
+<meta property="og:description" content="ERP for manufacturers: field notes on schema, costing, deployment and the operations behind them.">
+<meta property="og:url" content="https://simplegrid.ai/blogs.html">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/resources.css">
+<link rel="stylesheet" href="css/grid.css">
+</head>
+<body>
+
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main data-resources>
+
+  <!-- ============================================================= HERO -->
+  <section class="section">
+    <div class="container">
+      <div class="card res-hero">
+        <p class="eyebrow">Blogs</p>
+        <h1 class="res-hero__title">Field notes from the operators who <span class="accent">built it.</span></h1>
+        <p class="lede res-hero__sub">Straight talk about ERP and operations. No jargon, no &ldquo;digital transformation&rdquo;. Just what works on the factory floor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ BLOGS -->
+  <section class="section" id="blogs">
+    <div class="container">
+      <div class="card reveal" data-collection data-per-page="6">
+        <div class="res-filters res-filters--section" role="group" aria-label="Filter posts by category">
+            <button class="res-pill" type="button" data-res-cat="all" aria-pressed="true">All</button>
+            <button class="res-pill" type="button" data-res-cat="Product Deep-Dive" aria-pressed="false">Product Deep-Dive</button>
+            <button class="res-pill" type="button" data-res-cat="Operator Insights" aria-pressed="false">Operator Insights</button>
+            <button class="res-pill" type="button" data-res-cat="Industry Critique" aria-pressed="false">Industry Critique</button>
+            <button class="res-pill" type="button" data-res-cat="Culture" aria-pressed="false">Culture</button>
+            <button class="res-pill" type="button" data-res-cat="Build in Public" aria-pressed="false">Build in Public</button>
+        </div>
+        <div class="res-grid res-grid--3">
+          <a class="res-card" data-item data-cat="Product Deep-Dive" href="blog/event-sourcing-why-simplegrid-stores-everything-that-ever-happened/">
+            <div class="res-card__cover res-card__cover--blue">
+              <span class="res-card__kicker">Product Deep-Dive</span>
+              <svg viewBox="0 0 200 110"><line x1="20" y1="55" x2="180" y2="55" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><g><circle cx="30" cy="55" r="4" fill="#fff"/><text x="30" y="78" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-family="monospace">E1</text></g><g><circle cx="70" cy="55" r="4" fill="#fff"/><text x="70" y="78" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-family="monospace">E2</text></g><g><circle cx="110" cy="55" r="4" fill="#fff"/><text x="110" y="78" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-family="monospace">E3</text></g><g><circle cx="150" cy="55" r="6" fill="#fff"/><text x="150" y="78" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-family="monospace">E4</text></g><text x="100" y="30" font-size="10" fill="#fff" text-anchor="middle" font-weight="600" font-family="monospace">Append only</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Product Deep-Dive</p>
+              <h3 class="res-card__title">Event Sourcing: Why SimpleGrid Stores Every Action Forever</h3>
+              <p class="res-card__text">Most ERPs store today&rsquo;s state. SimpleGrid stores every event that ever happened. Immutable. Permanent. The audit trail IS the architecture.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">6 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Product Deep-Dive" href="blog/sg-schema-why-your-erp-should-speak-your-language/">
+            <div class="res-card__cover res-card__cover--ink">
+              <span class="res-card__kicker">Product Deep-Dive</span>
+              <svg viewBox="0 0 200 110"><rect x="20" y="35" width="70" height="40" rx="4" fill="none" stroke="#fff" stroke-width="1.5"/><text x="55" y="59" font-size="9" fill="#fff" text-anchor="middle" font-weight="600">Business</text><path d="M95 55 L125 55" stroke="#3461E0" stroke-width="1.5" marker-end="url(#a2)"/><defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8 z" fill="#3461E0"/></marker></defs><rect x="130" y="35" width="55" height="40" rx="4" fill="#3461E0" opacity="0.15"/><text x="157" y="59" font-size="9" fill="#3461E0" text-anchor="middle" font-weight="600">Model</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Product Deep-Dive</p>
+              <h3 class="res-card__title">SG Schema: Why Your ERP Should Speak Your Language</h3>
+              <p class="res-card__text">Most ERPs force your operation into someone else's modules. SG Schema captures your business in your own language - the same word can mean three different things, and the system keeps them straight.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">6 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Product Deep-Dive" href="blog/entity-roots-the-building-blocks-of-an-sg-schema-erp/">
+            <div class="res-card__cover res-card__cover--tint">
+              <span class="res-card__kicker">Product Deep-Dive</span>
+              <svg viewBox="0 0 200 110"><circle cx="100" cy="55" r="38" fill="none" stroke="rgba(30,58,138,0.6)" stroke-width="1" stroke-dasharray="3 3"/><circle cx="100" cy="55" r="12" fill="var(--sg-blue-dark)"/><text x="100" y="58" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">ROOT</text><circle cx="70" cy="35" r="5" fill="var(--sg-blue-dark)"/><circle cx="130" cy="35" r="5" fill="var(--sg-blue-dark)"/><circle cx="70" cy="80" r="5" fill="var(--sg-blue-dark)"/><circle cx="130" cy="80" r="5" fill="var(--sg-blue-dark)"/><line x1="100" y1="55" x2="70" y2="35" stroke="rgba(30,58,138,0.6)" stroke-width="1"/><line x1="100" y1="55" x2="130" y2="35" stroke="rgba(30,58,138,0.6)" stroke-width="1"/><line x1="100" y1="55" x2="70" y2="80" stroke="rgba(30,58,138,0.6)" stroke-width="1"/><line x1="100" y1="55" x2="130" y2="80" stroke="rgba(30,58,138,0.6)" stroke-width="1"/></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Product Deep-Dive</p>
+              <h3 class="res-card__title">Entity Roots: Building Blocks of an SG Schema ERP</h3>
+              <p class="res-card__text">Most ERPs let records exist in isolation - orphans, broken parents, impossible states. An SG Schema does not. Every entity has a root and a boundary.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">6 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Product Deep-Dive" href="blog/multi-tenant-architecture-how-simplegrid-runs-100-clients-on-one-platform/">
+            <div class="res-card__cover res-card__cover--blue">
+              <span class="res-card__kicker">Product Deep-Dive</span>
+              <svg viewBox="0 0 200 110"><rect x="30" y="20" width="140" height="18" rx="3" fill="#fff" opacity="0.3"/><text x="100" y="32" font-size="8" fill="#fff" text-anchor="middle" font-weight="600">One platform</text><g><rect x="35" y="55" width="40" height="40" rx="3" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="55" cy="68" r="3" fill="#fff"/><line x1="42" y1="78" x2="68" y2="78" stroke="#fff" stroke-width="1"/><line x1="42" y1="84" x2="68" y2="84" stroke="#fff" stroke-width="1"/><line x1="42" y1="90" x2="60" y2="90" stroke="#fff" stroke-width="1"/></g><g><rect x="81" y="55" width="40" height="40" rx="3" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="101" cy="68" r="3" fill="#fff"/><line x1="88" y1="78" x2="114" y2="78" stroke="#fff" stroke-width="1"/><line x1="88" y1="84" x2="114" y2="84" stroke="#fff" stroke-width="1"/><line x1="88" y1="90" x2="106" y2="90" stroke="#fff" stroke-width="1"/></g><g><rect x="127" y="55" width="40" height="40" rx="3" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="147" cy="68" r="3" fill="#fff"/><line x1="134" y1="78" x2="160" y2="78" stroke="#fff" stroke-width="1"/><line x1="134" y1="84" x2="160" y2="84" stroke="#fff" stroke-width="1"/><line x1="134" y1="90" x2="152" y2="90" stroke="#fff" stroke-width="1"/></g></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Product Deep-Dive</p>
+              <h3 class="res-card__title">Multi-Tenant Architecture: 100 Clients, One Platform</h3>
+              <p class="res-card__text">When you sign up for an ERP, there&rsquo;s a question nobody asks: is my data sharing a database with other companies? The answer matters more than vendors say.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Product Deep-Dive" href="blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">
+            <div class="res-card__cover res-card__cover--ink">
+              <span class="res-card__kicker">Product Deep-Dive</span>
+              <svg viewBox="0 0 200 110"><rect x="30" y="25" width="140" height="60" rx="3" fill="none" stroke="#fff" stroke-width="1.5"/><line x1="30" y1="40" x2="170" y2="40" stroke="#8A8F98" stroke-width="0.8"/><line x1="30" y1="52" x2="170" y2="52" stroke="#8A8F98" stroke-width="0.8"/><line x1="30" y1="64" x2="170" y2="64" stroke="#8A8F98" stroke-width="0.8"/><line x1="30" y1="76" x2="170" y2="76" stroke="#8A8F98" stroke-width="0.8"/><line x1="75" y1="25" x2="75" y2="85" stroke="#8A8F98" stroke-width="0.8"/><line x1="120" y1="25" x2="120" y2="85" stroke="#8A8F98" stroke-width="0.8"/><rect x="30" y="52" width="140" height="12" fill="#3461E0" opacity="0.25"/><text x="100" y="100" font-size="8" fill="#8A8F98" text-anchor="middle" font-family="monospace">rules table</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Product Deep-Dive</p>
+              <h3 class="res-card__title">ERP Customization in Minutes, Not Months</h3>
+              <p class="res-card__text">In most ERPs, changing a business rule is a software project. In SimpleGrid, it is a row in a table. Here is the architecture that makes that possible.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Product Deep-Dive" href="blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">
+            <div class="res-card__cover res-card__cover--tint">
+              <span class="res-card__kicker">Product Deep-Dive</span>
+              <svg viewBox="0 0 200 110"><rect x="25" y="25" width="60" height="14" rx="2" fill="none" stroke="rgba(30,58,138,0.6)" stroke-width="1.2"/><rect x="25" y="43" width="60" height="14" rx="2" fill="none" stroke="rgba(30,58,138,0.6)" stroke-width="1.2"/><rect x="25" y="61" width="60" height="14" rx="2" fill="none" stroke="rgba(30,58,138,0.6)" stroke-width="1.2"/><text x="55" y="92" font-size="7" fill="rgba(30,58,138,0.6)" text-anchor="middle">modules</text><path d="M115 30 Q160 25 170 55 Q175 85 135 85 Q105 82 115 55 Z" fill="none" stroke="var(--sg-blue-dark)" stroke-width="1.5"/><text x="143" y="92" font-size="7" fill="var(--sg-blue-dark)" text-anchor="middle" font-weight="600">SG Schema</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Product Deep-Dive</p>
+              <h3 class="res-card__title">Module-Based ERP vs. SG Schema ERP</h3>
+              <p class="res-card__text">Module-based ERPs hardcode workflows and charge per change. SG Schema generates the system from your operation. Two architectures. Two outcomes.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">6 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Build in Public" href="blog/how-we-built-an-erp-chatbot-with-claude-no-rag-and-full-context/">
+            <div class="res-card__cover res-card__cover--blue">
+              <span class="res-card__kicker">Build in Public</span>
+              <svg viewBox="0 0 200 110"><path d="M30 30 L150 30 Q158 30 158 38 L158 62 Q158 70 150 70 L60 70 L48 82 L48 70 L38 70 Q30 70 30 62 Z" fill="#fff" opacity="0.2" stroke="#fff" stroke-width="1.2"/><text x="94" y="54" font-size="9" fill="#fff" text-anchor="middle" font-family="monospace">stock of 304?</text><rect x="162" y="46" width="2" height="14" fill="#fff"><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Build in Public</p>
+              <h3 class="res-card__title">Building an ERP Chatbot With Claude, No RAG</h3>
+              <p class="res-card__text">Most AI chatbots use RAG: chunk documents, embed, retrieve. We skipped it. Here is what we built instead, and why it works better for live operations.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">6 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Operator Insights" href="blog/why-conversational-ux-does-not-change-user-behavior-and-why-that-is-the-point/">
+            <div class="res-card__cover res-card__cover--ink">
+              <span class="res-card__kicker">Operator Insights</span>
+              <svg viewBox="0 0 200 110"><rect x="30" y="20" width="110" height="20" rx="10" fill="#8A8F98" opacity="0.3"/><text x="85" y="34" font-size="8" fill="#fff" text-anchor="middle">Got 200 sheets</text><rect x="60" y="48" width="110" height="20" rx="10" fill="#3461E0"/><text x="115" y="62" font-size="8" fill="#fff" text-anchor="middle">&#10003; PO matched</text><rect x="30" y="76" width="90" height="20" rx="10" fill="#8A8F98" opacity="0.3"/><text x="75" y="90" font-size="8" fill="#fff" text-anchor="middle">20 rejected</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Operator Insights</p>
+              <h3 class="res-card__title">Why Conversational UX Does Not Change Behavior</h3>
+              <p class="res-card__text">Conversational UX does not change how your team behaves. It captures the behavior that already exists. Three pillars of user behavior - and why forms always lose to a sentence.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Operator Insights" href="blog/how-to-calculate-true-landed-cost-per-sku-and-why-most-manufacturers-cannot/">
+            <div class="res-card__cover res-card__cover--tint">
+              <span class="res-card__kicker">Operator Insights</span>
+              <svg viewBox="0 0 200 110"><g><rect x="40" y="35" width="45" height="10" fill="var(--sg-blue-dark)" opacity="0.3"/><text x="38" y="43" font-size="7" fill="var(--sg-blue-dark)" text-anchor="end">Wood</text></g><g><rect x="40" y="60" width="55" height="10" fill="var(--sg-blue-dark)" opacity="0.44999999999999996"/><text x="38" y="68" font-size="7" fill="var(--sg-blue-dark)" text-anchor="end">Labor</text></g><g><rect x="40" y="80" width="30" height="10" fill="var(--sg-blue-dark)" opacity="0.6"/><text x="38" y="88" font-size="7" fill="var(--sg-blue-dark)" text-anchor="end">Rework</text></g><g><rect x="40" y="100" width="25" height="10" fill="var(--sg-blue-dark)" opacity="0.75"/><text x="38" y="108" font-size="7" fill="var(--sg-blue-dark)" text-anchor="end">QC</text></g><g><rect x="40" y="115" width="40" height="10" fill="var(--sg-blue-dark)" opacity="0.8999999999999999"/><text x="38" y="123" font-size="7" fill="var(--sg-blue-dark)" text-anchor="end">Pack</text></g><line x1="40" y1="95" x2="160" y2="95" stroke="var(--sg-blue-dark)" stroke-width="1.5"/><text x="165" y="98" font-size="9" fill="var(--sg-blue-dark)" font-weight="700" font-family="monospace">$</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Operator Insights</p>
+              <h3 class="res-card__title">True Landed Cost Per SKU (And Why Most Cannot)</h3>
+              <p class="res-card__text">Most manufacturers running 200+ SKUs cannot tell you which products actually make money. The data exists, scattered. Here is how to connect it.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">6 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Culture" href="blog/inside-simplegrid-every-factory-floor-is-different-that-is-the-whole-point/">
+            <div class="res-card__cover res-card__cover--blue">
+              <span class="res-card__kicker">Culture</span>
+              <svg viewBox="0 0 200 110"><path d="M30 85 L30 55 L55 40 L55 55 L80 40 L80 55 L105 40 L105 55 L130 40 L130 85 Z" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="40" y="68" width="10" height="17" fill="#fff"/><rect x="65" y="68" width="10" height="17" fill="rgba(255,255,255,0.7)" opacity="0.5"/><rect x="90" y="68" width="10" height="17" fill="rgba(255,255,255,0.7)" opacity="0.5"/><rect x="115" y="68" width="10" height="17" fill="#fff"/><line x1="140" y1="85" x2="170" y2="85" stroke="rgba(255,255,255,0.7)" stroke-width="1"/><line x1="150" y1="85" x2="150" y2="60" stroke="rgba(255,255,255,0.7)" stroke-width="1"/><path d="M150 60 L155 55 L160 60" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1"/></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Culture</p>
+              <h3 class="res-card__title">Inside SimpleGrid: Every Factory Is Different</h3>
+              <p class="res-card__text">Most ERP companies start with software and look for customers who fit. We started with factories and built software that fits them. How that shapes us.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Industry Critique" href="blog/why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software/">
+            <div class="res-card__cover res-card__cover--ink">
+              <span class="res-card__kicker">Industry Critique</span>
+              <svg viewBox="0 0 200 110"><rect x="20" y="40" width="35" height="40" fill="#8A8F98" opacity="0.4"/><text x="37" y="64" font-size="7" fill="#fff" text-anchor="middle">SAP</text><rect x="75" y="30" width="50" height="50" fill="#3461E0" opacity="0.3" stroke="#3461E0" stroke-width="1.5" stroke-dasharray="3 2"/><text x="100" y="52" font-size="8" fill="#fff" text-anchor="middle" font-weight="700">MID</text><text x="100" y="64" font-size="7" fill="#fff" text-anchor="middle">MARKET</text><rect x="145" y="50" width="35" height="30" fill="#8A8F98" opacity="0.4"/><text x="162" y="69" font-size="7" fill="#fff" text-anchor="middle">QB</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Industry Critique</p>
+              <h3 class="res-card__title">Why Mid-Market Manufacturers Are Underserved</h3>
+              <p class="res-card__text">Too big for spreadsheets. Too small for SAP. The mid-market manufacturer has been the ERP industry&rsquo;s blind spot for 20 years. Here is what fixes it.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Operator Insights" href="blog/the-real-cost-of-running-your-factory-on-spreadsheets/">
+            <div class="res-card__cover res-card__cover--tint">
+              <span class="res-card__kicker">Operator Insights</span>
+              <svg viewBox="0 0 200 110"><rect x="30" y="20" width="140" height="75" fill="none" stroke="var(--sg-blue-dark)" stroke-width="1.2"/><line x1="30" y1="35" x2="170" y2="35" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="30" y1="47" x2="170" y2="47" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="30" y1="59" x2="170" y2="59" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="30" y1="71" x2="170" y2="71" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="30" y1="83" x2="170" y2="83" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="30" y1="20" x2="30" y2="95" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="55" y1="20" x2="55" y2="95" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="80" y1="20" x2="80" y2="95" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="105" y1="20" x2="105" y2="95" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="130" y1="20" x2="130" y2="95" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><line x1="155" y1="20" x2="155" y2="95" stroke="rgba(30,58,138,0.6)" stroke-width="0.6"/><circle cx="80" cy="40" r="6" fill="none" stroke="var(--sg-blue-dark)" stroke-width="1.5"/><circle cx="130" cy="64" r="6" fill="none" stroke="var(--sg-blue-dark)" stroke-width="1.5"/><circle cx="55" cy="76" r="6" fill="none" stroke="var(--sg-blue-dark)" stroke-width="1.5"/></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Operator Insights</p>
+              <h3 class="res-card__title">The Real Cost of Running Your Factory on Spreadsheets</h3>
+              <p class="res-card__text">Nobody plans to run a $10M manufacturing operation on spreadsheets. It just happens. The hidden costs - planner bottlenecks, $200K gaps - add up fast.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Industry Critique" href="blog/why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying/">
+            <div class="res-card__cover res-card__cover--blue">
+              <span class="res-card__kicker">Industry Critique</span>
+              <svg viewBox="0 0 200 110"><g><rect x="55" y="20" width="80" height="60" fill="#fff" stroke="#fff" stroke-width="1"/></g><g><rect x="59" y="24" width="80" height="60" fill="#fff" stroke="#fff" stroke-width="1"/></g><g><rect x="63" y="28" width="80" height="60" fill="#fff" stroke="#fff" stroke-width="1"/></g><g><rect x="67" y="32" width="80" height="60" fill="#fff" stroke="#fff" stroke-width="1"/></g><rect x="67" y="32" width="80" height="60" fill="#fff" stroke="#fff" stroke-width="1.5"/><line x1="73" y1="44" x2="135" y2="44" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/><line x1="73" y1="52" x2="125" y2="52" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/><line x1="73" y1="60" x2="130" y2="60" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/><text x="130" y="84" font-size="10" fill="#fff" text-anchor="end" font-weight="700" font-family="monospace">+$12K</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Industry Critique</p>
+              <h3 class="res-card__title">Why Your ERP Vendor Charges You for Every Change</h3>
+              <p class="res-card__text">$8K-$20K per change order. $64K-$300K per year. Vendor lock-in by architecture, not contract. The fix: store rules in tables, not application code.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Industry Critique" href="blog/how-ai-changed-erp-deployment-not-features-deployment/">
+            <div class="res-card__cover res-card__cover--ink">
+              <span class="res-card__kicker">Industry Critique</span>
+              <svg viewBox="0 0 200 110"><rect x="25" y="45" width="90" height="14" fill="#8A8F98" opacity="0.4"/><text x="70" y="70" font-size="8" fill="#8A8F98" text-anchor="middle">12 months</text><path d="M120 52 L140 52" stroke="#3461E0" stroke-width="1.5" marker-end="url(#a14)"/><defs><marker id="a14" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8 z" fill="#3461E0"/></marker></defs><rect x="145" y="45" width="18" height="14" fill="#3461E0"/><text x="154" y="70" font-size="8" fill="#3461E0" text-anchor="middle" font-weight="700">7 days</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Industry Critique</p>
+              <h3 class="res-card__title">How AI Changed ERP Deployment (Not Features)</h3>
+              <p class="res-card__text">Every ERP vendor adds AI features to 20-year-old architectures. What AI actually changes is deployment - from 18 months and $500K to days. Here&rsquo;s how.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Operator Insights" href="blog/what-happens-when-your-erp-cannot-keep-up-with-your-business/">
+            <div class="res-card__cover res-card__cover--tint">
+              <span class="res-card__kicker">Operator Insights</span>
+              <svg viewBox="0 0 200 110"><path d="M25 85 Q 70 85 100 55 T 175 20" fill="none" stroke="var(--sg-blue-dark)" stroke-width="2"/><path d="M25 85 L 175 75" fill="none" stroke="rgba(30,58,138,0.6)" stroke-width="1.5" stroke-dasharray="3 3"/><text x="178" y="22" font-size="7" fill="var(--sg-blue-dark)" font-weight="700">Business</text><text x="178" y="78" font-size="7" fill="rgba(30,58,138,0.6)">ERP</text><line x1="25" y1="90" x2="175" y2="90" stroke="var(--sg-blue-dark)" stroke-width="1"/></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Operator Insights</p>
+              <h3 class="res-card__title">When Your ERP Cannot Keep Up With Your Business</h3>
+              <p class="res-card__text">Your business changes. Your ERP does not. The 5-stage decline: workarounds, spreadsheets, change orders, trust erosion. Here is the alternative.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Operator Insights" href="blog/why-your-warehouse-manager-should-be-your-erp-s-first-user/">
+            <div class="res-card__cover res-card__cover--blue">
+              <span class="res-card__kicker">Operator Insights</span>
+              <svg viewBox="0 0 200 110"><rect x="40" y="25" width="50" height="70" rx="3" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="55" y="20" width="20" height="10" rx="2" fill="#fff"/><line x1="48" y1="42" x2="82" y2="42" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/><line x1="48" y1="52" x2="82" y2="52" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/><line x1="48" y1="62" x2="82" y2="62" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/><line x1="48" y1="72" x2="82" y2="72" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/><rect x="115" y="28" width="40" height="65" rx="5" fill="#fff"/><rect x="119" y="34" width="32" height="45" fill="#fff"/><circle cx="135" cy="87" r="2.5" fill="#fff"/><text x="135" y="58" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">OK</text></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Operator Insights</p>
+              <h3 class="res-card__title">Your Warehouse Manager Should Be Your ERP's First User</h3>
+              <p class="res-card__text">Most ERPs are designed for the executive dashboard and die at the warehouse. Build for the floor first - and the dashboards take care of themselves.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">4 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Industry Critique" href="blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/">
+            <div class="res-card__cover res-card__cover--ink">
+              <span class="res-card__kicker">Industry Critique</span>
+              <svg viewBox="0 0 200 110"><rect x="45" y="30" width="110" height="50" rx="4" fill="none" stroke="#fff" stroke-width="1.5"/><text x="100" y="52" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">BEST PRACTICES</text><text x="100" y="68" font-size="7" fill="#8A8F98" text-anchor="middle">industry average</text><line x1="55" y1="35" x2="145" y2="75" stroke="#3461E0" stroke-width="3"/><line x1="145" y1="35" x2="55" y2="75" stroke="#3461E0" stroke-width="3"/></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Industry Critique</p>
+              <h3 class="res-card__title">The Myth of ERP Best Practices</h3>
+              <p class="res-card__text">ERP &rdquo;best practices&rdquo; is just an average of 50 manufacturers&rsquo; processes - then you pay to make it fit yours. 96% of manufacturers need customization.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">5 min</span></p>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Industry Critique" href="blog/dynamics-gp-sunset-switch-to-simplegrid/">
+            <div class="res-card__cover res-card__cover--ink">
+              <span class="res-card__kicker">Industry Critique</span>
+              <svg viewBox="0 0 200 110" aria-hidden="true">
+                <text x="14" y="32" font-size="9" fill="#8A8F98" font-weight="700" letter-spacing="0.16em">GP SUNSET TIMELINE</text>
+                <line x1="14" y1="58" x2="186" y2="58" stroke="#3A3F4A" stroke-width="1"/>
+                <g font-family="ui-sans-serif,system-ui" font-size="7" fill="#fff">
+                  <circle cx="32" cy="58" r="3" fill="#3461E0"/>
+                  <text x="32" y="74" text-anchor="middle">Apr 2025</text>
+                  <text x="32" y="48" text-anchor="middle" fill="#8A8F98">no new licenses</text>
+                  <circle cx="78" cy="58" r="3" fill="#3461E0"/>
+                  <text x="78" y="74" text-anchor="middle">Apr 2026</text>
+                  <text x="78" y="48" text-anchor="middle" fill="#8A8F98">no new sales</text>
+                  <circle cx="132" cy="58" r="4" fill="#F59E0B"/>
+                  <text x="132" y="76" text-anchor="middle" font-weight="700">Dec 2029</text>
+                  <text x="132" y="48" text-anchor="middle" fill="#F59E0B">support ends</text>
+                  <circle cx="178" cy="58" r="4" fill="#DC2626"/>
+                  <text x="178" y="76" text-anchor="middle" font-weight="700">2031</text>
+                  <text x="178" y="48" text-anchor="middle" fill="#DC2626">patches stop</text>
+                </g>
+                <text x="100" y="100" text-anchor="middle" font-size="8" fill="#fff" font-weight="600">Move - without 18 months &amp; six figures.</text>
+              </svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Industry Critique</p>
+              <h3 class="res-card__title">Dynamics GP Sunset: Switch to SimpleGrid</h3>
+              <p class="res-card__text">Microsoft Dynamics GP support ends Dec 2029, patches stop in 2031. Skip the 18-month Business Central rip-and-replace. Switch to SimpleGrid - your GP rules, regenerated as a modern ERP.</p>
+              <p class="res-card__foot"><span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="meta res-card__meta">6 min</span></p>
+            </div>
+          </a>
+        </div>
+        <p class="res-empty" data-empty hidden>No posts in this category yet.</p>
+        <div class="res-pages" data-pages role="group" aria-label="Post pages"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/resources.js"></script>
+<script src="js/cursor.js"></script>
+</body>
+</html>

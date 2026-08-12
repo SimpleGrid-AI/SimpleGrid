@@ -1,111 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-
-<title>Case Studies - Live in 12 and 21 Days | SimpleGrid</title>
-<meta name="description" content="Real SimpleGrid deployments. Elite Arts & Crafts stopped $200K in silent losses, live in 21 days. An apparel maker went live in 12.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<title>Case Studies | SimpleGrid</title>
+<meta name="description" content="Elite Arts &amp; Crafts found $200K in silent losses and went live in 21 days. An apparel maker went live in 12.">
 <link rel="canonical" href="https://simplegrid.ai/case-studies.html">
-<link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
-<link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
-<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
-<link rel="stylesheet" href="colors_and_type.css">
-<link rel="stylesheet" href="styles.css">
-
-<!-- Open Graph -->
-<meta property="og:site_name" content="SimpleGrid">
+<!-- Social preview: the card everyone sees before the page itself. -->
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:title" content="Case Studies | SimpleGrid">
+<meta property="og:description" content="Elite Arts &amp; Crafts found $200K in silent losses and went live in 21 days. An apparel maker went live in 12.">
 <meta property="og:url" content="https://simplegrid.ai/case-studies.html">
-<meta property="og:title" content="Case Studies - Live in 12 and 21 Days | SimpleGrid">
-<meta property="og:description" content="Real SimpleGrid deployments. Elite Arts & Crafts stopped $200K in silent losses, live in 21 days. An apparel maker went live in 12.">
-<meta property="og:image" content="https://simplegrid.ai/assets/elite-factory.jpeg">
-<meta property="og:image:alt" content="Elite Arts & Crafts factory floor running SimpleGrid, the Adaptive ERP">
-
-<!-- Twitter Card -->
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="Case Studies - Live in 12 and 21 Days | SimpleGrid">
-<meta name="twitter:description" content="Real SimpleGrid deployments. Elite Arts & Crafts stopped $200K in silent losses, live in 21 days. An apparel maker went live in 12.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/elite-factory.jpeg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://simplegrid.ai/case-studies.html#webpage",
-      "url": "https://simplegrid.ai/case-studies.html",
-      "name": "Case Studies - Live in 12 and 21 Days",
-      "isPartOf": { "@id": "https://simplegrid.ai/#website" },
-      "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "description": "Two real operations running on SimpleGrid, the adaptive ERP. Real numbers, real adoption.",
-      "inLanguage": "en"
-    },
-    {
-      "@type": "CollectionPage",
-      "@id": "https://simplegrid.ai/case-studies.html#collection",
-      "url": "https://simplegrid.ai/case-studies.html",
-      "name": "SimpleGrid Case Studies",
-      "hasPart": [
-        { "@type": "Article", "url": "https://simplegrid.ai/case-furniture-manufacturer.html", "name": "Elite Arts & Crafts Case Study" },
-        { "@type": "Article", "url": "https://simplegrid.ai/case-apex.html", "name": "Apex Apparel Case Study" }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-        { "@type": "ListItem", "position": 2, "name": "Case studies", "item": "https://simplegrid.ai/case-studies.html" }
-      ]
-    }
-  ]
-}
-</script>
-<!-- No-flash boot: fade #root in once React replaces the seed (or after 1.2s failsafe) -->
-<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}@media (prefers-reduced-motion: reduce){html.js #root,html.js #root.sg-mounted{opacity:1;transition:none}}</style>
-<script>(function(){var h=document.documentElement;h.classList.add('js');function s(){var r=document.getElementById('root');if(!r)return;var m=new MutationObserver(function(){r.classList.add('sg-mounted');m.disconnect()});m.observe(r,{childList:true});setTimeout(function(){r.classList.add('sg-mounted');m.disconnect()},1200)}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',s)}else{s()}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous" defer></script>
-
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="assets/js/cookie-consent.js" defer></script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/resources.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- Static seed inside #root - React replaces on mount. -->
-<!-- Static seed inside #root - React replaces on mount. Crawler + AI-bot visible. -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js), outside #root. -->
-<div id="sg-nav" data-page="cases"></div>
-<div id="root">
-  <main id="main" style="padding:60px 32px;max-width:920px;margin:0 auto">
-    <h1 style="font-size:44px;line-height:1.1;letter-spacing:-0.025em;margin:0 0 18px">Real operations. Live in 12 and 21 days.</h1>
-    <p style="font-size:18px;line-height:1.55;color:#3b4250;margin:0 0 28px">Elite Arts &amp; Crafts found $200K in silent losses and went live in 21 days. An apparel maker went live in 12. Both ran SimpleGrid free for 30 days. Both kept it.</p>
-    <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3461e0;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600">Book a demo</a>
-  </main>
-</div>
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script src="components/site-nav.js" defer></script>
-<script src="components/site-footer.js" defer></script>
-<script src="components/LoginModal.js" defer></script>
-<script src="components/InviteModal.js" defer></script>
-<script src="components/Interactive.js" defer></script>
-<script src="components/HomeBottom.js" defer></script>
-<script src="components/FinalCTA.js" defer></script>
-<script src="app/case-studies.js" defer></script><script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
+
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main data-resources>
+
+  <!-- ============================================================= HERO -->
+  <section class="section">
+    <div class="container">
+      <div class="card res-hero">
+        <p class="eyebrow">Case Studies</p>
+        <h1 class="res-hero__title">Real operations. <span class="accent">Live in 12 and 21 days.</span></h1>
+        <p class="lede res-hero__sub">Two floors, both live inside three weeks, both with the numbers attached.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== CASE STUDIES -->
+  <!-- The one collection with no filter of its own: two studies, both shown. -->
+  <section class="section" id="case-studies">
+    <div class="container">
+      <div class="card reveal" data-collection>
+        <div class="res-grid res-grid--2">
+          <a class="res-card" data-item data-cat="Furniture &amp; home decor export" href="case-furniture-manufacturer.html">
+            <div class="res-card__cover">
+              <span class="res-card__kicker">Case study</span>
+              <picture>
+              <img class="res-card__photo" src="assets/elite-factory.jpeg" alt="Elite Arts &amp; Crafts&rsquo; export warehouse, finished furniture staged for shipping." loading="lazy" decoding="async">
+            </picture>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Furniture &amp; home decor export</p>
+              <h3 class="res-card__title">Elite Arts &amp; Crafts found $200K in silent losses. Live in 21 days.</h3>
+              <p class="res-card__text">Elite Arts &amp; Crafts is Chirag&rsquo;s furniture and home decor export house: 600+ people across 1 million sq ft, shipping to 12+ countries, including a major US retailer.</p>
+              <span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a class="res-card" data-item data-cat="Apparel manufacturing" href="case-apex.html">
+            <div class="res-card__cover">
+              <span class="res-card__kicker">Case study</span>
+              <svg class="res-card__art" viewBox="0 0 120 54" aria-hidden="true" focusable="false"><rect x="0.8" y="0.8" width="118.4" height="52.4" rx="4" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.55"/><rect x="10" y="8" width="100" height="9" rx="2" fill="currentColor" opacity="0.35"/><rect x="10" y="23" width="30" height="23" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="45" y="23" width="30" height="23" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="80" y="23" width="30" height="23" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M25 30v9M55 30h10M95 30v9" stroke="currentColor" stroke-width="1.2" opacity="0.7"/></svg>
+            </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Apparel manufacturing</p>
+              <h3 class="res-card__title">An apparel maker went live in 12 days.</h3>
+              <p class="res-card__text">Apex Apparel makes 80,000 to 100,000 shirts a month without a factory of its own. Production runs through 20+ job workers across the city.</p>
+              <span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/resources.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

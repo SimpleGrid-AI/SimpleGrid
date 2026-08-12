@@ -1,68 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The page lives two levels down; everything else is written from the root. -->
+<base href="../../">
 <title>Do I Need an ERP? Free Diagnostic for Manufacturers | SimpleGrid</title>
 <meta name="description" content="Free 8-question ERP needs assessment for US manufacturers. Quantifies the annual cost of operating without a system. PDF report with peer comparison.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<link rel="canonical" href="https://simplegrid.ai/tools/erp-needs-assessment/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="apple-touch-icon" href="../../assets/simplegrid-logomark.svg">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../tools.css">
-<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/erp-needs-assessment/"><meta property="og:title" content="Do I Need an ERP? Free Diagnostic"><meta property="og:description" content="8 questions, 3 minutes. Get a real number for what operating without a system costs you."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Do I Need an ERP? Diagnostic","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/erp-needs-assessment/","description":"Free 8-question diagnostic that quantifies the annual cost of running a mid-market manufacturing business without an ERP system.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},{"@type":"HowTo","name":"How to use the Do I Need an ERP? Free Diagnostic for Manufacturers","description":"Free 8-question ERP needs assessment for US manufacturers. Quantifies the annual cost of operating without a system. PDF report with peer comparison.","step":[{"@type":"HowToStep","position":1,"name":"Answer the questions","text":"Work through each question about your operation: Under $3M; $3M - $8M; $8M - $25M; $25M - $80M.","url":"https://simplegrid.ai/tools/erp-needs-assessment/#tool"},{"@type":"HowToStep","position":2,"name":"Get your result instantly","text":"Free 8-question ERP needs assessment for US manufacturers. Quantifies the annual cost of operating without a system. PDF report with peer comparison.","url":"https://simplegrid.ai/tools/erp-needs-assessment/#result"},{"@type":"HowToStep","position":3,"name":"Export or take it further","text":"Download the result as PDF, or book a demo to see SimpleGrid track this automatically from your live operation.","url":"https://simplegrid.ai/tools/erp-needs-assessment/#next"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Do I Need an ERP?","item":"https://simplegrid.ai/tools/erp-needs-assessment/"}]}]}
-</script>
-<script src="../../vendor/jspdf/jspdf.umd.min.js" defer></script>
-<script src="../../vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
-<script src="../tools.js" defer></script>
 
-<script src="../../assets/js/analytics-init.js" defer></script>
-<script src="../../assets/js/tracking.js" defer></script>
-<script src="../../assets/js/cookie-consent.js" defer></script>
-
-<style>
-.q-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
-.q-card .q-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-blue); margin-bottom: 6px; }
-.q-card .q-text { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--fg1); margin: 0 0 14px; letter-spacing: -0.005em; line-height: 1.3; }
-.q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-@media (max-width: 600px) { .q-options { grid-template-columns: 1fr; } }
-.q-option { padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 14px; color: var(--fg1); transition: all 120ms ease; background: #fff; }
-.q-option:hover { border-color: var(--sg-blue); }
-.q-option.selected { background: var(--sg-blue-light); border-color: var(--sg-blue); color: var(--sg-blue); font-weight: 600; }
-.q-option input { display: none; }
-</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:title" content="Do I Need an ERP? Free Diagnostic for Manufacturers | SimpleGrid">
+<meta property="og:description" content="Free 8-question ERP needs assessment for US manufacturers. Quantifies the annual cost of operating without a system. PDF report with peer comparison.">
+<meta property="og:url" content="https://simplegrid.ai/tools/erp-needs-assessment/">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:title" content="Do I Need an ERP? Free Diagnostic">
-<meta name="twitter:description" content="8 questions, 3 minutes. Get a real number for what operating without a system costs you.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="canonical" href="https://simplegrid.ai/tools/erp-needs-assessment/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/tool.css">
+<link rel="stylesheet" href="css/grid.css">
+
+<!-- The PDF export and the shared tool helpers, unchanged from the versions
+     these calculators were written against. -->
+<script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
+<script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
+<script src="tools/tools.js" defer></script>
 </head>
 <body>
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="tools"></div>
 
-<main id="main">
-  <section class="tool-header"><div class="container-sm">
-    <a href="../" class="back-link">← All productive tools</a>
-    <h1>Do I Need an ERP? - 8 questions, 3 minutes, a real number.</h1>
-    <p class="tool-lead">Not every manufacturer needs an ERP yet. This 8-question assessment scores your processes, data, and pain against the cost of an ERP and gives you a real do-it-or-wait number in about 3 minutes.</p>
-    <p class="lead">Mid-market manufacturers typically outgrow spreadsheets at $8-15M revenue but don't feel it until $25M when the pain is acute. This diagnostic quantifies the annual cost of operating without a system - then shows you whether you're in the green, the yellow, or bleeding money.</p>
-  </div></section>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
 
-  <section class="tool-app"><div class="container-sm">
+<sg-header></sg-header>
 
-    <div class="tool-card" style="padding:14px 18px;margin-bottom:14px">
+<main>
+
+  <!-- ============================================================= HERO -->
+  <section class="section">
+    <div class="container">
+      <div class="card tool-hero">
+        <a class="tool-hero__back" href="tools.html">&larr; All productive tools</a>
+        <p class="eyebrow">Free tool</p>
+        <h1 class="tool-hero__title">Do I Need an ERP? - 8 questions, 3 minutes, a real number.</h1>
+        <p class="lede tool-hero__sub">Not every manufacturer needs an ERP yet. This 8-question assessment scores your processes, data, and pain against the cost of an ERP and gives you a real do-it-or-wait number in about 3 minutes.</p>
+        <p class="body-copy tool-hero__sub">Mid-market manufacturers typically outgrow spreadsheets at $8-15M revenue but don't feel it until $25M when the pain is acute. This diagnostic quantifies the annual cost of operating without a system - then shows you whether you're in the green, the yellow, or bleeding money.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== TOOL -->
+  <!-- Form, results and PDF export are carried over unchanged: the ids below
+       are what this page's own script reads and writes. -->
+  <section class="section" id="tool">
+    <div class="container">
+      <div class="card">
+<div class="tool-card" style="padding:14px 18px;margin-bottom:14px">
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
         <span style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg3)">Mode</span>
         <div role="tablist" aria-label="Diagnostic mode" style="display:inline-flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden">
@@ -232,56 +231,10 @@
     <div class="tool-actions" style="justify-content:flex-end;margin-top:16px;gap:14px;align-items:center">
       <span id="answer-progress-hint" style="font-size:13px;color:var(--fg3, #6b7280)" aria-live="polite"></span>
       <button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px" disabled>Download PDF Report</button>
-    </div>
-
-    <div class="tool-cta">
-      <div class="eyebrow">When the score points to "yes"</div>
-      <h2>The answer isn't a 12-month ERP project. It's an operations layer.</h2>
-      <p>SimpleGrid is the operations layer configured to how your factory actually runs - synced to the QuickBooks or Tally you already use. Run it live on your real floor for 30 days. You pay only when it works.</p>
-      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="erp_diag_cta" class="btn btn-primary">Book a demo</a>
-    </div>
-  </div></section>
-
-  <section class="tool-seo"><div class="container-sm">
-    <h2>How the diagnostic works</h2>
-    <p>The 8 questions are weighted to surface the three signals that matter for ERP readiness in mid-market manufacturing: operational complexity (revenue + employees + SKUs), data fragmentation (tracking system + inventory accuracy + data entry hours), and growth pressure (delivery performance + customer churn).</p>
-    <p>The score ranges 0-185. Anything above 80 means the annual cost of operating without a system is now visible on your P&L - whether you label it that way or not.</p>
-
-    <h2>What "annual cost" actually means</h2>
-    <p>Four buckets:</p>
-    <ul>
-      <li><strong>Data-entry waste</strong> - team hours/week on manual re-keying x loaded labor cost x 52. Based on McKinsey Global Institute research that 50% of manufacturing work activities are automatable.</li>
-      <li><strong>Missed-delivery cost</strong> - Aberdeen Group's 2% revenue impact per percentage point of on-time delivery gap (customer concessions, expedite premiums, lost reorders).</li>
-      <li><strong>Inventory inaccuracy</strong> - APICS/ASCM 15% carrying cost on the variance between book and actual inventory.</li>
-      <li><strong>Lost customers</strong> - average customer revenue x churn count. Operational failures are the #2 cited reason for B2B churn (HBR 2022).</li>
-    </ul>
-
-    <h2>FAQ</h2>
-    <details><summary>What if I scored under 40?</summary><p>You're fine. Spreadsheets work below a certain complexity threshold. Use the score as a watch-list: if 2-3 dimensions creep up over the next year, revisit. Most manufacturers know when they're across the line - the pain becomes acute around $25M revenue or 150 employees.</p></details>
-    <details><summary>What if I scored 100+?</summary><p>The operational cost is real and growing. The question isn't "should I get an ERP" - it's "which one, and how do I avoid the 55-75% implementation failure rate." That's where the ERP Readiness Scorecard (coming next) helps.</p></details>
-    <details><summary>Is this biased toward selling SimpleGrid?</summary><p>The scoring methodology is industry-standard (Gartner Postmodern ERP, Aberdeen mid-market benchmarks, Panorama Consulting ERP Reports). The recommendation at the end is operator advice, not a sales pitch. The CTA at the bottom is contextual - if you score green, we don't push.</p></details>
-  </div></section>
-
-<section class="tool-seo related-tools"><div class="container-sm"><h2>Related free tools for manufacturers</h2><ul class="related-tools-list"><li><a href="../erp-readiness-scorecard/">ERP Readiness Scorecard for Manufacturers</a></li><li><a href="../digital-maturity-assessment/">Digital Maturity Assessment (SIRI)</a></li><li><a href="../operations-health-score/">Manufacturing Operations Health Score</a></li><li><a href="../">See all 35 manufacturer tools</a></li></ul></div></section>
-</main>
-
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">Tools are nice. A system that runs your floor is better.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">SimpleGrid is the Adaptive ERP - an operations cloud built around how your operation actually runs, synced to the QuickBooks or Tally you already use. Run it live for 30 days. You pay only when it works.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
+    </div>
+  </section>
 
 <script defer>
 document.addEventListener('DOMContentLoaded',()=>{
@@ -655,7 +608,85 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 });
 </script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+
+  <!-- ======================================================= BOOK A DEMO -->
+  <section class="section" id="book">
+
+    <div class="container">
+      <div class="card tool-cta reveal">
+        <p class="eyebrow">When the score points to "yes"</p>
+        <h2>The answer isn't a 12-month ERP project. It's an operations layer.</h2>
+        <p>SimpleGrid is the operations layer configured to how your factory actually runs - synced to the QuickBooks or Tally you already use. Run it live on your real floor for 30 days. You pay only when it works.</p>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ DETAIL -->
+  <section class="section" id="learn">
+    <div class="container">
+      <div class="card tool-seo reveal">
+        <p class="eyebrow">The detail</p>
+
+    <h2>How the diagnostic works</h2>
+    <p>The 8 questions are weighted to surface the three signals that matter for ERP readiness in mid-market manufacturing: operational complexity (revenue + employees + SKUs), data fragmentation (tracking system + inventory accuracy + data entry hours), and growth pressure (delivery performance + customer churn).</p>
+    <p>The score ranges 0-185. Anything above 80 means the annual cost of operating without a system is now visible on your P&L - whether you label it that way or not.</p>
+
+    <h2>What "annual cost" actually means</h2>
+    <p>Four buckets:</p>
+    <ul>
+      <li><strong>Data-entry waste</strong> - team hours/week on manual re-keying x loaded labor cost x 52. Based on McKinsey Global Institute research that 50% of manufacturing work activities are automatable.</li>
+      <li><strong>Missed-delivery cost</strong> - Aberdeen Group's 2% revenue impact per percentage point of on-time delivery gap (customer concessions, expedite premiums, lost reorders).</li>
+      <li><strong>Inventory inaccuracy</strong> - APICS/ASCM 15% carrying cost on the variance between book and actual inventory.</li>
+      <li><strong>Lost customers</strong> - average customer revenue x churn count. Operational failures are the #2 cited reason for B2B churn (HBR 2022).</li>
+    </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================== FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="card tool-seo reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions about this tool</h2>
+<details><summary>What if I scored under 40?</summary><p>You're fine. Spreadsheets work below a certain complexity threshold. Use the score as a watch-list: if 2-3 dimensions creep up over the next year, revisit. Most manufacturers know when they're across the line - the pain becomes acute around $25M revenue or 150 employees.</p></details>
+    <details><summary>What if I scored 100+?</summary><p>The operational cost is real and growing. The question isn't "should I get an ERP" - it's "which one, and how do I avoid the 55-75% implementation failure rate." That's where the ERP Readiness Scorecard (coming next) helps.</p></details>
+    <details><summary>Is this biased toward selling SimpleGrid?</summary><p>The scoring methodology is industry-standard (Gartner Postmodern ERP, Aberdeen mid-market benchmarks, Panorama Consulting ERP Reports). The recommendation at the end is operator advice, not a sales pitch. The CTA at the bottom is contextual - if you score green, we don't push.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== RELATED TOOLS -->
+  <section class="section" id="related">
+    <div class="container">
+      <div class="card tool-seo reveal">
+        <h2>Related free tools for manufacturers</h2>
+        <ul class="related-tools-list"><li><a href="tools/erp-readiness-scorecard/">ERP Readiness Scorecard for Manufacturers</a></li><li><a href="tools/digital-maturity-assessment/">Digital Maturity Assessment (SIRI)</a></li><li><a href="tools/operations-health-score/">Manufacturing Operations Health Score</a></li><li><a href="tools.html">See all 35 manufacturer tools</a></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= CLOSING CTA -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="card cta reveal" data-cursor="light">
+        <h2 class="cta__title">Tools are nice. A system that runs your floor is better.</h2>
+        <p class="cta__sub">SimpleGrid is the Adaptive ERP, an operations cloud built around how your operation actually runs, synced to the QuickBooks or Tally you already use. Run it live for 30 days. You pay only when it works.</p>
+        <a class="btn btn--onblue" href="pricing.html#demo">Book a demo</a>
+        <p class="cta__meta meta">Limited slots each quarter. We onboard selectively.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/tool-forms.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>
