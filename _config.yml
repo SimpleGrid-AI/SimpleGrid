@@ -66,6 +66,9 @@ exclude:
   - node_modules/
   - .node/
 
+  # Tests ship with their code but are not part of the site.
+  - "**/*.test.js"
+
   # Build scripts (not needed at runtime; production reads only the .html/.js output).
   - scripts/
   - tools/_blog_optimize.py
