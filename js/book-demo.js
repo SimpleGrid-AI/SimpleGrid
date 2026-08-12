@@ -130,10 +130,10 @@
     submitBtn = el('button', { class: 'btn btn--primary bd__submit', type: 'submit' }, 'Book a demo');
     form.appendChild(submitBtn);
 
-    /* No privacy page on this site yet, so the note makes the promise itself
-       rather than linking to something that would 404. */
-    form.appendChild(el('p', { class: 'meta bd__note' },
-      'We respond within 48 hours · Your details are used only for your deployment'));
+    var note = el('p', { class: 'meta bd__note' },
+      'We respond within 48 hours · Your details are used only for your deployment · ');
+    note.appendChild(el('a', { href: 'privacy.html' }, 'Privacy'));
+    form.appendChild(note);
 
     form.addEventListener('submit', submit);
     /* A field the reader has come back to fix stops showing as wrong. */

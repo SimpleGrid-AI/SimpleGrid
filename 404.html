@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | SimpleGrid</title>
+<meta name="description" content="That page is not here. The product, pricing, the syncs and the case studies are, and they are one click away.">
+<meta name="robots" content="noindex, follow">
+
+<!-- Absolute paths throughout: GitHub Pages serves this file for a miss at
+     any depth, so a relative path would resolve against the URL that failed. -->
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/v3.css">
+<link rel="stylesheet" href="/css/legal.css">
+<link rel="stylesheet" href="/css/grid.css">
+<base href="/">
+</head>
+<body>
+
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <section class="section">
+    <div class="container">
+      <div class="card notfound">
+        <p class="notfound__code">404</p>
+        <h1 class="notfound__title">This page is not on the grid.</h1>
+        <p class="lede notfound__sub">The link is broken, or the page moved when we rebuilt the
+          site. Everything below is where it should be.</p>
+
+        <div class="notfound__actions">
+          <a class="btn btn--primary" href="index.html">Back to home</a>
+          <a class="btn btn--ghost" href="pricing.html#demo">Book a demo</a>
+        </div>
+
+        <!-- The four things people arrive looking for, rather than a sitemap. -->
+        <nav class="notfound__map" aria-label="Popular pages">
+          <a class="notfound__link" href="product.html">
+            <span class="notfound__link-name">Product</span>
+            <span class="notfound__link-note">Every screen, and what each one runs.</span>
+          </a>
+          <a class="notfound__link" href="pricing.html">
+            <span class="notfound__link-name">Pricing</span>
+            <span class="notfound__link-note">One subscription. You pay when it works.</span>
+          </a>
+          <a class="notfound__link" href="syncs.html">
+            <span class="notfound__link-name">Syncs</span>
+            <span class="notfound__link-note">The tools we connect to. Nothing gets replaced.</span>
+          </a>
+          <a class="notfound__link" href="case-studies.html">
+            <span class="notfound__link-name">Case studies</span>
+            <span class="notfound__link-note">Two floors, both live inside three weeks.</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="/js/components.js"></script>
+<script src="/js/book-demo.js" defer></script>
+<script src="/js/v3.js"></script>
+<script src="/js/cursor.js"></script>
+</body>
+</html>
