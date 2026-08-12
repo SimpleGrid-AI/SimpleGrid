@@ -1843,8 +1843,7 @@ sg-footer { display: contents; }
     'title   lede';
   gap: 0 64px;
   align-items: start;
-  padding-bottom: 48px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
 }
 .lived__eyebrow { grid-area: eyebrow; }
 .lived__title {
@@ -1855,6 +1854,14 @@ sg-footer { display: contents; }
   margin: 0;
 }
 .lived__lede { grid-area: lede; max-width: 46ch; }
+
+/* The two case tiles under the founding story. Same component the case
+   studies page uses; the space above them is the story's margin, so nothing
+   is added here. */
+
+@media (max-width: 700px) {
+  .lived__cases { grid-template-columns: minmax(0, 1fr); }
+}
 
 @media (max-width: 900px) {
   .lived {
@@ -2166,178 +2173,6 @@ sg-footer { display: contents; }
    above its own caption — the figure treatment the case pages use, on the
    page's own white card.
    -------------------------------------------------------------------------- */
-
-.lived { margin-bottom: 48px; }
-
-/* The frame holds both clients; the arrows sit over its top-right corner so
-   they read as belonging to the picture, not to the copy under it. */
-.floorfilm { position: relative; margin: 0; }
-
-/* The arrows sit outside the picture, one either side, centred on it — the
-   row matches the media's own 16:7 box so it centres on the film rather than
-   on the film plus its caption, and the negative margins carry the buttons
-   out into the card's padding. */
-.floorfilm__nav {
-  position: absolute;
-  inset: 0 0 auto;
-  aspect-ratio: 16 / 7;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
-}
-.floorfilm__nav > * { pointer-events: auto; }
-.floorfilm__nav > :first-child { margin-left: -56px; }
-.floorfilm__nav > :last-child { margin-right: -56px; }
-/* Outside the picture they sit on the card, so they take the card's own
-   edge rather than a translucent plate over the image. */
-.floorfilm__arrow {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  color: var(--fg-muted);
-  transition: border-color 160ms var(--ease), color 160ms var(--ease),
-              background-color 160ms var(--ease);
-}
-.floorfilm__arrow:hover {
-  border-color: var(--sg-blue-15);
-  background: var(--bg-highlight-soft);
-  color: var(--accent);
-}
-.floorfilm__arrow svg { width: 16px; height: 16px; }
-
-.floorfilm__slide { margin: 0; }
-.floorfilm__slide[hidden] { display: none; }
-
-/* Apex asked not to be shown, so their panel carries the numbers instead of a
-   picture — same frame, same height, no borrowed photograph. */
-.floorfilm__plate {
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  gap: 24px;
-  aspect-ratio: 16 / 7;
-  padding: 32px;
-  text-align: center;
-  background: var(--sg-grad-cta);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  color: var(--sg-logo-white);
-}
-.floorfilm__plate-name {
-  font-family: var(--font-body);
-  font-size: var(--fs-h5);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-.floorfilm__stats {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px 48px;
-  margin: 0;
-  padding: 0;
-}
-.floorfilm__stats li {
-  display: grid;
-  gap: 4px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-sub);
-  letter-spacing: var(--tracking-sub);
-  color: rgba(250, 250, 250, 0.72);
-}
-.floorfilm__stats span {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--sg-logo-white);
-}
-.floorfilm__plate-note {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: var(--tracking-sub);
-  text-transform: uppercase;
-  color: rgba(250, 250, 250, 0.6);
-}
-
-/* Full bleed to the card's edges: the film is the width of the section, and
-   the caption under it sits back on the text column. */
-.floorfilm__video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
-  background: var(--sg-eerie-black);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-}
-
-/* Title left, what it is right — the caption reads as one line of the page,
-   not as a block under a picture. */
-.floorfilm__cap {
-  display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: start;
-  margin-top: 32px;
-}
-
-.floorfilm__title {
-  font-family: var(--font-body);
-  font-size: var(--fs-h5);
-  font-weight: 700;
-  line-height: var(--lh-tight);
-  letter-spacing: -0.02em;
-  color: var(--accent);
-}
-
-.floorfilm__body { display: grid; gap: 18px; justify-items: start; }
-.floorfilm__body .body-copy { max-width: 62ch; }
-
-/* The case behind the quote — the claim is theirs, the numbers are on that
-   page. */
-.quote__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-sub);
-  letter-spacing: var(--tracking-sub);
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.quote__link svg { width: 12px; height: 12px; flex: 0 0 auto; transition: transform 200ms var(--ease); }
-.quote__link:hover svg { transform: translateX(3px); }
-
-@media (max-width: 900px) {
-  .lived { margin-bottom: 32px; }
-  .floorfilm__video,
-  .floorfilm__plate { aspect-ratio: 4 / 3; }
-  /* No padding left to sit in at this width, so they come back inside the
-     picture's edges. */
-  .floorfilm__nav { aspect-ratio: 4 / 3; }
-  .floorfilm__nav > :first-child { margin-left: 12px; }
-  .floorfilm__nav > :last-child { margin-right: 12px; }
-  .floorfilm__arrow { background: rgba(250, 250, 250, 0.9); border-color: transparent; }
-  .floorfilm__stats { gap: 14px 28px; }
-  .floorfilm__cap { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-}
-
-/* ==========================================================================
-   Book a demo
-
-   The same form the previous site used, in this one's clothes: a white card
-   on a dimmed page, square corners, the fields stacked because there are
-   only three of them.
-   ========================================================================== */
 
 .bd {
   position: fixed;

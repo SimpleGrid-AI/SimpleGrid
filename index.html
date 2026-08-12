@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/v3.css">
 <link rel="stylesheet" href="css/modules.css">
+<!-- The case tiles in the customers section are the same component the
+     case studies page uses. -->
+<link rel="stylesheet" href="css/resources.css">
 <link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
@@ -526,50 +529,36 @@
             built the system we could not buy.</p>
         </div>
 
-        <!-- Two clients, one frame. Elite runs as film; Apex asked not to be
-             shown, so its panel carries the numbers instead. -->
-        <div class="floorfilm" data-floor>
-          <div class="floorfilm__nav">
-            <button class="floorfilm__arrow" type="button" data-floor-prev aria-label="Previous client"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M9.8 3.5 5.3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button class="floorfilm__arrow" type="button" data-floor-next aria-label="Next client"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6.2 3.5 10.7 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <!-- The two studies, in the same tiles the case studies page uses:
+             a reader who wants proof at this point wants to open one, not
+             watch a loop. -->
+        <div class="res-grid res-grid--2 lived__cases">
+          <a class="res-card" href="case-furniture-manufacturer.html">
+            <div class="res-card__cover">
+              <span class="res-card__kicker">Case study</span>
+              <picture>
+            <img class="res-card__photo" src="assets/elite-factory.jpeg" alt="Elite Arts &amp; Crafts&rsquo; export warehouse, finished furniture staged for shipping." loading="lazy" decoding="async">
+          </picture>
           </div>
-
-          <figure class="floorfilm__slide" data-floor-slide data-current>
-            <video class="floorfilm__video" src="assets/elite-clip.mp4"
-                   poster="assets/cases/elite-arts-crafts.webp"
-                   autoplay muted loop playsinline preload="metadata"
-                   aria-label="The production floor at Elite Arts &amp; Crafts, running on SimpleGrid."></video>
-            <figcaption class="floorfilm__cap">
-              <h3 class="floorfilm__title">On the floor<br class="break-lg">at Elite Arts &amp; Crafts</h3>
-              <div class="floorfilm__body">
-                <p class="body-copy">600+ people across nearly a million square feet, previously run
-                  on 550 spreadsheets and a group chat. SAP quoted 18 months; SimpleGrid was live in
-                  21 days, modelled around their stages, contractors and costing formulas.</p>
-                <a class="quote__link" href="case-furniture-manufacturer.html">Read the case <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="floorfilm__slide" data-floor-slide hidden>
-            <div class="floorfilm__plate" aria-hidden="true">
-              <p class="floorfilm__plate-name">Apex Apparel</p>
-              <ul class="floorfilm__stats">
-                <li><span>72 hours</span>to a working demo</li>
-                <li><span>60-70%</span>right on the first build</li>
-                <li><span>$0</span>before it proved itself</li>
-              </ul>
-              <p class="floorfilm__plate-note">Name withheld at the customer&rsquo;s request</p>
-            </div>
-            <figcaption class="floorfilm__cap">
-              <h3 class="floorfilm__title">A demo first,<br class="break-lg">then the conversation</h3>
-              <div class="floorfilm__body">
-                <p class="body-copy">&ldquo;They sent a working demo in 72 hours and it was 60-70%
-                  right already. No other vendor showed us a working system before asking for
-                  money.&rdquo;</p>
-                <a class="quote__link" href="case-apex.html">Read the case <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              </div>
-            </figcaption>
-          </figure>
+            <div class="res-card__body">
+              <p class="res-card__cat">Furniture &amp; home decor export</p>
+              <h3 class="res-card__title">Elite Arts &amp; Crafts found $200K in silent losses. Live in 21 days.</h3>
+              <p class="res-card__text">Elite Arts &amp; Crafts is Chirag&rsquo;s furniture and home decor export house: 600+ people across 1 million sq ft, shipping to 12+ countries, including a major US retailer.</p>
+              <span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </a>
+          <a class="res-card" href="case-apex.html">
+            <div class="res-card__cover">
+              <span class="res-card__kicker">Case study</span>
+              <svg class="res-card__art" viewBox="0 0 120 54" aria-hidden="true" focusable="false"><rect x="0.8" y="0.8" width="118.4" height="52.4" rx="4" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.55"/><rect x="10" y="8" width="100" height="9" rx="2" fill="currentColor" opacity="0.35"/><rect x="10" y="23" width="30" height="23" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="45" y="23" width="30" height="23" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="80" y="23" width="30" height="23" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M25 30v9M55 30h10M95 30v9" stroke="currentColor" stroke-width="1.2" opacity="0.7"/></svg>
+          </div>
+            <div class="res-card__body">
+              <p class="res-card__cat">Apparel manufacturing</p>
+              <h3 class="res-card__title">An apparel maker went live in 12 days.</h3>
+              <p class="res-card__text">Apex Apparel makes 80,000 to 100,000 shirts a month without a factory of its own. Production runs through 20+ job workers across the city.</p>
+              <span class="res-card__more">Read more <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </a>
         </div>
       </div>
     </div>
@@ -1372,7 +1361,6 @@
 <script src="js/v3.js"></script>
 <script src="js/modules.js"></script>
 <script src="js/problem.js"></script>
-<script src="js/floor.js"></script>
 <script src="js/hank.js"></script>
 <script src="js/cursor.js"></script>
 </body>
