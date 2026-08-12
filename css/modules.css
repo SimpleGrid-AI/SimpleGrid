@@ -1,0 +1,500 @@
+/* ==========================================================================
+   SimpleGrid — module tiles and their detail panels
+
+   Shared by the product page (the full 12-tile grid) and the homepage (the six
+   "what you get" cards). Both open the same dialog, so the styles live here
+   rather than in either page's own sheet. Loaded after css/v3.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   3. Modules
+   -------------------------------------------------------------------------- */
+
+/* Placed by area rather than by source order: the eyebrow sits over the
+   heading on the left, and the copy starts level with the heading itself —
+   not with the eyebrow above it. */
+.modules__head {
+  display: grid;
+  /* The heading takes the wider share: at 40px its first line needs about
+     500px, and an even split leaves 456. What it takes, the copy gives up —
+     which sets that paragraph in three lines instead of two. */
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  grid-template-areas:
+    'eyebrow .'
+    'title   copy';
+  gap: 0 64px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+.modules__head .eyebrow { grid-area: eyebrow; }
+.modules__head .body-copy { grid-area: copy; }
+
+.modules__title {
+  grid-area: title;
+  /* Between h3 and h2 on the scale — the size the two-line break holds at,
+     given the wider column above. */
+  font-size: 43px;
+  color: var(--accent);
+  max-width: 30ch;
+}
+
+/* Box tops are level, but the two type sizes carry different half-leading, so
+   the paragraph's letters printed 7px above the heading's. This drops it onto
+   the same cap line — what the eye reads as aligned. */
+.modules__head .body-copy { margin-top: 7px; }
+
+/* 3×4 rather than 4×3: at three across each tile has room for the longer
+   names ("Sales orders and planning") on one line. */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Icon top-left, label bottom-left, and a fixed height so a two-word name and
+   a three-word one produce the same tile. */
+.module {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 132px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+.module:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
+
+.module__icon {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.module__name {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: var(--lh-tight);
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  /* One column: the areas stack in reading order, so the copy follows the
+     heading rather than sitting beside it. */
+  .modules__head {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'eyebrow' 'title' 'copy';
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .modules__title { max-width: none; }
+  .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .module-grid { grid-template-columns: minmax(0, 1fr); }
+  .module { min-height: 0; gap: 16px; }
+}
+
+/* --------------------------------------------------------------------------
+   6. Module detail panels
+   -------------------------------------------------------------------------- */
+
+/* Tiles are buttons now — reset the UA styling that comes with that. */
+.module {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.module:hover .module__name { color: var(--accent-hover); }
+
+/* The page behind must not scroll while a panel is up, or a trackpad flick
+   carries on scrolling it under the overlay. */
+.has-modal body { overflow: hidden; }
+
+.mod-panel {
+  /* Backdrop, and the scroll container: the sheet sits in normal flow inside
+     it, so a long panel is scrolled by the window rather than by a box inside
+     the window. */
+  position: fixed;
+  inset: 0;
+  z-index: 200;      /* over the sticky header, which sits at 60 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(250, 251, 252, 0.55);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+          backdrop-filter: blur(14px) saturate(140%);
+  opacity: 0;
+  /* Two sets of timings: the plain rule is what the exit runs on, the
+     [data-open] rule what the entrance runs on. Opening is the slower, softer
+     move; closing gets out of the way. */
+  transition: opacity 280ms var(--ease);
+}
+.mod-panel[hidden] { display: none; }
+.mod-panel[data-open='true'] {
+  opacity: 1;
+  transition-duration: 400ms;
+}
+
+/* The sheet. Sits high in the window and stops at its content — whatever runs
+   past the fold is reached by scrolling the window. */
+.mod-panel__scroll {
+  --mod-inset: clamp(16px, 5vw, 96px);
+  width: calc(100% - (var(--mod-inset) * 2));
+  max-width: 1180px;
+  margin: 64px auto 0;
+  padding: 40px 0 72px;
+  background: var(--bg-card);
+  border: 1px solid var(--card-border);
+  border-bottom: 0;
+  border-radius: var(--card-radius);
+  box-shadow: 0 24px 64px rgba(26, 26, 26, 0.10);
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+  transition: opacity 280ms var(--ease), transform 360ms var(--ease);
+}
+.mod-panel[data-open='true'] .mod-panel__scroll {
+  opacity: 1;
+  transform: none;
+  /* Longer travel and a beat behind the backdrop, so the sheet reads as
+     arriving rather than appearing. */
+  transition: opacity 420ms var(--ease), transform 720ms var(--ease);
+  transition-delay: 80ms;
+}
+
+/* The sheet supplies its own margin rather than borrowing the page container's
+   — it is narrower than the page, so the page's gutter would read as mean. */
+.mod-panel__inner {
+  position: relative;
+  max-width: none;
+  padding-inline: clamp(24px, 4vw, 56px);
+  /* Clears the close button, which gets its own band across the top rather
+     than a reserved column beside the checklist. Padding, not a margin on the
+     head — a margin there collapses out and carries the button down with it. */
+  padding-top: 68px;
+}
+
+.mod-close {
+  position: absolute;
+  top: 0;
+  right: clamp(24px, 4vw, 56px);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--bg-highlight);
+  color: var(--accent);
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease);
+}
+.mod-close:hover { background: var(--sg-blue-15); border-color: var(--sg-blue-15); }
+.mod-close svg { width: 16px; height: 16px; }
+
+/* Title block left, the "what it does for you" claims right. The claims sit in
+   the second row, so their first line starts on the lead paragraph's first
+   line rather than up beside the title. */
+.mod-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    'lead .'
+    'body checks';
+  column-gap: 64px;
+  align-items: start;
+  margin: 0 0 48px;
+}
+.mod-head__lead   { grid-area: lead; }
+.mod-head__body   { grid-area: body; }
+.mod-head .mod-checks { grid-area: checks; }
+
+.mod-title { font-size: var(--fs-h2); margin-bottom: 14px; text-wrap: balance; }
+.mod-tagline {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+/* 38ch is the measure that holds the lead paragraph to three lines across
+   the module set — wider drops several to two, narrower pushes two to four. */
+.mod-intro { max-width: 38ch; }
+
+/* The head's own actions, as in the reference: one primary, one quiet. */
+.mod-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+.mod-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.mod-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  line-height: 1.6;
+  color: var(--fg);
+}
+.mod-check__mark {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Placeholder for the product shot. Same 16:9 treatment as the homepage
+   player, so dropping a real image in later is a src away. */
+.mod-media {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  /* Full content width at 16:9, as in the reference — its edges are the same
+     edges the title, checklist and columns sit on. The panel got smaller by
+     narrowing the sheet, not by shrinking this inside it. */
+  aspect-ratio: 16 / 9;
+  margin: 0 0 48px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--sg-grad-soft);
+}
+/* The screenshot fills the 16:9 slot; its own 1040x598 is close enough that
+   cover trims only a sliver top and bottom. */
+.mod-media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+/* A taller screenshot sits inside the slot instead of being cropped by it, so
+   the gradient stays visible as its ground. */
+.mod-media--fit { padding: 18px; }
+.mod-media--fit img { object-fit: contain; object-position: center; border-radius: 6px; }
+
+/* Two captioned shots, stacked rather than side by side. Side by side they
+   rendered 505px wide against the 1068px every single-image module gets —
+   47% of the size, which on a dense costing table is the difference between
+   reading it and squinting at it. Stacked, both screens are shown at the
+   same width as everywhere else. */
+.mod-media--pair {
+  aspect-ratio: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  padding: 20px;
+}
+.mod-shot { margin: 0; display: grid; gap: 12px; }
+/* Natural ratio, no crop: at full width there is no second shot to match
+   heights with, so nothing has to be cut off the foot to keep a row even. */
+.mod-shot img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--bg-card);
+}
+.mod-shot figcaption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .mod-media--pair { gap: 20px; padding: 12px; }
+}
+
+.mod-why {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border);
+}
+.mod-why__icon {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 14px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The shared banner, inside the panel rather than on the page behind it. */
+.mod-banner { margin: 56px 0; }
+.mod-banner .card { margin: 0; }
+
+.mod-more__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.mod-more__title { font-size: var(--fs-h3); margin: 0; }
+
+.mod-more__nav { display: flex; gap: 8px; }
+.mod-more__arrow {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--accent);
+  transition: border-color 160ms var(--ease), background-color 160ms var(--ease),
+              opacity 160ms var(--ease);
+}
+.mod-more__arrow:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
+/* Disabled rather than hidden at the ends, so the pair does not jump about. */
+.mod-more__arrow[disabled] { opacity: 0.3; pointer-events: none; }
+.mod-more__arrow svg { width: 16px; height: 16px; }
+
+/* All eleven other modules on one rail, sized so five sit in view — the cards
+   keep their own width instead of stretching to fill a row of three. */
+.mod-more__track {
+  --mod-more-visible: 5;
+  --mod-more-gap: 16px;
+  display: flex;
+  gap: var(--mod-more-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;          /* the arrows are the control */
+  margin-bottom: 32px;
+  padding-bottom: 2px;            /* room for the focus ring on a card */
+}
+.mod-more__track::-webkit-scrollbar { display: none; }
+.mod-more__card {
+  flex: 0 0 calc((100% - (var(--mod-more-visible) - 1) * var(--mod-more-gap))
+                 / var(--mod-more-visible));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 132px;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+.mod-more__card:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
+
+/* Centred under the rail — width: max-content so the auto margins have
+   something to balance; a plain text-align would not reach a flex button. */
+.mod-more__cta { display: flex; width: max-content; margin-inline: auto; }
+
+@media (max-width: 900px) {
+  .mod-panel__scroll { margin-top: 24px; padding: 24px 0 48px; }
+  .mod-head {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'lead' 'body' 'checks';
+    gap: 32px;
+    padding-right: 52px;
+    margin-bottom: 32px;
+  }
+  .mod-why { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  /* Two and a bit in view on a phone — the cut card is what says "swipe". */
+  .mod-more__track { --mod-more-visible: 2.2; }
+  .mod-media { margin-bottom: 32px; }
+}
+
+/* The panel is a full-screen change of context; without motion it should just
+   be there rather than slide in slowly. */
+@media (prefers-reduced-motion: reduce) {
+  .mod-panel,
+  .mod-panel__scroll { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   Screenshots at full size
+
+   Opened from a module panel, so it has to sit above one: the panels are at
+   z-index 200.
+   ========================================================================== */
+
+.mod-media img,
+.mod-shot img { cursor: zoom-in; }
+
+.has-zoom body { overflow: hidden; }
+
+.zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(17, 18, 22, 0.82);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 220ms var(--ease);
+}
+/* display:grid above outranks the browser's [hidden] rule. */
+.zoom[hidden] { display: none; }
+.zoom[data-open='true'] { opacity: 1; }
+
+.zoom__frame {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+.zoom__img {
+  display: block;
+  max-width: 100%;
+  /* Room for the caption under it, so a wide screenshot never pushes the
+     label off the screen. */
+  max-height: calc(100vh - 140px);
+  width: auto;
+  height: auto;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+.zoom__caption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: rgba(250, 250, 250, 0.72);
+  text-align: center;
+  margin: 0;
+}
+
+.zoom__close {
+  position: absolute;
+  top: clamp(12px, 3vw, 28px);
+  right: clamp(12px, 3vw, 28px);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: rgba(250, 250, 250, 0.12);
+  color: var(--sg-logo-white);
+  transition: background-color 160ms var(--ease);
+}
+.zoom__close:hover { background: rgba(250, 250, 250, 0.22); }
+.zoom__close svg { width: 18px; height: 18px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom { transition: none; }
+}

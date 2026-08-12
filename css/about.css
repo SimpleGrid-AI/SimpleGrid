@@ -1,0 +1,306 @@
+/* ==========================================================================
+   SimpleGrid — about page
+
+   The story, the first client, and the open roles. Hero, cards, banner and
+   closing CTA are the shared components; only the story's pull line, the
+   client split and the job rows are particular to this page.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------- hero */
+
+/* Centred type on the page's own card and column, as on pricing: a heading and
+   a line, not a pitch. 4 blocks puts the bottom edge on 480, a major line, and
+   48px of padding is what fits the type inside them. */
+.about-hero {
+  margin-top: var(--grid-cell);
+  padding-block: 48px;
+  min-height: calc(var(--grid-block) * 4);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.about-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 22ch;
+  margin: 0 0 20px;
+}
+
+.about-hero__sub { max-width: 56ch; margin: 0; }
+
+.about-title {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+  text-wrap: balance;
+  margin-bottom: 24px;
+}
+
+/* ------------------------------------------------------------------ story */
+
+/* Prose left, the numbers right, divided by a rule as in the reference. */
+.story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+/* One column at reading width rather than the card's full span — the story is
+   prose, and prose past ~70 characters stops being read. */
+.story { max-width: 68ch; }
+
+/* --------------------------------------------------------- story figures */
+
+.story-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding-left: 56px;
+  border-left: 1px solid var(--border);
+}
+
+/* Tiles alternate fill so the block reads as a grid rather than four boxes:
+   the diagonal carries the tint, matching the reference. */
+.fig {
+  padding: 26px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  text-align: center;
+}
+.fig:nth-child(2),
+.fig:nth-child(3) { background: var(--bg-highlight-soft); border-color: transparent; }
+
+.fig__num {
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.fig__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: var(--tracking-sub);
+  color: var(--fg-body);
+  margin: 0;
+  text-wrap: balance;
+}
+/* The team, under the line about the team. */
+.story__shot { margin: 28px 0 20px; }
+.story__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+}
+.story__badge { margin: 0; }
+.story__badge img { height: 40px; width: auto; opacity: 0.9; }
+
+.story p { margin: 0 0 18px; }
+.story p:last-child { margin-bottom: 0; }
+
+/* The line the rest of the page turns on, so it is set as a heading in the
+   accent rather than as another paragraph. */
+.story__turn {
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  color: var(--accent);
+  margin: 32px 0 24px;
+  max-width: 26ch;
+}
+
+/* ----------------------------------------------------------- first client */
+
+.client { align-items: center; }
+.client__copy p { margin: 0 0 16px; }
+.client__actions { margin-top: 28px; }
+
+.client__shot {
+  margin: 0;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-highlight-soft);
+}
+.client__shot img { display: block; width: 100%; height: auto; }
+
+/* ------------------------------------------------------------------- jobs */
+
+.jobs__head { margin-bottom: 40px; }
+.jobs__head .about-title { margin: 0; }
+
+.jobs { display: grid; gap: 16px; }
+
+/* Copy left, the two actions right — the actions keep their own column so a
+   long role description never pushes them out of line with the row above. */
+.job {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 40px;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 200ms var(--ease);
+}
+.job:hover { border-color: var(--sg-blue-15); }
+
+.job__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+.job__where {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 400;
+  letter-spacing: var(--tracking-sub);
+  color: var(--fg-muted);
+  margin-left: 10px;
+}
+.job__body { font-size: var(--fs-sub); line-height: 1.6; color: var(--fg-body); margin: 0 0 10px; }
+.job__tags {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: var(--accent);
+  margin: 0;
+}
+.job__actions { display: grid; gap: 8px; }
+.job__actions .btn { width: 100%; justify-content: center; }
+
+/* Marks a link that leaves the page — mail client, or the full JD. */
+.job__out { width: 11px; height: 11px; margin-left: 8px; fill: none; stroke: currentColor;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+@media (max-width: 900px) {
+  .story-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .story-stats { padding-left: 0; border-left: 0; }
+  .job { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .story__turn { font-size: var(--fs-h5); }
+}
+
+/* ---------------------------------------------------------------- careers */
+
+/* Three things to know before applying, as tiles rather than prose — they are
+   claims about how the company runs, and a paragraph would bury them. */
+.why-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.why-card {
+  padding: 22px 24px 26px;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+.why-card__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+
+/* ------------------------------------------------------------------- JDs */
+
+/* One job description per card: the header on its own column, the detail at
+   reading width beside it, so a long JD never runs the full span of the card. */
+.jd { display: grid; grid-template-columns: minmax(0, 0.68fr) minmax(0, 1fr); gap: 56px; }
+.jd__head { position: sticky; top: 96px; align-self: start; }
+.jd__head .about-title { margin-bottom: 12px; }
+
+.jd__meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: var(--fg-muted);
+  margin: 0;
+}
+
+.jd__body { max-width: 68ch; }
+.jd__body .body-copy + .body-copy { margin-top: 14px; }
+
+.jd__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 34px 0 14px;
+}
+
+.jd__list, .jd__steps { margin: 0; padding: 0; display: grid; gap: 10px; }
+.jd__list { list-style: none; }
+.jd__steps { list-style: none; counter-reset: jd; }
+
+.jd__list li, .jd__steps li {
+  position: relative;
+  padding-left: 24px;
+  font-size: var(--fs-sub);
+  line-height: 1.65;
+  color: var(--fg-body);
+}
+.jd__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+/* What the role is not gets its own mark — it is a warning, not a duty. */
+.jd__list--no li::before { background: var(--fg-muted); }
+
+.jd__steps li { counter-increment: jd; }
+.jd__steps li::before {
+  content: counter(jd);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+
+/* Links inside the prose only — a .btn carries its own colour, and this rule
+   would otherwise paint blue text onto a blue button. */
+.jd__body a:not(.btn) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.jd__body a:not(.btn):hover { color: var(--accent-hover); }
+
+.jd__apply { margin: 34px 0 0; }
+
+@media (max-width: 1000px) {
+  .why-grid { grid-template-columns: minmax(0, 1fr); }
+  .jd { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .jd__head { position: static; }
+}
+
+/* The line under the roles heading: what is open now, what opens next, and
+   where to write either way. */
+.jobs__lede { max-width: 72ch; margin-top: 12px; }
+
+/* Apply sits with the title in the dialog, so the reader can act before
+   reading the whole thing. */
+.jd__apply { margin-top: 20px; }

@@ -1,0 +1,173 @@
+/* ==========================================================================
+   SimpleGrid — syncs (integrations) page
+
+   One card per integration category, each holding a grid of connector tiles.
+   Everything structural — cards, type, grid field, cursor, closing CTA — is
+   the shared language from v3.css; this file only adds the tile and the
+   category jump row.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------- hero */
+
+/* Same centred opening card as tools and about: 4 blocks tall, type centred
+   on the page's own column. */
+.sync-hero {
+  margin-top: var(--grid-cell);
+  padding-block: 48px;
+  min-height: calc(var(--grid-block) * 4);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.sync-hero__title {
+  font-family: var(--font-display);
+  font-size: 35px;
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 24ch;
+  margin: 0 0 20px;
+}
+
+.sync-hero__sub { max-width: 64ch; margin: 0; }
+/* The card centres its own content; the row centres the button inside it, so
+   a single CTA sits on the same axis as the headline above it. */
+.sync-hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+
+/* --------------------------------------------------------- category filter */
+
+/* The old page used a sticky <select> that scrolled the page; this is the pill
+   row the resources pages already use, filtering the sections in place. */
+.sync-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+
+.sync-chip {
+  height: 34px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  color: var(--fg-body);
+  white-space: nowrap;
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+.sync-chip:hover { background: var(--bg-highlight); color: var(--accent); }
+.sync-chip[aria-pressed='true'] { background: var(--accent); color: var(--sg-logo-white); }
+.sync-chip[aria-pressed='true']:hover { background: var(--accent-hover); color: var(--sg-logo-white); }
+
+/* A section carries its own margin, which outranks the browser's [hidden]
+   rule — without this, filtering would leave gaps where the sections were. */
+[data-sync-section][hidden] { display: none; }
+
+/* ---------------------------------------------------------------- section */
+
+/* The header sits above the tiles rather than beside them: the intro line is
+   one sentence, and a two-column head would leave it stranded. */
+.sync-head { max-width: 62ch; margin-bottom: 32px; }
+.sync-title { font-size: var(--fs-h5); color: var(--accent); margin-bottom: 10px; }
+.sync-intro { margin: 0; }
+
+/* Sections are anchor targets from the jump row; the sticky header would
+   otherwise sit on top of the heading it just scrolled to. */
+.sync-section { scroll-margin-top: 96px; }
+
+/* ------------------------------------------------------------------ tiles */
+
+.sync-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.sync-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+/* Only tiles that are links react to the pointer — a hover state on a plain
+   tile promises a destination that is not there. Give a tile an href and it
+   picks this up on its own. */
+a.sync-card:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
+
+/* The arrow says the whole tile is the target, not a "read more" inside it.
+   It nudges on hover so the pointer gets an answer before the page changes. */
+.sync-go {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: auto;
+  padding-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--accent);
+  transition: transform 200ms var(--ease);
+}
+a.sync-card:hover .sync-go { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .sync-go { transition: none; } }
+
+/* The mark keeps its own brand colours, so it needs a white ground of its own
+   even when the tile behind it tints on hover. */
+.sync-logo {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--sg-white);
+  overflow: hidden;
+}
+.sync-logo svg { width: 24px; height: 24px; display: block; }
+
+.sync-card__body { min-width: 0; }
+
+.sync-name {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--fg);
+  margin-bottom: 6px;
+}
+
+.sync-desc { font-size: var(--fs-sub); line-height: 1.6; color: var(--fg-body); }
+
+/* ------------------------------------------------------------ custom build */
+
+/* Dashed rather than solid: this is the tile that does not exist yet. */
+.sync-custom {
+  border-style: dashed;
+  border-color: var(--sg-blue-15);
+  background: var(--sg-blue-08);
+  text-align: center;
+}
+.sync-custom__title { font-size: var(--fs-h5); margin-bottom: 12px; }
+.sync-custom__text { max-width: 62ch; margin: 0 auto; }
+.sync-custom__text + .sync-custom__text { margin-top: 10px; }
+.sync-custom__mail { color: var(--accent); font-weight: 600; }
+.sync-custom__mail:hover { color: var(--accent-hover); text-decoration: underline; }
+
+@media (max-width: 1100px) {
+  .sync-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .sync-grid { grid-template-columns: minmax(0, 1fr); }
+  .sync-nav { width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .sync-nav::-webkit-scrollbar { display: none; }
+}

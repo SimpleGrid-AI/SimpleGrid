@@ -1,0 +1,180 @@
+/* ==========================================================================
+   SimpleGrid — grid field + custom cursor
+
+   The brand mark is a grid and the copy calls customers "a cell in one grid",
+   so the page sits on a real one. Two stacked gradient layers: fine cells,
+   with a heavier line every 6th so the field reads at both distances.
+
+   The field is viewport-fixed rather than painted on <body>. That keeps the
+   base layer and the cursor-lit layer locked to each other — a scrolling
+   base under a fixed highlight would drift apart vertically on every scroll.
+   ========================================================================== */
+
+:root {
+  --grid-cell:        16px;   /* Fine cell */
+  --grid-block:       96px;   /* Heavier line every 6 cells */
+
+  --grid-line-minor:  rgba(52, 86, 217, 0.03);
+  /* Carries at the same weight as the card edge, so where a container sits on
+     a major line the two read as one continuous rule. */
+  --grid-line-major:  rgba(52, 86, 217, 0.10);
+
+  /* The same lines at carrying strength, revealed only around the pointer */
+  --grid-lit-minor:   rgba(52, 86, 217, 0.14);
+  --grid-lit-major:   rgba(52, 86, 217, 0.30);
+  --grid-glow-radius: 220px;
+
+  /* Cursor — sizes taken from the reference, colours from our palette */
+  --cursor-dot:       11px;
+  --cursor-hover:     33px;
+}
+
+/* --------------------------------------------------------------------------
+   The field
+   -------------------------------------------------------------------------- */
+
+/* Horizontal alignment with the layout:
+   `background-position-x: calc(50% + <half a tile>)` puts a grid line exactly
+   on the viewport centre, so lines then fall every N cells either side of it.
+   A capped .container is centred too, and its card spans ±576px — which is
+   36 fine cells and 6 blocks — so the card edges land on grid lines. The wide
+   hero container spans ±672px: 42 cells, 7 blocks. Both are exact.
+
+   Below the cap the container is viewport-width and its edges depend on the
+   window size, so alignment is a desktop guarantee, not a universal one. */
+.grid-field,
+.grid-field__lit {
+  background-image:
+    linear-gradient(to right,  var(--line-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-minor) 1px, transparent 1px),
+    linear-gradient(to right,  var(--line-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-major) 1px, transparent 1px);
+  background-size:
+    var(--grid-cell)  var(--grid-cell),
+    var(--grid-cell)  var(--grid-cell),
+    var(--grid-block) var(--grid-block),
+    var(--grid-block) var(--grid-block);
+  background-position:
+    calc(50% + (var(--grid-cell)  / 2)) 0,
+    calc(50% + (var(--grid-cell)  / 2)) 0,
+    calc(50% + (var(--grid-block) / 2)) 0,
+    calc(50% + (var(--grid-block) / 2)) 0;
+}
+
+.grid-field {
+  --line-minor: var(--grid-line-minor);
+  --line-major: var(--grid-line-major);
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Brighter copy of the same lines, masked to a disc under the pointer.
+   Sits in the same fixed frame, so the two layers can never fall out of
+   register. js/cursor.js writes --mx / --my. */
+.grid-field__lit {
+  --line-minor: var(--grid-lit-minor);
+  --line-major: var(--grid-lit-major);
+  --mx: -1000px;
+  --my: -1000px;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  -webkit-mask-image: radial-gradient(circle var(--grid-glow-radius) at var(--mx) var(--my),
+                        rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 45%, transparent 72%);
+          mask-image: radial-gradient(circle var(--grid-glow-radius) at var(--mx) var(--my),
+                        rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 45%, transparent 72%);
+}
+
+.grid-field__lit[data-active='true'] { opacity: 1; }
+
+/* Page content sits above the field. The field only shows through the gaps
+   between sections and through the translucent hero panel. */
+main,
+.site-footer { position: relative; z-index: 1; }
+
+/* The hero panel is solid white like every other section — the field shows in
+   the gutters around it, not through it. */
+.hero { background-color: var(--sg-white); }
+
+/* --------------------------------------------------------------------------
+   Custom cursor
+   -------------------------------------------------------------------------- */
+
+/* Applied to <html> by js/cursor.js, and only once the replacement has
+   actually painted. If the script never runs, the native cursor is untouched. */
+.has-custom-cursor,
+.has-custom-cursor *,
+.has-custom-cursor *::before,
+.has-custom-cursor *::after {
+  cursor: none !important;
+}
+
+/* Fullscreen paints the fullscreen element alone on the top layer, so the
+   replacement cursor — a child of <body> — is not drawn at all. Without this
+   the pointer simply disappears over a maximised video. The native cursor
+   comes back for as long as anything is fullscreen. Prefixed selectors are
+   kept in rules of their own: one unknown selector would void the whole list. */
+:fullscreen,
+:fullscreen * { cursor: auto !important; }
+
+:-webkit-full-screen,
+:-webkit-full-screen * { cursor: auto !important; }
+
+/* Text entry keeps a real caret — losing it costs more than the effect adds. */
+.has-custom-cursor input,
+.has-custom-cursor textarea,
+.has-custom-cursor select,
+.has-custom-cursor [contenteditable] {
+  cursor: auto !important;
+}
+
+.sg-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-dot);
+  height: var(--cursor-dot);
+  margin-left: calc(var(--cursor-dot) / -2);
+  margin-top: calc(var(--cursor-dot) / -2);
+  border-radius: 1px;
+  background: var(--sg-eerie-black);
+  border: 1px solid transparent;
+  pointer-events: none;
+  z-index: 999999;
+  opacity: 0;
+  will-change: transform;
+  transform: translate(-100px, -100px);
+  transition:
+    width 0.15s ease, height 0.15s ease,
+    margin 0.15s ease, background-color 0.15s ease,
+    border-color 0.15s ease, border-radius 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.sg-cursor[data-visible='true'] { opacity: 1; }
+
+/* Over anything clickable the dot opens into a ring that reads as a grid cell */
+.sg-cursor[data-hover='true'] {
+  width: var(--cursor-hover);
+  height: var(--cursor-hover);
+  margin-left: calc(var(--cursor-hover) / -2);
+  margin-top: calc(var(--cursor-hover) / -2);
+  border-radius: 3px;
+  background: transparent;
+  border-color: var(--sg-blue-party);
+}
+
+/* Inverted over dark surfaces — the blue CTA band, an active case card */
+.sg-cursor[data-theme='light'] { background: var(--sg-logo-white); }
+.sg-cursor[data-theme='light'][data-hover='true'] {
+  background: transparent;
+  border-color: var(--sg-logo-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-cursor { transition: none; }
+  .grid-field__lit { transition: none; }
+}

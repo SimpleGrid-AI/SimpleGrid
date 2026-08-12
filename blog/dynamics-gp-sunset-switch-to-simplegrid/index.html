@@ -1,257 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>Dynamics GP Sunset: Switch to SimpleGrid | SimpleGrid Blog</title>
-<meta name="description" content="Microsoft Dynamics GP support ends Dec 2029, patches stop in 2031. Skip the 18-month Business Central rip-and-replace. Switch to SimpleGrid - your GP rules, regenerated as a modern ERP.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<!-- The post lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>Dynamics GP Sunset: Switch to SimpleGrid | SimpleGrid</title>
+<meta name="description" content="Dynamics GP support ends in 2029. Skip the 18-month Business Central rip-and-replace: your GP rules, regenerated as a modern ERP.">
 <link rel="canonical" href="https://simplegrid.ai/blog/dynamics-gp-sunset-switch-to-simplegrid/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Dynamics GP Sunset: Switch to SimpleGrid | SimpleGrid">
+<meta property="og:description" content="Dynamics GP support ends in 2029. Skip the 18-month Business Central rip-and-replace: your GP rules, regenerated as a modern ERP.">
 <meta property="og:url" content="https://simplegrid.ai/blog/dynamics-gp-sunset-switch-to-simplegrid/">
-<meta property="og:title" content="Dynamics GP Sunset: Switch to SimpleGrid">
-<meta property="og:description" content="Microsoft Dynamics GP support ends Dec 2029, patches stop in 2031. Skip the 18-month Business Central rip-and-replace. Switch to SimpleGrid - your GP rules, regenerated as a modern ERP.">
-<meta property="og:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
-<meta property="og:image:alt" content="Dynamics GP Sunset: Switch to SimpleGrid - SimpleGrid blog post">
-
-<!-- Twitter Card -->
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="Dynamics GP Sunset: Switch to SimpleGrid">
-<meta name="twitter:description" content="Microsoft Dynamics GP support ends Dec 2029, patches stop in 2031. Skip the 18-month Business Central rip-and-replace. Switch to SimpleGrid - your GP rules, regenerated as a modern ERP.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- JSON-LD: Article + BreadcrumbList (for crawlers that don't run JS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Dynamics GP Sunset: Switch to SimpleGrid",
-  "description": "Microsoft Dynamics GP support ends Dec 2029, patches stop in 2031. Skip the 18-month Business Central rip-and-replace. Switch to SimpleGrid - your GP rules, regenerated as a modern ERP.",
-  "image": "https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg",
-  "url": "https://simplegrid.ai/blog/dynamics-gp-sunset-switch-to-simplegrid/",
-  "mainEntityOfPage": "https://simplegrid.ai/blog/dynamics-gp-sunset-switch-to-simplegrid/",
-  "inLanguage": "en",
-  "isPartOf": { "@id": "https://simplegrid.ai/blog.html#blog" },
-  "publisher": { "@id": "https://simplegrid.ai/#org" },
-  "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-  "datePublished": "2026-05-26",
-  "dateModified": "2026-05-26"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simplegrid.ai/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "Dynamics GP Sunset: Switch to SimpleGrid", "item": "https://simplegrid.ai/blog/dynamics-gp-sunset-switch-to-simplegrid/" }
-  ]
-}
-</script>
-<script>
-  // Tells Nav to resolve root-relative paths with ../../ since this page is
-  // two levels deep, and tells blog-post.js which infographic to mount.
-  window.__SG_BLOG_ID__ = 18;
-  window.__SG_BLOG_ASSET_PREFIX__ = "../../";
-</script>
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="../../assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="../../assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- sg-static-chrome -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="blog"></div>
-<div class="nav-mobile" data-sg-mobile-menu hidden>
-  <nav class="nav-mobile-panel" aria-label="Mobile navigation">
-    <a href="../../index.html" class="nav-mobile-link">Home</a>
-    <a href="../../product.html" class="nav-mobile-link">Product</a>
-    <div class="nav-mobile-section">Resources</div>
-    <a href="../../tools/" class="nav-mobile-link nav-mobile-sub">Productive Tools</a>
-    <a href="../../case-studies.html" class="nav-mobile-link nav-mobile-sub">Case studies</a>
-    <a href="../../blog.html" class="nav-mobile-link nav-mobile-sub active">Blog</a>
-    <div class="nav-mobile-sep"></div>
-    <a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>
-  </nav>
-</div>
 
-<main id="main">
-<section class="post-header">
-  <div class="container-sm">
-    <a href="../../blog.html" style="font-size:15px;color:var(--sg-blue);text-decoration:none;border:none">← Back to blog</a>
-    <h1>Dynamics GP Sunset: Switch to SimpleGrid</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="2026-05-26">May 26, 2026</time>
-      <span>Industry Critique</span>
-      <span>6 min read</span>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= POST -->
+  <!-- Title block and prose share one card: they are one piece of
+       reading, and a seam between them read as two. -->
+  <section class="section">
+    <div class="container">
+      <div class="card post-card">
+        <header class="post-hero">
+          <p class="eyebrow">Industry Critique</p>
+          <h1 class="post-hero__title">Dynamics GP Sunset: Switch to SimpleGrid</h1>
+          <p class="post-meta">
+            <time datetime="2026-05-26">May 26, 2026</time>
+            <span class="post-meta__cat">Industry Critique</span>
+            <span>6 min</span>
+          </p>
+        </header>
+        <article class="post">
+          <p>If you run on Microsoft Dynamics GP, you already know the clock is ticking. Microsoft stopped selling new GP licenses to new customers in April 2025. They stop selling to existing customers in April 2026. Mainstream support ends December 2029. Security patches stop in 2031.</p>
+          <p>You have a deadline. What you do not have is a clean exit.</p>
+          <h2>The three paths your reseller will show you</h2>
+          <p><strong>Path 1: Migrate to Business Central.</strong> Microsoft's official upgrade story. In practice: a 12-to-18-month re-implementation. New chart of accounts model. New posting accounts. New inventory items. New SKU structure. New everything. Your GP customizations (Dexterity, Modifier, VBA, SmartList Builder, Integration Manager) do not come with you. You rebuild them as extensions, AL code, or Power Automate flows - which means you re-buy them from a consulting partner. Industry quotes start at $150K for a 50-user mid-market shop and climb fast from there.</p>
+          <p><strong>Path 2: Jump to a different vendor.</strong> NetSuite, Acumatica, Sage Intacct, Epicor. Same problem, different label. Each one is a full re-implementation. Each one charges per user, per module, per customization. Each one tells you to adopt their "best practices" and pay to fit the parts that do not match. (We wrote about that <a href="/blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/">here</a>.)</p>
+          <p><strong>Path 3: Stay on GP forever.</strong> Run unsupported. Pray your SQL Server upgrade does not break Dexterity. Pray your auditor signs off on an unpatched system after 2029. Pray your next CFO does not flag it as a material risk.</p>
+          <p>None of those is a good answer.</p>
+          <h2>What actually goes wrong with the "official" migration</h2>
+          <p>GP customers are not running stock GP. After 10-20 years on the platform, every shop has:</p>
+          <ul>
+          <li>Custom Dexterity windows for shop-floor entry that nobody wants to give up.</li>
+          <li>A web of SmartList Builder queries that finance lives in.</li>
+          <li>Integration Manager scripts moving data in from EDI, the bank, the e-commerce site.</li>
+          <li>VBA scripts on critical forms (PO Entry, SOP Entry, Receivings Transaction Entry) that enforce business rules nobody documented.</li>
+          <li>A homegrown reporting layer (Crystal, SSRS, Excel pivot books) that pulls directly from GP tables.</li>
+          </ul>
+          <p>That stack is not "data." That is twenty years of accumulated business logic. The "migrate to Business Central" path treats it as something to throw away and rebuild from a blank slate. That is where the 18-month timeline and six-figure invoice come from.</p>
+          <h2>SimpleGrid's approach: keep the rules, replace the platform</h2>
+          <p>SimpleGrid does not sell you modules. We write an <strong>SG Schema</strong> for your business - a complete operational blueprint of every entity, state, rule, and event in your operation - and SG Engine regenerates the ERP from it. (Deep-dive on that architecture <a href="/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">here</a>.)</p>
+          <p>For a GP migration, that means we do not start from a template. We start from your actual GP system:</p>
+          <ul>
+          <li>Read your GP tables (RM, PM, SOP, POP, IV, GL, BR) to extract the entities you actually use.</li>
+          <li>Read your Dexterity / VBA / SmartList logic to extract the rules you actually run on.</li>
+          <li>Write those entities and rules into your SG Schema, in your language - your item categories, your approval chains, your three-way-match tolerances, your costing method, your GL mapping.</li>
+          <li>SG Engine reads the schema and generates the forms, workflows, validations, dashboards, and APIs.</li>
+          </ul>
+          <p>Your custom PO entry screen comes across as a form definition. Your VBA validation comes across as a rule. Your SmartList query comes across as a view. None of it is "thrown away and rebuilt." It is <em>specified</em>, not templated.</p>
+          <h2>What we migrate (and what we leave behind)</h2>
+          <p><strong>Migrated across:</strong></p>
+          <ul>
+          <li><strong>Master data</strong> - customers, vendors, items, BOMs, chart of accounts, employees, tax codes, sites/warehouses.</li>
+          <li><strong>Open transactions</strong> - open POs, open SOs, open invoices (AR), open bills (AP), open work orders, on-hand inventory by site/bin.</li>
+          <li><strong>Historical balances</strong> - trial balance at cutover, year-to-date P&amp;L, AR/AP aging buckets.</li>
+          <li><strong>Transaction history</strong> - optional. Most clients pull 3-5 years of posted transactions into a read-only history table for audit and reporting.</li>
+          <li><strong>Business rules</strong> - approval chains, posting rules, validation logic, allocation rules, costing method.</li>
+          </ul>
+          <p><strong>Left behind:</strong></p>
+          <ul>
+          <li>The GP UI itself (replaced by a modern web app your warehouse manager can actually use - see <a href="/blog/why-your-warehouse-manager-should-be-your-erp-s-first-user/">our take on adoption</a>).</li>
+          <li>Dexterity, VBA, Modifier - replaced by SG Schema rules.</li>
+          <li>SmartList Builder - replaced by Hank, our AI agent that answers operational questions against the events ledger.</li>
+          <li>Integration Manager - replaced by SimpleGrid's connector layer.</li>
+          <li>Crystal / SSRS reports - replaced by SG Engine dashboards and the events ledger.</li>
+          </ul>
+          <h2>Timeline and cost, plainly</h2>
+          <p>A typical GP-to-SimpleGrid migration for a 30-100-user mid-market manufacturer or distributor:</p>
+          <ul>
+          <li><strong>Weeks 1-2:</strong> SG Schema drafting from your GP tables, customizations, and interviews with operators.</li>
+          <li><strong>Weeks 3-6:</strong> SG Engine generates the system. You walk through it. We tighten the rules. No "scope change orders." Schema edits regenerate in minutes.</li>
+          <li><strong>Weeks 7-10:</strong> Parallel run. GP and SimpleGrid live at the same time. Reconcile daily.</li>
+          <li><strong>Week 11-12:</strong> Cutover. GP becomes read-only history. SimpleGrid takes over.</li>
+          </ul>
+          <p>That is 12 weeks, not 18 months. And the SimpleGrid commercial model is "paid for if it works" - which means we carry the build risk, not you. (More on that in our <a href="pricing.html">pricing</a>.)</p>
+          <h2>Why the timing matters now, not in 2029</h2>
+          <p>Two reasons you do not want to wait for the 2029 support cliff:</p>
+          <p><strong>1. Migration partner capacity.</strong> Every GP customer is going to start looking at this at the same time. By 2028 the consulting market for Business Central migrations will be price-gouging. Move while the market is calm.</p>
+          <p><strong>2. Audit risk.</strong> Most auditors will start writing material-weakness comments on unsupported financial systems 12-18 months before the support end date. That is mid-2028 for GP. If your fiscal year ends December and you are still on GP in calendar 2029, expect questions.</p>
+          <h2>What to do this week</h2>
+          <ol>
+          <li>Pull your GP version, user count, and a list of every customization (Dexterity, VBA, Modifier, SmartList, Integration Manager).</li>
+          <li>Make a list of the five GP screens your team uses most. Those are your "must-not-lose" workflows.</li>
+          <li>Book 30 minutes with us. We will read your customization list back to you as an SG Schema sketch - so you can see, concretely, what "regenerated" means.</li>
+          </ol>
+          <p>You do not have to spend $200K and 18 months to get off GP. You can keep your rules. You can keep your language. You just need a platform that treats them as the spec - not as a customization invoice.</p>
+          <!-- Prev/Next -->
+          <div class="post-pager">
+          <a class="post-pager-link" href="/blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/">← The Myth of ERP Best Practices</a>
+          <span></span>
+          </div>
+          <div class="post-foot">
+            <a class="post-foot__back" href="blogs.html">&larr; All posts</a>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="post-content">
-<p class="post-lead"><strong>Key takeaway: Microsoft is sunsetting Dynamics GP, and GP shops need a migration path before support ends. SimpleGrid builds a custom replacement modeled on your operation and deploys it in 7 to 21 days, paid only after it runs on your floor.</strong></p>
-  <div class="container-sm">
-    <p>If you run on Microsoft Dynamics GP, you already know the clock is ticking. Microsoft stopped selling new GP licenses to new customers in April 2025. They stop selling to existing customers in April 2026. Mainstream support ends December 2029. Security patches stop in 2031.</p>
-    <p>You have a deadline. What you do not have is a clean exit.</p>
-
-    <h2>The three paths your reseller will show you</h2>
-    <p><strong>Path 1: Migrate to Business Central.</strong> Microsoft's official upgrade story. In practice: a 12-to-18-month re-implementation. New chart of accounts model. New posting accounts. New inventory items. New SKU structure. New everything. Your GP customizations (Dexterity, Modifier, VBA, SmartList Builder, Integration Manager) do not come with you. You rebuild them as extensions, AL code, or Power Automate flows - which means you re-buy them from a consulting partner. Industry quotes start at $150K for a 50-user mid-market shop and climb fast from there.</p>
-    <p><strong>Path 2: Jump to a different vendor.</strong> NetSuite, Acumatica, Sage Intacct, Epicor. Same problem, different label. Each one is a full re-implementation. Each one charges per user, per module, per customization. Each one tells you to adopt their "best practices" and pay to fit the parts that do not match. (We wrote about that <a href="/blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/">here</a>.)</p>
-    <p><strong>Path 3: Stay on GP forever.</strong> Run unsupported. Pray your SQL Server upgrade does not break Dexterity. Pray your auditor signs off on an unpatched system after 2029. Pray your next CFO does not flag it as a material risk.</p>
-    <p>None of those is a good answer.</p>
-
-    <h2>What actually goes wrong with the "official" migration</h2>
-    <p>GP customers are not running stock GP. After 10-20 years on the platform, every shop has:</p>
-    <ul>
-      <li>Custom Dexterity windows for shop-floor entry that nobody wants to give up.</li>
-      <li>A web of SmartList Builder queries that finance lives in.</li>
-      <li>Integration Manager scripts moving data in from EDI, the bank, the e-commerce site.</li>
-      <li>VBA scripts on critical forms (PO Entry, SOP Entry, Receivings Transaction Entry) that enforce business rules nobody documented.</li>
-      <li>A homegrown reporting layer (Crystal, SSRS, Excel pivot books) that pulls directly from GP tables.</li>
-    </ul>
-    <p>That stack is not "data." That is twenty years of accumulated business logic. The "migrate to Business Central" path treats it as something to throw away and rebuild from a blank slate. That is where the 18-month timeline and six-figure invoice come from.</p>
-
-    <h2>SimpleGrid's approach: keep the rules, replace the platform</h2>
-    <p>SimpleGrid does not sell you modules. We write an <strong>SG Schema</strong> for your business - a complete operational blueprint of every entity, state, rule, and event in your operation - and SG Engine regenerates the ERP from it. (Deep-dive on that architecture <a href="/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">here</a>.)</p>
-    <p>For a GP migration, that means we do not start from a template. We start from your actual GP system:</p>
-    <ul>
-      <li>Read your GP tables (RM, PM, SOP, POP, IV, GL, BR) to extract the entities you actually use.</li>
-      <li>Read your Dexterity / VBA / SmartList logic to extract the rules you actually run on.</li>
-      <li>Write those entities and rules into your SG Schema, in your language - your item categories, your approval chains, your three-way-match tolerances, your costing method, your GL mapping.</li>
-      <li>SG Engine reads the schema and generates the forms, workflows, validations, dashboards, and APIs.</li>
-    </ul>
-    <p>Your custom PO entry screen comes across as a form definition. Your VBA validation comes across as a rule. Your SmartList query comes across as a view. None of it is "thrown away and rebuilt." It is <em>specified</em>, not templated.</p>
-
-    <h2>What we migrate (and what we leave behind)</h2>
-    <p><strong>Migrated across:</strong></p>
-    <ul>
-      <li><strong>Master data</strong> - customers, vendors, items, BOMs, chart of accounts, employees, tax codes, sites/warehouses.</li>
-      <li><strong>Open transactions</strong> - open POs, open SOs, open invoices (AR), open bills (AP), open work orders, on-hand inventory by site/bin.</li>
-      <li><strong>Historical balances</strong> - trial balance at cutover, year-to-date P&amp;L, AR/AP aging buckets.</li>
-      <li><strong>Transaction history</strong> - optional. Most clients pull 3-5 years of posted transactions into a read-only history table for audit and reporting.</li>
-      <li><strong>Business rules</strong> - approval chains, posting rules, validation logic, allocation rules, costing method.</li>
-    </ul>
-    <p><strong>Left behind:</strong></p>
-    <ul>
-      <li>The GP UI itself (replaced by a modern web app your warehouse manager can actually use - see <a href="/blog/why-your-warehouse-manager-should-be-your-erp-s-first-user/">our take on adoption</a>).</li>
-      <li>Dexterity, VBA, Modifier - replaced by SG Schema rules.</li>
-      <li>SmartList Builder - replaced by Hank, our AI agent that answers operational questions against the events ledger.</li>
-      <li>Integration Manager - replaced by SimpleGrid's connector layer.</li>
-      <li>Crystal / SSRS reports - replaced by SG Engine dashboards and the events ledger.</li>
-    </ul>
-
-    <h2>Timeline and cost, plainly</h2>
-    <p>A typical GP-to-SimpleGrid migration for a 30-100-user mid-market manufacturer or distributor:</p>
-    <ul>
-      <li><strong>Weeks 1-2:</strong> SG Schema drafting from your GP tables, customizations, and interviews with operators.</li>
-      <li><strong>Weeks 3-6:</strong> SG Engine generates the system. You walk through it. We tighten the rules. No "scope change orders." Schema edits regenerate in minutes.</li>
-      <li><strong>Weeks 7-10:</strong> Parallel run. GP and SimpleGrid live at the same time. Reconcile daily.</li>
-      <li><strong>Week 11-12:</strong> Cutover. GP becomes read-only history. SimpleGrid takes over.</li>
-    </ul>
-    <p>That is 12 weeks, not 18 months. And the SimpleGrid commercial model is "paid for if it works" - which means we carry the build risk, not you. (More on that in our <a href="../../pricing.html">pricing</a>.)</p>
-
-    <h2>Why the timing matters now, not in 2029</h2>
-    <p>Two reasons you do not want to wait for the 2029 support cliff:</p>
-    <p><strong>1. Migration partner capacity.</strong> Every GP customer is going to start looking at this at the same time. By 2028 the consulting market for Business Central migrations will be price-gouging. Move while the market is calm.</p>
-    <p><strong>2. Audit risk.</strong> Most auditors will start writing material-weakness comments on unsupported financial systems 12-18 months before the support end date. That is mid-2028 for GP. If your fiscal year ends December and you are still on GP in calendar 2029, expect questions.</p>
-
-    <h2>What to do this week</h2>
-    <ol>
-      <li>Pull your GP version, user count, and a list of every customization (Dexterity, VBA, Modifier, SmartList, Integration Manager).</li>
-      <li>Make a list of the five GP screens your team uses most. Those are your "must-not-lose" workflows.</li>
-      <li>Book 30 minutes with us. We will read your customization list back to you as an SG Schema sketch - so you can see, concretely, what "regenerated" means.</li>
-    </ol>
-    <p>You do not have to spend $200K and 18 months to get off GP. You can keep your rules. You can keep your language. You just need a platform that treats them as the spec - not as a customization invoice.</p>
-
-    <!-- Prev/Next -->
-    <div class="post-pager">
-      <a class="post-pager-link" href="/blog/the-myth-of-erp-best-practices-your-operation-is-not-generic/">← The Myth of ERP Best Practices</a>
-      <span></span>
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">Off GP without losing your rules.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">Send us your GP version and your customization list. SimpleGrid reads it back as an SG Schema sketch - your Dexterity windows, your VBA rules, your SmartList queries, regenerated, not rebuilt. Twelve weeks, not eighteen months.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<sg-footer></sg-footer>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script>
-(function(){
-  // Top nav (burger + Resources dropdown) is handled by components/site-nav.js.
-  // Lazy-load React + PostInfographics only if there's an infographic on the page.
-  var mounts = document.querySelectorAll('[id^="root-infographic-"]');
-  if (!mounts.length) return;
-  var loaded = false;
-  function loadOnce(){
-    if (loaded) return;
-    loaded = true;
-    function add(src, cb){
-      var s = document.createElement('script');
-      s.src = src; s.async = false; var SRI={'https://unpkg.com/react@18.3.1/umd/react.production.min.js':'sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z','https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js':'sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1'};if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous';} s.onload = cb; document.head.appendChild(s);
-    }
-    add('https://unpkg.com/react@18.3.1/umd/react.production.min.js', function(){
-      add('https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js', function(){
-        add('../../components/PostInfographics.js', function(){
-          var id = window.__SG_BLOG_ID__;
-          var pi = id && window.PostInfographics && window.PostInfographics[id];
-          if (!pi) return;
-          mounts.forEach(function(el){
-            var which = el.id === 'root-infographic-mid' ? pi.mid : pi.end;
-            if (which) ReactDOM.createRoot(el).render(which);
-          });
-        });
-      });
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting) { loadOnce(); io.disconnect(); } });
-    }, { rootMargin: '600px 0px' });
-    mounts.forEach(function(m){ io.observe(m); });
-  } else {
-    loadOnce();
-  }
-})();
-</script>
-<script src="../../components/blog-post-chrome.js" defer></script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/post.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

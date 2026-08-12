@@ -1,0 +1,161 @@
+/* ==========================================================================
+   SimpleGrid Design Tokens
+   Source of truth: SimpleGrid Brand Guidelines 2026 (final guidelines.pdf)
+   Do not add colours outside this palette. Do not add typefaces.
+   ========================================================================== */
+
+:root {
+  /* ----- CORE PALETTE (guidelines p.007) ----- */
+  --sg-eerie-black:  #1A1A1A;  /* Core. Headings, primary text, logo on light */
+  --sg-blue-party:   #3456D9;  /* Core. CTAs, links, accent words, active states */
+  --sg-titan-white:  #EBF0FF;  /* Highlight fills, callouts, tinted surfaces */
+  --sg-pale-white:   #FAFBFC;  /* Page background */
+
+  /* ----- LOGO COLOURS (guidelines p.005) ----- */
+  --sg-logo-white:   #FAFAFA;  /* Logo on dark backgrounds */
+  --sg-logo-black:   #111111;  /* Logo on light backgrounds */
+
+  /* ----- DERIVED NEUTRALS -----
+     Tints/shades of the core palette only. No new hues. */
+  --sg-white:        #FFFFFF;
+  --sg-ink-70:       rgba(26, 26, 26, 0.70);  /* Body copy */
+  --sg-ink-55:       rgba(26, 26, 26, 0.55);  /* Muted copy, captions */
+  --sg-ink-40:       rgba(26, 26, 26, 0.40);  /* Disabled, watermarks */
+  --sg-line:         rgba(26, 26, 26, 0.10);  /* Card borders, dividers */
+  --sg-line-soft:    rgba(26, 26, 26, 0.06);  /* Inner hairlines */
+  --sg-titan-light:  #F0F4FF;  /* Titan White lifted toward white — for large
+                                  fills where the full tint is too heavy */
+  --sg-blue-press:   #2A46B8;  /* Blue Party, pressed/hover */
+  --sg-blue-15:      rgba(52, 86, 217, 0.15);
+  --sg-blue-08:      rgba(52, 86, 217, 0.08);
+
+  /* ----- SECONDARY GRADIENTS (guidelines p.008) -----
+     Background imagery for core marketing graphics only. */
+  --sg-grad-deep:    linear-gradient(180deg, #1A2E8C 0%, #3456D9 55%, #7C97F0 100%);
+  --sg-grad-soft:    linear-gradient(180deg, #DDE5FF 0%, #FAFBFC 100%);
+  --sg-grad-glow:    radial-gradient(circle at 50% 50%, rgba(52, 86, 217, 0.18) 0%, rgba(52, 86, 217, 0) 70%);
+  --sg-grad-cta:     linear-gradient(135deg, #3456D9 0%, #2A46B8 100%);
+
+  /* ----- SEMANTIC TOKENS ----- */
+  --bg:              var(--sg-pale-white);
+  --bg-card:         var(--sg-white);
+  --bg-highlight:    var(--sg-titan-white);
+  --bg-highlight-soft: var(--sg-titan-light);
+  --fg:              var(--sg-eerie-black);
+  --fg-body:         var(--sg-ink-70);
+  --fg-muted:        var(--sg-ink-55);
+  --fg-on-dark:      var(--sg-logo-white);
+  --accent:          var(--sg-blue-party);
+  --accent-hover:    var(--sg-blue-press);
+  --border:          var(--sg-line);
+  /* Section cards land exactly on the field's major lines, so their edge is
+     drawn in the same blue and reads as that line continuing through the
+     card rather than as a separate grey rule. */
+  --card-border:     rgba(52, 86, 217, 0.16);
+
+  /* ----- TYPEFACES (guidelines p.010–012) -----
+     Primary   Merriweather   display + headings
+     Secondary Albert Sans    titles + body + UI
+     Tertiary  IBM Plex Mono  subtexts, eyebrows, metadata */
+  --font-display: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --font-body:    'Albert Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono:    'IBM Plex Mono', Consolas, 'SF Mono', monospace;
+
+  /* ----- TYPE SCALE (guidelines p.013) -----
+     Display 64 · Title 28 · Heading 64/28 · Body 28/20 · Subtext 12
+     All headings set at 120% leading per spec. Body copy relaxes to 155%
+     for multi-line readability; the 120% figure in the spec is a specimen
+     measurement taken on single-line samples. */
+  /* Merriweather — headings */
+  --fs-h1:        64px;
+  --fs-h2:        48px;
+  --fs-h3:        35px;
+  --fs-h5:        28px;  /* "Title 28" in the spec — the step between 35 and 20 */
+  --fs-h6:        20px;
+
+  /* Albert Sans — body and UI */
+  --fs-body:      14px;
+
+  /* IBM Plex Mono — eyebrows, metadata, captions */
+  --fs-sub:       12px;
+
+  --lh-tight:     1.2;   /* 120% — headings, per spec */
+  --lh-body:      1.55;
+  --tracking-sub: 0.08em;
+
+  /* ----- LAYOUT ----- */
+  --container:      1200px;  /* Standard section width */
+  --container-wide: 1584px;  /* Hero only — breaks out past the other sections.
+                                Sized so the hero card's half-width is 768px:
+                                48 cells and exactly 8 blocks, which is what
+                                lands its edges on major grid lines. Any change
+                                here must keep (value - 2*gutter) / 2 a whole
+                                multiple of --grid-block. */
+  --gutter:         24px;
+  --card-radius:    0;       /* Section boxes sit square */
+  --radius:         0;       /* Everything inside them too — tiles, buttons,
+                                chat rows, controls. One value squares or
+                                softens the whole page. */
+  --card-pad:       88px;
+  --section-gap:    24px;
+
+  /* ----- MOTION ----- */
+  --ease:         cubic-bezier(0.22, 1, 0.36, 1);
+  --dur:          520ms;
+}
+
+/* Guidelines set the mobile size for the primary typeface at 48px.
+   Body and subtext hold at 14/12 across breakpoints. */
+@media (max-width: 900px) {
+  :root {
+    --fs-h1:    48px;
+    --fs-h2:    34px;
+    --fs-h3:    26px;
+    --fs-h5:    22px;
+    --fs-h6:    18px;
+    --card-pad: 36px;
+    --gutter:   16px;
+  }
+}
+
+/* Below 480px, 48px overflows a serif headline. Step down rather than clip. */
+@media (max-width: 480px) {
+  :root {
+    --fs-h1:    38px;
+    --fs-h2:    28px;
+    --fs-h3:    24px;
+    --fs-h5:    20px;
+    --card-pad: 26px;
+  }
+
+/* --------------------------------------------------------------- carried over
+
+   The tools, calculators and blog carry markup written against the previous
+   site's token names. Those names had no definition here, so every colour and
+   face they asked for resolved to nothing: status figures lost their green and
+   red, muted text fell back to body ink, and the questionnaire's selected
+   state had no tint at all. Mapped onto the v3 palette rather than rewritten
+   across a hundred files.
+   -------------------------------------------------------------------------- */
+
+  --fg1: var(--fg);
+  --fg2: var(--fg-body);
+  --fg3: var(--fg-muted);
+
+  --sg-blue: var(--accent);
+  --sg-blue-dark: var(--accent-hover);
+  --sg-blue-light: var(--sg-blue-08);
+  --sg-off-white: var(--sg-pale-white);
+
+  --font-heading: var(--font-body);
+
+  /* Status colours have no equivalent in the v3 palette; these are the values
+     the calculators were built against, kept at their AA-safe variants. */
+  --sg-green: #10B981;
+  --sg-green-dark: #047857;
+  --sg-red: #EF4444;
+  --sg-red-dark: #B91C1C;
+  --sg-gold: #F59E0B;
+  --sg-gold-dark: #B45309;
+}
+

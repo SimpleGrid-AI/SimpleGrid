@@ -1,0 +1,266 @@
+/* ==========================================================================
+   SimpleGrid — case study pages
+
+   One customer, told in order: the numbers, the background, what was built,
+   the floor it runs on, and what changed. Cards, type and colour are the
+   shared system; the stat strip, the stage list and the before/after table
+   are particular to these pages.
+   ========================================================================== */
+
+.case-hero { margin-top: var(--grid-cell); }
+
+.case-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 26ch;
+  margin: 0 0 20px;
+}
+
+.case-hero__sub { max-width: 74ch; margin-bottom: 40px; }
+
+/* The four numbers, across the foot of the hero. */
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.case-stat__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 8px;
+}
+.case-stat__value {
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------------- prose */
+
+.case-title { font-size: var(--fs-h2); color: var(--accent); margin-bottom: 20px; text-wrap: balance; }
+.case-body { max-width: 74ch; }
+.case-body p + p { margin-top: 16px; }
+
+/* ------------------------------------------------------------- the flow */
+
+/* Nineteen stations down one rail — the operation as it actually runs, which
+   is the thing SimpleGrid was modeled around. */
+.flow { position: relative; display: grid; gap: 0; margin-top: 36px; }
+.flow::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 19px;
+  width: 1px;
+  background: var(--sg-line-soft);
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 18px;
+  padding: 14px 0;
+}
+
+.stage__key {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  background: var(--bg-highlight-soft);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+/* The QC gates are the ones that stop work, so they carry the weight. */
+.stage--gate .stage__key { background: var(--accent); color: var(--sg-logo-white); }
+
+.stage__name {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+.stage__note { font-size: var(--fs-sub); line-height: 1.6; color: var(--fg-body); margin: 0; }
+.stage__pricing {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 9px;
+  border-radius: var(--radius);
+  background: var(--bg-highlight-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-sub);
+  color: var(--fg-body);
+}
+
+/* ------------------------------------------------------------- the rules */
+
+.rules { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 10px; max-width: 74ch; }
+.rules li {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  font-size: var(--fs-sub);
+  line-height: 1.6;
+  color: var(--fg-body);
+}
+
+/* --------------------------------------------------------- before/after */
+
+.ba { width: 100%; border-collapse: collapse; margin-top: 28px; }
+.ba th, .ba td { padding: 16px 18px; text-align: left; vertical-align: top; font-size: var(--fs-sub); }
+.ba thead th {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--fg);
+  border-bottom: 1px solid var(--border);
+}
+.ba thead th:first-child { color: var(--fg-muted); }
+.ba thead th:last-child { color: var(--accent); }
+.ba tbody td { color: var(--fg-body); line-height: 1.6; }
+.ba tbody td:first-child { color: var(--fg-muted); }
+.ba tbody td:last-child { background: var(--bg-highlight-soft); }
+.ba tbody td strong { color: var(--fg); }
+.ba tbody tr + tr td { border-top: 1px solid var(--sg-line-soft); }
+
+/* ------------------------------------------------------------ the video */
+
+.case-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-top: 28px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: #000;
+}
+.case-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---------------------------------------------------------- the speaker */
+
+.case-quote { max-width: 62ch; margin: 0 auto; text-align: center; }
+.case-quote blockquote {
+  font-family: var(--font-display);
+  font-size: var(--fs-h5);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin: 0 0 20px;
+}
+.case-quote figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: var(--fg-muted);
+}
+
+/* --------------------------------------------------------- the last line */
+
+.case-close { text-align: center; }
+.case-close__line {
+  font-size: var(--fs-h3);
+  color: var(--accent);
+  max-width: 24ch;
+  margin: 0 auto 24px;
+  text-wrap: balance;
+}
+.case-close__next { margin-top: 22px; font-size: var(--fs-sub); }
+
+@media (max-width: 900px) {
+  .case-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 16px; }
+  .stage { grid-template-columns: 32px minmax(0, 1fr); gap: 14px; }
+  .stage__key { width: 32px; height: 32px; font-size: 9px; }
+  .flow::before { left: 15px; }
+  .ba th, .ba td { padding: 12px 10px; }
+}
+
+/* ---------------------------------------------------------- the network */
+
+/* Hub and spokes: one central warehouse, thirty places stock actually sits.
+   Static — the point is the count and the spread, not motion. */
+.network { max-width: 800px; margin: 32px auto 0; }
+.network svg { width: 100%; height: auto; }
+
+.network .hub-glow { fill: url(#hubGlow); }
+.network .spoke { stroke-width: 1; opacity: 0.4; }
+.network .node--worker { stroke: var(--accent); fill: var(--accent); }
+.network .node--logistics { stroke: #F0A32F; fill: #F0A32F; }
+.network .node--house { stroke: #7C3AED; fill: #7C3AED; }
+.network .node { stroke: none; }
+
+.network .hub { fill: var(--bg-card); stroke: var(--accent); stroke-width: 2.5; }
+.network .hub-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  fill: var(--fg);
+  text-anchor: middle;
+}
+.network .network-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-sub);
+  fill: var(--fg-muted);
+  text-anchor: middle;
+}
+.network .legend text { font-family: var(--font-body); font-size: 12px; fill: var(--fg-body); }
+
+/* ------------------------------------------------------------- the road */
+
+/* The whole run as one strip: nineteen stops from sales order to container,
+   with the four QC gates sitting proud. The detail is in the list under it —
+   this is the shape of the operation at a glance. */
+.road { max-width: 800px; margin: 32px auto 8px; }
+.road svg { width: 100%; height: auto; }
+
+.road .rail { stroke: var(--sg-line-soft); stroke-width: 2; }
+.road .stop { stroke: var(--bg-card); stroke-width: 3; }
+.road .stop--flow { fill: var(--accent); }
+.road .stop--plan { fill: #7C3AED; }
+.road .stop--stock { fill: #2F9BF0; }
+.road .stop--make { fill: #1F9E60; }
+.road .stop--contract { fill: #F0A32F; }
+/* The gates are the ones that stop work, so they are the largest and darkest. */
+.road .stop--gate { fill: #D8434F; }
+
+.road .stop__code {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  fill: var(--fg-muted);
+  text-anchor: middle;
+}
+.road .road__end {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-sub);
+  fill: var(--fg-muted);
+}
+.road .legend text { font-family: var(--font-body); font-size: 11px; fill: var(--fg-body); }

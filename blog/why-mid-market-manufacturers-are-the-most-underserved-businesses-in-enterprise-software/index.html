@@ -1,213 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>Why Mid-Market Manufacturers Are Underserved | SimpleGrid Blog</title>
-<meta name="description" content="Too big for spreadsheets. Too small for SAP. The mid-market manufacturer has been the ERP industry&#39;s blind spot for 20 years. Here is what fixes it.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<!-- The post lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>Why Mid-Market Manufacturers Are Underserved | SimpleGrid</title>
+<meta name="description" content="Too big for spreadsheets. Too small for SAP. The mid-market manufacturer has been the ERP industry&#39;s blind spot for 20 years. Here is what fixes it.">
 <link rel="canonical" href="https://simplegrid.ai/blog/why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta property="og:url" content="https://simplegrid.ai/blog/why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software/">
-<meta property="og:title" content="Why Mid-Market Manufacturers Are Underserved">
+<meta property="og:title" content="Why Mid-Market Manufacturers Are Underserved | SimpleGrid">
 <meta property="og:description" content="Too big for spreadsheets. Too small for SAP. The mid-market manufacturer has been the ERP industry&#39;s blind spot for 20 years. Here is what fixes it.">
-<meta property="og:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
-<meta property="og:image:alt" content="Why Mid-Market Manufacturers Are Underserved - SimpleGrid blog post">
-
-<!-- Twitter Card -->
+<meta property="og:url" content="https://simplegrid.ai/blog/why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software/">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="Why Mid-Market Manufacturers Are Underserved">
-<meta name="twitter:description" content="Too big for spreadsheets. Too small for SAP. The mid-market manufacturer has been the ERP industry&#39;s blind spot for 20 years. Here is what fixes it.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- JSON-LD: Article + BreadcrumbList (for crawlers that don't run JS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Why Mid-Market Manufacturers Are Underserved",
-  "description": "Too big for spreadsheets. Too small for SAP. The mid-market manufacturer has been the ERP industry&#39;s blind spot for 20 years. Here is what fixes it.",
-  "image": "https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg",
-  "url": "https://simplegrid.ai/blog/why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software/",
-  "mainEntityOfPage": "https://simplegrid.ai/blog/why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software/",
-  "inLanguage": "en",
-  "isPartOf": { "@id": "https://simplegrid.ai/blog.html#blog" },
-  "publisher": { "@id": "https://simplegrid.ai/#org" },
-  "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-  "datePublished": "2026-04-29",
-  "dateModified": "2026-04-29"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simplegrid.ai/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "Why Mid-Market Manufacturers Are Underserved", "item": "https://simplegrid.ai/blog/why-mid-market-manufacturers-are-the-most-underserved-businesses-in-enterprise-software/" }
-  ]
-}
-</script>
-<script>
-  // Tells Nav to resolve root-relative paths with ../../ since this page is
-  // two levels deep, and tells blog-post.js which infographic to mount.
-  window.__SG_BLOG_ID__ = 11;
-  window.__SG_BLOG_ASSET_PREFIX__ = "../../";
-</script>
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="../../assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="../../assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- sg-static-chrome -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="blog"></div>
-<div class="nav-mobile" data-sg-mobile-menu hidden>
-  <nav class="nav-mobile-panel" aria-label="Mobile navigation">
-    <a href="../../index.html" class="nav-mobile-link">Home</a>
-    <a href="../../product.html" class="nav-mobile-link">Product</a>
-    <div class="nav-mobile-section">Resources</div>
-    <a href="../../tools/" class="nav-mobile-link nav-mobile-sub">Productive Tools</a>
-    <a href="../../case-studies.html" class="nav-mobile-link nav-mobile-sub">Case studies</a>
-    <a href="../../blog.html" class="nav-mobile-link nav-mobile-sub active">Blog</a>
-    <div class="nav-mobile-sep"></div>
-    <a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>
-  </nav>
-</div>
 
-<main id="main">
-<section class="post-header">
-  <div class="container-sm">
-    <a href="../../blog.html" style="font-size:15px;color:var(--sg-blue);text-decoration:none;border:none">← Back to blog</a>
-    <h1>Why Mid-Market Manufacturers Are Underserved</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="2026-04-29">Apr 29, 2026</time>
-      <span>Industry Critique</span>
-      <span>5 min read</span>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= POST -->
+  <!-- Title block and prose share one card: they are one piece of
+       reading, and a seam between them read as two. -->
+  <section class="section">
+    <div class="container">
+      <div class="card post-card">
+        <header class="post-hero">
+          <p class="eyebrow">Industry Critique</p>
+          <h1 class="post-hero__title">Why Mid-Market Manufacturers Are Underserved</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-29">Apr 29, 2026</time>
+            <span class="post-meta__cat">Industry Critique</span>
+            <span>5 min</span>
+          </p>
+        </header>
+        <article class="post">
+          <p>If you run a manufacturing business with 50 to 1,500 employees, you are in the worst possible position when it comes to enterprise software.</p>
+          <p>Too big for spreadsheets. Too small for SAP. Too complex for off-the-shelf SaaS tools. Too lean to hire an IT department that customizes something in-house.</p>
+          <p>You are the mid-market manufacturer. And the entire ERP industry has decided you are not worth solving for.</p>
+          <p>The gap</p>
+          <p>On one end: SAP, Oracle, Infor. Built for the Fortune 500. 18-month deployments. $500K minimum. Consulting armies. Change orders that cost more than the original implementation. These systems work if you have 10,000 employees and a dedicated IT team. You do not.</p>
+          <p>On the other end: QuickBooks, Xero, Wave. Built for small businesses. They handle invoicing and basic accounting. They do not track production stages, material movements, contractor settlements, or quality checks. You outgrew them two years ago.</p>
+          <p>In between: Epicor, Plex, IQMS (now CEVA), Fishbowl. These are the "mid-market" ERPs. They market to you. But their deployment model is a miniature version of the enterprise model: 9 to 12 months, $150K to $300K, consultants, customization, change orders. The only difference between them and SAP is the price tag. The pain is the same.</p>
+          <p>Why nobody has solved this</p>
+          <p>Three reasons.</p>
+          <p>The economics do not add up for traditional vendors. An enterprise ERP vendor makes $500K to $2M per deal from a Fortune 500 client. A mid-market deal is $150K to $300K. Same deployment effort (roughly). Much less money. Guess which client gets the A-team?</p>
+          <p>Mid-market businesses are diverse. A furniture manufacturer, an apparel contract manufacturer, a pharma distributor, and a metal stamping shop all have 200 employees. Their operations have almost nothing in common. A module-based ERP has to build separate templates or modules for each. That is expensive. So vendors build for the most common patterns and tell everyone else to "customize."</p>
+          <p>The IT buyer does not exist. In a Fortune 500 company, the CIO drives ERP selection. They evaluate vendors, run RFPs, manage implementation partners. In a mid-market manufacturer, the founder or a single operations head makes the decision. They do not speak software. They speak operations. Most ERP sales processes are designed for IT buyers, not operators.</p>
+          <div id="root-infographic-mid"></div>
+          <h2>What the mid-market actually needs</h2>
+          <p>Talk to 50 manufacturers with 50 to 1,500 employees and you hear the same five things:</p>
+          <p>"It has to deploy fast." They cannot afford an 18-month implementation. Their business changes quarterly. By the time the system ships, the requirements have changed.</p>
+          <p>"It has to match how we work." They have spent years optimizing their process. They are not going to change it for software. The software has to adapt to them, not the other way around.</p>
+          <p>"My team has to use it." The floor staff, the warehouse crew, the supervisors. These are the people who enter data. If they cannot use it, the system is dead. Complex menus and multi-step forms are deal-breakers.</p>
+          <p>"I need to see it before I pay for it." They have been burned before. They have paid $150K for a system that did not work. They are not signing another check on faith.</p>
+          <p>"Don't <a href="/blog/why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying/">charge me every time I need a change</a>." Business rules change. Approval thresholds change. New product lines get added. If every change requires a consultant and a change order, the total cost of ownership becomes unpredictable.</p>
+          <h2>What a real mid-market solution looks like</h2>
+          <p>Deploy in days, not months. Let the business see it working before paying anything. Build the system around their process, not around predefined modules. Make it usable by floor staff who have never touched an ERP. Make changes instant, not projects.</p>
+          <p>This is not a wish list. This is what SimpleGrid does.</p>
+          <p>We deploy in days. We build at our cost. You pay only if it works. The system adapts to your operation through configuration, not customization. Floor staff use a conversational AI interface that works like WhatsApp. Business rule changes take minutes, not weeks.</p>
+          <p>The mid-market ERP gap exists because nobody has built a system that works the way mid-market manufacturers actually operate. We did.</p>
+          <p>SimpleGrid is built for mid-market manufacturers. Deploy in days. $0 to start. No modules. No consultants. No IT team required.</p>
+          <div id="root-infographic-end"></div>
+          <!-- Prev/Next -->
+          <div class="post-pager">
+          <a class="post-pager-link" href="/blog/inside-simplegrid-every-factory-floor-is-different-that-is-the-whole-point/">← Inside SimpleGrid: Every Factory Is Different</a>
+          <a class="post-pager-link post-pager-next" href="/blog/the-real-cost-of-running-your-factory-on-spreadsheets/">The Real Cost of Running Your Factory on Spreadshe… →</a>
+          </div>
+          <div class="post-foot">
+            <a class="post-foot__back" href="blogs.html">&larr; All posts</a>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="post-content">
-  <div class="container-sm">
-    <p>If you run a manufacturing business with 50 to 1,500 employees, you are in the worst possible position when it comes to enterprise software.</p>
-    <p>Too big for spreadsheets. Too small for SAP. Too complex for off-the-shelf SaaS tools. Too lean to hire an IT department that customizes something in-house.</p>
-    <p>You are the mid-market manufacturer. And the entire ERP industry has decided you are not worth solving for.</p>
-    <p>The gap</p>
-    <p>On one end: SAP, Oracle, Infor. Built for the Fortune 500. 18-month deployments. $500K minimum. Consulting armies. Change orders that cost more than the original implementation. These systems work if you have 10,000 employees and a dedicated IT team. You do not.</p>
-    <p>On the other end: QuickBooks, Xero, Wave. Built for small businesses. They handle invoicing and basic accounting. They do not track production stages, material movements, contractor settlements, or quality checks. You outgrew them two years ago.</p>
-    <p>In between: Epicor, Plex, IQMS (now CEVA), Fishbowl. These are the "mid-market" ERPs. They market to you. But their deployment model is a miniature version of the enterprise model: 9 to 12 months, $150K to $300K, consultants, customization, change orders. The only difference between them and SAP is the price tag. The pain is the same.</p>
-    <p>Why nobody has solved this</p>
-    <p>Three reasons.</p>
-    <p>The economics do not add up for traditional vendors. An enterprise ERP vendor makes $500K to $2M per deal from a Fortune 500 client. A mid-market deal is $150K to $300K. Same deployment effort (roughly). Much less money. Guess which client gets the A-team?</p>
-    <p>Mid-market businesses are diverse. A furniture manufacturer, an apparel contract manufacturer, a pharma distributor, and a metal stamping shop all have 200 employees. Their operations have almost nothing in common. A module-based ERP has to build separate templates or modules for each. That is expensive. So vendors build for the most common patterns and tell everyone else to "customize."</p>
-    <p>The IT buyer does not exist. In a Fortune 500 company, the CIO drives ERP selection. They evaluate vendors, run RFPs, manage implementation partners. In a mid-market manufacturer, the founder or a single operations head makes the decision. They do not speak software. They speak operations. Most ERP sales processes are designed for IT buyers, not operators.</p>
-    <div id="root-infographic-mid"></div>
-    <h2>What the mid-market actually needs</h2>
-    <p>Talk to 50 manufacturers with 50 to 1,500 employees and you hear the same five things:</p>
-    <p>"It has to deploy fast." They cannot afford an 18-month implementation. Their business changes quarterly. By the time the system ships, the requirements have changed.</p>
-    <p>"It has to match how we work." They have spent years optimizing their process. They are not going to change it for software. The software has to adapt to them, not the other way around.</p>
-    <p>"My team has to use it." The floor staff, the warehouse crew, the supervisors. These are the people who enter data. If they cannot use it, the system is dead. Complex menus and multi-step forms are deal-breakers.</p>
-    <p>"I need to see it before I pay for it." They have been burned before. They have paid $150K for a system that did not work. They are not signing another check on faith.</p>
-    <p>"Don't <a href="/blog/why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying/">charge me every time I need a change</a>." Business rules change. Approval thresholds change. New product lines get added. If every change requires a consultant and a change order, the total cost of ownership becomes unpredictable.</p>
-    <h2>What a real mid-market solution looks like</h2>
-    <p>Deploy in days, not months. Let the business see it working before paying anything. Build the system around their process, not around predefined modules. Make it usable by floor staff who have never touched an ERP. Make changes instant, not projects.</p>
-    <p>This is not a wish list. This is what SimpleGrid does.</p>
-    <p>We deploy in days. We build at our cost. You pay only if it works. The system adapts to your operation through configuration, not customization. Floor staff use a conversational AI interface that works like WhatsApp. Business rule changes take minutes, not weeks.</p>
-    <p>The mid-market ERP gap exists because nobody has built a system that works the way mid-market manufacturers actually operate. We did.</p>
-    <p>SimpleGrid is built for mid-market manufacturers. Deploy in days. $0 to start. No modules. No consultants. No IT team required.</p>
-
-    <div id="root-infographic-end"></div>
-
-    <!-- Prev/Next -->
-    <div class="post-pager">
-      <a class="post-pager-link" href="/blog/inside-simplegrid-every-factory-floor-is-different-that-is-the-whole-point/">← Inside SimpleGrid: Every Factory Is Different</a>
-      <a class="post-pager-link post-pager-next" href="/blog/the-real-cost-of-running-your-factory-on-spreadsheets/">The Real Cost of Running Your Factory on Spreadshe… →</a>
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">Too big for spreadsheets, too small for SAP?</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">SimpleGrid is built for the manufacturer the ERP industry skipped: deployed in days, shaped around how your floor already runs, usable by your crew on day one. No consultants, no change orders, no $150K leap of faith.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<sg-footer></sg-footer>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script>
-(function(){
-  // Top nav (burger + Resources dropdown) is handled by components/site-nav.js.
-  // Lazy-load React + PostInfographics only if there's an infographic on the page.
-  var mounts = document.querySelectorAll('[id^="root-infographic-"]');
-  if (!mounts.length) return;
-  var loaded = false;
-  function loadOnce(){
-    if (loaded) return;
-    loaded = true;
-    function add(src, cb){
-      var s = document.createElement('script');
-      s.src = src; s.async = false; var SRI={'https://unpkg.com/react@18.3.1/umd/react.production.min.js':'sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z','https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js':'sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1'};if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous';} s.onload = cb; document.head.appendChild(s);
-    }
-    add('https://unpkg.com/react@18.3.1/umd/react.production.min.js', function(){
-      add('https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js', function(){
-        add('../../components/PostInfographics.js', function(){
-          var id = window.__SG_BLOG_ID__;
-          var pi = id && window.PostInfographics && window.PostInfographics[id];
-          if (!pi) return;
-          mounts.forEach(function(el){
-            var which = el.id === 'root-infographic-mid' ? pi.mid : pi.end;
-            if (which) ReactDOM.createRoot(el).render(which);
-          });
-        });
-      });
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting) { loadOnce(); io.disconnect(); } });
-    }, { rootMargin: '600px 0px' });
-    mounts.forEach(function(m){ io.observe(m); });
-  } else {
-    loadOnce();
-  }
-})();
-</script>
-<script src="../../components/blog-post-chrome.js" defer></script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/post.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

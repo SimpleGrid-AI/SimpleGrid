@@ -1,55 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>Manufacturing Operations Health Score | SimpleGrid</title>
-<meta name="description" content="Free composite manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes. McKinsey OHI methodology adapted for mid-market manufacturing. PDF report.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<link rel="canonical" href="https://simplegrid.ai/tools/operations-health-score/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="apple-touch-icon" href="../../assets/simplegrid-logomark.svg">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../tools.css">
-<meta property="og:site_name" content="SimpleGrid"><meta property="og:type" content="website"><meta property="og:url" content="https://simplegrid.ai/tools/operations-health-score/"><meta property="og:title" content="Manufacturing Operations Health Score | SimpleGrid"><meta property="og:description" content="Free composite manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes. McKinsey OHI methodology adapted for mid-market manufacturing. PDF report."><meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Manufacturing Operations Health Score | SimpleGrid","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simplegrid.ai/tools/operations-health-score/","description":"Free composite manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes. McKinsey OHI methodology adapted for mid-market manufacturing. PDF report.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://simplegrid.ai/#org"}},{"@type":"HowTo","name":"How to use the Manufacturing Operations Health Score","description":"Free composite manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes. McKinsey OHI methodology adapted for mid-market manufacturing. PDF report.","step":[{"@type":"HowToStep","position":1,"name":"Answer the questions","text":"Work through each question about your operation: Planned production hours / shift; Actual running hours / shift; Ideal output units/hr; Actual output (incl defects).","url":"https://simplegrid.ai/tools/operations-health-score/#tool"},{"@type":"HowToStep","position":2,"name":"Get your result instantly","text":"Free composite manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes. McKinsey OHI methodology adapted for mid-market manufacturing. PDF report.","url":"https://simplegrid.ai/tools/operations-health-score/#result"},{"@type":"HowToStep","position":3,"name":"Export or take it further","text":"Download the result as PDF, or book a demo to see SimpleGrid track this automatically from your live operation.","url":"https://simplegrid.ai/tools/operations-health-score/#next"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://simplegrid.ai/"},{"@type":"ListItem","position":2,"name":"Productive Tools","item":"https://simplegrid.ai/tools/"},{"@type":"ListItem","position":3,"name":"Manufacturing Operations Health Score | SimpleGrid","item":"https://simplegrid.ai/tools/operations-health-score/"}]}]}
-</script>
-<script src="../../vendor/jspdf/jspdf.umd.min.js" defer></script>
-<script src="../../vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
-<script src="../tools.js" defer></script>
+<!-- The page lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>Manufacturing Operations Health Score | SimpleGrid</title>
+<meta name="description" content="Free manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes, with a PDF report you can take to your team.">
 
-<script src="../../assets/js/analytics-init.js" defer></script>
-<script src="../../assets/js/tracking.js" defer></script>
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:title" content="Manufacturing Operations Health Score | SimpleGrid">
+<meta property="og:description" content="Free manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes, with a PDF report you can take to your team.">
+<meta property="og:url" content="https://simplegrid.ai/tools/operations-health-score/">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:title" content="Manufacturing Operations Health Score | SimpleGrid">
-<meta name="twitter:description" content="Free composite manufacturing operations health score. 5 dimensions, ~15 inputs, 10 minutes. McKinsey OHI methodology adapted for mid-market manufacturing. PDF report.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="canonical" href="https://simplegrid.ai/tools/operations-health-score/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/tool.css">
+<link rel="stylesheet" href="css/grid.css">
+
+<!-- The PDF export and the shared tool helpers, unchanged from the versions
+     these calculators were written against. -->
+<script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
+<script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
+<script src="tools/tools.js" defer></script>
 </head>
 <body>
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="tools"></div>
 
-<main id="main">
-  <section class="tool-header"><div class="container-sm">
-    <a href="../" class="back-link">← All productive tools</a>
-    <h1>Manufacturing Operations Health Score - one number for your whole operation.</h1>
-    <p class="tool-lead">Your operations health score rolls up the core signals of a healthy factory (throughput, quality, delivery, cost, and people) into one number. Answer the questions to get your score and your weakest area.</p>
-    <p class="lead">The flagship. 5 dimensions (production efficiency, quality, delivery, inventory, workforce), ~15 inputs, 10 minutes. A single score 0-100 with grade A-F, dimension breakdown, and the $ value of closing your biggest gaps. Modeled on McKinseys Organizational Health Index.</p>
-  </div></section>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
 
-<section class="tool-app"><div class="container-sm">
-    <p class="tool-note" style="margin:0 0 20px">The flagship composite. 5 dimensions, ~15 inputs, 10 minutes. Synthesizes OEE, scrap, on-time delivery, inventory turns, revenue/employee into a single score with peer comparison. Modeled on McKinseys Organizational Health Index, adapted for manufacturing.</p>
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= HERO -->
+  <section class="section">
+    <div class="container">
+      <div class="card tool-hero">
+        <a class="tool-hero__back" href="tools.html">&larr; All productive tools</a>
+        <p class="eyebrow">Free tool</p>
+        <h1 class="tool-hero__title">Manufacturing Operations Health Score - one number for your whole operation.</h1>
+        <p class="lede tool-hero__sub">Your operations health score rolls up the core signals of a healthy factory (throughput, quality, delivery, cost, and people) into one number. Answer the questions to get your score and your weakest area.</p>
+        <p class="body-copy tool-hero__sub">The flagship. 5 dimensions (production efficiency, quality, delivery, inventory, workforce), ~15 inputs, 10 minutes. A single score 0-100 with grade A-F, dimension breakdown, and the $ value of closing your biggest gaps. Modeled on McKinseys Organizational Health Index.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== TOOL -->
+  <!-- Form, results and PDF export are carried over unchanged: the ids below
+       are what this page's own script reads and writes. -->
+  <section class="section" id="tool">
+    <div class="container">
+      <div class="card">
+<p class="tool-note" style="margin:0 0 20px">The flagship composite. 5 dimensions, ~15 inputs, 10 minutes. Synthesizes OEE, scrap, on-time delivery, inventory turns, revenue/employee into a single score with peer comparison. Modeled on McKinseys Organizational Health Index, adapted for manufacturing.</p>
     <div class="tool-card"><h2>1. Production Efficiency (OEE)</h2>
       <div class="tool-form-grid cols-3">
         <div class="tool-field"><label for="planned">Planned production hours / shift</label><input id="planned" type="number" data-clamp="0.1,24" step="0.1" value="8" data-required></div>
@@ -91,15 +103,12 @@
     <div class="results-hero" id="hero"></div>
     <div class="tool-card" id="detail" style="margin-top:24px"></div>
 
-    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px"><button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button></div>
-
-    <div class="tool-cta">
-      <div class="eyebrow">When you want all 5 dimensions live, not from a quarterly all-hands</div>
-      <h2>SimpleGrid scores your operation live from the event ledger.</h2>
-      <p>OEE from production cycles. Quality from NCR events. Delivery from ship events. Inventory from consumption events. Workforce from labor postings. One source of truth, no manual compilation.</p>
-      <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="ohs_cta" class="btn btn-primary">Book a demo</a>
+    <div class="tool-actions" style="justify-content:flex-end;margin-top:16px"><button type="button" id="generate-pdf" class="btn btn-primary" style="padding:12px 28px;font-size:16px">Download PDF Report</button>
+      </div>
     </div>
-  </div></section>
+    </div>
+  </section>
+
 <script defer>
 document.addEventListener('DOMContentLoaded',()=>{
   function fmt$(n){return '$'+Math.round(n||0).toLocaleString();}
@@ -281,30 +290,49 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
+  <!-- ======================================================= BOOK A DEMO -->
+  <section class="section" id="book">
 
-
-<section class="tool-seo related-tools"><div class="container-sm"><h2>Related free tools for manufacturers</h2><ul class="related-tools-list"><li><a href="../erp-needs-assessment/">Do I Need an ERP? Free Diagnostic for Manufacturers</a></li><li><a href="../erp-readiness-scorecard/">ERP Readiness Scorecard for Manufacturers</a></li><li><a href="../digital-maturity-assessment/">Digital Maturity Assessment (SIRI)</a></li><li><a href="../">See all 35 manufacturer tools</a></li></ul></div></section>
-</main>
-
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">Tools are nice. A system that runs your floor is better.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">SimpleGrid is the Adaptive ERP - an operations cloud built around how your operation actually runs, synced to the QuickBooks or Tally you already use. Run it live for 30 days. You pay only when it works.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
+    <div class="container">
+      <div class="card tool-cta reveal">
+        <p class="eyebrow">When you want all 5 dimensions live, not from a quarterly all-hands</p>
+        <h2>SimpleGrid scores your operation live from the event ledger.</h2>
+        <p>OEE from production cycles. Quality from NCR events. Delivery from ship events. Inventory from consumption events. Workforce from labor postings. One source of truth, no manual compilation.</p>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
+  <!-- ===================================================== RELATED TOOLS -->
+  <section class="section" id="related">
+    <div class="container">
+      <div class="card tool-seo reveal">
+        <h2>Related free tools for manufacturers</h2>
+        <ul class="related-tools-list"><li><a href="tools/erp-needs-assessment/">Do I Need an ERP? Free Diagnostic for Manufacturers</a></li><li><a href="tools/erp-readiness-scorecard/">ERP Readiness Scorecard for Manufacturers</a></li><li><a href="tools/digital-maturity-assessment/">Digital Maturity Assessment (SIRI)</a></li><li><a href="tools.html">See all 35 manufacturer tools</a></li></ul>
+      </div>
+    </div>
+  </section>
 
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+  <!-- ======================================================= CLOSING CTA -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="card cta reveal" data-cursor="light">
+        <h2 class="cta__title">Tools are nice. A system that runs your floor is better.</h2>
+        <p class="cta__sub">SimpleGrid is the Adaptive ERP, an operations cloud built around how your operation actually runs, synced to the QuickBooks or Tally you already use. Run it live for 30 days. You pay only when it works.</p>
+        <a class="btn btn--onblue" href="pricing.html#demo">Book a demo</a>
+        <p class="cta__meta meta">Limited slots each quarter. We onboard selectively.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/tool-forms.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

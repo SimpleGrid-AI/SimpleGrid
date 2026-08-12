@@ -1,0 +1,305 @@
+/* ==========================================================================
+   SimpleGrid — pricing page
+
+   Rides on v3.css and product.css: the hero, cards, banner, cases, FAQ and
+   closing CTA are the shared components, and the module rail is the one from
+   the product panels reused on the page itself. Only what is unique to this
+   page lives here — the payment steps and the "what we build" list.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------- hero */
+
+/* Centred type on the same card and column as the sections below it. Height in
+   whole blocks so the bottom edge lands on a major line. */
+.pricing-hero {
+  margin-top: var(--grid-cell);
+  /* Tighter than the standard card: at full padding the type alone stood 451px
+     and the block missed the line. 48 either side fits it inside 4 blocks, so
+     the bottom edge lands on 480. */
+  padding-block: 48px;
+  min-height: calc(var(--grid-block) * 4);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.pricing-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  /* 22ch is the measure that breaks it after "until you", as in the design. */
+  max-width: 22ch;
+  margin: 0 0 20px;
+}
+
+.pricing-hero__sub { max-width: 56ch; margin: 0; }
+
+/* Centred blue heading, used by both the steps block and the closing sections
+   so the page keeps one voice for its section titles. */
+.pricing-title {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+  text-wrap: balance;
+}
+
+/* ------------------------------------------------------ how payment works */
+
+.pay-steps__head { text-align: center; margin-bottom: 56px; }
+.pay-steps__head .eyebrow { margin-bottom: 14px; }
+.pay-steps__head .pricing-title { max-width: 24ch; margin: 0 auto 10px; }
+.pay-steps__head .body-copy { margin: 0; }
+
+/* Three columns divided by rules rather than gaps — the order of the steps is
+   the point, so they read as one sequence, not three cards. */
+.pay-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+.pay-step { padding-inline: 40px; border-left: 1px solid var(--sg-line-soft); }
+.pay-step:first-child { padding-left: 0; border-left: 0; }
+.pay-step:last-child { padding-right: 0; }
+
+.pay-step__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-h5);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.pay-step__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+
+/* ------------------------------------------------ what we build / included */
+
+.included__title { margin-bottom: 16px; }
+
+.included__list {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-body);
+}
+.included__list::marker,
+.included__list li::marker { color: var(--accent); }
+.included__list strong { color: var(--fg); font-weight: 700; }
+
+/* ------------------------------------------------------------ module rail */
+
+/* The rail is the panels' "More to discover" — on this page it is a section of
+   its own, so it carries the card's own top margin instead of a banner above. */
+.discover .mod-more__title { color: var(--fg); }
+
+@media (max-width: 900px) {
+  .pay-steps { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .pay-step { padding-inline: 0; border-left: 0; padding-top: 24px; border-top: 1px solid var(--sg-line-soft); }
+  .pay-step:first-child { padding-top: 0; border-top: 0; }
+  .pay-steps__head { margin-bottom: 36px; }
+}
+
+/* Follows the lede it qualifies: same voice, a step down the column. */
+.included__note { margin-top: 16px; }
+
+/* --------------------------------------------------------------------------
+   Your price + AI usage
+
+   Two tiles, each a drawn panel over a claim: what sets the number, and what
+   the AI inside it costs.
+   -------------------------------------------------------------------------- */
+
+.duo-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+
+.tile {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+
+/* The panel: a tinted stage the drawing sits on, at a fixed height so the two
+   tiles line up whatever is inside them. */
+.tile__art {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  padding: 28px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-highlight-soft);
+  /* The page's own grid, faint, behind the drawing. */
+  background-image:
+    linear-gradient(to right, var(--sg-line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--sg-line-soft) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.tile__eyebrow { margin-bottom: 12px; }
+.tile__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-h6);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+.tile__text { max-width: 52ch; }
+
+/* Both panels are authored in their finished state; nothing below hides
+   anything until js/price-art.js says it is driving them ([data-anim]). */
+
+/* ------------------------------------------------------- what sets a price */
+
+.quote { display: grid; grid-template-columns: auto 60px auto; align-items: center; width: 100%; }
+
+.quote__inputs { list-style: none; display: grid; gap: 10px; margin: 0; padding: 0; }
+.quote[data-anim] .quote__inputs li {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+}
+.quote[data-anim] .quote__inputs li[data-in] { opacity: 1; transform: none; }
+
+.quote__inputs li {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  color: var(--fg-body);
+  white-space: nowrap;
+}
+
+/* Three lines converging on one — drawn, not decorative: it is the sentence
+   beside it, in the same order. */
+.quote__wires {
+  width: 60px;
+  height: 120px;
+  fill: none;
+  stroke: var(--sg-blue-15);
+  stroke-width: 1.5;
+}
+/* pathLength="100" on the path, so one dash covers the whole run whatever the
+   real geometry measures. */
+.quote[data-anim] .quote__wires path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+.quote[data-anim='on'] .quote__wires path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 700ms var(--ease) 320ms;
+}
+
+/* The number lands last, once the wires have arrived. */
+.quote[data-anim] .quote__out {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 360ms var(--ease), transform 360ms var(--ease);
+}
+.quote[data-anim] .quote__out[data-in] { opacity: 1; transform: none; }
+
+.quote__out {
+  padding: 16px 18px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  text-align: center;
+}
+.quote__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.quote__figure {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin-top: 8px;
+}
+
+/* --------------------------------------------------------- the allowance */
+
+.allow { width: 100%; max-width: 320px; }
+.allow__head { margin-bottom: 16px; }
+.allow__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.allow__pct {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin-top: 6px;
+}
+
+/* The bar runs past the allowance line on purpose: the far side is what the
+   copy is about, and it is drawn as costing something, not as a wall. */
+.allow__track {
+  position: relative;
+  height: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.allow__fill { position: absolute; inset: 0 auto 0 0; width: 62%; background: var(--accent); }
+.allow[data-anim='on'] .allow__fill { transition: width 760ms var(--ease); }
+
+.allow__line { position: absolute; top: -6px; bottom: -6px; left: 78%; width: 1px; background: var(--fg-muted); }
+.allow[data-anim] .allow__line,
+.allow[data-anim] .allow__legend {
+  opacity: 0;
+  transition: opacity 320ms var(--ease);
+}
+.allow[data-anim] .allow__line[data-in],
+.allow[data-anim] .allow__legend[data-in] { opacity: 1; }
+
+.allow__legend { display: grid; gap: 6px; margin-top: 16px; }
+.allow__key {
+  position: relative;
+  padding-left: 18px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  color: var(--fg-body);
+}
+.allow__key::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+}
+.allow__key--used::before { background: var(--accent); }
+.allow__key--over::before { background: var(--fg-muted); }
+
+@media (max-width: 900px) {
+  .duo-tiles { grid-template-columns: minmax(0, 1fr); }
+  .tile__art { min-height: 220px; padding: 20px; }
+  .quote { grid-template-columns: auto 40px auto; }
+  .quote__wires { width: 40px; }
+}

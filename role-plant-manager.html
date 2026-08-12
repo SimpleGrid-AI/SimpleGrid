@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plant manager | SimpleGrid</title>
+<meta name="description" content="Run the shift, not the questions. What you know, on a screen everyone reads, logged by the people doing the work.">
+<link rel="canonical" href="https://simplegrid.ai/role-plant-manager.html">
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:title" content="Plant manager | SimpleGrid">
+<meta property="og:description" content="Run the shift, not the questions. What you know, on a screen everyone reads, logged by the people doing the work.">
+<meta property="og:url" content="https://simplegrid.ai/role-plant-manager.html">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/modules.css">
+<link rel="stylesheet" href="css/solutions.css">
+<link rel="stylesheet" href="css/grid.css">
+</head>
+<body>
+
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= HERO -->
+  <!-- The claim, and the screen that makes it. -->
+  <section class="section">
+    <div class="container">
+      <div class="card role-hero-2">
+        <div class="role-hero-2__copy">
+          <p class="eyebrow">Plant manager</p>
+          <h1 class="role-hero-2__title accent">Run the shift, not the questions.</h1>
+          <p class="lede role-hero-2__sub">You are the floor&rsquo;s single source of truth,
+          and it costs you hours every day. SimpleGrid puts what you know on a screen everyone
+          reads, logged by the people doing the work.</p>
+          <div class="role-hero-2__actions">
+            <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+          </div>
+        </div>
+        <figure class="role-shot">
+          <img src="assets/modules/floor-operations.webp" width="1600" height="1042" loading="eager"
+               decoding="async" alt="SimpleGrid floor operations: each job on the floor as a card with its stage, contractor, quantity done and the components ready from the previous stage.">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== SCENES -->
+  <!-- Three moments the reader recognises, before any claim is made. -->
+  <section class="section" id="scenes">
+    <div class="container">
+      <div class="card reveal">
+        <div class="scenes__head">
+          <p class="eyebrow">You know this one</p>
+          <h2 class="scenes__title">You are the system everyone queries.</h2>
+        </div>
+        <div class="scenes">
+          <p class="scene">Two to three hours a day answering the same status questions from
+          the owner, sales and accounts.</p>
+          <p class="scene">The job reached the station but the material did not, so the line
+          stands while you chase it.</p>
+          <p class="scene">Take a day off and the operation loses its nervous system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ SHIFT -->
+  <section class="section" id="shift">
+    <div class="container">
+      <div class="card reveal">
+        <div class="split split--aligned">
+          <div>
+            <p class="eyebrow">What changes</p>
+            <h2 class="role-page__title">The board holds what you have been holding.</h2>
+            <p class="body-copy">Nothing about how the floor works has to change. What changes
+            is that the floor writes it down once, where the work happens.</p>
+          </div>
+          <table class="role-table">
+            <thead>
+              <tr><th scope="col">Today</th><th scope="col">With SimpleGrid</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>You are the single source of truth</td><td>The board is, and it says what you know</td></tr>
+              <tr><td>Floor staff locked out of a system built for finance</td><td>Simple enough to log a job without training</td></tr>
+              <tr><td>Status means a phone call to you</td><td>The owner checks the screen instead</td></tr>
+              <tr><td>End of shift is an hour of paperwork</td><td>Logged at the station, once</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== SCREENS -->
+  <section class="section" id="screens">
+    <div class="container">
+      <div class="card reveal">
+        <div class="scenes__head">
+          <p class="eyebrow">Your screens</p>
+          <h2 class="scenes__title">Three screens, and the shift runs itself.</h2>
+        </div>
+        <div class="role-screens">
+          <button class="role-screen" type="button" data-mod-open="floor-operations" aria-haspopup="dialog">
+            <svg class="role-screen__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.4" width="12" height="10.6" rx="1.4"/><path d="M2 6.6h12M5.4 1.8v3M10.6 1.8v3"/></svg>
+            <span class="role-screen__name">Floor operations</span>
+          </button>
+          <button class="role-screen" type="button" data-mod-open="production" aria-haspopup="dialog">
+            <svg class="role-screen__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 13.5v-6l4 2.4V7.5l4 2.4V4.2l4 1.9v7.4z"/><path d="M2 13.5h12"/></svg>
+            <span class="role-screen__name">Production</span>
+          </button>
+          <button class="role-screen" type="button" data-mod-open="routing" aria-haspopup="dialog">
+            <svg class="role-screen__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.5" cy="4" r="1.6"/><circle cx="12.5" cy="12" r="1.6"/><path d="M3.5 5.6v3.2a2.6 2.6 0 0 0 2.6 2.6h4.8"/></svg>
+            <span class="role-screen__name">Routing and QC</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= PROOF -->
+  <section class="section" id="proof">
+    <div class="container">
+      <div class="card reveal role-proof">
+        <blockquote class="role-quote">
+          <p class="role-quote__words">I used to spend the first two hours of the day telling
+          people where things were. Now they look, and I run the shift.</p>
+          <footer class="role-quote__by">
+            <span class="role-quote__name">Wes Karpinski</span>
+            <span class="role-quote__role">Plant Manager, furniture manufacturer</span>
+          </footer>
+        </blockquote>
+        <p class="role-proof__stat">30 of 30 floor staff log work daily. Their plant managers
+        got 2 to 3 hours a day back.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= OBJECTION -->
+  <section class="section" id="objection">
+    <div class="container">
+      <div class="card reveal">
+        <div class="split split--divided split--aligned">
+          <div>
+            <p class="eyebrow">The objection</p>
+            <h2 class="role-page__title">&ldquo;My guys are not computer people.&rdquo;</h2>
+          </div>
+          <div>
+            <p class="body-copy">If they can text, they can run it. No training week, no
+            manual. Built by a founder who ran his own floor (one that industry people
+            visited to study) and who still could not buy software his operators would
+            use.</p>
+            <a class="btn btn--primary role-objection__cta" href="pricing.html#demo">Book a demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================== MODULE DETAIL PANELS -->
+<!-- The three screens named above, as the same dialogs the product page
+     opens. Held here so the reader stays on their own page: the dialog opens
+     over it, and closing puts them back where they were. -->
+  <div class="mod-panel" id="mod-floor-operations" role="dialog" aria-modal="true"
+       aria-labelledby="mod-floor-operations-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Floor operations">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-floor-operations-title">Floor operations</h2>
+            <p class="mod-tagline">Plan in minutes. Not weekends.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Orders, capacity, material and routes come together in one plan. Change an input and the plan rebuilds itself.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Planning time down about 90%.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>On-time delivery up 15 points.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Replan mid-week in one pass.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/floor-operations.webp" alt="SimpleGrid floor operations: each job on the floor as a card with its stage, contractor, quantity done and the components ready from the previous stage." width="1600" height="1042" loading="lazy" decoding="async">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">The plan runs on live stock, live capacity and live orders. No old sheet feeding a bad schedule.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Your limits, your rules. Shift patterns, machine capacity and material lead times are yours to set and change.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">The plan reaches the floor the moment it changes. No printed sheet from Monday still running Thursday.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  <div class="mod-panel" id="mod-production" role="dialog" aria-modal="true"
+       aria-labelledby="mod-production-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Production">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-production-title">Production</h2>
+            <p class="mod-tagline">The floor reports itself.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Operators tell Hank, the AI assistant, what happened. Output, downtime, scrap, rework, by voice or text. No paperwork, no data entry clerk.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>30 of 30 operators use it daily.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Planning time down about 90%.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Live output by line and by shift.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/production.webp" alt="SimpleGrid production: record types for planning, contractor assignment, wood requirement and issue, floor operations, production orders and lines, seasoning batches, contractor jobs and material issues." width="1600" height="727" loading="lazy" decoding="async">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">Hank takes plain language, typed or spoken, in the words the operator already uses. In most plants, paper reaching a computer runs a full shift behind reality. That gap goes to zero.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Every entry carries a person, a time and a machine. You can rebuild yesterday&rsquo;s shift today, exactly as it happened.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">Go live across the floor in 3 weeks. No terminals to rebuild, no consultants on site.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  <div class="mod-panel" id="mod-routing" role="dialog" aria-modal="true"
+       aria-labelledby="mod-routing-title" hidden>
+    <div class="mod-panel__scroll">
+      <div class="container mod-panel__inner">
+        <button class="mod-close" type="button" data-mod-close aria-label="Close Routing">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="mod-head">
+          <div class="mod-head__lead">
+            <h2 class="mod-title" id="mod-routing-title">Routing</h2>
+            <p class="mod-tagline">One route. Every step. No guesswork.</p>
+          </div>
+          <div class="mod-head__body">
+            <p class="body-copy mod-intro">Lay out how a product actually gets made, step by step, machine by machine. The floor follows the route, and the route records itself.</p>
+            <div class="mod-actions">
+              <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener" data-mod-close>See it live</a>
+            </div>
+          </div>
+          <ul class="mod-checks">
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Ask Hank what runs next.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Bottlenecks show as waiting time.</span></li>
+            <li><svg class="mod-check__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="2.4"/><path d="m5 8.3 2 2 4-4.4"/></svg><span>Add or move a step in minutes.</span></li>
+          </ul>
+        </div>
+
+        <div class="mod-media mod-media--fit">
+          <img src="assets/modules/routing.webp" alt="SimpleGrid SKU detail: the process route from machining through assembly, sanding, hardware fitting, packaging and final QC, with the SKU details and its current lifecycle state." width="1600" height="1045" loading="lazy" decoding="async">
+        </div>
+
+        <div class="mod-why">
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 11.6 6 7.9l2.6 2.4L13.5 4.6"/><path d="M10.4 4.6h3.1v3.1"/></svg>
+              <p class="body-copy">Routes are set up, not built. A new product route is live the same day.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.6"/><circle cx="8" cy="8" r="2.2"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2"/></svg>
+              <p class="body-copy">Every step start and finish is recorded. Run time, setup time and waiting time are measured, not estimated.</p>
+            </div>
+            <div class="mod-why__item">
+              <svg class="mod-why__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.2 13 4v4c0 3-2.2 4.9-5 5.8C5.2 12.9 3 11 3 8V4z"/><path d="m6 8.2 1.5 1.5 3-3.2"/></svg>
+              <p class="body-copy">Scrap and rework are logged against the exact step that caused them. That is what took waste from 1.5% to under 0.1%.</p>
+            </div>
+        </div>
+
+        <section class="section mod-banner">
+          <div class="card banner">
+            <div class="banner__copy">
+              <h2 class="banner__title">Upgrade your operation.</h2>
+              <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+            </div>
+            <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/modules.js"></script>
+<script src="js/cursor.js"></script>
+</body>
+</html>

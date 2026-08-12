@@ -1,0 +1,263 @@
+/* ==========================================================================
+   SimpleGrid — resources page
+
+   Three collections on one page: case studies, blog posts, tools. Each is a
+   card grid; the blogs and tools also carry their own category filter and
+   paging. Everything else — cards, type, grid field, cursor — is the shared
+   language from v3.css.
+   ========================================================================== */
+
+/* Shorter hero than the product page: this one carries a heading and a line,
+   not a pitch. 4 blocks rather than 7 — 288px less, and the bottom edge still
+   lands on a major line (96 + 384 = 480). */
+/* ------------------------------------------------------------------- hero */
+
+/* Centred type on the page's own card and column, as on about and pricing.
+   4 blocks puts the bottom edge on 480; two lines of headline and two of lede
+   stand 261px tall, so the padding comes in from 94 to fit them inside. */
+.res-hero {
+  margin-top: var(--grid-cell);
+  padding-block: 48px;
+  min-height: calc(var(--grid-block) * 4);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.res-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 22ch;
+  margin: 0 0 20px;
+}
+
+.res-hero__sub { max-width: 56ch; margin: 0; }
+
+.res-title {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+  text-wrap: balance;
+  margin-bottom: 12px;
+}
+.res-head { margin-bottom: 36px; }
+.res-head .body-copy { max-width: 62ch; margin: 0; }
+
+/* ----------------------------------------------------------------- filters */
+
+/* The top row switches whole sections; the row inside a section filters that
+   section's cards. Same control, two scopes, so they share one look. */
+.res-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px;
+  width: max-content;
+  max-width: 100%;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+.res-filters--top { margin: 0 auto 48px; }
+.res-filters--section { margin-bottom: 28px; }
+
+.res-pill {
+  height: 34px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  color: var(--fg-body);
+  white-space: nowrap;
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+.res-pill:hover { background: var(--bg-highlight); color: var(--accent); }
+.res-pill[aria-pressed='true'] { background: var(--accent); color: var(--sg-logo-white); }
+.res-pill[aria-pressed='true']:hover { background: var(--accent-hover); color: var(--sg-logo-white); }
+
+/* ------------------------------------------------------------------- cards */
+
+/* A card sets its own display, which outranks the browser's [hidden] rule —
+   without this, filtering and paging would hide nothing. */
+[data-item][hidden],
+[data-res-panel][hidden],
+[data-pages][hidden] { display: none; }
+
+.res-grid { display: grid; gap: 16px; }
+.res-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.res-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.res-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* A card is a link: the whole tile is the target, not a "read more" at the
+   bottom of it. */
+.res-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  overflow: hidden;
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+.res-card:hover { border-color: var(--sg-blue-15); }
+
+/* Cover art stands in for a per-post image: the mark on the house blue, with
+   the category called out in mono. Swapping in real art is a src away. */
+.res-card__cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  background: var(--sg-grad-cta);
+  color: var(--sg-logo-white);
+}
+.res-card__kicker {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.res-card__art { width: 46%; height: auto; opacity: 0.9; }
+
+/* A real cover, where the piece has one. It fills the same 16:9 slot the
+   drawn mark occupies, so the grid stays even either way. */
+.res-card__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.res-card__cover:has(.res-card__photo) { background: var(--bg-highlight-soft); }
+/* The kicker sits over the image, so it needs its own ground. */
+.res-card__cover:has(.res-card__photo) .res-card__kicker {
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.res-card__body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.res-card__cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.res-card__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  color: var(--fg);
+}
+.res-card__text { font-size: var(--fs-sub); line-height: 1.6; color: var(--fg-body); }
+
+/* Not a link of its own — the whole tile is the link. This is the affordance
+   that says so, pushed to the bottom of the body so it sits on one line
+   across tiles of unequal copy. */
+/* On the blog cards the link shares a row with the read time. */
+.res-card__foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+.res-card__foot .res-card__more { margin-top: 0; padding-top: 0; }
+
+.res-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.res-card__more svg { width: 12px; height: 12px; flex: 0 0 auto; transition: transform 200ms var(--ease); }
+.res-card:hover .res-card__more svg { transform: translateX(3px); }
+.res-card__meta { margin-top: auto; padding-top: 6px; }
+.res-card__foot .res-card__meta { margin-top: 0; padding-top: 0; }
+
+/* -------------------------------------------------------- drawn covers */
+
+/* Every post carries its own diagram rather than the house mark — the same art
+   the old blog index used, so a post is recognisable from its thumbnail. Three
+   grounds, picked per post: ink, the accent, and the tint. */
+.res-card__cover--ink   { background: var(--sg-eerie-black); }
+.res-card__cover--blue  { background: var(--accent); }
+.res-card__cover--tint  { background: var(--bg-highlight); }
+
+/* One size for all of them, so a row of cards reads as a set. The art is
+   authored on a 200x110 field and centres itself in the 16:9 slot. */
+.res-card__cover--ink svg,
+.res-card__cover--blue svg,
+.res-card__cover--tint svg { width: 74%; height: auto; }
+
+/* The kicker rides on the art, so it takes the ground's own contrast. */
+.res-card__cover--tint .res-card__kicker { color: var(--fg-muted); }
+
+/* --------------------------------------------------------------- cards */
+
+/* Tools are denser: no cover, a category line, and the arrow that says the
+   tile goes somewhere. */
+.res-tool { position: relative; min-height: 168px; padding: 18px 20px; }
+.res-tool .res-card__title { color: var(--accent); padding-right: 24px; }
+.res-tool__go {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.res-tool:hover { background: var(--bg-highlight-soft); }
+
+/* -------------------------------------------------------------- pagination */
+
+.res-pages { display: flex; gap: 6px; margin-top: 32px; padding: 6px; width: max-content;
+  border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--bg-card); }
+.res-page {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  color: var(--fg-body);
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+.res-page:hover { background: var(--bg-highlight); color: var(--accent); }
+.res-page[aria-current='true'] { background: var(--accent); color: var(--sg-logo-white); }
+
+/* Nothing matched the filter — better than an empty white space. */
+.res-empty { font-size: var(--fs-sub); color: var(--fg-muted); margin: 0; }
+
+@media (max-width: 1100px) {
+  .res-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .res-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .res-grid--2, .res-grid--3, .res-grid--4 { grid-template-columns: minmax(0, 1fr); }
+  .res-filters { width: 100%; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+  .res-filters::-webkit-scrollbar { display: none; }
+}

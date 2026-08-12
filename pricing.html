@@ -1,151 +1,380 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://us-assets.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; object-src 'none'; upgrade-insecure-requests">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-
-<title>Pricing | SimpleGrid Adaptive ERP</title>
-<meta name="description" content="SimpleGrid is the adaptive ERP with $0 up front. We build it, you run it free for 30 days on your real operation, and you pay only after it works.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<link rel="canonical" href="https://simplegrid.ai/pricing.html">
-<link rel="icon" type="image/svg+xml" href="assets/simplegrid-logomark.svg">
-<link rel="apple-touch-icon" href="assets/simplegrid-logomark.svg">
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
-<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
-<link rel="stylesheet" href="colors_and_type.css">
-<link rel="stylesheet" href="styles.css">
-<!-- No-flash boot: fade #root in once React replaces the seed (or after 1.2s failsafe) -->
-<style>html.js #root{opacity:0}html.js #root.sg-mounted{opacity:1;transition:opacity 180ms ease-out}@media (prefers-reduced-motion: reduce){html.js #root,html.js #root.sg-mounted{opacity:1;transition:none}}</style>
-<script>(function(){var h=document.documentElement;h.classList.add('js');function s(){var r=document.getElementById('root');if(!r)return;var m=new MutationObserver(function(){r.classList.add('sg-mounted');m.disconnect()});m.observe(r,{childList:true});setTimeout(function(){r.classList.add('sg-mounted');m.disconnect()},1200)}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',s)}else{s()}})();</script>
+<title>Pricing | SimpleGrid</title>
+<meta name="description" content="You carry nothing until you see it run. We build SimpleGrid around your operation, you run it live for thirty days at no cost, and payment begins only once it works.">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous" defer></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous" defer></script>
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="product">
-<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Pricing | SimpleGrid">
+<meta property="og:description" content="You carry nothing until you see it run. We build SimpleGrid around your operation, you run it live for thirty days at no cost, and payment begins only once it works.">
 <meta property="og:url" content="https://simplegrid.ai/pricing.html">
-<meta property="og:title" content="Pricing | SimpleGrid Adaptive ERP">
-<meta property="og:description" content="SimpleGrid is the adaptive ERP with $0 up front. We build it, you run it free for 30 days on your real operation, and you pay only after it works.">
 <meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
-<meta property="og:image:alt" content="SimpleGrid pricing - $0 up front, pay only after it works">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="Pricing | SimpleGrid Adaptive ERP">
-<meta name="twitter:description" content="SimpleGrid is the adaptive ERP with $0 up front. We build it, you run it free for 30 days on your real operation, and you pay only after it works.">
 <meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="canonical" href="https://simplegrid.ai/pricing.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://simplegrid.ai/pricing.html#webpage",
-      "url": "https://simplegrid.ai/pricing.html",
-      "name": "Pricing | SimpleGrid Adaptive ERP",
-      "isPartOf": { "@id": "https://simplegrid.ai/#website" },
-      "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "description": "$0 up front. SimpleGrid, the adaptive ERP, running your real operations for a 30 days trial. Pay only after it works.",
-      "inLanguage": "en"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://simplegrid.ai/pricing.html#software",
-      "name": "SimpleGrid",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web",
-      "publisher": { "@id": "https://simplegrid.ai/#org" },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "0",
-          "priceCurrency": "USD",
-          "name": "30-day trial - pay only if it works"
-        },
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://simplegrid.ai/pricing.html" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How much does SimpleGrid cost after the 30 days?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You get a quote after the first call, before the deep dive. One monthly subscription is the entire bill - no setup, no add-ons, no per-seat fees." }
-        },
-        {
-          "@type": "Question",
-          "name": "What does \"you walk if it doesn't work\" actually mean?",
-          "acceptedAnswer": { "@type": "Answer", "text": "At the end of 30 days you decide. If it is not running your operation, you walk with a clean export and no invoice." }
-        },
-        {
-          "@type": "Question",
-          "name": "Why isn't this the cheapest option on the table?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We carry the build, the risk and the 30-day trial, so the price reflects the result. Cheap ERP exists, but it will not show you a working system before you pay." }
-        },
-        {
-          "@type": "Question",
-          "name": "Who is SimpleGrid built for?",
-          "acceptedAnswer": { "@type": "Answer", "text": "CPG brands, manufacturers and inventory-led businesses doing $5M-$250M in revenue. Senior engineers build every deployment." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I get new features as you ship them?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every feature we ship rolls out to every customer at no extra cost." }
-        }
-      ]
-    }
-  ]
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="assets/js/cookie-consent.js" defer></script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/pricing.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- Static seed inside #root - React replaces on mount. -->
-<!-- Static seed inside #root - React replaces on mount. Crawler + AI-bot visible. -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js), outside #root. -->
-<div id="sg-nav" data-page="pricing"></div>
-<div id="root">
-  <main id="main" style="padding:60px 32px;max-width:920px;margin:0 auto">
-    <h1 style="font-size:44px;line-height:1.1;letter-spacing:-0.025em;margin:0 0 18px">You carry nothing until you see it run.</h1>
-    <p style="font-size:18px;line-height:1.55;color:#3b4250;margin:0 0 28px">The build is on us. Your books stay in QuickBooks, Tally or Zoho. You pay only after 30 days live on your real operation.</p>
-    <p style="font-size:16px;line-height:1.6;color:#3b4250;margin:0 0 32px">SimpleGrid is the adaptive ERP for CPG brands, manufacturers and inventory-led businesses. We build it at our cost, you go live in 3 weeks or less, and you run it free for 30 days. If it does not work, you walk with a clean export and no invoice. If you keep it, the price is one monthly subscription - all features, no add-ons, no per-seat fees.</p>
-    <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3461e0;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600">Book a demo</a>
-  </main>
-</div>
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script src="components/site-nav.js" defer></script>
-<script src="components/site-footer.js" defer></script>
-<script src="components/LoginModal.js" defer></script>
-<script src="components/InviteModal.js" defer></script>
-<script src="components/FinalCTA.js" defer></script>
-<script src="components/Interactive.js" defer></script>
-<script src="app/pricing.js" defer></script><script src="components/BookDemoModal.js" defer></script><script src="components/TryErpModal.js" defer></script></body>
+
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
+
+<sg-header></sg-header>
+
+<main>
+
+  <!-- ============================================================= HERO -->
+  <section class="section">
+    <div class="container">
+      <!-- Same card and column as the sections under it, the page opens on a
+           panel, not on bare page. -->
+      <div class="card pricing-hero">
+        <p class="eyebrow">Pricing</p>
+        <h1 class="pricing-hero__title">You carry nothing until you
+          <span class="accent">see it run</span>.</h1>
+        <p class="lede pricing-hero__sub">We build SimpleGrid around your operation. You run it
+          live for thirty days, at no cost, on your real orders and stock. Payment begins only
+          after it has proven itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================= HOW PAYMENT WORKS -->
+  <section class="section" id="how-payment-works">
+    <div class="container">
+      <div class="card reveal">
+        <div class="pay-steps__head">
+          <p class="eyebrow">Pricing</p>
+          <h2 class="pricing-title">How payment works</h2>
+          <p class="body-copy">Three steps, in the order they occur.</p>
+        </div>
+        <div class="pay-steps">
+          <div class="pay-step">
+            <p class="pay-step__num">01</p>
+            <h3 class="pay-step__title">We build it. At our cost.</h3>
+            <p class="body-copy">One call to understand your operation. A working demo on your own products within 72 hours. The build is our investment, not your expense.</p>
+          </div>
+          <div class="pay-step">
+            <p class="pay-step__num">02</p>
+            <h3 class="pay-step__title">You run it live. Thirty days, at no cost.</h3>
+            <p class="body-copy">Your real orders, your real stock, your real month-end. Your current systems stay untouched throughout.</p>
+          </div>
+          <div class="pay-step">
+            <p class="pay-step__num">03</p>
+            <h3 class="pay-step__title">It proves itself. Then you pay.</h3>
+            <p class="body-copy">One monthly subscription, beginning only when you decide SimpleGrid stays. If it has not earned its place, you leave with your data. <span class="accent">15% off when you pay annually.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== WHAT WE BUILD -->
+  <section class="section" id="included">
+    <div class="container">
+      <div class="card reveal">
+        <div class="split split--divided split--middle">
+          <div>
+            <p class="eyebrow">One subscription</p>
+            <h2 class="pricing-title included__title">What we build before you owe us
+              anything.</h2>
+            <p class="body-copy">No tiers, no feature gates, no per-seat maths. One monthly price
+              covers the entire grid.</p>
+            <!-- The one case where the price moves, said before anyone asks. -->
+            <p class="body-copy included__note">If you later add something substantial, the
+              subscription moves with it, agreed before we build. Never a surprise invoice.</p>
+          </div>
+          <ul class="included__list">
+            <li><strong>Modeling sessions</strong>: we map your products, stages and rules.</li>
+            <li><strong>Working demo in 3 days</strong>: a live system, not a slideshow.</li>
+            <li><strong>Data migration</strong>: spreadsheets, exports and group chats moved in.</li>
+            <li><strong>Team training</strong>: if your team can text, they can use it.</li>
+            <li><strong>Senior-led onboarding</strong>: engineers, not account managers.</li>
+            <li><strong>All future changes</strong>: new rules and stages, no change orders.</li>
+            <li><strong>AI allowance</strong>: 30% of your subscription, every month, for
+              everything Hank does.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== THE MATH -->
+  <!-- Two bills, one row per line item. The right-hand column carries the
+       tint, so the eye holds its place across the row and lands on ours. -->
+  <section class="section" id="math">
+    <div class="container">
+      <div class="card reveal">
+        <div class="math__head">
+          <p class="eyebrow">The math</p>
+          <h2 class="math__title">The two bills, side by side.</h2>
+          <p class="body-copy math__lede">What an ERP rollout normally costs, against what this one
+            does.</p>
+        </div>
+        <table class="math">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Line item</span></th>
+              <th scope="col">Every other ERP</th>
+              <th scope="col">SimpleGrid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Implementation</th>
+              <td>Six figures, paid upfront</td>
+              <td class="math__ours">$0, built at our cost</td>
+            </tr>
+            <tr>
+              <th scope="row">Licences</th>
+              <td>Per seat, per year</td>
+              <td class="math__ours">Unlimited seats, one subscription</td>
+            </tr>
+            <tr>
+              <th scope="row">Changes</th>
+              <td>Quoted, documented, invoiced</td>
+              <td class="math__ours">Included</td>
+            </tr>
+            <tr>
+              <th scope="row">Consultants</th>
+              <td>Retainer</td>
+              <td class="math__ours">None. You call us.</td>
+            </tr>
+            <tr>
+              <th scope="row">AI</th>
+              <td>A paid add-on, metered</td>
+              <td class="math__ours">Included. Overflow at cost.</td>
+            </tr>
+            <tr>
+              <th scope="row">When you pay</th>
+              <td>At signature, before go-live</td>
+              <td class="math__ours">After it proves itself</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== PRICE + AI USAGE -->
+  <!-- Two halves of the same answer, what the number is, and why the AI in it
+       costs nothing extra. Each carries a drawn panel above the claim: the
+       three inputs that set a price, and the allowance the AI runs inside. -->
+  <section class="section" id="your-price">
+    <div class="container">
+      <div class="card reveal">
+        <div class="duo-tiles">
+
+          <article class="tile">
+            <div class="tile__art" aria-hidden="true">
+              <!-- Three inputs, one number, and the fact that it is written
+                   down before anything is built. -->
+              <div class="quote" data-quote>
+                <ul class="quote__inputs" data-quote-inputs>
+                  <li>Size of your operation</li>
+                  <li>Pieces you deploy</li>
+                  <li>Connectors we build</li>
+                </ul>
+                <svg class="quote__wires" viewBox="0 0 60 120" preserveAspectRatio="none" focusable="false">
+                  <path d="M0 20H30V60H60M0 60H60M0 100H30V60" pathLength="100" data-quote-wires/>
+                </svg>
+                <div class="quote__out" data-quote-out>
+                  <p class="quote__label">Your price</p>
+                  <p class="quote__figure"><span data-quote-figure>$ &middot;&middot;&middot;</span></p>
+                </div>
+              </div>
+            </div>
+            <p class="eyebrow tile__eyebrow">Your price</p>
+            <h3 class="tile__title">Your exact price, in writing, on the first call.</h3>
+            <p class="body-copy tile__text">The number depends on the size of your operation, the
+              pieces you deploy and the connectors we build. You get it before we build anything,
+              and it does not move during the trial. No quote rounds, no discovery phase, no
+              surprises at day 31.</p>
+          </article>
+
+          <article class="tile">
+            <div class="tile__art" aria-hidden="true">
+              <!-- The allowance, what a normal month uses of it, and what the
+                   far side of the line costs. -->
+              <div class="allow" data-allow>
+                <div class="allow__head">
+                  <p class="allow__label">Monthly AI allowance</p>
+                  <p class="allow__pct">30% of your subscription</p>
+                </div>
+                <div class="allow__track">
+                  <span class="allow__fill" data-allow-fill></span>
+                  <span class="allow__line" data-allow-line></span>
+                </div>
+                <div class="allow__legend" data-allow-legend>
+                  <span class="allow__key allow__key--used">A normal month</span>
+                  <span class="allow__key allow__key--over">Past it: our cost + 3%</span>
+                </div>
+              </div>
+            </div>
+            <p class="eyebrow tile__eyebrow">AI usage</p>
+            <h3 class="tile__title">We make nothing on AI usage.</h3>
+            <p class="body-copy tile__text">30% of your subscription is reserved as your monthly AI
+              allowance: every match, every board Hank builds, every question it answers. Most
+              operations stay inside it. Past it, usage is billed at our cost plus 3% processing.
+              No markup, no meter anxiety, no reason to ration Hank.</p>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="card reveal">
+        <div class="split">
+          <div>
+            <h2 class="faq__title">Pricing questions, answered.</h2>
+            <p class="body-copy">What it costs, when you pay, and what happens if it does not
+              work. Anything else, ask us.</p>
+          </div>
+          <div class="faq__list" data-faq>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-1">
+                How much does SimpleGrid cost after the 30 days?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-1"><div>
+                <p>One monthly subscription. No tiers, no per-seat charges, no feature gates:
+                unlimited users and every capability, including future changes, are inside
+                it. The exact number depends on the size of your operation and the pieces you
+                deploy, and you get it in writing on the first call, before we build
+                anything. It does not change during the trial.</p>
+              </div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-2">
+                Does the AI cost extra?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-2"><div>
+                <p>No. 30% of your subscription is reserved as AI credits each month,
+                covering everything Hank does: matching documents, building boards, answering
+                questions. Most operations never exhaust it. If you do, additional usage is
+                billed at our cost plus 3% processing. We make nothing on AI usage, so there
+                is never a reason to ration it.</p>
+              </div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-3">
+                What does &ldquo;you walk if it does not work&rdquo; actually mean?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-3"><div>
+                <p>Exactly that. If at any point in the 30 days you decide it has not beaten
+                what you run today, you stop. No invoice, no exit fee, no minimum term. You
+                leave with your data in standard formats, and we delete your instance on
+                request. The build cost stays ours, because that was our bet, not yours.</p>
+              </div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-4">
+                Why isn&rsquo;t this the cheapest option on the table?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-4"><div>
+                <p>Because the cheapest option is a template, and you have already outgrown
+                templates. Your subscription carries senior engineers who build around your
+                operation, every future change with no change orders, unlimited seats, and
+                connectors built at no cost. We replace the six-figure rollout at a fraction
+                of it, and the spreadsheet system that quietly costs you a planner&rsquo;s
+                week, every week.</p>
+              </div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-5">
+                What happens to the price when we grow?
+                <svg class="faq__sign" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                  <path d="M7 1v12M1 7h12" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round"/></svg>
+              </button>
+              <div class="faq__a" id="faq-a-5"><div>
+                <p>Day-to-day growth costs nothing: more orders, more users, more data are
+                already yours. New integrations are usually part of that too, built in as we
+                go. Where an addition is genuinely substantial, a new site or a whole new
+                piece of the system, the subscription moves with it, and the new number is
+                agreed before we build. You will never open an invoice you did not
+                expect.</p>
+              </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= CLOSING CTA -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="card cta reveal" data-cursor="light">
+        <h2 class="cta__title">Start your operations cloud journey today.</h2>
+        <p class="cta__sub">A working demo in 72 hours. Live in three weeks.</p>
+        <p class="meta cta__meta">Payment begins when it works.</p>
+        <a class="btn btn--onblue" href="pricing.html#demo" data-sg-invite>Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/price-art.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

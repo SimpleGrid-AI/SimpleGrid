@@ -1,220 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>How AI Changed ERP Deployment (Not Features) | SimpleGrid Blog</title>
-<meta name="description" content="Every ERP vendor adds AI features to 20-year-old architectures. What AI actually changes is deployment - from 18 months and $500K to days. Here&#39;s how.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<!-- The post lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>How AI Changed ERP Deployment (Not Features) | SimpleGrid</title>
+<meta name="description" content="Every ERP vendor adds AI features to 20-year-old architectures. What AI actually changes is deployment - from 18 months and $500K to days. Here&#39;s how.">
 <link rel="canonical" href="https://simplegrid.ai/blog/how-ai-changed-erp-deployment-not-features-deployment/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta property="og:url" content="https://simplegrid.ai/blog/how-ai-changed-erp-deployment-not-features-deployment/">
-<meta property="og:title" content="How AI Changed ERP Deployment (Not Features)">
+<meta property="og:title" content="How AI Changed ERP Deployment (Not Features) | SimpleGrid">
 <meta property="og:description" content="Every ERP vendor adds AI features to 20-year-old architectures. What AI actually changes is deployment - from 18 months and $500K to days. Here&#39;s how.">
-<meta property="og:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
-<meta property="og:image:alt" content="How AI Changed ERP Deployment (Not Features) - SimpleGrid blog post">
-
-<!-- Twitter Card -->
+<meta property="og:url" content="https://simplegrid.ai/blog/how-ai-changed-erp-deployment-not-features-deployment/">
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="How AI Changed ERP Deployment (Not Features)">
-<meta name="twitter:description" content="Every ERP vendor adds AI features to 20-year-old architectures. What AI actually changes is deployment - from 18 months and $500K to days. Here&#39;s how.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- JSON-LD: Article + BreadcrumbList (for crawlers that don't run JS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How AI Changed ERP Deployment (Not Features)",
-  "description": "Every ERP vendor adds AI features to 20-year-old architectures. What AI actually changes is deployment - from 18 months and $500K to days. Here's how.",
-  "image": "https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg",
-  "url": "https://simplegrid.ai/blog/how-ai-changed-erp-deployment-not-features-deployment/",
-  "mainEntityOfPage": "https://simplegrid.ai/blog/how-ai-changed-erp-deployment-not-features-deployment/",
-  "inLanguage": "en",
-  "isPartOf": { "@id": "https://simplegrid.ai/blog.html#blog" },
-  "publisher": { "@id": "https://simplegrid.ai/#org" },
-  "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-  "datePublished": "2026-05-10",
-  "dateModified": "2026-05-10"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simplegrid.ai/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "How AI Changed ERP Deployment (Not Features)", "item": "https://simplegrid.ai/blog/how-ai-changed-erp-deployment-not-features-deployment/" }
-  ]
-}
-</script>
-<script>
-  // Tells Nav to resolve root-relative paths with ../../ since this page is
-  // two levels deep, and tells blog-post.js which infographic to mount.
-  window.__SG_BLOG_ID__ = 14;
-  window.__SG_BLOG_ASSET_PREFIX__ = "../../";
-</script>
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="../../assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="../../assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- sg-static-chrome -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="blog"></div>
-<div class="nav-mobile" data-sg-mobile-menu hidden>
-  <nav class="nav-mobile-panel" aria-label="Mobile navigation">
-    <a href="../../index.html" class="nav-mobile-link">Home</a>
-    <a href="../../product.html" class="nav-mobile-link">Product</a>
-    <div class="nav-mobile-section">Resources</div>
-    <a href="../../tools/" class="nav-mobile-link nav-mobile-sub">Productive Tools</a>
-    <a href="../../case-studies.html" class="nav-mobile-link nav-mobile-sub">Case studies</a>
-    <a href="../../blog.html" class="nav-mobile-link nav-mobile-sub active">Blog</a>
-    <div class="nav-mobile-sep"></div>
-    <a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>
-  </nav>
-</div>
 
-<main id="main">
-<section class="post-header">
-  <div class="container-sm">
-    <a href="../../blog.html" style="font-size:15px;color:var(--sg-blue);text-decoration:none;border:none">← Back to blog</a>
-    <h1>How AI Changed ERP Deployment (Not Features)</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="2026-05-10">May 10, 2026</time>
-      <span>Industry Critique</span>
-      <span>5 min read</span>
-    </div>
-  </div>
-</section>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
 
-<section class="post-content">
-  <div class="container-sm">
-    <p>Every ERP vendor is adding AI features. Chatbots on top of their existing systems. "Smart" recommendations. Automated report generation. These are features bolted onto architectures designed 20 years ago.</p>
-    <p>That is not what AI changes about ERP.</p>
-    <p>What AI actually changes is deployment. The process of going from "we need an ERP" to "we have a live ERP." That is the hard part. That is where 12 to 18 months gets spent. That is where $500K goes. And AI compresses it to days.</p>
-    <p>Where the time goes in traditional deployment</p>
-    <h2>A traditional ERP deployment has 6 phases:</h2>
-    <p style="padding-left:8px"><strong>1.</strong> Requirements gathering: 4 to 6 weeks. Consultants interview stakeholders. Hundreds of pages of requirements documents.</p>
-    <p style="padding-left:8px"><strong>2.</strong> System design: 4 to 8 weeks. The implementation team maps requirements to modules and custom workflows.</p>
-    <p style="padding-left:8px"><strong>3.</strong> Configuration and customization: 8 to 16 weeks. Developers build the custom parts.</p>
-    <p style="padding-left:8px"><strong>4.</strong> Data migration: 4 to 6 weeks. Moving historical data from spreadsheets and legacy systems.</p>
-    <p style="padding-left:8px"><strong>5.</strong> Testing and training: 4 to 8 weeks. User acceptance testing. Training sessions.</p>
-    <p style="padding-left:8px"><strong>6.</strong> Go-live and stabilization: 4 to 8 weeks. Bug fixes. Adjustments.</p>
-    <p>Total: 28 to 52 weeks. Each phase involves human labor, back-and-forth communication, and iterative refinement. The bottleneck is always the translation step: turning what the business does into what the software can do.</p>
-    <h2>What AI compresses</h2>
-    <p>AI does not eliminate any of these phases. It compresses the translation step in each one.</p>
-    <p>Requirements gathering. Instead of 6 weeks of interviews producing 200-page documents, a 2 to 3 hour conversation with the founder produces a structured SG Schema. AI assists in converting the conversation into a formal specification of the business: what entities exist, what states they live in, what rules apply.</p>
-    <p>System design. Instead of consultants mapping requirements to modules over 8 weeks, AI generates the SG Schema directly from the founder conversation. The SG Schema IS the system design. No translation step. No gap between "what the business needs" and "what the system will do."</p>
-    <div id="root-infographic-mid"></div>
-    <p>Configuration. Instead of developers writing custom code for 16 weeks, SG Engine reads the SG Schema and generates the application. This is the core architectural shift. The SG Schema is the complete specification of the client's system. SG Engine interprets it. No custom code per client.</p>
-    <p>Data migration. Instead of 6 weeks of manual mapping and cleaning, AI parses messy input files: Excel sheets with inconsistent layouts, PDFs with varying formats, CSV exports from legacy systems. It extracts structured data, maps it to the new system's types, and loads it. Manual validation still happens, but the heavy lifting is automated.</p>
-    <p>Testing. The SG Schema itself is testable. If it says "received_qty cannot exceed ordered_qty," that rule can be validated before go-live by simulating events against the spec. The test suite is generated from the rules, not written by hand.</p>
-    <p>The result</p>
-    <p>What used to take 28 to 52 weeks takes days. Not because corners were cut. Because the translation layer, the step where human understanding gets converted into software behavior, is now handled by AI.</p>
-    <p>The founder describes the business. AI writes the SG Schema. SG Engine generates the application. The founder reviews. Changes are made. The system goes live.</p>
-    <p>Working demo in 24 hours. Production-ready in 2 weeks.</p>
-    <h2>Why this is not incremental</h2>
-    <p>This is not "AI makes ERP 20% faster." It is a different deployment model entirely.</p>
-    <p>In the old model, deployment is a project. It has a start date, a team, a budget, and a go-live date 12 months away. It is managed by a project manager. It has weekly status meetings. It has a risk register.</p>
-    <p>In the new model, deployment is a conversation. The founder talks. The system listens. The result is visible in 24 hours. Feedback is immediate. Iteration is continuous. Go-live happens when the founder says "this is right."</p>
-    <p>The project model has a 50 to 75% failure rate because the feedback loop is too long. By the time you see the system, 12 months have passed and the business has changed. The conversation model has near-zero failure rate because the feedback loop is 24 hours. If it is wrong, you see it immediately and fix it.</p>
-    <h2>What AI does NOT change</h2>
-    <p>AI does not make bad architecture good. If the underlying system is module-based, AI can speed up the configuration of those modules, but you still have the same constraints: rigid workflows, expensive customization, cross-module consistency problems.</p>
-    <p>AI changes ERP deployment only when paired with <a href="/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">an architecture that was designed for it</a>: spec-driven, event-sourced, single source of truth. The AI writes the SG Schema. SG Engine reads it. The events record what happens. The rules enforce themselves.</p>
-    <p>The architecture is the foundation. AI is the accelerant.</p>
-    <p>SimpleGrid is AI-native: AI writes the SG Schema, SG Engine generates the system, and deployment takes days. Not AI bolted onto 20-year-old software.</p>
+<sg-header></sg-header>
 
-    <div id="root-infographic-end"></div>
+<main>
 
-    <!-- Prev/Next -->
-    <div class="post-pager">
-      <a class="post-pager-link" href="/blog/why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying/">← Why Your ERP Vendor Charges You for Every Change</a>
-      <a class="post-pager-link post-pager-next" href="/blog/what-happens-when-your-erp-cannot-keep-up-with-your-business/">When Your ERP Cannot Keep Up With Your Business →</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">Describe your floor. See it in 24 hours.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">No 12-month project, no 200-page requirements doc. Talk us through how your operation runs and SimpleGrid turns that conversation into a working system you can see the next day.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
+  <!-- ============================================================= POST -->
+  <!-- Title block and prose share one card: they are one piece of
+       reading, and a seam between them read as two. -->
+  <section class="section">
+    <div class="container">
+      <div class="card post-card">
+        <header class="post-hero">
+          <p class="eyebrow">Industry Critique</p>
+          <h1 class="post-hero__title">How AI Changed ERP Deployment (Not Features)</h1>
+          <p class="post-meta">
+            <time datetime="2026-05-10">May 10, 2026</time>
+            <span class="post-meta__cat">Industry Critique</span>
+            <span>5 min</span>
+          </p>
+        </header>
+        <article class="post">
+          <p>Every ERP vendor is adding AI features. Chatbots on top of their existing systems. "Smart" recommendations. Automated report generation. These are features bolted onto architectures designed 20 years ago.</p>
+          <p>That is not what AI changes about ERP.</p>
+          <p>What AI actually changes is deployment. The process of going from "we need an ERP" to "we have a live ERP." That is the hard part. That is where 12 to 18 months gets spent. That is where $500K goes. And AI compresses it to days.</p>
+          <p>Where the time goes in traditional deployment</p>
+          <h2>A traditional ERP deployment has 6 phases:</h2>
+          <p><strong>1.</strong> Requirements gathering: 4 to 6 weeks. Consultants interview stakeholders. Hundreds of pages of requirements documents.</p>
+          <p><strong>2.</strong> System design: 4 to 8 weeks. The implementation team maps requirements to modules and custom workflows.</p>
+          <p><strong>3.</strong> Configuration and customization: 8 to 16 weeks. Developers build the custom parts.</p>
+          <p><strong>4.</strong> Data migration: 4 to 6 weeks. Moving historical data from spreadsheets and legacy systems.</p>
+          <p><strong>5.</strong> Testing and training: 4 to 8 weeks. User acceptance testing. Training sessions.</p>
+          <p><strong>6.</strong> Go-live and stabilization: 4 to 8 weeks. Bug fixes. Adjustments.</p>
+          <p>Total: 28 to 52 weeks. Each phase involves human labor, back-and-forth communication, and iterative refinement. The bottleneck is always the translation step: turning what the business does into what the software can do.</p>
+          <h2>What AI compresses</h2>
+          <p>AI does not eliminate any of these phases. It compresses the translation step in each one.</p>
+          <p>Requirements gathering. Instead of 6 weeks of interviews producing 200-page documents, a 2 to 3 hour conversation with the founder produces a structured SG Schema. AI assists in converting the conversation into a formal specification of the business: what entities exist, what states they live in, what rules apply.</p>
+          <p>System design. Instead of consultants mapping requirements to modules over 8 weeks, AI generates the SG Schema directly from the founder conversation. The SG Schema IS the system design. No translation step. No gap between "what the business needs" and "what the system will do."</p>
+          <div id="root-infographic-mid"></div>
+          <p>Configuration. Instead of developers writing custom code for 16 weeks, SG Engine reads the SG Schema and generates the application. This is the core architectural shift. The SG Schema is the complete specification of the client's system. SG Engine interprets it. No custom code per client.</p>
+          <p>Data migration. Instead of 6 weeks of manual mapping and cleaning, AI parses messy input files: Excel sheets with inconsistent layouts, PDFs with varying formats, CSV exports from legacy systems. It extracts structured data, maps it to the new system's types, and loads it. Manual validation still happens, but the heavy lifting is automated.</p>
+          <p>Testing. The SG Schema itself is testable. If it says "received_qty cannot exceed ordered_qty," that rule can be validated before go-live by simulating events against the spec. The test suite is generated from the rules, not written by hand.</p>
+          <p>The result</p>
+          <p>What used to take 28 to 52 weeks takes days. Not because corners were cut. Because the translation layer, the step where human understanding gets converted into software behavior, is now handled by AI.</p>
+          <p>The founder describes the business. AI writes the SG Schema. SG Engine generates the application. The founder reviews. Changes are made. The system goes live.</p>
+          <p>Working demo in 72 hours. Production-ready in 2 weeks.</p>
+          <h2>Why this is not incremental</h2>
+          <p>This is not "AI makes ERP 20% faster." It is a different deployment model entirely.</p>
+          <p>In the old model, deployment is a project. It has a start date, a team, a budget, and a go-live date 12 months away. It is managed by a project manager. It has weekly status meetings. It has a risk register.</p>
+          <p>In the new model, deployment is a conversation. The founder talks. The system listens. The result is visible in 72 hours. Feedback is immediate. Iteration is continuous. Go-live happens when the founder says "this is right."</p>
+          <p>The project model has a 50 to 75% failure rate because the feedback loop is too long. By the time you see the system, 12 months have passed and the business has changed. The conversation model has near-zero failure rate because the feedback loop is a day. If it is wrong, you see it immediately and fix it.</p>
+          <h2>What AI does NOT change</h2>
+          <p>AI does not make bad architecture good. If the underlying system is module-based, AI can speed up the configuration of those modules, but you still have the same constraints: rigid workflows, expensive customization, cross-module consistency problems.</p>
+          <p>AI changes ERP deployment only when paired with <a href="/blog/module-based-erp-vs-sg-schema-erp-two-architectures-two-outcomes/">an architecture that was designed for it</a>: spec-driven, event-sourced, single source of truth. The AI writes the SG Schema. SG Engine reads it. The events record what happens. The rules enforce themselves.</p>
+          <p>The architecture is the foundation. AI is the accelerant.</p>
+          <p>SimpleGrid is AI-native: AI writes the SG Schema, SG Engine generates the system, and deployment takes days. Not AI bolted onto 20-year-old software.</p>
+          <div id="root-infographic-end"></div>
+          <!-- Prev/Next -->
+          <div class="post-pager">
+          <a class="post-pager-link" href="/blog/why-your-erp-vendor-charges-you-for-every-change-and-how-to-stop-paying/">← Why Your ERP Vendor Charges You for Every Change</a>
+          <a class="post-pager-link post-pager-next" href="/blog/what-happens-when-your-erp-cannot-keep-up-with-your-business/">When Your ERP Cannot Keep Up With Your Business →</a>
+          </div>
+          <div class="post-foot">
+            <a class="post-foot__back" href="blogs.html">&larr; All posts</a>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script>
-(function(){
-  // Top nav (burger + Resources dropdown) is handled by components/site-nav.js.
-  // Lazy-load React + PostInfographics only if there's an infographic on the page.
-  var mounts = document.querySelectorAll('[id^="root-infographic-"]');
-  if (!mounts.length) return;
-  var loaded = false;
-  function loadOnce(){
-    if (loaded) return;
-    loaded = true;
-    function add(src, cb){
-      var s = document.createElement('script');
-      s.src = src; s.async = false; var SRI={'https://unpkg.com/react@18.3.1/umd/react.production.min.js':'sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z','https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js':'sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1'};if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous';} s.onload = cb; document.head.appendChild(s);
-    }
-    add('https://unpkg.com/react@18.3.1/umd/react.production.min.js', function(){
-      add('https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js', function(){
-        add('../../components/PostInfographics.js', function(){
-          var id = window.__SG_BLOG_ID__;
-          var pi = id && window.PostInfographics && window.PostInfographics[id];
-          if (!pi) return;
-          mounts.forEach(function(el){
-            var which = el.id === 'root-infographic-mid' ? pi.mid : pi.end;
-            if (which) ReactDOM.createRoot(el).render(which);
-          });
-        });
-      });
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting) { loadOnce(); io.disconnect(); } });
-    }, { rootMargin: '600px 0px' });
-    mounts.forEach(function(m){ io.observe(m); });
-  } else {
-    loadOnce();
-  }
-})();
-</script>
-<script src="../../components/blog-post-chrome.js" defer></script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/post.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

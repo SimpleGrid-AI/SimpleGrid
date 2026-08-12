@@ -1,204 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Security meta (GitHub Pages can't set HTTP headers; these are the next-best-thing) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://d1i6y7ff3hcohx.cloudfront.net https://us.i.posthog.com https://formsubmit.co https://www.google-analytics.com https://*.clarity.ms https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-
-<title>SG Schema: Why Your ERP Should Speak Your Language | SimpleGrid Blog</title>
-<meta name="description" content="Most ERPs force your operation into someone else's modules. SG Schema captures your business in your own language - the same word can mean three different things, and the system keeps them straight.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#3461E0">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<!-- The post lives two levels down; everything else is written from the root. -->
+<base href="../../">
+<title>SG Schema: Why Your ERP Should Speak Your Language | SimpleGrid</title>
+<meta name="description" content="Most ERPs force your operation into someone else's modules. SG Schema captures your business in the words your floor already uses.">
 <link rel="canonical" href="https://simplegrid.ai/blog/sg-schema-why-your-erp-should-speak-your-language/">
-<link rel="icon" type="image/svg+xml" href="../../assets/simplegrid-logomark.svg">
-<link rel="dns-prefetch" href="https://us-assets.i.posthog.com">
-<link rel="stylesheet" href="../../colors_and_type.css">
-<link rel="stylesheet" href="../../styles.css">
-
-<!-- Open Graph -->
+<!-- Social preview: the card everyone sees before the page itself. -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
+<meta property="og:title" content="SG Schema: Why Your ERP Should Speak Your Language | SimpleGrid">
+<meta property="og:description" content="Most ERPs force your operation into someone else's modules. SG Schema captures your business in the words your floor already uses.">
 <meta property="og:url" content="https://simplegrid.ai/blog/sg-schema-why-your-erp-should-speak-your-language/">
-<meta property="og:title" content="SG Schema: Why Your ERP Should Speak Your Language">
-<meta property="og:description" content="Most ERPs force your operation into someone else's modules. SG Schema captures your business in your own language - the same word can mean three different things, and the system keeps them straight.">
-<meta property="og:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
-<meta property="og:image:alt" content="SG Schema: Why Your ERP Should Speak Your Language - SimpleGrid blog post">
-
-<!-- Twitter Card -->
+<meta property="og:image" content="https://simplegrid.ai/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@simplegridai">
-<meta name="twitter:creator" content="@simplegridai">
-<meta name="twitter:title" content="SG Schema: Why Your ERP Should Speak Your Language">
-<meta name="twitter:description" content="Most ERPs force your operation into someone else's modules. SG Schema captures your business in your own language - the same word can mean three different things, and the system keeps them straight.">
-<meta name="twitter:image" content="https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg">
+<meta name="twitter:image" content="https://simplegrid.ai/assets/og-card.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- JSON-LD: Article + BreadcrumbList (for crawlers that don't run JS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "SG Schema: Why Your ERP Should Speak Your Language",
-  "description": "Most ERPs force your operation into someone else's modules. SG Schema captures your business in your own language - the same word can mean three different things, and the system keeps them straight.",
-  "image": "https://simplegrid.ai/assets/simplegrid-logo-horizontal.svg",
-  "url": "https://simplegrid.ai/blog/sg-schema-why-your-erp-should-speak-your-language/",
-  "mainEntityOfPage": "https://simplegrid.ai/blog/sg-schema-why-your-erp-should-speak-your-language/",
-  "inLanguage": "en",
-  "isPartOf": { "@id": "https://simplegrid.ai/blog.html#blog" },
-  "publisher": { "@id": "https://simplegrid.ai/#org" },
-  "author": {"@type": "Person", "name": "Mukund Agarwal", "url": "https://simplegrid.ai/about.html", "jobTitle": "Founder", "worksFor": {"@id": "https://simplegrid.ai/#org"}},
-  "datePublished": "2026-03-29",
-  "dateModified": "2026-03-29"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplegrid.ai/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://simplegrid.ai/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "SG Schema: Why Your ERP Should Speak Your Language", "item": "https://simplegrid.ai/blog/sg-schema-why-your-erp-should-speak-your-language/" }
-  ]
-}
-</script>
-<script>
-  // Tells Nav to resolve root-relative paths with ../../ since this page is
-  // two levels deep, and tells blog-post.js which infographic to mount.
-  window.__SG_BLOG_ID__ = 2;
-  window.__SG_BLOG_ASSET_PREFIX__ = "../../";
-</script>
-<!-- Analytics (PostHog + GA4) - deferred to first user interaction. See /assets/js/analytics-init.js -->
-<script src="../../assets/js/analytics-init.js" defer></script>
-<!-- Conversion event tracking (data-cta + form + scroll) -->
-<script src="../../assets/js/tracking.js" defer></script>
-<!-- Cookie consent banner -->
-<script src="../../assets/js/cookie-consent.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/v3.css">
+<link rel="stylesheet" href="css/post.css">
+<link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
-<!-- sg-static-chrome -->
-<!-- Top navigation rendered by the shared component (components/site-nav.js). -->
-<div id="sg-nav" data-page="blog"></div>
-<div class="nav-mobile" data-sg-mobile-menu hidden>
-  <nav class="nav-mobile-panel" aria-label="Mobile navigation">
-    <a href="../../index.html" class="nav-mobile-link">Home</a>
-    <a href="../../product.html" class="nav-mobile-link">Product</a>
-    <div class="nav-mobile-section">Resources</div>
-    <a href="../../tools/" class="nav-mobile-link nav-mobile-sub">Productive Tools</a>
-    <a href="../../case-studies.html" class="nav-mobile-link nav-mobile-sub">Case studies</a>
-    <a href="../../blog.html" class="nav-mobile-link nav-mobile-sub active">Blog</a>
-    <div class="nav-mobile-sep"></div>
-    <a href="#" data-sg-try-erp role="button" class="nav-mobile-link">See It</a>
-  </nav>
-</div>
 
-<main id="main">
-<section class="post-header">
-  <div class="container-sm">
-    <a href="../../blog.html" style="font-size:15px;color:var(--sg-blue);text-decoration:none;border:none">← Back to blog</a>
-    <h1>SG Schema: Why Your ERP Should Speak Your Language</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="2026-03-29">Mar 29, 2026</time>
-      <span>Product Deep-Dive</span>
-      <span>6 min read</span>
-    </div>
-  </div>
-</section>
+<div class="grid-field" aria-hidden="true"><div class="grid-field__lit" data-grid-lit></div></div>
 
-<section class="post-content">
-  <div class="container-sm">
-    <p>Buy a traditional ERP and the first thing you do is learn its vocabulary. Your "lot" is now a "batch." Your "job worker" is a "subcontracted operation." The thing you've called a dispatch for thirty years is a "delivery document, type ZLF." Before the system can run your business, you have to translate your business into its language.</p>
-    <p>That translation is where most ERP projects quietly go wrong. SG Schema is built on the opposite premise: the software should speak your language, not the other way around.</p>
-    <h2>The same word means different things</h2>
-    <p>Here's the problem every generic ERP pretends doesn't exist: the same business term means completely different things in different parts of your operation.</p>
-    <p>Take the word "order." On the sales side, an order is a customer commitment - a promise to deliver, with a price and a date. In production, an order is a work instruction - what to make, in what sequence, on which line. In procurement, an order is a purchase commitment to a vendor. Same word. Three different entities, with three different lifecycles, three different sets of rules.</p>
-    <p>A module-based ERP forces all three into one rigid "Order" object, or splits them across modules that don't quite line up, and then sells you the integration to stitch them back together. Your team spends the next year learning which screen means which kind of order.</p>
-    <div id="root-infographic-mid"></div>
-    <h2>What a schema actually is</h2>
-    <p>SG Schema is a description of your operation in your own terms: the entities you actually work with, the words you actually use, and the rules that actually govern how they move. "Order" can mean three things, and the schema keeps each one distinct - with its own fields, its own states, and its own boundaries - while still knowing how they relate.</p>
-    <p>This isn't a settings screen or a pile of custom fields bolted onto a generic object. The schema <em>is</em> the system. When your business says a dispatch can't ship until QC signs off, that's a rule in the schema, enforced everywhere, not a workflow plugin someone has to remember to install. (The entities themselves are defined as <a href="/blog/entity-roots-the-building-blocks-of-an-sg-schema-erp/">entity roots</a> - the building blocks the schema is assembled from.)</p>
-    <h2>Why this matters for deployment</h2>
-    <p>When the software speaks your language, three things change.</p>
-    <p><strong>Onboarding collapses.</strong> Your stores manager doesn't learn a new vocabulary, because the screens already say "lot" and "dispatch" and "job worker." The interface looks like the business they already run.</p>
-    <p><strong>Customization stops being a project.</strong> Changing how an entity behaves means editing the schema, not rebuilding a module. That's the difference between <a href="/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">a change that takes minutes and one that takes months</a>.</p>
-    <p><strong>The data stays honest.</strong> Because nobody is translating reality into the software's categories, nothing gets lost or mislabeled in the gap between what happened and what the system can represent.</p>
-    <h2>Your operation is not generic</h2>
-    <p>The entire premise of off-the-shelf ERP is that businesses in an industry are basically the same, so one set of modules should fit all of them. They aren't, and it doesn't. Two furniture factories down the road from each other settle contractors differently, track wood differently, and define "finished" differently. A generic model flattens those differences and calls it best practice.</p>
-    <p>SG Schema captures the differences instead of erasing them. Your business speaks. The software listens - in your language, not translated into someone else's modules.</p>
+<sg-header></sg-header>
 
-    <div id="root-infographic-end"></div>
+<main>
 
-    <!-- Prev/Next -->
-    <div class="post-pager">
-      <a class="post-pager-link" href="/blog/event-sourcing-why-simplegrid-stores-everything-that-ever-happened/">← Event Sourcing: Why SimpleGrid Stores Every Action Forever</a>
-      <a class="post-pager-link post-pager-next" href="/blog/entity-roots-the-building-blocks-of-an-sg-schema-erp/">Entity Roots: Building Blocks of an SG Schema ERP →</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<!-- Closing CTA band -->
-<section class="final-cta-band">
-  <div class="final-cta-gridbg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="final-cta-inner">
-      <h2 class="final-cta-head">An ERP that speaks your language.</h2>
-      <div class="final-cta-col">
-        <p class="final-cta-text">SimpleGrid models your operation in your own terms - your entities, your words, your rules - instead of forcing your business into someone else's modules. See what it looks like when the software finally fits the way you actually work.</p>
-        <a href="https://cal.com/simplegrid-ai" target="_blank" rel="noopener noreferrer" data-cta="final_cta" class="btn btn-lg btn-primary final-cta-btn">Book a demo</a>
-        <p class="final-cta-note">Limited slots each quarter. We onboard selectively.</p>
+  <!-- ============================================================= POST -->
+  <!-- Title block and prose share one card: they are one piece of
+       reading, and a seam between them read as two. -->
+  <section class="section">
+    <div class="container">
+      <div class="card post-card">
+        <header class="post-hero">
+          <p class="eyebrow">Product Deep-Dive</p>
+          <h1 class="post-hero__title">SG Schema: Why Your ERP Should Speak Your Language</h1>
+          <p class="post-meta">
+            <time datetime="2026-03-29">Mar 29, 2026</time>
+            <span class="post-meta__cat">Product Deep-Dive</span>
+            <span>6 min</span>
+          </p>
+        </header>
+        <article class="post">
+          <p>Buy a traditional ERP and the first thing you do is learn its vocabulary. Your "lot" is now a "batch." Your "job worker" is a "subcontracted operation." The thing you've called a dispatch for thirty years is a "delivery document, type ZLF." Before the system can run your business, you have to translate your business into its language.</p>
+          <p>That translation is where most ERP projects quietly go wrong. SG Schema is built on the opposite premise: the software should speak your language, not the other way around.</p>
+          <h2>The same word means different things</h2>
+          <p>Here's the problem every generic ERP pretends doesn't exist: the same business term means completely different things in different parts of your operation.</p>
+          <p>Take the word "order." On the sales side, an order is a customer commitment - a promise to deliver, with a price and a date. In production, an order is a work instruction - what to make, in what sequence, on which line. In procurement, an order is a purchase commitment to a vendor. Same word. Three different entities, with three different lifecycles, three different sets of rules.</p>
+          <p>A module-based ERP forces all three into one rigid "Order" object, or splits them across modules that don't quite line up, and then sells you the integration to stitch them back together. Your team spends the next year learning which screen means which kind of order.</p>
+          <div id="root-infographic-mid"></div>
+          <h2>What a schema actually is</h2>
+          <p>SG Schema is a description of your operation in your own terms: the entities you actually work with, the words you actually use, and the rules that actually govern how they move. "Order" can mean three things, and the schema keeps each one distinct - with its own fields, its own states, and its own boundaries - while still knowing how they relate.</p>
+          <p>This isn't a settings screen or a pile of custom fields bolted onto a generic object. The schema <em>is</em> the system. When your business says a dispatch can't ship until QC signs off, that's a rule in the schema, enforced everywhere, not a workflow plugin someone has to remember to install. (The entities themselves are defined as <a href="/blog/entity-roots-the-building-blocks-of-an-sg-schema-erp/">entity roots</a> - the building blocks the schema is assembled from.)</p>
+          <h2>Why this matters for deployment</h2>
+          <p>When the software speaks your language, three things change.</p>
+          <p><strong>Onboarding collapses.</strong> Your stores manager doesn't learn a new vocabulary, because the screens already say "lot" and "dispatch" and "job worker." The interface looks like the business they already run.</p>
+          <p><strong>Customization stops being a project.</strong> Changing how an entity behaves means editing the schema, not rebuilding a module. That's the difference between <a href="/blog/how-simplegrid-makes-erp-customization-take-minutes-not-months/">a change that takes minutes and one that takes months</a>.</p>
+          <p><strong>The data stays honest.</strong> Because nobody is translating reality into the software's categories, nothing gets lost or mislabeled in the gap between what happened and what the system can represent.</p>
+          <h2>Your operation is not generic</h2>
+          <p>The entire premise of off-the-shelf ERP is that businesses in an industry are basically the same, so one set of modules should fit all of them. They aren't, and it doesn't. Two furniture factories down the road from each other settle contractors differently, track wood differently, and define "finished" differently. A generic model flattens those differences and calls it best practice.</p>
+          <p>SG Schema captures the differences instead of erasing them. Your business speaks. The software listens - in your language, not translated into someone else's modules.</p>
+          <div id="root-infographic-end"></div>
+          <!-- Prev/Next -->
+          <div class="post-pager">
+          <a class="post-pager-link" href="/blog/event-sourcing-why-simplegrid-stores-everything-that-ever-happened/">← Event Sourcing: Why SimpleGrid Stores Every Action Forever</a>
+          <a class="post-pager-link post-pager-next" href="/blog/entity-roots-the-building-blocks-of-an-sg-schema-erp/">Entity Roots: Building Blocks of an SG Schema ERP →</a>
+          </div>
+          <div class="post-foot">
+            <a class="post-foot__back" href="blogs.html">&larr; All posts</a>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer rendered by the shared component (components/site-footer.js). -->
-<div id="sg-footer"></div>
-<script>
-(function(){
-  // Top nav (burger + Resources dropdown) is handled by components/site-nav.js.
-  // Lazy-load React + PostInfographics only if there's an infographic on the page.
-  var mounts = document.querySelectorAll('[id^="root-infographic-"]');
-  if (!mounts.length) return;
-  var loaded = false;
-  function loadOnce(){
-    if (loaded) return;
-    loaded = true;
-    function add(src, cb){
-      var s = document.createElement('script');
-      s.src = src; s.async = false; var SRI={'https://unpkg.com/react@18.3.1/umd/react.production.min.js':'sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z','https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js':'sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1'};if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous';} s.onload = cb; document.head.appendChild(s);
-    }
-    add('https://unpkg.com/react@18.3.1/umd/react.production.min.js', function(){
-      add('https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js', function(){
-        add('../../components/PostInfographics.js', function(){
-          var id = window.__SG_BLOG_ID__;
-          var pi = id && window.PostInfographics && window.PostInfographics[id];
-          if (!pi) return;
-          mounts.forEach(function(el){
-            var which = el.id === 'root-infographic-mid' ? pi.mid : pi.end;
-            if (which) ReactDOM.createRoot(el).render(which);
-          });
-        });
-      });
-    });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting) { loadOnce(); io.disconnect(); } });
-    }, { rootMargin: '600px 0px' });
-    mounts.forEach(function(m){ io.observe(m); });
-  } else {
-    loadOnce();
-  }
-})();
-</script>
-<script src="../../components/blog-post-chrome.js" defer></script>
-<script src="../../components/site-nav.js" defer></script>
-<script src="../../components/site-footer.js" defer></script>
-<script src="../../components/BookDemoModal.js" defer></script><script src="../../components/TryErpModal.js" defer></script></body>
+  <!-- ================================================== MID-PAGE BANNER -->
+  <section class="section" id="upgrade">
+    <div class="container">
+      <div class="card banner reveal">
+        <div class="banner__copy">
+          <h2 class="banner__title">Upgrade your operation.</h2>
+          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+        </div>
+        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<sg-footer></sg-footer>
+
+<script src="js/components.js"></script>
+<script src="js/book-demo.js" defer></script>
+<script src="js/v3.js"></script>
+<script src="js/post.js"></script>
+<script src="js/cursor.js"></script>
+</body>
 </html>

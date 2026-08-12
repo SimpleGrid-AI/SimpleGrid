@@ -1,0 +1,280 @@
+/* ==========================================================================
+   SimpleGrid — blog post pages
+
+   One column of prose on the page's own card. Everything here is the reading
+   experience: measure, rhythm, and the few block types the posts actually use
+   (headings, figures, pull-out mono lines, links).
+   ========================================================================== */
+
+/* The title block, at the head of the post's own card rather than on a card
+   of its own — one piece of reading, one container. The rule under it is what
+   separates the two now. */
+.post-hero {
+  max-width: 68ch;
+  margin: 0 auto 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+
+.post-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  max-width: 26ch;
+  margin: 0 0 20px;
+}
+
+/* Date, category and length, in the meta voice used across the site. */
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  color: var(--fg-muted);
+}
+.post-meta__cat { color: var(--accent); }
+
+/* ------------------------------------------------------------------ prose */
+
+/* 68 characters is the measure the rest of the site reads at; the post keeps
+   it rather than running the full width of the card. */
+.post { max-width: 68ch; margin: 0 auto; }
+
+.post p {
+  font-size: var(--fs-body);
+  line-height: 1.75;
+  color: var(--fg-body);
+  margin: 0 0 20px;
+}
+.post p:last-child { margin-bottom: 0; }
+
+.post h2 {
+  font-size: var(--fs-h3);
+  color: var(--accent);
+  letter-spacing: -0.025em;
+  margin: 44px 0 16px;
+  text-wrap: balance;
+}
+.post h3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--fg);
+  margin: 32px 0 10px;
+}
+.post h2:first-child, .post h3:first-child { margin-top: 0; }
+
+.post strong { color: var(--fg); font-weight: 700; }
+/* Prose links only. A .btn inside the article carries its own colour, and
+   this rule would otherwise paint blue text onto a blue button. */
+.post a:not(.btn) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.post a:not(.btn):hover { color: var(--accent-hover); }
+
+.post ul, .post ol { margin: 0 0 20px; padding-left: 22px; display: grid; gap: 8px; }
+.post li { font-size: var(--fs-body); line-height: 1.7; color: var(--fg-body); }
+.post li::marker { color: var(--accent); }
+
+.post blockquote {
+  margin: 28px 0;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--accent);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+/* The posts set worked examples as a run of mono lines — a log, effectively.
+   Grouped runs get one panel rather than a border each. */
+.post__mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  line-height: 1.65;
+  color: var(--fg-body);
+  margin: 0;
+  padding: 4px 0;
+}
+.post__mono:first-of-type { padding-top: 14px; }
+.post__log {
+  margin: 8px 0 24px;
+  padding: 6px 18px 14px;
+  border-radius: var(--radius);
+  background: var(--bg-highlight-soft);
+}
+
+/* ---------------------------------------------------------------- figures */
+
+.post figure { margin: 32px 0; }
+.post figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+}
+.post figcaption {
+  margin-top: 12px;
+  font-size: var(--fs-sub);
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+
+/* ----------------------------------------------------------------- footer */
+
+.post-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 44px;
+  padding-top: 28px; border-top: 1px solid var(--sg-line-soft); }
+.post-foot__back { font-size: var(--fs-sub); color: var(--accent); }
+
+@media (max-width: 900px) {
+  .post h2 { margin-top: 34px; }
+}
+
+/* ------------------------------------------------------------------ share */
+
+/* The card the post sits on is what the rail is measured against, so the
+   rail can hang outside it. */
+.post-card { position: relative; margin-top: var(--grid-cell); }
+
+/* A column of its own, in the page margin beside the box rather than inside
+   it. It spans the whole card, so the block inside can stick for exactly as
+   long as there is post left to read and no longer. */
+.share {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  margin-right: 20px;
+  width: 38px;
+}
+
+/* This is what actually sticks. It clears the 80px header. */
+.share__stack {
+  position: sticky;
+  top: 112px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+/* Set across, above the buttons: it labels the column it heads. */
+.share__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 6px;
+}
+
+.share__btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--fg-body);
+  transition: border-color 160ms var(--ease), background-color 160ms var(--ease),
+              color 160ms var(--ease);
+}
+.share__btn:hover {
+  border-color: var(--sg-blue-15);
+  background: var(--bg-highlight);
+  color: var(--accent);
+}
+.share__btn svg { width: 17px; height: 17px; }
+
+/* The rail lives inside .post, so the prose-link rule would otherwise
+   colour and underline these three. They are controls, not links in text. */
+.post a.share__btn { color: var(--fg-body); text-decoration: none; }
+.post a.share__btn:hover { color: var(--accent); }
+
+/* Copied: the tick reads as the confirmation, so the button holds the accent
+   for as long as it is showing one. */
+.share__btn.is-copied {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--sg-logo-white);
+}
+
+/* --------------------------------------------------------- reading line */
+
+/* Pinned under the header rather than over it: the header is 79px plus its
+   1px border, so the line sits on the header's own bottom edge and reads as
+   part of it. Below it in the stack too, so a blurred header covers it. */
+.read-bar {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 55;
+  background: transparent;
+  pointer-events: none;
+}
+.read-bar__fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .read-bar__fill { transition: width 90ms linear; }
+}
+
+/* The page margin has run out — the rail goes back inside, as a row above
+   the prose. */
+@media (max-width: 1400px) {
+  .share {
+    position: static;
+    width: auto;
+    max-width: 68ch;
+    margin: 0 auto 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--sg-line-soft);
+  }
+  .share__stack { position: static; display: flex; align-items: center; gap: 8px; }
+  .share__label { margin: 0 4px 0 0; }
+}
+
+/* ==========================================================================
+   Post to post
+
+   The pager sat in every post with no rules at all, so the two links ran
+   together as plain text. Previous on the left, next on the right, both
+   reading as the titles they are.
+   ========================================================================== */
+
+.post-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 68ch;
+  margin: 56px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--sg-line-soft);
+}
+.post-pager-link {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-tight);
+  color: var(--fg-body);
+  transition: color 160ms var(--ease);
+}
+.post-pager-link:hover { color: var(--accent); }
+/* Only one of the two exists on the first and last post; the next link keeps
+   its own side of the grid either way. */
+.post-pager-next { grid-column: 2; text-align: right; }
+
+@media (max-width: 700px) {
+  .post-pager { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .post-pager-next { grid-column: 1; text-align: left; }
+}
