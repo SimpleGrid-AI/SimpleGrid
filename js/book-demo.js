@@ -291,6 +291,12 @@
 
   function isTrigger(node) {
     if (!node) return false;
+    /* Nothing inside the dialog opens the dialog. Its submit button is also
+       labelled "Book a demo", so without this the handler below caught the
+       click, called preventDefault(), and re-opened the dialog instead of
+       letting the button submit the form — the request never sent, and the
+       only visible effect was focus jumping back to the name field. */
+    if (node.closest('.bd')) return false;
     if (node.hasAttribute('data-sg-invite')) return true;
     /* Any CTA that says "book a demo", wherever it was written, including the
        few inside FAQ answers that carry a trailing arrow. "Book a call" is a
