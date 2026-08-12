@@ -371,8 +371,8 @@
               '<div class="footer__top">' +
                 '<div class="footer__brand">' +
                   '<a class="logo" href="index.html" aria-label="SimpleGrid home">' + LOGO + '</a>' +
-                  '<p class="footer__blurb">The Adaptive ERP. Built around your business. ' +
-                    'Live in 3 weeks or less.</p>' +
+                  '<p class="footer__blurb">The Operations Cloud/Adaptive ERP. Built around ' +
+                    'your business. Live in 3 weeks or less.</p>' +
                 '</div>' +
                 columns + contact +
               '</div>' +
