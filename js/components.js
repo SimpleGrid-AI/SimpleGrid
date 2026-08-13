@@ -132,6 +132,8 @@
     links: [
       { label: 'hello@simplegrid.ai', href: 'mailto:hello@simplegrid.ai', icon: 'mail' },
       { label: 'LinkedIn',    href: 'https://www.linkedin.com/company/simplegridai', icon: 'linkedin' },
+      /* Opened by js/book-demo.js, which matches on the label; the href is
+         the fallback for anyone without it. */
       { label: 'Book a call', href: 'pricing.html#demo', icon: 'call' }
     ],
     address: ['2810 N Church St STE 88778', 'Wilmington, DE 19802']
