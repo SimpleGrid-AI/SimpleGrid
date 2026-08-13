@@ -99,7 +99,7 @@
   <!-- ===================================================== WHAT WE BUILT -->
   <section class="section" id="built">
     <div class="container">
-      <div class="card reveal">
+      <div class="card reveal" data-road>
         <p class="eyebrow">What we built</p>
         <h2 class="case-title">Their process, modeled as-is.</h2>
         <div class="body-copy case-body">
@@ -110,57 +110,10 @@
         </div>
 
         <!-- The run at a glance: nineteen stops, four of them gates. -->
-        <div class="road">
-          <svg viewBox="0 0 800 150" role="img"
-               aria-label="Nineteen stations from sales order to dispatch: planning and transfers, purchasing and stock, in-house work, three contractor stages and four QC gates.">
-            <text class="road__end" x="60" y="34" text-anchor="middle">SALES ORDER</text>
-            <text class="road__end" x="740" y="34" text-anchor="middle">CONTAINER</text>
-            <line class="rail" x1="60" y1="74" x2="740" y2="74"/>
-            <circle class="stop stop--flow" cx="60.0" cy="74" r="6"/>
-            <circle class="stop stop--plan" cx="97.8" cy="74" r="6"/>
-            <circle class="stop stop--stock" cx="135.6" cy="74" r="6"/>
-            <circle class="stop stop--make" cx="173.3" cy="74" r="6"/>
-            <circle class="stop stop--make" cx="211.1" cy="74" r="6"/>
-            <circle class="stop stop--stock" cx="248.9" cy="74" r="6"/>
-            <circle class="stop stop--contract" cx="286.7" cy="74" r="6"/>
-            <circle class="stop stop--gate" cx="324.4" cy="74" r="9"/>
-            <circle class="stop stop--stock" cx="362.2" cy="74" r="6"/>
-            <circle class="stop stop--plan" cx="400.0" cy="74" r="6"/>
-            <circle class="stop stop--gate" cx="437.8" cy="74" r="9"/>
-            <circle class="stop stop--plan" cx="475.6" cy="74" r="6"/>
-            <circle class="stop stop--contract" cx="513.3" cy="74" r="6"/>
-            <circle class="stop stop--gate" cx="551.1" cy="74" r="9"/>
-            <circle class="stop stop--make" cx="588.9" cy="74" r="6"/>
-            <circle class="stop stop--contract" cx="626.7" cy="74" r="6"/>
-            <circle class="stop stop--gate" cx="664.4" cy="74" r="9"/>
-            <circle class="stop stop--make" cx="702.2" cy="74" r="6"/>
-            <circle class="stop stop--flow" cx="740.0" cy="74" r="6"/>
-            <text class="stop__code" x="60.0" y="100">SO</text>
-            <text class="stop__code" x="286.7" y="100">MACH</text>
-            <text class="stop__code" x="324.4" y="100">QC1</text>
-            <text class="stop__code" x="400.0" y="100">ASSY</text>
-            <text class="stop__code" x="437.8" y="100">QC2</text>
-            <text class="stop__code" x="513.3" y="100">SAND</text>
-            <text class="stop__code" x="551.1" y="100">QC3</text>
-            <text class="stop__code" x="588.9" y="100">FIN</text>
-            <text class="stop__code" x="664.4" y="100">QC4</text>
-            <text class="stop__code" x="740.0" y="100">SHIP</text>
-            <g class="legend" transform="translate(60, 126)">
-              <circle class="stop stop--contract" cx="6" cy="0" r="6"/>
-              <text x="18" y="4">Contractor</text>
-              <circle class="stop stop--gate" cx="128" cy="0" r="6"/>
-              <text x="140" y="4">QC gate</text>
-              <circle class="stop stop--make" cx="234" cy="0" r="6"/>
-              <text x="246" y="4">In-house</text>
-              <circle class="stop stop--stock" cx="342" cy="0" r="6"/>
-              <text x="354" y="4">Stock</text>
-              <circle class="stop stop--plan" cx="424" cy="0" r="6"/>
-              <text x="436" y="4">Planning &amp; transfer</text>
-            </g>
-          </svg>
-        </div>
+        
 
-        <!-- The nineteen stations, in the order the work moves through them. -->
+        <!-- The nineteen stations. js/case-road.js draws the road from this list
+           and hides it; without the script the list is the whole section. -->
         <div class="flow">
           <div class="stage">
             <span class="stage__key">SO</span>
