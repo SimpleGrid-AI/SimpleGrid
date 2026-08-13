@@ -1045,18 +1045,18 @@ sg-footer { display: contents; }
 }
 .syncs__tile:hover { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
 .syncs__tile svg { width: 22px; height: 22px; fill: currentColor; }
+/* Vendors' own files sit beside the sprite marks. They carry their own
+   colours, so no tint here — only a size that fits a wordmark as well as a
+   square glyph. */
+.syncs__logo { display: block; width: auto; height: auto; max-width: 24px; max-height: 24px; }
 
 /* Each mark in its own brand colour, set on the svg rather than the tile so
    the tile's hover leaves the logo alone — the same rule the tools band uses. */
 .syncs__tile svg:has(use[href="#logo-quickbooks"])   { color: #2CA01C; }
-.syncs__tile svg:has(use[href="#logo-xero"])         { color: #13B5EA; }
-.syncs__tile svg:has(use[href="#logo-tally"])        { color: #1A1A1A; }
-.syncs__tile svg:has(use[href="#logo-excel"])        { color: #107C41; }
 .syncs__tile svg:has(use[href="#logo-google-sheets"]){ color: #34A853; }
 .syncs__tile svg:has(use[href="#logo-shopify"])      { color: #95BF47; }
 .syncs__tile svg:has(use[href="#logo-whatsapp"])     { color: #25D366; }
 .syncs__tile svg:has(use[href="#logo-gmail"])        { color: #EA4335; }
-.syncs__tile svg:has(use[href="#logo-amazon"])       { color: #FF9900; }
 .syncs__tile svg:has(use[href="#logo-slack"])        { color: #4A154B; }
 
 /* Revealed one at a time, left to right along each row — and cleared again on

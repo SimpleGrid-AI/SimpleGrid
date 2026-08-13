@@ -36,8 +36,18 @@
   border-radius: var(--radius);
   background: var(--sg-white);
 }
+/* The vendors' own files now, so a mark arrives at whatever proportion the
+   brand uses — a square glyph, a wide wordmark. Fitted inside the tile
+   rather than forced square, or Excel's sheet and Tally's wordmark would
+   both come out stretched. */
 .intg-mark svg,
-.intg-mark img { width: 30px; height: 30px; display: block; }
+.intg-mark img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 32px;
+  max-height: 32px;
+}
 
 .intg-plus { font-family: var(--font-mono); font-size: 18px; color: var(--fg-muted); }
 
@@ -217,7 +227,8 @@
   border: 1px solid var(--border);
   background: var(--sg-white);
 }
-.intg-rel__logo svg { width: 20px; height: 20px; display: block; }
+.intg-rel__logo svg,
+.intg-rel__logo img { display: block; width: auto; height: auto; max-width: 22px; max-height: 22px; }
 
 .intg-rel__all {
   display: inline-block;

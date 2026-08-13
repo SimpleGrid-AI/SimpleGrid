@@ -133,7 +133,16 @@ a.sync-card:hover .sync-go { transform: translateX(3px); }
   background: var(--sg-white);
   overflow: hidden;
 }
-.sync-logo svg { width: 24px; height: 24px; display: block; }
+/* Vendors' own files: fitted, not forced square — a wordmark is wider than
+   it is tall and would otherwise be stretched to a box. */
+.sync-logo svg,
+.sync-logo img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 26px;
+  max-height: 26px;
+}
 
 .sync-card__body { min-width: 0; }
 
