@@ -58,6 +58,10 @@
 /* Nineteen stations down one rail — the operation as it actually runs, which
    is the thing SimpleGrid was modeled around. */
 .flow { position: relative; display: grid; gap: 0; margin-top: 36px; }
+/* display:grid above outranks the browser's [hidden] rule, so hiding the list
+   once the road has drawn has to be said here — setting the attribute alone
+   left both the road and the list on the page. */
+.flow[hidden] { display: none; }
 .flow::before {
   content: '';
   position: absolute;

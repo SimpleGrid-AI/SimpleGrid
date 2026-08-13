@@ -28,6 +28,15 @@ if (!wants.includes('js/case-road.js')) {
   console.error('FAIL: case-furniture-manufacturer.html does not load js/case-road.js');
   process.exit(1);
 }
+/* jsdom cannot parse this site's stylesheets — it bails on the whole sheet —
+   so getComputedStyle here would report the UA default and prove nothing.
+   The cascade is checked against the CSS text instead: `hidden` is only
+   display:none from the UA sheet, and .flow sets display:grid, which
+   outranks it, so the rule has to exist in the author sheet. */
+const caseCss = fs.readFileSync('/Users/simplegrid/SGUI/css/case.css', 'utf8');
+const desktop = caseCss.split('@media')[0];
+const hidesList = /\.flow\[hidden\]\s*\{[^}]*display:\s*none/.test(desktop);
+
 const dom=new JSDOM(page.replace(/<script[\s\S]*?<\/script>/g,''),{runScripts:'outside-only',pretendToBeVisual:true});
 const w=dom.window;
 let observed=null;
@@ -43,7 +52,8 @@ const cap=w.document.querySelector('.road2__cap-name');
 
 console.log('road drawn            :', !!road);
 console.log('stations              :', stations.length);
-console.log('list hidden           :', list.hidden);
+console.log('list hidden (attr)    :', list.hidden);
+console.log('css hides a hidden list:', hidesList);
 console.log('list still in the DOM :', !!list, '(fallback)');
 console.log('starts at             :', cap && cap.textContent);
 console.log('first station state   :', stations[0] && stations[0].getAttribute('data-state'));
@@ -57,7 +67,7 @@ const done=w.document.querySelector('.road2__done');
 console.log('progress fill height  :', done.getAttribute('height'));
 console.log('cargo at              :', w.document.querySelector('.road2__cargo').getAttribute('transform'));
 
-const ok = road && stations.length===19 && list.hidden && cap.textContent.includes('QC2')
+const ok = road && stations.length===19 && list.hidden && hidesList && cap.textContent.includes('QC2')
   && stations[10].getAttribute('data-state')==='at' && stations[9].getAttribute('data-state')==='done';
 console.log(ok ? '\nPASS' : '\nFAIL');
 process.exit(ok?0:1);
