@@ -7,7 +7,16 @@
    moves the work there and updates the caption under it.
 */
 
-const fs=require('fs'), vm=require('vm'), {JSDOM}=require('jsdom');
+const fs=require('fs'), vm=require('vm');
+let JSDOM;
+try {
+  ({ JSDOM } = require('jsdom'));
+} catch (e) {
+  console.error('This test needs jsdom, which the site itself does not:\n  npm install jsdom\n' +
+                'or point at an existing copy:\n  NODE_PATH=/path/to/node_modules node ' + process.argv[1]);
+  process.exit(2);
+}
+
 const page=fs.readFileSync('/Users/simplegrid/SGUI/case-furniture-manufacturer.html','utf8');
 const src=fs.readFileSync('/Users/simplegrid/SGUI/js/case-road.js','utf8');
 
