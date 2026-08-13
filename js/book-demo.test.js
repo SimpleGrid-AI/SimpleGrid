@@ -15,7 +15,15 @@
 
 const fs = require('fs');
 const vm = require('vm');
-const { JSDOM } = require('jsdom');
+let JSDOM;
+try {
+  ({ JSDOM } = require('jsdom'));
+} catch (e) {
+  console.error('This test needs jsdom, which the site itself does not:\n  npm install jsdom\n' +
+                'or point at an existing copy:\n  NODE_PATH=/path/to/node_modules node ' + process.argv[1]);
+  process.exit(2);
+}
+
 
 const SCRIPT = process.argv[2] || '/Users/simplegrid/SGUI/js/book-demo.js';
 const source = fs.readFileSync(SCRIPT, 'utf8');
