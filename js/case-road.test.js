@@ -20,7 +20,14 @@ try {
 const page=fs.readFileSync('/Users/simplegrid/SGUI/case-furniture-manufacturer.html','utf8');
 const src=fs.readFileSync('/Users/simplegrid/SGUI/js/case-road.js','utf8');
 
-// the real page markup, scripts stripped so only the road runs
+/* The page's own <script> tags decide what runs — loading the file by hand
+   would pass even on a page that never links it, which is exactly how the
+   missing tag shipped the first time. */
+const wants = [...page.matchAll(/<script src="([^"]+)"/g)].map(m => m[1]);
+if (!wants.includes('js/case-road.js')) {
+  console.error('FAIL: case-furniture-manufacturer.html does not load js/case-road.js');
+  process.exit(1);
+}
 const dom=new JSDOM(page.replace(/<script[\s\S]*?<\/script>/g,''),{runScripts:'outside-only',pretendToBeVisual:true});
 const w=dom.window;
 let observed=null;
