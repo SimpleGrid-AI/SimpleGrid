@@ -264,3 +264,93 @@
   fill: var(--fg-muted);
 }
 .road .legend text { font-family: var(--font-body); font-size: 11px; fill: var(--fg-body); }
+
+/* ==========================================================================
+   The road
+
+   The nineteen stations as one vertical run, with the work moving down it.
+   Drawn by js/case-road.js from the .flow list below it; the list is the
+   fallback and stays in the markup, hidden once the road has drawn.
+   ========================================================================== */
+
+.road2 { margin-top: 36px; }
+.road2__svg { display: block; width: 100%; height: auto; }
+
+/* The road, and the distance already covered. */
+.road2__road { fill: var(--bg-highlight-soft); }
+.road2__done { fill: var(--accent); opacity: 0.16; transition: none; }
+
+/* A station: the tie out to its row, the row itself, and the dot on the road.
+   Everything that changes between states is set here rather than in script,
+   so the script only ever moves the work and says which station it is at. */
+.road2__stn { cursor: pointer; }
+.road2__stn:focus-visible { outline: none; }
+.road2__stn:focus-visible .road2__row { stroke: var(--accent); stroke-width: 2; }
+
+.road2__tie { stroke: var(--sg-line); stroke-width: 1; stroke-dasharray: 3 3; }
+.road2__row { fill: var(--bg); stroke: var(--sg-line-soft); stroke-width: 1;
+              transition: fill 200ms var(--ease), stroke 200ms var(--ease); }
+.road2__dot { fill: var(--sg-line); transition: r 200ms var(--ease), fill 200ms var(--ease); }
+.road2__chip { fill: var(--bg-card); stroke: var(--sg-line); stroke-width: 1;
+               transition: fill 200ms var(--ease), stroke 200ms var(--ease); }
+
+.road2__num  { font-family: var(--font-mono); font-size: 9px; font-weight: 500; fill: var(--sg-ink-40); }
+.road2__code { font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 0.06em;
+               text-anchor: middle; fill: var(--fg-muted); transition: fill 200ms var(--ease); }
+.road2__name { font-family: var(--font-body); font-size: 13px; fill: var(--fg-body);
+               transition: fill 200ms var(--ease); }
+
+/* Passed: the station keeps its own colour, quietly. */
+.road2__stn[data-state='done'] .road2__tie  { stroke-dasharray: 0; opacity: 0.7; }
+.road2__stn[data-state='done'] .road2__row  { fill: var(--bg-highlight-soft); stroke: var(--border); }
+.road2__stn[data-state='done'] .road2__dot,
+.road2__stn[data-state='done'] .road2__chip { fill: currentColor; stroke: currentColor; }
+.road2__stn[data-state='done'] .road2__code { fill: var(--sg-white); }
+
+/* Where the work is now. */
+.road2__stn[data-state='at'] .road2__tie  { stroke: currentColor; stroke-width: 2; stroke-dasharray: 0; }
+.road2__stn[data-state='at'] .road2__row  { fill: var(--bg-card); stroke: currentColor; stroke-width: 2; }
+.road2__stn[data-state='at'] .road2__dot  { fill: currentColor; r: 7; }
+.road2__stn[data-state='at'] .road2__chip { fill: currentColor; stroke: currentColor; }
+.road2__stn[data-state='at'] .road2__code { fill: var(--sg-white); }
+.road2__stn[data-state='at'] .road2__name { fill: var(--fg); font-weight: 600; }
+
+/* currentColor carries the kind, so the five colours are declared once and
+   every part of a station picks its own up. Same five the rail above uses. */
+.road2__stn[data-kind='flow']     { color: var(--accent); }
+.road2__stn[data-kind='plan']     { color: #7C3AED; }
+.road2__stn[data-kind='stock']    { color: #2F9BF0; }
+.road2__stn[data-kind='make']     { color: #1F9E60; }
+.road2__stn[data-kind='contract'] { color: #F0A32F; }
+.road2__stn[data-kind='gate']     { color: #D8434F; }
+
+/* The work itself. */
+.road2__cargo-box  { fill: var(--sg-eerie-black); }
+.road2__cargo-line { stroke: var(--sg-titan-light); stroke-width: 1.5; stroke-linecap: round; }
+
+/* What the station the work is at actually does. */
+.road2__cap {
+  max-width: 60ch;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--sg-line-soft);
+}
+.road2__cap-name {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.road2__cap-note { margin: 0; min-height: 3em; }
+.road2__cap-price { margin-top: 8px; color: var(--fg-muted); }
+.road2__cap-price[hidden] { display: none; }
+
+@media (max-width: 700px) {
+  /* The rows carry 13px type in a 700-unit box; below this the box is narrow
+     enough that the text would fall under 9px on screen, so the road goes and
+     the list it was drawn from comes back. */
+  .road2 { display: none; }
+  .flow[hidden] { display: grid !important; }
+}
