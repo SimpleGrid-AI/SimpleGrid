@@ -95,6 +95,13 @@
 
 /* A card is a link: the whole tile is the target, not a "read more" at the
    bottom of it. */
+/* display:flex outranks the browser's [hidden] rule, so the filter and the
+   pager hiding a card would leave it on the page. Same for the pager itself
+   and the panels. */
+.res-card[hidden],
+.res-pages[hidden],
+[data-res-panel][hidden] { display: none; }
+
 .res-card {
   display: flex;
   flex-direction: column;
