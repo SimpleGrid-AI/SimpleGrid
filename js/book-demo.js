@@ -298,11 +298,13 @@
        only visible effect was focus jumping back to the name field. */
     if (node.closest('.bd')) return false;
     if (node.hasAttribute('data-sg-invite')) return true;
-    /* Any CTA that says "book a demo", wherever it was written, including the
-       few inside FAQ answers that carry a trailing arrow. "Book a call" is a
-       different ask and is left to its own link. */
+    /* Any CTA that asks for the same thing, wherever it was written,
+       including the few inside FAQ answers that carry a trailing arrow.
+       "Book a call" is the partner pages' and the footer's wording for it and
+       lands in the same place — the dialog offers the booking page once the
+       request is in, so a caller is one click from a slot either way. */
     var label = (node.textContent || '').trim().toLowerCase().replace(/[\s→>·]+$/, '');
-    return label === 'book a demo';
+    return label === 'book a demo' || label === 'book a call';
   }
 
   document.addEventListener('click', function (e) {
