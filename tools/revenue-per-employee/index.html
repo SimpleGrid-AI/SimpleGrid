@@ -31,6 +31,85 @@
 <script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/revenue-per-employee/#webpage",
+      "url": "https://simplegrid.ai/tools/revenue-per-employee/",
+      "name": "Revenue per Employee Benchmark for Manufacturers | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free revenue per employee benchmark for US manufacturers. Compare your operational efficiency to industry medians and top quartile across 11 verticals. PDF export."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should I include contractors in headcount?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, partially. Contractors and temps doing recurring work in your facility should count as 0.75 FTE each. They are doing the work; the value they produce is part of your revenue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My revenue/employee is below median. Is that a problem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is signal, not verdict. Above-median usually means more automation or higher-margin products. Below-median could mean labor-intensive processes (some verticals like custom furniture are naturally lower), early-stage scaling, or operational gaps that are correctable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What changes revenue/employee fastest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "(1) Reduce manual data work - typical mid-market manufacturer recovers 8-15% of FTE hours. (2) Improve OEE - same equipment produces more revenue. (3) Raise prices - if your products and quality justify it, this is the fastest lift. (4) Automate the right step - identify the bottleneck first."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Revenue per Employee Benchmark for Manufacturers",
+          "item": "https://simplegrid.ai/tools/revenue-per-employee/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

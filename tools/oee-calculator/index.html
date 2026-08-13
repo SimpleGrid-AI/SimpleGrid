@@ -31,6 +31,77 @@
 <script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/oee-calculator/#webpage",
+      "url": "https://simplegrid.ai/tools/oee-calculator/",
+      "name": "OEE Calculator (Overall Equipment Effectiveness) | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free OEE calculator for manufacturers. Availability x Performance x Quality. Top-decile 85%. Find the biggest production loss with $ impact. PDF export."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "My Performance % is over 100. What does that mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your \"ideal cycle time\" is too conservative. Either you're under-stating what the machine can do, or your operators have learned to beat the nameplate speed. Recalibrate ideal cycle time - use the fastest sustained pace you've ever achieved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I track OEE per machine or per line?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start at the bottleneck. OEE on a non-bottleneck machine is interesting but doesn't change throughput. Track the constraint first - it's the only metric that moves the system."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "OEE Calculator (Overall Equipment Effectiveness)",
+          "item": "https://simplegrid.ai/tools/oee-calculator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

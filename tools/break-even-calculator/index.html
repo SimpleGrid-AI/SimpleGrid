@@ -31,6 +31,77 @@
 <script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/break-even-calculator/#webpage",
+      "url": "https://simplegrid.ai/tools/break-even-calculator/",
+      "name": "Break-Even Calculator for Manufacturers | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free break-even and Cost-Volume-Profit calculator for manufacturers. Contribution margin, margin of safety, what-if scenarios. PDF export."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should overhead labor count as fixed or variable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Salaried supervisors = fixed. Hourly direct labor = variable (you cut hours when volume drops). Hybrid (salaried with OT scaling to volume) = blend. Be honest about which is which - it changes break-even by 20-40% in mid-market shops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this work for multi-product businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but use the weighted-average CM ratio. Or do break-even per product line. Don't lump together: your low-margin product might be subsidizing your high-margin one, which is a different management problem than overall break-even."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Break-Even Calculator for Manufacturers",
+          "item": "https://simplegrid.ai/tools/break-even-calculator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

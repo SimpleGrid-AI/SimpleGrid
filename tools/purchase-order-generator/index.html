@@ -33,6 +33,125 @@
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="vendor/jspdf/cropper.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/purchase-order-generator/#webpage",
+      "url": "https://simplegrid.ai/tools/purchase-order-generator/",
+      "name": "Free Purchase Order Generator (PDF) | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free browser-based purchase order generator for US manufacturers. Fill in vendor and line items, download a branded PDF PO. Saves vendors locally. No signup."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this purchase order generator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. No signup, no email wall, no usage limit. Generate as many POs as you need."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does my data go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Form values stay in your browser. The PDF is built locally and downloaded to your computer. Your buyer info, vendor library, and recent POs save to your browser's localStorage - never to a server. The one caveat: anonymous page analytics (which page you viewed, not what you typed) fire if you accept the cookie banner, and not otherwise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I save my vendors so I don't retype them?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After typing a vendor, click \"Save current vendor\" - it's added to your local library. Next time, pick from the dropdown at the top of the Vendor section."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the PO number generated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The generator suggests a sequential number per year (e.g. PO-2026-0001, PO-2026-0002, etc.) saved per-browser. You can edit it to whatever scheme your company uses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I need different payment terms than Net 30?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The dropdown includes Net 15 / 30 / 45 / 60, Due on receipt, 2/10 Net 30, and COD. If you need something else, type it in the Notes & terms field at the bottom."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the point of issuing POs at all?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A PO is your written commitment to a vendor at agreed terms. When the goods arrive, you compare the receipt against the PO. When the invoice arrives, the three-way match (PO + receipt + invoice) protects you from being overcharged or paying for goods you didn't get. It's the cheapest fraud protection in manufacturing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I want my logo on the PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The current version uses a standard SimpleGrid-styled PDF layout. Logo upload isn't supported in this free tool - when you outgrow it, SimpleGrid renders fully-branded PDFs from your live data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I'm generating 30+ POs a week. Is this the right tool for me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Probably not. At that volume you want vendor history, receipt tracking against the PO, automatic inventory updates when goods arrive, and the ability to roll up POs across multiple jobs. SimpleGrid does this in one system - configured to your floor, live in days. Book a demo →"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Free Purchase Order Generator (PDF)",
+          "item": "https://simplegrid.ai/tools/purchase-order-generator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

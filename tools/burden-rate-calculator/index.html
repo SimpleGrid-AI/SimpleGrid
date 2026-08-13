@@ -31,6 +31,77 @@
 <script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/burden-rate-calculator/#webpage",
+      "url": "https://simplegrid.ai/tools/burden-rate-calculator/",
+      "name": "Labor Burden Rate Calculator for Manufacturers | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free fully-loaded labor cost calculator. Base + FICA + benefits + overhead per productive hour. Stop underpricing labor by 30-50%. PDF export."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the typical burden multiplier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1.35-1.55x base pay for US manufacturing. India is typically 1.20-1.35x (lower statutory + benefits). Knowing yours specifically beats using an industry average."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about overtime hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OT is paid at 1.5x base but the burden stays largely the same (FICA + workers comp scale, benefits don't). OT productive hours have a different multiplier - typically 1.25-1.35x. Many shops underestimate the real cost of OT for this reason."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Labor Burden Rate Calculator for Manufacturers",
+          "item": "https://simplegrid.ai/tools/burden-rate-calculator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

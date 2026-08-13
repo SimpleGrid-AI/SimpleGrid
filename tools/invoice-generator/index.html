@@ -33,6 +33,101 @@
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="vendor/jspdf/cropper.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/invoice-generator/#webpage",
+      "url": "https://simplegrid.ai/tools/invoice-generator/",
+      "name": "Free Invoice Generator for Manufacturers | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free browser-based invoice generator for US manufacturers. Fill in customer + line items, download branded PDF invoice. Saves customers locally. No signup."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this invoice generator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Browser-based, no signup, no email wall, unlimited invoices."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does my data go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nowhere - runs entirely in your browser. PDF is built locally and downloaded to your device. Customer library and recent invoices save to your browser's localStorage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it calculate sales tax automatically?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No - you enter the tax rate. Sales tax in the US varies by state, county, and sometimes city, and exemptions matter for B2B sales. We don't want to give you the wrong number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this for international customers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The PDF is in USD only. For international invoicing in other currencies or with VAT, you'll outgrow this fast."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I generate 30+ invoices a month. Outgrown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Probably. At that volume you want auto-invoicing from sales orders, A/R aging reports, reconciliation against bank deposits, and customer credit-limit tracking. SimpleGrid does all of it. Book a demo →"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Free Invoice Generator for Manufacturers",
+          "item": "https://simplegrid.ai/tools/invoice-generator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

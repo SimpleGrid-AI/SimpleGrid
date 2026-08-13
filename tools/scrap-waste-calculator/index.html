@@ -31,6 +31,85 @@
 <script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/scrap-waste-calculator/#webpage",
+      "url": "https://simplegrid.ai/tools/scrap-waste-calculator/",
+      "name": "Scrap & Waste Cost Calculator for Manufacturers | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free scrap and rework cost calculator for US manufacturers. Material + labor + overhead waste. Shows true margin after waste. Benchmarks + reduction scenarios."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should rework labor count as full labor cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rework labor is usually 0.5-1.5x the original labor cost. It's slower (operator is being careful) but it's also labor that produces zero new units. This tool asks for the rework labor cost separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about defects we ship to the customer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Those become warranty claims, returns, or customer complaints - much more expensive than internal scrap. The 1-10-100 rule from quality research: $1 to prevent a defect, $10 to catch it internally, $100 to fix it after it ships. The cost calculator here covers the $1-$10 zone. If you have significant external failures, you need a full Cost of Poor Quality assessment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My scrap rate \"feels\" right but I can't measure it precisely. What's a reasonable estimate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most mid-market manufacturers underestimate scrap by 30-50%. If your gut says 3%, the real number is usually 4-5%. The first month of formal tracking almost always reveals more than expected. That awareness alone reduces scrap by 10-15% within a quarter (Hawthorne effect)."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Scrap & Waste Cost Calculator for Manufacturers",
+          "item": "https://simplegrid.ai/tools/scrap-waste-calculator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

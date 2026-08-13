@@ -25,6 +25,115 @@
 <link rel="stylesheet" href="css/modules.css">
 <link rel="stylesheet" href="css/product.css">
 <link rel="stylesheet" href="css/grid.css">
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/product.html#webpage",
+      "url": "https://simplegrid.ai/product.html",
+      "name": "Product | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "One system for orders, inventory, production and costing. Ready-made modules, configured to how you actually run, live in three weeks."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://simplegrid.ai/#software",
+      "name": "SimpleGrid",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "ERP",
+      "operatingSystem": "Web browser",
+      "url": "https://simplegrid.ai/",
+      "publisher": {
+        "@id": "https://simplegrid.ai/#org"
+      },
+      "description": "An operations cloud for manufacturers and inventory-led businesses: inventory, planning, production, costing and forecasting in one system, posting to the accounting you already keep.",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD",
+        "description": "30 days live at no cost. You pay only when it works.",
+        "url": "https://simplegrid.ai/pricing.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What happens to our spreadsheets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The ones running your operation get absorbed: the screen does the same job without the retyping, and the reports people used to build by hand, Hank builds as live boards that update themselves. The spreadsheets you like keep working, since SimpleGrid syncs with Excel and Google Sheets and you can pull anything out at any time. Nothing gets deleted until your team has stopped reaching for it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the AI gets something wrong?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It cannot post anything, so a mistake cannot reach your records on its own. The most Hank ever does is prepare work: match documents, fill a form, draft an entry, build a view. Everything it prepares sits in draft until a person you have named approves it, and anything it is unsure about is flagged separately for review. If a match is wrong, you reject it and the record never existed. Every approval carries a name and a time, so the trail is always a person, never the AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does our existing data get in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Week 1 needs a few documents from your desk: one sales order, one PO, one GRN, one BOM, one costing sheet, and the like. That builds your demo. Full migration happens in week 3, if there is anything to migrate. We map your files, we load them, and you verify against your own records before go-live. Your team does not spend months cleaning data. That is our job."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can the floor see, and what can they change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Everyone you add sees the work: what is running, what is next, what is stuck, on a phone or a tablet at the line. Seats are unlimited, so that is genuinely everyone. What they can change is up to you. Access is open, approvals are not. Only the people you name can commit stock, costs or orders, and every entry carries a name and a time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a connector we need does not exist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We build it as part of setup, and setup costs you nothing. Name the tool on the first call and it is scoped into your 3 weeks. Same answer for hardware: scanners, scales and label printers connect the same way."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Product",
+          "item": "https://simplegrid.ai/product.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -31,6 +31,93 @@
 <script src="vendor/jspdf/jspdf.umd.min.js" defer></script>
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/markup-vs-margin/#webpage",
+      "url": "https://simplegrid.ai/tools/markup-vs-margin/",
+      "name": "Markup vs Margin Calculator for Manufacturers | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free markup vs margin calculator for manufacturers. A 50% markup is NOT a 50% margin - it's 33%. Calculate price, margin, markup correctly. PDF export."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which one should I use for cost-plus pricing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markup. Cost-plus means you start with cost and add a percentage. So 50% markup on $100 cost = $150 price. If you want to think in margin terms, calculate margin from the final price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which one should I use when comparing my pricing to competitors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Margin. Margin is comparable across cost structures. Markup depends on your specific cost basis, which competitors don't share."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is gross margin different from net margin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gross margin uses only direct cost (materials, labor, machine). Net margin subtracts everything - SG&A, taxes, interest. This tool calculates gross margin. For mid-market manufacturing, target 25-40% gross margin to leave room for 8-15% net margin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my \"cost\" already includes overhead?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Then this is your fully-loaded cost and the margin you calculate is closer to net margin. Be consistent: either always use direct cost (for gross margin analysis) or always use loaded cost (for net margin analysis). Don't mix."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Markup vs Margin Calculator for Manufacturers",
+          "item": "https://simplegrid.ai/tools/markup-vs-margin/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

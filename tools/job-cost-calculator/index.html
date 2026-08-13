@@ -33,6 +33,85 @@
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="vendor/jspdf/cropper.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/job-cost-calculator/#webpage",
+      "url": "https://simplegrid.ai/tools/job-cost-calculator/",
+      "name": "Free Job Cost Calculator for Manufacturers | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free job cost calculator for US manufacturers. Materials, labor, machine and overhead to a true job cost, with margin at your selling price."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the difference between direct labor and indirect labor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Direct = hands on the job (operator, assembler). Indirect = supervisor, scheduler, QC inspector, warehouse staff. Indirect labor is part of overhead, not direct labor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I handle scrap and rework?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two options: (1) include a 2-5 % scrap allowance in your material cost; OR (2) cost the job assuming 100% yield, then add a separate \"rework / rejection\" line. SimpleGrid's event-sourced costing handles this automatically - every rejection event posts the consumed cost to that job."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's a healthy gross margin for manufacturing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "25-40 % gross margin (selling price minus total job cost, divided by selling price) is healthy for US mid-market discrete manufacturers. Below 15 % is usually unprofitable after you account for sales, admin, bad debt, and the cost of capital."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Free Job Cost Calculator for Manufacturers",
+          "item": "https://simplegrid.ai/tools/job-cost-calculator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

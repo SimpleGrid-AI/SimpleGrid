@@ -33,6 +33,93 @@
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
 <script src="vendor/jspdf/cropper.min.js" defer></script>
 <script src="tools/tools.js" defer></script>
+
+<!-- What this page is, in the vocabulary search engines read. Every
+     value is taken from the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://simplegrid.ai/#org",
+      "name": "SimpleGrid",
+      "url": "https://simplegrid.ai/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://simplegrid.ai/tools/bill-of-materials-template/#webpage",
+      "url": "https://simplegrid.ai/tools/bill-of-materials-template/",
+      "name": "Free Bill of Materials (BOM) Builder | SimpleGrid",
+      "isPartOf": {
+        "@id": "https://simplegrid.ai/#website"
+      },
+      "inLanguage": "en-US",
+      "description": "Free browser-based bill of materials builder for US manufacturers. Multi-component BOM with per-unit costs and assembly totals. Export as CSV or PDF."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Single-level vs multi-level BOM - which is this tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This is a single-level BOM (parent → components). For multi-level BOMs (where a component is itself an assembly with its own BOM), you've outgrown a free tool. SimpleGrid handles multi-level BOMs with phantom assemblies and explosion logic. See how →"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I handle BOM revisions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Revision field lets you tag this BOM (Rev A, Rev B, etc.). For real revision control with effective dates and ECO (engineering change order) tracking, you need an ERP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I export to CSV for my costing spreadsheet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Click Export CSV - it downloads a comma-separated file with all your BOM lines. Opens directly in Excel or Google Sheets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my BOM has 200+ lines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The tool will handle it, but at that complexity you really want a system that links the BOM to inventory, costing, and production. Book a demo →"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://simplegrid.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://simplegrid.ai/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Free Bill of Materials (BOM) Builder",
+          "item": "https://simplegrid.ai/tools/bill-of-materials-template/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
