@@ -391,14 +391,16 @@
   line-height: var(--lh-tight);
   color: var(--accent);
 }
+/* The same twelve marks the module tiles carry — see .module__icon in
+   css/modules.css. They are shaded faces rather than strokes, so what matters
+   here is `color`: it is what currentColor resolves to, and without it the
+   faces would take the page's ink instead of the accent. */
 .role-screen__icon {
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: none;
+  color: var(--accent);
 }
 
 /* ------------------------------------------------------------------ proof */
