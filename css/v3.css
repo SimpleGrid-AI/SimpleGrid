@@ -475,10 +475,14 @@ sg-footer { display: contents; }
     display: none;
   }
   .site-header[data-open='true'] .nav { display: flex; }
+  /* Centred: the drawer is a column down the middle of a phone, not a list
+     hanging off the left edge the way the desktop bar reads. */
   .nav__link {
     height: auto;
     padding: 12px 4px;
     font-size: var(--fs-body);
+    justify-content: center;
+    text-align: center;
   }
   .nav__link--cta {
     justify-content: center;
@@ -499,22 +503,29 @@ sg-footer { display: contents; }
     opacity: 1;
     visibility: visible;
     min-width: 0;
-    padding: 0 0 4px 14px;
+    /* No left indent: an indent under centred rows reads as a mistake. */
+    padding: 0 0 4px;
     border: 0;
     box-shadow: none;
     background: none;
     display: none;
+    justify-items: center;
   }
   .nav__item[data-open='true'] > .nav__menu { display: grid; }
-  .nav__sub { padding: 9px 4px; }
+  .nav__sub { padding: 9px 4px; text-align: center; }
   /* In the drawer the columns stack and the tiles come off — it is a list. */
-  .nav__menu--mega { gap: 14px; min-width: 0; padding: 0 0 4px 14px; }
-  .nav__item[data-open='true'] > .nav__menu--mega { display: flex; flex-direction: column; }
-  .nav__col-title { margin-left: 0; }
-  .nav__row { padding: 9px 4px; }
-  /* The caret is how a row says it opens, which matters more here than on
-     desktop, where hovering reveals it. */
-  .nav__caret { display: block; margin-left: auto; }
+  .nav__menu--mega { gap: 14px; min-width: 0; padding: 0 0 4px; }
+  .nav__item[data-open='true'] > .nav__menu--mega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav__col { display: grid; justify-items: center; }
+  .nav__col-title { margin-left: 0; text-align: center; }
+  .nav__row { padding: 9px 4px; text-align: center; }
+  /* The caret sits beside its label rather than out at the edge, so the pair
+     centres as one thing. */
+  .nav__caret { display: block; margin-left: 6px; }
   .nav-toggle { display: inline-flex; }
 }
 
