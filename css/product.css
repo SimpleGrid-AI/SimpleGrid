@@ -571,7 +571,10 @@
   /* Copy takes the wider share; the phone only needs its own width. */
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: 64px;
-  align-items: center;
+  /* Top edges together: the device starts on the eyebrow's line, so the two
+     columns open at the same height rather than the phone floating against
+     the middle of the copy. */
+  align-items: start;
 }
 
 .app__title {
@@ -599,14 +602,14 @@
 
 /* The shot carries its own device frame and its own shadow, so nothing is
    drawn around it — a border here would read as a second phone. */
-.app__shot { margin: 0; justify-self: center; max-width: 300px; }
+.app__shot { margin: 0; justify-self: center; max-width: 258px; }
 .app__shot img { display: block; width: 100%; height: auto; }
 
 @media (max-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .app__title { max-width: none; }
   .app__points { margin-top: 32px; }
-  .app__shot { max-width: 260px; }
+  .app__shot { max-width: 236px; justify-self: start; }
 }
 
 /* --------------------------------------------------------------------------
