@@ -62,6 +62,25 @@
     var painted = false;
     var hovering = false;
     var theme = 'dark';
+    var visible = false;
+    var parked = false;
+
+    /* The replacement and the native cursor are one switch, never two. Hiding
+       the dot on its own leaves `cursor: none` standing over the whole page,
+       so the pointer is somewhere with nothing drawn at it — which is what
+       happened on the way back from a browser menu: the popup opening sends
+       mouseleave, and the pointer coming back onto the page does not always
+       send the matching mouseenter, so the dot stayed hidden and the native
+       arrow stayed suppressed. Whatever hides the dot hands the real cursor
+       back for as long as the dot is down. */
+    function setVisible(on) {
+      on = !!on && painted && !parked;
+      if (on === visible) return;
+      visible = on;
+      dot.setAttribute('data-visible', String(on));
+      if (lit) lit.setAttribute('data-active', String(on));
+      document.documentElement.classList.toggle('has-custom-cursor', on);
+    }
 
     /* Resolve state from whatever sits under the pointer. Runs only on frames
        where the pointer actually moved or the page scrolled beneath it. */
@@ -104,9 +123,7 @@
          having none at all. */
       if (!painted) {
         painted = true;
-        document.documentElement.classList.add('has-custom-cursor');
-        dot.setAttribute('data-visible', 'true');
-        if (lit) lit.setAttribute('data-active', 'true');
+        setVisible(true);
       }
       resolve();
     }
@@ -117,17 +134,20 @@
        the duration and let the real cursor through (see css/grid.css). */
     ['fullscreenchange', 'webkitfullscreenchange'].forEach(function (type) {
       document.addEventListener(type, function () {
-        var full = document.fullscreenElement || document.webkitFullscreenElement;
-        dot.setAttribute('data-visible', full ? 'false' : 'true');
-        if (lit) lit.setAttribute('data-active', full ? 'false' : 'true');
+        parked = !!(document.fullscreenElement || document.webkitFullscreenElement);
+        setVisible(!parked);
       });
     });
 
+    /* A move is the one reading that cannot be stale: the pointer is over the
+       page, at these coordinates, now. So it is also what brings the dot back,
+       whether or not the boundary event that hid it was ever answered. */
     window.addEventListener('mousemove', function (event) {
       x = event.clientX;
       y = event.clientY;
       moved = true;
       seen = true;
+      setVisible(true);
     }, { passive: true });
 
     /* Scrolling changes what is under a stationary pointer. */
@@ -136,13 +156,30 @@
     }, { passive: true });
 
     document.documentElement.addEventListener('mouseleave', function () {
-      dot.setAttribute('data-visible', 'false');
-      if (lit) lit.setAttribute('data-active', 'false');
+      setVisible(false);
     });
-    document.documentElement.addEventListener('mouseenter', function () {
-      if (!seen || !painted) return;
-      dot.setAttribute('data-visible', 'true');
-      if (lit) lit.setAttribute('data-active', 'true');
+    document.documentElement.addEventListener('mouseenter', function (event) {
+      if (!seen) return;
+      /* Enter carries a position of its own. Taking it means the dot is drawn
+         where the pointer came in rather than flashing at wherever it left. */
+      if (typeof event.clientX === 'number') {
+        x = event.clientX;
+        y = event.clientY;
+        moved = true;
+      }
+      setVisible(true);
+    });
+
+    /* Opening a browser menu, an extension popup or the downloads shelf moves
+       the pointer into the browser's own furniture, where nothing this page
+       draws is visible. The page keeps the pointer's last position but loses
+       the right to be the thing under it, so the native cursor comes back and
+       the first move over the page again takes it away. */
+    window.addEventListener('blur', function () {
+      setVisible(false);
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) setVisible(false);
     });
   }
 
