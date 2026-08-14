@@ -289,14 +289,28 @@
       }
       function closeAll() { open(null); }
 
+      /* Below this width the nav is a drawer, and a drawer is not a hover
+         surface: hovering a row there would open it and the tap that follows
+         would read as "already open" and close it again. */
+      var drawer = window.matchMedia('(max-width: 900px)');
+
+      /* Whether the focus about to arrive came from a finger or a keyboard.
+         Tapping a <button> focuses it, so focusin fired, opened the menu, and
+         then the click saw it already open and shut it — which is why tapping
+         a collection appeared to do nothing at all. */
+      var fromPointer = false;
+      document.addEventListener('pointerdown', function () { fromPointer = true; }, true);
+      document.addEventListener('keydown', function () { fromPointer = false; }, true);
+
       items.forEach(function (item) {
         var parent = item.querySelector('.nav__link');
 
         item.addEventListener('pointerenter', function (event) {
-          if (event.pointerType !== 'touch') open(item);
+          if (drawer.matches || event.pointerType === 'touch') return;
+          open(item);
         });
         item.addEventListener('pointerleave', function (event) {
-          if (event.pointerType === 'touch') return;
+          if (drawer.matches || event.pointerType === 'touch') return;
           /* A keyboard user tabbing through keeps their menu; a mouse leaving
              does not, even if the button it clicked still holds focus. */
           if (item.contains(document.activeElement)) document.activeElement.blur();
@@ -304,7 +318,10 @@
           parent.setAttribute('aria-expanded', 'false');
         });
 
-        item.addEventListener('focusin', function () { open(item); });
+        item.addEventListener('focusin', function () {
+          if (fromPointer) return;          /* the click below owns that case */
+          open(item);
+        });
         item.addEventListener('focusout', function (event) {
           if (!item.contains(event.relatedTarget)) {
             item.setAttribute('data-open', 'false');
@@ -312,13 +329,11 @@
           }
         });
 
-        /* The parent goes nowhere on its own. On touch, where there is no
-           hover, the first tap opens it; with a pointer it stays open rather
-           than fighting the hover that just opened it. */
-        parent.addEventListener('click', function (event) {
-          var wasOpen = item.getAttribute('data-open') === 'true';
-          if (event.detail === 0) { open(wasOpen ? null : item); return; }  // keyboard
-          if (wasOpen) { closeAll(); parent.blur(); } else { open(item); }
+        /* The parent goes nowhere on its own, so opening and closing is its
+           only job — and with hover and focus kept out of the way above, it
+           is a plain toggle however it was pressed. */
+        parent.addEventListener('click', function () {
+          open(item.getAttribute('data-open') === 'true' ? null : item);
         });
       });
 
