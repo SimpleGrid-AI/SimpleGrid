@@ -95,16 +95,9 @@
   margin: 0;
   text-wrap: balance;
 }
-/* The team, under the line about the team. */
-.story__shot { margin: 28px 0 20px; }
-.story__shot img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-}
-.story__badge { margin: 0; }
+/* The badge now follows the story text directly — the team shot that used to
+   sit between them is gone, so it carries the space the figure used to. */
+.story__badge { margin: 28px 0 0; }
 .story__badge img { height: 40px; width: auto; opacity: 0.9; }
 
 .story p { margin: 0 0 18px; }
