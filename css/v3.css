@@ -453,6 +453,24 @@ sg-footer { display: contents; }
 }
 .nav__link--cta:hover { background: var(--accent-hover); color: var(--sg-logo-white); }
 
+/* Beside the hamburger on a phone, so the one action in the header does not
+   need the drawer opened to reach it. Hidden on desktop, where the CTA lives
+   in the nav box with the links. */
+.header-cta {
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--sg-logo-white);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.header-cta:hover { background: var(--accent-hover); color: var(--sg-logo-white); }
+
 .nav-toggle { display: none; padding: 8px; border-radius: var(--radius); color: var(--fg); }
 .nav-toggle:hover { background: var(--bg-highlight); }
 
@@ -475,22 +493,20 @@ sg-footer { display: contents; }
     display: none;
   }
   .site-header[data-open='true'] .nav { display: flex; }
-  /* Centred: the drawer is a column down the middle of a phone, not a list
-     hanging off the left edge the way the desktop bar reads. */
   .nav__link {
     height: auto;
     padding: 12px 4px;
     font-size: var(--fs-body);
-    justify-content: center;
-    text-align: center;
   }
-  .nav__link--cta {
-    justify-content: center;
-    margin: 12px 0 0;
-    padding: 14px 26px;
-    background: var(--accent);
-    color: var(--sg-logo-white);
-  }
+  /* The CTA moved up beside the hamburger, so the drawer's copy of it would
+     be the same link twice. display:none takes it out of the page and out of
+     the accessibility tree with it. */
+  .nav__link--cta { display: none; }
+  /* The bar is logo | CTA | hamburger. space-between would push the CTA to the
+     middle of the phone, so the two controls are grouped at the right and only
+     the logo takes the free space. */
+  .site-header__inner { gap: 12px; }
+  .header-cta { display: inline-flex; margin-left: auto; padding: 9px 14px; }
   /* In the drawer there is nothing to hang a menu from — a collection opens
      inline, indented under its parent, and starts closed. Listing all three
      open made the drawer 22 items long before a thumb had chosen anything.
@@ -503,29 +519,24 @@ sg-footer { display: contents; }
     opacity: 1;
     visibility: visible;
     min-width: 0;
-    /* No left indent: an indent under centred rows reads as a mistake. */
-    padding: 0 0 4px;
+    /* Indented under the parent that opens it, which is what says the rows
+       belong to it. */
+    padding: 0 0 4px 14px;
     border: 0;
     box-shadow: none;
     background: none;
     display: none;
-    justify-items: center;
   }
   .nav__item[data-open='true'] > .nav__menu { display: grid; }
-  .nav__sub { padding: 9px 4px; text-align: center; }
+  .nav__sub { padding: 9px 4px; }
   /* In the drawer the columns stack and the tiles come off — it is a list. */
-  .nav__menu--mega { gap: 14px; min-width: 0; padding: 0 0 4px; }
-  .nav__item[data-open='true'] > .nav__menu--mega {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .nav__col { display: grid; justify-items: center; }
-  .nav__col-title { margin-left: 0; text-align: center; }
-  .nav__row { padding: 9px 4px; text-align: center; }
-  /* The caret sits beside its label rather than out at the edge, so the pair
-     centres as one thing. */
-  .nav__caret { display: block; margin-left: 6px; }
+  .nav__menu--mega { gap: 14px; min-width: 0; padding: 0 0 4px 14px; }
+  .nav__item[data-open='true'] > .nav__menu--mega { display: flex; flex-direction: column; }
+  .nav__col-title { margin-left: 0; }
+  .nav__row { padding: 9px 4px; }
+  /* Out at the row's end, where a disclosure arrow belongs in a left-aligned
+     list, and the only sign a row opens when there is no hover. */
+  .nav__caret { display: block; margin-left: auto; }
   .nav-toggle { display: inline-flex; }
 }
 

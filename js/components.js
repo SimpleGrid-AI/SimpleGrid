@@ -237,6 +237,11 @@
                  sandbox tenant, no email gate. */
               '<a class="nav__link nav__link--cta" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>' +
             '</nav>' +
+            /* The drawer's CTA cannot sit in the drawer: it is the one thing
+               that should be reachable without opening anything. On a phone
+               this is the one shown and the one inside .nav is hidden, so
+               only ever one of the two is in the page for real. */
+            '<a class="header-cta" href="https://erp.simplegrid.ai/?sandbox=true" rel="noopener">See it live</a>' +
             '<button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">' +
               '<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
                 '<path d="M3 6h14M3 10h14M3 14h14" fill="none" stroke="currentColor" ' +
