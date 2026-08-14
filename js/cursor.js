@@ -99,11 +99,21 @@
        time the pointer reaches the browser's own furniture the arrow is
        already back, and it is the arrow that stays frozen instead of nothing
        at all. */
-    var EDGE = 8;
+    var EDGE = 12;
 
+    /* clientWidth, not innerWidth: innerWidth counts the scrollbar gutter, and
+       the document never receives a pointer reading inside it. On a 1534px
+       window with a 15px scrollbar the largest x any event carries is 1518,
+       while the band this measured out ran from 1526 — so the pointer left
+       through the right edge without ever crossing it, and the page kept
+       `cursor: none` on the way out. The left, top and bottom edges worked;
+       only the side the scrollbar sits on was dead, which is why it looked
+       like a bug about one panel. EDGE is wider than any scrollbar for the
+       same reason: the band must be reachable, not merely defined. */
     function insideEdge(px, py) {
-      var w = window.innerWidth || document.documentElement.clientWidth || 0;
-      var h = window.innerHeight || document.documentElement.clientHeight || 0;
+      var doc = document.documentElement;
+      var w = doc.clientWidth || window.innerWidth || 0;
+      var h = doc.clientHeight || window.innerHeight || 0;
       return px >= EDGE && py >= EDGE && px <= w - EDGE && py <= h - EDGE;
     }
 
@@ -129,10 +139,17 @@
       }
     }
 
-    function frame() {
-      requestAnimationFrame(frame);
-      if (!moved) return;
-      moved = false;
+    /* Writing the dot where the pointer is. Pulled out of the frame loop so
+       that whatever is about to show the dot can put it in the right place
+       first: revealing it before the next frame writes the transform fades it
+       in at the position it was last left at, and a tab coming back from a
+       browser panel has a throttled frame loop, so "the next frame" can be
+       long enough to watch. That is the cursor that looked stuck.
+
+       It also carries `painted`, because having written a transform is exactly
+       what that flag means, and setVisible() refuses to give up the native
+       cursor until it is true. */
+    function place() {
       dot.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
 
       /* The field is viewport-fixed, so the pointer's client coordinates are
@@ -141,15 +158,21 @@
         lit.style.setProperty('--mx', x + 'px');
         lit.style.setProperty('--my', y + 'px');
       }
+      painted = true;
+    }
+
+    function frame() {
+      requestAnimationFrame(frame);
+      if (!moved) return;
+      moved = false;
 
       /* The native cursor is only given up once the replacement has actually
          painted somewhere real. If rAF never ticks — a stalled tab, a
          throttled frame loop — the page keeps a working cursor instead of
          having none at all. */
-      if (!painted) {
-        painted = true;
-        setVisible(insideEdge(x, y));
-      }
+      var first = !painted;
+      place();
+      if (first) setVisible(insideEdge(x, y));
       resolve();
     }
     requestAnimationFrame(frame);
@@ -172,7 +195,12 @@
       y = event.clientY;
       moved = true;
       seen = true;
-      setVisible(insideEdge(x, y));
+      /* Placed before it is shown, never after — see place(). Only on the
+         move that brings it back, so an ordinary move still costs one write
+         per frame rather than one per event. */
+      var show = insideEdge(x, y);
+      if (show && !visible) place();
+      setVisible(show);
     }, { passive: true });
 
     /* Scrolling changes what is under a stationary pointer. */
@@ -192,7 +220,17 @@
         y = event.clientY;
         moved = true;
       }
-      setVisible(insideEdge(x, y));
+      var show = insideEdge(x, y);
+      if (show && !visible) place();
+      setVisible(show);
+    });
+
+    /* An exit through the scrollbar gutter is not a mouseleave on the document
+       element — the pointer is still inside the window, just over furniture the
+       page does not own. mouseout with no relatedTarget is the one event that
+       covers it, and the same reading covers leaving the window entirely. */
+    document.addEventListener('mouseout', function (event) {
+      if (!event.relatedTarget) setVisible(false);
     });
 
     /* Opening a browser menu, an extension popup or the downloads shelf moves
