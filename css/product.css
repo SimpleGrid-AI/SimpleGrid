@@ -605,8 +605,13 @@
 .app__device { display: grid; justify-items: center; gap: 22px; }
 
 /* The shot carries its own device frame and its own shadow, so nothing is
-   drawn around it — a border here would read as a second phone. */
-.app__shot { margin: 0; max-width: 258px; }
+   drawn around it — a border here would read as a second phone.
+
+   208px is not a taste: the image is 720x1460, so at this width it stands
+   422px, and 422 + the 22px gap + the 53px badge row is the height of the
+   copy beside it. The column ends on the last line of the copy rather than
+   hanging a screen's worth below it. */
+.app__shot { margin: 0; max-width: 208px; }
 .app__shot img { display: block; width: 100%; height: auto; }
 
 /* Both stores, in this page's own square style rather than the platforms'
@@ -641,6 +646,14 @@
   margin-bottom: 1px;
 }
 .app__store-name { display: block; font-size: 14px; font-weight: 600; line-height: 1.2; }
+
+/* Between the two-column and stacked layouts the right column narrows past
+   the badge pair, which wraps to two rows and drops the column below the copy
+   it is meant to end level with. A little more of the row buys the line back;
+   the headline still holds its three lines at this width. */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .app { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 48px; }
+}
 
 @media (max-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr); gap: 40px; }
