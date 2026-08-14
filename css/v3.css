@@ -1321,7 +1321,11 @@ sg-footer { display: contents; }
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   gap: 64px;
-  align-items: center;
+  /* Stretch, not centre: the chat is the one thing on this side, and centring
+     it against a taller column left it floating between the claims and the
+     store badges, level with neither. Stretched, it opens on the eyebrow's
+     line and closes on the badges. */
+  align-items: stretch;
 }
 
 /* The rule belongs to the second column, so it lands exactly between them. */
@@ -1331,6 +1335,9 @@ sg-footer { display: contents; }
   justify-self: center;
   width: 100%;
   max-width: 460px;
+  /* A column, so the panel below the label can take the height that is left. */
+  display: flex;
+  flex-direction: column;
 }
 
 .team__title {
@@ -1665,6 +1672,12 @@ sg-footer { display: contents; }
 /* Minimised: the same panel, sized to sit beside a paragraph rather than to
    carry a section of its own. Shorter log, tighter chrome, smaller type. */
 .hchat--mini { max-width: 400px; }
+
+/* Inside the homepage's floor section the panel is height-driven by the copy
+   beside it, so the log gives up its fixed height and takes what is left. The
+   floor is kept so a short copy column cannot squeeze the conversation shut. */
+.team__side .hchat { flex: 1 1 auto; min-height: 0; }
+.team__side .hchat__log { height: auto; flex: 1 1 auto; min-height: 240px; }
 .hchat--mini .hchat__head { padding: 10px 14px; gap: 10px; }
 .hchat--mini .hchat__avatar { width: 30px; height: 30px; }
 .hchat--mini .hchat__name { font-size: var(--fs-sub); margin-bottom: 2px; }
