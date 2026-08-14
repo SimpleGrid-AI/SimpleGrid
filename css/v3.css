@@ -497,6 +497,12 @@ sg-footer { display: contents; }
     height: auto;
     padding: 12px 4px;
     font-size: var(--fs-body);
+    /* The desktop cell centres its label inside a fixed-width box. In the
+       drawer every link is full width, so centring leaves the plain links
+       floating mid-row while the ones with a caret sit left. Start-aligned,
+       every label starts on the same edge as the rows underneath it. */
+    justify-content: flex-start;
+    text-align: left;
   }
   /* The CTA moved up beside the hamburger, so the drawer's copy of it would
      be the same link twice. display:none takes it out of the page and out of
@@ -532,7 +538,9 @@ sg-footer { display: contents; }
   /* In the drawer the columns stack and the tiles come off — it is a list. */
   .nav__menu--mega { gap: 14px; min-width: 0; padding: 0 0 4px 14px; }
   .nav__item[data-open='true'] > .nav__menu--mega { display: flex; flex-direction: column; }
-  .nav__col-title { margin-left: 0; }
+  /* 4px, not 0: the rows below carry that much padding, so the column title
+     starts on the same edge as the labels it heads. */
+  .nav__col-title { margin-left: 4px; }
   .nav__row { padding: 9px 4px; }
   /* Out at the row's end, where a disclosure arrow belongs in a left-aligned
      list, and the only sign a row opens when there is no hover. */

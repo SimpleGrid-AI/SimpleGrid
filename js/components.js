@@ -35,6 +35,12 @@
     '</svg>'
   ].join('');
 
+  /* Every logo on the site points here. The canonical home is the bare origin
+     (see <link rel="canonical"> on index.html), so linking "index.html" would
+     have every page on the site pointing at a duplicate of the canonical URL.
+     Absolute rather than "/" so the link is the canonical string itself. */
+  var HOME = 'https://simplegrid.ai/';
+
   var CARET = '<svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true" focusable="false">' +
     '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" ' +
     'stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -111,7 +117,7 @@
      of the site, so a link that goes nowhere is worse than one less link. */
   var FOOTER_COLUMNS = [
     { title: 'Company', links: [
-      { label: 'Home',     href: 'index.html' },
+      { label: 'Home',     href: HOME },
       { label: 'Product',  href: 'product.html' },
       { label: 'Syncs',    href: 'syncs.html' },
       { label: 'Pricing',  href: 'pricing.html' },
@@ -229,7 +235,7 @@
           /* Wide container so the header shares the hero's edges: the nav box
              ends on the hero's right edge, the logo starts on its left. */
           '<div class="container container--wide site-header__inner">' +
-            '<a class="logo" href="index.html" aria-label="SimpleGrid home">' + LOGO + '</a>' +
+            '<a class="logo" href="' + HOME + '" aria-label="SimpleGrid home">' + LOGO + '</a>' +
             '<nav class="nav" aria-label="Primary">' + links +
               /* Absolute rather than "#demo": about and resources carry no
                  closing CTA of their own for it to land on. */
@@ -396,7 +402,7 @@
             '<div class="container">' +
               '<div class="footer__top">' +
                 '<div class="footer__brand">' +
-                  '<a class="logo" href="index.html" aria-label="SimpleGrid home">' + LOGO + '</a>' +
+                  '<a class="logo" href="' + HOME + '" aria-label="SimpleGrid home">' + LOGO + '</a>' +
                   '<p class="footer__blurb">The Operations Cloud/Adaptive ERP. Built around ' +
                     'your business. Live in 3 weeks or less.</p>' +
                 '</div>' +
