@@ -600,16 +600,57 @@
 }
 .app__point .body-copy { max-width: 46ch; }
 
+/* The device and the two store links are one column, so the badges centre on
+   the phone rather than on the grid cell. */
+.app__device { display: grid; justify-items: center; gap: 22px; }
+
 /* The shot carries its own device frame and its own shadow, so nothing is
    drawn around it — a border here would read as a second phone. */
-.app__shot { margin: 0; justify-self: center; max-width: 258px; }
+.app__shot { margin: 0; max-width: 258px; }
 .app__shot img { display: block; width: 100%; height: auto; }
+
+/* Both stores, in this page's own square style rather than the platforms'
+   artwork — see the note in the markup. */
+.app__stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.app__store {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--fg);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease),
+              color 200ms var(--ease);
+}
+.app__store:hover,
+.app__store:focus-visible {
+  border-color: var(--sg-blue-15);
+  background: var(--bg-highlight-soft);
+  color: var(--accent);
+}
+.app__store-mark { flex: 0 0 auto; width: 21px; height: 21px; fill: currentColor; }
+.app__store-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 1px;
+}
+.app__store-name { display: block; font-size: 14px; font-weight: 600; line-height: 1.2; }
 
 @media (max-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .app__title { max-width: none; }
   .app__points { margin-top: 32px; }
-  .app__shot { max-width: 236px; justify-self: start; }
+  /* Stacked, the device and its badges line up with the copy above them
+     rather than sitting centred in a column of their own. */
+  .app__device { justify-items: start; }
+  .app__stores { justify-content: flex-start; }
+  .app__shot { max-width: 236px; }
 }
 
 /* --------------------------------------------------------------------------

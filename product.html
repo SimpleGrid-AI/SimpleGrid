@@ -20,13 +20,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#3456D9">
 
-<link rel="stylesheet" href="css/fonts.css?v=202608141322">
+<link rel="stylesheet" href="css/fonts.css?v=202608141329">
 
-<link rel="stylesheet" href="css/tokens.css?v=202608141322">
-<link rel="stylesheet" href="css/v3.css?v=202608141322">
-<link rel="stylesheet" href="css/modules.css?v=202608141322">
-<link rel="stylesheet" href="css/product.css?v=202608141322">
-<link rel="stylesheet" href="css/grid.css?v=202608141322">
+<link rel="stylesheet" href="css/tokens.css?v=202608141329">
+<link rel="stylesheet" href="css/v3.css?v=202608141329">
+<link rel="stylesheet" href="css/modules.css?v=202608141329">
+<link rel="stylesheet" href="css/product.css?v=202608141329">
+<link rel="stylesheet" href="css/grid.css?v=202608141329">
 
 <!-- What this page is, in the vocabulary search engines read. Every
      value is taken from the page itself. -->
@@ -469,11 +469,37 @@
           </div>
         </div>
 
-        <figure class="app__shot">
-          <img src="assets/app/app-home.webp"
-               alt="The SimpleGrid app on a phone: the operation's home screen, with sales orders booked and order book value, shortcuts into Operations and Insights, and recent activity from the floor."
-               width="720" height="1460" loading="lazy" decoding="async">
-        </figure>
+        <div class="app__device">
+          <figure class="app__shot">
+            <img src="assets/app/app-home.webp"
+                 alt="The SimpleGrid app on a phone: the operation's home screen, with sales orders booked and order book value, shortcuts into Operations and Insights, and recent activity from the floor."
+                 width="720" height="1460" loading="lazy" decoding="async">
+          </figure>
+
+          <!-- Both stores are live, so both are links. The marks are drawn in
+               currentColor rather than dropped in as the platforms' own
+               artwork: the badges sit in this page's square, bordered style
+               with everything else, and two foreign lockups beside a phone
+               would be the loudest thing in the section. -->
+          <div class="app__stores">
+            <a class="app__store" href="https://play.google.com/store/apps/details?id=ai.simplegrid.mobile"
+               rel="noopener" aria-label="Get SimpleGrid on Google Play">
+              <svg class="app__store-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.6 1.8a1.4 1.4 0 0 0-.5 1.1v18.2a1.4 1.4 0 0 0 .5 1.1l.1.1L13.8 12v-.2L3.7 1.7zM17.2 15.4 14.6 12.8v-.2l2.6-2.6.1.1 3.1 1.8c.9.5.9 1.4 0 1.9l-3.1 1.8zM15.1 16.5 12.4 13.8 3.6 22.6c.3.3.8.4 1.3.1l10.2-6.2M15.1 7.5 4.9 1.3c-.5-.3-1-.2-1.3.1l8.8 8.8z"/></svg>
+              <span class="app__store-text">
+                <span class="app__store-kicker">Get it on</span>
+                <span class="app__store-name">Google Play</span>
+              </span>
+            </a>
+            <a class="app__store" href="https://apps.apple.com/app/id6792262223"
+               rel="noopener" aria-label="Download SimpleGrid on the App Store">
+              <svg class="app__store-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.3-.9-2.3-3.3zM14.2 6.2c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+              <span class="app__store-text">
+                <span class="app__store-kicker">Download on the</span>
+                <span class="app__store-name">App Store</span>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2098,14 +2124,14 @@
 
 <sg-footer></sg-footer>
 
-<script src="js/components.js?v=202608141322"></script>
-<script src="js/book-demo.js?v=202608141322" defer></script>
-<script src="js/v3.js?v=202608141322"></script>
-<script src="js/modules.js?v=202608141322"></script>
-<script src="js/ai-mocks.js?v=202608141322"></script>
-<script src="js/lightbox.js?v=202608141322"></script>
-<script src="js/hank.js?v=202608141322"></script>
-<script src="js/cursor.js?v=202608141322"></script>
+<script src="js/components.js?v=202608141329"></script>
+<script src="js/book-demo.js?v=202608141329" defer></script>
+<script src="js/v3.js?v=202608141329"></script>
+<script src="js/modules.js?v=202608141329"></script>
+<script src="js/ai-mocks.js?v=202608141329"></script>
+<script src="js/lightbox.js?v=202608141329"></script>
+<script src="js/hank.js?v=202608141329"></script>
+<script src="js/cursor.js?v=202608141329"></script>
 
 </body>
 </html>
