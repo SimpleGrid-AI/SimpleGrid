@@ -487,8 +487,11 @@ sg-footer { display: contents; }
     background: var(--accent);
     color: var(--sg-logo-white);
   }
-  /* In the drawer there is nothing to hang a menu from — the collections are
-     listed inline, indented under their parent. */
+  /* In the drawer there is nothing to hang a menu from — a collection opens
+     inline, indented under its parent, and starts closed. Listing all three
+     open made the drawer 22 items long before a thumb had chosen anything.
+     display:none rather than the desktop's clip, so a closed list takes no
+     height; the script's data-open is what opens it, exactly as on desktop. */
   .nav__item { flex-direction: column; align-items: stretch; }
   .nav__menu {
     position: static;
@@ -500,13 +503,18 @@ sg-footer { display: contents; }
     border: 0;
     box-shadow: none;
     background: none;
+    display: none;
   }
+  .nav__item[data-open='true'] > .nav__menu { display: grid; }
   .nav__sub { padding: 9px 4px; }
   /* In the drawer the columns stack and the tiles come off — it is a list. */
-  .nav__menu--mega { flex-direction: column; gap: 14px; min-width: 0; padding: 0 0 4px 14px; }
+  .nav__menu--mega { gap: 14px; min-width: 0; padding: 0 0 4px 14px; }
+  .nav__item[data-open='true'] > .nav__menu--mega { display: flex; flex-direction: column; }
   .nav__col-title { margin-left: 0; }
   .nav__row { padding: 9px 4px; }
-  .nav__caret { display: none; }
+  /* The caret is how a row says it opens, which matters more here than on
+     desktop, where hovering reveals it. */
+  .nav__caret { display: block; margin-left: auto; }
   .nav-toggle { display: inline-flex; }
 }
 

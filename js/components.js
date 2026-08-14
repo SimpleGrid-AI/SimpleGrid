@@ -254,6 +254,10 @@
         header.setAttribute('data-open', String(open));
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        /* The drawer opens on its collections closed, every time. Without
+           this, whichever one was opened last stays expanded behind the
+           closed drawer and is there again on the next tap. */
+        closeAll();
       });
 
       this.querySelectorAll('.nav a').forEach(function (link) {
