@@ -1896,8 +1896,12 @@ sg-footer { display: contents; }
   .lived {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: 'eyebrow' 'title' 'lede';
-    gap: 24px;
-    padding-bottom: 32px;
+    gap: 20px;
+    /* The 48px margin below already sets the story off from the case tiles.
+       The extra padding was sized against a four-line lede; against the one
+       line it is now, the two together left a hole under the paragraph. */
+    padding-bottom: 0;
+    margin-bottom: 40px;
   }
   .lived__title { max-width: 20ch; }
 }
