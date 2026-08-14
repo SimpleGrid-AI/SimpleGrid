@@ -23,7 +23,12 @@ const src=fs.readFileSync('/Users/simplegrid/SGUI/js/case-road.js','utf8');
 /* The page's own <script> tags decide what runs — loading the file by hand
    would pass even on a page that never links it, which is exactly how the
    missing tag shipped the first time. */
-const wants = [...page.matchAll(/<script src="([^"]+)"/g)].map(m => m[1]);
+/* The ?v= cache stamp is part of the src and none of this test's business —
+   scripts/stamp-assets.sh moves it on every push that touches js/, and an
+   exact-string match on the src turned that into a failing test about a page
+   that was fine. */
+const wants = [...page.matchAll(/<script src="([^"]+)"/g)]
+  .map(m => m[1].split('?')[0]);
 if (!wants.includes('js/case-road.js')) {
   console.error('FAIL: case-furniture-manufacturer.html does not load js/case-road.js');
   process.exit(1);

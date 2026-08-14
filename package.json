@@ -1,0 +1,18 @@
+{
+  "name": "simplegrid-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "simplegrid.ai — static site. This file exists only so the tests under js/ have a runner and jsdom to run in; the site itself has no build step and ships as plain HTML, CSS and JS. _config.yml excludes package.json, package-lock.json and node_modules/ from what GitHub Pages serves.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "for t in js/*.test.js; do printf '%-28s' \"$(basename $t)\"; node \"$t\" > /dev/null 2>&1 && echo PASS || { node \"$t\"; exit 1; }; done",
+    "stamp": "./scripts/stamp-assets.sh"
+  },
+  "devDependencies": {
+    "jsdom": "^30.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimpleGrid-AI/SimpleGrid.git"
+  }
+}
