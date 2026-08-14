@@ -558,6 +558,58 @@
 }
 
 /* --------------------------------------------------------------------------
+   The app — the same grid, in a hand
+
+   One split, not the AI section's head-then-rows: the phone is twice as tall
+   as it is wide, so the copy column carries the heading as well as the claims
+   and the two columns come out level. Anything shorter on the left leaves a
+   screen's worth of nothing beside the device.
+   -------------------------------------------------------------------------- */
+
+.app {
+  display: grid;
+  /* Copy takes the wider share; the phone only needs its own width. */
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.app__title {
+  font-size: var(--fs-h2);
+  color: var(--accent);
+  max-width: 16ch;
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+.app__lede { max-width: 54ch; }
+
+/* Three claims under the lede, set off from it by more than they are from
+   each other, so they read as a group rather than as three more paragraphs. */
+.app__points { display: grid; gap: 28px; margin-top: 44px; }
+.app__point { display: grid; gap: 8px; }
+.app__point-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--fg);
+  margin: 0;
+}
+.app__point .body-copy { max-width: 46ch; }
+
+/* The shot carries its own device frame and its own shadow, so nothing is
+   drawn around it — a border here would read as a second phone. */
+.app__shot { margin: 0; justify-self: center; max-width: 300px; }
+.app__shot img { display: block; width: 100%; height: auto; }
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .app__title { max-width: none; }
+  .app__points { margin-top: 32px; }
+  .app__shot { max-width: 260px; }
+}
+
+/* --------------------------------------------------------------------------
    The math — the two bills, side by side
 
    The comparison table the competitor pages already use, on this page's own
