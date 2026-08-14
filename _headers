@@ -23,6 +23,15 @@
 /*.html
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
+# Safe to hold forever: every reference to these carries a ?v= stamp that
+# scripts/stamp-assets.sh moves on each deploy, so a changed file is requested
+# under a URL no cache has seen.
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
