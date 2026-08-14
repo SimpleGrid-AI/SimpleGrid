@@ -1,12 +1,15 @@
-/* The replacement cursor must never be down while the native one is hidden.
+/* The replacement cursor must never be down while the native one is hidden,
+   and the page must give the native one back before the pointer leaves.
 
    node js/cursor.test.js   (needs jsdom: npm install jsdom)
 
-   Opening a browser menu sends the page a mouseleave. The matching mouseenter
-   on the way back is not guaranteed — the pointer never left the window as far
-   as the OS is concerned — so the page used to be left with the dot hidden and
-   `cursor: none` still standing over everything: no pointer at all until you
-   clicked. The two are one switch now, and a mousemove alone brings both back.
+   Opening the browser's ⋮ menu stops event delivery to the page: no move, no
+   leave, nothing until the next click. The pointer keeps whatever cursor it
+   had at that moment, so if the page was still hiding it there is no pointer
+   at all — and nothing arrives afterwards to put it back. Hence the band
+   around the inside of the window: the pointer crosses it on the way out,
+   while the page is still being sent events, and the arrow is already back by
+   the time the menu opens.
 */
 
 const fs = require('fs'), vm = require('vm');
@@ -85,6 +88,36 @@ const check = (name, pass, s) => {
   await painted();
   s = state();
   check('never a hidden dot over a hidden cursor', s.dot === s.none, s);
+
+  /* The ⋮ menu: up through the top of the window, then nothing at all until
+     the click that closes it. The last event the page gets is the move
+     through the band, and that has to be the one that gives the arrow back —
+     whatever comes afterwards, there is nothing to act on. */
+  await move(400, 300);
+  check('inside the page, the dot has it', state().dot && state().none, state());
+
+  await move(400, 3);                    // crossing out to the browser's chrome
+  s = state();
+  check('the band hands the arrow back on the way out', !s.dot && !s.none, s);
+
+  /* No events for as long as the menu is open, and none on the way back. */
+  await painted();
+  s = state();
+  check('and it stays the arrow while nothing is delivered', !s.dot && !s.none, s);
+
+  await move(402, 320);                  // the click, or the first move after it
+  s = state();
+  check('the page takes it again once events resume', s.dot && s.none, s);
+
+  /* Every edge, not just the one the menu is behind. */
+  const edges = [[400, 765], [3, 300], [1021, 300]];
+  const gaveBack = [];
+  for (const [ex, ey] of edges) {
+    await move(400, 300);
+    await move(ex, ey);
+    gaveBack.push(!state().dot && !state().none);
+  }
+  check('every edge does the same', gaveBack.every(Boolean), gaveBack);
 
   const passed = checks.filter(Boolean).length;
   console.log('\n' + passed + '/' + checks.length + ' passed');

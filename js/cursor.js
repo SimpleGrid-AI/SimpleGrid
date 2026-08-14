@@ -82,6 +82,31 @@
       document.documentElement.classList.toggle('has-custom-cursor', on);
     }
 
+    /* A band around the inside of the window where the page gives the cursor
+       up early.
+
+       The browser only redraws the pointer while it is delivering events to
+       the page. Open the ⋮ menu and the page stops receiving them: no move, no
+       leave, nothing until the next click. Whatever the cursor was at that
+       moment is what it stays — and if that was `none`, the pointer is simply
+       missing for as long as the menu is open and after it closes, which is
+       the bug that outlived the last fix. Restoring on the way back cannot
+       work, because there is no event on the way back to restore from.
+
+       So the page hands the cursor over before it loses the chance to. Every
+       exit crosses this band on the way out, and crossing it is an ordinary
+       mousemove, delivered while the page is still being talked to. By the
+       time the pointer reaches the browser's own furniture the arrow is
+       already back, and it is the arrow that stays frozen instead of nothing
+       at all. */
+    var EDGE = 8;
+
+    function insideEdge(px, py) {
+      var w = window.innerWidth || document.documentElement.clientWidth || 0;
+      var h = window.innerHeight || document.documentElement.clientHeight || 0;
+      return px >= EDGE && py >= EDGE && px <= w - EDGE && py <= h - EDGE;
+    }
+
     /* Resolve state from whatever sits under the pointer. Runs only on frames
        where the pointer actually moved or the page scrolled beneath it. */
     function resolve() {
@@ -123,7 +148,7 @@
          having none at all. */
       if (!painted) {
         painted = true;
-        setVisible(true);
+        setVisible(insideEdge(x, y));
       }
       resolve();
     }
@@ -147,7 +172,7 @@
       y = event.clientY;
       moved = true;
       seen = true;
-      setVisible(true);
+      setVisible(insideEdge(x, y));
     }, { passive: true });
 
     /* Scrolling changes what is under a stationary pointer. */
@@ -167,7 +192,7 @@
         y = event.clientY;
         moved = true;
       }
-      setVisible(true);
+      setVisible(insideEdge(x, y));
     });
 
     /* Opening a browser menu, an extension popup or the downloads shelf moves
