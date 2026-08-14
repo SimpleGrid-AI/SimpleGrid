@@ -172,7 +172,7 @@
          having none at all. */
       var first = !painted;
       place();
-      if (first) setVisible(insideEdge(x, y));
+      if (first) setVisible(showAt(x, y));
       resolve();
     }
     requestAnimationFrame(frame);
@@ -198,7 +198,7 @@
       /* Placed before it is shown, never after — see place(). Only on the
          move that brings it back, so an ordinary move still costs one write
          per frame rather than one per event. */
-      var show = insideEdge(x, y);
+      var show = showAt(x, y);
       if (show && !visible) place();
       setVisible(show);
     }, { passive: true });
@@ -220,7 +220,7 @@
         y = event.clientY;
         moved = true;
       }
-      var show = insideEdge(x, y);
+      var show = showAt(x, y);
       if (show && !visible) place();
       setVisible(show);
     });
@@ -232,6 +232,62 @@
     document.addEventListener('mouseout', function (event) {
       if (!event.relatedTarget) setVisible(false);
     });
+
+    /* An embedded document — the YouTube player on the furniture case study —
+       owns the pointer inside its own box, and the crossing is silent: the page
+       gets no move, no mouseout, and no mouseover naming the frame. The last
+       thing it hears is an ordinary move a pixel outside, and then nothing at
+       all. So the dot stopped where it crossed in and stayed drawn there, with
+       the native cursor still suppressed underneath it. That is the frozen dot.
+
+       Nothing can be listened for, so the frames are measured instead, and the
+       band around each one is handed over on the last move this page is told
+       about — the same bargain the window's own edge makes above. */
+    /* Wide enough to be crossed by one event. Moves arrive 60–120 times a
+       second, so a fast flick covers 20–30px between two of them; a band
+       narrower than that can be stepped straight over, and the page would hear
+       nothing until the pointer came back out. A pointer thrown into the middle
+       of a frame in a single jump is still beyond reach — there is no event to
+       act on — but it heals itself on the way out, which a frozen dot did not. */
+    var FRAME_MARGIN = 44;
+    var frames = [];
+
+    function measureFrames() {
+      frames = Array.prototype.map.call(
+        document.querySelectorAll('iframe, embed, object'),
+        function (node) {
+          var box = node.getBoundingClientRect();
+          return {
+            left: box.left - FRAME_MARGIN, top: box.top - FRAME_MARGIN,
+            right: box.right + FRAME_MARGIN, bottom: box.bottom + FRAME_MARGIN
+          };
+        }
+      );
+    }
+
+    function overFrame(px, py) {
+      for (var i = 0; i < frames.length; i++) {
+        var f = frames[i];
+        if (px >= f.left && px <= f.right && py >= f.top && py <= f.bottom) return true;
+      }
+      return false;
+    }
+
+    /* Viewport coordinates, so they move with the page. Measured on the frames
+       where the pointer moved anyway, and only on pages that embed something —
+       everywhere else this is one length check against an empty list. */
+    var stale = true;
+    function markStale() { stale = true; }
+
+    measureFrames();
+    window.addEventListener('load', measureFrames);
+    window.addEventListener('resize', markStale, { passive: true });
+    window.addEventListener('scroll', markStale, { passive: true });
+
+    function showAt(px, py) {
+      if (frames.length && stale) { measureFrames(); stale = false; }
+      return insideEdge(px, py) && !overFrame(px, py);
+    }
 
     /* Opening a browser menu, an extension popup or the downloads shelf moves
        the pointer into the browser's own furniture, where nothing this page

@@ -54,6 +54,15 @@ const doc = {
   listeners: {},
   createElement() { return dot; },
   querySelector() { return null; },
+  /* One embedded document, a stand-in for the YouTube player on the furniture
+     case study. The script measures frames rather than listening for them,
+     because crossing into one is silent. Placed low and left, clear of every
+     coordinate the sections above probe — otherwise those moves land in its
+     hand-back band and the dot is down for a reason they do not expect. */
+  querySelectorAll(sel) {
+    if (!/iframe/.test(sel)) return [];
+    return [{ getBoundingClientRect: () => ({ left: 150, top: 560, right: 480, bottom: 700 }) }];
+  },
   elementFromPoint() { return { closest: () => null }; },
   addEventListener(t, fn) { (this.listeners[t] = this.listeners[t] || []).push(fn); }
 };
@@ -140,6 +149,21 @@ console.log('\n5. Other three edges still hand off');
   check('edge (' + x + ',' + y + ') hides', dot.getAttribute('data-visible') === 'false');
   move(700, 400);
 });
+
+console.log('\n6. Embedded documents (the frozen dot)');
+/* The frame sits at (150,560)-(480,700) with a 44px band around it. Inside
+   that band the page hands the cursor back, because once the pointer is over
+   the frame nothing is delivered here at all — no move, no mouseout, and no
+   mouseover naming it. The dot would otherwise stop at the crossing and stay
+   drawn there with the native cursor still suppressed. */
+move(300, 620);   // inside the frame itself
+check('over the frame, the dot is down', dot.getAttribute('data-visible') === 'false');
+move(300, 530);   // 30px above the top edge — inside the band
+check('handed back before the edge is reached', dot.getAttribute('data-visible') === 'false');
+move(300, 500);   // 60px above — clear of it
+check('and taken again once clear', dot.getAttribute('data-visible') === 'true');
+move(800, 620);   // level with it, far to the right
+check('unaffected beside the frame', dot.getAttribute('data-visible') === 'true');
 
 console.log('\n' + (fails ? fails + ' FAILING' : 'all checks passed'));
 process.exit(fails ? 1 : 0);

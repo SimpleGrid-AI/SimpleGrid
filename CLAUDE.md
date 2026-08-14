@@ -45,6 +45,15 @@ nothing about behaviour. Never claim a JS change works on `--check` alone.
 Tests assert against the page's own `<script src>` tags, so remember they see
 the `?v=` stamp — compare on the path, not the whole src string.
 
+jsdom cannot model what a real browser does at the edges: scrollbar gutters,
+iframe hit-testing, or the fact that crossing into an embedded document is
+completely silent to the parent page. Puppeteer is a devDependency for those —
+drive the system Chrome at `/Applications/Google Chrome.app/Contents/MacOS/
+Google Chrome` and move the pointer in `{ steps: N }`, because a teleporting
+synthetic mouse produces event sequences a hand never would. Two cursor bugs
+were "fixed" against reasoning alone before a real browser showed the actual
+one.
+
 ---
 
 ## How the site is put together

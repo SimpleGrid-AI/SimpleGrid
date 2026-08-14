@@ -9,7 +9,8 @@
     "stamp": "./scripts/stamp-assets.sh"
   },
   "devDependencies": {
-    "jsdom": "^30.0.1"
+    "jsdom": "^30.0.1",
+    "puppeteer": "^25.7.0"
   },
   "repository": {
     "type": "git",
