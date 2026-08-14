@@ -396,8 +396,8 @@
    here is `color`: it is what currentColor resolves to, and without it the
    faces would take the page's ink instead of the accent. */
 .role-screen__icon {
-  width: 30px;
-  height: 30px;
+  width: 64px;
+  height: 64px;
   fill: none;
   stroke: none;
   color: var(--accent);
