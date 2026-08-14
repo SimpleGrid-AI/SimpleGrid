@@ -206,10 +206,38 @@
 @media (max-width: 1400px) { .ui-stack { --ui-scale: 0.68; } }
 @media (max-width: 1280px) { .product-hero__title { font-size: 45px; } }
 @media (max-width: 1200px) { .ui-stack { --ui-scale: 0.66; } }
+/* Stacked. The stage is a fixed 620px wide however it is scaled, so below the
+   split the scale is what has to fit it inside the card: the room it has is the
+   viewport less both page gutters and both sides of the card's padding. At
+   ≤900 that is 100vw - 104, so 0.58 (359.6px of stage) holds down to a 464px
+   viewport; under that the steps below each fit the narrowest width in their
+   band, where the card's padding has also dropped to 26. The box is reserved at
+   the scaled height so the caption sits under the panels rather than under the
+   untransformed 420. */
 @media (max-width: 900px) {
   .product-hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .ui-stack { --ui-scale: 0.58; justify-self: start; transform-origin: left top; height: 280px; }
+  /* Stacked, the figure is the full row, and the stage's untransformed 620px
+     is wider than that row — with the column still aligned to its end, the
+     overflow ran off the left edge and the card's overflow:hidden took the
+     panels with it. Start-aligned, the overflow falls off the right, where
+     the scaled stage no longer reaches. */
+  .product-hero__figure { justify-self: start; justify-items: start; }
+  .ui-stack {
+    --ui-scale: 0.58;
+    justify-self: start;
+    transform-origin: left top;
+    /* The stage keeps its own 420 — the panels are positioned against it, so
+       shortening the box would move them against each other. A transform
+       leaves the layout box behind, so the space it no longer fills is taken
+       back here and the caption follows the panels up. */
+    margin-bottom: calc(420px * (var(--ui-scale) - 1));
+  }
 }
+@media (max-width: 480px) { .ui-stack { --ui-scale: 0.55; } }  /* 431px:  347 room */
+@media (max-width: 430px) { .ui-stack { --ui-scale: 0.49; } }  /* 391px:  307 room */
+@media (max-width: 390px) { .ui-stack { --ui-scale: 0.44; } }  /* 361px:  277 room */
+@media (max-width: 360px) { .ui-stack { --ui-scale: 0.38; } }  /* 321px:  237 room */
+@media (max-width: 320px) { .ui-stack { --ui-scale: 0.34; } }
 
 /* --------------------------------------------------------------------------
    3. Integrations

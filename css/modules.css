@@ -97,9 +97,19 @@
   .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 }
 
+/* Two across on phones as well, as squares. At this width a full-bleed row per
+   module made a long scroll of mostly empty tile; paired squares keep the set
+   readable as a set. The ratio sets the height, and the grid item's automatic
+   minimum size lets the few names that need a third line push past it rather
+   than spill over the border. */
 @media (max-width: 480px) {
-  .module-grid { grid-template-columns: minmax(0, 1fr); }
-  .module { min-height: 0; gap: 16px; }
+  .module-grid { gap: 10px; }
+  .module {
+    aspect-ratio: 1;
+    min-height: 0;
+    gap: 12px;
+    padding: 16px;
+  }
 }
 
 /* --------------------------------------------------------------------------
