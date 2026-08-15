@@ -2054,7 +2054,22 @@ sg-footer { display: contents; }
 
 /* No padding below — the panel is the last thing on the page and runs to the
    bottom edge rather than leaving a strip of background under it. */
-.site-footer { padding-top: 50px; padding-bottom: 0; }
+/* The footer is the one block the page ends on, so it is sized in the units
+   the field behind it is drawn in: half a block of air above it, and a total
+   of six blocks. 50px and a content-height panel came to 533 — five and a half
+   blocks and a third of a cell, which is the one height on the page that
+   belongs to nothing.
+
+   The panel takes the slack rather than the padding, so the extra lands in the
+   band under the columns where the wordmark sits, not between the links. */
+.site-footer {
+  padding-top: calc(var(--grid-block) / 2);
+  padding-bottom: 0;
+  min-height: calc(var(--grid-block) * 6);
+  display: flex;
+  flex-direction: column;
+}
+.site-footer .footer__panel { flex: 1 1 auto; }
 
 /* Full-bleed panel: it spans the viewport while the content inside stays on
    the container, so the columns still line up with the rest of the page.
