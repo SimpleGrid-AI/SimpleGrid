@@ -27,6 +27,20 @@ fix that was live and correct but never fetched.
 
 Stamp, then commit the stamp with the change it belongs to.
 
+The script versions CSS and JS only, not images. Replacing an image at a path
+that already exists therefore keeps serving the old one — Cloudflare holds it
+for four hours and browsers longer — so a swapped screenshot looks like it
+never deployed. Either give the new file its own name, or put the current
+stamp on that one reference by hand:
+
+```
+<img src="assets/app/app-home.webp?v=202608150703" …>
+```
+
+Images are deliberately left out of the sweep: they are the heavy assets, and
+stamping all of them on every push would make every deploy re-download every
+picture for returning visitors.
+
 ---
 
 ## Tests
