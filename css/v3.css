@@ -940,13 +940,15 @@ sg-footer { display: contents; }
 .get:hover,
 .get:focus-visible { border-color: var(--sg-blue-15); background: var(--bg-highlight-soft); }
 
-/* Same set the module tiles carry — see .module__icon in css/modules.css. */
+/* Stroke-drawn from the accent, like every module icon. */
 .get__icon {
-  width: 48px;
-  height: 48px;
+  width: 22px;
+  height: 22px;
   fill: none;
-  stroke: none;
-  color: var(--accent);
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .get__title {
