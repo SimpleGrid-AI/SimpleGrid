@@ -1958,7 +1958,10 @@ sg-footer { display: contents; }
   background: var(--bg-highlight-soft);
   color: var(--accent);
 }
-.store-badge__mark { flex: 0 0 auto; width: 21px; height: 21px; fill: currentColor; }
+/* The marks carry their own fills — Google Play's four facets, Apple's black —
+   so the badge's hover moves the border and the words and leaves them alone. A
+   brand mark that changes colour on hover is a different mark. */
+.store-badge__mark { flex: 0 0 auto; width: 21px; height: 21px; }
 .store-badge__kicker {
   display: block;
   font-family: var(--font-mono);
