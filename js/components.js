@@ -49,7 +49,10 @@
   var NAV = [
     { label: 'Product',   href: 'product.html', caret: false },
     { label: 'Pricing',   href: 'pricing.html', caret: false },
-    /* Two columns: the seats on the by-role page, and the head-to-heads. */
+    /* Three columns: the seats on the by-role page, the head-to-heads, and the
+       people who bring us in. Partners used to open its own menu beside this
+       one, which put five audiences a level above the six roles they sell to;
+       they are all answers to "is this for me", so they read as one list. */
     { label: 'Solutions', caret: true, columns: [
       { title: 'By role', items: [
         { label: 'Owner / MD',     href: 'role-owner-md.html' },
@@ -67,16 +70,14 @@
         { label: 'Odoo',                    href: 'competitors/odoo/' },
         { label: 'Infor',                   href: 'competitors/infor/' },
         { label: 'DOSS',                    href: 'competitors/doss/' }
+      ] },
+      { title: 'Partners', items: [
+        { label: 'Accountants & advisors',  href: 'partners/accountants/' },
+        { label: 'QuickBooks ProAdvisors',  href: 'partners/proadvisors/' },
+        { label: 'ERP & ops consultants',   href: 'partners/consultants/' },
+        { label: 'Private equity',          href: 'partners/private-equity/' },
+        { label: 'Become a partner',        href: 'partners/become-a-partner/' }
       ] }
-    ] },
-    /* Five audiences, a page each — the label opens the list and goes nowhere
-       itself. */
-    { label: 'Partners', caret: true, menu: [
-      { label: 'Accountants & advisors',  href: 'partners/accountants/' },
-      { label: 'QuickBooks ProAdvisors',  href: 'partners/proadvisors/' },
-      { label: 'ERP & ops consultants',   href: 'partners/consultants/' },
-      { label: 'Private equity',          href: 'partners/private-equity/' },
-      { label: 'Become a partner',        href: 'partners/become-a-partner/' }
     ] },
     /* Menu only — the label opens the list and goes nowhere itself. */
     { label: 'Resources', caret: true, menu: [

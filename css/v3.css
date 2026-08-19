@@ -286,10 +286,11 @@ sg-footer { display: contents; }
   background: var(--bg-card);
   border: 1px solid var(--card-border);
   /* Right edge is already flush with the hero, so making the box a whole
-     number of blocks puts the left edge on a major line too. Five labels plus
-     the CTA need 8 — Partners was the fifth, and at 7 the cells were tight
-     enough that the labels stopped reading as evenly spaced. */
-  min-width: calc(var(--grid-block) * 8);
+     number of blocks puts the left edge on a major line too. Four labels plus
+     the CTA need 6: Partners moved into the Solutions menu, and at the 8 the
+     five used to need the gaps opened from 26px to 75 and the row read as
+     five things adrift rather than one control. */
+  min-width: calc(var(--grid-block) * 6);
 }
 
 .nav__link {

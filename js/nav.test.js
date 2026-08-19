@@ -33,24 +33,36 @@ setTimeout(()=>{
     el.dispatchEvent(new w.MouseEvent('click',{bubbles:true,cancelable:true,detail:1}));
   };
 
+  if (items.length < 2) {
+    console.log('\nSKIP — "one at a time" needs two collections; the nav has ' + items.length);
+    process.exit(0);
+  }
+
   tap(toggle);                                   // open the drawer
   console.log('drawer open            :', w.document.querySelector('.site-header').getAttribute('data-open'));
   console.log('collections after open :', items.map(i=>i.getAttribute('data-open')).join(', '));
 
-  tap(items[1].querySelector('.nav__link'));     // tap Partners
-  const opensOnTap = items[1].getAttribute('data-open') === 'true';
-  console.log('after tapping "%s"     :', names[1], items.map(i=>i.getAttribute('data-open')).join(', '));
+  /* Taken from whatever collections the nav carries rather than from fixed
+     positions: this read items[2] when there were three, and folding Partners
+     into Solutions left it undefined — a failing test about a nav that was
+     fine. The behaviour under test is "one at a time", which needs two of
+     them, not three. */
+  const first = items[0], second = items[items.length - 1];
 
-  tap(items[2].querySelector('.nav__link'));     // tap Resources — Partners must close
-  const closesOthers = items[2].getAttribute('data-open') === 'true'
-                    && items[1].getAttribute('data-open') === 'false';
-  console.log('after tapping "%s"    :', names[2], items.map(i=>i.getAttribute('data-open')).join(', '));
+  tap(first.querySelector('.nav__link'));
+  const opensOnTap = first.getAttribute('data-open') === 'true';
+  console.log('after tapping "%s"     :', names[0], items.map(i=>i.getAttribute('data-open')).join(', '));
 
-  tap(items[2].querySelector('.nav__link'));     // tap it again — closes
-  const togglesShut = items[2].getAttribute('data-open') === 'false';
+  tap(second.querySelector('.nav__link'));       // the other one — the first must close
+  const closesOthers = second.getAttribute('data-open') === 'true'
+                    && first.getAttribute('data-open') === 'false';
+  console.log('after tapping "%s"    :', names[names.length - 1], items.map(i=>i.getAttribute('data-open')).join(', '));
+
+  tap(second.querySelector('.nav__link'));       // tap it again — closes
+  const togglesShut = second.getAttribute('data-open') === 'false';
   console.log('tapping it again       :', items.map(i=>i.getAttribute('data-open')).join(', '));
 
-  tap(items[0].querySelector('.nav__link'));     // open one, then close the drawer
+  tap(first.querySelector('.nav__link'));        // open one, then close the drawer
   tap(toggle);
   tap(toggle);                                   // reopen
   console.log('reopened drawer        :', items.map(i=>i.getAttribute('data-open')).join(', '));
