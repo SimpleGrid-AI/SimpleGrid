@@ -96,6 +96,14 @@
   --radius:         0;       /* Everything inside them too — tiles, buttons,
                                 chat rows, controls. One value squares or
                                 softens the whole page. */
+  /* The one exception, and it is deliberate: the mocks are pictures of an
+     application, and an app window has soft corners. The product hero's panels
+     have always carried 12px; this names that value so the live windows on the
+     product page and the Hank panel on the home page curve by the same amount
+     rather than each choosing its own. Panels only — what sits inside them
+     stays square, like the rest of the page. */
+  --radius-panel:   12px;
+
   --card-pad:       88px;
   --section-gap:    24px;
 

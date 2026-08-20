@@ -1483,7 +1483,10 @@ sg-footer { display: contents; }
   display: flex;
   flex-direction: column;
   border: 1px solid var(--card-border);
-  border-radius: var(--card-radius);
+  /* Same curve the product hero's panels carry: this is a chat window, not a
+     section box — see --radius-panel. overflow: hidden below keeps the head
+     and the composer inside the corners. */
+  border-radius: var(--radius-panel);
   background: var(--bg-card);
   overflow: hidden;
 }

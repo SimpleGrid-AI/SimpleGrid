@@ -79,7 +79,7 @@
 
 .ui-panel {
   position: absolute;
-  border-radius: 12px;
+  border-radius: var(--radius-panel);
   background: var(--bg-card);
   border: 1px solid var(--card-border);
   box-shadow: 0 18px 40px rgba(26, 26, 26, 0.10);
@@ -368,7 +368,8 @@
 .queue {
   padding: 20px;
   border: 1px solid var(--card-border);
-  border-radius: var(--radius);
+  /* A window, so it curves like the hero's panels — see --radius-panel. */
+  border-radius: var(--radius-panel);
   background: var(--bg-card);
   box-shadow: 0 18px 40px rgba(26, 26, 26, 0.08);
 }
@@ -436,7 +437,8 @@
 .board {
   padding: 20px;
   border: 1px solid var(--card-border);
-  border-radius: var(--radius);
+  /* A window, so it curves like the hero's panels — see --radius-panel. */
+  border-radius: var(--radius-panel);
   background: var(--bg-card);
   box-shadow: 0 18px 40px rgba(26, 26, 26, 0.08);
 }
