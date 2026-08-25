@@ -108,6 +108,11 @@
       '<rect x="2" y="3.5" width="12" height="10.5" rx="1.5" fill="none" stroke="currentColor" ' +
       'stroke-width="1.3"/><path d="M2 6.5h12M5.5 2v3M10.5 2v3" fill="none" stroke="currentColor" ' +
       'stroke-width="1.3" stroke-linecap="round"/></svg>',
+    phone: '<svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">' +
+      '<path d="M5.4 2.2 3.1 2.9c-.5.2-.8.7-.7 1.2.4 2.5 1.6 4.8 3.4 6.6 1.8 1.8 4.1 3 6.6 3.4.5.1 1-.2 ' +
+      '1.2-.7l.7-2.3c.1-.5-.1-1-.6-1.2l-2.2-.9c-.4-.2-.9 0-1.2.3l-.8 1c-1.6-.8-2.9-2.1-3.7-3.7l1-.8c.3-.3.5-.8.3-1.2' +
+      'l-.9-2.2c-.2-.5-.7-.7-1.2-.6z" fill="none" stroke="currentColor" stroke-width="1.3" ' +
+      'stroke-linejoin="round"/></svg>',
     place: '<svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">' +
       '<path d="M8 14.5s5-4.35 5-8a5 5 0 0 0-10 0c0 3.65 5 8 5 8Z" fill="none" stroke="currentColor" ' +
       'stroke-width="1.3" stroke-linejoin="round"/><circle cx="8" cy="6.4" r="1.7" fill="none" ' +
@@ -138,6 +143,10 @@
     title: 'Get in touch',
     links: [
       { label: 'hello@simplegrid.ai', href: 'mailto:hello@simplegrid.ai', icon: 'mail' },
+      /* Written the way it is read, dialled the way a phone wants it: tel:
+         takes E.164 with no spaces or brackets, or the number does not
+         dial from a handset. */
+      { label: '+1 (773) 280-4485', href: 'tel:+17732804485', icon: 'phone' },
       { label: 'LinkedIn',    href: 'https://www.linkedin.com/company/simplegridai', icon: 'linkedin' },
       /* Opened by js/book-demo.js, which matches on the label; the href is
          the fallback for anyone without it. */
