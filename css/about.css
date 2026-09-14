@@ -101,7 +101,14 @@
   padding-top: 20px;
   border-top: 1px solid var(--border);
 }
-.story__badges .eyebrow { margin-bottom: 14px; }
+.story__badges-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--fg);
+  margin: 0 0 14px;
+}
 .story__badge-row {
   display: flex;
   align-items: center;
