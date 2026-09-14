@@ -95,10 +95,9 @@
   margin: 0;
   text-wrap: balance;
 }
-/* The badge now follows the story text directly — the team shot that used to
-   sit between them is gone, so it carries the space the figure used to. */
 .story__badge {
-  margin: 28px 0 0;
+  grid-column: 1 / -1;
+  margin: 12px 0 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
