@@ -196,7 +196,9 @@
 
 /* --------------------------------------------------------------- operators */
 
-.facts { display: grid; gap: 18px; }
+/* Pushed down by the eyebrow's own height + margin, so it starts level
+   with the paragraph beside it rather than "The Team" above it. */
+.facts { display: grid; gap: 18px; margin-top: 34px; }
 .fact {
   display: flex;
   gap: 18px;
