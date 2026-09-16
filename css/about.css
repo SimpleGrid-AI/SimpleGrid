@@ -59,8 +59,10 @@
 .story-head .about-title { margin-bottom: 0; }
 
 /* Prose stays at reading width rather than the column's full span — past
-   ~70 characters a line stops being read. */
-.story { max-width: 60ch; }
+   ~70 characters a line stops being read. Pushed down by the eyebrow's own
+   height + margin, so the first line lines up with the headline beside it,
+   not the eyebrow above it. */
+.story { max-width: 60ch; margin-top: 34px; }
 
 .fig__num {
   font-family: var(--font-body);
