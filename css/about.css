@@ -157,6 +157,14 @@
   .programs { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* The title carries a manual <br> after "world-class" so it always breaks
+   into exactly 2 lines. At the narrowest phones the card shrinks enough
+   that --fs-h2 (28px there) still wraps "Supported by world-class" on its
+   own, making 3 — so it steps down further, here alone. */
+@media (max-width: 480px) {
+  .programs-title { font-size: 24px; }
+}
+
 /* ----------------------------------------------------------- first client */
 
 /* Same blue the closing CTA uses — the one other place on the page that
