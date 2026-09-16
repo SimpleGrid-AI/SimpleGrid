@@ -8,18 +8,13 @@
 
 /* ------------------------------------------------------------------- hero */
 
-/* Centred type on the page's own card and column, as on pricing: a heading and
-   a line, not a pitch. 4 blocks puts the bottom edge on 480, a major line, and
-   48px of padding is what fits the type inside them. */
-.about-hero {
-  margin-top: var(--grid-cell);
-  padding-block: 48px;
-  min-height: calc(var(--grid-block) * 4);
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  text-align: center;
-}
+/* The page's first card, so it carries the same clearance below the sticky
+   header every other page's opening card does. */
+.about-top { margin-top: var(--grid-cell); }
+
+/* Left-aligned, flush with the story copy below it — one column running
+   top to bottom of the card rather than a centred banner over it. */
+.about-hero { text-align: left; }
 
 .about-hero__title {
   font-family: var(--font-display);
@@ -43,16 +38,12 @@
 
 /* -------------------------------------------------------------- stat strip */
 
-/* Decoupled from the story card, unboxed — a bar the page passes through
-   rather than another tile grid. */
+/* A band inside the hero/story card now, not a card of its own — the two
+   hairlines around it do the separating. */
 .stat-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  padding: 32px 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
   text-align: center;
 }
 

@@ -20,13 +20,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#3456D9">
 
-<link rel="stylesheet" href="css/fonts.css?v=202609160723">
+<link rel="stylesheet" href="css/fonts.css?v=202609160732">
 
-<link rel="stylesheet" href="css/tokens.css?v=202609160723">
-<link rel="stylesheet" href="css/v3.css?v=202609160723">
-<link rel="stylesheet" href="css/product.css?v=202609160723">
-<link rel="stylesheet" href="css/about.css?v=202609160723">
-<link rel="stylesheet" href="css/grid.css?v=202609160723">
+<link rel="stylesheet" href="css/tokens.css?v=202609160732">
+<link rel="stylesheet" href="css/v3.css?v=202609160732">
+<link rel="stylesheet" href="css/product.css?v=202609160732">
+<link rel="stylesheet" href="css/about.css?v=202609160732">
+<link rel="stylesheet" href="css/grid.css?v=202609160732">
 
 <!-- What this page is, in the vocabulary search engines read. Every
      value is taken from the page itself. -->
@@ -80,63 +80,56 @@
 
 <main>
 
-  <!-- ============================================================= HERO -->
+  <!-- ============================================= HERO + FIGURES + STORY -->
   <section class="section">
     <div class="container">
-      <!-- Same card, column and centring as the pricing page opens on. -->
-      <div class="card about-hero">
-        <p class="eyebrow">About SimpleGrid &middot; The Operations Cloud &middot; Adaptive ERP</p>
-        <h1 class="about-hero__title">We were the <span class="accent">customer first.</span></h1>
-        <p class="lede about-hero__sub">We ran factories to $30M and watched two ERPs fail us.
-          So we built the one we wished existed.</p>
-        <a class="btn btn--primary about-hero__cta" href="pricing.html#demo">Book a demo</a>
-      </div>
-    </div>
-  </section>
+      <div class="card reveal about-top">
+        <div class="about-hero">
+          <p class="eyebrow">About SimpleGrid &middot; The Operations Cloud &middot; Adaptive ERP</p>
+          <h1 class="about-hero__title">We were the <span class="accent">customer first.</span></h1>
+          <p class="lede about-hero__sub">We ran factories to $30M and watched two ERPs fail us.
+            So we built the one we wished existed.</p>
+          <a class="btn btn--primary about-hero__cta" href="pricing.html#demo">Book a demo</a>
+        </div>
 
-  <!-- ========================================================= STAT STRIP -->
-  <section class="section" id="numbers">
-    <div class="container">
-      <div class="stat-strip">
-        <div class="stat-strip__item">
-          <p class="fig__num">$30M</p>
-          <p class="fig__label">The operation we ran</p>
-        </div>
-        <div class="stat-strip__item">
-          <p class="fig__num">2</p>
-          <p class="fig__label">ERPs that failed us</p>
-        </div>
-        <div class="stat-strip__item">
-          <p class="fig__num">$200K</p>
-          <p class="fig__label">Losses found in month one</p>
-        </div>
-        <div class="stat-strip__item">
-          <p class="fig__num">21 days</p>
-          <p class="fig__label">Kickoff to live</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <hr class="rule">
 
-  <!-- ======================================================== OUR STORY -->
-  <section class="section" id="story">
-    <div class="container">
-      <div class="card reveal">
-        <div class="story-layout">
-        <div class="story-head">
-          <p class="eyebrow">Our Story</p>
-          <h2 class="about-title">The books were never the problem. The floor was invisible.</h2>
+        <div class="stat-strip">
+          <div class="stat-strip__item">
+            <p class="fig__num">$30M</p>
+            <p class="fig__label">The operation we ran</p>
+          </div>
+          <div class="stat-strip__item">
+            <p class="fig__num">2</p>
+            <p class="fig__label">ERPs that failed us</p>
+          </div>
+          <div class="stat-strip__item">
+            <p class="fig__num">$200K</p>
+            <p class="fig__label">Losses found in month one</p>
+          </div>
+          <div class="stat-strip__item">
+            <p class="fig__num">21 days</p>
+            <p class="fig__label">Kickoff to live</p>
+          </div>
         </div>
-        <div class="story">
-          <p class="body-copy">We ran a multi-stage production facility with hundreds of people
-            on the floor. The business grew to <strong>$30M</strong> &mdash; on one
-            person&rsquo;s memory, group chats and a wall of spreadsheets.</p>
-          <p class="body-copy">Twice we bought an ERP to fix it. Twice we paid six figures, spent
-            months in workshops, and watched the floor quietly go back to Excel &mdash; because
-            the ERP was built to close the books, and our problem was never the books.</p>
-          <p class="story__turn">Accounting is standardized by law. Operations are not. So we
-            built the operations cloud we kept trying to buy.</p>
-        </div>
+
+        <hr class="rule">
+
+        <div class="story-layout" id="story">
+          <div class="story-head">
+            <p class="eyebrow">Our Story</p>
+            <h2 class="about-title">The books were never the problem. The floor was invisible.</h2>
+          </div>
+          <div class="story">
+            <p class="body-copy">We ran a multi-stage production facility with hundreds of people
+              on the floor. The business grew to <strong>$30M</strong> &mdash; on one
+              person&rsquo;s memory, group chats and a wall of spreadsheets.</p>
+            <p class="body-copy">Twice we bought an ERP to fix it. Twice we paid six figures, spent
+              months in workshops, and watched the floor quietly go back to Excel &mdash; because
+              the ERP was built to close the books, and our problem was never the books.</p>
+            <p class="story__turn">Accounting is standardized by law. Operations are not. So we
+              built the operations cloud we kept trying to buy.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -306,9 +299,9 @@
 
 <sg-footer></sg-footer>
 
-<script src="js/components.js?v=202609160723"></script>
-<script src="js/book-demo.js?v=202609160723" defer></script>
-<script src="js/v3.js?v=202609160723"></script>
-<script src="js/cursor.js?v=202609160723"></script>
+<script src="js/components.js?v=202609160732"></script>
+<script src="js/book-demo.js?v=202609160732" defer></script>
+<script src="js/v3.js?v=202609160732"></script>
+<script src="js/cursor.js?v=202609160732"></script>
 </body>
 </html>
