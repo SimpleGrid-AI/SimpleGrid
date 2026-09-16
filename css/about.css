@@ -112,11 +112,17 @@
 /* ------------------------------------------------------------- programs */
 
 .programs-head { max-width: 46ch; margin: 0 auto 40px; text-align: center; }
+/* Fixed sizes rather than --fs-h2 — at 48px even the 1024px desktop card
+   wasn't wide enough to hold "Supported by world-class" on one line, so
+   the manual <br> below it still produced 3 lines instead of 2. Sized (and
+   re-sized per breakpoint) so that first segment always fits on one line. */
 .programs-title {
-  font-size: var(--fs-h2);
+  font-size: 36px;
   color: var(--fg);
   margin-bottom: 12px;
 }
+@media (max-width: 900px) { .programs-title { font-size: 30px; } }
+@media (max-width: 600px) { .programs-title { font-size: 24px; } }
 .programs-lede { margin: 0 auto; }
 
 .programs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
