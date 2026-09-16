@@ -118,7 +118,7 @@
    re-sized per breakpoint) so that first segment always fits on one line. */
 .programs-title {
   font-size: 36px;
-  color: var(--fg);
+  color: var(--accent);
   margin-bottom: 12px;
 }
 @media (max-width: 900px) { .programs-title { font-size: 30px; } }
