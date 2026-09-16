@@ -118,8 +118,7 @@
 .programs-head { max-width: 46ch; margin: 0 auto 40px; text-align: center; }
 .programs-title {
   font-size: var(--fs-h2);
-  color: var(--accent);
-  text-wrap: balance;
+  color: var(--fg);
   margin-bottom: 12px;
 }
 .programs-lede { margin: 0 auto; }
@@ -128,7 +127,6 @@
 .program {
   padding: 28px 24px 24px;
   border: 1px solid var(--border);
-  border-top: 2px solid var(--accent);
   border-radius: var(--radius);
   background: var(--bg-card);
   text-align: center;
@@ -149,14 +147,14 @@
   display: inline-block;
   margin-top: 16px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 9px;
   letter-spacing: var(--tracking-sub);
   text-transform: uppercase;
   color: var(--fg-muted);
   background: var(--bg-highlight-soft);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 5px 12px;
+  padding: 3px 9px;
 }
 
 @media (max-width: 760px) {
