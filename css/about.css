@@ -1,9 +1,9 @@
 /* ==========================================================================
    SimpleGrid — about page
 
-   The story, the first client, and the open roles. Hero, cards, banner and
-   closing CTA are the shared components; only the story's pull line, the
-   client split and the job rows are particular to this page.
+   The story, the first client, and the open roles. Hero, cards and closing
+   CTA are the shared components; only the stat strip, the story's pull line,
+   the client spotlight and the job rows are particular to this page.
    ========================================================================== */
 
 /* ------------------------------------------------------------------- hero */
@@ -32,6 +32,7 @@
 }
 
 .about-hero__sub { max-width: 56ch; margin: 0; }
+.about-hero__cta { margin-top: 28px; }
 
 .about-title {
   font-size: var(--fs-h2);
@@ -40,41 +41,33 @@
   margin-bottom: 24px;
 }
 
-/* ------------------------------------------------------------------ story */
+/* -------------------------------------------------------------- stat strip */
 
-/* Prose left, the numbers right, divided by a rule as in the reference. */
-.story-layout {
+/* Decoupled from the story card, unboxed — a bar the page passes through
+   rather than another tile grid. */
+.stat-strip {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: center;
-}
-
-/* One column at reading width rather than the card's full span — the story is
-   prose, and prose past ~70 characters stops being read. */
-.story { max-width: 68ch; }
-
-/* --------------------------------------------------------- story figures */
-
-.story-stats {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  padding-left: 56px;
-  border-left: 1px solid var(--border);
-}
-
-/* Tiles alternate fill so the block reads as a grid rather than four boxes:
-   the diagonal carries the tint, matching the reference. */
-.fig {
-  padding: 26px 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
+  padding-block: 32px;
+  border-block: 1px solid var(--border);
   text-align: center;
 }
-.fig:nth-child(2),
-.fig:nth-child(3) { background: var(--bg-highlight-soft); border-color: transparent; }
+
+/* ------------------------------------------------------------------ story */
+
+/* Headline left at its own width, prose right at reading width. */
+.story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 56px;
+  align-items: start;
+}
+.story-head .about-title { margin-bottom: 0; }
+
+/* Prose stays at reading width rather than the column's full span — past
+   ~70 characters a line stops being read. */
+.story { max-width: 60ch; }
 
 .fig__num {
   font-family: var(--font-body);
@@ -109,6 +102,18 @@
   color: var(--accent);
   margin: 32px 0 24px;
   max-width: 26ch;
+}
+
+/* Numbered mark ahead of each Why Us reason — this page's own touch on the
+   shared .why grid from v3.css. */
+.why__index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  color: var(--accent);
+  margin-bottom: 14px;
 }
 
 /* ------------------------------------------------------------- programs */
@@ -167,18 +172,57 @@
 
 /* ----------------------------------------------------------- first client */
 
-.client { align-items: center; }
-.client__copy p { margin: 0 0 16px; }
+/* Same blue the closing CTA uses — the one other place on the page that
+   earns full-bleed colour, so a second one here still reads as deliberate. */
+.spotlight { background: var(--sg-grad-cta); border: 0; color: var(--sg-logo-white); }
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+.spotlight .eyebrow { color: rgba(255, 255, 255, 0.7); }
+.spotlight .about-title { color: var(--sg-logo-white); margin-bottom: 16px; }
+.spotlight__copy p.body-copy { color: rgba(255, 255, 255, 0.85); margin: 0 0 14px; }
 .client__actions { margin-top: 28px; }
 
-.client__shot {
-  margin: 0;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg-highlight-soft);
+.spotlight__metrics { display: grid; gap: 20px; }
+.spotlight__metric { border-left: 2px solid rgba(255, 255, 255, 0.35); padding-left: 18px; }
+.spotlight__metric-num {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
 }
-.client__shot img { display: block; width: 100%; height: auto; }
+.spotlight__metric-label { font-size: var(--fs-sub); color: rgba(255, 255, 255, 0.75); margin: 0; }
+
+@media (max-width: 900px) {
+  .spotlight-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+
+/* --------------------------------------------------------------- operators */
+
+.facts { display: grid; gap: 18px; }
+.fact {
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 18px;
+}
+.fact:last-child { border-bottom: 0; padding-bottom: 0; }
+.fact__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--accent);
+  flex: none;
+  width: 8.5em;
+}
+.fact__body { font-size: var(--fs-sub); line-height: 1.6; color: var(--fg-body); }
 
 /* ------------------------------------------------------------------- jobs */
 
@@ -236,9 +280,12 @@
 
 @media (max-width: 900px) {
   .story-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-  .story-stats { padding-left: 0; border-left: 0; }
   .job { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .story__turn { font-size: var(--fs-h5); }
+}
+
+@media (max-width: 640px) {
+  .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
 }
 
 /* ---------------------------------------------------------------- careers */

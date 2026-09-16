@@ -20,13 +20,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#3456D9">
 
-<link rel="stylesheet" href="css/fonts.css?v=202609160650">
+<link rel="stylesheet" href="css/fonts.css?v=202609160701">
 
-<link rel="stylesheet" href="css/tokens.css?v=202609160650">
-<link rel="stylesheet" href="css/v3.css?v=202609160650">
-<link rel="stylesheet" href="css/product.css?v=202609160650">
-<link rel="stylesheet" href="css/about.css?v=202609160650">
-<link rel="stylesheet" href="css/grid.css?v=202609160650">
+<link rel="stylesheet" href="css/tokens.css?v=202609160701">
+<link rel="stylesheet" href="css/v3.css?v=202609160701">
+<link rel="stylesheet" href="css/product.css?v=202609160701">
+<link rel="stylesheet" href="css/about.css?v=202609160701">
+<link rel="stylesheet" href="css/grid.css?v=202609160701">
 
 <!-- What this page is, in the vocabulary search engines read. Every
      value is taken from the page itself. -->
@@ -85,10 +85,35 @@
     <div class="container">
       <!-- Same card, column and centring as the pricing page opens on. -->
       <div class="card about-hero">
-        <p class="eyebrow">About Us</p>
+        <p class="eyebrow">About SimpleGrid &middot; The Operations Cloud &middot; Adaptive ERP</p>
         <h1 class="about-hero__title">We were the <span class="accent">customer first.</span></h1>
         <p class="lede about-hero__sub">We ran factories to $30M and watched two ERPs fail us.
           So we built the one we wished existed.</p>
+        <a class="btn btn--primary about-hero__cta" href="pricing.html#demo">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= STAT STRIP -->
+  <section class="section" id="numbers">
+    <div class="container">
+      <div class="stat-strip">
+        <div class="stat-strip__item">
+          <p class="fig__num">$30M</p>
+          <p class="fig__label">The operation we ran</p>
+        </div>
+        <div class="stat-strip__item">
+          <p class="fig__num">2</p>
+          <p class="fig__label">ERPs that failed us</p>
+        </div>
+        <div class="stat-strip__item">
+          <p class="fig__num">$200K</p>
+          <p class="fig__label">Losses found in month one</p>
+        </div>
+        <div class="stat-strip__item">
+          <p class="fig__num">21 days</p>
+          <p class="fig__label">Kickoff to live</p>
+        </div>
       </div>
     </div>
   </section>
@@ -98,44 +123,19 @@
     <div class="container">
       <div class="card reveal">
         <div class="story-layout">
-        <div class="story">
+        <div class="story-head">
           <p class="eyebrow">Our Story</p>
-          <h2 class="about-title">Two failed ERPs. Then our own.</h2>
-          <p class="body-copy">We ran a real operation. Multi-stage production, hundreds of
-            people, orders moving every hour. We grew it to $30M, and it ran on memory. The real
-            status of any order lived in one person&rsquo;s head and a dozen group chats.</p>
-          <p class="body-copy">So we bought an ERP. Months of rollout, a six-figure bill, a fee
-            for every change. The floor never logged in.</p>
-          <p class="body-copy">We tried a second one. Same rollout, same bill, same result. We
-            were not unlucky: around 75% of mid-market ERP projects fail.</p>
-          <p class="body-copy">We went back to spreadsheets and group chats. The floor actually
-            used them. They also hid losses we could not see.</p>
-          <p class="story__turn">The books were never the problem. The floor was invisible.</p>
-          <p class="body-copy">That was the whole insight. So we built SimpleGrid, the ERP we
-            wished existed. Today it runs CPG brands, manufacturers and inventory-led
-            businesses.</p>
-          <p class="body-copy">We are a small team. A senior engineer is on every deployment,
-            from the first call to go-live.</p>
+          <h2 class="about-title">The books were never the problem. The floor was invisible.</h2>
         </div>
-
-        <!-- The story in numbers, all of them from what is written beside it. -->
-        <div class="story-stats">
-          <div class="fig">
-            <p class="fig__num">$30M</p>
-            <p class="fig__label">Operation we ran</p>
-          </div>
-          <div class="fig">
-            <p class="fig__num">2</p>
-            <p class="fig__label">ERPs that failed us</p>
-          </div>
-          <div class="fig">
-            <p class="fig__num">$200K</p>
-            <p class="fig__label">Hidden losses found</p>
-          </div>
-          <div class="fig">
-            <p class="fig__num">21 days</p>
-            <p class="fig__label">Kickoff to live</p>
-          </div>
+        <div class="story">
+          <p class="body-copy">We ran a multi-stage production facility with hundreds of people
+            on the floor. The business grew to <strong>$30M</strong> &mdash; on one
+            person&rsquo;s memory, group chats and a wall of spreadsheets.</p>
+          <p class="body-copy">Twice we bought an ERP to fix it. Twice we paid six figures, spent
+            months in workshops, and watched the floor quietly go back to Excel &mdash; because
+            the ERP was built to close the books, and our problem was never the books.</p>
+          <p class="story__turn">Accounting is standardized by law. Operations are not. So we
+            built the operations cloud we kept trying to buy.</p>
         </div>
         </div>
       </div>
@@ -202,15 +202,18 @@
         </div>
         <div class="why">
           <div class="why__item">
+            <span class="why__index">01</span>
             <h3 class="why__name">Weeks, not quarters</h3>
             <p class="body-copy">Live in 3 weeks. Changes in days.</p>
           </div>
           <div class="why__item">
+            <span class="why__index">02</span>
             <h3 class="why__name">Yours to change</h3>
             <p class="body-copy">You call us, not a partner. Most changes are covered by what you
               already pay. Anything substantial gets priced before we build it.</p>
           </div>
           <div class="why__item">
+            <span class="why__index">03</span>
             <h3 class="why__name">No ERP tax</h3>
             <p class="body-copy">See it working before you spend a dollar.</p>
           </div>
@@ -222,38 +225,67 @@
   <!-- ==================================================== FIRST CLIENT -->
   <section class="section" id="first-client">
     <div class="container">
-      <div class="card reveal">
-        <div class="split client">
-          <div class="client__copy">
+      <div class="card spotlight reveal">
+        <div class="spotlight-grid">
+          <div class="spotlight__copy">
             <p class="eyebrow">Our First Client</p>
-            <h2 class="about-title">Elite Arts &amp; Crafts.</h2>
+            <h2 class="about-title">Elite Arts &amp; Crafts</h2>
             <p class="body-copy">Chirag runs Elite Arts &amp; Crafts, a furniture and home decor
               export house with 600+ people. The whole operation ran on Excel and WhatsApp.</p>
-            <p class="body-copy">We modeled his stages, his contractors and his costing formulas.
-              Live in 21 days. In the first month, SimpleGrid found $200K in silent losses nobody
-              could see. Planning went from 20 hours a week to 30 minutes. All 30 floor staff use
-              it daily.</p>
+            <p class="body-copy">They found $200K in silent losses in the first month.</p>
             <div class="client__actions">
-              <a class="btn btn--primary" href="case-furniture-manufacturer.html">Read More</a>
+              <a class="btn btn--onblue" href="case-furniture-manufacturer.html">Read More</a>
             </div>
           </div>
-          <figure class="client__shot">
-            <img src="assets/elite-factory.jpeg" alt="Elite Arts &amp; Crafts&rsquo; production floor: finished furniture staged in a covered export warehouse." width="1184" height="666" loading="lazy">
-          </figure>
+          <div class="spotlight__metrics">
+            <div class="spotlight__metric">
+              <p class="spotlight__metric-num">21 days</p>
+              <p class="spotlight__metric-label">Kickoff to live</p>
+            </div>
+            <div class="spotlight__metric">
+              <p class="spotlight__metric-num">20 hrs &rarr; 30 min</p>
+              <p class="spotlight__metric-label">Weekly planning</p>
+            </div>
+            <div class="spotlight__metric">
+              <p class="spotlight__metric-num">30 of 30</p>
+              <p class="spotlight__metric-label">Floor staff on it daily</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================================================== MID-PAGE BANNER -->
-  <section class="section" id="upgrade">
+  <!-- ========================================================= OPERATORS -->
+  <section class="section" id="operators">
     <div class="container">
-      <div class="card banner reveal">
-        <div class="banner__copy">
-          <h2 class="banner__title">Upgrade your operation.</h2>
-          <p class="banner__sub">Fast to Deploy. Easy to Configure. Built to scale.</p>
+      <div class="card reveal">
+        <div class="split ops">
+          <div>
+            <p class="eyebrow">The Team</p>
+            <h2 class="about-title">Built by operators, for operators</h2>
+            <p class="body-copy">We didn&rsquo;t study this problem. We lived it. The people who
+              build SimpleGrid have run purchasing, planned floors, chased trucks and closed
+              month-ends &mdash; which is why the product speaks floor, not software.</p>
+          </div>
+          <div class="facts">
+            <div class="fact">
+              <span class="fact__label">Operators</span>
+              <span class="fact__body">Founding team built and ran a $30M manufacturing business
+                from scratch.</span>
+            </div>
+            <div class="fact">
+              <span class="fact__label">On the floor</span>
+              <span class="fact__body">Every feature is tested inside running plants before it
+                ships.</span>
+            </div>
+            <div class="fact">
+              <span class="fact__label">Direct line</span>
+              <span class="fact__body">Customers talk to the people who write the system &mdash;
+                no ticket queue between you and a fix.</span>
+            </div>
+          </div>
         </div>
-        <a class="btn btn--primary" href="pricing.html#demo">Book a demo</a>
       </div>
     </div>
   </section>
@@ -262,9 +294,9 @@
   <section class="section" id="demo">
     <div class="container">
       <div class="card cta reveal" data-cursor="light">
-        <h2 class="cta__title">Start your operations cloud journey today.</h2>
+        <h2 class="cta__title">Try it on. Then decide.</h2>
         <p class="cta__sub">A working demo in 72 hours. Live in three weeks.</p>
-        <p class="meta cta__meta">Payment begins when it works.</p>
+        <p class="meta cta__meta">&le;3 weeks to Go Live &middot; 30-day trial &middot; $0 upfront</p>
         <a class="btn btn--onblue" href="pricing.html#demo">Book a demo</a>
       </div>
     </div>
@@ -274,9 +306,9 @@
 
 <sg-footer></sg-footer>
 
-<script src="js/components.js?v=202609160650"></script>
-<script src="js/book-demo.js?v=202609160650" defer></script>
-<script src="js/v3.js?v=202609160650"></script>
-<script src="js/cursor.js?v=202609160650"></script>
+<script src="js/components.js?v=202609160701"></script>
+<script src="js/book-demo.js?v=202609160701" defer></script>
+<script src="js/v3.js?v=202609160701"></script>
+<script src="js/cursor.js?v=202609160701"></script>
 </body>
 </html>
