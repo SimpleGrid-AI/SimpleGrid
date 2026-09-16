@@ -97,13 +97,13 @@
    accent rather than as another paragraph. */
 .story__turn {
   font-family: var(--font-body);
-  font-size: var(--fs-h3);
+  font-size: var(--fs-body);
   font-weight: 700;
   line-height: var(--lh-tight);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
   color: var(--accent);
   margin: 32px 0 24px;
-  max-width: 26ch;
+  max-width: 32ch;
 }
 
 /* Numbered mark ahead of each Why Us reason — this page's own touch on the
@@ -283,7 +283,6 @@
 @media (max-width: 900px) {
   .story-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .job { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .story__turn { font-size: var(--fs-h5); }
 }
 
 @media (max-width: 640px) {
