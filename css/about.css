@@ -114,7 +114,7 @@
 .programs-head { max-width: 46ch; margin: 0 auto 40px; text-align: center; }
 .programs-title {
   font-size: var(--fs-h2);
-  color: var(--accent);
+  color: var(--fg);
   margin-bottom: 12px;
 }
 .programs-lede { margin: 0 auto; }
@@ -155,14 +155,6 @@
 
 @media (max-width: 760px) {
   .programs { grid-template-columns: minmax(0, 1fr); }
-}
-
-/* The title carries a manual <br> after "world-class" so it always breaks
-   into exactly 2 lines. At the narrowest phones the card shrinks enough
-   that --fs-h2 (28px there) still wraps "Supported by world-class" on its
-   own, making 3 — so it steps down further, here alone. */
-@media (max-width: 480px) {
-  .programs-title { font-size: 24px; }
 }
 
 /* ----------------------------------------------------------- first client */
