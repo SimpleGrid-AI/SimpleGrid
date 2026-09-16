@@ -102,7 +102,6 @@
   line-height: var(--lh-body);
   color: var(--accent);
   margin: 32px 0 24px;
-  max-width: 32ch;
 }
 
 /* Numbered mark ahead of each Why Us reason — this page's own touch on the
