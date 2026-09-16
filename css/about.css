@@ -147,7 +147,7 @@
 .program p { margin: 0; }
 .program__tag {
   display: inline-block;
-  margin-top: 16px;
+  margin-top: 28px;
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: var(--tracking-sub);
