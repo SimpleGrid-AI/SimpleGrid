@@ -196,9 +196,11 @@
 
 /* --------------------------------------------------------------- operators */
 
-/* Pushed down by the eyebrow's own height + margin, so it starts level
-   with the paragraph beside it rather than "The Team" above it. */
-.facts { display: grid; gap: 18px; margin-top: 34px; }
+.facts { display: grid; gap: 18px; }
+
+/* Centered against the left column's full height rather than top-aligned
+   to it — the .split default. */
+.ops { align-items: center; }
 .fact {
   display: flex;
   gap: 18px;
