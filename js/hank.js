@@ -19,7 +19,15 @@
   var log = panel.querySelector('[data-hank-log]');
   var pauseBtn = panel.querySelector('[data-hank-pause]');
   var replayBtn = panel.querySelector('[data-hank-replay]');
+  var mark = panel.querySelector('[data-hank-mark]');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* The avatar's eyes track the same three beats the transcript itself
+     moves through: idle between turns, thinking while the dots show, done
+     for one beat once an answer lands. See Hank Brand and Motion v1. */
+  function setMark(state) {
+    if (mark) mark.className = 'hchat__avatar hk ' + state;
+  }
 
   /* A turn is either something the operator typed, or Hank answering. An
      answer is a run of lines; the parts marked strong are the numbers, which
@@ -129,6 +137,7 @@
 
   function finish() {
     clearTyping();
+    setMark('idle');
     pauseBtn.disabled = true;
     replayBtn.disabled = false;
   }
@@ -146,15 +155,20 @@
     }
 
     /* An answer arrives in two beats: the dots, then the reply. */
+    setMark('thinking');
     typingRow = typing();
     log.appendChild(typingRow);
     toBottom();
     timer = window.setTimeout(function () {
       clearTyping();
       log.appendChild(sayRow(turn));
+      setMark('done');
       step++;
       toBottom();
-      timer = window.setTimeout(next, 1700);
+      timer = window.setTimeout(function () {
+        setMark('idle');
+        next();
+      }, 1700);
     }, 1100);
   }
 
@@ -169,6 +183,7 @@
     while (log.firstChild) log.removeChild(log.firstChild);
     step = 0;
     paused = false;
+    setMark('idle');
     pauseBtn.classList.remove('is-paused');
     pauseBtn.setAttribute('aria-label', 'Pause');
     pauseBtn.disabled = false;
@@ -189,7 +204,7 @@
     paused = !paused;
     pauseBtn.classList.toggle('is-paused', paused);
     pauseBtn.setAttribute('aria-label', paused ? 'Resume' : 'Pause');
-    if (paused) { window.clearTimeout(timer); clearTyping(); }
+    if (paused) { window.clearTimeout(timer); clearTyping(); setMark('idle'); }
     else play();
   });
 

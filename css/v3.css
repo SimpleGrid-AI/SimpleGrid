@@ -1499,7 +1499,34 @@ sg-footer { display: contents; }
   border-bottom: 1px solid var(--border);
   background: var(--bg-highlight-soft);
 }
-.hchat__avatar { flex: 0 0 auto; width: 40px; height: 40px; display: block; }
+.hchat__avatar { flex: 0 0 auto; width: 40px; height: 40px; display: block; color: var(--fg); }
+
+/* The Hank mark — hat and eyes, per Hank Brand and Motion v1. Eyes are
+   currentColor so the same markup works on any surface; the hat is always
+   --hk. States are driven by js/hank.js swapping the class as the
+   transcript plays: idle while waiting, thinking while the dots show,
+   done for a beat once an answer lands. */
+.hk .hat { fill: var(--hk); transition: fill var(--hk-d3); }
+.hk .badge { fill: var(--on-hk); opacity: 0.55; }
+.hk .eye { fill: currentColor; transform-box: fill-box; transform-origin: center; transition: transform var(--hk-d3) var(--hk-e-move); }
+.hk .smile, .hk .flat { fill: none; stroke: currentColor; stroke-width: 7; stroke-linecap: round; opacity: 0; }
+.hk .smile { stroke-dasharray: 30; stroke-dashoffset: 30; }
+.hk .top { transform-box: fill-box; transform-origin: 50% 100%; }
+
+.hk.idle .eye { animation: hk-blink 4.2s var(--hk-e-move) infinite; }
+.hk.thinking .eye { animation: hk-glance var(--hk-loop) var(--hk-e-move) infinite; }
+.hk.done .eye { animation: hk-eye-out var(--hk-d2) var(--hk-e-in) both; }
+.hk.done .smile { animation: hk-draw var(--hk-d3) var(--hk-e-out) var(--hk-d2) both; }
+
+@keyframes hk-blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.12); } }
+@keyframes hk-glance { 0%, 100% { transform: translate(0, 0); } 30% { transform: translate(-5px, -6px); } 70% { transform: translate(5px, -6px); } }
+@keyframes hk-eye-out { to { opacity: 0; transform: scale(0.4); } }
+@keyframes hk-draw { to { opacity: 1; stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hk .eye, .hk .smile { animation: none !important; }
+}
+
 .hchat__who { min-width: 0; }
 
 .hchat__name {

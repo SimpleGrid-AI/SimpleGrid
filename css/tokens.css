@@ -110,6 +110,24 @@
   /* ----- MOTION ----- */
   --ease:         cubic-bezier(0.22, 1, 0.36, 1);
   --dur:          520ms;
+
+  /* ----- HANK ----- (Hank Brand and Motion, v1 draft, 8 Oct 2026)
+     The one named exception to "no colours outside this palette": Hank is
+     SimpleGrid's assistant, not the product, and owns exactly one colour so
+     he reads as a presence inside pages that are otherwise blue-and-neutral.
+     Durations step by φ (×1.618) from 100ms; three easings only — arrivals
+     use e-out, exits use e-in, travel uses e-move. Scoped to .hk so nothing
+     outside the mark can reach for hard-hat yellow by accident. */
+  --hk:           #E39B00;
+  --on-hk:        #1A1405;
+  --hk-d1:        100ms;
+  --hk-d2:        160ms;
+  --hk-d3:        260ms;
+  --hk-d4:        420ms;
+  --hk-loop:      1680ms;
+  --hk-e-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --hk-e-in:      cubic-bezier(0.7, 0, 0.84, 0);
+  --hk-e-move:    cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* Guidelines set the mobile size for the primary typeface at 48px.
