@@ -26,7 +26,11 @@
      moves through: idle between turns, thinking while the dots show, done
      for one beat once an answer lands. See Hank Brand and Motion v1. */
   function setMark(state) {
-    if (mark) mark.className = 'hchat__avatar hk ' + state;
+    /* Not mark.className = — SVGElement.className is a read-only
+       SVGAnimatedString, and assigning to it throws under 'use strict',
+       which killed the whole transcript the moment the first answer tried
+       to start typing. setAttribute works on any element. */
+    if (mark) mark.setAttribute('class', 'hchat__avatar hk ' + state);
   }
 
   /* A turn is either something the operator typed, or Hank answering. An
