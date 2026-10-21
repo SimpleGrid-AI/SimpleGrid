@@ -1711,22 +1711,24 @@ sg-footer { display: contents; }
 /* --------------------------------------------------------------------------
    10b. iPhone mockup frame — wraps the Hank panel on the homepage so "on the
    floor from a phone" is something the reader sees, not just reads. Pure CSS:
-   no device-frame library on a site with no build step. The frame scales to
-   whatever height its flex parent gives it; only the width is fixed.
-   -------------------------------------------------------------------------- */
+   no device-frame library on a site with no build step. Locked to the real
+   iPhone 17 Pro Max aspect ratio (71.5:149.6) rather than left to flex, or it
+   reads as a rounded rectangle instead of a phone. Three nested layers —
+   titanium frame, black bezel, screen — same structure real teardown photos
+   show and the reference component builds, each with its own 3px reveal and
+   its own (slightly tighter) radius. */
 
 .iphone-mock {
   width: 296px;
-  flex: 1 1 auto;
-  min-height: 0;
+  aspect-ratio: 71.5 / 149.6;
+  position: relative;
 }
 
 .iphone-mock__frame {
-  position: relative;
-  height: 100%;
-  min-height: 460px;
-  border-radius: 46px;
-  padding: 10px;
+  position: absolute;
+  inset: 0;
+  border-radius: 48px;
+  padding: 3px;
   background: linear-gradient(165deg, #4a4a4e 0%, #3a3a3e 20%, #343436 50%, #3d3d41 80%, #343436 100%);
   box-shadow:
     0 20px 40px -14px rgba(26, 26, 26, 0.35),
@@ -1741,8 +1743,16 @@ sg-footer { display: contents; }
   position: absolute;
   background: #343436;
 }
-.iphone-mock__frame::before { right: -2px; top: 26%; width: 3px; height: 70px; border-radius: 0 2px 2px 0; }
-.iphone-mock__frame::after  { left: -2px; top: 19%; width: 3px; height: 46px; border-radius: 2px 0 0 2px; box-shadow: 0 60px 0 0 #343436; }
+.iphone-mock__frame::before { right: -2px; top: 28%; width: 3px; height: 58px; border-radius: 0 2px 2px 0; }
+.iphone-mock__frame::after  { left: -2px; top: 19%; width: 3px; height: 20px; border-radius: 2px 0 0 2px; box-shadow: 0 32px 0 0 #343436, 0 64px 0 0 #343436; }
+
+.iphone-mock__bezel {
+  height: 100%;
+  width: 100%;
+  border-radius: 45px;
+  padding: 3px;
+  background: #0a0a0a;
+}
 
 .iphone-mock__screen {
   position: relative;
@@ -1750,7 +1760,7 @@ sg-footer { display: contents; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 38px;
+  border-radius: 42px;
   background: var(--bg-card);
 }
 
@@ -1761,7 +1771,7 @@ sg-footer { display: contents; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 22px;
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
@@ -1770,11 +1780,11 @@ sg-footer { display: contents; }
 
 .iphone-mock__island {
   position: absolute;
-  top: 10px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90px;
-  height: 26px;
+  width: 96px;
+  height: 28px;
   border-radius: 14px;
   background: #0a0a0a;
 }
@@ -1821,7 +1831,6 @@ sg-footer { display: contents; }
 
 @media (max-width: 480px) {
   .iphone-mock { width: 248px; }
-  .iphone-mock__frame { min-height: 400px; }
 }
 
 /* --------------------------------------------------------------------------
