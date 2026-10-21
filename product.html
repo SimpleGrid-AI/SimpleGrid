@@ -20,13 +20,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#3456D9">
 
-<link rel="stylesheet" href="css/fonts.css?v=202610210802">
+<link rel="stylesheet" href="css/fonts.css?v=202610210812">
 
-<link rel="stylesheet" href="css/tokens.css?v=202610210802">
-<link rel="stylesheet" href="css/v3.css?v=202610210802">
-<link rel="stylesheet" href="css/modules.css?v=202610210802">
-<link rel="stylesheet" href="css/product.css?v=202610210802">
-<link rel="stylesheet" href="css/grid.css?v=202610210802">
+<link rel="stylesheet" href="css/tokens.css?v=202610210812">
+<link rel="stylesheet" href="css/v3.css?v=202610210812">
+<link rel="stylesheet" href="css/modules.css?v=202610210812">
+<link rel="stylesheet" href="css/product.css?v=202610210812">
+<link rel="stylesheet" href="css/grid.css?v=202610210812">
 
 <!-- What this page is, in the vocabulary search engines read. Every
      value is taken from the page itself. -->
@@ -408,15 +408,28 @@
 
             <div class="hchat hchat--mini" data-hank>
               <div class="hchat__head">
-                <img class="hchat__avatar" src="assets/hank.svg" width="40" height="40" alt=""
+                <img class="hchat__avatar" src="assets/hank-mark.svg" width="40" height="40" alt=""
                      loading="lazy" decoding="async">
                 <div class="hchat__who">
                   <p class="hchat__name">Hank <span class="hchat__tag">AI</span></p>
                   <p class="hchat__status">online &middot; answers from live data</p>
                 </div>
                 <div class="hchat__controls">
-                  <button class="hchat__btn" type="button" data-hank-pause>Pause</button>
-                  <button class="hchat__btn" type="button" data-hank-replay disabled>Replay</button>
+                  <button class="hchat__btn" type="button" data-hank-pause aria-label="Pause">
+                    <svg class="hchat__icon hchat__icon--pause" viewBox="0 0 16 16" aria-hidden="true">
+                      <rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/>
+                    </svg>
+                    <svg class="hchat__icon hchat__icon--play" viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M5 3l8 5-8 5z"/>
+                    </svg>
+                  </button>
+                  <button class="hchat__btn" type="button" data-hank-replay disabled aria-label="Replay">
+                    <svg class="hchat__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                         stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M13.3 8A5.3 5.3 0 1 1 11.8 4"/>
+                      <path d="M13.3 2.6v3.6h-3.6"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
 
@@ -2124,14 +2137,14 @@
 
 <sg-footer></sg-footer>
 
-<script src="js/components.js?v=202610210802"></script>
-<script src="js/book-demo.js?v=202610210802" defer></script>
-<script src="js/v3.js?v=202610210802"></script>
-<script src="js/modules.js?v=202610210802"></script>
-<script src="js/ai-mocks.js?v=202610210802"></script>
-<script src="js/lightbox.js?v=202610210802"></script>
-<script src="js/hank.js?v=202610210802"></script>
-<script src="js/cursor.js?v=202610210802"></script>
+<script src="js/components.js?v=202610210812"></script>
+<script src="js/book-demo.js?v=202610210812" defer></script>
+<script src="js/v3.js?v=202610210812"></script>
+<script src="js/modules.js?v=202610210812"></script>
+<script src="js/ai-mocks.js?v=202610210812"></script>
+<script src="js/lightbox.js?v=202610210812"></script>
+<script src="js/hank.js?v=202610210812"></script>
+<script src="js/cursor.js?v=202610210812"></script>
 
 </body>
 </html>

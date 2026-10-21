@@ -169,7 +169,8 @@
     while (log.firstChild) log.removeChild(log.firstChild);
     step = 0;
     paused = false;
-    pauseBtn.textContent = 'Pause';
+    pauseBtn.classList.remove('is-paused');
+    pauseBtn.setAttribute('aria-label', 'Pause');
     pauseBtn.disabled = false;
     replayBtn.disabled = true;
   }
@@ -186,7 +187,8 @@
 
   pauseBtn.addEventListener('click', function () {
     paused = !paused;
-    pauseBtn.textContent = paused ? 'Resume' : 'Pause';
+    pauseBtn.classList.toggle('is-paused', paused);
+    pauseBtn.setAttribute('aria-label', paused ? 'Resume' : 'Pause');
     if (paused) { window.clearTimeout(timer); clearTyping(); }
     else play();
   });

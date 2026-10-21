@@ -1544,17 +1544,19 @@ sg-footer { display: contents; }
 }
 
 .hchat__controls { margin-left: auto; display: flex; gap: 6px; }
+
+/* Icon, not text — Pause/Replay as a circular control, same shape as the
+   iconbtn pattern in the Hank mock this is matched against. */
 .hchat__btn {
-  padding: 6px 12px;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 50%;
   background: var(--bg-card);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: var(--tracking-sub);
-  text-transform: uppercase;
   color: var(--fg-body);
+  display: grid;
+  place-items: center;
   transition: color 160ms var(--ease), border-color 160ms var(--ease),
               background-color 160ms var(--ease);
 }
@@ -1564,6 +1566,11 @@ sg-footer { display: contents; }
   color: var(--accent);
 }
 .hchat__btn:disabled { opacity: 0.4; cursor: default; }
+
+.hchat__icon { width: 14px; height: 14px; fill: currentColor; display: block; }
+.hchat__icon--play { display: none; }
+.hchat__btn.is-paused .hchat__icon--pause { display: none; }
+.hchat__btn.is-paused .hchat__icon--play { display: block; }
 
 /* --------------------------------------------------------------- the log */
 
@@ -1694,7 +1701,8 @@ sg-footer { display: contents; }
 /* One line in the narrow panel: at 10px "online · answers from live data"
    wrapped once the header also had to hold the name and the two buttons. */
 .hchat--mini .hchat__status { font-size: 9px; letter-spacing: 0.02em; white-space: nowrap; }
-.hchat--mini .hchat__btn { padding: 5px 9px; font-size: 9px; }
+.hchat--mini .hchat__btn { width: 24px; height: 24px; }
+.hchat--mini .hchat__icon { width: 12px; height: 12px; }
 .hchat--mini .hchat__log { height: 296px; padding: 14px 16px; gap: 12px; }
 .hchat--mini .hchat__ask { padding: 8px 11px; }
 .hchat--mini .hchat__answer { padding: 9px 12px; }
