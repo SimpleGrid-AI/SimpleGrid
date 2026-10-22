@@ -7,7 +7,7 @@
 :root {
   /* ----- CORE PALETTE (guidelines p.007) ----- */
   --sg-eerie-black:  #1A1A1A;  /* Core. Headings, primary text, logo on light */
-  --sg-blue-party:   #3456D9;  /* Core. CTAs, links, accent words, active states */
+  --sg-blue-party:   #120058;  /* Core. CTAs, links, accent words, active states */
   --sg-titan-white:  #EBF0FF;  /* Highlight fills, callouts, tinted surfaces */
   --sg-pale-white:   #FAFBFC;  /* Page background */
 
@@ -25,16 +25,16 @@
   --sg-line-soft:    rgba(26, 26, 26, 0.06);  /* Inner hairlines */
   --sg-titan-light:  #F0F4FF;  /* Titan White lifted toward white — for large
                                   fills where the full tint is too heavy */
-  --sg-blue-press:   #2A46B8;  /* Blue Party, pressed/hover */
-  --sg-blue-15:      rgba(52, 86, 217, 0.15);
-  --sg-blue-08:      rgba(52, 86, 217, 0.08);
+  --sg-blue-press:   #0F0048;  /* Blue Party, pressed/hover */
+  --sg-blue-15:      rgba(18, 0, 88, 0.15);
+  --sg-blue-08:      rgba(18, 0, 88, 0.08);
 
   /* ----- SECONDARY GRADIENTS (guidelines p.008) -----
      Background imagery for core marketing graphics only. */
-  --sg-grad-deep:    linear-gradient(180deg, #1A2E8C 0%, #3456D9 55%, #7C97F0 100%);
+  --sg-grad-deep:    linear-gradient(180deg, #1A2E8C 0%, #120058 55%, #7C97F0 100%);
   --sg-grad-soft:    linear-gradient(180deg, #DDE5FF 0%, #FAFBFC 100%);
-  --sg-grad-glow:    radial-gradient(circle at 50% 50%, rgba(52, 86, 217, 0.18) 0%, rgba(52, 86, 217, 0) 70%);
-  --sg-grad-cta:     linear-gradient(135deg, #3456D9 0%, #2A46B8 100%);
+  --sg-grad-glow:    radial-gradient(circle at 50% 50%, rgba(18, 0, 88, 0.18) 0%, rgba(18, 0, 88, 0) 70%);
+  --sg-grad-cta:     linear-gradient(135deg, #120058 0%, #0F0048 100%);
 
   /* ----- SEMANTIC TOKENS ----- */
   --bg:              var(--sg-pale-white);
@@ -51,7 +51,7 @@
   /* Section cards land exactly on the field's major lines, so their edge is
      drawn in the same blue and reads as that line continuing through the
      card rather than as a separate grey rule. */
-  --card-border:     rgba(52, 86, 217, 0.16);
+  --card-border:     rgba(18, 0, 88, 0.16);
 
   /* ----- TYPEFACES (guidelines p.010–012) -----
      Primary   Merriweather   display + headings
