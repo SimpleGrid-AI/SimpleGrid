@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stretch the curd, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes Italian cheese for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/{{company}}.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="{{theme}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, stretch the curd.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes Italian cheese for a living.">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Two mozzarella curds on a board above a pot of hot water, beside the words: {{first}}, you make Italian cheese for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, stretch the curd.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes Italian cheese for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/saira-semi-condensed-800-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* Caputo’s colors: red, white and green, with their blue for buttons’ edges. Their menus and buttons are a
+   condensed bold sans, so our headings are too (Saira Semi Condensed, self-hosted). */
+@font-face{font-family:'Saira Semi Condensed';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/saira-semi-condensed-800-latin.woff2') format('woff2')}
+:root{
+  --brand:#2C2C2C;--brand-press:#1E1E1E;--brand-deep:#111111;
+  --accent:#057A3F;--accent-soft:#D3EEDD;--accent-edge:#035028;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#fff;--on-accent-soft:rgba(255,255,255,.9);
+  --tint:#F2F3F5;--pale:#FFFFFF;--ink:#2C2C2C;--alert:#D8032A;--marker:#FBD3DA;--h2-hi:#D8032A;
+  --display:'Saira Semi Condensed','Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
+}
+.hero,.hero-wipe{--field:#F2F3F5;--on:#2C2C2C;--on-soft:rgba(44,44,44,.82);--hi:#D8032A;--btn-bg:#D8032A;--btn-fg:#fff;--btn-edge:#8A0219;--focus:#0079B3}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--field:#057A3F;--on:#fff;--on-soft:rgba(255,255,255,.9);--hi:#CDEFD9;--btn-bg:#fff;--btn-fg:#057A3F;--btn-edge:#035028;--focus:#fff}
+h1{letter-spacing:-.008em;line-height:1.08}
+.back{--back-hi:#FF8A99}
+.meet{--meet-ink:#fff;--meet-btn:#D8032A}
+
+/* -------------------------------------------------------- The curd */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.cheese{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.cheese.is-done{cursor:default}
+.cheese svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.board{fill:#B07A45}
+.board-grain{fill:none;stroke:#9A6838;stroke-width:2;opacity:.6}
+.curd{fill:#EFE9D8;stroke:#D6CCB2;stroke-width:2;transition:fill .5s,stroke .5s}
+.curd-lump{fill:#E1D8BF;transition:opacity .5s}
+.shine{fill:#fff;opacity:0;transition:opacity .5s}
+.cheese.warm .curd{fill:#FFFDF6;stroke:#ECE4CF}
+.cheese.warm .curd-lump{opacity:0}
+.cheese.warm .shine{opacity:.85}
+.lump-top,.lump-bottom{transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.5,0,.3,1),opacity .4s}
+.crack{fill:none;stroke:#9A8C6A;stroke-width:2.5;stroke-linejoin:round;opacity:0;transition:opacity .15s}
+.cheese.cracked .crack{opacity:1}
+.crumb{fill:#EFE9D8;stroke:#D6CCB2;transition:transform .7s cubic-bezier(.5,0,.7,1),opacity .4s .6s}
+.ball{opacity:0;transform:scale(.8);transform-box:fill-box;transform-origin:center;transition:opacity .35s,transform .5s cubic-bezier(.2,1.3,.4,1)}
+.cheese.fused .ball{opacity:1;transform:none}
+.cheese.fused .lump-top,.cheese.fused .lump-bottom{opacity:0}
+.basil{fill:#06974E}
+.basil-vein{fill:none;stroke:#04703A;stroke-width:1.5}
+.pot{fill:#B9C2C9}
+.pot-dk{fill:#8E989F}
+.water{fill:#6FA8D6;opacity:.55}
+.steam{fill:none;stroke:rgba(140,150,160,.55);stroke-width:5;stroke-linecap:round;animation:steam 3s ease-in-out infinite;opacity:0}
+@keyframes steam{0%{opacity:0;transform:translateY(8px)}30%{opacity:1}100%{opacity:0;transform:translateY(-30px)}}
+.hero:not(.in-view) .steam{animation-play-state:paused}
+.callout-top{top:20%}
+.callout-bottom{top:53%}
+.callout-gap{top:calc(45% - 15px)}
+.callout-top h3 i,.callout-bottom h3 i{background:#EFE9D8;box-shadow:0 0 0 1.5px #9A8C6A}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.2)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include label.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Hand-stretched for {{full}},</span> <span>{{co_name}}. Batch size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make Italian cheese for a living. <span>So here’s our software, explained as fresh mozzarella.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="cheese hero-obj" id="cheese" role="img" aria-label="Two cold mozzarella curds on a wooden board, one above the other and not touching, above a pot of hot water.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <!-- the board -->
+            <rect class="board" x="54" y="100" width="252" height="300" rx="18"/>
+            <path class="board-grain" d="M70 140Q180 128 290 146M70 214Q180 202 290 220M70 292Q180 280 290 298M70 366Q180 354 290 372"/>
+            <!-- the floor: the bottom curd -->
+            <g class="lump-bottom" id="lumpBottom">
+              <ellipse class="curd" cx="180" cy="318" rx="78" ry="50"/>
+              <circle class="curd-lump" cx="150" cy="306" r="12"/><circle class="curd-lump" cx="196" cy="326" r="14"/><circle class="curd-lump" cx="222" cy="304" r="9"/><circle class="curd-lump" cx="166" cy="336" r="8"/>
+              <ellipse class="shine" cx="150" cy="296" rx="22" ry="8"/>
+            </g>
+            <!-- the ERP: the top curd -->
+            <g class="lump-top" id="lumpTop">
+              <ellipse class="curd" cx="180" cy="186" rx="70" ry="46"/>
+              <circle class="curd-lump" cx="154" cy="176" r="11"/><circle class="curd-lump" cx="198" cy="194" r="13"/><circle class="curd-lump" cx="214" cy="170" r="8"/><circle class="curd-lump" cx="168" cy="204" r="7"/>
+              <ellipse class="shine" cx="152" cy="166" rx="20" ry="7"/>
+            </g>
+            <path class="crack" d="M118 268L134 276L146 266L160 280L176 268L190 282L206 270L220 282L238 270"/>
+            <g id="crumbs"></g>
+            <!-- one ball, once it holds -->
+            <g class="ball">
+              <ellipse cx="180" cy="300" rx="86" ry="66" fill="#FFFDF6" stroke="#ECE4CF" stroke-width="2"/>
+              <path d="M126 300Q180 262 234 300" fill="none" stroke="#ECE4CF" stroke-width="3"/>
+              <ellipse cx="146" cy="276" rx="26" ry="10" fill="#fff"/>
+              <path class="basil" d="M180 240Q206 214 236 222Q218 252 180 240Z"/>
+              <path class="basil-vein" d="M184 238Q208 228 230 224"/>
+            </g>
+            <!-- SimpleGrid: the hot water that makes curd stretch (drawn last, so the curds dip behind it) -->
+            <path class="steam" d="M140 418C132 404 148 396 140 380"/>
+            <path class="steam" d="M220 422C212 408 228 400 220 384" style="animation-delay:-1.5s"/>
+            <rect class="pot-dk" x="56" y="428" width="248" height="14" rx="6"/>
+            <path class="pot" d="M66 436H294V520Q294 542 272 542H88Q66 542 66 520Z"/>
+            <rect class="water" x="72" y="450" width="216" height="84" rx="8"/>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The top curd: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The bottom curd: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Press them together</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Two curds, and nothing holding them. Press them together, or tap the board to try it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of the bag can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include facts.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about {{co_name}} comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll re-stretch. The rest of the deli is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* ----------------------------------------------------------- The curd
+     Top curd: the ERP. Bottom curd: the floor. Cold curd won't bind: press
+     the two together and they crack apart. The hot water is SimpleGrid:
+     warm curd stretches, and two pieces become one. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), cheese = $('cheese'), top = $('lumpTop'), bottom = $('lumpBottom'), crumbs = $('crumbs');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+  var COPY = {
+    cold:    { btn: 'Press them together', caption: 'Two curds, and nothing holding them. Press them together, or tap the board to try it yourself.' },
+    pressing:{ btn: 'Pressing…', caption: 'Looks like one cheese, doesn’t it?' },
+    broken:  { btn: 'Into the hot water', caption: 'And there it goes. Cold curd cracks. That’s the usual ERP go-live: pressed together for the launch, and months later the plant is back on Excel.' },
+    dipping: { btn: 'Warming…', caption: 'Into the hot water they go.' },
+    warm:    { btn: 'Press them together', caption: 'That’s SimpleGrid: warm curd stretches and binds. Press them together.' },
+    done:    { btn: 'Why did the first one crack?', caption: 'One live record. Your ERP and your floor, stretched into one.' }
+  };
+  var ARIA = {
+    cold: cheese.getAttribute('aria-label'),
+    done: 'One smooth ball of fresh mozzarella with a basil leaf, where two cold curds used to be.'
+  };
+  var phase = 'cold', warm = false, busy = false, timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'pressing' || next === 'dipping';
+    caption.textContent = COPY[next].caption;
+  }
+
+  function press(){
+    busy = true;
+    setPhase('pressing');
+    // The top curd comes down onto the bottom one.
+    top.style.transform = 'translateY(78px)';
+    return wait(560).then(function(){
+      if (warm){
+        cheese.classList.add('fused');
+        return wait(700).then(function(){ busy = false; complete(); });
+      }
+      cheese.classList.add('cracked');
+      var html = '';
+      for (var i = 0; i < 7; i++) html += '<circle class="crumb" cx="' + (128 + i*17) + '" cy="270" r="' + (4 + i % 3) + '"/>';
+      crumbs.innerHTML = html;
+      return wait(300).then(function(){
+        top.style.transform = '';
+        crumbs.getBoundingClientRect();
+        [].forEach.call(crumbs.children, function(c, i){ c.style.transform = 'translate(' + ((i % 2 ? 1 : -1)*(10 + i*6)) + 'px,' + (70 + (i*13) % 50) + 'px)'; c.style.opacity = '0'; });
+        return wait(1200).then(function(){
+          cheese.classList.remove('cracked');
+          crumbs.innerHTML = '';
+          busy = false;
+          setPhase('broken');
+        });
+      });
+    });
+  }
+
+  function dip(){
+    busy = true;
+    setPhase('dipping');
+    top.style.transform = 'translateY(300px) scale(.7)';
+    bottom.style.transform = 'translateY(168px) scale(.7)';
+    later(function(){ warm = true; cheese.classList.add('warm'); }, 520);
+    later(function(){ top.style.transform = ''; bottom.style.transform = ''; }, 900);
+    later(function(){ busy = false; setPhase('warm'); }, 1450);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The top curd: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The bottom curd: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    cheese.classList.add('is-done');
+    setCallouts(true);
+    setPhase('done');
+    cheese.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, cheese, 'b', '.cheese');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    busy = false; warm = false;
+    cheese.classList.remove('warm', 'fused', 'cracked', 'is-done');
+    top.style.transform = ''; bottom.style.transform = '';
+    crumbs.innerHTML = '';
+    setCallouts(false);
+    cheese.setAttribute('aria-label', ARIA.cold);
+    setPhase('cold');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, cheese, 'a', '.cheese');
+  }
+
+  btn.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'cold' || phase === 'warm') press();
+    else if (phase === 'broken') dip();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  cheese.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'cold' || phase === 'warm') press();
+    else if (phase === 'broken') dip();
+  });
+  resetBtn.addEventListener('click', startOver);
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ hero.classList.toggle('in-view', entries[0].isIntersecting); }).observe(hero);
+  } else hero.classList.add('in-view');
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Parmesan', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Shredder 2 is down!',
+    'Distributor: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Cheese truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QC hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 3 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Parmesan PO is ready for your OK',
+    'QC: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

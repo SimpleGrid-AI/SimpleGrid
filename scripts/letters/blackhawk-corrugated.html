@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Run the crush test, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes corrugated for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/blackhawk-corrugated.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="{{theme}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, run the crush test.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes corrugated for a living.">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Two liners with nothing between them under a load, beside the words: {{first}}, you make corrugated for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, run the crush test.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes corrugated for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+@font-face{font-family:'Bree Serif';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/bree-serif-latin.woff2') format('woff2')}
+/* Blackhawk’s site: light gray pages, red headings in Bree Serif. The hero starts there and ends in their red. */
+:root{
+  --brand:#2B2B2B;--brand-press:#1E1E1E;--brand-deep:#111111;
+  --accent:#CA0814;--accent-soft:#F7D3D5;--accent-edge:#7E050C;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#fff;--on-accent-soft:rgba(255,255,255,.9);
+  --tint:#F6F6F6;--pale:#FFFFFF;--ink:#1A1A1A;--alert:#CA0814;--marker:#F7D3D5;--h2-hi:#CA0814;
+  --display:'Bree Serif',Georgia,'Times New Roman',serif;--dw:400;
+}
+.hero,.hero-wipe{--field:#E9E9E9;--on:#1F1F1F;--on-soft:rgba(31,31,31,.82);--hi:#CA0814;--btn-bg:#CA0814;--btn-fg:#fff;--btn-edge:#7E050C;--focus:#CA0814}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--field:#CA0814;--on:#fff;--on-soft:rgba(255,255,255,.9);--hi:#FFD5D7;--btn-bg:#1F1F1F;--btn-fg:#fff;--btn-edge:#000;--focus:#fff}
+.back{--back-hi:#FF8A8F}
+.meet{--meet-ink:#fff;--meet-btn:#1F1F1F}
+
+/* ------------------------------------------------------ The crush test */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.board{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.board svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.kraft{fill:#C9A06A}
+.kraft-dk{fill:#A87F4B}
+.kraft-lt{fill:#DDBB8A}
+.flute{fill:none;stroke:#B98C55;stroke-width:4.5;stroke-linejoin:round;stroke-dasharray:1300;stroke-dashoffset:1300;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1)}
+.board.fluted .flute{stroke-dashoffset:0}
+.glue{fill:#F2E3C4;opacity:0;transition:opacity .3s .8s}
+.board.fluted .glue{opacity:1}
+.liner-top{transform-box:view-box;transition:transform .45s cubic-bezier(.6,0,.4,1)}
+.sag{transition:d .45s cubic-bezier(.6,0,.4,1)}
+.load{transition:transform .5s cubic-bezier(.6,0,.4,1)}
+.load-box{fill:#C9A06A;stroke:#8F6A3A;stroke-width:2}
+.load-tape{fill:#B78F5B}
+.load-label{fill:#fff;opacity:0;transition:opacity .4s .2s}
+.board.is-done .load-label{opacity:1}
+.platen{fill:color-mix(in srgb,var(--field) 55%,#000)}
+.gauge{fill:rgba(0,0,0,.22)}
+.gauge-txt{font:800 13px/1 var(--body);letter-spacing:.08em;fill:var(--on-soft)}
+.gauge-val{font:900 17px/1 var(--display);fill:var(--on)}
+.callout-top{top:31%}
+.callout-bottom{top:63.5%}
+.callout-gap{top:calc(53.6% - 15px)}
+.callout-top h3 i,.callout-bottom h3 i{background:#C9A06A}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.1)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include report.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>{{made}} {{full}},</span> <span>{{co_name}}. Run size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make corrugated for a living. <span>So here’s our software, explained as one sheet of it.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="board hero-obj" id="board" role="img" aria-label="Two liner sheets with nothing between them, under a stack of cases waiting to be set down.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <!-- the load: three cases waiting to be set down -->
+            <g class="load" id="load">
+              <rect class="load-box" x="92" y="56" width="176" height="56" rx="3"/>
+              <rect class="load-box" x="102" y="112" width="156" height="56" rx="3"/>
+              <rect class="load-box" x="92" y="168" width="176" height="56" rx="3"/>
+              <rect class="load-tape" x="172" y="56" width="16" height="168"/>
+              <g class="load-label"><rect x="118" y="182" width="124" height="30" rx="3"/>
+                <g transform="translate(124 186) scale(.52)" fill="none" stroke="#1A1A1A"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g>
+                <text x="147" y="202" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="900" font-size="13" fill="#1A1A1A">SimpleGrid</text>
+              </g>
+            </g>
+            <!-- the board: top liner, flute (once there is one), bottom liner -->
+            <g id="sheet">
+              <path class="kraft-dk sag" id="topShadow" d="M30 260H330V270H30Z"/>
+              <path class="kraft sag" id="topLiner" d="M30 252H330V264H30Z"/>
+              <path class="flute" id="flute" d="M30 300.0 L32 289.5 L34 280.0 L36 272.5 L38 267.7 L40 266.0 L42 267.7 L44 272.5 L46 280.0 L48 289.5 L50 300.0 L52 310.5 L54 320.0 L56 327.5 L58 332.3 L60 334.0 L62 332.3 L64 327.5 L66 320.0 L68 310.5 L70 300.0 L72 289.5 L74 280.0 L76 272.5 L78 267.7 L80 266.0 L82 267.7 L84 272.5 L86 280.0 L88 289.5 L90 300.0 L92 310.5 L94 320.0 L96 327.5 L98 332.3 L100 334.0 L102 332.3 L104 327.5 L106 320.0 L108 310.5 L110 300.0 L112 289.5 L114 280.0 L116 272.5 L118 267.7 L120 266.0 L122 267.7 L124 272.5 L126 280.0 L128 289.5 L130 300.0 L132 310.5 L134 320.0 L136 327.5 L138 332.3 L140 334.0 L142 332.3 L144 327.5 L146 320.0 L148 310.5 L150 300.0 L152 289.5 L154 280.0 L156 272.5 L158 267.7 L160 266.0 L162 267.7 L164 272.5 L166 280.0 L168 289.5 L170 300.0 L172 310.5 L174 320.0 L176 327.5 L178 332.3 L180 334.0 L182 332.3 L184 327.5 L186 320.0 L188 310.5 L190 300.0 L192 289.5 L194 280.0 L196 272.5 L198 267.7 L200 266.0 L202 267.7 L204 272.5 L206 280.0 L208 289.5 L210 300.0 L212 310.5 L214 320.0 L216 327.5 L218 332.3 L220 334.0 L222 332.3 L224 327.5 L226 320.0 L228 310.5 L230 300.0 L232 289.5 L234 280.0 L236 272.5 L238 267.7 L240 266.0 L242 267.7 L244 272.5 L246 280.0 L248 289.5 L250 300.0 L252 310.5 L254 320.0 L256 327.5 L258 332.3 L260 334.0 L262 332.3 L264 327.5 L266 320.0 L268 310.5 L270 300.0 L272 289.5 L274 280.0 L276 272.5 L278 267.7 L280 266.0 L282 267.7 L284 272.5 L286 280.0 L288 289.5 L290 300.0 L292 310.5 L294 320.0 L296 327.5 L298 332.3 L300 334.0 L302 332.3 L304 327.5 L306 320.0 L308 310.5 L310 300.0 L312 289.5 L314 280.0 L316 272.5 L318 267.7 L320 266.0 L322 267.7 L324 272.5 L326 280.0 L328 289.5 L330 300.0"/>
+              <g class="glue" id="glue"></g>
+              <rect class="kraft-dk" x="30" y="344" width="300" height="10"/>
+              <rect class="kraft" x="30" y="336" width="300" height="12"/>
+            </g>
+            <!-- the test bed -->
+            <rect class="platen" x="18" y="356" width="324" height="16" rx="4"/>
+            <rect class="platen" x="40" y="372" width="18" height="70"/>
+            <rect class="platen" x="302" y="372" width="18" height="70"/>
+            <g transform="translate(110 456)">
+              <rect class="gauge" width="140" height="64" rx="10"/>
+              <text class="gauge-txt" x="70" y="22" text-anchor="middle">CRUSH TEST</text>
+              <text class="gauge-val" id="gauge" x="70" y="49" text-anchor="middle">Ready</text>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The top liner: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The bottom liner: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Run the crush test</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Two liners and nothing between them. Run the crush test, or tap the board to set the load down yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The box print can say what it likes. <span>The test report has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include report.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not packaging: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Grade:</strong> Your orders, your routings, your people’s own words, what actually happened on the floor.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">SHIP BY: BEFORE YOUR NEXT ERP RENEWAL<br>JOB 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about {{co_name}} comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll re-score. The rest of the plant is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* --------------------------------------------------- The crush test
+     Top liner: the ERP. Bottom liner: the floor. With nothing between
+     them, a load folds one onto the other. The fluted medium is SimpleGrid:
+     glued to both at every flute tip, it's what lets the sheet carry a load. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), board = $('board'), load = $('load'), gauge = $('gauge');
+  var top = $('topLiner'), topShadow = $('topShadow');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    open:    { btn: 'Run the crush test', caption: 'Two liners and nothing between them. Run the crush test, or tap the board to set the load down yourself.' },
+    testing: { btn: 'Testing…', caption: 'Looks like a sheet of board, doesn’t it?' },
+    broken:  { btn: 'Add the flute', caption: 'And there it goes. That’s the usual ERP go-live: two sheets laid on each other for the launch, and months later the plant is back on Excel.' },
+    fluting: { btn: 'Fluting…', caption: 'In goes the medium, glued at every tip.' },
+    fluted:  { btn: 'Run the crush test', caption: 'That’s SimpleGrid: tied to both sides, every flute. Run it again.' },
+    done:    { btn: 'Why did the first one fold?', caption: 'One live record. Your ERP and your floor carry the load together.' }
+  };
+  var ARIA = {
+    open: board.getAttribute('aria-label'),
+    done: 'A sheet of corrugated board, fluted and glued, holding a stack of cases with a SimpleGrid label.'
+  };
+  var phase = 'open', fluted = false, busy = false, timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
+
+  // Glue at every flute tip that touches a liner.
+  (function(){
+    var g = '';
+    for (var x = 40; x < 330; x += 40){ g += '<ellipse cx="' + x + '" cy="266" rx="6" ry="2.4"/>'; if (x + 20 < 330) g += '<ellipse cx="' + (x + 20) + '" cy="334" rx="6" ry="2.4"/>'; }
+    $('glue').innerHTML = g;
+  })();
+
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'testing' || next === 'fluting';
+    caption.textContent = COPY[next].caption;
+  }
+  // The top liner, flat or folded down onto the bottom one.
+  function liner(dip){
+    var d1 = 'M30 252Q180 ' + (252 + dip*2) + ' 330 252V264Q180 ' + (264 + dip*2) + ' 30 264Z';
+    var d2 = 'M30 260Q180 ' + (260 + dip*2) + ' 330 260V270Q180 ' + (270 + dip*2) + ' 30 270Z';
+    // The attribute for every browser; the style too where CSS can animate a path.
+    top.setAttribute('d', d1);
+    topShadow.setAttribute('d', d2);
+    top.style.d = 'path("' + d1 + '")';
+    topShadow.style.d = 'path("' + d2 + '")';
+  }
+
+  function test(){
+    busy = true;
+    setPhase('testing');
+    gauge.textContent = 'Loading…';
+    // The load comes down onto the sheet.
+    load.style.transform = 'translateY(26px)';
+    return wait(600).then(function(){
+      if (!fluted){
+        // Nothing between the liners: the top one folds down onto the bottom.
+        load.style.transform = 'translateY(96px)';
+        liner(34);
+        gauge.textContent = 'Failed';
+        return wait(1500).then(function(){
+          load.style.transform = '';
+          liner(0);
+          gauge.textContent = 'Ready';
+          busy = false;
+          setPhase('broken');
+        });
+      }
+      load.style.transform = 'translateY(28px)';
+      gauge.textContent = 'Passed';
+      return wait(700).then(function(){ busy = false; complete(); });
+    });
+  }
+
+  function flute(){
+    busy = true;
+    setPhase('fluting');
+    fluted = true;
+    board.classList.add('fluted');
+    later(function(){ busy = false; setPhase('fluted'); }, 1200);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The top liner: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The bottom liner: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    board.classList.add('is-done');
+    setCallouts(true);
+    setPhase('done');
+    board.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, board, 'b', '.board');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    busy = false; fluted = false;
+    board.classList.remove('fluted', 'is-done');
+    load.style.transform = '';
+    liner(0);
+    gauge.textContent = 'Ready';
+    setCallouts(false);
+    board.setAttribute('aria-label', ARIA.open);
+    setPhase('open');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, board, 'a', '.board');
+  }
+
+  btn.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'open' || phase === 'fluted') test();
+    else if (phase === 'broken') flute();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  // Or set the load down yourself.
+  board.addEventListener('click', function(){
+    if (busy || !(phase === 'open' || phase === 'fluted' || phase === 'broken')) return;
+    if (phase === 'broken') { flute(); return; }
+    test();
+  });
+  resetBtn.addEventListener('click', startOver);
+  liner(0);
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Liner, 42 lb', '40 rolls in stock', '<s>40</s> 32 rolls in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Corrugator is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Paper truck: 8 rolls short',
+    'Which die is on the rotary?',
+    'Re: Re: Fwd: Re: which job?',
+    'QC hold: job 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Rotary crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Liner PO is ready for your OK',
+    'QC: Job 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

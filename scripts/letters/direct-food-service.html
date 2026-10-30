@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crimp the raviolo, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes frozen meals for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/{{company}}.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="{{theme}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, crimp the raviolo.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes frozen meals for a living.">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A raviolo with its edges open above a pot of boiling water, beside the words: {{first}}, you make frozen meals for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, crimp the raviolo.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes frozen meals for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* Direct Food Service’s site: warm dark brown, red-orange links, classic uppercase serif headings. */
+:root{
+  --brand:#2B2421;--brand-press:#1F1A18;--brand-deep:#120F0E;
+  --accent:#ED2E0C;--accent-soft:#FBD5CC;--accent-edge:#9E1E08;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#fff;--on-accent-soft:rgba(255,255,255,.9);
+  --tint:#F5EFE6;--pale:#FBF8F3;--ink:#222222;--alert:#C92A0E;--marker:#FBD5CC;--h2-hi:#C92A0E;
+}
+.hero,.hero-wipe{--btn-bg:#C92A0E;--btn-fg:#fff;--btn-edge:#7A1A07}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--field:#F5EFE6;--on:#2B2421;--on-soft:rgba(43,36,33,.84);--hi:#C92A0E;--btn-bg:#2B2421;--btn-fg:#fff;--btn-edge:#000;--focus:#C92A0E}
+h1,h2{text-transform:uppercase;letter-spacing:.03em;font-weight:400}
+h1{font-size:clamp(34px,2.2vw + 14px,46px);line-height:1.18}
+h1 span,h2 span{font-weight:700}
+.meet .go-btn{--btn-bg:#2B2421}
+.meet{--meet-ink:#7A1A07;--meet-btn:#2B2421}
+.meet h2{font-size:clamp(28px,2.4vw + 12px,44px)}
+.go-btn{--btn-bg:#C92A0E;--btn-edge:#7A1A07}
+
+/* ------------------------------------------------------- The raviolo */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.rav{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.rav.is-done{cursor:default}
+.rav svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pasta{fill:#F2CF7E}
+.pasta-dk{fill:#D9B05A}
+.filling{fill:#EEF0E2}
+.fleck{fill:#5E8C3A}
+.crimp{fill:none;stroke:#C9A04C;stroke-width:2.2;opacity:0;transition:opacity .3s}
+.rav.sealed .crimp{opacity:1}
+.top-sheet{transition:d .45s cubic-bezier(.4,0,.2,1)}
+.pot{fill:#B9C2C9}
+.pot-dk{fill:#8E989F}
+.water{fill:#6FA8D6;opacity:.55}
+.bubble{fill:#fff;opacity:0;animation:boil 1.6s ease-in infinite}
+@keyframes boil{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:.8}100%{opacity:0;transform:translateY(-46px) scale(1.1)}}
+.steam{fill:none;stroke:rgba(255,255,255,.35);stroke-width:5;stroke-linecap:round;animation:steam 3s ease-in-out infinite;opacity:0}
+@keyframes steam{0%{opacity:0;transform:translateY(8px)}30%{opacity:1}100%{opacity:0;transform:translateY(-30px)}}
+.hero:not(.in-view) .bubble,.hero:not(.in-view) .steam{animation-play-state:paused}
+.raviolo{transition:transform .55s cubic-bezier(.55,0,.75,.3)}
+.part{transition:transform 1.4s cubic-bezier(.2,.6,.3,1),opacity 1.4s}
+.wheel{opacity:0;transition:opacity .2s}
+.rav.crimping .wheel{opacity:1}
+.wheel-disc{fill:#C7CED4;stroke:#7E8890;stroke-width:2}
+.wheel-handle{stroke:#6B4423;stroke-width:7;stroke-linecap:round}
+.callout-top{top:20%}
+.callout-bottom{top:52%}
+.callout-gap{top:calc(43.5% - 15px)}
+.callout-top h3 i,.callout-bottom h3 i{background:#F2CF7E}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.16)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include label.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Made to order for {{full}},</span> <span>{{co_name}}. Portion: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make frozen meals for a living. <span>So here’s our software, explained as one raviolo.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="rav hero-obj" id="rav" role="img" aria-label="A raviolo, seen from the side: filling between two sheets of pasta whose edges don’t meet, above a pot of boiling water.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <!-- the pot, boiling -->
+            <path class="steam" d="M140 388C132 374 148 366 140 350"/>
+            <path class="steam" d="M220 392C212 378 228 370 220 354" style="animation-delay:-1.4s"/>
+            <rect class="pot-dk" x="44" y="404" width="272" height="14" rx="6"/>
+            <path class="pot" d="M56 412H304V516Q304 540 280 540H80Q56 540 56 516Z"/>
+            <rect class="water" x="62" y="428" width="236" height="104" rx="8"/>
+            <g id="bubbles"><circle class="bubble" cx="100" cy="520" r="4"/><circle class="bubble" cx="150" cy="526" r="3" style="animation-delay:-.5s"/><circle class="bubble" cx="200" cy="522" r="4" style="animation-delay:-1s"/><circle class="bubble" cx="250" cy="526" r="3" style="animation-delay:-.3s"/><circle class="bubble" cx="276" cy="520" r="3.5" style="animation-delay:-1.2s"/></g>
+            <g id="spill"></g>
+            <!-- the raviolo: bottom sheet (the floor), filling, top sheet (the ERP) -->
+            <g class="raviolo" id="raviolo">
+              <g class="part" id="bottomSheet">
+                <rect class="pasta-dk" x="70" y="252" width="220" height="12" rx="5"/>
+                <rect class="pasta" x="70" y="248" width="220" height="10" rx="5"/>
+              </g>
+              <g class="part" id="fillingG">
+                <path class="filling" d="M112 249Q116 200 180 196Q244 200 248 249Z"/>
+                <g class="fleck"><circle cx="150" cy="226" r="3"/><circle cx="172" cy="212" r="2.5"/><circle cx="196" cy="222" r="3"/><circle cx="216" cy="236" r="2.5"/><circle cx="134" cy="240" r="2.2"/><circle cx="186" cy="238" r="2.2"/></g>
+              </g>
+              <g class="part" id="topSheetG">
+                <path class="pasta top-sheet" id="topSheet" d="M70 226Q70 220 90 220Q112 220 116 196Q124 176 180 174Q236 176 244 196Q248 220 270 220Q290 220 290 226V232Q290 236 270 236Q252 236 248 216Q240 190 180 188Q120 190 112 216Q108 236 90 236Q70 236 70 232Z"/>
+                <path class="crimp" d="M74 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6M246 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6"/>
+              </g>
+            </g>
+            <!-- SimpleGrid: the crimping wheel -->
+            <g class="wheel" id="wheel">
+              <line class="wheel-handle" x1="0" y1="0" x2="34" y2="-58"/>
+              <circle class="wheel-disc" r="17"/>
+              <path d="M-17 0h34M0 -17v34M-12 -12l24 24M-12 12l24 -24" stroke="#7E8890" stroke-width="1.5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The top sheet: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The bottom sheet: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Drop it in the pot</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The filling sits between the sheets, and the edges never meet. Drop it in, or tap it to see for yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of the tray can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include facts.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about {{co_name}} comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll remake it. The rest of the kitchen is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* -------------------------------------------------------- The raviolo
+     Top sheet: the ERP. Bottom sheet: the floor. The filling sits between
+     them, and the edges never meet. The first boil opens it. The crimping
+     wheel is SimpleGrid: sealed on every edge, it holds through the boil. */
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), rav = $('rav'), raviolo = $('raviolo'), wheel = $('wheel'), spill = $('spill');
+  var topG = $('topSheetG'), bottomG = $('bottomSheet'), fillG = $('fillingG'), topSheet = $('topSheet');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+  var OPEN = topSheet.getAttribute('d');
+  // Crimped: the edges come down to meet the bottom sheet.
+  var SEALED = 'M70 246Q70 242 90 242Q112 242 116 210Q124 176 180 174Q236 176 244 210Q248 242 270 242Q290 242 290 246V250Q290 252 270 252Q252 252 248 228Q240 190 180 188Q120 190 112 228Q108 252 90 252Q70 252 70 250Z';
+  var COPY = {
+    open:     { btn: 'Drop it in the pot', caption: 'The filling sits between the sheets, and the edges never meet. Drop it in, or tap it to see for yourself.' },
+    dropping: { btn: 'Boiling…', caption: 'Looks like a raviolo, doesn’t it?' },
+    broken:   { btn: 'Crimp it', caption: 'And there it goes. That’s the usual ERP go-live: it looks sealed on launch day, and the first boil opens it up.' },
+    crimping: { btn: 'Crimping…', caption: 'Round the edge goes the wheel.' },
+    sealed:   { btn: 'Drop it in the pot', caption: 'That’s SimpleGrid: sealed on every edge. Now drop it in.' },
+    done:     { btn: 'Why did the first one open?', caption: 'One live record. Your ERP and your floor finally hold together, even at a boil.' }
+  };
+  var ARIA = {
+    open: rav.getAttribute('aria-label'),
+    done: 'A crimped raviolo bobbing whole in a pot of boiling water.'
+  };
+  var phase = 'open', sealed = false, busy = false, timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'dropping' || next === 'crimping';
+    caption.textContent = COPY[next].caption;
+  }
+  function sheet(d){ topSheet.setAttribute('d', d); topSheet.style.d = 'path("' + d + '")'; }
+
+  function drop(){
+    busy = true;
+    setPhase('dropping');
+    raviolo.style.transform = 'translateY(208px)';
+    return wait(600).then(function(){
+      if (sealed){
+        // It bobs, and holds.
+        raviolo.style.transition = 'transform .5s ease-in-out';
+        raviolo.style.transform = 'translateY(196px)';
+        return wait(500).then(function(){ raviolo.style.transform = 'translateY(204px)'; return wait(500); }).then(function(){ busy = false; complete(); });
+      }
+      // The edges let go: the top sheet floats off, the filling clouds the water.
+      topG.style.transform = 'translate(-60px,-26px) rotate(-14deg)';
+      topG.style.opacity = '.85';
+      bottomG.style.transform = 'translate(30px,40px) rotate(6deg)';
+      fillG.style.opacity = '0';
+      var html = '';
+      for (var i = 0; i < 14; i++){
+        html += '<circle class="part" cx="' + (150 + (i*23) % 60) + '" cy="' + (440 + (i*7) % 16) + '" r="' + (4 + i % 3) + '" fill="#EEF0E2"/>';
+      }
+      spill.innerHTML = html;
+      spill.getBoundingClientRect();
+      [].forEach.call(spill.children, function(c, i){
+        c.style.transform = 'translate(' + ((i % 2 ? 1 : -1)*(20 + (i*13) % 70)) + 'px,' + (18 + (i*11) % 50) + 'px)';
+        c.style.opacity = '.5';
+      });
+      return wait(1700).then(function(){
+        setPhase('broken');
+        // A fresh one, waiting above the pot.
+        [topG, bottomG, fillG, raviolo].forEach(function(el){ el.style.transition = 'none'; el.style.transform = ''; el.style.opacity = ''; });
+        spill.innerHTML = '';
+        raviolo.getBoundingClientRect();
+        [topG, bottomG, fillG, raviolo].forEach(function(el){ el.style.transition = ''; });
+        busy = false;
+      });
+    });
+  }
+
+  function crimp(){
+    busy = true;
+    setPhase('crimping');
+    rav.classList.add('crimping');
+    sheet(SEALED);
+    // The wheel runs along one edge, then the other.
+    var pts = [[74, 248], [110, 248], [250, 248], [288, 248]];
+    var i = 0;
+    var step = function(){
+      if (i >= pts.length){ rav.classList.remove('crimping'); sealed = true; rav.classList.add('sealed'); busy = false; setPhase('sealed'); return; }
+      wheel.setAttribute('transform', 'translate(' + pts[i][0] + ' ' + pts[i][1] + ')');
+      i++;
+      later(step, i === 2 ? 120 : 380);
+    };
+    step();
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The top sheet: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The bottom sheet: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    rav.classList.add('is-done');
+    setCallouts(true);
+    setPhase('done');
+    rav.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, rav, 'b', '.rav');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    busy = false; sealed = false;
+    rav.classList.remove('sealed', 'crimping', 'is-done');
+    raviolo.style.transition = ''; raviolo.style.transform = '';
+    sheet(OPEN);
+    setCallouts(false);
+    rav.setAttribute('aria-label', ARIA.open);
+    setPhase('open');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, rav, 'a', '.rav');
+  }
+
+  btn.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'open' || phase === 'sealed') drop();
+    else if (phase === 'broken') crimp();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  rav.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'open' || phase === 'sealed') drop();
+    else if (phase === 'broken') crimp();
+  });
+  resetBtn.addEventListener('click', startOver);
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ hero.classList.toggle('in-view', entries[0].isIntersecting); }).observe(hero);
+  } else hero.classList.add('in-view');
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Semolina', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Line 2 is down!',
+    'Airline: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Semolina truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QC hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 3 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Semolina PO is ready for your OK',
+    'QC: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

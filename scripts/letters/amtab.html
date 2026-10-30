@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Level the table, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes school furniture for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/{{company}}.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="{{theme}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, level the table.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes school furniture for a living.">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A table with one leg short of an uneven floor, beside the words: {{first}}, you make school furniture for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, level the table.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes school furniture for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* AmTab’s colors: blue copy, deep red accents. Bright, like the schools they furnish. */
+:root{
+  --brand:#0071BC;--brand-press:#005A96;--brand-deep:#003E68;
+  --accent:#8B1E1F;--accent-soft:#F4D6D6;--accent-edge:#5C1314;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.88);--on-accent:#fff;--on-accent-soft:rgba(255,255,255,.9);
+  --tint:#E6F1FA;--pale:#F7FAFD;--ink:#1F2A33;--alert:#8B1E1F;--marker:#FFE3A3;--h2-hi:#005A96;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+.hero,.hero-wipe{--hi:#A9DBFF}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--hi:#FFD3D3}
+.back{--back-hi:#A9DBFF}
+.meet{--meet-ink:#fff}
+
+/* --------------------------------------------------------- The table */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.tbl{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.tbl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ground{fill:color-mix(in srgb,var(--field) 70%,#000)}
+.ground-line{fill:none;stroke:color-mix(in srgb,var(--field) 45%,#fff);stroke-width:2}
+.top-slab{fill:#E9E4DA}
+.top-edge{fill:#B9B2A4}
+.frame{fill:#7E868D}
+.frame-hi{fill:#A9B0B6}
+.foot{fill:#2B2F33}
+.glide{fill:#F2C14E;stroke:#8A6A1F;stroke-width:1.5;transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);transition:transform .6s cubic-bezier(.3,1.3,.5,1)}
+.tbl.leveled .glide{transform:scaleY(1)}
+.rock{transform-origin:78px 452px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.tray{transition:transform .5s cubic-bezier(.5,0,.75,1),opacity .3s}
+.tray-body{fill:#3D7FB9}
+.tray-lip{fill:#2E6696}
+.cup{fill:#fff}
+.cup-band{fill:var(--accent)}
+.spill{fill:#9CC9F0;opacity:0;transition:opacity .3s}
+.tbl.spilled .spill{opacity:.85}
+.shim{opacity:0;transition:opacity .3s,transform .5s cubic-bezier(.3,1.2,.5,1);transform:translateX(30px)}
+.tbl.shimmed .shim{opacity:1;transform:none}
+.tbl.leveled .shim{opacity:0;transform:translateX(30px)}
+.shim-paper{fill:#fff;stroke:#107C41;stroke-width:1.5}
+.label-sg{opacity:0;transition:opacity .4s .2s}
+.tbl.is-done .label-sg{opacity:1}
+.callout-top{top:27%}
+.callout-bottom{top:84%}
+.callout-gap{top:calc(76% - 15px)}
+.callout-top h3 i{background:#E9E4DA}
+.callout-bottom h3 i{background:color-mix(in srgb,var(--field) 45%,#fff)}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.12)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include report.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Built to spec for {{full}},</span> <span>{{co_name}}. Quantity: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make school furniture for a living. <span>So here’s our software, explained as one table.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="tbl hero-obj" id="tbl" role="img" aria-label="A table on an uneven floor, its right leg not touching the ground.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <!-- the floor, not quite flat -->
+            <path class="ground" d="M0 452H200Q240 452 262 466Q282 476 312 474Q340 472 360 468V560H0Z"/>
+            <path class="ground-line" d="M0 452H200Q240 452 262 466Q282 476 312 474Q340 472 360 468"/>
+            <!-- the hack: a folded spreadsheet under the short leg -->
+            <g class="shim"><path class="shim-paper" d="M268 466L304 464L306 476L270 478Z"/><text x="276" y="475" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="800" font-size="8" fill="#107C41">v8.xlsx</text></g>
+            <g class="rock" id="rock">
+              <!-- the table: top, frame, legs -->
+              <rect class="top-edge" x="26" y="214" width="308" height="16" rx="5"/>
+              <rect class="top-slab" x="26" y="206" width="308" height="14" rx="5"/>
+              <g class="label-sg"><rect x="138" y="190" width="84" height="16" rx="3" fill="var(--accent)"/><text x="180" y="202" text-anchor="middle" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="900" font-size="11" fill="var(--on-accent)">SimpleGrid</text></g>
+              <rect class="frame" x="60" y="230" width="240" height="10" rx="3"/>
+              <rect class="frame" x="70" y="230" width="16" height="216"/>
+              <rect class="frame-hi" x="72" y="230" width="4" height="216"/>
+              <rect class="frame" x="274" y="230" width="16" height="216"/>
+              <rect class="frame-hi" x="276" y="230" width="4" height="216"/>
+              <rect class="foot" x="64" y="444" width="28" height="8" rx="3"/>
+              <rect class="foot" x="268" y="444" width="28" height="8" rx="3"/>
+              <!-- SimpleGrid: the leveling glide that reaches the real floor -->
+              <rect class="glide" x="270" y="452" width="24" height="22" rx="3"/>
+              <!-- what gets set down on it -->
+              <g class="tray" id="tray">
+                <rect class="tray-lip" x="110" y="196" width="140" height="10" rx="4"/>
+                <rect class="tray-body" x="116" y="190" width="128" height="10" rx="4"/>
+                <rect class="cup" x="196" y="150" width="30" height="40" rx="4"/>
+                <rect class="cup-band" x="196" y="164" width="30" height="8"/>
+                <path class="spill" d="M226 196C250 196 262 204 290 206L300 214H232Z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The tabletop: your ERP</span></h3>
+            <p id="topText">Flat and level, the way the system sees it.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The floor: your floor</span></h3>
+            <p id="bottomText">Not flat. Never has been.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Set the tray down</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The top says level. The floor doesn’t agree. Set the tray down, or tap the table to lean on it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The catalog can say what it likes. <span>The inspection report has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include report.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture too: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Materials:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">SHIP BY: BEFORE YOUR NEXT ERP RENEWAL<br>MODEL 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about {{co_name}} comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll rebuild. The rest of the showroom is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* -------------------------------------------------------- The table
+     The top is the ERP: level, the way the system sees it. The floor is the
+     floor, which is never level. With one leg short of it, the first real load
+     rocks the table. The usual fix is a folded spreadsheet under the leg.
+     SimpleGrid is the leveling glide: it reaches down to wherever the floor is. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), tbl = $('tbl'), rock = $('rock'), tray = $('tray');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    open:    { btn: 'Set the tray down', caption: 'The top says level. The floor doesn’t agree. Set the tray down, or tap the table to lean on it yourself.' },
+    setting: { btn: 'Setting it down…', caption: 'Looks steady, doesn’t it?' },
+    broken:  { btn: 'Level it', caption: 'And there it goes. That’s the usual ERP go-live: level in the demo, tipping by the first real load, and someone folds a spreadsheet under the leg.' },
+    leveling:{ btn: 'Leveling…', caption: 'Out comes the spreadsheet. Down comes the glide.' },
+    leveled: { btn: 'Set the tray down', caption: 'That’s SimpleGrid: it reaches all the way down to where the floor really is. Try the tray again.' },
+    done:    { btn: 'Why did the first one tip?', caption: 'One live record. Your ERP and your floor finally agree on what level means.' }
+  };
+  var ARIA = {
+    open: tbl.getAttribute('aria-label'),
+    done: 'A table standing level on an uneven floor, its right leg on a leveling glide, with a tray set on it.'
+  };
+  var phase = 'open', leveled = false, busy = false, timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'setting' || next === 'leveling';
+    caption.textContent = COPY[next].caption;
+  }
+  // Rest the table: on its short leg's corner, or level on the glide.
+  function lean(deg){ rock.style.transform = 'rotate(' + deg + 'deg)'; }
+
+  function setDown(){
+    busy = true;
+    setPhase('setting');
+    tray.style.transform = 'translateY(-150px)';
+    tray.style.opacity = '0';
+    tray.getBoundingClientRect();
+    tray.style.opacity = '1';
+    tray.style.transform = '';
+    return wait(560).then(function(){
+      if (leveled){ lean(0); return wait(500).then(function(){ busy = false; complete(); }); }
+      // The weight lands; the short leg drops to the floor and everything slides.
+      lean(3.4);
+      return wait(320).then(function(){
+        tbl.classList.add('spilled');
+        tray.style.transform = 'translate(46px,-6px) rotate(5deg)';
+        return wait(1100).then(function(){
+          tbl.classList.add('shimmed');
+          tbl.classList.remove('spilled');
+          tray.style.opacity = '0';
+          lean(0);
+          return wait(500).then(function(){
+            tray.style.transform = '';
+            busy = false;
+            setPhase('broken');
+          });
+        });
+      });
+    });
+  }
+
+  function level(){
+    busy = true;
+    setPhase('leveling');
+    leveled = true;
+    tbl.classList.add('leveled');
+    later(function(){ busy = false; setPhase('leveled'); }, 900);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The tabletop: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'Flat and level, the way the system sees it.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The floor: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks. The shim too.' : 'Not flat. Never has been.';
+  }
+
+  function complete(){
+    tbl.classList.add('is-done');
+    setCallouts(true);
+    setPhase('done');
+    tbl.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, tbl, 'b', '.tbl');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    busy = false; leveled = false;
+    tbl.classList.remove('leveled', 'shimmed', 'spilled', 'is-done');
+    tray.style.transform = ''; tray.style.opacity = '';
+    lean(1.6);
+    setCallouts(false);
+    tbl.setAttribute('aria-label', ARIA.open);
+    setPhase('open');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, tbl, 'a', '.tbl');
+  }
+
+  btn.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'open' || phase === 'leveled') setDown();
+    else if (phase === 'broken') level();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  // Lean on it yourself: a tap rocks it while the leg is short.
+  tbl.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'open'){ busy = true; lean(3.4); later(function(){ lean(1.6); busy = false; }, 300); }
+    else if (phase === 'broken') level();
+    else if (phase === 'leveled') setDown();
+  });
+  resetBtn.addEventListener('click', startOver);
+  // At rest, the table sits a little crooked on its short leg.
+  tray.style.opacity = '0';
+  lean(1.6);
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Steel tube', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Welder 2 is down!',
+    'District: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Tube truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which color?',
+    'QC hold: lot 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'School starts Monday!',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Weld cell 3: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Tube PO is ready for your OK',
+    'QC: Lot 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

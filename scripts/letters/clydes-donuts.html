@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Take a bite, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes donuts for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/{{company}}.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="{{theme}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, take a bite.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes donuts for a living.">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A donut tagged jelly next to a piping bag of jelly, beside the words: {{first}}, you make over 10 million donuts a week.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, take a bite.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes donuts for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* Clyde’s colors: chocolate-brown type, orange headlines and buttons, frosting pink. */
+:root{
+  --brand:#532C1B;--brand-press:#3E2013;--brand-deep:#28140B;
+  --accent:#F08321;--accent-soft:#FDE0C4;--accent-edge:#A8550F;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#532C1B;--on-accent-soft:rgba(83,44,27,.86);
+  --tint:#FFF1E4;--pale:#FFFBF7;--ink:#3A1F12;--alert:#C8102E;--marker:#FDE0C4;--h2-hi:#C25E12;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--field:#FF8FCB;--on:#532C1B;--on-soft:rgba(83,44,27,.86);--hi:#8A2A63;--btn-bg:#532C1B;--btn-fg:#fff;--btn-edge:#28140B;--focus:#532C1B}
+h1{font-weight:900;letter-spacing:-.02em}
+h2{letter-spacing:-.018em}
+.meet{--meet-ink:#532C1B}
+
+/* --------------------------------------------------------- The donut */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.dnt{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.dnt.is-done{cursor:default}
+.dnt svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.plate{fill:#F4EEE6}
+.plate-rim{fill:none;stroke:#DCD2C4;stroke-width:3}
+.crust{fill:#D58E3B}
+.crust-dk{fill:#B26E26}
+.crumb{fill:#F3DDB2}
+.cavity{fill:#B98A4F;transition:fill .2s}
+.dnt.filled .cavity{fill:#C8102E}
+.jelly-hi{fill:#EE5A73;opacity:0}
+.dnt.filled .jelly-hi{opacity:1}
+.sugar circle{fill:#fff;opacity:.9}
+.bite{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .16s cubic-bezier(.3,1.5,.6,1)}
+.dnt.bitten .bite{transform:scale(1)}
+.ooze{fill:#C8102E;opacity:0;transform:translateY(-8px);transition:opacity .3s .2s,transform .7s cubic-bezier(.3,0,.3,1) .2s}
+.dnt.filled.bitten .ooze{opacity:1;transform:none}
+.donut{transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .4s}
+.donut.away{transform:translateX(-260px) rotate(-30deg);opacity:0}
+.donut.plump{transform:scale(1.035)}
+.tag-stick{stroke:#E9D8B8;stroke-width:3;stroke-linecap:round}
+.tag-paper{fill:#fff}
+.tag-text{font:900 13px/1 var(--display);fill:#C8102E;letter-spacing:.08em}
+.bag{transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.dnt.filling .bag{transform:translate(-36px,58px) rotate(-12deg)}
+.bag-film{fill:rgba(255,255,255,.75);stroke:rgba(255,255,255,.95);stroke-width:2}
+.bag-jelly{fill:#C8102E;transform-box:fill-box;transform-origin:50% 100%;transition:transform .5s ease .3s}
+.dnt.filled .bag-jelly{transform:scaleY(.45)}
+.nozzle{fill:#BFC6CC}
+.callout-bag{top:4%}
+.callout-tag{top:47%}
+.callout-gap{top:calc(38% - 15px)}
+.callout-tag h3 i{background:#fff}
+.callout-bag h3 i{background:#C8102E}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.12)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include label.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Made fresh for {{full}},</span> <span>{{co_name}}. Batch size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make over 10 million donuts a week. <span>So here’s our software, explained as one.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="dnt hero-obj" id="dnt" role="img" aria-label="A sugared donut on a plate with a tag that says jelly, and a piping bag of jelly beside it, not in it.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <clipPath id="donutClip"><circle cx="180" cy="320" r="104"/></clipPath>
+              <mask id="biteMask">
+                <rect x="0" y="0" width="360" height="560" fill="#fff"/>
+                <g class="bite" fill="#000"><circle cx="262" cy="248" r="34"/><circle cx="232" cy="230" r="26"/><circle cx="284" cy="284" r="27"/><circle cx="250" cy="270" r="30"/></g>
+              </mask>
+            </defs>
+            <!-- the filling, still in its piping bag: the floor -->
+            <g class="bag" id="bag">
+              <path class="bag-film" d="M268 80L346 80L320 186L294 186Z"/>
+              <path class="bag-jelly" d="M276 112L338 112L318 184L296 184Z"/>
+              <path class="nozzle" d="M296 186H318L310 214H304Z"/>
+            </g>
+            <ellipse class="plate" cx="180" cy="440" rx="150" ry="36"/>
+            <ellipse class="plate-rim" cx="180" cy="436" rx="112" ry="22"/>
+            <g class="donut" id="donut">
+              <!-- what a bite shows: dough, and in the middle either nothing or jelly -->
+              <g clip-path="url(#donutClip)">
+                <circle class="crumb" cx="180" cy="320" r="104"/>
+                <ellipse class="cavity" cx="222" cy="280" rx="54" ry="36"/>
+                <ellipse class="jelly-hi" cx="210" cy="270" rx="18" ry="8"/>
+              </g>
+              <!-- the donut, sugared, with a bite out of it once someone bites -->
+              <g mask="url(#biteMask)">
+                <circle class="crust-dk" cx="180" cy="326" r="104"/>
+                <circle class="crust" cx="180" cy="318" r="100"/>
+                <g class="sugar">
+                  <circle cx="132" cy="262" r="2.4"/><circle cx="150" cy="248" r="2"/><circle cx="170" cy="240" r="2.6"/><circle cx="192" cy="238" r="2"/><circle cx="214" cy="244" r="2.4"/><circle cx="120" cy="286" r="2"/><circle cx="142" cy="276" r="2.6"/><circle cx="164" cy="262" r="2"/><circle cx="188" cy="256" r="2.4"/><circle cx="208" cy="262" r="2"/><circle cx="230" cy="262" r="2.4"/><circle cx="112" cy="312" r="2.4"/><circle cx="136" cy="300" r="2"/><circle cx="158" cy="288" r="2.4"/><circle cx="182" cy="280" r="2"/><circle cx="246" cy="290" r="2"/><circle cx="124" cy="334" r="2"/><circle cx="252" cy="318" r="2.4"/><circle cx="242" cy="344" r="2"/><circle cx="110" cy="356" r="2"/>
+                </g>
+              </g>
+              <path class="ooze" d="M286 284C292 300 300 312 296 326C292 338 282 332 284 320C286 308 280 300 276 290Z"/>
+              <!-- what it says it is: the ERP -->
+              <line class="tag-stick" x1="128" y1="250" x2="104" y2="176"/>
+              <g transform="rotate(-8 92 160)"><rect class="tag-paper" x="50" y="146" width="84" height="32" rx="4"/><text class="tag-text" x="92" y="167" text-anchor="middle">JELLY</text></g>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-bag">
+            <h3><i></i><span id="bagTitle">The filling: your floor</span></h3>
+            <p id="bagText">What’s really inside, on Excel, whiteboards and phones.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-tag">
+            <h3><i></i><span id="tagTitle">The tag: your ERP</span></h3>
+            <p id="tagText">What the system says is inside.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Take a bite</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The tag says jelly. The jelly is still in the bag. Take a bite, or tap the donut and see for yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of the box can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include facts.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about {{co_name}} comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll fry a fresh batch. The rest of the bakery is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* ---------------------------------------------------------- The donut
+     The tag says jelly: that's the ERP. The jelly, still in its piping bag,
+     is what's really there: the floor. The first bite tells you which is
+     true. The filler is SimpleGrid: once it's in, the tag and the inside agree. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), dnt = $('dnt'), donut = $('donut');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+  var COPY = {
+    whole:   { btn: 'Take a bite', caption: 'The tag says jelly. The jelly is still in the bag. Take a bite, or tap the donut and see for yourself.' },
+    biting:  { btn: 'Chewing…', caption: 'Looks like a jelly donut, doesn’t it?' },
+    broken:  { btn: 'Fill it', caption: 'Empty. And there it goes. That’s the usual ERP go-live: it looks filled on launch day, and the first real bite says otherwise.' },
+    filling: { btn: 'Filling…', caption: 'In goes the filling. That’s SimpleGrid.' },
+    filled:  { btn: 'Take a bite', caption: 'Now the tag and the inside should agree. Take a bite.' },
+    done:    { btn: 'Why was the first one empty?', caption: 'One live record. What the tag says and what’s inside finally match.' }
+  };
+  var ARIA = {
+    whole: dnt.getAttribute('aria-label'),
+    done: 'A jelly donut with a bite out of it and jelly showing, the tag on it now telling the truth.'
+  };
+  var phase = 'whole', busy = false, queued = false, timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'biting' || next === 'filling';
+    caption.textContent = COPY[next].caption;
+  }
+
+  function bite(){
+    busy = true;
+    setPhase('biting');
+    dnt.classList.add('bitten');
+    var filled = dnt.classList.contains('filled');
+    return wait(filled ? 900 : 1000).then(function(){
+      if (filled){ busy = false; complete(); return; }
+      setPhase('broken');
+      // A fresh one takes the bitten one's place.
+      return wait(1400).then(function(){
+        donut.classList.add('away');
+        return wait(450).then(function(){
+          donut.style.transition = 'none';
+          dnt.classList.remove('bitten');
+          donut.classList.remove('away');
+          donut.style.transform = 'translateX(260px)';
+          donut.getBoundingClientRect();
+          donut.style.transition = '';
+          donut.style.transform = '';
+          busy = false;
+          // A Fill it pressed while the fresh one rolled in still counts.
+          if (queued){ queued = false; fill(); }
+        });
+      });
+    });
+  }
+
+  function fill(){
+    busy = true;
+    setPhase('filling');
+    dnt.classList.add('filling');
+    later(function(){ donut.classList.add('plump'); dnt.classList.add('filled'); }, 550);
+    later(function(){ donut.classList.remove('plump'); dnt.classList.remove('filling'); }, 1100);
+    later(function(){ busy = false; setPhase('filled'); }, 1300);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('tagTitle').textContent = final ? 'Your ERP' : 'The tag: your ERP';
+    $('tagText').textContent = final ? 'Still keeping the books.' : 'What the system says is inside.';
+    $('bagTitle').textContent = final ? 'Your spreadsheets' : 'The filling: your floor';
+    $('bagText').textContent = final ? 'Retired, with thanks.' : 'What’s really inside, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    dnt.classList.add('is-done');
+    setCallouts(true);
+    setPhase('done');
+    dnt.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, dnt, 'b', '.dnt');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    busy = false; queued = false;
+    dnt.classList.remove('bitten', 'filled', 'filling', 'is-done');
+    donut.classList.remove('away', 'plump');
+    donut.style.transform = '';
+    setCallouts(false);
+    dnt.setAttribute('aria-label', ARIA.whole);
+    setPhase('whole');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, dnt, 'a', '.dnt');
+  }
+
+  btn.addEventListener('click', function(){
+    if (busy){ queued = phase === 'broken'; return; }
+    if (phase === 'whole' || phase === 'filled') bite();
+    else if (phase === 'broken') fill();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  // Or bite it yourself.
+  dnt.addEventListener('click', function(){
+    if (busy){ queued = phase === 'broken'; return; }
+    if (phase === 'whole' || phase === 'filled') bite();
+    else if (phase === 'broken') fill();
+  });
+  resetBtn.addEventListener('click', startOver);
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Flour', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Fryer 2 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Flour truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QC hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 3 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Flour PO is ready for your OK',
+    'QC: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

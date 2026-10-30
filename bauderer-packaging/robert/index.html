@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seal the bag, Robert | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who packs food for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/bauderer-packaging.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#FFFEF8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="https://simplegrid.ai/bauderer-packaging/robert/">
+<meta property="og:title" content="Robert, seal the bag.">
+<meta property="og:description" content="SimpleGrid, explained to someone who packs food for a living.">
+<meta property="og:image" content="https://simplegrid.ai/bauderer-packaging/og-robert.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An open bag of candy hanging between seal jaws, beside the words: Robert, you pack food for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Robert, seal the bag.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who packs food for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/bauderer-packaging/og-robert.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+/* The site's self-hosted faces, so nothing here calls out to a third party. */
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('/assets/fonts/merriweather-latin.woff2') format('woff2')}
+@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/albert-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
+
+/* Each template sets its company's palette on :root. These read it:
+   --brand --brand-press --brand-deep   their main color, darker, darkest
+   --accent --accent-soft --accent-edge  the color the hero ends on
+   --on-brand --on-brand-soft --on-accent --on-accent-soft   text on those
+   --tint --pale --ink --alert            light fill, page, type, the "No link" red
+   --marker                               the highlighter in the ERP panel
+   and optionally --display, --dw (its weight; a single-weight face must not be faux-bolded) and --h2-hi. */
+:root{
+  --ink-70:rgba(26,26,26,.74);
+  --ink-55:rgba(26,26,26,.62);
+  --display:'Merriweather',Georgia,'Times New Roman',serif;
+  --body:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Consolas,'SF Mono',monospace;
+  --hand:'Bradley Hand','Noteworthy','Segoe Print','Ink Free','Comic Sans MS',cursive;
+  --dw:900;
+  --gutter:clamp(20px,5vw,56px);
+  --section:clamp(64px,9vw,128px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;font-synthesis-weight:none}
+body{margin:0;background:var(--pale);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img,svg,canvas{display:block}
+:focus-visible{outline:3px solid var(--focus,var(--brand));outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
+h2{font:var(--dw) clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
+h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
+
+/* ------------------------------------------------------------------ Hero */
+.hero,.hero-wipe{
+  --field:var(--brand);--on:var(--on-brand);--on-soft:var(--on-brand-soft);--hi:var(--accent);
+  --btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  background:var(--field);color:var(--on);
+}
+/* Where the hero ends up once the link is made. */
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:var(--accent);--on:var(--on-accent);--on-soft:var(--on-accent-soft);--hi:var(--brand-press);
+  --btn-bg:var(--brand);--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep);--focus:var(--brand-press);
+}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-inner{padding:0 var(--gutter) clamp(84px,9vw,124px);max-width:calc(1240px + 2*var(--gutter));margin-inline:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(16px,2vw,24px) 0}
+.logo{display:block;flex:none;width:clamp(138px,12vw,168px);color:inherit;border-radius:4px}
+.logo svg{width:100%;height:auto;overflow:visible}
+.bar-tag{font-size:14.5px;line-height:1.3;text-align:right;color:var(--on-soft)}
+.bar-tag span{display:inline-block}
+.bar-right{display:flex;align-items:center;gap:clamp(12px,1.6vw,22px)}
+.bar-cta{flex:none;padding:9px 15px;border-radius:9px;box-shadow:inset 0 0 0 2px currentColor;color:var(--on);font:800 15px/1 var(--body);text-decoration:none;white-space:nowrap}
+.bar-cta:hover{background:var(--on);color:var(--field);box-shadow:none}
+
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"copy art" "ctrl art";grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4vw,60px);margin-top:clamp(10px,2.4vh,30px);
+}
+.hero-copy{grid-area:copy}
+.hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+/* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
+.hero-obj{position:relative;z-index:3;flex:none}
+.hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
+h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
+h1 span{display:block;color:var(--hi)}
+.hero-sub{margin-top:clamp(16px,2vw,24px);max-width:50ch;font-size:clamp(17px,.4vw + 15px,20px);color:var(--on-soft)}
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.hero-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
+
+/* The primary button presses in like something you'd find on a line. */
+.go-btn{
+  position:relative;appearance:none;border:0;cursor:pointer;
+  padding:16px 28px 19px;border-radius:12px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font:var(--dw) 18px/1.2 var(--display);text-decoration:none;display:inline-block;
+  box-shadow:0 5px 0 var(--btn-edge);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.go-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
+.go-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
+.go-btn:disabled{cursor:default;opacity:.7;transform:none;box-shadow:0 5px 0 var(--btn-edge)}
+.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* Labels beside the hero object. Each template places them. */
+.callouts{position:relative;width:clamp(150px,14.5vw,196px);flex:none}
+.callout{position:absolute;left:0;right:0}
+.callout-gap{position:absolute;left:0;padding:6px 12px;border-radius:999px;background:var(--alert);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:clamp(14px,1.6vw,24px);border-top:2px dashed var(--on-soft)}
+.callout-gap[hidden]{display:none}
+.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
+.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+
+.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+
+@media (max-width:980px){
+  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
+  .hero-copy{display:contents}
+  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
+  .hero-art{order:2;margin-top:20px}
+  .hero-ctrl{order:3;margin-top:24px}
+  .hero-sub{order:4;margin-top:6px}
+  .hero-caption{min-height:4.6em;font-size:16.5px}
+  .bar{gap:10px}
+  .bar-tag{font-size:12px}
+  .logo{width:124px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
+  .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
+  .callout p{font-size:13.5px;line-height:1.36}
+  .callout h3{font-size:15px;gap:7px}
+  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .bar-tag{display:none}
+}
+@media (max-width:350px){
+  .callout h3{font-size:13.5px}
+  .callout p{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+
+/* Bauderer’s site: off-white pages, all-caps headlines in charcoal with the key words in orange.
+   The hero starts there and ends on their orange band. */
+:root{
+  --brand:#58595B;--brand-press:#3F4042;--brand-deep:#2A2B2C;
+  --accent:#F15F22;--accent-soft:#FCD9C8;--accent-edge:#A63D10;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#0D2123;--on-accent-soft:rgba(13,33,35,.82);
+  --tint:#F4F1EA;--pale:#FFFEF8;--ink:#0D2123;--alert:#C2410C;--marker:#FCD9C8;--h2-hi:#C2410C;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+.hero,.hero-wipe{
+  --field:#FFFEF8;--on:#58595B;--on-soft:rgba(60,61,63,.84);--hi:#C2410C;
+  --btn-bg:#C2410C;--btn-fg:#fff;--btn-edge:#7C2A08;--focus:#C2410C;
+}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:#F15F22;--on:#0D2123;--on-soft:rgba(13,33,35,.86);--hi:#fff;
+  --btn-bg:#0D2123;--btn-fg:#fff;--btn-edge:#000;--focus:#0D2123;
+}
+h1,h2{text-transform:uppercase;letter-spacing:-.01em}
+h1{line-height:1.08}
+.bar-cta{color:var(--on)}
+.meet{--meet-ink:#0D2123;--meet-btn:#0D2123}
+.mouth{fill:#2A2B2C}
+h1{font-weight:900;letter-spacing:-.022em}
+h2{letter-spacing:-.02em}
+
+/* ------------------------------------------------------- The bagger */
+.hero-art{--art-w:min(330px,28vw,calc((100vh - 130px)/1.6))}
+.bagger{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.bagger svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bag-g{cursor:grab;touch-action:none}
+.bag-g:active{cursor:grabbing}
+.bagger.dropping .bag-g,.bagger.is-done .bag-g{cursor:default}
+.film{fill:rgba(255,255,255,.2);stroke:rgba(255,255,255,.78);stroke-width:2.2;stroke-linejoin:round}
+.film-hi{fill:none;stroke:rgba(255,255,255,.55);stroke-width:5;stroke-linecap:round}
+.mouth{fill:color-mix(in srgb,var(--field) 55%,#000);transition:opacity .2s}
+.bagger.sealed .mouth{opacity:0}
+.band{fill:var(--accent)}
+.band-wave{fill:#9E5FA6}
+.band-text{fill:#1A1A1A;font:800 9.5px/1 var(--body);letter-spacing:.06em}
+.crimp{fill:rgba(255,255,255,.82)}
+.crimp-lines{stroke:rgba(0,0,0,.2);stroke-width:1.4}
+.top-seal{opacity:0;transition:opacity .25s .1s}
+.bagger.sealed .top-seal{opacity:1}
+.grid-seal{stroke:#9E5FA6;stroke-width:1.8}
+.steel{fill:#C4CBD2}
+.steel-dk{fill:#8D97A1}
+.jaw{transition:transform .32s cubic-bezier(.6,0,.4,1)}
+.jaw-l{transform:translateX(-82px)}
+.jaw-r{transform:translateX(82px)}
+.bagger.crimping .jaw{transform:none}
+.heater{fill:var(--accent)}
+.bagger.crimping .heater{fill:#FF7A1A}
+.case-in{fill:#7A5A33}
+.case-front{fill:#C89B5E}
+.case-edge{fill:#B5864A}
+.case-flap{fill:#D5AB72}
+.ship-label{opacity:0;transform:translateY(6px);transition:opacity .3s,transform .4s cubic-bezier(.2,.9,.3,1.3)}
+.bagger.closed .ship-label{opacity:1;transform:none}
+.ship-label rect{fill:#fff}
+.ship-label .bars{fill:#1A1A1A}
+.ship-label text{fill:#1A1A1A;font:900 12px/1 var(--display)}
+.callout-bottom{top:45%}
+.callout-gap{top:calc(27% - 15px)}
+.callout-top h3 i{background:rgba(255,255,255,.4);box-shadow:0 0 0 1.5px #fff}
+.callout-bottom h3 i{background:#F8485E}
+.callout-top{top:2%}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.26)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+/* ------------------------------------- The gap between the ERP and the floor */
+.gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
+.stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
+.panel-erp h3,.panel-floor h3{font:var(--dw) clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
+
+/* The ERP is deliberately calm. That's the joke, and the problem. */
+.panel-erp{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
+.erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
+.stage[data-state=chaos] .erp-status{animation:smug .8s ease-in-out 3}
+@keyframes smug{50%{transform:scale(1.09)}}
+.erp-rows{margin-top:clamp(16px,2vw,28px);display:grid;gap:clamp(12px,1.5vw,21px)}
+.erp-rows li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:clamp(15.5px,.3vw + 14px,18px);line-height:1.3}
+.erp-rows span{flex:none;color:var(--ink-55)}
+.erp-rows b{font-weight:700;text-align:right}
+.erp-rows s{font-weight:400;color:var(--ink-55)}
+.erp-rows li.hit b{
+  background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 100%/0 100%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
+  animation:marker .42s ease-out var(--d,0s) forwards;
+}
+@keyframes marker{to{background-size:100% 100%}}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--alert);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
+.erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
+
+/* The broken pipe between them. Once linked, it joins up and flows. */
+.link{position:relative;display:grid;place-items:center}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:color-mix(in srgb,var(--brand) 26%,transparent);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub-a{left:0}
+.stub-b{right:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:color-mix(in srgb,var(--brand) 55%,transparent);opacity:0}
+.stub-a::after{right:1px}
+.stub-b::after{left:1px}
+.stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
+.stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
+.link-no{position:relative;z-index:2;background:var(--alert);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--brand-press);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.link-yes svg{width:56%;height:56%}
+.stage[data-state=linked] .link-no{display:none}
+.stage[data-state=linked] .link-yes{display:grid}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+@keyframes pipe{to{background-position:28px 0}}
+
+/* The floor: where the morning actually happens. */
+.panel-floor{
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
+  display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
+}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
+.floor-calm{flex:1;display:grid;place-items:center}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:var(--dw) clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.dome{
+  width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
+  box-shadow:0 0 0 9px var(--accent),0 8px 0 9px var(--accent-edge),0 18px 26px 9px rgba(0,0,0,.55);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--accent),0 6px 0 9px var(--accent-edge),0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--accent),0 1px 0 9px var(--accent-edge),0 5px 9px 9px rgba(0,0,0,.55)}
+.pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
+.stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
+.stage:not([data-state=calm]) .floor-calm{display:none}
+.n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
+@keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
+.n-sticky{background:#FFD84D;color:#2B2000}
+.n-pink{background:#FF9FB4;color:#3D0012}
+.n-board{background:#fff;color:#C4163F}
+.n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
+.n-file{background:#fff;color:#1A1A1A}
+.n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
+.n-mail{background:#E9EEF6;color:#1A1A1A}
+.n-call{background:#2F6FE0;color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:#C4163F;color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n svg{flex:none;width:15px;height:15px}
+.n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
+@keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
+.stage[data-state=linked] .tidy{display:grid}
+.tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
+.tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.tidy i svg{width:14px;height:14px}
+@keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
+.stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
+#linkBtn,#stageReset,#stageMeet{display:none}
+.stage[data-state=messy] #linkBtn{display:inline-block}
+.stage[data-state=linked] #stageReset,.stage[data-state=linked] #stageMeet{display:inline-block}
+.stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
+.fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
+
+@media (max-width:980px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
+}
+@media (max-width:620px){
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+}
+@media (max-width:350px){
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
+}
+/* ------------------------------------------------- The back of the pack */
+.back{background:var(--brand);color:var(--on-brand);padding:var(--section) 0;--focus:var(--accent)}
+.back h2{color:var(--on-brand)}
+.back h2 span{color:var(--accent)}
+.label{
+  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--brand-press);
+  border-radius:16px;padding:clamp(18px,3vw,40px);
+  display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:clamp(28px,4vw,60px);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
+}
+/* The panel follows the FDA layout: heavy rules, heavy title, nothing cute about the structure. */
+.facts{border:2.5px solid var(--ink);padding:8px 11px 10px;font-family:'Helvetica Neue',Helvetica,var(--body)}
+.facts-title{font:900 clamp(37px,3.3vw + 20px,50px)/1 'Helvetica Neue',Helvetica,var(--body);letter-spacing:-.022em;white-space:nowrap}
+.facts-serving{margin-top:5px;padding-bottom:6px;font-size:15.5px;line-height:1.28}
+.facts-serving strong{font-weight:800}
+.rule-10{height:10px;background:var(--ink)}
+.rule-5{height:5px;background:var(--ink)}
+.facts-big{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:4px 0 3px;font-weight:900}
+.facts-big span{font-size:24px;line-height:1.05;letter-spacing:-.012em}
+.facts-big b{font-size:clamp(30px,2.4vw + 20px,37px);line-height:1;font-weight:900;white-space:nowrap;letter-spacing:-.02em}
+.facts table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.25}
+.facts th,.facts td{padding:5px 0;border-top:1px solid rgba(26,26,26,.55);text-align:right;font-weight:400;white-space:nowrap}
+.facts thead th{border-top:0;padding:3px 0;font-size:13.5px;font-weight:800}
+.facts th:first-child{text-align:left;font-weight:800;white-space:normal}
+.facts thead th:first-child{font-weight:400}
+.facts td{width:68px;padding-left:8px}
+.facts td:last-child{font-weight:900}
+.facts-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0 6px;font-weight:800;font-size:16px;line-height:1.2}
+.facts-saved b{font-weight:900;white-space:nowrap}
+.facts-foot{padding-top:6px;font-size:13px;line-height:1.3}
+.facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
+.margin-note{color:var(--brand-press);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
+.margin-note svg{position:absolute;left:0;top:-4px;width:32px;height:38px}
+
+.label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
+.label-copy > * + *{margin-top:18px}
+.label-copy strong{font-weight:800}
+.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;margin-top:auto;padding-top:22px}
+.barcode{display:block;text-decoration:none;color:var(--ink);flex:none;border-radius:4px}
+.barcode svg{width:190px;height:56px}
+.barcode span{display:block;margin-top:3px;text-align:center;font:500 14.5px/1 var(--body);letter-spacing:.11em}
+.inkjet{font:600 15.5px/1.42 var(--mono);letter-spacing:.05em;color:#222;max-width:27ch}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .inkjet{
+    color:transparent;
+    background:radial-gradient(circle at center,#000 54%,transparent 60%) 0 0/2.1px 2.1px;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+
+@media (max-width:980px){
+  .label{grid-template-columns:minmax(0,1fr)}
+  .facts{max-width:430px}
+}
+@media (max-width:620px){
+  .lockup{align-items:center}
+  .facts-title{font-size:min(46px,calc((100vw - 104px)/7.95))}
+  .facts-big span{font-size:20px}
+  .facts-saved{flex-direction:column;gap:1px}
+}
+/* ------------------------------------------------------------- The ask */
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
+
+/* -------------------------------------------------------------- Footer */
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
+.foot .logo{width:150px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
+
+@media (max-width:980px){
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
+}
+@media (max-width:620px){
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Packed to order for Robert Gonnella,</span> <span>Bauderer Packaging. Run size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Robert, you pack food for a living. <span>So here’s our software, explained as one pouch.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="bagger hero-obj" id="bagger" role="img" aria-label="A clear bag of candy hanging open between two seal jaws, above an empty shipping case.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <clipPath id="bagClip"><path d="M110 132Q180 126 250 132L256 318Q180 328 104 318Z"/></clipPath>
+              <pattern id="gridSeal" width="8" height="8" patternUnits="userSpaceOnUse"><path class="grid-seal" d="M0 .9h8M.9 0v8" fill="none"/></pattern>
+            </defs>
+
+            <!-- the case, back half -->
+            <rect class="case-in" x="84" y="430" width="192" height="116"/>
+            <path class="case-flap flap-l" d="M84 430L40 392H84Z"/>
+            <path class="case-flap flap-r" d="M276 430L320 392H276Z"/>
+
+            <!-- the filler -->
+            <path class="steel" d="M140 0H220L208 64H152Z"/>
+            <rect class="steel-dk" x="160" y="62" width="40" height="58"/>
+            <rect class="steel" x="166" y="62" width="10" height="58" opacity=".7"/>
+
+            <!-- the bag: clear film is your ERP, the candy is your floor -->
+            <g class="bag-g" id="bagG">
+              <g id="bag">
+                <path class="film" d="M110 132Q180 126 250 132L256 318Q180 328 104 318Z"/>
+                <g clip-path="url(#bagClip)" id="inside"></g>
+                <g clip-path="url(#bagClip)">
+                  <rect class="band" x="100" y="252" width="160" height="40"/>
+                  <path class="band-wave" d="M100 262C130 252 150 276 180 266S230 254 260 264V270C230 260 210 282 180 272S130 260 100 270Z"/>
+                  <text class="band-text" x="180" y="287" text-anchor="middle">NET WT 12 OZ</text>
+                </g>
+                <path class="film-hi" d="M124 150C120 200 120 260 124 300"/>
+                <rect class="crimp" x="100" y="314" width="160" height="20" rx="2"/>
+                <path class="crimp-lines" d="M108 317v14M116 317v14M124 317v14M132 317v14M140 317v14M148 317v14M156 317v14M164 317v14M172 317v14M180 317v14M188 317v14M196 317v14M204 317v14M212 317v14M220 317v14M228 317v14M236 317v14M244 317v14M252 317v14"/>
+                <ellipse class="mouth" cx="180" cy="132" rx="70" ry="5"/>
+                <g class="top-seal">
+                  <rect class="crimp" x="104" y="118" width="152" height="24" rx="2"/>
+                  <rect x="104" y="118" width="152" height="24" rx="2" fill="url(#gridSeal)"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- the seal jaws: SimpleGrid -->
+            <g class="jaw jaw-l"><rect class="steel-dk" x="86" y="112" width="94" height="36" rx="6"/><rect class="heater" x="168" y="112" width="12" height="36" rx="3"/><rect class="steel" x="92" y="118" width="62" height="5" rx="2.5" opacity=".6"/></g>
+            <g class="jaw jaw-r"><rect class="steel-dk" x="180" y="112" width="94" height="36" rx="6"/><rect class="heater" x="180" y="112" width="12" height="36" rx="3"/><rect class="steel" x="206" y="118" width="62" height="5" rx="2.5" opacity=".6"/></g>
+
+            <!-- the case, front half, and whatever lands on the floor -->
+            <rect class="case-front" x="84" y="468" width="192" height="80"/>
+            <rect class="case-edge" x="84" y="466" width="192" height="6"/>
+            <g class="ship-label">
+              <rect x="128" y="482" width="104" height="52" rx="3"/>
+              <g transform="translate(136 489) scale(.42)" fill="none" stroke="#1A1A1A"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="4"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g>
+              <text x="158" y="502">SimpleGrid</text>
+              <path class="bars" d="M136 512h2v16h-2zM140 512h1v16h-1zM143 512h3v16h-3zM148 512h1v16h-1zM151 512h2v16h-2zM155 512h1v16h-1zM158 512h3v16h-3zM163 512h1v16h-1zM166 512h2v16h-2zM170 512h1v16h-1zM173 512h3v16h-3zM178 512h2v16h-2zM182 512h1v16h-1zM185 512h2v16h-2zM189 512h1v16h-1zM192 512h3v16h-3zM197 512h1v16h-1zM200 512h2v16h-2zM204 512h1v16h-1zM207 512h3v16h-3zM212 512h1v16h-1zM215 512h2v16h-2zM219 512h1v16h-1zM222 512h2v16h-2z"/>
+            </g>
+            <g id="loose"></g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The bag: your ERP</span></h3>
+            <p id="topText">What the system says is inside.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">What’s in it: your floor</span></h3>
+            <p id="bottomText">What’s really inside, on Excel, whiteboards and phones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Ship it</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Nothing holds what’s inside to what the bag says. Ship it, or grab the bag and give it a swing.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<section class="gap" id="gap">
+  <div class="wrap">
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
+
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
+        </div>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
+      </div>
+
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg></i>SimpleGrid</span>
+      </div>
+
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
+        </div>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="floor-do">
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend numbers.</p>
+  </div>
+</section>
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of the pack can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <div class="facts">
+          <!-- Same numbers as report.html. Change both. -->
+          <h3 class="facts-title">Operations Facts</h3>
+          <p class="facts-serving"><strong>Serving size:</strong> 1 deployment<br>6 plants, 1.2 million sq ft</p>
+          <div class="rule-10"></div>
+          <div class="facts-big"><span>Excel files<br>to run planning</span><b>550 → 1</b></div>
+          <div class="rule-5"></div>
+          <table>
+            <thead><tr><th scope="col">Amount per serving</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Weekly planning cycle</th><td>40 hrs</td><td>2 hrs</td></tr>
+              <tr><th scope="row">On-time delivery</th><td>70%</td><td>90%</td></tr>
+              <tr><th scope="row">Material wastage</th><td>1.5%</td><td>0.1%</td></tr>
+              <tr><th scope="row">Gross margin</th><td>19%</td><td>24%</td></tr>
+            </tbody>
+          </table>
+          <div class="rule-10"></div>
+          <div class="facts-saved"><span>Saved on wastage alone</span><b>About $200,000 a year</b></div>
+          <div class="rule-5"></div>
+          <p class="facts-foot">Not a significant source of slides, rip-and-replace or GL migration.</p>
+        </div>
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>Robert, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at your plant in Addison. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Addison.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">P.S. Your site says the food rooms were built for fast changeovers. SimpleGrid is how the plan changes over just as fast.</p>
+    </div>
+    <div class="faces">
+      <figure class="polaroid polaroid-a">
+        <img src="/assets/letters/mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <figcaption>Mukund Agarwal</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-b">
+        <img src="/assets/letters/aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <figcaption>Aditi Puri Batra</figcaption>
+      </figure>
+      <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
+      <p class="who"><strong>Advisor.</strong> Former Country Head of QuickBooks/Intuit India. Ex-Amazon and Google in the US.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+    <p>Everything we know about Bauderer Packaging comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll repack. The rest of the line is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+/* Shared by every hero: small helpers, the wipe into the end-state colors,
+   and the barcode on the back of the label. */
+var SG = (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+
+  /* The end state spreads out from the hero object and takes the whole hero
+     with it. The clone carries the other colorway, so the type stays legible
+     as the edge passes. `skip` hides whatever shouldn't be painted twice. */
+  function wipeTo(hero, from, theme, skip){
+    if (reduce){ hero.dataset.theme = theme; return; }
+    var r = from.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
+    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
+    var over = document.createElement('div');
+    over.className = 'hero-wipe';
+    over.dataset.theme = theme;
+    over.setAttribute('aria-hidden', 'true');
+    over.inert = true;
+    var inner = hero.querySelector('.hero-inner').cloneNode(true);
+    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+    if (skip) inner.querySelectorAll(skip).forEach(function(el){ el.style.visibility = 'hidden'; });
+    over.appendChild(inner);
+    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
+    hero.appendChild(over);
+    over.getBoundingClientRect();
+    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
+    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      hero.dataset.theme = theme;
+      over.remove();
+    };
+    over.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+
+  /* The barcode is real: Code 128 for 7732804485, in bar and space widths. */
+  function barcode(svg){
+    var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
+    for (var i = 0; i < CODE.length; i++){
+      var width = +CODE.charAt(i);
+      if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="currentColor"/>';
+      x += width;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 26');
+    svg.innerHTML = bars;
+  }
+
+  /* Runs `frame(dt)` only while `el` is on screen and the tab is visible, so
+     an idle hero costs nothing once it's scrolled away. */
+  function loop(el, frame){
+    var raf = 0, last = 0, visible = true;
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(.05, (now - last)/1000 || .016);
+      last = now;
+      frame(dt);
+    }
+    function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        visible ? run() : halt();
+      }).observe(el);
+    }
+    run();
+  }
+
+  return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
+})();
+</script>
+<script>
+(function(){
+  /* --------------------------------------------------------- The bag
+     The bag says what's inside: that's the ERP. The candy is what's really
+     inside: that's the floor. With the top open, nothing holds the two
+     together, and the first bump puts the candy on the floor. The seal jaws
+     are SimpleGrid. Look at the seal they leave. */
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), bagger = $('bagger'), bagG = $('bagG'), bag = $('bag');
+  var inside = $('inside'), loose = $('loose');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce, clamp = SG.clamp;
+
+  var COPY = {
+    open:    { btn: 'Ship it', caption: 'Nothing holds what’s inside to what the bag says. Ship it, or grab the bag and give it a swing.' },
+    falling: { btn: 'Shipping…', caption: 'Looks packed, doesn’t it?' },
+    broken:  { btn: 'Seal it', caption: 'And there it goes. That’s the usual ERP go-live: packed up for the launch, and months later the floor is back on Excel.' },
+    sealing: { btn: 'Sealing…', caption: 'In go the jaws.' },
+    sealed:  { btn: 'Ship it', caption: 'That’s SimpleGrid. Look closely at the seal. Now ship it.' },
+    done:    { btn: 'Why did the first one spill?', caption: 'One live record. What the bag says and what’s inside finally match, and they stay that way.' }
+  };
+  var ARIA = {
+    open: bagger.getAttribute('aria-label'),
+    done: 'A bag of candy sealed shut with a grid-patterned seal, packed in a taped shipping case.'
+  };
+  var COLORS = ['#FFCD00', '#9E5FA6', '#F8485E', '#FFFFFF', '#FFCD00', '#F8485E', '#9E5FA6', '#FFFFFF'];
+  // Where each piece sits inside the bag, settled from the bottom up.
+  var SPOTS = [];
+  (function(){
+    var rows = [[312, 9], [298, 9], [284, 8], [270, 8], [256, 7], [242, 6]];
+    rows.forEach(function(r, j){
+      for (var i = 0; i < r[1]; i++) SPOTS.push([180 + (i - (r[1] - 1)/2)*15.5 + (j % 2 ? 5 : -3), r[0] - (i % 3)*1.5]);
+    });
+  })();
+
+  var phase = 'open', sealed = false, timers = [];
+  var swing = { a: 0, v: 0, target: 0 }, drop = 0, drag = null, spilled = 0, cool = 0;
+  var bits = [];   // candy that's left the bag
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'falling' || next === 'sealing';
+    caption.textContent = COPY[next].caption;
+  }
+
+  function candy(x, y, i){
+    var c = document.createElementNS(NS, 'ellipse');
+    c.setAttribute('cx', x.toFixed(1));
+    c.setAttribute('cy', y.toFixed(1));
+    c.setAttribute('rx', 7.8);
+    c.setAttribute('ry', 6.4);
+    c.setAttribute('fill', COLORS[i % COLORS.length]);
+    c.setAttribute('stroke', 'rgba(0,0,0,.18)');
+    return c;
+  }
+  function fill(){
+    inside.innerHTML = '';
+    SPOTS.forEach(function(p, i){ inside.appendChild(candy(p[0], p[1], i)); });
+    spilled = 0;
+  }
+
+  // Where a point inside the bag ends up on screen, given the swing and the drop.
+  function world(x, y){
+    var px = 180, py = 120, s = Math.sin(swing.a), c = Math.cos(swing.a);
+    var dx = x - px, dy = y - py;
+    return { x: px + dx*c - dy*s, y: py + dx*s + dy*c + drop };
+  }
+
+  // Throw `n` pieces out of the top of the bag, the way it's moving.
+  function toss(n, power){
+    var kids = inside.children;
+    for (var k = 0; k < n && kids.length; k++){
+      var el = kids[kids.length - 1];
+      var mouth = world(150 + Math.random()*60, 134);
+      el.remove();
+      var b = candy(mouth.x, mouth.y, spilled + k);
+      loose.appendChild(b);
+      bits.push({ el: b, x: mouth.x, y: mouth.y, vx: (Math.random() - .5)*360*power + swing.v*90, vy: -(160 + Math.random()*260)*power, rest: false });
+    }
+    spilled += n;
+  }
+
+  function frame(dt){
+    // The bag hangs from the filler and swings like it.
+    if (phase !== 'falling' && phase !== 'done'){
+      var k = drag ? 90 : 26, damp = drag ? 12 : 3.2;
+      swing.v += ((swing.target - swing.a)*k - swing.v*damp)*dt;
+      swing.a += swing.v*dt;
+      cool -= dt;
+      // An open bag swung hard throws candy. A sealed one can't.
+      if (!sealed && Math.abs(swing.v) > 3 && cool <= 0 && inside.children.length){
+        toss(2, .8);
+        cool = .22;
+        if (phase === 'open'){ setPhase('broken'); caption.textContent = 'And there it goes. That’s the usual ERP go-live: packed up for the launch, and months later the floor is back on Excel.'; }
+      }
+    }
+    bagG.setAttribute('transform', 'translate(0 ' + drop.toFixed(1) + ') rotate(' + (swing.a*57.3).toFixed(2) + ' 180 120)');
+    // Loose candy falls, bounces and settles on the floor.
+    for (var i = 0; i < bits.length; i++){
+      var b = bits[i];
+      if (b.rest) continue;
+      b.vy += 1500*dt;
+      b.x += b.vx*dt; b.y += b.vy*dt;
+      if (b.x < 12){ b.x = 12; b.vx = -b.vx*.5; }
+      if (b.x > 348){ b.x = 348; b.vx = -b.vx*.5; }
+      // The case's front edge is something to land on too.
+      var floor = (b.x > 84 && b.x < 276 && b.y < 470) ? 462 : 552;
+      if (b.y > floor){
+        b.y = floor; b.vy = -b.vy*.34; b.vx *= .72;
+        if (Math.abs(b.vy) < 50){ b.vy = 0; if (Math.abs(b.vx) < 8) b.rest = true; }
+      }
+      b.el.setAttribute('cx', b.x.toFixed(1));
+      b.el.setAttribute('cy', b.y.toFixed(1));
+    }
+  }
+
+  function ship(){
+    setPhase('falling');
+    bagger.classList.add('dropping');
+    var t = 0;
+    var fall = setInterval(function(){
+      t += .016;
+      drop = Math.min(196, 1200*t*t);
+      swing.a *= .9;
+      if (drop >= 196 || reduce){
+        drop = 196;
+        clearInterval(fall);
+        if (!sealed){
+          toss(inside.children.length, 1);
+          later(function(){ setPhase('broken'); bagger.classList.remove('dropping'); restock(); }, 1700);
+        } else {
+          // A bump, and nothing moves.
+          later(function(){ drop = 186; }, 60);
+          later(function(){ drop = 196; }, 160);
+          later(function(){ bagger.classList.add('closed'); }, 300);
+          later(complete, 900);
+        }
+      }
+    }, reduce ? 0 : 16);
+  }
+
+  // A fresh bag takes the empty one's place under the filler.
+  function restock(){
+    bits.forEach(function(b){ b.el.style.transition = 'opacity .5s'; b.el.style.opacity = '0'; });
+    later(function(){
+      loose.innerHTML = ''; bits = [];
+      drop = 0; swing.a = 0; swing.v = 0;
+      fill();
+    }, 600);
+  }
+
+  function seal(){
+    setPhase('sealing');
+    swing.target = 0;
+    bagger.classList.add('crimping');
+    later(function(){ sealed = true; bagger.classList.add('sealed'); }, 330);
+    later(function(){ bagger.classList.remove('crimping'); }, 700);
+    later(function(){ setPhase('sealed'); }, 1000);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The bag: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says is inside.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'What’s in it: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really inside, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    bagger.classList.add('is-done');
+    setCallouts(true);
+    setPhase('done');
+    bagger.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, bagger, 'b', '.bagger');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    sealed = false; drop = 0; swing.a = 0; swing.v = 0; swing.target = 0;
+    bagger.classList.remove('sealed', 'closed', 'is-done', 'dropping', 'crimping');
+    loose.innerHTML = ''; bits = [];
+    fill();
+    setCallouts(false);
+    bagger.setAttribute('aria-label', ARIA.open);
+    setPhase('open');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, bagger, 'a', '.bagger');
+  }
+
+  btn.addEventListener('click', function(){
+    if (phase === 'open' || phase === 'sealed') ship();
+    else if (phase === 'broken') seal();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  resetBtn.addEventListener('click', startOver);
+
+  // Grab the bag and swing it.
+  var svg = bagger.querySelector('svg');
+  bagG.addEventListener('pointerdown', function(e){
+    if (phase === 'falling' || phase === 'sealing' || phase === 'done') return;
+    drag = { x: e.clientX };
+    try { bagG.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  bagG.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    var w = svg.getBoundingClientRect().width/360;
+    swing.target = clamp((e.clientX - drag.x)/w/150, -.75, .75);
+  });
+  var letGo = function(){ drag = null; swing.target = 0; };
+  bagG.addEventListener('pointerup', letGo);
+  bagG.addEventListener('pointercancel', letGo);
+
+  fill();
+  SG.loop(hero, frame);
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Film rollstock', '40 rolls in stock', '<s>40</s> 32 rolls in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Line 12 is down!',
+    'Brand: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Film truck: 8 rolls short',
+    'Which film is on line 9?',
+    'Re: Re: Fwd: Re: which lot?',
+    'QC hold: lot 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Brand: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 9 crew: Order 4417 moved to you',
+    'Brand: 4417 ships Monday, and here’s why',
+    'Buyer: Film PO is ready for your OK',
+    'QC: Lot 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+/* ------------------------------------ The gap: your ERP vs your floor.
+   The template sets window.STAGE = { erp, notes, tidy } before this runs:
+     erp    four rows of [label, what the ERP says, what's true once linked]
+     notes  twelve things that land on the floor, in the order below
+     tidy   four lines the floor reads once it's linked */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var data = window.STAGE;
+
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.8 14.7 1.3 9.2 1.3 3.8 1.3 2.5 2 1.5 3.3 1c.3-.1.7 0 .9.3z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>';
+  var TICK = '<i aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"/></svg></i>';
+  // kind, tilt, where it lands on a laptop, where it lands on a phone
+  var SLOTS = [
+    ['sticky', -6, 'left:1%;top:1%',   'left:0;top:0'],
+    ['call',    3, 'left:33%;top:0',   'right:0;top:8%'],
+    ['file',   -3, 'right:0;top:9%',   'left:3%;top:17%'],
+    ['pink',    5, 'right:5%;top:20%', 'right:0;top:24.5%'],
+    ['board',  -4, 'left:2%;top:20%',  'left:0;top:33.5%'],
+    ['mail',    3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag',    -7, 'left:0;top:40%',   'left:4%;top:50%'],
+    ['file',   -2, 'right:0;top:51%',  'right:0;top:57%'],
+    ['call',    4, 'left:6%;top:57%',  'left:0;top:65%'],
+    ['sticky', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink',    3, 'left:1%;top:78%',  'left:0;top:82%'],
+    ['board',  -3, 'right:7%;top:85%', 'right:4%;top:90.5%']
+  ];
+  var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
+  var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
+  var NOTE = {
+    calm: stageNote.textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Your ERP stays. The spreadsheets go.'
+  };
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  $('tidy').innerHTML = data.tidy.map(function(line, i){
+    return '<li style="--i:' + i + '">' + TICK + '<span>' + line + '</span></li>';
+  }).join('');
+
+  function renderErp(linked){
+    erpRows.innerHTML = data.erp.map(function(row, i){
+      return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
+    }).join('');
+    $('erpStatus').textContent = linked ? 'In sync' : 'All good';
+    $('erpFoot').textContent = linked ? 'Last updated: just now' : 'Last updated: yesterday, 6:00 PM';
+  }
+  function runMorning(){
+    var onPhone = window.matchMedia('(max-width:620px)').matches;
+    stage.dataset.state = 'chaos';
+    $('floorClock').textContent = '9:41 AM';
+    stageNote.textContent = NOTE.chaos;
+    pile.innerHTML = data.notes.map(function(text, i){
+      var slot = SLOTS[i];
+      var icon = slot[0] === 'call' ? PHONE : slot[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + slot[0] + '" style="--r:' + slot[1] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + slot[onPhone ? 3 : 2] + '">' + icon + '<span>' + text + '</span></div>';
+    }).join('');
+    later(function(){
+      stage.dataset.state = 'messy';
+      linkBtn.focus({ preventScroll: true });
+    }, data.notes.length*170 + 300);
+  }
+  // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
+  function linkUp(){
+    var link = $('stageLink').getBoundingClientRect();
+    var tx = link.left + link.width/2, ty = link.top + link.height/2;
+    [].slice.call(pile.children).forEach(function(el, i){
+      var r = el.getBoundingClientRect();
+      var rot = el.style.getPropertyValue('--r');
+      el.style.animation = 'none';
+      el.style.opacity = 1;
+      el.style.transform = 'rotate(' + rot + ')';
+      void el.offsetWidth;
+      el.style.transition = 'transform .5s cubic-bezier(.6,0,.9,.4) ' + (i*.025) + 's,opacity .5s ease-in ' + (i*.025) + 's';
+      el.style.transform = 'translate(' + (tx - r.left - r.width/2) + 'px,' + (ty - r.top - r.height/2) + 'px) scale(.12)';
+      el.style.opacity = 0;
+    });
+    linkBtn.disabled = true;
+    later(function(){
+      stage.dataset.state = 'linked';
+      linkBtn.disabled = false;
+      pile.innerHTML = '';
+      renderErp(true);
+      stageNote.textContent = NOTE.linked;
+      stageReset.focus({ preventScroll: true });
+    }, 720);
+  }
+  function resetStage(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage.dataset.state = 'calm';
+    pile.innerHTML = '';
+    $('floorClock').textContent = '6:58 AM';
+    stageNote.textContent = NOTE.calm;
+    renderErp(false);
+    chaosBtn.focus({ preventScroll: true });
+  }
+  chaosBtn.addEventListener('click', runMorning);
+  linkBtn.addEventListener('click', linkUp);
+  stageReset.addEventListener('click', resetStage);
+  renderErp(false);
+})();
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

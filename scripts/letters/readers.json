@@ -98,5 +98,183 @@
         "ps": "P.S. An NIU engineering Alumnus of the Year will spot every flaw in this page. Please tell me what they are."
       }
     ]
+  },
+  "blackhawk-corrugated": {
+    "template": "blackhawk-corrugated.html",
+    "values": {
+      "co_name": "Blackhawk Corrugated",
+      "theme": "#E9E9E9",
+      "made": "Run to order for",
+      "ps": "P.S. I saw your post about the 3rd shift: 400,000 lineal feet in eight hours, zero stops. I’d love to see that corrugator run."
+    },
+    "readers": [
+      {
+        "slug": "dan",
+        "first": "Dan",
+        "full": "Dan Bulich",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream"
+      }
+    ]
+  },
+  "conway-dressings": {
+    "template": "conway-dressings.html",
+    "values": {
+      "co_name": "Conway",
+      "theme": "#1D3C1C",
+      "ps": "P.S. Over 370 dressings, sauces and mayos. I’d love to see how Franklin Park keeps them all on schedule."
+    },
+    "readers": [
+      {
+        "slug": "david",
+        "first": "David",
+        "full": "David Heineman",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park"
+      }
+    ]
+  },
+  "olympia-foods": {
+    "template": "olympia-foods.html",
+    "values": {
+      "co_name": "Olympia Foods",
+      "theme": "#1A2E5E",
+      "ps": "P.S. Your Hand-Stacked cones are stacked manually, the traditional Greek way. We wouldn’t change that. Just the paperwork around it."
+    },
+    "readers": [
+      {
+        "slug": "arlind",
+        "first": "Arlind",
+        "full": "Arlind Dano",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park"
+      }
+    ]
+  },
+  "standfast": {
+    "template": "standfast.html",
+    "values": {
+      "co_name": "StandFast",
+      "theme": "#1051A2",
+      "made": "Die-cut for",
+      "ps": "P.S. “We don’t over ship or under ship,” your site says. SimpleGrid is how your ERP gets to say the same."
+    },
+    "readers": [
+      {
+        "slug": "william",
+        "first": "William",
+        "full": "William Lopez",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream"
+      }
+    ]
+  },
+  "soteria-flexibles": {
+    "template": "soteria-flexibles.html",
+    "values": {
+      "co_name": "Soteria Flexibles",
+      "theme": "#AE0202",
+      "does": "makes flexible packaging for a living",
+      "does_you": "make flexible packaging for a living",
+      "bagword": "bag",
+      "ps": "P.S. It was good to meet you in person. This time I’d like the 15 minutes indoors."
+    },
+    "readers": [
+      {
+        "slug": "bradley",
+        "first": "Bradley",
+        "full": "Bradley Herbolsheimer",
+        "town": "Carol Stream",
+        "where": "your office in Carol Stream"
+      }
+    ]
+  },
+  "bauderer-packaging": {
+    "template": "bauderer-packaging.html",
+    "values": {
+      "co_name": "Bauderer Packaging",
+      "theme": "#FFFEF8",
+      "does": "packs food for a living",
+      "does_you": "pack food for a living",
+      "bagword": "pouch",
+      "ps": "P.S. Your site says the food rooms were built for fast changeovers. SimpleGrid is how the plan changes over just as fast."
+    },
+    "readers": [
+      {
+        "slug": "robert",
+        "first": "Robert",
+        "full": "Robert Gonnella",
+        "town": "Addison",
+        "where": "your plant in Addison"
+      }
+    ]
+  },
+  "amtab": {
+    "template": "amtab.html",
+    "values": {
+      "co_name": "AmTab",
+      "theme": "#0071BC",
+      "ps": "P.S. You’ve earned two Business Central certifications, so you know exactly where an ERP stops and the floor starts. I’d value your read on this."
+    },
+    "readers": [
+      {
+        "slug": "arnold",
+        "first": "Arnold",
+        "full": "Arnold Gantuangco",
+        "town": "Bensenville",
+        "where": "your office in Bensenville"
+      }
+    ]
+  },
+  "clydes-donuts": {
+    "template": "clydes-donuts.html",
+    "values": {
+      "co_name": "Clyde’s Donuts",
+      "theme": "#532C1B",
+      "ps": "P.S. Your leadership page says your favorite is the Glazed Old Fashioned. I’ll bring the coffee."
+    },
+    "readers": [
+      {
+        "slug": "erik",
+        "first": "Erik",
+        "full": "Erik Spangler",
+        "town": "Addison",
+        "where": "your place in Addison or Glendale Heights, whichever suits you"
+      }
+    ]
+  },
+  "direct-food-service": {
+    "template": "direct-food-service.html",
+    "values": {
+      "co_name": "Direct Food Service",
+      "theme": "#2B2421",
+      "ps": "P.S. Test kitchens in Chicago and Puglia. I’d settle for a tour of the Chicago one."
+    },
+    "readers": [
+      {
+        "slug": "gigi",
+        "first": "Gigi",
+        "full": "Gigi Bucaro",
+        "town": "Wood Dale",
+        "where": "your headquarters in Wood Dale"
+      }
+    ]
+  },
+  "caputo-cheese": {
+    "template": "caputo-cheese.html",
+    "values": {
+      "co_name": "Caputo Cheese",
+      "theme": "#F2F3F5",
+      "ps": "P.S. Next visit, I’m bringing donuts."
+    },
+    "readers": [
+      {
+        "slug": "brett",
+        "first": "Brett",
+        "full": "Brett Piccioni",
+        "town": "Melrose Park",
+        "where": "your place in Melrose Park"
+      }
+    ]
   }
 }
