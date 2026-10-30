@@ -132,6 +132,25 @@ h1 span{display:block;color:var(--hi)}
 .callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
 .callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
 .hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
 
 .hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
 
@@ -152,6 +171,12 @@ h1 span{display:block;color:var(--hi)}
   .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
   .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
 }
 @media (max-width:620px){
@@ -187,14 +212,15 @@ h1 span,h2 span{font-weight:700}
 /* ------------------------------------------------------- The raviolo */
 .hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
 .rav{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
-.rav.is-done{cursor:default}
+.hero[data-story$=ing] .rav,.hero[data-story=done] .rav{cursor:default}
 .rav svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.rav.snap,.rav.snap *{transition:none!important}
 .pasta{fill:#F2CF7E}
 .pasta-dk{fill:#D9B05A}
 .filling{fill:#EEF0E2}
 .fleck{fill:#5E8C3A}
-.crimp{fill:none;stroke:#C9A04C;stroke-width:2.2;opacity:0;transition:opacity .3s}
-.rav.sealed .crimp{opacity:1}
+.crimp{fill:none;stroke:#C9A04C;stroke-width:2.2;stroke-linejoin:round}
 .top-sheet{transition:d .45s cubic-bezier(.4,0,.2,1)}
 .pot{fill:#B9C2C9}
 .pot-dk{fill:#8E989F}
@@ -203,11 +229,37 @@ h1 span,h2 span{font-weight:700}
 @keyframes boil{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:.8}100%{opacity:0;transform:translateY(-46px) scale(1.1)}}
 .steam{fill:none;stroke:rgba(255,255,255,.35);stroke-width:5;stroke-linecap:round;animation:steam 3s ease-in-out infinite;opacity:0}
 @keyframes steam{0%{opacity:0;transform:translateY(8px)}30%{opacity:1}100%{opacity:0;transform:translateY(-30px)}}
-.hero:not(.in-view) .bubble,.hero:not(.in-view) .steam{animation-play-state:paused}
 .raviolo{transition:transform .55s cubic-bezier(.55,0,.75,.3)}
-.part{transition:transform 1.4s cubic-bezier(.2,.6,.3,1),opacity 1.4s}
-.wheel{opacity:0;transition:opacity .2s}
-.rav.crimping .wheel{opacity:1}
+.part,.bob,.rav-bob{transform-box:fill-box;transform-origin:center}
+.part{transition:transform 1.3s cubic-bezier(.2,.6,.3,1),opacity 1s}
+/* The mess: the boil opens it, the sheets drift apart and the filling clouds the water. It stays that way. */
+.rav.messy .bob{animation:bob 2.8s ease-in-out infinite}
+.rav.messy #bottomSheet .bob{animation-duration:3.6s;animation-delay:-1.3s}
+.rav.is-done .rav-bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px) rotate(-1.5deg)}}
+.murk{opacity:0;transition:opacity 1.2s ease .15s}
+.rav.cloudy .murk{opacity:1}
+.murk-fill{fill:#E6DFC5;opacity:.62}
+.cloud{fill:url(#cloud)}
+.bit{fill:#EEF0E2}
+.bit-fleck{fill:#5E8C3A}
+.drift{transform-box:fill-box;transform-origin:center;animation:drift 4.6s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(7px,-4px) scale(1.1)}}
+/* Clouds and bits come out of the filling, and at the end the raviolo takes them back. */
+.spread{transform-box:fill-box;transform-origin:center;transform:translate(var(--fx),var(--fy)) scale(.2);transition:transform 1.3s cubic-bezier(.2,.7,.3,1) var(--d)}
+.rav.cloudy .spread{transform:none}
+.rav.clearing .spread{transform:translate(var(--px),var(--py)) scale(0);transition:transform .9s cubic-bezier(.5,0,.8,.4) var(--d)}
+.foam path{fill:#F3EFE2;stroke:#DCD4BC;stroke-width:1.2}
+.foam-crown{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .5s cubic-bezier(.2,1.4,.4,1) .45s}
+.foam-drip{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);transition:transform 1.2s cubic-bezier(.3,.6,.3,1) .75s}
+.rav.cloudy .foam path{transform:none}
+.rav.clearing .foam path{transform:scaleY(0);transition:transform .45s ease-in}
+.drop{fill:#CFE3F4;opacity:0}
+.rav.splash .drop{animation:splash .6s cubic-bezier(.2,.7,.4,1) both}
+@keyframes splash{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--dx),-34px)}}
+.hero:not(.in-view) .bubble,.hero:not(.in-view) .steam,.hero:not(.in-view) .bob,.hero:not(.in-view) .drift,.hero:not(.in-view) .rav-bob{animation-play-state:paused}
+.wheel{opacity:0;transition:opacity .25s}
+.rav.crimping .wheel,.rav.parked .wheel{opacity:1}
 .wheel-disc{fill:#C7CED4;stroke:#7E8890;stroke-width:2}
 .wheel-handle{stroke:#6B4423;stroke-width:7;stroke-linecap:round}
 .callout-top{top:20%}
@@ -217,7 +269,7 @@ h1 span,h2 span{font-weight:700}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
 .wheel{--sg-bg:#C92A0E;--sg-ink:#fff}
 .pot-label{--sg-bg:#C92A0E;--sg-ink:#fff}
-.rav.sealed .pot-label{opacity:1;transform:none}
+.rav.is-done .pot-label{opacity:1;transform:none}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.16)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -308,6 +360,18 @@ h1 span,h2 span{font-weight:700}
 @keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
 .tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
 .stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
 .tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
 .tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
 .tidy i svg{width:14px;height:14px}
@@ -338,6 +402,11 @@ h1 span,h2 span{font-weight:700}
   .pile{min-height:470px}
   .n{max-width:90%}
   .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
 }
 @media (max-width:350px){
   .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
@@ -462,6 +531,10 @@ h1 span,h2 span{font-weight:700}
       <div class="hero-art">
         <div class="rav hero-obj" id="rav" role="img" aria-label="A raviolo, seen from the side: filling between two sheets of pasta whose edges don’t meet, above a pot of boiling water.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <radialGradient id="cloud"><stop offset="0" stop-color="#F7F4E8" stop-opacity=".95"/><stop offset=".55" stop-color="#EFEAD6" stop-opacity=".6"/><stop offset="1" stop-color="#EFEAD6" stop-opacity="0"/></radialGradient>
+              <clipPath id="waterClip"><rect x="62" y="428" width="236" height="104" rx="8"/></clipPath>
+            </defs>
             <!-- the pot, boiling -->
             <path class="steam" d="M140 388C132 374 148 366 140 350"/>
             <path class="steam" d="M220 392C212 378 228 370 220 354" style="animation-delay:-1.4s"/>
@@ -469,29 +542,45 @@ h1 span,h2 span{font-weight:700}
             <path class="pot" d="M56 412H304V516Q304 540 280 540H80Q56 540 56 516Z"/>
             <rect class="water" x="62" y="428" width="236" height="104" rx="8"/>
             <g id="bubbles"><circle class="bubble" cx="100" cy="520" r="4"/><circle class="bubble" cx="150" cy="526" r="3" style="animation-delay:-.5s"/><circle class="bubble" cx="200" cy="522" r="4" style="animation-delay:-1s"/><circle class="bubble" cx="250" cy="526" r="3" style="animation-delay:-.3s"/><circle class="bubble" cx="276" cy="520" r="3.5" style="animation-delay:-1.2s"/></g>
-            <g id="spill"></g>
             <!-- the raviolo: bottom sheet (the floor), filling, top sheet (the ERP) -->
-            <g class="raviolo" id="raviolo">
-              <g class="part" id="bottomSheet">
+            <g class="raviolo" id="raviolo"><g class="rav-bob">
+              <g class="part" id="bottomSheet"><g class="bob">
                 <rect class="pasta-dk" x="70" y="252" width="220" height="12" rx="5"/>
                 <rect class="pasta" x="70" y="248" width="220" height="10" rx="5"/>
-              </g>
+              </g></g>
               <g class="part" id="fillingG">
                 <path class="filling" d="M112 249Q116 200 180 196Q244 200 248 249Z"/>
                 <g class="fleck"><circle cx="150" cy="226" r="3"/><circle cx="172" cy="212" r="2.5"/><circle cx="196" cy="222" r="3"/><circle cx="216" cy="236" r="2.5"/><circle cx="134" cy="240" r="2.2"/><circle cx="186" cy="238" r="2.2"/></g>
               </g>
-              <g class="part" id="topSheetG">
+              <g class="part" id="topSheetG"><g class="bob">
                 <path class="pasta top-sheet" id="topSheet" d="M70 226Q70 220 90 220Q112 220 116 196Q124 176 180 174Q236 176 244 196Q248 220 270 220Q290 220 290 226V232Q290 236 270 236Q252 236 248 216Q240 190 180 188Q120 190 112 216Q108 236 90 236Q70 236 70 232Z"/>
-                <path class="crimp" d="M74 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6M246 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6"/>
-              </g>
+                <path class="crimp" id="crimpL" d="M74 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6"/>
+                <path class="crimp" id="crimpR" d="M246 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6"/>
+              </g></g>
+            </g></g>
+            <!-- the mess: what the filling does to the water once the edges open. It stays until the raviolo holds. -->
+            <g class="murk" clip-path="url(#waterClip)">
+              <rect class="murk-fill" x="62" y="428" width="236" height="104" rx="8"/>
+              <g id="clouds"></g>
+            </g>
+            <!-- and it boils over -->
+            <g class="foam">
+              <path class="foam-crown" d="M194 414c-2-8 6-12 12-7c1-8 13-9 16-2c3-7 14-7 16 0c4-6 14-4 14 3c5-4 13-1 12 6c5-2 11 3 8 9Z"/>
+              <path class="foam-drip" d="M231 410h12v30c0 7-12 7-12 0Z"/>
+              <path class="foam-drip" d="M262 410h10v44c0 6-10 6-10 0Z"/>
+            </g>
+            <g class="splash">
+              <circle class="drop" cx="150" cy="430" r="3.5" style="--dx:-26px"/><circle class="drop" cx="168" cy="428" r="2.5" style="--dx:-10px;animation-delay:.04s"/><circle class="drop" cx="192" cy="428" r="3" style="--dx:12px;animation-delay:.02s"/><circle class="drop" cx="212" cy="430" r="3.5" style="--dx:28px;animation-delay:.06s"/>
             </g>
             <!-- once it holds: the pot wears the label, like the Legacy jar -->
             <g transform="translate(180 506) scale(0.92)"><g class="pot-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
             <!-- SimpleGrid: the crimping wheel, with the mark on its hub -->
-            <g class="wheel" id="wheel">
+            <g class="wheel" id="wheel" transform="translate(72 248)">
               <line class="wheel-handle" x1="0" y1="0" x2="34" y2="-58"/>
-              <circle class="wheel-disc" r="22"/>
-              <g transform="scale(.85)"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g>
+              <g id="wheelDisc">
+                <circle class="wheel-disc" r="22"/>
+                <g transform="scale(.85)"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g>
+              </g>
             </g>
           </svg>
         </div>
@@ -505,15 +594,21 @@ h1 span,h2 span{font-weight:700}
             <h3><i></i><span id="bottomTitle">The bottom sheet: your floor</span></h3>
             <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Drop it in the pot</button>
+          <button class="go-btn" id="heroBtn" type="button">Drop it in the pot to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The filling sits between the sheets, and the edges never meet. Drop it in, or tap it to see for yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP on top, your floor underneath, the filling in between, and the edges never meet. Drop it in, or tap it to see for yourself.</p>
       </div>
     </div>
   </div>
@@ -553,7 +648,18 @@ h1 span,h2 span{font-weight:700}
           <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
         </div>
         <div class="pile" id="pile"></div>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
         <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
         <div class="floor-do">
           <button class="go-btn" id="linkBtn" type="button">Link them up</button>
           <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
@@ -563,7 +669,7 @@ h1 span,h2 span{font-weight:700}
     </div>
 
     <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
-    <p class="fine">Pretend plant, pretend numbers.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
   </div>
 </section>
 
@@ -724,100 +830,192 @@ var SG = (function(){
 
   return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
 })();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
 </script>
 <script>
 (function(){
   /* -------------------------------------------------------- The raviolo
      Top sheet: the ERP. Bottom sheet: the floor. The filling sits between
-     them, and the edges never meet. The first boil opens it. The crimping
-     wheel is SimpleGrid: sealed on every edge, it holds through the boil. */
+     them, and the edges never meet. Drop it in the pot and the boil opens
+     it: the sheets drift apart, the filling clouds the water, and the mess
+     stays. That's your operations. The crimping wheel is SimpleGrid: put it
+     back together, seal every edge, drop it in again, and the water clears. */
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), rav = $('rav'), raviolo = $('raviolo'), wheel = $('wheel'), spill = $('spill');
+  var hero = $('hero'), rav = $('rav'), raviolo = $('raviolo'), wheel = $('wheel'), disc = $('wheelDisc'), cloudsG = $('clouds');
   var topG = $('topSheetG'), bottomG = $('bottomSheet'), fillG = $('fillingG'), topSheet = $('topSheet');
+  var crimps = [$('crimpL'), $('crimpR')];
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
   var OPEN = topSheet.getAttribute('d');
   // Crimped: the edges come down to meet the bottom sheet.
   var SEALED = 'M70 246Q70 242 90 242Q112 242 116 210Q124 176 180 174Q236 176 244 210Q248 242 270 242Q290 242 290 246V250Q290 252 270 252Q252 252 248 228Q240 190 180 188Q120 190 112 228Q108 252 90 252Q70 252 70 250Z';
   var COPY = {
-    open:     { btn: 'Drop it in the pot', caption: 'The filling sits between the sheets, and the edges never meet. Drop it in, or tap it to see for yourself.' },
-    dropping: { btn: 'Boiling…', caption: 'Looks like a raviolo, doesn’t it?' },
-    broken:   { btn: 'Crimp it', caption: 'And there it goes. That’s the usual ERP go-live: it looks sealed on launch day, and the first boil opens it up.' },
-    crimping: { btn: 'Crimping…', caption: 'Round the edge goes the wheel.' },
-    sealed:   { btn: 'Drop it in the pot', caption: 'That’s SimpleGrid: sealed on every edge. Now drop it in.' },
-    done:     { btn: 'Why did the first one open?', caption: 'One live record. Your ERP and your floor finally hold together, even at a boil.' }
+    apart:    { btn: 'Drop it in the pot to see your operations', caption: 'Your ERP on top, your floor underneath, the filling in between, and the edges never meet. Drop it in, or tap it to see for yourself.' },
+    messing:  { btn: 'Boiling…', caption: 'Into the boil, edges open. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Crimp it', caption: 'That’s your operations today: a big mess. The sheets drifted apart and the filling clouded the water. It won’t fix itself, either.' },
+    dosing:   { btn: 'Crimping…', caption: 'Fish it out, put it back together, and round the edge goes the wheel.' },
+    dosed:    { btn: 'Drop it in again', caption: 'Round the edge goes the wheel. That’s SimpleGrid. Now drop it in again.' },
+    cleaning: { btn: 'Boiling…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one whole raviolo, and the water runs clear. Your ERP and your floor finally hold together, even at a boil.' }
   };
   var ARIA = {
-    open: rav.getAttribute('aria-label'),
-    done: 'A crimped raviolo bobbing whole in a pot of boiling water.'
+    apart: rav.getAttribute('aria-label'),
+    mess: 'The raviolo come apart in the boiling water: the two sheets drifting apart and the filling clouding the pot.',
+    dosed: 'The raviolo back together above the still-cloudy pot, its edges sealed by a crimping wheel with the SimpleGrid mark.',
+    done: 'A crimped raviolo bobbing whole in clear boiling water, in a pot labelled SimpleGrid.'
   };
-  var phase = 'open', sealed = false, busy = false, timers = [];
+
+  var timers = [];
   function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
   var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
-  function setPhase(next){
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'dropping' || next === 'crimping';
-    caption.textContent = COPY[next].caption;
-  }
-  function sheet(d){ topSheet.setAttribute('d', d); topSheet.style.d = 'path("' + d + '")'; }
-
-  function drop(){
-    busy = true;
-    setPhase('dropping');
-    raviolo.style.transform = 'translateY(208px)';
-    return wait(600).then(function(){
-      if (sealed){
-        // It bobs, and holds.
-        raviolo.style.transition = 'transform .5s ease-in-out';
-        raviolo.style.transform = 'translateY(196px)';
-        return wait(500).then(function(){ raviolo.style.transform = 'translateY(204px)'; return wait(500); }).then(function(){ busy = false; complete(); });
-      }
-      // The edges let go: the top sheet floats off, the filling clouds the water.
-      topG.style.transform = 'translate(-60px,-26px) rotate(-14deg)';
-      topG.style.opacity = '.85';
-      bottomG.style.transform = 'translate(30px,40px) rotate(6deg)';
-      fillG.style.opacity = '0';
-      var html = '';
-      for (var i = 0; i < 14; i++){
-        html += '<circle class="part" cx="' + (150 + (i*23) % 60) + '" cy="' + (440 + (i*7) % 16) + '" r="' + (4 + i % 3) + '" fill="#EEF0E2"/>';
-      }
-      spill.innerHTML = html;
-      spill.getBoundingClientRect();
-      [].forEach.call(spill.children, function(c, i){
-        c.style.transform = 'translate(' + ((i % 2 ? 1 : -1)*(20 + (i*13) % 70)) + 'px,' + (18 + (i*11) % 50) + 'px)';
-        c.style.opacity = '.5';
-      });
-      return wait(1700).then(function(){
-        setPhase('broken');
-        // A fresh one, waiting above the pot.
-        [topG, bottomG, fillG, raviolo].forEach(function(el){ el.style.transition = 'none'; el.style.transform = ''; el.style.opacity = ''; });
-        spill.innerHTML = '';
-        raviolo.getBoundingClientRect();
-        [topG, bottomG, fillG, raviolo].forEach(function(el){ el.style.transition = ''; });
-        busy = false;
-      });
+  // A move drawn frame by frame, for the wheel. Start over cancels it.
+  var run = 0;
+  function tween(ms, fn){
+    var token = run;
+    return new Promise(function(done){
+      if (reduce){ fn(1); done(); return; }
+      var t0 = performance.now();
+      (function tick(now){
+        if (token !== run) return;
+        var t = Math.min(1, (now - t0)/ms);
+        fn(t);
+        if (t < 1) requestAnimationFrame(tick); else done();
+      })(t0);
     });
   }
-
-  function crimp(){
-    busy = true;
-    setPhase('crimping');
-    rav.classList.add('crimping');
-    sheet(SEALED);
-    // The wheel runs along one edge, then the other.
-    var pts = [[74, 248], [110, 248], [250, 248], [288, 248]];
-    var i = 0;
-    var step = function(){
-      if (i >= pts.length){ rav.classList.remove('crimping'); sealed = true; rav.classList.add('sealed'); busy = false; setPhase('sealed'); return; }
-      wheel.setAttribute('transform', 'translate(' + pts[i][0] + ' ' + pts[i][1] + ')');
-      i++;
-      later(step, i === 2 ? 120 : 380);
-    };
-    step();
+  function sheet(d){ topSheet.setAttribute('d', d); topSheet.style.d = 'path("' + d + '")'; }
+  function wheelAt(x, y, turn){
+    wheel.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ')');
+    disc.setAttribute('transform', 'rotate(' + turn.toFixed(1) + ')');
+  }
+  // The crimp marks get drawn in as the wheel passes over them.
+  var LEN = crimps.map(function(c){ var n = Math.ceil(c.getTotalLength()); c.style.strokeDasharray = n; return n; });
+  function crimpShown(i, on, ms){
+    crimps[i].style.transition = ms ? 'stroke-dashoffset ' + ms + 'ms linear' : 'none';
+    crimps[i].style.strokeDashoffset = on ? 0 : LEN[i];
   }
 
+  /* The cloud the filling makes, and the torn bits floating in it, made once.
+     Each starts out at the filling and spreads to its own place in the water;
+     at the end the raviolo takes them back. */
+  var seed = 5113;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  var FILL = [180, 432], HOME = [180, 424], html = '';
+  function spread(x, y, i, inner){
+    return '<g class="spread" style="--fx:' + (FILL[0] - x).toFixed(0) + 'px;--fy:' + (FILL[1] - y).toFixed(0) + 'px;--px:' + (HOME[0] - x).toFixed(0) + 'px;--py:' + (HOME[1] - y).toFixed(0) + 'px;--d:' + (i*.04).toFixed(2) + 's">' +
+      '<g class="drift" style="animation-delay:' + (-R(0, 4.6)).toFixed(1) + 's;animation-duration:' + R(3.6, 5.6).toFixed(1) + 's">' + inner + '</g></g>';
+  }
+  [[96, 456, 44, 26], [176, 446, 54, 24], [258, 458, 46, 28], [124, 506, 52, 26], [226, 508, 56, 26], [176, 482, 40, 22], [286, 500, 30, 22], [74, 492, 28, 22]].forEach(function(c, i){
+    html += spread(c[0], c[1], i, '<ellipse class="cloud" cx="' + c[0] + '" cy="' + c[1] + '" rx="' + c[2] + '" ry="' + c[3] + '"/>');
+  });
+  for (var i = 0; i < 18; i++){
+    var x = R(76, 284), y = R(438, 526), r = R(2.6, 5.4), bit;
+    if (i % 3 === 2) bit = '<circle class="bit-fleck" cx="' + x.toFixed(0) + '" cy="' + y.toFixed(0) + '" r="' + (r*.5).toFixed(1) + '"/>';
+    else bit = '<path class="bit" d="M' + (x - r).toFixed(1) + ' ' + y.toFixed(1) + 'Q' + (x - r*.6).toFixed(1) + ' ' + (y - r*1.1).toFixed(1) + ' ' + (x + r*.4).toFixed(1) + ' ' + (y - r*.8).toFixed(1) + 'Q' + (x + r*1.2).toFixed(1) + ' ' + (y - r*.2).toFixed(1) + ' ' + (x + r*.7).toFixed(1) + ' ' + (y + r*.7).toFixed(1) + 'Q' + (x - r*.2).toFixed(1) + ' ' + (y + r*1.1).toFixed(1) + ' ' + (x - r).toFixed(1) + ' ' + y.toFixed(1) + 'Z"/>';
+    html += spread(x, y, i % 8, bit);
+  }
+  cloudsG.innerHTML = html;
+
+  function splash(){
+    rav.classList.remove('splash');
+    rav.getBoundingClientRect();
+    rav.classList.add('splash');
+  }
   function setCallouts(final){
     $('gapTag').hidden = final;
     $('topTitle').textContent = final ? 'Your ERP' : 'The top sheet: your ERP';
@@ -826,41 +1024,97 @@ var SG = (function(){
     $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
-  function complete(){
-    rav.classList.add('is-done');
-    setCallouts(true);
-    setPhase('done');
-    rav.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, rav, 'b', '.rav');
-  }
-
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    busy = false; sealed = false;
-    rav.classList.remove('sealed', 'crimping', 'is-done');
-    raviolo.style.transition = ''; raviolo.style.transform = '';
-    sheet(OPEN);
-    setCallouts(false);
-    rav.setAttribute('aria-label', ARIA.open);
-    setPhase('open');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, rav, 'a', '.rav');
-  }
-
-  btn.addEventListener('click', function(){
-    if (busy) return;
-    if (phase === 'open' || phase === 'sealed') drop();
-    else if (phase === 'broken') crimp();
-    else if (phase === 'done') $('gap').scrollIntoView();
+  var story = SG.story({
+    hero: hero, obj: rav, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.rav',
+    ops: {
+      mess: ['Your operations, today', 'Dropped in together, still not linked. It came apart, and the water stays cloudy.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same pot, same mess. Now every edge is sealed.']
+    },
+    // Into the boil with its edges open: it comes apart, and the water stays cloudy.
+    mess: function(){
+      rav.classList.remove('snap');
+      raviolo.style.transition = '';
+      raviolo.style.transform = 'translateY(208px)';
+      return wait(560).then(function(){
+        splash();
+        topG.style.transform = 'translate(-14px,4px) rotate(-12deg)';
+        bottomG.style.transform = 'translate(8px,44px) rotate(8deg)';
+        fillG.style.transform = 'scale(1.35,.6)';
+        fillG.style.opacity = '0';
+        rav.classList.add('messy', 'cloudy');
+        return wait(1350);
+      });
+    },
+    // Fish it out, put it back together, and run the wheel round both edges.
+    dose: function(){
+      rav.classList.remove('messy');
+      raviolo.style.transition = 'transform .6s cubic-bezier(.3,.7,.3,1)';
+      raviolo.style.transform = '';
+      [topG, bottomG, fillG].forEach(function(el){ el.style.transition = 'transform .6s cubic-bezier(.3,.7,.3,1),opacity .4s'; el.style.transform = ''; el.style.opacity = ''; });
+      return wait(600).then(function(){
+        sheet(SEALED);
+        wheelAt(72, 248, 0);
+        return wait(150);
+      }).then(function(){
+        rav.classList.add('crimping');
+        crimpShown(0, true, 380);
+        return tween(380, function(t){ wheelAt(72 + 40*t, 248, 90*t); });
+      }).then(function(){
+        return tween(150, function(t){ wheelAt(112 + 136*t, 248 - Math.sin(t*Math.PI)*18, 90); });
+      }).then(function(){
+        crimpShown(1, true, 380);
+        return tween(380, function(t){ wheelAt(248 + 42*t, 248, 90 + 90*t); });
+      }).then(function(){
+        rav.classList.add('sealed', 'parked');
+        rav.classList.remove('crimping');
+        return tween(260, function(t){ wheelAt(290 + 26*t, 248 - 14*t, 180); });
+      }).then(function(){ return wait(120); });
+    },
+    // Drop it in again: it holds, and the cloud goes back where it came from.
+    clean: function(){
+      rav.classList.remove('parked');
+      [topG, bottomG, fillG].forEach(function(el){ el.style.transition = ''; });
+      raviolo.style.transition = '';
+      raviolo.style.transform = 'translateY(208px)';
+      return wait(560).then(function(){
+        splash();
+        rav.classList.add('clearing');
+        rav.classList.remove('cloudy');
+        raviolo.style.transition = 'transform .45s ease-in-out';
+        raviolo.style.transform = 'translateY(194px)';
+        return wait(450);
+      }).then(function(){
+        raviolo.style.transform = 'translateY(206px)';
+        return wait(450);
+      }).then(function(){
+        raviolo.style.transform = 'translateY(202px)';
+        return wait(400);
+      });
+    },
+    restore: function(){
+      run++;
+      timers.forEach(clearTimeout);
+      timers = [];
+      rav.classList.add('snap');
+      rav.classList.remove('messy', 'cloudy', 'clearing', 'sealed', 'crimping', 'parked', 'splash');
+      raviolo.style.transition = '';
+      raviolo.style.transform = '';
+      [topG, bottomG, fillG].forEach(function(el){ el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; });
+      sheet(OPEN);
+      crimpShown(0, false); crimpShown(1, false);
+      wheelAt(72, 248, 0);
+      rav.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ rav.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      rav.classList.toggle('is-done', on);
+    }
   });
-  rav.addEventListener('click', function(){
-    if (busy) return;
-    if (phase === 'open' || phase === 'sealed') drop();
-    else if (phase === 'broken') crimp();
-  });
-  resetBtn.addEventListener('click', startOver);
+  crimpShown(0, false); crimpShown(1, false);
+
+  // Tapping the raviolo does the same as the button.
+  rav.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){ hero.classList.toggle('in-view', entries[0].isIntersecting); }).observe(hero);
   } else hero.classList.add('in-view');
@@ -930,7 +1184,7 @@ window.STAGE = {
   var NOTE = {
     calm: stageNote.textContent,
     chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
-    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Your ERP stays. The spreadsheets go.'
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
   };
   var timers = [];
   function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
@@ -982,9 +1236,26 @@ window.STAGE = {
       linkBtn.disabled = false;
       pile.innerHTML = '';
       renderErp(true);
+      countUp();
       stageNote.textContent = NOTE.linked;
       stageReset.focus({ preventScroll: true });
     }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
   }
   function resetStage(){
     timers.forEach(clearTimeout);

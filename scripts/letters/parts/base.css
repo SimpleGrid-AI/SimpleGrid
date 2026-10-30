@@ -105,6 +105,25 @@ h1 span{display:block;color:var(--hi)}
 .callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
 .callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
 .hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
 
 .hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
 
@@ -125,6 +144,12 @@ h1 span{display:block;color:var(--hi)}
   .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
   .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
 }
 @media (max-width:620px){

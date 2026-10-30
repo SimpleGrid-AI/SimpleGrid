@@ -83,6 +83,18 @@
 @keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
 .tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
 .stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
 .tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
 .tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
 .tidy i svg{width:14px;height:14px}
@@ -113,6 +125,11 @@
   .pile{min-height:470px}
   .n{max-width:90%}
   .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
 }
 @media (max-width:350px){
   .n-file,.n-mail,.n-call,.n-tag{font-size:13px}

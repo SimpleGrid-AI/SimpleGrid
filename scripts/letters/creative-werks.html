@@ -14,14 +14,14 @@
 <meta property="og:url" content="{{url}}">
 <meta property="og:title" content="{{first}}, seal the bag.">
 <meta property="og:description" content="SimpleGrid, explained to someone who runs 70+ production lines.">
-<meta property="og:image" content="https://simplegrid.ai/creative-werks/og-{{slug}}.jpg">
+<meta property="og:image" content="https://simplegrid.ai/creative-werks/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="An open bag of candy hanging between seal jaws, beside the words: {{first}}, you run 70+ production lines.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, seal the bag.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who runs 70+ production lines.">
-<meta name="twitter:image" content="https://simplegrid.ai/creative-werks/og-{{slug}}.jpg">
+<meta name="twitter:image" content="https://simplegrid.ai/creative-werks/{{og}}.jpg">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
 <style>
@@ -53,13 +53,13 @@ h2{letter-spacing:-.02em}
 
 /* ------------------------------------------------------- The bagger */
 .hero-art{--art-w:min(330px,28vw,calc((100vh - 130px)/1.6))}
-.bagger{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.bagger{--film-fill:rgba(255,255,255,.2);--film-edge:rgba(255,255,255,.78);--film-hi:rgba(255,255,255,.55);position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .bagger svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .bag-g{cursor:grab;touch-action:none}
 .bag-g:active{cursor:grabbing}
-.bagger.dropping .bag-g,.bagger.is-done .bag-g{cursor:default}
-.film{fill:rgba(255,255,255,.2);stroke:rgba(255,255,255,.78);stroke-width:2.2;stroke-linejoin:round}
-.film-hi{fill:none;stroke:rgba(255,255,255,.55);stroke-width:5;stroke-linecap:round}
+.bagger.held .bag-g{cursor:default}
+.film{fill:var(--film-fill);stroke:var(--film-edge);stroke-width:2.2;stroke-linejoin:round}
+.film-hi{fill:none;stroke:var(--film-hi);stroke-width:5;stroke-linecap:round}
 .mouth{fill:color-mix(in srgb,var(--field) 55%,#000);transition:opacity .2s}
 .bagger.sealed .mouth{opacity:0}
 .band{fill:var(--accent)}
@@ -70,6 +70,12 @@ h2{letter-spacing:-.02em}
 .top-seal{opacity:0;transition:opacity .25s .1s}
 .bagger.sealed .top-seal{opacity:1}
 .grid-seal{stroke:#9E5FA6;stroke-width:1.8}
+/* Fresh film is raw where the jaws close on it, and comes away with their grid in the seal. */
+.crimp-grid{opacity:0;transition:opacity .2s}
+.bag-g.raw .crimp-b{fill:var(--film-raw,rgba(255,255,255,.34));stroke:var(--film-edge);stroke-width:2.2}
+.bag-g.raw .crimp-b-lines,.bag-g.sealed-b .crimp-b-lines{opacity:0}
+.bag-g.sealed-b .crimp-grid{opacity:1}
+.bagger.snap,.bagger.snap *{transition:none!important}
 .steel{fill:#C4CBD2}
 .steel-dk{fill:#8D97A1}
 .jaw{transition:transform .32s cubic-bezier(.6,0,.4,1)}
@@ -95,7 +101,7 @@ h2{letter-spacing:-.02em}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
 .jaw-badge{--sg-bg:#FFCD00;--sg-ink:#1A1A1A}
 .bag-label{--sg-bg:#2E2F31;--sg-ink:#fff}
-.bagger.crimping .jaw-badge,.bagger.sealed .jaw-badge{opacity:1;transform:none}
+.bagger.sg-in .jaw-badge{opacity:1;transform:none}
 .bagger.is-done .bag-label{opacity:1;transform:none}
 .band-text{transition:opacity .3s}
 .bagger.is-done .band-text{opacity:0}
@@ -133,6 +139,8 @@ h2{letter-spacing:-.02em}
             <defs>
               <clipPath id="bagClip"><path d="M110 132Q180 126 250 132L256 318Q180 328 104 318Z"/></clipPath>
               <pattern id="gridSeal" width="8" height="8" patternUnits="userSpaceOnUse"><path class="grid-seal" d="M0 .9h8M.9 0v8" fill="none"/></pattern>
+              <!-- fresh film comes down out of the filler, so nothing shows above its spout -->
+              <clipPath id="feedClip"><rect x="-200" y="121" width="760" height="700"/></clipPath>
             </defs>
 
             <!-- the case, back half -->
@@ -145,7 +153,11 @@ h2{letter-spacing:-.02em}
             <rect class="steel-dk" x="160" y="62" width="40" height="58"/>
             <rect class="steel" x="166" y="62" width="10" height="58" opacity=".7"/>
 
+            <!-- the bag that shipped open: it stays where it landed until the mess is packed back in -->
+            <g id="oldBag"></g>
+
             <!-- the bag: clear film is your ERP, the candy is your floor -->
+            <g id="feed">
             <g class="bag-g" id="bagG">
               <g id="bag">
                 <path class="film" d="M110 132Q180 126 250 132L256 318Q180 328 104 318Z"/>
@@ -158,14 +170,16 @@ h2{letter-spacing:-.02em}
                 <!-- what it says once it's sealed and shipped: the label, like the Legacy jar's -->
                 <g transform="translate(180 226) scale(.72)"><g class="bag-label sg-pop"><!--#include sg-tag.svg--></g></g>
                 <path class="film-hi" d="M124 150C120 200 120 260 124 300"/>
-                <rect class="crimp" x="100" y="314" width="160" height="20" rx="2"/>
-                <path class="crimp-lines" d="M108 317v14M116 317v14M124 317v14M132 317v14M140 317v14M148 317v14M156 317v14M164 317v14M172 317v14M180 317v14M188 317v14M196 317v14M204 317v14M212 317v14M220 317v14M228 317v14M236 317v14M244 317v14M252 317v14"/>
+                <rect class="crimp crimp-b" x="100" y="314" width="160" height="20" rx="2"/>
+                <path class="crimp-lines crimp-b-lines" d="M108 317v14M116 317v14M124 317v14M132 317v14M140 317v14M148 317v14M156 317v14M164 317v14M172 317v14M180 317v14M188 317v14M196 317v14M204 317v14M212 317v14M220 317v14M228 317v14M236 317v14M244 317v14M252 317v14"/>
+                <rect class="crimp-grid" x="100" y="314" width="160" height="20" rx="2" fill="url(#gridSeal)"/>
                 <ellipse class="mouth" cx="180" cy="132" rx="70" ry="5"/>
                 <g class="top-seal">
                   <rect class="crimp" x="104" y="118" width="152" height="24" rx="2"/>
                   <rect x="104" y="118" width="152" height="24" rx="2" fill="url(#gridSeal)"/>
                 </g>
               </g>
+            </g>
             </g>
 
             <!-- the seal jaws: SimpleGrid, and they wear the mark once they close -->
@@ -194,15 +208,16 @@ h2{letter-spacing:-.02em}
             <h3><i></i><span id="bottomTitle">The candy: your floor</span></h3>
             <p id="bottomText">What’s really inside, on Excel, whiteboards and phones.</p>
           </div>
+<!--#include ops.html-->
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Ship it</button>
+          <button class="go-btn" id="heroBtn" type="button">Ship it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">Nothing holds what’s inside to what the bag says. Ship it, or grab the bag and give it a swing.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP is the bag, your floor is the candy in it, and nothing seals one to the other. Ship it, or grab the bag and give it a swing.</p>
       </div>
     </div>
   </div>
@@ -270,27 +285,37 @@ h2{letter-spacing:-.02em}
 (function(){
   /* --------------------------------------------------------- The bag
      The bag says what's inside: that's the ERP. The candy is what's really
-     inside: that's the floor. With the top open, nothing holds the two
-     together, and the first bump puts the candy on the floor. The seal jaws
-     are SimpleGrid. Look at the seal they leave. */
+     inside: that's the floor. Ship it with the top open and the bag lands in
+     the case while the candy goes everywhere, and stays there: that's your
+     operations. The seal jaws are SimpleGrid. Fresh film goes between them,
+     they close on it, and the same spill packs itself back in. */
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), bagger = $('bagger'), bagG = $('bagG'), bag = $('bag');
-  var inside = $('inside'), loose = $('loose');
+  var hero = $('hero'), bagger = $('bagger'), bagG = $('bagG'), bag = $('bag'), feed = $('feed');
+  var inside = $('inside'), loose = $('loose'), oldBag = $('oldBag');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce, clamp = SG.clamp;
+  var lerp = function(a, b, t){ return a + (b - a)*t; };
+  var easeOut = function(t){ return 1 - (1 - t)*(1 - t); };
+  var easeInOut = function(t){ return t < .5 ? 2*t*t : 1 - Math.pow(2 - 2*t, 2)/2; };
+  var backOut = function(t){ return 1 + 2.9*Math.pow(t - 1, 3) + 1.9*Math.pow(t - 1, 2); };
+  // The same scatter every time, so the mess always reads as one.
+  var rnd = function(i){ var x = Math.sin(i*12.9898 + 4.1)*43758.5453; return x - Math.floor(x); };
 
   var COPY = {
-    open:    { btn: 'Ship it', caption: 'Nothing holds what’s inside to what the bag says. Ship it, or grab the bag and give it a swing.' },
-    falling: { btn: 'Shipping…', caption: 'Looks packed, doesn’t it?' },
-    broken:  { btn: 'Seal it', caption: 'And there it goes. That’s the usual ERP go-live: packed up for the launch, and months later the floor is back on Excel.' },
-    sealing: { btn: 'Sealing…', caption: 'In go the jaws.' },
-    sealed:  { btn: 'Ship it', caption: 'That’s SimpleGrid. Look closely at the seal. Now ship it.' },
-    done:    { btn: 'Why did the first one spill?', caption: 'One live record. What the bag says and what’s inside finally match, and they stay that way.' }
+    apart:    { btn: 'Ship it to see your operations', caption: 'Your ERP is the bag, your floor is the candy in it, and nothing seals one to the other. Ship it, or grab the bag and give it a swing.' },
+    messing:  { btn: 'Shipping…', caption: 'Shipping it with the top open. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Seal it', caption: 'That’s your operations today: a big mess. The bag made it into the case. The candy didn’t, and it won’t pick itself up, either.' },
+    dosing:   { btn: 'Sealing…', caption: 'Fresh film, and in go the jaws.' },
+    dosed:    { btn: 'Ship it again', caption: 'In go the jaws. That’s SimpleGrid: it seals what the bag says to what’s really inside. Now ship it again.' },
+    cleaning: { btn: 'Shipping…', caption: 'Watch the mess pack itself back in.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one sealed bag in the case. Your ERP and your floor finally match, and they stay that way.' }
   };
   var ARIA = {
-    open: bagger.getAttribute('aria-label'),
-    done: 'A bag of candy sealed shut with a grid-patterned seal, packed in a taped shipping case.'
+    apart: bagger.getAttribute('aria-label'),
+    mess: 'The open bag landed tipped over in the shipping case, and its candy is spilled all over the case and the floor.',
+    dosed: 'Fresh film hangs between the seal jaws, sealed at the bottom, above the spilled candy.',
+    done: 'A bag of candy sealed shut with a grid-patterned seal and a SimpleGrid label, packed in a shipping case.'
   };
   var COLORS = ['#FFCD00', '#9E5FA6', '#F8485E', '#FFFFFF', '#FFCD00', '#F8485E', '#9E5FA6', '#FFFFFF'];
   // Where each piece sits inside the bag, settled from the bottom up.
@@ -301,132 +326,146 @@ h2{letter-spacing:-.02em}
       for (var i = 0; i < r[1]; i++) SPOTS.push([180 + (i - (r[1] - 1)/2)*15.5 + (j % 2 ? 5 : -3), r[0] - (i % 3)*1.5]);
     });
   })();
+  // Where the spill comes to rest, in the order it lands: the floor either side of the case,
+  // out in front of it, along its rim and on the flaps, then piled up against the case.
+  var REST = [
+    [10,542],[284,542],[24,542],[297,542],[37,542],[311,542],[51,542],[324,542],[63,542],[338,542],[76,542],[351,542],
+    [99,554],[252,553],[128,556],[221,555],[160,553],[188,556],[270,556],
+    [94,460],[260,460],[116,460],[236,460],[141,460],[212,460],[166,460],[190,460],[49,386],[291,386],[67,386],[309,386],
+    [30,531],[290,531],[44,531],[304,531],[58,531],[318,531],[71,531],[333,531],
+    [105,449],[152,449],
+    [50,520],[297,520],[64,520],[312,520],[326,520],[305,509]
+  ].map(function(r, k){ return [r[0] + (rnd(k + 21) - .5)*5, r[1] - rnd(k + 33)*2.5]; });
+  var TIP = 28, SLUMP = .72;   // the bag that shipped open tips over in the case, and sags once it's empty
 
-  var phase = 'open', sealed = false, timers = [];
-  var swing = { a: 0, v: 0, target: 0 }, drop = 0, drag = null, spilled = 0, cool = 0;
-  var bits = [];   // candy that's left the bag
-  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  var swing = { a: 0, v: 0, target: 0 }, drop = 0, tip = 0, slump = 1, drag = null;
+  var hanging = true, steady = false;   // hanging: on the filler and free to swing. steady: held still to be filled.
+  var pieces = [], anims = [], timers = [];
 
-  function setPhase(next){
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'falling' || next === 'sealing';
-    caption.textContent = COPY[next].caption;
+  // Small tweens, run by the frame loop so they stop with it when the hero is off screen.
+  function tween(dur, delay, step){
+    return new Promise(function(done){ anims.push({ t: -(delay || 0), dur: dur, step: step, done: done }); });
   }
+  function wait(ms){ return new Promise(function(done){ timers.push(setTimeout(done, ms)); }); }
+  // A quadratic arc from y0 to y1 that tops out at `apex`: the control point that gets it there.
+  function ctrl(y0, y1, apex){ return apex - Math.sqrt(Math.max(0, (y0 - apex)*(y1 - apex))); }
+  function arc(y0, c, y1, t){ return (1 - t)*(1 - t)*y0 + 2*t*(1 - t)*c + t*t*y1; }
 
-  function candy(x, y, i){
+  function candy(i){
     var c = document.createElementNS(NS, 'ellipse');
-    c.setAttribute('cx', x.toFixed(1));
-    c.setAttribute('cy', y.toFixed(1));
     c.setAttribute('rx', 7.8);
     c.setAttribute('ry', 6.4);
     c.setAttribute('fill', COLORS[i % COLORS.length]);
     c.setAttribute('stroke', 'rgba(0,0,0,.18)');
     return c;
   }
+  function pos(p, x, y, r){
+    p.x = x; p.y = y; p.r = r;
+    p.el.setAttribute('cx', x.toFixed(1));
+    p.el.setAttribute('cy', y.toFixed(1));
+    if (r) p.el.setAttribute('transform', 'rotate(' + r.toFixed(1) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')');
+    else p.el.removeAttribute('transform');
+  }
   function fill(){
     inside.innerHTML = '';
-    SPOTS.forEach(function(p, i){ inside.appendChild(candy(p[0], p[1], i)); });
-    spilled = 0;
+    loose.innerHTML = '';
+    pieces = SPOTS.map(function(s, i){
+      var p = { el: candy(i), spot: i };
+      inside.appendChild(p.el);
+      pos(p, s[0], s[1], 0);
+      return p;
+    });
+  }
+  // Back in the bag in their own places, drawn bottom row first: the picture it started as.
+  function tidy(){
+    pieces.sort(function(a, b){ return a.spot - b.spot; }).forEach(function(p){
+      inside.appendChild(p.el);
+      pos(p, SPOTS[p.spot][0], SPOTS[p.spot][1], 0);
+    });
   }
 
-  // Where a point inside the bag ends up on screen, given the swing and the drop.
+  // Where a point of the bag ends up on screen: swung on the filler, sagged, tipped over, dropped.
+  function turn(p, deg, cx, cy){
+    var a = deg*Math.PI/180, s = Math.sin(a), c = Math.cos(a), dx = p.x - cx, dy = p.y - cy;
+    return { x: cx + dx*c - dy*s, y: cy + dx*s + dy*c };
+  }
   function world(x, y){
-    var px = 180, py = 120, s = Math.sin(swing.a), c = Math.cos(swing.a);
-    var dx = x - px, dy = y - py;
-    return { x: px + dx*c - dy*s, y: py + dx*s + dy*c + drop };
+    var p = turn({ x: x, y: y }, swing.a*57.2958, 180, 120);
+    p.y = 334 + (p.y - 334)*slump;
+    p = turn(p, tip, 260, 334);
+    p.y += drop;
+    return p;
+  }
+  function place(){
+    bagG.setAttribute('transform', 'translate(0 ' + drop.toFixed(1) + ') rotate(' + tip.toFixed(2) + ' 260 334) translate(0 ' + (334*(1 - slump)).toFixed(2) + ') scale(1 ' + slump.toFixed(3) + ') rotate(' + (swing.a*57.2958).toFixed(2) + ' 180 120)');
   }
 
-  // Throw `n` pieces out of the top of the bag, the way it's moving.
-  function toss(n, power){
-    var kids = inside.children;
-    for (var k = 0; k < n && kids.length; k++){
-      var el = kids[kids.length - 1];
-      var mouth = world(150 + Math.random()*60, 134);
-      el.remove();
-      var b = candy(mouth.x, mouth.y, spilled + k);
-      loose.appendChild(b);
-      bits.push({ el: b, x: mouth.x, y: mouth.y, vx: (Math.random() - .5)*360*power + swing.v*90, vy: -(160 + Math.random()*260)*power, rest: false });
-    }
-    spilled += n;
+  // Out of the top of the bag and everywhere: the top piece goes first, and the k-th lands on REST[k].
+  function spillOrder(){ return pieces.slice().sort(function(a, b){ return b.spot - a.spot; }); }
+  function restTilt(k){ return rnd(k + 3)*80 - 40; }
+  function spill(){
+    return Promise.all(spillOrder().map(function(p, k){
+      var to = REST[k], r1 = restTilt(k), spin = (rnd(k + 9) > .5 ? 1 : -1)*(200 + rnd(k)*320);
+      return tween(0, k*.009, function(){}).then(function(){
+        var m = world(150 + rnd(k + 1)*60, 128);
+        var x0 = m.x, y0 = m.y, c = ctrl(y0, to[1], Math.min(y0, to[1]) - 46 - Math.abs(to[0] - x0)*.22);
+        var T = .5 + Math.hypot(to[0] - x0, to[1] - y0)/1000, B = .16;
+        loose.appendChild(p.el);
+        pos(p, x0, y0, r1 - spin);
+        return tween(T + B, 0, function(q){
+          var s = q*(T + B), u = Math.min(1, s/T), b = Math.max(0, (s - T)/B);
+          pos(p, lerp(x0, to[0], u), arc(y0, c, to[1], u) - Math.sin(Math.PI*b)*6, r1 - spin*(1 - u));
+        });
+      });
+    }));
+  }
+  function spillNow(){
+    spillOrder().forEach(function(p, k){
+      loose.appendChild(p.el);
+      pos(p, REST[k][0], REST[k][1], restTilt(k));
+    });
   }
 
-  function frame(dt){
-    // The bag hangs from the filler and swings like it.
-    if (phase !== 'falling' && phase !== 'done'){
-      var k = drag ? 90 : 26, damp = drag ? 12 : 3.2;
-      swing.v += ((swing.target - swing.a)*k - swing.v*damp)*dt;
-      swing.a += swing.v*dt;
-      cool -= dt;
-      // An open bag swung hard throws candy. A sealed one can't.
-      if (!sealed && Math.abs(swing.v) > 3 && cool <= 0 && inside.children.length){
-        toss(2, .8);
-        cool = .22;
-        if (phase === 'open'){ setPhase('broken'); caption.textContent = 'And there it goes. That’s the usual ERP go-live: packed up for the launch, and months later the floor is back on Excel.'; }
-      }
-    }
-    bagG.setAttribute('transform', 'translate(0 ' + drop.toFixed(1) + ') rotate(' + (swing.a*57.3).toFixed(2) + ' 180 120)');
-    // Loose candy falls, bounces and settles on the floor.
-    for (var i = 0; i < bits.length; i++){
-      var b = bits[i];
-      if (b.rest) continue;
-      b.vy += 1500*dt;
-      b.x += b.vx*dt; b.y += b.vy*dt;
-      if (b.x < 12){ b.x = 12; b.vx = -b.vx*.5; }
-      if (b.x > 348){ b.x = 348; b.vx = -b.vx*.5; }
-      // The case's front edge is something to land on too.
-      var floor = (b.x > 84 && b.x < 276 && b.y < 470) ? 462 : 552;
-      if (b.y > floor){
-        b.y = floor; b.vy = -b.vy*.34; b.vx *= .72;
-        if (Math.abs(b.vy) < 50){ b.vy = 0; if (Math.abs(b.vx) < 8) b.rest = true; }
-      }
-      b.el.setAttribute('cx', b.x.toFixed(1));
-      b.el.setAttribute('cy', b.y.toFixed(1));
-    }
+  // The bag that shipped open stays where it landed. The live one goes back up into the filler, out of sight, for fresh film.
+  function retire(){
+    var copy = bag.cloneNode(true);
+    copy.removeAttribute('id');
+    [].forEach.call(copy.querySelectorAll('[id]'), function(el){ el.removeAttribute('id'); });
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('transform', bagG.getAttribute('transform'));
+    g.appendChild(copy);
+    oldBag.innerHTML = '';
+    oldBag.removeAttribute('style');
+    oldBag.appendChild(g);
+    drop = -222; tip = 0; slump = 1; swing.a = swing.v = swing.target = 0;
+    feed.setAttribute('clip-path', 'url(#feedClip)');
+    bagG.classList.add('raw');
+    place();
   }
-
-  function ship(){
-    setPhase('falling');
-    bagger.classList.add('dropping');
-    var t = 0;
-    var fall = setInterval(function(){
-      t += .016;
-      drop = Math.min(196, 1200*t*t);
-      swing.a *= .9;
-      if (drop >= 196 || reduce){
-        drop = 196;
-        clearInterval(fall);
-        if (!sealed){
-          toss(inside.children.length, 1);
-          later(function(){ setPhase('broken'); bagger.classList.remove('dropping'); restock(); }, 1700);
-        } else {
-          // A bump, and nothing moves.
-          later(function(){ drop = 186; }, 60);
-          later(function(){ drop = 196; }, 160);
-          later(function(){ bagger.classList.add('closed'); }, 300);
-          later(complete, 900);
-        }
-      }
-    }, reduce ? 0 : 16);
+  // As the mess packs itself back in, the empty bag sinks out of sight in the case.
+  function sinkOld(){
+    var g = oldBag.firstChild;
+    if (!g) return Promise.resolve();
+    var base = g.getAttribute('transform');
+    return tween(.55, .05, function(k){
+      g.setAttribute('transform', 'translate(0 ' + (80*k*k).toFixed(1) + ') ' + base);
+      oldBag.style.opacity = (1 - k).toFixed(3);
+    }).then(function(){ oldBag.innerHTML = ''; oldBag.removeAttribute('style'); });
   }
-
-  // A fresh bag takes the empty one's place under the filler.
-  function restock(){
-    bits.forEach(function(b){ b.el.style.transition = 'opacity .5s'; b.el.style.opacity = '0'; });
-    later(function(){
-      loose.innerHTML = ''; bits = [];
-      drop = 0; swing.a = 0; swing.v = 0;
-      fill();
-    }, 600);
-  }
-
-  function seal(){
-    setPhase('sealing');
-    swing.target = 0;
-    bagger.classList.add('crimping');
-    later(function(){ sealed = true; bagger.classList.add('sealed'); }, 330);
-    later(function(){ bagger.classList.remove('crimping'); }, 700);
-    later(function(){ setPhase('sealed'); }, 1000);
+  // Each piece hops from wherever it fell, over the jaws and in at the mouth, then drops to its own place.
+  function hop(p, delay){
+    var s = SPOTS[p.spot], mx = clamp(s[0], 132, 228);
+    return tween(0, delay, function(){}).then(function(){
+      var x0 = p.x, y0 = p.y, r0 = p.r;
+      var T = .46 + Math.hypot(180 - x0, 120 - y0)/1300;
+      return tween(T, 0, function(k){
+        var m = world(mx, 116), c = ctrl(y0, m.y, m.y - 34 - Math.abs(m.x - x0)*.08);
+        pos(p, lerp(x0, m.x, k), arc(y0, c, m.y, k), r0*(1 - k));
+      });
+    }).then(function(){
+      inside.appendChild(p.el);
+      return tween(.2, 0, function(k){ pos(p, lerp(mx, s[0], k), lerp(116, s[1], k*k), 0); });
+    });
   }
 
   function setCallouts(final){
@@ -437,40 +476,115 @@ h2{letter-spacing:-.02em}
     $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really inside, on Excel, whiteboards and phones.';
   }
 
-  function complete(){
-    bagger.classList.add('is-done');
-    setCallouts(true);
-    setPhase('done');
-    bagger.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, bagger, 'b', '.bagger');
-  }
-
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    sealed = false; drop = 0; swing.a = 0; swing.v = 0; swing.target = 0;
-    bagger.classList.remove('sealed', 'closed', 'is-done', 'dropping', 'crimping');
-    loose.innerHTML = ''; bits = [];
-    fill();
-    setCallouts(false);
-    bagger.setAttribute('aria-label', ARIA.open);
-    setPhase('open');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, bagger, 'a', '.bagger');
-  }
-
-  btn.addEventListener('click', function(){
-    if (phase === 'open' || phase === 'sealed') ship();
-    else if (phase === 'broken') seal();
-    else if (phase === 'done') $('gap').scrollIntoView();
+  var story = SG.story({
+    hero: hero, obj: bagger, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.bagger',
+    ops: {
+      mess: ['Your operations, today', 'Shipped open, still not linked. What the bag says is in the case. What’s really in it is all over the floor.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same spill, same floor. Now there are jaws to seal it.']
+    },
+    // Ship it open: it drops into the case, tips over, and the candy goes everywhere. The spill stays.
+    mess: function(){
+      drag = null; hanging = false;
+      if (reduce){ drop = 196; tip = TIP; slump = SLUMP; place(); spillNow(); retire(); return; }
+      return tween(.42, 0, function(k){ drop = 196*k*k; }).then(function(){
+        return Promise.all([
+          tween(.4, 0, function(k){ tip = TIP*backOut(k); drop = 196 - 7*Math.sin(Math.PI*Math.min(1, k*2.4)); }),
+          tween(.7, .1, function(k){ slump = lerp(1, SLUMP, easeInOut(k)); }),
+          spill()
+        ]);
+      }).then(function(){ return wait(120); }).then(retire);
+    },
+    // Fresh film comes down between the jaws, they close on it and seal its bottom, and it hangs ready.
+    dose: function(){
+      if (reduce){
+        bagger.classList.add('sg-in');
+        bagG.classList.remove('raw'); bagG.classList.add('sealed-b');
+        drop = 0; hanging = true; place();
+        feed.removeAttribute('clip-path');
+        return;
+      }
+      return tween(.4, 0, function(k){ drop = lerp(-222, -194, easeOut(k)); })
+        .then(function(){ return wait(90); })
+        .then(function(){ bagger.classList.add('crimping', 'sg-in'); return wait(330); })
+        .then(function(){ bagG.classList.remove('raw'); bagG.classList.add('sealed-b'); return wait(280); })
+        .then(function(){ bagger.classList.remove('crimping'); return wait(260); })
+        .then(function(){ return tween(.6, 0, function(k){ drop = lerp(-194, 0, easeInOut(k)); }); })
+        .then(function(){ feed.removeAttribute('clip-path'); hanging = true; });
+    },
+    // Ship it again: the spill hops back in, the jaws seal it, and it drops into the case.
+    clean: function(){
+      drag = null; steady = true;
+      if (reduce){
+        oldBag.innerHTML = '';
+        tidy();
+        bagger.classList.add('sealed');
+        hanging = steady = false; swing.a = swing.v = 0; drop = 196; place();
+        return;
+      }
+      var hops = pieces.slice().sort(function(a, b){ return a.spot - b.spot; }).map(function(p, n){ return hop(p, .12 + n*.018); });
+      return Promise.all(hops.concat(sinkOld())).then(function(){ tidy(); return wait(80); })
+        .then(function(){ bagger.classList.add('crimping'); return wait(320); })
+        .then(function(){ bagger.classList.add('sealed'); return wait(300); })
+        .then(function(){ bagger.classList.remove('crimping'); hanging = steady = false; swing.a = swing.v = 0; return wait(220); })
+        .then(function(){ return tween(.36, 0, function(k){ drop = 196*k*k; }); })
+        .then(function(){ return tween(.22, 0, function(k){ drop = 196 - 8*Math.sin(Math.PI*k); }); })
+        .then(function(){ return wait(160); });
+    },
+    restore: function(){
+      anims = [];
+      timers.forEach(clearTimeout);
+      timers = [];
+      bagger.classList.add('snap');
+      drag = null; hanging = true; steady = false;
+      swing.a = swing.v = swing.target = 0; drop = 0; tip = 0; slump = 1;
+      feed.removeAttribute('clip-path');
+      bagG.classList.remove('raw', 'sealed-b');
+      bagger.classList.remove('crimping', 'sealed', 'sg-in');
+      oldBag.innerHTML = '';
+      oldBag.removeAttribute('style');
+      fill();
+      place();
+    },
+    final: function(on){
+      setCallouts(on);
+      bagger.classList.toggle('is-done', on);
+      bagger.classList.toggle('closed', on);
+      // Start over lands on the first picture at once, not by fading back to it.
+      if (!on){ bagger.getBoundingClientRect(); bagger.classList.remove('snap'); }
+    }
   });
-  resetBtn.addEventListener('click', startOver);
+
+  function frame(dt){
+    var phase = story.phase();
+    if (hanging){
+      // The bag hangs from the filler and swings like it.
+      var k = steady ? 140 : drag ? 90 : 26, damp = steady ? 24 : drag ? 12 : 3.2;
+      swing.v += (((steady ? 0 : swing.target) - swing.a)*k - swing.v*damp)*dt;
+      swing.a += swing.v*dt;
+      // Swing it hard and it comes off the filler: the same as the button.
+      if (!steady && Math.abs(swing.v) > 3 && (phase === 'apart' || phase === 'dosed')) story.go();
+    } else {
+      swing.a *= Math.exp(-dt*7);
+      swing.v = 0;
+    }
+    var list = anims.slice();
+    for (var i = 0; i < list.length; i++){
+      var a = list[i];
+      a.t += dt;
+      if (a.t < 0) continue;
+      var q = a.dur > 0 ? Math.min(1, a.t/a.dur) : 1;
+      a.step(q);
+      if (q >= 1){ anims.splice(anims.indexOf(a), 1); a.done(); }
+    }
+    bagger.classList.toggle('held', !(phase === 'apart' || phase === 'dosed') || story.busy());
+    place();
+  }
 
   // Grab the bag and swing it.
   var svg = bagger.querySelector('svg');
   bagG.addEventListener('pointerdown', function(e){
-    if (phase === 'falling' || phase === 'sealing' || phase === 'done') return;
+    var phase = story.phase();
+    if (story.busy() || !(phase === 'apart' || phase === 'dosed')) return;
     drag = { x: e.clientX };
     try { bagG.setPointerCapture(e.pointerId); } catch (err) {}
   });
@@ -484,6 +598,7 @@ h2{letter-spacing:-.02em}
   bagG.addEventListener('pointercancel', letGo);
 
   fill();
+  place();
   SG.loop(hero, frame);
 })();
 </script>

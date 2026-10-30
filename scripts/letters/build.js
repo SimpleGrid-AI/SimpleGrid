@@ -15,7 +15,9 @@
      {{key}}                that reader's value, HTML-escaped
      {{key|url}}            percent-encoded, for mailto: links
    Every reader gets slug, first, full, town and where from readers.json,
-   plus company (the folder) and url (where the page lives). A company's
+   plus company (the folder), url (where the page lives) and og (the name of
+   its link preview, og-<slug> unless the reader says otherwise). An empty
+   slug puts the page at the company's own folder. A company's
    "values" go to all its readers, and a reader's own entry wins: that's how
    one person gets a different P.S.
 
@@ -45,7 +47,9 @@ for (const [company, entry] of Object.entries(readers)) {
   const template = expand(fs.readFileSync(path.join(HERE, entry.template), 'utf8'));
 
   for (const reader of entry.readers) {
-    const values = { ...entry.values, ...reader, company, url: `${SITE}/${company}/${reader.slug}/` };
+    // An empty slug is the company's own page, simplegrid.ai/<company>/ (Legacy's first reader lives there).
+    const dir = reader.slug ? `${company}/${reader.slug}/` : `${company}/`;
+    const values = { ...entry.values, ...reader, company, url: `${SITE}/${dir}`, og: reader.og || `og-${reader.slug}` };
     const page = template.replace(/\{\{(\w+)(?:\|(\w+))?\}\}/g, (hole, key, filter) => {
       if (!(key in values)) throw new Error(`${entry.template}: ${hole} has no value for ${reader.slug}`);
       if (filter === 'url') return encodeURIComponent(values[key]);
@@ -53,7 +57,7 @@ for (const [company, entry] of Object.entries(readers)) {
       return escape(values[key]);
     });
 
-    const out = path.join(ROOT, company, reader.slug, 'index.html');
+    const out = path.join(ROOT, dir, 'index.html');
     const rel = path.relative(ROOT, out);
     const before = fs.existsSync(out) ? fs.readFileSync(out, 'utf8') : null;
     if (before === page) continue;

@@ -1,0 +1,50 @@
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <!-- the schedule: what the ERP says the line is running -->
+            <g class="ln-screen-g">
+              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
+              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
+              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
+              <text class="ln-order" x="56" y="84">{{line_order}}</text>
+              <text class="ln-sku" x="56" y="106">{{line_sku}}</text>
+              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
+              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
+              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            </g>
+            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
+            <path class="ln-stub" d="M165 142V154"/>
+            <path class="ln-stub" d="M165 168V180"/>
+            <path class="ln-cable" d="M165 142V180"/>
+            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><!--#include sg-badge.svg--></g></g>
+
+            <!-- the floor under the line -->
+            <path class="ln-floor" d="M0 478H360"/>
+            <!-- the conveyor -->
+            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
+            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
+            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
+            <path class="ln-run" d="M12 340H256"/>
+            <!-- the pallet at the end of the line -->
+            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
+            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
+
+            <!-- what runs down the line: line.js places every one -->
+            <g id="lnItems"></g>
+
+            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
+            <g class="ln-machine">
+              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
+              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
+              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
+              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
+              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
+              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
+              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
+              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
+              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
+              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
+              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            </g>
+            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
+            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
+            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><!--#include sg-tag.svg--></g></g>
+          </svg>

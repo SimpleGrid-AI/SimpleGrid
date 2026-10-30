@@ -31,7 +31,7 @@
   var NOTE = {
     calm: stageNote.textContent,
     chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
-    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Your ERP stays. The spreadsheets go.'
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
   };
   var timers = [];
   function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
@@ -83,9 +83,26 @@
       linkBtn.disabled = false;
       pile.innerHTML = '';
       renderErp(true);
+      countUp();
       stageNote.textContent = NOTE.linked;
       stageReset.focus({ preventScroll: true });
     }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
   }
   function resetStage(){
     timers.forEach(clearTimeout);

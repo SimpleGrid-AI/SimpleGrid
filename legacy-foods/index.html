@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shake the jar, Jonathan | SimpleGrid</title>
 <meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes emulsions for a living.">
-<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it. -->
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/legacy-foods.html by scripts/letters/build.js. Edit the template, not this file. -->
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="theme-color" content="#0047AB">
 <meta property="og:type" content="website">
@@ -21,60 +22,56 @@
 <meta name="twitter:title" content="Jonathan, shake the jar.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes emulsions for a living.">
 <meta name="twitter:image" content="https://simplegrid.ai/legacy-foods/og-jar.jpg">
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/merriweather-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/albert-sans-latin.woff2" crossorigin>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
 <style>
 /* The site's self-hosted faces, so nothing here calls out to a third party. */
-@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('../assets/fonts/merriweather-latin.woff2') format('woff2')}
-@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('../assets/fonts/albert-sans-latin.woff2') format('woff2')}
-@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('../assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('/assets/fonts/merriweather-latin.woff2') format('woff2')}
+@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/albert-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
 
+/* Each template sets its company's palette on :root. These read it:
+   --brand --brand-press --brand-deep   their main color, darker, darkest
+   --accent --accent-soft --accent-edge  the color the hero ends on
+   --on-brand --on-brand-soft --on-accent --on-accent-soft   text on those
+   --tint --pale --ink --alert            light fill, page, type, the "No link" red
+   --marker                               the highlighter in the ERP panel
+   and optionally --display, --dw (its weight; a single-weight face must not be faux-bolded) and --h2-hi. */
 :root{
-  /* Brand palette carries the structure. */
-  --blue:#0047AB;
-  --blue-press:#003A8C;
-  --titan:#EBF0FF;
-  --pale:#FAFBFC;
-  --ink:#1A1A1A;
   --ink-70:rgba(26,26,26,.74);
   --ink-55:rgba(26,26,26,.62);
-  /* Ingredients, not brand: only where the jar's contents show up on the page. */
-  --yolk:#FFC72C;
-  --yolk-soft:#FFEDB5;
-  --ruby:#C4163F;
-
   --display:'Merriweather',Georgia,'Times New Roman',serif;
   --body:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
   --mono:'IBM Plex Mono',Consolas,'SF Mono',monospace;
   --hand:'Bradley Hand','Noteworthy','Segoe Print','Ink Free','Comic Sans MS',cursive;
-
+  --dw:900;
   --gutter:clamp(20px,5vw,56px);
   --section:clamp(64px,9vw,128px);
 }
 
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;font-synthesis-weight:none}
 body{margin:0;background:var(--pale);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
 ul,ol{list-style:none}
 a{color:inherit}
 button{font:inherit;color:inherit}
 img,svg,canvas{display:block}
-:focus-visible{outline:3px solid var(--focus,var(--blue));outline-offset:3px;border-radius:4px}
+:focus-visible{outline:3px solid var(--focus,var(--brand));outline-offset:3px;border-radius:4px}
 .wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
-h2{font:900 clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
-h2 span{display:block;color:var(--blue)}
+h2{font:var(--dw) clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
+h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
 
 /* ------------------------------------------------------------------ Hero */
 .hero,.hero-wipe{
-  --field:var(--blue);--on:#fff;--on-soft:rgba(255,255,255,.86);--accent:var(--yolk);
-  --btn-bg:var(--yolk);--btn-fg:var(--ink);--btn-edge:#C89000;--focus:var(--yolk);
+  --field:var(--brand);--on:var(--on-brand);--on-soft:var(--on-brand-soft);--hi:var(--accent);
+  --btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
   background:var(--field);color:var(--on);
 }
-.hero[data-theme=yolk],.hero-wipe[data-theme=yolk]{
-  --field:var(--yolk);--on:var(--ink);--on-soft:rgba(26,26,26,.8);--accent:var(--blue);
-  --btn-bg:var(--blue);--btn-fg:#fff;--btn-edge:#002D6E;--focus:var(--blue);
+/* Where the hero ends up once the link is made. */
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:var(--accent);--on:var(--on-accent);--on-soft:var(--on-accent-soft);--hi:var(--brand-press);
+  --btn-bg:var(--brand);--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep);--focus:var(--brand-press);
 }
 .hero{position:relative;isolation:isolate;overflow:hidden}
 .hero-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
@@ -90,48 +87,138 @@ h2 span{display:block;color:var(--blue)}
 
 .hero-grid{
   display:grid;grid-template-columns:minmax(0,1fr) auto;
-  grid-template-areas:"copy jar" "ctrl jar";grid-template-rows:auto 1fr;
+  grid-template-areas:"copy art" "ctrl art";grid-template-rows:auto 1fr;
   column-gap:clamp(24px,4vw,60px);margin-top:clamp(10px,2.4vh,30px);
 }
 .hero-copy{grid-area:copy}
-.hero-jar{grid-area:jar}
-.jar-ctrl{grid-area:ctrl}
-h1{font:900 clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em}
-h1 span{display:block;color:var(--accent)}
+.hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+/* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
+.hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
+h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
+h1 span{display:block;color:var(--hi)}
 .hero-sub{margin-top:clamp(16px,2vw,24px);max-width:50ch;font-size:clamp(17px,.4vw + 15px,20px);color:var(--on-soft)}
-.jar-ctrl{margin-top:clamp(22px,3vh,34px)}
 .ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.hero-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
 
-/* Primary button: a jar lid, ridges along the bottom edge. */
-.lid-btn{
+/* The primary button presses in like something you'd find on a line. */
+.go-btn{
   position:relative;appearance:none;border:0;cursor:pointer;
-  padding:16px 28px 21px;border-radius:12px;
+  padding:16px 28px 19px;border-radius:12px;
   background:var(--btn-bg);color:var(--btn-fg);
-  font:900 18px/1.2 var(--display);text-decoration:none;display:inline-block;
+  font:var(--dw) 18px/1.2 var(--display);text-decoration:none;display:inline-block;
   box-shadow:0 5px 0 var(--btn-edge);
   transition:transform .09s ease,box-shadow .09s ease;
 }
-.lid-btn::after{
+.go-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
+.go-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
+.go-btn:disabled{cursor:default;opacity:.7;transform:none;box-shadow:0 5px 0 var(--btn-edge)}
+.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* Labels beside the hero object. Each template places them. */
+.callouts{position:relative;width:clamp(150px,14.5vw,196px);flex:none}
+.callout{position:absolute;left:0;right:0}
+.callout-gap{position:absolute;left:0;padding:6px 12px;border-radius:999px;background:var(--alert);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:clamp(14px,1.6vw,24px);border-top:2px dashed var(--on-soft)}
+.callout-gap[hidden]{display:none}
+.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
+.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
+
+.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+
+@media (max-width:980px){
+  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
+  .hero-copy{display:contents}
+  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
+  .hero-art{order:2;margin-top:20px}
+  .hero-ctrl{order:3;margin-top:24px}
+  .hero-sub{order:4;margin-top:6px}
+  .hero-caption{min-height:4.6em;font-size:16.5px}
+  .bar{gap:10px}
+  .bar-tag{font-size:12px}
+  .logo{width:124px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
+  .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
+  .callout p{font-size:13.5px;line-height:1.36}
+  .callout h3{font-size:15px;gap:7px}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
+  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .bar-tag{display:none}
+}
+@media (max-width:350px){
+  .callout h3{font-size:13.5px}
+  .callout p{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+
+/* Conway’s colors: deep green and gold, warm near-black type. */
+:root{
+  --brand:#0047AB;--brand-press:#003A8C;--brand-deep:#002D6E;
+  --accent:#FFC72C;--accent-soft:#FFEDB5;--accent-edge:#C89000;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#1A1A1A;--on-accent-soft:rgba(26,26,26,.8);
+  --tint:#EBF0FF;--pale:#FAFBFC;--ink:#1A1A1A;--alert:#C4163F;--marker:#FFEDB5;--h2-hi:#0047AB;
+}
+
+/* ------------------------------------------------------------ The jar */
+/* The primary buttons are jar lids, ridges along the bottom edge. */
+.go-btn{padding-bottom:21px}
+.go-btn::after{
   content:'';position:absolute;left:12px;right:12px;bottom:5px;height:6px;border-radius:2px;opacity:.28;
   background:repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 7px);
 }
-.lid-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
-.lid-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
-.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
-.jar-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
-
 /* The jar */
-.hero-jar{--jar-w:min(340px,29vw,calc((100vh - 130px)/1.56));position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+.hero-art{--jar-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
 .jar{
   --glass:rgba(255,255,255,.84);--glass-soft:rgba(255,255,255,.44);--glass-fill:rgba(255,255,255,.1);
-  --lid:var(--yolk);--lid-edge:#D99F00;--lid-ridge:rgba(90,50,0,.28);
+  --lid:var(--accent);--lid-edge:var(--accent-edge);--lid-ridge:rgba(0,0,0,.24);
   position:relative;z-index:3;flex:none;width:var(--jar-w);aspect-ratio:360/540;
   cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;
 }
-.jar[data-tone=yolk]{--glass:rgba(0,58,140,.62);--glass-soft:rgba(255,255,255,.72);--glass-fill:rgba(255,255,255,.18);--lid:var(--blue);--lid-edge:#002D6E;--lid-ridge:rgba(255,255,255,.2)}
+.jar[data-tone=b]{--glass:color-mix(in srgb,var(--brand) 62%,transparent);--glass-soft:rgba(255,255,255,.72);--glass-fill:rgba(255,255,255,.18);--lid:var(--brand);--lid-edge:var(--brand-deep);--lid-ridge:rgba(255,255,255,.2)}
 .jar:active{cursor:grabbing}
 .jar-shadow{position:absolute;left:6%;right:6%;bottom:-3.2%;height:7.5%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,18,60,.5),rgba(0,18,60,0));transition:opacity .4s}
-.jar[data-tone=yolk] .jar-shadow{opacity:.55}
+.jar[data-tone=b] .jar-shadow{opacity:.55}
 .jar-move{position:absolute;inset:0;will-change:transform}
 .jar-back,.jar-front{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 #liquid,.liquid-flat{
@@ -178,29 +265,25 @@ h1 span{display:block;color:var(--accent)}
   100%{transform:translateY(0)}
 }
 
-.callouts{position:relative;width:clamp(150px,14.5vw,196px);height:calc(var(--jar-w)*1.5)}
-.callout{position:absolute;left:0;right:0}
+.hero-art .callouts{height:calc(var(--jar-w)*1.5)}
 .callout-oil{top:35%}
 .callout-vin{top:73%}
-.callout-gap{position:absolute;left:0;top:calc(66.3% - 15px);padding:6px 12px;border-radius:999px;background:var(--ruby);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
-.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:calc(clamp(14px,1.6vw,24px) + var(--jar-w)*.06);border-top:2px dashed rgba(255,255,255,.8)}
-.callout-gap[hidden]{display:none}
-.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
-.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.7);transform:translateY(1px)}
+.callout-gap{top:calc(66.3% - 15px)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--jar-w)*.06)}
 .callout-oil h3 i{background:#FFC21A}
-.callout-vin h3 i{background:var(--ruby)}
-.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
-.hero[data-theme=yolk] .callout h3 i,.hero-wipe[data-theme=yolk] .callout h3 i{display:none}
+.callout-vin h3 i{background:#C4163F}
 
-.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+@media (max-width:980px){
+  .hero-art{--jar-w:clamp(158px,43vw,290px)}
+}
 
 /* ------------------------------------- The gap between the ERP and the floor */
 .gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
 .stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
-.panel-erp h3,.panel-floor h3{font:900 clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
+.panel-erp h3,.panel-floor h3{font:var(--dw) clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
 
 /* The ERP is deliberately calm. That's the joke, and the problem. */
-.panel-erp{background:#fff;border:2px solid var(--blue);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.panel-erp{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
 .erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
 .erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
@@ -212,75 +295,88 @@ h1 span{display:block;color:var(--accent)}
 .erp-rows b{font-weight:700;text-align:right}
 .erp-rows s{font-weight:400;color:var(--ink-55)}
 .erp-rows li.hit b{
-  background:linear-gradient(var(--yolk),var(--yolk)) no-repeat 0 100%/0 100%;
+  background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 100%/0 100%;
   -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
   animation:marker .42s ease-out var(--d,0s) forwards;
 }
 @keyframes marker{to{background-size:100% 100%}}
-.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--ruby);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--alert);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
 .stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
 .erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
 
 /* The broken pipe between them. Once linked, it joins up and flows. */
 .link{position:relative;display:grid;place-items:center}
-.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:rgba(0,71,171,.24);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:color-mix(in srgb,var(--brand) 26%,transparent);transition:width .5s cubic-bezier(.4,0,.2,1)}
 .stub-a{left:0}
 .stub-b{right:0}
-.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:rgba(0,71,171,.5);opacity:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:color-mix(in srgb,var(--brand) 55%,transparent);opacity:0}
 .stub-a::after{right:1px}
 .stub-b::after{left:1px}
 .stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
 .stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
 @keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
-.link-no{position:relative;z-index:2;background:var(--ruby);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
-.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--blue);font:800 14px/1 var(--body)}
-.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--yolk);color:var(--blue);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,30,80,.25)}
+.link-no{position:relative;z-index:2;background:var(--alert);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--brand-press);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
 .link-yes svg{width:56%;height:56%}
 .stage[data-state=linked] .link-no{display:none}
 .stage[data-state=linked] .link-yes{display:grid}
-.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--yolk) 0 14px,#FFB800 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
 @keyframes pipe{to{background-position:28px 0}}
 
 /* The floor: where the morning actually happens. */
 .panel-floor{
-  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--yolk);--btn-fg:var(--ink);--btn-edge:#C89000;--focus:var(--yolk);
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
   position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
   display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
 }
 .floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
 .floor-calm{flex:1;display:grid;place-items:center}
-.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:900 clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:var(--dw) clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
 .dome{
   width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
-  box-shadow:0 0 0 9px var(--yolk),0 8px 0 9px #C89000,0 18px 26px 9px rgba(0,0,0,.55);
+  box-shadow:0 0 0 9px var(--accent),0 8px 0 9px var(--accent-edge),0 18px 26px 9px rgba(0,0,0,.55);
   transition:transform .09s ease,box-shadow .09s ease;
 }
-.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--yolk),0 6px 0 9px #C89000,0 15px 22px 9px rgba(0,0,0,.55)}
-.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--yolk),0 1px 0 9px #C89000,0 5px 9px 9px rgba(0,0,0,.55)}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--accent),0 6px 0 9px var(--accent-edge),0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--accent),0 1px 0 9px var(--accent-edge),0 5px 9px 9px rgba(0,0,0,.55)}
 .pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
 .stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
 .stage:not([data-state=calm]) .floor-calm{display:none}
 .n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
 @keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
 .n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
-.n-sticky{background:var(--yolk);color:#2B2000}
+.n-sticky{background:#FFD84D;color:#2B2000}
 .n-pink{background:#FF9FB4;color:#3D0012}
-.n-board{background:#fff;color:var(--ruby)}
+.n-board{background:#fff;color:#C4163F}
 .n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
-.n-file{background:#fff;color:var(--ink)}
+.n-file{background:#fff;color:#1A1A1A}
 .n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
-.n-mail{background:var(--titan);color:var(--ink)}
-.n-call{background:var(--blue);color:#fff;border-radius:16px 16px 16px 4px}
-.n-tag{background:var(--ruby);color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n-mail{background:#E9EEF6;color:#1A1A1A}
+.n-call{background:#2F6FE0;color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:#C4163F;color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
 .n svg{flex:none;width:15px;height:15px}
 .n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
 @keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
 .tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
 .stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
 .tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
-.tidy li::before{content:'';flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--yolk) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7.4l2.6 2.6L11 4.4'/%3E%3C/svg%3E") center/14px no-repeat}
+.tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.tidy i svg{width:14px;height:14px}
 @keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
 .stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
@@ -290,15 +386,43 @@ h1 span{display:block;color:var(--accent)}
 .stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
 .fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
 
-/* ------------------------------------------------- The back of the jar */
-.back{background:var(--blue);color:#fff;padding:var(--section) 0;--focus:var(--yolk)}
-.back h2{color:#fff}
-.back h2 span{color:var(--yolk)}
+@media (max-width:980px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
+}
+@media (max-width:620px){
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
+}
+@media (max-width:350px){
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
+}
+/* ------------------------------------------------- The back of the pack */
+.back{background:var(--brand);color:var(--on-brand);padding:var(--section) 0;--focus:var(--accent)}
+.back h2{color:var(--on-brand)}
+.back h2 span{color:var(--accent)}
 .label{
-  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--blue);
+  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--brand-press);
   border-radius:16px;padding:clamp(18px,3vw,40px);
   display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:clamp(28px,4vw,60px);
-  box-shadow:0 26px 60px rgba(0,16,50,.38);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
 }
 /* The panel follows the FDA layout: heavy rules, heavy title, nothing cute about the structure. */
 .facts{border:2.5px solid var(--ink);padding:8px 11px 10px;font-family:'Helvetica Neue',Helvetica,var(--body)}
@@ -317,13 +441,12 @@ h1 span{display:block;color:var(--accent)}
 .facts thead th:first-child{font-weight:400}
 .facts td{width:68px;padding-left:8px}
 .facts td:last-child{font-weight:900}
-.facts tr.is-saved th{font-weight:800}
 .facts-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0 6px;font-weight:800;font-size:16px;line-height:1.2}
 .facts-saved b{font-weight:900;white-space:nowrap}
 .facts-foot{padding-top:6px;font-size:13px;line-height:1.3}
 .facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
-.margin-note{color:var(--blue);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
-.margin-note svg{position:absolute;left:0;top:-4px;width:32px;height:38px;color:var(--blue)}
+.margin-note{color:var(--brand-press);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
+.margin-note svg{position:absolute;left:0;top:-4px;width:32px;height:38px}
 
 .label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
 .label-copy > * + *{margin-top:18px}
@@ -341,21 +464,32 @@ h1 span{display:block;color:var(--accent)}
   }
 }
 
+@media (max-width:980px){
+  .label{grid-template-columns:minmax(0,1fr)}
+  .facts{max-width:430px}
+}
+@media (max-width:620px){
+  .lockup{align-items:center}
+  .facts-title{font-size:min(46px,calc((100vw - 104px)/7.95))}
+  .facts-big span{font-size:20px}
+  .facts-saved{flex-direction:column;gap:1px}
+}
 /* ------------------------------------------------------------- The ask */
-.meet{background:var(--yolk);padding:var(--section) 0;--focus:var(--blue)}
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
 .meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
 .meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
 .meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
 .meet-lead strong{font-weight:800}
 .meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
-.meet .lid-btn{--btn-bg:var(--blue);--btn-fg:#fff;--btn-edge:#002D6E}
-.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--blue-press);box-shadow:inset 0 0 0 2px var(--blue);font:900 17px/1.2 var(--display);text-decoration:none}
-.side-btn:hover{background:var(--titan)}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
 .meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
-.meet-contact a{font-weight:700;color:var(--blue-press);text-underline-offset:3px}
-.meet-ps{margin-top:18px;color:var(--blue-press);font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
 .faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
-.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(110,70,0,.28)}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
 .polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
 .polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
 .polaroid-a{transform:rotate(-2deg)}
@@ -364,80 +498,26 @@ h1 span{display:block;color:var(--accent)}
 .who strong{font-weight:800}
 
 /* -------------------------------------------------------------- Footer */
-.foot{background:var(--blue);color:#fff;padding:clamp(30px,4vw,48px) 0;--focus:var(--yolk)}
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
 .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
 .foot .logo{width:150px}
-.foot p{font-size:15px;line-height:1.45;color:rgba(255,255,255,.86);max-width:64ch}
-.foot p + p{margin-top:8px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
 
-/* --------------------------------------------------------- Smaller screens */
 @media (max-width:980px){
-  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
-  .hero-copy{display:contents}
-  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
-  .hero-jar{order:2;margin-top:20px;--jar-w:clamp(158px,43vw,290px)}
-  .jar-ctrl{order:3;margin-top:24px}
-  .hero-sub{order:4;margin-top:6px}
-  .jar-caption{min-height:4.6em;font-size:16.5px}
-  .bar{gap:10px}
-  .bar-tag{font-size:12px}
-  .logo{width:124px}
-  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
-  .callout{position:static}
-  .callout-gap{position:static}
-  .callout-gap::before{display:none}
-  .callout p{font-size:13.5px;line-height:1.36}
-  .callout h3{font-size:15px;gap:7px}
-  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
-  .stage{grid-template-columns:minmax(0,1fr)}
-  .link{height:76px}
-  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
-  .stub-b{top:auto;bottom:0}
-  .stub::after{left:3px;right:auto}
-  .stub-b::after{display:none}
-  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--yolk) 0 14px,#FFB800 14px 28px);background-size:100% 28px;animation-name:pipe-y}
-  @keyframes pipe-y{to{background-position:0 28px}}
-  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
-  .link-yes i{width:44px}
-  .label{grid-template-columns:minmax(0,1fr)}
-  .facts{max-width:430px}
   .meet-grid{grid-template-columns:minmax(0,1fr)}
   .faces{max-width:440px}
 }
 @media (max-width:620px){
-  body{font-size:17px}
-  .bar-tag{display:none}
-  .lockup{align-items:center}
-  .facts-title{font-size:min(46px,calc((100vw - 104px)/7.95))}
-  .facts-big span{font-size:20px}
-  .facts-saved{flex-direction:column;gap:1px}
-  .panel-floor{min-height:0}
-  .floor-calm{min-height:430px}
-  .pile{min-height:470px}
-  .n{max-width:90%}
-  .erp-rows li{font-size:15.5px}
-  .meet-btns .lid-btn,.meet-btns .side-btn{width:100%;text-align:center}
-}
-@media (max-width:350px){
-  .callout h3{font-size:13.5px}
-  .callout p{font-size:13px}
-  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
-  .pile{min-height:530px}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<section class="hero" id="hero" data-theme="blue">
+<section class="hero" id="hero" data-theme="a">
   <div class="hero-inner">
     <header class="bar">
-      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home">
-        <svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg>
-      </a>
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
       <div class="bar-right">
         <p class="bar-tag"><span>Custom formula for Jonathan Gilbert,</span> <span>Legacy Foods. Run size: 1.</span></p>
         <a class="bar-cta" href="#meet">Let’s meet</a>
@@ -450,8 +530,8 @@ h1 span{display:block;color:var(--accent)}
         <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
       </div>
 
-      <div class="hero-jar">
-        <div class="jar" id="jar" role="img" aria-label="A glass jar with a layer of oil floating on a layer of vinegar." data-phase="separated" data-tone="blue">
+      <div class="hero-art">
+        <div class="jar hero-obj" id="jar" role="img" aria-label="A glass jar with a layer of oil floating on a layer of vinegar." data-phase="separated" data-tone="a">
           <div class="jar-shadow" id="jarShadow"></div>
           <div class="jar-move" id="jarMove">
             <svg class="jar-back" viewBox="0 0 360 540" aria-hidden="true">
@@ -502,15 +582,21 @@ h1 span{display:block;color:var(--accent)}
             <h3><i></i><span id="vinTitle">The vinegar: your floor</span></h3>
             <p id="vinText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
         </div>
       </div>
 
-      <div class="jar-ctrl">
+      <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="lid-btn" id="jarBtn" type="button">Shake the jar</button>
-          <button class="quiet-btn" id="jarReset" type="button" hidden>Start over</button>
+          <button class="go-btn" id="heroBtn" type="button">Shake the jar to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="jar-caption" id="jarCaption" aria-live="polite">Nothing links these two. Give it a shake, or grab the jar and do it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.</p>
       </div>
     </div>
   </div>
@@ -550,22 +636,28 @@ h1 span{display:block;color:var(--accent)}
           <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
         </div>
         <div class="pile" id="pile"></div>
-        <ul class="tidy">
-          <li style="--i:0">Kettle 6 crew: Order 4417 moved to you</li>
-          <li style="--i:1">Sales: 4417 ships Monday, and here’s why</li>
-          <li style="--i:2">Buyer: Oil PO is ready for your OK</li>
-          <li style="--i:3">QC: Batch 2207 on hold, and everyone can see it</li>
-        </ul>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
         <div class="floor-do">
-          <button class="lid-btn" id="linkBtn" type="button">Link them up</button>
-          <a class="lid-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
           <button class="quiet-btn" id="stageReset" type="button">Start over</button>
         </div>
       </div>
     </div>
 
     <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
-    <p class="fine">Pretend plant, pretend numbers.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
   </div>
 </section>
 
@@ -576,6 +668,7 @@ h1 span{display:block;color:var(--accent)}
     <div class="label">
       <div class="label-proof">
         <div class="facts">
+          <!-- Same numbers as report.html. Change both. -->
           <h3 class="facts-title">Operations Facts</h3>
           <p class="facts-serving"><strong>Serving size:</strong> 1 deployment<br>6 plants, 1.2 million sq ft</p>
           <div class="rule-10"></div>
@@ -596,7 +689,6 @@ h1 span{display:block;color:var(--accent)}
           <p class="facts-foot">Not a significant source of slides, rip-and-replace or GL migration.</p>
         </div>
       </div>
-
       <div class="label-copy">
         <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
         <p class="margin-note">
@@ -624,7 +716,7 @@ h1 span{display:block;color:var(--accent)}
       <h2>Jonathan, I’d like an appointment with you.</h2>
       <p class="meet-lead">15 minutes at your plant in Elk Grove Village. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
       <div class="meet-btns">
-        <a class="lid-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Elk%20Grove%20Village.%20How%20about%20">Let’s meet in person</a>
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Elk%20Grove%20Village.%20How%20about%20">Let’s meet in person</a>
         <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
       </div>
       <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
@@ -632,11 +724,11 @@ h1 span{display:block;color:var(--accent)}
     </div>
     <div class="faces">
       <figure class="polaroid polaroid-a">
-        <img src="mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <img src="/assets/letters/mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
         <figcaption>Mukund Agarwal</figcaption>
       </figure>
       <figure class="polaroid polaroid-b">
-        <img src="aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <img src="/assets/letters/aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
         <figcaption>Aditi Puri Batra</figcaption>
       </figure>
       <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
@@ -649,15 +741,182 @@ h1 span{display:block;color:var(--accent)}
 
 <footer class="foot">
   <div class="wrap foot-row">
-    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home">
-      <svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg>
-    </a>
-    <div>
-      <p>Everything we know about Legacy comes from your website and LinkedIn. If we got something wrong, tell us and we’ll reformulate. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
-    </div>
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+    <p>Everything we know about Legacy Foods comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll reformulate. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
   </div>
 </footer>
 
+<script>
+/* Shared by every hero: small helpers, the wipe into the end-state colors,
+   and the barcode on the back of the label. */
+var SG = (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+
+  /* The end state spreads out from the hero object and takes the whole hero
+     with it. The clone carries the other colorway, so the type stays legible
+     as the edge passes. `skip` hides whatever shouldn't be painted twice. */
+  function wipeTo(hero, from, theme, skip){
+    if (reduce){ hero.dataset.theme = theme; return; }
+    var r = from.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
+    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
+    var over = document.createElement('div');
+    over.className = 'hero-wipe';
+    over.dataset.theme = theme;
+    over.setAttribute('aria-hidden', 'true');
+    over.inert = true;
+    var inner = hero.querySelector('.hero-inner').cloneNode(true);
+    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+    if (skip) inner.querySelectorAll(skip).forEach(function(el){ el.style.visibility = 'hidden'; });
+    over.appendChild(inner);
+    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
+    hero.appendChild(over);
+    over.getBoundingClientRect();
+    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
+    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      hero.dataset.theme = theme;
+      over.remove();
+    };
+    over.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+
+  /* The barcode is real: Code 128 for 7732804485, in bar and space widths. */
+  function barcode(svg){
+    var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
+    for (var i = 0; i < CODE.length; i++){
+      var width = +CODE.charAt(i);
+      if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="currentColor"/>';
+      x += width;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 26');
+    svg.innerHTML = bars;
+  }
+
+  /* Runs `frame(dt)` only while `el` is on screen and the tab is visible, so
+     an idle hero costs nothing once it's scrolled away. */
+  function loop(el, frame){
+    var raf = 0, last = 0, visible = true;
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(.05, (now - last)/1000 || .016);
+      last = now;
+      frame(dt);
+    }
+    function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        visible ? run() : halt();
+      }).observe(el);
+    }
+    run();
+  }
+
+  return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
+})();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
+</script>
 <script id="liquidFrag" type="x-shader/x-fragment">
 precision highp float;
 uniform vec2 uRes;
@@ -776,65 +1035,44 @@ void main(){
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = SG.reduce;
   var $ = function(id){ return document.getElementById(id); };
-  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+  var clamp = SG.clamp;
   var lerp = function(a, b, t){ return a + (b - a)*t; };
   var smooth = function(a, b, v){ var t = clamp((v - a)/(b - a), 0, 1); return t*t*(3 - 2*t); };
 
   /* ----------------------------------------------------------------- The jar */
   var hero = $('hero'), jar = $('jar'), mover = $('jarMove'), shadow = $('jarShadow');
-  var canvas = $('liquid'), btn = $('jarBtn'), resetBtn = $('jarReset'), caption = $('jarCaption');
+  var canvas = $('liquid'), btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var yolk = $('yolk'), yolkBall = $('yolkBall');
 
   var COPY = {
-    separated: { btn: 'Shake the jar', caption: 'Nothing links these two. Give it a shake, or grab the jar and do it yourself.' },
-    mixed:     { btn: 'Shake the jar', caption: 'Looks mixed, doesn’t it?' },
-    broken:    { btn: 'Add the emulsifier', caption: 'And there it goes. That’s the usual ERP go-live: months later, the plant is back on Excel.' },
-    dosing:    { btn: 'Add the emulsifier', caption: 'One moment. Lid off.' },
-    dosed:     { btn: 'Shake the jar', caption: 'In goes the yolk. That’s SimpleGrid. Unlike 2015, there’s no shortage of this one. Now shake it.' },
-    taking:    { btn: 'Keep shaking', caption: 'It’s coming together.' },
-    done:      { btn: 'Why did the first one break?', caption: 'One live record. Your ERP and your floor finally tell the same story, and it won’t break.' }
+    apart:    { btn: 'Shake the jar to see your operations', caption: 'Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.' },
+    messing:  { btn: 'Shaking…', caption: 'Shaking them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the emulsifier', caption: 'That’s your operations today: a big mess. Your ERP and your floor got shaken together, and they still don’t mix. It won’t settle back, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Lid off. In goes the yolk.' },
+    dosed:    { btn: 'Shake it again', caption: 'In goes the yolk. That’s SimpleGrid. Unlike 2015, there’s no shortage of this one. Now shake it again.' },
+    cleaning: { btn: 'Shaking…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth emulsion. Your ERP and your floor finally tell the same story, and it won’t break.' }
   };
   var ARIA = {
-    separated: 'A glass jar with a layer of oil floating on a layer of vinegar.',
-    done: 'A glass jar of smooth, pale emulsion with a blue SimpleGrid label.'
+    apart: 'A glass jar with a layer of oil floating on a layer of vinegar.',
+    mess: 'The same jar shaken into a churning, broken mess of oil and vinegar that won’t settle.',
+    done: 'A glass jar of smooth, pale emulsion with a SimpleGrid label.'
   };
 
-  var phase = 'separated', stable = false, touched = false;
-  var s = { x:0, y:0, vx:0, vy:0, tilt:0, tiltV:0, slope:0, slopeV:0, energy:0, mix:0, cream:0, ripple:0, wave:0, flow:0 };
-  var drag = null, shakeLeft = 0, shakeT = 0;
-
-  function setPhase(next){
-    phase = next;
-    jar.dataset.phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'dosing';
-    caption.textContent = COPY[next].caption;
-    if (ARIA[next]) jar.setAttribute('aria-label', ARIA[next]);
-  }
+  // messy: shaken without the emulsifier, so it churns and never settles. stable: the yolk is in.
+  var messy = false, stable = false, touched = false;
+  var s = { x:0, y:0, vx:0, vy:0, tilt:0, tiltV:0, slope:0, slopeV:0, energy:0, mix:0, cream:0, prog:0, ripple:0, wave:0, flow:0 };
+  var drag = null, shakeLeft = 0, shakeT = 0, waiting = null;
 
   function shake(){
     touched = true;
     shakeLeft = 1.55;
     shakeT = 0;
   }
-
-  function addEmulsifier(){
-    setPhase('dosing');
-    jar.classList.add('lid-off');
-    var wait = reduce ? 0 : 340;
-    setTimeout(function(){
-      yolk.classList.add('in');
-      if (!reduce) yolk.classList.add('drop');
-      setTimeout(function(){ s.ripple = 1; s.slopeV += .9; }, reduce ? 0 : 330);
-      setTimeout(function(){
-        jar.classList.remove('lid-off');
-        stable = true;
-        setPhase('dosed');
-      }, reduce ? 0 : 900);
-    }, wait);
-  }
+  // Resolves once the liquid gets where a move is taking it; the physics checks every frame.
+  function until(test){ return new Promise(function(done){ waiting = { test: test, done: done }; }); }
 
   function setCallouts(final){
     $('gapTag').hidden = final;
@@ -844,67 +1082,53 @@ void main(){
     $('vinText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
-  /* The emulsion spreads out from the jar and takes the whole hero with it. The
-     clone carries the other colorway, so the type stays legible as the edge passes. */
-  function wipeTo(theme){
-    jar.dataset.tone = theme;
-    if (reduce){ hero.dataset.theme = theme; return; }
-    var r = jar.getBoundingClientRect(), h = hero.getBoundingClientRect();
-    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
-    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
-    var over = document.createElement('div');
-    over.className = 'hero-wipe';
-    over.dataset.theme = theme;
-    over.setAttribute('aria-hidden', 'true');
-    over.inert = true;
-    var inner = hero.querySelector('.hero-inner').cloneNode(true);
-    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
-    inner.querySelector('.jar').style.visibility = 'hidden';
-    over.appendChild(inner);
-    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
-    hero.appendChild(over);
-    over.getBoundingClientRect();
-    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
-    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
-    var finished = false;
-    var finish = function(){
-      if (finished) return;
-      finished = true;
-      hero.dataset.theme = theme;
-      over.remove();
-    };
-    over.addEventListener('transitionend', finish, { once: true });
-    setTimeout(finish, 1100);
-  }
-
-  function complete(){
-    setCallouts(true);
-    setPhase('done');
-    resetBtn.hidden = false;
-    jar.classList.add('is-labelled');
-    wipeTo('yolk');
-  }
-
-  function startOver(){
-    stable = false;
-    s.mix = s.cream = s.energy = 0;
-    shakeLeft = 0;
-    yolk.classList.remove('in', 'drop');
-    yolkBall.style.opacity = '';
-    yolkBall.style.transform = '';
-    jar.classList.remove('is-labelled');
-    setCallouts(false);
-    setPhase('separated');
-    resetBtn.hidden = true;
-    wipeTo('blue');
-  }
-
-  btn.addEventListener('click', function(){
-    if (phase === 'broken') addEmulsifier();
-    else if (phase === 'done') $('gap').scrollIntoView();
-    else shake();
+  var story = SG.story({
+    hero: hero, obj: jar, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.jar',
+    ops: {
+      mess: ['Your operations, today', 'Shaken together, still not linked. It churns, and it won’t settle back.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same jar, same mess. Now there’s an emulsifier in it.']
+    },
+    // Shake it without the emulsifier: it churns into a mess, and the mess stays.
+    mess: function(){
+      messy = true;
+      jar.dataset.phase = 'mixed';
+      if (!drag && shakeLeft <= 0) shake();
+      return until(function(){ return shakeLeft <= 0 && s.mix > .4; });
+    },
+    dose: function(){
+      jar.classList.add('lid-off');
+      return new Promise(function(done){
+        setTimeout(function(){
+          yolk.classList.add('in');
+          if (!reduce) yolk.classList.add('drop');
+          setTimeout(function(){ s.ripple = 1; s.slopeV += .9; }, reduce ? 0 : 330);
+          setTimeout(function(){ jar.classList.remove('lid-off'); stable = true; s.prog = 0; done(); }, reduce ? 0 : 900);
+        }, reduce ? 0 : 340);
+      });
+    },
+    // Shake it again with the yolk in: the same mess comes together, smooth.
+    clean: function(){
+      jar.dataset.phase = 'taking';
+      if (!drag && shakeLeft <= 0) shake();
+      return until(function(){ return s.prog >= 1; });
+    },
+    restore: function(){
+      waiting = null;
+      messy = stable = false;
+      s.mix = s.cream = s.prog = s.energy = 0;
+      shakeLeft = 0;
+      yolk.classList.remove('in', 'drop');
+      yolkBall.style.opacity = '';
+      yolkBall.style.transform = '';
+      jar.dataset.phase = 'separated';
+    },
+    final: function(on){
+      setCallouts(on);
+      jar.classList.toggle('is-labelled', on);
+      if (on) jar.dataset.phase = 'done';
+      jar.dataset.tone = on ? 'b' : 'a';
+    }
   });
-  resetBtn.addEventListener('click', startOver);
 
   // Grab the jar. Vertical swipes still scroll the page on a phone.
   jar.addEventListener('pointerdown', function(e){
@@ -956,25 +1180,31 @@ void main(){
     for (var i = 0; i < 3; i++) physics(dt/3);
     s.energy -= s.energy*dt*1.1;
 
+    // Shaken without the emulsifier, it never settles: it keeps churning around a broken, beaded mix.
+    if (messy && !stable) s.energy = Math.max(s.energy, .2);
     if (!stable){
       var target = smooth(.12, .72, s.energy);
+      if (messy) target = Math.max(target, .54);
       if (target > s.mix) s.mix += (target - s.mix)*Math.min(1, dt*5);
       else s.mix = Math.max(target, s.mix - dt*(.14 + .1*s.mix));
     } else {
-      s.mix = Math.min(1, s.mix + s.energy*dt*.62);
+      s.prog = Math.min(1, s.prog + s.energy*dt*.75);
+      s.mix = Math.max(s.mix, s.prog);
     }
-    s.cream = stable ? smooth(.22, .98, s.mix) : 0;
+    s.cream = stable ? smooth(.02, .98, s.prog) : 0;
     s.wave += (s.energy - s.wave)*Math.min(1, dt*6);
     s.flow += dt*(reduce ? s.energy*2 : (.22 + s.energy*2.4))*(1 - s.cream*.75);
     s.ripple *= Math.exp(-dt*2.4);
 
-    if (phase === 'separated' && s.mix > .5) setPhase('mixed');
-    else if (phase === 'mixed' && s.mix < .05 && s.energy < .1) setPhase('broken');
-    else if (phase === 'dosed' && s.mix > .06) setPhase('taking');
-    else if (phase === 'taking' && s.mix >= .995) complete();
+    // Shaking it by hand does the same as the button.
+    var phase = story.phase();
+    if (drag && ((phase === 'apart' && s.energy > .5) || (phase === 'dosed' && s.energy > .45))) story.go();
+    // A hand that stops shaking early gets help finishing, so the button never stays stuck.
+    if (phase === 'cleaning' && !drag && shakeLeft <= 0 && s.energy < .12 && s.prog < 1) shake();
+    if (waiting && waiting.test()){ var w = waiting; waiting = null; w.done(); }
 
     if (stable){
-      var gone = smooth(.04, .42, s.mix);
+      var gone = smooth(.04, .42, s.prog);
       yolkBall.style.opacity = 1 - gone;
       yolkBall.style.transform = 'scale(' + (1 - gone*.55) + ') rotate(' + (s.flow*60) + 'deg)';
     }
@@ -1071,46 +1301,86 @@ void main(){
   // One small wobble if nobody's touched the jar. Only ever to point it out.
   if (!reduce){
     [3500, 11000].forEach(function(ms){
-      setTimeout(function(){ if (!touched && phase === 'separated'){ s.vx += 230; s.slopeV += .35; } }, ms);
+      setTimeout(function(){ if (!touched && story.phase() === 'apart'){ s.vx += 230; s.slopeV += .35; } }, ms);
     });
   }
-
-  /* ------------------------------------ The gap: your ERP vs your floor */
-  var ERP_ROWS = [
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
     ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
     ['Soybean oil', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
     ['Open POs', 'None overdue', '1 new, awaiting OK'],
     ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Kettle 4 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Oil truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QC hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Kettle 6 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Oil PO is ready for your OK',
+    'QC: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+/* ------------------------------------ The gap: your ERP vs your floor.
+   The template sets window.STAGE = { erp, notes, tidy } before this runs:
+     erp    four rows of [label, what the ERP says, what's true once linked]
+     notes  twelve things that land on the floor, in the order below
+     tidy   four lines the floor reads once it's linked */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var data = window.STAGE;
+
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.8 14.7 1.3 9.2 1.3 3.8 1.3 2.5 2 1.5 3.3 1c.3-.1.7 0 .9.3z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>';
+  var TICK = '<i aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"/></svg></i>';
+  // kind, tilt, where it lands on a laptop, where it lands on a phone
+  var SLOTS = [
+    ['sticky', -6, 'left:1%;top:1%',   'left:0;top:0'],
+    ['call',    3, 'left:33%;top:0',   'right:0;top:8%'],
+    ['file',   -3, 'right:0;top:9%',   'left:3%;top:17%'],
+    ['pink',    5, 'right:5%;top:20%', 'right:0;top:24.5%'],
+    ['board',  -4, 'left:2%;top:20%',  'left:0;top:33.5%'],
+    ['mail',    3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag',    -7, 'left:0;top:40%',   'left:4%;top:50%'],
+    ['file',   -2, 'right:0;top:51%',  'right:0;top:57%'],
+    ['call',    4, 'left:6%;top:57%',  'left:0;top:65%'],
+    ['sticky', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink',    3, 'left:1%;top:78%',  'left:0;top:82%'],
+    ['board',  -3, 'right:7%;top:85%', 'right:4%;top:90.5%']
   ];
-  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.800 14.700 1.300 9.200 1.300 3.800 1.300 2.500 2 1.500 3.300 1c.3-.1.7 0 .9.300z"/></svg>';
-  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.500" y="3" width="13" height="10" rx="1.500"/><path d="M2 4l6 5 6-5"/></svg>';
-  // kind, text, tilt, where it lands on a laptop, where it lands on a phone
-  var NOTES = [
-    ['sticky', 'Kettle 4 is down!', -6, 'left:1%;top:1%', 'left:0;top:0'],
-    ['call', 'Sales: Where’s the order?', 3, 'left:33%;top:0', 'right:0;top:8%'],
-    ['file', 'plan_FINAL_v7.xlsx', -3, 'right:0;top:9%', 'left:3%;top:17%'],
-    ['pink', 'Oil truck: 8,000 lb short', 5, 'right:5%;top:20%', 'right:0;top:24.500%'],
-    ['board', 'What should we buy???', -4, 'left:2%;top:20%', 'left:0;top:33.500%'],
-    ['mail', 'Re: Re: Fwd: Re: which batch?', 3, 'right:9%;top:36%', 'right:2%;top:42%'],
-    ['tag', 'QC hold: batch 2207', -7, 'left:0;top:40%', 'left:4%;top:50%'],
-    ['file', 'plan_FINAL_v8_USE THIS.xlsx', -2, 'right:0;top:51%', 'right:0;top:57%'],
-    ['call', 'Customer: You said Thursday.', 4, 'left:6%;top:57%', 'left:0;top:65%'],
-    ['sticky', 'Rebuilding the plan. Again.', -5, 'right:3%;top:66%', 'right:0;top:73%'],
-    ['pink', 'What did it actually cost?', 3, 'left:1%;top:78%', 'left:0;top:82%'],
-    ['board', 'Ask whoever knows', -3, 'right:7%;top:85%', 'right:4%;top:90.500%']
-  ];
-  var STAGE_NOTE = {
-    calm: $('stageNote').textContent,
-    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
-    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Your ERP stays. The spreadsheets go.'
-  };
   var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
   var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
-  var stageTimers = [];
-  function later(fn, ms){ stageTimers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  var NOTE = {
+    calm: stageNote.textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
+  };
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  $('tidy').innerHTML = data.tidy.map(function(line, i){
+    return '<li style="--i:' + i + '">' + TICK + '<span>' + line + '</span></li>';
+  }).join('');
 
   function renderErp(linked){
-    erpRows.innerHTML = ERP_ROWS.map(function(row, i){
+    erpRows.innerHTML = data.erp.map(function(row, i){
       return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
     }).join('');
     $('erpStatus').textContent = linked ? 'In sync' : 'All good';
@@ -1120,15 +1390,16 @@ void main(){
     var onPhone = window.matchMedia('(max-width:620px)').matches;
     stage.dataset.state = 'chaos';
     $('floorClock').textContent = '9:41 AM';
-    stageNote.textContent = STAGE_NOTE.chaos;
-    pile.innerHTML = NOTES.map(function(n, i){
-      var icon = n[0] === 'call' ? PHONE : n[0] === 'mail' ? ENVELOPE : '';
-      return '<div class="n n-' + n[0] + '" style="--r:' + n[2] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + n[onPhone ? 4 : 3] + '">' + icon + '<span>' + n[1] + '</span></div>';
+    stageNote.textContent = NOTE.chaos;
+    pile.innerHTML = data.notes.map(function(text, i){
+      var slot = SLOTS[i];
+      var icon = slot[0] === 'call' ? PHONE : slot[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + slot[0] + '" style="--r:' + slot[1] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + slot[onPhone ? 3 : 2] + '">' + icon + '<span>' + text + '</span></div>';
     }).join('');
     later(function(){
       stage.dataset.state = 'messy';
       linkBtn.focus({ preventScroll: true });
-    }, NOTES.length*170 + 300);
+    }, data.notes.length*170 + 300);
   }
   // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
   function linkUp(){
@@ -1151,17 +1422,34 @@ void main(){
       linkBtn.disabled = false;
       pile.innerHTML = '';
       renderErp(true);
-      stageNote.textContent = STAGE_NOTE.linked;
+      countUp();
+      stageNote.textContent = NOTE.linked;
       stageReset.focus({ preventScroll: true });
     }, 720);
   }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
   function resetStage(){
-    stageTimers.forEach(clearTimeout);
-    stageTimers = [];
+    timers.forEach(clearTimeout);
+    timers = [];
     stage.dataset.state = 'calm';
     pile.innerHTML = '';
     $('floorClock').textContent = '6:58 AM';
-    stageNote.textContent = STAGE_NOTE.calm;
+    stageNote.textContent = NOTE.calm;
     renderErp(false);
     chaosBtn.focus({ preventScroll: true });
   }
@@ -1169,17 +1457,8 @@ void main(){
   linkBtn.addEventListener('click', linkUp);
   stageReset.addEventListener('click', resetStage);
   renderErp(false);
-
-  /* --- The barcode is real: Code 128 for 7732804485, in bar and space widths. --- */
-  var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
-  for (var i = 0; i < CODE.length; i++){
-    var width = +CODE.charAt(i);
-    if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="#1A1A1A"/>';
-    x += width;
-  }
-  $('barcode').setAttribute('viewBox', '0 0 ' + x + ' 26');
-  $('barcode').innerHTML = bars;
 })();
+SG.barcode(document.getElementById('barcode'));
 </script>
 </body>
 </html>

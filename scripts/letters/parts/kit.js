@@ -73,3 +73,4 @@ var SG = (function(){
 
   return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
 })();
+<!--#include story.js-->

@@ -133,6 +133,25 @@ h1 span{display:block;color:var(--hi)}
 .callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
 .callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
 .hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
 
 .hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
 
@@ -153,6 +172,12 @@ h1 span{display:block;color:var(--hi)}
   .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
   .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
 }
 @media (max-width:620px){
@@ -187,31 +212,44 @@ h1{letter-spacing:-.008em;line-height:1.08}
 /* -------------------------------------------------------- The curd */
 .hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
 .cheese{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
-.cheese.is-done{cursor:default}
+.hero[data-story$=ing] .cheese,.hero[data-story=done] .cheese{cursor:default}
 .cheese svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.cheese.snap,.cheese.snap *{transition:none!important}
 .board{fill:#B07A45}
 .board-grain{fill:none;stroke:#9A6838;stroke-width:2;opacity:.6}
-.curd{fill:#EFE9D8;stroke:#D6CCB2;stroke-width:2;transition:fill .5s,stroke .5s}
-.curd-lump{fill:#E1D8BF;transition:opacity .5s}
-.shine{fill:#fff;opacity:0;transition:opacity .5s}
-.cheese.warm .curd{fill:#FFFDF6;stroke:#ECE4CF}
-.cheese.warm .curd-lump{opacity:0}
-.cheese.warm .shine{opacity:.85}
-.lump-top,.lump-bottom{transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.5,0,.3,1),opacity .4s}
+.curd{fill:#EFE9D8;stroke:#D6CCB2;stroke-width:2}
+.curd-lump{fill:#E1D8BF}
+.shine{fill:#fff;opacity:0}
+.lump-top,.lump-bottom{transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.5,0,.3,1),opacity .12s}
 .crack{fill:none;stroke:#9A8C6A;stroke-width:2.5;stroke-linejoin:round;opacity:0;transition:opacity .15s}
 .cheese.cracked .crack{opacity:1}
-.crumb{fill:#EFE9D8;stroke:#D6CCB2;transition:transform .7s cubic-bezier(.5,0,.7,1),opacity .4s .6s}
-.ball{opacity:0;transform:scale(.8);transform-box:fill-box;transform-origin:center;transition:opacity .35s,transform .5s cubic-bezier(.2,1.3,.4,1)}
+/* The mess: pressed cold, the curd crumbles across the board, and the crumbs stay where they land. */
+.cheese.crumbled .lump-top,.cheese.crumbled .lump-bottom,.cheese.crumbled .crack{opacity:0}
+.whey{fill:#E9D9A6;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.4);transition:opacity .5s .15s,transform .7s cubic-bezier(.2,.8,.3,1) .1s}
+.cheese.wet .whey{opacity:.4;transform:none}
+.cheese.warm .whey{opacity:0;transition-delay:0s}
+.crumb{opacity:0;transform-box:view-box;transform-origin:0 0}
+.cheese.crumbled .crumb{opacity:1}
+.cheese.crumbled.gone .crumb{opacity:0}
+.crumb-in{transform-box:fill-box;transform-origin:center}
+.crumb path{fill:#EFE9D8;stroke:#C9BC9C;stroke-width:1.5;stroke-linejoin:round}
+.crumb circle{fill:#DED3B6}
+/* In the hot water the crumbs soften and bob. */
+.cheese.soft .crumb path{fill:#FBF7EC}
+.cheese.soft .crumb-in{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-3px) rotate(8deg)}}
+.ball{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:center;transition:opacity .3s,transform .65s cubic-bezier(.2,1.4,.4,1)}
 .cheese.fused .ball{opacity:1;transform:none}
-.cheese.fused .lump-top,.cheese.fused .lump-bottom{opacity:0}
 .basil{fill:#06974E}
 .basil-vein{fill:none;stroke:#04703A;stroke-width:1.5}
 .pot{fill:#B9C2C9}
 .pot-dk{fill:#8E989F}
 .water{fill:#6FA8D6;opacity:.55}
-.steam{fill:none;stroke:rgba(140,150,160,.55);stroke-width:5;stroke-linecap:round;animation:steam 3s ease-in-out infinite;opacity:0}
+.steam{fill:none;stroke:rgba(140,150,160,.55);stroke-width:5;stroke-linecap:round;animation:steam 3s ease-in-out infinite;opacity:0;transition:stroke .4s}
+.cheese.warm .steam{stroke:rgba(140,150,160,.85)}
 @keyframes steam{0%{opacity:0;transform:translateY(8px)}30%{opacity:1}100%{opacity:0;transform:translateY(-30px)}}
-.hero:not(.in-view) .steam{animation-play-state:paused}
+.hero:not(.in-view) .steam,.hero:not(.in-view) .crumb-in{animation-play-state:paused}
 .callout-top{top:20%}
 .callout-bottom{top:53%}
 .callout-gap{top:calc(45% - 15px)}
@@ -309,6 +347,18 @@ h1{letter-spacing:-.008em;line-height:1.08}
 @keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
 .tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
 .stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
 .tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
 .tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
 .tidy i svg{width:14px;height:14px}
@@ -339,6 +389,11 @@ h1{letter-spacing:-.008em;line-height:1.08}
   .pile{min-height:470px}
   .n{max-width:90%}
   .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
 }
 @media (max-width:350px){
   .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
@@ -466,6 +521,8 @@ h1{letter-spacing:-.008em;line-height:1.08}
             <!-- the board -->
             <rect class="board" x="54" y="100" width="252" height="300" rx="18"/>
             <path class="board-grain" d="M70 140Q180 128 290 146M70 214Q180 202 290 220M70 292Q180 280 290 298M70 366Q180 354 290 372"/>
+            <!-- the pot's body sits behind the curd, so whatever goes in shows through the water -->
+            <path class="pot" d="M66 436H294V520Q294 542 272 542H88Q66 542 66 520Z"/>
             <!-- the floor: the bottom curd -->
             <g class="lump-bottom" id="lumpBottom">
               <ellipse class="curd" cx="180" cy="318" rx="78" ry="50"/>
@@ -479,6 +536,8 @@ h1{letter-spacing:-.008em;line-height:1.08}
               <ellipse class="shine" cx="152" cy="166" rx="20" ry="7"/>
             </g>
             <path class="crack" d="M118 268L134 276L146 266L160 280L176 268L190 282L206 270L220 282L238 270"/>
+            <!-- the mess: whey where the curd broke, and the crumbs it leaves on the board (the script makes them) -->
+            <g class="whey"><path d="M96 262Q108 236 140 246Q170 230 196 250Q232 238 252 262Q276 280 250 300Q262 330 226 334Q200 356 168 338Q130 350 116 322Q84 306 96 262Z"/><ellipse cx="96" cy="186" rx="15" ry="8"/><ellipse cx="268" cy="364" rx="18" ry="7"/><ellipse cx="250" cy="172" rx="10" ry="5"/></g>
             <g id="crumbs"></g>
             <!-- one ball, once it holds -->
             <g class="ball">
@@ -488,14 +547,14 @@ h1{letter-spacing:-.008em;line-height:1.08}
               <path class="basil" d="M180 240Q206 214 236 222Q218 252 180 240Z"/>
               <path class="basil-vein" d="M184 238Q208 228 230 224"/>
             </g>
-            <!-- SimpleGrid: the hot water that makes curd stretch (drawn last, so the curds dip behind it) -->
+            <!-- SimpleGrid: the hot water that makes curd stretch. Rim and water come last, so the crumbs drop in behind them. -->
             <path class="steam" d="M140 418C132 404 148 396 140 380"/>
             <path class="steam" d="M220 422C212 408 228 400 220 384" style="animation-delay:-1.5s"/>
+            <path class="steam" d="M180 414C172 400 188 392 180 376" style="animation-delay:-.7s"/>
             <rect class="pot-dk" x="56" y="428" width="248" height="14" rx="6"/>
-            <path class="pot" d="M66 436H294V520Q294 542 272 542H88Q66 542 66 520Z"/>
             <rect class="water" x="72" y="450" width="216" height="84" rx="8"/>
             <!-- the hot water is SimpleGrid, and the pot says so once the curd goes in -->
-            <g transform="translate(180 500) scale(0.92)"><g class="pot-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <g transform="translate(180 510) scale(0.8)"><g class="pot-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
           </svg>
         </div>
         <div class="callouts">
@@ -508,15 +567,21 @@ h1{letter-spacing:-.008em;line-height:1.08}
             <h3><i></i><span id="bottomTitle">The bottom curd: your floor</span></h3>
             <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Press them together</button>
+          <button class="go-btn" id="heroBtn" type="button">Press them together to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">Two curds, and nothing holding them. Press them together, or tap the board to try it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP on top, your floor underneath: two cold curds, and nothing holding them. Press them together, or tap the board to try it yourself.</p>
       </div>
     </div>
   </div>
@@ -556,7 +621,18 @@ h1{letter-spacing:-.008em;line-height:1.08}
           <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
         </div>
         <div class="pile" id="pile"></div>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
         <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
         <div class="floor-do">
           <button class="go-btn" id="linkBtn" type="button">Link them up</button>
           <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
@@ -566,7 +642,7 @@ h1{letter-spacing:-.008em;line-height:1.08}
     </div>
 
     <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
-    <p class="fine">Pretend plant, pretend numbers.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
   </div>
 </section>
 
@@ -727,76 +803,196 @@ var SG = (function(){
 
   return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
 })();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
 </script>
 <script>
 (function(){
   /* ----------------------------------------------------------- The curd
      Top curd: the ERP. Bottom curd: the floor. Cold curd won't bind: press
-     the two together and they crack apart. The hot water is SimpleGrid:
-     warm curd stretches, and two pieces become one. */
+     the two together and they crumble all over the board, and the crumbs
+     stay put. That's your operations. The hot water is SimpleGrid: in go
+     the crumbs, and warm curd stretches back into one smooth ball. */
   var $ = function(id){ return document.getElementById(id); };
-  var hero = $('hero'), cheese = $('cheese'), top = $('lumpTop'), bottom = $('lumpBottom'), crumbs = $('crumbs');
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), cheese = $('cheese'), top = $('lumpTop'), bottom = $('lumpBottom'), crumbsG = $('crumbs');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
-  var reduce = SG.reduce;
+  var reduce = SG.reduce, clamp = SG.clamp;
+
   var COPY = {
-    cold:    { btn: 'Press them together', caption: 'Two curds, and nothing holding them. Press them together, or tap the board to try it yourself.' },
-    pressing:{ btn: 'Pressing…', caption: 'Looks like one cheese, doesn’t it?' },
-    broken:  { btn: 'Into the hot water', caption: 'And there it goes. Cold curd cracks. That’s the usual ERP go-live: pressed together for the launch, and months later the plant is back on Excel.' },
-    dipping: { btn: 'Warming…', caption: 'Into the hot water they go.' },
-    warm:    { btn: 'Press them together', caption: 'That’s SimpleGrid: warm curd stretches and binds. Press them together.' },
-    done:    { btn: 'Why did the first one crack?', caption: 'One live record. Your ERP and your floor, stretched into one.' }
+    apart:    { btn: 'Press them together to see your operations', caption: 'Your ERP on top, your floor underneath: two cold curds, and nothing holding them. Press them together, or tap the board to try it yourself.' },
+    messing:  { btn: 'Pressing…', caption: 'Pressing them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Into the hot water', caption: 'That’s your operations today: a big mess. Cold curd doesn’t bind, so your ERP and your floor crumbled all over the board. It won’t fix itself, either.' },
+    dosing:   { btn: 'Warming…', caption: 'Every last crumb, into the hot water.' },
+    dosed:    { btn: 'Stretch it again', caption: 'Into the hot water. That’s SimpleGrid. Warm curd stretches, so now stretch it again.' },
+    cleaning: { btn: 'Stretching…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth ball. Your ERP and your floor finally stretch into one, and it won’t crumble.' }
   };
   var ARIA = {
-    cold: cheese.getAttribute('aria-label'),
-    done: 'One smooth ball of fresh mozzarella with a basil leaf, where two cold curds used to be.'
+    apart: cheese.getAttribute('aria-label'),
+    mess: 'The two curds, pressed together cold, crumbled into pieces scattered all over the board.',
+    dosed: 'The crumbled curd softening in a pot of hot water labelled SimpleGrid.',
+    done: 'One smooth ball of fresh mozzarella with a basil leaf, made from the crumbs, beside a pot labelled SimpleGrid.'
   };
-  var phase = 'cold', warm = false, busy = false, timers = [];
+
+  var timers = [];
   function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
   var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
-  function setPhase(next){
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'pressing' || next === 'dipping';
-    caption.textContent = COPY[next].caption;
-  }
 
-  function press(){
-    busy = true;
-    setPhase('pressing');
-    // The top curd comes down onto the bottom one.
-    top.style.transform = 'translateY(78px)';
-    return wait(560).then(function(){
-      if (warm){
-        cheese.classList.add('fused');
-        return wait(700).then(function(){ busy = false; complete(); });
+  /* The crumbs, made once and the same every time: a few big broken chunks
+     that stay near where the curds were, then smaller pieces flung further,
+     a few right off the board. Each knows where it lands, where it starts
+     (inside the two curds, pressed together) and where it floats in the pot. */
+  var seed = 7321;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  // Broken pieces have straight edges; small crumbs are lumpy.
+  function shape(r, broken){
+    var n = broken ? 7 : 6, p = [], k, d;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2 + R(-.35, .35), rr = r*R(.62, 1.1); p.push([Math.cos(a)*rr, Math.sin(a)*rr]); }
+    var f = function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); };
+    var mid = function(a, b){ return f([(a[0] + b[0])/2, (a[1] + b[1])/2]); };
+    if (broken) return 'M' + p.map(f).join('L') + 'Z';
+    d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f(p[k]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return d + 'Z';
+  }
+  var CX = 180, CY = 288, HW = 112, HH = 132;
+  // [how many, smallest, largest, nearest, furthest (share of the board), broken edges]
+  var KINDS = [[6, 17, 24, .14, .56, true], [10, 9, 13, .32, .86, true], [26, 4.6, 7.6, .44, 1.12, false]];
+  var crumbs = [], placed = [];
+  KINDS.forEach(function(kind){
+    for (var n = 0; n < kind[0]; n++){
+      var r = R(kind[1], kind[2]), ex, ey, tries = 0, ok;
+      do {
+        var a = R(0, Math.PI*2), sp = R(kind[3], kind[4]);
+        ex = CX + Math.cos(a)*sp*HW; ey = CY + Math.sin(a)*sp*HH*.95;
+        // On the board, or just off its edge; never down by the pot.
+        ex = clamp(ex, 44 + r, 316 - r); ey = clamp(ey, 106 + r, 396 - r);
+        ok = placed.every(function(q){ return Math.hypot(q[0] - ex, q[1] - ey) > (q[2] + r)*.8; });
+      } while (!ok && ++tries < 40);
+      placed.push([ex, ey, r]);
+      var g = document.createElementNS(NS, 'g'), inner = document.createElementNS(NS, 'g'), path = document.createElementNS(NS, 'path');
+      g.setAttribute('class', 'crumb');
+      inner.setAttribute('class', 'crumb-in');
+      inner.style.animationDelay = (-R(0, 2.6)).toFixed(2) + 's';
+      path.setAttribute('d', shape(r, kind[5]));
+      inner.appendChild(path);
+      if (r > 16) for (var q = 0; q < 2; q++){
+        var pit = document.createElementNS(NS, 'circle');
+        pit.setAttribute('cx', R(-r*.4, r*.4).toFixed(1)); pit.setAttribute('cy', R(-r*.4, r*.4).toFixed(1)); pit.setAttribute('r', (r*R(.16, .26)).toFixed(1));
+        inner.appendChild(pit);
       }
-      cheese.classList.add('cracked');
-      var html = '';
-      for (var i = 0; i < 7; i++) html += '<circle class="crumb" cx="' + (128 + i*17) + '" cy="270" r="' + (4 + i % 3) + '"/>';
-      crumbs.innerHTML = html;
-      return wait(300).then(function(){
-        top.style.transform = '';
-        crumbs.getBoundingClientRect();
-        [].forEach.call(crumbs.children, function(c, i){ c.style.transform = 'translate(' + ((i % 2 ? 1 : -1)*(10 + i*6)) + 'px,' + (70 + (i*13) % 50) + 'px)'; c.style.opacity = '0'; });
-        return wait(1200).then(function(){
-          cheese.classList.remove('cracked');
-          crumbs.innerHTML = '';
-          busy = false;
-          setPhase('broken');
-        });
+      g.appendChild(inner);
+      crumbsG.appendChild(g);
+      var big = r > 16;
+      crumbs.push({
+        el: g, r: r, rot: R(-160, 160)*(big ? .4 : 1),
+        sx: CX + (ex - CX)*(big ? .45 : .22) + R(-5, 5), sy: CY + (ey - CY)*(big ? .35 : .22) + R(-5, 5),
+        ex: ex, ey: ey,
+        // In the pot they float near the top, clear of the label.
+        wx: R(84, 276), wy: R(449, 482), ws: big ? .62 : .85,
+        dist: Math.hypot(ex - CX, ey - CY)
       });
-    });
+    }
+  });
+  function put(c, x, y, rot, s, ms, delay, ease){
+    c.el.style.transition = ms ? 'transform ' + ms + 'ms ' + (ease || 'cubic-bezier(.15,.75,.25,1)') + ' ' + (delay || 0) + 'ms,opacity .25s' : 'none';
+    c.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(0) + 'deg) scale(' + s + ')';
   }
-
-  function dip(){
-    busy = true;
-    setPhase('dipping');
-    top.style.transform = 'translateY(300px) scale(.7)';
-    bottom.style.transform = 'translateY(168px) scale(.7)';
-    later(function(){ warm = true; cheese.classList.add('warm'); }, 520);
-    later(function(){ top.style.transform = ''; bottom.style.transform = ''; }, 900);
-    later(function(){ busy = false; setPhase('warm'); }, 1450);
-  }
+  crumbs.forEach(function(c){ put(c, c.sx, c.sy, 0, 1, 0); });
 
   function setCallouts(final){
     $('gapTag').hidden = final;
@@ -806,41 +1002,66 @@ var SG = (function(){
     $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
-  function complete(){
-    cheese.classList.add('is-done');
-    setCallouts(true);
-    setPhase('done');
-    cheese.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, cheese, 'b', '.cheese');
-  }
-
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    busy = false; warm = false;
-    cheese.classList.remove('warm', 'fused', 'cracked', 'is-done');
-    top.style.transform = ''; bottom.style.transform = '';
-    crumbs.innerHTML = '';
-    setCallouts(false);
-    cheese.setAttribute('aria-label', ARIA.cold);
-    setPhase('cold');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, cheese, 'a', '.cheese');
-  }
-
-  btn.addEventListener('click', function(){
-    if (busy) return;
-    if (phase === 'cold' || phase === 'warm') press();
-    else if (phase === 'broken') dip();
-    else if (phase === 'done') $('gap').scrollIntoView();
+  var story = SG.story({
+    hero: hero, obj: cheese, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.cheese',
+    ops: {
+      mess: ['Your operations, today', 'Pressed together, still not linked. It crumbled, and the crumbs stay where they fell.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same crumbs, same mess. Now they’re in the hot water.']
+    },
+    // Pressed cold, the curd cracks, then crumbles across the board. The crumbs stay there.
+    mess: function(){
+      cheese.classList.remove('snap');
+      top.style.transform = 'translateY(78px)';
+      return wait(520).then(function(){
+        cheese.classList.add('cracked');
+        bottom.style.transform = 'scale(1.05,.94)';
+        return wait(220);
+      }).then(function(){
+        crumbs.forEach(function(c){ put(c, c.sx, c.sy, 0, 1, 0); });
+        cheese.getBoundingClientRect();
+        cheese.classList.add('crumbled');
+        crumbs.forEach(function(c){ put(c, c.ex, c.ey, c.rot, 1, c.r > 16 ? 620 : 820, c.dist*.3); });
+        cheese.classList.add('wet');
+        return wait(1000);
+      });
+    },
+    // Into the hot water, crumb by crumb, and the pot shows whose water it is.
+    dose: function(){
+      var order = crumbs.slice().sort(function(a, b){ return b.ey - a.ey; });
+      order.forEach(function(c, i){ put(c, c.wx, c.wy, c.rot + 120, c.ws, 520, i*20, 'cubic-bezier(.45,0,.8,.55)'); });
+      later(function(){ cheese.classList.add('warm'); }, 280);
+      return wait(520 + order.length*20).then(function(){
+        cheese.classList.add('soft');
+        return wait(200);
+      });
+    },
+    // Out of the water, and the same crumbs stretch into one smooth ball.
+    clean: function(){
+      cheese.classList.remove('soft');
+      crumbs.forEach(function(c, i){ put(c, CX + R(-36, 36), 300 + R(-26, 26), c.rot + 260, .55, 620, i*10, 'cubic-bezier(.4,0,.2,1)'); });
+      later(function(){ cheese.classList.add('fused'); }, 520);
+      later(function(){ cheese.classList.add('gone'); }, 820);
+      return wait(1150);
+    },
+    restore: function(){
+      timers.forEach(clearTimeout);
+      timers = [];
+      cheese.classList.add('snap');
+      cheese.classList.remove('cracked', 'crumbled', 'wet', 'warm', 'soft', 'fused', 'gone');
+      top.style.transform = '';
+      bottom.style.transform = '';
+      crumbs.forEach(function(c){ put(c, c.sx, c.sy, 0, 1, 0); });
+      cheese.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ cheese.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      cheese.classList.toggle('is-done', on);
+    }
   });
-  cheese.addEventListener('click', function(){
-    if (busy) return;
-    if (phase === 'cold' || phase === 'warm') press();
-    else if (phase === 'broken') dip();
-  });
-  resetBtn.addEventListener('click', startOver);
+
+  // Tapping the board does the same as the button.
+  cheese.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){ hero.classList.toggle('in-view', entries[0].isIntersecting); }).observe(hero);
   } else hero.classList.add('in-view');
@@ -910,7 +1131,7 @@ window.STAGE = {
   var NOTE = {
     calm: stageNote.textContent,
     chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
-    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Your ERP stays. The spreadsheets go.'
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
   };
   var timers = [];
   function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
@@ -962,9 +1183,26 @@ window.STAGE = {
       linkBtn.disabled = false;
       pile.innerHTML = '';
       renderErp(true);
+      countUp();
       stageNote.textContent = NOTE.linked;
       stageReset.focus({ preventScroll: true });
     }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
   }
   function resetStage(){
     timers.forEach(clearTimeout);

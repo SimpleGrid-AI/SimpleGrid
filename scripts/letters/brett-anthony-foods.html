@@ -14,14 +14,14 @@
 <meta property="og:url" content="{{url}}">
 <meta property="og:title" content="{{first}}, stir the pot.">
 <meta property="og:description" content="SimpleGrid, explained to someone who makes fresh food to order for a living.">
-<meta property="og:image" content="https://simplegrid.ai/brett-anthony-foods/og-{{slug}}.jpg">
+<meta property="og:image" content="https://simplegrid.ai/brett-anthony-foods/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A pot of chowder with the broth on top and everything else sunk to the bottom, beside the words: {{first}}, you make fresh food to order for a living.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, stir the pot.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes fresh food to order for a living.">
-<meta name="twitter:image" content="https://simplegrid.ai/brett-anthony-foods/og-{{slug}}.jpg">
+<meta name="twitter:image" content="https://simplegrid.ai/brett-anthony-foods/{{og}}.jpg">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
 <style>
@@ -151,8 +151,8 @@ h2 span{font-weight:800}
           <svg viewBox="0 0 360 560" aria-hidden="true">
             <!-- SimpleGrid: the roux -->
             <g class="roux" id="roux">
-              <g transform="translate(180 152)">
-                <g transform="scale(1.1)"><!--#include sg-badge.svg--></g>
+              <g id="rouxBob" transform="translate(180 152)">
+                <g id="rouxBall" transform="scale(1.1)"><!--#include sg-badge.svg--></g>
               </g>
             </g>
             <!-- the ladle -->
@@ -175,15 +175,16 @@ h2 span{font-weight:800}
             <h3><i></i><span id="bottomTitle">The chunks: your floor</span></h3>
             <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
+<!--#include ops.html-->
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Stir it</button>
+          <button class="go-btn" id="heroBtn" type="button">Stir it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">Everything that matters has sunk to the bottom. Stir it, or grab the ladle and do it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP is the thin broth on top, your floor has sunk to the bottom, and nothing links them. Stir it, or grab the ladle and stir it yourself.</p>
       </div>
     </div>
   </div>
@@ -251,31 +252,45 @@ h2 span{font-weight:800}
 (function(){
   /* ---------------------------------------------------------- The pot
      Thin broth on top is the ERP: what you see. The potatoes, clams and
-     celery that sank are the floor: what's really in there. Stir it and it
-     all comes up, then sinks again. The roux is SimpleGrid: stir it in and
-     the chowder holds everything where it is. Units are the art's own,
-     360 x 560, so the numbers below line up with the drawing. */
+     celery sunk at the bottom are the floor: what's really in there. Stir
+     them together without a roux, the way most go-lives do, and it turns
+     into a lumpy, split mess that keeps churning and never thickens. That's
+     your operations, and it stays. The roux is SimpleGrid: stir it in and
+     that same mess comes together into one creamy chowder that holds every
+     piece where it is. Units are the art's own, 360 x 560, so the numbers
+     below line up with the drawing. */
   var $ = function(id){ return document.getElementById(id); };
   var hero = $('hero'), pot = $('pot'), canvas = $('soup'), ctx = canvas.getContext('2d');
-  var ladle = $('ladle'), roux = $('roux');
+  var ladle = $('ladle'), roux = $('roux'), rouxBob = $('rouxBob'), rouxBall = $('rouxBall');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce, clamp = SG.clamp;
+  var lerp = function(a, b, t){ return a + (b - a)*t; };
+  var smooth = function(a, b, v){ var t = clamp((v - a)/(b - a), 0, 1); return t*t*(3 - 2*t); };
 
   var BOX = { x: 62, y: 120, w: 236, h: 320 }, SURFACE = 160, FLOOR = 438, CENTER = { x: 180, y: 300 };
   var REST = { x: 258, y: 140 };
 
   var COPY = {
-    thin:    { btn: 'Stir it', caption: 'Everything that matters has sunk to the bottom. Stir it, or grab the ladle and do it yourself.' },
-    stirred: { btn: 'Stirring…', caption: 'Looks mixed, doesn’t it?' },
-    broken:  { btn: 'Add the roux', caption: 'And there it goes. That’s the usual ERP go-live: stirred up for the launch, and months later the plant is back on Excel.' },
-    dosed:   { btn: 'Stir it', caption: 'In goes the roux. That’s SimpleGrid. Now stir it in.' },
-    taking:  { btn: 'Keep stirring', caption: 'It’s coming together.' },
-    done:    { btn: 'Why did it all sink the first time?', caption: 'One live record. Your ERP and your floor finally hold together, and nothing sinks out of sight.' }
+    apart:    { btn: 'Stir it to see your operations', caption: 'Your ERP is the thin broth on top, your floor has sunk to the bottom, and nothing links them. Stir it, or grab the ladle and stir it yourself.' },
+    messing:  { btn: 'Stirring…', caption: 'Stirring them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the roux', caption: 'That’s your operations today: a big mess. Your ERP and your floor got stirred together, and it’s lumpy and split. It won’t thicken on its own, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Here comes the roux.' },
+    dosed:    { btn: 'Stir it again', caption: 'In goes the roux. That’s SimpleGrid. Now stir it again.' },
+    cleaning: { btn: 'Stirring…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one thick, creamy chowder. Your ERP and your floor finally hold together, and nothing sinks out of sight.' }
   };
   var ARIA = {
-    thin: pot.getAttribute('aria-label'),
-    done: 'A pot of thick, creamy chowder with everything held in it, and a masking-tape label that says SimpleGrid.'
+    apart: pot.getAttribute('aria-label'),
+    mess: 'The same pot stirred into a lumpy, split mess: cloudy broth, curdled bits and chunks tumbling round, and it won’t settle.',
+    dosed: 'The same messy pot, with a spoonful of roux marked SimpleGrid floating on top.',
+    done: 'A pot of thick, creamy chowder with everything held evenly in it, and a masking-tape label that says SimpleGrid.'
   };
+
+  function hex(h){ return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+  function mixc(a, b, t){ return [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)]; }
+  function rgba(c, a){ return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + a.toFixed(3) + ')'; }
+  // Thin broth, the grey of broth that has split, and chowder.
+  var THIN = hex('#C9A964'), MURK = hex('#9C9078'), CREAM = hex('#F2E8CF');
 
   // What's in the pot. Kind, how many, size.
   var KINDS = [
@@ -284,23 +299,30 @@ h2 span{font-weight:800}
     { kind: 'celery', n: 8,  w: 9,  h: 9,  fill: '#8DBE5A', edge: '#5F8A35' },
     { kind: 'parsley',n: 7,  w: 5,  h: 4,  fill: '#477D3B', edge: '#2F5527' }
   ];
-  var bits = [];
-  var phase = 'thin', roux_in = false, cream = 0, swirl = 0, energy = 0;
-  var spoon = { x: REST.x, y: REST.y, vx: 0, vy: 0 }, drag = null, auto = 0, autoT = 0;
-  var timers = [], still = 0;
-  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  KINDS.forEach(function(k){ k.rgb = hex(k.fill); });
 
-  function setPhase(next){
-    still = 0;
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'stirred';
-    caption.textContent = COPY[next].caption;
-  }
+  // What a split pot looks like: curds, beads of fat and cloudy patches in thin broth.
+  // A fixed seed, so it splits the same way every time.
+  var seed = 11;
+  function rnd(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  var curds = [], beads = [], clouds = [], i;
+  for (i = 0; i < 26; i++) curds.push({ x: BOX.x + 16 + rnd()*(BOX.w - 32), y: SURFACE + 24 + rnd()*(FLOOR - SURFACE - 44), r: 3.8 + rnd()*2.8, ph: rnd()*6.28, d0: rnd()*6.28, d1: rnd()*6.28 });
+  for (i = 0; i < 16; i++) beads.push({ x: BOX.x + 10 + rnd()*(BOX.w - 20), dy: i < 11 ? 3 + rnd()*8 : 40 + rnd()*190, r: 2.6 + rnd()*3.2, ph: rnd()*6.28 });
+  for (i = 0; i < 6; i++) clouds.push({ x: BOX.x + 34 + rnd()*(BOX.w - 68), y: SURFACE + 46 + rnd()*(FLOOR - SURFACE - 92), r: 48 + rnd()*30, ph: rnd()*6.28 });
+
+  var bits = [], bubbles = [], pops = [], bubbleDue = 0;
+  // muck: how far stirring without the roux has turned it into a mess. It never goes back down.
+  // cream: how far stirring with the roux in has brought it together.
+  var messy = false, roux_in = false, muck = 0, cream = 0, swirl = 0, energy = 0, churn = 0, ripple = 0, turn = 0, t0 = 0;
+  var spoon = { x: REST.x, y: REST.y, vx: 0, vy: 0 }, spoonSpeed = 0, drag = null, auto = 0, autoT = 0;
+  var timers = [], waiting = null;
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  // Resolves once the pot gets where a move is taking it; every frame checks.
+  function until(test){ return new Promise(function(done){ waiting = { test: test, done: done }; }); }
 
   function fill(){
     bits = [];
-    var i = 0, n = KINDS.reduce(function(t, k){ return t + k.n; }, 0);
+    var i = 0, solid = 0, n = KINDS.reduce(function(t, k){ return t + k.n; }, 0);
     var cols = 5, rows = Math.ceil(n/cols);
     KINDS.forEach(function(k){
       for (var j = 0; j < k.n; j++){
@@ -308,42 +330,69 @@ h2 span{font-weight:800}
         var slot = (i*17) % n, c = slot % cols, r = Math.floor(slot/cols);
         var hx = BOX.x + 22 + (c + .5 + ((i*7) % 7 - 3)*.11)*(BOX.w - 44)/cols;
         var hy = SURFACE + 20 + (r + .5 + ((i*11) % 7 - 3)*.11)*(FLOOR - SURFACE - 36)/rows;
-        bits.push({ k: k, hx: hx, hy: hy, x: BOX.x + 14 + ((i*37) % (BOX.w - 28)), y: FLOOR - 10 - (i % 3)*12, vx: 0, vy: 0, a: (i*1.7) % 6.28, spin: 0 });
+        // In the mess most pieces tumble round in one of four lumps. Every fifth just stays sunk.
+        var lump = -1;
+        if (k.kind !== 'parsley'){ lump = solid % 5 === 4 ? -1 : solid % 4; solid++; }
+        // Everything starts sunk, except the parsley, which floats.
+        var y0 = k.kind === 'parsley' ? SURFACE + 9 : FLOOR - 10 - (i % 3)*12;
+        bits.push({ k: k, hx: hx, hy: hy, x: BOX.x + 14 + ((i*37) % (BOX.w - 28)), y: y0, vx: 0, vy: 0, a: (i*1.7) % 6.28, spin: 0, lump: lump, la: i*2.39996, lr: 6 + (i*7) % 17 });
         i++;
       }
     });
     turn = 0;
     // Let it settle once, off screen, so the first frame already shows a pile.
-    for (var s = 0; s < 240; s++) physics(1/60);
+    for (var s = 0; s < 300; s++) physics(1/60);
+  }
+  // Every piece close to its own spot, so done looks done.
+  function settled(){
+    for (var i = 0; i < bits.length; i++){ var b = bits[i]; if (Math.abs(b.x - b.hx) + Math.abs(b.y - b.hy) > 7) return false; }
+    return true;
   }
 
-  var turn = 0, spoonSpeed = 0;
+  // Where each lump of the mess is: tumbling round the pot on a path of its own.
+  function lumpAt(j){
+    var f = 1 + j*.27;
+    return {
+      x: CENTER.x + 66*Math.sin(churn*.93*f + j*1.9) + 12*Math.sin(churn*2.1*f + j),
+      y: 298 + 92*Math.sin(churn*.71*f + j*2.6 + 1),
+      a: churn*(1.1 + j*.35)*(j % 2 ? 1 : -1)
+    };
+  }
+
   function physics(dt){
-    var mixK = clamp(energy, 0, 1.2)*8;               // stirring keeps everything in circulation
-    var holdK = cream*(3.2 + (1 - clamp(energy, 0, 1))*7);  // chowder holds each piece where it's spread
-    var damp = 2.6 + cream*4;
-    var g = 460*(1 - cream*.985);
+    var c = smooth(0, .85, cream), roil = muck*(1 - c);
+    var stirK = clamp(energy, 0, 1.2)*8;                         // stirring keeps everything moving
+    var holdK = cream*cream*(14 + (1 - clamp(energy, 0, 1))*22);    // chowder holds each piece where it's spread
+    var damp = 2.6 + cream*8 + roil*2.4;
+    // The ladle shoves whatever it passes while it's stirring, less so once it's thick.
+    var shove = auto > 0 || drag ? .35*(1 - cream*.75) : 0;
+    var L = [lumpAt(0), lumpAt(1), lumpAt(2), lumpAt(3)];
     turn += swirl*dt*.45;
-    // Once the stirring stops, everything comes to rest at its own spot, not squeezed into a turn.
-    if (energy < .3) turn += (Math.round(turn/6.2832)*6.2832 - turn)*Math.min(1, dt*4);
-    var cs = Math.cos(turn), sn = Math.sin(turn);
+    // While it's stirred everything leans into the swirl a little; once it's chowder, each piece sits at its own spot.
+    var lean = clamp(swirl*.07, -.4, .4)*(1 - c), cs = Math.cos(lean), sn = Math.sin(lean);
     for (var i = 0; i < bits.length; i++){
-      var b = bits[i], r = b.k.w/2;
-      // Its spot, carried round the pot by the swirl.
+      var b = bits[i], r = b.k.w/2, solid = b.k.kind !== 'parsley';
+      // Its spot, evenly spread. With the roux in, stirring takes it there.
       var ox = b.hx - CENTER.x, oy = b.hy - CENTER.y;
-      var tx = clamp(CENTER.x + ox*cs - oy*sn, BOX.x + r + 4, BOX.x + BOX.w - r - 4);
-      var ty = clamp(CENTER.y + ox*sn + oy*cs, SURFACE + r + 4, FLOOR - r - 2);
-      var k = mixK + holdK;
-      b.vx += ((tx - b.x)*k - b.vx*damp)*dt;
-      b.vy += ((ty - b.y)*k - b.vy*damp)*dt;
-      if (b.k.kind !== 'parsley') b.vy += g*dt;
+      var hx = clamp(CENTER.x + ox*cs - oy*sn, BOX.x + r + 4, BOX.x + BOX.w - r - 4);
+      var hy = clamp(CENTER.y + ox*sn + oy*cs, SURFACE + r + 4, FLOOR - r - 2);
+      var kHome = (roux_in ? stirK : 0) + holdK;
+      var ax = (hx - b.x)*kHome, ay = (hy - b.y)*kHome;
+      // Without the roux, stirring pulls everything into lumps, and once it's a mess they keep tumbling.
+      var kMess = ((roux_in ? 0 : stirK*2.5) + muck*30)*(1 - c), mx = 0, my = 0;
+      if (!solid){ mx = b.hx + 46*Math.sin(churn*1.15 + b.la); my = SURFACE + 8; kMess *= .3; }
+      else if (b.lump >= 0){ var l = L[b.lump], a = l.a + b.la; mx = l.x + Math.cos(a)*b.lr; my = l.y + Math.sin(a)*b.lr; }
+      else kMess = 0;
+      if (kMess > 0){ ax += (mx - b.x)*kMess; ay += (my - b.y)*kMess; }
+      b.vx += (ax - b.vx*damp)*dt;
+      b.vy += (ay - b.vy*damp)*dt;
+      if (solid) b.vy += 460*(1 - cream*.985)*(b.lump >= 0 ? 1 - .86*roil : 1)*dt;
       else b.vy += (SURFACE + 9 - b.y)*1.2*(1 - cream)*dt;   // parsley floats on broth, not in chowder
-      // The ladle shoves whatever it passes.
       var lx = b.x - spoon.x, ly = b.y - spoon.y, d2 = lx*lx + ly*ly;
-      if (d2 < 2000 && spoonSpeed > 30){
-        var f = 1 - d2/2000;
-        b.vx += (spoon.vx - b.vx)*f*.35;
-        b.vy += (spoon.vy - b.vy)*f*.35;
+      if (d2 < 2000 && spoonSpeed > 30 && shove){
+        var f = (1 - d2/2000)*shove;
+        b.vx += (spoon.vx - b.vx)*f;
+        b.vy += (spoon.vy - b.vy)*f;
       }
       b.x += b.vx*dt; b.y += b.vy*dt;
       b.spin += ((b.vx*.02) - b.spin)*Math.min(1, 4*dt);
@@ -353,7 +402,7 @@ h2 span{font-weight:800}
       if (b.y < SURFACE + r){ b.y = SURFACE + r; b.vy = Math.abs(b.vy)*.2; }
       if (b.y > FLOOR - r){ b.y = FLOOR - r; b.vy = -Math.abs(b.vy)*.2; b.vx *= .9; }
     }
-    // Pieces don't pass through each other, which is what makes the pile.
+    // Pieces don't pass through each other, which is what makes the pile, and the lumps.
     for (var p = 0; p < bits.length; p++){
       for (var q = p + 1; q < bits.length; q++){
         var A = bits[p], B = bits[q];
@@ -366,6 +415,24 @@ h2 span{font-weight:800}
     }
   }
 
+  // Bubbles keep coming up through a pot that won't settle, and stop once it's chowder.
+  function bubbling(dt, roil){
+    if (!reduce && roil > .05){
+      bubbleDue += dt*roil*15;
+      while (bubbleDue >= 1){
+        bubbleDue--;
+        bubbles.push({ x: BOX.x + 16 + Math.random()*(BOX.w - 32), y: FLOOR - 8, r: 2.4 + Math.random()*3.6, vy: 50 + Math.random()*60, ph: Math.random()*6.28 });
+      }
+    }
+    for (var i = bubbles.length - 1; i >= 0; i--){
+      var b = bubbles[i];
+      b.y -= b.vy*dt;
+      b.x += Math.sin(t0*5 + b.ph)*14*dt;
+      if (b.y < SURFACE + 4){ pops.push({ x: b.x, r: b.r, t: 0 }); bubbles.splice(i, 1); }
+    }
+    for (i = pops.length - 1; i >= 0; i--){ pops[i].t += dt; if (pops[i].t > .32) pops.splice(i, 1); }
+  }
+
   var scale = 1, dpr = 1;
   function size(){
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -374,36 +441,77 @@ h2 span{font-weight:800}
     canvas.height = Math.max(1, Math.round(h*dpr));
     scale = w/BOX.w;
   }
-  function mix(a, b, t){
-    var pa = [parseInt(a.slice(1, 3), 16), parseInt(a.slice(3, 5), 16), parseInt(a.slice(5, 7), 16)];
-    var pb = [parseInt(b.slice(1, 3), 16), parseInt(b.slice(3, 5), 16), parseInt(b.slice(5, 7), 16)];
-    return 'rgb(' + pa.map(function(v, i){ return Math.round(v + (pb[i] - v)*t); }).join(',') + ')';
-  }
-  var t0 = 0;
+
   function draw(){
     ctx.setTransform(dpr*scale, 0, 0, dpr*scale, -BOX.x*dpr*scale, -BOX.y*dpr*scale);
     ctx.clearRect(BOX.x, BOX.y, BOX.w, BOX.h);
-    // The broth: thin and see-through, or chowder.
-    var wave = Math.min(6, Math.abs(swirl)*1.4);
+    var c = smooth(0, .85, cream), roil = muck*(1 - c), x, i;
+    // The broth's surface: smooth when it's still, choppy while it churns, rippling where the roux lands.
+    var wave = Math.min(6, Math.abs(swirl)*1.4)*(1 - cream*.6);
+    var top = function(x){
+      var d = Math.abs(x - 118);
+      return SURFACE + Math.sin(x*.05 + t0*6)*wave + roil*(Math.sin(x*.11 - t0*4.3)*2.4 + Math.sin(x*.27 + t0*7.3)*1.3) + ripple*5*Math.sin(d*.16 - t0*15)*Math.exp(-d*.014);
+    };
     ctx.beginPath();
     ctx.moveTo(BOX.x, BOX.y + BOX.h);
-    for (var x = 0; x <= BOX.w; x += 8){
-      ctx.lineTo(BOX.x + x, SURFACE + Math.sin(x*.05 + t0*6)*wave*(1 - cream*.6));
-    }
+    for (x = 0; x <= BOX.w; x += 6) ctx.lineTo(BOX.x + x, top(x));
     ctx.lineTo(BOX.x + BOX.w, BOX.y + BOX.h);
     ctx.closePath();
-    ctx.globalAlpha = .58 + cream*.42;
-    ctx.fillStyle = mix('#C9A964', '#F2E8CF', cream);
+    // Thin and see-through, then grey and cloudy once it splits, then chowder.
+    ctx.fillStyle = rgba(mixc(mixc(THIN, MURK, muck), CREAM, cream), lerp(lerp(.58, .8, muck), 1, cream));
     ctx.fill();
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = 'rgba(255,255,255,' + (.18 + cream*.12) + ')';
-    ctx.fillRect(BOX.x, SURFACE - 1, BOX.w, 3);
-    for (var i = 0; i < bits.length; i++){
+    if (roil > .01){
+      ctx.save();
+      ctx.clip();
+      // Cloudy patches where it has split.
+      clouds.forEach(function(cl){
+        var cx = cl.x + Math.sin(churn*.42 + cl.ph)*30, cy = cl.y + Math.cos(churn*.31 + cl.ph)*22;
+        var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, cl.r);
+        g.addColorStop(0, 'rgba(238,232,216,' + (.4*roil).toFixed(3) + ')');
+        g.addColorStop(1, 'rgba(238,232,216,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(cx - cl.r, cy - cl.r, cl.r*2, cl.r*2);
+      });
+      // Curds, drifting with the churn: a shadow, then the curd.
+      [[[118, 100, 70], .5, 1], [[244, 238, 224], .96, 0]].forEach(function(pass){
+        ctx.fillStyle = rgba(pass[0], pass[1]*roil);
+        ctx.beginPath();
+        curds.forEach(function(cd){
+          var x = clamp(cd.x + Math.sin(churn*.9 + cd.ph)*22 + Math.sin(churn*1.7 + cd.ph*2)*10, BOX.x + 6, BOX.x + BOX.w - 6) + pass[2];
+          var y = clamp(cd.y + Math.cos(churn*.7 + cd.ph*1.3)*18, SURFACE + 8, FLOOR - 6) + pass[2];
+          var r = cd.r*(1 - c*.6);
+          ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+          var x1 = x + Math.cos(cd.d0)*r*.75, y1 = y + Math.sin(cd.d0)*r*.75;
+          ctx.moveTo(x1 + r*.72, y1); ctx.arc(x1, y1, r*.72, 0, 6.2832);
+          var x2 = x + Math.cos(cd.d1)*r*.8, y2 = y + Math.sin(cd.d1)*r*.8;
+          ctx.moveTo(x2 + r*.58, y2); ctx.arc(x2, y2, r*.58, 0, 6.2832);
+        });
+        ctx.fill();
+      });
+      // The lumps: a pale, curdled mass around each clump of pieces.
+      [[[104, 90, 62], .38, 1.4], [[220, 210, 184], .62, 0]].forEach(function(pass){
+        ctx.fillStyle = rgba(pass[0], pass[1]*roil);
+        ctx.beginPath();
+        bits.forEach(function(b, n){
+          if (b.lump < 0) return;
+          var r = 9 + (n % 3)*2.5;
+          ctx.moveTo(b.x + pass[2] + r, b.y + pass[2]); ctx.arc(b.x + pass[2], b.y + pass[2], r, 0, 6.2832);
+        });
+        ctx.fill();
+      });
+      // Bubbles on their way up.
+      ctx.lineWidth = 1.1;
+      ctx.strokeStyle = 'rgba(255,255,255,' + (.62*roil).toFixed(3) + ')';
+      ctx.fillStyle = 'rgba(255,255,255,' + (.12*roil).toFixed(3) + ')';
+      bubbles.forEach(function(b){ ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 6.2832); ctx.fill(); ctx.stroke(); });
+      ctx.restore();
+    }
+    for (i = 0; i < bits.length; i++){
       var b = bits[i];
       ctx.save();
       ctx.translate(b.x, b.y);
       ctx.rotate(b.a);
-      ctx.fillStyle = mix(b.k.fill, '#F2E8CF', cream*.18);
+      ctx.fillStyle = rgba(mixc(b.k.rgb, CREAM, cream*.18), 1);
       ctx.strokeStyle = b.k.edge;
       ctx.lineWidth = 1.2;
       ctx.beginPath();
@@ -414,9 +522,45 @@ h2 span{font-weight:800}
       ctx.stroke();
       ctx.restore();
     }
+    if (roil > .01){
+      // The fat that has split out, pooling on top in a greasy slick, and beads of it below.
+      ctx.beginPath();
+      for (x = 0; x <= BOX.w; x += 6) ctx.lineTo(BOX.x + x, top(x) - .5);
+      for (x = BOX.w; x >= 0; x -= 6) ctx.lineTo(BOX.x + x, top(x) + 7 + Math.sin(x*.09 + churn*2)*2.5);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(236,178,46,' + (.5*roil).toFixed(3) + ')';
+      ctx.fill();
+      beads.forEach(function(bd, n){
+        var x = clamp(bd.x + Math.sin(churn*.55 + bd.ph)*26, BOX.x + 6, BOX.x + BOX.w - 6);
+        var y = n < 11 ? top(x - BOX.x) + bd.dy : clamp(SURFACE + bd.dy + Math.cos(churn*.5 + bd.ph)*14, SURFACE + 20, FLOOR - 8);
+        ctx.fillStyle = 'rgba(244,184,48,' + (.92*roil).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(x, y, bd.r, 0, 6.2832); ctx.fill();
+        ctx.fillStyle = 'rgba(255,248,222,' + (.85*roil).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(x - bd.r*.35, y - bd.r*.35, bd.r*.32, 0, 6.2832); ctx.fill();
+      });
+      ctx.lineWidth = 1.2;
+      pops.forEach(function(p){
+        ctx.strokeStyle = 'rgba(255,255,255,' + ((1 - p.t/.32)*.7*roil).toFixed(3) + ')';
+        ctx.beginPath(); ctx.ellipse(p.x, top(p.x - BOX.x), p.r + p.t*26, (p.r + p.t*26)*.4, 0, 0, 6.2832); ctx.stroke();
+      });
+    }
+    // A bright line where the broth meets the air.
+    ctx.beginPath();
+    for (x = 0; x <= BOX.w; x += 6) ctx.lineTo(BOX.x + x, top(x));
+    ctx.strokeStyle = 'rgba(255,255,255,' + (.2 + cream*.12).toFixed(3) + ')';
+    ctx.lineWidth = 2.6;
+    ctx.stroke();
   }
   function placeLadle(){
     ladle.setAttribute('transform', 'translate(' + spoon.x.toFixed(1) + ' ' + spoon.y.toFixed(1) + ')');
+  }
+  // The roux floats on the mess until it's stirred in, then turns with the pot and melts away.
+  function placeRoux(c){
+    if (!roux_in && !roux.classList.contains('in')) return;
+    var gone = clamp(cream*2.2, 0, 1);
+    roux.style.opacity = 1 - gone;
+    rouxBob.setAttribute('transform', 'translate(180 ' + (152 + (reduce ? 0 : Math.sin(t0*2.3)*2.4*muck*(1 - c))).toFixed(2) + ')');
+    rouxBall.setAttribute('transform', 'rotate(' + (turn*57.3*gone).toFixed(1) + ') scale(' + (1.1*(1 - gone*.5)).toFixed(3) + ')');
   }
 
   function frame(dt){
@@ -440,28 +584,37 @@ h2 span{font-weight:800}
     energy += ((inPot ? clamp(speed/420, 0, 1.4) : 0) - energy)*Math.min(1, dt*3);
     var dir = (spoon.vx*(spoon.y - CENTER.y) - spoon.vy*(spoon.x - CENTER.x)) < 0 ? 1 : -1;
     swirl += (energy*5*dir - swirl)*Math.min(1, dt*(1.6 + cream*2));
-    if (roux_in && !reduce) cream = Math.min(1, cream + energy*dt*.42);
-    if (roux_in){
-      var gone = clamp(cream*2.2, 0, 1);
-      roux.style.opacity = 1 - gone;
-    }
+    // Stirred without the roux, the mess builds, and it never goes back down.
+    if (messy && !roux_in) muck = Math.min(1, muck + dt*(.45 + energy*.9));
+    // With the roux in, stirring brings it together.
+    if (roux_in && !reduce) cream = Math.min(1, cream + energy*dt*.55);
+    var c = smooth(0, .85, cream), roil = muck*(1 - c);
+    if (!reduce) churn += dt*(.35 + roil*.8 + energy*.5);
+    ripple *= Math.exp(-dt*2.6);
+    bubbling(dt, roil);
     for (var s = 0; s < 2; s++) physics(dt/2);
-    // The story moves on from what's in the pot, not from the clock.
-    var high = bits.filter(function(b){ return b.k.kind !== 'parsley' && b.y < FLOOR - 60; }).length;
-    if (phase === 'thin' && energy > .5 && high > 12) setPhase('stirred');
-    else if (phase === 'stirred' && !drag && auto <= 0 && energy < .1 && (high < 5 || (still += dt) > 2.5)) setPhase('broken');
-    else if (phase === 'dosed' && energy > .3) setPhase('taking');
-    else if (phase === 'taking' && cream >= 1) complete();
+    placeRoux(c);
+    // Stirring by hand does the same as the button.
+    var phase = story.phase();
+    if (drag && ((phase === 'apart' && energy > .5) || (phase === 'dosed' && energy > .3))) story.go();
+    // A hand that stops stirring early gets help finishing, so the button never stays stuck.
+    if (phase === 'cleaning' && !drag && auto <= 0 && energy < .12 && cream < 1) stir();
+    if (waiting && waiting.test()){ var w = waiting; waiting = null; w.done(); }
     draw();
     placeLadle();
   }
 
-  function addRoux(){
-    roux_in = true;
-    roux.style.opacity = '';
-    roux.classList.add('in');
-    if (!reduce) roux.classList.add('drop');
-    setPhase('dosed');
+  function stir(){ if (!reduce){ auto = 2.2; autoT = 0; } }
+  // With motion reduced, a move shows where it lands instead of acting it out.
+  function jump(to){
+    var L = [lumpAt(0), lumpAt(1), lumpAt(2), lumpAt(3)];
+    bits.forEach(function(b){
+      if (to === 'mess'){
+        if (b.k.kind === 'parsley') b.y = SURFACE + 8;
+        else if (b.lump >= 0){ var l = L[b.lump], a = l.a + b.la; b.x = l.x + Math.cos(a)*b.lr; b.y = l.y + Math.sin(a)*b.lr; }
+      } else { b.x = b.hx; b.y = b.hy; }
+      b.vx = b.vy = 0;
+    });
   }
 
   function setCallouts(final){
@@ -472,44 +625,59 @@ h2 span{font-weight:800}
     $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
-  function complete(){
-    pot.classList.add('is-done');
-    drag = null; auto = 0;
-    setCallouts(true);
-    setPhase('done');
-    pot.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, pot, 'b', '.pot');
-  }
-
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    roux_in = false; cream = 0; swirl = 0; energy = 0; auto = 0; drag = null;
-    roux.classList.remove('in', 'drop');
-    pot.classList.remove('is-done');
-    fill();
-    setCallouts(false);
-    pot.setAttribute('aria-label', ARIA.thin);
-    setPhase('thin');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, pot, 'a', '.pot');
-  }
-
-  function stir(){
-    auto = 2.2; autoT = 0;
-    if (reduce){
-      // No motion: show where the story lands instead of acting it out.
-      if (roux_in){ cream = 1; bits.forEach(function(b){ b.x = b.hx; b.y = b.hy; }); }
+  var story = SG.story({
+    hero: hero, obj: pot, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.pot',
+    ops: {
+      mess: ['Your operations, today', 'Stirred together, still not linked. It’s lumpy, it’s split, and it won’t thicken.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same pot, same mess. Now there’s a roux in it.']
+    },
+    // Stir it without the roux: it churns into a lumpy, split mess, and the mess stays.
+    mess: function(){
+      messy = true;
+      if (!drag) stir();
+      if (reduce){ churn = 2.2; muck = 1; jump('mess'); }
+      return until(function(){ return auto <= 0 && muck >= 1; });
+    },
+    dose: function(){
+      roux.style.opacity = '';
+      roux.classList.add('in');
+      if (!reduce) roux.classList.add('drop');
+      return new Promise(function(done){ later(function(){ roux_in = true; ripple = 1; done(); }, 800); });
+    },
+    // Stir it again with the roux in: the same mess comes together into chowder.
+    clean: function(){
+      if (!drag) stir();
+      if (reduce){ cream = 1; jump('home'); }
+      var since = performance.now();
+      return until(function(){
+        if (cream < 1) since = performance.now();
+        return cream >= 1 && (settled() || performance.now() - since > 1600);
+      });
+    },
+    restore: function(){
+      timers.forEach(clearTimeout);
+      timers = [];
+      waiting = null;
+      messy = roux_in = false;
+      muck = cream = swirl = energy = churn = ripple = 0;
+      auto = 0; drag = null;
+      bubbles = []; pops = []; bubbleDue = 0;
+      roux.classList.remove('in', 'drop');
+      roux.style.opacity = '';
+      rouxBob.setAttribute('transform', 'translate(180 152)');
+      rouxBall.setAttribute('transform', 'scale(1.1)');
+      spoon = { x: REST.x, y: REST.y, vx: 0, vy: 0 };
+      spoonSpeed = 0;
+      fill();
+      draw();
+      placeLadle();
+    },
+    final: function(on){
+      setCallouts(on);
+      pot.classList.toggle('is-done', on);
+      if (on){ drag = null; auto = 0; }
     }
-  }
-
-  btn.addEventListener('click', function(){
-    if (phase === 'thin' || phase === 'dosed' || phase === 'taking') stir();
-    else if (phase === 'broken') addRoux();
-    else if (phase === 'done') $('gap').scrollIntoView();
   });
-  resetBtn.addEventListener('click', startOver);
 
   // Grab the ladle (or anywhere in the pot) and stir it yourself.
   var art = pot.querySelector('svg');
@@ -518,7 +686,8 @@ h2 span{font-weight:800}
     return { x: clamp((e.clientX - r.left)/r.width*360, BOX.x + 20, BOX.x + BOX.w - 20), y: clamp((e.clientY - r.top)/r.height*560, BOX.y + 10, FLOOR - 16) };
   }
   pot.addEventListener('pointerdown', function(e){
-    if (phase === 'done' || phase === 'broken') return;
+    var phase = story.phase();
+    if (phase === 'done' || phase === 'dosing') return;
     drag = toArt(e);
     auto = 0;
     try { pot.setPointerCapture(e.pointerId); } catch (err) {}

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shake the jar, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes emulsions for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/{{company}}.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="{{theme}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, shake the jar.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes emulsions for a living.">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A glass jar of oil floating on vinegar, on SimpleGrid blue, beside the words: {{first}}, you make emulsions for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, shake the jar.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes emulsions for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* Conway’s colors: deep green and gold, warm near-black type. */
+:root{
+  --brand:#0047AB;--brand-press:#003A8C;--brand-deep:#002D6E;
+  --accent:#FFC72C;--accent-soft:#FFEDB5;--accent-edge:#C89000;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#1A1A1A;--on-accent-soft:rgba(26,26,26,.8);
+  --tint:#EBF0FF;--pale:#FAFBFC;--ink:#1A1A1A;--alert:#C4163F;--marker:#FFEDB5;--h2-hi:#0047AB;
+}
+
+/* ------------------------------------------------------------ The jar */
+/* The primary buttons are jar lids, ridges along the bottom edge. */
+.go-btn{padding-bottom:21px}
+.go-btn::after{
+  content:'';position:absolute;left:12px;right:12px;bottom:5px;height:6px;border-radius:2px;opacity:.28;
+  background:repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 7px);
+}
+/* The jar */
+.hero-art{--jar-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.jar{
+  --glass:rgba(255,255,255,.84);--glass-soft:rgba(255,255,255,.44);--glass-fill:rgba(255,255,255,.1);
+  --lid:var(--accent);--lid-edge:var(--accent-edge);--lid-ridge:rgba(0,0,0,.24);
+  position:relative;z-index:3;flex:none;width:var(--jar-w);aspect-ratio:360/540;
+  cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;
+}
+.jar[data-tone=b]{--glass:color-mix(in srgb,var(--brand) 62%,transparent);--glass-soft:rgba(255,255,255,.72);--glass-fill:rgba(255,255,255,.18);--lid:var(--brand);--lid-edge:var(--brand-deep);--lid-ridge:rgba(255,255,255,.2)}
+.jar:active{cursor:grabbing}
+.jar-shadow{position:absolute;left:6%;right:6%;bottom:-3.2%;height:7.5%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,18,60,.5),rgba(0,18,60,0));transition:opacity .4s}
+.jar[data-tone=b] .jar-shadow{opacity:.55}
+.jar-move{position:absolute;inset:0;will-change:transform}
+.jar-back,.jar-front{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+#liquid,.liquid-flat{
+  position:absolute;left:8.611%;top:12.963%;width:82.778%;height:84.444%;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='31 70 298 456' preserveAspectRatio='none'%3E%3Cpath d='M100 70L100 90C100 126 31 130 31 190L31 468C31 502 58 526 94 526L266 526C302 526 329 502 329 468L329 190C329 130 260 126 260 90L260 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='31 70 298 456' preserveAspectRatio='none'%3E%3Cpath d='M100 70L100 90C100 126 31 130 31 190L31 468C31 502 58 526 94 526L266 526C302 526 329 502 329 468L329 190C329 130 260 126 260 90L260 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+}
+/* If WebGL isn't available, flat layers tell the same story. */
+.liquid-flat{display:none;background:linear-gradient(transparent 0 27.5%,#FFC21A 27.5% 63.2%,#B3123C 63.2%);transition:background .6s}
+.jar.no-gl #liquid{display:none}
+.jar.no-gl .liquid-flat{display:block}
+.jar.no-gl[data-phase=mixed] .liquid-flat,.jar.no-gl[data-phase=taking] .liquid-flat{background:linear-gradient(transparent 0 27.5%,#F08A4B 27.5%)}
+.jar.no-gl[data-phase=done] .liquid-flat{background:linear-gradient(transparent 0 24%,#FFF4D2 24%)}
+
+.g-fill{fill:var(--glass-fill)}
+.g-outline{fill:none;stroke:var(--glass);stroke-width:3.2;stroke-linejoin:round;transition:stroke .4s}
+.g-inner{fill:none;stroke:var(--glass-soft);stroke-width:1.4}
+.g-base{fill:var(--glass-soft)}
+.g-rim{fill:var(--glass-soft)}
+.g-hi{fill:none;stroke:#fff;stroke-linecap:round}
+.jar-lid{transform-box:fill-box;transform-origin:center;transition:transform .36s cubic-bezier(.3,.7,.2,1)}
+.jar.lid-off .jar-lid{transform:translate(122px,-40px) rotate(17deg)}
+.lid-top{fill:var(--lid);transition:fill .4s}
+.lid-edge{fill:var(--lid-edge);transition:fill .4s}
+.lid-ridge{stroke:var(--lid-ridge);stroke-width:3}
+.jar-label{opacity:0;transform:scale(.9);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.jar.is-labelled .jar-label{opacity:1;transform:none}
+
+/* The egg yolk. The outer element falls, the inner one gets whisked in. */
+.yolk{position:absolute;left:50%;top:66.3%;width:21%;aspect-ratio:1;margin:-10.5% 0 0 -10.5%;visibility:hidden}
+.yolk.in{visibility:visible}
+.yolk.drop{animation:yolk-drop .95s both}
+.yolk-ball{
+  position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 36% 30%,#FFE99A 0 10%,#FFB800 42%,#EE8600 100%);
+  box-shadow:inset -5px -7px 12px rgba(170,70,0,.5),0 2px 9px rgba(110,35,0,.4);
+}
+.yolk-ball svg{width:58%;height:58%;color:rgba(130,62,0,.72)}
+@keyframes yolk-drop{
+  0%{transform:translateY(-500%);animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+  34%{transform:translateY(-226%);animation-timing-function:cubic-bezier(.1,.6,.3,1)}
+  68%{transform:translateY(15%);animation-timing-function:ease-in-out}
+  85%{transform:translateY(-7%);animation-timing-function:ease-in-out}
+  100%{transform:translateY(0)}
+}
+
+.hero-art .callouts{height:calc(var(--jar-w)*1.5)}
+.callout-oil{top:35%}
+.callout-vin{top:73%}
+.callout-gap{top:calc(66.3% - 15px)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--jar-w)*.06)}
+.callout-oil h3 i{background:#FFC21A}
+.callout-vin h3 i{background:#C4163F}
+
+@media (max-width:980px){
+  .hero-art{--jar-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include label.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Custom formula for {{full}},</span> <span>{{co_name}}. Run size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make emulsions for a living. <span>So here’s our software, explained as one.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="jar hero-obj" id="jar" role="img" aria-label="A glass jar with a layer of oil floating on a layer of vinegar." data-phase="separated" data-tone="a">
+          <div class="jar-shadow" id="jarShadow"></div>
+          <div class="jar-move" id="jarMove">
+            <svg class="jar-back" viewBox="0 0 360 540" aria-hidden="true">
+              <path class="g-fill" d="M92 62L92 86C92 118 22 124 22 186L22 470C22 510 52 536 92 536L268 536C308 536 338 510 338 470L338 186C338 124 268 118 268 86L268 62Z"/>
+            </svg>
+            <canvas id="liquid" aria-hidden="true"></canvas>
+            <div class="liquid-flat" aria-hidden="true"></div>
+            <div class="yolk" id="yolk" aria-hidden="true">
+              <div class="yolk-ball" id="yolkBall">
+                <svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg>
+              </div>
+            </div>
+            <svg class="jar-front" viewBox="0 0 360 540" aria-hidden="true">
+              <g class="jar-label">
+                <path d="M22 288Q180 322 338 288L338 392Q180 426 22 392Z" fill="#0047AB"/>
+                <path d="M22 297Q180 331 338 297M22 383Q180 417 338 383" fill="none" stroke="#FFC72C" stroke-width="3"/>
+                <path id="ribbonLine" d="M36 367Q180 398 324 367" fill="none"/>
+                <text font-family="Merriweather, Georgia, serif" font-weight="900" font-size="45" fill="#FAFAFA" text-anchor="middle" letter-spacing="-.5"><textPath href="#ribbonLine" startOffset="50%">SimpleGrid</textPath></text>
+                <circle cx="180" cy="248" r="37" fill="#FFC72C"/>
+                <g fill="none" stroke="#0047AB" transform="translate(159 227)"><rect x="1.5" y="1.5" width="39" height="39" rx="7" stroke-width="3"/><path d="M14.5 1.5v39M27.5 1.5v39M1.5 14.5h39M1.5 27.5h39" stroke-width="2.6"/></g>
+                <path id="subLine" d="M64 451Q180 474 296 451" fill="none"/>
+                <text font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="800" font-size="23" fill="#0047AB" text-anchor="middle"><textPath href="#subLine" startOffset="50%">Real operations</textPath></text>
+                <text font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="500" font-size="12.5" fill="#1A1A1A" text-anchor="middle"><tspan x="180" y="489">Net wt: everything between your</tspan><tspan x="180" dy="15.5">books and your shop floor</tspan></text>
+              </g>
+              <path class="g-outline" d="M92 62L92 86C92 118 22 124 22 186L22 470C22 510 52 536 92 536L268 536C308 536 338 510 338 470L338 186C338 124 268 118 268 86L268 62"/>
+              <path class="g-inner" d="M100 72L100 90C100 126 31 130 31 190L31 468C31 502 58 526 94 526L266 526C302 526 329 502 329 468L329 190C329 130 260 126 260 90L260 72"/>
+              <path class="g-base" d="M22 470C22 510 52 536 92 536L268 536C308 536 338 510 338 470C338 502 302 526 266 526L94 526C58 526 22 502 22 470Z"/>
+              <path class="g-hi" d="M52 218C47 300 47 392 54 462" stroke-width="10" opacity=".42"/>
+              <path class="g-hi" d="M68 198C69 172 90 152 110 136" stroke-width="6" opacity=".5"/>
+              <path class="g-hi" d="M312 232C316 300 316 382 310 450" stroke-width="4.5" opacity=".24"/>
+              <rect class="g-rim" x="86" y="66" width="188" height="9" rx="4.5"/>
+              <g class="jar-lid">
+                <rect class="lid-edge" x="72" y="10" width="216" height="58" rx="11"/>
+                <rect class="lid-top" x="72" y="6" width="216" height="55" rx="11"/>
+                <g class="lid-ridge"><path d="M86 22v32M100 22v32M114 22v32M128 22v32M142 22v32M156 22v32M170 22v32M184 22v32M198 22v32M212 22v32M226 22v32M240 22v32M254 22v32M268 22v32"/></g>
+                <rect x="84" y="11" width="192" height="4" rx="2" fill="#fff" opacity=".4"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-oil">
+            <h3><i></i><span id="oilTitle">The oil: your ERP</span></h3>
+            <p id="oilText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-vin">
+            <h3><i></i><span id="vinTitle">The vinegar: your floor</span></h3>
+            <p id="vinText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+<!--#include ops.html-->
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Shake the jar to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of a jar can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include facts.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p class="margin-note">
+          <svg viewBox="0 0 32 38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 8C17 8 8 15 5 33M1 26l4 8 7-5"/></svg>
+          On your 70 million lb of capacity, every 0.1 point is nearly two truckloads of sauce.
+        </p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about {{co_name}} comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll reformulate. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script id="liquidFrag" type="x-shader/x-fragment">
+precision highp float;
+uniform vec2 uRes;
+uniform float uT, uMix, uCream, uSlope, uWave, uRipple;
+
+// The canvas spans the jar's inside: 298 x 456 units of the jar drawing, y measured up from the floor of the jar.
+const vec2 SIZE = vec2(298., 456.);
+const float SURFACE = 330., INTERFACE = 168.;
+
+float hash(vec2 p){ vec3 q = fract(vec3(p.xyx)*.1031); q += dot(q, q.yzx + 33.33); return fract((q.x + q.y)*q.z); }
+float noise(vec2 p){
+  vec2 i = floor(p), f = fract(p);
+  f = f*f*(3.-2.*f);
+  return mix(mix(hash(i), hash(i+vec2(1.,0.)), f.x), mix(hash(i+vec2(0.,1.)), hash(i+vec2(1.,1.)), f.x), f.y);
+}
+float fbm(vec2 p){
+  float a = .5, s = 0.;
+  for(int i = 0; i < 3; i++){ s += a*noise(p); p = p*2.03 + vec2(17., 9.); a *= .5; }
+  return s;
+}
+// Distance to the jar's wall, for the shading that makes it read as round.
+float sdBody(vec2 p){
+  vec2 q = abs(p - vec2(0., 300.)) - vec2(149., 300.) + 58.;
+  return length(max(q, 0.)) + min(max(q.x, q.y), 0.) - 58.;
+}
+// Round beads of one liquid hanging in the other. x = coverage, y = highlight.
+vec2 beads(vec2 p, float cell, float drift, float density, float seed){
+  vec2 g = p/cell;
+  g.y -= drift;
+  vec2 id0 = floor(g), res = vec2(0.);
+  for(int j = -1; j <= 1; j++) for(int i = -1; i <= 1; i++){
+    vec2 id = id0 + vec2(float(i), float(j));
+    if(hash(id + seed) > density) continue;
+    vec2 c = id + vec2(hash(id + seed + 3.1), hash(id + seed + 7.7));
+    float r = .14 + .24*hash(id + seed + 11.3);
+    float d = length(g - c);
+    float cov = smoothstep(r, r - .07, d);
+    if(cov > res.x){ res.x = cov; res.y = smoothstep(r*.5, 0., length(g - c - vec2(-.35, .35)*r)); }
+  }
+  return res;
+}
+
+void main(){
+  vec2 uv = gl_FragCoord.xy/uRes;
+  vec2 p = vec2((uv.x - .5)*SIZE.x, uv.y*SIZE.y);
+  float m = uMix, t = uT, cream = uCream;
+
+  // The two levels stay flat while the jar tilts, and slosh a little behind it.
+  float calm = 1. - cream*.92;
+  float amp = uWave*calm;
+  float rip = uRipple*sin(abs(p.x)*.13 - t*16.)*exp(-abs(p.x)*.011);
+  float w1 = sin(p.x*.028 + t*5.1)*1.5 + sin(p.x*.061 - t*3.4)*.8;
+  float w2 = sin(p.x*.021 - t*3.2)*2.2 + sin(p.x*.052 + t*4.3)*1.1;
+  float surf = SURFACE + uSlope*p.x*calm + w1*(.6 + amp*7.)*calm + rip*7.;
+  if(cream > 0.) surf += cream*(16. + (fbm(vec2(p.x*.011 + 3., 1.)) - .5)*30.);
+  float inter = INTERFACE + uSlope*1.12*p.x + w2*(.5 + amp*8.) + rip*5.;
+
+  // Marbling: the coordinates get warped harder the more the jar has been shaken.
+  // Sitting still costs next to nothing, so a modest laptop isn't working for an idle jar.
+  vec2 fl = p*.0085, wa = vec2(0.), q = p;
+  if(m > .002){
+    wa = vec2(fbm(fl + vec2(0., t*.33)), fbm(fl + vec2(5.2, -t*.27))) - .5;
+    vec2 wb = vec2(fbm(fl*2.7 + wa*2. + vec2(1.7, t*.4)), fbm(fl*2.7 - wa*2. + vec2(8.3, -t*.5))) - .5;
+    q = p + (wa*320. + wb*130.)*m;
+  }
+  float d = q.y - inter;
+  float e = mix(1.4, 8., m);
+  float L = smoothstep(-e, e, d);
+
+  float hO = clamp((p.y - INTERFACE)/(SURFACE - INTERFACE), 0., 1.);
+  float hV = clamp(p.y/INTERFACE, 0., 1.);
+  vec3 oil = mix(vec3(.97, .62, .04), vec3(1., .82, .22), hO);
+  vec3 vin = mix(vec3(.47, .02, .15), vec3(.82, .09, .24), hV);
+  vec3 col = mix(vin, oil, L);
+
+  // Big beads when it's nearly separated, fine ones as it mixes.
+  float bigD = .05 + .5*smoothstep(0., .35, m)*(1. - smoothstep(.45, .85, m));
+  float fineD = smoothstep(.1, .6, m)*.92;
+  float dir = L > .5 ? -1. : 1.;
+  vec2 bb = beads(p, 46., t*dir*.8, bigD, 1.);
+  vec2 bs = fineD > 0. ? beads(p, 15., t*dir*1.6, fineD, 40.) : vec2(0.);
+  float wall = smoothstep(0., 76., -sdBody(p));
+  float cover = max(bb.x, bs.x)*smoothstep(6., 30., -sdBody(p));
+  float hi = max(bb.y*bb.x, bs.y*bs.x);
+  vec3 other = L > .5 ? vin*1.14 : oil;
+  col = mix(col, other, cover);
+  col += hi*.3;
+
+  // Shaken hard, a vinaigrette goes cloudy.
+  float cloud = smoothstep(.28, .92, m);
+  if(cloud > 0.){
+    vec3 cloudCol = vec3(.96, .51, .29) + (fbm(fl*7. + t*.4) - .5)*.16;
+    col = mix(col, cloudCol, cloud*.8);
+  }
+
+  // With the emulsifier in, it thickens into something smooth and pale.
+  if(cream > 0.){
+    float ridge = fbm(p*.018 + wa*2.4);
+    vec3 creamCol = vec3(1., .965, .84)*(.982 + .03*smoothstep(.34, .66, ridge));
+    col = mix(col, creamCol, smoothstep(.0, 1., cream));
+  }
+
+  // Round-jar shading, soft window light, a bright line where the liquid meets the air.
+  col *= mix(mix(vec3(.84, .7, .62), vec3(1.05), wall), mix(vec3(.95), vec3(1.01), wall), cream);
+  col += exp(-pow((p.x + 74.)/58., 2.))*.07*(1. - cream*.55);
+  float below = surf - p.y;
+  float a = smoothstep(0., 1.5, below);
+  float men = smoothstep(8., 1., below)*a;
+  col = mix(col, col*1.1 + .09, men*.75);
+  col += exp(-pow(d/2.2, 2.))*(1. - m)*(1. - cream)*vec3(.3, .22, .1);
+
+  col = clamp(col, 0., 1.);
+  gl_FragColor = vec4(col*a, a);
+}
+</script>
+
+<script>
+(function(){
+  var reduce = SG.reduce;
+  var $ = function(id){ return document.getElementById(id); };
+  var clamp = SG.clamp;
+  var lerp = function(a, b, t){ return a + (b - a)*t; };
+  var smooth = function(a, b, v){ var t = clamp((v - a)/(b - a), 0, 1); return t*t*(3 - 2*t); };
+
+  /* ----------------------------------------------------------------- The jar */
+  var hero = $('hero'), jar = $('jar'), mover = $('jarMove'), shadow = $('jarShadow');
+  var canvas = $('liquid'), btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var yolk = $('yolk'), yolkBall = $('yolkBall');
+
+  var COPY = {
+    apart:    { btn: 'Shake the jar to see your operations', caption: 'Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.' },
+    messing:  { btn: 'Shaking…', caption: 'Shaking them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the emulsifier', caption: 'That’s your operations today: a big mess. Your ERP and your floor got shaken together, and they still don’t mix. It won’t settle back, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Lid off. In goes the yolk.' },
+    dosed:    { btn: 'Shake it again', caption: 'In goes the yolk. That’s SimpleGrid. Unlike 2015, there’s no shortage of this one. Now shake it again.' },
+    cleaning: { btn: 'Shaking…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth emulsion. Your ERP and your floor finally tell the same story, and it won’t break.' }
+  };
+  var ARIA = {
+    apart: 'A glass jar with a layer of oil floating on a layer of vinegar.',
+    mess: 'The same jar shaken into a churning, broken mess of oil and vinegar that won’t settle.',
+    done: 'A glass jar of smooth, pale emulsion with a SimpleGrid label.'
+  };
+
+  // messy: shaken without the emulsifier, so it churns and never settles. stable: the yolk is in.
+  var messy = false, stable = false, touched = false;
+  var s = { x:0, y:0, vx:0, vy:0, tilt:0, tiltV:0, slope:0, slopeV:0, energy:0, mix:0, cream:0, prog:0, ripple:0, wave:0, flow:0 };
+  var drag = null, shakeLeft = 0, shakeT = 0, waiting = null;
+
+  function shake(){
+    touched = true;
+    shakeLeft = 1.55;
+    shakeT = 0;
+  }
+  // Resolves once the liquid gets where a move is taking it; the physics checks every frame.
+  function until(test){ return new Promise(function(done){ waiting = { test: test, done: done }; }); }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('oilTitle').textContent = final ? 'Your ERP' : 'The oil: your ERP';
+    $('oilText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('vinTitle').textContent = final ? 'Your spreadsheets' : 'The vinegar: your floor';
+    $('vinText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: jar, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.jar',
+    ops: {
+      mess: ['Your operations, today', 'Shaken together, still not linked. It churns, and it won’t settle back.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same jar, same mess. Now there’s an emulsifier in it.']
+    },
+    // Shake it without the emulsifier: it churns into a mess, and the mess stays.
+    mess: function(){
+      messy = true;
+      jar.dataset.phase = 'mixed';
+      if (!drag && shakeLeft <= 0) shake();
+      return until(function(){ return shakeLeft <= 0 && s.mix > .4; });
+    },
+    dose: function(){
+      jar.classList.add('lid-off');
+      return new Promise(function(done){
+        setTimeout(function(){
+          yolk.classList.add('in');
+          if (!reduce) yolk.classList.add('drop');
+          setTimeout(function(){ s.ripple = 1; s.slopeV += .9; }, reduce ? 0 : 330);
+          setTimeout(function(){ jar.classList.remove('lid-off'); stable = true; s.prog = 0; done(); }, reduce ? 0 : 900);
+        }, reduce ? 0 : 340);
+      });
+    },
+    // Shake it again with the yolk in: the same mess comes together, smooth.
+    clean: function(){
+      jar.dataset.phase = 'taking';
+      if (!drag && shakeLeft <= 0) shake();
+      return until(function(){ return s.prog >= 1; });
+    },
+    restore: function(){
+      waiting = null;
+      messy = stable = false;
+      s.mix = s.cream = s.prog = s.energy = 0;
+      shakeLeft = 0;
+      yolk.classList.remove('in', 'drop');
+      yolkBall.style.opacity = '';
+      yolkBall.style.transform = '';
+      jar.dataset.phase = 'separated';
+    },
+    final: function(on){
+      setCallouts(on);
+      jar.classList.toggle('is-labelled', on);
+      if (on) jar.dataset.phase = 'done';
+      jar.dataset.tone = on ? 'b' : 'a';
+    }
+  });
+
+  // Grab the jar. Vertical swipes still scroll the page on a phone.
+  jar.addEventListener('pointerdown', function(e){
+    touched = true;
+    drag = { px: e.clientX, py: e.clientY, x: 0, y: 0 };
+    try { jar.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  jar.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    drag.x = clamp(e.clientX - drag.px, -130, 130);
+    drag.y = clamp(e.clientY - drag.py, -70, 70);
+  });
+  var letGo = function(){ drag = null; };
+  jar.addEventListener('pointerup', letGo);
+  jar.addEventListener('pointercancel', letGo);
+
+  function physics(dt){
+    var tx = 0, ty = 0, boost = 0;
+    if (drag){ tx = drag.x; ty = drag.y; }
+    if (shakeLeft > 0){
+      shakeLeft -= dt;
+      shakeT += dt;
+      var env = Math.min(1, shakeT*6)*Math.min(1, Math.max(0, shakeLeft)*6);
+      var w = 2*Math.PI*5.6;
+      tx = Math.sin(w*shakeT)*52*env;
+      ty = Math.sin(w*2*shakeT + .6)*22*env;
+      boost = Math.sin(w*shakeT + 1)*.25*env;
+      s.energy = Math.min(1, s.energy + dt*2.3);
+    }
+    var ax = 0;
+    if (!reduce){
+      ax = (tx - s.x)*900 - s.vx*30;
+      var ay = (ty - s.y)*900 - s.vy*30;
+      s.vx += ax*dt; s.vy += ay*dt;
+      s.x += s.vx*dt; s.y += s.vy*dt;
+      var tiltT = clamp(s.vx*.00027, -.42, .42) + boost;
+      s.tiltV += ((tiltT - s.tilt)*420 - s.tiltV*26)*dt;
+      s.tilt += s.tiltV*dt;
+      var K = lerp(190, 70, s.cream), C = lerp(3.2, 20, s.cream);
+      var slopeT = -Math.tan(s.tilt) + clamp(-ax*.000012, -.42, .42)*(1 - s.cream*.8);
+      s.slopeV += ((slopeT - s.slope)*K - s.slopeV*C)*dt;
+      s.slope += s.slopeV*dt;
+      var speed = Math.hypot(s.vx, s.vy);
+      if (speed > 240) s.energy = Math.min(1, s.energy + (speed - 240)*.0017*dt);
+    }
+  }
+
+  function step(dt){
+    for (var i = 0; i < 3; i++) physics(dt/3);
+    s.energy -= s.energy*dt*1.1;
+
+    // Shaken without the emulsifier, it never settles: it keeps churning around a broken, beaded mix.
+    if (messy && !stable) s.energy = Math.max(s.energy, .2);
+    if (!stable){
+      var target = smooth(.12, .72, s.energy);
+      if (messy) target = Math.max(target, .54);
+      if (target > s.mix) s.mix += (target - s.mix)*Math.min(1, dt*5);
+      else s.mix = Math.max(target, s.mix - dt*(.14 + .1*s.mix));
+    } else {
+      s.prog = Math.min(1, s.prog + s.energy*dt*.75);
+      s.mix = Math.max(s.mix, s.prog);
+    }
+    s.cream = stable ? smooth(.02, .98, s.prog) : 0;
+    s.wave += (s.energy - s.wave)*Math.min(1, dt*6);
+    s.flow += dt*(reduce ? s.energy*2 : (.22 + s.energy*2.4))*(1 - s.cream*.75);
+    s.ripple *= Math.exp(-dt*2.4);
+
+    // Shaking it by hand does the same as the button.
+    var phase = story.phase();
+    if (drag && ((phase === 'apart' && s.energy > .5) || (phase === 'dosed' && s.energy > .45))) story.go();
+    // A hand that stops shaking early gets help finishing, so the button never stays stuck.
+    if (phase === 'cleaning' && !drag && shakeLeft <= 0 && s.energy < .12 && s.prog < 1) shake();
+    if (waiting && waiting.test()){ var w = waiting; waiting = null; w.done(); }
+
+    if (stable){
+      var gone = smooth(.04, .42, s.prog);
+      yolkBall.style.opacity = 1 - gone;
+      yolkBall.style.transform = 'scale(' + (1 - gone*.55) + ') rotate(' + (s.flow*60) + 'deg)';
+    }
+  }
+
+  function place(){
+    mover.style.transform = reduce ? '' : 'translate3d(' + s.x.toFixed(2) + 'px,' + s.y.toFixed(2) + 'px,0) rotate(' + s.tilt.toFixed(4) + 'rad)';
+    shadow.style.transform = reduce ? '' : 'translateX(' + (s.x*.6).toFixed(1) + 'px) scale(' + (1 - Math.abs(s.y)*.0035).toFixed(3) + ')';
+  }
+
+  /* WebGL for the liquid, with the flat layers as the fallback. */
+  var gl = null, U = {}, quality = 1, slowFrames = 0;
+  function compile(type, src){
+    var sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    return gl.getShaderParameter(sh, gl.COMPILE_STATUS) ? sh : null;
+  }
+  function initGL(){
+    try { gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false }); } catch (err) {}
+    if (!gl) return false;
+    var vs = compile(gl.VERTEX_SHADER, 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}');
+    var fs = compile(gl.FRAGMENT_SHADER, $('liquidFrag').textContent);
+    if (!vs || !fs) return false;
+    var prog = gl.createProgram();
+    gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return false;
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0);
+    gl.bindAttribLocation(prog, 0, 'a');
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+    gl.vertexAttribPointer(gl.getAttribLocation(prog, 'a'), 2, gl.FLOAT, false, 0, 0);
+    ['uRes','uT','uMix','uCream','uSlope','uWave','uRipple'].forEach(function(n){ U[n] = gl.getUniformLocation(prog, n); });
+    gl.clearColor(0, 0, 0, 0);
+    return true;
+  }
+  function size(){
+    if (!gl) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5)*quality;
+    var w = Math.max(1, Math.round(canvas.clientWidth*dpr)), h = Math.max(1, Math.round(canvas.clientHeight*dpr));
+    if (canvas.width !== w || canvas.height !== h){ canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+    gl.uniform2f(U.uRes, w, h);
+  }
+  function draw(){
+    if (!gl) return;
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(U.uT, s.flow);
+    gl.uniform1f(U.uMix, s.mix);
+    gl.uniform1f(U.uCream, s.cream);
+    gl.uniform1f(U.uSlope, s.slope);
+    gl.uniform1f(U.uWave, s.wave);
+    gl.uniform1f(U.uRipple, s.ripple);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+
+  if (initGL()){
+    // Paint straight away: the loop below doesn't run in a background tab.
+    size();
+    draw();
+    window.addEventListener('resize', function(){ size(); draw(); });
+    canvas.addEventListener('webglcontextlost', function(e){ e.preventDefault(); gl = null; jar.classList.add('no-gl'); });
+  } else {
+    gl = null;
+    jar.classList.add('no-gl');
+  }
+
+  var raf = 0, last = 0, visible = true;
+  function frame(now){
+    raf = requestAnimationFrame(frame);
+    var ms = now - last;
+    var dt = Math.min(.05, ms/1000 || .016);
+    last = now;
+    // A machine that can't keep up renders the liquid smaller rather than stuttering.
+    slowFrames = ms > 28 ? slowFrames + 1 : Math.max(0, slowFrames - 1);
+    if (slowFrames > 24 && quality > .5){ quality -= .25; slowFrames = 0; size(); }
+    step(dt);
+    place();
+    draw();
+  }
+  function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(frame); } }
+  function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+  document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      visible = entries[0].isIntersecting;
+      visible ? run() : halt();
+    }).observe(hero);
+  }
+  run();
+
+  // One small wobble if nobody's touched the jar. Only ever to point it out.
+  if (!reduce){
+    [3500, 11000].forEach(function(ms){
+      setTimeout(function(){ if (!touched && story.phase() === 'apart'){ s.vx += 230; s.slopeV += .35; } }, ms);
+    });
+  }
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Soybean oil', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Kettle 4 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Oil truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QC hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Kettle 6 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Oil PO is ready for your OK',
+    'QC: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

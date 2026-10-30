@@ -14,14 +14,14 @@
 <meta property="og:url" content="{{url}}">
 <meta property="og:title" content="{{first}}, shake the jar.">
 <meta property="og:description" content="SimpleGrid, explained to someone who makes dressings for a living.">
-<meta property="og:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A glass jar of oil floating on vinegar, beside the words: {{first}}, you make dressings for a living.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, shake the jar.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes dressings for a living.">
-<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/og-{{slug}}.jpg">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
 <style>
@@ -187,15 +187,16 @@
             <h3><i></i><span id="vinTitle">The vinegar: your floor</span></h3>
             <p id="vinText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
+<!--#include ops.html-->
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Shake the jar</button>
+          <button class="go-btn" id="heroBtn" type="button">Shake the jar to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">Nothing links these two. Give it a shake, or grab the jar and do it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.</p>
       </div>
     </div>
   </div>
@@ -389,53 +390,32 @@ void main(){
   var yolk = $('yolk'), yolkBall = $('yolkBall');
 
   var COPY = {
-    separated: { btn: 'Shake the jar', caption: 'Nothing links these two. Give it a shake, or grab the jar and do it yourself.' },
-    mixed:     { btn: 'Shake the jar', caption: 'Looks mixed, doesn’t it?' },
-    broken:    { btn: 'Add the emulsifier', caption: 'And there it goes. That’s the usual ERP go-live: months later, the plant is back on Excel.' },
-    dosing:    { btn: 'Add the emulsifier', caption: 'One moment. Lid off.' },
-    dosed:     { btn: 'Shake the jar', caption: 'In goes the yolk. That’s SimpleGrid. Unlike 2015, there’s no shortage of this one. Now shake it.' },
-    taking:    { btn: 'Keep shaking', caption: 'It’s coming together.' },
-    done:      { btn: 'Why did the first one break?', caption: 'One live record. Your ERP and your floor finally tell the same story, and it won’t break.' }
+    apart:    { btn: 'Shake the jar to see your operations', caption: 'Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.' },
+    messing:  { btn: 'Shaking…', caption: 'Shaking them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the emulsifier', caption: 'That’s your operations today: a big mess. Your ERP and your floor got shaken together, and they still don’t mix. It won’t settle back, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Lid off. In goes the yolk.' },
+    dosed:    { btn: 'Shake it again', caption: 'In goes the yolk. That’s SimpleGrid. Unlike 2015, there’s no shortage of this one. Now shake it again.' },
+    cleaning: { btn: 'Shaking…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth emulsion. Your ERP and your floor finally tell the same story, and it won’t break.' }
   };
   var ARIA = {
-    separated: 'A glass jar with a layer of oil floating on a layer of vinegar.',
-    done: 'A glass jar of smooth, pale emulsion with a blue SimpleGrid label.'
+    apart: 'A glass jar with a layer of oil floating on a layer of vinegar.',
+    mess: 'The same jar shaken into a churning, broken mess of oil and vinegar that won’t settle.',
+    done: 'A glass jar of smooth, pale emulsion with a SimpleGrid label.'
   };
 
-  var phase = 'separated', stable = false, touched = false;
-  var s = { x:0, y:0, vx:0, vy:0, tilt:0, tiltV:0, slope:0, slopeV:0, energy:0, mix:0, cream:0, ripple:0, wave:0, flow:0 };
-  var drag = null, shakeLeft = 0, shakeT = 0;
-
-  function setPhase(next){
-    phase = next;
-    jar.dataset.phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'dosing';
-    caption.textContent = COPY[next].caption;
-    if (ARIA[next]) jar.setAttribute('aria-label', ARIA[next]);
-  }
+  // messy: shaken without the emulsifier, so it churns and never settles. stable: the yolk is in.
+  var messy = false, stable = false, touched = false;
+  var s = { x:0, y:0, vx:0, vy:0, tilt:0, tiltV:0, slope:0, slopeV:0, energy:0, mix:0, cream:0, prog:0, ripple:0, wave:0, flow:0 };
+  var drag = null, shakeLeft = 0, shakeT = 0, waiting = null;
 
   function shake(){
     touched = true;
     shakeLeft = 1.55;
     shakeT = 0;
   }
-
-  function addEmulsifier(){
-    setPhase('dosing');
-    jar.classList.add('lid-off');
-    var wait = reduce ? 0 : 340;
-    setTimeout(function(){
-      yolk.classList.add('in');
-      if (!reduce) yolk.classList.add('drop');
-      setTimeout(function(){ s.ripple = 1; s.slopeV += .9; }, reduce ? 0 : 330);
-      setTimeout(function(){
-        jar.classList.remove('lid-off');
-        stable = true;
-        setPhase('dosed');
-      }, reduce ? 0 : 900);
-    }, wait);
-  }
+  // Resolves once the liquid gets where a move is taking it; the physics checks every frame.
+  function until(test){ return new Promise(function(done){ waiting = { test: test, done: done }; }); }
 
   function setCallouts(final){
     $('gapTag').hidden = final;
@@ -445,40 +425,53 @@ void main(){
     $('vinText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
-  /* The emulsion spreads out from the jar and takes the whole hero with it. */
-  function wipeTo(theme){
-    jar.dataset.tone = theme;
-    SG.wipeTo(hero, jar, theme, '.jar');
-  }
-
-  function complete(){
-    setCallouts(true);
-    setPhase('done');
-    resetBtn.hidden = false;
-    jar.classList.add('is-labelled');
-    wipeTo('b');
-  }
-
-  function startOver(){
-    stable = false;
-    s.mix = s.cream = s.energy = 0;
-    shakeLeft = 0;
-    yolk.classList.remove('in', 'drop');
-    yolkBall.style.opacity = '';
-    yolkBall.style.transform = '';
-    jar.classList.remove('is-labelled');
-    setCallouts(false);
-    setPhase('separated');
-    resetBtn.hidden = true;
-    wipeTo('a');
-  }
-
-  btn.addEventListener('click', function(){
-    if (phase === 'broken') addEmulsifier();
-    else if (phase === 'done') $('gap').scrollIntoView();
-    else shake();
+  var story = SG.story({
+    hero: hero, obj: jar, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.jar',
+    ops: {
+      mess: ['Your operations, today', 'Shaken together, still not linked. It churns, and it won’t settle back.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same jar, same mess. Now there’s an emulsifier in it.']
+    },
+    // Shake it without the emulsifier: it churns into a mess, and the mess stays.
+    mess: function(){
+      messy = true;
+      jar.dataset.phase = 'mixed';
+      if (!drag && shakeLeft <= 0) shake();
+      return until(function(){ return shakeLeft <= 0 && s.mix > .4; });
+    },
+    dose: function(){
+      jar.classList.add('lid-off');
+      return new Promise(function(done){
+        setTimeout(function(){
+          yolk.classList.add('in');
+          if (!reduce) yolk.classList.add('drop');
+          setTimeout(function(){ s.ripple = 1; s.slopeV += .9; }, reduce ? 0 : 330);
+          setTimeout(function(){ jar.classList.remove('lid-off'); stable = true; s.prog = 0; done(); }, reduce ? 0 : 900);
+        }, reduce ? 0 : 340);
+      });
+    },
+    // Shake it again with the yolk in: the same mess comes together, smooth.
+    clean: function(){
+      jar.dataset.phase = 'taking';
+      if (!drag && shakeLeft <= 0) shake();
+      return until(function(){ return s.prog >= 1; });
+    },
+    restore: function(){
+      waiting = null;
+      messy = stable = false;
+      s.mix = s.cream = s.prog = s.energy = 0;
+      shakeLeft = 0;
+      yolk.classList.remove('in', 'drop');
+      yolkBall.style.opacity = '';
+      yolkBall.style.transform = '';
+      jar.dataset.phase = 'separated';
+    },
+    final: function(on){
+      setCallouts(on);
+      jar.classList.toggle('is-labelled', on);
+      if (on) jar.dataset.phase = 'done';
+      jar.dataset.tone = on ? 'b' : 'a';
+    }
   });
-  resetBtn.addEventListener('click', startOver);
 
   // Grab the jar. Vertical swipes still scroll the page on a phone.
   jar.addEventListener('pointerdown', function(e){
@@ -530,25 +523,31 @@ void main(){
     for (var i = 0; i < 3; i++) physics(dt/3);
     s.energy -= s.energy*dt*1.1;
 
+    // Shaken without the emulsifier, it never settles: it keeps churning around a broken, beaded mix.
+    if (messy && !stable) s.energy = Math.max(s.energy, .2);
     if (!stable){
       var target = smooth(.12, .72, s.energy);
+      if (messy) target = Math.max(target, .54);
       if (target > s.mix) s.mix += (target - s.mix)*Math.min(1, dt*5);
       else s.mix = Math.max(target, s.mix - dt*(.14 + .1*s.mix));
     } else {
-      s.mix = Math.min(1, s.mix + s.energy*dt*.62);
+      s.prog = Math.min(1, s.prog + s.energy*dt*.75);
+      s.mix = Math.max(s.mix, s.prog);
     }
-    s.cream = stable ? smooth(.22, .98, s.mix) : 0;
+    s.cream = stable ? smooth(.02, .98, s.prog) : 0;
     s.wave += (s.energy - s.wave)*Math.min(1, dt*6);
     s.flow += dt*(reduce ? s.energy*2 : (.22 + s.energy*2.4))*(1 - s.cream*.75);
     s.ripple *= Math.exp(-dt*2.4);
 
-    if (phase === 'separated' && s.mix > .5) setPhase('mixed');
-    else if (phase === 'mixed' && s.mix < .05 && s.energy < .1) setPhase('broken');
-    else if (phase === 'dosed' && s.mix > .06) setPhase('taking');
-    else if (phase === 'taking' && s.mix >= .995) complete();
+    // Shaking it by hand does the same as the button.
+    var phase = story.phase();
+    if (drag && ((phase === 'apart' && s.energy > .5) || (phase === 'dosed' && s.energy > .45))) story.go();
+    // A hand that stops shaking early gets help finishing, so the button never stays stuck.
+    if (phase === 'cleaning' && !drag && shakeLeft <= 0 && s.energy < .12 && s.prog < 1) shake();
+    if (waiting && waiting.test()){ var w = waiting; waiting = null; w.done(); }
 
     if (stable){
-      var gone = smooth(.04, .42, s.mix);
+      var gone = smooth(.04, .42, s.prog);
       yolkBall.style.opacity = 1 - gone;
       yolkBall.style.transform = 'scale(' + (1 - gone*.55) + ') rotate(' + (s.flow*60) + 'deg)';
     }
@@ -645,7 +644,7 @@ void main(){
   // One small wobble if nobody's touched the jar. Only ever to point it out.
   if (!reduce){
     [3500, 11000].forEach(function(ms){
-      setTimeout(function(){ if (!touched && phase === 'separated'){ s.vx += 230; s.slopeV += .35; } }, ms);
+      setTimeout(function(){ if (!touched && story.phase() === 'apart'){ s.vx += 230; s.slopeV += .35; } }, ms);
     });
   }
 })();

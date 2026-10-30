@@ -1,5 +1,30 @@
 {
-  "_about": "Who gets a page. Each company folder is built from its template; each reader gets <company>/<slug>/. town goes in the mailto, where finishes '15 minutes at ...'.",
+  "_about": "Who gets a page. Each company folder is built from its template; each reader gets <company>/<slug>/. town goes in the mailto, where finishes '15 minutes at ...'. An empty slug is the company’s own page (/legacy-foods/ is Jonathan’s); og names the link preview when it isn’t og-<slug>.",
+  "legacy-foods": {
+    "template": "legacy-foods.html",
+    "values": {
+      "co_name": "Legacy Foods",
+      "theme": "#0047AB",
+      "ps": "P.S. You make Indian sauces. I moved here from India. I may have notes."
+    },
+    "readers": [
+      {
+        "slug": "",
+        "og": "og-jar",
+        "first": "Jonathan",
+        "full": "Jonathan Gilbert",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "robbie",
+        "first": "Robbie",
+        "full": "Robbie Taylor",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      }
+    ]
+  },
   "doumak": {
     "template": "doumak.html",
     "readers": [
@@ -276,5 +301,260 @@
         "where": "your place in Melrose Park"
       }
     ]
+  },
+  "assemblers": {
+    "template": "assemblers.html",
+    "values": {
+      "co_name": "Assemblers",
+      "theme": "#0E46A2",
+      "line_order": "Order 4417",
+      "line_sku": "Protein bars, 2,400 cases",
+      "ps": "P.S. Four high-speed case-erecting lines and 200-plus loading docks. I’d love to watch them run."
+    },
+    "readers": [
+      {
+        "slug": "carlos",
+        "first": "Carlos",
+        "full": "Carlos Hankins",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      }
+    ]
+  },
+  "greenseed": {
+    "values": {
+      "co_name": "GreenSeed",
+      "theme": "#092B17",
+      "line_order": "Order 4417",
+      "line_sku": "Food pouches, 2,400 cases",
+      "ps": "P.S. “On time and on budget” is right there on your site. I’d love to see how Batavia keeps it that way."
+    },
+    "readers": [
+      {
+        "slug": "hector",
+        "first": "Hector",
+        "full": "Hector Leon",
+        "town": "Batavia",
+        "where": "your plant in Batavia"
+      }
+    ],
+    "template": "greenseed.html"
+  },
+  "subco-foods": {
+    "values": {
+      "co_name": "Subco Foods",
+      "theme": "#19195A",
+      "line_order": "Order 4417",
+      "line_sku": "Bottles, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "nadia",
+        "first": "Nadia",
+        "full": "Nadia Attia",
+        "town": "West Chicago",
+        "where": "your plant in West Chicago",
+        "ps": "P.S. I read your post on why SQF certification matters. Level 3 is no small thing. I’d love to see the West Chicago lines."
+      },
+      {
+        "slug": "denise",
+        "first": "Denise",
+        "full": "Denise Miller",
+        "town": "West Chicago",
+        "where": "your plant in West Chicago",
+        "ps": "P.S. One ounce to super sack is quite a range to buy for. I’d love to see how West Chicago plans it."
+      }
+    ],
+    "template": "subco-foods.html"
+  },
+  "vanee-foods": {
+    "values": {
+      "co_name": "Vanee Foods",
+      "theme": "#A93A2A",
+      "line_order": "Order 4417",
+      "line_sku": "Signature sauce, 2,400 cases",
+      "ps": "P.S. Family owned since 1950, and still turning out new recipes “at warp speed,” as your site puts it. I’d love to see how."
+    },
+    "readers": [
+      {
+        "slug": "alex",
+        "first": "Alex",
+        "full": "Alex Van Eekeren",
+        "town": "Oak Brook",
+        "where": "your office in Oak Brook"
+      }
+    ],
+    "template": "vanee-foods.html"
+  },
+  "superior-nut": {
+    "values": {
+      "co_name": "Superior Nut & Candy",
+      "theme": "#492900",
+      "ps": "P.S. I saw your post about the new ÇRZ Makina equipment. I’d love to see it once it’s running.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "roshdi",
+        "first": "Roshdi",
+        "full": "Roshdi Shatat",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      }
+    ],
+    "template": "superior-nut.html"
+  },
+  "schulze-burch": {
+    "values": {
+      "co_name": "Schulze and Burch",
+      "theme": "#1470AF",
+      "ps": "P.S. Saltines, granola bars and toaster pastries, your site says. I’d love to see which one is running on 35th Street.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "eric",
+        "first": "Eric",
+        "full": "Eric M. Finke",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      }
+    ],
+    "template": "schulze-burch.html"
+  },
+  "azteca-foods": {
+    "values": {
+      "co_name": "Azteca Foods",
+      "theme": "#9E1B32",
+      "ps": "P.S. Art Velasquez and nine other businessmen from the Azteca Lions Club in Pilsen. That’s a Chicago story. I’d love to hear the rest.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "renee",
+        "first": "Renee",
+        "full": "Renee Togher",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      }
+    ],
+    "template": "azteca-foods.html"
+  },
+  "intelligentsia": {
+    "values": {
+      "co_name": "Intelligentsia",
+      "theme": "#2E2925",
+      "ps": "P.S. Twenty times the green storage of the old place, you told Daily Coffee News. I’d love to see Roasting Works.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "samuel",
+        "first": "Samuel",
+        "full": "Samuel Sabori",
+        "town": "Bedford Park",
+        "where": "your roastery in Bedford Park"
+      }
+    ],
+    "template": "intelligentsia.html"
+  },
+  "nurture-life": {
+    "values": {
+      "co_name": "Nurture Life",
+      "theme": "#004B2C",
+      "ps": "P.S. 4.8 out of 5 from 1,929 reviews, and kids are the toughest critics there are. I’d love to see the kitchen.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "amy",
+        "first": "Amy",
+        "full": "Amy",
+        "town": "Bedford Park",
+        "where": "your kitchen in Bedford Park"
+      }
+    ],
+    "template": "nurture-life.html"
+  },
+  "pures-food": {
+    "values": {
+      "co_name": "Pure’s",
+      "theme": "#263746",
+      "ps": "P.S. Six Chicagoland facilities and some of the largest lines in the cookie industry, your site says. I’d love to see one run.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "chris",
+        "first": "Chris",
+        "full": "Chris",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      }
+    ],
+    "template": "pures-food.html"
+  },
+  "37th-street-bakery": {
+    "values": {
+      "co_name": "37th Street Bakery",
+      "theme": "#004A70",
+      "ps": "P.S. From a neighborhood bakery in Chicago to one of North America’s largest producers of laminated dough. I’d love to see the line on Kedzie.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "ronald",
+        "first": "Ronald",
+        "full": "Ronald Mrow",
+        "town": "Chicago",
+        "where": "your bakery in Chicago"
+      }
+    ],
+    "template": "37th-street-bakery.html"
+  },
+  "amity-packing": {
+    "values": {
+      "co_name": "Amity",
+      "theme": "#191919",
+      "ps": "P.S. 175,000 square feet on Kildare and customers in 30-plus countries. I’d love to see the RTE side.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "jose",
+        "first": "Jose",
+        "full": "Jose Polanco",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      }
+    ],
+    "template": "amity-packing.html"
+  },
+  "durable-packaging": {
+    "values": {
+      "co_name": "Durable",
+      "theme": "#00188A",
+      "ps": "P.S. Fourth-generation family-owned, your site says. That’s rarer than a perfect seal. I’d love to see Wheeling.",
+      "line_order": "Order 4417",
+      "line_sku": "Placeholder, 2,400 cases"
+    },
+    "readers": [
+      {
+        "slug": "corey",
+        "first": "Corey",
+        "full": "Corey Anders",
+        "town": "Wheeling",
+        "where": "your plant in Wheeling"
+      }
+    ],
+    "template": "durable-packaging.html"
   }
 }

@@ -14,14 +14,14 @@
 <meta property="og:url" content="{{url}}">
 <meta property="og:title" content="{{first}}, spin the cone.">
 <meta property="og:description" content="SimpleGrid, explained to someone who makes gyro cones for a living.">
-<meta property="og:image" content="https://simplegrid.ai/grecian-delight/og-{{slug}}.jpg">
+<meta property="og:image" content="https://simplegrid.ai/grecian-delight/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A gyro cone in two halves on a vertical broiler, beside the words: {{first}}, you make gyro cones for a living.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, spin the cone.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes gyro cones for a living.">
-<meta name="twitter:image" content="https://simplegrid.ai/grecian-delight/og-{{slug}}.jpg">
+<meta name="twitter:image" content="https://simplegrid.ai/grecian-delight/{{og}}.jpg">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
 <style>
@@ -62,22 +62,37 @@ h2{letter-spacing:-.02em}
 @keyframes heat{to{opacity:.7}}
 .heat-glow{fill:url(#heatGlow);opacity:0;transition:opacity .8s}
 .broiler.hot .heat-glow{opacity:.7}
-.meat{fill:#9A5532}
 .layer-line{stroke:rgba(60,22,8,.32);stroke-width:1.4;fill:none}
 .shade{fill:url(#round)}
 .char{fill:url(#charGrad);opacity:0;transition:opacity 2.4s ease}
 .broiler.browned .char{opacity:1}
 .steel-part{fill:#B9C3CC}
 .steel-dark{fill:#7F8B96}
-.half{transition:transform .8s cubic-bezier(.55,0,.9,.5),opacity .45s .4s}
-.half-top.fall{transform:translate(96px,250px) rotate(38deg);opacity:0}
+/* The top half wobbles on its bottom edge, then slides off (the script moves it). */
+.half-top{transform-box:view-box;transform-origin:180px 282px}
 .half-top.wobble{animation:wobble .26s ease-in-out infinite alternate}
 @keyframes wobble{from{transform:rotate(-2.4deg)}to{transform:rotate(2.4deg)}}
-.half-top{transform-box:fill-box;transform-origin:50% 100%}
-.spit{transform:translateY(-330px);opacity:0;transition:transform .7s cubic-bezier(.4,0,.2,1),opacity .2s}
+.broiler.topless .half-top{visibility:hidden}
+.stump-cap{opacity:0}
+.broiler.topless .stump-cap{opacity:1}
+/* Where it lands: the pieces it breaks into, crumbs and drippings. They stay put until the spit is in. */
+.frag,.crumb{visibility:hidden}
+.frag{transform-box:view-box}
+.crumb{transform-box:fill-box;transform-origin:center;fill:#8A4422}
+.crumb:nth-child(3n){fill:#B8693E}
+.broiler.broken .frag,.broiler.broken .crumb{visibility:visible}
+.crack-rim{fill:none;stroke:#CF9165;stroke-width:5.5;stroke-linejoin:round}
+.crack{fill:none;stroke:#3E1606;stroke-width:2;stroke-linejoin:round}
+.grease{fill:#C9772C;opacity:0;transition:opacity .5s}
+.broiler.broken .grease{opacity:.8}
+/* SimpleGrid: the spit, behind the meat so it disappears into whatever's on it */
+.spit{transform:translateY(-330px);opacity:0;transition:transform .7s cubic-bezier(.4,0,.2,1),opacity .35s}
 .broiler.spitted .spit{transform:none;opacity:1}
 .seam{stroke:rgba(40,12,0,.55);stroke-width:2.5;transition:opacity .8s}
-.broiler.is-done .seam{opacity:0}
+.broiler.topless .seam,.broiler.is-done .seam{opacity:0}
+.broiler.falling .seam{opacity:0;transition-duration:.12s}
+/* Start over puts everything back at once, rather than fading it back. */
+.broiler.snap,.broiler.snap *{transition:none!important;animation:none!important}
 .flag{opacity:0;transform:translateY(10px);transition:opacity .4s .3s,transform .5s cubic-bezier(.2,.9,.3,1.3) .3s}
 .broiler.is-done .flag{opacity:1;transform:none}
 .flag-cloth{fill:#fff}
@@ -154,6 +169,8 @@ h2{letter-spacing:-.02em}
               </pattern>
               <clipPath id="clipTop"><path d="M84 92Q180 78 276 92L262 276Q180 286 98 276Z"/></clipPath>
               <clipPath id="clipBottom"><path d="M98 273Q180 283 262 273L242 468Q180 478 118 468Z"/></clipPath>
+              <!-- the spit drops in from the top of the picture, not from over the headline -->
+              <clipPath id="clipArt"><rect x="-40" y="0" width="440" height="600"/></clipPath>
             </defs>
 
             <!-- the broiler: heat panel, drip tray, motor -->
@@ -165,6 +182,14 @@ h2{letter-spacing:-.02em}
             <ellipse class="steel-dark" cx="180" cy="491" rx="96" ry="9"/>
             <rect class="steel-dark" x="138" y="506" width="84" height="38" rx="8"/>
             <rect class="steel-part" x="146" y="514" width="68" height="6" rx="3"/>
+            <!-- what a fall splashes onto the drip tray -->
+            <g class="grease"><ellipse cx="88" cy="496" rx="12" ry="2.6"/><ellipse cx="126" cy="503" rx="9" ry="2.2"/><ellipse cx="232" cy="504" rx="13" ry="2.6"/><ellipse cx="274" cy="495" rx="10" ry="2.4"/></g>
+
+            <!-- SimpleGrid: the spit, one rod through every layer. Behind the meat, so it vanishes into it. -->
+            <g clip-path="url(#clipArt)"><g class="spit">
+              <rect class="steel-part" x="176" y="28" width="8" height="452" rx="2"/>
+              <rect class="steel-dark" x="180.5" y="28" width="3.5" height="452" rx="1.5"/>
+            </g></g>
 
             <!-- the floor: the bottom half, on the motor -->
             <g class="half half-bottom" id="bottomHalf">
@@ -174,6 +199,8 @@ h2{letter-spacing:-.02em}
                 <rect class="char" x="90" y="270" width="180" height="212"/>
                 <rect class="shade" x="90" y="270" width="180" height="212"/>
               </g>
+              <!-- its torn top, once there's nothing on it -->
+              <g class="stump-cap"><ellipse cx="180" cy="274" rx="82" ry="6.5" fill="#A85C36"/><ellipse cx="180" cy="274.5" rx="66" ry="4" fill="#D69A6C"/></g>
             </g>
             <!-- the ERP: the top half, just sitting there -->
             <g class="half half-top" id="topHalf">
@@ -186,20 +213,30 @@ h2{letter-spacing:-.02em}
               <ellipse cx="180" cy="90" rx="96" ry="10" fill="#B86A42"/>
               <ellipse cx="180" cy="90" rx="80" ry="6" fill="#C98458" opacity=".7"/>
             </g>
+            <!-- the pieces it breaks into: the script cuts them from the top half -->
+            <g id="frags"></g>
+            <g id="crumbs">
+              <g transform="translate(76 489)"><path class="crumb" d="M-5-2L0-5L5-3L4 3L-2 4Z"/></g>
+              <g transform="translate(104 502)"><path class="crumb" d="M-6-1L-1-4L6-2L4 3L-4 3Z"/></g>
+              <g transform="translate(140 507)"><path class="crumb" d="M-4-3L3-4L5 1L0 4L-5 2Z"/></g>
+              <g transform="translate(166 502)"><path class="crumb" d="M-3-2L2-3L3 2L-2 3Z"/></g>
+              <g transform="translate(202 507)"><path class="crumb" d="M-6-2L0-4L6-1L3 3L-4 3Z"/></g>
+              <g transform="translate(228 499)"><path class="crumb" d="M-3-3L3-2L4 2L-1 3L-4 1Z"/></g>
+              <g transform="translate(254 505)"><path class="crumb" d="M-5-1L0-4L5-2L3 3L-3 3Z"/></g>
+              <g transform="translate(284 491)"><path class="crumb" d="M-4-3L2-4L5 0L1 4L-4 2Z"/></g>
+            </g>
             <path class="seam" d="M98 275Q180 285 262 275"/>
 
-            <!-- SimpleGrid: the spit, through every layer -->
-            <g class="spit">
-              <rect class="steel-part" x="176" y="28" width="8" height="68" rx="2"/>
+            <!-- the spit's top, with SimpleGrid's mark on it, the way the yolk wears it -->
+            <g clip-path="url(#clipArt)"><g class="spit">
               <rect class="steel-dark" x="158" y="80" width="44" height="7" rx="3"/>
-              <!-- the mark on the spit, the way the yolk wears it -->
               <g transform="translate(180 24) scale(.65)"><!--#include sg-badge.svg--></g>
               <g class="flag">
                 <path class="flag-cloth" d="M186 40h160l-12 20 12 20h-160z"/>
                 <g class="flag-ink" transform="translate(193.8 44.8) scale(.722)" fill="none"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g>
                 <text class="flag-text" x="229" y="66.7" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="18" letter-spacing="-.5">SimpleGrid</text>
               </g>
-            </g>
+            </g></g>
           </svg>
         </div>
         <div class="callouts">
@@ -212,15 +249,16 @@ h2{letter-spacing:-.02em}
             <h3><i></i><span id="bottomTitle">The bottom: your floor</span></h3>
             <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
+<!--#include ops.html-->
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Spin it</button>
+          <button class="go-btn" id="heroBtn" type="button">Spin it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">Two halves, one on the other, nothing through the middle. Spin it, or grab the cone and turn it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP on top, your floor underneath, and nothing through the middle to link them. Spin it, or grab the cone and turn it yourself.</p>
       </div>
     </div>
   </div>
@@ -287,89 +325,181 @@ h2{letter-spacing:-.02em}
 <script>
 (function(){
   /* ------------------------------------------------- The gyro cone
-     Two halves, stacked: the top is the ERP, the bottom is the floor. The
-     motor turns the bottom; with nothing through the middle, the top doesn't
-     follow, wobbles, and comes off. The spit is SimpleGrid: one rod through
-     every layer, and the whole cone turns as one. */
+     Two halves, stacked: the top is the ERP, the bottom is the floor. Spin it
+     with nothing through the middle and the top doesn't follow: it wobbles,
+     slides off and lands in pieces on the drip tray, and there they stay.
+     That's your operations today. The spit is SimpleGrid, one rod through
+     every layer: spin it again and the pieces jump back up onto it, one cone
+     that turns, and browns, as one. */
   var $ = function(id){ return document.getElementById(id); };
-  var hero = $('hero'), broiler = $('broiler'), topHalf = $('topHalf');
+  var hero = $('hero'), broiler = $('broiler'), topHalf = $('topHalf'), frags = $('frags');
   var texTop = $('texTop'), texBottom = $('texBottom');
-  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
 
   var COPY = {
-    loose:   { btn: 'Spin it', caption: 'Two halves, one on the other, nothing through the middle. Spin it, or grab the cone and turn it yourself.' },
-    turning: { btn: 'Spinning…', caption: 'Your floor turns all day. Your ERP doesn’t.' },
-    broken:  { btn: 'Add the spit', caption: 'And there it goes. That’s the usual ERP go-live: stacked up for the launch, and months later the plant is back on Excel.' },
-    spitted: { btn: 'Spin it', caption: 'In goes the spit. That’s SimpleGrid, right through every layer. Now spin it.' },
-    cooking: { btn: 'Spinning…', caption: 'Turning together, cooking evenly.' },
-    done:    { btn: 'Why did the first one fall off?', caption: 'One live record. Your ERP and your floor finally turn together.' }
+    apart:    { btn: 'Spin it to see your operations', caption: 'Your ERP on top, your floor underneath, and nothing through the middle to link them. Spin it, or grab the cone and turn it yourself.' },
+    messing:  { btn: 'Spinning…', caption: 'Spinning them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the spit', caption: 'That’s your operations today: a big mess. Your floor keeps turning, and your ERP lies in pieces on the drip tray. It won’t stack itself back up, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Down goes the spit.' },
+    dosed:    { btn: 'Spin it again', caption: 'In goes the spit. That’s SimpleGrid, right through every layer. Now spin it again.' },
+    cleaning: { btn: 'Spinning…', caption: 'Watch the mess stack back up.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one whole cone, browning evenly. Your ERP and your floor finally turn together.' }
   };
   var ARIA = {
-    loose: broiler.getAttribute('aria-label'),
+    apart: broiler.getAttribute('aria-label'),
+    mess: 'The top half of the cone has slid off and lies broken in pieces on the drip tray, while the bottom half turns on alone.',
+    dosed: 'A spit now runs down through the bottom half. The broken pieces of the top half still lie on the drip tray.',
     done: 'A whole gyro cone turning on its spit, browned evenly, with a SimpleGrid flag on top.'
   };
 
-  var phase = 'loose', spitted = false;
-  var spin = { bottom: 0, top: 0, speed: 0, target: 0 }, twist = 0, drag = null;
-  var timers = [];
-  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  /* Where the top half breaks: eight pieces, back to front. Each has its
+     outline (the top half's own edge trims it), the middle it turns about,
+     where it comes to rest on the drip tray [x, y, turn], and how high it
+     bounces getting there. */
+  var PIECES = [
+    { pts: '70,150 98,142 124,152 146,144 170,154 186,176 172,198 184,218 150,226 124,212 98,224 70,214', c: [136, 184], rest: [92, 452, -96], hop: 22 },
+    { pts: '170,154 196,142 210,146 232,152 256,141 290,148 290,216 264,224 238,214 212,228 184,218 172,198 186,176', c: [226, 184], rest: [270, 452, 84], hop: 20 },
+    { pts: '140,70 212,70 204,96 218,122 210,146 196,142 170,154 146,144 136,120 150,94', c: [178, 108], rest: [262, 418, 138], hop: 34 },
+    { pts: '70,70 140,70 150,94 136,120 146,144 124,152 98,142 70,150', c: [116, 112], rest: [122, 470, 18], hop: 16 },
+    { pts: '212,70 290,70 290,148 256,141 232,152 210,146 218,122 204,96', c: [242, 110], rest: [240, 474, -22], hop: 14 },
+    { pts: '150,226 184,218 212,228 222,252 206,276 216,296 146,296 156,274 140,250', c: [180, 254], rest: [182, 470, 172], hop: 26 },
+    { pts: '70,214 98,224 124,212 150,226 140,250 156,274 146,296 70,296', c: [124, 252], rest: [150, 484, -64], hop: 12 },
+    { pts: '212,228 238,214 264,224 290,216 290,296 216,296 206,276 222,252', c: [236, 252], rest: [212, 486, 70], hop: 10 }
+  ];
+  var art = topHalf.innerHTML;
+  PIECES.forEach(function(p, i){
+    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'frag');
+    g.style.transformOrigin = p.c[0] + 'px ' + p.c[1] + 'px';
+    g.innerHTML = '<clipPath id="gyroPiece' + i + '"><polygon points="' + p.pts + '"/></clipPath>' +
+      '<g clip-path="url(#gyroPiece' + i + ')">' + art +
+      '<g clip-path="url(#clipTop)"><polygon class="crack-rim" points="' + p.pts + '"/><polygon class="crack" points="' + p.pts + '"/></g></g>';
+    frags.appendChild(g);
+    p.el = g;
+    p.end = [p.rest[0] - p.c[0], p.rest[1] - p.c[1], p.rest[2]];
+  });
+  var crumbs = [].map.call(document.querySelectorAll('#crumbs .crumb'), function(el){
+    var at = el.parentNode.getAttribute('transform').match(/[\d.]+/g);
+    return { el: el, x: +at[0], y: +at[1] };
+  });
 
-  function setPhase(next){
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'turning' || next === 'cooking';
-    caption.textContent = COPY[next].caption;
+  /* Every move is a few timed steps. Start over clears them all, and a step that
+     was cleared never runs, so nothing from an old run lands on a fresh start. */
+  var timers = [], anims = [];
+  function wait(ms){ return new Promise(function(done){ timers.push(setTimeout(done, reduce ? 0 : ms)); }); }
+  // Takes an element through keyframes and leaves it on the last one. Resolves as it lands.
+  function play(el, frames, opts){
+    var last = frames[frames.length - 1];
+    el.style.transform = last.transform;
+    if (last.opacity != null) el.style.opacity = last.opacity;
+    if (reduce || !el.animate) return Promise.resolve();
+    return new Promise(function(done){
+      var a = el.animate(frames, Object.assign({ fill: 'backwards' }, opts));
+      anims.push(a);
+      a.onfinish = function(){ done(); };
+    });
+  }
+  var T = function(x, y, r){ return 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + r.toFixed(1) + 'deg)'; };
+
+  // How the top half goes: tipped off its bottom edge, to the right, and down onto the tray.
+  var FALL = [20, 168, 20], PIVOT = [180, 282], SMASH = [236, 420];
+  // A piece's own pose that matches the top half's at the moment it hits, so the swap can't be seen.
+  function atImpact(p){
+    var a = FALL[2]*Math.PI/180, dx = PIVOT[0] - p.c[0], dy = PIVOT[1] - p.c[1];
+    return [dx - (dx*Math.cos(a) - dy*Math.sin(a)) + FALL[0], dy - (dx*Math.sin(a) + dy*Math.cos(a)) + FALL[1], FALL[2]];
   }
 
-  function paint(){
-    texBottom.setAttribute('patternTransform', 'translate(' + (spin.bottom % 120).toFixed(2) + ' 0)');
-    texTop.setAttribute('patternTransform', 'translate(' + (spin.top % 120).toFixed(2) + ' 0)');
-  }
+  var spin = { bottom: 0, top: 0, speed: 0, target: 0 }, spitted = false, topOff = false;
+  function turn(v){ spin.target = reduce ? 0 : v; }
 
-  function frame(dt){
-    spin.speed += (spin.target - spin.speed)*Math.min(1, dt*2.2);
-    spin.bottom += spin.speed*dt;
-    // Without the spit, the top barely follows. With it, it's the same cone.
-    spin.top += (spitted ? spin.speed : spin.speed*.06)*dt;
-    paint();
-  }
-
-  function fallOff(){
-    topHalf.classList.remove('wobble');
-    topHalf.classList.add('fall');
-    setPhase('broken');
-    later(function(){
-      spin.target = 0;
-      topHalf.style.transition = 'none';
-      topHalf.classList.remove('fall');
-      topHalf.style.opacity = '0';
-      topHalf.getBoundingClientRect();
-      topHalf.style.transition = '';
-      topHalf.style.opacity = '';
-      twist = 0;
-    }, 1300);
-  }
-
-  function spinLoose(){
-    setPhase('turning');
+  // Spin it with nothing through the middle: the top wobbles, slides off and breaks on the tray.
+  function mess(){
     broiler.classList.add('hot');
-    spin.target = 120;
-    later(function(){ topHalf.classList.add('wobble'); }, 1300);
-    later(fallOff, 2500);
+    turn(120);
+    return wait(600).then(function(){
+      topHalf.classList.add('wobble');
+      return wait(900);
+    }).then(function(){
+      topHalf.classList.remove('wobble');
+      broiler.classList.add('falling');
+      topOff = true;
+      return play(topHalf, [
+        { transform: T(0, 0, 0) },
+        { transform: T(16, -4, 9), offset: .3 },
+        { transform: T(FALL[0], FALL[1], FALL[2]) }
+      ], { duration: 640, easing: 'cubic-bezier(.45,0,.9,.55)' });
+    }).then(function(){
+      broiler.classList.add('topless', 'broken');
+      var landed = PIECES.map(function(p, i){
+        var s = atImpact(p), e = p.end;
+        var m = [s[0] + (e[0] - s[0])*.5, Math.min(s[1], e[1]) - p.hop, s[2] + (e[2] - s[2])*.55];
+        return play(p.el, [
+          { transform: T(s[0], s[1], s[2]), easing: 'cubic-bezier(.2,.6,.4,1)' },
+          { transform: T(m[0], m[1], m[2]), offset: .4, easing: 'cubic-bezier(.6,0,1,.6)' },
+          { transform: T(e[0], e[1], e[2]) }
+        ], { duration: 560, delay: i % 3 * 40 });
+      });
+      crumbs.forEach(function(c, i){
+        var x = SMASH[0] - c.x, y = SMASH[1] - c.y;
+        landed.push(play(c.el, [
+          { transform: 'translate(' + x + 'px,' + y + 'px) scale(.4)', easing: 'cubic-bezier(.2,.6,.4,1)' },
+          { transform: 'translate(' + (x*.45).toFixed(1) + 'px,' + (y - 18 - i % 3*10) + 'px) scale(1)', offset: .45, easing: 'cubic-bezier(.6,0,1,.6)' },
+          { transform: 'translate(0px,0px) scale(1)' }
+        ], { duration: 600, delay: 30 + i*25 }));
+      });
+      return Promise.all(landed);
+    }).then(function(){ turn(45); });
   }
 
-  function addSpit(){
+  // In goes the spit, down through the bottom half. The pieces stay where they are.
+  function dose(){
     spitted = true;
     broiler.classList.add('spitted');
-    setPhase('spitted');
+    return wait(850);
   }
 
-  function cook(){
-    setPhase('cooking');
-    broiler.classList.add('hot', 'browned');
-    spin.target = 120;
-    later(complete, 2600);
+  // Spin it again: every piece jumps back up to its own place on the spit, and the cone browns as one.
+  function clean(){
+    turn(120);
+    var back = PIECES.map(function(p, i){
+      var e = p.end;
+      return play(p.el, [
+        { transform: T(e[0], e[1], e[2]), easing: 'cubic-bezier(.25,.8,.4,1)' },
+        { transform: T(e[0]*.08, -12, e[2]*.05), offset: .78, easing: 'ease-in-out' },
+        { transform: T(0, 0, 0) }
+      ], { duration: 720, delay: 120 + i*70 });
+    });
+    crumbs.forEach(function(c, i){
+      back.push(play(c.el, [
+        { transform: 'translate(0px,0px) scale(1)', opacity: 1 },
+        { transform: 'translate(' + (180 - c.x) + 'px,' + (200 - c.y) + 'px) scale(.2)', opacity: 0 }
+      ], { duration: 520, delay: i*40, easing: 'cubic-bezier(.4,0,.6,1)' }));
+    });
+    return Promise.all(back).then(function(){
+      // Whole again: the top half takes the pieces' place and turns with the spit.
+      topHalf.style.transform = '';
+      topOff = false;
+      broiler.classList.remove('topless', 'broken', 'falling');
+      broiler.classList.add('browned');
+      return wait(1400);
+    });
+  }
+
+  function restore(){
+    timers.forEach(clearTimeout);
+    anims.forEach(function(a){ a.cancel(); });
+    timers = []; anims = [];
+    spitted = topOff = false;
+    spin.target = spin.speed = spin.bottom = spin.top = 0;
+    paint();
+    broiler.classList.add('snap');
+    broiler.classList.remove('hot', 'browned', 'spitted', 'falling', 'topless', 'broken', 'is-done');
+    topHalf.classList.remove('wobble');
+    topHalf.style.transform = '';
+    PIECES.forEach(function(p){ p.el.style.transform = ''; });
+    crumbs.forEach(function(c){ c.el.style.transform = c.el.style.opacity = ''; });
+    broiler.getBoundingClientRect();
+    broiler.classList.remove('snap');
   }
 
   function setCallouts(final){
@@ -380,58 +510,60 @@ h2{letter-spacing:-.02em}
     $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
-  function complete(){
-    broiler.classList.add('is-done');
-    spin.target = 70;
-    setCallouts(true);
-    setPhase('done');
-    broiler.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, broiler, 'b', '.broiler');
-  }
-
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    spitted = false;
-    spin.target = 0; twist = 0;
-    broiler.classList.remove('hot', 'browned', 'spitted', 'is-done');
-    topHalf.classList.remove('wobble', 'fall');
-    setCallouts(false);
-    broiler.setAttribute('aria-label', ARIA.loose);
-    setPhase('loose');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, broiler, 'a', '.broiler');
-  }
-
-  btn.addEventListener('click', function(){
-    if (phase === 'loose') spinLoose();
-    else if (phase === 'broken') addSpit();
-    else if (phase === 'spitted') cook();
-    else if (phase === 'done') $('gap').scrollIntoView();
+  var story = SG.story({
+    hero: hero, obj: broiler, btn: $('heroBtn'), reset: $('heroReset'), caption: $('heroCaption'),
+    copy: COPY, aria: ARIA, skip: '.broiler',
+    ops: {
+      mess: ['Your operations, today', 'Spun together, still not linked. The top came off, and the pieces stay where they landed.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same pieces, same drip tray. Now there’s a spit through the middle.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){
+      setCallouts(on);
+      broiler.classList.toggle('is-done', on);
+      turn(on ? 70 : 0);
+    }
   });
-  resetBtn.addEventListener('click', startOver);
 
-  // Turn it by hand: a sideways drag turns the bottom. Up and down still scrolls the page.
+  function paint(){
+    texBottom.setAttribute('patternTransform', 'translate(' + (spin.bottom % 120).toFixed(2) + ' 0)');
+    texTop.setAttribute('patternTransform', 'translate(' + (spin.top % 120).toFixed(2) + ' 0)');
+  }
+  function frame(dt){
+    spin.speed += (spin.target - spin.speed)*Math.min(1, dt*2.2);
+    spin.bottom += spin.speed*dt;
+    // Without the spit, the top barely follows; with it, it's the same cone. Off the cone, it doesn't turn at all.
+    if (!topOff) spin.top += (spitted ? spin.speed : spin.speed*.06)*dt;
+    paint();
+  }
+
+  // Turn it by hand: a sideways drag turns the bottom, and turned far enough it does what the
+  // button does. So does a tap. Up and down still scrolls the page.
+  var drag = null;
   broiler.addEventListener('pointerdown', function(e){
-    if (phase === 'turning' || phase === 'cooking' || phase === 'broken') return;
-    drag = { x: e.clientX };
+    if (story.busy()) return;
+    drag = { x: e.clientX, moved: 0, twist: 0 };
     try { broiler.setPointerCapture(e.pointerId); } catch (err) {}
   });
   broiler.addEventListener('pointermove', function(e){
     if (!drag) return;
-    var dx = e.clientX - drag.x;
+    var dx = e.clientX - drag.x, p = story.phase();
     drag.x = e.clientX;
+    drag.moved += Math.abs(dx);
     spin.bottom += dx*.8;
-    if (spitted){ spin.top += dx*.8; return; }
-    // Turn the floor far enough and the ERP, which never moved, comes off.
-    twist += Math.abs(dx);
-    if (phase === 'loose'){
-      if (twist > 120) topHalf.classList.add('wobble');
-      if (twist > 320){ drag = null; fallOff(); }
-    }
+    if (spitted && !topOff) spin.top += dx*.8;
+    if (p !== 'apart' && p !== 'dosed') return;
+    drag.twist += Math.abs(dx);
+    // Turn the floor far enough and the ERP, which never moved, starts to go.
+    if (p === 'apart' && drag.twist > 90) topHalf.classList.add('wobble');
+    if (drag.twist > 240){ drag = null; story.go(); }
   });
-  var letGo = function(){ drag = null; };
+  function letGo(e){
+    var tap = drag && drag.moved < 8 && e.type === 'pointerup';
+    drag = null;
+    if (!story.busy()) topHalf.classList.remove('wobble');
+    if (tap && story.phase() !== 'done') story.go();
+  }
   broiler.addEventListener('pointerup', letGo);
   broiler.addEventListener('pointercancel', letGo);
 

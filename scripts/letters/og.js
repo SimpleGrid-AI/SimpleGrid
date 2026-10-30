@@ -63,11 +63,11 @@ async function browser() {
       if (company.startsWith('_') || (only && company !== only)) continue;
       for (const reader of entry.readers) {
         const page = await chrome.page();
-        await page.goto(`${base}/${company}/${reader.slug}/`, { waitUntil: 'load' });
+        await page.goto(`${base}/${company}/${reader.slug ? reader.slug + '/' : ''}`, { waitUntil: 'load' });
         await page.addStyleTag({ content: CARD_CSS });
         await page.evaluate(() => document.fonts.ready);
         await new Promise(r => setTimeout(r, 400));
-        const out = path.join(ROOT, company, `og-${reader.slug}.jpg`);
+        const out = path.join(ROOT, company, `${reader.og || 'og-' + reader.slug}.jpg`);
         await page.screenshot({ path: out, type: 'jpeg', quality: 84, clip: { x: 0, y: 0, width: 1200, height: 630 } });
         await page.close();
         console.log(`wrote ${path.relative(ROOT, out)}`);
