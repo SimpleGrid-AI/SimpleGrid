@@ -88,7 +88,8 @@ one.
 - **One-reader pages are unlisted on purpose.** `/legacy-foods/` and the
   `/<company>/<first-name>/` letters are `noindex` and are kept out of the nav,
   the sitemap and `robots.txt` (listing them there would only advertise them).
-  The `<company>/<first-name>/` pages are built: edit
+  The `<company>/<first-name>/` pages are built, and so is
+  `/legacy-foods/` itself (its reader in `readers.json` has an empty slug): edit
   `scripts/letters/<company>.html` and `readers.json`, run
   `node scripts/letters/build.js`, then `node scripts/letters/og.js` for the
   link previews. Never edit a built page by hand; `build.js --check` fails
