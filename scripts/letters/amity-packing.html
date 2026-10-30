@@ -44,7 +44,7 @@
 .hero-art{
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
   --meat:#E0736B;--meat-dk:#B6463F;--meat-edge:#6E211D;--fat:#FFEDE4;
-  --casing:rgba(255,224,210,.66);--casing-edge:rgba(255,240,232,.92);--knot:#F6E2D8;
+  --casing:rgba(255,214,198,.68);--casing-edge:rgba(255,240,232,.92);--knot:#F6E2D8;
   --steel:#CDD4DA;--steel-dk:#949EA8;--steel-hi:#F2F5F7;--steel-ink:#5F6973;
   --tray:#E3E7EA;--tray-well:#C8CFD5;--tray-lip:#A9B2BA;
   --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
@@ -571,13 +571,13 @@
     CLUMPS.push({ el: el, from: [R(104, 256), R(420, 452)] });
   }
   // The bursts: a split in the casing, filling pushing out of it, and lumps of it on the floor.
-  var bursts = BURSTS.map(function(b, n){
+  var bursts = BURSTS.map(function(b){
     var fr = frameAt(b.u), w = lumpy(b.u, MESS.len)/2 - 3;
     var ox = -fr.ty*b.side, oy = fr.tx*b.side;                 // outward, off the side that splits
     var g = mk('g', null, burstG), inner = mk('g', 'ss-burst', g);
     g.setAttribute('transform', 'translate(' + f(fr.p[0] + ox*w) + ' ' + f(fr.p[1] + oy*w) + ') rotate(' + f(Math.atan2(ox, -oy)*180/Math.PI) + ') scale(1.7)');
     inner.innerHTML = '<path class="ss-burst-gash" d="M-16 4Q-8-4 0-3Q9-4 16 4Q7 9 0 8Q-8 9-16 4Z"/><path class="ss-burst-meat" d="M-12 3C-15-6-10-19 0-20C6-21 9-15 13-14C17-10 15-3 12 3Z"/><path class="ss-burst-flap" d="M-16 4Q-23 0-22-8M16 4Q23 1 23-7"/>';
-    return { inner: inner, at: [fr.p[0] + ox*(w + 24), fr.p[1] + oy*(w + 24)], u: b.u, out: [ox, oy] };
+    return { inner: inner, at: [fr.p[0] + ox*(w + 24), fr.p[1] + oy*(w + 24)] };
   });
   var SPILL_TO = [[[150, 318], [262, 348], [284, 330], [232, 368]], [[192, 404], [226, 398], [166, 414], [250, 420]]];
   var spills = [];
@@ -623,7 +623,6 @@
 
   // Stuff it, nothing linking it: the heap goes up the funnel, the casing fills, and the rope comes out kinking and bursting.
   function mess(){
-    obj.classList.add('stuffing');
     CLUMPS.forEach(function(c, i){
       anim(c.el, hop(c.from, [180, 44], 150 + i*8, 1, .45, 0, 200, function(t){ return t < .08 ? t/.08 : t > .9 ? (1 - t)*10 : 1; }), 560, i*55, 'linear');
     });
@@ -636,7 +635,7 @@
         // The filling runs down the hanging casing from the horn.
         var front = HANG*easeOut(span(T, 250, 700));
         P = along(HANG); u = uOf(P);
-        Wd = u.map(function(v){ return v < front - 6 ? lumpy(v, HANG + 40) : flat(v, HANG); });
+        Wd = u.map(function(v){ return v < front - 6 ? lumpy(v, HANG) : flat(v, HANG); });
         M = u.map(function(v, i){ return v < front ? Math.max(0, Wd[i] - 3)*cap(front - v, 8) : 0; });
       } else {
         // Then it keeps coming, and the rope pushes out along the tangle.
@@ -656,7 +655,7 @@
         });
       }
       draw(P, Wd, M, null, folds);
-    }).then(function(){ obj.classList.remove('stuffing'); obj.classList.add('messy'); });
+    }).then(function(){ obj.classList.add('messy'); });
   }
 
   // On goes the linker, wearing the mark.
@@ -705,12 +704,10 @@
     gen++;
     timers.forEach(clearTimeout);
     timers = [];
-    var moved = [heap, sleeve, linker].concat(CLUMPS.map(function(c){ return c.el; }), spills.map(function(s){ return s.el; }), bursts.map(function(b){ return b.inner; }));
     moves.forEach(function(a){ a.cancel(); });
-    moved.forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
     styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
     styled = []; moves = [];
-    obj.classList.remove('stuffing', 'messy', 'has-linker', 'dosed', 'twisting', 'is-done');
+    obj.classList.remove('messy', 'has-linker', 'dosed', 'twisting', 'is-done');
     drawApart();
   }
   function setCallouts(final){

@@ -305,7 +305,7 @@
   var ARIA = {
     apart: obj.getAttribute('aria-label'),
     mess: 'The lid forced on crooked: it doesn’t match, the container’s rim is bent, and food leaks out the side into a puddle.',
-    dosed: 'The same leaking container, with a crimper marked SimpleGrid now over the lid.',
+    dosed: 'The same leaking container, with a crimping wheel marked SimpleGrid now on the edge of the lid.',
     done: 'The container sealed tight under a flat, crimped lid, with no leaks and a SimpleGrid label on the lid.'
   };
 
@@ -332,7 +332,7 @@
   var LEAKS = ['pnLeakR', 'pnFlow'].map($), puddle = $('pnPuddle'), crease = $('pnCrease');
   // The crimp, a tick at a time along the sealed edge.
   var ticks = [];
-  for (var x = 38; x <= 322; x += 13){
+  for (var x = 36; x <= 324; x += 12){
     var tk = document.createElementNS(NS, 'path');
     tk.setAttribute('class', 'pn-crimp');
     tk.setAttribute('d', 'M' + x + ' 319.5V327.5');
@@ -440,9 +440,7 @@
     gen++;
     timers.forEach(clearTimeout);
     timers = [];
-    var moved = [lid, crimper, roll, crease, puddle].concat(LEAKS, ticks);
     moves.forEach(function(a){ a.cancel(); });
-    moved.forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
     styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
     styled = []; moves = [];
     obj.classList.remove('messy', 'has-crimper', 'dosed', 'is-done');
