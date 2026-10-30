@@ -597,5 +597,149 @@
         "ps": "P.S. “Supply Chain Execution” is one of the value-added services on your site, and execution is in your title. I’d love to compare notes."
       }
     ]
+  },
+  "assemblies-unlimited": {
+    "template": "assemblies-unlimited.html",
+    "values": {
+      "co_name": "Assemblies Unlimited",
+      "theme": "#203569",
+      "line_order": "Order 4417",
+      "line_sku": "Powder pouches, 25,000",
+      "ps": "P.S. “A missed retail launch date costs more than the packaging turnaround behind it.” You wrote that this month. I couldn’t agree more."
+    },
+    "readers": [
+      {
+        "slug": "randy",
+        "first": "Randy",
+        "full": "Randy Shaw",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale"
+      }
+    ]
+  },
+  "fresh-factory": {
+    "template": "fresh-factory.html",
+    "values": {
+      "co_name": "The Fresh Factory",
+      "theme": "#1F3A2B",
+      "line_order": "Order 4417",
+      "line_sku": "Dips, 2,400 cases",
+      "ps": "P.S. SQF certified ten years straight, your site says. I’d love to see the floor that keeps that streak going."
+    },
+    "readers": [
+      {
+        "slug": "carl",
+        "first": "Carl",
+        "full": "Carl Purnell",
+        "town": "Chicago",
+        "where": "your office in Chicago"
+      }
+    ]
+  },
+  "georgia-nut": {
+    "template": "georgia-nut.html",
+    "values": {
+      "co_name": "Georgia Nut Company",
+      "theme": "#053F77",
+      "ps": "P.S. Your PLMA booth is F6507, November 16–17 in Rosemont. If that’s easier than Skokie, I’ll come find you there."
+    },
+    "readers": [
+      {
+        "slug": "john",
+        "first": "John",
+        "full": "John Drehobl",
+        "town": "Skokie",
+        "where": "your plant in Skokie"
+      }
+    ]
+  },
+  "arway-long-grove": {
+    "template": "arway-long-grove.html",
+    "values": {
+      "co_name": "Arway-Long Grove Confections",
+      "theme": "#0C6A38",
+      "ps": "P.S. Bulk, gourmet, co-manufacturing and private label, your catalogs say. That’s four businesses to keep straight. I’d love to see how you do it."
+    },
+    "readers": [
+      {
+        "slug": "phil",
+        "first": "Phil",
+        "full": "Phil Layden",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      }
+    ]
+  },
+  "amylu-foods": {
+    "template": "amylu-foods.html",
+    "values": {
+      "co_name": "Amylu Foods",
+      "theme": "#3B3134",
+      "ps": "P.S. Over 50 flavors of chicken sausages, burgers and meatballs. I’d love to see how the floor keeps them all straight."
+    },
+    "readers": [
+      {
+        "slug": "miguel",
+        "first": "Miguel",
+        "full": "Miguel Ayala-Huaracha",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      }
+    ]
+  },
+  "lifeway-foods": {
+    "template": "lifeway-foods.html",
+    "values": {
+      "co_name": "Lifeway Foods",
+      "theme": "#1B4F8C",
+      "ps": "P.S. Twelve live and active cultures, your site says. We’d like to be the thirteenth."
+    },
+    "readers": [
+      {
+        "slug": "fallon",
+        "first": "Fallon",
+        "full": "Fallon Morgan",
+        "town": "Morton Grove",
+        "where": "your plant in Morton Grove"
+      }
+    ]
+  },
+  "psw-group": {
+    "template": "psw-group.html",
+    "values": {
+      "co_name": "PSW Group",
+      "theme": "#146B26",
+      "line_order": "Heat 4417",
+      "line_sku": "Magnesium alloy ingot",
+      "ps": "P.S. Congratulations on ten years of Magretech in the PSW family. I’d love to see what the next ten look like."
+    },
+    "readers": [
+      {
+        "slug": "jacky",
+        "first": "Jacky",
+        "full": "Jacky Xu",
+        "town": "Detroit",
+        "where": "your office, in Chicago or Detroit"
+      }
+    ]
+  },
+  "chicago-meat-authority": {
+    "template": "chicago-meat-authority.html",
+    "values": {
+      "co_name": "Chicago Meat Authority",
+      "theme": "#A9233E",
+      "line_order": "Order 4417",
+      "line_sku": "Diced beef, 10 lb cases",
+      "ps": "P.S. I’m the one who left the popcorn for you and Robert. I’d still love to meet in person."
+    },
+    "readers": [
+      {
+        "slug": "don",
+        "first": "Don",
+        "full": "Don Bergman",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      }
+    ]
   }
 }

@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Link the sausage, Miguel | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes chicken sausage for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/amylu-foods.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#3B3134">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="https://simplegrid.ai/amylu-foods/miguel/">
+<meta property="og:title" content="Miguel, link the sausage.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes chicken sausage for a living.">
+<meta property="og:image" content="https://simplegrid.ai/amylu-foods/og-miguel.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A sausage casing and its filling, apart, beside the words: Miguel, Amylu pioneered chicken sausage in 1992.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Miguel, link the sausage.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes chicken sausage for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/amylu-foods/og-miguel.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+/* The site's self-hosted faces, so nothing here calls out to a third party. */
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('/assets/fonts/merriweather-latin.woff2') format('woff2')}
+@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/albert-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
+
+/* Each template sets its company's palette on :root. These read it:
+   --brand --brand-press --brand-deep   their main color, darker, darkest
+   --accent --accent-soft --accent-edge  the color the hero ends on
+   --on-brand --on-brand-soft --on-accent --on-accent-soft   text on those
+   --tint --pale --ink --alert            light fill, page, type, the "No link" red
+   --marker                               the highlighter in the ERP panel
+   and optionally --display, --dw (its weight; a single-weight face must not be faux-bolded) and --h2-hi. */
+:root{
+  --ink-70:rgba(26,26,26,.74);
+  --ink-55:rgba(26,26,26,.62);
+  --display:'Merriweather',Georgia,'Times New Roman',serif;
+  --body:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Consolas,'SF Mono',monospace;
+  --hand:'Bradley Hand','Noteworthy','Segoe Print','Ink Free','Comic Sans MS',cursive;
+  --dw:900;
+  --gutter:clamp(20px,5vw,56px);
+  --section:clamp(64px,9vw,128px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;font-synthesis-weight:none}
+body{margin:0;background:var(--pale);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img,svg,canvas{display:block}
+:focus-visible{outline:3px solid var(--focus,var(--brand));outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
+h2{font:var(--dw) clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
+h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
+
+/* ------------------------------------------------------------------ Hero */
+.hero,.hero-wipe{
+  --field:var(--brand);--on:var(--on-brand);--on-soft:var(--on-brand-soft);--hi:var(--accent);
+  --btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  background:var(--field);color:var(--on);
+}
+/* Where the hero ends up once the link is made. */
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:var(--accent);--on:var(--on-accent);--on-soft:var(--on-accent-soft);--hi:var(--brand-press);
+  --btn-bg:var(--brand);--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep);--focus:var(--brand-press);
+}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-inner{padding:0 var(--gutter) clamp(84px,9vw,124px);max-width:calc(1240px + 2*var(--gutter));margin-inline:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(16px,2vw,24px) 0}
+.logo{display:block;flex:none;width:clamp(138px,12vw,168px);color:inherit;border-radius:4px}
+.logo svg{width:100%;height:auto;overflow:visible}
+.bar-tag{font-size:14.5px;line-height:1.3;text-align:right;color:var(--on-soft)}
+.bar-tag span{display:inline-block}
+.bar-right{display:flex;align-items:center;gap:clamp(12px,1.6vw,22px)}
+.bar-cta{flex:none;padding:9px 15px;border-radius:9px;box-shadow:inset 0 0 0 2px currentColor;color:var(--on);font:800 15px/1 var(--body);text-decoration:none;white-space:nowrap}
+.bar-cta:hover{background:var(--on);color:var(--field);box-shadow:none}
+
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"copy art" "ctrl art";grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4vw,60px);margin-top:clamp(10px,2.4vh,30px);
+}
+.hero-copy{grid-area:copy}
+.hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+/* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
+.hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
+h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
+h1 span{display:block;color:var(--hi)}
+.hero-sub{margin-top:clamp(16px,2vw,24px);max-width:50ch;font-size:clamp(17px,.4vw + 15px,20px);color:var(--on-soft)}
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.hero-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
+
+/* The primary button presses in like something you'd find on a line. */
+.go-btn{
+  position:relative;appearance:none;border:0;cursor:pointer;
+  padding:16px 28px 19px;border-radius:12px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font:var(--dw) 18px/1.2 var(--display);text-decoration:none;display:inline-block;
+  box-shadow:0 5px 0 var(--btn-edge);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.go-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
+.go-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
+.go-btn:disabled{cursor:default;opacity:.7;transform:none;box-shadow:0 5px 0 var(--btn-edge)}
+.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* Labels beside the hero object. Each template places them. */
+.callouts{position:relative;width:clamp(150px,14.5vw,196px);flex:none}
+.callout{position:absolute;left:0;right:0}
+.callout-gap{position:absolute;left:0;padding:6px 12px;border-radius:999px;background:var(--alert);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:clamp(14px,1.6vw,24px);border-top:2px dashed var(--on-soft)}
+.callout-gap[hidden]{display:none}
+.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
+.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
+
+.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+
+@media (max-width:980px){
+  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
+  .hero-copy{display:contents}
+  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
+  .hero-art{order:2;margin-top:20px}
+  .hero-ctrl{order:3;margin-top:24px}
+  .hero-sub{order:4;margin-top:6px}
+  .hero-caption{min-height:4.6em;font-size:16.5px}
+  .bar{gap:10px}
+  .bar-tag{font-size:12px}
+  .logo{width:124px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
+  .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
+  .callout p{font-size:13.5px;line-height:1.36}
+  .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
+  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .bar-tag{display:none}
+}
+@media (max-width:350px){
+  .callout h3{font-size:13.5px}
+  .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+
+/* Amylu’s colors: their orange, on the warm charcoal of their type. */
+:root{
+  --brand:#3B3134;--brand-press:#2E2628;--brand-deep:#1E181A;
+  --accent:#F2682B;--accent-soft:#FDE3D6;--accent-edge:#C94E17;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#1E1210;--on-accent-soft:rgba(30,18,16,.82);
+  --tint:#FBF1EC;--pale:#FDFAF8;--ink:#2A2224;--alert:#D7263D;--marker:#FDE3D6;--h2-hi:#C94E17;
+}
+
+/* ------------------------------------------------------------ The sausage
+   For meat processors. The casing is the ERP, the filling is the floor, and SimpleGrid
+   is the linker. Every color lives on .sausage, so another meat page can reuse this hero
+   with its own palette: copy this block, the .sausage markup and its script, and set the colors
+   on .hero-art (the callouts' dots read them too). */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --meat:#E9B48B;--meat-dk:#C68A5C;--meat-edge:#7A4A2B;--fat:#FFF3DE;
+  --casing:rgba(255,228,206,.66);--casing-edge:rgba(255,244,234,.92);--knot:#F7E7DB;
+  --steel:#CDD4DA;--steel-dk:#949EA8;--steel-hi:#F2F5F7;--steel-ink:#5F6973;
+  --tray:#E3E7EA;--tray-well:#C8CFD5;--tray-lip:#A9B2BA;
+  --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
+}
+.sausage{
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+}
+.hero[data-story$=ing] .sausage,.sausage.is-done{cursor:default}
+.sausage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The filling's texture: fat flecks through the casing, ground strands in the heap. */
+.ss-pat-bg{fill:var(--meat)}
+.ss-pat-fat{fill:var(--fat)}
+.ss-pat-dk{fill:var(--meat-dk)}
+.ss-strand{fill:none;stroke:var(--meat-dk);stroke-width:2.2;stroke-linecap:round}
+.ss-strand-hi{fill:none;stroke:var(--fat);stroke-width:1.8;stroke-linecap:round;opacity:.8}
+/* The tray on the floor: where the filling waits, and where the links end up. */
+.ss-tray-body{fill:var(--tray)}
+.ss-tray-well{fill:var(--tray-well)}
+.ss-tray-lip{fill:var(--tray-lip)}
+.ss-tray-hi{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.7}
+/* The filling: a heap of it. Stuffing sinks it to a smear, and the links clean that up. */
+.ss-heap{transform-box:view-box;transform-origin:180px 490px}
+.ss-heap-meat{fill:url(#ssGround);stroke:var(--meat-edge);stroke-width:2}
+.ss-heap-hi{fill:#fff;opacity:.22}
+/* The stuffer's funnel and horn, with the casing shirred onto the horn. */
+.ss-steel{fill:var(--steel)}
+.ss-steel-dk{fill:var(--steel-dk)}
+.ss-steel-hi{fill:var(--steel-hi)}
+.ss-rim{fill:none;stroke:var(--steel-hi);stroke-width:3}
+.ss-sleeve{transform-box:view-box;transform-origin:180px 92px}
+.ss-sleeve-body{fill:var(--knot)}
+.ss-pleat{fill:none;stroke:rgba(140,80,70,.38);stroke-width:1.6}
+/* The rope, drawn by the script: casing, filling, edges and a shine, in a few pieces so it can cross itself. */
+.ss-cas{fill:var(--casing)}
+.ss-crease{fill:none;stroke:var(--casing-edge);stroke-width:1.5;stroke-linecap:round;opacity:.7}
+.ss-fold{fill:none;stroke:var(--meat-edge);stroke-width:2;stroke-linecap:round;opacity:.75}
+.ss-cas-edge{fill:none;stroke:var(--casing-edge);stroke-width:1.7;stroke-linejoin:round}
+.ss-meat{fill:url(#ssMeat)}
+.ss-meat-edge{fill:none;stroke:var(--meat-edge);stroke-width:1.9;stroke-linejoin:round}
+.ss-gloss{fill:#fff;opacity:.34}
+.ss-twists{fill:none;stroke:var(--knot);stroke-width:2;stroke-linecap:round}
+.ss-knot path{fill:var(--knot);stroke:var(--meat-edge);stroke-width:1.4;stroke-linejoin:round}
+.ss-knot .ss-string{fill:none;stroke:#F4EFE6;stroke-width:2;stroke-linecap:round}
+/* Where it bursts: a split in the casing and the filling pushing out. */
+.ss-burst{opacity:0}
+.ss-burst-gash{fill:#5A1714}
+.ss-burst-meat{fill:url(#ssGround);stroke:var(--meat-edge);stroke-width:1.8;stroke-linejoin:round;transform-box:fill-box;transform-origin:50% 100%}
+.ss-burst-flap{fill:none;stroke:var(--casing-edge);stroke-width:2.6;stroke-linecap:round}
+.sausage.messy .ss-burst-meat{animation:ss-ooze 2.6s ease-in-out infinite}
+.sausage.messy .ss-burst + .ss-burst .ss-burst-meat{animation-delay:-1.3s}
+@keyframes ss-ooze{50%{transform:scale(1.1,1.16)}}
+.ss-blob{fill:url(#ssGround);stroke:var(--meat-edge);stroke-width:1.6;stroke-linejoin:round;opacity:0}
+/* The linker: SimpleGrid. It drops onto the horn wearing the mark, and twists the rope into links. */
+.ss-linker{visibility:hidden}
+.sausage.has-linker .ss-linker{visibility:visible}
+.ss-lk-body{fill:var(--steel)}
+.ss-lk-face{fill:var(--steel-hi)}
+.ss-lk-dk{fill:var(--steel-dk)}
+.ss-lk-collar{fill:var(--steel-ink)}
+.ss-spin{fill:none;stroke:var(--steel-hi);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:7 9;opacity:0;transition:opacity .2s}
+.sausage.twisting .ss-spin{opacity:1;animation:ss-spin .35s linear infinite}
+@keyframes ss-spin{to{stroke-dashoffset:-16}}
+.ss-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
+.sausage.dosed .ss-mark{opacity:1;transform:none}
+.ss-tag{--sg-bg:var(--tag-bg);--sg-ink:var(--tag-ink)}
+.sausage.is-done .ss-tag{opacity:1;transform:none}
+.sausage:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:16%}
+.callout-gap{top:calc(54.3% - 15px)}
+.callout-bottom{top:61%}
+.callout-top h3 i{background:var(--knot)}
+.callout-bottom h3 i{background:var(--meat)}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.4)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+/* ------------------------------------- The gap between the ERP and the floor */
+.gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
+.stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
+.panel-erp h3,.panel-floor h3{font:var(--dw) clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
+
+/* The ERP is deliberately calm. That's the joke, and the problem. */
+.panel-erp{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
+.erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
+.stage[data-state=chaos] .erp-status{animation:smug .8s ease-in-out 3}
+@keyframes smug{50%{transform:scale(1.09)}}
+.erp-rows{margin-top:clamp(16px,2vw,28px);display:grid;gap:clamp(12px,1.5vw,21px)}
+.erp-rows li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:clamp(15.5px,.3vw + 14px,18px);line-height:1.3}
+.erp-rows span{flex:none;color:var(--ink-55)}
+.erp-rows b{font-weight:700;text-align:right}
+.erp-rows s{font-weight:400;color:var(--ink-55)}
+.erp-rows li.hit b{
+  background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 100%/0 100%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
+  animation:marker .42s ease-out var(--d,0s) forwards;
+}
+@keyframes marker{to{background-size:100% 100%}}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--alert);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
+.erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
+
+/* The broken pipe between them. Once linked, it joins up and flows. */
+.link{position:relative;display:grid;place-items:center}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:color-mix(in srgb,var(--brand) 26%,transparent);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub-a{left:0}
+.stub-b{right:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:color-mix(in srgb,var(--brand) 55%,transparent);opacity:0}
+.stub-a::after{right:1px}
+.stub-b::after{left:1px}
+.stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
+.stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
+.link-no{position:relative;z-index:2;background:var(--alert);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--brand-press);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.link-yes svg{width:56%;height:56%}
+.stage[data-state=linked] .link-no{display:none}
+.stage[data-state=linked] .link-yes{display:grid}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+@keyframes pipe{to{background-position:28px 0}}
+
+/* The floor: where the morning actually happens. */
+.panel-floor{
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
+  display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
+}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
+.floor-calm{flex:1;display:grid;place-items:center}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:var(--dw) clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.dome{
+  width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
+  box-shadow:0 0 0 9px var(--accent),0 8px 0 9px var(--accent-edge),0 18px 26px 9px rgba(0,0,0,.55);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--accent),0 6px 0 9px var(--accent-edge),0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--accent),0 1px 0 9px var(--accent-edge),0 5px 9px 9px rgba(0,0,0,.55)}
+.pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
+.stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
+.stage:not([data-state=calm]) .floor-calm{display:none}
+.n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
+@keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
+.n-sticky{background:#FFD84D;color:#2B2000}
+.n-pink{background:#FF9FB4;color:#3D0012}
+.n-board{background:#fff;color:#C4163F}
+.n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
+.n-file{background:#fff;color:#1A1A1A}
+.n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
+.n-mail{background:#E9EEF6;color:#1A1A1A}
+.n-call{background:#2F6FE0;color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:#C4163F;color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n svg{flex:none;width:15px;height:15px}
+.n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
+@keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
+.stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
+.tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
+.tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.tidy i svg{width:14px;height:14px}
+@keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
+.stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
+#linkBtn,#stageReset,#stageMeet{display:none}
+.stage[data-state=messy] #linkBtn{display:inline-block}
+.stage[data-state=linked] #stageReset,.stage[data-state=linked] #stageMeet{display:inline-block}
+.stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
+.fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
+
+@media (max-width:980px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
+}
+@media (max-width:620px){
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
+}
+@media (max-width:350px){
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
+}
+/* ------------------------------------------------- The back of the pack */
+.back{background:var(--brand);color:var(--on-brand);padding:var(--section) 0;--focus:var(--accent)}
+.back h2{color:var(--on-brand)}
+.back h2 span{color:var(--accent)}
+.label{
+  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--brand-press);
+  border-radius:16px;padding:clamp(18px,3vw,40px);
+  display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:clamp(28px,4vw,60px);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
+}
+/* The panel follows the FDA layout: heavy rules, heavy title, nothing cute about the structure. */
+.facts{border:2.5px solid var(--ink);padding:8px 11px 10px;font-family:'Helvetica Neue',Helvetica,var(--body)}
+.facts-title{font:900 clamp(37px,3.3vw + 20px,50px)/1 'Helvetica Neue',Helvetica,var(--body);letter-spacing:-.022em;white-space:nowrap}
+.facts-serving{margin-top:5px;padding-bottom:6px;font-size:15.5px;line-height:1.28}
+.facts-serving strong{font-weight:800}
+.rule-10{height:10px;background:var(--ink)}
+.rule-5{height:5px;background:var(--ink)}
+.facts-big{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:4px 0 3px;font-weight:900}
+.facts-big span{font-size:24px;line-height:1.05;letter-spacing:-.012em}
+.facts-big b{font-size:clamp(30px,2.4vw + 20px,37px);line-height:1;font-weight:900;white-space:nowrap;letter-spacing:-.02em}
+.facts table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.25}
+.facts th,.facts td{padding:5px 0;border-top:1px solid rgba(26,26,26,.55);text-align:right;font-weight:400;white-space:nowrap}
+.facts thead th{border-top:0;padding:3px 0;font-size:13.5px;font-weight:800}
+.facts th:first-child{text-align:left;font-weight:800;white-space:normal}
+.facts thead th:first-child{font-weight:400}
+.facts td{width:68px;padding-left:8px}
+.facts td:last-child{font-weight:900}
+.facts-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0 6px;font-weight:800;font-size:16px;line-height:1.2}
+.facts-saved b{font-weight:900;white-space:nowrap}
+.facts-foot{padding-top:6px;font-size:13px;line-height:1.3}
+.facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
+.margin-note{color:var(--brand-press);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
+.margin-note svg{position:absolute;left:0;top:-4px;width:32px;height:38px}
+
+.label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
+.label-copy > * + *{margin-top:18px}
+.label-copy strong{font-weight:800}
+.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;margin-top:auto;padding-top:22px}
+.barcode{display:block;text-decoration:none;color:var(--ink);flex:none;border-radius:4px}
+.barcode svg{width:190px;height:56px}
+.barcode span{display:block;margin-top:3px;text-align:center;font:500 14.5px/1 var(--body);letter-spacing:.11em}
+.inkjet{font:600 15.5px/1.42 var(--mono);letter-spacing:.05em;color:#222;max-width:27ch}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .inkjet{
+    color:transparent;
+    background:radial-gradient(circle at center,#000 54%,transparent 60%) 0 0/2.1px 2.1px;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+
+@media (max-width:980px){
+  .label{grid-template-columns:minmax(0,1fr)}
+  .facts{max-width:430px}
+}
+@media (max-width:620px){
+  .lockup{align-items:center}
+  .facts-title{font-size:min(46px,calc((100vw - 104px)/7.95))}
+  .facts-big span{font-size:20px}
+  .facts-saved{flex-direction:column;gap:1px}
+}
+/* ------------------------------------------------------------- The ask */
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
+
+/* -------------------------------------------------------------- Footer */
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
+.foot .logo{width:150px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
+
+@media (max-width:980px){
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
+}
+@media (max-width:620px){
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Processed to order for Miguel Ayala-Huaracha,</span> <span>Amylu Foods. Batch size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Miguel, Amylu pioneered chicken sausage in 1992. <span>So here’s our software, explained as one link of chicken sausage.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="sausage hero-obj" id="sausage" role="img" aria-label="An empty sausage casing on a stuffing horn, and below it a tray heaped with filling. Nothing links them.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <!-- the filling through the casing: fat flecks -->
+              <pattern id="ssMeat" width="24" height="24" patternUnits="userSpaceOnUse">
+                <rect class="ss-pat-bg" width="24" height="24"/>
+                <ellipse class="ss-pat-fat" cx="5" cy="6" rx="2.4" ry="1.7"/><ellipse class="ss-pat-fat" cx="14" cy="15" rx="2.1" ry="1.5"/>
+                <ellipse class="ss-pat-fat" cx="3" cy="19" rx="1.4" ry="1"/><ellipse class="ss-pat-fat" cx="20.5" cy="20" rx="2" ry="1.4"/>
+                <circle class="ss-pat-dk" cx="9" cy="10" r="1.4"/><circle class="ss-pat-dk" cx="21" cy="11" r="1.1"/><circle class="ss-pat-dk" cx="8.5" cy="21.5" r="1.2"/>
+              </pattern>
+              <!-- the filling in the heap: ground strands -->
+              <pattern id="ssGround" width="30" height="30" patternUnits="userSpaceOnUse">
+                <rect class="ss-pat-bg" width="30" height="30"/>
+                <path class="ss-strand" d="M3 6q4-4 8 0M17 4q3 4 8 2M6 17q3-4 7-1M19 15q5-1 6 4M2 27q4-3 8 0M15 26q3-4 8-2"/>
+                <path class="ss-strand-hi" d="M10 11q2 2 5 1M24 24q2-2 5-1M3 21q1 2 4 2M22 8q2 1 3 3"/>
+              </pattern>
+            </defs>
+
+            <!-- the tray on the floor: the filling waits in it, and the links end up in it -->
+            <rect class="ss-tray-lip" x="26" y="478" width="308" height="46" rx="20"/>
+            <rect class="ss-tray-body" x="22" y="332" width="316" height="180" rx="22"/>
+            <rect class="ss-tray-well" x="36" y="344" width="288" height="154" rx="14"/>
+            <path class="ss-tray-hi" d="M52 339H308"/>
+
+            <!-- the filling: your floor -->
+            <g class="ss-heap" id="ssHeap">
+              <path class="ss-heap-meat" d="M64 492C62 470 74 452 92 445C96 428 112 418 128 421C138 404 160 397 177 404C191 394 214 398 225 411C245 409 263 423 267 439C283 447 294 467 294 492Z"/>
+              <path class="ss-heap-hi" d="M104 446C110 432 124 426 136 428C144 414 160 408 174 412C158 418 146 428 140 440C128 438 114 442 104 452Z"/>
+            </g>
+
+            <!-- the stuffer: funnel and horn, the casing shirred onto the horn -->
+            <path class="ss-steel" d="M122 38L166 86H194L238 38Z"/>
+            <path class="ss-steel-hi" d="M140 45L170 81H176L151 45Z" opacity=".75"/>
+            <ellipse class="ss-steel-dk" cx="180" cy="38" rx="58" ry="10"/>
+            <ellipse class="ss-rim" cx="180" cy="38" rx="58" ry="10"/>
+            <rect class="ss-steel" x="170" y="84" width="20" height="44" rx="3"/>
+            <g class="ss-sleeve" id="ssSleeve">
+              <rect class="ss-sleeve-body" x="164" y="92" width="32" height="31" rx="7"/>
+              <path class="ss-pleat" d="M165 98.5Q180 101.5 195 98.5M165 104.5Q180 107.5 195 104.5M165 110.5Q180 113.5 195 110.5M165 116.5Q180 119.5 195 116.5"/>
+            </g>
+
+            <!-- the casing, and the rope it becomes: the script draws it, with its bursts and spills -->
+            <g id="ssRope"></g>
+            <g id="ssBursts"></g>
+            <g id="ssSpill"></g>
+
+            <!-- the linker: SimpleGrid, wearing the mark -->
+            <g class="ss-linker" id="ssLinker"><g transform="translate(180 152)">
+              <rect class="ss-lk-dk" x="-50" y="-12" width="100" height="26" rx="8"/>
+              <rect class="ss-lk-body" x="-40" y="-32" width="80" height="62" rx="15"/>
+              <rect class="ss-lk-face" x="-34" y="-27" width="68" height="46" rx="11"/>
+              <ellipse class="ss-spin" cx="0" cy="31" rx="31" ry="9"/>
+              <ellipse class="ss-lk-collar" cx="0" cy="30" rx="23" ry="6.5"/>
+              <g transform="translate(0 -4)"><g class="ss-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g></g>
+
+            <!-- once it comes out in links, the tray gets its label -->
+            <g transform="translate(262 504) scale(.66)"><g class="ss-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The casing: your ERP</span></h3>
+            <p id="topText">What the system says you’re making.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The filling: your floor</span></h3>
+            <p id="bottomText">What’s really going in, on Excel, whiteboards and phones.</p>
+          </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Stuff it to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP is the casing up top, your floor is the filling down below, and nothing links them. Stuff it, or tap the casing to try it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<section class="gap" id="gap">
+  <div class="wrap">
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
+
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
+        </div>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
+      </div>
+
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg></i>SimpleGrid</span>
+      </div>
+
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
+        </div>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
+        <div class="floor-do">
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
+  </div>
+</section>
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of a package can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <div class="facts">
+          <!-- Same numbers as report.html. Change both. -->
+          <h3 class="facts-title">Operations Facts</h3>
+          <p class="facts-serving"><strong>Serving size:</strong> 1 deployment<br>6 plants, 1.2 million sq ft</p>
+          <div class="rule-10"></div>
+          <div class="facts-big"><span>Excel files<br>to run planning</span><b>550 → 1</b></div>
+          <div class="rule-5"></div>
+          <table>
+            <thead><tr><th scope="col">Amount per serving</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Weekly planning cycle</th><td>40 hrs</td><td>2 hrs</td></tr>
+              <tr><th scope="row">On-time delivery</th><td>70%</td><td>90%</td></tr>
+              <tr><th scope="row">Material wastage</th><td>1.5%</td><td>0.1%</td></tr>
+              <tr><th scope="row">Gross margin</th><td>19%</td><td>24%</td></tr>
+            </tbody>
+          </table>
+          <div class="rule-10"></div>
+          <div class="facts-saved"><span>Saved on wastage alone</span><b>About $200,000 a year</b></div>
+          <div class="rule-5"></div>
+          <p class="facts-foot">Not a significant source of slides, rip-and-replace or GL migration.</p>
+        </div>
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>Miguel, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at your plant in Chicago. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Chicago.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">P.S. Over 50 flavors of chicken sausages, burgers and meatballs. I’d love to see how the floor keeps them all straight.</p>
+    </div>
+    <div class="faces">
+      <figure class="polaroid polaroid-a">
+        <img src="/assets/letters/mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <figcaption>Mukund Agarwal</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-b">
+        <img src="/assets/letters/aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <figcaption>Aditi Puri Batra</figcaption>
+      </figure>
+      <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
+      <p class="who"><strong>Advisor.</strong> Former Country Head of QuickBooks/Intuit India. Ex-Amazon and Google in the US.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+    <p>Everything we know about Amylu Foods comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll run a fresh batch. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+/* Shared by every hero: small helpers, the wipe into the end-state colors,
+   and the barcode on the back of the label. */
+var SG = (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+
+  /* The end state spreads out from the hero object and takes the whole hero
+     with it. The clone carries the other colorway, so the type stays legible
+     as the edge passes. `skip` hides whatever shouldn't be painted twice. */
+  function wipeTo(hero, from, theme, skip){
+    if (reduce){ hero.dataset.theme = theme; return; }
+    var r = from.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
+    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
+    var over = document.createElement('div');
+    over.className = 'hero-wipe';
+    over.dataset.theme = theme;
+    over.setAttribute('aria-hidden', 'true');
+    over.inert = true;
+    var inner = hero.querySelector('.hero-inner').cloneNode(true);
+    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+    if (skip) inner.querySelectorAll(skip).forEach(function(el){ el.style.visibility = 'hidden'; });
+    over.appendChild(inner);
+    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
+    hero.appendChild(over);
+    over.getBoundingClientRect();
+    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
+    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      hero.dataset.theme = theme;
+      over.remove();
+    };
+    over.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+
+  /* The barcode is real: Code 128 for 7732804485, in bar and space widths. */
+  function barcode(svg){
+    var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
+    for (var i = 0; i < CODE.length; i++){
+      var width = +CODE.charAt(i);
+      if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="currentColor"/>';
+      x += width;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 26');
+    svg.innerHTML = bars;
+  }
+
+  /* Runs `frame(dt)` only while `el` is on screen and the tab is visible, so
+     an idle hero costs nothing once it's scrolled away. */
+  function loop(el, frame){
+    var raf = 0, last = 0, visible = true;
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(.05, (now - last)/1000 || .016);
+      last = now;
+      frame(dt);
+    }
+    function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        visible ? run() : halt();
+      }).observe(el);
+    }
+    run();
+  }
+
+  return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
+})();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
+</script>
+<script>
+/* --------------------------------------------------------------- The sausage
+   For meat processors. The casing is the ERP, the filling is the floor, and
+   nothing links them. Stuff it and the casing comes out as one long, lumpy
+   rope that kinks and bursts, with filling spilling out. That mess stays.
+   SimpleGrid is the linker: it goes on the horn wearing the mark, and when
+   you stuff it again the same mess comes out as a neat chain of even links,
+   down into the tray, and the tray gets its label.
+   Nothing in here is about one company. Another meat page can reuse it as it
+   is: the colors are on .hero-art in the CSS, and the words can be set with
+   window.SAUSAGE_COPY (the button and caption) and window.SAUSAGE_TEXT (the
+   callouts) before this runs. */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('sausage'), ropeG = $('ssRope'), burstG = $('ssBursts'), spillG = $('ssSpill');
+  var heap = $('ssHeap'), sleeve = $('ssSleeve'), linker = $('ssLinker');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = window.SAUSAGE_COPY || {
+    apart:    { btn: 'Stuff it to see your operations', caption: 'Your ERP is the casing up top, your floor is the filling down below, and nothing links them. Stuff it, or tap the casing to try it yourself.' },
+    messing:  { btn: 'Stuffing…', caption: 'Stuffing one into the other. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Link it', caption: 'That’s your operations today: a big mess. One long, lumpy rope that kinks and bursts, with filling everywhere. It won’t fix itself, either.' },
+    dosing:   { btn: 'Linking…', caption: 'On goes the linker.' },
+    dosed:    { btn: 'Stuff it again', caption: 'On goes the linker. That’s SimpleGrid. Now stuff it again.' },
+    cleaning: { btn: 'Stuffing…', caption: 'Watch the mess come out in links.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a neat chain of even links. Your ERP and your floor, finally linked. SimpleGrid is the link.' }
+  };
+  var TEXT = window.SAUSAGE_TEXT || {
+    apart: ['The casing: your ERP', 'What the system says you’re making.', 'The filling: your floor', 'What’s really going in, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The casing, stuffed with nothing linking it: one long, lumpy rope, kinked and burst open, with filling spilling across the tray.',
+    dosed: 'The same burst rope, now with a linker marked SimpleGrid on the stuffing horn.',
+    done: 'A neat chain of even sausage links running from the SimpleGrid linker down into the tray, and the tray labelled SimpleGrid.'
+  };
+
+  /* ------------------------------------------------------------ Geometry */
+  var dist = function(a, b){ return Math.hypot(b[0] - a[0], b[1] - a[1]); };
+  var clamp = SG.clamp;
+  var ease = function(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; };
+  var easeOut = function(t){ return 1 - Math.pow(1 - t, 3); };
+  var cap = function(d, r){ var k = 1 - clamp(d/r, 0, 1); return Math.sqrt(1 - k*k); };   // a round end
+  // A smooth line through the points, as a dense polyline. at[i] is where point i landed in it.
+  function spline(pts){
+    var out = [], at = [];
+    for (var i = 0; i < pts.length - 1; i++){
+      var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      var n = Math.max(2, Math.ceil(dist(p1, p2)/2.5));
+      at.push(out.length);
+      for (var k = 0; k < n; k++){
+        var t = k/n, t2 = t*t, t3 = t2*t;
+        out.push([0, 1].map(function(j){
+          return .5*(2*p1[j] + (p2[j] - p0[j])*t + (2*p0[j] - 5*p1[j] + 4*p2[j] - p3[j])*t2 + (3*p1[j] - p0[j] - 3*p2[j] + p3[j])*t3);
+        }));
+      }
+    }
+    at.push(out.length);
+    out.push(pts[pts.length - 1].slice());
+    return { pts: out, at: at };
+  }
+  // A polyline turned into straights and arcs: ['L', length] or ['A', radius, degrees], plus is clockwise.
+  function turtle(x, y, deg, steps){
+    var out = [[x, y]], a = deg*Math.PI/180;
+    steps.forEach(function(s){
+      var k, n;
+      if (s[0] === 'L'){
+        n = Math.ceil(s[1]/2.5);
+        for (k = 1; k <= n; k++) out.push([x + Math.cos(a)*s[1]*k/n, y + Math.sin(a)*s[1]*k/n]);
+        x += Math.cos(a)*s[1]; y += Math.sin(a)*s[1];
+      } else {
+        var r = s[1], turn = s[2]*Math.PI/180, sg = turn > 0 ? 1 : -1;
+        var cx = x - Math.sin(a)*r*sg, cy = y + Math.cos(a)*r*sg, f0 = Math.atan2(y - cy, x - cx);
+        n = Math.ceil(Math.abs(turn)*r/2.5);
+        for (k = 1; k <= n; k++) out.push([cx + Math.cos(f0 + turn*k/n)*r, cy + Math.sin(f0 + turn*k/n)*r]);
+        x = out[out.length - 1][0]; y = out[out.length - 1][1]; a += turn;
+      }
+    });
+    return out;
+  }
+  // The same line as points spaced evenly along it, with its length and each point's distance along.
+  function even(poly, n){
+    var cum = [0], i;
+    for (i = 1; i < poly.length; i++) cum.push(cum[i - 1] + dist(poly[i - 1], poly[i]));
+    var len = cum[cum.length - 1], pts = [], u = [], j = 1;
+    for (var k = 0; k < n; k++){
+      var s = len*k/(n - 1);
+      while (j < poly.length - 1 && cum[j] < s) j++;
+      var a = poly[j - 1], b = poly[j], t = (s - cum[j - 1])/((cum[j] - cum[j - 1]) || 1);
+      pts.push([a[0] + (b[0] - a[0])*t, a[1] + (b[1] - a[1])*t]);
+      u.push(s);
+    }
+    return { pts: pts, u: u, len: len, cum: cum, poly: poly };
+  }
+  function lengthTo(poly, idx){ var s = 0; for (var i = 1; i <= idx; i++) s += dist(poly[i - 1], poly[i]); return s; }
+
+  /* The horn ends at (180,128). The empty casing hangs from it; stuffed, it carries
+     on down into the tangle. The first five points are the casing as it hangs. */
+  var MESS_AT = [[180,128],[180,156],[176,196],[183,234],[180,264],
+    [194,300],[232,310],[284,292],[312,256],[296,214],[256,212],[238,250],[244,300],[212,346],[150,352],[96,326],
+    [66,282],[86,244],[130,248],[142,292],[118,340],[74,370],[62,426],[96,470],[160,478],[214,446],[236,398],
+    [284,386],[318,420],[306,474],[256,500]];
+  var KINK_AT = [9, 16, 19, 28];          // control points where it folds hard
+  var BURST_AT = [[13, 1], [25, -1]];     // control point, and which side splits
+  var sp = spline(MESS_AT);
+  var MESS = even(sp.pts, 0 | (lengthTo(sp.pts, sp.pts.length - 1)/4));
+  var HANG = lengthTo(sp.pts, sp.at[4]);
+  var KINKS = KINK_AT.map(function(i){ return lengthTo(sp.pts, sp.at[i]); });
+  var BURSTS = BURST_AT.map(function(b){ return { u: lengthTo(sp.pts, sp.at[b[0]]), side: b[1] }; });
+
+  /* The links: straight down from the horn, through the linker, into the tray, and back along it. */
+  var W = 43, LINKS = 7, NECK = 7;
+  var FIN = even(turtle(180, 128, 90, [['L', 216], ['A', 42, 90], ['L', 38], ['A', 38, -180], ['L', 190]]), 210);
+  var EXIT = 54;                          // the linker's collar, where the first twist sits
+  var LINK = (FIN.len - EXIT)/LINKS;
+  var TWISTS = [];
+  for (var t = 0; t < LINKS; t++) TWISTS.push(EXIT + t*LINK);
+
+  // How wide the rope is at u: lumpy and pinched at the kinks while it's a mess...
+  function lumpy(u, end){
+    var w = 38 + 8*Math.sin(u/21 + .5) + 5*Math.sin(u/8.3 + 1.7) + 2.5*Math.sin(u/4.1);
+    BURSTS.forEach(function(b){ var d = Math.abs(u - b.u); if (d < 44) w += 15*Math.pow(1 - d/44, 2); });
+    KINKS.forEach(function(k){ var d = Math.abs(u - k); if (d < 22) w -= 17*(1 - d/22); });
+    w = clamp(w, 20, 56)*(.62 + .38*clamp(u/22, 0, 1));
+    return w*cap(end - u, 15);
+  }
+  // ...even, with a twist at every link, as each twist goes in (depth 0 to 1)...
+  function linked(u, depth){
+    var w = W;
+    for (var k = 0; k < TWISTS.length; k++){
+      var d = Math.abs(u - TWISTS[k]);
+      if (d < 20 && depth[k] > 0) w = Math.min(w, W - (W - Math.max(NECK, W*cap(d, 20)))*depth[k]);
+    }
+    return w*cap(FIN.len - u, 18);
+  }
+  // ...and flat while it's still an empty casing, gathered at the knot.
+  function flat(u, end){ return (23 + 8*clamp(u/16, 0, 1))*Math.max(.18, cap(end - u, 13)); }
+
+  /* ------------------------------------------------------------ Drawing */
+  function mk(tag, cls, parent){ var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); parent.appendChild(e); return e; }
+  var casEl = mk('path', 'ss-cas', ropeG), creaseEl = mk('path', 'ss-crease', ropeG);
+  var PIECES = 6, pieces = [];
+  for (var c = 0; c < PIECES; c++){
+    var g = mk('g', null, ropeG);
+    pieces.push(['ss-cas-edge', 'ss-meat', 'ss-meat-edge', 'ss-gloss', 'ss-fold'].map(function(cls){ return mk('path', cls, g); }));
+  }
+  var twistEl = mk('path', 'ss-twists', ropeG);
+  var knotEl = mk('g', 'ss-knot', ropeG);
+  knotEl.innerHTML = '<path class="ss-string" d="M7 0q7-7 12-2M7 0q8 6 12 1"/><path d="M-2-5L7-3Q9.5 0 7 3L-2 5Z"/>';
+
+  var f = function(v){ return Math.round(v*10)/10; };
+  function line(pts){
+    var d = 'M' + f(pts[0][0]) + ' ' + f(pts[0][1]);
+    for (var i = 1; i < pts.length - 1; i++) d += 'Q' + f(pts[i][0]) + ' ' + f(pts[i][1]) + ' ' + f((pts[i][0] + pts[i + 1][0])/2) + ' ' + f((pts[i][1] + pts[i + 1][1])/2);
+    var e = pts[pts.length - 1];
+    return d + 'L' + f(e[0]) + ' ' + f(e[1]);
+  }
+  // The two edges of a band along the rope, from point a to b: kx, ky shift it off the middle, kh is its half-width, all as a share of the width there.
+  function sides(P, N, Wd, a, b, kx, ky, kh){
+    var L = [], R = [];
+    for (var i = a; i <= b; i++){
+      var w = Wd[i], x = P[i][0] + kx*w, y = P[i][1] + ky*w, h = kh*w;
+      L.push([x + N[i][0]*h, y + N[i][1]*h]);
+      R.push([x - N[i][0]*h, y - N[i][1]*h]);
+    }
+    return [L, R];
+  }
+  var shape = function(s){ return line(s[0].concat(s[1].slice().reverse())) + 'Z'; };
+  var edges = function(s){ return line(s[0]) + line(s[1]); };
+
+  // A short mark straight across the rope at point i: a fraction k of its width, tilted by `lean` along it.
+  function across(P, N, Wd, i, k, lean, shift){
+    var q = P[i], m = N[i], tx = m[1], ty = -m[0], h = Wd[i]*k/2, o = shift || 0;
+    return 'M' + f(q[0] + m[0]*h + tx*(lean + o)) + ' ' + f(q[1] + m[1]*h + ty*(lean + o)) + 'L' + f(q[0] - m[0]*h - tx*(lean - o)) + ' ' + f(q[1] - m[1]*h - ty*(lean - o));
+  }
+  // P: the middle of the rope, Wd: the casing's width, M: the filling's (0 where it's empty),
+  // tw: twists ({i, depth}), folds: where it's kinked (point indexes).
+  function draw(P, Wd, M, tw, folds){
+    var n = P.length, N = [], i, mEnd = -1;
+    for (i = 0; i < n; i++){
+      var a = P[i > 0 ? i - 1 : 0], b = P[i < n - 1 ? i + 1 : n - 1], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
+      N.push([-dy/l, dx/l]);
+      if (M[i] > .5) mEnd = i;
+    }
+    casEl.setAttribute('d', shape(sides(P, N, Wd, 0, n - 1, 0, 0, .5)));
+    // An empty casing is creased all along; it smooths out as it fills.
+    var cr = '';
+    for (i = 3; i < n - 2; i += 4) if (M[i] < .5) cr += across(P, N, Wd, i, .62, i % 8 ? 3 : -3);
+    if (cr) creaseEl.setAttribute('d', cr); else creaseEl.removeAttribute('d');
+    for (var c = 0; c < PIECES; c++){
+      var el = pieces[c], a0 = Math.floor(c*(n - 1)/PIECES), a1 = Math.floor((c + 1)*(n - 1)/PIECES), s0 = Math.max(0, a0 - 1);
+      el[0].setAttribute('d', edges(sides(P, N, Wd, s0, a1, 0, 0, .5)));
+      var m1 = Math.min(a1, mEnd);
+      if (m1 - s0 >= 1){
+        var ms = sides(P, N, M, s0, m1, 0, 0, .5);
+        el[1].setAttribute('d', shape(ms));
+        el[2].setAttribute('d', edges(ms));
+        el[3].setAttribute('d', shape(sides(P, N, M, s0, m1, -.15, -.19, .085)));
+      } else for (var k = 1; k < 4; k++) el[k].removeAttribute('d');
+      // Where it's kinked, the casing bunches up in folds.
+      var fd = '';
+      if (folds) folds.forEach(function(j){ if (j > s0 && j <= a1 && j < n - 3) fd += across(P, N, Wd, j - 2, .7, -2.5) + across(P, N, Wd, j, .82, 0) + across(P, N, Wd, j + 2, .7, 2.5); });
+      if (fd) el[4].setAttribute('d', fd); else el[4].removeAttribute('d');
+    }
+    var e = P[n - 1], p = P[Math.max(0, n - 4)];
+    knotEl.setAttribute('transform', 'translate(' + f(e[0]) + ' ' + f(e[1]) + ') rotate(' + f(Math.atan2(e[1] - p[1], e[0] - p[0])*180/Math.PI) + ')');
+    // A little twist of casing across each neck once it's in.
+    var d = '';
+    if (tw) tw.forEach(function(t){
+      if (t.depth < .6) return;
+      var q = P[t.i], m = N[t.i], tx = m[1], ty = -m[0], s = 4.5;
+      [-2.2, 2.2].forEach(function(o){
+        d += 'M' + f(q[0] + tx*o + m[0]*s + tx*2) + ' ' + f(q[1] + ty*o + m[1]*s + ty*2) + 'L' + f(q[0] + tx*o - m[0]*s - tx*2) + ' ' + f(q[1] + ty*o - m[1]*s - ty*2);
+      });
+    });
+    if (d) twistEl.setAttribute('d', d); else twistEl.removeAttribute('d');
+  }
+
+  // The rope along the tangle, out as far as `end`, every 4 units.
+  function along(end){
+    var n = Math.max(2, Math.round(end/MESS.len*(MESS.pts.length - 1)) + 1), P = MESS.pts.slice(0, n);
+    var last = pointAt(end);
+    if (n >= 2) P[n - 1] = last;
+    return P;
+  }
+  function pointAt(u){
+    var k = clamp(u/MESS.len*(MESS.pts.length - 1), 0, MESS.pts.length - 1), i = Math.floor(k), t = k - i;
+    var a = MESS.pts[i], b = MESS.pts[Math.min(i + 1, MESS.pts.length - 1)];
+    return [a[0] + (b[0] - a[0])*t, a[1] + (b[1] - a[1])*t];
+  }
+  function frameAt(u){
+    var a = pointAt(u - 3), b = pointAt(u + 3), l = dist(a, b) || 1;
+    return { p: pointAt(u), tx: (b[0] - a[0])/l, ty: (b[1] - a[1])/l };
+  }
+  // The kinks the rope has reached so far, as point indexes along a rope out to `end` drawn with n points.
+  function foldsTo(end, n){
+    return KINKS.filter(function(k){ return k < end - 20; }).map(function(k){ return Math.round(k/end*(n - 1)); });
+  }
+  function uOf(P){ var u = [0]; for (var i = 1; i < P.length; i++) u.push(u[i - 1] + dist(P[i - 1], P[i])); return u; }
+
+  // The empty casing, hanging off the horn: the start.
+  function drawApart(){
+    var P = along(HANG), u = uOf(P);
+    draw(P, u.map(function(v){ return flat(v, HANG); }), u.map(function(){ return 0; }));
+  }
+
+  /* ------------------------------------------------------------ The spill */
+  var seed = 4127;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function blob(r){
+    var n = 7, p = [], k;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2 + R(-.3, .3), rr = r*R(.72, 1.1); p.push([Math.cos(a)*rr, Math.sin(a)*rr]); }
+    var mid = function(a, b){ return f((a[0] + b[0])/2) + ' ' + f((a[1] + b[1])/2); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f(p[k][0]) + ' ' + f(p[k][1]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return d + 'Z';
+  }
+  var tf = function(x, y, s, r){ return 'translate(' + f(x) + 'px,' + f(y) + 'px) rotate(' + f(r || 0) + 'deg) scale(' + s + ')'; };
+  // Keyframes along a hop from a to b that peaks `lift` above the higher end.
+  function hop(a, b, lift, s0, s1, r0, r1, o){
+    var top = Math.min(a[1], b[1]) - lift, frames = [];
+    for (var k = 0; k <= 8; k++){
+      var t = k/8, m = [(a[0] + b[0])/2, top];
+      var x = (1 - t)*(1 - t)*a[0] + 2*(1 - t)*t*m[0] + t*t*b[0], y = (1 - t)*(1 - t)*a[1] + 2*(1 - t)*t*m[1] + t*t*b[1];
+      frames.push({ transform: tf(x, y, s0 + (s1 - s0)*t, r0 + (r1 - r0)*t), opacity: o ? o(t) : 1 });
+    }
+    return frames;
+  }
+  // Nine handfuls of filling, from the heap up into the funnel.
+  var CLUMPS = [];
+  for (var i = 0; i < 9; i++){
+    var el = mk('path', 'ss-blob', spillG);
+    el.setAttribute('d', blob(R(8, 12)));
+    CLUMPS.push({ el: el, from: [R(104, 256), R(420, 452)] });
+  }
+  // The bursts: a split in the casing, filling pushing out of it, and lumps of it on the floor.
+  var bursts = BURSTS.map(function(b){
+    var fr = frameAt(b.u), w = lumpy(b.u, MESS.len)/2 - 3;
+    var ox = -fr.ty*b.side, oy = fr.tx*b.side;                 // outward, off the side that splits
+    var g = mk('g', null, burstG), inner = mk('g', 'ss-burst', g);
+    g.setAttribute('transform', 'translate(' + f(fr.p[0] + ox*w) + ' ' + f(fr.p[1] + oy*w) + ') rotate(' + f(Math.atan2(ox, -oy)*180/Math.PI) + ') scale(1.7)');
+    inner.innerHTML = '<path class="ss-burst-gash" d="M-16 4Q-8-4 0-3Q9-4 16 4Q7 9 0 8Q-8 9-16 4Z"/><path class="ss-burst-meat" d="M-12 3C-15-6-10-19 0-20C6-21 9-15 13-14C17-10 15-3 12 3Z"/><path class="ss-burst-flap" d="M-16 4Q-23 0-22-8M16 4Q23 1 23-7"/>';
+    return { inner: inner, at: [fr.p[0] + ox*(w + 24), fr.p[1] + oy*(w + 24)] };
+  });
+  var SPILL_TO = [[[150, 318], [262, 348], [284, 330], [232, 368]], [[192, 404], [226, 398], [166, 414], [250, 420]]];
+  var spills = [];
+  bursts.forEach(function(b, n){
+    SPILL_TO[n].forEach(function(to){
+      var el = mk('path', 'ss-blob', spillG);
+      el.setAttribute('d', blob(R(9, 14)));
+      spills.push({ el: el, b: b, to: to, rot: R(-90, 90) });
+    });
+  });
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  // Runs fn(t) for t from 0 to 1 over ms, once a frame. Reduced motion jumps to the end.
+  function play(ms, fn){
+    var my = gen;
+    return new Promise(function(done){
+      if (reduce){ fn(1); done(); return; }
+      var t0 = 0;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (!t0) t0 = now;
+        var t = Math.min(1, (now - t0)/ms);
+        fn(t);
+        if (t < 1) requestAnimationFrame(tick); else done();
+      });
+    });
+  }
+  // With reduced motion nothing animates: the element just takes its last frame. Every animation is
+  // kept, because one that a later one replaces drops out of getAnimations() but still needs cancelling.
+  var styled = [], moves = [];
+  function anim(el, frames, ms, delay, easing){
+    if (reduce){
+      var last = frames[frames.length - 1];
+      for (var k in last) if (k !== 'offset' && k !== 'easing') el.style[k] = last[k];
+      styled.push(el);
+      return;
+    }
+    moves.push(el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' }));
+  }
+  var span = function(T, a, b){ return clamp((T - a)/(b - a), 0, 1); };
+
+  // Stuff it, nothing linking it: the heap goes up the funnel, the casing fills, and the rope comes out kinking and bursting.
+  function mess(){
+    CLUMPS.forEach(function(c, i){
+      anim(c.el, hop(c.from, [180, 44], 150 + i*8, 1, .45, 0, 200, function(t){ return t < .08 ? t/.08 : t > .9 ? (1 - t)*10 : 1; }), 560, i*55, 'linear');
+    });
+    anim(heap, [{ transform: 'none' }, { transform: 'scale(1.06,.16)' }], 900, 80, 'cubic-bezier(.5,0,.3,1)');
+    anim(sleeve, [{ transform: 'none' }, { transform: 'scaleY(.32)' }], 1500, 600, 'linear');
+    var popped = [false, false];
+    return play(2200, function(t){
+      var T = t*2200, P, u, Wd, M, folds = null;
+      if (T < 700){
+        // The filling runs down the hanging casing from the horn.
+        var front = HANG*easeOut(span(T, 250, 700));
+        P = along(HANG); u = uOf(P);
+        Wd = u.map(function(v){ return v < front - 6 ? lumpy(v, HANG) : flat(v, HANG); });
+        M = u.map(function(v, i){ return v < front ? Math.max(0, Wd[i] - 3)*cap(front - v, 8) : 0; });
+      } else {
+        // Then it keeps coming, and the rope pushes out along the tangle.
+        var end = HANG + (MESS.len - HANG)*ease(span(T, 700, 2100));
+        P = along(end); u = uOf(P);
+        Wd = u.map(function(v){ return lumpy(v, end); });
+        M = Wd.map(function(w){ return Math.max(0, w - 3); });
+        folds = foldsTo(end, P.length);
+        bursts.forEach(function(b, n){
+          if (popped[n] || end < b.u + 30) return;
+          popped[n] = true;
+          anim(b.inner, [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1.25)', offset: .6 }, { opacity: 1, transform: 'scale(1)' }], 320, 0, 'ease-out');
+          spills.forEach(function(s){
+            if (s.b !== b) return;
+            anim(s.el, hop(b.at, s.to, 26, .3, 1, 0, s.rot, function(t){ return Math.min(1, t*5); }), 520, 40, 'linear');
+          });
+        });
+      }
+      draw(P, Wd, M, null, folds);
+    }).then(function(){ obj.classList.add('messy'); });
+  }
+
+  // On goes the linker, wearing the mark.
+  function dose(){
+    obj.classList.add('has-linker');
+    anim(linker, [
+      { transform: 'translateY(-190px)', opacity: 0, easing: 'cubic-bezier(.5,0,.9,.6)' },
+      { transform: 'translateY(-110px)', opacity: 1, offset: .3, easing: 'cubic-bezier(.3,.6,.4,1)' },
+      { transform: 'translateY(5px)', offset: .68, easing: 'ease-in-out' },
+      { transform: 'translateY(-3px)', offset: .85, easing: 'ease-in-out' },
+      { transform: 'translateY(0)', opacity: 1 }
+    ], 820);
+    later(function(){ obj.classList.add('dosed'); }, 560);
+    return new Promise(function(done){ later(done, 1000); });
+  }
+
+  // Stuff it again, linked: the spill goes back in, the rope straightens out of its tangle, and the linker twists it into links.
+  function clean(){
+    var NM = FIN.pts.length;
+    var from = even(MESS.pts, NM), fromW = from.u.map(function(v){ return lumpy(v, MESS.len); });
+    var depth = TWISTS.map(function(){ return 0; });
+    var at = TWISTS.map(function(s){ return Math.round(s/FIN.len*(NM - 1)); });
+    obj.classList.remove('messy');
+    spills.forEach(function(s, i){
+      anim(s.el, hop(s.to, s.b.at, 22, 1, .2, s.rot, s.rot + 160, function(t){ return t > .85 ? (1 - t)/.15 : 1; }), 420, i*30, 'linear');
+    });
+    bursts.forEach(function(b){ anim(b.inner, [{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(0)' }], 280, 300, 'ease-in'); });
+    anim(heap, [{ transform: 'scale(1.06,.16)', opacity: 1 }, { transform: 'scale(1.06,.16)', opacity: 0 }], 500, 100);
+    later(function(){ obj.classList.add('twisting'); }, 1250);
+    later(function(){ obj.classList.remove('twisting'); }, 2350);
+    return play(2400, function(t){
+      var T = t*2400, P = [], Wd = [], M = [];
+      for (var k = 0; k < TWISTS.length; k++) depth[k] = easeOut(span(T, 1300 + k*120, 1560 + k*120));
+      for (var i = 0; i < NM; i++){
+        var p = ease(span(T, 380 + i/NM*420, 1100 + i/NM*420));
+        var a = from.pts[i], b = FIN.pts[i];
+        P.push([a[0] + (b[0] - a[0])*p, a[1] + (b[1] - a[1])*p]);
+        var w = fromW[i] + (linked(FIN.u[i], depth) - fromW[i])*p;
+        Wd.push(w); M.push(Math.max(0, w - 3));
+      }
+      draw(P, Wd, M, at.map(function(i, k){ return { i: i, depth: depth[k] }; }), T < 700 ? foldsTo(MESS.len, NM) : null);
+    });
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
+    styled = []; moves = [];
+    obj.classList.remove('messy', 'has-linker', 'dosed', 'twisting', 'is-done');
+    drawApart();
+  }
+  function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
+  }
+
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.sausage',
+    ops: {
+      mess: ['Your operations, today', 'Stuffed together, still not linked. It kinked, it burst, and it stays that way.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same rope, same mess. Now there’s a linker on it.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the casing does the same as the button.
+  obj.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  drawApart();
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Chicken', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '28%', '<s>28%</s> 23%']
+  ],
+  notes: [
+    'Linker 4 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Chicken truck: 8,000 lb short',
+    'Which flavor are we running???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QA hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 2 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Casing PO is ready for your OK',
+    'QA: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+/* ------------------------------------ The gap: your ERP vs your floor.
+   The template sets window.STAGE = { erp, notes, tidy } before this runs:
+     erp    four rows of [label, what the ERP says, what's true once linked]
+     notes  twelve things that land on the floor, in the order below
+     tidy   four lines the floor reads once it's linked */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var data = window.STAGE;
+
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.8 14.7 1.3 9.2 1.3 3.8 1.3 2.5 2 1.5 3.3 1c.3-.1.7 0 .9.3z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>';
+  var TICK = '<i aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"/></svg></i>';
+  // kind, tilt, where it lands on a laptop, where it lands on a phone
+  var SLOTS = [
+    ['sticky', -6, 'left:1%;top:1%',   'left:0;top:0'],
+    ['call',    3, 'left:33%;top:0',   'right:0;top:8%'],
+    ['file',   -3, 'right:0;top:9%',   'left:3%;top:17%'],
+    ['pink',    5, 'right:5%;top:20%', 'right:0;top:24.5%'],
+    ['board',  -4, 'left:2%;top:20%',  'left:0;top:33.5%'],
+    ['mail',    3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag',    -7, 'left:0;top:40%',   'left:4%;top:50%'],
+    ['file',   -2, 'right:0;top:51%',  'right:0;top:57%'],
+    ['call',    4, 'left:6%;top:57%',  'left:0;top:65%'],
+    ['sticky', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink',    3, 'left:1%;top:78%',  'left:0;top:82%'],
+    ['board',  -3, 'right:7%;top:85%', 'right:4%;top:90.5%']
+  ];
+  var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
+  var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
+  var NOTE = {
+    calm: stageNote.textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
+  };
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  $('tidy').innerHTML = data.tidy.map(function(line, i){
+    return '<li style="--i:' + i + '">' + TICK + '<span>' + line + '</span></li>';
+  }).join('');
+
+  function renderErp(linked){
+    erpRows.innerHTML = data.erp.map(function(row, i){
+      return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
+    }).join('');
+    $('erpStatus').textContent = linked ? 'In sync' : 'All good';
+    $('erpFoot').textContent = linked ? 'Last updated: just now' : 'Last updated: yesterday, 6:00 PM';
+  }
+  function runMorning(){
+    var onPhone = window.matchMedia('(max-width:620px)').matches;
+    stage.dataset.state = 'chaos';
+    $('floorClock').textContent = '9:41 AM';
+    stageNote.textContent = NOTE.chaos;
+    pile.innerHTML = data.notes.map(function(text, i){
+      var slot = SLOTS[i];
+      var icon = slot[0] === 'call' ? PHONE : slot[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + slot[0] + '" style="--r:' + slot[1] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + slot[onPhone ? 3 : 2] + '">' + icon + '<span>' + text + '</span></div>';
+    }).join('');
+    later(function(){
+      stage.dataset.state = 'messy';
+      linkBtn.focus({ preventScroll: true });
+    }, data.notes.length*170 + 300);
+  }
+  // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
+  function linkUp(){
+    var link = $('stageLink').getBoundingClientRect();
+    var tx = link.left + link.width/2, ty = link.top + link.height/2;
+    [].slice.call(pile.children).forEach(function(el, i){
+      var r = el.getBoundingClientRect();
+      var rot = el.style.getPropertyValue('--r');
+      el.style.animation = 'none';
+      el.style.opacity = 1;
+      el.style.transform = 'rotate(' + rot + ')';
+      void el.offsetWidth;
+      el.style.transition = 'transform .5s cubic-bezier(.6,0,.9,.4) ' + (i*.025) + 's,opacity .5s ease-in ' + (i*.025) + 's';
+      el.style.transform = 'translate(' + (tx - r.left - r.width/2) + 'px,' + (ty - r.top - r.height/2) + 'px) scale(.12)';
+      el.style.opacity = 0;
+    });
+    linkBtn.disabled = true;
+    later(function(){
+      stage.dataset.state = 'linked';
+      linkBtn.disabled = false;
+      pile.innerHTML = '';
+      renderErp(true);
+      countUp();
+      stageNote.textContent = NOTE.linked;
+      stageReset.focus({ preventScroll: true });
+    }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  function resetStage(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage.dataset.state = 'calm';
+    pile.innerHTML = '';
+    $('floorClock').textContent = '6:58 AM';
+    stageNote.textContent = NOTE.calm;
+    renderErp(false);
+    chaosBtn.focus({ preventScroll: true });
+  }
+  chaosBtn.addEventListener('click', runMorning);
+  linkBtn.addEventListener('click', linkUp);
+  stageReset.addEventListener('click', resetStage);
+  renderErp(false);
+})();
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>
