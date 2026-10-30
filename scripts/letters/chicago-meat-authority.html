@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A cutting line under a spec screen, with no link between them, beside the words: {{first}}, you can process 3 million pounds of meat a week.">
+<meta property="og:image:alt" content="A dicer with a slab of beef under a spec screen, with no link between them, beside the words: {{first}}, you can process 3 million pounds of meat a week.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, dice the beef.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who processes beef, pork and chicken for a living.">
@@ -35,9 +35,95 @@
   --tint:#F9EEF0;--pale:#FDFAFA;--ink:#1F1416;--alert:#D7263D;--marker:#FBE3E8;--h2-hi:#A9233E;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#B5333F;--sku-b:#D9686A;--sku-c:#8E2230}
-
-<!--#include line.css-->
+/* ------------------------------------------------------- One tray of diced beef
+   The spec on the screen is the ERP. The dicer under it, with its slab of trim and the tray on the
+   scale, is the floor. Every color lives on .hero-art, so the callouts' dots read them too. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --lean:#D23E4A;--lean-hi:#EE7680;--meat-edge:#4A0F1C;--fat:#FFF5EF;
+  --steel:#C9D0D6;--steel-hi:#F1F4F6;--steel-dk:#9DA7B0;--steel-ink:#5B646E;--steel-deep:#3F474F;
+  --table:#D7DDE2;--tray:#FBFAF7;--tray-in:#ECE7DE;--tray-wall:#DCD5C9;--tray-face:#EAE5DC;--tray-edge:#A3998B;
+  --screen:#1E2329;--glass:#2A313A;
+  --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
+}
+.dice{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .dice,.dice.is-done{cursor:default}
+.dice svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The spec: what the ERP says you're cutting. */
+.dc-screen{fill:var(--screen)}
+.dc-glass{fill:var(--glass)}
+.dc-kick{fill:rgba(255,255,255,.55);font:600 10.5px/1 var(--mono);letter-spacing:.14em}
+.dc-order{fill:#fff;font:800 19px/1 var(--body)}
+.dc-spec{fill:rgba(255,255,255,.86);font:700 13.5px/1 var(--body)}
+.dc-spec2{fill:rgba(255,255,255,.68);font:600 12.5px/1 var(--body)}
+.dc-pill{fill:#DFF5EA;transition:fill .3s}
+.dc-pill-t{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
+.dice.linked .dc-pill{fill:var(--accent)}
+.dice.linked .dc-pill-t{fill:var(--on-accent)}
+.dc-icon path{fill:var(--accent)}
+.dc-icon .dc-icon-l{opacity:.55}
+.dc-icon .dc-icon-r{opacity:.78}
+/* The cable from the spec to the dicer: broken, until SimpleGrid joins it. */
+.dc-stub{fill:none;stroke:var(--steel-ink);stroke-width:6;stroke-linecap:round}
+.dc-plug{transform-box:view-box;transform-origin:0 0}
+.dc-plug rect{fill:var(--steel-deep)}
+.dc-plug path{fill:none;stroke:var(--steel-dk);stroke-width:2.4;stroke-linecap:round}
+.dc-cable{fill:none;stroke:var(--hi);stroke-width:6;stroke-linecap:round;opacity:0;transition:opacity .3s .25s}
+.dc-flow{fill:none;stroke:var(--field);stroke-width:2.2;stroke-dasharray:3 7;opacity:0;transition:opacity .3s .25s}
+.dice.linked .dc-cable{opacity:1}
+.dice.linked .dc-flow{opacity:.85;animation:dc-flow .6s linear infinite}
+@keyframes dc-flow{to{stroke-dashoffset:-10}}
+/* The dicer: a press over the tray. Its head pushes the slab down through a bed of blades. */
+.dc-back{fill:var(--steel-deep)}
+.dc-post,.dc-bar,.dc-head-body{fill:var(--steel)}
+.dc-foot,.dc-rod,.dc-plate,.dc-bed,.dc-bolt{fill:var(--steel-dk)}
+.dc-bar-hi,.dc-bed-hi{fill:none;stroke:var(--steel-hi);stroke-width:2.5;stroke-linecap:round;opacity:.8}
+.dc-head-hi{fill:var(--steel-hi);opacity:.75}
+.dc-port{fill:var(--steel-dk);stroke:var(--steel-ink);stroke-width:2}
+.dc-head,.dc-rod{transform-box:view-box;transform-origin:180px 205px}
+.dc-slab{transform-box:view-box;transform-origin:180px 282px}
+.dc-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
+.dice.dosed .dc-mark{opacity:1;transform:none}
+/* The beef: lean with white fat through it, in the slab, the mess and the cubes. */
+.dc-lean,.dc-pc-b,.dc-cube-top,.dc-cube-front{fill:var(--lean);stroke:var(--meat-edge);stroke-width:2;stroke-linejoin:round}
+.dc-lean-hi,.dc-pc-t,.dc-cube-top{fill:var(--lean-hi)}
+.dc-fat,.dc-pc-f{fill:none;stroke:var(--fat);stroke-width:2.6;stroke-linecap:round}
+.dc-pc.fatty .dc-pc-t,.dc-pc.flap .dc-pc-b{fill:var(--fat)}
+.dc-pc.flap .dc-pc-f{stroke:var(--lean)}
+.dc-pc,.dc-cube,.dc-film{transform-box:view-box;transform-origin:0 0;opacity:0}
+/* The table, the scale built into it, and the tray. */
+.dc-floor{fill:rgba(40,4,14,.2)}
+.dc-leg{fill:var(--steel-dk)}
+.dc-top{fill:var(--table)}
+.dc-top-hi{fill:none;stroke:#fff;stroke-width:2;opacity:.7}
+.dc-apron{fill:var(--steel)}
+.dc-readout{fill:var(--screen)}
+.dc-scale{fill:#A8E6C4;font:600 11.5px/1 var(--mono)}
+.dice.wrong .dc-scale{fill:#FF5D58;animation:dc-blink .7s steps(1) infinite}
+.dice.right .dc-scale{fill:#3DDC84}
+@keyframes dc-blink{50%{opacity:.2}}
+.dc-plat{fill:var(--steel-dk)}
+.dc-tray{fill:var(--tray);stroke:var(--tray-edge);stroke-width:1.5}
+.dc-well{fill:var(--tray-in)}
+.dc-wall{fill:var(--tray-wall)}
+.dc-tray-lip{fill:var(--tray)}
+.dc-tray-face{fill:var(--tray-face);stroke:var(--tray-edge);stroke-width:1.5}
+/* Once it comes clean: sealed under film, with the label. */
+.dc-film-body{fill:rgba(255,255,255,.16);stroke:rgba(255,255,255,.9);stroke-width:2}
+.dc-film-hi{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;opacity:.42}
+.dc-tag{--sg-bg:var(--tag-bg);--sg-ink:var(--tag-ink)}
+.dice.is-done .dc-tag{opacity:1;transform:none}
+.dice:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:2%}
+.callout-gap{top:calc(25% - 15px)}
+.callout-bottom{top:50%}
+.callout-top h3 i{background:var(--screen)}
+.callout-bottom h3 i{background:var(--lean)}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.5)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->
@@ -63,18 +149,108 @@
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
-<!--#include line.svg-->
+        <div class="dice hero-obj" id="dice" role="img" aria-label="A spec screen for order 4417: diced beef, cubes all one size. Under it, a dicer holding a slab of beef trim over an empty tray on a scale. The cable between the screen and the dicer is broken.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <!-- the slab sinks into the blade bed, and whatever comes out drops from under it -->
+              <clipPath id="dcAbove"><rect x="70" y="150" width="220" height="132"/></clipPath>
+              <clipPath id="dcBelow"><rect x="0" y="296" width="360" height="264"/></clipPath>
+              <clipPath id="dcRodClip"><rect x="150" y="182" width="60" height="110"/></clipPath>
+              <clipPath id="dcWrapClip"><rect x="90" y="312" width="180" height="130" rx="12"/></clipPath>
+            </defs>
+
+            <!-- the floor -->
+            <rect class="dc-floor" x="0" y="522" width="360" height="30" rx="15"/>
+
+            <!-- the cutting table, seen from just above, with a scale built into its front -->
+            <rect class="dc-leg" x="20" y="462" width="12" height="68" rx="2"/>
+            <rect class="dc-leg" x="328" y="462" width="12" height="68" rx="2"/>
+            <rect class="dc-top" x="8" y="350" width="344" height="98" rx="7"/>
+            <path class="dc-top-hi" d="M18 352.5H342"/>
+            <rect class="dc-apron" x="8" y="445" width="344" height="21" rx="4"/>
+            <rect class="dc-readout" x="132" y="448" width="96" height="15" rx="3"/>
+            <text class="dc-scale" id="dcScale" x="180" y="459.6" text-anchor="middle">0.00 lb</text>
+
+            <!-- the dicer: a press over the tray. The head pushes the slab down through a bed of blades -->
+            <rect class="dc-back" x="78" y="180" width="204" height="104"/>
+            <rect class="dc-post" x="66" y="166" width="12" height="230"/>
+            <rect class="dc-post" x="282" y="166" width="12" height="230"/>
+            <rect class="dc-foot" x="58" y="390" width="28" height="8" rx="3"/>
+            <rect class="dc-foot" x="274" y="390" width="28" height="8" rx="3"/>
+            <g clip-path="url(#dcRodClip)"><rect class="dc-rod" id="dcRod" x="172" y="130" width="16" height="70"/></g>
+            <rect class="dc-bar" x="56" y="166" width="248" height="16" rx="6"/>
+            <path class="dc-bar-hi" d="M64 169.5H296"/>
+            <g clip-path="url(#dcAbove)"><g class="dc-slab" id="dcSlab">
+              <path class="dc-lean" d="M100 282C96 270 97 254 106 245C114 236 132 233 152 235C170 231 196 232 216 232C238 232 256 238 260 252C263 262 262 274 259 282Z"/>
+              <path class="dc-lean-hi" d="M107 254C109 244 125 238 147 239C169 236 196 237 216 236C236 236 251 241 254 251C239 257 218 255 198 257C172 259 137 258 107 254Z"/>
+              <path class="dc-fat" d="M111 247C121 240 136 238 150 239M150 249C160 245 172 250 184 246C192 243 200 247 210 245M226 244C234 243 242 245 248 249M114 270C126 264 138 272 152 266M170 275C182 269 196 277 210 271M222 263C232 259 240 267 252 263"/>
+              <path class="dc-fat" d="M182 259C190 265 200 267 214 266" stroke-width="4"/>
+            </g></g>
+            <g class="dc-head" id="dcHead">
+              <rect class="dc-head-body" x="80" y="188" width="200" height="34" rx="9"/>
+              <rect class="dc-head-hi" x="90" y="191" width="180" height="4" rx="2"/>
+              <rect class="dc-plate" x="88" y="221" width="184" height="8" rx="2"/>
+              <circle class="dc-port" cx="180" cy="205" r="12"/>
+              <circle class="dc-bolt" cx="98" cy="205" r="3.2"/><circle class="dc-bolt" cx="262" cy="205" r="3.2"/>
+              <g transform="translate(180 205) scale(.82)"><g class="dc-mark sg-pop"><!--#include sg-badge.svg--></g></g>
+            </g>
+            <rect class="dc-bed" x="70" y="282" width="220" height="14" rx="3"/>
+            <path class="dc-bed-hi" d="M76 285H284"/>
+
+            <!-- the tray, on the scale -->
+            <rect class="dc-plat" x="86" y="344" width="188" height="99" rx="6"/>
+            <rect class="dc-tray" x="94" y="338" width="172" height="101" rx="10"/>
+            <rect class="dc-well" x="100" y="341" width="160" height="80" rx="6"/>
+            <rect class="dc-wall" x="100" y="341" width="160" height="15" rx="6"/>
+            <!-- what lands in the tray: dicer.js draws it -->
+            <g clip-path="url(#dcBelow)"><g id="dcCubes"></g></g>
+            <g id="dcInTray"></g>
+            <path class="dc-tray-lip" d="M94.75 419H265.25V429A9.25 9.25 0 0 1 256 438.25H104A9.25 9.25 0 0 1 94.75 429Z"/>
+            <path class="dc-tray-face" d="M94 422H266V429A10 10 0 0 1 256 439H104A10 10 0 0 1 94 429Z"/>
+
+            <!-- once it comes clean: sealed under film, with the label -->
+            <g clip-path="url(#dcWrapClip)"><g class="dc-film" id="dcFilm">
+              <rect class="dc-film-body" x="91" y="313" width="178" height="128" rx="11"/>
+              <path class="dc-film-hi" d="M110 424L150 322M130 432L162 352"/>
+            </g></g>
+            <g transform="translate(180 431) scale(.58)"><g class="dc-tag sg-pop"><!--#include sg-tag.svg--></g></g>
+
+            <!-- what lands on the table and the floor -->
+            <g id="dcOnTable"></g>
+
+            <!-- the spec: what the ERP says you're cutting -->
+            <rect class="dc-screen" x="24" y="10" width="312" height="96" rx="12"/>
+            <rect class="dc-glass" x="33" y="18" width="294" height="80" rx="7"/>
+            <text class="dc-kick" x="48" y="37">SPEC</text>
+            <rect class="dc-pill" id="dcPill" x="238" y="24" width="74" height="22" rx="11"/>
+            <text class="dc-pill-t" id="dcPillText" x="275" y="39.2" text-anchor="middle">On spec</text>
+            <text class="dc-order" x="48" y="60">Order 4417</text>
+            <text class="dc-spec" x="48" y="78">Diced beef · 10.00 lb</text>
+            <text class="dc-spec2" x="48" y="93">Cubes, all one size</text>
+            <g class="dc-icon">
+              <path class="dc-icon-t" d="M290 54L305 61.5L290 69L275 61.5Z"/>
+              <path class="dc-icon-l" d="M275 61.5L290 69V87L275 79.5Z"/>
+              <path class="dc-icon-r" d="M290 69L305 61.5V79.5L290 87Z"/>
+            </g>
+
+            <!-- the cable from the spec to the dicer: broken, until SimpleGrid joins it -->
+            <path class="dc-stub" d="M180 106V117"/>
+            <path class="dc-stub" d="M180 157V166"/>
+            <g class="dc-plug" id="dcPlugA"><rect x="171" y="116" width="18" height="10" rx="2.5"/><path d="M175.5 126V130M184.5 126V130"/></g>
+            <g class="dc-plug" id="dcPlugB"><rect x="171" y="150" width="18" height="9" rx="2.5"/></g>
+            <path class="dc-cable" d="M180 106V166"/>
+            <path class="dc-flow" d="M180 106V166"/>
+          </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The spec: your ERP</span></h3>
+            <p id="topText">What the system says you’re cutting.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The cut: your floor</span></h3>
+            <p id="bottomText">What’s really coming off the table, on Excel, whiteboards and phones.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -82,10 +258,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Dice it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The spec is your ERP, the cut is your floor, and nothing links them. Dice it, or tap the beef.</p>
       </div>
     </div>
   </div>

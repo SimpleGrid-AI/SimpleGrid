@@ -331,7 +331,7 @@ float sdBottle(vec2 p){
   vec2 q = vec2(abs(p.x) - hw + 44., 44. - p.y);
   return length(max(q, 0.)) + min(max(q.x, q.y), 0.) - 44.;
 }
-// Lumps that won't blend in. x = coverage, y = highlight, z = the shaded edge that makes it a lump,
+// Lumps that won't blend in. x = coverage, y = highlight, z = the shadow on the far side that makes it a lump,
 // w = which layer it came from (1 kefir, 0 fruit).
 vec4 lumps(vec2 p, float cell, float drift, float density, float seed){
   vec2 g = p/cell;
@@ -346,9 +346,10 @@ vec4 lumps(vec2 p, float cell, float drift, float density, float seed){
     float d = length(g - c) + (noise((g - c)*5. + id*3.7) - .5)*r*.7;
     float cov = smoothstep(r, r - .05, d);
     if(cov > res.x){
+      vec2 v = (g - c)/max(length(g - c), .001);
       res.x = cov;
       res.y = smoothstep(r*.55, 0., length(g - c - vec2(-.3, .3)*r));
-      res.z = smoothstep(r*.45, r, d)*cov;
+      res.z = smoothstep(r*.4, r, d)*cov*clamp(.55 - .65*dot(v, vec2(-.6, .8)), 0., 1.);
       res.w = step(.45, hash(id + seed + 5.5));
     }
   }
@@ -388,8 +389,9 @@ void main(){
     wa = vec2(fbm(fl + vec2(0., t*.33)), fbm(fl + vec2(5.2, -t*.27))) - .5;
     vec2 wb = vec2(fbm(fl*2.7 + wa*2. + vec2(1.7, t*.4)), fbm(fl*2.7 - wa*2. + vec2(8.3, -t*.5))) - .5;
     q = p + (wa*300. + wb*120.)*m;
-    float swirl = (fbm(q*.011 + vec2(7., 3.)) - .47)*260. + (p.y - inter)*.25;
-    field = mix(q.y - inter, swirl, smoothstep(.12, .5, m));
+    // Bands of kefir and fruit, warped into veins: more kefir toward the top, more fruit toward the floor.
+    float vein = sin(q.y*.05 + q.x*.013 + (fbm(q*.013 + vec2(7., 3.)) - .5)*7.);
+    field = mix(q.y - inter, vein*60. + (p.y - inter)*.2, smoothstep(.12, .5, m));
   }
   float e = mix(1.4, 3.4, m);
   float L = smoothstep(-e, e, field);      // 1 is kefir, 0 is fruit
@@ -411,7 +413,7 @@ void main(){
   vec4 lu = lb.x >= ls.x ? lb : ls;
   vec3 lumpCol = mix(mix(fruit, vec3(.92, .3, .44), .25), kefir*1.02, lu.w);
   col = mix(col, lumpCol, lu.x*inside);
-  col *= 1. - lu.z*inside*.3;
+  col *= 1. - lu.z*inside*.38;
   col += lu.y*lu.x*inside*.2;
 
   // Shaken hard it churns frothy, and settled it stays curdled: an uneven, grainy marble that never evens out.
@@ -419,7 +421,7 @@ void main(){
   if(curd > 0.){
     float grain = fbm(q*.07 + vec2(0., t*.3));
     col *= mix(1., .84 + .3*grain, curd);
-    col = mix(col, vec3(.96, .66, .74) + (grain - .5)*.14, smoothstep(.62, .98, m)*.5*(1. - cream));
+    col = mix(col, vec3(.96, .66, .74) + (grain - .5)*.14, smoothstep(.62, .98, m)*.38*(1. - cream));
   }
 
   // With the cultures in, it blends into one smooth, pale strawberry kefir.
@@ -430,7 +432,7 @@ void main(){
   }
 
   // Round-bottle shading, soft window light, a bright line where the liquid meets the air.
-  col *= mix(mix(vec3(.78, .79, .86), vec3(1.04), wall), mix(vec3(.94), vec3(1.01), wall), cream);
+  col *= mix(mix(vec3(.78, .79, .86), vec3(1.), wall), mix(vec3(.94), vec3(1.01), wall), cream);
   col += exp(-pow((p.x + 62.)/50., 2.))*.06*(1. - cream*.55);
   float below = surf - p.y;
   float a = smoothstep(0., 1.5, below);
