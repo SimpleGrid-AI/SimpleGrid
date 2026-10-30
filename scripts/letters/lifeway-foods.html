@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A bottle of kefir with strawberry at the bottom, beside the words: {{first}}, you make “the champagne of dairy.”">
+<meta property="og:image:alt" content="A glass bottle of plain white kefir sitting on strawberry purée, beside the words: {{first}}, you make “the champagne of dairy.”">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, shake the bottle.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes kefir for a living.">
@@ -35,38 +35,49 @@
   --tint:#EEF3FA;--pale:#FAFBFD;--ink:#14213A;--alert:#D7263D;--marker:#DDF0F8;--h2-hi:#163276;
 }
 
-/* ------------------------------------------------------------ The jar */
-/* The primary buttons are jar lids, ridges along the bottom edge. */
+/* ------------------------------------------------------------ The bottle */
+/* The primary buttons are bottle caps, ridges along the bottom edge. */
 .go-btn{padding-bottom:21px}
 .go-btn::after{
   content:'';position:absolute;left:12px;right:12px;bottom:5px;height:6px;border-radius:2px;opacity:.28;
   background:repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 7px);
 }
-/* The jar */
-.hero-art{--jar-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.jar{
+/* One bottle of kefir: plain white kefir on top, strawberry purée settled at the bottom. */
+.hero-art{--bottle-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.bottle{
   --glass:rgba(255,255,255,.84);--glass-soft:rgba(255,255,255,.44);--glass-fill:rgba(255,255,255,.1);
-  --lid:var(--accent);--lid-edge:var(--accent-edge);--lid-ridge:rgba(0,0,0,.24);
-  position:relative;z-index:3;flex:none;width:var(--jar-w);aspect-ratio:360/540;
+  --cap:var(--accent);--cap-edge:var(--accent-edge);--cap-ridge:rgba(0,0,0,.22);
+  --sg-bg:var(--brand);--sg-ink:#fff;
+  position:relative;z-index:3;flex:none;width:var(--bottle-w);aspect-ratio:360/560;
   cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;
 }
-.jar[data-tone=b]{--glass:color-mix(in srgb,var(--brand) 62%,transparent);--glass-soft:rgba(255,255,255,.72);--glass-fill:rgba(255,255,255,.18);--lid:var(--brand);--lid-edge:var(--brand-deep);--lid-ridge:rgba(255,255,255,.2)}
-.jar:active{cursor:grabbing}
-.jar-shadow{position:absolute;left:6%;right:6%;bottom:-3.2%;height:7.5%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,18,60,.5),rgba(0,18,60,0));transition:opacity .4s}
-.jar[data-tone=b] .jar-shadow{opacity:.55}
-.jar-move{position:absolute;inset:0;will-change:transform}
-.jar-back,.jar-front{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.bottle[data-tone=b]{--glass:color-mix(in srgb,var(--brand) 62%,transparent);--glass-soft:rgba(255,255,255,.72);--glass-fill:rgba(255,255,255,.18);--cap:var(--brand);--cap-edge:var(--brand-deep);--cap-ridge:rgba(255,255,255,.2)}
+.bottle:active{cursor:grabbing}
+.bottle-shadow{position:absolute;left:13%;right:13%;bottom:-2.4%;height:6.4%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,10,40,.5),rgba(0,10,40,0));transition:opacity .4s}
+.bottle[data-tone=b] .bottle-shadow{opacity:.55}
+.bottle-move{position:absolute;inset:0;will-change:transform}
+.bottle-back,.bottle-front{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+/* The liquid fills the inside of the glass: shoulders, neck and all. */
 #liquid,.liquid-flat{
-  position:absolute;left:8.611%;top:12.963%;width:82.778%;height:84.444%;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='31 70 298 456' preserveAspectRatio='none'%3E%3Cpath d='M100 70L100 90C100 126 31 130 31 190L31 468C31 502 58 526 94 526L266 526C302 526 329 502 329 468L329 190C329 130 260 126 260 90L260 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='31 70 298 456' preserveAspectRatio='none'%3E%3Cpath d='M100 70L100 90C100 126 31 130 31 190L31 468C31 502 58 526 94 526L266 526C302 526 329 502 329 468L329 190C329 130 260 126 260 90L260 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  position:absolute;left:14.722%;top:12.5%;width:70.556%;height:84.464%;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='53 70 254 473' preserveAspectRatio='none'%3E%3Cpath d='M140 70L140 114C140 156 53 170 53 234L53 502C53 527 71 543 100 543L260 543C289 543 307 527 307 502L307 234C307 170 220 156 220 114L220 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='53 70 254 473' preserveAspectRatio='none'%3E%3Cpath d='M140 70L140 114C140 156 53 170 53 234L53 502C53 527 71 543 100 543L260 543C289 543 307 527 307 502L307 234C307 170 220 156 220 114L220 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
 }
 /* If WebGL isn't available, flat layers tell the same story. */
-.liquid-flat{display:none;background:linear-gradient(transparent 0 27.5%,#FFC21A 27.5% 63.2%,#B3123C 63.2%);transition:background .6s}
-.jar.no-gl #liquid{display:none}
-.jar.no-gl .liquid-flat{display:block}
-.jar.no-gl[data-phase=mixed] .liquid-flat,.jar.no-gl[data-phase=taking] .liquid-flat{background:linear-gradient(transparent 0 27.5%,#F08A4B 27.5%)}
-.jar.no-gl[data-phase=done] .liquid-flat{background:linear-gradient(transparent 0 24%,#FFF4D2 24%)}
+.liquid-flat{display:none;background:linear-gradient(transparent 0 30.4%,#FBFAF6 30.4%,#E6E7EC 68.1%,#D6224B 68.1%,#86092A);transition:background .6s}
+.bottle.no-gl #liquid{display:none}
+.bottle.no-gl .liquid-flat{display:block}
+.bottle.no-gl[data-phase=mixed] .liquid-flat,.bottle.no-gl[data-phase=taking] .liquid-flat{
+  background:
+    radial-gradient(closest-side,#FBF7F2 70%,transparent 80%) 22% 46%/17% 9% no-repeat,
+    radial-gradient(closest-side,#C8183E 70%,transparent 80%) 76% 56%/15% 8% no-repeat,
+    radial-gradient(closest-side,#FBF7F2 70%,transparent 80%) 66% 73%/13% 7% no-repeat,
+    radial-gradient(closest-side,#C8183E 70%,transparent 80%) 28% 82%/14% 7.5% no-repeat,
+    radial-gradient(closest-side,#FBF7F2 70%,transparent 80%) 52% 93%/12% 6.5% no-repeat,
+    radial-gradient(closest-side,#C8183E 70%,transparent 80%) 70% 39%/11% 6% no-repeat,
+    repeating-linear-gradient(-58deg,#F6DCE2 0 18px,#D93A5E 18px 34px,#FFF6F4 34px 48px,#E86C88 48px 66px) bottom/100% 69.6% no-repeat;
+}
+.bottle.no-gl[data-phase=done] .liquid-flat{background:linear-gradient(transparent 0 29.4%,#FCD3DD 29.4%)}
 
 .g-fill{fill:var(--glass-fill)}
 .g-outline{fill:none;stroke:var(--glass);stroke-width:3.2;stroke-linejoin:round;transition:stroke .4s}
@@ -74,42 +85,65 @@
 .g-base{fill:var(--glass-soft)}
 .g-rim{fill:var(--glass-soft)}
 .g-hi{fill:none;stroke:#fff;stroke-linecap:round}
-.jar-lid{transform-box:fill-box;transform-origin:center;transition:transform .36s cubic-bezier(.3,.7,.2,1)}
-.jar.lid-off .jar-lid{transform:translate(122px,-40px) rotate(17deg)}
-.lid-top{fill:var(--lid);transition:fill .4s}
-.lid-edge{fill:var(--lid-edge);transition:fill .4s}
-.lid-ridge{stroke:var(--lid-ridge);stroke-width:3}
-.jar-label{opacity:0;transform:scale(.9);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
-.jar.is-labelled .jar-label{opacity:1;transform:none}
+.bottle-cap{transform-box:fill-box;transform-origin:center;transition:transform .36s cubic-bezier(.3,.7,.2,1)}
+.bottle.cap-off .bottle-cap{transform:translate(124px,-30px) rotate(20deg)}
+.cap-top{fill:var(--cap);transition:fill .4s}
+.cap-edge{fill:var(--cap-edge);transition:fill .4s}
+.cap-ridge{stroke:var(--cap-ridge);stroke-width:3}
+.bottle-label{opacity:0;transform:scale(.9);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.bottle.is-labelled .bottle-label{opacity:1;transform:none}
+.lb-band{fill:var(--brand)}
+.lb-stripe{fill:none;stroke:#F59BB0;stroke-width:3}
+.lb-word{fill:#fff}
+.lb-sub{fill:var(--brand)}
+.lb-small{fill:var(--ink)}
 
-/* The egg yolk. The outer element falls, the inner one gets whisked in. */
-.yolk{position:absolute;left:50%;top:66.3%;width:21%;aspect-ratio:1;margin:-10.5% 0 0 -10.5%;visibility:hidden}
-.yolk.in{visibility:visible}
-.yolk.drop{animation:yolk-drop .95s both}
-.yolk-ball{
-  position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;
-  background:radial-gradient(circle at 36% 30%,#FFE99A 0 10%,#FFB800 42%,#EE8600 100%);
-  box-shadow:inset -5px -7px 12px rgba(170,70,0,.5),0 2px 9px rgba(110,35,0,.4);
+/* The cultures come in on a dropper, as one drop, and the drop is SimpleGrid.
+   The outer g falls, the inner one gets shaken in. */
+.dropper{opacity:0}
+.bottle.dropping .dropper{animation:dropper 1.3s both}
+.bottle.dropping .dp-bulb{animation:dp-squeeze 1.3s both}
+.dp-glass{fill:rgba(255,255,255,.2);stroke:rgba(255,255,255,.9);stroke-width:2.6;stroke-linejoin:round}
+.dp-collar{fill:#fff}
+.dp-bulb{fill:#E8476B;transform-box:fill-box;transform-origin:50% 100%}
+.dp-shine{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;opacity:.45}
+@keyframes dropper{
+  0%{opacity:0;transform:translateY(-90px);animation-timing-function:cubic-bezier(.2,.7,.3,1)}
+  8%{opacity:0}
+  20%{opacity:1}
+  28%{opacity:1;transform:none}
+  60%{opacity:1;transform:none;animation-timing-function:cubic-bezier(.5,0,.8,.5)}
+  72%{opacity:1}
+  86%,100%{opacity:0;transform:translateY(-90px)}
 }
-.yolk-ball svg{width:58%;height:58%;color:rgba(130,62,0,.72)}
-@keyframes yolk-drop{
-  0%{transform:translateY(-500%);animation-timing-function:cubic-bezier(.5,0,.9,.6)}
-  34%{transform:translateY(-226%);animation-timing-function:cubic-bezier(.1,.6,.3,1)}
-  68%{transform:translateY(15%);animation-timing-function:ease-in-out}
-  85%{transform:translateY(-7%);animation-timing-function:ease-in-out}
-  100%{transform:translateY(0)}
+@keyframes dp-squeeze{
+  0%,30%{transform:none}
+  38%{transform:scale(1.14,.74)}
+  54%,100%{transform:none}
+}
+.drop{visibility:hidden;transform-box:fill-box;transform-origin:50% 0}
+.drop.in{visibility:visible}
+.drop.fall{animation:drop-fall .95s both}
+.drop-ball{transform-box:fill-box;transform-origin:center}
+@keyframes drop-fall{
+  0%{transform:translateY(-262px) scale(.25);animation-timing-function:cubic-bezier(.3,.6,.4,1)}
+  20%{transform:translateY(-262px) scale(1);animation-timing-function:cubic-bezier(.55,0,.9,.55)}
+  36%{transform:translateY(-196px) scale(1);animation-timing-function:cubic-bezier(.12,.6,.3,1)}
+  72%{transform:translateY(12px) scale(1);animation-timing-function:ease-in-out}
+  87%{transform:translateY(-5px) scale(1);animation-timing-function:ease-in-out}
+  100%{transform:translateY(0) scale(1)}
 }
 
-.hero-art .callouts{height:calc(var(--jar-w)*1.5)}
-.callout-oil{top:35%}
-.callout-vin{top:73%}
-.callout-gap{top:calc(66.3% - 15px)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--jar-w)*.06)}
-.callout-oil h3 i{background:#FFC21A}
-.callout-vin h3 i{background:#C4163F}
+.hero-art .callouts{height:calc(var(--bottle-w)*1.556)}
+.callout-top{top:41%}
+.callout-bottom{top:75.5%}
+.callout-gap{top:calc(70% - 15px)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--bottle-w)*.135)}
+.callout-top h3 i{background:#FBFAF6}
+.callout-bottom h3 i{background:#D6224B}
 
 @media (max-width:980px){
-  .hero-art{--jar-w:clamp(158px,43vw,290px)}
+  .hero-art{--bottle-w:clamp(158px,43vw,290px)}
 }
 
 <!--#include stage.css-->
@@ -136,56 +170,66 @@
       </div>
 
       <div class="hero-art">
-        <div class="jar hero-obj" id="jar" role="img" aria-label="A glass jar with a layer of oil floating on a layer of vinegar." data-phase="separated" data-tone="a">
-          <div class="jar-shadow" id="jarShadow"></div>
-          <div class="jar-move" id="jarMove">
-            <svg class="jar-back" viewBox="0 0 360 540" aria-hidden="true">
-              <path class="g-fill" d="M92 62L92 86C92 118 22 124 22 186L22 470C22 510 52 536 92 536L268 536C308 536 338 510 338 470L338 186C338 124 268 118 268 86L268 62Z"/>
+        <div class="bottle hero-obj" id="bottle" role="img" aria-label="A glass bottle with a layer of plain white kefir on top of a layer of strawberry purée. Nothing links them." data-phase="separated" data-tone="a">
+          <div class="bottle-shadow" id="bottleShadow"></div>
+          <div class="bottle-move" id="bottleMove">
+            <svg class="bottle-back" viewBox="0 0 360 560" aria-hidden="true">
+              <path class="g-fill" d="M132 68L132 112C132 150 44 166 44 230L44 504C44 534 64 552 98 552L262 552C296 552 316 534 316 504L316 230C316 166 228 150 228 112L228 68Z"/>
             </svg>
             <canvas id="liquid" aria-hidden="true"></canvas>
             <div class="liquid-flat" aria-hidden="true"></div>
-            <div class="yolk" id="yolk" aria-hidden="true">
-              <div class="yolk-ball" id="yolkBall">
-                <svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg>
-              </div>
-            </div>
-            <svg class="jar-front" viewBox="0 0 360 540" aria-hidden="true">
-              <g class="jar-label">
-                <path d="M22 288Q180 322 338 288L338 392Q180 426 22 392Z" fill="#0047AB"/>
-                <path d="M22 297Q180 331 338 297M22 383Q180 417 338 383" fill="none" stroke="#FFC72C" stroke-width="3"/>
-                <path id="ribbonLine" d="M36 367Q180 398 324 367" fill="none"/>
-                <text font-family="Merriweather, Georgia, serif" font-weight="900" font-size="45" fill="#FAFAFA" text-anchor="middle" letter-spacing="-.5"><textPath href="#ribbonLine" startOffset="50%">SimpleGrid</textPath></text>
-                <circle cx="180" cy="248" r="37" fill="#FFC72C"/>
-                <g fill="none" stroke="#0047AB" transform="translate(159 227)"><rect x="1.5" y="1.5" width="39" height="39" rx="7" stroke-width="3"/><path d="M14.5 1.5v39M27.5 1.5v39M1.5 14.5h39M1.5 27.5h39" stroke-width="2.6"/></g>
-                <path id="subLine" d="M64 451Q180 474 296 451" fill="none"/>
-                <text font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="800" font-size="23" fill="#0047AB" text-anchor="middle"><textPath href="#subLine" startOffset="50%">Real operations</textPath></text>
-                <text font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="500" font-size="12.5" fill="#1A1A1A" text-anchor="middle"><tspan x="180" y="489">Net wt: everything between your</tspan><tspan x="180" dy="15.5">books and your shop floor</tspan></text>
+            <svg class="bottle-front" viewBox="0 0 360 560" aria-hidden="true">
+              <!-- the label it gets once it comes out smooth -->
+              <g class="bottle-label">
+                <path class="lb-band" d="M44 300Q180 330 316 300L316 420Q180 450 44 420Z"/>
+                <path class="lb-stripe" d="M44 309Q180 339 316 309M44 411Q180 441 316 411"/>
+                <path id="ribbonLine" d="M56 374Q180 404 304 374" fill="none"/>
+                <text class="lb-word" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="40" text-anchor="middle" letter-spacing="-.5"><textPath href="#ribbonLine" startOffset="50%">SimpleGrid</textPath></text>
+                <g transform="translate(180 260) scale(1.5)"><!--#include sg-badge.svg--></g>
+                <path id="subLine" d="M76 468Q180 486 284 468" fill="none"/>
+                <text class="lb-sub" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="800" font-size="23" text-anchor="middle"><textPath href="#subLine" startOffset="50%">Real operations</textPath></text>
+                <text class="lb-small" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="500" font-size="12.5" text-anchor="middle"><tspan x="180" y="503">Shake well. Your books and your</tspan><tspan x="180" dy="15.5">shop floor, in one bottle.</tspan></text>
               </g>
-              <path class="g-outline" d="M92 62L92 86C92 118 22 124 22 186L22 470C22 510 52 536 92 536L268 536C308 536 338 510 338 470L338 186C338 124 268 118 268 86L268 62"/>
-              <path class="g-inner" d="M100 72L100 90C100 126 31 130 31 190L31 468C31 502 58 526 94 526L266 526C302 526 329 502 329 468L329 190C329 130 260 126 260 90L260 72"/>
-              <path class="g-base" d="M22 470C22 510 52 536 92 536L268 536C308 536 338 510 338 470C338 502 302 526 266 526L94 526C58 526 22 502 22 470Z"/>
-              <path class="g-hi" d="M52 218C47 300 47 392 54 462" stroke-width="10" opacity=".42"/>
-              <path class="g-hi" d="M68 198C69 172 90 152 110 136" stroke-width="6" opacity=".5"/>
-              <path class="g-hi" d="M312 232C316 300 316 382 310 450" stroke-width="4.5" opacity=".24"/>
-              <rect class="g-rim" x="86" y="66" width="188" height="9" rx="4.5"/>
-              <g class="jar-lid">
-                <rect class="lid-edge" x="72" y="10" width="216" height="58" rx="11"/>
-                <rect class="lid-top" x="72" y="6" width="216" height="55" rx="11"/>
-                <g class="lid-ridge"><path d="M86 22v32M100 22v32M114 22v32M128 22v32M142 22v32M156 22v32M170 22v32M184 22v32M198 22v32M212 22v32M226 22v32M240 22v32M254 22v32M268 22v32"/></g>
-                <rect x="84" y="11" width="192" height="4" rx="2" fill="#fff" opacity=".4"/>
+              <!-- the dropper the cultures come in on -->
+              <g class="dropper">
+                <path class="dp-glass" d="M168 40L192 40L192 82L185 98L175 98L168 82Z"/>
+                <rect class="dp-collar" x="160" y="28" width="40" height="12" rx="3"/>
+                <path class="dp-bulb" d="M160 32C152 32 151 14 152 2C153 -14 166 -20 180 -20C194 -20 207 -14 208 2C209 14 208 32 200 32Z"/>
+                <path class="dp-shine" d="M163 6C163 -5 168 -11 176 -13"/>
+              </g>
+              <!-- the culture: one drop, and it's SimpleGrid -->
+              <g transform="translate(180 392)"><g class="drop" id="drop"><g class="drop-ball" id="dropBall">
+                <circle r="32" fill="#fff"/>
+                <g transform="scale(1.4)"><!--#include sg-badge.svg--></g>
+              </g></g></g>
+              <!-- the glass -->
+              <path class="g-outline" d="M132 68L132 112C132 150 44 166 44 230L44 504C44 534 64 552 98 552L262 552C296 552 316 534 316 504L316 230C316 166 228 150 228 112L228 68"/>
+              <path class="g-inner" d="M140 74L140 114C140 156 53 170 53 234L53 502C53 527 71 543 100 543L260 543C289 543 307 527 307 502L307 234C307 170 220 156 220 114L220 74"/>
+              <path class="g-base" d="M44 504C44 534 64 552 98 552L262 552C296 552 316 534 316 504C316 530 290 543 260 543L100 543C70 543 44 530 44 504Z"/>
+              <path class="g-hi" d="M70 262C65 340 65 420 72 488" stroke-width="10" opacity=".42"/>
+              <path class="g-hi" d="M78 224C82 198 104 174 128 154" stroke-width="6" opacity=".5"/>
+              <path class="g-hi" d="M292 272C297 340 297 420 290 478" stroke-width="4.5" opacity=".24"/>
+              <path class="g-hi" d="M148 90V109" stroke-width="4" opacity=".4"/>
+              <rect class="g-rim" x="118" y="76" width="124" height="9" rx="4.5"/>
+              <!-- the cap -->
+              <g class="bottle-cap">
+                <rect class="cap-edge" x="122" y="10" width="116" height="60" rx="10"/>
+                <rect class="cap-top" x="122" y="4" width="116" height="60" rx="10"/>
+                <g class="cap-ridge"><path d="M135 18v34M144 18v34M153 18v34M162 18v34M171 18v34M180 18v34M189 18v34M198 18v34M207 18v34M216 18v34M225 18v34"/></g>
+                <rect x="132" y="9" width="96" height="4" rx="2" fill="#fff" opacity=".4"/>
               </g>
             </svg>
           </div>
         </div>
         <div class="callouts">
-          <div class="callout callout-oil">
-            <h3><i></i><span id="oilTitle">The oil: your ERP</span></h3>
-            <p id="oilText">What the system says happened.</p>
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The kefir: your ERP</span></h3>
+            <p id="topText">What the system says is there.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
-          <div class="callout callout-vin">
-            <h3><i></i><span id="vinTitle">The vinegar: your floor</span></h3>
-            <p id="vinText">What’s really happening, on Excel, whiteboards and phones.</p>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The fruit: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -193,10 +237,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Shake the jar to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Shake the bottle to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The kefir is your ERP, the fruit is your floor, and nothing links them. Shake it, or grab the bottle and shake it yourself.</p>
       </div>
     </div>
   </div>
@@ -265,9 +309,9 @@ precision highp float;
 uniform vec2 uRes;
 uniform float uT, uMix, uCream, uSlope, uWave, uRipple;
 
-// The canvas spans the jar's inside: 298 x 456 units of the jar drawing, y measured up from the floor of the jar.
-const vec2 SIZE = vec2(298., 456.);
-const float SURFACE = 330., INTERFACE = 168.;
+// The canvas spans the bottle's inside: 254 x 473 units of the bottle drawing, y measured up from its floor.
+const vec2 SIZE = vec2(254., 473.);
+const float SURFACE = 329., INTERFACE = 151.;
 
 float hash(vec2 p){ vec3 q = fract(vec3(p.xyx)*.1031); q += dot(q, q.yzx + 33.33); return fract((q.x + q.y)*q.z); }
 float noise(vec2 p){
@@ -280,26 +324,43 @@ float fbm(vec2 p){
   for(int i = 0; i < 3; i++){ s += a*noise(p); p = p*2.03 + vec2(17., 9.); a *= .5; }
   return s;
 }
-// Distance to the jar's wall, for the shading that makes it read as round.
-float sdBody(vec2 p){
-  vec2 q = abs(p - vec2(0., 300.)) - vec2(149., 300.) + 58.;
-  return length(max(q, 0.)) + min(max(q.x, q.y), 0.) - 58.;
+// Distance to the bottle's wall, for the shading that makes it read as round:
+// straight sides, a rounded base, and the shoulders closing in toward the neck.
+float sdBottle(vec2 p){
+  float hw = mix(127., 40., smoothstep(309., 429., p.y));
+  vec2 q = vec2(abs(p.x) - hw + 44., 44. - p.y);
+  return length(max(q, 0.)) + min(max(q.x, q.y), 0.) - 44.;
 }
-// Round beads of one liquid hanging in the other. x = coverage, y = highlight.
-vec2 beads(vec2 p, float cell, float drift, float density, float seed){
+// Lumps that won't blend in. x = coverage, y = highlight, z = the shaded edge that makes it a lump,
+// w = which layer it came from (1 kefir, 0 fruit).
+vec4 lumps(vec2 p, float cell, float drift, float density, float seed){
   vec2 g = p/cell;
   g.y -= drift;
-  vec2 id0 = floor(g), res = vec2(0.);
+  vec2 id0 = floor(g);
+  vec4 res = vec4(0.);
   for(int j = -1; j <= 1; j++) for(int i = -1; i <= 1; i++){
     vec2 id = id0 + vec2(float(i), float(j));
     if(hash(id + seed) > density) continue;
     vec2 c = id + vec2(hash(id + seed + 3.1), hash(id + seed + 7.7));
-    float r = .14 + .24*hash(id + seed + 11.3);
-    float d = length(g - c);
-    float cov = smoothstep(r, r - .07, d);
-    if(cov > res.x){ res.x = cov; res.y = smoothstep(r*.5, 0., length(g - c - vec2(-.35, .35)*r)); }
+    float r = .15 + .23*hash(id + seed + 11.3);
+    float d = length(g - c) + (noise((g - c)*5. + id*3.7) - .5)*r*.7;
+    float cov = smoothstep(r, r - .05, d);
+    if(cov > res.x){
+      res.x = cov;
+      res.y = smoothstep(r*.55, 0., length(g - c - vec2(-.3, .3)*r));
+      res.z = smoothstep(r*.45, r, d)*cov;
+      res.w = step(.45, hash(id + seed + 5.5));
+    }
   }
   return res;
+}
+// Strawberry seeds: a fleck here and there in the fruit.
+float seeds(vec2 p){
+  vec2 g = p/9.;
+  vec2 id = floor(g);
+  if(hash(id + 91.) > .3) return 0.;
+  vec2 c = id + .25 + .5*vec2(hash(id + 13.), hash(id + 29.));
+  return smoothstep(.16, .07, length((g - c)*vec2(1.25, 1.)));
 }
 
 void main(){
@@ -307,69 +368,75 @@ void main(){
   vec2 p = vec2((uv.x - .5)*SIZE.x, uv.y*SIZE.y);
   float m = uMix, t = uT, cream = uCream;
 
-  // The two levels stay flat while the jar tilts, and slosh a little behind it.
-  float calm = 1. - cream*.92;
+  // The two levels stay flat while the bottle tilts, and slosh a little behind it.
+  float calm = 1. - cream*.85;
   float amp = uWave*calm;
-  float rip = uRipple*sin(abs(p.x)*.13 - t*16.)*exp(-abs(p.x)*.011);
-  float w1 = sin(p.x*.028 + t*5.1)*1.5 + sin(p.x*.061 - t*3.4)*.8;
-  float w2 = sin(p.x*.021 - t*3.2)*2.2 + sin(p.x*.052 + t*4.3)*1.1;
+  float rip = uRipple*sin(abs(p.x)*.15 - t*16.)*exp(-abs(p.x)*.013);
+  float w1 = sin(p.x*.033 + t*5.1)*1.5 + sin(p.x*.071 - t*3.4)*.8;
+  float w2 = sin(p.x*.025 - t*3.2)*2.2 + sin(p.x*.061 + t*4.3)*1.1;
   float surf = SURFACE + uSlope*p.x*calm + w1*(.6 + amp*7.)*calm + rip*7.;
-  if(cream > 0.) surf += cream*(16. + (fbm(vec2(p.x*.011 + 3., 1.)) - .5)*30.);
+  // Blended, it rises a touch under a soft head of froth.
+  if(cream > 0.) surf += cream*(5. + (fbm(vec2(p.x*.03 + 3., 1.)) - .5)*4.);
   float inter = INTERFACE + uSlope*1.12*p.x + w2*(.5 + amp*8.) + rip*5.;
 
-  // Marbling: the coordinates get warped harder the more the jar has been shaken.
-  // Sitting still costs next to nothing, so a modest laptop isn't working for an idle jar.
-  vec2 fl = p*.0085, wa = vec2(0.), q = p;
+  // Marbling: the coordinates get warped harder the more the bottle has been shaken, and past a point
+  // the two layers stop being layers at all: pink and white swirled through the whole bottle.
+  // Sitting still costs next to nothing, so a modest laptop isn't working for an idle bottle.
+  vec2 fl = p*.0095, wa = vec2(0.), q = p;
+  float field = p.y - inter;
   if(m > .002){
     wa = vec2(fbm(fl + vec2(0., t*.33)), fbm(fl + vec2(5.2, -t*.27))) - .5;
     vec2 wb = vec2(fbm(fl*2.7 + wa*2. + vec2(1.7, t*.4)), fbm(fl*2.7 - wa*2. + vec2(8.3, -t*.5))) - .5;
-    q = p + (wa*320. + wb*130.)*m;
+    q = p + (wa*300. + wb*120.)*m;
+    float swirl = (fbm(q*.011 + vec2(7., 3.)) - .47)*260. + (p.y - inter)*.25;
+    field = mix(q.y - inter, swirl, smoothstep(.12, .5, m));
   }
-  float d = q.y - inter;
-  float e = mix(1.4, 8., m);
-  float L = smoothstep(-e, e, d);
+  float e = mix(1.4, 3.4, m);
+  float L = smoothstep(-e, e, field);      // 1 is kefir, 0 is fruit
 
   float hO = clamp((p.y - INTERFACE)/(SURFACE - INTERFACE), 0., 1.);
   float hV = clamp(p.y/INTERFACE, 0., 1.);
-  vec3 oil = mix(vec3(.97, .62, .04), vec3(1., .82, .22), hO);
-  vec3 vin = mix(vec3(.47, .02, .15), vec3(.82, .09, .24), hV);
-  vec3 col = mix(vin, oil, L);
+  vec3 kefir = mix(vec3(.9, .905, .925), vec3(1., .99, .965), hO);
+  vec3 fruit = mix(vec3(.5, .03, .14), vec3(.86, .13, .29), hV);
+  vec3 col = mix(mix(fruit, vec3(.96, .74, .4), seeds(q)*.8*(1. - cream)), kefir, L);
 
-  // Big beads when it's nearly separated, fine ones as it mixes.
-  float bigD = .05 + .5*smoothstep(0., .35, m)*(1. - smoothstep(.45, .85, m));
-  float fineD = smoothstep(.1, .6, m)*.92;
-  float dir = L > .5 ? -1. : 1.;
-  vec2 bb = beads(p, 46., t*dir*.8, bigD, 1.);
-  vec2 bs = fineD > 0. ? beads(p, 15., t*dir*1.6, fineD, 40.) : vec2(0.);
-  float wall = smoothstep(0., 76., -sdBody(p));
-  float cover = max(bb.x, bs.x)*smoothstep(6., 30., -sdBody(p));
-  float hi = max(bb.y*bb.x, bs.y*bs.x);
-  vec3 other = L > .5 ? vin*1.14 : oil;
-  col = mix(col, other, cover);
-  col += hi*.3;
+  // Shaken without the cultures, both layers break into lumps of each other.
+  float wall = smoothstep(0., 64., -sdBottle(p));
+  float inside = smoothstep(4., 26., -sdBottle(p));
+  float bigD = .32*smoothstep(0., .35, m)*(1. - smoothstep(.6, 1., m))*(1. - cream);
+  float fineD = smoothstep(.15, .6, m)*.42*(1. - cream);
+  vec2 lp = p + wa*90.*m;
+  vec4 lb = bigD > 0. ? lumps(lp, 44., t*.35, bigD, 1.) : vec4(0.);
+  vec4 ls = fineD > 0. ? lumps(lp, 17., t*.7, fineD, 40.) : vec4(0.);
+  vec4 lu = lb.x >= ls.x ? lb : ls;
+  vec3 lumpCol = mix(mix(fruit, vec3(.92, .3, .44), .25), kefir*1.02, lu.w);
+  col = mix(col, lumpCol, lu.x*inside);
+  col *= 1. - lu.z*inside*.3;
+  col += lu.y*lu.x*inside*.2;
 
-  // Shaken hard, a vinaigrette goes cloudy.
-  float cloud = smoothstep(.28, .92, m);
-  if(cloud > 0.){
-    vec3 cloudCol = vec3(.96, .51, .29) + (fbm(fl*7. + t*.4) - .5)*.16;
-    col = mix(col, cloudCol, cloud*.8);
+  // Shaken hard it churns frothy, and settled it stays curdled: an uneven, grainy marble that never evens out.
+  float curd = smoothstep(.25, .75, m)*(1. - cream);
+  if(curd > 0.){
+    float grain = fbm(q*.07 + vec2(0., t*.3));
+    col *= mix(1., .84 + .3*grain, curd);
+    col = mix(col, vec3(.96, .66, .74) + (grain - .5)*.14, smoothstep(.62, .98, m)*.5*(1. - cream));
   }
 
-  // With the emulsifier in, it thickens into something smooth and pale.
+  // With the cultures in, it blends into one smooth, pale strawberry kefir.
   if(cream > 0.){
     float ridge = fbm(p*.018 + wa*2.4);
-    vec3 creamCol = vec3(1., .965, .84)*(.982 + .03*smoothstep(.34, .66, ridge));
-    col = mix(col, creamCol, smoothstep(.0, 1., cream));
+    vec3 creamCol = vec3(.99, .8, .85)*(.975 + .04*smoothstep(.34, .66, ridge));
+    col = mix(col, creamCol, smoothstep(0., 1., cream));
   }
 
-  // Round-jar shading, soft window light, a bright line where the liquid meets the air.
-  col *= mix(mix(vec3(.84, .7, .62), vec3(1.05), wall), mix(vec3(.95), vec3(1.01), wall), cream);
-  col += exp(-pow((p.x + 74.)/58., 2.))*.07*(1. - cream*.55);
+  // Round-bottle shading, soft window light, a bright line where the liquid meets the air.
+  col *= mix(mix(vec3(.78, .79, .86), vec3(1.04), wall), mix(vec3(.94), vec3(1.01), wall), cream);
+  col += exp(-pow((p.x + 62.)/50., 2.))*.06*(1. - cream*.55);
   float below = surf - p.y;
   float a = smoothstep(0., 1.5, below);
   float men = smoothstep(8., 1., below)*a;
-  col = mix(col, col*1.1 + .09, men*.75);
-  col += exp(-pow(d/2.2, 2.))*(1. - m)*(1. - cream)*vec3(.3, .22, .1);
+  col = mix(col, col*1.08 + .08, men*.7);
+  col = mix(col, vec3(1., .94, .95), smoothstep(12., 2., below)*a*cream*.55);
 
   col = clamp(col, 0., 1.);
   gl_FragColor = vec4(col*a, a);
@@ -384,30 +451,30 @@ void main(){
   var lerp = function(a, b, t){ return a + (b - a)*t; };
   var smooth = function(a, b, v){ var t = clamp((v - a)/(b - a), 0, 1); return t*t*(3 - 2*t); };
 
-  /* ----------------------------------------------------------------- The jar */
-  var hero = $('hero'), jar = $('jar'), mover = $('jarMove'), shadow = $('jarShadow');
+  /* -------------------------------------------------------------- The bottle */
+  var hero = $('hero'), bottle = $('bottle'), mover = $('bottleMove'), shadow = $('bottleShadow');
   var canvas = $('liquid'), btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
-  var yolk = $('yolk'), yolkBall = $('yolkBall');
+  var drop = $('drop'), dropBall = $('dropBall');
 
   var COPY = {
-    apart:    { btn: 'Shake the jar to see your operations', caption: 'Your ERP floats on top, your floor sits underneath, and nothing links them. Shake it, or grab the jar and shake it yourself.' },
+    apart:    { btn: 'Shake the bottle to see your operations', caption: 'The kefir is your ERP, the fruit is your floor, and nothing links them. Shake it, or grab the bottle and shake it yourself.' },
     messing:  { btn: 'Shaking…', caption: 'Shaking them together. That’s what most ERP go-lives do.' },
-    mess:     { btn: 'Add the emulsifier', caption: 'That’s your operations today: a big mess. Your ERP and your floor got shaken together, and they still don’t mix. It won’t settle back, either.' },
-    dosing:   { btn: 'Adding…', caption: 'Lid off. In goes the yolk.' },
-    dosed:    { btn: 'Shake it again', caption: 'In goes the yolk. That’s SimpleGrid. Unlike 2015, there’s no shortage of this one. Now shake it again.' },
-    cleaning: { btn: 'Shaking…', caption: 'Watch the mess come together.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth emulsion. Your ERP and your floor finally tell the same story, and it won’t break.' }
+    mess:     { btn: 'Add the cultures', caption: 'That’s your operations today: a big mess. Your ERP and your floor got shaken together, and all they made was lumps. It won’t settle back, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Cap off. In go the cultures.' },
+    dosed:    { btn: 'Shake it again', caption: 'That’s SimpleGrid: the live culture that links your ERP and your floor. Now shake well.' },
+    cleaning: { btn: 'Shaking…', caption: 'Watch the lumps blend away.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth strawberry kefir. Your ERP and your floor finally tell the same story, and it stays that way.' }
   };
   var ARIA = {
-    apart: 'A glass jar with a layer of oil floating on a layer of vinegar.',
-    mess: 'The same jar shaken into a churning, broken mess of oil and vinegar that won’t settle.',
-    done: 'A glass jar of smooth, pale emulsion with a SimpleGrid label.'
+    apart: 'A glass bottle with a layer of plain white kefir on top of a layer of strawberry purée. Nothing links them.',
+    mess: 'The same bottle shaken into a lumpy pink-and-white mess that won’t blend and won’t settle.',
+    done: 'A bottle of smooth, pale pink strawberry kefir with a SimpleGrid label.'
   };
 
-  // messy: shaken without the emulsifier, so it churns and never settles. stable: the yolk is in.
+  // messy: shaken without the cultures, so it churns and never settles. stable: the cultures are in.
   var messy = false, stable = false, touched = false;
   var s = { x:0, y:0, vx:0, vy:0, tilt:0, tiltV:0, slope:0, slopeV:0, energy:0, mix:0, cream:0, prog:0, ripple:0, wave:0, flow:0 };
-  var drag = null, shakeLeft = 0, shakeT = 0, waiting = null;
+  var drag = null, shakeLeft = 0, shakeT = 0, waiting = null, timers = [];
 
   function shake(){
     touched = true;
@@ -416,77 +483,90 @@ void main(){
   }
   // Resolves once the liquid gets where a move is taking it; the physics checks every frame.
   function until(test){ return new Promise(function(done){ waiting = { test: test, done: done }; }); }
+  // A step of a move, at once under reduced motion. Start over clears any still waiting.
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
 
   function setCallouts(final){
     $('gapTag').hidden = final;
-    $('oilTitle').textContent = final ? 'Your ERP' : 'The oil: your ERP';
-    $('oilText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
-    $('vinTitle').textContent = final ? 'Your spreadsheets' : 'The vinegar: your floor';
-    $('vinText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = final ? 'Your ERP' : 'The kefir: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says is there.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The fruit: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
   var story = SG.story({
-    hero: hero, obj: jar, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.jar',
+    hero: hero, obj: bottle, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.bottle',
     ops: {
-      mess: ['Your operations, today', 'Shaken together, still not linked. It churns, and it won’t settle back.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same jar, same mess. Now there’s an emulsifier in it.']
+      mess: ['Your operations, today', 'Shaken together, still not linked. It’s all lumps, and it won’t settle back.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same bottle, same lumps. Now there’s a culture in it.']
     },
-    // Shake it without the emulsifier: it churns into a mess, and the mess stays.
+    // Shake it without the cultures: it goes lumpy, and the lumps stay.
     mess: function(){
       messy = true;
-      jar.dataset.phase = 'mixed';
+      bottle.dataset.phase = 'mixed';
       if (!drag && shakeLeft <= 0) shake();
       return until(function(){ return shakeLeft <= 0 && s.mix > .4; });
     },
+    // Cap off, the dropper in, one drop: SimpleGrid sinks to where the two layers meet. Cap back on.
     dose: function(){
-      jar.classList.add('lid-off');
+      bottle.classList.add('cap-off');
       return new Promise(function(done){
-        setTimeout(function(){
-          yolk.classList.add('in');
-          if (!reduce) yolk.classList.add('drop');
-          setTimeout(function(){ s.ripple = 1; s.slopeV += .9; }, reduce ? 0 : 330);
-          setTimeout(function(){ jar.classList.remove('lid-off'); stable = true; s.prog = 0; done(); }, reduce ? 0 : 900);
-        }, reduce ? 0 : 340);
+        later(function(){ if (!reduce) bottle.classList.add('dropping'); }, 160);
+        later(function(){
+          drop.classList.add('in');
+          if (!reduce) drop.classList.add('fall');
+        }, 560);
+        later(function(){ s.ripple = 1; s.slopeV += .9; }, 900);
+        later(function(){ bottle.classList.remove('cap-off', 'dropping'); stable = true; s.prog = 0; done(); }, 1540);
       });
     },
-    // Shake it again with the yolk in: the same mess comes together, smooth.
+    // Shake it again with the cultures in: the same mess blends smooth.
     clean: function(){
-      jar.dataset.phase = 'taking';
+      bottle.dataset.phase = 'taking';
       if (!drag && shakeLeft <= 0) shake();
       return until(function(){ return s.prog >= 1; });
     },
     restore: function(){
       waiting = null;
+      timers.forEach(clearTimeout);
+      timers = [];
       messy = stable = false;
       s.mix = s.cream = s.prog = s.energy = 0;
       shakeLeft = 0;
-      yolk.classList.remove('in', 'drop');
-      yolkBall.style.opacity = '';
-      yolkBall.style.transform = '';
-      jar.dataset.phase = 'separated';
+      drop.classList.remove('in', 'fall');
+      dropBall.style.opacity = '';
+      dropBall.style.transform = '';
+      bottle.classList.remove('cap-off', 'dropping');
+      bottle.dataset.phase = 'separated';
     },
     final: function(on){
       setCallouts(on);
-      jar.classList.toggle('is-labelled', on);
-      if (on) jar.dataset.phase = 'done';
-      jar.dataset.tone = on ? 'b' : 'a';
+      bottle.classList.toggle('is-labelled', on);
+      if (on) bottle.dataset.phase = 'done';
+      bottle.dataset.tone = on ? 'b' : 'a';
     }
   });
 
-  // Grab the jar. Vertical swipes still scroll the page on a phone.
-  jar.addEventListener('pointerdown', function(e){
+  // Grab the bottle. Vertical swipes still scroll the page on a phone.
+  bottle.addEventListener('pointerdown', function(e){
     touched = true;
-    drag = { px: e.clientX, py: e.clientY, x: 0, y: 0 };
-    try { jar.setPointerCapture(e.pointerId); } catch (err) {}
+    drag = { px: e.clientX, py: e.clientY, x: 0, y: 0, far: 0, at: performance.now() };
+    try { bottle.setPointerCapture(e.pointerId); } catch (err) {}
   });
-  jar.addEventListener('pointermove', function(e){
+  bottle.addEventListener('pointermove', function(e){
     if (!drag) return;
-    drag.x = clamp(e.clientX - drag.px, -130, 130);
-    drag.y = clamp(e.clientY - drag.py, -70, 70);
+    var dx = e.clientX - drag.px, dy = e.clientY - drag.py;
+    drag.far = Math.max(drag.far, Math.abs(dx), Math.abs(dy));
+    drag.x = clamp(dx, -130, 130);
+    drag.y = clamp(dy, -70, 70);
   });
-  var letGo = function(){ drag = null; };
-  jar.addEventListener('pointerup', letGo);
-  jar.addEventListener('pointercancel', letGo);
+  bottle.addEventListener('pointerup', function(){
+    var was = drag;
+    drag = null;
+    // A tap, not a shake, does what the button does. Only shaking by hand is left to the physics below.
+    if (was && was.far < 8 && performance.now() - was.at < 600 && !story.busy() && story.phase() !== 'done') story.go();
+  });
+  bottle.addEventListener('pointercancel', function(){ drag = null; });
 
   function physics(dt){
     var tx = 0, ty = 0, boost = 0;
@@ -510,7 +590,7 @@ void main(){
       var tiltT = clamp(s.vx*.00027, -.42, .42) + boost;
       s.tiltV += ((tiltT - s.tilt)*420 - s.tiltV*26)*dt;
       s.tilt += s.tiltV*dt;
-      var K = lerp(190, 70, s.cream), C = lerp(3.2, 20, s.cream);
+      var K = lerp(190, 90, s.cream), C = lerp(3.2, 14, s.cream);
       var slopeT = -Math.tan(s.tilt) + clamp(-ax*.000012, -.42, .42)*(1 - s.cream*.8);
       s.slopeV += ((slopeT - s.slope)*K - s.slopeV*C)*dt;
       s.slope += s.slopeV*dt;
@@ -523,7 +603,7 @@ void main(){
     for (var i = 0; i < 3; i++) physics(dt/3);
     s.energy -= s.energy*dt*1.1;
 
-    // Shaken without the emulsifier, it never settles: it keeps churning around a broken, beaded mix.
+    // Shaken without the cultures, it never settles: it keeps churning around a lumpy, marbled mix.
     if (messy && !stable) s.energy = Math.max(s.energy, .2);
     if (!stable){
       var target = smooth(.12, .72, s.energy);
@@ -546,10 +626,11 @@ void main(){
     if (phase === 'cleaning' && !drag && shakeLeft <= 0 && s.energy < .12 && s.prog < 1) shake();
     if (waiting && waiting.test()){ var w = waiting; waiting = null; w.done(); }
 
+    // As it blends, the drop of SimpleGrid dissolves into the kefir.
     if (stable){
       var gone = smooth(.04, .42, s.prog);
-      yolkBall.style.opacity = 1 - gone;
-      yolkBall.style.transform = 'scale(' + (1 - gone*.55) + ') rotate(' + (s.flow*60) + 'deg)';
+      dropBall.style.opacity = 1 - gone;
+      dropBall.style.transform = 'scale(' + (1 - gone*.55) + ') rotate(' + (s.flow*60) + 'deg)';
     }
   }
 
@@ -611,10 +692,10 @@ void main(){
     size();
     draw();
     window.addEventListener('resize', function(){ size(); draw(); });
-    canvas.addEventListener('webglcontextlost', function(e){ e.preventDefault(); gl = null; jar.classList.add('no-gl'); });
+    canvas.addEventListener('webglcontextlost', function(e){ e.preventDefault(); gl = null; bottle.classList.add('no-gl'); });
   } else {
     gl = null;
-    jar.classList.add('no-gl');
+    bottle.classList.add('no-gl');
   }
 
   var raf = 0, last = 0, visible = true;
@@ -636,12 +717,13 @@ void main(){
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
       visible = entries[0].isIntersecting;
+      hero.classList.toggle('in-view', visible);
       visible ? run() : halt();
     }).observe(hero);
   }
   run();
 
-  // One small wobble if nobody's touched the jar. Only ever to point it out.
+  // One small wobble if nobody's touched the bottle. Only ever to point it out.
   if (!reduce){
     [3500, 11000].forEach(function(ms){
       setTimeout(function(){ if (!touched && story.phase() === 'apart'){ s.vx += 230; s.slopeV += .35; } }, ms);
