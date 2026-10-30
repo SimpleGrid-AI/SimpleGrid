@@ -605,7 +605,7 @@
       "theme": "#203569",
       "line_order": "Order 4417",
       "line_sku": "Powder pouches, 25,000",
-      "ps": "P.S. “A missed retail launch date costs more than the packaging turnaround behind it.” You wrote that this month. I couldn’t agree more."
+      "ps": "P.S. “A missed retail launch date costs more than the packaging turnaround behind it.” You wrote that in October. I couldn’t agree more."
     },
     "readers": [
       {
@@ -621,7 +621,7 @@
     "template": "fresh-factory.html",
     "values": {
       "co_name": "The Fresh Factory",
-      "theme": "#1F3A2B",
+      "theme": "#135E2A",
       "line_order": "Order 4417",
       "line_sku": "Dips, 2,400 cases",
       "ps": "P.S. SQF certified ten years straight, your site says. I’d love to see the floor that keeps that streak going."
