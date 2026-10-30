@@ -71,7 +71,7 @@
 .lt-arc{fill:none;stroke:#EBDFCC;stroke-linecap:round}
 .lt-drip{fill:#F6F1EA;stroke:rgba(46,41,37,.12);stroke-width:1.5}
 /* The pour, seen from above: where the stream hits. */
-.lt-stream{fill:#FBF8F3;opacity:0}
+.lt-stream{fill:#FBF8F3;opacity:0;transform-box:fill-box;transform-origin:center}
 /* The latte it ends up as. */
 .lt-base{opacity:0}
 .lt-leaf{fill:#FFF8EC;opacity:0;transform:scaleX(.12);transform-box:fill-box;transform-origin:center}
@@ -158,8 +158,6 @@
             <circle class="lt-saucer" cx="180" cy="190" r="148"/>
             <circle class="lt-ring" cx="180" cy="190" r="137"/>
             <circle class="lt-well" cx="180" cy="190" r="112"/>
-            <!-- the mess spills over onto the saucer too (the script places the drips) -->
-            <g id="ltDrips"></g>
             <!-- the cup, its handle to the right -->
             <circle class="lt-cup-shadow" cx="186" cy="197" r="100"/>
             <rect class="lt-handle" x="262" y="177" width="56" height="26" rx="13"/>
@@ -191,6 +189,8 @@
               <ellipse class="lt-stream" id="ltStream" cx="180" cy="262" rx="10" ry="10"/>
             </g>
             <circle class="lt-edge" cx="180" cy="190" r="84"/>
+            <!-- the mess spills over onto the rim and the saucer too (the script places the drips) -->
+            <g id="ltDrips"></g>
             <!-- once it comes clean, the saucer says whose latte it is -->
             <g transform="translate(180 309) scale(.58)"><g class="lt-tag sg-pop"><!--#include sg-tag.svg--></g></g>
             <!-- the floor: a steel jug of cold milk -->
@@ -314,7 +314,210 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+(function(){
+  /* ----------------------------------------------------------- The latte
+     Seen from above. The espresso is the ERP, the cold milk in the jug is the
+     floor, and nothing links them. Dump the cold milk straight in and the cup
+     goes muddy: pale blobs and broken rings that never come together, drips
+     on the saucer. That stays. The steam is SimpleGrid: the wand goes in
+     wearing the mark and the milk turns silky. Pour again, and the same mess
+     comes out one smooth latte with a rosetta on top. */
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), latte = $('latte'), jug = $('ltJug'), milk = $('ltMilk'), foam = $('ltFoam'), wand = $('ltWand');
+  var messG = $('ltMess'), dripG = $('ltDrips'), mud = $('ltMud'), base = $('ltBase'), stem = $('ltStem'), stream = $('ltStream');
+  var leaves = [].slice.call(latte.querySelectorAll('.lt-leaf'));
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Pour it to see your operations', caption: 'The espresso is your ERP, the cold milk is your floor, and nothing links them. Pour it, or tap the jug to pour it yourself.' },
+    messing:  { btn: 'Pouring…', caption: 'Pouring them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Steam the milk', caption: 'That’s your operations today: a big mess. Cold milk, dumped straight in: muddy, blotchy, and none of it comes together. It won’t fix itself, either.' },
+    dosing:   { btn: 'Steaming…', caption: 'In goes the steam wand.' },
+    dosed:    { btn: 'Pour it again', caption: 'In goes the steam. That’s SimpleGrid. The milk is silky now, so pour it again.' },
+    cleaning: { btn: 'Pouring…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth latte, rosetta and all. Your ERP and your floor finally pour as one.' }
+  };
+  var ARIA = {
+    apart: latte.getAttribute('aria-label'),
+    mess: 'The cold milk dumped into the espresso: a muddy, blotchy cup with pale blobs and broken rings that won’t come together, and drips on the saucer.',
+    dosed: 'A steam wand marked SimpleGrid in the milk jug, the milk now silky, beside the same muddy cup.',
+    done: 'One smooth latte with a rosetta on top, in a cup on a saucer labelled SimpleGrid.'
+  };
+
+  var anims = [], timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(r){ later(r, ms); }); }
+  // Every move is a Web Animation that holds where it lands, so Start over can cancel the lot.
+  function play(el, frames, ms, delay, easing){
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease-in-out', fill: 'both' });
+    anims.push(a);
+    return a.finished.catch(function(){});
+  }
+  var at = function(x, y, s, deg){ return 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + (deg || 0) + 'deg) scale(' + s + ')'; };
+
+  // The jug's poses and the milk's level, in the drawing's own units.
+  var REST = 'translate(196px,462px) rotate(-8deg) scale(1)', POUR = 'translate(180px,356px) rotate(0deg) scale(1.08)';
+  var FULL = 'translate(0px,0px) scale(1,1)';
+  var pose = REST, level = FULL;
+  function moveJug(to, ms, easing){ var from = pose; pose = to; return play(jug, [{ transform: from }, { transform: to }], ms, 0, easing || 'cubic-bezier(.45,0,.3,1)'); }
+  function setLevel(to, ms){ var from = level; level = to; return play(milk, [{ transform: from }, { transform: to }], ms); }
+
+  /* The mess, made once and the same every time: blobs of cold milk, espresso
+     gone muddy, rings that start to form and never close, drips. Each knows
+     where it lands; they all come in from where the milk hits. */
+  var CX = 180, CY = 190, LAND = [180, 258];
+  var seed = 2207;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function make(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+  function blob(r){
+    var n = 7, p = [], k;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2 + (rand() - .5)*.6, rr = r*(.7 + rand()*.45); p.push([Math.cos(a)*rr, Math.sin(a)*rr]); }
+    var mid = function(a, b){ return ((a[0] + b[0])/2).toFixed(1) + ' ' + ((a[1] + b[1])/2).toFixed(1); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + p[k][0].toFixed(1) + ' ' + p[k][1].toFixed(1) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return d + 'Z';
+  }
+  var bits = [];
+  function piece(x, y, ring, draw){
+    var g = make('g', { 'class': 'lt-ms' }, messG), inner = make('g', { 'class': 'lt-ms-in' + (ring ? ' lt-ring-in' : '') }, g);
+    inner.style.animationDelay = (-rand()*3.4).toFixed(2) + 's';
+    draw(inner);
+    bits.push({ el: g, x: x, y: y, d: Math.hypot(x - LAND[0], y - LAND[1]) });
+  }
+  [[150, 142, 19], [224, 178, 15], [166, 238, 17], [116, 204, 12]].forEach(function(b){
+    piece(b[0], b[1], false, function(g){ make('path', { 'class': 'lt-dark', d: blob(b[2]) }, g); });
+  });
+  [[194, 178, 40, 200, 230, 6], [150, 222, 25, 30, 200, 5], [224, 232, 19, 250, 190, 4.5], [162, 150, 17, 80, 220, 4]].forEach(function(r){
+    var a0 = r[3]*Math.PI/180, a1 = (r[3] + r[4])*Math.PI/180;
+    var d = 'M' + (Math.cos(a0)*r[2]).toFixed(1) + ' ' + (Math.sin(a0)*r[2]).toFixed(1) + 'A' + r[2] + ' ' + r[2] + ' 0 ' + (r[4] > 180 ? 1 : 0) + ' 1 ' + (Math.cos(a1)*r[2]).toFixed(1) + ' ' + (Math.sin(a1)*r[2]).toFixed(1);
+    piece(r[0], r[1], true, function(g){ make('path', { 'class': 'lt-arc', 'stroke-width': r[5], d: d }, g); });
+  });
+  [[204, 128, 17], [130, 168, 14], [190, 198, 19], [238, 222, 12], [148, 214, 11], [212, 254, 13], [120, 238, 8], [246, 160, 9], [176, 158, 7]].forEach(function(b, i){
+    piece(b[0], b[1], false, function(g){ make('path', { 'class': i % 3 === 2 ? 'lt-pale2' : 'lt-pale', d: blob(b[2]) }, g); });
+  });
+  [[128, 132, 4], [250, 198, 3.5], [196, 270, 4], [104, 196, 3]].forEach(function(b){
+    piece(b[0], b[1], false, function(g){ make('circle', { 'class': 'lt-pale', r: b[2] }, g); });
+  });
+  var drips = [[104, 288, 9], [264, 294, 7], [72, 212, 6.5], [294, 112, 5.5], [122, 262, 6]].map(function(b){
+    var g = make('g', { 'class': 'lt-ms' }, dripG);
+    make('path', { 'class': 'lt-drip', d: blob(b[2]) }, g);
+    return { el: g, x: b[0], y: b[1] };
+  });
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The espresso: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The milk: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: latte, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.latte',
+    ops: {
+      mess: ['Your operations, today', 'Poured together, still not linked. Muddy, blotchy, and it won’t come together.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same cup, same mess. Now the milk is steamed.']
+    },
+    // Cold milk, straight in, in one glug. The cup goes muddy and stays that way.
+    mess: function(){
+      latte.classList.remove('snap');
+      return moveJug(POUR, 620).then(function(){
+        setLevel('translate(0px,-9px) scale(.9,.8)', 260);
+        play(stream, [{ opacity: 0, transform: 'scale(.4)' }, { opacity: 1, transform: 'scale(1.7)', offset: .3 }, { opacity: 1, transform: 'scale(1.2)', offset: .8 }, { opacity: 0, transform: 'scale(.6)' }], 900, 100);
+        play(mud, [{ opacity: 0 }, { opacity: 1 }], 700, 250, 'ease-out');
+        latte.classList.add('messy');
+        bits.forEach(function(b){
+          play(b.el, [{ opacity: 1, transform: at(LAND[0], LAND[1], 0) }, { opacity: 1, transform: at(b.x, b.y, 1) }], 760, 180 + b.d*2.2, 'cubic-bezier(.15,.75,.25,1)');
+        });
+        drips.forEach(function(d, i){
+          play(d.el, [{ opacity: 0, transform: at(d.x, d.y, 0) }, { opacity: 1, transform: at(d.x, d.y, 1.25), offset: .6 }, { opacity: 1, transform: at(d.x, d.y, 1) }], 420, 420 + i*70, 'ease-out');
+        });
+        return wait(1050);
+      }).then(function(){
+        setLevel('translate(0px,0px) scale(.8,.8)', 500);
+        return moveJug(REST, 650);
+      });
+    },
+    // The wand goes in wearing SimpleGrid's mark, and the cold milk steams up silky.
+    dose: function(){
+      latte.classList.add('dosed');
+      play(wand, [{ opacity: 0, transform: 'translate(170px,-76px)' }, { opacity: 1, transform: 'translate(0px,0px)' }], 560, 0, 'cubic-bezier(.2,.8,.3,1)');
+      return wait(480).then(function(){
+        latte.classList.add('steaming');
+        play(foam, [{ opacity: 0 }, { opacity: 1 }], 1100, 150);
+        setLevel(FULL, 1200);
+        return wait(1500);
+      }).then(function(){
+        latte.classList.remove('steaming');
+        latte.classList.add('hot');
+      });
+    },
+    // Pour again: the mess swirls under, and a rosetta comes up through it.
+    clean: function(){
+      latte.classList.remove('hot');
+      play(wand, [{ opacity: 1, transform: 'translate(0px,0px)' }, { opacity: 0, transform: 'translate(170px,-76px)' }], 420, 0, 'cubic-bezier(.5,0,.8,.4)');
+      return wait(260).then(function(){
+        return moveJug(POUR, 560);
+      }).then(function(){
+        setLevel('translate(0px,-6px) scale(.92,.86)', 260);
+        play(stream, [{ opacity: 0, transform: 'scale(.3)' }, { opacity: 1, transform: 'scale(.7)', offset: .1 }, { opacity: 1, transform: 'scale(.7)', offset: .9 }, { opacity: 0, transform: 'scale(.3)' }], 1800);
+        play(mud, [{ opacity: 1 }, { opacity: 0 }], 900, 250);
+        play(base, [{ opacity: 0 }, { opacity: 1 }], 900, 150);
+        bits.forEach(function(b, i){
+          var dx = b.x - CX, dy = b.y - CY;
+          play(b.el, [0, 50, 100, 150].map(function(deg, k){
+            var a = deg*Math.PI/180;
+            return { opacity: k < 3 ? 1 : 0, transform: at(CX + dx*Math.cos(a) - dy*Math.sin(a), CY + dx*Math.sin(a) + dy*Math.cos(a), 1 - k*.3, deg) };
+          }), 900, i*25, 'ease-in');
+        });
+        drips.forEach(function(d, i){
+          play(d.el, [{ opacity: 1, transform: at(d.x, d.y, 1) }, { opacity: 0, transform: at(CX + (d.x - CX)*.55, CY + (d.y - CY)*.55, .2) }], 600, 100 + i*60, 'ease-in');
+        });
+        // The rosetta: the jug rocks side to side as it backs off, and each rock lays a leaf.
+        var rock = [];
+        for (var k = 0; k <= 8; k++) rock.push({ transform: 'translate(180px,' + (356 + k*3) + 'px) rotate(' + (k === 0 || k === 8 ? 0 : k % 2 ? 7 : -7) + 'deg) scale(1.08)' });
+        play(jug, rock, 1150, 380, 'linear');
+        pose = rock[8].transform;
+        leaves.forEach(function(l, i){
+          play(l, [{ opacity: 0, transform: 'scaleX(.12)' }, { opacity: 1, transform: 'scaleX(1)' }], 330, 420 + i*120, 'cubic-bezier(.2,.8,.3,1)');
+        });
+        return wait(1560);
+      }).then(function(){
+        // Then one stroke forward, the pull-through, draws the stem.
+        play(stem, [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], 340, 0, 'ease-in');
+        return moveJug('translate(180px,334px) rotate(0deg) scale(1.08)', 340, 'ease-in');
+      }).then(function(){
+        latte.classList.remove('messy');
+        setLevel('translate(0px,0px) scale(.55,.55)', 500);
+        return moveJug(REST, 640);
+      });
+    },
+    restore: function(){
+      timers.forEach(clearTimeout);
+      timers = [];
+      anims.forEach(function(a){ a.cancel(); });
+      anims = [];
+      pose = REST;
+      level = FULL;
+      latte.classList.add('snap');
+      latte.classList.remove('messy', 'dosed', 'steaming', 'hot', 'is-done');
+      latte.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ latte.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      latte.classList.toggle('is-done', on);
+    }
+  });
+
+  // Tapping the cup or the jug does the same as the button.
+  latte.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ latte.classList.toggle('in-view', entries[0].isIntersecting); }).observe(latte);
+  } else latte.classList.add('in-view');
+})();
 </script>
 <script>
 window.STAGE = {

@@ -201,71 +201,104 @@ h1 span{display:block;color:var(--hi)}
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
+/* -------------------------------------------------------- The croissant
+   The sheet of dough is the ERP, the block of butter is the floor. Folded
+   together by hand they mash into one greasy, streaky lump, and it stays one.
+   SimpleGrid is the roller: roll, fold, roll, and the lump comes out as crisp
+   layers that roll up into a croissant. */
 .hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
-.callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.lam{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.hero[data-story$=ing] .lam,.hero[data-story=done] .lam{cursor:default}
+.lam svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.lam.snap,.lam.snap *{transition:none!important}
+.lam-wood{fill:#C9935C}
+.lam-wood-dk{fill:#9E6B3B}
+.lam-grain{fill:none;stroke:#B57F4A;stroke-width:2.5;stroke-linecap:round;opacity:.7}
+.lam-flour{fill:#fff;opacity:.42}
+/* The two halves */
+.lam-paper{fill:#F7F3E8}
+.lam-paper-fold{fill:none;stroke:#DCD3BF;stroke-width:2;stroke-linecap:round}
+.lam-butter-top{fill:#FFDF6E}
+.lam-butter-dk{fill:#F0B935}
+.lam-butter-hi{fill:none;stroke:#FFF3BC;stroke-width:5;stroke-linecap:round}
+.lam-dough-top{fill:#F8E6BC}
+.lam-dough-dk{fill:#DDBB7A}
+.lam-dough-hi{fill:none;stroke:#FFF8E4;stroke-width:6;stroke-linecap:round}
+.lam-dust{fill:#fff;opacity:.85}
+#lamDough{transform-origin:180px 157px}
+#lamPre{transform-origin:180px 372px}
+/* The mess: one greasy, streaky lump, butter smeared through it and grease pooling round it */
+.lam-mess{visibility:hidden;transform-origin:180px 300px}
+.lam.messy .lam-mess{visibility:visible}
+.lam-grease{fill:#8A5512;opacity:.36;transform-origin:182px 318px}
+.lam-sheen{fill:none;stroke:#FFE9A6;stroke-width:5;stroke-linecap:round;opacity:.45}
+.lam-smears path{fill:none;stroke:#FFD24A;stroke-width:11;stroke-linecap:round;opacity:.8;stroke-dasharray:1 1}
+.lam-splats{fill:#FFD24A}
+.lam-lump{fill:#EAC888}
+.lam-lump-dk{fill:#C99A55}
+.lam-streaks path{fill:none;stroke:#FFD03F;stroke-linecap:round}
+.lam-dents{fill:#D5AC69}
+.lam-shine path{fill:none;stroke:#FFFBEE;stroke-width:4.5;stroke-linecap:round;opacity:.9}
+.lam-chunk{fill:#FFD84F;stroke:#E9AE28;stroke-width:2}
+.lam-scrap{fill:#EAC888;stroke:#C99A55;stroke-width:2}
+.lam-drip{fill:#D69A33;opacity:0;transform-box:fill-box;transform-origin:50% 0}
+.lam.messy .lam-drip{animation:lam-drip 2.6s 1.2s ease-in infinite}
+.lam.messy .lam-sheen{animation:lam-glisten 3s ease-in-out infinite}
+@keyframes lam-drip{0%{opacity:0;transform:scale(.5,.2)}12%{opacity:.95}50%{opacity:.95;transform:none}78%{opacity:.9;transform:translateY(16px) scale(.8,1.15)}100%{opacity:0;transform:translateY(26px) scale(.6)}}
+@keyframes lam-glisten{50%{opacity:.12}}
+.hero:not(.in-view) .lam *{animation-play-state:paused}
+/* Laminated: the smooth sheet the roller leaves, folded, rolled again into crisp layers */
+.lam-sheet,.lam-slab,.lam-croissant{visibility:hidden}
+.lam.sheeted .lam-sheet,.lam.slabbed .lam-slab,.lam.baked .lam-croissant{visibility:visible}
+.lam-sh-top{fill:#F6DFA9}
+.lam-sh-d{fill:#E2BF7C}
+.lam-sh-b{fill:#FFD34A}
+#lamFlap{transform-origin:180px 268px}
+.lam-flap-top{fill:#F6DFA9}
+.lam.flipped .lam-flap-top{fill:#EFD193}
+.lam-fold2{visibility:hidden}
+.lam.folded .lam-fold2{visibility:visible}
+.lam-slab-top{fill:#F6DFA9}
+.lam-slab-hi{fill:none;stroke:#FFF6DA;stroke-width:6;stroke-linecap:round}
+.lam-ly-d{fill:#EBC985}
+.lam-ly-b{fill:#FFCE3D}
+.lam-glint{fill:#fff;opacity:.6}
+#lamSlab{transform-origin:180px 300px}
+.lam-croissant{transform-origin:180px 286px}
+.lam-seg{fill:url(#lamGold);stroke:#8E4C12;stroke-width:3;stroke-linejoin:round}
+.lam-flake{fill:none;stroke:#C06A18;stroke-width:2.5;stroke-linecap:round;opacity:.6}
+.lam-gloss{fill:none;stroke:#FFF2CC;stroke-width:5;stroke-linecap:round;opacity:.75}
+/* The bakery box it goes out in, at the end */
+.lam-box{opacity:0;transform:translateY(14px);transition:opacity .35s ease,transform .55s cubic-bezier(.2,.9,.3,1.2)}
+.lam.is-done .lam-box{opacity:1;transform:none}
+.lam-box-lid{fill:#F2F5F7;stroke:#D3DCE3;stroke-width:2;stroke-linejoin:round}
+.lam-box-crease{fill:none;stroke:#DCE3E9;stroke-width:2}
+.lam-box-front{fill:#fff;stroke:#D3DCE3;stroke-width:2}
+.lam-box-side{fill:#D9E2E8}
+.lam-box-band{fill:var(--accent)}
+.lam-box-sh{fill:rgba(60,30,0,.28)}
+.lam-tag{--sg-bg:var(--brand);--sg-ink:#fff}
+.lam .lam-tag{transition-delay:.35s}
+.lam.is-done .lam-tag{opacity:1;transform:none}
+/* SimpleGrid: the roller */
+.lam-roller{opacity:0}
+.lam-roller-sh{fill:rgba(50,25,0,.3)}
+.lam-rod{fill:#7D8B96}
+.lam-grip{fill:var(--brand)}
+.lam-grip-hi{fill:none;stroke:rgba(255,255,255,.35);stroke-width:3;stroke-linecap:round}
+.lam-barrel{fill:url(#lamSteel);stroke:#6E7C88;stroke-width:2}
+.lam-barrel-end{fill:#A3B1BC}
+.lam-barrel-hi{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;opacity:.75}
+.lam-badge{--sg-bg:var(--brand);--sg-ink:#fff}
+.lam.dosed .lam-badge{opacity:1;transform:none}
+.callout-top{top:20%}
+.callout-bottom{top:53%}
+.callout-gap{top:calc(44.3% - 15px)}
+.callout-top h3 i{background:#F8E6BC}
+.callout-bottom h3 i{background:#FFDF6E}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.28)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
