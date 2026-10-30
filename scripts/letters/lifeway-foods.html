@@ -64,7 +64,7 @@
   mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='53 70 254 473' preserveAspectRatio='none'%3E%3Cpath d='M140 70L140 114C140 156 53 170 53 234L53 502C53 527 71 543 100 543L260 543C289 543 307 527 307 502L307 234C307 170 220 156 220 114L220 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
 }
 /* If WebGL isn't available, flat layers tell the same story. */
-.liquid-flat{display:none;background:linear-gradient(transparent 0 30.4%,#FBFAF6 30.4%,#E6E7EC 68.1%,#D6224B 68.1%,#86092A);transition:background .6s}
+.liquid-flat{display:none;background:linear-gradient(transparent 0 23.7%,#FBFAF6 23.7%,#E6E7EC 66.4%,#D6224B 66.4%,#86092A);transition:background .6s}
 .bottle.no-gl #liquid{display:none}
 .bottle.no-gl .liquid-flat{display:block}
 .bottle.no-gl[data-phase=mixed] .liquid-flat,.bottle.no-gl[data-phase=taking] .liquid-flat{
@@ -75,9 +75,9 @@
     radial-gradient(closest-side,#C8183E 70%,transparent 80%) 28% 82%/14% 7.5% no-repeat,
     radial-gradient(closest-side,#FBF7F2 70%,transparent 80%) 52% 93%/12% 6.5% no-repeat,
     radial-gradient(closest-side,#C8183E 70%,transparent 80%) 70% 39%/11% 6% no-repeat,
-    repeating-linear-gradient(-58deg,#F6DCE2 0 18px,#D93A5E 18px 34px,#FFF6F4 34px 48px,#E86C88 48px 66px) bottom/100% 69.6% no-repeat;
+    repeating-linear-gradient(-58deg,#F6DCE2 0 18px,#D93A5E 18px 34px,#FFF6F4 34px 48px,#E86C88 48px 66px) bottom/100% 76.3% no-repeat;
 }
-.bottle.no-gl[data-phase=done] .liquid-flat{background:linear-gradient(transparent 0 29.4%,#FCD3DD 29.4%)}
+.bottle.no-gl[data-phase=done] .liquid-flat{background:linear-gradient(transparent 0 22.6%,#FCD3DD 22.6%)}
 
 .g-fill{fill:var(--glass-fill)}
 .g-outline{fill:none;stroke:var(--glass);stroke-width:3.2;stroke-linejoin:round;transition:stroke .4s}
@@ -127,17 +127,17 @@
 .drop-ball{transform-box:fill-box;transform-origin:center}
 @keyframes drop-fall{
   0%{transform:translateY(-262px) scale(.25);animation-timing-function:cubic-bezier(.3,.6,.4,1)}
-  20%{transform:translateY(-262px) scale(1);animation-timing-function:cubic-bezier(.55,0,.9,.55)}
-  36%{transform:translateY(-196px) scale(1);animation-timing-function:cubic-bezier(.12,.6,.3,1)}
-  72%{transform:translateY(12px) scale(1);animation-timing-function:ease-in-out}
-  87%{transform:translateY(-5px) scale(1);animation-timing-function:ease-in-out}
+  22%{transform:translateY(-262px) scale(1);animation-timing-function:cubic-bezier(.55,0,.9,.55)}
+  30%{transform:translateY(-226px) scale(1);animation-timing-function:cubic-bezier(.25,.5,.35,1)}
+  75%{transform:translateY(12px) scale(1);animation-timing-function:ease-in-out}
+  88%{transform:translateY(-5px) scale(1);animation-timing-function:ease-in-out}
   100%{transform:translateY(0) scale(1)}
 }
 
 .hero-art .callouts{height:calc(var(--bottle-w)*1.556)}
-.callout-top{top:41%}
-.callout-bottom{top:75.5%}
-.callout-gap{top:calc(70% - 15px)}
+.callout-top{top:40%}
+.callout-bottom{top:73.5%}
+.callout-gap{top:calc(68.6% - 15px)}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--bottle-w)*.135)}
 .callout-top h3 i{background:#FBFAF6}
 .callout-bottom h3 i{background:#D6224B}
@@ -192,13 +192,13 @@
               </g>
               <!-- the dropper the cultures come in on -->
               <g class="dropper">
-                <path class="dp-glass" d="M168 40L192 40L192 82L185 98L175 98L168 82Z"/>
-                <rect class="dp-collar" x="160" y="28" width="40" height="12" rx="3"/>
-                <path class="dp-bulb" d="M160 32C152 32 151 14 152 2C153 -14 166 -20 180 -20C194 -20 207 -14 208 2C209 14 208 32 200 32Z"/>
-                <path class="dp-shine" d="M163 6C163 -5 168 -11 176 -13"/>
+                <path class="dp-glass" d="M168 34L192 34L192 74L185 90L175 90L168 74Z"/>
+                <rect class="dp-collar" x="160" y="22" width="40" height="12" rx="3"/>
+                <path class="dp-bulb" d="M160 26C152 26 151 8 152 -4C153 -20 166 -26 180 -26C194 -26 207 -20 208 -4C209 8 208 26 200 26Z"/>
+                <path class="dp-shine" d="M163 0C163 -11 168 -17 176 -19"/>
               </g>
               <!-- the culture: one drop, and it's SimpleGrid -->
-              <g transform="translate(180 392)"><g class="drop" id="drop"><g class="drop-ball" id="dropBall">
+              <g transform="translate(180 384)"><g class="drop" id="drop"><g class="drop-ball" id="dropBall">
                 <circle r="32" fill="#fff"/>
                 <g transform="scale(1.4)"><!--#include sg-badge.svg--></g>
               </g></g></g>
@@ -311,7 +311,7 @@ uniform float uT, uMix, uCream, uSlope, uWave, uRipple;
 
 // The canvas spans the bottle's inside: 254 x 473 units of the bottle drawing, y measured up from its floor.
 const vec2 SIZE = vec2(254., 473.);
-const float SURFACE = 329., INTERFACE = 151.;
+const float SURFACE = 361., INTERFACE = 159.;
 
 float hash(vec2 p){ vec3 q = fract(vec3(p.xyx)*.1031); q += dot(q, q.yzx + 33.33); return fract((q.x + q.y)*q.z); }
 float noise(vec2 p){
@@ -358,7 +358,7 @@ vec4 lumps(vec2 p, float cell, float drift, float density, float seed){
 float seeds(vec2 p){
   vec2 g = p/9.;
   vec2 id = floor(g);
-  if(hash(id + 91.) > .3) return 0.;
+  if(hash(id + 91.) > .22) return 0.;
   vec2 c = id + .25 + .5*vec2(hash(id + 13.), hash(id + 29.));
   return smoothstep(.16, .07, length((g - c)*vec2(1.25, 1.)));
 }
@@ -398,7 +398,7 @@ void main(){
   float hV = clamp(p.y/INTERFACE, 0., 1.);
   vec3 kefir = mix(vec3(.9, .905, .925), vec3(1., .99, .965), hO);
   vec3 fruit = mix(vec3(.5, .03, .14), vec3(.86, .13, .29), hV);
-  vec3 col = mix(mix(fruit, vec3(.96, .74, .4), seeds(q)*.8*(1. - cream)), kefir, L);
+  vec3 col = mix(mix(fruit, vec3(.84, .5, .32), seeds(q)*.55*(1. - cream)), kefir, L);
 
   // Shaken without the cultures, both layers break into lumps of each other.
   float wall = smoothstep(0., 64., -sdBottle(p));
@@ -516,7 +516,7 @@ void main(){
           drop.classList.add('in');
           if (!reduce) drop.classList.add('fall');
         }, 560);
-        later(function(){ s.ripple = 1; s.slopeV += .9; }, 900);
+        later(function(){ s.ripple = 1; s.slopeV += .9; }, 850);
         later(function(){ bottle.classList.remove('cap-off', 'dropping'); stable = true; s.prog = 0; done(); }, 1540);
       });
     },
