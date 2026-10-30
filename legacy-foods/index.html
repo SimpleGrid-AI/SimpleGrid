@@ -13,14 +13,14 @@
 <meta property="og:url" content="https://simplegrid.ai/legacy-foods/">
 <meta property="og:title" content="Jonathan, shake the jar.">
 <meta property="og:description" content="SimpleGrid, explained to someone who makes emulsions for a living.">
-<meta property="og:image" content="https://simplegrid.ai/legacy-foods/og.jpg">
+<meta property="og:image" content="https://simplegrid.ai/legacy-foods/og-jar.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A glass jar of oil floating on vinegar, on SimpleGrid blue, beside the words: Jonathan, you make emulsions for a living.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Jonathan, shake the jar.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes emulsions for a living.">
-<meta name="twitter:image" content="https://simplegrid.ai/legacy-foods/og.jpg">
+<meta name="twitter:image" content="https://simplegrid.ai/legacy-foods/og-jar.jpg">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/merriweather-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/albert-sans-latin.woff2" crossorigin>
@@ -63,9 +63,8 @@ button{font:inherit;color:inherit}
 img,svg,canvas{display:block}
 :focus-visible{outline:3px solid var(--focus,var(--blue));outline-offset:3px;border-radius:4px}
 .wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
-h2{font:900 clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em}
+h2{font:900 clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
 h2 span{display:block;color:var(--blue)}
-.text{max-width:62ch;color:var(--ink-70)}
 
 /* ------------------------------------------------------------------ Hero */
 .hero,.hero-wipe{
@@ -85,6 +84,9 @@ h2 span{display:block;color:var(--blue)}
 .logo svg{width:100%;height:auto;overflow:visible}
 .bar-tag{font-size:14.5px;line-height:1.3;text-align:right;color:var(--on-soft)}
 .bar-tag span{display:inline-block}
+.bar-right{display:flex;align-items:center;gap:clamp(12px,1.6vw,22px)}
+.bar-cta{flex:none;padding:9px 15px;border-radius:9px;box-shadow:inset 0 0 0 2px currentColor;color:var(--on);font:800 15px/1 var(--body);text-decoration:none;white-space:nowrap}
+.bar-cta:hover{background:var(--on);color:var(--field);box-shadow:none}
 
 .hero-grid{
   display:grid;grid-template-columns:minmax(0,1fr) auto;
@@ -116,7 +118,7 @@ h1 span{display:block;color:var(--accent)}
 .lid-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
 .lid-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
 .quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
-.jar-caption{margin-top:18px;max-width:52ch;min-height:4.7em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
+.jar-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
 
 /* The jar */
 .hero-jar{--jar-w:min(340px,29vw,calc((100vh - 130px)/1.56));position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
@@ -178,8 +180,11 @@ h1 span{display:block;color:var(--accent)}
 
 .callouts{position:relative;width:clamp(150px,14.5vw,196px);height:calc(var(--jar-w)*1.5)}
 .callout{position:absolute;left:0;right:0}
-.callout-oil{top:33%}
-.callout-vin{top:66%}
+.callout-oil{top:35%}
+.callout-vin{top:73%}
+.callout-gap{position:absolute;left:0;top:calc(66.3% - 15px);padding:6px 12px;border-radius:999px;background:var(--ruby);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:calc(clamp(14px,1.6vw,24px) + var(--jar-w)*.06);border-top:2px dashed rgba(255,255,255,.8)}
+.callout-gap[hidden]{display:none}
 .callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
 .callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.7);transform:translateY(1px)}
 .callout-oil h3 i{background:#FFC21A}
@@ -189,106 +194,106 @@ h1 span{display:block;color:var(--accent)}
 
 .hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
 
-/* ------------------------------------------------- Why it keeps breaking */
-.why{padding:clamp(36px,5vw,72px) 0 var(--section)}
-.why .text{margin-top:22px;font-size:clamp(18px,.3vw + 17px,20px)}
-.why .text + .text{margin-top:14px}
-.why-q-title{margin-top:clamp(48px,6vw,80px);font:800 18px/1.4 var(--body);color:var(--ruby)}
-.qs{margin-top:10px}
-.q{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px clamp(24px,4vw,64px);padding:clamp(20px,2.6vw,32px) 0}
-.q dt{font:900 clamp(25px,1.4vw + 19px,36px)/1.2 var(--display);letter-spacing:-.01em;color:var(--blue)}
-.q dd{color:var(--ink-70);max-width:58ch;padding-top:.25em}
+/* ------------------------------------- The gap between the ERP and the floor */
+.gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
+.stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
+.panel-erp h3,.panel-floor h3{font:900 clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
 
-/* ------------------------------------------------------------ The rig */
-.inside{background:var(--titan);padding:var(--section) 0}
-.inside .text{margin-top:18px}
-.rig{
-  margin-top:clamp(32px,4vw,52px);display:grid;
-  grid-template-columns:minmax(230px,250px) 44px minmax(0,1fr) 44px minmax(150px,172px);
-  grid-template-areas:"floor pipea screen pipeb erp" "phone pipea screen pipeb erp";
-  grid-template-rows:auto 1fr;
-}
-.rig h3{font:900 21px/1.25 var(--display);letter-spacing:-.005em}
-.rig-floor{grid-area:floor}
-.rig-note{margin-top:6px;font-size:15px;line-height:1.42;color:var(--ink-70)}
-.estops{margin-top:18px;display:grid;gap:12px}
-.estop{appearance:none;background:none;border:0;padding:6px 4px;cursor:pointer;display:flex;align-items:center;gap:15px;text-align:left;font:700 16.5px/1.25 var(--body);border-radius:10px}
-.dome{
-  flex:none;width:38px;height:38px;border-radius:50%;margin:6px;
-  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
-  box-shadow:0 0 0 5px var(--yolk),0 3px 0 5px #C89000,0 6px 8px 4px rgba(0,30,80,.2);
-  transition:transform .09s ease,box-shadow .09s ease;
-}
-.estop:hover .dome{transform:translateY(1px)}
-.estop:active .dome,.estop[aria-pressed=true] .dome{transform:translateY(3px);box-shadow:0 0 0 5px var(--yolk),0 0 0 5px #C89000,0 2px 4px 4px rgba(0,30,80,.2)}
-.estop[aria-pressed=true]{color:var(--ruby)}
-.rig-reset{appearance:none;background:none;border:0;padding:4px 2px;margin-top:6px;cursor:pointer;font-size:15px;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
-.rig-reset[hidden]{display:none}
-
-.pipe{position:relative;align-self:center;height:12px;background:rgba(0,71,171,.2);overflow:hidden}
-.pipe-a{grid-area:pipea;border-radius:0}
-.pipe-b{grid-area:pipeb}
-.pipe i{position:absolute;top:1px;left:-12px;width:10px;height:10px;border-radius:50%;background:var(--blue)}
-.pipe.run i{animation:flow-x .5s cubic-bezier(.4,0,.6,1) var(--d,0s) 1 both}
-@keyframes flow-x{from{left:-12px}to{left:100%}}
-
-.rig-screen{grid-area:screen;background:#fff;border:2px solid var(--blue);border-radius:16px;padding:clamp(16px,1.8vw,24px);min-width:0;scroll-margin-top:16px}
-.screen-bar{display:flex;gap:10px 14px;align-items:baseline;flex-wrap:wrap;padding-bottom:14px}
-.screen-bar svg{width:18px;height:18px;color:var(--blue);flex:none;align-self:center}
-.screen-name{font:800 16px/1 var(--body);color:var(--blue);display:flex;align-items:center;gap:8px}
-.screen-log{flex:1 1 240px;font-size:15.5px;line-height:1.35;color:var(--ink-70)}
-.screen-log.live{color:var(--ruby);font-weight:700}
-.panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2vw,28px) clamp(18px,2.4vw,34px)}
-.pane h4{font:800 15.5px/1.25 var(--body)}
-.pane-sub{font-size:13.5px;line-height:1.35;color:var(--ink-55);margin-top:2px;min-height:2.7em}
-.pane ul{margin-top:8px;display:grid;gap:7px}
-.pane li{font-size:14.5px;line-height:1.32}
-.pane li span{display:block;color:var(--ink-55);font-size:12.5px}
-.pane li b{font-weight:600}
-.pane li s{color:var(--ink-55);font-weight:400}
-.pane li.hit b{
+/* The ERP is deliberately calm. That's the joke, and the problem. */
+.panel-erp{background:#fff;border:2px solid var(--blue);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
+.erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
+.stage[data-state=chaos] .erp-status{animation:smug .8s ease-in-out 3}
+@keyframes smug{50%{transform:scale(1.09)}}
+.erp-rows{margin-top:clamp(16px,2vw,28px);display:grid;gap:clamp(12px,1.5vw,21px)}
+.erp-rows li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:clamp(15.5px,.3vw + 14px,18px);line-height:1.3}
+.erp-rows span{flex:none;color:var(--ink-55)}
+.erp-rows b{font-weight:700;text-align:right}
+.erp-rows s{font-weight:400;color:var(--ink-55)}
+.erp-rows li.hit b{
   background:linear-gradient(var(--yolk),var(--yolk)) no-repeat 0 100%/0 100%;
-  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-left:-3px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
   animation:marker .42s ease-out var(--d,0s) forwards;
 }
 @keyframes marker{to{background-size:100% 100%}}
-.pane-quiet{margin-top:7px;font-size:13.5px;color:var(--ink-55);font-style:italic;min-height:1.3em}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--ruby);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
+.erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
 
-.phone{grid-area:phone;align-self:start;margin-top:22px;width:min(100%,214px);background:var(--ink);color:#fff;border-radius:22px;padding:15px 15px 18px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.14)}
-.phone::before{content:'';display:block;width:42px;height:5px;margin:0 auto 12px;border-radius:3px;background:rgba(255,255,255,.28)}
-.phone-title{font-size:12.5px;color:rgba(255,255,255,.72)}
-.phone-text{margin-top:4px;font-size:15px;line-height:1.36;font-weight:600}
-.phone-text.hit{color:var(--yolk)}
+/* The broken pipe between them. Once linked, it joins up and flows. */
+.link{position:relative;display:grid;place-items:center}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:rgba(0,71,171,.24);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub-a{left:0}
+.stub-b{right:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:rgba(0,71,171,.5);opacity:0}
+.stub-a::after{right:1px}
+.stub-b::after{left:1px}
+.stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
+.stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
+.link-no{position:relative;z-index:2;background:var(--ruby);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--blue);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--yolk);color:var(--blue);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,30,80,.25)}
+.link-yes svg{width:56%;height:56%}
+.stage[data-state=linked] .link-no{display:none}
+.stage[data-state=linked] .link-yes{display:grid}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--yolk) 0 14px,#FFB800 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+@keyframes pipe{to{background-position:28px 0}}
 
-.rig-erp{grid-area:erp;align-self:center;padding-left:16px}
-.rig-erp p{margin-top:6px;font-size:15px;line-height:1.42;color:var(--ink-70)}
-.rig-erp p.erp-now{margin-top:10px;font-weight:600;color:var(--ink);min-height:4.2em}
-
-.rig-after{margin-top:clamp(26px,3vw,40px);display:grid;gap:8px;max-width:72ch}
-.rig-without{font-weight:600;min-height:3.1em}
-
-/* ------------------------------------------------------------ Two maps */
-.maps{padding:var(--section) 0}
-.maps .text{margin-top:18px}
-.maps .text + .text{margin-top:12px}
-.line-intro{margin-top:clamp(36px,4vw,56px);font-weight:700;max-width:62ch}
-.line{position:relative;margin-top:22px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
-.line::before{content:'';position:absolute;left:10%;right:10%;top:15px;height:12px;background:rgba(0,71,171,.18)}
-.line-drop{position:absolute;top:9px;left:10%;width:24px;height:24px;margin-left:-12px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#FFE99A 0 10%,#FFB800 45%,#EE8600 100%);box-shadow:0 2px 6px rgba(110,35,0,.35);transition:left .5s cubic-bezier(.45,0,.2,1);z-index:2;pointer-events:none}
-.stop{position:relative;appearance:none;background:none;border:0;cursor:pointer;padding:0 4px;text-align:center;font:600 clamp(13px,.5vw + 11px,16.5px)/1.25 var(--body);color:var(--ink-70);border-radius:8px}
-.stop::before{content:'';display:block;width:42px;height:42px;margin:0 auto 8px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 3px var(--blue);position:relative;z-index:1}
-.stop[aria-selected=true]{color:var(--blue);font-weight:800}
-.map-sheets{margin-top:clamp(22px,3vw,36px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.sheet{padding:clamp(20px,2.6vw,34px);min-height:204px}
-.sheet h3{font:800 16px/1.3 var(--body)}
-.sheet p{margin-top:10px;font:700 clamp(19px,.7vw + 15px,23px)/1.36 var(--display);letter-spacing:-.004em}
-.sheet-d{background:var(--titan);color:var(--blue-press);border-radius:14px 0 0 14px}
-.sheet-m{background:var(--yolk-soft);color:#4F3A00;border-radius:0 14px 14px 0}
-.maps-end{margin-top:clamp(26px,3vw,40px);max-width:64ch;font-size:clamp(18px,.3vw + 17px,20px)}
+/* The floor: where the morning actually happens. */
+.panel-floor{
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--yolk);--btn-fg:var(--ink);--btn-edge:#C89000;--focus:var(--yolk);
+  position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
+  display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
+}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
+.floor-calm{flex:1;display:grid;place-items:center}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:900 clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.dome{
+  width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
+  box-shadow:0 0 0 9px var(--yolk),0 8px 0 9px #C89000,0 18px 26px 9px rgba(0,0,0,.55);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--yolk),0 6px 0 9px #C89000,0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--yolk),0 1px 0 9px #C89000,0 5px 9px 9px rgba(0,0,0,.55)}
+.pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
+.stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
+.stage:not([data-state=calm]) .floor-calm{display:none}
+.n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
+@keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
+.n-sticky{background:var(--yolk);color:#2B2000}
+.n-pink{background:#FF9FB4;color:#3D0012}
+.n-board{background:#fff;color:var(--ruby)}
+.n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
+.n-file{background:#fff;color:var(--ink)}
+.n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
+.n-mail{background:var(--titan);color:var(--ink)}
+.n-call{background:var(--blue);color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:var(--ruby);color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n svg{flex:none;width:15px;height:15px}
+.n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
+@keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
+.stage[data-state=linked] .tidy{display:grid}
+.tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
+.tidy li::before{content:'';flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--yolk) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7.4l2.6 2.6L11 4.4'/%3E%3C/svg%3E") center/14px no-repeat}
+@keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
+.stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
+#linkBtn,#stageReset,#stageMeet{display:none}
+.stage[data-state=messy] #linkBtn{display:inline-block}
+.stage[data-state=linked] #stageReset,.stage[data-state=linked] #stageMeet{display:inline-block}
+.stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
+.fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
 
 /* ------------------------------------------------- The back of the jar */
 .back{background:var(--blue);color:#fff;padding:var(--section) 0;--focus:var(--yolk)}
-.back h2{color:#fff;max-width:24ch}
+.back h2{color:#fff}
+.back h2 span{color:var(--yolk)}
 .label{
   margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--blue);
   border-radius:16px;padding:clamp(18px,3vw,40px);
@@ -316,19 +321,14 @@ h1 span{display:block;color:var(--accent)}
 .facts-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0 6px;font-weight:800;font-size:16px;line-height:1.2}
 .facts-saved b{font-weight:900;white-space:nowrap}
 .facts-foot{padding-top:6px;font-size:13px;line-height:1.3}
-.facts-src{margin-top:12px;font-size:14.5px;line-height:1.42;color:var(--ink-70)}
-.margin-note{margin-top:16px;color:var(--blue);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
-.margin-note svg{position:absolute;left:0;top:-6px;width:32px;height:38px;color:var(--blue)}
+.facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
+.margin-note{color:var(--blue);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
+.margin-note svg{position:absolute;left:0;top:-4px;width:32px;height:38px;color:var(--blue)}
 
-.label-copy{font-size:16.5px;line-height:1.46;min-width:0}
-.label-copy > * + *{margin-top:16px}
+.label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
+.label-copy > * + *{margin-top:18px}
 .label-copy strong{font-weight:800}
-.directions-h{font-weight:800}
-.directions{margin-top:6px;counter-reset:d;display:grid;gap:7px}
-.directions li{counter-increment:d;position:relative;padding-left:26px}
-.directions li::before{content:counter(d) '.';position:absolute;left:0;font-weight:800}
-.fine{font-size:13.5px;color:var(--ink-55)}
-.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;padding-top:6px}
+.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;margin-top:auto;padding-top:22px}
 .barcode{display:block;text-decoration:none;color:var(--ink);flex:none;border-radius:4px}
 .barcode svg{width:190px;height:56px}
 .barcode span{display:block;margin-top:3px;text-align:center;font:500 14.5px/1 var(--body);letter-spacing:.11em}
@@ -341,28 +341,27 @@ h1 span{display:block;color:var(--accent)}
   }
 }
 
-/* ---------------------------------------------------------- The note */
-.note{background:var(--yolk);padding:var(--section) 0;--focus:var(--blue)}
-.note-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,320px);gap:clamp(30px,5vw,72px);align-items:start}
-.paper{
-  background:#fff;padding:clamp(24px,3.6vw,50px) clamp(22px,3.6vw,52px);border-radius:4px;
-  transform:rotate(-.5deg);box-shadow:0 2px 0 rgba(90,60,0,.18),0 20px 44px rgba(110,70,0,.26);
-  color:var(--blue);font:700 clamp(20px,.55vw + 17px,23.5px)/1.42 var(--hand);
-}
-.paper p + p{margin-top:.8em}
-.paper .sign{margin-top:1.1em}
-.paper .ps{margin-top:1.2em}
-.note-side{padding-top:6px}
-.polaroid{width:min(100%,214px);background:#fff;padding:9px 9px 8px;transform:rotate(2.4deg);box-shadow:0 12px 26px rgba(110,70,0,.28)}
-.polaroid img{width:100%;height:auto;aspect-ratio:1}
-.polaroid figcaption{margin-top:7px;text-align:center;color:var(--ink);font:700 16.5px/1.2 var(--hand)}
-.who{margin-top:24px;font-size:16px;line-height:1.46;color:var(--ink)}
-.who + .who{margin-top:10px}
-.cta{margin-top:24px;display:grid;gap:15px;justify-items:start}
-.note .lid-btn{--btn-bg:var(--blue);--btn-fg:#fff;--btn-edge:#002D6E}
-.call-link{font-weight:700;color:var(--blue-press);text-underline-offset:3px}
-.skip{margin-top:clamp(30px,4vw,46px);max-width:62ch;font-size:clamp(17px,.3vw + 16px,19px);font-weight:500}
-.skip a{font-weight:700;color:var(--blue-press);text-underline-offset:3px}
+/* ------------------------------------------------------------- The ask */
+.meet{background:var(--yolk);padding:var(--section) 0;--focus:var(--blue)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .lid-btn{--btn-bg:var(--blue);--btn-fg:#fff;--btn-edge:#002D6E}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--blue-press);box-shadow:inset 0 0 0 2px var(--blue);font:900 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--titan)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--blue-press);text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--blue-press);font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(110,70,0,.28)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
 
 /* -------------------------------------------------------------- Footer */
 .foot{background:var(--blue);color:#fff;padding:clamp(30px,4vw,48px) 0;--focus:var(--yolk)}
@@ -372,19 +371,6 @@ h1 span{display:block;color:var(--accent)}
 .foot p + p{margin-top:8px}
 
 /* --------------------------------------------------------- Smaller screens */
-@media (max-width:1120px){
-  .rig{grid-template-columns:minmax(0,1fr);grid-template-areas:"floor" "pipea" "screen" "phone" "pipeb" "erp";grid-template-rows:none}
-  .estops{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-  .estop{flex-direction:column;text-align:center;gap:10px;font-size:15px}
-  .pipe{justify-self:center;width:12px;height:30px;align-self:auto}
-  .pipe i{left:1px;top:-12px}
-  .pipe.run i{animation-name:flow-y}
-  @keyframes flow-y{from{top:-12px}to{top:100%}}
-  .phone{margin-top:22px;justify-self:center;width:min(100%,290px)}
-  .rig-erp{text-align:center;max-width:44ch;justify-self:center;padding-left:0}
-  .rig-erp p.erp-now{min-height:0}
-  .pane-sub{min-height:0}
-}
 @media (max-width:980px){
   .hero-grid{display:flex;flex-direction:column;margin-top:4px}
   .hero-copy{display:contents}
@@ -392,54 +378,55 @@ h1 span{display:block;color:var(--accent)}
   .hero-jar{order:2;margin-top:20px;--jar-w:clamp(158px,43vw,290px)}
   .jar-ctrl{order:3;margin-top:24px}
   .hero-sub{order:4;margin-top:6px}
-  .jar-caption{min-height:6em;font-size:16.5px}
+  .jar-caption{min-height:4.6em;font-size:16.5px}
   .bar{gap:10px}
   .bar-tag{font-size:12px}
   .logo{width:124px}
-  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding-bottom:4px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
   .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
   .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
-  .q{grid-template-columns:minmax(0,1fr)}
-  .q dd{padding-top:0}
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--yolk) 0 14px,#FFB800 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
   .label{grid-template-columns:minmax(0,1fr)}
   .facts{max-width:430px}
-  .note-grid{grid-template-columns:minmax(0,1fr)}
-  .note-side{display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1fr);gap:0 20px;align-items:start}
-  .polaroid{grid-row:span 2}
-  .who{margin-top:0}
-  .cta{grid-column:1/-1}
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
 }
 @media (max-width:620px){
   body{font-size:17px}
-  .panes{grid-template-columns:minmax(0,1fr)}
-  .map-sheets{grid-template-columns:minmax(0,1fr)}
-  .sheet{min-height:0}
-  .sheet-d{border-radius:14px 14px 0 0}
-  .sheet-m{border-radius:0 0 14px 14px}
-  .stop::before{width:34px;height:34px;margin-bottom:6px}
-  .line::before{top:11px}
-  .line-drop{top:5px}
-  .estop{font-size:14px;line-height:1.2}
-  .dome{width:32px;height:32px}
+  .bar-tag{display:none}
   .lockup{align-items:center}
   .facts-title{font-size:min(46px,calc((100vw - 104px)/7.95))}
   .facts-big span{font-size:20px}
   .facts-saved{flex-direction:column;gap:1px}
-}
-@media (max-width:420px){
-  .note-side{display:block}
-  .who{margin-top:22px}
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+  .meet-btns .lid-btn,.meet-btns .side-btn{width:100%;text-align:center}
 }
 @media (max-width:350px){
   .callout h3{font-size:13.5px}
   .callout p{font-size:13px}
-  .stop{font-size:12.5px;padding:0 2px}
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
 }
 </style>
 </head>
@@ -451,13 +438,16 @@ h1 span{display:block;color:var(--accent)}
       <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home">
         <svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg>
       </a>
-      <p class="bar-tag"><span>Custom formula for Jonathan Gilbert,</span> <span>Legacy Foods. Run size: 1.</span></p>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Custom formula for Jonathan Gilbert,</span> <span>Legacy Foods. Run size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
     </header>
 
     <div class="hero-grid">
       <div class="hero-copy">
         <h1>Jonathan, you make emulsions for a living. <span>So here’s our software, explained as one.</span></h1>
-        <p class="hero-sub">SimpleGrid is the operations cloud for manufacturers. It replaces the spreadsheets between your books and your shop floor with one live system. The jar will explain the rest.</p>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
       </div>
 
       <div class="hero-jar">
@@ -505,11 +495,12 @@ h1 span{display:block;color:var(--accent)}
         <div class="callouts">
           <div class="callout callout-oil">
             <h3><i></i><span id="oilTitle">The oil: your ERP</span></h3>
-            <p id="oilText">It knows what happened. Orders, stock, open POs, BOMs, invoices.</p>
+            <p id="oilText">What the system says happened.</p>
           </div>
+          <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-vin">
-            <h3><i></i><span id="vinTitle">The vinegar: your spreadsheets</span></h3>
-            <p id="vinText">They decide what happens next. What to buy, what to make, what to promise.</p>
+            <h3><i></i><span id="vinTitle">The vinegar: your floor</span></h3>
+            <p id="vinText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
         </div>
       </div>
@@ -519,7 +510,7 @@ h1 span{display:block;color:var(--accent)}
           <button class="lid-btn" id="jarBtn" type="button">Shake the jar</button>
           <button class="quiet-btn" id="jarReset" type="button" hidden>Start over</button>
         </div>
-        <p class="jar-caption" id="jarCaption" aria-live="polite">Nothing’s holding these two together. Give it a shake, or grab the jar and do it yourself.</p>
+        <p class="jar-caption" id="jarCaption" aria-live="polite">Nothing links these two. Give it a shake, or grab the jar and do it yourself.</p>
       </div>
     </div>
   </div>
@@ -528,129 +519,59 @@ h1 span{display:block;color:var(--accent)}
 
 <main>
 
-<section class="why" id="why">
+<section class="gap" id="gap">
   <div class="wrap">
-    <h2>Accounting is standardized by law. <span>Operations aren’t.</span></h2>
-    <p class="text">So every plant ends up running an ERP plus hundreds of spreadsheets. The ERP holds the data, and the decisions get made somewhere else.</p>
-    <p class="text">A plant like yours has more reason than most. Your website says “customization defines us at every step,” and it shows: custom formulas, two buildings in Elk Grove Village, packs from a 7-gram sachet to a tote. Nobody’s standard module was built around that.</p>
-    <p class="why-q-title">Three questions live down in that vinegar layer.</p>
-    <dl class="qs">
-      <div class="q">
-        <dt>What should we buy?</dt>
-        <dd>Confirmed orders from sales, formulas from R&amp;D, stock from stores and open POs from purchasing, all reconciled by hand in a sheet that gets rebuilt every week. Then a new order arrives, and the answer changes.</dd>
-      </div>
-      <div class="q">
-        <dt>Where’s the order?</dt>
-        <dd>Everyone holds part of the answer: the planner in Excel, the supervisor on a whiteboard, someone else in email. People ask, wait and follow up. You ran sales at Flavor Right, so you’ve made that call yourself.</dd>
-      </div>
-      <div class="q">
-        <dt>What did it actually cost?</dt>
-        <dd>Material from purchasing, labor from production, overhead from wherever it lives, all added up after the fact. By the time you see the true cost, it’s too late to change anything.</dd>
-      </div>
-    </dl>
-  </div>
-</section>
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
 
-<section class="inside" id="inside">
-  <div class="wrap">
-    <h2>One live record. <span>Go on, ruin its morning.</span></h2>
-    <p class="text">Your planners, buyers and ops team work in SimpleGrid. So does your floor, on phones, tablets and laptops. Your ERP keeps the books. Pick something that goes wrong and watch where it lands. Pretend plant, pretend numbers.</p>
-
-    <div class="rig" id="rig">
-      <div class="rig-floor">
-        <h3>Your shop floor</h3>
-        <p class="rig-note">Starts, stops, rejects, shortages, breakdowns and QC holds, logged from phones.</p>
-        <div class="estops" role="group" aria-label="Pick something that goes wrong">
-          <button class="estop" type="button" data-event="kettle" aria-pressed="false"><span class="dome" aria-hidden="true"></span><span>Kettle 4 goes down</span></button>
-          <button class="estop" type="button" data-event="oil" aria-pressed="false"><span class="dome" aria-hidden="true"></span><span>Oil comes in short</span></button>
-          <button class="estop" type="button" data-event="qc" aria-pressed="false"><span class="dome" aria-hidden="true"></span><span>QC holds a batch</span></button>
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
         </div>
-        <button class="rig-reset" id="rigReset" type="button" hidden>Undo the morning</button>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
       </div>
 
-      <div class="pipe pipe-a" id="pipeA" aria-hidden="true"><i></i></div>
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg></i>SimpleGrid</span>
+      </div>
 
-      <div class="rig-screen" id="rigScreen">
-        <div class="screen-bar">
-          <span class="screen-name"><svg viewBox="0 0 42 42" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg>SimpleGrid</span>
-          <span class="screen-log" id="rigLog" aria-live="polite">All quiet so far. Give it a minute.</span>
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
         </div>
-        <div class="panes">
-          <section class="pane" data-pane="plan">
-            <h4>Production planning</h4>
-            <p class="pane-sub">Builds the plan and moves jobs when things change.</p>
-            <ul></ul><p class="pane-quiet"></p>
-          </section>
-          <section class="pane" data-pane="buy">
-            <h4>Purchasing</h4>
-            <p class="pane-sub">Works out what to buy from the BOM and raises the POs.</p>
-            <ul></ul><p class="pane-quiet"></p>
-          </section>
-          <section class="pane" data-pane="track">
-            <h4>Order tracking</h4>
-            <p class="pane-sub">Every order, every stage, every delay, in one live view.</p>
-            <ul></ul><p class="pane-quiet"></p>
-          </section>
-          <section class="pane" data-pane="cost">
-            <h4>Job costing</h4>
-            <p class="pane-sub">Actual cost per SKU, tracked live as the work runs.</p>
-            <ul></ul><p class="pane-quiet"></p>
-          </section>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <ul class="tidy">
+          <li style="--i:0">Kettle 6 crew: Order 4417 moved to you</li>
+          <li style="--i:1">Sales: 4417 ships Monday, and here’s why</li>
+          <li style="--i:2">Buyer: Oil PO is ready for your OK</li>
+          <li style="--i:3">QC: Batch 2207 on hold, and everyone can see it</li>
+        </ul>
+        <div class="floor-do">
+          <button class="lid-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="lid-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
         </div>
       </div>
-
-      <div class="phone">
-        <p class="phone-title">Work instructions, back on the floor</p>
-        <p class="phone-text" id="phoneText">Kettle 6 crew. Next job: marinara, pails, 11:00.</p>
-      </div>
-
-      <div class="pipe pipe-b" id="pipeB" aria-hidden="true"><i></i></div>
-
-      <div class="rig-erp">
-        <h3>Your ERP</h3>
-        <p>Stays put, synced both ways. GL, invoices and payments stay right where they are.</p>
-        <p class="erp-now" id="erpText"></p>
-      </div>
     </div>
 
-    <div class="rig-after">
-      <p class="rig-without" id="rigWithout">Everything shares one record. A change on the floor shows up in the plan, the buy list and the cost, and nobody works from a stale spreadsheet.</p>
-    </div>
-  </div>
-</section>
-
-<section class="maps">
-  <div class="wrap">
-    <h2>We don’t start with a demo. <span>We start with your plant.</span></h2>
-    <p class="text">Most software companies start with their software: a demo, a list of modules and a consultant’s plan to fit your operations into them. Months later, the accounts are in the system and the plant is back on Excel.</p>
-    <p class="text">So we go the other way. We take one order, follow it, and draw two maps: how decisions get made, and how material moves. Then we build the software from those two maps. Your ERP stays.</p>
-
-    <p class="line-intro">Follow one order with us. We haven’t seen your plant yet, so these are only the questions. The answers are yours.</p>
-    <div class="line" role="tablist" aria-label="Stops along one order" id="line">
-      <span class="line-drop" id="lineDrop" aria-hidden="true"></span>
-      <button class="stop" role="tab" type="button" aria-selected="true" aria-controls="mapPanel" id="stop0">Order comes in</button>
-      <button class="stop" role="tab" type="button" aria-selected="false" aria-controls="mapPanel" id="stop1" tabindex="-1">Delivery arrives</button>
-      <button class="stop" role="tab" type="button" aria-selected="false" aria-controls="mapPanel" id="stop2" tabindex="-1">Kettle or cold line</button>
-      <button class="stop" role="tab" type="button" aria-selected="false" aria-controls="mapPanel" id="stop3" tabindex="-1">Filling and packing</button>
-      <button class="stop" role="tab" type="button" aria-selected="false" aria-controls="mapPanel" id="stop4" tabindex="-1">Onto the truck</button>
-    </div>
-    <div class="map-sheets" id="mapPanel" role="tabpanel" aria-labelledby="stop0">
-      <div class="sheet sheet-d">
-        <h3>The decision map asks</h3>
-        <p id="mapD">Who sees it first? Who decides whether it runs at Greenleaf or Katherine Way, and on which line? Who do they call when the answer isn’t on any screen?</p>
-      </div>
-      <div class="sheet sheet-m">
-        <h3>The material map asks</h3>
-        <p id="mapM">Is everything in the formula on site, on a truck, or on someone’s wish list?</p>
-      </div>
-    </div>
-    <p class="maps-end">Then we lay the two maps over each other. Every screen in SimpleGrid is one of those decisions, at the point where the material actually is, showing that person what they need to decide, in their own words. Behind them, the software makes the routine decisions on its own.</p>
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend numbers.</p>
   </div>
 </section>
 
 <section class="back">
   <div class="wrap">
-    <h2>The front of a jar can say what it likes. The back has to be true.</h2>
+    <h2>The front of a jar can say what it likes. <span>The back has to be true.</span></h2>
 
     <div class="label">
       <div class="label-proof">
@@ -674,31 +595,17 @@ h1 span{display:block;color:var(--accent)}
           <div class="rule-5"></div>
           <p class="facts-foot">Not a significant source of slides, rip-and-replace or GL migration.</p>
         </div>
-        <p class="facts-src">Yes, this one’s furniture, not food: a group in India running six plants and more than 100 containers a month. Every number comes from that one deployment, not five different references.</p>
-        <p class="margin-note">
-          <svg viewBox="0 0 32 38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M27 34C14 34 7 23 8 5M3 11L8 4l6 6"/></svg>
-          Your site lists 70 million lb of annual capacity. Every 0.1 point on that is 70,000 lb, or nearly two truckloads of sauce.
-        </p>
       </div>
 
       <div class="label-copy">
-        <p><strong>Ingredients:</strong> Your orders, your BOMs, your stages and approvals, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
-        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration. Your ledger stays where it is.</p>
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p class="margin-note">
+          <svg viewBox="0 0 32 38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 8C17 8 8 15 5 33M1 26l4 8 7-5"/></svg>
+          On your 70 million lb of capacity, every 0.1 point is nearly two truckloads of sauce.
+        </p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
         <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
-        <div>
-          <p class="directions-h">Directions:</p>
-          <ol class="directions">
-            <li>Send one PO, one BOM and one process note. A formula sheet and a batch ticket will do nicely.</li>
-            <li>On day 3, see a working demo built on your own orders and BOM.</li>
-            <li>Agree the first workflows and who owns them.</li>
-            <li>Map the stages and approvals to how your plant runs.</li>
-            <li>In weeks 3 to 5,* connect your ERP, put devices on the floor and cost the first jobs.</li>
-          </ol>
-        </div>
-        <p><strong>Pay only if you keep it.</strong></p>
-        <p><strong>Storage:</strong> Keep on phones, tablets and laptops, inside the plant, not just at a desk.</p>
-        <p><strong>Distributed by:</strong> SimpleGrid Inc, mHUB, 1623 W Fulton St, Chicago, IL 60612</p>
-        <p class="fine">*Depends on scope, data readiness and integrations.</p>
         <div class="lockup">
           <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
             <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
@@ -711,32 +618,30 @@ h1 span{display:block;color:var(--accent)}
   </div>
 </section>
 
-<section class="note">
-  <div class="wrap">
-    <div class="note-grid">
-      <div class="paper">
-        <p>Hi Jonathan,</p>
-        <p>A little about me. I built and sold a $30 million manufacturing business and ran its floor myself for years. Before that, I worked in audit and investment banking. I recently moved to Chicago from India, and I’m building SimpleGrid here, out of mHUB on Fulton Street.</p>
-        <p>Twice I bought an ERP, and twice the floor went back to Excel, because the software wanted us to change how we ran our operations. You can’t change how a running plant works just to suit software.</p>
-        <p>I’d like 15 minutes with you, at your plant in Elk Grove Village, to get your opinion on where a platform like this would fit. After thirty-odd years in food, from Cargill to Stratas, yours is the opinion I’d want. I won’t bring slides, and I won’t ask you to buy anything.</p>
-        <p>If the answer is no, just say so, and I won’t follow up again.</p>
-        <p class="sign">Warm regards,<br>Mukund Agarwal<br>Founder, SimpleGrid</p>
-        <p class="ps">P.S. You make Indian sauces in Elk Grove Village. I moved here from India. I may have notes.</p>
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>Jonathan, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at your plant in Elk Grove Village. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="lid-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Elk%20Grove%20Village.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
       </div>
-      <div class="note-side">
-        <figure class="polaroid">
-          <img src="mukund.jpg" width="320" height="320" alt="Mukund Agarwal, laughing." loading="lazy" decoding="async">
-          <figcaption>Me, before ERP number two.</figcaption>
-        </figure>
-        <p class="who">You’d work with me and our advisor Aditi Puri Batra, former Country Head of QuickBooks/Intuit India, who has also worked at Amazon and Google in the US.</p>
-        <p class="who">One of us ran plants on ERPs and Excel. The other ran QuickBooks in India. We know both sides of the gap.</p>
-        <div class="cta">
-          <a class="lid-btn" href="mailto:mukund@simplegrid.ai?subject=I%20shook%20the%20jar&amp;body=Hi%20Mukund%2C%0A%0A15%20minutes%20works.%20How%20about%20">Email Mukund</a>
-          <a class="call-link" href="tel:+17732804485">Or call (773) 280-4485</a>
-        </div>
-      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">P.S. You make Indian sauces. I moved here from India. I may have notes.</p>
     </div>
-    <p class="skip">Rather skip me? Send one PO, one BOM and one process note to <a href="mailto:mukund@simplegrid.ai?subject=One%20PO%2C%20one%20BOM%2C%20one%20process%20note">mukund@simplegrid.ai</a> and you’ll see a working demo on your own data in 3 days.</p>
+    <div class="faces">
+      <figure class="polaroid polaroid-a">
+        <img src="mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <figcaption>Mukund Agarwal</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-b">
+        <img src="aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <figcaption>Aditi Puri Batra</figcaption>
+      </figure>
+      <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
+      <p class="who"><strong>Advisor.</strong> Former Country Head of QuickBooks/Intuit India. Ex-Amazon and Google in the US.</p>
+    </div>
   </div>
 </section>
 
@@ -748,8 +653,7 @@ h1 span{display:block;color:var(--accent)}
       <svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg>
     </a>
     <div>
-      <p>What we know about Legacy Foods comes from your website, and what we know about you comes from LinkedIn. If we got something wrong, tell us and we’ll reformulate.</p>
-      <p>The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+      <p>Everything we know about Legacy comes from your website and LinkedIn. If we got something wrong, tell us and we’ll reformulate. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
     </div>
   </div>
 </footer>
@@ -884,13 +788,13 @@ void main(){
   var yolk = $('yolk'), yolkBall = $('yolkBall');
 
   var COPY = {
-    separated: { btn: 'Shake the jar', caption: 'Nothing’s holding these two together. Give it a shake, or grab the jar and do it yourself.' },
-    mixed:     { btn: 'Shake the jar', caption: 'There we go. Looks mixed, doesn’t it?' },
-    broken:    { btn: 'Add the emulsifier', caption: 'And there it goes. That’s the usual ERP go-live: mixed in the demo, and months later the accounts are in the system and the plant is back on Excel.' },
+    separated: { btn: 'Shake the jar', caption: 'Nothing links these two. Give it a shake, or grab the jar and do it yourself.' },
+    mixed:     { btn: 'Shake the jar', caption: 'Looks mixed, doesn’t it?' },
+    broken:    { btn: 'Add the emulsifier', caption: 'And there it goes. That’s the usual ERP go-live: months later, the plant is back on Excel.' },
     dosing:    { btn: 'Add the emulsifier', caption: 'One moment. Lid off.' },
     dosed:     { btn: 'Shake the jar', caption: 'In goes the yolk. That’s SimpleGrid. Unlike 2015, there’s no shortage of this one. Now shake it.' },
     taking:    { btn: 'Keep shaking', caption: 'It’s coming together.' },
-    done:      { btn: 'Why did the first one break?', caption: 'One live record for everyone who runs the operation. Shake it all you like, it won’t break.' }
+    done:      { btn: 'Why did the first one break?', caption: 'One live record. Your ERP and your floor finally tell the same story, and it won’t break.' }
   };
   var ARIA = {
     separated: 'A glass jar with a layer of oil floating on a layer of vinegar.',
@@ -933,10 +837,11 @@ void main(){
   }
 
   function setCallouts(final){
+    $('gapTag').hidden = final;
     $('oilTitle').textContent = final ? 'Your ERP' : 'The oil: your ERP';
-    $('oilText').textContent = final ? 'Still here, still keeping the books.' : 'It knows what happened. Orders, stock, open POs, BOMs, invoices.';
-    $('vinTitle').textContent = final ? 'Your spreadsheets' : 'The vinegar: your spreadsheets';
-    $('vinText').textContent = final ? 'Retired, with thanks.' : 'They decide what happens next. What to buy, what to make, what to promise.';
+    $('oilText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('vinTitle').textContent = final ? 'Your spreadsheets' : 'The vinegar: your floor';
+    $('vinText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
   /* The emulsion spreads out from the jar and takes the whole hero with it. The
@@ -996,7 +901,7 @@ void main(){
 
   btn.addEventListener('click', function(){
     if (phase === 'broken') addEmulsifier();
-    else if (phase === 'done') $('why').scrollIntoView();
+    else if (phase === 'done') $('gap').scrollIntoView();
     else shake();
   });
   resetBtn.addEventListener('click', startOver);
@@ -1170,133 +1075,100 @@ void main(){
     });
   }
 
-  /* ---------------------------------------------- One live record: the rig */
-  var BASE = {
-    plan: [['Kettle 4', 'Smoky BBQ, gallons'], ['Kettle 6', 'Marinara, pails'], ['Cold line 2', 'Garlic aioli, 2-oz cups']],
-    buy:  [['Soybean oil', 'Covered through Friday'], ['Egg yolk', 'Covered through Friday'], ['Tomato paste', 'Covered through Friday']],
-    track:[['Order 4417, BBQ', 'Ships Thursday'], ['Order 4421, marinara', 'Ships Friday'], ['Order 4430, aioli', 'Ships Friday']],
-    cost: [['Order 4417', '$1.42 per lb'], ['Order 4421', '$1.12 per lb'], ['Order 4430', '$2.05 per lb']]
-  };
-  var EVENTS = {
-    kettle: {
-      log: '9:41 AM. Floor supervisor, from a phone: Kettle 4 is down.',
-      plan: { 0: '<s>Smoky BBQ, gallons</s> Down', 1: 'Smoky BBQ first, then marinara' },
-      buy: null, quiet: { buy: 'Nothing to buy. Nobody gets bothered.' },
-      track: { 0: 'Still ships Thursday', 1: 'Ships <s>Friday</s> Monday' },
-      cost: { 0: '<s>$1.42</s> $1.47 per lb, with overtime' },
-      phone: 'Kettle 6 crew. Next job: Smoky BBQ, moved over from Kettle 4.',
-      erp: 'Ledger untouched. The real cost lands when the job closes.',
-      without: 'Without it: a radio call, a note on the whiteboard, and a spreadsheet someone rebuilds by Thursday. Sales hears about it from the customer.'
-    },
-    oil: {
-      log: '7:05 AM. Receiving, from a phone: the oil delivery is 8,000 lb short.',
-      plan: { 2: 'Garlic aioli, <s>full run</s> half run today' },
-      buy: { 0: '<s>Covered through Friday</s> 8,000 lb short. PO drafted for the buyer’s OK' },
-      track: { 2: '<s>Ships Friday</s> Half Friday, the rest Tuesday' },
-      cost: { 2: '<s>$2.05</s> $2.11 per lb, with spot oil' },
-      phone: 'Cold line 2 crew. Run half the aioli, then switch to the next job.',
-      erp: 'The new PO syncs across once it’s approved.',
-      without: 'Without it: receiving tells purchasing, purchasing emails the planner, and the line finds out when the tank runs dry.'
-    },
-    qc: {
-      log: '1:22 PM. QC, from a phone: batch 2207 is on hold.',
-      plan: { 2: '<s>Garlic aioli, 2-oz cups</s> Stopped. Next job pulled forward' },
-      buy: { 1: '<s>Covered through Friday</s> 300 lb short if 2207 gets re-run' },
-      track: { 2: '<s>Ships Friday</s> On hold, and sales can see why' },
-      cost: { 2: '$2,140 of batch 2207 at risk' },
-      phone: 'Filler crew. Stop. Batch 2207 is on QC hold. Your next job is on screen.',
-      erp: 'Ledger untouched until the batch is released or written off.',
-      without: 'Without it: a red tag on a tote, and a phone call when the customer asks where the truck is.'
-    }
-  };
-  var PANE_ORDER = ['plan', 'buy', 'track', 'cost'];
-  var estops = [].slice.call(document.querySelectorAll('.estop'));
-  var rigLog = $('rigLog'), rigWithout = $('rigWithout'), phoneText = $('phoneText'), erpText = $('erpText');
-  var rigQuietDefault = rigWithout.textContent, phoneDefault = phoneText.textContent, logDefault = rigLog.textContent;
-
-  function renderPanes(ev){
-    PANE_ORDER.forEach(function(key, n){
-      var pane = document.querySelector('.pane[data-pane=' + key + ']');
-      var list = pane.querySelector('ul'), quiet = pane.querySelector('.pane-quiet');
-      var hits = ev && ev[key];
-      list.innerHTML = BASE[key].map(function(row, i){
-        var hit = hits && hits[i] !== undefined;
-        return '<li' + (hit ? ' class="hit" style="--d:' + (.38 + n*.13) + 's"' : '') + '><span>' + row[0] + '</span><b>' + (hit ? hits[i] : row[1]) + '</b></li>';
-      }).join('');
-      quiet.textContent = (ev && ev.quiet && ev.quiet[key]) || '';
-    });
-  }
-  function runPipe(el, delay){
-    el.classList.remove('run');
-    el.style.setProperty('--d', delay + 's');
-    void el.offsetWidth;
-    el.classList.add('run');
-  }
-  function fire(name){
-    var ev = EVENTS[name];
-    estops.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.event === name ? 'true' : 'false'); });
-    rigLog.textContent = ev.log;
-    rigLog.classList.add('live');
-    rigWithout.textContent = ev.without;
-    phoneText.textContent = ev.phone;
-    phoneText.classList.add('hit');
-    erpText.textContent = ev.erp;
-    $('rigReset').hidden = false;
-    renderPanes(ev);
-    runPipe($('pipeA'), 0);
-    runPipe($('pipeB'), .75);
-    if (window.matchMedia('(max-width:1120px)').matches) $('rigScreen').scrollIntoView({ block: 'start' });
-  }
-  function calm(){
-    estops.forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
-    rigLog.textContent = logDefault;
-    rigLog.classList.remove('live');
-    rigWithout.textContent = rigQuietDefault;
-    phoneText.textContent = phoneDefault;
-    phoneText.classList.remove('hit');
-    erpText.textContent = '';
-    $('rigReset').hidden = true;
-    renderPanes(null);
-  }
-  estops.forEach(function(b){ b.addEventListener('click', function(){ fire(b.dataset.event); }); });
-  $('rigReset').addEventListener('click', calm);
-  renderPanes(null);
-
-  /* --------------------------------------------------- Two maps, one order */
-  var STOPS = [
-    { d: 'Who sees it first? Who decides whether it runs at Greenleaf or Katherine Way, and on which line? Who do they call when the answer isn’t on any screen?',
-      m: 'Is everything in the formula on site, on a truck, or on someone’s wish list?' },
-    { d: 'Who accepts a load of oil or egg, and what do they look at before saying yes?',
-      m: 'Who gives, who takes, and what gets counted at the dock?' },
-    { d: 'Who picks what runs next, and how do allergens and changeovers change that call?',
-      m: 'What left the store, what went in, and where did the difference go?' },
-    { d: 'Tote, pail or 7-gram sachet: who sets the run order? Who can put a batch on QC hold, and who lifts it?',
-      m: 'Where does the leftover go, and does anyone write it down?' },
-    { d: 'When the truck is short, who decides whose order ships first?',
-      m: 'What left, who signed for it, and does it match what the plan says?' }
+  /* ------------------------------------ The gap: your ERP vs your floor */
+  var ERP_ROWS = [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Soybean oil', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
   ];
-  var stops = [].slice.call(document.querySelectorAll('.stop'));
-  var mapPanel = $('mapPanel'), mapD = $('mapD'), mapM = $('mapM'), lineDrop = $('lineDrop');
-  function selectStop(i, focus){
-    stops.forEach(function(b, n){
-      b.setAttribute('aria-selected', n === i ? 'true' : 'false');
-      b.tabIndex = n === i ? 0 : -1;
-    });
-    mapD.textContent = STOPS[i].d;
-    mapM.textContent = STOPS[i].m;
-    mapPanel.setAttribute('aria-labelledby', stops[i].id);
-    lineDrop.style.left = (10 + i*20) + '%';
-    if (focus) stops[i].focus();
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.800 14.700 1.300 9.200 1.300 3.800 1.300 2.500 2 1.500 3.300 1c.3-.1.7 0 .9.300z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.500" y="3" width="13" height="10" rx="1.500"/><path d="M2 4l6 5 6-5"/></svg>';
+  // kind, text, tilt, where it lands on a laptop, where it lands on a phone
+  var NOTES = [
+    ['sticky', 'Kettle 4 is down!', -6, 'left:1%;top:1%', 'left:0;top:0'],
+    ['call', 'Sales: Where’s the order?', 3, 'left:33%;top:0', 'right:0;top:8%'],
+    ['file', 'plan_FINAL_v7.xlsx', -3, 'right:0;top:9%', 'left:3%;top:17%'],
+    ['pink', 'Oil truck: 8,000 lb short', 5, 'right:5%;top:20%', 'right:0;top:24.500%'],
+    ['board', 'What should we buy???', -4, 'left:2%;top:20%', 'left:0;top:33.500%'],
+    ['mail', 'Re: Re: Fwd: Re: which batch?', 3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag', 'QC hold: batch 2207', -7, 'left:0;top:40%', 'left:4%;top:50%'],
+    ['file', 'plan_FINAL_v8_USE THIS.xlsx', -2, 'right:0;top:51%', 'right:0;top:57%'],
+    ['call', 'Customer: You said Thursday.', 4, 'left:6%;top:57%', 'left:0;top:65%'],
+    ['sticky', 'Rebuilding the plan. Again.', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink', 'What did it actually cost?', 3, 'left:1%;top:78%', 'left:0;top:82%'],
+    ['board', 'Ask whoever knows', -3, 'right:7%;top:85%', 'right:4%;top:90.500%']
+  ];
+  var STAGE_NOTE = {
+    calm: $('stageNote').textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Your ERP stays. The spreadsheets go.'
+  };
+  var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
+  var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
+  var stageTimers = [];
+  function later(fn, ms){ stageTimers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  function renderErp(linked){
+    erpRows.innerHTML = ERP_ROWS.map(function(row, i){
+      return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
+    }).join('');
+    $('erpStatus').textContent = linked ? 'In sync' : 'All good';
+    $('erpFoot').textContent = linked ? 'Last updated: just now' : 'Last updated: yesterday, 6:00 PM';
   }
-  stops.forEach(function(b, i){
-    b.addEventListener('click', function(){ selectStop(i); });
-    b.addEventListener('keydown', function(e){
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
-        e.preventDefault();
-        selectStop((i + (e.key === 'ArrowRight' ? 1 : stops.length - 1)) % stops.length, true);
-      }
+  function runMorning(){
+    var onPhone = window.matchMedia('(max-width:620px)').matches;
+    stage.dataset.state = 'chaos';
+    $('floorClock').textContent = '9:41 AM';
+    stageNote.textContent = STAGE_NOTE.chaos;
+    pile.innerHTML = NOTES.map(function(n, i){
+      var icon = n[0] === 'call' ? PHONE : n[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + n[0] + '" style="--r:' + n[2] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + n[onPhone ? 4 : 3] + '">' + icon + '<span>' + n[1] + '</span></div>';
+    }).join('');
+    later(function(){
+      stage.dataset.state = 'messy';
+      linkBtn.focus({ preventScroll: true });
+    }, NOTES.length*170 + 300);
+  }
+  // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
+  function linkUp(){
+    var link = $('stageLink').getBoundingClientRect();
+    var tx = link.left + link.width/2, ty = link.top + link.height/2;
+    [].slice.call(pile.children).forEach(function(el, i){
+      var r = el.getBoundingClientRect();
+      var rot = el.style.getPropertyValue('--r');
+      el.style.animation = 'none';
+      el.style.opacity = 1;
+      el.style.transform = 'rotate(' + rot + ')';
+      void el.offsetWidth;
+      el.style.transition = 'transform .5s cubic-bezier(.6,0,.9,.4) ' + (i*.025) + 's,opacity .5s ease-in ' + (i*.025) + 's';
+      el.style.transform = 'translate(' + (tx - r.left - r.width/2) + 'px,' + (ty - r.top - r.height/2) + 'px) scale(.12)';
+      el.style.opacity = 0;
     });
-  });
+    linkBtn.disabled = true;
+    later(function(){
+      stage.dataset.state = 'linked';
+      linkBtn.disabled = false;
+      pile.innerHTML = '';
+      renderErp(true);
+      stageNote.textContent = STAGE_NOTE.linked;
+      stageReset.focus({ preventScroll: true });
+    }, 720);
+  }
+  function resetStage(){
+    stageTimers.forEach(clearTimeout);
+    stageTimers = [];
+    stage.dataset.state = 'calm';
+    pile.innerHTML = '';
+    $('floorClock').textContent = '6:58 AM';
+    stageNote.textContent = STAGE_NOTE.calm;
+    renderErp(false);
+    chaosBtn.focus({ preventScroll: true });
+  }
+  chaosBtn.addEventListener('click', runMorning);
+  linkBtn.addEventListener('click', linkUp);
+  stageReset.addEventListener('click', resetStage);
+  renderErp(false);
 
   /* --- The barcode is real: Code 128 for 7732804485, in bar and space widths. --- */
   var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
