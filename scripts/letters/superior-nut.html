@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Almonds and chocolate in a panning drum, beside the words: {{first}}, you’ve been Chicago-made since 1982.">
+<meta property="og:image:alt" content="A copper panning drum of almonds with a jug of chocolate above it, beside the words: {{first}}, you’ve been Chicago-made since 1982.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, pan the almonds.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes nuts, trail mix and chocolates for a living.">
@@ -38,7 +38,73 @@
   --display:'Saira Semi Condensed','Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-<!--#include line.css-->
+/* -------------------------------------------------- The panning drum
+   The almonds in the copper pan are the ERP: what the system says is there.
+   The chocolate in the jug above is the floor: what's really happening. */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.pan{
+  --choc:#4A2412;--nut:#EBC28C;--nut-skin:#C79257;
+  --copper:#CA743C;--copper-dk:#9B4F25;--copper-hi:#EEA872;--inside:#B5622F;--inside-dk:#8E4521;--rim:#E0925A;
+  --steel:#CBD2D8;--steel-dk:#99A3AC;
+  --patch:0;--coat:0;--gloss:0;--glaze:0;--bridge:0;--smear:0;
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+}
+.hero[data-story$=ing] .pan,.hero[data-story=done] .pan{cursor:default}
+.pan svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing fading home. */
+.pan.snap,.pan.snap *{transition:none!important}
+.pn-floor{fill:rgba(0,0,0,.22)}
+.pn-cab{fill:#5C646C}
+.pn-cab-top{fill:#7E878F}
+.pn-knob{fill:#E5322F;stroke:#3A3F44;stroke-width:3}
+.pn-vent{fill:none;stroke:#454C53;stroke-width:3;stroke-linecap:round}
+.pn-copper-dk{fill:var(--copper-dk)}
+.pn-copper{fill:var(--copper)}
+.pn-copper-hi{fill:none;stroke:var(--copper-hi);stroke-width:9;stroke-linecap:round;opacity:.8}
+.pn-inside{fill:var(--inside)}
+.pn-inside-dk{fill:var(--inside-dk)}
+.pn-rim{fill:none;stroke:var(--rim);stroke-width:13}
+/* Dashes travel round the rim while the drum turns. */
+.pn-spin{fill:none;stroke:#F8CDA3;stroke-width:4;stroke-dasharray:5 7;opacity:.85}
+.pn-pour{fill:none;stroke:var(--choc);stroke-width:7;stroke-linecap:round}
+.pn-seal{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round}
+/* The mess: chocolate up the walls, over the rim and down the side. It stays until the seal coat's in. */
+.pn-smear{fill:var(--choc);opacity:var(--smear)}
+.pn-drip{fill:none;stroke:var(--choc);stroke-width:7;stroke-linecap:round;opacity:0}
+.pn-bulb{fill:var(--choc);opacity:0}
+.alm .nut{fill:var(--nut);stroke:rgba(52,24,6,.55);stroke-width:1.4}
+.alm .skin{fill:none;stroke:var(--nut-skin);stroke-width:1.6;stroke-linecap:round}
+.alm .patch{fill:var(--choc);opacity:var(--patch)}
+.alm .coat{fill:var(--choc);stroke:rgba(28,10,0,.55);stroke-width:1.3;opacity:var(--coat)}
+.alm .glaze{fill:none;stroke:var(--accent);stroke-width:2.2;opacity:var(--glaze)}
+.alm .gloss{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;opacity:calc(var(--gloss)*.9)}
+.pn-bridge{fill:var(--choc);opacity:var(--bridge)}
+.pn-jug{fill:var(--steel)}
+.pn-jug-dk{fill:var(--steel-dk)}
+.pn-jug-hi{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;opacity:.55}
+.pn-jug-handle{fill:none;stroke:var(--steel-dk);stroke-width:8;stroke-linecap:round}
+.pn-jug-rim{fill:#E8ECEF}
+.pn-choc{fill:var(--choc)}
+.pn-disp{opacity:0}
+.pn-disp-body{fill:var(--pale);stroke:rgba(38,24,0,.4);stroke-width:2}
+.pn-disp-tip{fill:var(--h2-hi)}
+.pn-disp-hang{fill:none;stroke:var(--steel);stroke-width:3}
+/* SimpleGrid: the mark on the seal coat as it goes in, the label on the pan once the batch comes clean. */
+.pn-badge{--sg-bg:var(--h2-hi);--sg-ink:#fff}
+.pan.dosed .pn-badge{opacity:1;transform:none}
+.pn-label{--sg-bg:var(--h2-hi);--sg-ink:#fff}
+.pan.is-done .pn-label{opacity:1;transform:none}
+.callout-top{top:2%}
+.callout-gap{top:calc(30% - 15px)}
+.callout-bottom{top:50%}
+.callout-top h3 i{background:#4A2412}
+.callout-bottom h3 i{background:#EBC28C}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.47)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->
@@ -64,18 +130,87 @@
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
-<!--#include line.svg-->
+        <div class="pan hero-obj" id="pan" role="img" aria-label="A copper panning drum turning on its stand with bare almonds inside, and a jug of melted chocolate above it, not pouring.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <clipPath id="pnBall"><circle cx="180" cy="338" r="146"/></clipPath>
+              <!-- the shape of a coated almond: the bare nut's patchy chocolate stays inside it -->
+              <clipPath id="pnCoat"><path d="M-20 0C-20-8.6-12-12.4-2-12.4C9-12.4 15.5-6.2 21.5 0C15.5 6.2 9 12.4-2 12.4C-12 12.4-20 8.6-20 0Z"/></clipPath>
+            </defs>
+            <!-- the stand: a motor cabinet on the floor -->
+            <ellipse class="pn-floor" cx="180" cy="547" rx="108" ry="6"/>
+            <path class="pn-cab" d="M116 480H244L258 546H102Z"/>
+            <rect class="pn-cab-top" x="112" y="478" width="136" height="10" rx="3"/>
+            <circle class="pn-knob" cx="146" cy="518" r="7"/>
+            <path class="pn-vent" d="M194 508H224M196 518H226M198 528H228"/>
+            <!-- the drum: a copper pan with its mouth tilted toward us -->
+            <g clip-path="url(#pnBall)">
+              <rect class="pn-copper-dk" x="30" y="190" width="300" height="300"/>
+              <circle class="pn-copper" cx="166" cy="322" r="146"/>
+            </g>
+            <path class="pn-copper-hi" d="M52 386C40 340 44 294 66 256"/>
+            <!-- inside the drum -->
+            <ellipse class="pn-inside" cx="180" cy="306" rx="112" ry="84"/>
+            <path class="pn-inside-dk" d="M68 306A112 84 0 0 1 292 306A112 60 0 0 0 68 306Z"/>
+            <!-- the mess inside: chocolate up the walls and pooled under the almonds -->
+            <g class="pn-smear">
+              <path d="M84 296C88 276 102 262 124 254C120 265 110 271 104 281C99 290 93 297 86 304Z"/>
+              <path d="M234 252C257 256 274 268 283 286C277 292 269 283 260 276C250 269 240 265 231 263Z"/>
+              <circle cx="176" cy="243" r="7"/><circle cx="193" cy="251" r="4.5"/><circle cx="160" cy="253" r="3.5"/><circle cx="207" cy="239" r="3"/>
+              <path d="M108 368C130 358 160 363 180 361C206 359 234 361 254 367C247 380 222 386 196 386C166 388 130 384 108 368Z"/>
+            </g>
+            <!-- the far half of the rim -->
+            <path class="pn-rim" d="M68 306A112 84 0 0 1 292 306"/>
+            <path class="pn-spin" id="pnSpinFar" pathLength="100" d="M68 306A112 84 0 0 1 292 306"/>
+            <!-- what pours in: the chocolate, and later the seal coat -->
+            <path class="pn-pour" id="pnPour" d="M0 0"/>
+            <path class="pn-seal" id="pnSeal" d="M0 0"/>
+            <!-- the almonds, and the chocolate that glues them into clumps: the script below builds both -->
+            <g id="pnBed"><g id="pnNuts"></g><g id="pnBridges"></g></g>
+            <!-- the near half of the rim -->
+            <path class="pn-rim" d="M292 306A112 84 0 0 1 68 306"/>
+            <path class="pn-spin" id="pnSpinNear" pathLength="100" d="M292 306A112 84 0 0 1 68 306"/>
+            <!-- chocolate over the rim, and down the outside -->
+            <g class="pn-smear">
+              <path d="M200 224C202 218 222 217 226 223C228 229 202 231 200 224Z"/>
+              <path d="M107 385C109 377 133 376 137 383C139 391 111 393 107 385Z"/>
+              <path d="M223 388C225 380 249 379 253 386C253 394 225 396 223 388Z"/>
+              <path d="M163 392C164 387 179 386 181 391C182 396 164 397 163 392Z"/>
+            </g>
+            <path class="pn-drip" pathLength="1" d="M122 389V428"/><circle class="pn-bulb" cx="122" cy="430" r="5.5"/>
+            <path class="pn-drip" pathLength="1" d="M238 391V442"/><circle class="pn-bulb" cx="238" cy="444" r="5.5"/>
+            <path class="pn-drip" pathLength="1" d="M172 395V414"/><circle class="pn-bulb" cx="172" cy="416" r="4.6"/>
+            <!-- once the batch comes clean, the pan wears the label -->
+            <g transform="translate(180 436) scale(.56)"><g class="pn-label sg-pop"><!--#include sg-tag.svg--></g></g>
+            <!-- the jug of melted chocolate: the floor -->
+            <g id="pnJug" transform="translate(252 92)">
+              <path class="pn-jug-handle" d="M28-26C54-26 56 22 26 26"/>
+              <path class="pn-jug" d="M-30-42H30L27 40Q26 48 18 48H-18Q-26 48-27 40Z"/>
+              <path class="pn-jug-dk" d="M14-42H30L27 40Q26 48 18 48H11Z"/>
+              <path class="pn-jug-hi" d="M-19-30V36"/>
+              <path class="pn-jug" d="M-26-46L-50-52Q-55-49-49-44L-25-32Z"/>
+              <ellipse class="pn-jug-rim" cx="0" cy="-42" rx="30" ry="8"/>
+              <ellipse class="pn-choc" cx="0" cy="-41" rx="25" ry="5.4"/>
+              <path class="pn-choc" d="M-45-47C-40-44-35-42-31-38C-29-31-31-25-28-21C-24-25-25-33-24-41Z"/>
+            </g>
+            <!-- the seal coat: SimpleGrid. Its dispenser comes down from above. -->
+            <g class="pn-disp" id="pnDisp" transform="translate(120 44)">
+              <path class="pn-disp-hang" d="M0-32V-42"/><circle class="pn-disp-hang" cx="0" cy="-47" r="5"/>
+              <rect class="pn-disp-body" x="-25" y="-32" width="50" height="62" rx="12"/>
+              <path class="pn-disp-tip" d="M-13 29H13L5 48H-5Z"/>
+              <g transform="translate(0 -1)"><g class="pn-badge sg-pop"><!--#include sg-badge.svg--></g></g>
+            </g>
+          </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The chocolate: your floor</span></h3>
+            <p id="topText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The almonds: your ERP</span></h3>
+            <p id="bottomText">What the system says is there.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -83,10 +218,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Pan them to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The almonds are your ERP, the chocolate is your floor, and nothing links them. Pan them, or tap the pan.</p>
       </div>
     </div>
   </div>
@@ -151,7 +286,254 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+(function(){
+  /* --------------------------------------------------------- The panning drum
+     The almonds in the copper pan are the ERP: what the system says is there.
+     The chocolate in the jug above is the floor: what's really happening. And
+     nothing links them. Pour it straight on, with nothing to make it take, and
+     the almonds clump into doubles and triples, the coats come out streaky and
+     bald in patches, and chocolate ends up all over the pan. That mess stays.
+     SimpleGrid is the seal coat: in it goes, the pan turns again, the clumps
+     break apart and every almond comes out evenly coated, with a shine. */
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), pan = $('pan'), bed = $('pnBed'), nutsG = $('pnNuts'), bridgesG = $('pnBridges');
+  var jug = $('pnJug'), disp = $('pnDisp'), pourEl = $('pnPour'), sealEl = $('pnSeal');
+  var spinFar = $('pnSpinFar'), spinNear = $('pnSpinNear');
+  var drips = pan.querySelectorAll('.pn-drip'), bulbs = pan.querySelectorAll('.pn-bulb');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce, clamp = SG.clamp;
+  var COPY = {
+    apart:    { btn: 'Pan them to see your operations', caption: 'The almonds are your ERP, the chocolate is your floor, and nothing links them. Pan them, or tap the pan.' },
+    messing:  { btn: 'Panning…', caption: 'Pouring the chocolate straight on. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the seal coat', caption: 'That’s your operations today: a big mess. Almonds stuck in clumps, coats streaky and bald, chocolate all over the pan. It won’t pan itself smooth, either.' },
+    dosing:   { btn: 'Adding…', caption: 'In goes the seal coat, over all of it.' },
+    dosed:    { btn: 'Pan them again', caption: 'In goes the seal coat. That’s SimpleGrid. Now the chocolate has something to hold on to, so pan them again.' },
+    cleaning: { btn: 'Panning…', caption: 'Watch the clumps break up and the coats even out.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean batch: every almond on its own, evenly coated, with a shine. Your ERP and your floor finally match, all the way around.' }
+  };
+  var ARIA = {
+    apart: pan.getAttribute('aria-label'),
+    mess: 'The almonds after the chocolate went straight on: stuck together in clumps of two and three, streaky and bald in patches, with chocolate smeared over the pan and dripping down its side.',
+    dosed: 'The same messy pan, with a seal-coat dispenser above it wearing the SimpleGrid mark.',
+    done: 'Every almond on its own, evenly coated in glossy chocolate, in a clean pan labelled SimpleGrid.'
+  };
+  var lerp = function(a, b, t){ return a + (b - a)*t; };
+  var seg = function(t, a, b){ return clamp((t - a)/(b - a), 0, 1); };
+  var sm = function(t, a, b){ var x = seg(t, a, b); return x*x*(3 - 2*x); };
+  var seed = 4417;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+
+  /* Twelve almonds: [x, y, turn]. At rest they lie in a loose bed at the bottom
+     of the pan. In the mess they're glued into two triples and two doubles,
+     with two strays. */
+  var REST = [[98,320,-12],[140,316,170],[182,319,8],[224,315,-168],[264,321,16],[118,347,186],[160,344,-6],[202,348,176],[244,345,10],[140,372,-174],[180,374,6],[220,371,190]];
+  var MESS = [[102,326,38],[124,324,-42],[113,344,176],[236,322,-146],[258,328,66],[242,344,12],[172,367,18],[196,370,-164],[168,312,-62],[189,311,112],[128,368,160],[232,369,-24]];
+  var CLUMPS = [[0,1,2],[3,4,5],[6,7],[8,9]];
+  var NUT = 'M-17 0C-17-7-10-10-2-10C7-10 13-5 18 0C13 5 7 10-2 10C-10 10-17 7-17 0Z';
+  var COAT = 'M-20 0C-20-8.6-12-12.4-2-12.4C9-12.4 15.5-6.2 21.5 0C15.5 6.2 9 12.4-2 12.4C-12 12.4-20 8.6-20 0Z';
+  // Where the chocolate took and where it didn't: three ways of getting it wrong.
+  var PATCH = [
+    'M-24-15H2C-4-9 6-6 0-1C-6 4 5 8-1 15H-24ZM8-15H12L5 15H1Z',
+    'M-24-15H24V-3C17 1 12-5 6 0C0 5-6-2-12 2C-17 5-20 1-24 3ZM5 6.5a4 3.4 0 1 0 8 0a4 3.4 0 1 0-8 0Z',
+    'M-4-15H24V15H-3C1 9-7 5-3-1C0-6-8-9-5-15ZM-15-15H-11L-17 15H-21Z'
+  ];
+  var nuts = REST.map(function(p, i){
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'alm');
+    g.innerHTML = '<path class="nut" d="' + NUT + '"/>' +
+      '<path class="skin" d="M-11-3.5C-3-6.5 6-6 12-2.5M-11 4C-3 6.5 6 6 12 2.5"/>' +
+      '<path class="patch" clip-path="url(#pnCoat)" d="' + PATCH[i % 3] + '"/>' +
+      '<path class="coat" d="' + COAT + '"/><path class="glaze" d="' + COAT + '"/>' +
+      '<path class="gloss" d="M-12-5.5C-6-9.5 3-9.8 9.5-6.5"/>';
+    nutsG.appendChild(g);
+    // While the pan turns, each one rides its own loop and tumbles a whole turn or two.
+    return { el: g, phi: i/12*Math.PI*2 + rand()*.5, rs: .55 + rand()*.5, turns: (rand() < .5 ? -1 : 1)*(rand() < .5 ? 1 : 2) };
+  });
+  // The chocolate that glues each clump together: a lump on every joint.
+  function blob(cx, cy, rx, ry, ang){
+    var n = 8, pts = [], c = Math.cos(ang), s = Math.sin(ang), k;
+    for (k = 0; k < n; k++){
+      var a = k/n*Math.PI*2, r = .78 + rand()*.36, x = Math.cos(a)*rx*r, y = Math.sin(a)*ry*r;
+      pts.push([cx + x*c - y*s, cy + x*s + y*c]);
+    }
+    var f = function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); };
+    var mid = function(p, q){ return f([(p[0] + q[0])/2, (p[1] + q[1])/2]); };
+    var d = 'M' + mid(pts[n - 1], pts[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f(pts[k]) + ' ' + mid(pts[k], pts[(k + 1) % n]);
+    return d + 'Z';
+  }
+  var glue = '';
+  CLUMPS.forEach(function(c){
+    for (var a = 0; a < c.length; a++) for (var b = a + 1; b < c.length; b++){
+      var p = MESS[c[a]], q = MESS[c[b]];
+      glue += blob((p[0] + q[0])/2, (p[1] + q[1])/2, 8, 11, Math.atan2(q[1] - p[1], q[0] - p[0]));
+    }
+    if (c.length === 3) glue += blob((MESS[c[0]][0] + MESS[c[1]][0] + MESS[c[2]][0])/3, (MESS[c[0]][1] + MESS[c[1]][1] + MESS[c[2]][1])/3, 10, 9, 0);
+  });
+  var glueEl = document.createElementNS(NS, 'path');
+  glueEl.setAttribute('class', 'pn-bridge');
+  glueEl.setAttribute('d', glue);
+  bridgesG.appendChild(glueEl);
+
+  /* Everything the drum does is a number here, and each frame draws from them.
+     The moves below are timelines that set these numbers from the time alone,
+     so reduced motion can jump straight to the end of each one. */
+  function fresh(){
+    return { from: REST, to: REST, mix: 0, env: 0, tt: 0, turns: 0, fast: 0,
+      jug: 0, pourA: 0, pourB: 0, disp: 0, tilt: 0, park: 0, sealA: 0, sealB: 0,
+      patch: 0, coat: 0, gloss: 0, glaze: 0, bridge: 0, smear: 0, drip: 0 };
+  }
+  var S = fresh(), clock = 0, spin = 0;
+  var JUG = [252, 92], SPOUT = [-50, -50], TIP = -42;
+  var ABOVE = [120, 44], OVER = [120, 112], PARK = [84, 116], LEAN = -28, NOZZLE = [0, 48];
+  var BED = [180, 338], RX = 70, RY = 28, OMEGA = Math.PI*2*.85, LAND = 332;
+  function turn(p, deg){ var a = deg*Math.PI/180, c = Math.cos(a), s = Math.sin(a); return [p[0]*c - p[1]*s, p[0]*s + p[1]*c]; }
+  var spout = turn(SPOUT, TIP), nozzle = turn(NOZZLE, LEAN);
+  var POUR = [JUG[0] + spout[0], JUG[1] + spout[1]], SEAL = [OVER[0] + nozzle[0], OVER[1] + nozzle[1]];
+  var vars = {};
+  function setVar(k, v){ v = Math.round(v*1000)/1000; if (vars[k] !== v){ vars[k] = v; pan.style.setProperty('--' + k, v); } }
+  function stream(el, from, a, b){
+    var top = lerp(from[1], LAND, a), bot = lerp(from[1], LAND, b);
+    if (bot - top < 1){ el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.setAttribute('d', 'M' + (from[0] + (reduce ? 0 : Math.sin(clock*21)*.7)).toFixed(1) + ' ' + top.toFixed(1) + 'V' + bot.toFixed(1));
+  }
+  function render(){
+    var off = -(spin % 12);
+    spinFar.setAttribute('stroke-dashoffset', off.toFixed(2));
+    spinNear.setAttribute('stroke-dashoffset', (off + 100).toFixed(2));
+    bed.setAttribute('transform', reduce ? '' : 'rotate(' + (Math.sin(clock*1.4)*1.3).toFixed(2) + ' 180 372)');
+    nuts.forEach(function(n, i){
+      var f = S.from[i], g = S.to[i];
+      var x = lerp(f[0], g[0], S.mix), y = lerp(f[1], g[1], S.mix), r = lerp(f[2], g[2], S.mix) + 360*n.turns*S.turns;
+      if (S.env > 0){
+        var ph = n.phi + S.tt*OMEGA, e = S.env*.9;
+        x = lerp(x, BED[0] + Math.cos(ph)*RX*n.rs, e);
+        y = lerp(y, BED[1] + Math.sin(ph)*RY*n.rs, e);
+      }
+      n.el.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') rotate(' + r.toFixed(1) + ')');
+    });
+    ['patch', 'coat', 'gloss', 'glaze', 'bridge', 'smear'].forEach(function(k){ setVar(k, S[k]); });
+    [].forEach.call(drips, function(el, k){
+      var v = clamp(S.drip*1.3 - k*.15, 0, 1);
+      el.setAttribute('stroke-dasharray', v.toFixed(3) + ' 2');
+      el.style.opacity = v > .01 ? 1 : 0;
+      bulbs[k].style.opacity = sm(v, .8, 1);
+    });
+    jug.setAttribute('transform', 'translate(' + JUG[0] + ' ' + JUG[1] + ') rotate(' + (TIP*S.jug).toFixed(2) + ')');
+    stream(pourEl, POUR, S.pourA, S.pourB);
+    var dx = lerp(lerp(ABOVE[0], OVER[0], S.disp), PARK[0], S.park), dy = lerp(lerp(ABOVE[1], OVER[1], S.disp), PARK[1], S.park);
+    disp.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + dy.toFixed(1) + ') rotate(' + (LEAN*S.tilt).toFixed(2) + ')');
+    disp.style.opacity = clamp(S.disp*2.5, 0, 1);
+    stream(sealEl, SEAL, S.sealA, S.sealB);
+  }
+
+  // One frame loop: it runs while a move is playing, and while the pan is on screen it keeps turning.
+  var active = null, raf = 0, last = 0, inView = true;
+  function tick(now){
+    var dt = Math.min(.05, (now - last)/1000 || .016), a = active;
+    last = now;
+    clock += dt;
+    if (!reduce) spin += dt*(1.4 + S.fast*7);
+    if (a){
+      a.t = reduce ? a.dur : Math.min(a.dur, a.t + dt);
+      a.fn(a.t);
+    }
+    render();
+    if (a && a === active && a.t >= a.dur){ active = null; a.done(); }
+    raf = (active || (inView && !reduce && !document.hidden)) ? requestAnimationFrame(tick) : 0;
+  }
+  function wake(){ if (!raf){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+  function play(dur, fn){
+    return new Promise(function(done){ active = { t: 0, dur: dur, fn: fn, done: done }; wake(); });
+  }
+
+  // Straight on, with nothing to make it take: the chocolate goes on in patches, the almonds
+  // glue together in clumps, and it ends up all over the pan. Then the pan slows, and the mess stays.
+  function mess(){
+    S.from = REST; S.to = MESS; S.mix = 0;
+    return play(3.1, function(t){
+      S.tt = t;
+      S.fast = sm(t, .15, .6)*(1 - sm(t, 2.2, 3.1));
+      S.jug = sm(t, .05, .55)*(1 - sm(t, 2, 2.6));
+      S.pourB = seg(t, .45, .7); S.pourA = seg(t, 1.95, 2.2);
+      S.env = sm(t, .45, .95)*(1 - sm(t, 1.95, 2.95));
+      S.turns = sm(t, .45, 2.95);
+      S.mix = sm(t, 1.7, 2.95);
+      S.patch = sm(t, .7, 1.7);
+      S.smear = sm(t, .9, 1.9);
+      S.drip = sm(t, 1.9, 3);
+      S.bridge = sm(t, 2.45, 3.05);
+    });
+  }
+  // The seal coat comes down wearing the mark, and goes on over all of it.
+  function dose(){
+    return play(1.9, function(t){
+      S.disp = sm(t, 0, .6);
+      S.tilt = sm(t, .55, .8)*(1 - sm(t, 1.35, 1.65));
+      S.park = sm(t, 1.4, 1.9);
+      S.sealB = seg(t, .72, .92); S.sealA = seg(t, 1.25, 1.45);
+      S.glaze = sm(t, .9, 1.5);
+      pan.classList.toggle('dosed', t >= .3);
+    });
+  }
+  // Pan the same mess again: the clumps break up, the chocolate takes all the way round, and it shines.
+  function clean(){
+    S.from = MESS; S.to = REST; S.mix = 0;
+    return play(3.3, function(t){
+      S.tt = t;
+      S.fast = sm(t, 0, .45)*(1 - sm(t, 2.3, 3.3));
+      S.bridge = 1 - sm(t, 0, .35);
+      S.env = sm(t, .05, .5)*(1 - sm(t, 2.1, 3.05));
+      S.turns = sm(t, .05, 3.05);
+      S.mix = sm(t, 1.85, 3.05);
+      S.jug = sm(t, .15, .6)*(1 - sm(t, 2.05, 2.65));
+      S.pourB = seg(t, .5, .75); S.pourA = seg(t, 1.95, 2.2);
+      S.coat = sm(t, .8, 2);
+      S.glaze = 1 - sm(t, .8, 1.6);
+      S.smear = 1 - sm(t, .9, 2);
+      S.drip = 1 - sm(t, .7, 1.7);
+      S.gloss = sm(t, 2.6, 3.25);
+    });
+  }
+  // Start over: bare almonds in a clean pan, at once.
+  function restore(){
+    active = null;
+    pan.classList.add('snap');
+    pan.classList.remove('dosed', 'is-done');
+    S = fresh(); clock = 0; spin = 0;
+    render();
+    pan.getBoundingClientRect();
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ pan.classList.remove('snap'); }); });
+    wake();
+  }
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your spreadsheets' : 'The chocolate: your floor';
+    $('topText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+    $('bottomTitle').textContent = final ? 'Your ERP' : 'The almonds: your ERP';
+    $('bottomText').textContent = final ? 'Still keeping the books.' : 'What the system says is there.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: pan, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.pan',
+    ops: {
+      mess: ['Your operations, today', 'Panned together, still not linked. Clumped, streaky, and it won’t smooth out.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same pan, same mess. Now there’s a seal coat on it.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); pan.classList.toggle('is-done', on); }
+  });
+  // Tapping the pan does the same as the button.
+  pan.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ inView = entries[0].isIntersecting; if (inView) wake(); }).observe(pan);
+  }
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) wake(); });
+  render();
+  wake();
+})();
 </script>
 <script>
 window.STAGE = {

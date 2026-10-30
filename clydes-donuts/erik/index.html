@@ -224,18 +224,38 @@ h2{letter-spacing:-.018em}
 .dnt.bitten .bite{transform:scale(1)}
 .ooze{fill:#C8102E;opacity:0;transform:translateY(-8px);transition:opacity .3s .2s,transform .7s cubic-bezier(.3,0,.3,1) .2s}
 .dnt.filled.bitten .ooze{opacity:1;transform:none}
-.donut{transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .4s}
-.donut.away{transform:translateX(-260px) rotate(-30deg);opacity:0}
+.donut{transform-box:view-box;transform-origin:180px 330px;transition:transform .45s cubic-bezier(.4,0,.2,1)}
 .donut.plump{transform:scale(1.035)}
 .tag-stick{stroke:#E9D8B8;stroke-width:3;stroke-linecap:round}
 .tag-paper{fill:#fff}
-.tag-text{font:900 13px/1 var(--display);fill:#C8102E;letter-spacing:.08em}
-.bag{transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.dnt.filling .bag{transform:translate(-36px,58px) rotate(-12deg)}
+.tag-text{font:900 13px/1 var(--display);fill:#C8102E;letter-spacing:.08em;transition:transform .4s}
+/* Once there's jelly inside, the tag is telling the truth. */
+.tag-check{fill:none;stroke:#1E8E3E;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .3s .35s}
+.dnt.is-done .tag-text{transform:translateX(-6px)}
+.dnt.is-done .tag-check{opacity:1}
+/* The piping bag turns about its tip. */
+.bag{transform-box:view-box;transform-origin:307px 186px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.dnt.squeezing .bag{transform:translate(-111px,-2px) rotate(-6deg)}
+.dnt.injecting .bag{transform:translate(-32px,47px) rotate(34deg)}
 .bag-film{fill:rgba(255,255,255,.75);stroke:rgba(255,255,255,.95);stroke-width:2}
-.bag-jelly{fill:#C8102E;transform-box:fill-box;transform-origin:50% 100%;transition:transform .5s ease .3s}
-.dnt.filled .bag-jelly{transform:scaleY(.45)}
-.nozzle{fill:#BFC6CC}
+.bag-jelly{fill:#C8102E;transform-box:fill-box;transform-origin:50% 100%;transition:transform .45s ease}
+.dnt.squeezed .bag-jelly{transform:scaleY(.45)}
+.dnt.injected .bag-jelly{transform:scaleY(.2)}
+.nozzle{fill:#BFC6CC;transition:opacity .25s,transform .3s}
+.dnt.nozzled .nozzle{opacity:0;transform:translateY(12px)}
+/* SimpleGrid's nozzle: a long filling tip that reaches the inside. */
+.sg-nozzle{opacity:0;transform:translateY(34px);transition:opacity .2s .25s,transform .5s cubic-bezier(.2,.9,.3,1.3) .25s}
+.dnt.nozzled .sg-nozzle{opacity:1;transform:none}
+.sg-collar{fill:#F08321}
+.sg-tube{fill:#C9D1D8}
+/* The mess: jelly on everything but the inside. It stays until the nozzle that reaches inside is on. */
+.mess-bit{visibility:hidden;fill:#C8102E;transform-box:fill-box;transform-origin:center}
+.dnt.splat .mess-bit{visibility:visible}
+.mess-bit.drip{transform-origin:50% 0}
+.mess-bit.pud{fill:#AE0D28}
+.sp-hi{fill:#EE5A73}
+/* Start over puts everything back at once, rather than fading it back. */
+.dnt.snap,.dnt.snap *{transition:none!important;animation:none!important}
 .callout-bag{top:4%}
 .callout-tag{top:47%}
 .callout-gap{top:calc(38% - 15px)}
@@ -244,7 +264,7 @@ h2{letter-spacing:-.018em}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
 .bag-badge{--sg-bg:#F08321;--sg-ink:#fff}
 .plate-label{--sg-bg:#532C1B;--sg-ink:#fff}
-.dnt.filling .bag-badge,.dnt.filled .bag-badge,.dnt.is-done .plate-label{opacity:1;transform:none}
+.dnt.nozzled .bag-badge,.dnt.is-done .plate-label{opacity:1;transform:none}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.12)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -515,11 +535,15 @@ h2{letter-spacing:-.018em}
             </defs>
             <!-- the filling, still in its piping bag: the floor -->
             <g class="bag" id="bag">
-              <path class="bag-film" d="M268 80L346 80L320 186L294 186Z"/>
-              <path class="bag-jelly" d="M276 112L338 112L318 184L296 184Z"/>
-              <path class="nozzle" d="M296 186H318L310 214H304Z"/>
-              <!-- filling it is SimpleGrid: the bag wears the mark, the way the yolk does -->
-              <g transform="translate(307 97) scale(0.62)"><g class="bag-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+              <g id="bagBody">
+                <path class="bag-film" d="M268 80L346 80L320 186L294 186Z"/>
+                <path class="bag-jelly" d="M276 112L338 112L318 184L296 184Z"/>
+                <path class="nozzle" d="M296 186H318L310 214H304Z"/>
+                <!-- SimpleGrid: a filling nozzle long enough to reach the inside -->
+                <g class="sg-nozzle"><path class="sg-tube" d="M302 194H312L308.6 262H305.4Z"/><rect class="sg-collar" x="295" y="182" width="24" height="14" rx="3"/></g>
+                <!-- filling it is SimpleGrid: the bag wears the mark, the way the yolk does -->
+                <g transform="translate(307 97) scale(0.62)"><g class="bag-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+              </g>
             </g>
             <ellipse class="plate" cx="180" cy="440" rx="150" ry="36"/>
             <ellipse class="plate-rim" cx="180" cy="436" rx="112" ry="22"/>
@@ -543,8 +567,10 @@ h2{letter-spacing:-.018em}
               <path class="ooze" d="M286 284C292 300 300 312 296 326C292 338 282 332 284 320C286 308 280 300 276 290Z"/>
               <!-- what it says it is: the ERP -->
               <line class="tag-stick" x1="128" y1="250" x2="104" y2="176"/>
-              <g transform="rotate(-8 92 160)"><rect class="tag-paper" x="50" y="146" width="84" height="32" rx="4"/><text class="tag-text" x="92" y="167" text-anchor="middle">JELLY</text></g>
+              <g transform="rotate(-8 92 160)"><rect class="tag-paper" x="50" y="146" width="84" height="32" rx="4"/><text class="tag-text" x="92" y="167" text-anchor="middle">JELLY</text><path class="tag-check" d="M112 161l4 4.5 8-9.5"/></g>
             </g>
+            <!-- the mess, on everything but the inside: the script draws it -->
+            <g id="splats"></g>
           </svg>
         </div>
         <div class="callouts">
@@ -557,15 +583,21 @@ h2{letter-spacing:-.018em}
             <h3><i></i><span id="tagTitle">The tag: your ERP</span></h3>
             <p id="tagText">What the system says is inside.</p>
           </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Take a bite</button>
+          <button class="go-btn" id="heroBtn" type="button">Fill the donut to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The tag says jelly. The jelly is still in the bag. Take a bite, or tap the donut and see for yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The tag says jelly. The jelly is still in the bag, and nothing links them. Fill it, or tap the donut and try it yourself.</p>
       </div>
     </div>
   </div>
@@ -886,68 +918,168 @@ SG.story = function(o){
 (function(){
   /* ---------------------------------------------------------- The donut
      The tag says jelly: that's the ERP. The jelly, still in its piping bag,
-     is what's really there: the floor. The first bite tells you which is
-     true. The filler is SimpleGrid: once it's in, the tag and the inside agree. */
+     is what's really there: the floor. Squeeze one into the other with
+     nothing made to reach the inside, and it goes everywhere but in: over the
+     donut, down its sides, all over the plate, while the tag still says
+     JELLY. That mess stays. SimpleGrid is the nozzle long enough to reach the
+     inside: fill it again, and the mess goes where it belongs. */
   var $ = function(id){ return document.getElementById(id); };
-  var hero = $('hero'), dnt = $('dnt'), donut = $('donut');
-  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var hero = $('hero'), dnt = $('dnt'), donut = $('donut'), bagBody = $('bagBody'), splats = $('splats');
   var reduce = SG.reduce;
   var COPY = {
-    whole:   { btn: 'Take a bite', caption: 'The tag says jelly. The jelly is still in the bag. Take a bite, or tap the donut and see for yourself.' },
-    biting:  { btn: 'Chewing…', caption: 'Looks like a jelly donut, doesn’t it?' },
-    broken:  { btn: 'Fill it', caption: 'Empty. And there it goes. That’s the usual ERP go-live: it looks filled on launch day, and the first real bite says otherwise.' },
-    filling: { btn: 'Filling…', caption: 'In goes the filling. That’s SimpleGrid.' },
-    filled:  { btn: 'Take a bite', caption: 'Now the tag and the inside should agree. Take a bite.' },
-    done:    { btn: 'Why was the first one empty?', caption: 'One live record. What the tag says and what’s inside finally match.' }
+    apart:    { btn: 'Fill the donut to see your operations', caption: 'The tag says jelly. The jelly is still in the bag, and nothing links them. Fill it, or tap the donut and try it yourself.' },
+    messing:  { btn: 'Squeezing…', caption: 'Squeezing them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Fit the SimpleGrid nozzle', caption: 'That’s your operations today: a big mess. Jelly everywhere but inside, and the tag still says JELLY. It won’t clean itself up, either.' },
+    dosing:   { btn: 'Fitting…', caption: 'On goes a nozzle long enough to reach the inside.' },
+    dosed:    { btn: 'Fill it again', caption: 'On goes the nozzle. That’s SimpleGrid, made to reach the inside. Now fill it again.' },
+    cleaning: { btn: 'Filling…', caption: 'Watch the mess go where it belongs.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a donut full of jelly. The tag finally tells the truth: your ERP and your floor say the same thing.' }
   };
   var ARIA = {
-    whole: dnt.getAttribute('aria-label'),
-    done: 'A jelly donut with a bite out of it and jelly showing, the tag on it now telling the truth.'
+    apart: dnt.getAttribute('aria-label'),
+    mess: 'Jelly splattered all over the outside of the donut and across the plate, none of it inside, and the tag still says jelly.',
+    dosed: 'The piping bag now has SimpleGrid’s long filling nozzle on it. The jelly is still splattered all over the donut and the plate.',
+    done: 'A jelly donut with a bite out of it and jelly showing, its tag now telling the truth, on a plate with a SimpleGrid label.'
   };
-  var phase = 'whole', busy = false, queued = false, timers = [];
-  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
-  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
-  function setPhase(next){
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'biting' || next === 'filling';
-    caption.textContent = COPY[next].caption;
+
+  /* The mess, drawn once, back to front: [kind, x, y, size, extra].
+     p: a puddle on the plate (extra: how flat), d: a drip running down (extra: its width),
+     s: a splat (extra: how flat), o: a drop. */
+  var MESS = [
+    ['p', 96, 447, 34, .28], ['p', 268, 452, 38, .28], ['p', 176, 471, 22, .3],
+    ['d', 258, 300, 50, 5.5], ['d', 121, 294, 40, 4.5], ['d', 204, 262, 44, 6], ['d', 232, 376, 34, 4.5],
+    ['s', 190, 252, 33, .8], ['s', 132, 292, 18, .9], ['s', 246, 302, 21, .9], ['s', 160, 362, 15, .8], ['s', 226, 372, 13, .8],
+    ['o', 150, 236, 3.5], ['o', 228, 232, 4], ['o', 110, 322, 3], ['o', 264, 336, 3.5], ['o', 196, 398, 3], ['o', 126, 153, 4.5],
+    ['o', 60, 437, 4], ['o', 302, 434, 3.5], ['o', 320, 456, 3], ['o', 138, 480, 3], ['o', 224, 482, 4], ['o', 46, 452, 2.5]
+  ];
+  var f = function(v){ return v.toFixed(1); };
+  var rand = function(i, seed){ var x = Math.sin(seed*127.1 + i*311.7)*43758.5453; return x - Math.floor(x); };
+  // A smooth closed curve through points (Catmull-Rom, as Béziers).
+  function curve(pts){
+    var n = pts.length, d = 'M' + f(pts[0][0]) + ' ' + f(pts[0][1]);
+    for (var j = 0; j < n; j++){
+      var p0 = pts[(j + n - 1) % n], p1 = pts[j], p2 = pts[(j + 1) % n], p3 = pts[(j + 2) % n];
+      d += 'C' + f(p1[0] + (p2[0] - p0[0])/6) + ' ' + f(p1[1] + (p2[1] - p0[1])/6) + ' ' + f(p2[0] - (p3[0] - p1[0])/6) + ' ' + f(p2[1] - (p3[1] - p1[1])/6) + ' ' + f(p2[0]) + ' ' + f(p2[1]);
+    }
+    return d + 'Z';
+  }
+  // A splat round (0,0): a lumpy body with a few fingers thrown out, and drops beyond them. Same every time.
+  function blob(r, flat, seed, fingers){
+    var n = 16, pts = [], dots = '', reach = [];
+    for (var i = 0; i < n; i++) reach.push(.84 + .14*rand(i, seed));
+    for (var k = 0; k < fingers; k++){
+      var at = Math.floor((k + rand(k, seed + 9)*.6)*n/fingers) % n;
+      reach[at] = 1.35 + .4*rand(k, seed + 3);
+      var a = at/n*Math.PI*2, out = r*(reach[at] + .32 + .2*rand(k, seed + 5));
+      if (rand(k, seed + 7) > .35) dots += '<circle cx="' + f(Math.cos(a)*out) + '" cy="' + f(Math.sin(a)*out*flat) + '" r="' + f(r*(.07 + .05*rand(k, seed + 1))) + '"/>';
+    }
+    for (var j = 0; j < n; j++){ var b = j/n*Math.PI*2; pts.push([Math.cos(b)*r*reach[j], Math.sin(b)*r*reach[j]*flat]); }
+    return '<path d="' + curve(pts) + '"/>' + dots;
+  }
+  // A drip running down from (0,0): narrowing as it goes, a drop gathering at the bottom.
+  function drip(len, w){
+    return '<path d="M' + f(-w) + ' 0C' + f(-w) + ' ' + f(len*.45) + ' ' + f(-w*.55) + ' ' + f(len*.6) + ' ' + f(-w*.55) + ' ' + f(len - w*.5) +
+      'A' + f(w*1.05) + ' ' + f(w*1.05) + ' 0 1 0 ' + f(w*.55) + ' ' + f(len - w*.5) + 'C' + f(w*.55) + ' ' + f(len*.6) + ' ' + f(w) + ' ' + f(len*.45) + ' ' + f(w) + ' 0Z"/>';
+  }
+  var bits = MESS.map(function(m, i){
+    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'), kind = m[0], s = m[3], inner;
+    g.setAttribute('transform', 'translate(' + m[1] + ' ' + m[2] + ')');
+    if (kind === 's') inner = blob(s, m[4], i + 1, s > 20 ? 5 : 3) + '<ellipse class="sp-hi" cx="' + f(-s*.3) + '" cy="' + f(-s*.32*m[4]) + '" rx="' + f(s*.3) + '" ry="' + f(s*.2*m[4]) + '"/>';
+    else if (kind === 'p') inner = blob(s, m[4], i + 3, 2) + '<ellipse class="sp-hi" cx="' + f(-s*.25) + '" cy="' + f(-s*m[4]*.25) + '" rx="' + f(s*.3) + '" ry="' + f(s*m[4]*.22) + '" opacity=".7"/>';
+    else if (kind === 'd') inner = drip(s, m[4]);
+    else inner = '<circle r="' + s + '"/>';
+    g.innerHTML = '<g class="mess-bit' + (kind === 'd' ? ' drip' : kind === 'p' ? ' pud' : '') + '">' + inner + '</g>';
+    splats.appendChild(g);
+    return { el: g.firstChild, kind: kind, x: m[1], y: m[2] };
+  });
+
+  /* Every move is a few timed steps. Start over clears them all, and a step that
+     was cleared never runs, so nothing from an old run lands on a fresh start. */
+  var timers = [], anims = [];
+  function wait(ms){ return new Promise(function(done){ timers.push(setTimeout(done, reduce ? 0 : ms)); }); }
+  // Takes an element through keyframes and leaves it on the last one. Resolves as it lands.
+  function play(el, frames, opts){
+    el.style.transform = frames[frames.length - 1].transform;
+    if (reduce || !el.animate) return Promise.resolve();
+    return new Promise(function(done){
+      var a = el.animate(frames, Object.assign({ fill: 'backwards' }, opts));
+      anims.push(a);
+      a.onfinish = function(){ done(); };
+    });
+  }
+  // Each squeeze of the bag.
+  function pump(ms){
+    timers.push(setTimeout(function(){
+      if (!reduce && bagBody.animate) anims.push(bagBody.animate([{ transform: 'translateY(0px)' }, { transform: 'translateY(7px)' }, { transform: 'translateY(0px)' }], { duration: 240, easing: 'ease-in-out' }));
+    }, ms));
+  }
+  var HIT = [196, 222], INSIDE = [232, 296];
+
+  // Squeeze it in with nothing made to reach the inside: it goes everywhere but in.
+  function mess(){
+    dnt.classList.add('squeezing');
+    return wait(560).then(function(){
+      dnt.classList.add('squeezed', 'splat');
+      pump(0); pump(380);
+      return Promise.all(bits.map(function(b, i){
+        if (b.kind === 'd') return play(b.el, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 420, delay: 260 + i*30, easing: 'cubic-bezier(.5,0,.6,1)' });
+        if (b.kind === 'p') return play(b.el, [{ transform: 'scale(0)' }, { transform: 'scale(1.06)', offset: .7 }, { transform: 'scale(1)' }], { duration: 420, delay: 380 + i*40, easing: 'ease-out' });
+        return play(b.el, [
+          { transform: 'translate(' + f(HIT[0] - b.x) + 'px,' + f(HIT[1] - b.y) + 'px) scale(.2)' },
+          { transform: 'translate(0px,0px) scale(1.12)', offset: .75 },
+          { transform: 'translate(0px,0px) scale(1)' }
+        ], { duration: 340, delay: 40*(i % 6), easing: 'cubic-bezier(.2,.7,.4,1)' });
+      }));
+    }).then(function(){
+      dnt.classList.remove('squeezing');
+      return wait(560);
+    }).then(landed);
   }
 
-  function bite(){
-    busy = true;
-    setPhase('biting');
-    dnt.classList.add('bitten');
-    var filled = dnt.classList.contains('filled');
-    return wait(filled ? 900 : 1000).then(function(){
-      if (filled){ busy = false; complete(); return; }
-      setPhase('broken');
-      // A fresh one takes the bitten one's place.
-      return wait(1400).then(function(){
-        donut.classList.add('away');
-        return wait(450).then(function(){
-          donut.style.transition = 'none';
-          dnt.classList.remove('bitten');
-          donut.classList.remove('away');
-          donut.style.transform = 'translateX(260px)';
-          donut.getBoundingClientRect();
-          donut.style.transition = '';
-          donut.style.transform = '';
-          busy = false;
-          // A Fill it pressed while the fresh one rolled in still counts.
-          if (queued){ queued = false; fill(); }
-        });
-      });
+  // On goes SimpleGrid's nozzle. The mess stays where it is.
+  function dose(){
+    dnt.classList.add('nozzled');
+    return wait(900).then(landed);
+  }
+
+  // Fill it again: the nozzle goes in, the mess goes in after it, and one bite shows it's full.
+  function clean(){
+    dnt.classList.add('injecting');
+    return wait(520).then(function(){
+      dnt.classList.add('injected');
+      return Promise.all(bits.map(function(b, i){
+        if (b.kind === 'd') return play(b.el, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], { duration: 260, delay: i*20, easing: 'ease-in' });
+        return play(b.el, [
+          { transform: 'translate(0px,0px) scale(1)' },
+          { transform: 'translate(' + f(INSIDE[0] - b.x) + 'px,' + f(INSIDE[1] - b.y) + 'px) scale(0)' }
+        ], { duration: 480, delay: 120 + (i % 9)*35, easing: 'cubic-bezier(.5,0,.8,.4)' });
+      }));
+    }).then(function(){
+      dnt.classList.remove('splat');
+      dnt.classList.add('filled');
+      donut.classList.add('plump');
+      return wait(380);
+    }).then(function(){
+      donut.classList.remove('plump');
+      dnt.classList.remove('injecting');
+      return wait(620);
+    }).then(function(){
+      dnt.classList.add('bitten');
+      return wait(800);
     });
   }
 
-  function fill(){
-    busy = true;
-    setPhase('filling');
-    dnt.classList.add('filling');
-    later(function(){ donut.classList.add('plump'); dnt.classList.add('filled'); }, 550);
-    later(function(){ donut.classList.remove('plump'); dnt.classList.remove('filling'); }, 1100);
-    later(function(){ busy = false; setPhase('filled'); }, 1300);
+  function restore(){
+    timers.forEach(clearTimeout);
+    anims.forEach(function(a){ a.cancel(); });
+    timers = []; anims = [];
+    queued = false;
+    dnt.classList.add('snap');
+    dnt.classList.remove('squeezing', 'squeezed', 'splat', 'nozzled', 'injecting', 'injected', 'filled', 'bitten', 'is-done');
+    donut.classList.remove('plump');
+    bits.forEach(function(b){ b.el.style.transform = ''; });
+    dnt.getBoundingClientRect();
+    dnt.classList.remove('snap');
   }
 
   function setCallouts(final){
@@ -958,42 +1090,35 @@ SG.story = function(o){
     $('bagText').textContent = final ? 'Retired, with thanks.' : 'What’s really inside, on Excel, whiteboards and phones.';
   }
 
-  function complete(){
-    dnt.classList.add('is-done');
-    setCallouts(true);
-    setPhase('done');
-    dnt.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, dnt, 'b', '.dnt');
-  }
-
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    busy = false; queued = false;
-    dnt.classList.remove('bitten', 'filled', 'filling', 'is-done');
-    donut.classList.remove('away', 'plump');
-    donut.style.transform = '';
-    setCallouts(false);
-    dnt.setAttribute('aria-label', ARIA.whole);
-    setPhase('whole');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, dnt, 'a', '.dnt');
-  }
-
-  btn.addEventListener('click', function(){
-    if (busy){ queued = phase === 'broken'; return; }
-    if (phase === 'whole' || phase === 'filled') bite();
-    else if (phase === 'broken') fill();
-    else if (phase === 'done') $('gap').scrollIntoView();
+  var story = SG.story({
+    hero: hero, obj: dnt, btn: $('heroBtn'), reset: $('heroReset'), caption: $('heroCaption'),
+    copy: COPY, aria: ARIA, skip: '.dnt',
+    ops: {
+      mess: ['Your operations, today', 'Squeezed together, still not linked. Jelly on everything, and none of it inside.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same jelly, same mess. Now there’s a nozzle that reaches inside.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){
+      setCallouts(on);
+      dnt.classList.toggle('is-done', on);
+    }
   });
-  // Or bite it yourself.
+
+  // Or tap the donut. A tap while something is still landing isn't lost: it runs as soon as
+  // the next step is ready. (A double click is still one tap.)
+  var queued = false, lastTap = 0;
+  function landed(){
+    if (!queued) return;
+    queued = false;
+    setTimeout(function(){ if (!story.busy() && story.phase() !== 'done') story.go(); }, 0);
+  }
   dnt.addEventListener('click', function(){
-    if (busy){ queued = phase === 'broken'; return; }
-    if (phase === 'whole' || phase === 'filled') bite();
-    else if (phase === 'broken') fill();
+    var now = Date.now();
+    if (now - lastTap < 350 || story.phase() === 'done') return;
+    lastTap = now;
+    if (story.busy()) queued = true;
+    else story.go();
   });
-  resetBtn.addEventListener('click', startOver);
 })();
 </script>
 <script>

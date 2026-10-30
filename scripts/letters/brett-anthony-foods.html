@@ -315,7 +315,7 @@ h2 span{font-weight:800}
   // cream: how far stirring with the roux in has brought it together.
   var messy = false, roux_in = false, muck = 0, cream = 0, swirl = 0, energy = 0, churn = 0, ripple = 0, turn = 0, t0 = 0;
   var spoon = { x: REST.x, y: REST.y, vx: 0, vy: 0 }, spoonSpeed = 0, drag = null, auto = 0, autoT = 0;
-  var timers = [], waiting = null;
+  var timers = [], waiting = null, stepDue = 0;
   function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
   // Resolves once the pot gets where a move is taking it; every frame checks.
   function until(test){ return new Promise(function(done){ waiting = { test: test, done: done }; }); }
@@ -328,8 +328,8 @@ h2 span{font-weight:800}
       for (var j = 0; j < k.n; j++){
         // Its spot when the pot is properly mixed: spread evenly, kinds shuffled, a little off the grid.
         var slot = (i*17) % n, c = slot % cols, r = Math.floor(slot/cols);
-        var hx = BOX.x + 22 + (c + .5 + ((i*7) % 7 - 3)*.11)*(BOX.w - 44)/cols;
-        var hy = SURFACE + 20 + (r + .5 + ((i*11) % 7 - 3)*.11)*(FLOOR - SURFACE - 36)/rows;
+        var hx = BOX.x + 22 + (c + .5 + ((i*5) % 7 - 3)*.16)*(BOX.w - 44)/cols;
+        var hy = SURFACE + 20 + (r + .5 + ((i*11) % 7 - 3)*.13)*(FLOOR - SURFACE - 36)/rows;
         // In the mess most pieces tumble round in one of four lumps. Every fifth just stays sunk.
         var lump = -1;
         if (k.kind !== 'parsley'){ lump = solid % 5 === 4 ? -1 : solid % 4; solid++; }
@@ -340,8 +340,8 @@ h2 span{font-weight:800}
       }
     });
     turn = 0;
-    // Let it settle once, off screen, so the first frame already shows a pile.
-    for (var s = 0; s < 300; s++) physics(1/60);
+    // Let it settle once, off screen and in the same steps the frames take, so the first frame already shows a pile at rest.
+    for (var s = 0; s < 480; s++) physics(1/120);
   }
   // Every piece close to its own spot, so done looks done.
   function settled(){
@@ -372,6 +372,7 @@ h2 span{font-weight:800}
     var lean = clamp(swirl*.07, -.4, .4)*(1 - c), cs = Math.cos(lean), sn = Math.sin(lean);
     for (var i = 0; i < bits.length; i++){
       var b = bits[i], r = b.k.w/2, solid = b.k.kind !== 'parsley';
+      b.ox = b.x; b.oy = b.y;
       // Its spot, evenly spread. With the roux in, stirring takes it there.
       var ox = b.hx - CENTER.x, oy = b.hy - CENTER.y;
       var hx = clamp(CENTER.x + ox*cs - oy*sn, BOX.x + r + 4, BOX.x + BOX.w - r - 4);
@@ -397,10 +398,7 @@ h2 span{font-weight:800}
       b.x += b.vx*dt; b.y += b.vy*dt;
       b.spin += ((b.vx*.02) - b.spin)*Math.min(1, 4*dt);
       b.a += b.spin*dt*3;
-      if (b.x < BOX.x + r){ b.x = BOX.x + r; b.vx = Math.abs(b.vx)*.3; }
-      if (b.x > BOX.x + BOX.w - r){ b.x = BOX.x + BOX.w - r; b.vx = -Math.abs(b.vx)*.3; }
-      if (b.y < SURFACE + r){ b.y = SURFACE + r; b.vy = Math.abs(b.vy)*.2; }
-      if (b.y > FLOOR - r){ b.y = FLOOR - r; b.vy = -Math.abs(b.vy)*.2; b.vx *= .9; }
+      walls(b);
     }
     // Pieces don't pass through each other, which is what makes the pile, and the lumps.
     for (var p = 0; p < bits.length; p++){
@@ -413,6 +411,18 @@ h2 span{font-weight:800}
         }
       }
     }
+    // A piece moves as far as it really got to move, so a pile comes to rest instead of pressing into itself.
+    for (i = 0; i < bits.length; i++){
+      b = bits[i];
+      walls(b);
+      b.vx = (b.x - b.ox)/dt;
+      b.vy = (b.y - b.oy)/dt;
+    }
+  }
+  function walls(b){
+    var r = b.k.w/2;
+    b.x = clamp(b.x, BOX.x + r, BOX.x + BOX.w - r);
+    b.y = clamp(b.y, SURFACE + r, FLOOR - r);
   }
 
   // Bubbles keep coming up through a pot that won't settle, and stop once it's chowder.
@@ -586,13 +596,16 @@ h2 span{font-weight:800}
     swirl += (energy*5*dir - swirl)*Math.min(1, dt*(1.6 + cream*2));
     // Stirred without the roux, the mess builds, and it never goes back down.
     if (messy && !roux_in) muck = Math.min(1, muck + dt*(.45 + energy*.9));
-    // With the roux in, stirring brings it together.
-    if (roux_in && !reduce) cream = Math.min(1, cream + energy*dt*.55);
+    // With the roux in, stirring brings it together. Once it's thick, the ladle comes out.
+    if (roux_in && !reduce) cream = Math.min(1, cream + energy*dt*.7);
+    if (roux_in && cream >= 1) auto = 0;
     var c = smooth(0, .85, cream), roil = muck*(1 - c);
     if (!reduce) churn += dt*(.35 + roil*.8 + energy*.5);
     ripple *= Math.exp(-dt*2.6);
     bubbling(dt, roil);
-    for (var s = 0; s < 2; s++) physics(dt/2);
+    // The pieces always move in the same small steps, however fast the screen draws.
+    stepDue = Math.min(stepDue + dt, 8/120);
+    while (stepDue >= 1/120){ physics(1/120); stepDue -= 1/120; }
     placeRoux(c);
     // Stirring by hand does the same as the button.
     var phase = story.phase();

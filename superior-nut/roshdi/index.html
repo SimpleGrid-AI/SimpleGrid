@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/superior-nut/og-roshdi.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Almonds and chocolate in a panning drum, beside the words: Roshdi, you’ve been Chicago-made since 1982.">
+<meta property="og:image:alt" content="A copper panning drum of almonds with a jug of chocolate above it, beside the words: Roshdi, you’ve been Chicago-made since 1982.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Roshdi, pan the almonds.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes nuts, trail mix and chocolates for a living.">
@@ -203,71 +203,70 @@ h1 span{display:block;color:var(--hi)}
   --display:'Saira Semi Condensed','Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
+/* -------------------------------------------------- The panning drum
+   The almonds in the copper pan are the ERP: what the system says is there.
+   The chocolate in the jug above is the floor: what's really happening. */
 .hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
-.callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.pan{
+  --choc:#4A2412;--nut:#EBC28C;--nut-skin:#C79257;
+  --copper:#CA743C;--copper-dk:#9B4F25;--copper-hi:#EEA872;--inside:#B5622F;--inside-dk:#8E4521;--rim:#E0925A;
+  --steel:#CBD2D8;--steel-dk:#99A3AC;
+  --patch:0;--coat:0;--gloss:0;--glaze:0;--bridge:0;--smear:0;
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+}
+.hero[data-story$=ing] .pan,.hero[data-story=done] .pan{cursor:default}
+.pan svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing fading home. */
+.pan.snap,.pan.snap *{transition:none!important}
+.pn-floor{fill:rgba(0,0,0,.22)}
+.pn-cab{fill:#5C646C}
+.pn-cab-top{fill:#7E878F}
+.pn-knob{fill:#E5322F;stroke:#3A3F44;stroke-width:3}
+.pn-vent{fill:none;stroke:#454C53;stroke-width:3;stroke-linecap:round}
+.pn-copper-dk{fill:var(--copper-dk)}
+.pn-copper{fill:var(--copper)}
+.pn-copper-hi{fill:none;stroke:var(--copper-hi);stroke-width:9;stroke-linecap:round;opacity:.8}
+.pn-inside{fill:var(--inside)}
+.pn-inside-dk{fill:var(--inside-dk)}
+.pn-rim{fill:none;stroke:var(--rim);stroke-width:13}
+/* Dashes travel round the rim while the drum turns. */
+.pn-spin{fill:none;stroke:#F8CDA3;stroke-width:4;stroke-dasharray:5 7;opacity:.85}
+.pn-pour{fill:none;stroke:var(--choc);stroke-width:7;stroke-linecap:round}
+.pn-seal{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round}
+/* The mess: chocolate up the walls, over the rim and down the side. It stays until the seal coat's in. */
+.pn-smear{fill:var(--choc);opacity:var(--smear)}
+.pn-drip{fill:none;stroke:var(--choc);stroke-width:7;stroke-linecap:round;opacity:0}
+.pn-bulb{fill:var(--choc);opacity:0}
+.alm .nut{fill:var(--nut);stroke:rgba(52,24,6,.55);stroke-width:1.4}
+.alm .skin{fill:none;stroke:var(--nut-skin);stroke-width:1.6;stroke-linecap:round}
+.alm .patch{fill:var(--choc);opacity:var(--patch)}
+.alm .coat{fill:var(--choc);stroke:rgba(28,10,0,.55);stroke-width:1.3;opacity:var(--coat)}
+.alm .glaze{fill:none;stroke:var(--accent);stroke-width:2.2;opacity:var(--glaze)}
+.alm .gloss{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;opacity:calc(var(--gloss)*.9)}
+.pn-bridge{fill:var(--choc);opacity:var(--bridge)}
+.pn-jug{fill:var(--steel)}
+.pn-jug-dk{fill:var(--steel-dk)}
+.pn-jug-hi{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;opacity:.55}
+.pn-jug-handle{fill:none;stroke:var(--steel-dk);stroke-width:8;stroke-linecap:round}
+.pn-jug-rim{fill:#E8ECEF}
+.pn-choc{fill:var(--choc)}
+.pn-disp{opacity:0}
+.pn-disp-body{fill:var(--pale);stroke:rgba(38,24,0,.4);stroke-width:2}
+.pn-disp-tip{fill:var(--h2-hi)}
+.pn-disp-hang{fill:none;stroke:var(--steel);stroke-width:3}
+/* SimpleGrid: the mark on the seal coat as it goes in, the label on the pan once the batch comes clean. */
+.pn-badge{--sg-bg:var(--h2-hi);--sg-ink:#fff}
+.pan.dosed .pn-badge{opacity:1;transform:none}
+.pn-label{--sg-bg:var(--h2-hi);--sg-ink:#fff}
+.pan.is-done .pn-label{opacity:1;transform:none}
+.callout-top{top:2%}
+.callout-gap{top:calc(30% - 15px)}
+.callout-bottom{top:50%}
+.callout-top h3 i{background:#4A2412}
+.callout-bottom h3 i{background:#EBC28C}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.47)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -526,67 +525,87 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="pan hero-obj" id="pan" role="img" aria-label="A copper panning drum turning on its stand with bare almonds inside, and a jug of melted chocolate above it, not pouring.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">Placeholder, 2,400 cases</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <clipPath id="pnBall"><circle cx="180" cy="338" r="146"/></clipPath>
+              <!-- the shape of a coated almond: the bare nut's patchy chocolate stays inside it -->
+              <clipPath id="pnCoat"><path d="M-20 0C-20-8.6-12-12.4-2-12.4C9-12.4 15.5-6.2 21.5 0C15.5 6.2 9 12.4-2 12.4C-12 12.4-20 8.6-20 0Z"/></clipPath>
+            </defs>
+            <!-- the stand: a motor cabinet on the floor -->
+            <ellipse class="pn-floor" cx="180" cy="547" rx="108" ry="6"/>
+            <path class="pn-cab" d="M116 480H244L258 546H102Z"/>
+            <rect class="pn-cab-top" x="112" y="478" width="136" height="10" rx="3"/>
+            <circle class="pn-knob" cx="146" cy="518" r="7"/>
+            <path class="pn-vent" d="M194 508H224M196 518H226M198 528H228"/>
+            <!-- the drum: a copper pan with its mouth tilted toward us -->
+            <g clip-path="url(#pnBall)">
+              <rect class="pn-copper-dk" x="30" y="190" width="300" height="300"/>
+              <circle class="pn-copper" cx="166" cy="322" r="146"/>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
-
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
-
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <path class="pn-copper-hi" d="M52 386C40 340 44 294 66 256"/>
+            <!-- inside the drum -->
+            <ellipse class="pn-inside" cx="180" cy="306" rx="112" ry="84"/>
+            <path class="pn-inside-dk" d="M68 306A112 84 0 0 1 292 306A112 60 0 0 0 68 306Z"/>
+            <!-- the mess inside: chocolate up the walls and pooled under the almonds -->
+            <g class="pn-smear">
+              <path d="M84 296C88 276 102 262 124 254C120 265 110 271 104 281C99 290 93 297 86 304Z"/>
+              <path d="M234 252C257 256 274 268 283 286C277 292 269 283 260 276C250 269 240 265 231 263Z"/>
+              <circle cx="176" cy="243" r="7"/><circle cx="193" cy="251" r="4.5"/><circle cx="160" cy="253" r="3.5"/><circle cx="207" cy="239" r="3"/>
+              <path d="M108 368C130 358 160 363 180 361C206 359 234 361 254 367C247 380 222 386 196 386C166 388 130 384 108 368Z"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <!-- the far half of the rim -->
+            <path class="pn-rim" d="M68 306A112 84 0 0 1 292 306"/>
+            <path class="pn-spin" id="pnSpinFar" pathLength="100" d="M68 306A112 84 0 0 1 292 306"/>
+            <!-- what pours in: the chocolate, and later the seal coat -->
+            <path class="pn-pour" id="pnPour" d="M0 0"/>
+            <path class="pn-seal" id="pnSeal" d="M0 0"/>
+            <!-- the almonds, and the chocolate that glues them into clumps: the script below builds both -->
+            <g id="pnBed"><g id="pnNuts"></g><g id="pnBridges"></g></g>
+            <!-- the near half of the rim -->
+            <path class="pn-rim" d="M292 306A112 84 0 0 1 68 306"/>
+            <path class="pn-spin" id="pnSpinNear" pathLength="100" d="M292 306A112 84 0 0 1 68 306"/>
+            <!-- chocolate over the rim, and down the outside -->
+            <g class="pn-smear">
+              <path d="M200 224C202 218 222 217 226 223C228 229 202 231 200 224Z"/>
+              <path d="M107 385C109 377 133 376 137 383C139 391 111 393 107 385Z"/>
+              <path d="M223 388C225 380 249 379 253 386C253 394 225 396 223 388Z"/>
+              <path d="M163 392C164 387 179 386 181 391C182 396 164 397 163 392Z"/>
+            </g>
+            <path class="pn-drip" pathLength="1" d="M122 389V428"/><circle class="pn-bulb" cx="122" cy="430" r="5.5"/>
+            <path class="pn-drip" pathLength="1" d="M238 391V442"/><circle class="pn-bulb" cx="238" cy="444" r="5.5"/>
+            <path class="pn-drip" pathLength="1" d="M172 395V414"/><circle class="pn-bulb" cx="172" cy="416" r="4.6"/>
+            <!-- once the batch comes clean, the pan wears the label -->
+            <g transform="translate(180 436) scale(.56)"><g class="pn-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <!-- the jug of melted chocolate: the floor -->
+            <g id="pnJug" transform="translate(252 92)">
+              <path class="pn-jug-handle" d="M28-26C54-26 56 22 26 26"/>
+              <path class="pn-jug" d="M-30-42H30L27 40Q26 48 18 48H-18Q-26 48-27 40Z"/>
+              <path class="pn-jug-dk" d="M14-42H30L27 40Q26 48 18 48H11Z"/>
+              <path class="pn-jug-hi" d="M-19-30V36"/>
+              <path class="pn-jug" d="M-26-46L-50-52Q-55-49-49-44L-25-32Z"/>
+              <ellipse class="pn-jug-rim" cx="0" cy="-42" rx="30" ry="8"/>
+              <ellipse class="pn-choc" cx="0" cy="-41" rx="25" ry="5.4"/>
+              <path class="pn-choc" d="M-45-47C-40-44-35-42-31-38C-29-31-31-25-28-21C-24-25-25-33-24-41Z"/>
+            </g>
+            <!-- the seal coat: SimpleGrid. Its dispenser comes down from above. -->
+            <g class="pn-disp" id="pnDisp" transform="translate(120 44)">
+              <path class="pn-disp-hang" d="M0-32V-42"/><circle class="pn-disp-hang" cx="0" cy="-47" r="5"/>
+              <rect class="pn-disp-body" x="-25" y="-32" width="50" height="62" rx="12"/>
+              <path class="pn-disp-tip" d="M-13 29H13L5 48H-5Z"/>
+              <g transform="translate(0 -1)"><g class="pn-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The chocolate: your floor</span></h3>
+            <p id="topText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The almonds: your ERP</span></h3>
+            <p id="bottomText">What the system says is there.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -599,10 +618,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Pan them to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The almonds are your ERP, the chocolate is your floor, and nothing links them. Pan them, or tap the pan.</p>
       </div>
     </div>
   </div>
@@ -920,122 +939,253 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
 (function(){
+  /* --------------------------------------------------------- The panning drum
+     The almonds in the copper pan are the ERP: what the system says is there.
+     The chocolate in the jug above is the floor: what's really happening. And
+     nothing links them. Pour it straight on, with nothing to make it take, and
+     the almonds clump into doubles and triples, the coats come out streaky and
+     bald in patches, and chocolate ends up all over the pan. That mess stays.
+     SimpleGrid is the seal coat: in it goes, the pan turns again, the clumps
+     break apart and every almond comes out evenly coated, with a shine. */
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), pan = $('pan'), bed = $('pnBed'), nutsG = $('pnNuts'), bridgesG = $('pnBridges');
+  var jug = $('pnJug'), disp = $('pnDisp'), pourEl = $('pnPour'), sealEl = $('pnSeal');
+  var spinFar = $('pnSpinFar'), spinNear = $('pnSpinNear');
+  var drips = pan.querySelectorAll('.pn-drip'), bulbs = pan.querySelectorAll('.pn-bulb');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
-  var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+  var reduce = SG.reduce, clamp = SG.clamp;
+  var COPY = {
+    apart:    { btn: 'Pan them to see your operations', caption: 'The almonds are your ERP, the chocolate is your floor, and nothing links them. Pan them, or tap the pan.' },
+    messing:  { btn: 'Panning…', caption: 'Pouring the chocolate straight on. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the seal coat', caption: 'That’s your operations today: a big mess. Almonds stuck in clumps, coats streaky and bald, chocolate all over the pan. It won’t pan itself smooth, either.' },
+    dosing:   { btn: 'Adding…', caption: 'In goes the seal coat, over all of it.' },
+    dosed:    { btn: 'Pan them again', caption: 'In goes the seal coat. That’s SimpleGrid. Now the chocolate has something to hold on to, so pan them again.' },
+    cleaning: { btn: 'Panning…', caption: 'Watch the clumps break up and the coats even out.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean batch: every almond on its own, evenly coated, with a shine. Your ERP and your floor finally match, all the way around.' }
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: pan.getAttribute('aria-label'),
+    mess: 'The almonds after the chocolate went straight on: stuck together in clumps of two and three, streaky and bald in patches, with chocolate smeared over the pan and dripping down its side.',
+    dosed: 'The same messy pan, with a seal-coat dispenser above it wearing the SimpleGrid mark.',
+    done: 'Every almond on its own, evenly coated in glossy chocolate, in a clean pan labelled SimpleGrid.'
   };
+  var lerp = function(a, b, t){ return a + (b - a)*t; };
+  var seg = function(t, a, b){ return clamp((t - a)/(b - a), 0, 1); };
+  var sm = function(t, a, b){ var x = seg(t, a, b); return x*x*(3 - 2*x); };
+  var seed = 4417;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
-
-  var items = SKUS.map(function(sku){
+  /* Twelve almonds: [x, y, turn]. At rest they lie in a loose bed at the bottom
+     of the pan. In the mess they're glued into two triples and two doubles,
+     with two strays. */
+  var REST = [[98,320,-12],[140,316,170],[182,319,8],[224,315,-168],[264,321,16],[118,347,186],[160,344,-6],[202,348,176],[244,345,10],[140,372,-174],[180,374,6],[220,371,190]];
+  var MESS = [[102,326,38],[124,324,-42],[113,344,176],[236,322,-146],[258,328,66],[242,344,12],[172,367,18],[196,370,-164],[168,312,-62],[189,311,112],[128,368,160],[232,369,-24]];
+  var CLUMPS = [[0,1,2],[3,4,5],[6,7],[8,9]];
+  var NUT = 'M-17 0C-17-7-10-10-2-10C7-10 13-5 18 0C13 5 7 10-2 10C-10 10-17 7-17 0Z';
+  var COAT = 'M-20 0C-20-8.6-12-12.4-2-12.4C9-12.4 15.5-6.2 21.5 0C15.5 6.2 9 12.4-2 12.4C-12 12.4-20 8.6-20 0Z';
+  // Where the chocolate took and where it didn't: three ways of getting it wrong.
+  var PATCH = [
+    'M-24-15H2C-4-9 6-6 0-1C-6 4 5 8-1 15H-24ZM8-15H12L5 15H1Z',
+    'M-24-15H24V-3C17 1 12-5 6 0C0 5-6-2-12 2C-17 5-20 1-24 3ZM5 6.5a4 3.4 0 1 0 8 0a4 3.4 0 1 0-8 0Z',
+    'M-4-15H24V15H-3C1 9-7 5-3-1C0-6-8-9-5-15ZM-15-15H-11L-17 15H-21Z'
+  ];
+  var nuts = REST.map(function(p, i){
     var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
+    g.setAttribute('class', 'alm');
+    g.innerHTML = '<path class="nut" d="' + NUT + '"/>' +
+      '<path class="skin" d="M-11-3.5C-3-6.5 6-6 12-2.5M-11 4C-3 6.5 6 6 12 2.5"/>' +
+      '<path class="patch" clip-path="url(#pnCoat)" d="' + PATCH[i % 3] + '"/>' +
+      '<path class="coat" d="' + COAT + '"/><path class="glaze" d="' + COAT + '"/>' +
+      '<path class="gloss" d="M-12-5.5C-6-9.5 3-9.8 9.5-6.5"/>';
+    nutsG.appendChild(g);
+    // While the pan turns, each one rides its own loop and tumbles a whole turn or two.
+    return { el: g, phi: i/12*Math.PI*2 + rand()*.5, rs: .55 + rand()*.5, turns: (rand() < .5 ? -1 : 1)*(rand() < .5 ? 1 : 2) };
   });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  // The chocolate that glues each clump together: a lump on every joint.
+  function blob(cx, cy, rx, ry, ang){
+    var n = 8, pts = [], c = Math.cos(ang), s = Math.sin(ang), k;
+    for (k = 0; k < n; k++){
+      var a = k/n*Math.PI*2, r = .78 + rand()*.36, x = Math.cos(a)*rx*r, y = Math.sin(a)*ry*r;
+      pts.push([cx + x*c - y*s, cy + x*s + y*c]);
+    }
+    var f = function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); };
+    var mid = function(p, q){ return f([(p[0] + q[0])/2, (p[1] + q[1])/2]); };
+    var d = 'M' + mid(pts[n - 1], pts[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f(pts[k]) + ' ' + mid(pts[k], pts[(k + 1) % n]);
+    return d + 'Z';
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  var glue = '';
+  CLUMPS.forEach(function(c){
+    for (var a = 0; a < c.length; a++) for (var b = a + 1; b < c.length; b++){
+      var p = MESS[c[a]], q = MESS[c[b]];
+      glue += blob((p[0] + q[0])/2, (p[1] + q[1])/2, 8, 11, Math.atan2(q[1] - p[1], q[0] - p[0]));
+    }
+    if (c.length === 3) glue += blob((MESS[c[0]][0] + MESS[c[1]][0] + MESS[c[2]][0])/3, (MESS[c[0]][1] + MESS[c[1]][1] + MESS[c[2]][1])/3, 10, 9, 0);
+  });
+  var glueEl = document.createElementNS(NS, 'path');
+  glueEl.setAttribute('class', 'pn-bridge');
+  glueEl.setAttribute('d', glue);
+  bridgesG.appendChild(glueEl);
+
+  /* Everything the drum does is a number here, and each frame draws from them.
+     The moves below are timelines that set these numbers from the time alone,
+     so reduced motion can jump straight to the end of each one. */
+  function fresh(){
+    return { from: REST, to: REST, mix: 0, env: 0, tt: 0, turns: 0, fast: 0,
+      jug: 0, pourA: 0, pourB: 0, disp: 0, tilt: 0, park: 0, sealA: 0, sealB: 0,
+      patch: 0, coat: 0, gloss: 0, glaze: 0, bridge: 0, smear: 0, drip: 0 };
+  }
+  var S = fresh(), clock = 0, spin = 0;
+  var JUG = [252, 92], SPOUT = [-50, -50], TIP = -42;
+  var ABOVE = [120, 44], OVER = [120, 112], PARK = [84, 116], LEAN = -28, NOZZLE = [0, 48];
+  var BED = [180, 338], RX = 70, RY = 28, OMEGA = Math.PI*2*.85, LAND = 332;
+  function turn(p, deg){ var a = deg*Math.PI/180, c = Math.cos(a), s = Math.sin(a); return [p[0]*c - p[1]*s, p[0]*s + p[1]*c]; }
+  var spout = turn(SPOUT, TIP), nozzle = turn(NOZZLE, LEAN);
+  var POUR = [JUG[0] + spout[0], JUG[1] + spout[1]], SEAL = [OVER[0] + nozzle[0], OVER[1] + nozzle[1]];
+  var vars = {};
+  function setVar(k, v){ v = Math.round(v*1000)/1000; if (vars[k] !== v){ vars[k] = v; pan.style.setProperty('--' + k, v); } }
+  function stream(el, from, a, b){
+    var top = lerp(from[1], LAND, a), bot = lerp(from[1], LAND, b);
+    if (bot - top < 1){ el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.setAttribute('d', 'M' + (from[0] + (reduce ? 0 : Math.sin(clock*21)*.7)).toFixed(1) + ' ' + top.toFixed(1) + 'V' + bot.toFixed(1));
+  }
+  function render(){
+    var off = -(spin % 12);
+    spinFar.setAttribute('stroke-dashoffset', off.toFixed(2));
+    spinNear.setAttribute('stroke-dashoffset', (off + 100).toFixed(2));
+    bed.setAttribute('transform', reduce ? '' : 'rotate(' + (Math.sin(clock*1.4)*1.3).toFixed(2) + ' 180 372)');
+    nuts.forEach(function(n, i){
+      var f = S.from[i], g = S.to[i];
+      var x = lerp(f[0], g[0], S.mix), y = lerp(f[1], g[1], S.mix), r = lerp(f[2], g[2], S.mix) + 360*n.turns*S.turns;
+      if (S.env > 0){
+        var ph = n.phi + S.tt*OMEGA, e = S.env*.9;
+        x = lerp(x, BED[0] + Math.cos(ph)*RX*n.rs, e);
+        y = lerp(y, BED[1] + Math.sin(ph)*RY*n.rs, e);
+      }
+      n.el.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') rotate(' + r.toFixed(1) + ')');
+    });
+    ['patch', 'coat', 'gloss', 'glaze', 'bridge', 'smear'].forEach(function(k){ setVar(k, S[k]); });
+    [].forEach.call(drips, function(el, k){
+      var v = clamp(S.drip*1.3 - k*.15, 0, 1);
+      el.setAttribute('stroke-dasharray', v.toFixed(3) + ' 2');
+      el.style.opacity = v > .01 ? 1 : 0;
+      bulbs[k].style.opacity = sm(v, .8, 1);
+    });
+    jug.setAttribute('transform', 'translate(' + JUG[0] + ' ' + JUG[1] + ') rotate(' + (TIP*S.jug).toFixed(2) + ')');
+    stream(pourEl, POUR, S.pourA, S.pourB);
+    var dx = lerp(lerp(ABOVE[0], OVER[0], S.disp), PARK[0], S.park), dy = lerp(lerp(ABOVE[1], OVER[1], S.disp), PARK[1], S.park);
+    disp.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + dy.toFixed(1) + ') rotate(' + (LEAN*S.tilt).toFixed(2) + ')');
+    disp.style.opacity = clamp(S.disp*2.5, 0, 1);
+    stream(sealEl, SEAL, S.sealA, S.sealB);
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
+  // One frame loop: it runs while a move is playing, and while the pan is on screen it keeps turning.
+  var active = null, raf = 0, last = 0, inView = true;
+  function tick(now){
+    var dt = Math.min(.05, (now - last)/1000 || .016), a = active;
+    last = now;
+    clock += dt;
+    if (!reduce) spin += dt*(1.4 + S.fast*7);
+    if (a){
+      a.t = reduce ? a.dur : Math.min(a.dur, a.t + dt);
+      a.fn(a.t);
+    }
+    render();
+    if (a && a === active && a.t >= a.dur){ active = null; a.done(); }
+    raf = (active || (inView && !reduce && !document.hidden)) ? requestAnimationFrame(tick) : 0;
+  }
+  function wake(){ if (!raf){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+  function play(dur, fn){
+    return new Promise(function(done){ active = { t: 0, dur: dur, fn: fn, done: done }; wake(); });
+  }
+
+  // Straight on, with nothing to make it take: the chocolate goes on in patches, the almonds
+  // glue together in clumps, and it ends up all over the pan. Then the pan slows, and the mess stays.
   function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
+    S.from = REST; S.to = MESS; S.mix = 0;
+    return play(3.1, function(t){
+      S.tt = t;
+      S.fast = sm(t, .15, .6)*(1 - sm(t, 2.2, 3.1));
+      S.jug = sm(t, .05, .55)*(1 - sm(t, 2, 2.6));
+      S.pourB = seg(t, .45, .7); S.pourA = seg(t, 1.95, 2.2);
+      S.env = sm(t, .45, .95)*(1 - sm(t, 1.95, 2.95));
+      S.turns = sm(t, .45, 2.95);
+      S.mix = sm(t, 1.7, 2.95);
+      S.patch = sm(t, .7, 1.7);
+      S.smear = sm(t, .9, 1.9);
+      S.drip = sm(t, 1.9, 3);
+      S.bridge = sm(t, 2.45, 3.05);
     });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
   }
+  // The seal coat comes down wearing the mark, and goes on over all of it.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
-  }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
-  function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+    return play(1.9, function(t){
+      S.disp = sm(t, 0, .6);
+      S.tilt = sm(t, .55, .8)*(1 - sm(t, 1.35, 1.65));
+      S.park = sm(t, 1.4, 1.9);
+      S.sealB = seg(t, .72, .92); S.sealA = seg(t, 1.25, 1.45);
+      S.glaze = sm(t, .9, 1.5);
+      pan.classList.toggle('dosed', t >= .3);
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+  }
+  // Pan the same mess again: the clumps break up, the chocolate takes all the way round, and it shines.
+  function clean(){
+    S.from = MESS; S.to = REST; S.mix = 0;
+    return play(3.3, function(t){
+      S.tt = t;
+      S.fast = sm(t, 0, .45)*(1 - sm(t, 2.3, 3.3));
+      S.bridge = 1 - sm(t, 0, .35);
+      S.env = sm(t, .05, .5)*(1 - sm(t, 2.1, 3.05));
+      S.turns = sm(t, .05, 3.05);
+      S.mix = sm(t, 1.85, 3.05);
+      S.jug = sm(t, .15, .6)*(1 - sm(t, 2.05, 2.65));
+      S.pourB = seg(t, .5, .75); S.pourA = seg(t, 1.95, 2.2);
+      S.coat = sm(t, .8, 2);
+      S.glaze = 1 - sm(t, .8, 1.6);
+      S.smear = 1 - sm(t, .9, 2);
+      S.drip = 1 - sm(t, .7, 1.7);
+      S.gloss = sm(t, 2.6, 3.25);
+    });
+  }
+  // Start over: bare almonds in a clean pan, at once.
+  function restore(){
+    active = null;
+    pan.classList.add('snap');
+    pan.classList.remove('dosed', 'is-done');
+    S = fresh(); clock = 0; spin = 0;
+    render();
+    pan.getBoundingClientRect();
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ pan.classList.remove('snap'); }); });
+    wake();
   }
   function setCallouts(final){
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = final ? 'Your spreadsheets' : 'The chocolate: your floor';
+    $('topText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+    $('bottomTitle').textContent = final ? 'Your ERP' : 'The almonds: your ERP';
+    $('bottomText').textContent = final ? 'Still keeping the books.' : 'What the system says is there.';
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: pan, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.pan',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Panned together, still not linked. Clumped, streaky, and it won’t smooth out.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same pan, same mess. Now there’s a seal coat on it.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); pan.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the pan does the same as the button.
+  pan.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ inView = entries[0].isIntersecting; if (inView) wake(); }).observe(pan);
+  }
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) wake(); });
+  render();
+  wake();
 })();
 </script>
 <script>

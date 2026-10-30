@@ -222,8 +222,11 @@ h2{letter-spacing:.004em;line-height:1.12}
 
 /* ------------------------------------------------------- The campfire */
 .hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.smore{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.smore{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .smore,.hero[data-story=done] .smore{cursor:default}
 .smore > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.smore.snap,.smore.snap *{transition:none!important}
 .cracker{fill:#D9A257}
 .cracker-edge{fill:#B37C35}
 .cracker-dock{fill:#A86F2C;opacity:.55}
@@ -231,22 +234,43 @@ h2{letter-spacing:.004em;line-height:1.12}
 .choc{fill:#4A2617}
 .choc-pip{fill:#5C3220}
 .choc-hi{fill:#7A4730}
-.top{transition:transform .5s cubic-bezier(.5,0,.3,1),opacity .3s}
-.top.slide{transition:transform .75s cubic-bezier(.55,0,.9,.5),opacity .5s .3s;opacity:0}
+.top{transition:transform .5s cubic-bezier(.5,0,.3,1)}
 .emboss{opacity:0;transition:opacity .5s .2s}
 .smore.is-made .emboss{opacity:1}
 .emboss text{fill:#8C5A22}
 .emboss-mark{fill:none;stroke:#8C5A22}
 .plain{transition:opacity .3s}
 .smore.is-made .plain{opacity:0}
-.mallow-g{cursor:grab;touch-action:none}
-.mallow-g:active{cursor:grabbing}
+/* The mess: pressed with nothing between them, the top cracker snaps in two and slides off, the
+   chocolate smears and runs off the edge, and the crumbs go everywhere. None of it goes back by itself. */
+.half{opacity:0;transform-box:view-box;transform-origin:0 0}
+.smore.cracked .half{opacity:1}
+.smore.cracked .top{opacity:0}
+.break{fill:none;stroke:#F3D193;stroke-width:3.4;stroke-linejoin:round}
+.crack-b{fill:none;stroke:#7A4A18;stroke-width:2.6;stroke-linejoin:round;opacity:0;transition:opacity .2s .1s}
+.smore.smeared .crack-b{opacity:.9}
+#chocBar{transition:opacity .25s .05s}
+.smore.smeared #chocBar{opacity:0}
+.smear{opacity:0;transform-box:fill-box;transform-origin:0 50%;transform:scaleX(.6);transition:opacity .15s,transform .55s cubic-bezier(.2,.8,.3,1)}
+.smore.smeared .smear{opacity:1;transform:none}
+.smear-hi{fill:none;stroke:#7A4730;stroke-width:2.4;stroke-linecap:round;opacity:.8}
+.drip{fill:#4A2617;transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);transition:transform 1.5s cubic-bezier(.4,0,.2,1) .35s}
+.smore.smeared .drip{transform:none}
+.smore.mending .drip{transition:transform .35s ease-in}
+.drop-c{fill:#4A2617;opacity:0}
+.smore.smeared .drop-c{animation:choc-drop 2.8s ease-in 1.6s infinite}
+@keyframes choc-drop{0%,50%{opacity:0;transform:translateY(0)}54%{opacity:1}96%{opacity:1;transform:translateY(118px)}100%{opacity:0;transform:translateY(124px)}}
+.crumb{opacity:0;transform-box:view-box;transform-origin:0 0}
+.smore.crumbly .crumb{opacity:1}
+.crumb path{fill:#D9A257;stroke:#A9732F;stroke-width:1.3;stroke-linejoin:round}
+.mallow-g{touch-action:pan-y}
+/* Once it's a mess, the marshmallow can be grabbed and held in the flames by hand. */
+.hero[data-story=mess] .mallow-g,.hero[data-story=dosing] .mallow-g{cursor:grab;touch-action:none}
+.hero[data-story=mess] .mallow-g:active,.hero[data-story=dosing] .mallow-g:active{cursor:grabbing}
 .stick{stroke:#6B4423;stroke-width:6;stroke-linecap:round}
 .stick-hi{stroke:#8C5D34;stroke-width:2;stroke-linecap:round}
-.mallow-fire{opacity:0;transition:opacity .2s}
 #stickG{transition:opacity .4s}
 .smore.is-made #stickG{opacity:0}
-.smore.burning .mallow-fire{opacity:1}
 .log{fill:#6B4423}
 .log-end{fill:#C79A66}
 .log-ring{fill:none;stroke:#8C5D34;stroke-width:2}
@@ -264,7 +288,7 @@ h2{letter-spacing:.004em;line-height:1.12}
 }
 .ember{fill:#FFB53B;animation:rise 2.4s linear infinite;opacity:0}
 @keyframes rise{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,8px),-150px)}}
-.hero:not(.in-view) .flame,.hero:not(.in-view) .ember,.hero:not(.in-view) .glow{animation-play-state:paused}
+.hero:not(.in-view) .flame,.hero:not(.in-view) .ember,.hero:not(.in-view) .glow,.hero:not(.in-view) .drop-c{animation-play-state:paused}
 .callout-top{top:9%}
 .callout-bottom{top:38.5%}
 .callout-gap{top:calc(30.7% - 15px)}
@@ -537,6 +561,9 @@ h2{letter-spacing:.004em;line-height:1.12}
             <defs>
               <radialGradient id="glow"><stop offset="0" stop-color="#FFB53B" stop-opacity=".55"/><stop offset="1" stop-color="#FFB53B" stop-opacity="0"/></radialGradient>
               <radialGradient id="mallowFill" cx=".42" cy=".38" r=".7"><stop offset="0" id="mallowIn" stop-color="#FFFDF6"/><stop offset=".62" id="mallowMid" stop-color="#FBF6EC"/><stop offset="1" id="mallowOut" stop-color="#EDE5D6"/></radialGradient>
+              <!-- where the top cracker snaps: along its perforation, more or less -->
+              <clipPath id="clipL"><path d="M60 50H182L175 74L186 86L177 99L187 111L179 124L184 140H60Z"/></clipPath>
+              <clipPath id="clipR"><path d="M300 50H182L175 74L186 86L177 99L187 111L179 124L184 140H300Z"/></clipPath>
             </defs>
 
             <!-- the fire -->
@@ -565,9 +592,24 @@ h2{letter-spacing:.004em;line-height:1.12}
               <rect class="cracker" x="70" y="248" width="220" height="62" rx="9"/>
               <path class="cracker-perf" d="M180 254v50"/>
               <g class="cracker-dock"><circle cx="96" cy="296" r="2.6"/><circle cx="264" cy="296" r="2.6"/></g>
-              <rect class="choc" x="96" y="212" width="168" height="40" rx="4"/>
-              <g class="choc-pip"><rect x="102" y="217" width="48" height="13" rx="2"/><rect x="156" y="217" width="48" height="13" rx="2"/><rect x="210" y="217" width="48" height="13" rx="2"/><rect x="102" y="234" width="48" height="13" rx="2"/><rect x="156" y="234" width="48" height="13" rx="2"/><rect x="210" y="234" width="48" height="13" rx="2"/></g>
-              <path class="choc-hi" d="M104 218h44v2h-44zM158 218h44v2h-44zM212 218h44v2h-44z"/>
+              <path class="crack-b" d="M186 249L180 261L189 272L181 285L188 297L182 315"/>
+              <g id="chocBar">
+                <rect class="choc" x="96" y="212" width="168" height="40" rx="4"/>
+                <g class="choc-pip"><rect x="102" y="217" width="48" height="13" rx="2"/><rect x="156" y="217" width="48" height="13" rx="2"/><rect x="210" y="217" width="48" height="13" rx="2"/><rect x="102" y="234" width="48" height="13" rx="2"/><rect x="156" y="234" width="48" height="13" rx="2"/><rect x="210" y="234" width="48" height="13" rx="2"/></g>
+                <path class="choc-hi" d="M104 218h44v2h-44zM158 218h44v2h-44zM212 218h44v2h-44z"/>
+              </g>
+            </g>
+
+            <!-- the mess: the chocolate smeared across the cracker and running off it, a drop at a time into the fire -->
+            <g>
+              <path class="drip" d="M101 262h10v54a5 5 0 0 1-10 0z"/>
+              <path class="drip" d="M147.5 266h9v30a4.5 4.5 0 0 1-9 0z"/>
+              <path class="drip" d="M231 262h10v72a5 5 0 0 1-10 0z"/>
+              <circle class="drop-c" cx="236" cy="338" r="4.5"/>
+              <g class="smear">
+                <path class="choc" d="M96 222C96 211 112 208 132 210C160 205 196 212 224 210C256 208 290 214 312 228C326 238 322 252 304 254C288 262 268 256 250 262C226 270 206 260 186 266C160 274 140 262 120 268C102 272 94 258 96 244Z"/>
+                <path class="smear-hi" d="M118 226C150 221 190 224 232 221M196 244C230 239 268 242 300 237M128 255C148 252 168 255 186 252"/>
+              </g>
             </g>
 
             <!-- the marshmallow, on its stick -->
@@ -581,10 +623,6 @@ h2{letter-spacing:.004em;line-height:1.12}
                 <ellipse cx="-12" cy="-14" rx="13" ry="6" fill="#fff" opacity=".45" id="mallowShine"/>
                 <!-- toasting brands the SimpleGrid mark into it, the way the yolk wears it in the jar -->
                 <g class="mallow-mark" id="mallowMark" transform="translate(-14 -14) scale(.667)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g>
-                <g class="mallow-fire">
-                  <path class="flame flame-a" d="M-28 -20C-30 -40 -14 -46 -10 -62C-2 -46 6 -44 8 -34C14 -46 20 -50 26 -60C32 -40 32 -28 26 -20Z"/>
-                  <path class="flame flame-c" d="M-16 -22C-16 -34 -8 -38 -4 -48C2 -38 6 -36 8 -30C12 -36 14 -38 18 -44C20 -34 20 -26 16 -22Z"/>
-                </g>
               </g>
             </g>
 
@@ -597,6 +635,21 @@ h2{letter-spacing:.004em;line-height:1.12}
               <!-- stamped in, like a brand on a cracker: the label on the finished s'more -->
               <g class="emboss"><g class="emboss-mark" transform="translate(105.6 82.1) scale(.58)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g><text x="135.3" y="102" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="21" letter-spacing="-.5">SimpleGrid</text></g>
             </g>
+            <!-- the same top cracker, snapped in two, for when nothing holds it -->
+            <g class="half" id="topL"><g clip-path="url(#clipL)">
+              <rect class="cracker-edge" x="70" y="68" width="220" height="64" rx="9"/>
+              <rect class="cracker" x="70" y="64" width="220" height="62" rx="9"/>
+              <g class="cracker-dock"><circle cx="96" cy="80" r="2.6"/><circle cx="96" cy="110" r="2.6"/><circle cx="138" cy="95" r="2.6"/></g>
+              <path class="break" d="M177.9 64L175 74L186 86L177 99L187 111L179 124L181.5 132"/>
+            </g></g>
+            <g class="half" id="topR"><g clip-path="url(#clipR)">
+              <rect class="cracker-edge" x="70" y="68" width="220" height="64" rx="9"/>
+              <rect class="cracker" x="70" y="64" width="220" height="62" rx="9"/>
+              <g class="cracker-dock"><circle cx="264" cy="80" r="2.6"/><circle cx="264" cy="110" r="2.6"/><circle cx="222" cy="95" r="2.6"/></g>
+              <path class="break" d="M177.9 64L175 74L186 86L177 99L187 111L179 124L181.5 132"/>
+            </g></g>
+            <!-- and the crumbs (the script makes them) -->
+            <g id="crumbs"></g>
           </svg>
         </div>
         <div class="callouts">
@@ -609,15 +662,21 @@ h2{letter-spacing:.004em;line-height:1.12}
             <h3><i></i><span id="bottomTitle">The chocolate: your floor</span></h3>
             <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Press them together</button>
+          <button class="go-btn" id="heroBtn" type="button">Press them together to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">Nothing holds these two together. Press them, or grab the marshmallow and toast it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP on top, your floor underneath, and nothing to hold them together. Press them, or tap the crackers to try it yourself.</p>
       </div>
     </div>
   </div>
@@ -938,49 +997,62 @@ SG.story = function(o){
 (function(){
   /* ----------------------------------------------------- The s'more
      Top cracker: the ERP. Chocolate on a cracker: the floor. Pressed together
-     with nothing in between, they slide apart. The marshmallow is SimpleGrid,
-     and it only holds once it's toasted: golden, not burnt. */
+     with nothing in between, the top one snaps and slides off, the chocolate
+     smears, the crumbs fly, and that mess stays: it's your operations. The
+     marshmallow is SimpleGrid, and it only holds once it's toasted golden.
+     Press them together again and the same mess comes together as a s'more. */
   var $ = function(id){ return document.getElementById(id); };
-  var hero = $('hero'), smore = $('smore'), top = $('top'), mallowG = $('mallowG'), mallow = $('mallow');
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), smore = $('smore'), top = $('top'), mallowG = $('mallowG'), mallow = $('mallow'), stickG = $('stickG');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce, clamp = SG.clamp;
 
   var COPY = {
-    apart:   { btn: 'Press them together', caption: 'Nothing holds these two together. Press them, or grab the marshmallow and toast it yourself.' },
-    pressed: { btn: 'Press them together', caption: 'Looks like a s’more, doesn’t it?' },
-    broken:  { btn: 'Toast a marshmallow', caption: 'And there it goes. That’s the usual ERP go-live: pressed together for the launch, and months later the plant is back on Excel.' },
-    toasting:{ btn: 'Toasting…', caption: 'Turn it slowly. Golden, not burnt.' },
-    toasted: { btn: 'Make the s’more', caption: 'Golden. That’s SimpleGrid, made around how your plant already runs. Now make the s’more.' },
-    burnt:   { btn: 'Toast a marshmallow', caption: 'On fire. Everyone’s done it. Here’s a fresh one.' },
-    making:  { btn: 'Making…', caption: 'Squish.' },
-    done:    { btn: 'Why did the first one slide off?', caption: 'One live record. Your ERP and your floor finally stick together, and they won’t slide apart.' }
+    apart:    { btn: 'Press them together to see your operations', caption: 'Your ERP on top, your floor underneath, and nothing to hold them together. Press them, or tap the crackers to try it yourself.' },
+    messing:  { btn: 'Pressing…', caption: 'Pressing them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Toast the marshmallow', caption: 'That’s your operations today: a big mess. Cracked, slid apart, chocolate everywhere, and it won’t fix itself. Toast the marshmallow, or hold it in the flames yourself.' },
+    dosing:   { btn: 'Toasting…', caption: 'Turn it slowly. Golden, not burnt.' },
+    dosed:    { btn: 'Press them together again', caption: 'Toasted golden. That’s SimpleGrid. Now press them together again.' },
+    cleaning: { btn: 'Pressing…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one neat s’more. Your ERP and your floor finally stick together, and they won’t slide apart.' }
   };
   var ARIA = {
     apart: smore.getAttribute('aria-label'),
-    done: 'A finished s’more: a golden marshmallow holding the two crackers together, SimpleGrid embossed on top.'
+    mess: 'The crackers pressed together with nothing between them: the top one snapped in two and slid off, chocolate smeared and dripping, crumbs everywhere.',
+    dosed: 'The same mess, and a golden toasted marshmallow on its stick, branded with the SimpleGrid mark.',
+    done: 'A finished s’more: a golden marshmallow holding the two crackers together, SimpleGrid stamped on top.'
   };
 
-  // Where the marshmallow rests, where the fire is hottest, and how fast it browns there.
-  var REST = { x: 180, y: 362 }, HOT = 452, RATE = .5;
-  var phase = 'apart', toast = 0, pos = { x: REST.x, y: REST.y }, target = { x: REST.x, y: REST.y };
-  var drag = null, auto = false, squash = 0;
-  var timers = [];
+  // Where the marshmallow rests, where the fire is hottest, how fast it browns there, and where it sits in the s'more.
+  var REST = { x: 180, y: 362 }, HOT = 452, RATE = .9, ON = { x: 180, y: 183 };
+  var toast = 0, squash = 0, pos = { x: REST.x, y: REST.y }, target = { x: REST.x, y: REST.y };
+  var drag = null, dragged = false, auto = false, scripted = false, waiting = null;
+  var timers = [], run = 0;
   function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
-
-  function setPhase(next){
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'toasting' || next === 'making' || next === 'pressed';
-    caption.textContent = COPY[next].caption;
+  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
+  // Resolves once the marshmallow gets where a move is taking it; the frame loop checks.
+  function until(test){ return new Promise(function(done){ waiting = { test: test, done: done }; }); }
+  // A move drawn frame by frame. Start over cancels it.
+  function tween(ms, fn){
+    var token = run;
+    return new Promise(function(done){
+      if (reduce){ fn(1); done(); return; }
+      var t0 = performance.now();
+      (function tick(now){
+        if (token !== run) return;
+        var t = Math.min(1, (now - t0)/ms);
+        fn(t);
+        if (t < 1) requestAnimationFrame(tick); else done();
+      })(t0);
+    });
   }
+  var ease = function(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; };
 
-  /* Raw, golden, toasted, black. Each stop: inside, middle, outside. */
+  /* Raw, golden. Each stop: inside, middle, outside. */
   var SHADES = [
-    [0,    [255,253,246], [251,246,236], [237,229,214]],
-    [.55,  [253,240,208], [244,214,150], [226,178,102]],
-    [1,    [250,226,170], [222,164, 84], [176,104, 40]],
-    [1.25, [226,170,104], [160, 92, 36], [ 98, 52, 18]],
-    [1.45, [ 70, 44, 26], [ 44, 28, 16], [ 26, 16, 10]]
+    [0,   [255,253,246], [251,246,236], [237,229,214]],
+    [.55, [253,240,208], [244,214,150], [226,178,102]],
+    [1,   [250,226,170], [222,164, 84], [176,104, 40]]
   ];
   function shade(t, k){
     for (var i = 1; i < SHADES.length; i++){
@@ -995,104 +1067,55 @@ SG.story = function(o){
     $('mallowMid').setAttribute('stop-color', shade(toast, 2));
     $('mallowOut').setAttribute('stop-color', shade(toast, 3));
     $('mallowShine').setAttribute('opacity', (.45*(1 - clamp(toast/1.3, 0, 1))).toFixed(2));
-    $('mallowMark').style.opacity = (clamp((toast - .45)/.4, 0, 1)*(1 - clamp((toast - 1.2)/.2, 0, 1))).toFixed(2);
+    // The SimpleGrid mark browns into it as it goes golden, the way the yolk wears it in the jar.
+    $('mallowMark').style.opacity = clamp((toast - .45)/.4, 0, 1).toFixed(2);
   }
-  var stickG = $('stickG');
   function place(){
     var sx = 1 + squash*.78, sy = 1 - squash*.42;
     // Squashed from the bottom, so it stays sitting on the chocolate.
     mallow.setAttribute('transform', 'translate(' + pos.x.toFixed(1) + ' ' + (pos.y + squash*12.2).toFixed(1) + ') scale(' + sx.toFixed(3) + ' ' + sy.toFixed(3) + ')');
     stickG.setAttribute('transform', 'translate(' + (pos.x + squash*60).toFixed(1) + ' ' + pos.y.toFixed(1) + ')');
   }
-
   function heat(y){ return clamp((y - 400)/(HOT - 400), 0, 1); }
 
-  function burn(){
-    smore.classList.add('burning');
-    setPhase('burnt');
-    drag = null; auto = false;
-    target = { x: REST.x, y: REST.y };
-    later(function(){
-      smore.classList.remove('burning');
-      toast = 0;
-      paintMallow();
-      setPhase('broken');
-      caption.textContent = 'Fresh one. Hold it in the flames, and pull it out when it’s golden.';
-    }, 1600);
+  /* The two halves of the top cracker, each turning about its own middle. */
+  var L = { el: $('topL'), cx: 126, cy: 98 }, Rt = { el: $('topR'), cx: 234, cy: 98 };
+  function half(h, x, y, a, ms, how){
+    h.el.style.transition = ms ? 'transform ' + ms + 'ms ' + (how || 'cubic-bezier(.3,.7,.3,1)') : 'none';
+    h.el.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + a + 'deg) translate(' + (-h.cx) + 'px,' + (-h.cy) + 'px)';
   }
 
-  function frame(dt){
-    if (phase === 'making' || phase === 'done') return;
-    // The marshmallow eases toward wherever it's being held.
-    var k = Math.min(1, dt*(drag ? 18 : 7));
-    pos.x += (target.x - pos.x)*k;
-    pos.y += (target.y - pos.y)*k;
-    if (phase !== 'burnt'){
-      var h = heat(pos.y);
-      if (h > 0){
-        toast += h*RATE*dt;
-        paintMallow();
-        if (!auto && phase !== 'toasting' && phase !== 'toasted') setPhase('toasting');
-        if (toast > 1.35) burn();
-      }
-      // The button turns it until it's golden, then lifts it out.
-      if (auto && toast >= 1){ auto = false; target = { x: REST.x, y: REST.y }; }
-      if (!drag && !auto && phase === 'toasting' && heat(pos.y) === 0){
-        if (toast >= .8 && toast <= 1.25) setPhase('toasted');
-        else { setPhase('broken'); caption.textContent = 'Not quite. Golden takes a little longer.'; }
-      }
+  /* The crumbs, made once and the same every time: they burst out of the
+     crack and land all over the mess, and a few drop into the fire. */
+  var seed = 9137;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function shard(r){
+    var n = 5 + Math.floor(rand()*2), p = [];
+    for (var k = 0; k < n; k++){ var a = k/n*Math.PI*2 + R(-.4, .4), rr = r*R(.6, 1.15); p.push((Math.cos(a)*rr).toFixed(1) + ' ' + (Math.sin(a)*rr).toFixed(1)); }
+    return 'M' + p.join('L') + 'Z';
+  }
+  var crumbsG = $('crumbs'), crumbs = [];
+  for (var i = 0; i < 26; i++){
+    var r = i < 6 ? R(5.5, 7.5) : R(2.6, 5), ex, ey, fall = i % 9 === 8;
+    if (fall){ ex = R(150, 214); ey = R(470, 490); }
+    else {
+      // Over the whole pile, but never on the marshmallow.
+      var a = R(0, Math.PI*2), d = Math.sqrt(R(.08, 1));
+      ex = clamp(194 + Math.cos(a)*d*136, 70, 330); ey = clamp(258 + Math.sin(a)*d*70, 186, 330);
+      if (ey > 322 && ex > 136 && ex < 226) ey = 322;
     }
-    place();
+    var g = document.createElementNS(NS, 'g'), path = document.createElementNS(NS, 'path');
+    g.setAttribute('class', 'crumb');
+    path.setAttribute('d', shard(r));
+    g.appendChild(path);
+    crumbsG.appendChild(g);
+    crumbs.push({ el: g, fall: fall, rot: R(-200, 200), sx: R(176, 188), sy: R(146, 210), ex: ex, ey: ey, hx: R(176, 186), hy: R(68, 128) });
   }
-
-  function press(){
-    setPhase('pressed');
-    top.style.transform = 'translateY(80px)';
-    later(function(){
-      top.classList.add('slide');
-      top.style.transform = 'translate(150px,150px) rotate(28deg)';
-    }, 1100);
-    later(function(){
-      top.classList.remove('slide');
-      top.style.transition = 'none';
-      top.style.transform = 'translateY(-40px)';
-      top.style.opacity = '0';
-      top.getBoundingClientRect();
-      top.style.transition = '';
-      top.style.transform = '';
-      top.style.opacity = '';
-      setPhase('broken');
-    }, 2100);
+  function put(c, x, y, rot, s, ms, delay, how){
+    c.el.style.transition = ms ? 'transform ' + ms + 'ms ' + (how || 'cubic-bezier(.15,.75,.3,1)') + ' ' + (delay || 0) + 'ms,opacity .3s ' + (c.fall && ms ? (delay || 0) + ms*.7 : 0) + 'ms' : 'none';
+    c.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(0) + 'deg) scale(' + s + ')';
   }
-
-  function makeSmore(){
-    setPhase('making');
-    var steps = 26, i = 0, from = { x: pos.x, y: pos.y };
-    // Up out of the fire and onto the chocolate, then the top cracker comes down and squishes it.
-    var lift = setInterval(function(){
-      i++;
-      var f = i/steps, e = f < .5 ? 2*f*f : 1 - Math.pow(-2*f + 2, 2)/2;
-      pos.x = from.x + (180 - from.x)*e;
-      pos.y = from.y + (183 - from.y)*e;
-      place();
-      if (i >= steps){
-        clearInterval(lift);
-        top.style.transform = 'translateY(22px)';
-        later(function(){
-          var j = 0;
-          top.style.transition = 'none';
-          var sq = setInterval(function(){
-            j++;
-            squash = Math.min(1, j/12);
-            top.style.transform = 'translateY(' + (22 + 24.4*squash).toFixed(1) + 'px)';
-            place();
-            if (j >= 12){ clearInterval(sq); top.style.transition = ''; complete(); }
-          }, reduce ? 0 : 22);
-        }, 520);
-      }
-    }, reduce ? 0 : 16);
-  }
-
   function setCallouts(final){
     $('gapTag').hidden = final;
     $('topTitle').textContent = final ? 'Your ERP' : 'The cracker: your ERP';
@@ -1100,72 +1123,167 @@ SG.story = function(o){
     $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The chocolate: your floor';
     $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
-
-  function complete(){
-    smore.classList.add('is-made');
-    mallowG.style.cursor = 'default';
-    setCallouts(true);
-    setPhase('done');
-    smore.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, smore, 'b', '.smore');
+  function home(){
+    half(L, L.cx, L.cy, 0, 0); half(Rt, Rt.cx, Rt.cy, 0, 0);
+    crumbs.forEach(function(c){ put(c, c.sx, c.sy, 0, 1, 0); });
   }
 
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    smore.classList.remove('is-made', 'burning');
-    mallowG.style.cursor = '';
-    top.style.transform = '';
-    toast = 0; squash = 0; auto = false; drag = null;
-    pos = { x: REST.x, y: REST.y }; target = { x: REST.x, y: REST.y };
-    paintMallow();
-    place();
-    setCallouts(false);
-    smore.setAttribute('aria-label', ARIA.apart);
-    setPhase('apart');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, smore, 'a', '.smore');
-  }
-
-  btn.addEventListener('click', function(){
-    if (phase === 'apart') press();
-    else if (phase === 'broken' || phase === 'burnt'){
-      auto = true;
-      target = { x: REST.x, y: HOT };
-      setPhase('toasting');
+  var story = SG.story({
+    hero: hero, obj: smore, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.smore',
+    ops: {
+      mess: ['Your operations, today', 'Pressed together, still not linked. Cracked, smeared, crumbs everywhere.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same crumbs, same smear. Now there’s a toasted marshmallow to hold it.']
+    },
+    // Pressed with nothing in between: it snaps, slides, smears, and stays that way.
+    mess: function(){
+      smore.classList.remove('snap');
+      top.style.transform = 'translateY(80px)';
+      return wait(560).then(function(){
+        // The halves take over from the whole cracker exactly where it is, then come apart.
+        half(L, L.cx, L.cy + 80, 0, 0); half(Rt, Rt.cx, Rt.cy + 80, 0, 0);
+        crumbs.forEach(function(c){ put(c, c.sx, c.sy, 0, 1, 0); });
+        smore.getBoundingClientRect();
+        smore.classList.add('cracked', 'smeared', 'crumbly');
+        // The whole cracker waits out of sight, back where it started, for when it's mended.
+        top.style.transition = 'none';
+        top.style.transform = '';
+        half(L, 120, 214, -9, 620, 'cubic-bezier(.4,0,.3,1)');
+        half(Rt, 268, 262, 28, 760, 'cubic-bezier(.45,0,.25,1.15)');
+        crumbs.forEach(function(c, i){
+          if (c.fall) put(c, c.ex, c.ey, c.rot, .8, 900, 60 + i*8, 'cubic-bezier(.4,0,.9,.6)');
+          else put(c, c.ex, c.ey, c.rot, 1, 700, i*10);
+        });
+        crumbs.forEach(function(c){ if (c.fall) later(function(){ c.el.style.opacity = '0'; }, 900); });
+        return wait(1100);
+      });
+    },
+    // Toast it golden: by the button, or by hand.
+    dose: function(){
+      if (reduce){
+        drag = null; auto = false; toast = 1; paintMallow();
+        pos = { x: REST.x, y: REST.y }; target = { x: REST.x, y: REST.y }; place();
+        return Promise.resolve();
+      }
+      if (!drag){ auto = true; target = { x: REST.x, y: HOT }; }
+      return until(function(){ return toast >= 1 && !drag && Math.abs(pos.y - REST.y) < 2 && Math.abs(pos.x - REST.x) < 2; });
+    },
+    // Press them together again: the mess comes back together around the marshmallow, and it holds.
+    clean: function(){
+      scripted = true; auto = false; drag = null;
+      var from = { x: pos.x, y: pos.y };
+      smore.classList.add('mending');
+      smore.classList.remove('smeared');
+      half(L, L.cx, L.cy, 0, 620);
+      half(Rt, Rt.cx, Rt.cy, 0, 620);
+      crumbs.forEach(function(c, i){ c.el.style.opacity = ''; put(c, c.hx, c.hy, c.rot + 180, .3, 520, i*8, 'cubic-bezier(.5,0,.6,1)'); });
+      later(function(){ smore.classList.remove('crumbly'); }, 460);
+      return tween(620, function(t){
+        var e = ease(t);
+        pos = { x: from.x + (ON.x - from.x)*e, y: from.y + (ON.y - from.y)*e };
+        place();
+      }).then(function(){
+        // Whole again: the top comes down on the marshmallow...
+        smore.classList.remove('cracked', 'mending');
+        top.style.transition = '';
+        top.style.transform = 'translateY(22px)';
+        return wait(520);
+      }).then(function(){
+        // ...and squishes it.
+        top.style.transition = 'none';
+        return tween(260, function(t){
+          squash = t;
+          top.style.transform = 'translateY(' + (22 + 24.4*t).toFixed(1) + 'px)';
+          place();
+        });
+      }).then(function(){
+        top.style.transition = '';
+        return wait(120);
+      });
+    },
+    restore: function(){
+      run++;
+      waiting = null;
+      timers.forEach(clearTimeout);
+      timers = [];
+      smore.classList.add('snap');
+      smore.classList.remove('cracked', 'smeared', 'crumbly', 'mending', 'is-made');
+      top.style.transition = '';
+      top.style.transform = '';
+      home();
+      crumbs.forEach(function(c){ c.el.style.opacity = ''; });
+      scripted = false; drag = null; dragged = false; auto = false;
+      toast = 0; squash = 0;
+      pos = { x: REST.x, y: REST.y }; target = { x: REST.x, y: REST.y };
+      paintMallow();
+      place();
+      smore.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ smore.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      smore.classList.toggle('is-made', on);
     }
-    else if (phase === 'toasted') makeSmore();
-    else if (phase === 'done') $('gap').scrollIntoView();
   });
-  resetBtn.addEventListener('click', startOver);
 
-  // Or toast it yourself: grab the marshmallow and hold it in the flames.
+  function frame(dt){
+    if (scripted) return;
+    // The marshmallow eases toward wherever it's being held.
+    var k = Math.min(1, dt*(drag ? 18 : 7));
+    pos.x += (target.x - pos.x)*k;
+    pos.y += (target.y - pos.y)*k;
+    var phase = story.phase();
+    // Holding it in the flames does the same as the button.
+    if (phase === 'mess' && drag && heat(pos.y) > 0){ story.go(); phase = story.phase(); }
+    if (phase === 'dosing'){
+      if (toast < 1){
+        var h = heat(pos.y);
+        if (h > 0){ toast = Math.min(1, toast + h*RATE*dt); paintMallow(); }
+        // Pulled out too soon: it goes back in and finishes, so the button never stays stuck.
+        if (!drag && !auto){ auto = true; target = { x: REST.x, y: HOT }; }
+      } else if (auto || drag){
+        // Golden. Out of the fire it comes, even from a hand that's still holding it.
+        auto = false; drag = null; target = { x: REST.x, y: REST.y };
+      }
+    }
+    if (waiting && waiting.test()){ var w = waiting; waiting = null; w.done(); }
+    place();
+  }
+
+  // Tapping the s'more does the same as the button.
+  smore.addEventListener('click', function(){
+    if (dragged){ dragged = false; return; }
+    if (story.phase() !== 'done') story.go();
+  });
+  // Or toast it by hand: once it's a mess, grab the marshmallow and hold it in the flames.
   var svg = smore.querySelector('svg');
   function toSvg(e){
     var r = svg.getBoundingClientRect();
     return { x: (e.clientX - r.left)/r.width*360, y: (e.clientY - r.top)/r.height*560 };
   }
   mallowG.addEventListener('pointerdown', function(e){
-    if (phase === 'making' || phase === 'done' || phase === 'burnt' || phase === 'pressed') return;
+    var phase = story.phase();
+    if (phase !== 'mess' && !(phase === 'dosing' && toast < 1)) return;
     var p = toSvg(e);
-    drag = { dx: pos.x - p.x, dy: pos.y - p.y };
+    drag = { dx: pos.x - p.x, dy: pos.y - p.y, px: e.clientX, py: e.clientY };
+    dragged = false;
     auto = false;
     try { mallowG.setPointerCapture(e.pointerId); } catch (err) {}
   });
   mallowG.addEventListener('pointermove', function(e){
     if (!drag) return;
+    if (Math.hypot(e.clientX - drag.px, e.clientY - drag.py) > 6) dragged = true;
     var p = toSvg(e);
     target = { x: clamp(p.x + drag.dx, 120, 240), y: clamp(p.y + drag.dy, 340, 476) };
   });
   var letGo = function(){
     if (!drag) return;
     drag = null;
-    target = { x: REST.x, y: REST.y };
+    if (story.phase() === 'mess') target = { x: REST.x, y: REST.y };
   };
   mallowG.addEventListener('pointerup', letGo);
   mallowG.addEventListener('pointercancel', letGo);
 
+  home();
   paintMallow();
   place();
   SG.loop(hero, frame);

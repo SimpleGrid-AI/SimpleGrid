@@ -38,7 +38,87 @@
   --display:'Saira Semi Condensed','Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-<!--#include line.css-->
+/* ------------------------------------------------------------ The latte */
+/* Top down: the espresso in the cup is the ERP, the cold milk in the jug is the floor. */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.latte{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .latte,.hero[data-story=done] .latte{cursor:default}
+.latte svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.latte.snap,.latte.snap *{transition:none!important}
+.lt-shadow{fill:rgba(0,0,0,.3)}
+.lt-saucer{fill:#FEFBF9}
+.lt-well{fill:#F4ECE6}
+.lt-ring{fill:none;stroke:var(--accent);stroke-width:3}
+.lt-cup-shadow{fill:rgba(46,41,37,.16)}
+.lt-cup{fill:#FEFBF9;stroke:#E6DCD3;stroke-width:2}
+.lt-handle{fill:#FEFBF9;stroke:#E6DCD3;stroke-width:2}
+.lt-wall{fill:#EFE6DE}
+.lt-edge{fill:none;stroke:rgba(60,30,10,.45);stroke-width:2.5}
+.lt-shine{fill:#fff;opacity:.28}
+.lt-fleck{fill:#7E4320;opacity:.55}
+/* The mess: cold milk dumped in. Muddy, blotchy, and none of it joins up. */
+.lt-mud{opacity:0}
+.lt-ms{opacity:0}
+.lt-ms-in{transform-box:fill-box;transform-origin:center}
+.latte.messy .lt-ms-in{animation:lt-wob 3.4s ease-in-out infinite}
+.latte.messy .lt-ring-in{animation-name:lt-drift;animation-duration:7s}
+@keyframes lt-wob{50%{transform:translate(1.5px,-1px) rotate(5deg) scale(1.04,.97)}}
+@keyframes lt-drift{50%{transform:rotate(-14deg) scale(1.05)}}
+.lt-pale{fill:#F1E7D8}
+.lt-pale2{fill:#E3D3BD}
+.lt-dark{fill:#5A3925}
+.lt-arc{fill:none;stroke:#EBDFCC;stroke-linecap:round}
+.lt-drip{fill:#F6F1EA;stroke:rgba(46,41,37,.12);stroke-width:1.5}
+/* The pour, seen from above: where the stream hits. */
+.lt-stream{fill:#FBF8F3;opacity:0}
+/* The latte it ends up as. */
+.lt-base{opacity:0}
+.lt-leaf{fill:#FFF8EC;opacity:0;transform:scaleX(.12);transform-box:fill-box;transform-origin:center}
+.lt-stem{fill:none;stroke:#FFF8EC;stroke-width:5;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1}
+/* The jug: steel, cold milk, then steamed silky. */
+.lt-jug,.lt-milk-g,.lt-wand{transform-box:view-box;transform-origin:0 0}
+.lt-jug{transform:translate(196px,462px) rotate(-8deg)}
+.lt-jug-shadow{fill:rgba(0,0,0,.3)}
+.lt-steel{fill:#C9CFD5;stroke:#8D959D;stroke-width:2}
+.lt-steel-in{fill:#9AA3AB}
+.lt-steel-hi{fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;opacity:.8}
+.lt-grip{fill:#B9C0C7;stroke:#8D959D;stroke-width:2}
+.lt-grip-slot{fill:rgba(46,41,37,.28)}
+.lt-cold{fill:#EEF2F5}
+.lt-cold-hi{fill:#fff;opacity:.7}
+.lt-foam{opacity:0}
+.lt-foam-c{fill:#FFF7EA}
+.lt-foam-hi{fill:#fff;opacity:.9}
+.lt-swirl{fill:none;stroke:rgba(176,128,82,.38);stroke-width:2.5;stroke-linecap:round}
+.lt-swirl-g{transform-box:fill-box;transform-origin:center}
+.latte.steaming .lt-swirl-g{animation:lt-spin .9s linear infinite}
+@keyframes lt-spin{to{transform:rotate(360deg)}}
+/* SimpleGrid is the steam: the wand carries the mark into the jug. */
+.lt-wand{transform:translate(170px,-76px);opacity:0}
+.lt-rod{fill:none;stroke:#7F878F;stroke-width:13;stroke-linecap:round}
+.lt-rod-hi{fill:none;stroke:#D7DCE1;stroke-width:8;stroke-linecap:round}
+.lt-tip{fill:#5F676F}
+.lt-badge{--sg-bg:var(--accent);--sg-ink:#fff}
+.latte.dosed .lt-badge{opacity:1;transform:none}
+.lt-puff{fill:#fff;opacity:0;transform-box:fill-box;transform-origin:center}
+.latte.steaming .lt-puff{animation:lt-puff 1.5s ease-out infinite}
+.latte.hot .lt-puff{animation:lt-puff 3.2s ease-out infinite}
+@keyframes lt-puff{0%{opacity:0;transform:translate(0,0) scale(.35)}25%{opacity:.62}100%{opacity:0;transform:translate(-6px,-58px) scale(1.7)}}
+/* At the end, the saucer says whose latte it is. */
+.lt-tag{--sg-bg:var(--brand);--sg-ink:#FEFBF9}
+.latte.is-done .lt-tag{opacity:1;transform:none}
+.latte:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:15%}
+.callout-gap{top:calc(63.6% - 15px)}
+.callout-bottom{top:72.5%}
+.callout-top h3 i{background:#B06A33}
+.callout-bottom h3 i{background:#EEF2F5}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.45)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->
@@ -64,18 +144,101 @@
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
-<!--#include line.svg-->
+        <div class="latte hero-obj" id="latte" role="img" aria-label="Seen from above: an espresso with crema in a cup on its saucer, and a jug of cold milk beside it, not touching.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <radialGradient id="ltCrema" cx="44%" cy="40%" r="64%"><stop offset="0" stop-color="#D59B5D"/><stop offset=".55" stop-color="#B06A33"/><stop offset="1" stop-color="#6A3514"/></radialGradient>
+              <radialGradient id="ltMudG" cx="50%" cy="45%" r="62%"><stop offset="0" stop-color="#9D7B5F"/><stop offset="1" stop-color="#76563F"/></radialGradient>
+              <radialGradient id="ltLatteG" cx="50%" cy="44%" r="60%"><stop offset="0" stop-color="#C98E57"/><stop offset=".72" stop-color="#AE6E3B"/><stop offset="1" stop-color="#7B421F"/></radialGradient>
+              <clipPath id="ltCup"><circle cx="180" cy="190" r="84"/></clipPath>
+              <clipPath id="ltFrame"><rect width="360" height="560"/></clipPath>
+            </defs>
+            <!-- the saucer -->
+            <circle class="lt-shadow" cx="187" cy="200" r="148"/>
+            <circle class="lt-saucer" cx="180" cy="190" r="148"/>
+            <circle class="lt-ring" cx="180" cy="190" r="137"/>
+            <circle class="lt-well" cx="180" cy="190" r="112"/>
+            <!-- the mess spills over onto the saucer too (the script places the drips) -->
+            <g id="ltDrips"></g>
+            <!-- the cup, its handle to the right -->
+            <circle class="lt-cup-shadow" cx="186" cy="197" r="100"/>
+            <rect class="lt-handle" x="262" y="177" width="56" height="26" rx="13"/>
+            <circle class="lt-cup" cx="180" cy="190" r="98"/>
+            <circle class="lt-wall" cx="180" cy="190" r="90"/>
+            <g clip-path="url(#ltCup)">
+              <!-- the ERP: an espresso, crema on top -->
+              <circle cx="180" cy="190" r="84" fill="url(#ltCrema)"/>
+              <ellipse class="lt-fleck" cx="156" cy="168" rx="10" ry="4.5" transform="rotate(24 156 168)"/>
+              <ellipse class="lt-fleck" cx="206" cy="206" rx="12" ry="4.5" transform="rotate(-32 206 206)"/>
+              <ellipse class="lt-fleck" cx="170" cy="226" rx="8" ry="3.5" transform="rotate(10 170 226)"/>
+              <ellipse class="lt-fleck" cx="212" cy="158" rx="7" ry="3" transform="rotate(-50 212 158)"/>
+              <ellipse class="lt-shine" cx="150" cy="148" rx="24" ry="10" transform="rotate(-35 150 148)"/>
+              <!-- the mess: cold milk, dumped straight in (the script makes the blobs and rings) -->
+              <circle class="lt-mud" id="ltMud" cx="180" cy="190" r="84" fill="url(#ltMudG)"/>
+              <g id="ltMess"></g>
+              <!-- the latte it becomes, rosetta and all -->
+              <circle class="lt-base" id="ltBase" cx="180" cy="190" r="84" fill="url(#ltLatteG)"/>
+              <g id="ltArt">
+                <path class="lt-leaf" d="M124 120Q180 160 236 120Q180 140 124 120Z"/>
+                <path class="lt-leaf" d="M127 139Q180 178 233 139Q180 158 127 139Z"/>
+                <path class="lt-leaf" d="M132 158Q180 194.5 228 158Q180 175.5 132 158Z"/>
+                <path class="lt-leaf" d="M138 177Q180 211 222 177Q180 193 138 177Z"/>
+                <path class="lt-leaf" d="M145 196Q180 226.5 215 196Q180 209.5 145 196Z"/>
+                <path class="lt-leaf" d="M153 215Q180 240.5 207 215Q180 225.5 153 215Z"/>
+                <path class="lt-leaf" d="M162 234Q180 254 198 234Q180 242 162 234Z"/>
+                <path class="lt-stem" id="ltStem" pathLength="1" d="M180 258L180 112"/>
+              </g>
+              <ellipse class="lt-stream" id="ltStream" cx="180" cy="262" rx="10" ry="10"/>
+            </g>
+            <circle class="lt-edge" cx="180" cy="190" r="84"/>
+            <!-- once it comes clean, the saucer says whose latte it is -->
+            <g transform="translate(180 309) scale(.58)"><g class="lt-tag sg-pop"><!--#include sg-tag.svg--></g></g>
+            <!-- the floor: a steel jug of cold milk -->
+            <g class="lt-jug" id="ltJug">
+              <circle class="lt-jug-shadow" cx="6" cy="9" r="63"/>
+              <rect class="lt-grip" x="-15" y="52" width="30" height="60" rx="13"/>
+              <rect class="lt-grip-slot" x="-5" y="70" width="10" height="30" rx="5"/>
+              <path class="lt-steel" d="M0 -88Q12 -70 26.2 -56.2A62 62 0 1 1 -26.2 -56.2Q-12 -70 0 -88Z"/>
+              <path class="lt-steel-in" d="M0 -75Q9 -61 22.4 -48A53 53 0 1 1 -22.4 -48Q-9 -61 0 -75Z"/>
+              <g class="lt-milk-g" id="ltMilk">
+                <circle class="lt-cold" r="49"/>
+                <ellipse class="lt-cold-hi" cx="-18" cy="-22" rx="15" ry="6" transform="rotate(-35 -18 -22)"/>
+                <g class="lt-foam" id="ltFoam">
+                  <circle class="lt-foam-c" r="49"/>
+                  <g class="lt-swirl-g"><path class="lt-swirl" d="M-31 3A31 31 0 1 1 8 30M-13 -2A13 13 0 1 1 4 12"/></g>
+                  <ellipse class="lt-foam-hi" cx="-17" cy="-21" rx="17" ry="7" transform="rotate(-35 -17 -21)"/>
+                </g>
+              </g>
+              <path class="lt-steel-hi" d="M-51 -29A58 58 0 0 1 -21 -54"/>
+            </g>
+            <!-- steam, while SimpleGrid works the milk -->
+            <g id="ltSteam">
+              <circle class="lt-puff" cx="178" cy="440" r="16"/>
+              <circle class="lt-puff" cx="207" cy="432" r="19" style="animation-delay:-.5s"/>
+              <circle class="lt-puff" cx="192" cy="452" r="14" style="animation-delay:-1s"/>
+              <circle class="lt-puff" cx="224" cy="448" r="13" style="animation-delay:-.25s"/>
+              <circle class="lt-puff" cx="165" cy="458" r="12" style="animation-delay:-.75s"/>
+            </g>
+            <!-- SimpleGrid is the steam: the wand wears the mark -->
+            <g clip-path="url(#ltFrame)">
+              <g class="lt-wand" id="ltWand">
+                <path class="lt-rod" d="M392 376L214 452"/>
+                <path class="lt-rod-hi" d="M392 376L214 452"/>
+                <circle class="lt-tip" cx="214" cy="452" r="7"/>
+                <g transform="translate(304 414) scale(.9)"><g class="lt-badge sg-pop"><!--#include sg-badge.svg--></g></g>
+              </g>
+            </g>
+          </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The espresso: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The milk: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -83,10 +246,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Pour it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The espresso is your ERP, the cold milk is your floor, and nothing links them. Pour it, or tap the jug to pour it yourself.</p>
       </div>
     </div>
   </div>
