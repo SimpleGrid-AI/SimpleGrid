@@ -201,71 +201,69 @@ h1 span{display:block;color:var(--hi)}
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
-.callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+/* ------------------------------------------------------------ The container
+   A food pan and its lid, kept generic on purpose. The lid is the ERP, the container with
+   the food in it is the floor, and SimpleGrid is the crimp that seals one to the other. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --pan-top:#F6F8FE;--pan-in:#C9D0EC;--pan-side:#DCE1F4;--pan-lip:#B3BCE2;--pan-line:#0A1A6B;
+  --lid-top:#FFFFFF;--lid-panel:#EDF0FA;--lid-side:#C2C9EA;
+  --sauce:#E4572E;--sauce-dk:#B53A18;--ball:#8C4A2B;--ball-hi:#B86C45;--herb:#46A05A;
+  --steel:#CDD3EA;--steel-dk:#8E98C6;--steel-hi:#F1F3FB;--grip:var(--alert);
+  --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
+}
+.pan{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .pan,.pan.is-done{cursor:default}
+.pan svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pn-shadow{fill:rgba(0,6,40,.35)}
+.pn-side{fill:var(--pan-side);stroke:var(--pan-line);stroke-width:2;stroke-linejoin:round}
+.pn-side-hi{fill:#fff;opacity:.45}
+.pn-lip{fill:var(--pan-lip);stroke:var(--pan-line);stroke-width:2;stroke-linejoin:round}
+.pn-rim{fill:var(--pan-top);stroke:var(--pan-line);stroke-width:2;stroke-linejoin:round}
+.pn-in{fill:var(--pan-in)}
+.pn-crease{fill:none;stroke:var(--pan-line);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.pn-sauce{fill:var(--sauce)}
+.pn-sauce-hi{fill:none;stroke:#FF9A6E;stroke-width:3;stroke-linecap:round;opacity:.7}
+.pn-ball{fill:var(--ball)}
+.pn-ball-hi{fill:var(--ball-hi)}
+.pn-herb{fill:var(--herb)}
+/* The lid. It starts a size off, and the crimp is what makes it fit. */
+.pn-lid{transform-box:view-box;transform-origin:180px 125px}
+.pn-lid-side{fill:var(--lid-side);stroke:var(--pan-line);stroke-width:2;stroke-linejoin:round}
+.pn-lid-top{fill:var(--lid-top);stroke:var(--pan-line);stroke-width:2;stroke-linejoin:round}
+.pn-lid-panel{fill:var(--lid-panel);stroke:var(--lid-side);stroke-width:2.5}
+/* The leak: out from under the lid, down the side, into a puddle. It stays until the crimp. */
+.pn-leak{fill:var(--sauce);stroke:var(--sauce-dk);stroke-width:1.6;stroke-linejoin:round}
+.pn-leak-hi{fill:none;stroke:#FF9A6E;stroke-width:3;stroke-linecap:round;opacity:.65}
+.pn-grow{transform-box:fill-box;transform-origin:50% 0;transform:scale(1,0);opacity:0}
+.pn-spread{transform-box:fill-box;transform-origin:50% 40%;transform:scale(0);opacity:0}
+.pn-drop{fill:var(--sauce);opacity:0}
+.pan.messy .pn-drop{animation:pn-drip 2.2s cubic-bezier(.5,0,.9,.5) infinite}
+@keyframes pn-drip{0%{opacity:0;transform:translateY(0) scale(.4)}20%{opacity:1;transform:translateY(0) scale(1)}55%{opacity:1;transform:translateY(0) scale(1.1,1.2)}90%{opacity:1;transform:translateY(26px) scale(.9,1.1)}100%{opacity:0;transform:translateY(30px)}}
+.pn-drop{transform-box:fill-box;transform-origin:50% 0}
+/* The crimp along the sealed edge. */
+.pn-crimp{fill:none;stroke:var(--pan-line);stroke-width:2;stroke-linecap:round;opacity:0}
+/* The crimper: SimpleGrid. It comes down wearing the mark and seals lid to rim. */
+.pn-crimper{visibility:hidden}
+.pan.has-crimper .pn-crimper{visibility:visible}
+.pn-handle{fill:none;stroke:var(--steel-dk);stroke-width:13;stroke-linecap:round}
+.pn-grip{fill:none;stroke:var(--grip);stroke-width:19;stroke-linecap:round}
+.pn-wheel{fill:var(--steel);stroke:var(--pan-line);stroke-width:2;stroke-linejoin:round}
+.pn-wheel-face{fill:var(--steel-hi);stroke:var(--steel-dk);stroke-width:2}
+.pn-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
+.pan.dosed .pn-mark{opacity:1;transform:none}
+.pn-tag{--sg-bg:var(--tag-bg);--sg-ink:var(--tag-ink)}
+.pan.is-done .pn-tag{opacity:1;transform:none}
+.pan:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:15%}
+.callout-gap{top:calc(38.6% - 15px)}
+.callout-bottom{top:47%}
+.callout-top h3 i{background:#fff}
+.callout-bottom h3 i{background:var(--sauce)}
+.hero[data-story=done] .callout-top{top:41%}
+.hero[data-story=done] .callout-bottom{top:59%}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.3)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -524,67 +522,77 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="pan hero-obj" id="pan" role="img" aria-label="A food container with food in it, and above it a lid that doesn’t match. Nothing links them.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">Placeholder, 2,400 cases</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <clipPath id="pnClip"><path id="pnClipPath" d="M58 266H302Q322 266 322 280V308Q322 322 302 322H58Q38 322 38 308V280Q38 266 58 266Z" data-bent="M58 268H300Q320 272 322 290V318Q320 332 300 330H58Q38 324 38 310V282Q38 268 58 268Z"/></clipPath>
+            </defs>
+
+            <!-- the floor: the container, with the food in it -->
+            <ellipse class="pn-shadow" cx="180" cy="453" rx="138" ry="10"/>
+            <path class="pn-side" id="pnSide" d="M30 326L60 438Q62 448 74 448H286Q298 448 300 438L330 326Z" data-bent="M30 328L60 438Q62 448 74 448H286Q298 448 302 436L332 338Z"/>
+            <path class="pn-side-hi" d="M50 338L72 430H84L64 338Z"/>
+            <path class="pn-crease" id="pnCrease" d="M320 348L300 380L313 416"/>
+            <path class="pn-lip" id="pnLip" d="M22 312Q22 330 46 330H314Q338 330 338 312V320Q338 338 314 338H46Q22 338 22 320Z" data-bent="M22 314Q22 332 46 332H312Q336 340 338 322V330Q336 348 312 346H46Q22 340 22 322Z"/>
+            <path class="pn-rim" id="pnRim" d="M46 256H314Q338 256 338 274V312Q338 330 314 330H46Q22 330 22 312V274Q22 256 46 256Z" data-bent="M46 258H310Q336 264 338 286V322Q336 340 312 338H46Q22 332 22 314V276Q22 258 46 258Z"/>
+            <path class="pn-in" id="pnIn" d="M58 266H302Q322 266 322 280V308Q322 322 302 322H58Q38 322 38 308V280Q38 266 58 266Z" data-bent="M58 268H300Q320 272 322 290V318Q320 332 300 330H58Q38 324 38 310V282Q38 268 58 268Z"/>
+            <g clip-path="url(#pnClip)">
+              <rect class="pn-sauce" x="30" y="277" width="300" height="60"/>
+              <path class="pn-sauce-hi" d="M60 283Q120 279 160 281"/>
+              <ellipse class="pn-ball" cx="88" cy="294" rx="17" ry="11.5"/><ellipse class="pn-ball-hi" cx="83" cy="290" rx="7" ry="4"/>
+              <ellipse class="pn-ball" cx="148" cy="288" rx="18" ry="12"/><ellipse class="pn-ball-hi" cx="143" cy="284" rx="7.5" ry="4.2"/>
+              <ellipse class="pn-ball" cx="210" cy="294" rx="17.5" ry="11.5"/><ellipse class="pn-ball-hi" cx="205" cy="290" rx="7" ry="4"/>
+              <ellipse class="pn-ball" cx="270" cy="288" rx="17" ry="11.5"/><ellipse class="pn-ball-hi" cx="265" cy="284" rx="7" ry="4"/>
+              <ellipse class="pn-ball" cx="122" cy="312" rx="16" ry="10"/><ellipse class="pn-ball-hi" cx="117" cy="309" rx="6.5" ry="3.5"/>
+              <ellipse class="pn-ball" cx="240" cy="313" rx="16" ry="10"/><ellipse class="pn-ball-hi" cx="235" cy="310" rx="6.5" ry="3.5"/>
+              <ellipse class="pn-herb" cx="118" cy="294" rx="5" ry="2.4" transform="rotate(-25 118 294)"/><ellipse class="pn-herb" cx="180" cy="304" rx="5" ry="2.4" transform="rotate(20 180 304)"/>
+              <ellipse class="pn-herb" cx="240" cy="292" rx="5" ry="2.4" transform="rotate(-15 240 292)"/><ellipse class="pn-herb" cx="296" cy="306" rx="5" ry="2.4" transform="rotate(30 296 306)"/>
+              <ellipse class="pn-herb" cx="62" cy="310" rx="4.5" ry="2.2" transform="rotate(10 62 310)"/>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
+            <!-- what leaks out when the lid's forced on: out the right, where it's jammed in -->
+            <g class="pn-grow" id="pnLeakR"><path class="pn-leak" d="M326 295C338 290 350 302 348 317C346 330 343 342 341 357C340 367 330 368 330 358C330 346 333 334 328 323C320 317 317 300 326 295Z"/></g>
 
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the ERP: the lid, a size off -->
+            <g class="pn-lid" id="pnLid">
+              <path class="pn-lid-side" d="M10 144Q10 162 34 162H326Q350 162 350 144V158Q350 176 326 176H34Q10 176 10 158Z"/>
+              <path class="pn-lid-top" d="M34 88H326Q350 88 350 106V144Q350 162 326 162H34Q10 162 10 144V106Q10 88 34 88Z"/>
+              <path class="pn-lid-panel" d="M66 102H294Q312 102 312 114V136Q312 148 294 148H66Q48 148 48 136V114Q48 102 66 102Z"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+
+            <!-- and out the left, where it gapes: over the rim, down the side, into a puddle -->
+            <g class="pn-grow" id="pnFlow">
+              <path class="pn-leak" d="M23 315C30 304 72 302 106 311C116 317 111 329 101 334C94 338 95 346 95 356C95 369 85 372 84 362C83 352 84 345 77 343C70 342 69 352 69 366C69 392 71 408 66 417C61 426 50 422 51 411C53 394 53 375 49 360C47 351 43 354 43 366C44 392 52 418 58 435C61 445 43 448 37 436C31 420 26 394 24 371C22 351 17 327 23 315Z"/>
+              <path class="pn-leak-hi" d="M34 318Q60 311 92 316M31 336Q33 374 44 420M61 356Q63 384 60 406"/>
+            </g>
+            <g class="pn-spread" id="pnPuddle">
+              <path class="pn-leak" d="M24 454C26 442 70 436 112 440C148 444 162 456 142 464C116 474 56 474 34 466C22 462 22 458 24 454Z"/>
+              <circle class="pn-leak" cx="166" cy="463" r="4"/><circle class="pn-leak" cx="12" cy="446" r="3.2"/>
+            </g>
+            <circle class="pn-drop" cx="58" cy="425" r="5"/>
+
+            <!-- once it's sealed: the crimp along the edge (the script draws it), and the label -->
+            <g id="pnCrimp"></g>
+            <g transform="translate(180 279) scale(.82)"><g class="pn-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+
+            <!-- the crimper: SimpleGrid, a crimping wheel with the mark for its hub. The script rolls it along the edge. -->
+            <g class="pn-crimper" id="pnCrimper">
+              <path class="pn-handle" d="M0 0L52-92"/>
+              <path class="pn-grip" d="M40-70L56-99"/>
+              <g class="pn-roll" id="pnRoll"><path class="pn-wheel" id="pnTeeth"/><circle class="pn-wheel-face" r="24"/></g>
+              <g transform="scale(.98)"><g class="pn-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The lid: your ERP</span></h3>
+            <p id="topText">What the system says is inside.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The container: your floor</span></h3>
+            <p id="bottomText">What’s really in it, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -597,10 +605,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Close it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP is the lid, your floor is the container with the food in it, and nothing links them. Close it, or tap the container to try it yourself.</p>
       </div>
     </div>
   </div>
@@ -918,122 +926,191 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
+/* ------------------------------------------------------------ The container
+   The lid is the ERP, the container with the food in it is the floor, and
+   nothing links them; the lid isn't even the right size. Close it and it gets
+   forced on crooked: it doesn't match, the rim bends, and the food leaks out
+   the side into a puddle. That mess stays. SimpleGrid is the crimp: the
+   crimper comes down wearing the mark, and when you close it again it presses
+   the same lid flat onto the same rim, the leak goes back in, and it's sealed
+   tight, crimped all round, flat enough to stack. The lid gets its label.
+   The page may set window.PAN_COPY and window.PAN_TEXT before this runs. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), obj = $('pan'), lid = $('pnLid'), crimper = $('pnCrimper'), roll = $('pnRoll'), crimpG = $('pnCrimp');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = window.PAN_COPY || {
+    apart:    { btn: 'Close it to see your operations', caption: 'Your ERP is the lid, your floor is the container with the food in it, and nothing links them. Close it, or tap the container to try it yourself.' },
+    messing:  { btn: 'Closing…', caption: 'Forcing one onto the other. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Crimp it', caption: 'That’s your operations today: a big mess. The lid doesn’t match, the rim bends, and the food leaks out the side. It won’t fix itself, either.' },
+    dosing:   { btn: 'Crimping…', caption: 'Down comes the crimper.' },
+    dosed:    { btn: 'Close it again', caption: 'In comes the crimp. That’s SimpleGrid. Now close it again.' },
+    cleaning: { btn: 'Closing…', caption: 'Watch the mess seal up.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a tight seal: no leaks, flat and stackable. Your ERP and your floor finally fit, edge to edge.' }
+  };
+  var TEXT = window.PAN_TEXT || {
+    apart: ['The lid: your ERP', 'What the system says is inside.', 'The container: your floor', 'What’s really in it, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The lid forced on crooked: it doesn’t match, the container’s rim is bent, and food leaks out the side into a puddle.',
+    dosed: 'The same leaking container, with a crimper marked SimpleGrid now over the lid.',
+    done: 'The container sealed tight under a flat, crimped lid, with no leaks and a SimpleGrid label on the lid.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
-
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
+  // Where the lid goes: forced on crooked, and seated, the size of the rim.
+  var FORCED = 'translate(-16px,146px) rotate(7deg)', SEATED = 'translate(0px,154px) scale(.929,1)';
+  // The crimping wheel: where it lands on the crooked lid, and the edge it rolls along once it presses down.
+  var LAND = [56, 302], EDGE = 323, FROM = 54, TO = 290, R = 31;
+  var at = function(x, y){ return 'translate(' + x + 'px,' + y + 'px)'; };
+  var teeth = '';
+  for (var k = 0; k < 36; k++){ var a = k*Math.PI/18, r = k % 2 ? 26.5 : R; teeth += (k ? 'L' : 'M') + (Math.cos(a)*r).toFixed(1) + ' ' + (Math.sin(a)*r).toFixed(1); }
+  $('pnTeeth').setAttribute('d', teeth + 'Z');
+  // The container's outline, straight and bent: each path carries its bent self in data-bent.
+  var BEND = ['pnSide', 'pnLip', 'pnRim', 'pnIn', 'pnClipPath'].map(function(id){
+    var el = $(id);
+    return { el: el, a: el.getAttribute('d'), b: el.getAttribute('data-bent') };
   });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  var NUM = /-?\d*\.?\d+/g;
+  function bend(t){
+    BEND.forEach(function(s){
+      var nb = s.b.match(NUM), i = 0;
+      s.el.setAttribute('d', t <= 0 ? s.a : s.a.replace(NUM, function(v){ var x = +v + (nb[i++] - v)*t; return Math.round(x*10)/10; }));
+    });
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  var LEAKS = ['pnLeakR', 'pnFlow'].map($), puddle = $('pnPuddle'), crease = $('pnCrease');
+  // The crimp, a tick at a time along the sealed edge.
+  var ticks = [];
+  for (var x = 38; x <= 322; x += 13){
+    var tk = document.createElementNS(NS, 'path');
+    tk.setAttribute('class', 'pn-crimp');
+    tk.setAttribute('d', 'M' + x + ' 319.5V327.5');
+    crimpG.appendChild(tk);
+    ticks.push(tk);
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
+  var gen = 0, timers = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  function anim(el, frames, ms, delay, easing){
+    return el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease', fill: 'both' });
+  }
+  function play(ms, delay, fn){
+    var my = gen;
+    return new Promise(function(done){
+      if (reduce){ fn(1); done(); return; }
+      var t0 = 0;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (!t0) t0 = now + delay;
+        var t = Math.max(0, Math.min(1, (now - t0)/ms));
+        if (now >= t0) fn(t);
+        if (t < 1) requestAnimationFrame(tick); else done();
+      });
+    });
+  }
+  var ease = function(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; };
+  var GROW = [{ transform: 'scale(1,0)', opacity: 1 }, { transform: 'scale(1,1)', opacity: 1 }];
+  var SPREAD = [{ transform: 'scale(0)', opacity: 1 }, { transform: 'scale(1)', opacity: 1 }];
+
+  // Close it, nothing linking them: the lid gets forced on crooked, the rim bends, and it leaks.
   function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
-    });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    anim(lid, [
+      { transform: 'none' },
+      { transform: 'translate(-6px,118px) rotate(2deg)', offset: .55 },
+      { transform: 'translate(-18px,151px) rotate(8.5deg)', offset: .78 },
+      { transform: FORCED }
+    ], 900, 0, 'cubic-bezier(.5,0,.75,.4)');
+    anim(crease, [{ opacity: 0 }, { opacity: .8 }], 200, 640);
+    anim(LEAKS[0], GROW, 420, 700, 'cubic-bezier(.3,.6,.4,1)');
+    anim(LEAKS[1], GROW, 900, 760, 'cubic-bezier(.35,.5,.45,1)');
+    anim(puddle, SPREAD, 600, 1360, 'cubic-bezier(.2,.8,.3,1)');
+    return play(300, 480, function(t){ bend(ease(t)); })
+      .then(function(){ return wait(1520); })
+      .then(function(){ obj.classList.add('messy'); });
   }
+
+  // Down comes the crimper, wearing the mark, onto the edge of the lid.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+    obj.classList.add('has-crimper');
+    anim(crimper, [
+      { transform: at(LAND[0] + 70, LAND[1] - 330), opacity: 0, easing: 'cubic-bezier(.5,0,.9,.6)' },
+      { transform: at(LAND[0] + 50, LAND[1] - 230), opacity: 1, offset: .3, easing: 'cubic-bezier(.3,.6,.4,1)' },
+      { transform: at(LAND[0], LAND[1] + 6), offset: .7, easing: 'ease-in-out' },
+      { transform: at(LAND[0], LAND[1] - 5), offset: .86, easing: 'ease-in-out' },
+      { transform: at(LAND[0], LAND[1]), opacity: 1 }
+    ], 820);
+    later(function(){ obj.classList.add('dosed'); }, 520);
+    return wait(980);
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
+
+  // Close it again, crimped: the wheel presses the lid down and rolls the edge shut, the lid comes level
+  // and fits the rim, the leak goes back in, and the crimp follows the wheel all the way along.
+  var PRESS = 210, ROLL = 960;
   function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+    obj.classList.remove('messy');
+    var total = PRESS + ROLL + 330;
+    anim(crimper, [
+      { transform: at(LAND[0], LAND[1]) },
+      { transform: at(FROM, EDGE), offset: PRESS/total, easing: 'cubic-bezier(.45,0,.55,1)' },
+      { transform: at(TO, EDGE), offset: (PRESS + ROLL)/total },
+      { transform: at(TO, EDGE) }
+    ], total, 0, 'linear');
+    anim(roll, [{ transform: 'rotate(0deg)' }, { transform: 'rotate(0deg)', offset: PRESS/total, easing: 'cubic-bezier(.45,0,.55,1)' }, { transform: 'rotate(' + Math.round((TO - FROM)/R*180/Math.PI) + 'deg)', offset: (PRESS + ROLL)/total }, { transform: 'rotate(' + Math.round((TO - FROM)/R*180/Math.PI) + 'deg)' }], total, 0, 'linear');
+    anim(lid, [{ transform: FORCED }, { transform: SEATED }], 760, 120, 'cubic-bezier(.4,0,.3,1)');
+    anim(crease, [{ opacity: .8 }, { opacity: 0 }], 260, 420);
+    LEAKS.forEach(function(el, i){ anim(el, GROW.slice().reverse(), 520, 300 + i*60, 'cubic-bezier(.6,0,.8,.4)'); });
+    anim(puddle, SPREAD.slice().reverse(), 520, 360, 'cubic-bezier(.6,0,.8,.4)');
+    // The wheel's speed along the edge eases in and out, so each tick waits for it to arrive.
+    ticks.forEach(function(tk){
+      var x = +tk.getAttribute('d').slice(1).split(' ')[0], f = (x - FROM)/(TO - FROM), lo = 0, hi = 1;
+      for (var n = 0; n < 18; n++){ var m = (lo + hi)/2; if (bez(m) < f) lo = m; else hi = m; }
+      anim(tk, [{ opacity: 0 }, { opacity: 1 }], 110, PRESS + lo*ROLL);
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    return play(420, 320, function(t){ bend(1 - ease(t)); }).then(function(){ return wait(total - 740); });
+  }
+  // cubic-bezier(.45,0,.55,1), the wheel's easing along the edge: how far it's got at time share t.
+  function bez(t){
+    var lo = 0, hi = 1, u, x;
+    for (var n = 0; n < 20; n++){ u = (lo + hi)/2; x = 3*u*(1 - u)*(1 - u)*.45 + 3*u*u*(1 - u)*.55 + u*u*u; if (x < t) lo = u; else hi = u; }
+    return 3*u*u*(1 - u) + u*u*u;
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    [lid, crimper, roll, crease, puddle].concat(LEAKS, ticks).forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
+    obj.classList.remove('messy', 'has-crimper', 'dosed', 'is-done');
+    bend(0);
   }
   function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.pan',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Forced together, still not linked. It leaks, and it won’t stop on its own.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same lid, same mess. Now there’s a crimp to seal it.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the container does the same as the button.
+  obj.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
 })();
 </script>
 <script>

@@ -203,71 +203,71 @@ h1 span{display:block;color:var(--hi)}
   --display:'Saira Semi Condensed','Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
+/* ---------------------------------------------------------- The cookie
+   The top wafer is the ERP, the bottom wafer is the floor. Pressed together
+   with nothing between them they crack, and the crumbs go everywhere and stay
+   there. SimpleGrid is the crème: in it goes, and the next press makes one
+   neat sandwich cookie. */
 .hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
-.callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.ck{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.hero[data-story$=ing] .ck,.hero[data-story=done] .ck{cursor:default}
+.ck svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.ck.snap,.ck.snap *{transition:none!important}
+/* The tin, lid on: where the cookie goes in the end */
+.ck-floor{fill:rgba(0,0,0,.28)}
+.ck-tin{fill:url(#ckTinBody)}
+.ck-lid-band{fill:#557D91}
+.ck-lid{fill:#8DB0C2}
+.ck-lid-ring{fill:none;stroke:#789CAF;stroke-width:3}
+.ck-lid-hi{fill:none;stroke:#B7D1DE;stroke-width:5;stroke-linecap:round}
+.ck-label{--sg-bg:var(--brand);--sg-ink:#fff}
+.ck .ck-label{transition-delay:.3s}
+.ck.is-done .ck-label{opacity:1;transform:none}
+/* The wafers */
+.ck-band{fill:#C98634;stroke:#83521A;stroke-width:2.5;stroke-linejoin:round}
+.ck-ridge{fill:none;stroke:#A66A24;stroke-width:2;stroke-linecap:round}
+.ck-face{fill:#EAB561;stroke:#83521A;stroke-width:2.5;stroke-linejoin:round}
+.ck-rim{fill:none;stroke:#F7D28D;stroke-width:3.5}
+.ck-groove{fill:none;stroke:#CB9042;stroke-width:2}
+.ck-dot{fill:#C88A3B}
+.ck-crack{fill:none;stroke:#5E3510;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;opacity:0}
+.ck.cracked .ck-crack{opacity:1}
+#ckTop{transform:translateY(-154px)}
+.ck-squash{transform-box:fill-box;transform-origin:50% 100%}
+.ck.broken .ck-wafer-g{visibility:hidden}
+.ck.whole .ck-wafer-g{visibility:visible}
+/* The mess: what's left of both wafers, pieces and crumbs (the script makes them) */
+.ck-bits{visibility:hidden}
+.ck.broken .ck-bits{visibility:visible}
+.ck-bit{transform-origin:0 0}
+.ck-crumb{fill:#DCA350;stroke:#8E5B1D;stroke-width:1.5;stroke-linejoin:round}
+/* SimpleGrid: the crème, and the depositor that puts it in */
+.ck-cream{fill:#FFF9EF;stroke:#E2D3BA;stroke-width:2;stroke-linejoin:round}
+.ck-cream-hi{fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round}
+.ck-cream-sh{fill:rgba(20,40,60,.18)}
+.ck-dollop{visibility:hidden;transform-box:fill-box;transform-origin:50% 100%}
+.ck.pouring .ck-dollop{visibility:visible}
+.ck.filled .ck-dollop{visibility:hidden}
+.ck-creme{visibility:hidden;transform-box:fill-box;transform-origin:50% 50%}
+.ck.filled .ck-creme{visibility:visible}
+.ck-noz{transform:translateY(-270px)}
+.ck-pipe{fill:#93A2AE}
+.ck-noz-body{fill:url(#ckSteel);stroke:#6C7B87;stroke-width:2}
+.ck-noz-collar{fill:#7D8C98}
+.ck-noz-cone{fill:url(#ckSteel);stroke:#6C7B87;stroke-width:2;stroke-linejoin:round}
+.ck-noz-tip{fill:#5F6E7A}
+.ck-stream{fill:#FFF9EF;visibility:hidden;transform-box:fill-box}
+.ck.pouring .ck-stream{visibility:visible}
+.ck-badge{--sg-bg:var(--brand);--sg-ink:#fff}
+.ck.dosed .ck-badge{opacity:1;transform:none}
+.ck-spark{fill:#fff;opacity:0;transform-box:fill-box;transform-origin:center}
+.callout-top{top:22%}
+.callout-bottom{top:56%}
+.callout-gap{top:calc(47.5% - 15px)}
+.callout-top h3 i,.callout-bottom h3 i{background:#EAB561}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.24)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -526,67 +526,90 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="ck hero-obj" id="ck" role="img" aria-label="Two golden cookie wafers, one above the other with nothing between them, over a closed cookie tin.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">Placeholder, 2,400 cases</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <clipPath id="ckView"><rect x="-40" y="0" width="440" height="600"/></clipPath>
+              <linearGradient id="ckSteel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7F8E9A"/><stop offset=".3" stop-color="#EEF3F6"/><stop offset=".55" stop-color="#C6D0D8"/><stop offset="1" stop-color="#7A8995"/></linearGradient>
+              <linearGradient id="ckTinBody" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4C778C"/><stop offset=".22" stop-color="#86ACBE"/><stop offset=".5" stop-color="#6692A6"/><stop offset="1" stop-color="#46708A"/></linearGradient>
+            </defs>
+
+            <!-- the tin, lid on: where the cookie goes in the end, and what gets the label -->
+            <ellipse class="ck-floor" cx="180" cy="498" rx="166" ry="15"/>
+            <path class="ck-tin" d="M30 378V446A150 50 0 0 0 330 446V378Z"/>
+            <path class="ck-lid-band" d="M22 360V378A158 54 0 0 0 338 378V360Z"/>
+            <ellipse class="ck-lid" cx="180" cy="360" rx="158" ry="54"/>
+            <ellipse class="ck-lid-ring" cx="180" cy="358" rx="134" ry="44"/>
+            <path class="ck-lid-hi" d="M56 342Q88 318 140 311"/>
+            <g transform="translate(180 466) scale(.84)"><g class="ck-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+
+            <!-- the floor: the bottom wafer -->
+            <g transform="translate(180 350)">
+              <g class="ck-wafer-g" id="ckBottom"><g class="ck-squash" id="ckBottomSq">
+                <path class="ck-band" d="M-100 0V20A100 32 0 0 0 100 20V0A100 32 0 0 1 -100 0Z"/>
+                <path class="ck-ridge" d="M97.8 9.7V23.7M91.4 16V30M80.9 21.8V35.8M66.9 26.8V40.8M50 30.7V44.7M30.9 33.4V47.4M10.5 34.8V48.8M-10.5 34.8V48.8M-30.9 33.4V47.4M-50 30.7V44.7M-66.9 26.8V40.8M-80.9 21.8V35.8M-91.4 16V30M-97.8 9.7V23.7"/>
+                <ellipse class="ck-face" rx="100" ry="32"/>
+                <ellipse class="ck-rim" rx="91" ry="28.5"/>
+                <ellipse class="ck-groove" rx="85" ry="26.5"/>
+                <path class="ck-crack" d="M-64 28L-52 38L-44 30L-34 46M40 32L50 40L58 34L64 44"/>
+              </g></g>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
-
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
-
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the mess: what's left of both wafers. The script makes the pieces and the crumbs. -->
+            <g class="ck-bits" id="ckBits"></g>
+            <!-- SimpleGrid: the crème, as it comes out of the depositor... -->
+            <g class="ck-dollop" id="ckDollop">
+              <ellipse class="ck-cream-sh" cx="180" cy="364" rx="46" ry="9"/>
+              <path class="ck-cream" d="M138 360Q134 342 156 338Q150 322 170 318Q166 302 182 298Q198 302 194 318Q214 322 208 338Q230 342 222 360Q180 374 138 360Z"/>
+              <path class="ck-cream-hi" d="M152 350Q162 344 174 346M164 330Q172 326 180 328M176 312Q182 308 188 310"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <!-- ...and once it's pressed: one clean line of it between the wafers -->
+            <g transform="translate(180 336)">
+              <g class="ck-creme" id="ckCreme">
+                <path class="ck-cream" d="M-98 0V14A98 31 0 0 0 98 14V0A98 31 0 0 1 -98 0Z"/>
+                <ellipse class="ck-cream" rx="98" ry="31"/>
+              </g>
+            </g>
+            <!-- the ERP: the top wafer -->
+            <g transform="translate(180 316)">
+              <g class="ck-wafer-g" id="ckTop"><g class="ck-squash" id="ckPress">
+                <path class="ck-band" d="M-100 0V20A100 32 0 0 0 100 20V0A100 32 0 0 1 -100 0Z"/>
+                <path class="ck-ridge" d="M97.8 9.7V23.7M91.4 16V30M80.9 21.8V35.8M66.9 26.8V40.8M50 30.7V44.7M30.9 33.4V47.4M10.5 34.8V48.8M-10.5 34.8V48.8M-30.9 33.4V47.4M-50 30.7V44.7M-66.9 26.8V40.8M-80.9 21.8V35.8M-91.4 16V30M-97.8 9.7V23.7"/>
+                <ellipse class="ck-face" rx="100" ry="32"/>
+                <ellipse class="ck-rim" rx="91" ry="28.5"/>
+                <ellipse class="ck-groove" rx="85" ry="26.5"/>
+                <g class="ck-dot"><ellipse cx="74" cy="0" rx="4.2" ry="2.7"/><ellipse cx="68.4" cy="9.1" rx="4.2" ry="2.7"/><ellipse cx="52.3" cy="16.8" rx="4.2" ry="2.7"/><ellipse cx="28.3" cy="21.9" rx="4.2" ry="2.7"/><ellipse cx="0" cy="23.7" rx="4.2" ry="2.7"/><ellipse cx="-28.3" cy="21.9" rx="4.2" ry="2.7"/><ellipse cx="-52.3" cy="16.8" rx="4.2" ry="2.7"/><ellipse cx="-68.4" cy="9.1" rx="4.2" ry="2.7"/><ellipse cx="-74" cy="0" rx="4.2" ry="2.7"/><ellipse cx="-68.4" cy="-9.1" rx="4.2" ry="2.7"/><ellipse cx="-52.3" cy="-16.8" rx="4.2" ry="2.7"/><ellipse cx="-28.3" cy="-21.9" rx="4.2" ry="2.7"/><ellipse cx="0" cy="-23.7" rx="4.2" ry="2.7"/><ellipse cx="28.3" cy="-21.9" rx="4.2" ry="2.7"/><ellipse cx="52.3" cy="-16.8" rx="4.2" ry="2.7"/><ellipse cx="68.4" cy="-9.1" rx="4.2" ry="2.7"/></g>
+                <ellipse class="ck-groove" rx="42" ry="13.4"/>
+                <ellipse class="ck-dot" rx="16" ry="5"/>
+                <path class="ck-crack" d="M-80 -2L-58 8L-44 -6L-22 6L-2 -8L18 6L40 -4L60 8L82 0M-22 6L-16 18L-26 28"/>
+              </g></g>
+            </g>
+            <!-- SimpleGrid: the depositor, down from the line above, wearing the mark -->
+            <g clip-path="url(#ckView)">
+              <g class="ck-noz" id="ckNoz">
+                <rect class="ck-pipe" x="168" y="-420" width="24" height="466"/>
+                <rect class="ck-noz-body" x="132" y="40" width="96" height="104" rx="16"/>
+                <g transform="translate(180 92) scale(1.2)"><g class="ck-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+                <rect class="ck-noz-collar" x="144" y="142" width="72" height="14" rx="4"/>
+                <path class="ck-noz-cone" d="M150 156H210L192 198H168Z"/>
+                <rect class="ck-noz-tip" x="170" y="196" width="20" height="12" rx="3"/>
+                <rect class="ck-stream" id="ckStream" x="173" y="204" width="14" height="66" rx="7"/>
+              </g>
+            </g>
+            <g id="ckShine">
+              <path class="ck-spark" d="M290 288l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+              <path class="ck-spark" d="M74 322l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+            </g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The top wafer: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The bottom wafer: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -599,10 +622,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Press them together to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP on top, your floor underneath: two cookie wafers with nothing between them. Press them together, or tap the cookie to try it yourself.</p>
       </div>
     </div>
   </div>
@@ -920,122 +943,242 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
 (function(){
+  /* ---------------------------------------------------------- The cookie
+     The top wafer is the ERP, the bottom wafer is the floor. Press them
+     together with nothing between them and they crack, and the crumbs go
+     everywhere, and stay there. That's your operations. SimpleGrid is the
+     crème: the depositor puts it in, and the next press gathers every crumb
+     back into one neat sandwich cookie with a clean crème line. */
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), ck = $('ck'), bitsG = $('ckBits');
+  var top = $('ckTop'), press = $('ckPress'), bottom = $('ckBottom'), bottomSq = $('ckBottomSq');
+  var dollop = $('ckDollop'), creme = $('ckCreme'), noz = $('ckNoz'), stream = $('ckStream'), sparks = [].slice.call($('ckShine').children);
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = {
+    apart:    { btn: 'Press them together to see your operations', caption: 'Your ERP on top, your floor underneath: two cookie wafers with nothing between them. Press them together, or tap the cookie to try it yourself.' },
+    messing:  { btn: 'Pressing…', caption: 'Pressing them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the crème', caption: 'That’s your operations today: a big mess. With nothing between them, your ERP and your floor cracked, and the crumbs went everywhere. It won’t fix itself, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Down comes the depositor.' },
+    dosed:    { btn: 'Press them again', caption: 'In goes the crème. That’s SimpleGrid. Now press them again.' },
+    cleaning: { btn: 'Pressing…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the crumbs, one neat sandwich cookie with a clean line of crème. Your ERP and your floor finally hold together, and nothing crumbles.' }
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: ck.getAttribute('aria-label'),
+    mess: 'The two wafers, pressed together with nothing between them, cracked into pieces, with crumbs scattered all over the tin lid and the floor.',
+    dosed: 'The same broken pieces and crumbs, with a swirl of crème on them from a depositor marked SimpleGrid.',
+    done: 'One neat sandwich cookie with a clean line of crème, on a cookie tin labelled SimpleGrid.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
+  /* Every timer and animation a move starts belongs to one run, so Start
+     over can stop the lot. When an animation lands, its end state is written
+     onto the element, so the next move starts where this one left off. */
+  var run = 0, timers = [], anims = [], touched = [];
+  function touch(el){ if (touched.indexOf(el) < 0) touched.push(el); }
+  function wait(ms){ var r = run; return new Promise(function(done){ timers.push(setTimeout(function(){ if (r === run) done(); }, reduce ? 0 : ms)); }); }
+  function play(el, frames, ms, opt){
+    opt = opt || {};
+    var r = run, last = frames[frames.length - 1];
+    touch(el);
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (opt.delay || 0), easing: opt.easing || 'ease', fill: 'both' });
+    anims.push(a);
+    return a.finished.then(function(){
+      if (r !== run) return new Promise(function(){});
+      for (var k in last) if (k !== 'offset' && k !== 'easing') el.style[k] = last[k];
+      a.cancel();
+    }, function(){ return new Promise(function(){}); });
+  }
 
-  var items = SKUS.map(function(sku){
+  /* The wafers as drawn: 100 by 32 across the top, 20 thick, centred on x 180.
+     The top one sits up high to start, lands on the bottom one when pressed
+     with nothing between them, hovers just above before the last press, and
+     ends up on the crème. */
+  var RX = 100, RY = 32, T = 20, X = 180;
+  var BOTTOM = 350, TOP = 316, APART = 162, HIT = 330, HOVER = 236;
+  var up = function(y){ return 'translateY(' + (y - TOP) + 'px)'; };
+  var f1 = function(n){ return n.toFixed(1); };
+
+  // The pieces and crumbs are made once, the same every time.
+  var seed = 9127;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function outline(pts, cx, cy){ return 'M' + pts.map(function(p){ return f1(p[0] - cx) + ' ' + f1(p[1] - cy); }).join('L') + 'Z'; }
+  // A wedge of a wafer, broken off along jagged lines that meet near the middle. Its edge shows where the rim faces you.
+  function wedge(a1, a2, emboss){
+    var n = 9, rim = [], k, rad = Math.PI/180;
+    for (k = 0; k <= n; k++){ var a = (a1 + (a2 - a1)*k/n)*rad; rim.push([RX*Math.cos(a), RY*Math.sin(a), Math.sin(a)]); }
+    var m = [R(-12, 12), R(-4, 4)];
+    var jag = function(p, q){ var out = []; for (var j = 1; j < 4; j++){ var t = j/4; out.push([p[0] + (q[0] - p[0])*t + R(-7, 7), p[1] + (q[1] - p[1])*t + R(-2.5, 2.5)]); } return out; };
+    var face = rim.map(function(p){ return [p[0], p[1]]; }).concat(jag(rim[n], m), [m], jag(m, rim[0]));
+    var cx = 0, cy = 0;
+    face.forEach(function(p){ cx += p[0]; cy += p[1]; });
+    cx /= face.length; cy /= face.length;
+    var html = '', front = rim.filter(function(p){ return p[2] > -.02; });
+    if (front.length > 1){
+      html += '<path class="ck-band" d="' + outline(front.concat(front.slice().reverse().map(function(p){ return [p[0], p[1] + T]; })), cx, cy) + '"/>';
+      html += '<path class="ck-ridge" d="' + front.slice(1, -1).map(function(p){ return 'M' + f1(p[0] - cx) + ' ' + f1(p[1] - cy + 3) + 'V' + f1(p[1] - cy + T - 3); }).join('') + '"/>';
+    }
+    html += '<path class="ck-face" d="' + outline(face, cx, cy) + '"/>';
+    if (emboss) for (k = 0; k < 16; k++){
+      var b = k*22.5;
+      while (b < a1) b += 360;
+      if (b > a1 + 5 && b < a2 - 5) html += '<ellipse class="ck-dot" cx="' + f1(74*Math.cos(b*rad) - cx) + '" cy="' + f1(23.7*Math.sin(b*rad) - cy) + '" rx="4.2" ry="2.7"/>';
+    }
+    return { html: html, cx: cx, cy: cy };
+  }
+  function blob(r){
+    var n = 7, p = [], k;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2 + R(-.3, .3), rr = r*R(.68, 1.12); p.push([Math.cos(a)*rr, Math.sin(a)*rr*.8]); }
+    var mid = function(a, b){ return f1((a[0] + b[0])/2) + ' ' + f1((a[1] + b[1])/2); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f1(p[k][0]) + ' ' + f1(p[k][1]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return d + 'Z';
+  }
+  function add(html, cls){
     var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
+    g.setAttribute('class', 'ck-bit ' + cls);
+    g.innerHTML = html;
+    bitsG.appendChild(g);
     return g;
-  });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  var bits = [];
+  // Four pieces from each wafer: which wafer, where it breaks (degrees round the rim), where it lands (x, y, turn).
+  // One from each goes over the edge of the tin and onto the floor.
+  [['b', -180, -95, 170, 326, 6], ['b', -95, -5, 200, 356, -18], ['b', -5, 88, 318, 506, 14], ['b', 88, 180, 142, 390, -12],
+   ['t', -175, -88, 106, 340, -16], ['t', -88, 2, 250, 330, 12], ['t', 2, 92, 262, 386, 18], ['t', 92, 185, 50, 505, -12]].forEach(function(s, i){
+    var w = wedge(s[1], s[2], s[0] === 't'), y = s[0] === 't' ? HIT : BOTTOM;
+    bits.push({ el: add(w.html, 'ck-piece'), start: [X + w.cx, y + w.cy, 0], rest: [s[3], s[4], s[5]],
+      home: [X + w.cx, (s[0] === 't' ? HOVER : BOTTOM) + w.cy, 0], lift: s[4] > 450 ? 70 : 34, delay: 0, back: 30 + i*12 });
+  });
+  // And the crumbs: most on the lid, the last few on the floor beside the tin.
+  for (var i = 0; i < 30; i++){
+    var off = i >= 24, r = off ? R(3.5, 6) : (i < 6 ? R(7, 10) : R(3.5, 6.5));
+    var a = R(0, Math.PI*2), d = Math.sqrt(R(.1, 1)), fromTop = i % 2 === 1;
+    bits.push({
+      el: add('<path class="ck-crumb" d="' + blob(r) + '"/>', 'ck-crumb-g'),
+      start: [X + R(-70, 70), (fromTop ? HIT : BOTTOM) + R(-4, 18), 0],
+      rest: [off ? (i % 2 ? R(16, 60) : R(300, 346)) : X + Math.cos(a)*d*142, off ? R(490, 514) : 360 + Math.sin(a)*d*44, R(-160, 160)],
+      home: [X + R(-75, 75), (fromTop ? HOVER : BOTTOM) + R(-4, 16), 0],
+      lift: off ? R(60, 100) : R(26, 70), delay: R(0, 90), back: R(0, 160)
+    });
+  }
+  function tf(p){ return 'translate(' + f1(p[0]) + 'px,' + f1(p[1]) + 'px) rotate(' + f1(p[2]) + 'deg)'; }
+  function placeBits(){ bits.forEach(function(b){ b.el.style.opacity = ''; b.el.style.transform = tf(b.start); }); }
+  // Along an arc, from p to q: up by `lift` at the top of it.
+  function fly(b, p, q, ms, delay, lift, easing){
+    var frames = [];
+    for (var k = 0; k <= 6; k++){
+      var t = k/6;
+      frames.push({ transform: tf([p[0] + (q[0] - p[0])*t, p[1] + (q[1] - p[1])*t - lift*4*t*(1 - t), p[2] + (q[2] - p[2])*t]) });
+    }
+    return play(b.el, frames, ms, { delay: delay, easing: easing });
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
-  function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
-    });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
-  }
-  function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
-  }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
-  function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
-    });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
-  }
   function setCallouts(final){
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = final ? 'Your ERP' : 'The top wafer: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The bottom wafer: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: ck, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.ck',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Pressed together, nothing between them. It cracked, and the crumbs are everywhere.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same crumbs, same mess. Now there’s crème in it.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    // Pressed with nothing between them: the top wafer lands hard on the bottom one, they crack, and the
+    // pieces and crumbs scatter across the tin and onto the floor. They stay where they land.
+    mess: function(){
+      ck.classList.remove('snap');
+      return play(top, [{ transform: up(APART) }, { transform: up(HIT) }], 360, { easing: 'cubic-bezier(.6,0,.95,.5)' })
+      .then(function(){
+        ck.classList.add('cracked');
+        return Promise.all([
+          play(press, [{ transform: 'none' }, { transform: 'scale(1.03,.84)' }, { transform: 'none' }], 170),
+          play(bottomSq, [{ transform: 'none' }, { transform: 'scale(1.03,.9)' }, { transform: 'none' }], 170)
+        ]);
+      }).then(function(){ return wait(120); })
+      .then(function(){
+        placeBits();
+        ck.classList.add('broken');
+        return Promise.all(bits.map(function(b){
+          var far = Math.hypot(b.rest[0] - b.start[0], b.rest[1] - b.start[1]);
+          return fly(b, b.start, b.rest, 480 + far*1.3, b.delay, b.lift, 'cubic-bezier(.2,.65,.35,1)');
+        }));
+      }).then(function(){ return wait(200); });
+    },
+    // The depositor comes down, wearing the mark, and puts a swirl of crème right on the mess.
+    dose: function(){
+      ck.classList.add('dosed');
+      return play(noz, [{ transform: 'translateY(-270px)' }, { transform: 'translateY(48px)', offset: .78 }, { transform: 'translateY(40px)' }], 620, { easing: 'cubic-bezier(.25,.7,.3,1)' })
+      .then(function(){
+        ck.classList.add('pouring');
+        stream.style.transformOrigin = '50% 0';
+        return Promise.all([
+          play(stream, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], 200, { easing: 'ease-in' }),
+          play(dollop, [{ transform: 'scale(0)' }, { transform: 'scale(1.1,.92)', offset: .7 }, { transform: 'none' }], 460, { delay: 130, easing: 'ease-out' })
+        ]);
+      }).then(function(){
+        stream.style.transformOrigin = '50% 100%';
+        return play(stream, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], 170, { easing: 'ease-in' });
+      }).then(function(){
+        return play(noz, [{ transform: 'translateY(40px)' }, { transform: 'none' }], 340, { easing: 'ease-in-out' });
+      });
+    },
+    // Pressed again, with the crème in: every piece and crumb comes back, the wafers are whole again,
+    // and the top one comes down on the crème. One cookie, one clean line.
+    clean: function(){
+      return Promise.all(bits.map(function(b){
+        return fly(b, b.rest, b.home, 620, b.back, Math.max(24, b.lift*.7), 'cubic-bezier(.45,.05,.55,.95)');
+      })).then(function(){
+        ck.classList.remove('cracked');
+        ck.classList.add('whole');
+        return Promise.all([
+          play(bitsG, [{ opacity: 1 }, { opacity: 0 }], 170),
+          play(bottom, [{ opacity: 0 }, { opacity: 1 }], 170),
+          play(top, [{ transform: up(HOVER), opacity: 0 }, { transform: up(HOVER), opacity: 1 }], 170)
+        ]);
+      }).then(function(){
+        return play(top, [{ transform: up(HOVER) }, { transform: 'none' }], 280, { easing: 'cubic-bezier(.55,0,.9,.5)' });
+      }).then(function(){
+        ck.classList.add('filled');
+        play(creme, [{ transform: 'scaleX(.84)' }, { transform: 'none' }], 240, { easing: 'cubic-bezier(.2,.9,.3,1.3)' });
+        sparks.forEach(function(s, i){ play(s, [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1.15)', offset: .45 }, { opacity: 0, transform: 'scale(.4) rotate(45deg)' }], 700, { delay: 120 + i*160 }); });
+        return play(press, [{ transform: 'scale(1.02,.92)' }, { transform: 'none' }], 300, { easing: 'cubic-bezier(.3,1.6,.5,1)' });
+      }).then(function(){ return wait(260); });
+    },
+    restore: function(){
+      run++;
+      timers.forEach(clearTimeout);
+      timers = [];
+      anims.forEach(function(a){ a.cancel(); });
+      anims = [];
+      ck.classList.add('snap');
+      ck.classList.remove('cracked', 'broken', 'whole', 'dosed', 'pouring', 'filled', 'is-done');
+      touched.forEach(function(el){ el.removeAttribute('style'); });
+      touched = [];
+      placeBits();
+      ck.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ ck.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      ck.classList.toggle('is-done', on);
+    }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+
+  placeBits();
+  // Tapping the cookie does the same as the button.
+  ck.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ hero.classList.toggle('in-view', entries[0].isIntersecting); }).observe(hero);
+  } else hero.classList.add('in-view');
 })();
 </script>
 <script>

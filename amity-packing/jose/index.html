@@ -201,71 +201,90 @@ h1 span{display:block;color:var(--hi)}
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
-.callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+/* ------------------------------------------------------------ The sausage
+   For meat processors. The casing is the ERP, the filling is the floor, and SimpleGrid
+   is the linker. Every color lives on .sausage, so another meat page can reuse this hero
+   with its own palette: copy this block, the .sausage markup and its script, and set the colors
+   on .hero-art (the callouts' dots read them too). */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --meat:#E0736B;--meat-dk:#B6463F;--meat-edge:#6E211D;--fat:#FFEDE4;
+  --casing:rgba(255,224,210,.66);--casing-edge:rgba(255,240,232,.92);--knot:#F6E2D8;
+  --steel:#CDD4DA;--steel-dk:#949EA8;--steel-hi:#F2F5F7;--steel-ink:#5F6973;
+  --tray:#E3E7EA;--tray-well:#C8CFD5;--tray-lip:#A9B2BA;
+  --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
+}
+.sausage{
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+}
+.hero[data-story$=ing] .sausage,.sausage.is-done{cursor:default}
+.sausage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The filling's texture: fat flecks through the casing, ground strands in the heap. */
+.ss-pat-bg{fill:var(--meat)}
+.ss-pat-fat{fill:var(--fat)}
+.ss-pat-dk{fill:var(--meat-dk)}
+.ss-strand{fill:none;stroke:var(--meat-dk);stroke-width:2.2;stroke-linecap:round}
+.ss-strand-hi{fill:none;stroke:var(--fat);stroke-width:1.8;stroke-linecap:round;opacity:.8}
+/* The tray on the floor: where the filling waits, and where the links end up. */
+.ss-tray-body{fill:var(--tray)}
+.ss-tray-well{fill:var(--tray-well)}
+.ss-tray-lip{fill:var(--tray-lip)}
+.ss-tray-hi{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.7}
+/* The filling: a heap of it. Stuffing sinks it to a smear, and the links clean that up. */
+.ss-heap{transform-box:view-box;transform-origin:180px 490px}
+.ss-heap-meat{fill:url(#ssGround);stroke:var(--meat-edge);stroke-width:2}
+.ss-heap-hi{fill:#fff;opacity:.22}
+/* The stuffer's funnel and horn, with the casing shirred onto the horn. */
+.ss-steel{fill:var(--steel)}
+.ss-steel-dk{fill:var(--steel-dk)}
+.ss-steel-hi{fill:var(--steel-hi)}
+.ss-rim{fill:none;stroke:var(--steel-hi);stroke-width:3}
+.ss-sleeve{transform-box:view-box;transform-origin:180px 92px}
+.ss-sleeve-body{fill:var(--knot)}
+.ss-pleat{fill:none;stroke:rgba(140,80,70,.38);stroke-width:1.6}
+/* The rope, drawn by the script: casing, filling, edges and a shine, in a few pieces so it can cross itself. */
+.ss-cas{fill:var(--casing)}
+.ss-crease{fill:none;stroke:var(--casing-edge);stroke-width:1.5;stroke-linecap:round;opacity:.7}
+.ss-fold{fill:none;stroke:var(--meat-edge);stroke-width:2;stroke-linecap:round;opacity:.75}
+.ss-cas-edge{fill:none;stroke:var(--casing-edge);stroke-width:1.7;stroke-linejoin:round}
+.ss-meat{fill:url(#ssMeat)}
+.ss-meat-edge{fill:none;stroke:var(--meat-edge);stroke-width:1.9;stroke-linejoin:round}
+.ss-gloss{fill:#fff;opacity:.34}
+.ss-twists{fill:none;stroke:var(--knot);stroke-width:2;stroke-linecap:round}
+.ss-knot path{fill:var(--knot);stroke:var(--meat-edge);stroke-width:1.4;stroke-linejoin:round}
+.ss-knot .ss-string{fill:none;stroke:#F4EFE6;stroke-width:2;stroke-linecap:round}
+/* Where it bursts: a split in the casing and the filling pushing out. */
+.ss-burst{opacity:0}
+.ss-burst-gash{fill:#5A1714}
+.ss-burst-meat{fill:url(#ssGround);stroke:var(--meat-edge);stroke-width:1.8;stroke-linejoin:round;transform-box:fill-box;transform-origin:50% 100%}
+.ss-burst-flap{fill:none;stroke:var(--casing-edge);stroke-width:2.6;stroke-linecap:round}
+.sausage.messy .ss-burst-meat{animation:ss-ooze 2.6s ease-in-out infinite}
+.sausage.messy .ss-burst + .ss-burst .ss-burst-meat{animation-delay:-1.3s}
+@keyframes ss-ooze{50%{transform:scale(1.1,1.16)}}
+.ss-blob{fill:url(#ssGround);stroke:var(--meat-edge);stroke-width:1.6;stroke-linejoin:round;opacity:0}
+/* The linker: SimpleGrid. It drops onto the horn wearing the mark, and twists the rope into links. */
+.ss-linker{visibility:hidden}
+.sausage.has-linker .ss-linker{visibility:visible}
+.ss-lk-body{fill:var(--steel)}
+.ss-lk-face{fill:var(--steel-hi)}
+.ss-lk-dk{fill:var(--steel-dk)}
+.ss-lk-collar{fill:var(--steel-ink)}
+.ss-spin{fill:none;stroke:var(--steel-hi);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:7 9;opacity:0;transition:opacity .2s}
+.sausage.twisting .ss-spin{opacity:1;animation:ss-spin .35s linear infinite}
+@keyframes ss-spin{to{stroke-dashoffset:-16}}
+.ss-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
+.sausage.dosed .ss-mark{opacity:1;transform:none}
+.ss-tag{--sg-bg:var(--tag-bg);--sg-ink:var(--tag-ink)}
+.sausage.is-done .ss-tag{opacity:1;transform:none}
+.sausage:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:16%}
+.callout-gap{top:calc(54.3% - 15px)}
+.callout-bottom{top:61%}
+.callout-top h3 i{background:var(--knot)}
+.callout-bottom h3 i{background:var(--meat)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.4)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -524,67 +543,75 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="sausage hero-obj" id="sausage" role="img" aria-label="An empty sausage casing on a stuffing horn, and below it a tray heaped with filling. Nothing links them.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">Placeholder, 2,400 cases</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <!-- the filling through the casing: fat flecks -->
+              <pattern id="ssMeat" width="24" height="24" patternUnits="userSpaceOnUse">
+                <rect class="ss-pat-bg" width="24" height="24"/>
+                <ellipse class="ss-pat-fat" cx="5" cy="6" rx="2.4" ry="1.7"/><ellipse class="ss-pat-fat" cx="14" cy="15" rx="2.1" ry="1.5"/>
+                <ellipse class="ss-pat-fat" cx="3" cy="19" rx="1.4" ry="1"/><ellipse class="ss-pat-fat" cx="20.5" cy="20" rx="2" ry="1.4"/>
+                <circle class="ss-pat-dk" cx="9" cy="10" r="1.4"/><circle class="ss-pat-dk" cx="21" cy="11" r="1.1"/><circle class="ss-pat-dk" cx="8.5" cy="21.5" r="1.2"/>
+              </pattern>
+              <!-- the filling in the heap: ground strands -->
+              <pattern id="ssGround" width="30" height="30" patternUnits="userSpaceOnUse">
+                <rect class="ss-pat-bg" width="30" height="30"/>
+                <path class="ss-strand" d="M3 6q4-4 8 0M17 4q3 4 8 2M6 17q3-4 7-1M19 15q5-1 6 4M2 27q4-3 8 0M15 26q3-4 8-2"/>
+                <path class="ss-strand-hi" d="M10 11q2 2 5 1M24 24q2-2 5-1M3 21q1 2 4 2M22 8q2 1 3 3"/>
+              </pattern>
+            </defs>
+
+            <!-- the tray on the floor: the filling waits in it, and the links end up in it -->
+            <rect class="ss-tray-lip" x="26" y="478" width="308" height="46" rx="20"/>
+            <rect class="ss-tray-body" x="22" y="332" width="316" height="180" rx="22"/>
+            <rect class="ss-tray-well" x="36" y="344" width="288" height="154" rx="14"/>
+            <path class="ss-tray-hi" d="M52 339H308"/>
+
+            <!-- the filling: your floor -->
+            <g class="ss-heap" id="ssHeap">
+              <path class="ss-heap-meat" d="M64 492C62 470 74 452 92 445C96 428 112 418 128 421C138 404 160 397 177 404C191 394 214 398 225 411C245 409 263 423 267 439C283 447 294 467 294 492Z"/>
+              <path class="ss-heap-hi" d="M104 446C110 432 124 426 136 428C144 414 160 408 174 412C158 418 146 428 140 440C128 438 114 442 104 452Z"/>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
-
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the stuffer: funnel and horn, the casing shirred onto the horn -->
+            <path class="ss-steel" d="M122 38L166 86H194L238 38Z"/>
+            <path class="ss-steel-hi" d="M140 45L170 81H176L151 45Z" opacity=".75"/>
+            <ellipse class="ss-steel-dk" cx="180" cy="38" rx="58" ry="10"/>
+            <ellipse class="ss-rim" cx="180" cy="38" rx="58" ry="10"/>
+            <rect class="ss-steel" x="170" y="84" width="20" height="44" rx="3"/>
+            <g class="ss-sleeve" id="ssSleeve">
+              <rect class="ss-sleeve-body" x="164" y="92" width="32" height="31" rx="7"/>
+              <path class="ss-pleat" d="M165 98.5Q180 101.5 195 98.5M165 104.5Q180 107.5 195 104.5M165 110.5Q180 113.5 195 110.5M165 116.5Q180 119.5 195 116.5"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+
+            <!-- the casing, and the rope it becomes: the script draws it, with its bursts and spills -->
+            <g id="ssRope"></g>
+            <g id="ssBursts"></g>
+            <g id="ssSpill"></g>
+
+            <!-- the linker: SimpleGrid, wearing the mark -->
+            <g class="ss-linker" id="ssLinker"><g transform="translate(180 152)">
+              <rect class="ss-lk-dk" x="-50" y="-12" width="100" height="26" rx="8"/>
+              <rect class="ss-lk-body" x="-40" y="-32" width="80" height="62" rx="15"/>
+              <rect class="ss-lk-face" x="-34" y="-27" width="68" height="46" rx="11"/>
+              <ellipse class="ss-spin" cx="0" cy="31" rx="31" ry="9"/>
+              <ellipse class="ss-lk-collar" cx="0" cy="30" rx="23" ry="6.5"/>
+              <g transform="translate(0 -4)"><g class="ss-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g></g>
+
+            <!-- once it comes out in links, the tray gets its label -->
+            <g transform="translate(262 504) scale(.66)"><g class="ss-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The casing: your ERP</span></h3>
+            <p id="topText">What the system says you’re making.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The filling: your floor</span></h3>
+            <p id="bottomText">What’s really going in, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -597,10 +624,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Stuff it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP is the casing up top, your floor is the filling down below, and nothing links them. Stuff it, or tap the casing to try it yourself.</p>
       </div>
     </div>
   </div>
@@ -918,122 +945,439 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
+/* --------------------------------------------------------------- The sausage
+   For meat processors. The casing is the ERP, the filling is the floor, and
+   nothing links them. Stuff it and the casing comes out as one long, lumpy
+   rope that kinks and bursts, with filling spilling out. That mess stays.
+   SimpleGrid is the linker: it goes on the horn wearing the mark, and when
+   you stuff it again the same mess comes out as a neat chain of even links,
+   down into the tray, and the tray gets its label.
+   Nothing in here is about one company. Another meat page can reuse it as it
+   is: the colors are on .hero-art in the CSS, and the words can be set with
+   window.SAUSAGE_COPY (the button and caption) and window.SAUSAGE_TEXT (the
+   callouts) before this runs. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), obj = $('sausage'), ropeG = $('ssRope'), burstG = $('ssBursts'), spillG = $('ssSpill');
+  var heap = $('ssHeap'), sleeve = $('ssSleeve'), linker = $('ssLinker');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = window.SAUSAGE_COPY || {
+    apart:    { btn: 'Stuff it to see your operations', caption: 'Your ERP is the casing up top, your floor is the filling down below, and nothing links them. Stuff it, or tap the casing to try it yourself.' },
+    messing:  { btn: 'Stuffing…', caption: 'Stuffing one into the other. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Link it', caption: 'That’s your operations today: a big mess. One long, lumpy rope that kinks and bursts, with filling everywhere. It won’t fix itself, either.' },
+    dosing:   { btn: 'Linking…', caption: 'On goes the linker.' },
+    dosed:    { btn: 'Stuff it again', caption: 'On goes the linker. That’s SimpleGrid. Now stuff it again.' },
+    cleaning: { btn: 'Stuffing…', caption: 'Watch the mess come out in links.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a neat chain of even links. Your ERP and your floor, finally linked. SimpleGrid is the link.' }
+  };
+  var TEXT = window.SAUSAGE_TEXT || {
+    apart: ['The casing: your ERP', 'What the system says you’re making.', 'The filling: your floor', 'What’s really going in, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The casing, stuffed with nothing linking it: one long, lumpy rope, kinked and burst open, with filling spilling across the tray.',
+    dosed: 'The same burst rope, now with a linker marked SimpleGrid on the stuffing horn.',
+    done: 'A neat chain of even sausage links running from the SimpleGrid linker down into the tray, and the tray labelled SimpleGrid.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
+  /* ------------------------------------------------------------ Geometry */
+  var dist = function(a, b){ return Math.hypot(b[0] - a[0], b[1] - a[1]); };
+  var clamp = SG.clamp;
+  var ease = function(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; };
+  var easeOut = function(t){ return 1 - Math.pow(1 - t, 3); };
+  var cap = function(d, r){ var k = 1 - clamp(d/r, 0, 1); return Math.sqrt(1 - k*k); };   // a round end
+  // A smooth line through the points, as a dense polyline. at[i] is where point i landed in it.
+  function spline(pts){
+    var out = [], at = [];
+    for (var i = 0; i < pts.length - 1; i++){
+      var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      var n = Math.max(2, Math.ceil(dist(p1, p2)/2.5));
+      at.push(out.length);
+      for (var k = 0; k < n; k++){
+        var t = k/n, t2 = t*t, t3 = t2*t;
+        out.push([0, 1].map(function(j){
+          return .5*(2*p1[j] + (p2[j] - p0[j])*t + (2*p0[j] - 5*p1[j] + 4*p2[j] - p3[j])*t2 + (3*p1[j] - p0[j] - 3*p2[j] + p3[j])*t3);
+        }));
+      }
+    }
+    at.push(out.length);
+    out.push(pts[pts.length - 1].slice());
+    return { pts: out, at: at };
+  }
+  // A polyline turned into straights and arcs: ['L', length] or ['A', radius, degrees], plus is clockwise.
+  function turtle(x, y, deg, steps){
+    var out = [[x, y]], a = deg*Math.PI/180;
+    steps.forEach(function(s){
+      var k, n;
+      if (s[0] === 'L'){
+        n = Math.ceil(s[1]/2.5);
+        for (k = 1; k <= n; k++) out.push([x + Math.cos(a)*s[1]*k/n, y + Math.sin(a)*s[1]*k/n]);
+        x += Math.cos(a)*s[1]; y += Math.sin(a)*s[1];
+      } else {
+        var r = s[1], turn = s[2]*Math.PI/180, sg = turn > 0 ? 1 : -1;
+        var cx = x - Math.sin(a)*r*sg, cy = y + Math.cos(a)*r*sg, f0 = Math.atan2(y - cy, x - cx);
+        n = Math.ceil(Math.abs(turn)*r/2.5);
+        for (k = 1; k <= n; k++) out.push([cx + Math.cos(f0 + turn*k/n)*r, cy + Math.sin(f0 + turn*k/n)*r]);
+        x = out[out.length - 1][0]; y = out[out.length - 1][1]; a += turn;
+      }
+    });
+    return out;
+  }
+  // The same line as points spaced evenly along it, with its length and each point's distance along.
+  function even(poly, n){
+    var cum = [0], i;
+    for (i = 1; i < poly.length; i++) cum.push(cum[i - 1] + dist(poly[i - 1], poly[i]));
+    var len = cum[cum.length - 1], pts = [], u = [], j = 1;
+    for (var k = 0; k < n; k++){
+      var s = len*k/(n - 1);
+      while (j < poly.length - 1 && cum[j] < s) j++;
+      var a = poly[j - 1], b = poly[j], t = (s - cum[j - 1])/((cum[j] - cum[j - 1]) || 1);
+      pts.push([a[0] + (b[0] - a[0])*t, a[1] + (b[1] - a[1])*t]);
+      u.push(s);
+    }
+    return { pts: pts, u: u, len: len, cum: cum, poly: poly };
+  }
+  function lengthTo(poly, idx){ var s = 0; for (var i = 1; i <= idx; i++) s += dist(poly[i - 1], poly[i]); return s; }
 
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
+  /* The horn ends at (180,128). The empty casing hangs from it; stuffed, it carries
+     on down into the tangle. The first five points are the casing as it hangs. */
+  var MESS_AT = [[180,128],[180,156],[176,196],[183,234],[180,264],
+    [194,300],[232,310],[284,292],[312,256],[296,214],[256,212],[238,250],[244,300],[212,346],[150,352],[96,326],
+    [66,282],[86,244],[130,248],[142,292],[118,340],[74,370],[62,426],[96,470],[160,478],[214,446],[236,398],
+    [284,386],[318,420],[306,474],[256,500]];
+  var KINK_AT = [9, 16, 19, 28];          // control points where it folds hard
+  var BURST_AT = [[13, 1], [25, -1]];     // control point, and which side splits
+  var sp = spline(MESS_AT);
+  var MESS = even(sp.pts, 0 | (lengthTo(sp.pts, sp.pts.length - 1)/4));
+  var HANG = lengthTo(sp.pts, sp.at[4]);
+  var KINKS = KINK_AT.map(function(i){ return lengthTo(sp.pts, sp.at[i]); });
+  var BURSTS = BURST_AT.map(function(b){ return { u: lengthTo(sp.pts, sp.at[b[0]]), side: b[1] }; });
+
+  /* The links: straight down from the horn, through the linker, into the tray, and back along it. */
+  var W = 43, LINKS = 7, NECK = 7;
+  var FIN = even(turtle(180, 128, 90, [['L', 216], ['A', 42, 90], ['L', 38], ['A', 38, -180], ['L', 190]]), 210);
+  var EXIT = 54;                          // the linker's collar, where the first twist sits
+  var LINK = (FIN.len - EXIT)/LINKS;
+  var TWISTS = [];
+  for (var t = 0; t < LINKS; t++) TWISTS.push(EXIT + t*LINK);
+
+  // How wide the rope is at u: lumpy and pinched at the kinks while it's a mess...
+  function lumpy(u, end){
+    var w = 38 + 8*Math.sin(u/21 + .5) + 5*Math.sin(u/8.3 + 1.7) + 2.5*Math.sin(u/4.1);
+    BURSTS.forEach(function(b){ var d = Math.abs(u - b.u); if (d < 44) w += 15*Math.pow(1 - d/44, 2); });
+    KINKS.forEach(function(k){ var d = Math.abs(u - k); if (d < 22) w -= 17*(1 - d/22); });
+    w = clamp(w, 20, 56)*(.62 + .38*clamp(u/22, 0, 1));
+    return w*cap(end - u, 15);
+  }
+  // ...even, with a twist at every link, as each twist goes in (depth 0 to 1)...
+  function linked(u, depth){
+    var w = W;
+    for (var k = 0; k < TWISTS.length; k++){
+      var d = Math.abs(u - TWISTS[k]);
+      if (d < 20 && depth[k] > 0) w = Math.min(w, W - (W - Math.max(NECK, W*cap(d, 20)))*depth[k]);
+    }
+    return w*cap(FIN.len - u, 18);
+  }
+  // ...and flat while it's still an empty casing, gathered at the knot.
+  function flat(u, end){ return (23 + 8*clamp(u/16, 0, 1))*Math.max(.18, cap(end - u, 13)); }
+
+  /* ------------------------------------------------------------ Drawing */
+  function mk(tag, cls, parent){ var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); parent.appendChild(e); return e; }
+  var casEl = mk('path', 'ss-cas', ropeG), creaseEl = mk('path', 'ss-crease', ropeG);
+  var PIECES = 6, pieces = [];
+  for (var c = 0; c < PIECES; c++){
+    var g = mk('g', null, ropeG);
+    pieces.push(['ss-cas-edge', 'ss-meat', 'ss-meat-edge', 'ss-gloss', 'ss-fold'].map(function(cls){ return mk('path', cls, g); }));
+  }
+  var twistEl = mk('path', 'ss-twists', ropeG);
+  var knotEl = mk('g', 'ss-knot', ropeG);
+  knotEl.innerHTML = '<path class="ss-string" d="M7 0q7-7 12-2M7 0q8 6 12 1"/><path d="M-2-5L7-3Q9.5 0 7 3L-2 5Z"/>';
+
+  var f = function(v){ return Math.round(v*10)/10; };
+  function line(pts){
+    var d = 'M' + f(pts[0][0]) + ' ' + f(pts[0][1]);
+    for (var i = 1; i < pts.length - 1; i++) d += 'Q' + f(pts[i][0]) + ' ' + f(pts[i][1]) + ' ' + f((pts[i][0] + pts[i + 1][0])/2) + ' ' + f((pts[i][1] + pts[i + 1][1])/2);
+    var e = pts[pts.length - 1];
+    return d + 'L' + f(e[0]) + ' ' + f(e[1]);
+  }
+  // The two edges of a band along the rope, from point a to b: kx, ky shift it off the middle, kh is its half-width, all as a share of the width there.
+  function sides(P, N, Wd, a, b, kx, ky, kh){
+    var L = [], R = [];
+    for (var i = a; i <= b; i++){
+      var w = Wd[i], x = P[i][0] + kx*w, y = P[i][1] + ky*w, h = kh*w;
+      L.push([x + N[i][0]*h, y + N[i][1]*h]);
+      R.push([x - N[i][0]*h, y - N[i][1]*h]);
+    }
+    return [L, R];
+  }
+  var shape = function(s){ return line(s[0].concat(s[1].slice().reverse())) + 'Z'; };
+  var edges = function(s){ return line(s[0]) + line(s[1]); };
+
+  // A short mark straight across the rope at point i: a fraction k of its width, tilted by `lean` along it.
+  function across(P, N, Wd, i, k, lean, shift){
+    var q = P[i], m = N[i], tx = m[1], ty = -m[0], h = Wd[i]*k/2, o = shift || 0;
+    return 'M' + f(q[0] + m[0]*h + tx*(lean + o)) + ' ' + f(q[1] + m[1]*h + ty*(lean + o)) + 'L' + f(q[0] - m[0]*h - tx*(lean - o)) + ' ' + f(q[1] - m[1]*h - ty*(lean - o));
+  }
+  // P: the middle of the rope, Wd: the casing's width, M: the filling's (0 where it's empty),
+  // tw: twists ({i, depth}), folds: where it's kinked (point indexes).
+  function draw(P, Wd, M, tw, folds){
+    var n = P.length, N = [], i, mEnd = -1;
+    for (i = 0; i < n; i++){
+      var a = P[i > 0 ? i - 1 : 0], b = P[i < n - 1 ? i + 1 : n - 1], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
+      N.push([-dy/l, dx/l]);
+      if (M[i] > .5) mEnd = i;
+    }
+    casEl.setAttribute('d', shape(sides(P, N, Wd, 0, n - 1, 0, 0, .5)));
+    // An empty casing is creased all along; it smooths out as it fills.
+    var cr = '';
+    for (i = 3; i < n - 2; i += 4) if (M[i] < .5) cr += across(P, N, Wd, i, .62, i % 8 ? 3 : -3);
+    if (cr) creaseEl.setAttribute('d', cr); else creaseEl.removeAttribute('d');
+    for (var c = 0; c < PIECES; c++){
+      var el = pieces[c], a0 = Math.floor(c*(n - 1)/PIECES), a1 = Math.floor((c + 1)*(n - 1)/PIECES), s0 = Math.max(0, a0 - 1);
+      el[0].setAttribute('d', edges(sides(P, N, Wd, s0, a1, 0, 0, .5)));
+      var m1 = Math.min(a1, mEnd);
+      if (m1 - s0 >= 1){
+        var ms = sides(P, N, M, s0, m1, 0, 0, .5);
+        el[1].setAttribute('d', shape(ms));
+        el[2].setAttribute('d', edges(ms));
+        el[3].setAttribute('d', shape(sides(P, N, M, s0, m1, -.15, -.19, .085)));
+      } else for (var k = 1; k < 4; k++) el[k].removeAttribute('d');
+      // Where it's kinked, the casing bunches up in folds.
+      var fd = '';
+      if (folds) folds.forEach(function(j){ if (j > s0 && j <= a1 && j < n - 3) fd += across(P, N, Wd, j - 2, .7, -2.5) + across(P, N, Wd, j, .82, 0) + across(P, N, Wd, j + 2, .7, 2.5); });
+      if (fd) el[4].setAttribute('d', fd); else el[4].removeAttribute('d');
+    }
+    var e = P[n - 1], p = P[Math.max(0, n - 4)];
+    knotEl.setAttribute('transform', 'translate(' + f(e[0]) + ' ' + f(e[1]) + ') rotate(' + f(Math.atan2(e[1] - p[1], e[0] - p[0])*180/Math.PI) + ')');
+    // A little twist of casing across each neck once it's in.
+    var d = '';
+    if (tw) tw.forEach(function(t){
+      if (t.depth < .6) return;
+      var q = P[t.i], m = N[t.i], tx = m[1], ty = -m[0], s = 4.5;
+      [-2.2, 2.2].forEach(function(o){
+        d += 'M' + f(q[0] + tx*o + m[0]*s + tx*2) + ' ' + f(q[1] + ty*o + m[1]*s + ty*2) + 'L' + f(q[0] + tx*o - m[0]*s - tx*2) + ' ' + f(q[1] + ty*o - m[1]*s - ty*2);
+      });
+    });
+    if (d) twistEl.setAttribute('d', d); else twistEl.removeAttribute('d');
+  }
+
+  // The rope along the tangle, out as far as `end`, every 4 units.
+  function along(end){
+    var n = Math.max(2, Math.round(end/MESS.len*(MESS.pts.length - 1)) + 1), P = MESS.pts.slice(0, n);
+    var last = pointAt(end);
+    if (n >= 2) P[n - 1] = last;
+    return P;
+  }
+  function pointAt(u){
+    var k = clamp(u/MESS.len*(MESS.pts.length - 1), 0, MESS.pts.length - 1), i = Math.floor(k), t = k - i;
+    var a = MESS.pts[i], b = MESS.pts[Math.min(i + 1, MESS.pts.length - 1)];
+    return [a[0] + (b[0] - a[0])*t, a[1] + (b[1] - a[1])*t];
+  }
+  function frameAt(u){
+    var a = pointAt(u - 3), b = pointAt(u + 3), l = dist(a, b) || 1;
+    return { p: pointAt(u), tx: (b[0] - a[0])/l, ty: (b[1] - a[1])/l };
+  }
+  // The kinks the rope has reached so far, as point indexes along a rope out to `end` drawn with n points.
+  function foldsTo(end, n){
+    return KINKS.filter(function(k){ return k < end - 20; }).map(function(k){ return Math.round(k/end*(n - 1)); });
+  }
+  function uOf(P){ var u = [0]; for (var i = 1; i < P.length; i++) u.push(u[i - 1] + dist(P[i - 1], P[i])); return u; }
+
+  // The empty casing, hanging off the horn: the start.
+  function drawApart(){
+    var P = along(HANG), u = uOf(P);
+    draw(P, u.map(function(v){ return flat(v, HANG); }), u.map(function(){ return 0; }));
+  }
+
+  /* ------------------------------------------------------------ The spill */
+  var seed = 4127;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function blob(r){
+    var n = 7, p = [], k;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2 + R(-.3, .3), rr = r*R(.72, 1.1); p.push([Math.cos(a)*rr, Math.sin(a)*rr]); }
+    var mid = function(a, b){ return f((a[0] + b[0])/2) + ' ' + f((a[1] + b[1])/2); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f(p[k][0]) + ' ' + f(p[k][1]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return d + 'Z';
+  }
+  var tf = function(x, y, s, r){ return 'translate(' + f(x) + 'px,' + f(y) + 'px) rotate(' + f(r || 0) + 'deg) scale(' + s + ')'; };
+  // Keyframes along a hop from a to b that peaks `lift` above the higher end.
+  function hop(a, b, lift, s0, s1, r0, r1, o){
+    var top = Math.min(a[1], b[1]) - lift, frames = [];
+    for (var k = 0; k <= 8; k++){
+      var t = k/8, m = [(a[0] + b[0])/2, top];
+      var x = (1 - t)*(1 - t)*a[0] + 2*(1 - t)*t*m[0] + t*t*b[0], y = (1 - t)*(1 - t)*a[1] + 2*(1 - t)*t*m[1] + t*t*b[1];
+      frames.push({ transform: tf(x, y, s0 + (s1 - s0)*t, r0 + (r1 - r0)*t), opacity: o ? o(t) : 1 });
+    }
+    return frames;
+  }
+  // Nine handfuls of filling, from the heap up into the funnel.
+  var CLUMPS = [];
+  for (var i = 0; i < 9; i++){
+    var el = mk('path', 'ss-blob', spillG);
+    el.setAttribute('d', blob(R(8, 12)));
+    CLUMPS.push({ el: el, from: [R(104, 256), R(420, 452)] });
+  }
+  // The bursts: a split in the casing, filling pushing out of it, and lumps of it on the floor.
+  var bursts = BURSTS.map(function(b, n){
+    var fr = frameAt(b.u), w = lumpy(b.u, MESS.len)/2 - 3;
+    var ox = -fr.ty*b.side, oy = fr.tx*b.side;                 // outward, off the side that splits
+    var g = mk('g', null, burstG), inner = mk('g', 'ss-burst', g);
+    g.setAttribute('transform', 'translate(' + f(fr.p[0] + ox*w) + ' ' + f(fr.p[1] + oy*w) + ') rotate(' + f(Math.atan2(ox, -oy)*180/Math.PI) + ') scale(1.7)');
+    inner.innerHTML = '<path class="ss-burst-gash" d="M-16 4Q-8-4 0-3Q9-4 16 4Q7 9 0 8Q-8 9-16 4Z"/><path class="ss-burst-meat" d="M-12 3C-15-6-10-19 0-20C6-21 9-15 13-14C17-10 15-3 12 3Z"/><path class="ss-burst-flap" d="M-16 4Q-23 0-22-8M16 4Q23 1 23-7"/>';
+    return { inner: inner, at: [fr.p[0] + ox*(w + 24), fr.p[1] + oy*(w + 24)], u: b.u, out: [ox, oy] };
   });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  var SPILL_TO = [[[150, 318], [262, 348], [284, 330], [232, 368]], [[192, 404], [226, 398], [166, 414], [250, 420]]];
+  var spills = [];
+  bursts.forEach(function(b, n){
+    SPILL_TO[n].forEach(function(to){
+      var el = mk('path', 'ss-blob', spillG);
+      el.setAttribute('d', blob(R(9, 14)));
+      spills.push({ el: el, b: b, to: to, rot: R(-90, 90) });
+    });
+  });
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  // Runs fn(t) for t from 0 to 1 over ms, once a frame. Reduced motion jumps to the end.
+  function play(ms, fn){
+    var my = gen;
+    return new Promise(function(done){
+      if (reduce){ fn(1); done(); return; }
+      var t0 = 0;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (!t0) t0 = now;
+        var t = Math.min(1, (now - t0)/ms);
+        fn(t);
+        if (t < 1) requestAnimationFrame(tick); else done();
+      });
+    });
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  function anim(el, frames, ms, delay, easing){
+    return el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease', fill: 'both' });
+  }
+  var span = function(T, a, b){ return clamp((T - a)/(b - a), 0, 1); };
+
+  // Stuff it, nothing linking it: the heap goes up the funnel, the casing fills, and the rope comes out kinking and bursting.
+  function mess(){
+    obj.classList.add('stuffing');
+    CLUMPS.forEach(function(c, i){
+      anim(c.el, hop(c.from, [180, 44], 150 + i*8, 1, .45, 0, 200, function(t){ return t < .08 ? t/.08 : t > .9 ? (1 - t)*10 : 1; }), 560, i*55, 'linear');
+    });
+    anim(heap, [{ transform: 'none' }, { transform: 'scale(1.06,.16)' }], 900, 80, 'cubic-bezier(.5,0,.3,1)');
+    anim(sleeve, [{ transform: 'none' }, { transform: 'scaleY(.32)' }], 1500, 600, 'linear');
+    var popped = [false, false];
+    return play(2200, function(t){
+      var T = t*2200, P, u, Wd, M, folds = null;
+      if (T < 700){
+        // The filling runs down the hanging casing from the horn.
+        var front = HANG*easeOut(span(T, 250, 700));
+        P = along(HANG); u = uOf(P);
+        Wd = u.map(function(v){ return v < front - 6 ? lumpy(v, HANG + 40) : flat(v, HANG); });
+        M = u.map(function(v, i){ return v < front ? Math.max(0, Wd[i] - 3)*cap(front - v, 8) : 0; });
+      } else {
+        // Then it keeps coming, and the rope pushes out along the tangle.
+        var end = HANG + (MESS.len - HANG)*ease(span(T, 700, 2100));
+        P = along(end); u = uOf(P);
+        Wd = u.map(function(v){ return lumpy(v, end); });
+        M = Wd.map(function(w){ return Math.max(0, w - 3); });
+        folds = foldsTo(end, P.length);
+        bursts.forEach(function(b, n){
+          if (popped[n] || end < b.u + 30) return;
+          popped[n] = true;
+          anim(b.inner, [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1.25)', offset: .6 }, { opacity: 1, transform: 'scale(1)' }], 320, 0, 'ease-out');
+          spills.forEach(function(s){
+            if (s.b !== b) return;
+            anim(s.el, hop(b.at, s.to, 26, .3, 1, 0, s.rot, function(t){ return Math.min(1, t*5); }), 520, 40, 'linear');
+          });
+        });
+      }
+      draw(P, Wd, M, null, folds);
+    }).then(function(){ obj.classList.remove('stuffing'); obj.classList.add('messy'); });
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
-  function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
-    });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
-  }
+  // On goes the linker, wearing the mark.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+    obj.classList.add('has-linker');
+    anim(linker, [
+      { transform: 'translateY(-190px)', opacity: 0, easing: 'cubic-bezier(.5,0,.9,.6)' },
+      { transform: 'translateY(-110px)', opacity: 1, offset: .3, easing: 'cubic-bezier(.3,.6,.4,1)' },
+      { transform: 'translateY(5px)', offset: .68, easing: 'ease-in-out' },
+      { transform: 'translateY(-3px)', offset: .85, easing: 'ease-in-out' },
+      { transform: 'translateY(0)', opacity: 1 }
+    ], 820);
+    later(function(){ obj.classList.add('dosed'); }, 560);
+    return new Promise(function(done){ later(done, 1000); });
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
+
+  // Stuff it again, linked: the spill goes back in, the rope straightens out of its tangle, and the linker twists it into links.
   function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+    var NM = FIN.pts.length;
+    var from = even(MESS.pts, NM), fromW = from.u.map(function(v){ return lumpy(v, MESS.len); });
+    var depth = TWISTS.map(function(){ return 0; });
+    var at = TWISTS.map(function(s){ return Math.round(s/FIN.len*(NM - 1)); });
+    obj.classList.remove('messy');
+    spills.forEach(function(s, i){
+      anim(s.el, hop(s.to, s.b.at, 22, 1, .2, s.rot, s.rot + 160, function(t){ return t > .85 ? (1 - t)/.15 : 1; }), 420, i*30, 'linear');
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    bursts.forEach(function(b){ anim(b.inner, [{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(0)' }], 280, 300, 'ease-in'); });
+    anim(heap, [{ transform: 'scale(1.06,.16)', opacity: 1 }, { transform: 'scale(1.06,.16)', opacity: 0 }], 500, 100);
+    later(function(){ obj.classList.add('twisting'); }, 1250);
+    later(function(){ obj.classList.remove('twisting'); }, 2350);
+    return play(2400, function(t){
+      var T = t*2400, P = [], Wd = [], M = [];
+      for (var k = 0; k < TWISTS.length; k++) depth[k] = easeOut(span(T, 1300 + k*120, 1560 + k*120));
+      for (var i = 0; i < NM; i++){
+        var p = ease(span(T, 380 + i/NM*420, 1100 + i/NM*420));
+        var a = from.pts[i], b = FIN.pts[i];
+        P.push([a[0] + (b[0] - a[0])*p, a[1] + (b[1] - a[1])*p]);
+        var w = fromW[i] + (linked(FIN.u[i], depth) - fromW[i])*p;
+        Wd.push(w); M.push(Math.max(0, w - 3));
+      }
+      draw(P, Wd, M, at.map(function(i, k){ return { i: i, depth: depth[k] }; }), T < 700 ? foldsTo(MESS.len, NM) : null);
+    });
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    [heap, sleeve, linker].concat(CLUMPS.map(function(c){ return c.el; }), spills.map(function(s){ return s.el; }), bursts.map(function(b){ return b.inner; }))
+      .forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
+    obj.classList.remove('stuffing', 'messy', 'has-linker', 'dosed', 'twisting', 'is-done');
+    drawApart();
   }
   function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.sausage',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Stuffed together, still not linked. It kinked, it burst, and it stays that way.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same rope, same mess. Now there’s a linker on it.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the casing does the same as the button.
+  obj.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  drawApart();
 })();
 </script>
 <script>

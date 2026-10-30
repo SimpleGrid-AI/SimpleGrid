@@ -104,6 +104,12 @@ h2 span{font-weight:800}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
+/* On the narrowest phones the ops panel keeps to two notes, so it never climbs into the headline,
+   and a long file name wraps inside its note instead of running out of it. */
+@media (max-width:350px){
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->
@@ -152,7 +158,7 @@ h2 span{font-weight:800}
             <!-- SimpleGrid: the roux -->
             <g class="roux" id="roux">
               <g id="rouxBob" transform="translate(180 152)">
-                <g id="rouxBall" transform="scale(1.1)"><!--#include sg-badge.svg--></g>
+                <g id="rouxBall" transform="scale(1.3)"><!--#include sg-badge.svg--></g>
               </g>
             </g>
             <!-- the ladle -->
@@ -457,10 +463,10 @@ h2 span{font-weight:800}
     ctx.clearRect(BOX.x, BOX.y, BOX.w, BOX.h);
     var c = smooth(0, .85, cream), roil = muck*(1 - c), x, i;
     // The broth's surface: smooth when it's still, choppy while it churns, rippling where the roux lands.
-    var wave = Math.min(6, Math.abs(swirl)*1.4)*(1 - cream*.6);
+    var wave = Math.min(6, Math.abs(swirl)*1.4)*(1 - cream*.6), wt = reduce ? 0 : t0;
     var top = function(x){
       var d = Math.abs(x - 118);
-      return SURFACE + Math.sin(x*.05 + t0*6)*wave + roil*(Math.sin(x*.11 - t0*4.3)*2.4 + Math.sin(x*.27 + t0*7.3)*1.3) + ripple*5*Math.sin(d*.16 - t0*15)*Math.exp(-d*.014);
+      return SURFACE + Math.sin(x*.05 + wt*6)*wave + roil*(Math.sin(x*.11 - wt*4.3)*2.4 + Math.sin(x*.27 + wt*7.3)*1.3) + ripple*5*Math.sin(d*.16 - wt*15)*Math.exp(-d*.014);
     };
     ctx.beginPath();
     ctx.moveTo(BOX.x, BOX.y + BOX.h);
@@ -570,7 +576,7 @@ h2 span{font-weight:800}
     var gone = clamp(cream*2.2, 0, 1);
     roux.style.opacity = 1 - gone;
     rouxBob.setAttribute('transform', 'translate(180 ' + (152 + (reduce ? 0 : Math.sin(t0*2.3)*2.4*muck*(1 - c))).toFixed(2) + ')');
-    rouxBall.setAttribute('transform', 'rotate(' + (turn*57.3*gone).toFixed(1) + ') scale(' + (1.1*(1 - gone*.5)).toFixed(3) + ')');
+    rouxBall.setAttribute('transform', 'rotate(' + (turn*57.3*gone).toFixed(1) + ') scale(' + (1.3*(1 - gone*.5)).toFixed(3) + ')');
   }
 
   function frame(dt){
@@ -623,11 +629,12 @@ h2 span{font-weight:800}
     var L = [lumpAt(0), lumpAt(1), lumpAt(2), lumpAt(3)];
     bits.forEach(function(b){
       if (to === 'mess'){
-        if (b.k.kind === 'parsley') b.y = SURFACE + 8;
+        if (b.k.kind === 'parsley'){ b.x = clamp(b.hx + 46*Math.sin(churn*1.15 + b.la), BOX.x + 3, BOX.x + BOX.w - 3); b.y = SURFACE + 8; }
         else if (b.lump >= 0){ var l = L[b.lump], a = l.a + b.la; b.x = l.x + Math.cos(a)*b.lr; b.y = l.y + Math.sin(a)*b.lr; }
       } else { b.x = b.hx; b.y = b.hy; }
       b.vx = b.vy = 0;
     });
+    for (var s = 0; s < 360; s++) physics(1/120);
   }
 
   function setCallouts(final){
@@ -648,14 +655,14 @@ h2 span{font-weight:800}
     mess: function(){
       messy = true;
       if (!drag) stir();
-      if (reduce){ churn = 2.2; muck = 1; jump('mess'); }
+      if (reduce){ churn = 11.5; muck = 1; jump('mess'); }
       return until(function(){ return auto <= 0 && muck >= 1; });
     },
     dose: function(){
       roux.style.opacity = '';
       roux.classList.add('in');
       if (!reduce) roux.classList.add('drop');
-      return new Promise(function(done){ later(function(){ roux_in = true; ripple = 1; done(); }, 800); });
+      return new Promise(function(done){ later(function(){ roux_in = true; ripple = reduce ? 0 : 1; done(); }, 800); });
     },
     // Stir it again with the roux in: the same mess comes together into chowder.
     clean: function(){
@@ -678,7 +685,7 @@ h2 span{font-weight:800}
       roux.classList.remove('in', 'drop');
       roux.style.opacity = '';
       rouxBob.setAttribute('transform', 'translate(180 152)');
-      rouxBall.setAttribute('transform', 'scale(1.1)');
+      rouxBall.setAttribute('transform', 'scale(1.3)');
       spoon = { x: REST.x, y: REST.y, vx: 0, vy: 0 };
       spoonSpeed = 0;
       fill();

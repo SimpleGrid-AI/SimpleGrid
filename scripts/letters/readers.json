@@ -556,5 +556,39 @@
       }
     ],
     "template": "durable-packaging.html"
+  },
+  "batavia-container": {
+    "template": "batavia-container.html",
+    "values": {
+      "co_name": "Batavia Container",
+      "theme": "#3F65A8",
+      "ps": "P.S. Packaging design to POP displays, across four Illinois facilities. I’d love to see the one in Batavia."
+    },
+    "readers": [
+      {
+        "slug": "casey",
+        "first": "Casey",
+        "full": "Casey Shaw",
+        "town": "Batavia",
+        "where": "your plant in Batavia"
+      }
+    ]
+  },
+  "stamar": {
+    "template": "stamar.html",
+    "values": {
+      "co_name": "Stamar",
+      "theme": "#22324A",
+      "ps": "P.S. Half corrugated, half protective packaging, your LinkedIn says. I’d love to see how Elgin keeps 20,000 items straight."
+    },
+    "readers": [
+      {
+        "slug": "josh",
+        "first": "Josh",
+        "full": "Josh Weiss",
+        "town": "Elgin",
+        "where": "your place in Elgin"
+      }
+    ]
   }
 }

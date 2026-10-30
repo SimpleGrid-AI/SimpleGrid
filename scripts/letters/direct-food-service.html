@@ -109,6 +109,12 @@ h1 span,h2 span{font-weight:700}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
+/* Under 360px the panel beside the object is too narrow for all of it: the caption under the
+   button already says what the paragraph says, and long file names wrap instead of running off. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->

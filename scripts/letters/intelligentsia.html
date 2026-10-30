@@ -56,7 +56,7 @@
 .lt-wall{fill:#EFE6DE}
 .lt-edge{fill:none;stroke:rgba(60,30,10,.45);stroke-width:2.5}
 .lt-shine{fill:#fff;opacity:.28}
-.lt-fleck{fill:#7E4320;opacity:.55}
+.lt-fleck{fill:#7E4320;opacity:.3}
 /* The mess: cold milk dumped in. Muddy, blotchy, and none of it joins up. */
 .lt-mud{opacity:0}
 .lt-ms{opacity:0}
@@ -69,13 +69,15 @@
 .lt-pale2{fill:#E3D3BD}
 .lt-dark{fill:#5A3925}
 .lt-arc{fill:none;stroke:#EBDFCC;stroke-linecap:round}
-.lt-drip{fill:#F6F1EA;stroke:rgba(46,41,37,.12);stroke-width:1.5}
+.lt-drip{fill:#A98262;opacity:.92}
+.lt-cloud{fill:#EFE4D3;opacity:.5}
 /* The pour, seen from above: where the stream hits. */
 .lt-stream{fill:#FBF8F3;opacity:0;transform-box:fill-box;transform-origin:center}
 /* The latte it ends up as. */
 .lt-base{opacity:0}
 .lt-leaf{fill:#FFF8EC;opacity:0;transform:scaleX(.12);transform-box:fill-box;transform-origin:center}
-.lt-stem{fill:none;stroke:#FFF8EC;stroke-width:5;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1}
+.lt-dot{fill:#FFF8EC;opacity:0;transform:scale(.2);transform-box:fill-box;transform-origin:center}
+.lt-stem{fill:none;stroke:#FFF8EC;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1}
 /* The jug: steel, cold milk, then steamed silky. */
 .lt-jug,.lt-milk-g,.lt-wand{transform-box:view-box;transform-origin:0 0}
 .lt-jug{transform:translate(196px,462px) rotate(-8deg)}
@@ -101,10 +103,11 @@
 .lt-tip{fill:#5F676F}
 .lt-badge{--sg-bg:var(--accent);--sg-ink:#fff}
 .latte.dosed .lt-badge{opacity:1;transform:none}
-.lt-puff{fill:#fff;opacity:0;transform-box:fill-box;transform-origin:center}
+.lt-puff{fill:url(#ltPuffG);opacity:0;transform-box:fill-box;transform-origin:center}
 .latte.steaming .lt-puff{animation:lt-puff 1.5s ease-out infinite}
-.latte.hot .lt-puff{animation:lt-puff 3.2s ease-out infinite}
-@keyframes lt-puff{0%{opacity:0;transform:translate(0,0) scale(.35)}25%{opacity:.62}100%{opacity:0;transform:translate(-6px,-58px) scale(1.7)}}
+.latte.hot .lt-puff{animation:lt-puff-soft 3.4s ease-out infinite}
+@keyframes lt-puff{0%{opacity:0;transform:translate(0,0) scale(.4)}25%{opacity:.95}100%{opacity:0;transform:translate(-8px,-64px) scale(1.8)}}
+@keyframes lt-puff-soft{0%{opacity:0;transform:translate(0,0) scale(.4)}30%{opacity:.5}100%{opacity:0;transform:translate(-6px,-54px) scale(1.5)}}
 /* At the end, the saucer says whose latte it is. */
 .lt-tag{--sg-bg:var(--brand);--sg-ink:#FEFBF9}
 .latte.is-done .lt-tag{opacity:1;transform:none}
@@ -149,6 +152,7 @@
             <defs>
               <radialGradient id="ltCrema" cx="44%" cy="40%" r="64%"><stop offset="0" stop-color="#D59B5D"/><stop offset=".55" stop-color="#B06A33"/><stop offset="1" stop-color="#6A3514"/></radialGradient>
               <radialGradient id="ltMudG" cx="50%" cy="45%" r="62%"><stop offset="0" stop-color="#9D7B5F"/><stop offset="1" stop-color="#76563F"/></radialGradient>
+              <radialGradient id="ltPuffG"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".55" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
               <radialGradient id="ltLatteG" cx="50%" cy="44%" r="60%"><stop offset="0" stop-color="#C98E57"/><stop offset=".72" stop-color="#AE6E3B"/><stop offset="1" stop-color="#7B421F"/></radialGradient>
               <clipPath id="ltCup"><circle cx="180" cy="190" r="84"/></clipPath>
               <clipPath id="ltFrame"><rect width="360" height="560"/></clipPath>
@@ -177,14 +181,15 @@
               <!-- the latte it becomes, rosetta and all -->
               <circle class="lt-base" id="ltBase" cx="180" cy="190" r="84" fill="url(#ltLatteG)"/>
               <g id="ltArt">
-                <path class="lt-leaf" d="M124 120Q180 160 236 120Q180 140 124 120Z"/>
-                <path class="lt-leaf" d="M127 139Q180 178 233 139Q180 158 127 139Z"/>
-                <path class="lt-leaf" d="M132 158Q180 194.5 228 158Q180 175.5 132 158Z"/>
-                <path class="lt-leaf" d="M138 177Q180 211 222 177Q180 193 138 177Z"/>
-                <path class="lt-leaf" d="M145 196Q180 226.5 215 196Q180 209.5 145 196Z"/>
-                <path class="lt-leaf" d="M153 215Q180 240.5 207 215Q180 225.5 153 215Z"/>
-                <path class="lt-leaf" d="M162 234Q180 254 198 234Q180 242 162 234Z"/>
-                <path class="lt-stem" id="ltStem" pathLength="1" d="M180 258L180 112"/>
+                <path class="lt-leaf" d="M120 143C144 126.1 170 119 180 114C190 119 216 126.1 240 143C213 143.7 188 132 180 130C172 132 147 143.7 120 143Z"/>
+                <path class="lt-leaf" d="M122 160.5C145.2 144.2 170 137.5 180 132.5C190 137.5 214.8 144.2 238 160.5C211.9 162.2 188 151 180 149C172 151 148.1 162.2 122 160.5Z"/>
+                <path class="lt-leaf" d="M127 177C148.2 162.1 170 156 180 151C190 156 211.8 162.1 233 177C209.2 179.3 188 169 180 167C172 169 150.8 179.3 127 177Z"/>
+                <path class="lt-leaf" d="M133 192.5C151.8 179.5 170 174.5 180 169.5C190 174.5 208.2 179.5 227 192.5C205.8 195.5 188 186.5 180 184.5C172 186.5 154.2 195.5 133 192.5Z"/>
+                <path class="lt-leaf" d="M140 208C156 196.9 170 193 180 188C190 193 204 196.9 220 208C202 211.7 188 204 180 202C172 204 158 211.7 140 208Z"/>
+                <path class="lt-leaf" d="M148 223.5C160.8 214.4 170 211.5 180 206.5C190 211.5 199.2 214.4 212 223.5C197.6 227.3 188 221 180 219C172 221 162.4 227.3 148 223.5Z"/>
+                <path class="lt-leaf" d="M157 239C166.2 231.8 170 230 180 225C190 230 193.8 231.8 203 239C192.7 242.9 188 238 180 236C172 238 167.3 242.9 157 239Z"/>
+                <circle class="lt-dot" id="ltDot" cx="180" cy="257" r="7.5"/>
+                <path class="lt-stem" id="ltStem" pathLength="1" d="M180 257L180 111"/>
               </g>
               <ellipse class="lt-stream" id="ltStream" cx="180" cy="262" rx="10" ry="10"/>
             </g>
@@ -213,11 +218,12 @@
             </g>
             <!-- steam, while SimpleGrid works the milk -->
             <g id="ltSteam">
-              <circle class="lt-puff" cx="178" cy="440" r="16"/>
-              <circle class="lt-puff" cx="207" cy="432" r="19" style="animation-delay:-.5s"/>
-              <circle class="lt-puff" cx="192" cy="452" r="14" style="animation-delay:-1s"/>
-              <circle class="lt-puff" cx="224" cy="448" r="13" style="animation-delay:-.25s"/>
-              <circle class="lt-puff" cx="165" cy="458" r="12" style="animation-delay:-.75s"/>
+              <circle class="lt-puff" cx="176" cy="438" r="24"/>
+              <circle class="lt-puff" cx="208" cy="428" r="28" style="animation-delay:-.5s"/>
+              <circle class="lt-puff" cx="192" cy="452" r="20" style="animation-delay:-1s"/>
+              <circle class="lt-puff" cx="226" cy="448" r="19" style="animation-delay:-.25s"/>
+              <circle class="lt-puff" cx="162" cy="458" r="18" style="animation-delay:-.75s"/>
+              <circle class="lt-puff" cx="196" cy="420" r="22" style="animation-delay:-1.25s"/>
             </g>
             <!-- SimpleGrid is the steam: the wand wears the mark -->
             <g clip-path="url(#ltFrame)">
@@ -325,7 +331,7 @@
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
   var hero = $('hero'), latte = $('latte'), jug = $('ltJug'), milk = $('ltMilk'), foam = $('ltFoam'), wand = $('ltWand');
-  var messG = $('ltMess'), dripG = $('ltDrips'), mud = $('ltMud'), base = $('ltBase'), stem = $('ltStem'), stream = $('ltStream');
+  var messG = $('ltMess'), dripG = $('ltDrips'), mud = $('ltMud'), base = $('ltBase'), dot = $('ltDot'), stem = $('ltStem'), stream = $('ltStream');
   var leaves = [].slice.call(latte.querySelectorAll('.lt-leaf'));
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
@@ -372,8 +378,8 @@
   function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
   function make(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
   function blob(r){
-    var n = 7, p = [], k;
-    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2 + (rand() - .5)*.6, rr = r*(.7 + rand()*.45); p.push([Math.cos(a)*rr, Math.sin(a)*rr]); }
+    var n = 9, p = [], k;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2 + (rand() - .5)*.5, rr = r*(.62 + rand()*.6); p.push([Math.cos(a)*rr, Math.sin(a)*rr]); }
     var mid = function(a, b){ return ((a[0] + b[0])/2).toFixed(1) + ' ' + ((a[1] + b[1])/2).toFixed(1); };
     var d = 'M' + mid(p[n - 1], p[0]);
     for (k = 0; k < n; k++) d += 'Q' + p[k][0].toFixed(1) + ' ' + p[k][1].toFixed(1) + ' ' + mid(p[k], p[(k + 1) % n]);
@@ -386,6 +392,9 @@
     draw(inner);
     bits.push({ el: g, x: x, y: y, d: Math.hypot(x - LAND[0], y - LAND[1]) });
   }
+  [[172, 178, 34], [216, 224, 25], [138, 230, 22], [208, 138, 20]].forEach(function(b){
+    piece(b[0], b[1], false, function(g){ make('path', { 'class': 'lt-cloud', d: blob(b[2]) }, g); });
+  });
   [[150, 142, 19], [224, 178, 15], [166, 238, 17], [116, 204, 12]].forEach(function(b){
     piece(b[0], b[1], false, function(g){ make('path', { 'class': 'lt-dark', d: blob(b[2]) }, g); });
   });
@@ -400,11 +409,31 @@
   [[128, 132, 4], [250, 198, 3.5], [196, 270, 4], [104, 196, 3]].forEach(function(b){
     piece(b[0], b[1], false, function(g){ make('circle', { 'class': 'lt-pale', r: b[2] }, g); });
   });
-  var drips = [[104, 288, 9], [264, 294, 7], [72, 212, 6.5], [294, 112, 5.5], [122, 262, 6]].map(function(b){
+  // Spilled coffee: flat splashes on the saucer, each with a droplet or two, and one run over the rim.
+  function splash(r){
+    var n = 8, p = [], k, a, d;
+    for (k = 0; k < n; k++){ a = k/n*Math.PI*2 + (rand() - .5)*.4; var rr = r*(.8 + rand()*.32); p.push([Math.cos(a)*rr, Math.sin(a)*rr]); }
+    var mid = function(a, b){ return ((a[0] + b[0])/2).toFixed(1) + ' ' + ((a[1] + b[1])/2).toFixed(1); };
+    d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + p[k][0].toFixed(1) + ' ' + p[k][1].toFixed(1) + ' ' + mid(p[k], p[(k + 1) % n]);
+    d += 'Z';
+    for (k = 0; k < 2; k++){
+      a = rand()*Math.PI*2;
+      var dr = r*(.22 + rand()*.16), dx = Math.cos(a)*r*(1.45 + rand()*.4), dy = Math.sin(a)*r*(1.45 + rand()*.4);
+      d += 'M' + (dx - dr).toFixed(1) + ' ' + dy.toFixed(1) + 'a' + dr.toFixed(1) + ' ' + dr.toFixed(1) + ' 0 1 0 ' + (2*dr).toFixed(1) + ' 0a' + dr.toFixed(1) + ' ' + dr.toFixed(1) + ' 0 1 0 ' + (-2*dr).toFixed(1) + ' 0Z';
+    }
+    return d;
+  }
+  var drips = [[104, 290, 11], [266, 292, 8], [70, 212, 8.5], [296, 114, 6.5]].map(function(b){
     var g = make('g', { 'class': 'lt-ms' }, dripG);
-    make('path', { 'class': 'lt-drip', d: blob(b[2]) }, g);
+    make('path', { 'class': 'lt-drip', d: splash(b[2]) }, g);
     return { el: g, x: b[0], y: b[1] };
   });
+  (function(){
+    var g = make('g', { 'class': 'lt-ms' }, dripG);
+    make('path', { 'class': 'lt-drip', d: 'M-9 -6.5Q3 -8 10 -4.5Q15.5 0 10 4.5Q3 8 -9 6.5Z', transform: 'rotate(129)' }, g);
+    drips.push({ el: g, x: 122.6, y: 261 });
+  })();
 
   function setCallouts(final){
     $('gapTag').hidden = final;
@@ -485,9 +514,10 @@
         });
         return wait(1560);
       }).then(function(){
-        // Then one stroke forward, the pull-through, draws the stem.
-        play(stem, [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], 340, 0, 'ease-in');
-        return moveJug('translate(180px,334px) rotate(0deg) scale(1.08)', 340, 'ease-in');
+        // Then a dot, and one stroke forward through it all, the pull-through, draws the stem.
+        play(dot, [{ opacity: 0, transform: 'scale(.2)' }, { opacity: 1, transform: 'scale(1)' }], 220, 0, 'ease-out');
+        play(stem, [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], 360, 140, 'ease-in');
+        return moveJug('translate(180px,334px) rotate(0deg) scale(1.08)', 500, 'ease-in');
       }).then(function(){
         latte.classList.remove('messy');
         setLevel('translate(0px,0px) scale(.55,.55)', 500);

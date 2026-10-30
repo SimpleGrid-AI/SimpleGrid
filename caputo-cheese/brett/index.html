@@ -261,6 +261,12 @@ h1{letter-spacing:-.008em;line-height:1.08}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
+/* Under 360px the panel beside the object is too narrow for all of it: the caption under the
+   button already says what the paragraph says, and long file names wrap instead of running off. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+}
 
 /* ------------------------------------- The gap between the ERP and the floor */
 .gap{padding:clamp(30px,4vw,60px) 0 var(--section)}

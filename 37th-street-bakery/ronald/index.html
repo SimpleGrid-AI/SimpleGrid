@@ -231,14 +231,14 @@ h1 span{display:block;color:var(--hi)}
 /* The mess: one greasy, streaky lump, butter smeared through it and grease pooling round it */
 .lam-mess{visibility:hidden;transform-origin:180px 300px}
 .lam.messy .lam-mess{visibility:visible}
-.lam-grease{fill:#8A5512;opacity:.36;transform-origin:182px 318px}
-.lam-sheen{fill:none;stroke:#FFE9A6;stroke-width:5;stroke-linecap:round;opacity:.45}
-.lam-smears path{fill:none;stroke:#FFD24A;stroke-width:11;stroke-linecap:round;opacity:.8;stroke-dasharray:1 1}
-.lam-splats{fill:#FFD24A}
-.lam-lump{fill:#EAC888}
-.lam-lump-dk{fill:#C99A55}
-.lam-streaks path{fill:none;stroke:#FFD03F;stroke-linecap:round}
-.lam-dents{fill:#D5AC69}
+.lam-grease{fill:#8A5512;opacity:.36;transform-origin:182px 322px}
+.lam-sheen{fill:none;stroke:#FFF3C8;stroke-width:4;stroke-linecap:round;opacity:.6}
+.lam-smears{fill:#FFD24A;opacity:.75;transform-origin:182px 318px}
+.lam-lump{fill:#EAC888;stroke:#B4844A;stroke-width:2.5;stroke-linejoin:round}
+.lam-lump-dk{fill:#C2904D;stroke:#9A6B33;stroke-width:2.5;stroke-linejoin:round}
+.lam-streaks{fill:#FFD03F}
+.lam-streak-thin{fill:none;stroke:#FFD03F;stroke-width:4;stroke-linecap:round}
+.lam-crease{fill:none;stroke:#C2934F;stroke-width:3.5;stroke-linecap:round}
 .lam-shine path{fill:none;stroke:#FFFBEE;stroke-width:4.5;stroke-linecap:round;opacity:.9}
 .lam-chunk{fill:#FFD84F;stroke:#E9AE28;stroke-width:2}
 .lam-scrap{fill:#EAC888;stroke:#C99A55;stroke-width:2}
@@ -261,8 +261,8 @@ h1 span{display:block;color:var(--hi)}
 .lam.folded .lam-fold2{visibility:visible}
 .lam-slab-top{fill:#F6DFA9}
 .lam-slab-hi{fill:none;stroke:#FFF6DA;stroke-width:6;stroke-linecap:round}
-.lam-ly-d{fill:#EBC985}
-.lam-ly-b{fill:#FFCE3D}
+.lam-ly-d{fill:#E0B66E}
+.lam-ly-b{fill:#FFD43C}
 .lam-glint{fill:#fff;opacity:.6}
 #lamSlab{transform-origin:180px 300px}
 .lam-croissant{transform-origin:180px 286px}
@@ -292,9 +292,9 @@ h1 span{display:block;color:var(--hi)}
 .lam-barrel-hi{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;opacity:.75}
 .lam-badge{--sg-bg:var(--brand);--sg-ink:#fff}
 .lam.dosed .lam-badge{opacity:1;transform:none}
-.callout-top{top:20%}
-.callout-bottom{top:53%}
-.callout-gap{top:calc(44.3% - 15px)}
+.callout-top{top:16%}
+.callout-bottom{top:51.5%}
+.callout-gap{top:calc(41.6% - 15px)}
 .callout-top h3 i{background:#F8E6BC}
 .callout-bottom h3 i{background:#FFDF6E}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
@@ -557,67 +557,158 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="lam hero-obj" id="lam" role="img" aria-label="A sheet of dough above a block of butter on a floured bench, with nothing linking them.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">Placeholder, 2,400 cases</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <!-- the roller's line as it passes: what it has rolled on one side, what it hasn't reached on the other -->
+              <clipPath id="lamAbove"><rect id="lamAboveR" x="-40" y="0" width="440" height="0"/></clipPath>
+              <clipPath id="lamBelow"><rect id="lamBelowR" x="-40" y="0" width="440" height="560"/></clipPath>
+              <clipPath id="lamLumpClip"><path d="M96 304C84 276 108 250 140 252C150 232 186 226 204 240C222 228 258 236 262 258C286 264 292 296 276 312C290 336 268 360 238 354C224 370 186 372 168 360C144 370 108 362 104 340C84 336 82 314 96 304Z"/></clipPath>
+              <clipPath id="lamFace"><path d="M58 298H302V352Q302 362 292 362H68Q58 362 58 352Z"/></clipPath>
+              <linearGradient id="lamSteel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5F8FA"/><stop offset=".4" stop-color="#C8D2DA"/><stop offset="1" stop-color="#7C8B97"/></linearGradient>
+              <linearGradient id="lamGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBCB6A"/><stop offset=".55" stop-color="#E9A040"/><stop offset="1" stop-color="#C66F1C"/></linearGradient>
+            </defs>
+
+            <g transform="translate(-18 -40) scale(1.1)">
+            <!-- the bench: floured wood -->
+            <rect class="lam-wood-dk" x="44" y="94" width="272" height="378" rx="18"/>
+            <rect class="lam-wood" x="44" y="80" width="272" height="376" rx="18"/>
+            <path class="lam-grain" d="M62 124Q180 114 298 130M62 196Q180 186 298 202M62 268Q180 258 298 274M62 340Q180 330 298 346M62 412Q180 402 298 418"/>
+            <g class="lam-flour">
+              <ellipse cx="96" cy="104" rx="28" ry="7"/><ellipse cx="268" cy="226" rx="30" ry="8"/><ellipse cx="84" cy="270" rx="20" ry="6"/>
+              <ellipse cx="276" cy="420" rx="26" ry="7"/><ellipse cx="112" cy="434" rx="32" ry="7"/>
+              <circle cx="72" cy="150" r="2.5"/><circle cx="292" cy="160" r="2"/><circle cx="246" cy="250" r="2.5"/><circle cx="66" cy="214" r="2"/><circle cx="300" cy="300" r="2.5"/><circle cx="70" cy="396" r="2"/><circle cx="230" cy="440" r="2.5"/><circle cx="150" cy="96" r="2"/>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
-
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the two halves, apart -->
+            <g id="lamPre">
+              <!-- the floor: a block of butter, on its wrapper -->
+              <g id="lamButter">
+                <path class="lam-paper" d="M98 300H262L276 390H84Z"/>
+                <path class="lam-paper-fold" d="M98 300L118 320M262 300L242 320M84 390L106 372M276 390L254 372"/>
+                <rect class="lam-butter-dk" x="116" y="320" width="128" height="56" rx="8"/>
+                <rect class="lam-butter-top" x="116" y="304" width="128" height="42" rx="8"/>
+                <path class="lam-butter-hi" d="M130 315H190"/>
+              </g>
+              <!-- the ERP: a sheet of dough -->
+              <g id="lamDough">
+                <rect class="lam-dough-dk" x="70" y="134" width="220" height="62" rx="16"/>
+                <rect class="lam-dough-top" x="70" y="118" width="220" height="62" rx="16"/>
+                <path class="lam-dough-hi" d="M92 132H200"/>
+                <g class="lam-dust"><circle cx="122" cy="156" r="2"/><circle cx="168" cy="148" r="1.6"/><circle cx="226" cy="160" r="2"/><circle cx="256" cy="140" r="1.6"/><circle cx="98" cy="166" r="1.6"/></g>
+              </g>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+
+            <!-- the mess: mashed together by hand, butter smeared all through it, no layers, and it stays that way -->
+            <g clip-path="url(#lamBelow)">
+              <g class="lam-mess" id="lamMess">
+                <path class="lam-grease" id="lamGrease" d="M68 318C58 276 110 252 178 256C248 250 306 280 298 320C306 362 250 394 180 392C106 398 60 362 68 318Z"/>
+                <path class="lam-sheen" d="M88 350Q100 368 124 376M262 366Q282 356 290 336"/>
+                <g class="lam-smears" id="lamSmears">
+                  <path d="M60 386C62 366 92 360 112 368C130 376 128 394 110 400C90 406 58 402 60 386Z"/>
+                  <path d="M252 244C266 232 296 234 304 248C308 260 290 266 272 262C256 260 244 254 252 244Z"/>
+                  <circle cx="52" cy="344" r="4.5"/><circle cx="304" cy="290" r="5"/><circle cx="294" cy="384" r="4"/><circle cx="134" cy="226" r="3.5"/><circle cx="316" cy="272" r="3"/>
+                </g>
+                <path class="lam-scrap" d="M50 296l13-7 7 10-11 7z"/>
+                <path class="lam-scrap" d="M232 392l13 1-1 11-13-2z"/>
+                <path class="lam-lump-dk" transform="translate(0 14)" d="M96 304C84 276 108 250 140 252C150 232 186 226 204 240C222 228 258 236 262 258C286 264 292 296 276 312C290 336 268 360 238 354C224 370 186 372 168 360C144 370 108 362 104 340C84 336 82 314 96 304Z"/>
+                <path class="lam-lump" d="M96 304C84 276 108 250 140 252C150 232 186 226 204 240C222 228 258 236 262 258C286 264 292 296 276 312C290 336 268 360 238 354C224 370 186 372 168 360C144 370 108 362 104 340C84 336 82 314 96 304Z"/>
+                <g class="lam-streaks" clip-path="url(#lamLumpClip)">
+                  <path d="M96 294C124 270 156 302 186 286C208 274 230 264 262 278C240 284 216 294 194 304C164 318 128 306 96 294Z"/>
+                  <path d="M112 334C140 318 166 340 196 328C218 320 244 314 276 326C252 334 226 342 200 348C170 354 140 346 112 334Z"/>
+                  <path d="M206 246C218 238 240 240 240 252C238 262 216 264 206 256Z"/>
+                  <path d="M128 312C136 306 150 308 150 316C148 322 134 322 128 316Z"/>
+                  <path class="lam-streak-thin" d="M142 262C158 254 172 266 190 256"/>
+                </g>
+                <path class="lam-crease" d="M126 268Q150 284 146 308M216 262Q240 270 252 292M158 340Q186 332 210 346"/>
+                <g class="lam-shine"><path d="M116 276Q126 264 142 262"/><path d="M244 266Q258 272 262 286"/><path d="M182 344Q198 348 212 344"/></g>
+                <path class="lam-chunk" d="M86 316q4-12 16-8q8 8-2 16q-12 4-14-8z"/>
+                <path class="lam-chunk" d="M268 334q8-8 16-2q4 10-6 14q-10 0-10-12z"/>
+                <path class="lam-chunk" d="M184 236q6-8 14-4q4 8-4 12q-8 0-10-8z"/>
+                <path class="lam-drip" d="M176 382q-5 9 0 14q5-5 0-14z"/>
+              </g>
+            </g>
+
+            <!-- laminated: the smooth sheet the roller leaves behind, the butter locked inside -->
+            <g clip-path="url(#lamAbove)">
+              <g class="lam-sheet" id="lamSheet">
+                <path class="lam-sh-d" d="M58 300H302V330Q302 340 292 340H68Q58 340 58 330Z"/>
+                <rect class="lam-sh-b" x="60" y="328" width="240" height="6"/>
+                <g class="lam-fold2">
+                  <path class="lam-sh-d" d="M58 300H302V348Q302 358 292 358H68Q58 358 58 348Z"/>
+                  <rect class="lam-sh-b" x="60" y="328" width="240" height="6"/>
+                  <rect class="lam-sh-b" x="60" y="346" width="240" height="6"/>
+                </g>
+                <path class="lam-sh-top" d="M58 268H302V310Q302 322 290 322H70Q58 322 58 310Z"/>
+                <g id="lamFlap"><path class="lam-flap-top" d="M58 268V226Q58 214 70 214H290Q302 214 302 226V268Z"/></g>
+              </g>
+            </g>
+            <!-- rolled again: crisp, distinct layers, and the cut edge shows every one -->
+            <g clip-path="url(#lamBelow)">
+              <g class="lam-slab" id="lamSlab">
+                <g clip-path="url(#lamFace)">
+                  <rect class="lam-ly-d" x="58" y="298" width="244" height="64"/>
+                  <rect class="lam-ly-b" x="58" y="305.1" width="244" height="7.1"/>
+                  <rect class="lam-ly-b" x="58" y="319.3" width="244" height="7.1"/>
+                  <rect class="lam-ly-b" x="58" y="333.6" width="244" height="7.1"/>
+                  <rect class="lam-ly-b" x="58" y="347.8" width="244" height="7.1"/>
+                  <g id="lamGlint"><path class="lam-glint" d="M20 290H46L16 370H-10Z"/></g>
+                </g>
+                <path class="lam-slab-top" d="M58 298V248Q58 236 70 236H290Q302 236 302 248V298Z"/>
+                <path class="lam-slab-hi" d="M80 250H220"/>
+              </g>
+            </g>
+
+            <!-- the bakery box it goes out in: the lid stands behind the croissant, the front panel carries the label -->
+            <g class="lam-box">
+              <path class="lam-box-lid" d="M98 206H262L276 336H84Z"/>
+              <path class="lam-box-crease" d="M104 222H256"/>
+            </g>
+            <!-- rolled up: one golden croissant -->
+            <g class="lam-croissant" id="lamCroissant">
+              <g transform="translate(180 290) scale(.86) translate(-180 -290)">
+                <path class="lam-seg" d="M50 322Q58 284 98 280Q110 304 106 330Q76 342 50 322Z"/>
+                <path class="lam-seg" d="M310 322Q302 284 262 280Q250 304 254 330Q284 342 310 322Z"/>
+                <path class="lam-seg" d="M98 280Q110 242 142 244Q156 280 150 316Q126 334 106 330Q110 304 98 280Z"/>
+                <path class="lam-seg" d="M262 280Q250 242 218 244Q204 280 210 316Q234 334 254 330Q250 304 262 280Z"/>
+                <path class="lam-seg" d="M142 244Q180 208 218 244Q228 280 210 316Q180 328 150 316Q132 280 142 244Z"/>
+                <path class="lam-flake" d="M152 264Q180 242 208 264M150 292Q180 276 212 292M108 298Q118 280 144 278M252 298Q242 280 216 278M64 320Q72 302 96 300M296 320Q288 302 264 300"/>
+                <path class="lam-gloss" d="M160 236Q180 224 198 234M112 266Q122 254 136 254M248 266Q238 254 224 254"/>
+              </g>
+            </g>
+            <g class="lam-box">
+              <ellipse class="lam-box-sh" cx="186" cy="418" rx="122" ry="9"/>
+              <path class="lam-box-side" d="M288 332L304 320V404L288 416Z"/>
+              <rect class="lam-box-front" x="72" y="332" width="216" height="84" rx="6"/>
+              <rect class="lam-box-band" x="72" y="332" width="216" height="9" rx="4"/>
+              <g transform="translate(180 380) scale(.78)"><g class="lam-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            </g>
+
+            <!-- SimpleGrid: the roller. It locks the butter in, so every layer stays its own. -->
+            <g class="lam-roller" id="lamRoller">
+              <ellipse class="lam-roller-sh" cx="182" cy="30" rx="130" ry="8"/>
+              <rect class="lam-rod" x="40" y="-5" width="280" height="10" rx="5"/>
+              <rect class="lam-grip" x="14" y="-12" width="42" height="24" rx="12"/>
+              <rect class="lam-grip" x="304" y="-12" width="42" height="24" rx="12"/>
+              <path class="lam-grip-hi" d="M24 -5H46M314 -5H336"/>
+              <rect class="lam-barrel" x="66" y="-24" width="228" height="48" rx="10"/>
+              <rect class="lam-barrel-end" x="67" y="-23" width="10" height="46" rx="5"/>
+              <rect class="lam-barrel-end" x="283" y="-23" width="10" height="46" rx="5"/>
+              <path class="lam-barrel-hi" d="M86 -13H274"/>
+              <g transform="translate(180 0)"><g class="lam-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g>
+            </g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The dough: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The butter: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -630,10 +721,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Fold them together to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP on top, your floor underneath: a sheet of dough and a block of butter, and nothing linking them. Fold them together, or tap the bench to try it yourself.</p>
       </div>
     </div>
   </div>
@@ -951,122 +1042,180 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
 (function(){
+  /* -------------------------------------------------------- The croissant
+     The sheet of dough is the ERP, the block of butter is the floor. Fold
+     them together by hand and they mash into one greasy, streaky lump: the
+     butter smeared through the dough, no layers, and it stays that way.
+     That's your operations. SimpleGrid is the roller: it locks the butter in,
+     and roll, fold, roll turns the same lump into crisp, distinct layers that
+     roll up into one golden croissant. */
   var $ = function(id){ return document.getElementById(id); };
-  var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), lam = $('lam'), pre = $('lamPre'), dough = $('lamDough'), messG = $('lamMess');
+  var grease = $('lamGrease'), smears = $('lamSmears');
+  var roller = $('lamRoller'), flap = $('lamFlap'), slab = $('lamSlab'), glint = $('lamGlint'), croissant = $('lamCroissant');
+  var aboveR = $('lamAboveR'), belowR = $('lamBelowR');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = {
+    apart:    { btn: 'Fold them together to see your operations', caption: 'Your ERP on top, your floor underneath: a sheet of dough and a block of butter, and nothing linking them. Fold them together, or tap the bench to try it yourself.' },
+    messing:  { btn: 'Folding…', caption: 'Folding them together by hand. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Laminate it', caption: 'That’s your operations today: a big mess. Mashed together without lamination, your ERP and your floor turned into one greasy, streaky lump. It won’t fix itself, either.' },
+    dosing:   { btn: 'Rolling in…', caption: 'Here comes the roller.' },
+    dosed:    { btn: 'Fold it again', caption: 'In goes the roller. That’s SimpleGrid. It locks the butter in, so every layer stays its own. Now fold it again.' },
+    cleaning: { btn: 'Folding…', caption: 'Roll, fold, roll. Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, crisp, distinct layers, rolled into one golden croissant. Your ERP and your floor finally work together, and each keeps its own layer.' }
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: lam.getAttribute('aria-label'),
+    mess: 'The dough and the butter mashed together into one greasy, streaky lump, butter smeared through it and grease pooling on the bench.',
+    dosed: 'The same greasy lump, with a steel roller marked SimpleGrid resting on the bench above it.',
+    done: 'A golden croissant with crisp layers, in a bakery box labelled SimpleGrid, with the roller resting behind it.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
-
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
-  });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  /* Every timer, frame and animation a move starts belongs to one run, so
+     Start over can stop the lot. When an animation lands, its end state is
+     written onto the element, so the next move starts where this one left off. */
+  var run = 0, timers = [], anims = [], touched = [];
+  function touch(el){ if (touched.indexOf(el) < 0) touched.push(el); }
+  function wait(ms){ var r = run; return new Promise(function(done){ timers.push(setTimeout(function(){ if (r === run) done(); }, reduce ? 0 : ms)); }); }
+  function play(el, frames, ms, opt){
+    opt = opt || {};
+    var r = run, last = frames[frames.length - 1];
+    touch(el);
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (opt.delay || 0), easing: opt.easing || 'ease', fill: 'both' });
+    anims.push(a);
+    return a.finished.then(function(){
+      if (r !== run) return new Promise(function(){});
+      for (var k in last) if (k !== 'offset' && k !== 'easing') el.style[k] = last[k];
+      a.cancel();
+    }, function(){ return new Promise(function(){}); });
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
-  }
-
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
-  function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
+  // The roller is moved frame by frame, because the line it draws across the bench has to keep up with it.
+  function tween(ms, fn, ease){
+    var r = run;
+    return new Promise(function(done){
+      if (reduce){ fn(1); done(); return; }
+      var t0 = null;
+      function step(now){
+        if (r !== run) return;
+        if (t0 === null) t0 = now;
+        var t = Math.min(1, (now - t0)/ms);
+        fn(ease ? ease(t) : t);
+        if (t < 1) requestAnimationFrame(step); else done();
+      }
+      requestAnimationFrame(step);
     });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
   }
-  function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+  var inOut = function(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; };
+  // On one side of the roller's line is what it has rolled; on the other, what it hasn't reached yet.
+  function rollLine(y){
+    aboveR.setAttribute('height', Math.max(0, y));
+    belowR.setAttribute('y', y);
+    belowR.setAttribute('height', Math.max(0, 560 - y));
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
-  function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
-    });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+  function rollerAt(y, o){
+    touch(roller);
+    roller.style.transform = 'translateY(' + y.toFixed(1) + 'px)';
+    if (o != null) roller.style.opacity = o;
   }
+  var REST = 118, LAND = 175, LOW = 410;   // where the roller parks, lands, and stops rolling down
+
   function setCallouts(final){
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = final ? 'Your ERP' : 'The dough: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The butter: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: lam, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.lam',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Folded together, still not linked. One greasy lump, no layers, and it stays that way.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same lump, same mess. Now there’s a roller on the bench.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    // Folded by hand: the dough comes down on the butter and gets worked in, and they mash into a lump that stays.
+    mess: function(){
+      lam.classList.remove('snap');
+      return play(dough, [{ transform: 'none' }, { transform: 'translateY(168px) scale(1.06,.72)' }], 460, { easing: 'cubic-bezier(.55,0,.8,.45)' })
+      .then(function(){
+        return play(pre, [{ transform: 'none' }, { transform: 'scale(1.2,.66)' }, { transform: 'scale(.92,1.1)' }, { transform: 'scale(1.16,.74)' }], 460, { easing: 'ease-in-out' });
+      }).then(function(){
+        lam.classList.add('messy');
+        play(pre, [{ opacity: 1 }, { opacity: 0 }], 120);
+        play(smears, [{ transform: 'scale(.5)', opacity: 0 }, { transform: 'none', opacity: .75 }], 420, { delay: 80, easing: 'cubic-bezier(.2,.9,.3,1.2)' });
+        play(grease, [{ transform: 'scale(.35)', opacity: 0 }, { transform: 'none', opacity: .36 }], 700, { easing: 'cubic-bezier(.2,.8,.3,1)' });
+        return play(messG, [{ transform: 'scale(1.22,.7)', opacity: 0 }, { transform: 'scale(.94,1.07)', opacity: 1, offset: .55 }, { transform: 'none', opacity: 1 }], 560, { easing: 'ease-out' });
+      }).then(function(){ return wait(250); });
+    },
+    // The roller comes down on the bench, clear of the lump, wearing the mark.
+    dose: function(){
+      lam.classList.add('dosed');
+      return tween(620, function(t){
+        var p = t < .72 ? Math.pow(t/.72, 2) : 1 - .07*Math.sin(Math.PI*(t - .72)/.28);
+        rollerAt(LAND - 120*(1 - p), Math.min(1, t*2.5));
+      }).then(function(){ return wait(200); });
+    },
+    // Roll, fold, roll: the same lump, rolled out smooth with the butter locked in, folded over, and rolled
+    // again into crisp layers. Then it rolls up into a croissant.
+    clean: function(){
+      lam.classList.add('sheeted');
+      rollLine(LAND);
+      return tween(720, function(t){ var y = LAND + (LOW - LAND)*t; rollerAt(y, 1); rollLine(y); }, inOut)
+      .then(function(){
+        lam.classList.remove('messy');
+        rollLine(560);
+        return play(flap, [{ transform: 'none' }, { transform: 'scaleY(0)' }], 170, { easing: 'ease-in' });
+      }).then(function(){
+        lam.classList.add('flipped');
+        return play(flap, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(-1)' }], 170, { easing: 'ease-out' });
+      }).then(function(){
+        lam.classList.add('folded');
+        return wait(100);
+      }).then(function(){
+        lam.classList.add('slabbed');
+        rollLine(LOW);
+        return tween(720, function(t){ var y = LOW + (REST - LOW)*t; rollerAt(y, 1); rollLine(y); }, inOut);
+      }).then(function(){
+        lam.classList.remove('sheeted');
+        rollLine(0);
+        return play(glint, [{ transform: 'none' }, { transform: 'translateX(340px)' }], 500, { easing: 'ease-in-out' });
+      }).then(function(){ return wait(160); })
+      .then(function(){
+        lam.classList.add('baked');
+        return Promise.all([
+          play(slab, [{ transform: 'none', opacity: 1 }, { transform: 'scale(.35,.45) rotate(-14deg)', opacity: 0 }], 380, { easing: 'cubic-bezier(.5,0,.8,.4)' }),
+          play(croissant, [{ transform: 'scale(.3) rotate(24deg)', opacity: 0 }, { transform: 'scale(1.08) rotate(-3deg)', opacity: 1, offset: .65 }, { transform: 'none', opacity: 1 }], 600, { delay: 160, easing: 'ease-out' })
+        ]);
+      });
+    },
+    restore: function(){
+      run++;
+      timers.forEach(clearTimeout);
+      timers = [];
+      anims.forEach(function(a){ a.cancel(); });
+      anims = [];
+      lam.classList.add('snap');
+      lam.classList.remove('messy', 'dosed', 'sheeted', 'flipped', 'folded', 'slabbed', 'baked', 'is-done');
+      touched.forEach(function(el){ el.removeAttribute('style'); });
+      touched = [];
+      rollLine(0);
+      lam.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ lam.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      lam.classList.toggle('is-done', on);
+    }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+
+  // Tapping the bench does the same as the button.
+  lam.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ hero.classList.toggle('in-view', entries[0].isIntersecting); }).observe(hero);
+  } else hero.classList.add('in-view');
 })();
 </script>
 <script>

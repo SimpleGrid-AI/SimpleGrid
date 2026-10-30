@@ -218,18 +218,32 @@ h1 span{display:block;color:var(--hi)}
 .foot{fill:#2B2F33}
 .glide{fill:#F2C14E;stroke:#8A6A1F;stroke-width:1.5;transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);transition:transform .6s cubic-bezier(.3,1.3,.5,1)}
 .tbl.leveled .glide{transform:scaleY(1);visibility:visible}
-.rock{transform-origin:78px 452px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
-.tray{transition:transform .5s cubic-bezier(.5,0,.75,1),opacity .3s}
+/* The table rocks on its one good leg (the script moves it). */
+.rock{transform-origin:78px 452px}
 .tray-body{fill:#3D7FB9}
 .tray-lip{fill:#2E6696}
 .cup{fill:#fff}
 .cup-band{fill:var(--accent)}
-.spill{fill:#9CC9F0;opacity:0;transition:opacity .3s}
-.tbl.spilled .spill{opacity:.85}
+#cup{transform-origin:198.5px 190px}
+/* The spill. Juice, so it shows up on the blue, and it stays until it's wiped. */
+.juice{fill:#FF9F1C}
+.juice-hi{fill:#FFC766}
+.spill-bit{visibility:hidden;transform-box:fill-box}
+.tbl.spilled .spill-bit{visibility:visible}
+.top-spill{transform-origin:22% 50%}
+.tray-spill{transform-origin:100% 50%}
+.edge-drip,.stream{transform-origin:50% 0}
+.puddle{transform-origin:50% 50%}
+/* After the pour, the low corner keeps dripping. */
+.drip-fall{visibility:hidden;fill:#FF9F1C;transform-box:fill-box;transform-origin:50% 0}
+.tbl.dripping .drip-fall{visibility:visible;animation:drip-fall 1.5s ease-in infinite}
+@keyframes drip-fall{0%{transform:translateY(0) scale(0)}35%{transform:translateY(0) scale(1)}92%{opacity:1}100%{transform:translateY(240px) scale(.9);opacity:0}}
+.sponge{visibility:hidden}
 .shim{opacity:0;transition:opacity .3s,transform .5s cubic-bezier(.3,1.2,.5,1);transform:translateX(30px)}
 .tbl.shimmed .shim{opacity:1;transform:none}
-.tbl.leveled .shim{opacity:0;transform:translateX(30px)}
 .shim-paper{fill:#fff;stroke:#107C41;stroke-width:1.5}
+/* Start over puts everything back at once, rather than fading it back. */
+.tbl.snap,.tbl.snap *{transition:none!important;animation:none!important}
 .callout-top{top:27%}
 .callout-bottom{top:84%}
 .callout-gap{top:calc(76% - 15px)}
@@ -503,8 +517,13 @@ h1 span{display:block;color:var(--hi)}
             <!-- the floor, not quite flat -->
             <path class="ground" d="M0 452H200Q240 452 262 466Q282 476 312 474Q340 472 360 468V560H0Z"/>
             <path class="ground-line" d="M0 452H200Q240 452 262 466Q282 476 312 474Q340 472 360 468"/>
+            <!-- where the spill ends up: a puddle in the floor's low spot -->
+            <g class="spill-bit puddle" id="puddle"><path class="juice" d="M251 475C254 469 271 467 289 468C311 466 333 466 350 469C359 472 357 479 345 480C325 482 291 483 269 481C255 480 249 478 251 475Z"/><ellipse class="juice-hi" cx="294" cy="471" rx="18" ry="1.8"/><circle class="juice" cx="242" cy="477" r="2.6"/><circle class="juice" cx="236" cy="473" r="1.6"/><circle class="juice" cx="306" cy="486" r="1.8"/></g>
             <!-- the hack: a folded spreadsheet under the short leg -->
             <g class="shim"><path class="shim-paper" d="M268 466L304 464L306 476L270 478Z"/><text x="276" y="475" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="800" font-size="8" fill="#107C41">v8.xlsx</text></g>
+            <!-- off the low corner and down: first a pour, then a drip that doesn't stop -->
+            <path class="spill-bit stream juice" id="stream" d="M346 222C345 300 348 390 346 471H352C354 390 351 300 352 222Z"/>
+            <circle class="drip-fall" cx="349" cy="226" r="3.6"/>
             <g class="rock" id="rock">
               <!-- the table: top, frame, legs -->
               <rect class="top-edge" x="26" y="214" width="308" height="16" rx="5"/>
@@ -520,14 +539,24 @@ h1 span{display:block;color:var(--hi)}
               <g class="hang"><path class="hang-string" d="M180 240V266"/><g transform="translate(180 288) scale(.72)"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g><circle class="hang-hole" cx="180" cy="271" r="2.6"/></g>
               <!-- SimpleGrid: the leveling glide that reaches the real floor -->
               <g class="glide"><g transform="translate(282 463) scale(.55)"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+              <!-- the spill: along the top, over the front edge, round the low end -->
+              <path class="spill-bit top-spill juice" id="topSpill" d="M96 208C100 204 112 203 126 204C150 205 170 202 196 203C226 204 250 201 276 203C300 204 318 201 332 203C337 204 339 208 338 214C337 219 336 222 335 224H333C332 220 331 217 329 214H96Q93 211 96 208Z"/>
+              <g class="juice">
+                <path class="spill-bit edge-drip" d="M117 213V233a3 3.6 0 0 0 6 0V213Z"/>
+                <path class="spill-bit edge-drip" d="M167.5 213V226a2.5 3 0 0 0 5 0V213Z"/>
+                <path class="spill-bit edge-drip" d="M223 213V240a3 3.6 0 0 0 6 0V213Z"/>
+                <path class="spill-bit edge-drip" d="M277.5 213V230a2.5 3 0 0 0 5 0V213Z"/>
+                <path class="spill-bit edge-drip" d="M315 213V246a3 3.6 0 0 0 6 0V213Z"/>
+              </g>
               <!-- what gets set down on it -->
               <g class="tray" id="tray">
                 <rect class="tray-lip" x="110" y="196" width="140" height="10" rx="4"/>
                 <rect class="tray-body" x="116" y="190" width="128" height="10" rx="4"/>
-                <rect class="cup" x="196" y="150" width="30" height="40" rx="4"/>
-                <rect class="cup-band" x="196" y="164" width="30" height="8"/>
-                <path class="spill" d="M226 196C250 196 262 204 290 206L300 214H232Z"/>
+                <path class="spill-bit tray-spill juice" id="traySpill" d="M160 186C150 184 136 185 124 187C114 189 108 192 110 196H160Z"/>
+                <g id="cup"><path class="cup" d="M194 150H228L223.5 190H198.5Z"/><rect class="cup" x="192.5" y="148" width="37" height="5" rx="2.5"/><path class="cup-band" d="M195.7 164H226.3L225.5 172H196.5Z"/></g>
               </g>
+              <!-- and what wipes it up -->
+              <g class="sponge" id="sponge"><rect y="-12" width="30" height="12" rx="3" fill="#FFD34D"/><rect y="-15" width="30" height="5" rx="2" fill="#3E9B5B"/></g>
             </g>
           </svg>
         </div>
@@ -541,15 +570,21 @@ h1 span{display:block;color:var(--hi)}
             <h3><i></i><span id="bottomTitle">The floor: your floor</span></h3>
             <p id="bottomText">Not flat. Never has been.</p>
           </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
         </div>
       </div>
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Set the tray down</button>
+          <button class="go-btn" id="heroBtn" type="button">Set the tray down to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The top says level. The floor doesn’t agree. Set the tray down, or tap the table to lean on it yourself.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The top says level. The floor doesn’t agree, and nothing links them. Set the tray down, or tap the table and see for yourself.</p>
       </div>
     </div>
   </div>
@@ -868,74 +903,123 @@ SG.story = function(o){
 (function(){
   /* -------------------------------------------------------- The table
      The top is the ERP: level, the way the system sees it. The floor is the
-     floor, which is never level. With one leg short of it, the first real load
-     rocks the table. The usual fix is a folded spreadsheet under the leg.
-     SimpleGrid is the leveling glide: it reaches down to wherever the floor is. */
+     floor, which is never level. Set a tray down on a table with one leg short
+     of it and the table rocks, the cup goes over, and the juice runs along the
+     top, off the low end and into a puddle, where it stays, with a folded
+     spreadsheet under the leg. That's the mess. SimpleGrid is the leveling
+     glide that reaches down to wherever the floor is: level it, set the tray
+     down again, and it comes out clean. */
   var $ = function(id){ return document.getElementById(id); };
-  var hero = $('hero'), tbl = $('tbl'), rock = $('rock'), tray = $('tray');
-  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var hero = $('hero'), tbl = $('tbl'), rock = $('rock'), tray = $('tray'), cup = $('cup');
+  var topSpill = $('topSpill'), traySpill = $('traySpill'), stream = $('stream'), puddle = $('puddle'), sponge = $('sponge');
+  var drips = [].slice.call(tbl.querySelectorAll('.edge-drip'));
   var reduce = SG.reduce;
 
   var COPY = {
-    open:    { btn: 'Set the tray down', caption: 'The top says level. The floor doesn’t agree. Set the tray down, or tap the table to lean on it yourself.' },
-    setting: { btn: 'Setting it down…', caption: 'Looks steady, doesn’t it?' },
-    broken:  { btn: 'Level it', caption: 'And there it goes. That’s the usual ERP go-live: level in the demo, tipping by the first real load, and someone folds a spreadsheet under the leg.' },
-    leveling:{ btn: 'Leveling…', caption: 'Out comes the spreadsheet. Down comes the glide.' },
-    leveled: { btn: 'Set the tray down', caption: 'That’s SimpleGrid: it reaches all the way down to where the floor really is. Try the tray again.' },
-    done:    { btn: 'Why did the first one tip?', caption: 'One live record. Your ERP and your floor finally agree on what level means.' }
+    apart:    { btn: 'Set the tray down to see your operations', caption: 'The top says level. The floor doesn’t agree, and nothing links them. Set the tray down, or tap the table and see for yourself.' },
+    messing:  { btn: 'Setting it down…', caption: 'Setting it down, the way most ERP go-lives do: straight onto an uneven floor.' },
+    mess:     { btn: 'Level it', caption: 'That’s your operations today: a big mess. Juice on the table, juice on the floor, and a spreadsheet folded under the leg. It won’t wipe itself up, either.' },
+    dosing:   { btn: 'Leveling…', caption: 'Out comes the spreadsheet. Down comes the glide.' },
+    dosed:    { btn: 'Set it down again', caption: 'Down comes the glide. That’s SimpleGrid: it reaches all the way down to where the floor really is. Now set it down again.' },
+    cleaning: { btn: 'Setting it down…', caption: 'Watch the mess wipe away.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean table that sits level, tray and all. Your ERP and your floor finally agree on what level means.' }
   };
   var ARIA = {
-    open: tbl.getAttribute('aria-label'),
-    done: 'A table standing level on an uneven floor, its right leg on a leveling glide, with a tray set on it.'
+    apart: tbl.getAttribute('aria-label'),
+    mess: 'The table rocked and the cup tipped over. Juice runs along the tabletop and drips into a puddle on the floor, and a folded spreadsheet is jammed under the short leg.',
+    dosed: 'The table now stands level on a leveling glide, the spreadsheet gone. The juice is still on the tabletop and the floor.',
+    done: 'A clean table standing level on an uneven floor, its right leg on a leveling glide, a tray set flat on it and a SimpleGrid hang tag.'
   };
-  var phase = 'open', leveled = false, busy = false, timers = [];
-  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
-  var wait = function(ms){ return new Promise(function(r){ later(r, ms); }); };
-  function setPhase(next){
-    phase = next;
-    btn.textContent = COPY[next].btn;
-    btn.disabled = next === 'setting' || next === 'leveling';
-    caption.textContent = COPY[next].caption;
-  }
-  // Rest the table: on its short leg's corner, or level on the glide.
-  function lean(deg){ rock.style.transform = 'rotate(' + deg + 'deg)'; }
 
-  function setDown(){
-    busy = true;
-    setPhase('setting');
-    tray.style.transform = 'translateY(-150px)';
-    tray.style.opacity = '0';
-    tray.getBoundingClientRect();
-    tray.style.opacity = '1';
-    tray.style.transform = '';
-    return wait(560).then(function(){
-      if (leveled){ lean(0); return wait(500).then(function(){ busy = false; complete(); }); }
-      // The weight lands; the short leg drops to the floor and everything slides.
-      lean(3.4);
-      return wait(320).then(function(){
-        tbl.classList.add('spilled');
-        tray.style.transform = 'translate(46px,-6px) rotate(5deg)';
-        return wait(1100).then(function(){
-          tbl.classList.add('shimmed');
-          tbl.classList.remove('spilled');
-          tray.style.opacity = '0';
-          lean(0);
-          return wait(500).then(function(){
-            tray.style.transform = '';
-            busy = false;
-            setPhase('broken');
-          });
-        });
-      });
+  /* Every move is a few timed steps. Start over clears them all, and a step that
+     was cleared never runs, so nothing from an old run lands on a fresh start. */
+  var timers = [], anims = [];
+  function wait(ms){ return new Promise(function(done){ timers.push(setTimeout(done, reduce ? 0 : ms)); }); }
+  // Takes an element through keyframes and leaves it on the last one. Resolves as it lands.
+  function play(el, frames, opts){
+    var last = frames[frames.length - 1];
+    el.style.transform = last.transform;
+    if (last.opacity != null) el.style.opacity = last.opacity;
+    if (reduce || !el.animate) return Promise.resolve();
+    return new Promise(function(done){
+      var a = el.animate(frames, Object.assign({ fill: 'backwards' }, opts));
+      anims.push(a);
+      a.onfinish = function(){ done(); };
+    });
+  }
+  // At rest the table sits a little crooked on its short leg, with nothing on it.
+  function rest(){ rock.style.transform = 'rotate(1.6deg)'; tray.style.opacity = '0'; }
+
+  // Set the tray down on the short leg: it rocks, the cup goes over, and the juice goes everywhere.
+  function mess(){
+    return play(tray, [{ transform: 'translate(0px,-150px)', opacity: 0 }, { transform: 'translate(0px,0px)', opacity: 1 }], { duration: 450, easing: 'cubic-bezier(.5,0,.75,1)' }).then(function(){
+      play(rock, [
+        { transform: 'rotate(1.6deg)' }, { transform: 'rotate(3.6deg)', offset: .14 }, { transform: 'rotate(.6deg)', offset: .38 },
+        { transform: 'rotate(3.3deg)', offset: .6 }, { transform: 'rotate(1.5deg)', offset: .8 }, { transform: 'rotate(3.2deg)' }
+      ], { duration: 900, easing: 'ease-in-out' });
+      play(tray, [{ transform: 'translate(0px,0px)', opacity: 1 }, { transform: 'translate(14px,0px)', opacity: 1 }], { duration: 700, delay: 80, easing: 'cubic-bezier(.3,0,.3,1)' });
+      return wait(120);
+    }).then(function(){
+      return play(cup, [{ transform: 'rotate(0deg)' }, { transform: 'rotate(-96deg)', offset: .75 }, { transform: 'rotate(-84deg)' }], { duration: 380, easing: 'cubic-bezier(.5,0,.8,.5)' });
+    }).then(function(){
+      tbl.classList.add('spilled');
+      play(traySpill, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 300, easing: 'ease-out' });
+      play(topSpill, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 600, delay: 100, easing: 'cubic-bezier(.3,.4,.4,1)' });
+      drips.forEach(function(d, i){ play(d, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 380, delay: 350 + i*70, easing: 'ease-in' }); });
+      return wait(560);
+    }).then(function(){
+      // Off the low end and down to the floor,
+      return play(stream, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 380, easing: 'cubic-bezier(.5,0,.9,.6)' });
+    }).then(function(){
+      play(puddle, [{ transform: 'scale(0,.4)' }, { transform: 'scale(1,1)' }], { duration: 520, easing: 'cubic-bezier(.2,.7,.3,1)' });
+      return wait(420);
+    }).then(function(){
+      // till the pour runs out. Then it drips, and someone folds a spreadsheet under the leg.
+      stream.style.transformOrigin = '50% 100%';
+      return play(stream, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], { duration: 360, easing: 'ease-in' });
+    }).then(function(){
+      tbl.classList.add('dripping', 'shimmed');
+      return wait(500);
     });
   }
 
-  function level(){
-    busy = true;
-    setPhase('leveling');
-    leveled = true;
+  // Out comes the spreadsheet, down comes the glide, and the table stands level. The juice stays put.
+  function dose(){
+    tbl.classList.remove('dripping', 'shimmed');
     tbl.classList.add('leveled');
-    later(function(){ busy = false; setPhase('leveled'); }, 900);
+    return play(rock, [{ transform: 'rotate(3.2deg)' }, { transform: 'rotate(0deg)' }], { duration: 600, delay: 150, easing: 'cubic-bezier(.3,1.25,.5,1)' }).then(function(){ return wait(250); });
+  }
+
+  // Set it down again: tray off, top wiped, floor dried, and the tray goes back down flat.
+  function clean(){
+    return play(tray, [{ transform: 'translate(14px,0px)', opacity: 1 }, { transform: 'translate(14px,-120px)', opacity: 0 }], { duration: 380, easing: 'cubic-bezier(.4,0,.8,.4)' }).then(function(){
+      sponge.style.visibility = 'visible';
+      topSpill.style.transformOrigin = '100% 50%';
+      play(topSpill, [{ transform: 'scaleX(1)' }, { transform: 'scaleX(0)' }], { duration: 720, easing: 'linear' });
+      drips.forEach(function(d, i){ play(d, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], { duration: 200, delay: 60 + i*130, easing: 'ease-in' }); });
+      return play(sponge, [{ transform: 'translate(84px,206px)', opacity: 1 }, { transform: 'translate(318px,206px)', opacity: 1, offset: .9 }, { transform: 'translate(330px,206px)', opacity: 0 }], { duration: 800, easing: 'linear' });
+    }).then(function(){
+      sponge.style.visibility = '';
+      return play(puddle, [{ transform: 'scale(1,1)' }, { transform: 'scale(0,.4)' }], { duration: 380, easing: 'ease-in' });
+    }).then(function(){
+      tbl.classList.remove('spilled');
+      cup.style.transform = '';
+      return play(tray, [{ transform: 'translate(0px,-150px)', opacity: 0 }, { transform: 'translate(0px,0px)', opacity: 1 }], { duration: 480, easing: 'cubic-bezier(.3,0,.3,1)' });
+    }).then(function(){ return wait(250); });
+  }
+
+  function restore(){
+    timers.forEach(clearTimeout);
+    anims.forEach(function(a){ a.cancel(); });
+    timers = []; anims = [];
+    tbl.classList.add('snap');
+    tbl.classList.remove('spilled', 'dripping', 'shimmed', 'leveled', 'is-done');
+    [rock, tray, cup, topSpill, traySpill, stream, puddle, sponge].concat(drips).forEach(function(el){
+      el.style.transform = el.style.opacity = el.style.transformOrigin = el.style.visibility = '';
+    });
+    rest();
+    tbl.getBoundingClientRect();
+    tbl.classList.remove('snap');
   }
 
   function setCallouts(final){
@@ -946,46 +1030,23 @@ SG.story = function(o){
     $('bottomText').textContent = final ? 'Retired, with thanks. The shim too.' : 'Not flat. Never has been.';
   }
 
-  function complete(){
-    tbl.classList.add('is-done');
-    setCallouts(true);
-    setPhase('done');
-    tbl.setAttribute('aria-label', ARIA.done);
-    resetBtn.hidden = false;
-    SG.wipeTo(hero, tbl, 'b', '.tbl');
-  }
-
-  function startOver(){
-    timers.forEach(clearTimeout);
-    timers = [];
-    busy = false; leveled = false;
-    tbl.classList.remove('leveled', 'shimmed', 'spilled', 'is-done');
-    tray.style.transform = ''; tray.style.opacity = '';
-    lean(1.6);
-    setCallouts(false);
-    tbl.setAttribute('aria-label', ARIA.open);
-    setPhase('open');
-    resetBtn.hidden = true;
-    SG.wipeTo(hero, tbl, 'a', '.tbl');
-  }
-
-  btn.addEventListener('click', function(){
-    if (busy) return;
-    if (phase === 'open' || phase === 'leveled') setDown();
-    else if (phase === 'broken') level();
-    else if (phase === 'done') $('gap').scrollIntoView();
+  var story = SG.story({
+    hero: hero, obj: tbl, btn: $('heroBtn'), reset: $('heroReset'), caption: $('heroCaption'),
+    copy: COPY, aria: ARIA, skip: '.tbl',
+    ops: {
+      mess: ['Your operations, today', 'Set down on each other, still not linked. It rocked, it spilled, and the spill stays.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same table, same spill. Now the leg reaches the floor.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){
+      setCallouts(on);
+      tbl.classList.toggle('is-done', on);
+    }
   });
-  // Lean on it yourself: a tap rocks it while the leg is short.
-  tbl.addEventListener('click', function(){
-    if (busy) return;
-    if (phase === 'open'){ busy = true; lean(3.4); later(function(){ lean(1.6); busy = false; }, 300); }
-    else if (phase === 'broken') level();
-    else if (phase === 'leveled') setDown();
-  });
-  resetBtn.addEventListener('click', startOver);
-  // At rest, the table sits a little crooked on its short leg.
-  tray.style.opacity = '0';
-  lean(1.6);
+
+  // Or tap the table: it does what the button does.
+  tbl.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
+  rest();
 })();
 </script>
 <script>
