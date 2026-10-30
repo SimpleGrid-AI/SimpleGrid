@@ -85,6 +85,14 @@ one.
   new URL, `<meta http-equiv="refresh">`, and a `location.replace()`. There are
   ~59 of them; they are deliberate, not dead files. A stub must point at the
   page that replaces it — redirecting to something unrelated is a soft 404.
+- **One-reader pages are unlisted on purpose.** `/legacy-foods/` and the
+  `/<company>/<first-name>/` letters are `noindex` and are kept out of the nav,
+  the sitemap and `robots.txt` (listing them there would only advertise them).
+  The `<company>/<first-name>/` pages are built: edit
+  `scripts/letters/<company>.html` and `readers.json`, run
+  `node scripts/letters/build.js`, then `node scripts/letters/og.js` for the
+  link previews. Never edit a built page by hand; `build.js --check` fails
+  when one has drifted from its template.
 - **`_headers` does nothing today.** It is Cloudflare Pages / Netlify syntax,
   kept as a statement of intent. GitHub Pages ignores it, so no CSP or HSTS is
   actually in force.

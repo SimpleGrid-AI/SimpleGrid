@@ -1,0 +1,36 @@
+/* ------------------------------------------------------------- The ask */
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
+
+/* -------------------------------------------------------------- Footer */
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
+.foot .logo{width:150px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
+
+@media (max-width:980px){
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
+}
+@media (max-width:620px){
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
+}

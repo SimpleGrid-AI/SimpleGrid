@@ -1,0 +1,102 @@
+{
+  "_about": "Who gets a page. Each company folder is built from its template; each reader gets <company>/<slug>/. town goes in the mailto, where finishes '15 minutes at ...'.",
+  "doumak": {
+    "template": "doumak.html",
+    "readers": [
+      {
+        "slug": "jason",
+        "first": "Jason",
+        "full": "Jason Ramirez",
+        "town": "Bensenville",
+        "where": "your plant in Bensenville",
+        "ps": "P.S. Your website says the first s’more recipe was printed in 1927. Ours is the first one with an ERP in it."
+      },
+      {
+        "slug": "james",
+        "first": "James",
+        "full": "James Leonauskas",
+        "town": "Elk Grove Village",
+        "where": "your office in Elk Grove Village",
+        "ps": "P.S. I read your Mindsight interview. Redzone already counts the knife strokes live. SimpleGrid is how that count reaches the plan."
+      }
+    ]
+  },
+  "grecian-delight": {
+    "template": "grecian-delight.html",
+    "values": {
+      "ps": "P.S. Congratulations on the three FABI Awards this year. I’d love to hear how a FABI Favorite gets made."
+    },
+    "readers": [
+      {
+        "slug": "jaime",
+        "first": "Jaime",
+        "full": "Jaime Hernandez",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "john",
+        "first": "John",
+        "full": "John Polson",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      }
+    ]
+  },
+  "creative-werks": {
+    "template": "creative-werks.html",
+    "values": {
+      "ps": "P.S. I read in Food Chain that you’re aiming to go live on a new ERP in 2027. SimpleGrid doesn’t replace it. It’s the link between it and your floor."
+    },
+    "readers": [
+      {
+        "slug": "jeff",
+        "first": "Jeff",
+        "full": "Jeff Sanko",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "michael",
+        "first": "Michael",
+        "full": "Michael Ventrella",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      }
+    ]
+  },
+  "brett-anthony-foods": {
+    "template": "brett-anthony-foods.html",
+    "readers": [
+      {
+        "slug": "ethan",
+        "first": "Ethan",
+        "full": "Ethan Stein",
+        "town": "Elk Grove Village",
+        "where": "your kitchen in Elk Grove Village",
+        "ps": "P.S. Your site says 99.8% fill rate. Whoever keeps that number up deserves a coffee. I’m buying."
+      }
+    ]
+  },
+  "wiegel": {
+    "template": "wiegel.html",
+    "readers": [
+      {
+        "slug": "aaron",
+        "first": "Aaron",
+        "full": "Aaron Wiegel",
+        "town": "Wood Dale",
+        "where": "your shop in Wood Dale",
+        "ps": "P.S. I saw the new 24-foot in-line washer on LinkedIn. I’d love to see it in person."
+      },
+      {
+        "slug": "erica",
+        "first": "Erica",
+        "full": "Erica Wiegel",
+        "town": "Wood Dale",
+        "where": "your shop in Wood Dale",
+        "ps": "P.S. An NIU engineering Alumnus of the Year will spot every flaw in this page. Please tell me what they are."
+      }
+    ]
+  }
+}

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keep it in register, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who runs progressive dies for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/wiegel.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#EDEDED">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, keep it in register.">
+<meta property="og:description" content="SimpleGrid, explained to someone who runs progressive dies for a living.">
+<meta property="og:image" content="https://simplegrid.ai/wiegel/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A steel strip running through a progressive die, beside the words: {{first}}, keep it in register.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, keep it in register.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who runs progressive dies for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/wiegel/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/saira-semi-condensed-800-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* Wiegel's headings are Saira Semi Condensed, so ours are too. Self-hosted, like every face on the site. */
+@font-face{font-family:'Saira Semi Condensed';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/saira-semi-condensed-800-latin.woff2') format('woff2')}
+
+:root{
+  /* Wiegel's own colors carry the page: charcoal type, red for anything you press, light gray behind. */
+  --brand:#4F4E4E;
+  --brand-press:#3A3939;
+  --brand-deep:#262525;
+  --accent:#D13028;
+  --accent-soft:#F6D5D3;
+  --accent-edge:#8A120C;
+  --on-brand:#fff;
+  --on-brand-soft:rgba(255,255,255,.86);
+  --on-accent:#fff;
+  --on-accent-soft:rgba(255,255,255,.9);
+  --tint:#EDEDED;
+  --pale:#FFFFFF;
+  --ink:#1A1A1A;
+  --alert:#D13028;
+  --marker:#F6D5D3;
+  --h2-hi:#D13028;
+  --display:'Saira Semi Condensed','Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --dw:800;
+  /* Steel, not brand: only where the strip shows up. */
+  --steel:#C9D0D6;
+  --steel-hi:#EEF1F4;
+  --steel-lo:#9AA4AE;
+}
+
+/* The hero starts the way wiegel.com looks, light gray with charcoal and red,
+   and ends in Wiegel red. */
+.hero,.hero-wipe{
+  --field:#EDEDED;--on:#3A3939;--on-soft:rgba(40,39,39,.8);--hi:#D13028;
+  --btn-bg:#D13028;--btn-fg:#fff;--btn-edge:#8A120C;--focus:#D13028;
+}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:#D13028;--on:#fff;--on-soft:rgba(255,255,255,.9);--hi:#FFD9D5;
+  --btn-bg:#3A3939;--btn-fg:#fff;--btn-edge:#1A1919;--focus:#fff;
+}
+h1{letter-spacing:-.01em;line-height:1.08}
+h2{letter-spacing:-.005em}
+.back{--back-hi:#FF8A80}
+.meet{--meet-ink:#fff;--meet-btn:#3A3939}
+
+/* ------------------------------------------------------------ The die */
+.hero-art{--art-w:min(330px,28vw,calc((100vh - 130px)/1.7))}
+.die{
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:340/580;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;border-radius:14px;
+}
+.die svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.die-block{fill:#4F4E4E}
+.bolts circle{fill:#8C8B8B}
+.steel{fill:url(#steel)}
+.st-lo{stop-color:var(--steel-lo)}
+.st-hi{stop-color:var(--steel-hi)}
+.st-mid{stop-color:var(--steel)}
+.hole{fill:#2E2D2D}
+.ram{fill:#000;opacity:0;transition:opacity .08s;pointer-events:none}
+.die.hit .ram{opacity:.2}
+.pilot-pin circle{fill:#D13028;stroke:#fff;stroke-width:1.5}
+.tote{fill:rgba(0,0,0,.22)}
+.feeder rect{fill:#3A3939}
+.feeder circle{fill:#8C8B8B}
+.die.hit .press-shake{animation:thunk .2s ease-out}
+@keyframes thunk{30%{transform:translateY(3px)}60%{transform:translateY(-1px)}}
+.strip-move{transition:transform var(--feed,.32s) cubic-bezier(.4,0,.2,1)}
+.print{fill:none;stroke:#3A3939;stroke-width:1.6;stroke-dasharray:5 4}
+.pilot-pin{opacity:0;transform:translateY(-26px);transition:opacity .3s,transform .45s cubic-bezier(.2,.9,.3,1.3)}
+.die.piloted .pilot-pin{opacity:1;transform:none}
+.part-steel{fill:url(#steel);stroke:rgba(0,0,0,.35)}
+.part{transition:transform .55s cubic-bezier(.5,0,.75,.2),opacity .2s .5s}
+.tally{font:800 13px/1 var(--body);fill:var(--on-soft);letter-spacing:.06em}
+.tally-n{font:900 20px/1 var(--display);fill:var(--on)}
+.callout-print{top:13%}
+.callout-strip{top:36%}
+.callout-gap{top:calc(67.2% - 15px)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.27)}
+.callout-print h3 i{background:none;box-shadow:none;border:1.6px dashed var(--on)}
+.callout-strip h3 i{background:var(--steel);box-shadow:0 0 0 1.5px #8C8B8B}
+.hero-art .callouts{height:calc(var(--art-w)*1.7)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(150px,42vw,280px)}
+}
+
+<!--#include stage.css-->
+<!--#include report.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Made to print for {{full}},</span> <span>Wiegel. Run quantity: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you run progressive dies for a living. <span>So here’s our software, explained as one.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="die hero-obj" id="die" role="img" aria-label="A steel strip running down through a three-station progressive die, with no pilots to keep it in register.">
+          <svg viewBox="0 0 340 580" aria-hidden="true">
+            <defs>
+              <linearGradient id="steel" x1="0" x2="1"><stop offset="0" class="st-lo"/><stop offset=".18" class="st-hi"/><stop offset=".5" class="st-mid"/><stop offset=".82" class="st-hi"/><stop offset="1" class="st-lo"/></linearGradient>
+              <clipPath id="stripClip"><rect x="90" y="10" width="160" height="462"/></clipPath>
+            </defs>
+            <g class="press-shake">
+              <rect class="die-block" x="64" y="38" width="212" height="426" rx="14"/>
+              <g class="bolts"><circle cx="78" cy="52" r="4"/><circle cx="262" cy="52" r="4"/><circle cx="78" cy="450" r="4"/><circle cx="262" cy="450" r="4"/></g>
+              <g clip-path="url(#stripClip)">
+                <rect class="steel" x="90" y="10" width="160" height="462"/>
+                <g id="strip"></g>
+              </g>
+              <g class="feeder"><rect x="76" y="4" width="188" height="30" rx="9"/><circle cx="92" cy="19" r="5"/><circle cx="248" cy="19" r="5"/></g>
+              <g id="print">
+                <circle class="print" cx="170" cy="110" r="17"/>
+                <circle class="print" cx="100" cy="110" r="5"/>
+                <circle class="print" cx="240" cy="110" r="5"/>
+                <circle class="print" cx="170" cy="250" r="17"/>
+                <rect class="print" x="110" y="338" width="120" height="104" rx="14"/>
+                <circle class="print" cx="170" cy="390" r="17"/>
+              </g>
+              <g class="pilot-pin">
+                <circle cx="100" cy="250" r="5.6"/><circle cx="240" cy="250" r="5.6"/>
+                <circle cx="100" cy="390" r="5.6"/><circle cx="240" cy="390" r="5.6"/>
+              </g>
+              <rect class="ram" x="64" y="38" width="212" height="426" rx="14"/>
+            </g>
+            <g id="parts"></g>
+            <g transform="translate(0 488)">
+              <path class="tote" d="M36 0h128l-7 86H43z"/>
+              <path class="tote" d="M176 0h128l-7 86H183z"/>
+              <text class="tally" x="50" y="22">GOOD</text>
+              <text class="tally" x="190" y="22">SCRAP</text>
+              <text class="tally-n" id="goodN" x="150" y="24" text-anchor="end">0</text>
+              <text class="tally-n" id="scrapN" x="290" y="24" text-anchor="end">0</text>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-print">
+            <h3><i></i><span id="printTitle">The print: your ERP</span></h3>
+            <p id="printText">Where the system says everything is.</p>
+          </div>
+          <div class="callout callout-strip">
+            <h3><i></i><span id="stripTitle">The strip: your floor</span></h3>
+            <p id="stripText">Where everything really is, on Excel, whiteboards and phones.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Run the press</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Nothing keeps these two in register. Run the press, or tap the die to hit it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>A print can say what it likes. <span>The inspection report has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include report.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not metal: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Material:</strong> Your orders, your routings, your people’s own words, what actually happened on the floor.</p>
+        <p><strong>Tolerance:</strong> Zero, between what your ERP says and what your floor did.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">NEXT PM: BEFORE YOUR NEXT ERP RENEWAL<br>HEAT NO. 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about Wiegel comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll re-tool. The rest of the shop is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* --------------------------------------------------------- The die
+     Three stations, one pitch apart, with the strip feeding down:
+       1 pierces the center hole and both pilot holes
+       2 is where the pilots ride, once there are pilots
+       3 blanks the part out, and it drops into a tote
+     Every feed slips a little, and the slip grows. Nothing pulls the
+     strip back until the pilots go in. Units are thousandths of an inch. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), die = $('die'), strip = $('strip'), partsG = $('parts');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var PITCH = 140, S1 = 110, S3 = 390, TOL = 5, SCALE = 1.5;
+  var SLIPS = [.5, 1.2, 2.4, 3.8, 5.4, 7.2, 9.2];
+
+  var COPY = {
+    start:   { btn: 'Run the press', caption: 'Nothing keeps these two in register. Run the press, or tap the die to hit it yourself.' },
+    running: { btn: 'Running…', caption: 'Looks fine, doesn’t it?' },
+    broken:  { btn: 'Add the pilots', caption: 'And there it goes. That’s the usual ERP go-live: lined up on day one, a little further off every day, until the plant is back on Excel.' },
+    piloted: { btn: 'Run the press', caption: 'In go the pilots. That’s SimpleGrid. Now run it again.' },
+    true_:   { btn: 'Running…', caption: 'Every hit, the pilots pull the strip back where the print says it should be.' },
+    done:    { btn: 'Why did the first run drift?', caption: 'One live record. Your ERP and your floor stay in register, every stroke.' }
+  };
+
+  var phase = 'start', busy = false, stroke = 0, good = 0, scrap = 0;
+  // Strip features in strip coordinates: holes (with their pilots) and blank cut-outs.
+  var offset = 0, feats = [];
+
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'running' || next === 'true_';
+    caption.textContent = COPY[next].caption;
+  }
+
+  function fresh(){
+    offset = 0; stroke = 0; good = 0; scrap = 0;
+    // Loaded and lined up: day one. A hole waits at stations 2 and 3.
+    feats = [{ y: S1 + PITCH, kind: 'hole' }, { y: S1 + 2*PITCH, kind: 'hole' }, { y: S1 + 2*PITCH + PITCH, kind: 'blank' }];
+    $('goodN').textContent = '0';
+    $('scrapN').textContent = '0';
+    partsG.innerHTML = '';
+    draw(0);
+  }
+
+  function draw(shift){
+    var s = '<g class="strip-move" style="transform:translateY(' + shift.toFixed(2) + 'px)">';
+    feats.forEach(function(f){
+      var y = f.y + offset;
+      if (y < -40 || y > 520) return;
+      if (f.kind === 'hole'){
+        s += '<circle class="hole" cx="170" cy="' + y + '" r="17"/>';
+      } else {
+        s += '<rect class="hole" x="110" y="' + (y - 52) + '" width="120" height="104" rx="14"/>';
+      }
+      s += '<circle class="hole" cx="100" cy="' + y + '" r="5"/><circle class="hole" cx="240" cy="' + y + '" r="5"/>';
+    });
+    s += '</g>';
+    strip.innerHTML = s;
+  }
+
+  function dropPart(err){
+    var ok = Math.abs(err) <= TOL;
+    var pile = ok ? good : scrap;
+    var tx = (ok ? 100 : 240) + (pile % 2 ? 9 : -9), ty = 556 - Math.min(pile, 5)*5;
+    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'part');
+    g.innerHTML = '<rect class="part-steel" x="-60" y="-52" width="120" height="104" rx="14"/>' +
+      '<circle class="hole" cx="0" cy="' + (err*SCALE).toFixed(2) + '" r="17"/>';
+    g.style.transform = 'translate(170px,' + S3 + 'px)';
+    partsG.appendChild(g);
+    if (ok) good++; else scrap++;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      g.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(.34) rotate(' + (ok ? -8 : 14) + 'deg)';
+    }); });
+    setTimeout(function(){
+      $('goodN').textContent = good;
+      $('scrapN').textContent = scrap;
+      // Keep the totes from filling with nodes on a long session.
+      var all = partsG.querySelectorAll('.part');
+      if (all.length > 12) all[0].remove();
+    }, reduce ? 0 : 520);
+    return ok;
+  }
+
+  var wait = function(ms){ return new Promise(function(r){ setTimeout(r, reduce ? 0 : ms); }); };
+
+  // One hit: punch, then feed (and, with pilots, register).
+  function hit(){
+    var piloted = die.classList.contains('piloted');
+    die.classList.add('hit');
+    // Station 3 blanks whatever hole sits there; its error is how far the hole is from the print.
+    var ok = true;
+    var at3 = feats.filter(function(f){ return f.kind === 'hole' && Math.abs(f.y + offset - S3) < PITCH/2; })[0];
+    if (at3){
+      var err = (at3.y + offset - S3)/SCALE;
+      at3.kind = 'blank';
+      at3.y = S3 - offset;
+      ok = dropPart(err);
+    }
+    feats.push({ y: S1 - offset, kind: 'hole' });
+    draw(0);
+    return wait(130).then(function(){
+      die.classList.remove('hit');
+      var slip = (piloted ? SLIPS[Math.min(stroke, SLIPS.length - 1)]*.6 : SLIPS[Math.min(stroke, SLIPS.length - 1)])*SCALE;
+      stroke++;
+      draw(0);
+      // Feed: everything moves one pitch, plus the slip.
+      var g = strip.firstChild;
+      g.getBoundingClientRect();
+      g.style.transform = 'translateY(' + (PITCH + slip) + 'px)';
+      return wait(330).then(function(){
+        offset += PITCH + slip;
+        feats = feats.filter(function(f){ return f.y + offset < 560; });
+        draw(0);
+        if (!piloted) return ok;
+        // The pilots find their holes and pull the strip back where the print says.
+        return wait(90).then(function(){
+          var g2 = strip.firstChild;
+          g2.style.transition = 'transform .16s cubic-bezier(.3,1.4,.5,1)';
+          g2.getBoundingClientRect();
+          g2.style.transform = 'translateY(' + (-slip) + 'px)';
+          return wait(180).then(function(){ offset -= slip; draw(0); return ok; });
+        });
+      });
+    });
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('printTitle').textContent = final ? 'Your ERP' : 'The print: your ERP';
+    $('printText').textContent = final ? 'Still keeping the books.' : 'Where the system says everything is.';
+    $('stripTitle').textContent = final ? 'Your spreadsheets' : 'The strip: your floor';
+    $('stripText').textContent = final ? 'Retired, with thanks.' : 'Where everything really is, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    setCallouts(true);
+    setPhase('done');
+    resetBtn.hidden = false;
+    die.setAttribute('aria-label', ARIA.done);
+    SG.wipeTo(hero, die, 'b', '.die');
+  }
+
+  // What a hit means depends on where the story is. Manual taps and the button share it.
+  function after(ok){
+    var piloted = die.classList.contains('piloted');
+    if (!piloted){
+      if (ok && phase === 'start' && good === 2) caption.textContent = COPY.running.caption;
+      if (!ok && (phase === 'start' || phase === 'running')){
+        if (phase === 'start') setPhase('broken');
+        else caption.textContent = 'And there it goes.';
+      }
+    } else if (phase !== 'done' && good >= 5){
+      complete();
+      return true;
+    }
+    return false;
+  }
+
+  function run(times){
+    busy = true;
+    var i = 0;
+    function next(){
+      if (i++ >= times || phase === 'done'){ busy = false; return Promise.resolve(); }
+      return hit().then(function(ok){
+        if (after(ok)){ busy = false; return; }
+        return wait(140).then(next);
+      });
+    }
+    return next();
+  }
+
+  var ARIA = {
+    start: die.getAttribute('aria-label'),
+    done: 'A steel strip running down through a progressive die, with pilots holding it in register and every part landing in the good tote.'
+  };
+
+  btn.addEventListener('click', function(){
+    if (busy) return;
+    if (phase === 'start'){
+      setPhase('running');
+      run(7).then(function(){ if (phase === 'running') setPhase('broken'); });
+    } else if (phase === 'broken'){
+      die.classList.add('piloted');
+      fresh();
+      setPhase('piloted');
+    } else if (phase === 'piloted'){
+      setPhase('true_');
+      run(8);
+    } else if (phase === 'done'){
+      $('gap').scrollIntoView();
+    }
+  });
+  // Or hit it yourself, one stroke at a time.
+  die.addEventListener('click', function(){
+    if (busy || phase === 'done' || phase === 'running' || phase === 'true_') return;
+    busy = true;
+    hit().then(function(ok){ busy = false; after(ok); });
+  });
+  resetBtn.addEventListener('click', function(){
+    if (busy) return;
+    die.classList.remove('piloted');
+    die.setAttribute('aria-label', ARIA.start);
+    fresh();
+    setCallouts(false);
+    setPhase('start');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, die, 'a', '.die');
+  });
+
+  fresh();
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Copper coil', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Press 6 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Coil truck: 8,000 lb short',
+    'Which die is in?',
+    'Re: Re: Fwd: Re: which lot?',
+    'QC hold: lot 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Press 4 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Coil PO is ready for your OK',
+    'QC: Lot 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

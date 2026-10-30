@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spin the cone, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes gyro cones for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/grecian-delight.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#00618F">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, spin the cone.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes gyro cones for a living.">
+<meta property="og:image" content="https://simplegrid.ai/grecian-delight/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A gyro cone in two halves on a vertical broiler, beside the words: {{first}}, you make gyro cones for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, spin the cone.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes gyro cones for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/grecian-delight/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+:root{
+  /* Grecian Delight | Kronos colors carry the page: their blue, deepened so white type reads on it,
+     their orange for the end state, their red for the alarm. Their headings are a heavy sans, so ours are too. */
+  --brand:#00618F;
+  --brand-press:#004C70;
+  --brand-deep:#00314A;
+  --accent:#FFA400;
+  --accent-soft:#FFE2AD;
+  --accent-edge:#C27C00;
+  --on-brand:#fff;
+  --on-brand-soft:rgba(255,255,255,.86);
+  --on-accent:#1A1A1A;
+  --on-accent-soft:rgba(26,26,26,.8);
+  --tint:#E3F4FB;
+  --pale:#FAFAFA;
+  --ink:#1A1A1A;
+  --alert:#E1251B;
+  --marker:#FFE2AD;
+  --h2-hi:#E1251B;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+h1{font-weight:900;letter-spacing:-.022em}
+h2{letter-spacing:-.02em}
+
+/* ------------------------------------------------- The vertical broiler */
+.hero-art{--art-w:min(330px,28vw,calc((100vh - 130px)/1.6))}
+.broiler{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.broiler:active{cursor:grabbing}
+.broiler svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.burner{fill:color-mix(in srgb,var(--field) 55%,#000)}
+.burner-bar{fill:#FF7A1A;opacity:.35;transition:opacity .6s}
+.broiler.hot .burner-bar{opacity:.95;animation:heat 1.2s ease-in-out infinite alternate}
+@keyframes heat{to{opacity:.7}}
+.heat-glow{fill:url(#heatGlow);opacity:0;transition:opacity .8s}
+.broiler.hot .heat-glow{opacity:.7}
+.meat{fill:#9A5532}
+.layer-line{stroke:rgba(60,22,8,.32);stroke-width:1.4;fill:none}
+.shade{fill:url(#round)}
+.char{fill:url(#charGrad);opacity:0;transition:opacity 2.4s ease}
+.broiler.browned .char{opacity:1}
+.steel-part{fill:#B9C3CC}
+.steel-dark{fill:#7F8B96}
+.half{transition:transform .8s cubic-bezier(.55,0,.9,.5),opacity .45s .4s}
+.half-top.fall{transform:translate(96px,250px) rotate(38deg);opacity:0}
+.half-top.wobble{animation:wobble .26s ease-in-out infinite alternate}
+@keyframes wobble{from{transform:rotate(-2.4deg)}to{transform:rotate(2.4deg)}}
+.half-top{transform-box:fill-box;transform-origin:50% 100%}
+.spit{transform:translateY(-330px);opacity:0;transition:transform .7s cubic-bezier(.4,0,.2,1),opacity .2s}
+.broiler.spitted .spit{transform:none;opacity:1}
+.seam{stroke:rgba(40,12,0,.55);stroke-width:2.5;transition:opacity .8s}
+.broiler.is-done .seam{opacity:0}
+.flag{opacity:0;transform:translateY(10px);transition:opacity .4s .3s,transform .5s cubic-bezier(.2,.9,.3,1.3) .3s}
+.broiler.is-done .flag{opacity:1;transform:none}
+.flag-cloth{fill:#fff}
+.flag-ink{stroke:var(--brand)}
+.flag-text{fill:var(--brand)}
+.callout-top{top:20%}
+.callout-bottom{top:60%}
+.callout-gap{top:calc(48.6% - 15px)}
+.callout-top h3 i,.callout-bottom h3 i{background:#9A5532}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.27)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include label.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Hand-stacked for {{full}},</span> <span>Grecian Delight | Kronos. Cone count: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make gyro cones for a living. <span>So here’s our software, explained as one.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="broiler hero-obj" id="broiler" role="img" aria-label="A gyro cone stacked in two halves on a vertical broiler, with no spit through the middle.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <linearGradient id="round" x1="0" x2="1">
+                <stop offset="0" stop-color="#2A0E02" stop-opacity=".62"/>
+                <stop offset=".22" stop-color="#2A0E02" stop-opacity=".12"/>
+                <stop offset=".42" stop-color="#FFE0B8" stop-opacity=".16"/>
+                <stop offset=".7" stop-color="#2A0E02" stop-opacity=".08"/>
+                <stop offset="1" stop-color="#2A0E02" stop-opacity=".66"/>
+              </linearGradient>
+              <linearGradient id="charGrad" x1="0" x2="1">
+                <stop offset="0" stop-color="#5A2A10" stop-opacity=".85"/>
+                <stop offset=".5" stop-color="#7A3A16" stop-opacity=".25"/>
+                <stop offset="1" stop-color="#5A2A10" stop-opacity=".6"/>
+              </linearGradient>
+              <radialGradient id="heatGlow"><stop offset="0" stop-color="#FF8A2A" stop-opacity=".55"/><stop offset="1" stop-color="#FF8A2A" stop-opacity="0"/></radialGradient>
+              <pattern id="texTop" width="120" height="26" patternUnits="userSpaceOnUse">
+                <rect width="120" height="26" fill="#A65B33"/>
+                <ellipse cx="14" cy="7" rx="13" ry="4.5" fill="#7A3A18" opacity=".65"/>
+                <ellipse cx="58" cy="18" rx="17" ry="5" fill="#7A3A18" opacity=".55"/>
+                <ellipse cx="98" cy="8" rx="11" ry="4" fill="#6B3014" opacity=".6"/>
+                <ellipse cx="36" cy="20" rx="7" ry="3" fill="#D08A5C" opacity=".55"/>
+                <ellipse cx="80" cy="5" rx="9" ry="2.6" fill="#D08A5C" opacity=".5"/>
+                <ellipse cx="112" cy="20" rx="6" ry="2.6" fill="#D08A5C" opacity=".45"/>
+              </pattern>
+              <pattern id="texBottom" width="120" height="26" patternUnits="userSpaceOnUse">
+                <rect width="120" height="26" fill="#A65B33"/>
+                <ellipse cx="14" cy="7" rx="13" ry="4.5" fill="#7A3A18" opacity=".65"/>
+                <ellipse cx="58" cy="18" rx="17" ry="5" fill="#7A3A18" opacity=".55"/>
+                <ellipse cx="98" cy="8" rx="11" ry="4" fill="#6B3014" opacity=".6"/>
+                <ellipse cx="36" cy="20" rx="7" ry="3" fill="#D08A5C" opacity=".55"/>
+                <ellipse cx="80" cy="5" rx="9" ry="2.6" fill="#D08A5C" opacity=".5"/>
+                <ellipse cx="112" cy="20" rx="6" ry="2.6" fill="#D08A5C" opacity=".45"/>
+              </pattern>
+              <clipPath id="clipTop"><path d="M84 92Q180 78 276 92L262 276Q180 286 98 276Z"/></clipPath>
+              <clipPath id="clipBottom"><path d="M98 273Q180 283 262 273L242 468Q180 478 118 468Z"/></clipPath>
+            </defs>
+
+            <!-- the broiler: heat panel, drip tray, motor -->
+            <rect class="burner" x="18" y="74" width="40" height="404" rx="10"/>
+            <g><rect class="burner-bar" x="26" y="96" width="24" height="10" rx="5"/><rect class="burner-bar" x="26" y="166" width="24" height="10" rx="5"/><rect class="burner-bar" x="26" y="236" width="24" height="10" rx="5"/><rect class="burner-bar" x="26" y="306" width="24" height="10" rx="5"/><rect class="burner-bar" x="26" y="376" width="24" height="10" rx="5"/><rect class="burner-bar" x="26" y="446" width="24" height="10" rx="5"/></g>
+            <ellipse class="heat-glow" cx="38" cy="276" rx="120" ry="220"/>
+            <rect class="steel-dark" x="172" y="470" width="16" height="22"/>
+            <ellipse class="steel-part" cx="180" cy="494" rx="112" ry="15"/>
+            <ellipse class="steel-dark" cx="180" cy="491" rx="96" ry="9"/>
+            <rect class="steel-dark" x="138" y="506" width="84" height="38" rx="8"/>
+            <rect class="steel-part" x="146" y="514" width="68" height="6" rx="3"/>
+
+            <!-- the floor: the bottom half, on the motor -->
+            <g class="half half-bottom" id="bottomHalf">
+              <g clip-path="url(#clipBottom)">
+                <rect x="90" y="270" width="180" height="212" fill="url(#texBottom)"/>
+                <path class="layer-line" d="M98 300Q180 309 262 300M100 326Q180 335 260 326M102 352Q180 361 258 352M104 378Q180 387 256 378M106 404Q180 413 254 404M108 430Q180 439 252 430M110 454Q180 463 250 454"/>
+                <rect class="char" x="90" y="270" width="180" height="212"/>
+                <rect class="shade" x="90" y="270" width="180" height="212"/>
+              </g>
+            </g>
+            <!-- the ERP: the top half, just sitting there -->
+            <g class="half half-top" id="topHalf">
+              <g clip-path="url(#clipTop)">
+                <rect x="80" y="70" width="200" height="212" fill="url(#texTop)"/>
+                <path class="layer-line" d="M86 118Q180 128 274 118M88 144Q180 154 272 144M90 170Q180 180 270 170M92 196Q180 206 268 196M94 222Q180 232 266 222M96 248Q180 258 264 248"/>
+                <rect class="char" x="80" y="70" width="200" height="212"/>
+                <rect class="shade" x="80" y="70" width="200" height="212"/>
+              </g>
+              <ellipse cx="180" cy="90" rx="96" ry="10" fill="#B86A42"/>
+              <ellipse cx="180" cy="90" rx="80" ry="6" fill="#C98458" opacity=".7"/>
+            </g>
+            <path class="seam" d="M98 275Q180 285 262 275"/>
+
+            <!-- SimpleGrid: the spit, through every layer -->
+            <g class="spit">
+              <rect class="steel-part" x="176" y="28" width="8" height="68" rx="2"/>
+              <rect class="steel-dark" x="158" y="80" width="44" height="7" rx="3"/>
+              <circle class="steel-part" cx="180" cy="28" r="7"/>
+              <g class="flag">
+                <path class="flag-cloth" d="M184 30h110l-12 15 12 15h-110z"/>
+                <g class="flag-ink" transform="translate(190 35.5) scale(.45)" fill="none"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="4"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g>
+                <text class="flag-text" x="212" y="50" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="900" font-size="12.5">SimpleGrid</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The top: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The bottom: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Spin it</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Two halves, one on the other, nothing through the middle. Spin it, or grab the cone and turn it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of the case can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include facts.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about Grecian Delight | Kronos comes from your website and LinkedIn. If we got something wrong, tell us and we’ll restack. The rest of the menu is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* ------------------------------------------------- The gyro cone
+     Two halves, stacked: the top is the ERP, the bottom is the floor. The
+     motor turns the bottom; with nothing through the middle, the top doesn't
+     follow, wobbles, and comes off. The spit is SimpleGrid: one rod through
+     every layer, and the whole cone turns as one. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), broiler = $('broiler'), topHalf = $('topHalf');
+  var texTop = $('texTop'), texBottom = $('texBottom');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    loose:   { btn: 'Spin it', caption: 'Two halves, one on the other, nothing through the middle. Spin it, or grab the cone and turn it yourself.' },
+    turning: { btn: 'Spinning…', caption: 'Your floor turns all day. Your ERP doesn’t.' },
+    broken:  { btn: 'Add the spit', caption: 'And there it goes. That’s the usual ERP go-live: stacked up for the launch, and months later the plant is back on Excel.' },
+    spitted: { btn: 'Spin it', caption: 'In goes the spit. That’s SimpleGrid, right through every layer. Now spin it.' },
+    cooking: { btn: 'Spinning…', caption: 'Turning together, cooking evenly.' },
+    done:    { btn: 'Why did the first one fall off?', caption: 'One live record. Your ERP and your floor finally turn together.' }
+  };
+  var ARIA = {
+    loose: broiler.getAttribute('aria-label'),
+    done: 'A whole gyro cone turning on its spit, browned evenly, with a SimpleGrid flag on top.'
+  };
+
+  var phase = 'loose', spitted = false;
+  var spin = { bottom: 0, top: 0, speed: 0, target: 0 }, twist = 0, drag = null;
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'turning' || next === 'cooking';
+    caption.textContent = COPY[next].caption;
+  }
+
+  function paint(){
+    texBottom.setAttribute('patternTransform', 'translate(' + (spin.bottom % 120).toFixed(2) + ' 0)');
+    texTop.setAttribute('patternTransform', 'translate(' + (spin.top % 120).toFixed(2) + ' 0)');
+  }
+
+  function frame(dt){
+    spin.speed += (spin.target - spin.speed)*Math.min(1, dt*2.2);
+    spin.bottom += spin.speed*dt;
+    // Without the spit, the top barely follows. With it, it's the same cone.
+    spin.top += (spitted ? spin.speed : spin.speed*.06)*dt;
+    paint();
+  }
+
+  function fallOff(){
+    topHalf.classList.remove('wobble');
+    topHalf.classList.add('fall');
+    setPhase('broken');
+    later(function(){
+      spin.target = 0;
+      topHalf.style.transition = 'none';
+      topHalf.classList.remove('fall');
+      topHalf.style.opacity = '0';
+      topHalf.getBoundingClientRect();
+      topHalf.style.transition = '';
+      topHalf.style.opacity = '';
+      twist = 0;
+    }, 1300);
+  }
+
+  function spinLoose(){
+    setPhase('turning');
+    broiler.classList.add('hot');
+    spin.target = 120;
+    later(function(){ topHalf.classList.add('wobble'); }, 1300);
+    later(fallOff, 2500);
+  }
+
+  function addSpit(){
+    spitted = true;
+    broiler.classList.add('spitted');
+    setPhase('spitted');
+  }
+
+  function cook(){
+    setPhase('cooking');
+    broiler.classList.add('hot', 'browned');
+    spin.target = 120;
+    later(complete, 2600);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The top: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The bottom: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    broiler.classList.add('is-done');
+    spin.target = 70;
+    setCallouts(true);
+    setPhase('done');
+    broiler.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, broiler, 'b', '.broiler');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    spitted = false;
+    spin.target = 0; twist = 0;
+    broiler.classList.remove('hot', 'browned', 'spitted', 'is-done');
+    topHalf.classList.remove('wobble', 'fall');
+    setCallouts(false);
+    broiler.setAttribute('aria-label', ARIA.loose);
+    setPhase('loose');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, broiler, 'a', '.broiler');
+  }
+
+  btn.addEventListener('click', function(){
+    if (phase === 'loose') spinLoose();
+    else if (phase === 'broken') addSpit();
+    else if (phase === 'spitted') cook();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  resetBtn.addEventListener('click', startOver);
+
+  // Turn it by hand: a sideways drag turns the bottom. Up and down still scrolls the page.
+  broiler.addEventListener('pointerdown', function(e){
+    if (phase === 'turning' || phase === 'cooking' || phase === 'broken') return;
+    drag = { x: e.clientX };
+    try { broiler.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  broiler.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    var dx = e.clientX - drag.x;
+    drag.x = e.clientX;
+    spin.bottom += dx*.8;
+    if (spitted){ spin.top += dx*.8; return; }
+    // Turn the floor far enough and the ERP, which never moved, comes off.
+    twist += Math.abs(dx);
+    if (phase === 'loose'){
+      if (twist > 120) topHalf.classList.add('wobble');
+      if (twist > 320){ drag = null; fallOff(); }
+    }
+  });
+  var letGo = function(){ drag = null; };
+  broiler.addEventListener('pointerup', letGo);
+  broiler.addEventListener('pointercancel', letGo);
+
+  paint();
+  SG.loop(hero, frame);
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Beef trim', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Cone line 2 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Meat truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which lot?',
+    'QC hold: lot 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Cone line 3: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Beef PO is ready for your OK',
+    'QC: Lot 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

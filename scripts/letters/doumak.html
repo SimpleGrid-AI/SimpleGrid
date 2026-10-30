@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Toast the marshmallow, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes marshmallows for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/doumak.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#005AAB">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, toast the marshmallow.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes marshmallows for a living.">
+<meta property="og:image" content="https://simplegrid.ai/doumak/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A s'more coming apart over a campfire, beside the words: {{first}}, you make marshmallows for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, toast the marshmallow.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes marshmallows for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/doumak/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/francois-one-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* Campfire's display face is Francois One, so ours is too. It comes in one weight. */
+@font-face{font-family:'Francois One';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/francois-one-latin.woff2') format('woff2')}
+
+:root{
+  /* Campfire's own colors carry the page: the blue of the bag, the orange of the flame on the logo. */
+  --brand:#005AAB;
+  --brand-press:#004B8F;
+  --brand-deep:#003A70;
+  --accent:#F9A11B;
+  --accent-soft:#FDE3B8;
+  --accent-edge:#C57A00;
+  --on-brand:#fff;
+  --on-brand-soft:rgba(255,255,255,.86);
+  --on-accent:#1A1A1A;
+  --on-accent-soft:rgba(26,26,26,.8);
+  --tint:#E6EEF6;
+  --pale:#F7F7F7;
+  --ink:#1A1A1A;
+  --alert:#D41920;
+  --marker:#FDE3B8;
+  --h2-hi:#005AAB;
+  --display:'Francois One','Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --dw:400;
+}
+h1{line-height:1.1;letter-spacing:.002em}
+h2{letter-spacing:.004em;line-height:1.12}
+
+/* ------------------------------------------------------- The campfire */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.smore{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.smore > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cracker{fill:#D9A257}
+.cracker-edge{fill:#B37C35}
+.cracker-dock{fill:#A86F2C;opacity:.55}
+.cracker-perf{stroke:#A86F2C;stroke-width:2;stroke-dasharray:3 5;opacity:.6}
+.choc{fill:#4A2617}
+.choc-pip{fill:#5C3220}
+.choc-hi{fill:#7A4730}
+.top{transition:transform .5s cubic-bezier(.5,0,.3,1),opacity .3s}
+.top.slide{transition:transform .75s cubic-bezier(.55,0,.9,.5),opacity .5s .3s;opacity:0}
+.emboss{opacity:0;transition:opacity .5s .2s}
+.smore.is-made .emboss{opacity:.9}
+.emboss text{fill:#A86F2C}
+.mallow-g{cursor:grab;touch-action:none}
+.mallow-g:active{cursor:grabbing}
+.stick{stroke:#6B4423;stroke-width:6;stroke-linecap:round}
+.stick-hi{stroke:#8C5D34;stroke-width:2;stroke-linecap:round}
+.mallow-fire{opacity:0;transition:opacity .2s}
+#stickG{transition:opacity .4s}
+.smore.is-made #stickG{opacity:0}
+.smore.burning .mallow-fire{opacity:1}
+.log{fill:#6B4423}
+.log-end{fill:#C79A66}
+.log-ring{fill:none;stroke:#8C5D34;stroke-width:2}
+.glow{fill:url(#glow);animation:glow 1.6s ease-in-out infinite alternate}
+@keyframes glow{to{opacity:.65}}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1s ease-in-out infinite alternate}
+.flame-a{fill:#E8461E}
+.flame-b{fill:#F7901E;animation-duration:.8s;animation-delay:-.3s}
+.flame-c{fill:#FFD23F;animation-duration:.6s;animation-delay:-.5s}
+@keyframes flick{
+  0%{transform:scale(1,1) skewX(0)}
+  35%{transform:scale(.94,1.07) skewX(-3deg)}
+  70%{transform:scale(1.04,.95) skewX(3deg)}
+  100%{transform:scale(.97,1.04) skewX(-1deg)}
+}
+.ember{fill:#FFB53B;animation:rise 2.4s linear infinite;opacity:0}
+@keyframes rise{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,8px),-150px)}}
+.hero:not(.in-view) .flame,.hero:not(.in-view) .ember,.hero:not(.in-view) .glow{animation-play-state:paused}
+.callout-top{top:9%}
+.callout-bottom{top:38.5%}
+.callout-gap{top:calc(30.7% - 15px)}
+.callout-top h3 i{background:#D9A257}
+.callout-bottom h3 i{background:#4A2617}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.2)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include label.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Toasted to order for {{full}},</span> <span>Doumak. Batch size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you make marshmallows for a living. <span>So here’s our software, explained as a s’more.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="smore hero-obj" id="smore" role="img" aria-label="Two graham crackers, one with chocolate, held apart above a campfire, with a marshmallow on a stick waiting by the fire.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <radialGradient id="glow"><stop offset="0" stop-color="#FFB53B" stop-opacity=".55"/><stop offset="1" stop-color="#FFB53B" stop-opacity="0"/></radialGradient>
+              <radialGradient id="mallowFill" cx=".42" cy=".38" r=".7"><stop offset="0" id="mallowIn" stop-color="#FFFDF6"/><stop offset=".62" id="mallowMid" stop-color="#FBF6EC"/><stop offset="1" id="mallowOut" stop-color="#EDE5D6"/></radialGradient>
+            </defs>
+
+            <!-- the fire -->
+            <ellipse class="glow" cx="180" cy="492" rx="150" ry="74"/>
+            <g class="flames">
+              <path class="flame flame-a" d="M118 512C108 470 132 452 136 420C150 446 160 452 164 470C170 440 176 420 182 396C194 428 204 446 206 470C214 452 222 446 230 424C240 458 252 474 242 512Z"/>
+              <path class="flame flame-b" d="M134 512C128 482 146 470 150 448C158 466 166 470 170 482C174 462 180 446 186 428C194 452 200 466 202 482C208 470 214 464 220 450C226 476 232 488 226 512Z"/>
+              <path class="flame flame-c" d="M152 512C150 494 160 486 164 472C170 484 174 488 178 496C182 482 186 472 190 462C196 478 198 488 198 496C202 490 206 486 210 478C214 494 214 504 208 512Z"/>
+            </g>
+            <g>
+              <circle class="ember" cx="162" cy="470" r="2.4" style="--dx:-10px;animation-delay:-.2s"/>
+              <circle class="ember" cx="190" cy="460" r="2" style="--dx:12px;animation-delay:-1.1s"/>
+              <circle class="ember" cx="206" cy="478" r="2.2" style="--dx:6px;animation-delay:-1.8s"/>
+              <circle class="ember" cx="176" cy="482" r="1.8" style="--dx:-6px;animation-delay:-.7s"/>
+            </g>
+            <g>
+              <rect class="log" x="84" y="506" width="196" height="26" rx="13" transform="rotate(-11 182 519)"/>
+              <rect class="log" x="80" y="506" width="196" height="26" rx="13" transform="rotate(12 178 519)"/>
+              <ellipse class="log-end" cx="275" cy="500" rx="7" ry="13" transform="rotate(-11 275 500)"/>
+              <ellipse class="log-end" cx="85" cy="499" rx="7" ry="13" transform="rotate(12 85 499)"/>
+            </g>
+
+            <!-- the floor: chocolate on a cracker -->
+            <g id="bottom">
+              <rect class="cracker-edge" x="70" y="252" width="220" height="64" rx="9"/>
+              <rect class="cracker" x="70" y="248" width="220" height="62" rx="9"/>
+              <path class="cracker-perf" d="M180 254v50"/>
+              <g class="cracker-dock"><circle cx="96" cy="296" r="2.6"/><circle cx="264" cy="296" r="2.6"/></g>
+              <rect class="choc" x="96" y="212" width="168" height="40" rx="4"/>
+              <g class="choc-pip"><rect x="102" y="217" width="48" height="13" rx="2"/><rect x="156" y="217" width="48" height="13" rx="2"/><rect x="210" y="217" width="48" height="13" rx="2"/><rect x="102" y="234" width="48" height="13" rx="2"/><rect x="156" y="234" width="48" height="13" rx="2"/><rect x="210" y="234" width="48" height="13" rx="2"/></g>
+              <path class="choc-hi" d="M104 218h44v2h-44zM158 218h44v2h-44zM212 218h44v2h-44z"/>
+            </g>
+
+            <!-- the marshmallow, on its stick -->
+            <g class="mallow-g" id="mallowG">
+              <g id="stickG">
+                <line class="stick" x1="18" y1="0" x2="176" y2="-58"/>
+                <line class="stick-hi" x1="40" y1="-10" x2="174" y2="-59"/>
+              </g>
+              <g id="mallow">
+                <rect id="mallowBody" x="-36" y="-29" width="72" height="58" rx="24" fill="url(#mallowFill)"/>
+                <ellipse cx="-12" cy="-14" rx="13" ry="6" fill="#fff" opacity=".45" id="mallowShine"/>
+                <g class="mallow-fire">
+                  <path class="flame flame-a" d="M-28 -20C-30 -40 -14 -46 -10 -62C-2 -46 6 -44 8 -34C14 -46 20 -50 26 -60C32 -40 32 -28 26 -20Z"/>
+                  <path class="flame flame-c" d="M-16 -22C-16 -34 -8 -38 -4 -48C2 -38 6 -36 8 -30C12 -36 14 -38 18 -44C20 -34 20 -26 16 -22Z"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- the ERP: the top cracker -->
+            <g class="top" id="top">
+              <rect class="cracker-edge" x="70" y="68" width="220" height="64" rx="9"/>
+              <rect class="cracker" x="70" y="64" width="220" height="62" rx="9"/>
+              <path class="cracker-perf" d="M180 70v50"/>
+              <g class="cracker-dock"><circle cx="96" cy="80" r="2.6"/><circle cx="264" cy="80" r="2.6"/><circle cx="96" cy="110" r="2.6"/><circle cx="264" cy="110" r="2.6"/><circle cx="138" cy="95" r="2.6"/><circle cx="222" cy="95" r="2.6"/></g>
+              <g class="emboss"><text x="180" y="102" text-anchor="middle" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="22" letter-spacing="-.3">SimpleGrid</text></g>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The cracker: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The chocolate: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Press them together</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Nothing holds these two together. Press them, or grab the marshmallow and toast it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of the bag can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include facts.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about Doumak comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll toast a fresh one. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* ----------------------------------------------------- The s'more
+     Top cracker: the ERP. Chocolate on a cracker: the floor. Pressed together
+     with nothing in between, they slide apart. The marshmallow is SimpleGrid,
+     and it only holds once it's toasted: golden, not burnt. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), smore = $('smore'), top = $('top'), mallowG = $('mallowG'), mallow = $('mallow');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce, clamp = SG.clamp;
+
+  var COPY = {
+    apart:   { btn: 'Press them together', caption: 'Nothing holds these two together. Press them, or grab the marshmallow and toast it yourself.' },
+    pressed: { btn: 'Press them together', caption: 'Looks like a s’more, doesn’t it?' },
+    broken:  { btn: 'Toast a marshmallow', caption: 'And there it goes. That’s the usual ERP go-live: pressed together for the launch, and months later the plant is back on Excel.' },
+    toasting:{ btn: 'Toasting…', caption: 'Turn it slowly. Golden, not burnt.' },
+    toasted: { btn: 'Make the s’more', caption: 'Golden. That’s SimpleGrid, made around how your plant already runs. Now make the s’more.' },
+    burnt:   { btn: 'Toast a marshmallow', caption: 'On fire. Everyone’s done it. Here’s a fresh one.' },
+    making:  { btn: 'Making…', caption: 'Squish.' },
+    done:    { btn: 'Why did the first one slide off?', caption: 'One live record. Your ERP and your floor finally stick together, and they won’t slide apart.' }
+  };
+  var ARIA = {
+    apart: smore.getAttribute('aria-label'),
+    done: 'A finished s’more: a golden marshmallow holding the two crackers together, SimpleGrid embossed on top.'
+  };
+
+  // Where the marshmallow rests, where the fire is hottest, and how fast it browns there.
+  var REST = { x: 180, y: 362 }, HOT = 452, RATE = .5;
+  var phase = 'apart', toast = 0, pos = { x: REST.x, y: REST.y }, target = { x: REST.x, y: REST.y };
+  var drag = null, auto = false, squash = 0;
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'toasting' || next === 'making' || next === 'pressed';
+    caption.textContent = COPY[next].caption;
+  }
+
+  /* Raw, golden, toasted, black. Each stop: inside, middle, outside. */
+  var SHADES = [
+    [0,    [255,253,246], [251,246,236], [237,229,214]],
+    [.55,  [253,240,208], [244,214,150], [226,178,102]],
+    [1,    [250,226,170], [222,164, 84], [176,104, 40]],
+    [1.25, [226,170,104], [160, 92, 36], [ 98, 52, 18]],
+    [1.45, [ 70, 44, 26], [ 44, 28, 16], [ 26, 16, 10]]
+  ];
+  function shade(t, k){
+    for (var i = 1; i < SHADES.length; i++){
+      if (t <= SHADES[i][0] || i === SHADES.length - 1){
+        var a = SHADES[i - 1], b = SHADES[i], f = clamp((t - a[0])/(b[0] - a[0]), 0, 1);
+        return 'rgb(' + a[k].map(function(c, j){ return Math.round(c + (b[k][j] - c)*f); }).join(',') + ')';
+      }
+    }
+  }
+  function paintMallow(){
+    $('mallowIn').setAttribute('stop-color', shade(toast, 1));
+    $('mallowMid').setAttribute('stop-color', shade(toast, 2));
+    $('mallowOut').setAttribute('stop-color', shade(toast, 3));
+    $('mallowShine').setAttribute('opacity', (.45*(1 - clamp(toast/1.3, 0, 1))).toFixed(2));
+  }
+  var stickG = $('stickG');
+  function place(){
+    var sx = 1 + squash*.78, sy = 1 - squash*.42;
+    // Squashed from the bottom, so it stays sitting on the chocolate.
+    mallow.setAttribute('transform', 'translate(' + pos.x.toFixed(1) + ' ' + (pos.y + squash*12.2).toFixed(1) + ') scale(' + sx.toFixed(3) + ' ' + sy.toFixed(3) + ')');
+    stickG.setAttribute('transform', 'translate(' + (pos.x + squash*60).toFixed(1) + ' ' + pos.y.toFixed(1) + ')');
+  }
+
+  function heat(y){ return clamp((y - 400)/(HOT - 400), 0, 1); }
+
+  function burn(){
+    smore.classList.add('burning');
+    setPhase('burnt');
+    drag = null; auto = false;
+    target = { x: REST.x, y: REST.y };
+    later(function(){
+      smore.classList.remove('burning');
+      toast = 0;
+      paintMallow();
+      setPhase('broken');
+      caption.textContent = 'Fresh one. Hold it in the flames, and pull it out when it’s golden.';
+    }, 1600);
+  }
+
+  function frame(dt){
+    if (phase === 'making' || phase === 'done') return;
+    // The marshmallow eases toward wherever it's being held.
+    var k = Math.min(1, dt*(drag ? 18 : 7));
+    pos.x += (target.x - pos.x)*k;
+    pos.y += (target.y - pos.y)*k;
+    if (phase !== 'burnt'){
+      var h = heat(pos.y);
+      if (h > 0){
+        toast += h*RATE*dt;
+        paintMallow();
+        if (!auto && phase !== 'toasting' && phase !== 'toasted') setPhase('toasting');
+        if (toast > 1.35) burn();
+      }
+      // The button turns it until it's golden, then lifts it out.
+      if (auto && toast >= 1){ auto = false; target = { x: REST.x, y: REST.y }; }
+      if (!drag && !auto && phase === 'toasting' && heat(pos.y) === 0){
+        if (toast >= .8 && toast <= 1.25) setPhase('toasted');
+        else { setPhase('broken'); caption.textContent = 'Not quite. Golden takes a little longer.'; }
+      }
+    }
+    place();
+  }
+
+  function press(){
+    setPhase('pressed');
+    top.style.transform = 'translateY(80px)';
+    later(function(){
+      top.classList.add('slide');
+      top.style.transform = 'translate(150px,150px) rotate(28deg)';
+    }, 1100);
+    later(function(){
+      top.classList.remove('slide');
+      top.style.transition = 'none';
+      top.style.transform = 'translateY(-40px)';
+      top.style.opacity = '0';
+      top.getBoundingClientRect();
+      top.style.transition = '';
+      top.style.transform = '';
+      top.style.opacity = '';
+      setPhase('broken');
+    }, 2100);
+  }
+
+  function makeSmore(){
+    setPhase('making');
+    var steps = 26, i = 0, from = { x: pos.x, y: pos.y };
+    // Up out of the fire and onto the chocolate, then the top cracker comes down and squishes it.
+    var lift = setInterval(function(){
+      i++;
+      var f = i/steps, e = f < .5 ? 2*f*f : 1 - Math.pow(-2*f + 2, 2)/2;
+      pos.x = from.x + (180 - from.x)*e;
+      pos.y = from.y + (183 - from.y)*e;
+      place();
+      if (i >= steps){
+        clearInterval(lift);
+        top.style.transform = 'translateY(22px)';
+        later(function(){
+          var j = 0;
+          top.style.transition = 'none';
+          var sq = setInterval(function(){
+            j++;
+            squash = Math.min(1, j/12);
+            top.style.transform = 'translateY(' + (22 + 24.4*squash).toFixed(1) + 'px)';
+            place();
+            if (j >= 12){ clearInterval(sq); top.style.transition = ''; complete(); }
+          }, reduce ? 0 : 22);
+        }, 520);
+      }
+    }, reduce ? 0 : 16);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The cracker: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The chocolate: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    smore.classList.add('is-made');
+    mallowG.style.cursor = 'default';
+    setCallouts(true);
+    setPhase('done');
+    smore.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, smore, 'b', '.smore');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    smore.classList.remove('is-made', 'burning');
+    mallowG.style.cursor = '';
+    top.style.transform = '';
+    toast = 0; squash = 0; auto = false; drag = null;
+    pos = { x: REST.x, y: REST.y }; target = { x: REST.x, y: REST.y };
+    paintMallow();
+    place();
+    setCallouts(false);
+    smore.setAttribute('aria-label', ARIA.apart);
+    setPhase('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, smore, 'a', '.smore');
+  }
+
+  btn.addEventListener('click', function(){
+    if (phase === 'apart') press();
+    else if (phase === 'broken' || phase === 'burnt'){
+      auto = true;
+      target = { x: REST.x, y: HOT };
+      setPhase('toasting');
+    }
+    else if (phase === 'toasted') makeSmore();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  resetBtn.addEventListener('click', startOver);
+
+  // Or toast it yourself: grab the marshmallow and hold it in the flames.
+  var svg = smore.querySelector('svg');
+  function toSvg(e){
+    var r = svg.getBoundingClientRect();
+    return { x: (e.clientX - r.left)/r.width*360, y: (e.clientY - r.top)/r.height*560 };
+  }
+  mallowG.addEventListener('pointerdown', function(e){
+    if (phase === 'making' || phase === 'done' || phase === 'burnt' || phase === 'pressed') return;
+    var p = toSvg(e);
+    drag = { dx: pos.x - p.x, dy: pos.y - p.y };
+    auto = false;
+    try { mallowG.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  mallowG.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    var p = toSvg(e);
+    target = { x: clamp(p.x + drag.dx, 120, 240), y: clamp(p.y + drag.dy, 340, 476) };
+  });
+  var letGo = function(){
+    if (!drag) return;
+    drag = null;
+    target = { x: REST.x, y: REST.y };
+  };
+  mallowG.addEventListener('pointerup', letGo);
+  mallowG.addEventListener('pointercancel', letGo);
+
+  paintMallow();
+  place();
+  SG.loop(hero, frame);
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ hero.classList.toggle('in-view', entries[0].isIntersecting); }).observe(hero);
+  } else hero.classList.add('in-view');
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Corn syrup', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Line 2 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Syrup truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QC hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 3 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Syrup PO is ready for your OK',
+    'QC: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<section class="gap" id="gap">
+  <div class="wrap">
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
+
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
+        </div>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
+      </div>
+
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><!--#include mark.svg--></i>SimpleGrid</span>
+      </div>
+
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
+        </div>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="floor-do">
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend numbers.</p>
+  </div>
+</section>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seal the bag, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who runs 70+ production lines.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/creative-werks.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#54565A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, seal the bag.">
+<meta property="og:description" content="SimpleGrid, explained to someone who runs 70+ production lines.">
+<meta property="og:image" content="https://simplegrid.ai/creative-werks/og-{{slug}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An open bag of candy hanging between seal jaws, beside the words: {{first}}, you run 70+ production lines.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, seal the bag.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who runs 70+ production lines.">
+<meta name="twitter:image" content="https://simplegrid.ai/creative-werks/og-{{slug}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+:root{
+  /* creative werks colors carry the page: the gray and yellow of the logo, the purple of the headings. */
+  --brand:#54565A;
+  --brand-press:#3F4144;
+  --brand-deep:#2A2B2E;
+  --accent:#FFCD00;
+  --accent-soft:#FFF2CC;
+  --accent-edge:#C79F00;
+  --on-brand:#fff;
+  --on-brand-soft:rgba(255,255,255,.86);
+  --on-accent:#1A1A1A;
+  --on-accent-soft:rgba(26,26,26,.8);
+  --tint:#EEEEEE;
+  --pale:#FAFAFA;
+  --ink:#1A1A1A;
+  --alert:#D63850;
+  --marker:#FFE680;
+  --h2-hi:#9E5FA6;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+h1{font-weight:900;letter-spacing:-.022em}
+h2{letter-spacing:-.02em}
+.meet{--meet-ink:#5B2E63}
+
+/* ------------------------------------------------------- The bagger */
+.hero-art{--art-w:min(330px,28vw,calc((100vh - 130px)/1.6))}
+.bagger{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.bagger svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bag-g{cursor:grab;touch-action:none}
+.bag-g:active{cursor:grabbing}
+.bagger.dropping .bag-g,.bagger.is-done .bag-g{cursor:default}
+.film{fill:rgba(255,255,255,.2);stroke:rgba(255,255,255,.78);stroke-width:2.2;stroke-linejoin:round}
+.film-hi{fill:none;stroke:rgba(255,255,255,.55);stroke-width:5;stroke-linecap:round}
+.mouth{fill:color-mix(in srgb,var(--field) 55%,#000);transition:opacity .2s}
+.bagger.sealed .mouth{opacity:0}
+.band{fill:var(--accent)}
+.band-wave{fill:#9E5FA6}
+.band-text{fill:#1A1A1A;font:800 9.5px/1 var(--body);letter-spacing:.06em}
+.crimp{fill:rgba(255,255,255,.82)}
+.crimp-lines{stroke:rgba(0,0,0,.2);stroke-width:1.4}
+.top-seal{opacity:0;transition:opacity .25s .1s}
+.bagger.sealed .top-seal{opacity:1}
+.grid-seal{stroke:#9E5FA6;stroke-width:1.8}
+.steel{fill:#C4CBD2}
+.steel-dk{fill:#8D97A1}
+.jaw{transition:transform .32s cubic-bezier(.6,0,.4,1)}
+.jaw-l{transform:translateX(-82px)}
+.jaw-r{transform:translateX(82px)}
+.bagger.crimping .jaw{transform:none}
+.heater{fill:var(--accent)}
+.bagger.crimping .heater{fill:#FF7A1A}
+.case-in{fill:#7A5A33}
+.case-front{fill:#C89B5E}
+.case-edge{fill:#B5864A}
+.case-flap{fill:#D5AB72}
+.ship-label{opacity:0;transform:translateY(6px);transition:opacity .3s,transform .4s cubic-bezier(.2,.9,.3,1.3)}
+.bagger.closed .ship-label{opacity:1;transform:none}
+.ship-label rect{fill:#fff}
+.ship-label .bars{fill:#1A1A1A}
+.ship-label text{fill:#1A1A1A;font:900 12px/1 var(--display)}
+.callout-bottom{top:45%}
+.callout-gap{top:calc(27% - 15px)}
+.callout-top h3 i{background:rgba(255,255,255,.4);box-shadow:0 0 0 1.5px #fff}
+.callout-bottom h3 i{background:#F8485E}
+.callout-top{top:5%}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.26)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+<!--#include stage.css-->
+<!--#include label.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Packed to order for {{full}},</span> <span>creative werks. Run size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, you run 70+ production lines. <span>So here’s our software, explained as one bag.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="bagger hero-obj" id="bagger" role="img" aria-label="A clear bag of candy hanging open between two seal jaws, above an empty shipping case.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <clipPath id="bagClip"><path d="M110 132Q180 126 250 132L256 318Q180 328 104 318Z"/></clipPath>
+              <pattern id="gridSeal" width="8" height="8" patternUnits="userSpaceOnUse"><path class="grid-seal" d="M0 .9h8M.9 0v8" fill="none"/></pattern>
+            </defs>
+
+            <!-- the case, back half -->
+            <rect class="case-in" x="84" y="430" width="192" height="116"/>
+            <path class="case-flap flap-l" d="M84 430L40 392H84Z"/>
+            <path class="case-flap flap-r" d="M276 430L320 392H276Z"/>
+
+            <!-- the filler -->
+            <path class="steel" d="M140 0H220L208 64H152Z"/>
+            <rect class="steel-dk" x="160" y="62" width="40" height="58"/>
+            <rect class="steel" x="166" y="62" width="10" height="58" opacity=".7"/>
+
+            <!-- the bag: clear film is your ERP, the candy is your floor -->
+            <g class="bag-g" id="bagG">
+              <g id="bag">
+                <path class="film" d="M110 132Q180 126 250 132L256 318Q180 328 104 318Z"/>
+                <g clip-path="url(#bagClip)" id="inside"></g>
+                <g clip-path="url(#bagClip)">
+                  <rect class="band" x="100" y="252" width="160" height="40"/>
+                  <path class="band-wave" d="M100 262C130 252 150 276 180 266S230 254 260 264V270C230 260 210 282 180 272S130 260 100 270Z"/>
+                  <text class="band-text" x="180" y="287" text-anchor="middle">NET WT 12 OZ</text>
+                </g>
+                <path class="film-hi" d="M124 150C120 200 120 260 124 300"/>
+                <rect class="crimp" x="100" y="314" width="160" height="20" rx="2"/>
+                <path class="crimp-lines" d="M108 317v14M116 317v14M124 317v14M132 317v14M140 317v14M148 317v14M156 317v14M164 317v14M172 317v14M180 317v14M188 317v14M196 317v14M204 317v14M212 317v14M220 317v14M228 317v14M236 317v14M244 317v14M252 317v14"/>
+                <ellipse class="mouth" cx="180" cy="132" rx="70" ry="5"/>
+                <g class="top-seal">
+                  <rect class="crimp" x="104" y="118" width="152" height="24" rx="2"/>
+                  <rect x="104" y="118" width="152" height="24" rx="2" fill="url(#gridSeal)"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- the seal jaws: SimpleGrid -->
+            <g class="jaw jaw-l"><rect class="steel-dk" x="86" y="112" width="94" height="36" rx="6"/><rect class="heater" x="168" y="112" width="12" height="36" rx="3"/><rect class="steel" x="92" y="118" width="62" height="5" rx="2.5" opacity=".6"/></g>
+            <g class="jaw jaw-r"><rect class="steel-dk" x="180" y="112" width="94" height="36" rx="6"/><rect class="heater" x="180" y="112" width="12" height="36" rx="3"/><rect class="steel" x="206" y="118" width="62" height="5" rx="2.5" opacity=".6"/></g>
+
+            <!-- the case, front half, and whatever lands on the floor -->
+            <rect class="case-front" x="84" y="468" width="192" height="80"/>
+            <rect class="case-edge" x="84" y="466" width="192" height="6"/>
+            <g class="ship-label">
+              <rect x="128" y="482" width="104" height="52" rx="3"/>
+              <g transform="translate(136 489) scale(.42)" fill="none" stroke="#1A1A1A"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="4"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g>
+              <text x="158" y="502">SimpleGrid</text>
+              <path class="bars" d="M136 512h2v16h-2zM140 512h1v16h-1zM143 512h3v16h-3zM148 512h1v16h-1zM151 512h2v16h-2zM155 512h1v16h-1zM158 512h3v16h-3zM163 512h1v16h-1zM166 512h2v16h-2zM170 512h1v16h-1zM173 512h3v16h-3zM178 512h2v16h-2zM182 512h1v16h-1zM185 512h2v16h-2zM189 512h1v16h-1zM192 512h3v16h-3zM197 512h1v16h-1zM200 512h2v16h-2zM204 512h1v16h-1zM207 512h3v16h-3zM212 512h1v16h-1zM215 512h2v16h-2zM219 512h1v16h-1zM222 512h2v16h-2z"/>
+            </g>
+            <g id="loose"></g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The bag: your ERP</span></h3>
+            <p id="topText">What the system says is inside.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The candy: your floor</span></h3>
+            <p id="bottomText">What’s really inside, on Excel, whiteboards and phones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Ship it</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Nothing holds what’s inside to what the bag says. Ship it, or grab the bag and give it a swing.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of the pack can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include facts.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about creative werks comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll repack. The rest of the line is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+(function(){
+  /* --------------------------------------------------------- The bag
+     The bag says what's inside: that's the ERP. The candy is what's really
+     inside: that's the floor. With the top open, nothing holds the two
+     together, and the first bump puts the candy on the floor. The seal jaws
+     are SimpleGrid. Look at the seal they leave. */
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), bagger = $('bagger'), bagG = $('bagG'), bag = $('bag');
+  var inside = $('inside'), loose = $('loose');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce, clamp = SG.clamp;
+
+  var COPY = {
+    open:    { btn: 'Ship it', caption: 'Nothing holds what’s inside to what the bag says. Ship it, or grab the bag and give it a swing.' },
+    falling: { btn: 'Shipping…', caption: 'Looks packed, doesn’t it?' },
+    broken:  { btn: 'Seal it', caption: 'And there it goes. That’s the usual ERP go-live: packed up for the launch, and months later the floor is back on Excel.' },
+    sealing: { btn: 'Sealing…', caption: 'In go the jaws.' },
+    sealed:  { btn: 'Ship it', caption: 'That’s SimpleGrid. Look closely at the seal. Now ship it.' },
+    done:    { btn: 'Why did the first one spill?', caption: 'One live record. What the bag says and what’s inside finally match, and they stay that way.' }
+  };
+  var ARIA = {
+    open: bagger.getAttribute('aria-label'),
+    done: 'A bag of candy sealed shut with a grid-patterned seal, packed in a taped shipping case.'
+  };
+  var COLORS = ['#FFCD00', '#9E5FA6', '#F8485E', '#FFFFFF', '#FFCD00', '#F8485E', '#9E5FA6', '#FFFFFF'];
+  // Where each piece sits inside the bag, settled from the bottom up.
+  var SPOTS = [];
+  (function(){
+    var rows = [[312, 9], [298, 9], [284, 8], [270, 8], [256, 7], [242, 6]];
+    rows.forEach(function(r, j){
+      for (var i = 0; i < r[1]; i++) SPOTS.push([180 + (i - (r[1] - 1)/2)*15.5 + (j % 2 ? 5 : -3), r[0] - (i % 3)*1.5]);
+    });
+  })();
+
+  var phase = 'open', sealed = false, timers = [];
+  var swing = { a: 0, v: 0, target: 0 }, drop = 0, drag = null, spilled = 0, cool = 0;
+  var bits = [];   // candy that's left the bag
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  function setPhase(next){
+    phase = next;
+    btn.textContent = COPY[next].btn;
+    btn.disabled = next === 'falling' || next === 'sealing';
+    caption.textContent = COPY[next].caption;
+  }
+
+  function candy(x, y, i){
+    var c = document.createElementNS(NS, 'ellipse');
+    c.setAttribute('cx', x.toFixed(1));
+    c.setAttribute('cy', y.toFixed(1));
+    c.setAttribute('rx', 7.8);
+    c.setAttribute('ry', 6.4);
+    c.setAttribute('fill', COLORS[i % COLORS.length]);
+    c.setAttribute('stroke', 'rgba(0,0,0,.18)');
+    return c;
+  }
+  function fill(){
+    inside.innerHTML = '';
+    SPOTS.forEach(function(p, i){ inside.appendChild(candy(p[0], p[1], i)); });
+    spilled = 0;
+  }
+
+  // Where a point inside the bag ends up on screen, given the swing and the drop.
+  function world(x, y){
+    var px = 180, py = 120, s = Math.sin(swing.a), c = Math.cos(swing.a);
+    var dx = x - px, dy = y - py;
+    return { x: px + dx*c - dy*s, y: py + dx*s + dy*c + drop };
+  }
+
+  // Throw `n` pieces out of the top of the bag, the way it's moving.
+  function toss(n, power){
+    var kids = inside.children;
+    for (var k = 0; k < n && kids.length; k++){
+      var el = kids[kids.length - 1];
+      var mouth = world(150 + Math.random()*60, 134);
+      el.remove();
+      var b = candy(mouth.x, mouth.y, spilled + k);
+      loose.appendChild(b);
+      bits.push({ el: b, x: mouth.x, y: mouth.y, vx: (Math.random() - .5)*360*power + swing.v*90, vy: -(160 + Math.random()*260)*power, rest: false });
+    }
+    spilled += n;
+  }
+
+  function frame(dt){
+    // The bag hangs from the filler and swings like it.
+    if (phase !== 'falling' && phase !== 'done'){
+      var k = drag ? 90 : 26, damp = drag ? 12 : 3.2;
+      swing.v += ((swing.target - swing.a)*k - swing.v*damp)*dt;
+      swing.a += swing.v*dt;
+      cool -= dt;
+      // An open bag swung hard throws candy. A sealed one can't.
+      if (!sealed && Math.abs(swing.v) > 3 && cool <= 0 && inside.children.length){
+        toss(2, .8);
+        cool = .22;
+        if (phase === 'open'){ setPhase('broken'); caption.textContent = 'And there it goes. That’s the usual ERP go-live: packed up for the launch, and months later the floor is back on Excel.'; }
+      }
+    }
+    bagG.setAttribute('transform', 'translate(0 ' + drop.toFixed(1) + ') rotate(' + (swing.a*57.3).toFixed(2) + ' 180 120)');
+    // Loose candy falls, bounces and settles on the floor.
+    for (var i = 0; i < bits.length; i++){
+      var b = bits[i];
+      if (b.rest) continue;
+      b.vy += 1500*dt;
+      b.x += b.vx*dt; b.y += b.vy*dt;
+      if (b.x < 12){ b.x = 12; b.vx = -b.vx*.5; }
+      if (b.x > 348){ b.x = 348; b.vx = -b.vx*.5; }
+      // The case's front edge is something to land on too.
+      var floor = (b.x > 84 && b.x < 276 && b.y < 470) ? 462 : 552;
+      if (b.y > floor){
+        b.y = floor; b.vy = -b.vy*.34; b.vx *= .72;
+        if (Math.abs(b.vy) < 50){ b.vy = 0; if (Math.abs(b.vx) < 8) b.rest = true; }
+      }
+      b.el.setAttribute('cx', b.x.toFixed(1));
+      b.el.setAttribute('cy', b.y.toFixed(1));
+    }
+  }
+
+  function ship(){
+    setPhase('falling');
+    bagger.classList.add('dropping');
+    var t = 0;
+    var fall = setInterval(function(){
+      t += .016;
+      drop = Math.min(196, 1200*t*t);
+      swing.a *= .9;
+      if (drop >= 196 || reduce){
+        drop = 196;
+        clearInterval(fall);
+        if (!sealed){
+          toss(inside.children.length, 1);
+          later(function(){ setPhase('broken'); bagger.classList.remove('dropping'); restock(); }, 1700);
+        } else {
+          // A bump, and nothing moves.
+          later(function(){ drop = 186; }, 60);
+          later(function(){ drop = 196; }, 160);
+          later(function(){ bagger.classList.add('closed'); }, 300);
+          later(complete, 900);
+        }
+      }
+    }, reduce ? 0 : 16);
+  }
+
+  // A fresh bag takes the empty one's place under the filler.
+  function restock(){
+    bits.forEach(function(b){ b.el.style.transition = 'opacity .5s'; b.el.style.opacity = '0'; });
+    later(function(){
+      loose.innerHTML = ''; bits = [];
+      drop = 0; swing.a = 0; swing.v = 0;
+      fill();
+    }, 600);
+  }
+
+  function seal(){
+    setPhase('sealing');
+    swing.target = 0;
+    bagger.classList.add('crimping');
+    later(function(){ sealed = true; bagger.classList.add('sealed'); }, 330);
+    later(function(){ bagger.classList.remove('crimping'); }, 700);
+    later(function(){ setPhase('sealed'); }, 1000);
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The bag: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says is inside.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The candy: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really inside, on Excel, whiteboards and phones.';
+  }
+
+  function complete(){
+    bagger.classList.add('is-done');
+    setCallouts(true);
+    setPhase('done');
+    bagger.setAttribute('aria-label', ARIA.done);
+    resetBtn.hidden = false;
+    SG.wipeTo(hero, bagger, 'b', '.bagger');
+  }
+
+  function startOver(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    sealed = false; drop = 0; swing.a = 0; swing.v = 0; swing.target = 0;
+    bagger.classList.remove('sealed', 'closed', 'is-done', 'dropping', 'crimping');
+    loose.innerHTML = ''; bits = [];
+    fill();
+    setCallouts(false);
+    bagger.setAttribute('aria-label', ARIA.open);
+    setPhase('open');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, bagger, 'a', '.bagger');
+  }
+
+  btn.addEventListener('click', function(){
+    if (phase === 'open' || phase === 'sealed') ship();
+    else if (phase === 'broken') seal();
+    else if (phase === 'done') $('gap').scrollIntoView();
+  });
+  resetBtn.addEventListener('click', startOver);
+
+  // Grab the bag and swing it.
+  var svg = bagger.querySelector('svg');
+  bagG.addEventListener('pointerdown', function(e){
+    if (phase === 'falling' || phase === 'sealing' || phase === 'done') return;
+    drag = { x: e.clientX };
+    try { bagG.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  bagG.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    var w = svg.getBoundingClientRect().width/360;
+    swing.target = clamp((e.clientX - drag.x)/w/150, -.75, .75);
+  });
+  var letGo = function(){ drag = null; swing.target = 0; };
+  bagG.addEventListener('pointerup', letGo);
+  bagG.addEventListener('pointercancel', letGo);
+
+  fill();
+  SG.loop(hero, frame);
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Film rollstock', '40 rolls in stock', '<s>40</s> 32 rolls in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Line 12 is down!',
+    'Brand: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Film truck: 8 rolls short',
+    'Which film is on line 9?',
+    'Re: Re: Fwd: Re: which lot?',
+    'QC hold: lot 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Brand: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 9 crew: Order 4417 moved to you',
+    'Brand: 4417 ships Monday, and here’s why',
+    'Buyer: Film PO is ready for your OK',
+    'QC: Lot 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>
