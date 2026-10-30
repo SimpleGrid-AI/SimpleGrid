@@ -996,8 +996,16 @@ SG.story = function(o){
   var gen = 0, timers = [];
   function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
   function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // With reduced motion nothing animates: the element just takes its last frame.
+  var styled = [];
   function anim(el, frames, ms, delay, easing){
-    return el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease', fill: 'both' });
+    if (reduce){
+      var last = frames[frames.length - 1];
+      for (var k in last) if (k !== 'offset' && k !== 'easing') el.style[k] = last[k];
+      styled.push(el);
+      return;
+    }
+    el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' });
   }
   function play(ms, delay, fn){
     var my = gen;
@@ -1085,6 +1093,8 @@ SG.story = function(o){
     timers.forEach(clearTimeout);
     timers = [];
     [lid, crimper, roll, crease, puddle].concat(LEAKS, ticks).forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
+    styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
+    styled = [];
     obj.classList.remove('messy', 'has-crimper', 'dosed', 'is-done');
     bend(0);
   }

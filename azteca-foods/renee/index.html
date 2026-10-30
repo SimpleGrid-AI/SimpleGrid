@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/azteca-foods/og-renee.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A ball of masa and a tortilla press, beside the words: Renee, you make tortillas for a living.">
+<meta property="og:image:alt" content="A bowl of masa flour, a bowl of water and a tortilla press, beside the words: Renee, you make tortillas for a living.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Renee, press the tortilla.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes tortillas for a living.">
@@ -192,80 +192,106 @@ h1 span{display:block;color:var(--hi)}
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
 }
 
-/* Azteca’s colors (placeholder until their stylesheet is read). */
+/* Azteca’s colors, read from their own stylesheet (aztecafoods.com, css/style.css): the purple of their header,
+   footer and headings (#69317D), the marigold of their nav links (#FFB024), their teal (#00928B), the red of
+   their form’s required marks for the alert (#C2292D), on a white page. Their headings are a brush script
+   (Tomarik Brush, from Adobe Fonts) that isn’t ours to self-host, so ours stay Albert Sans. */
 :root{
-  --brand:#9E1B32;--brand-press:#7E1527;--brand-deep:#560E1A;
-  --accent:#F2B33D;--accent-soft:#FBE8C2;--accent-edge:#C48B1C;
-  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#2A1A0E;--on-accent-soft:rgba(42,26,14,.82);
-  --tint:#FBF3E6;--pale:#FFFCF7;--ink:#2A1A0E;--alert:#B3261E;--marker:#FBE8C2;--h2-hi:#9E1B32;
+  --brand:#69317D;--brand-press:#55276A;--brand-deep:#3A1A49;
+  --accent:#FFB024;--accent-soft:#FFE9BF;--accent-edge:#C98400;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#2B1433;--on-accent-soft:rgba(43,20,51,.82);
+  --tint:#F4EEF6;--pale:#FFFFFF;--ink:#2B1433;--alert:#C2292D;--marker:#FFE6B3;--h2-hi:#69317D;
+  --teal:#00928B;--teal-deep:#00615C;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
 
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
+/* ------------------------------------------------------- The tortilla press */
+/* Seen from the front and a little above: the masa flour is the ERP, the water is the floor. */
 .hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
-.callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.press{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .press,.hero[data-story=done] .press{cursor:default}
+.press svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.press.snap,.press.snap *{transition:none!important}
+/* Everything that moves is placed in the drawing's own units. */
+.az-mv{transform-box:view-box;transform-origin:0 0}
+.az-shadow{fill:rgba(20,6,26,.3)}
+/* Cast iron: the base, the lid that swings open on its hinge at the back, the lever at the front. */
+.az-iron{fill:#2C2832}
+.az-iron-face{fill:#4A4552}
+.az-iron-plate{fill:#57525F}
+.az-iron-lid{fill:#45404D}
+.az-iron-rib{fill:none;stroke:#5E5869;stroke-width:7;stroke-linecap:round}
+.az-iron-boss{fill:#77717F}
+.az-iron-boss-top{fill:#948E9E}
+.az-iron-hi{fill:none;stroke:#A39DAE;stroke-width:2.5;stroke-linecap:round}
+.az-grip{fill:var(--teal-deep)}
+.az-grip-hi{fill:none;stroke:rgba(255,255,255,.35);stroke-width:3;stroke-linecap:round}
+.az-lid-top{transform-box:view-box;transform-origin:180px 336px}
+.az-lid-in{transform-box:view-box;transform-origin:180px 336px;transform:scaleY(0)}
+.az-lever-dn{transform-box:view-box;transform-origin:180px 452px}
+.az-lever-up{transform-box:view-box;transform-origin:180px 452px;transform:scaleY(0)}
+/* The ERP: masa flour, heaped in a clay bowl. */
+.az-clay{fill:#B85A33}
+.az-clay-in{fill:#8A3C1E}
+.az-clay-rim{fill:none;stroke:#DB8A60;stroke-width:3.5}
+.az-masa{fill:#F1DEA3}
+.az-masa-hi{fill:#FBF0CB}
+.az-masa-lo{fill:#DCC17F}
+.az-dust{fill:#F6E9C2}
+/* The floor: water, in an enamel bowl. */
+.az-enamel{fill:#F4F3EF}
+.az-enamel-in{fill:#E2E1DC}
+.az-enamel-rim{fill:none;stroke:#2F6FA8;stroke-width:4}
+.az-water{fill:#5DAFE0}
+.az-water-hi{fill:#C3E5F8}
+.az-ripple{fill:none;stroke:rgba(255,255,255,.55);stroke-width:2}
+.az-emptied{opacity:0}
+/* On the press: the heap that gets dumped, the mess it presses into, the ball, the tortilla. */
+.az-dough{opacity:0}
+.az-heap-flour{fill:#F1DEA3}
+.az-heap-wet{fill:#D9BE72}
+.az-splash{fill:#6DB9E6;opacity:.85}
+.az-raw{fill:#EED9A0;stroke:#C9A964;stroke-width:2;stroke-linejoin:round}
+.az-crack{fill:none;stroke:#9C7A3C;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.az-dry{fill:#FFF9E8;opacity:.9}
+.az-wet{fill:#CDAE63;opacity:.85}
+.az-puddle{fill:#7DBFE4;opacity:.75}
+.az-crumb{fill:#EED9A0;stroke:#C9A964;stroke-width:1.5}
+.az-ball-c{fill:url(#azBallG)}
+.az-ball-crack{fill:none;stroke:#B08E4A;stroke-width:2.4;stroke-linecap:round}
+.az-ball-hi{fill:#fff;opacity:.55}
+.az-tort{fill:#F3E2B0}
+.az-tort-edge{fill:none;stroke:#E2C98A;stroke-width:3}
+.az-tort-hi{fill:#FBF1D4}
+.az-spot{fill:#A8692B;opacity:0}
+.press.toasted .az-spot{opacity:.8;transition:opacity .5s}
+.press.toasted .az-spot:nth-child(2n){transition-delay:.12s}
+.press.toasted .az-spot:nth-child(3n){transition-delay:.24s}
+/* SimpleGrid does the kneading: a glove in Azteca’s teal, wearing the mark. */
+.az-glove{opacity:0}
+.az-glove-c{fill:var(--teal);stroke:var(--teal-deep);stroke-width:2.5;stroke-linejoin:round}
+.az-glove-cuff{fill:var(--teal-deep)}
+.az-glove-line{fill:none;stroke:var(--teal-deep);stroke-width:2.5;stroke-linecap:round}
+.az-badge{--sg-bg:#fff;--sg-ink:var(--brand)}
+.press.dosed .az-badge{opacity:1;transform:none}
+/* Where it ends up: the comal, and the label on its handle. */
+.az-comal{opacity:0}
+.az-comal-face{fill:#3A3541}
+.az-comal-hi{fill:none;stroke:#8F899A;stroke-width:2.5}
+.az-steam{fill:none;stroke:rgba(255,255,255,.7);stroke-width:4;stroke-linecap:round;opacity:0}
+.press.toasted .az-steam{animation:az-steam 2.6s ease-in-out infinite}
+@keyframes az-steam{0%{opacity:0;transform:translateY(6px)}30%{opacity:.9}100%{opacity:0;transform:translateY(-26px)}}
+.az-tag{--sg-bg:var(--brand);--sg-ink:#fff}
+.press.is-done .az-tag{opacity:1;transform:none}
+.press:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:2%}
+.callout-gap{top:calc(24% - 15px)}
+.callout-bottom{top:31%}
+.callout-top h3 i{background:#F1DEA3}
+.callout-bottom h3 i{background:#5DAFE0}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.4)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -524,67 +550,143 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="press hero-obj" id="press" role="img" aria-label="A bowl of masa flour, a bowl of water below it, and a closed tortilla press underneath. Nothing mixed.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">Placeholder, 2,400 cases</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <radialGradient id="azBallG" cx="40%" cy="34%" r="70%"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".55" stop-color="#EED79B"/><stop offset="1" stop-color="#CFAF68"/></radialGradient>
+            </defs>
+            <!-- where it ends up: the comal, waiting off to the side until there’s something to toast -->
+            <g class="az-comal az-mv" id="azComal">
+              <ellipse class="az-shadow" cx="172" cy="130" rx="110" ry="40"/>
+              <path class="az-iron" d="M262 102L340 90Q350 89 350 98L350 104Q350 112 341 113L262 122Z"/>
+              <path class="az-iron" d="M60 112A106 48 0 0 0 272 112L272 120A106 48 0 0 1 60 120Z"/>
+              <ellipse class="az-comal-face" cx="166" cy="112" rx="106" ry="48"/>
+              <path class="az-comal-hi" d="M60 112A106 48 0 0 1 272 112"/>
+              <path class="az-steam" d="M140 86C132 72 148 64 140 50"/>
+              <path class="az-steam" d="M192 84C184 70 200 62 192 48" style="animation-delay:-1.3s"/>
+              <!-- once it comes clean, the comal’s handle says whose tortilla it is -->
+              <g transform="translate(306 103) rotate(-8) scale(.42)"><g class="az-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
-
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
-
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the press’s lid, swung open on its hinge (drawn behind the base) -->
+            <g class="az-lid-in" id="azLidIn">
+              <path class="az-iron" d="M72 284A108 50 0 0 0 288 284L288 292A108 50 0 0 1 72 292Z"/>
+              <ellipse class="az-iron-plate" cx="180" cy="284" rx="108" ry="50"/>
+              <ellipse cx="152" cy="270" rx="44" ry="13" fill="#fff" opacity=".07"/>
+              <path class="az-iron-hi" d="M72 284A108 50 0 0 1 288 284"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <!-- the press’s base -->
+            <ellipse class="az-shadow" cx="187" cy="420" rx="124" ry="56"/>
+            <rect class="az-iron" x="110" y="444" width="16" height="22" rx="3"/>
+            <rect class="az-iron" x="234" y="444" width="16" height="22" rx="3"/>
+            <path class="az-iron" d="M72 390A108 54 0 0 0 288 390L288 408A108 54 0 0 1 72 408Z"/>
+            <ellipse class="az-iron-face" cx="180" cy="390" rx="108" ry="54"/>
+            <ellipse class="az-iron-plate" cx="180" cy="390" rx="96" ry="47"/>
+            <path class="az-iron-hi" d="M72 390A108 54 0 0 1 288 390"/>
+            <!-- on the press: the heap that gets dumped, the mess it presses into, the ball, the tortilla -->
+            <g class="az-dough" id="azHeap">
+              <path class="az-heap-flour" d="M118 394Q128 346 180 338Q232 346 242 394Q180 408 118 394Z"/>
+              <path class="az-heap-wet" d="M150 360Q170 346 196 352Q214 362 204 376Q184 386 162 380Q146 372 150 360Z"/>
+            </g>
+            <g class="az-dough" id="azMess"></g>
+            <g class="az-dough az-mv" id="azBall">
+              <g id="azBallIn" style="transform-box:view-box;transform-origin:180px 406px">
+                <circle class="az-ball-c" cx="180" cy="372" r="36"/>
+                <g id="azBallCracks">
+                  <path class="az-ball-crack" d="M152 356L162 362L158 372"/>
+                  <path class="az-ball-crack" d="M200 348L194 358L202 364"/>
+                  <path class="az-ball-crack" d="M206 382L196 386L198 396"/>
+                  <path class="az-ball-crack" d="M166 392L174 386"/>
+                </g>
+                <ellipse class="az-ball-hi" id="azBallHi" cx="168" cy="356" rx="12" ry="7" transform="rotate(-30 168 356)" opacity="0"/>
+              </g>
+            </g>
+            <g class="az-dough az-mv" id="azTort">
+              <ellipse class="az-tort" cx="180" cy="390" rx="84" ry="42"/>
+              <ellipse class="az-tort-edge" cx="180" cy="390" rx="80" ry="39.5"/>
+              <ellipse class="az-tort-hi" cx="152" cy="378" rx="30" ry="9"/>
+              <g>
+                <ellipse class="az-spot" cx="146" cy="392" rx="9" ry="4"/>
+                <ellipse class="az-spot" cx="200" cy="376" rx="7" ry="3.5"/>
+                <ellipse class="az-spot" cx="214" cy="402" rx="10" ry="4.5"/>
+                <ellipse class="az-spot" cx="172" cy="408" rx="6" ry="3"/>
+                <ellipse class="az-spot" cx="236" cy="384" rx="5" ry="2.5"/>
+                <ellipse class="az-spot" cx="128" cy="376" rx="5" ry="2.5"/>
+                <ellipse class="az-spot" cx="182" cy="370" rx="4.5" ry="2"/>
+              </g>
+            </g>
+            <!-- the ERP: masa flour, heaped in a clay bowl -->
+            <g id="azFlour" style="transform-box:fill-box;transform-origin:center">
+              <ellipse class="az-shadow" cx="185" cy="127" rx="66" ry="8"/>
+              <ellipse class="az-clay-in" cx="180" cy="68" rx="82" ry="26"/>
+              <ellipse class="az-dust az-emptied" id="azFlourDust" cx="180" cy="72" rx="56" ry="14"/>
+              <path class="az-clay-rim" d="M98 68A82 26 0 0 1 262 68"/>
+              <g id="azMound">
+                <path class="az-masa" d="M104 72Q126 22 180 14Q234 22 256 72Q180 88 104 72Z"/>
+                <path class="az-masa-hi" d="M126 56Q140 30 172 22Q150 36 142 62Z"/>
+                <path class="az-masa-lo" d="M214 28Q244 40 252 70Q236 74 222 72Q226 48 214 28Z"/>
+              </g>
+              <path class="az-clay" d="M98 68A82 26 0 0 0 262 68Q258 124 180 128Q102 124 98 68Z"/>
+              <path class="az-clay-rim" d="M98 68A82 26 0 0 0 262 68"/>
+            </g>
+            <!-- the floor: water, in an enamel bowl -->
+            <g id="azWater" style="transform-box:fill-box;transform-origin:center">
+              <ellipse class="az-shadow" cx="184" cy="212" rx="60" ry="7"/>
+              <ellipse class="az-enamel-in" cx="180" cy="172" rx="74" ry="22"/>
+              <g id="azWaterIn">
+                <ellipse class="az-water" cx="180" cy="174" rx="68" ry="18"/>
+                <ellipse class="az-water-hi" cx="156" cy="169" rx="22" ry="5"/>
+                <ellipse class="az-ripple" cx="198" cy="176" rx="22" ry="6"/>
+              </g>
+              <path class="az-enamel" d="M106 172A74 22 0 0 0 254 172Q252 212 180 214Q108 212 106 172Z"/>
+              <ellipse class="az-enamel-rim" cx="180" cy="172" rx="74" ry="22"/>
+            </g>
+            <!-- what gets poured: flour dust, splashes (the script throws them) -->
+            <g id="azFly"></g>
+            <!-- the press’s lid, shut (it swings on the hinge at the back) -->
+            <g class="az-lid-top" id="azLidTop">
+              <path class="az-iron" d="M72 376A108 54 0 0 0 288 376L288 390A108 54 0 0 1 72 390Z"/>
+              <ellipse class="az-iron-lid" cx="180" cy="376" rx="108" ry="54"/>
+              <ellipse class="az-iron-rib" cx="180" cy="376" rx="70" ry="35"/>
+              <path class="az-iron-rib" d="M180 376L104 338M180 376L256 338M180 376L104 414M180 376L256 414"/>
+              <ellipse class="az-iron-boss" cx="180" cy="380" rx="20" ry="10"/>
+              <ellipse class="az-iron-boss-top" cx="180" cy="375" rx="20" ry="10"/>
+              <path class="az-iron-hi" d="M72 376A108 54 0 0 1 288 376"/>
+            </g>
+            <!-- the hinge at the back -->
+            <rect class="az-iron" x="146" y="327" width="18" height="16" rx="3"/>
+            <rect class="az-iron" x="196" y="327" width="18" height="16" rx="3"/>
+            <!-- the lever at the front: resting, and pulled over to press -->
+            <rect class="az-iron" x="170" y="440" width="20" height="22" rx="4"/>
+            <g class="az-lever-dn" id="azLeverDn">
+              <rect class="az-iron" x="173" y="452" width="14" height="48"/>
+              <rect class="az-grip" x="170" y="490" width="20" height="42" rx="10"/>
+              <path class="az-grip-hi" d="M175 498V524"/>
+            </g>
+            <g class="az-lever-up" id="azLeverUp">
+              <rect class="az-iron" x="173" y="350" width="14" height="102"/>
+              <rect class="az-grip" x="170" y="316" width="20" height="44" rx="10"/>
+              <path class="az-grip-hi" d="M175 324V350"/>
+            </g>
+            <circle cx="180" cy="452" r="5" fill="#7A7484"/>
+            <!-- SimpleGrid does the kneading: a glove wearing the mark -->
+            <g class="az-glove az-mv" id="azGlove">
+              <ellipse class="az-glove-c" cx="31" cy="4" rx="10" ry="21" transform="rotate(-28 31 4)"/>
+              <path class="az-glove-c" d="M-27 -36L-27 18Q-27 48 0 48Q27 48 27 18L27 -36Z"/>
+              <path class="az-glove-line" d="M-10 28V44M3 30V47M15 26V42"/>
+              <rect class="az-glove-cuff" x="-31" y="-56" width="62" height="22" rx="6"/>
+              <g transform="translate(0 -8) scale(.68)"><g class="az-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The masa flour: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The water: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -597,10 +699,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Press it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The masa flour is your ERP, the water is your floor, and nothing works them together. Press it, or tap the press to try it yourself.</p>
       </div>
     </div>
   </div>

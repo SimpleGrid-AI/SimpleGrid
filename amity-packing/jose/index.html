@@ -1260,8 +1260,16 @@ SG.story = function(o){
       });
     });
   }
+  // With reduced motion nothing animates: the element just takes its last frame.
+  var styled = [];
   function anim(el, frames, ms, delay, easing){
-    return el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease', fill: 'both' });
+    if (reduce){
+      var last = frames[frames.length - 1];
+      for (var k in last) if (k !== 'offset' && k !== 'easing') el.style[k] = last[k];
+      styled.push(el);
+      return;
+    }
+    el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' });
   }
   var span = function(T, a, b){ return clamp((T - a)/(b - a), 0, 1); };
 
@@ -1351,6 +1359,8 @@ SG.story = function(o){
     timers = [];
     [heap, sleeve, linker].concat(CLUMPS.map(function(c){ return c.el; }), spills.map(function(s){ return s.el; }), bursts.map(function(b){ return b.inner; }))
       .forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
+    styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
+    styled = [];
     obj.classList.remove('stuffing', 'messy', 'has-linker', 'dosed', 'twisting', 'is-done');
     drawApart();
   }
