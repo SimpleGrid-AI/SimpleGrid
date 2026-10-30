@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Oats and fruit pieces that won’t hold together, beside the words: {{first}}, you’ve been baking for more than 100 years.">
+<meta property="og:image:alt" content="A bar press with a heap of oats on a shelf above a heap of fruit and nuts, beside the words: {{first}}, you’ve been baking for more than 100 years.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, press the bar.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who bakes bars, crackers and toaster pastries for a living.">
@@ -67,12 +67,12 @@
 .press.glazed .pr-pile{fill:#E5A548}
 .pr-slab,.pr-bar{opacity:0}
 .pr-slab,.pr-bar-base{fill:#D6973F}
+.pr-bar-top{fill:#fff;opacity:.3}
 /* Pressed dry, it’s a pale block that cracks into chunks. */
 .pr-frag{opacity:0;transform-box:fill-box;transform-origin:center}
 .pr-frag path{fill:#DDBF83;stroke:#B08B4E;stroke-width:1.5;stroke-linejoin:round}
 .pr-frag ellipse{fill:#F1DBA8;stroke:#BF9652;stroke-width:.9}
 .pr-frag circle{fill:#B81D38}
-.pr-bar-top{fill:#fff;opacity:.3}
 /* The pieces: oats, cranberries, almonds, raisins. */
 .pc-oat ellipse{fill:#F1DBA8;stroke:#BF9652;stroke-width:1.3}
 .pc-cran path{fill:#C51F3B}
@@ -102,7 +102,7 @@
 .pr-wrap-hi{fill:#fff;opacity:.18}
 .pr-tag{--sg-bg:#fff;--sg-ink:#1470AF}
 .press.is-done .pr-tag{opacity:1;transform:none;transition-delay:.35s}
-.callout-top{top:37%}
+.callout-top{top:35.5%}
 .callout-gap{top:calc(60.4% - 15px)}
 .callout-bottom{top:68.5%}
 .callout-top h3 i{background:#F1DBA8}
@@ -423,9 +423,9 @@
   var byX = pieces.slice().sort(function(a, b){ return a.press.x - b.press.x; });
   var ends = [byX.slice(0, 16), byX.slice(-16).reverse()], middle = byX.slice(16, -16);
   // A few crumbs off the top of the block stay stuck to the ram and go up with it.
-  var top = middle.filter(function(p){ return p.press.y < 403; });
+  var upper = middle.filter(function(p){ return p.press.y < 403; });
   [0, 1, 2, 3, 4, 5].forEach(function(j){
-    var p = top[Math.round(j*(top.length - 1)/5)];
+    var p = upper[Math.round(j*(upper.length - 1)/5)];
     p.stuck = true;
     p.mess = { x: p.press.x + R(-2, 2), y: 172 + (p.oat ? 3 : 5) + R(0, 1.5), r: p.press.r + R(-12, 12), s: .94 };
   });
