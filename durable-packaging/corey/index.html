@@ -210,6 +210,9 @@ h1 span{display:block;color:var(--hi)}
   --tint:#EEF0FA;--pale:#FAFBFF;--ink:#10153A;--alert:#ED1C24;--marker:#E6E9F7;--h2-hi:#00188A;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
+/* The headline’s second line needs its own color: the end color is too close to white to stand apart on the field. */
+.hero,.hero-wipe{--hi:#A9BCFF}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--hi:#2F49C9}
 
 /* ------------------------------------------------------------ The container
    A food pan and its lid, kept generic on purpose. The lid is the ERP, the container with

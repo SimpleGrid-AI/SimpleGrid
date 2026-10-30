@@ -34,6 +34,9 @@
   --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#2B1D19;--on-accent-soft:rgba(43,29,25,.82);
   --tint:#F6F1EC;--pale:#FCFAF8;--ink:#2B1D19;--alert:#C34836;--marker:#F3E3DE;--h2-hi:#A93A2A;
 }
+/* The headline’s second line needs its own color: the end color is too close to white to stand apart on the field. */
+.hero,.hero-wipe{--hi:#FFD2B5}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--hi:#A93A2A}
 .line{--sku-a:#C34836;--sku-b:#E9B44C;--sku-c:#8DB580}
 
 <!--#include line.css-->
