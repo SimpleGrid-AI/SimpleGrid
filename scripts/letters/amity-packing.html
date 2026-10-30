@@ -607,8 +607,9 @@
       });
     });
   }
-  // With reduced motion nothing animates: the element just takes its last frame.
-  var styled = [];
+  // With reduced motion nothing animates: the element just takes its last frame. Every animation is
+  // kept, because one that a later one replaces drops out of getAnimations() but still needs cancelling.
+  var styled = [], moves = [];
   function anim(el, frames, ms, delay, easing){
     if (reduce){
       var last = frames[frames.length - 1];
@@ -616,7 +617,7 @@
       styled.push(el);
       return;
     }
-    el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' });
+    moves.push(el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' }));
   }
   var span = function(T, a, b){ return clamp((T - a)/(b - a), 0, 1); };
 
@@ -704,10 +705,11 @@
     gen++;
     timers.forEach(clearTimeout);
     timers = [];
-    [heap, sleeve, linker].concat(CLUMPS.map(function(c){ return c.el; }), spills.map(function(s){ return s.el; }), bursts.map(function(b){ return b.inner; }))
-      .forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
+    var moved = [heap, sleeve, linker].concat(CLUMPS.map(function(c){ return c.el; }), spills.map(function(s){ return s.el; }), bursts.map(function(b){ return b.inner; }));
+    moves.forEach(function(a){ a.cancel(); });
+    moved.forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
     styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
-    styled = [];
+    styled = []; moves = [];
     obj.classList.remove('stuffing', 'messy', 'has-linker', 'dosed', 'twisting', 'is-done');
     drawApart();
   }

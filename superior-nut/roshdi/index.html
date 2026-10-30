@@ -172,6 +172,9 @@ h1 span{display:block;color:var(--hi)}
   .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
   .ops{position:static;align-self:stretch}
   .ops h3{font-size:15.5px;gap:7px}
   .ops p{font-size:13.5px;line-height:1.36}
@@ -187,6 +190,13 @@ h1 span{display:block;color:var(--hi)}
 @media (max-width:350px){
   .callout h3{font-size:13.5px}
   .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -1076,11 +1086,13 @@ SG.story = function(o){
     el.setAttribute('d', 'M' + (from[0] + (reduce ? 0 : Math.sin(clock*21)*.7)).toFixed(1) + ' ' + top.toFixed(1) + 'V' + bot.toFixed(1));
   }
   var lastDrip = -1;
-  function render(){
+  // The rivets and the bed's sway move every frame; everything else only while a move plays.
+  function render(all){
     var off = -(spin % 10);
     spinFar.setAttribute('stroke-dashoffset', off.toFixed(2));
     spinNear.setAttribute('stroke-dashoffset', (off + 100).toFixed(2));
     bed.setAttribute('transform', reduce ? '' : 'rotate(' + (Math.sin(clock*1.4)*1.3).toFixed(2) + ' 180 364)');
+    if (!all) return;
     nuts.forEach(function(n, i){
       var f = S.from[i], g = S.to[i];
       var x = lerp(f[0], g[0], S.mix), y = lerp(f[1], g[1], S.mix), r = lerp(f[2], g[2], S.mix) + 360*n.turns*S.turns, d = lerp(f[3], g[3], S.mix);
@@ -1113,7 +1125,7 @@ SG.story = function(o){
       a.t = reduce ? a.dur : Math.min(a.dur, a.t + dt);
       a.fn(a.t);
     }
-    render();
+    render(!!a);
     if (a && a === active && a.t >= a.dur){ active = null; a.done(); }
     raf = (active || (inView && !reduce && !document.hidden)) ? requestAnimationFrame(tick) : 0;
   }
@@ -1176,7 +1188,7 @@ SG.story = function(o){
     pan.classList.add('snap');
     pan.classList.remove('dosed', 'is-done');
     S = fresh(); clock = 0; spin = 0;
-    render();
+    render(true);
     pan.getBoundingClientRect();
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ pan.classList.remove('snap'); }); });
     wake();
@@ -1204,7 +1216,7 @@ SG.story = function(o){
     new IntersectionObserver(function(entries){ inView = entries[0].isIntersecting; if (inView) wake(); }).observe(pan);
   }
   document.addEventListener('visibilitychange', function(){ if (!document.hidden) wake(); });
-  render();
+  render(true);
   wake();
 })();
 </script>

@@ -171,6 +171,9 @@ h1 span{display:block;color:var(--hi)}
   .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
   .ops{position:static;align-self:stretch}
   .ops h3{font-size:15.5px;gap:7px}
   .ops p{font-size:13.5px;line-height:1.36}
@@ -186,6 +189,13 @@ h1 span{display:block;color:var(--hi)}
 @media (max-width:350px){
   .callout h3{font-size:13.5px}
   .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -996,8 +1006,9 @@ SG.story = function(o){
   var gen = 0, timers = [];
   function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
   function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
-  // With reduced motion nothing animates: the element just takes its last frame.
-  var styled = [];
+  // With reduced motion nothing animates: the element just takes its last frame. Every animation is
+  // kept, because one that a later one replaces drops out of getAnimations() but still needs cancelling.
+  var styled = [], moves = [];
   function anim(el, frames, ms, delay, easing){
     if (reduce){
       var last = frames[frames.length - 1];
@@ -1005,7 +1016,7 @@ SG.story = function(o){
       styled.push(el);
       return;
     }
-    el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' });
+    moves.push(el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' }));
   }
   function play(ms, delay, fn){
     var my = gen;
@@ -1092,9 +1103,11 @@ SG.story = function(o){
     gen++;
     timers.forEach(clearTimeout);
     timers = [];
-    [lid, crimper, roll, crease, puddle].concat(LEAKS, ticks).forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
+    var moved = [lid, crimper, roll, crease, puddle].concat(LEAKS, ticks);
+    moves.forEach(function(a){ a.cancel(); });
+    moved.forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
     styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
-    styled = [];
+    styled = []; moves = [];
     obj.classList.remove('messy', 'has-crimper', 'dosed', 'is-done');
     bend(0);
   }

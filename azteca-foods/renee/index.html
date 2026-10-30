@@ -171,6 +171,9 @@ h1 span{display:block;color:var(--hi)}
   .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
   .ops{position:static;align-self:stretch}
   .ops h3{font-size:15.5px;gap:7px}
   .ops p{font-size:13.5px;line-height:1.36}
@@ -186,6 +189,13 @@ h1 span{display:block;color:var(--hi)}
 @media (max-width:350px){
   .callout h3{font-size:13.5px}
   .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -227,8 +237,8 @@ h1 span{display:block;color:var(--hi)}
 .az-iron-hi{fill:none;stroke:#A39DAE;stroke-width:2.5;stroke-linecap:round}
 .az-grip{fill:var(--teal-deep)}
 .az-grip-hi{fill:none;stroke:rgba(255,255,255,.35);stroke-width:3;stroke-linecap:round}
-.az-lid-top{transform-box:view-box;transform-origin:180px 336px}
-.az-lid-in{transform-box:view-box;transform-origin:180px 336px;transform:scaleY(0)}
+.az-lid-top{transform-box:view-box;transform-origin:180px 336px;transform:scaleY(0)}
+.az-lid-in{transform-box:view-box;transform-origin:180px 336px}
 .az-lever-dn{transform-box:view-box;transform-origin:180px 452px}
 .az-lever-up{transform-box:view-box;transform-origin:180px 452px;transform:scaleY(0)}
 /* The ERP: masa flour, heaped in a clay bowl. */
@@ -252,8 +262,13 @@ h1 span{display:block;color:var(--hi)}
 .az-heap-flour{fill:#F1DEA3}
 .az-heap-wet{fill:#D9BE72}
 .az-splash{fill:#6DB9E6;opacity:.85}
+.az-wetg{opacity:0}
+.az-pop{transform-box:fill-box;transform-origin:center}
+.az-puffc{fill:#FBF3D9;opacity:0;transform-box:fill-box;transform-origin:center}
+.az-drop{fill:#6DB9E6;opacity:0}
 .az-raw{fill:#EED9A0;stroke:#C9A964;stroke-width:2;stroke-linejoin:round}
 .az-crack{fill:none;stroke:#9C7A3C;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.az-gap{fill:none;stroke:#57525F;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round}
 .az-dry{fill:#FFF9E8;opacity:.9}
 .az-wet{fill:#CDAE63;opacity:.85}
 .az-puddle{fill:#7DBFE4;opacity:.75}
@@ -263,7 +278,7 @@ h1 span{display:block;color:var(--hi)}
 .az-ball-hi{fill:#fff;opacity:.55}
 .az-tort{fill:#F3E2B0}
 .az-tort-edge{fill:none;stroke:#E2C98A;stroke-width:3}
-.az-tort-hi{fill:#FBF1D4}
+.az-tort-hi{fill:#FBF1D4;opacity:.7}
 .az-spot{fill:#A8692B;opacity:0}
 .press.toasted .az-spot{opacity:.8;transition:opacity .5s}
 .press.toasted .az-spot:nth-child(2n){transition-delay:.12s}
@@ -550,7 +565,7 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="press hero-obj" id="press" role="img" aria-label="A bowl of masa flour, a bowl of water below it, and a closed tortilla press underneath. Nothing mixed.">
+        <div class="press hero-obj" id="press" role="img" aria-label="A bowl of masa flour, a bowl of water below it, and an open tortilla press underneath. Nothing mixed.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
             <defs>
               <radialGradient id="azBallG" cx="40%" cy="34%" r="70%"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".55" stop-color="#EED79B"/><stop offset="1" stop-color="#CFAF68"/></radialGradient>
@@ -582,16 +597,19 @@ h1 span{display:block;color:var(--hi)}
             <ellipse class="az-iron-face" cx="180" cy="390" rx="108" ry="54"/>
             <ellipse class="az-iron-plate" cx="180" cy="390" rx="96" ry="47"/>
             <path class="az-iron-hi" d="M72 390A108 54 0 0 1 288 390"/>
+            <!-- the hinge at the back -->
+            <rect class="az-iron" x="146" y="327" width="18" height="16" rx="3"/>
+            <rect class="az-iron" x="196" y="327" width="18" height="16" rx="3"/>
             <!-- on the press: the heap that gets dumped, the mess it presses into, the ball, the tortilla -->
-            <g class="az-dough" id="azHeap">
+            <g class="az-dough" id="azHeap" style="transform-box:fill-box;transform-origin:50% 100%">
               <path class="az-heap-flour" d="M118 394Q128 346 180 338Q232 346 242 394Q180 408 118 394Z"/>
               <path class="az-heap-wet" d="M150 360Q170 346 196 352Q214 362 204 376Q184 386 162 380Q146 372 150 360Z"/>
             </g>
-            <g class="az-dough" id="azMess"></g>
-            <g class="az-dough az-mv" id="azBall">
+            <g class="az-dough" id="azMess" style="transform-box:view-box;transform-origin:180px 392px"></g>
+            <g class="az-dough az-pop" id="azBall">
               <g id="azBallIn" style="transform-box:view-box;transform-origin:180px 406px">
                 <circle class="az-ball-c" cx="180" cy="372" r="36"/>
-                <g id="azBallCracks">
+                <g id="azBallCracks" style="transform-box:view-box;transform-origin:180px 372px">
                   <path class="az-ball-crack" d="M152 356L162 362L158 372"/>
                   <path class="az-ball-crack" d="M200 348L194 358L202 364"/>
                   <path class="az-ball-crack" d="M206 382L196 386L198 396"/>
@@ -600,10 +618,10 @@ h1 span{display:block;color:var(--hi)}
                 <ellipse class="az-ball-hi" id="azBallHi" cx="168" cy="356" rx="12" ry="7" transform="rotate(-30 168 356)" opacity="0"/>
               </g>
             </g>
-            <g class="az-dough az-mv" id="azTort">
+            <g class="az-dough az-pop" id="azTort">
               <ellipse class="az-tort" cx="180" cy="390" rx="84" ry="42"/>
               <ellipse class="az-tort-edge" cx="180" cy="390" rx="80" ry="39.5"/>
-              <ellipse class="az-tort-hi" cx="152" cy="378" rx="30" ry="9"/>
+              <ellipse class="az-tort-hi" cx="156" cy="377" rx="22" ry="6"/>
               <g>
                 <ellipse class="az-spot" cx="146" cy="392" rx="9" ry="4"/>
                 <ellipse class="az-spot" cx="200" cy="376" rx="7" ry="3.5"/>
@@ -618,12 +636,12 @@ h1 span{display:block;color:var(--hi)}
             <g id="azFlour" style="transform-box:fill-box;transform-origin:center">
               <ellipse class="az-shadow" cx="185" cy="127" rx="66" ry="8"/>
               <ellipse class="az-clay-in" cx="180" cy="68" rx="82" ry="26"/>
-              <ellipse class="az-dust az-emptied" id="azFlourDust" cx="180" cy="72" rx="56" ry="14"/>
+              <path class="az-dust az-emptied" id="azFlourDust" d="M136 74Q150 64 172 68Q190 62 210 68Q226 72 220 78Q196 84 170 82Q140 82 136 74Z"/>
               <path class="az-clay-rim" d="M98 68A82 26 0 0 1 262 68"/>
               <g id="azMound">
-                <path class="az-masa" d="M104 72Q126 22 180 14Q234 22 256 72Q180 88 104 72Z"/>
-                <path class="az-masa-hi" d="M126 56Q140 30 172 22Q150 36 142 62Z"/>
-                <path class="az-masa-lo" d="M214 28Q244 40 252 70Q236 74 222 72Q226 48 214 28Z"/>
+                <path class="az-masa" d="M104 72Q112 50 128 40Q134 28 152 24Q164 13 182 15Q200 13 210 24Q230 28 236 42Q252 52 256 72Q180 88 104 72Z"/>
+                <path class="az-masa-hi" d="M124 56Q132 38 150 30Q160 22 176 21Q156 32 146 44Q138 54 138 64Z"/>
+                <path class="az-masa-lo" d="M214 30Q232 34 238 46Q250 56 252 70Q236 75 222 73Q228 54 214 30Z"/>
               </g>
               <path class="az-clay" d="M98 68A82 26 0 0 0 262 68Q258 124 180 128Q102 124 98 68Z"/>
               <path class="az-clay-rim" d="M98 68A82 26 0 0 0 262 68"/>
@@ -652,9 +670,6 @@ h1 span{display:block;color:var(--hi)}
               <ellipse class="az-iron-boss-top" cx="180" cy="375" rx="20" ry="10"/>
               <path class="az-iron-hi" d="M72 376A108 54 0 0 1 288 376"/>
             </g>
-            <!-- the hinge at the back -->
-            <rect class="az-iron" x="146" y="327" width="18" height="16" rx="3"/>
-            <rect class="az-iron" x="196" y="327" width="18" height="16" rx="3"/>
             <!-- the lever at the front: resting, and pulled over to press -->
             <rect class="az-iron" x="170" y="440" width="20" height="22" rx="4"/>
             <g class="az-lever-dn" id="azLeverDn">
@@ -1020,122 +1035,253 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
 (function(){
+  /* ---------------------------------------------------- The tortilla press
+     The masa flour is the ERP, the water is the floor, and nothing works them
+     together. Dump both on the press and press it with nothing kneading them
+     in, and it comes out cracked, ragged and crumbling at the edges, crumbs
+     all over the press. That stays. The kneading is SimpleGrid: a glove
+     wearing the mark gathers every crumb into one smooth ball. Press again,
+     and out comes one perfect round tortilla, onto the comal to toast. */
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), press = $('press');
+  var lidTop = $('azLidTop'), lidIn = $('azLidIn'), leverDn = $('azLeverDn'), leverUp = $('azLeverUp');
+  var flour = $('azFlour'), mound = $('azMound'), flourDust = $('azFlourDust'), water = $('azWater'), waterIn = $('azWaterIn'), fly = $('azFly');
+  var heap = $('azHeap'), messG = $('azMess'), ball = $('azBall'), ballIn = $('azBallIn'), cracks = $('azBallCracks'), ballHi = $('azBallHi'), tort = $('azTort');
+  var glove = $('azGlove'), comal = $('azComal');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = {
+    apart:    { btn: 'Press it to see your operations', caption: 'The masa flour is your ERP, the water is your floor, and nothing works them together. Press it, or tap the press to try it yourself.' },
+    messing:  { btn: 'Pressing…', caption: 'Pressing them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Knead it right', caption: 'That’s your operations today: a big mess. Flour and water, pressed with nothing working them in: cracked, ragged and crumbling at the edges. It won’t fix itself, either.' },
+    dosing:   { btn: 'Kneading…', caption: 'Every crumb gathered up, and worked in.' },
+    dosed:    { btn: 'Press it again', caption: 'In goes the kneading. That’s SimpleGrid. The dough holds together now, so press it again.' },
+    cleaning: { btn: 'Pressing…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one perfect round tortilla, toasted on the comal. Your ERP and your floor finally hold together.' }
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: press.getAttribute('aria-label'),
+    mess: 'The press opened on flour and water pressed together with nothing kneaded in: a cracked, ragged disc crumbling at the edges, crumbs all over the press.',
+    dosed: 'A glove marked SimpleGrid has kneaded every crumb into one smooth ball of dough on the press.',
+    done: 'One perfect round tortilla with toasty spots, on a comal labelled SimpleGrid, above the open press.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
+  var anims = [], timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(r){ later(r, ms); }); }
+  // Every move is a Web Animation that holds where it lands, so Start over can cancel the lot.
+  function play(el, frames, ms, delay, easing){
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease-in-out', fill: 'both' });
+    anims.push(a);
+    return a.finished.catch(function(){});
+  }
 
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
+  /* The lid and the lever swing toward you or away, so each is two drawings:
+     one folds flat onto its hinge, then the other unfolds from it. */
+  function swing(a, b, ms, e1, e2){
+    return play(a, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], ms/2, 0, e1 || 'ease-in').then(function(){
+      return play(b, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], ms/2, 0, e2 || 'ease-out');
+    });
+  }
+  function openLid(){ return swing(lidTop, lidIn, 400); }
+  function shutLid(){ return swing(lidIn, lidTop, 300, 'ease-in', 'cubic-bezier(.6,0,1,.6)'); }
+  function pull(){ return swing(leverDn, leverUp, 320); }
+  function release(){ return swing(leverUp, leverDn, 300); }
+  function squish(){
+    play(lidTop, [{ transform: 'translateY(0px) scaleY(1)' }, { transform: 'translateY(4px) scaleY(.97)', offset: .4 }, { transform: 'translateY(0px) scaleY(1)' }], 380);
+    play(leverUp, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(.93)', offset: .4 }, { transform: 'scaleY(1)' }], 380);
+  }
+
+  /* The mess, made once and the same every time: a cracked, ragged disc with
+     dry flour and wet patches in it, a puddle, crumbs all over the plate and
+     a few more squeezed out onto the table. */
+  var seed = 1938;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function make(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+  function f1(v){ return v.toFixed(1); }
+  function blob(cx, cy, rx, ry, cls, parent){
+    var n = 8, p = [], k;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2, f = R(.7, 1.15); p.push([cx + Math.cos(a)*rx*f, cy + Math.sin(a)*ry*f]); }
+    var mid = function(a, b){ return f1((a[0] + b[0])/2) + ' ' + f1((a[1] + b[1])/2); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f1(p[k][0]) + ' ' + f1(p[k][1]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return make('path', { 'class': cls, d: d + 'Z' }, parent);
+  }
+  var CX = 180, CY = 392, N = 34, pts = [], i, notch = {};
+  [2, 7, 11, 16, 21, 25, 30].forEach(function(k){ notch[k] = 1; });
+  for (i = 0; i < N; i++){
+    var ang = i/N*Math.PI*2 + R(-.05, .05), fr = notch[i] ? R(.56, .74) : R(.86, 1.1);
+    pts.push([CX + Math.cos(ang)*84*fr, CY + Math.sin(ang)*41*fr]);
+  }
+  make('path', { 'class': 'az-raw', d: 'M' + pts.map(function(p){ return f1(p[0]) + ' ' + f1(p[1]); }).join('L') + 'Z' }, messG);
+  [[148, 380, 20, 8], [214, 402, 15, 6], [194, 370, 11, 5], [136, 404, 10, 4], [236, 380, 8, 3.5]].forEach(function(b){ blob(b[0], b[1], b[2], b[3], 'az-dry', messG); });
+  [[206, 382, 16, 7], [164, 400, 13, 5], [226, 396, 9, 4], [174, 376, 8, 3.5]].forEach(function(b){ blob(b[0], b[1], b[2], b[3], 'az-wet', messG); });
+  // Where it split right open, the plate shows through; finer cracks run in from the rest.
+  function zig(p, reach, steps, jx, jy){
+    var d = 'M' + f1(p[0]) + ' ' + f1(p[1]);
+    for (var s = 1; s <= steps; s++){
+      var t = s*reach/steps;
+      d += 'L' + f1(p[0] + (CX - p[0])*t + R(-jx, jx)) + ' ' + f1(p[1] + (CY - p[1])*t + R(-jy, jy));
+    }
+    return d;
+  }
+  [2, 16, 25].forEach(function(k){ make('path', { 'class': 'az-gap', d: zig(pts[k], R(.5, .7), 4, 7, 3) }, messG); });
+  [7, 11, 21, 30, 13, 28].forEach(function(k){ make('path', { 'class': 'az-crack', d: zig(pts[k], R(.2, .4), 3, 6, 3) }, messG); });
+  blob(254, 412, 24, 8, 'az-puddle', messG);
+  function crumb(x, y, r, parent){
+    var d = '';
+    for (var k = 0; k < 5; k++){ var b = k/5*Math.PI*2 + R(-.3, .3), rr = r*R(.7, 1.2); d += (k ? 'L' : 'M') + f1(x + Math.cos(b)*rr) + ' ' + f1(y + Math.sin(b)*rr*.62); }
+    return make('path', { 'class': 'az-crumb', d: d + 'Z' }, parent);
+  }
+  crumb(112, 406, 13, messG);
+  crumb(244, 360, 10, messG);
+  for (i = 0; i < 24; i++){
+    var ca = i/24*Math.PI*2 + R(-.2, .2), cf = R(1.06, 1.34), cx = CX + Math.cos(ca)*84*cf, cy = CY + Math.sin(ca)*41*cf;
+    var q = Math.hypot((cx - 180)/100, (cy - 390)/49);
+    if (q > 1){ cx = 180 + (cx - 180)/q; cy = 390 + (cy - 390)/q; }
+    crumb(cx, cy, R(2.5, 6.5), messG);
+  }
+  for (i = 0; i < 14; i++) make('circle', { 'class': 'az-dry', cx: f1(R(96, 264)), cy: f1(R(356, 428)), r: f1(R(1.2, 2.4)) }, messG);
+  var outside = [[128, 474, 5], [228, 478, 4.5], [266, 466, 3.5], [100, 462, 4], [152, 486, 3], [212, 492, 3.5]].map(function(c){
+    var g = make('g', {}, messG);
+    crumb(c[0], c[1], c[2], g);
+    return { el: g, dx: (180 - c[0])*.5, dy: 448 - c[1] };
   });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  // What the water does to the heap, and what flies when things land.
+  var wetG = make('g', { 'class': 'az-wetg' }, heap);
+  wetG.appendChild(heap.querySelector('.az-heap-wet'));
+  [[170, 352, 9, 4], [200, 366, 7, 3.5], [148, 378, 6, 3]].forEach(function(b){ blob(b[0], b[1], b[2], b[3], 'az-splash', wetG); });
+  var dust = [[-44, -12, 14], [38, -18, 16], [-8, -34, 18], [56, 2, 11], [-60, 6, 10]].map(function(d){
+    return { el: make('circle', { 'class': 'az-puffc', cx: 180 + d[0]*.25, cy: 362 + d[1]*.25, r: d[2] }, fly), dx: d[0], dy: d[1] };
+  });
+  var drops = [[-46, -18], [40, -26], [-20, -36], [58, -8], [-62, -2], [24, -42]].map(function(d){
+    return { el: make('circle', { 'class': 'az-drop', cx: 180, cy: 356, r: 4 }, fly), dx: d[0], dy: d[1] };
+  });
+  function puff(){
+    dust.forEach(function(d, k){ play(d.el, [{ opacity: .95, transform: 'translate(0px,0px) scale(.5)' }, { opacity: 0, transform: 'translate(' + d.dx + 'px,' + d.dy + 'px) scale(1.6)' }], 640, k*30, 'ease-out'); });
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  function splash(){
+    drops.forEach(function(d, k){ play(d.el, [{ opacity: 1, transform: 'translate(0px,0px)' }, { opacity: 1, transform: 'translate(' + f1(d.dx*.7) + 'px,' + d.dy + 'px)', offset: .5 }, { opacity: 0, transform: 'translate(' + d.dx + 'px,' + (d.dy + 34) + 'px)' }], 560, k*25, 'ease-out'); });
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
-  function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
-    });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
-  }
-  function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
-  }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
-  function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
-    });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
-  }
+  // Where the vessels go to pour, and where the glove works.
+  var FLOUR_POUR = 'translate(16px,232px) rotate(-62deg)', WATER_POUR = 'translate(-26px,150px) rotate(58deg)', HOME = 'translate(0px,0px) rotate(0deg)';
+  var GLOVE_OFF = 'translate(330px,250px) rotate(30deg)', GLOVE_HOVER = 'translate(262px,314px) rotate(30deg)', GLOVE_PRESS = 'translate(204px,318px) rotate(18deg)';
+
   function setCallouts(final){
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = final ? 'Your ERP' : 'The masa flour: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The water: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: press, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.press',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Pressed together, still not linked. It cracked and crumbled, and the crumbs stay put.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same dough, same crumbs. Now it’s been kneaded.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    // Flour in, water on top, and press it with nothing worked in. It cracks and crumbles, and stays that way.
+    mess: function(){
+      press.classList.remove('snap');
+      play(flour, [{ transform: HOME }, { transform: FLOUR_POUR }], 440, 0, 'cubic-bezier(.4,0,.3,1)');
+      return wait(420).then(function(){
+        play(mound, [{ opacity: 1 }, { opacity: 0 }], 140);
+        play(flourDust, [{ opacity: 0 }, { opacity: .9 }], 200, 260);
+        play(heap, [{ opacity: 0, transform: 'translateY(-34px) scale(.55)' }, { opacity: 1, transform: 'translateY(0px) scale(1)' }], 300, 40, 'cubic-bezier(.3,1.4,.5,1)');
+        puff();
+        play(flour, [{ transform: FLOUR_POUR }, { transform: HOME }], 480, 200, 'cubic-bezier(.4,0,.3,1)');
+        play(water, [{ transform: HOME }, { transform: WATER_POUR }], 440, 260, 'cubic-bezier(.4,0,.3,1)');
+        return wait(700);
+      }).then(function(){
+        play(waterIn, [{ opacity: 1 }, { opacity: 0 }], 140);
+        play(wetG, [{ opacity: 0 }, { opacity: 1 }], 200, 40);
+        splash();
+        play(water, [{ transform: WATER_POUR }, { transform: HOME }], 480, 220, 'cubic-bezier(.4,0,.3,1)');
+        return wait(420);
+      }).then(shutLid).then(pull).then(function(){
+        // Pressed with nothing worked in, it splits, and crumbs squeeze out the front.
+        squish();
+        play(heap, [{ opacity: 1 }, { opacity: 0 }], 1);
+        play(messG, [{ opacity: 0 }, { opacity: 1 }], 1);
+        outside.forEach(function(c, k){
+          play(c.el, [{ transform: 'translate(' + f1(c.dx) + 'px,' + c.dy + 'px) scale(.4)' }, { transform: 'translate(0px,0px) scale(1)' }], 380, k*40, 'cubic-bezier(.2,.9,.3,1.2)');
+        });
+        return wait(420);
+      }).then(release).then(openLid);
+    },
+    // A glove wearing SimpleGrid’s mark gathers every crumb and kneads it into one smooth ball.
+    dose: function(){
+      press.classList.add('dosed');
+      play(messG, [{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(.3)' }], 520, 0, 'ease-in');
+      play(ball, [{ opacity: 0, transform: 'scale(.4)' }, { opacity: 1, transform: 'scale(1)' }], 420, 300, 'cubic-bezier(.3,1.3,.5,1)');
+      play(glove, [{ opacity: 0, transform: GLOVE_OFF }, { opacity: 1, transform: GLOVE_HOVER }], 460, 160, 'cubic-bezier(.2,.8,.3,1)');
+      var kneads = wait(720);
+      [0, 1, 2].forEach(function(k){
+        kneads = kneads.then(function(){
+          // Push it down, fold it over, give it a turn.
+          play(glove, [{ transform: GLOVE_HOVER }, { transform: GLOVE_PRESS, offset: .45 }, { transform: GLOVE_HOVER }], 480);
+          play(ballIn, [{ transform: 'scale(1,1)' }, { transform: 'scale(1.3,.7)', offset: .45 }, { transform: 'scale(1,1)' }], 480);
+          play(cracks, [{ opacity: 1 - k/3, transform: 'rotate(' + k*50 + 'deg)' }, { opacity: 1 - (k + 1)/3, transform: 'rotate(' + (k + 1)*50 + 'deg)' }], 480);
+          play(ballHi, [{ opacity: k*.2 }, { opacity: (k + 1)*.2 }], 300, 180);
+          return wait(500);
+        });
+      });
+      return kneads;
+    },
+    // Press the smooth ball, and out comes a perfect round tortilla, straight onto the comal.
+    clean: function(){
+      play(glove, [{ opacity: 1, transform: GLOVE_HOVER }, { opacity: 0, transform: GLOVE_OFF }], 380, 0, 'ease-in');
+      return wait(160).then(shutLid).then(pull).then(function(){
+        squish();
+        play(ball, [{ opacity: 1 }, { opacity: 0 }], 1);
+        play(tort, [{ opacity: 0 }, { opacity: 1 }], 1);
+        return wait(340);
+      }).then(release).then(openLid).then(function(){
+        // The bowls have done their part. The comal comes in, hot.
+        play(flour, [{ opacity: 1, transform: HOME }, { opacity: 0, transform: 'translate(-44px,0px) rotate(0deg)' }], 360, 0, 'ease-in');
+        play(water, [{ opacity: 1, transform: HOME }, { opacity: 0, transform: 'translate(-44px,0px) rotate(0deg)' }], 360, 60, 'ease-in');
+        play(comal, [{ opacity: 0, transform: 'translate(46px,0px)' }, { opacity: 1, transform: 'translate(0px,0px)' }], 420, 300, 'cubic-bezier(.2,.8,.3,1)');
+        return wait(700);
+      }).then(function(){
+        // Flip it over, onto the comal.
+        play(tort, [
+          { opacity: 1, transform: 'translate(0px,0px) scale(1,1)' },
+          { opacity: 1, transform: 'translate(-7px,-170px) scale(1.06,-.45)', offset: .5 },
+          { opacity: 1, transform: 'translate(-14px,-278px) scale(1,1)' }
+        ], 640, 0, 'cubic-bezier(.4,0,.3,1)');
+        return wait(660);
+      }).then(function(){
+        press.classList.add('toasted');
+        return wait(450);
+      });
+    },
+    restore: function(){
+      timers.forEach(clearTimeout);
+      timers = [];
+      anims.forEach(function(a){ a.cancel(); });
+      anims = [];
+      press.classList.add('snap');
+      press.classList.remove('dosed', 'toasted', 'is-done');
+      press.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ press.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      press.classList.toggle('is-done', on);
+    }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+
+  // Tapping the press does the same as the button.
+  press.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ press.classList.toggle('in-view', entries[0].isIntersecting); }).observe(press);
+  } else press.classList.add('in-view');
 })();
 </script>
 <script>

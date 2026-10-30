@@ -46,7 +46,7 @@
 .bowl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 /* Start over puts it all back at once, with nothing sliding home. */
 .bowl.snap,.bowl.snap *{transition:none!important}
-.bw-steam{fill:none;stroke:rgba(255,255,255,.55);stroke-width:5;stroke-linecap:round;opacity:0;animation:bw-steam 3.3s ease-in-out infinite}
+.bw-steam{fill:none;stroke:rgba(255,255,255,.55);stroke-width:5;stroke-linecap:round;opacity:.7;animation:bw-steam 3.3s ease-in-out infinite}
 .bowl:not(.in-view) .bw-steam{animation-play-state:paused}
 @keyframes bw-steam{0%{opacity:0;transform:translateY(10px)}30%{opacity:1}100%{opacity:0;transform:translateY(-28px)}}
 .bw-shadow{fill:rgba(0,20,10,.28)}
@@ -205,7 +205,7 @@
             <!-- what spills -->
             <path class="bw-splat" d="M86 244C88 245 91 246 93 247C94 254 93 262 90 264C87 266 85 262 85 256C85 251 85 247 86 244Z"/>
             <path class="bw-splat" d="M46 373C46 365 56 363 62 365C70 363 76 369 72 375C70 381 60 381 54 379C48 379 46 377 46 373Z"/>
-            <path class="bw-splat" d="M290 371C292 364 302 363 308 367C314 371 312 377 304 378C296 379 288 377 290 371Z"/>
+            <path class="bw-splat" d="M246 375C248 368 258 367 264 371C270 375 268 381 260 382C252 383 244 381 246 375Z"/>
             <!-- the bowl's face -->
             <circle class="bw-eye" cx="148" cy="278" r="8"/>
             <circle class="bw-eye" cx="212" cy="278" r="8"/>
@@ -317,7 +317,214 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduce = SG.reduce;
+
+  /* ---------------------------------------------- The mac and cheese */
+  var hero = $('hero'), bowl = $('bowl'), btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var blender = $('bwBlender'), smooth = $('bwSmooth'), lumpy = $('bwLumpy'), cream = $('bwCream'), gloss = $('bwGloss'), swirl = $('bwSwirl'), spoon = $('bwSpoon');
+  var splats = [].slice.call(bowl.querySelectorAll('.bw-splat'));
+
+  var COPY = {
+    apart:    { btn: 'Stir it in to see your operations', caption: 'Your ERP in the bowl, your floor on the board: mac and cheese, butternut squash, and nothing linking them. Stir it in, or tap the bowl.' },
+    messing:  { btn: 'Stirring…', caption: 'Stirring it in, chunks and all. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Blend it in', caption: 'That’s your operations today: a big mess. Lumps everywhere, and the spoon’s been pushed away. It won’t fix itself, either.' },
+    dosing:   { btn: 'Adding…', caption: 'Down goes the blender.' },
+    dosed:    { btn: 'Stir it again', caption: 'In goes the blender. That’s SimpleGrid. Now stir it again.' },
+    cleaning: { btn: 'Stirring…', caption: 'Watch the lumps disappear.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one smooth, creamy bowl, the squash hidden in plain sight. Your ERP and your floor finally blend into one, and the spoon’s back.' }
+  };
+  var ARIA = {
+    apart: bowl.getAttribute('aria-label'),
+    mess: 'The squash stirred into the mac and cheese in chunks: a lumpy bowl, chunks and sauce spilled on the table, the spoon pushed away and a frown on the bowl.',
+    dosed: 'A stick blender marked SimpleGrid standing in the lumpy bowl.',
+    done: 'A smooth, creamy orange bowl of mac and cheese with the squash blended in, the spoon back in it and a big smile on the bowl, in a sleeve labelled SimpleGrid.'
+  };
+
+  /* Moves. Each leaves its element resting where it lands, so nothing hangs on an animation
+     finishing, and Start over can cancel the lot. A cancelled move never resolves, so the rest of
+     its sequence never runs. */
+  var live = [], timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  function play(el, frames, ms, delay, easing){
+    var last = frames[frames.length - 1];
+    for (var k in last) if (k !== 'offset' && k !== 'easing') el.style[k] = last[k];
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease', fill: 'backwards' });
+    live.push(a);
+    return new Promise(function(done){
+      a.finished.then(function(){ var i = live.indexOf(a); if (i >= 0) live.splice(i, 1); done(); }, function(){});
+    });
+  }
+  function fade(el, to, ms, delay){ return play(el, [{ opacity: +getComputedStyle(el).opacity }, { opacity: to }], ms, delay); }
+
+  var seed = 4881;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  // How high the mac and cheese stands at x.
+  function domeTop(x){ var u = (x - 180)/124; return u*u >= 1 ? 230 : 230 - 70*Math.pow(1 - u*u, .6); }
+
+  // The macaroni on top, the same every time.
+  var placed = [], tries = 0;
+  while (placed.length < 20 && tries++ < 4000){
+    var mx = R(74, 286), my = R(domeTop(mx) + 8, 226);
+    if (my < domeTop(mx) + 8 || placed.some(function(q){ return Math.hypot(q[0] - mx, q[1] - my) < 21; })) continue;
+    placed.push([mx, my]);
+  }
+  placed.sort(function(a, b){ return a[1] - b[1]; }).forEach(function(q){
+    var g = document.createElementNS(NS, 'g'), d = 'M-8 4.5C-8 -6 8 -6 8 4.5';
+    g.setAttribute('class', 'bw-mac');
+    g.setAttribute('transform', 'translate(' + q[0].toFixed(1) + ' ' + q[1].toFixed(1) + ') rotate(' + R(-180, 180).toFixed(0) + ')');
+    g.innerHTML = '<path class="o" d="' + d + '"/><path class="i" d="' + d + '"/>';
+    $('bwMacs').appendChild(g);
+  });
+
+  /* The squash chunks. Stirred in as they are, nine land in the bowl as lumps, three bounce out
+     onto the table and two tumble on the board. In the clean-up the strays go back in, and then
+     every one of them disappears into the sauce. */
+  var CUBE = '<path class="s" d="M9.5 -6L14 -11L14 5L9.5 10Z"/><path class="t" d="M-9.5 -6L-5 -11L14 -11L9.5 -6Z"/><rect class="f" x="-9.5" y="-6" width="19" height="16"/>';
+  var PILE = [[222, 477], [243, 477], [264, 477], [285, 477], [306, 477], [232.5, 459], [253.5, 459], [274.5, 459], [295.5, 459], [243, 441], [264, 441], [285, 441], [253.5, 423], [274.5, 423]];
+  var IN = [[100, 207], [126, 191], [152, 180], [180, 174], [208, 178], [236, 188], [262, 204], [142, 205], [222, 206]];
+  var TABLE = [[46, 366], [98, 371], [338, 400]], BOARD = [[234, 477, 26], [298, 479, -18]];
+  var BACK = [[114, 200], [168, 188], [198, 193], [248, 198], [184, 206]];
+  var byX = function(a, b){ return a[0] - b[0]; };
+  var cubes = PILE.map(function(p, i){
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'bw-cube');
+    g.innerHTML = CUBE;
+    $('bwCubes').appendChild(g);
+    return { el: g, start: { x: p[0] + R(-1.5, 1.5), y: p[1], r: R(-4, 4) }, order: PILE.length - 1 - i };
+  });
+  var spots = IN.slice().sort(byX);
+  cubes.slice(5).sort(function(a, b){ return a.start.x - b.start.x; }).forEach(function(c, k){ c.where = 'bowl'; c.mess = { x: spots[k][0], y: spots[k][1], r: R(-40, 40) }; });
+  [cubes[2], cubes[3], cubes[4]].forEach(function(c, k){ c.where = 'table'; c.mess = { x: TABLE[k][0], y: TABLE[k][1], r: R(-30, 30) }; c.back = { x: BACK[k][0], y: BACK[k][1], r: R(-40, 40) }; });
+  [cubes[0], cubes[1]].forEach(function(c, k){ c.where = 'board'; c.mess = { x: BOARD[k][0], y: BOARD[k][1], r: BOARD[k][2] }; c.back = { x: BACK[3 + k][0], y: BACK[3 + k][1], r: R(-40, 40) }; });
+
+  var C = function(p){ return 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px) rotate(' + p.r.toFixed(1) + 'deg) scale(' + (p.s == null ? 1 : p.s) + ')'; };
+  var S = function(x, y, r){ return 'translate(' + x + 'px,' + y + 'px) rotate(' + r + 'deg)'; };
+  var SPOON_IN = S(236, 214, 30), SPOON_OUT = S(318, 372, -100);
+  var TIP = S(172, 200, 12), ABOVE = S(228, -66, 12);
+  var up = 'cubic-bezier(.25,.6,.45,1)', down = 'cubic-bezier(.55,0,.8,.45)';
+
+  // Stir it in as it is: the chunks go in whole, the mac goes lumpy, the sauce splashes, and the
+  // spoon gets pushed away. That's where it stays.
+  function mess(){
+    cubes.forEach(function(c){
+      var a = c.start, z = c.mess, hit;
+      if (c.where === 'bowl'){
+        play(c.el, [{ transform: C(a), easing: up }, { transform: C({ x: (a.x + z.x)/2, y: Math.min(a.y, z.y) - 70, r: z.r*.5 }), offset: .45, easing: down }, { transform: C(z) }], 620, c.order*45, 'linear');
+      } else if (c.where === 'table'){
+        hit = { x: z.x*.4 + 108, y: domeTop(z.x*.4 + 108) + 2, r: 90 };
+        play(c.el, [{ transform: C(a), easing: up }, { transform: C({ x: (a.x + hit.x)/2, y: Math.min(a.y, hit.y) - 70, r: 40 }), offset: .34, easing: down }, { transform: C(hit), offset: .58, easing: up }, { transform: C({ x: (hit.x + z.x)/2, y: hit.y - 36, r: 160 }), offset: .76, easing: down }, { transform: C(z) }], 980, c.order*45, 'linear');
+      } else {
+        play(c.el, [{ transform: C(a) }, { transform: C({ x: (a.x + z.x)/2, y: a.y - 16, r: z.r*.6 }), offset: .5 }, { transform: C(z) }], 440, 260 + c.order*40, 'ease-in-out');
+      }
+      c.at = z;
+    });
+    fade(lumpy, 1, 300, 520);
+    splats.forEach(function(s, i){ play(s, [{ opacity: 0, transform: 'scale(.2)' }, { opacity: 1, transform: 'scale(1)' }], 260, 640 + i*90, 'cubic-bezier(.2,.9,.3,1.3)'); });
+    play(spoon, [{ transform: SPOON_IN }, { transform: S(229, 214, 15), offset: .2 }, { transform: S(243, 212, 45), offset: .42 }, { transform: S(229, 214, 17), offset: .64 }, { transform: S(241, 213, 41), offset: .84 }, { transform: SPOON_IN }], 640, 380, 'ease-in-out');
+    return wait(1080).then(function(){
+      bowl.classList.add('sad');
+      play(spoon, [{ transform: SPOON_IN, easing: up }, { transform: S(300, 160, -30), offset: .4, easing: down }, { transform: S(318, 366, -96), offset: .84, easing: 'ease-out' }, { transform: SPOON_OUT }], 660, 0, 'linear');
+      return wait(760);
+    });
+  }
+
+  // In goes the blender, the mark on its side, and stands there in the lumps.
+  function dose(){
+    bowl.classList.add('dosed');
+    play(blender, [{ transform: ABOVE, opacity: 0 }, { transform: S(214, 12, 12), opacity: 1, offset: .3 }, { transform: S(170.5, 207, 12), opacity: 1, offset: .8 }, { transform: TIP, opacity: 1 }], 780, 0, 'cubic-bezier(.3,.5,.4,1)');
+    later(function(){
+      [smooth, lumpy].forEach(function(el){ play(el, [{ transform: 'scale(1,1)' }, { transform: 'scale(1.01,.95)', offset: .35 }, { transform: 'scale(1,1)' }], 320, 0, 'ease-out'); });
+    }, 560);
+    return wait(900);
+  }
+
+  // Stir it again with the blender in: the strays go back in, it whirs, the lumps disappear into
+  // a smooth, creamy sauce, and the spoon comes back.
+  function clean(){
+    cubes.filter(function(c){ return c.where !== 'bowl'; }).forEach(function(c, i){
+      var a = c.at, z = c.back;
+      play(c.el, [{ transform: C(a), easing: up }, { transform: C({ x: (a.x + z.x)/2, y: Math.min(a.y, z.y) - 60, r: a.r + 90 }), offset: .45, easing: down }, { transform: C(z) }], 560, i*70, 'linear');
+      c.at = z;
+    });
+    splats.forEach(function(s){ fade(s, 0, 300, 100); });
+    return wait(640).then(function(){
+      bowl.classList.add('whir');
+      fade(swirl, 1, 220);
+      cubes.forEach(function(c, i){
+        var a = c.at;
+        play(c.el, [{ transform: C(a), opacity: 1 }, { transform: C({ x: a.x + (172 - a.x)*.5, y: a.y + (196 - a.y)*.5, r: a.r + 200, s: .15 }), opacity: 0 }], 560, 120 + i*50, 'cubic-bezier(.5,0,.8,.6)');
+      });
+      later(function(){ bowl.classList.add('creamy'); }, 380);
+      fade(lumpy, 0, 600, 360);
+      fade(cream, 1, 700, 420);
+      fade(gloss, .4, 500, 1000);
+      return wait(1340);
+    }).then(function(){
+      bowl.classList.remove('whir');
+      fade(swirl, 0, 200);
+      play(blender, [{ transform: TIP, opacity: 1 }, { transform: S(214, 12, 12), opacity: 1, offset: .65 }, { transform: ABOVE, opacity: 0 }], 520, 0, 'cubic-bezier(.5,0,.7,.4)');
+      return wait(360);
+    }).then(function(){
+      bowl.classList.remove('sad');
+      bowl.classList.add('happy');
+      play(spoon, [{ transform: SPOON_OUT, easing: up }, { transform: S(304, 168, -34), offset: .42, easing: down }, { transform: S(236, 206, 22), offset: .74, easing: 'ease-out' }, { transform: S(236, 214, 38), offset: .87 }, { transform: SPOON_IN }], 780, 0, 'linear');
+      return wait(820);
+    });
+  }
+
+  function restore(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    live.slice().forEach(function(a){ a.cancel(); });
+    live = [];
+    bowl.classList.add('snap');
+    bowl.classList.remove('dosed', 'whir', 'creamy', 'sad', 'happy', 'is-done');
+    [blender, smooth, lumpy, cream, gloss, swirl].concat(splats).forEach(function(el){ el.removeAttribute('style'); });
+    cubes.forEach(function(c){ c.at = c.start; c.el.removeAttribute('style'); c.el.style.transform = C(c.start); });
+    spoon.style.transform = SPOON_IN;
+    bowl.getBoundingClientRect();
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ bowl.classList.remove('snap'); }); });
+  }
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The mac and cheese: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The squash: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  cubes.forEach(function(c){ c.at = c.start; c.el.style.transform = C(c.start); });
+  spoon.style.transform = SPOON_IN;
+  var story = SG.story({
+    hero: hero, obj: bowl, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.bowl',
+    ops: {
+      mess: ['Your operations, today', 'Stirred together, still not linked. Lumps everywhere, and they’re staying.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same bowl, same lumps. Now there’s a blender in it.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); bowl.classList.toggle('is-done', on); }
+  });
+
+  // Tapping the bowl does the same as the button.
+  var touched = false;
+  bowl.addEventListener('click', function(){ touched = true; if (story.phase() !== 'done') story.go(); });
+  btn.addEventListener('click', function(){ touched = true; });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ bowl.classList.toggle('in-view', entries[0].isIntersecting); }).observe(bowl);
+  } else bowl.classList.add('in-view');
+  // One small wiggle of the spoon if nobody's touched anything. Only ever to point it out.
+  if (!reduce) [3500, 11000].forEach(function(ms){
+    setTimeout(function(){
+      if (touched || !bowl.classList.contains('in-view') || story.phase() !== 'apart') return;
+      spoon.animate([{ transform: SPOON_IN }, { transform: S(236, 206, 22), offset: .3 }, { transform: S(236, 214, 38), offset: .62 }, { transform: SPOON_IN }], { duration: 760, easing: 'ease-in-out' });
+    }, ms);
+  });
+})();
 </script>
 <script>
 window.STAGE = {

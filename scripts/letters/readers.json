@@ -590,5 +590,30 @@
         "where": "your place in Elgin"
       }
     ]
+  },
+  "sureway-group": {
+    "template": "sureway-group.html",
+    "values": {
+      "co_name": "Sureway",
+      "theme": "#003462"
+    },
+    "readers": [
+      {
+        "slug": "juan",
+        "first": "Juan",
+        "full": "Juan Buenrostro",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park",
+        "ps": "P.S. An eco-friendly powder coating line, built in your own facility in 2019. I’d love to see it run."
+      },
+      {
+        "slug": "nick",
+        "first": "Nick",
+        "full": "Nick Blumenthal",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park",
+        "ps": "P.S. “Supply Chain Execution” is one of the value-added services on your site, and execution is in your title. I’d love to compare notes."
+      }
+    ]
   }
 }

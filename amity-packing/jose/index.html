@@ -171,6 +171,9 @@ h1 span{display:block;color:var(--hi)}
   .callout-gap::before{display:none}
   .callout p{font-size:13.5px;line-height:1.36}
   .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
   .ops{position:static;align-self:stretch}
   .ops h3{font-size:15.5px;gap:7px}
   .ops p{font-size:13.5px;line-height:1.36}
@@ -186,6 +189,13 @@ h1 span{display:block;color:var(--hi)}
 @media (max-width:350px){
   .callout h3{font-size:13.5px}
   .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -1260,8 +1270,9 @@ SG.story = function(o){
       });
     });
   }
-  // With reduced motion nothing animates: the element just takes its last frame.
-  var styled = [];
+  // With reduced motion nothing animates: the element just takes its last frame. Every animation is
+  // kept, because one that a later one replaces drops out of getAnimations() but still needs cancelling.
+  var styled = [], moves = [];
   function anim(el, frames, ms, delay, easing){
     if (reduce){
       var last = frames[frames.length - 1];
@@ -1269,7 +1280,7 @@ SG.story = function(o){
       styled.push(el);
       return;
     }
-    el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' });
+    moves.push(el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'ease', fill: 'both' }));
   }
   var span = function(T, a, b){ return clamp((T - a)/(b - a), 0, 1); };
 
@@ -1357,10 +1368,11 @@ SG.story = function(o){
     gen++;
     timers.forEach(clearTimeout);
     timers = [];
-    [heap, sleeve, linker].concat(CLUMPS.map(function(c){ return c.el; }), spills.map(function(s){ return s.el; }), bursts.map(function(b){ return b.inner; }))
-      .forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
+    var moved = [heap, sleeve, linker].concat(CLUMPS.map(function(c){ return c.el; }), spills.map(function(s){ return s.el; }), bursts.map(function(b){ return b.inner; }));
+    moves.forEach(function(a){ a.cancel(); });
+    moved.forEach(function(el){ el.getAnimations().forEach(function(a){ a.cancel(); }); });
     styled.forEach(function(el){ el.style.transform = el.style.opacity = ''; });
-    styled = [];
+    styled = []; moves = [];
     obj.classList.remove('stuffing', 'messy', 'has-linker', 'dosed', 'twisting', 'is-done');
     drawApart();
   }

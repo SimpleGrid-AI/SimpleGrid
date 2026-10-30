@@ -423,11 +423,13 @@
     el.setAttribute('d', 'M' + (from[0] + (reduce ? 0 : Math.sin(clock*21)*.7)).toFixed(1) + ' ' + top.toFixed(1) + 'V' + bot.toFixed(1));
   }
   var lastDrip = -1;
-  function render(){
+  // The rivets and the bed's sway move every frame; everything else only while a move plays.
+  function render(all){
     var off = -(spin % 10);
     spinFar.setAttribute('stroke-dashoffset', off.toFixed(2));
     spinNear.setAttribute('stroke-dashoffset', (off + 100).toFixed(2));
     bed.setAttribute('transform', reduce ? '' : 'rotate(' + (Math.sin(clock*1.4)*1.3).toFixed(2) + ' 180 364)');
+    if (!all) return;
     nuts.forEach(function(n, i){
       var f = S.from[i], g = S.to[i];
       var x = lerp(f[0], g[0], S.mix), y = lerp(f[1], g[1], S.mix), r = lerp(f[2], g[2], S.mix) + 360*n.turns*S.turns, d = lerp(f[3], g[3], S.mix);
@@ -460,7 +462,7 @@
       a.t = reduce ? a.dur : Math.min(a.dur, a.t + dt);
       a.fn(a.t);
     }
-    render();
+    render(!!a);
     if (a && a === active && a.t >= a.dur){ active = null; a.done(); }
     raf = (active || (inView && !reduce && !document.hidden)) ? requestAnimationFrame(tick) : 0;
   }
@@ -523,7 +525,7 @@
     pan.classList.add('snap');
     pan.classList.remove('dosed', 'is-done');
     S = fresh(); clock = 0; spin = 0;
-    render();
+    render(true);
     pan.getBoundingClientRect();
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ pan.classList.remove('snap'); }); });
     wake();
@@ -551,7 +553,7 @@
     new IntersectionObserver(function(entries){ inView = entries[0].isIntersecting; if (inView) wake(); }).observe(pan);
   }
   document.addEventListener('visibilitychange', function(){ if (!document.hidden) wake(); });
-  render();
+  render(true);
   wake();
 })();
 </script>

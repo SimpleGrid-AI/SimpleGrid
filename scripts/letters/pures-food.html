@@ -395,8 +395,8 @@
   var bits = [];
   // Four pieces from each wafer: which wafer, where it breaks (degrees round the rim), where it lands (x, y, turn).
   // One from each goes over the edge of the tin and onto the floor.
-  [['b', -180, -95, 170, 326, 6], ['b', -95, -5, 200, 356, -18], ['b', -5, 88, 318, 506, 14], ['b', 88, 180, 142, 390, -12],
-   ['t', -175, -88, 106, 340, -16], ['t', -88, 2, 250, 330, 12], ['t', 2, 92, 262, 386, 18], ['t', 92, 185, 50, 505, -12]].forEach(function(s, i){
+  [['b', -180, -95, 170, 326, 6], ['b', -95, -5, 200, 356, -18], ['b', -5, 88, 304, 508, 14], ['b', 88, 180, 142, 390, -12],
+   ['t', -175, -88, 106, 340, -16], ['t', -88, 2, 250, 330, 12], ['t', 2, 92, 262, 386, 18], ['t', 92, 185, 60, 506, -12]].forEach(function(s, i){
     var w = wedge(s[1], s[2], s[0] === 't'), y = s[0] === 't' ? HIT : BOTTOM;
     bits.push({ el: add(w.html, 'ck-piece'), start: [X + w.cx, y + w.cy, 0], rest: [s[3], s[4], s[5]],
       home: [X + w.cx, (s[0] === 't' ? HOVER : BOTTOM) + w.cy, 0], lift: s[4] > 450 ? 70 : 34, delay: 0, back: 30 + i*12 });
