@@ -1,5 +1,11 @@
 /**
+ * @OnlyCurrentDoc
+ *
  * SimpleGrid ABM pipeline — sheet hook.
+ *
+ * The @OnlyCurrentDoc line above limits Google's permission to this one
+ * spreadsheet. Without it, the consent screen asks for all of the account's
+ * Sheets, even though the script only ever opens this one.
  *
  * Paste into the "Case study GTM" sheet: Extensions → Apps Script.
  * The cloud agent talks to this web app to read the task rows and write its
