@@ -77,6 +77,8 @@ h1{letter-spacing:-.008em;line-height:1.08}
 .callout-gap{top:calc(45% - 15px)}
 .callout-top h3 i,.callout-bottom h3 i{background:#EFE9D8;box-shadow:0 0 0 1.5px #9A8C6A}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.pot-label{--sg-bg:#D8032A;--sg-ink:#fff}
+.cheese.warm .pot-label{opacity:1;transform:none}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.2)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -139,6 +141,8 @@ h1{letter-spacing:-.008em;line-height:1.08}
             <rect class="pot-dk" x="56" y="428" width="248" height="14" rx="6"/>
             <path class="pot" d="M66 436H294V520Q294 542 272 542H88Q66 542 66 520Z"/>
             <rect class="water" x="72" y="450" width="216" height="84" rx="8"/>
+            <!-- the hot water is SimpleGrid, and the pot says so once the curd goes in -->
+            <g transform="translate(180 500) scale(0.92)"><g class="pot-label sg-pop"><!--#include sg-tag.svg--></g></g>
           </svg>
         </div>
         <div class="callouts">

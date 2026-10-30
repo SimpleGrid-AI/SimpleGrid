@@ -94,6 +94,13 @@ h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
 .hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
 /* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
 .hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
 .hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
 h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
 h1 span{display:block;color:var(--hi)}
@@ -209,6 +216,7 @@ h2{letter-spacing:-.02em}
 .callout-gap{top:calc(48.6% - 15px)}
 .callout-top h3 i,.callout-bottom h3 i{background:#9A5532}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.spit{--sg-bg:var(--accent);--sg-ink:var(--brand)}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.27)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -525,11 +533,12 @@ h2{letter-spacing:-.02em}
             <g class="spit">
               <rect class="steel-part" x="176" y="28" width="8" height="68" rx="2"/>
               <rect class="steel-dark" x="158" y="80" width="44" height="7" rx="3"/>
-              <circle class="steel-part" cx="180" cy="28" r="7"/>
+              <!-- the mark on the spit, the way the yolk wears it -->
+              <g transform="translate(180 24) scale(.65)"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g>
               <g class="flag">
-                <path class="flag-cloth" d="M184 30h110l-12 15 12 15h-110z"/>
-                <g class="flag-ink" transform="translate(190 35.5) scale(.45)" fill="none"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="4"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g>
-                <text class="flag-text" x="212" y="50" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="900" font-size="12.5">SimpleGrid</text>
+                <path class="flag-cloth" d="M186 40h160l-12 20 12 20h-160z"/>
+                <g class="flag-ink" transform="translate(193.8 44.8) scale(.722)" fill="none"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g>
+                <text class="flag-text" x="229" y="66.7" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="18" letter-spacing="-.5">SimpleGrid</text>
               </g>
             </g>
           </svg>

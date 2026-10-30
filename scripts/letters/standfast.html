@@ -56,8 +56,8 @@
 .load{transition:transform .5s cubic-bezier(.6,0,.4,1)}
 .load-box{fill:#C9A06A;stroke:#8F6A3A;stroke-width:2}
 .load-tape{fill:#B78F5B}
-.load-label{fill:#fff;opacity:0;transition:opacity .4s .2s}
-.board.is-done .load-label{opacity:1}
+.load-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
+.board.is-done .load-label{opacity:1;transform:none}
 .platen{fill:color-mix(in srgb,var(--field) 55%,#000)}
 .gauge{fill:rgba(0,0,0,.22)}
 .gauge-txt{font:800 13px/1 var(--body);letter-spacing:.08em;fill:var(--on-soft)}
@@ -67,6 +67,8 @@
 .callout-gap{top:calc(53.6% - 15px)}
 .callout-top h3 i,.callout-bottom h3 i{background:#C9A06A}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.flute-badge{--sg-bg:#1051A2;--sg-ink:#fff}
+.board.fluted .flute-badge{opacity:1;transform:none}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.1)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -104,10 +106,8 @@
               <rect class="load-box" x="102" y="112" width="156" height="56" rx="3"/>
               <rect class="load-box" x="92" y="168" width="176" height="56" rx="3"/>
               <rect class="load-tape" x="172" y="56" width="16" height="168"/>
-              <g class="load-label"><rect x="118" y="182" width="124" height="30" rx="3"/>
-                <g transform="translate(124 186) scale(.52)" fill="none" stroke="#1A1A1A"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g>
-                <text x="147" y="202" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="900" font-size="13" fill="#1A1A1A">SimpleGrid</text>
-              </g>
+              <!-- once it passes: the label on the case, like the Legacy jar -->
+              <g transform="translate(180 196) scale(0.74)"><g class="load-label sg-pop"><!--#include sg-tag.svg--></g></g>
             </g>
             <!-- the board: top liner, flute (once there is one), bottom liner -->
             <g id="sheet">
@@ -115,6 +115,8 @@
               <path class="kraft sag" id="topLiner" d="M30 252H330V264H30Z"/>
               <path class="flute" id="flute" d="M30 300.0 L32 289.5 L34 280.0 L36 272.5 L38 267.7 L40 266.0 L42 267.7 L44 272.5 L46 280.0 L48 289.5 L50 300.0 L52 310.5 L54 320.0 L56 327.5 L58 332.3 L60 334.0 L62 332.3 L64 327.5 L66 320.0 L68 310.5 L70 300.0 L72 289.5 L74 280.0 L76 272.5 L78 267.7 L80 266.0 L82 267.7 L84 272.5 L86 280.0 L88 289.5 L90 300.0 L92 310.5 L94 320.0 L96 327.5 L98 332.3 L100 334.0 L102 332.3 L104 327.5 L106 320.0 L108 310.5 L110 300.0 L112 289.5 L114 280.0 L116 272.5 L118 267.7 L120 266.0 L122 267.7 L124 272.5 L126 280.0 L128 289.5 L130 300.0 L132 310.5 L134 320.0 L136 327.5 L138 332.3 L140 334.0 L142 332.3 L144 327.5 L146 320.0 L148 310.5 L150 300.0 L152 289.5 L154 280.0 L156 272.5 L158 267.7 L160 266.0 L162 267.7 L164 272.5 L166 280.0 L168 289.5 L170 300.0 L172 310.5 L174 320.0 L176 327.5 L178 332.3 L180 334.0 L182 332.3 L184 327.5 L186 320.0 L188 310.5 L190 300.0 L192 289.5 L194 280.0 L196 272.5 L198 267.7 L200 266.0 L202 267.7 L204 272.5 L206 280.0 L208 289.5 L210 300.0 L212 310.5 L214 320.0 L216 327.5 L218 332.3 L220 334.0 L222 332.3 L224 327.5 L226 320.0 L228 310.5 L230 300.0 L232 289.5 L234 280.0 L236 272.5 L238 267.7 L240 266.0 L242 267.7 L244 272.5 L246 280.0 L248 289.5 L250 300.0 L252 310.5 L254 320.0 L256 327.5 L258 332.3 L260 334.0 L262 332.3 L264 327.5 L266 320.0 L268 310.5 L270 300.0 L272 289.5 L274 280.0 L276 272.5 L278 267.7 L280 266.0 L282 267.7 L284 272.5 L286 280.0 L288 289.5 L290 300.0 L292 310.5 L294 320.0 L296 327.5 L298 332.3 L300 334.0 L302 332.3 L304 327.5 L306 320.0 L308 310.5 L310 300.0 L312 289.5 L314 280.0 L316 272.5 L318 267.7 L320 266.0 L322 267.7 L324 272.5 L326 280.0 L328 289.5 L330 300.0"/>
               <g class="glue" id="glue"></g>
+              <!-- the flute is SimpleGrid, and it wears the mark the way the yolk does -->
+              <g transform="translate(326 300) scale(0.8)"><g class="flute-badge sg-pop"><!--#include sg-badge.svg--></g></g>
               <rect class="kraft-dk" x="30" y="344" width="300" height="10"/>
               <rect class="kraft" x="30" y="336" width="300" height="12"/>
             </g>

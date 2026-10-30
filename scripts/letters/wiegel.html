@@ -109,6 +109,9 @@ h2{letter-spacing:-.005em}
 .callout-print h3 i{background:none;box-shadow:none;border:1.6px dashed var(--on)}
 .callout-strip h3 i{background:var(--steel);box-shadow:0 0 0 1.5px #8C8B8B}
 .hero-art .callouts{height:calc(var(--art-w)*1.7)}
+.feed-plate{--sg-bg:#D13028;--sg-ink:#fff}
+.tote-label{--sg-bg:#fff;--sg-ink:#D13028}
+.die.piloted .feed-plate,.die.is-done .tote-label{opacity:1;transform:none}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(150px,42vw,280px)}
 }
@@ -151,6 +154,8 @@ h2{letter-spacing:-.005em}
                 <g id="strip"></g>
               </g>
               <g class="feeder"><rect x="76" y="4" width="188" height="30" rx="9"/><circle cx="92" cy="19" r="5"/><circle cx="248" cy="19" r="5"/></g>
+              <!-- the pilots are SimpleGrid, and the die wears its plate once they go in -->
+              <g transform="translate(170 19) scale(0.6)"><g class="feed-plate sg-pop"><!--#include sg-tag.svg--></g></g>
               <g id="print">
                 <circle class="print" cx="170" cy="110" r="17"/>
                 <circle class="print" cx="100" cy="110" r="5"/>
@@ -173,6 +178,8 @@ h2{letter-spacing:-.005em}
               <text class="tally" x="190" y="22">SCRAP</text>
               <text class="tally-n" id="goodN" x="150" y="24" text-anchor="end">0</text>
               <text class="tally-n" id="scrapN" x="290" y="24" text-anchor="end">0</text>
+              <!-- and what comes out good carries the label, like the Legacy jar -->
+              <g transform="translate(100 56) scale(0.5)"><g class="tote-label sg-pop"><!--#include sg-tag.svg--></g></g>
             </g>
           </svg>
         </div>
@@ -401,6 +408,7 @@ h2{letter-spacing:-.005em}
     setPhase('done');
     resetBtn.hidden = false;
     die.setAttribute('aria-label', ARIA.done);
+    die.classList.add('is-done');
     SG.wipeTo(hero, die, 'b', '.die');
   }
 
@@ -462,7 +470,7 @@ h2{letter-spacing:-.005em}
   });
   resetBtn.addEventListener('click', function(){
     if (busy) return;
-    die.classList.remove('piloted');
+    die.classList.remove('piloted', 'is-done');
     die.setAttribute('aria-label', ARIA.start);
     fresh();
     setCallouts(false);

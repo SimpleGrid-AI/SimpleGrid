@@ -75,6 +75,9 @@ h1 span,h2 span{font-weight:700}
 .callout-gap{top:calc(43.5% - 15px)}
 .callout-top h3 i,.callout-bottom h3 i{background:#F2CF7E}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.wheel{--sg-bg:#C92A0E;--sg-ink:#fff}
+.pot-label{--sg-bg:#C92A0E;--sg-ink:#fff}
+.rav.sealed .pot-label{opacity:1;transform:none}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.16)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -129,11 +132,13 @@ h1 span,h2 span{font-weight:700}
                 <path class="crimp" d="M74 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6M246 246l5-6 5 6 5-6 5 6 5-6 5 6 5-6"/>
               </g>
             </g>
-            <!-- SimpleGrid: the crimping wheel -->
+            <!-- once it holds: the pot wears the label, like the Legacy jar -->
+            <g transform="translate(180 506) scale(0.92)"><g class="pot-label sg-pop"><!--#include sg-tag.svg--></g></g>
+            <!-- SimpleGrid: the crimping wheel, with the mark on its hub -->
             <g class="wheel" id="wheel">
               <line class="wheel-handle" x1="0" y1="0" x2="34" y2="-58"/>
-              <circle class="wheel-disc" r="17"/>
-              <path d="M-17 0h34M0 -17v34M-12 -12l24 24M-12 12l24 -24" stroke="#7E8890" stroke-width="1.5"/>
+              <circle class="wheel-disc" r="22"/>
+              <g transform="scale(.85)"><!--#include sg-badge.svg--></g>
             </g>
           </svg>
         </div>

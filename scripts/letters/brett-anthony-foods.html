@@ -90,14 +90,16 @@ h2 span{font-weight:800}
 }
 .tape{opacity:0;transform:rotate(-3deg) scale(.9);transform-box:fill-box;transform-origin:center;transition:opacity .4s .1s,transform .5s cubic-bezier(.2,.9,.3,1.3) .1s}
 .pot.is-done .tape{opacity:1;transform:rotate(-3deg)}
-.tape rect{fill:#F1E6C8}
-.tape text{fill:#2B2B2B;font:700 15px/1 var(--hand)}
+.tape > rect{fill:#F1E6C8}
+.tape{--sg-bg:transparent;--sg-ink:#2B2B2B}
 .callout-top{top:30%}
 .callout-bottom{top:73%}
 .callout-gap{top:calc(67.2% - 15px)}
 .callout-top h3 i{background:#D9C08A}
 .callout-bottom h3 i{background:#EAD9A6;box-shadow:0 0 0 1.5px #8DBE5A}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.roux{--sg-bg:#D9A441;--sg-ink:#6E4C10}
+.roux .sg-badge-bg{stroke:#A97A1E;stroke-width:2}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.2)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -150,18 +152,17 @@ h2 span{font-weight:800}
             <!-- SimpleGrid: the roux -->
             <g class="roux" id="roux">
               <g transform="translate(180 152)">
-                <ellipse rx="26" ry="15" fill="#D9A441" stroke="#A97A1E" stroke-width="2"/>
-                <g transform="translate(-10 -10) scale(.48)" fill="none" stroke="#6E4C10"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.4"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3"/></g>
+                <g transform="scale(1.1)"><!--#include sg-badge.svg--></g>
               </g>
             </g>
-            <!-- masking tape, the way every kitchen labels a pot -->
-            <g class="tape"><rect x="118" y="124" width="112" height="28" rx="2"/><text x="174" y="144" text-anchor="middle">SimpleGrid</text></g>
             <!-- the ladle -->
             <g class="ladle" id="ladle">
               <path class="ladle-steel" d="M0 0L78 -128" stroke-width="9" stroke="#7E8890"/>
               <path d="M0 0L78 -128" stroke="#C9D1D7" stroke-width="5" stroke-linecap="round"/>
               <ellipse class="ladle-steel" cx="0" cy="6" rx="24" ry="14"/>
             </g>
+            <!-- masking tape, the way every kitchen labels a pot -->
+            <g class="tape"><rect x="90" y="121" width="180" height="42" rx="2"/><g transform="translate(180 142) scale(.8)"><!--#include sg-tag.svg--></g></g>
           </svg>
         </div>
         <div class="callouts">

@@ -77,6 +77,9 @@ h2{letter-spacing:-.018em}
 .callout-tag h3 i{background:#fff}
 .callout-bag h3 i{background:#C8102E}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.bag-badge{--sg-bg:#F08321;--sg-ink:#fff}
+.plate-label{--sg-bg:#532C1B;--sg-ink:#fff}
+.dnt.filling .bag-badge,.dnt.filled .bag-badge,.dnt.is-done .plate-label{opacity:1;transform:none}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.12)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -120,9 +123,13 @@ h2{letter-spacing:-.018em}
               <path class="bag-film" d="M268 80L346 80L320 186L294 186Z"/>
               <path class="bag-jelly" d="M276 112L338 112L318 184L296 184Z"/>
               <path class="nozzle" d="M296 186H318L310 214H304Z"/>
+              <!-- filling it is SimpleGrid: the bag wears the mark, the way the yolk does -->
+              <g transform="translate(307 97) scale(0.62)"><g class="bag-badge sg-pop"><!--#include sg-badge.svg--></g></g>
             </g>
             <ellipse class="plate" cx="180" cy="440" rx="150" ry="36"/>
             <ellipse class="plate-rim" cx="180" cy="436" rx="112" ry="22"/>
+            <!-- and once the inside matches the tag, the plate carries the label -->
+            <g transform="translate(180 459) scale(.64)"><g class="plate-label sg-pop"><!--#include sg-tag.svg--></g></g>
             <g class="donut" id="donut">
               <!-- what a bite shows: dough, and in the middle either nothing or jelly -->
               <g clip-path="url(#donutClip)">

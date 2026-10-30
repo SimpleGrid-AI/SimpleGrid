@@ -94,6 +94,13 @@ h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
 .hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
 /* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
 .hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
 .hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
 h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
 h1 span{display:block;color:var(--hi)}
@@ -216,6 +223,12 @@ h2{letter-spacing:-.02em}
 .callout-bottom h3 i{background:#F8485E}
 .callout-top{top:2%}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.jaw-badge{--sg-bg:#AE0202;--sg-ink:#fff}
+.bag-label{--sg-bg:#AE0202;--sg-ink:#fff}
+.bagger.crimping .jaw-badge,.bagger.sealed .jaw-badge{opacity:1;transform:none}
+.bagger.is-done .bag-label{opacity:1;transform:none}
+.band-text{transition:opacity .3s}
+.bagger.is-done .band-text{opacity:0}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.26)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -485,6 +498,8 @@ h2{letter-spacing:-.02em}
                   <path class="band-wave" d="M100 262C130 252 150 276 180 266S230 254 260 264V270C230 260 210 282 180 272S130 260 100 270Z"/>
                   <text class="band-text" x="180" y="287" text-anchor="middle">NET WT 12 OZ</text>
                 </g>
+                <!-- what it says once it's sealed and shipped: the label, like the Legacy jar's -->
+                <g transform="translate(180 226) scale(.72)"><g class="bag-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
                 <path class="film-hi" d="M124 150C120 200 120 260 124 300"/>
                 <rect class="crimp" x="100" y="314" width="160" height="20" rx="2"/>
                 <path class="crimp-lines" d="M108 317v14M116 317v14M124 317v14M132 317v14M140 317v14M148 317v14M156 317v14M164 317v14M172 317v14M180 317v14M188 317v14M196 317v14M204 317v14M212 317v14M220 317v14M228 317v14M236 317v14M244 317v14M252 317v14"/>
@@ -496,9 +511,9 @@ h2{letter-spacing:-.02em}
               </g>
             </g>
 
-            <!-- the seal jaws: SimpleGrid -->
-            <g class="jaw jaw-l"><rect class="steel-dk" x="86" y="112" width="94" height="36" rx="6"/><rect class="heater" x="168" y="112" width="12" height="36" rx="3"/><rect class="steel" x="92" y="118" width="62" height="5" rx="2.5" opacity=".6"/></g>
-            <g class="jaw jaw-r"><rect class="steel-dk" x="180" y="112" width="94" height="36" rx="6"/><rect class="heater" x="180" y="112" width="12" height="36" rx="3"/><rect class="steel" x="206" y="118" width="62" height="5" rx="2.5" opacity=".6"/></g>
+            <!-- the seal jaws: SimpleGrid, and they wear the mark once they close -->
+            <g class="jaw jaw-l"><rect class="steel-dk" x="86" y="112" width="94" height="36" rx="6"/><rect class="heater" x="168" y="112" width="12" height="36" rx="3"/><rect class="steel" x="92" y="118" width="62" height="5" rx="2.5" opacity=".6"/><g transform="translate(122 133) scale(0.55)"><g class="jaw-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g></g>
+            <g class="jaw jaw-r"><rect class="steel-dk" x="180" y="112" width="94" height="36" rx="6"/><rect class="heater" x="180" y="112" width="12" height="36" rx="3"/><rect class="steel" x="206" y="118" width="62" height="5" rx="2.5" opacity=".6"/><g transform="translate(238 133) scale(0.55)"><g class="jaw-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g></g>
 
             <!-- the case, front half, and whatever lands on the floor -->
             <rect class="case-front" x="84" y="468" width="192" height="80"/>

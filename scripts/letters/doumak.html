@@ -69,8 +69,11 @@ h2{letter-spacing:.004em;line-height:1.12}
 .top{transition:transform .5s cubic-bezier(.5,0,.3,1),opacity .3s}
 .top.slide{transition:transform .75s cubic-bezier(.55,0,.9,.5),opacity .5s .3s;opacity:0}
 .emboss{opacity:0;transition:opacity .5s .2s}
-.smore.is-made .emboss{opacity:.9}
-.emboss text{fill:#A86F2C}
+.smore.is-made .emboss{opacity:1}
+.emboss text{fill:#8C5A22}
+.emboss-mark{fill:none;stroke:#8C5A22}
+.plain{transition:opacity .3s}
+.smore.is-made .plain{opacity:0}
 .mallow-g{cursor:grab;touch-action:none}
 .mallow-g:active{cursor:grabbing}
 .stick{stroke:#6B4423;stroke-width:6;stroke-linecap:round}
@@ -103,6 +106,8 @@ h2{letter-spacing:.004em;line-height:1.12}
 .callout-top h3 i{background:#D9A257}
 .callout-bottom h3 i{background:#4A2617}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.mallow-mark{fill:none;stroke:#94571F;opacity:0}
+.smore.is-made .mallow-mark{opacity:0!important}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.2)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -179,6 +184,8 @@ h2{letter-spacing:.004em;line-height:1.12}
               <g id="mallow">
                 <rect id="mallowBody" x="-36" y="-29" width="72" height="58" rx="24" fill="url(#mallowFill)"/>
                 <ellipse cx="-12" cy="-14" rx="13" ry="6" fill="#fff" opacity=".45" id="mallowShine"/>
+                <!-- toasting brands the SimpleGrid mark into it, the way the yolk wears it in the jar -->
+                <g class="mallow-mark" id="mallowMark" transform="translate(-14 -14) scale(.667)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g>
                 <g class="mallow-fire">
                   <path class="flame flame-a" d="M-28 -20C-30 -40 -14 -46 -10 -62C-2 -46 6 -44 8 -34C14 -46 20 -50 26 -60C32 -40 32 -28 26 -20Z"/>
                   <path class="flame flame-c" d="M-16 -22C-16 -34 -8 -38 -4 -48C2 -38 6 -36 8 -30C12 -36 14 -38 18 -44C20 -34 20 -26 16 -22Z"/>
@@ -190,9 +197,10 @@ h2{letter-spacing:.004em;line-height:1.12}
             <g class="top" id="top">
               <rect class="cracker-edge" x="70" y="68" width="220" height="64" rx="9"/>
               <rect class="cracker" x="70" y="64" width="220" height="62" rx="9"/>
-              <path class="cracker-perf" d="M180 70v50"/>
-              <g class="cracker-dock"><circle cx="96" cy="80" r="2.6"/><circle cx="264" cy="80" r="2.6"/><circle cx="96" cy="110" r="2.6"/><circle cx="264" cy="110" r="2.6"/><circle cx="138" cy="95" r="2.6"/><circle cx="222" cy="95" r="2.6"/></g>
-              <g class="emboss"><text x="180" y="102" text-anchor="middle" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="22" letter-spacing="-.3">SimpleGrid</text></g>
+              <path class="cracker-perf plain" d="M180 70v50"/>
+              <g class="cracker-dock"><circle cx="96" cy="80" r="2.6"/><circle cx="264" cy="80" r="2.6"/><circle cx="96" cy="110" r="2.6"/><circle cx="264" cy="110" r="2.6"/><g class="plain"><circle cx="138" cy="95" r="2.6"/><circle cx="222" cy="95" r="2.6"/></g></g>
+              <!-- stamped in, like a brand on a cracker: the label on the finished s'more -->
+              <g class="emboss"><g class="emboss-mark" transform="translate(105.6 82.1) scale(.58)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g><text x="135.3" y="102" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="21" letter-spacing="-.5">SimpleGrid</text></g>
             </g>
           </svg>
         </div>
@@ -339,6 +347,7 @@ h2{letter-spacing:.004em;line-height:1.12}
     $('mallowMid').setAttribute('stop-color', shade(toast, 2));
     $('mallowOut').setAttribute('stop-color', shade(toast, 3));
     $('mallowShine').setAttribute('opacity', (.45*(1 - clamp(toast/1.3, 0, 1))).toFixed(2));
+    $('mallowMark').style.opacity = (clamp((toast - .45)/.4, 0, 1)*(1 - clamp((toast - 1.2)/.2, 0, 1))).toFixed(2);
   }
   var stickG = $('stickG');
   function place(){

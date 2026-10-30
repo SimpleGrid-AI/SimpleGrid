@@ -94,6 +94,13 @@ h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
 .hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
 /* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
 .hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
 .hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
 h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
 h1 span{display:block;color:var(--hi)}
@@ -185,7 +192,7 @@ h1 span{display:block;color:var(--hi)}
 .frame-hi{fill:#A9B0B6}
 .foot{fill:#2B2F33}
 .glide{fill:#F2C14E;stroke:#8A6A1F;stroke-width:1.5;transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);transition:transform .6s cubic-bezier(.3,1.3,.5,1)}
-.tbl.leveled .glide{transform:scaleY(1)}
+.tbl.leveled .glide{transform:scaleY(1);visibility:visible}
 .rock{transform-origin:78px 452px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
 .tray{transition:transform .5s cubic-bezier(.5,0,.75,1),opacity .3s}
 .tray-body{fill:#3D7FB9}
@@ -198,14 +205,17 @@ h1 span{display:block;color:var(--hi)}
 .tbl.shimmed .shim{opacity:1;transform:none}
 .tbl.leveled .shim{opacity:0;transform:translateX(30px)}
 .shim-paper{fill:#fff;stroke:#107C41;stroke-width:1.5}
-.label-sg{opacity:0;transition:opacity .4s .2s}
-.tbl.is-done .label-sg{opacity:1}
 .callout-top{top:27%}
 .callout-bottom{top:84%}
 .callout-gap{top:calc(76% - 15px)}
 .callout-top h3 i{background:#E9E4DA}
 .callout-bottom h3 i{background:color-mix(in srgb,var(--field) 45%,#fff)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.glide{--sg-bg:#F2C14E;--sg-ink:#0071BC;visibility:hidden}
+.hang{--sg-bg:#fff;--sg-ink:#0071BC;opacity:0;transform:rotate(-9deg);transform-box:view-box;transform-origin:180px 240px;transition:opacity .3s .15s,transform .9s cubic-bezier(.3,1.6,.5,1) .15s}
+.tbl.is-done .hang{opacity:1;transform:none}
+.hang-string{fill:none;stroke:#fff;stroke-width:1.6}
+.hang-hole{fill:#8C9AA6}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.12)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
@@ -457,7 +467,6 @@ h1 span{display:block;color:var(--hi)}
               <!-- the table: top, frame, legs -->
               <rect class="top-edge" x="26" y="214" width="308" height="16" rx="5"/>
               <rect class="top-slab" x="26" y="206" width="308" height="14" rx="5"/>
-              <g class="label-sg"><rect x="138" y="190" width="84" height="16" rx="3" fill="var(--accent)"/><text x="180" y="202" text-anchor="middle" font-family="Albert Sans, Helvetica, Arial, sans-serif" font-weight="900" font-size="11" fill="var(--on-accent)">SimpleGrid</text></g>
               <rect class="frame" x="60" y="230" width="240" height="10" rx="3"/>
               <rect class="frame" x="70" y="230" width="16" height="216"/>
               <rect class="frame-hi" x="72" y="230" width="4" height="216"/>
@@ -465,8 +474,10 @@ h1 span{display:block;color:var(--hi)}
               <rect class="frame-hi" x="276" y="230" width="4" height="216"/>
               <rect class="foot" x="64" y="444" width="28" height="8" rx="3"/>
               <rect class="foot" x="268" y="444" width="28" height="8" rx="3"/>
+              <!-- level at last: the hang tag every new table ships with, like the label on the Legacy jar -->
+              <g class="hang"><path class="hang-string" d="M180 240V266"/><g transform="translate(180 288) scale(.72)"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g><circle class="hang-hole" cx="180" cy="271" r="2.6"/></g>
               <!-- SimpleGrid: the leveling glide that reaches the real floor -->
-              <rect class="glide" x="270" y="452" width="24" height="22" rx="3"/>
+              <g class="glide"><g transform="translate(282 463) scale(.55)"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
               <!-- what gets set down on it -->
               <g class="tray" id="tray">
                 <rect class="tray-lip" x="110" y="196" width="140" height="10" rx="4"/>
