@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A melting furnace and a schedule screen, with no link between them, beside the words: {{first}}, you recycle magnesium and aluminum on three continents.">
+<meta property="og:image:alt" content="A crucible of mixed scrap on a furnace under a spec screen, with no link between them, beside the words: {{first}}, you recycle magnesium and aluminum on three continents.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, pour the melt.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who recycles magnesium and aluminum for a living.">
@@ -113,8 +113,8 @@
 .ml-s5{fill:#B8C0C6;stroke:#6C777E;stroke-width:1.6;stroke-linejoin:round}
 .ml-s6{fill:#9A7454;stroke:#614630;stroke-width:1.6;stroke-linejoin:round}
 .ml-s7{fill:#6F8AA6;stroke:#43586D;stroke-width:1.6;stroke-linejoin:round}
-.ml-chip{fill:#E6EBEE;stroke:#66717A;stroke-width:1.3;stroke-linejoin:round}
-.ml-chip-dk{fill:#A7B1B8;stroke:#56616A;stroke-width:1.3;stroke-linejoin:round}
+.ml-chip{fill:#E3E8EB;stroke:#5E6971;stroke-width:1.5;stroke-linejoin:round}
+.ml-chip-dk{fill:#A3ADB4;stroke:#525D66;stroke-width:1.5;stroke-linejoin:round}
 /* Dross: grey-black crust that floats on a melt nobody fluxed. */
 .ml-lump{opacity:0;transform-box:fill-box;transform-origin:50% 50%}
 .ml-lump .ml-crust{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.8;stroke-linejoin:round}
@@ -148,6 +148,7 @@
 .ml-splat .ml-crust{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.5}
 .ml-splat .ml-burn{fill:#8E431A}
 .ml-floor{fill:none;stroke:rgba(0,0,0,.2);stroke-width:2}
+.ml-shadow{fill:rgba(0,0,0,.18)}
 .ml-pallet{fill:var(--pallet)}
 .ml-pallet-dk{fill:var(--pallet-dk)}
 /* The ingots: the script draws each one twice, off spec and on it. */
@@ -156,7 +157,7 @@
 .ml-ok .ml-top{fill:url(#mlAluTop)}
 .ml-ok .ml-front{fill:url(#mlAluFront)}
 .ml-ok .ml-shine{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round}
-.ml-ing .ml-edge{fill:none;stroke:var(--alu-edge);stroke-width:1.7;stroke-linejoin:round}
+.ml-ing .ml-edge{fill:none;stroke:var(--alu-edge);stroke-width:1.9;stroke-linejoin:round}
 .ml-bad .ml-crack{fill:none;stroke:#121417;stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round}
 .ml-hot{fill:#FF9A2E;opacity:0}
 .ml-strap{fill:none;stroke:var(--h2-hi);stroke-width:3.5;opacity:0;transition:opacity .4s .1s}
@@ -202,9 +203,10 @@
           <svg viewBox="0 0 360 560" aria-hidden="true">
             <defs>
               <radialGradient id="mlHalo">
-                <stop offset="0" stop-color="#FFB547" stop-opacity=".9"/>
-                <stop offset=".5" stop-color="#FF8F1F" stop-opacity=".36"/>
-                <stop offset="1" stop-color="#FF8F1F" stop-opacity="0"/>
+                <stop offset="0" stop-color="#FFC45C" stop-opacity=".95"/>
+                <stop offset=".42" stop-color="#FF9A2E" stop-opacity=".62"/>
+                <stop offset=".72" stop-color="#FF8A1F" stop-opacity=".16"/>
+                <stop offset="1" stop-color="#FF8A1F" stop-opacity="0"/>
               </radialGradient>
               <radialGradient id="mlHot" cx=".44" cy=".36" r=".72">
                 <stop offset="0" stop-color="#FFF7CF"/>
@@ -229,8 +231,9 @@
                 <stop offset="1" stop-color="#E5480F"/>
               </linearGradient>
               <linearGradient id="mlAluFront" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#F3F6F8"/>
-                <stop offset="1" stop-color="#A9B3BB"/>
+                <stop offset="0" stop-color="#F5F8FA"/>
+                <stop offset=".55" stop-color="#CDD5DB"/>
+                <stop offset="1" stop-color="#97A2AB"/>
               </linearGradient>
               <linearGradient id="mlAluTop" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0" stop-color="#E4EAEE"/>
@@ -267,7 +270,7 @@
 
             <!-- the crucible: it tips on the hub to pour -->
             <g class="ml-cru" id="mlCru">
-              <ellipse class="ml-halo" cx="92" cy="232" rx="112" ry="64"/>
+              <ellipse class="ml-halo" cx="92" cy="238" rx="104" ry="56"/>
               <path class="ml-shell" d="M10 252C10 306 18 352 36 368Q44 376 62 376H122Q140 376 148 368C166 352 174 306 174 252Z"/>
               <path class="ml-hoop" d="M13 290Q92 312 171 290M22 340Q92 360 162 340"/>
               <path class="ml-lip" d="M156 240Q188 240 210 249Q188 262 158 268Z"/>
@@ -287,12 +290,12 @@
                   <g class="ml-pc"><g transform="translate(144 252) rotate(-22)"><path class="ml-s6" d="M-12-8H12L9 8H-10Z"/></g></g>
                   <g class="ml-pc"><g transform="translate(104 226) rotate(24)"><path class="ml-s2" d="M-19-12H-10V4H19V12H-19Z"/></g></g>
                   <g class="ml-pc"><g transform="translate(66 218) rotate(-30)"><path class="ml-s7" d="M-13-6H13V6H-13Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(82 204) rotate(10)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(126 212) rotate(70)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(42 228) rotate(-40)"><path class="ml-chip-dk" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(150 230) rotate(140)"><path class="ml-chip-dk" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(104 198) rotate(-80)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(60 232) rotate(200)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(82 204) rotate(10)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(126 212) rotate(70)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(42 228) rotate(-40)"><path class="ml-chip-dk" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(150 230) rotate(140)"><path class="ml-chip-dk" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(104 198) rotate(-80)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(60 232) rotate(200)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
                 </g>
                 <!-- dross: it floats up once the charge melts down with nothing to clean it -->
                 <g id="mlDross">
@@ -332,6 +335,7 @@
             <!-- the pour, the mold it fills, and the pallet the ingots go on -->
             <g class="ml-pour" id="mlPour"><path class="ml-pour-out" pathLength="100"/><path class="ml-pour-core" pathLength="100"/><path class="ml-pour-dirt" id="mlDirt"/></g>
             <path class="ml-floor" d="M0 528H360"/>
+            <ellipse class="ml-shadow" cx="298" cy="529" rx="64" ry="4"/>
             <path class="ml-mold" d="M187 508H235L231 528H191Z"/>
             <rect class="ml-mold-top" x="185" y="503" width="52" height="7" rx="2"/>
             <rect class="ml-mold-cav" x="192" y="504" width="38" height="3" rx="1.5"/>
