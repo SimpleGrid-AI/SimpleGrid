@@ -65,7 +65,7 @@
 .wk-coils{transition:fill .25s}
 .wk.told .wk-count{fill:#FF8A84}
 .wk.told .wk-fill{fill:var(--alert)}
-.wk.told .wk-coils{fill:#FF8A84}
+.wk-coils.out{fill:#FF8A84}
 .wk-pill-bg{fill:#DFF5EA;transition:fill .3s}
 .wk-pill-t{fill:#0A6B47;font:800 16.5px/1 var(--body);transition:fill .3s}
 .wk[data-pill=live] .wk-pill-bg{fill:var(--accent)}
@@ -76,11 +76,11 @@
 .wk-stub{fill:none;stroke:#5C6584;stroke-width:6;stroke-linecap:round}
 .wk-plug{fill:#9AA2BC;transition:opacity .3s}
 .wk-cable-case{fill:none;stroke:var(--brand-deep);stroke-width:11;stroke-linecap:round;opacity:0;transition:opacity .35s}
-.wk-cable{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-dasharray:10 5;opacity:0;transition:opacity .35s}
+.wk-cable{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-dasharray:14 4;opacity:0;transition:opacity .35s}
 .wk.linked .wk-cable-case{opacity:1}
 .wk.linked .wk-cable{opacity:1;animation:wk-flow .5s linear infinite}
 .wk.linked .wk-plug{opacity:0}
-@keyframes wk-flow{to{stroke-dashoffset:-15}}
+@keyframes wk-flow{to{stroke-dashoffset:-18}}
 .wk-mark{--sg-bg:var(--accent);--sg-ink:var(--brand-deep)}
 .wk.linked .wk-mark{opacity:1;transform:none}
 /* The floor. */
@@ -108,6 +108,9 @@
 .wk-p-dk{fill:var(--brand-press)}
 .wk-p-deep{fill:var(--brand-deep)}
 .wk-p-hi{fill:#fff;opacity:.16}
+.wk-wheel{fill:none;stroke:var(--brand-press);stroke-width:8}
+.wk-spoke{fill:none;stroke:var(--brand-press);stroke-width:5;stroke-linecap:round}
+.wk-wheel-hub{fill:var(--brand-deep)}
 .wk-die{fill:var(--wk-steel);stroke:var(--wk-steel-ink);stroke-width:1.4}
 .wk-ctr{fill:var(--brand-deep)}
 .wk-ctr-face{fill:#05061E;transition:fill .2s}
@@ -129,6 +132,8 @@
 .wk-tag{--sg-bg:#fff;--sg-ink:var(--brand)}
 .wk.is-done .wk-tag{opacity:1;transform:none}
 .wk:not(.in-view) *{animation-play-state:paused!important}
+/* A long file name in the ops panel wraps inside its note instead of running off it. */
+.hero .chip{overflow-wrap:anywhere}
 .callout-top{top:3%}
 .callout-gap{top:calc(34.8% - 15px)}
 .callout-bottom{top:47%}
@@ -191,15 +196,16 @@
             <rect class="wk-stand" x="72" y="326" width="16" height="168"/>
             <path class="wk-stand" d="M44 506L52 488H108L116 506Z"/>
             <g id="wkCoil">
-              <circle class="wk-coil-face" id="wkCoilFace" cx="80" cy="326" r="68"/>
+              <circle class="wk-coil-face" id="wkCoilFace" cx="80" cy="326" r="72"/>
               <path class="wk-coil-wrap" id="wkCoilWrap"/>
-              <circle class="wk-coil-rim" id="wkCoilRim" cx="80" cy="326" r="68"/>
+              <circle class="wk-coil-rim" id="wkCoilRim" cx="80" cy="326" r="72"/>
             </g>
-            <circle class="wk-ghost" cx="80" cy="326" r="68"/>
+            <circle class="wk-ghost" cx="80" cy="326" r="72"/>
             <circle class="wk-eye" cx="80" cy="326" r="19"/>
             <g id="wkHub" transform="translate(80 326)"><circle class="wk-hub-ring" r="12"/><path class="wk-hub-jaw" d="M0-11V-5M9.5 5.5L4.3 2.5M-9.5 5.5L-4.3 2.5"/></g>
 
-            <!-- the press, in Walker indigo -->
+            <!-- the press, in Walker indigo, its flywheel peeking out behind the crown -->
+            <g id="wkWheel" transform="translate(308 298)"><circle class="wk-wheel" r="26"/><path class="wk-spoke" d="M0-22V22M-22 0H22"/><circle class="wk-wheel-hub" r="7"/></g>
             <rect class="wk-p" x="158" y="320" width="24" height="90"/>
             <rect class="wk-p" x="270" y="320" width="24" height="90"/>
             <rect class="wk-p-dk" x="156" y="424" width="140" height="74" rx="4"/>
@@ -355,14 +361,14 @@
   var coilG = $('wkCoil'), coilFace = $('wkCoilFace'), coilRim = $('wkCoilRim'), coilWrap = $('wkCoilWrap'), hub = $('wkHub');
   var stripEls = [$('wkStripEdge'), $('wkStrip'), $('wkStripRun')], stripRun = $('wkStripRun');
   var skelEls = [$('wkSkelEdge'), $('wkSkelBody'), $('wkSkelHoles')], skelHoles = $('wkSkelHoles');
-  var ram = $('wkRam'), strokesEl = $('wkStrokes'), brWrap = $('wkBrackets');
+  var ram = $('wkRam'), wheel = $('wkWheel'), strokesEl = $('wkStrokes'), brWrap = $('wkBrackets');
   var countEl = $('wkCount'), fillEl = $('wkFill'), coilsEl = $('wkCoils'), pillBg = $('wkPillBg'), pillT = $('wkPill');
   var reduce = SG.reduce, clamp = SG.clamp;
 
   var COPY = {
     apart:    { btn: 'Run the coil to see your operations', caption: 'Your ERP is the work order up top, your floor is the press below, and nothing links them. Run the coil, or tap the press.' },
     messing:  { btn: 'Running…', caption: 'Running it the usual way: the order in one place, the press in another.' },
-    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. The counter races past the order, the coil runs out mid-strip, brackets hit the floor, and the order still reads 0, On plan. It won’t sort itself out, either.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. The counter is past the order, the coil ran out mid-strip, brackets are all over the floor, and the work order still says 0 and On plan. It won’t sort itself out, either.' },
     dosing:   { btn: 'Linking…', caption: 'The link goes in, from the counter and the coil to the work order. That’s SimpleGrid.' },
     dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the counter and the coil, live on the work order, so it finally sees what the press did. Now run it again.' },
     cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
@@ -377,7 +383,7 @@
 
   var ORDER = 5000, OVER = 7384, N = 9;
   // The coil on its uncoiler: full, empty (just the mandrel), and what a clean run leaves of it.
-  var C = [80, 326], R_FULL = 68, R_EYE = 19, R_END = 44, PITCH = 8;
+  var C = [80, 326], R_FULL = 72, R_EYE = 19, R_END = 46, PITCH = 8;
   // The strip peels off the bottom of the coil, enters the press at FEED and runs to the die's far edge.
   // Brackets drop out at DROP. Once the coil runs out, the strip's loose tail ends up at TAIL.
   var FEED = [158, 380], DIE = [264, 380], DROP = [266, 393], TAIL = [116, 394], STROKE = 9;
@@ -435,7 +441,7 @@
   function drawSkel(L, flow){
     var P = ROUTE.pts, cum = ROUTE.cum, d = '';
     if (L > .5){
-      d = 'M' + P[0][0] + ' ' + P[0][1];
+      d = 'M' + f1(P[0][0]) + ' ' + f1(P[0][1]);
       for (var i = 1; i < P.length; i++){
         if (cum[i] >= L){
           var t = (L - cum[i - 1])/(cum[i] - cum[i - 1]);
@@ -456,6 +462,10 @@
     return u < .7 ? STROKE*Math.sin(Math.PI*u/.7) : 0;
   }
   function setRam(y){ ram.setAttribute('transform', 'translate(0 ' + y.toFixed(2) + ')'); }
+  // The flywheel turns once a stroke while the press runs, so after n whole strokes it's back where it started.
+  function spin(t, t0, beat, n){
+    wheel.setAttribute('transform', 'translate(308 298) rotate(' + f1(360*clamp((t - t0)/beat, 0, n) % 360) + ')');
+  }
 
   /* ------------------------------------------------------------ The numbers */
   var fmt = function(n){ return Math.round(n).toLocaleString('en-US'); };
@@ -467,11 +477,14 @@
     shown = s;
     obj.classList.toggle('over', Math.round(n) > ORDER);
   }
-  function setCount(n){
+  // The order goes red once it's told about more than it asked for (or, while it catches up, about to be).
+  function setCount(n, over){
     countEl.textContent = fmt(n);
     fillEl.setAttribute('width', f1(276*clamp(n/ORDER, 0, 1)));
-    obj.classList.toggle('told', Math.round(n) > ORDER);
+    obj.classList.toggle('told', !!over || Math.round(n) > ORDER);
   }
+  // Once it's linked, the order hears from the coil too.
+  function setCoils(out){ coilsEl.textContent = out ? 'coil out' : '3 coils'; coilsEl.classList.toggle('out', out); }
   var PILL = { plan: ['On plan', 86], live: ['Live', 70], done: ['Done, on time', 136] };
   function setPill(k){
     var p = PILL[k];
@@ -516,13 +529,12 @@
     var el = brs[i];
     el.getAnimations().forEach(function(a){ a.cancel(); });
     // Every frame carries its own opacity, so nothing falls back to a hidden style mid-throw.
-    var anim = el.animate(frames.map(function(f){ return { transform: tf(f.p), opacity: f.o, offset: f.at }; }),
+    el.animate(frames.map(function(f){ return { transform: tf(f.p), opacity: f.o, offset: f.at }; }),
       { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: 'linear', fill: 'both' });
     var last = frames[frames.length - 1];
     at[i] = last.p;
     el.style.transform = tf(last.p);
     el.style.opacity = last.o;
-    return anim.finished.catch(function(){});
   }
   function messThrow(i){
     var a = [DROP[0], DROP[1], 0], f;
@@ -590,6 +602,7 @@
         obj.classList.add('out');
       }
       setRam(ramAt(t, M.t0, M.beat, M.strokes));
+      spin(t, M.t0, M.beat, M.strokes);
       setStrokes(OVER*Math.pow(clamp((t - M.t0)/(M.count - M.t0), 0, 1), 1.4));
       var L = ROUTE.len*ease(clamp((t - 300)/2900, 0, 1));
       drawSkel(L, L);
@@ -602,8 +615,8 @@
     setPill('live');
     return play(1000, function(t){
       var u = easeOut(clamp((t - 250)/650, 0, 1));
-      setCount(OVER*u);
-      coilsEl.textContent = u > .5 ? 'coil out' : '3 coils';
+      setCount(OVER*u, true);
+      setCoils(u > .5);
     });
   }
   // Run it again, linked: the mess goes back in, a fresh coil goes on, and it comes out clean.
@@ -613,7 +626,7 @@
     thrown = 0;
     obj.classList.remove('out');
     obj.classList.add('running');
-    coilsEl.textContent = '3 coils';
+    setCoils(false);
     brs.forEach(function(g, i){ backIn(i, i*28); });
     return play(K.ms, function(t){
       if (t < K.t0){
@@ -638,6 +651,7 @@
       drawStrip(tangent(rr).p, 0, fl);
       drawSkel(SKEL_NEAT, SKEL_NEAT + fl);
       setRam(ramAt(t, K.t0, K.beat, N));
+      spin(t, K.t0, K.beat, N);
       while (thrown < N && t >= K.t0 + thrown*K.beat + 60) cleanThrow(thrown++);
       if (p >= 1 && obj.dataset.pill !== 'done') setPill('done');
     }).then(function(){ obj.classList.remove('running'); });
@@ -652,10 +666,11 @@
     drawStrip(tangent(R_FULL).p, 0, 0);
     drawSkel(0, 0);
     setRam(0);
+    spin(0, 0, 1, 0);
     setStrokes(0);
     setCount(0);
     setPill('plan');
-    coilsEl.textContent = '3 coils';
+    setCoils(false);
   }
   function setCallouts(final){
     $('gapTag').hidden = final;

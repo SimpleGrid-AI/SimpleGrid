@@ -218,19 +218,24 @@ h1 span{display:block;color:var(--hi)}
    everything else reads the page's palette. Every hf- class belongs to this hero. */
 .hero-art{
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
-  --hf-ink:#0B1820;--hf-iron:#5B6873;--hf-slate:#7E8B96;--hf-plate:#CDD5DB;
+  --hf-ink:#0B1820;--hf-iron:#55626D;--hf-slate:#7E8B96;--hf-plate:#E3E9ED;--hf-paint:var(--h2-hi);
   --hf-hot:#FFF8E6;--hf-burn:#FF7A1A;--hf-spark:#FFC04D;--hf-red:#E5484D;--hf-ok:#1FB46B;--hf-warn:#F2B43C;
 }
 .hfi{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
 .hero[data-story$=ing] .hfi,.hfi.is-done{cursor:default}
 .hfi svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .hfi:not(.in-view) *{animation-play-state:paused!important}
+.hf-snap,.hf-snap *{transition:none!important}
 /* Brushed steel, one ramp for everything the shop is built from. */
 .hf-s0{stop-color:#F3F6F8}
 .hf-s1{stop-color:#CBD3D9}
 .hf-s2{stop-color:#A3AEB7}
 .hf-m0{stop-color:#C3CCD3}
 .hf-m1{stop-color:#97A3AD}
+/* The machines wear HFI's steel blue, so the bare steel of the parts stands out against them. */
+.hf-p0{stop-color:#2FA3CB}
+.hf-p1{stop-color:var(--hf-paint)}
+.hf-p2{stop-color:#015F80}
 .hf-line{stroke:var(--hf-ink);stroke-width:2.5;stroke-linejoin:round}
 .hf-floor{fill:none;stroke:rgba(0,0,0,.24);stroke-width:2}
 /* The job sheet: what the ERP says. */
@@ -240,7 +245,7 @@ h1 span{display:block;color:var(--hi)}
 .hf-job{fill:#fff;font:800 37px/1 var(--body);letter-spacing:-.01em}
 .hf-spec{fill:rgba(255,255,255,.8);font:600 15px/1 var(--body)}
 .hf-pill{fill:#D5F5E3}
-.hf-pill-t{fill:#08663F;font:800 18px/1 var(--body)}
+.hf-pill-t{fill:#08663F;font:800 20px/1 var(--body)}
 .hf-status[data-s=linked] .hf-pill{fill:var(--accent)}
 .hf-status[data-s=linked] .hf-pill-t{fill:var(--brand)}
 .hf-status[data-s=done] .hf-pill{fill:var(--hf-ok)}
@@ -249,7 +254,7 @@ h1 span{display:block;color:var(--hi)}
 .hf-fill{fill:var(--hf-ok)}
 .hf-fill.warn{fill:var(--hf-warn)}
 /* The cable between them: broken until SimpleGrid plugs into it. */
-.hf-stub{fill:none;stroke:var(--hf-iron);stroke-width:6;stroke-linecap:round}
+.hf-stub{fill:none;stroke:var(--hf-iron);stroke-width:7;stroke-linecap:round}
 .hf-plug{fill:var(--hf-slate)}
 .hf-lit,.hf-flow{fill:none;stroke-linecap:round;opacity:0;transition:opacity .3s}
 .hf-lit{stroke:var(--accent);stroke-width:7}
@@ -258,7 +263,8 @@ h1 span{display:block;color:var(--hi)}
 .hfi.linked .hf-flow{opacity:.85;animation:hf-flow .7s linear infinite}
 @keyframes hf-flow{to{stroke-dashoffset:-12}}
 /* The fiber laser: a slatted bed, a steel sheet, and the gantry that carries the head. */
-.hf-rail,.hf-foot,.hf-truck{fill:var(--hf-iron)}
+.hf-foot,.hf-truck{fill:var(--hf-iron)}
+.hf-rail{fill:url(#hfPaint)}
 .hf-jbox{fill:var(--hf-slate)}
 .hf-bed{fill:url(#hfSlats)}
 .hf-slat-bg{fill:#22313B}
@@ -267,13 +273,13 @@ h1 span{display:block;color:var(--hi)}
 .hf-plan{fill:none;stroke:rgba(11,24,32,.42);stroke-width:1.4;stroke-dasharray:5 4}
 .hf-hole{fill:url(#hfSlats);stroke:var(--hf-ink);stroke-width:1.5;opacity:0}
 .hf-kerf{fill:none;stroke:#26343D;stroke-width:1.6;opacity:0}
-.hf-front{fill:url(#hfSteel)}
-.hf-stripe{fill:var(--brand)}
+.hf-front{fill:url(#hfPaint)}
+.hf-stripe{fill:rgba(255,255,255,.55)}
 .hf-beam{fill:url(#hfSteelX)}
 .hf-head{fill:var(--brand)}
-.hf-burn,.hf-cut{fill:none;stroke-linecap:round;stroke-dasharray:192;opacity:0}
-.hf-burn{stroke:var(--hf-burn);stroke-width:5.5}
-.hf-cut{stroke:var(--hf-hot);stroke-width:1.8}
+.hf-burn,.hf-cut{fill:none;stroke-linecap:round;stroke-dasharray:220;opacity:0}
+.hf-burn{stroke:var(--hf-burn);stroke-width:6}
+.hf-cut{stroke:var(--hf-hot);stroke-width:2}
 .hf-glow{fill:var(--hf-burn);opacity:0}
 .hf-spot{fill:#fff;opacity:0}
 .hf-sparks{fill:none;stroke:var(--hf-spark);stroke-width:1.8;stroke-linecap:round;opacity:0}
@@ -281,19 +287,20 @@ h1 span{display:block;color:var(--hi)}
 .hfi.lasing .hf-spot,.hfi.lasing .hf-sparks{opacity:1}
 /* The press brake: the ram comes down, the punch bends whatever is on the die. */
 .hf-base,.hf-cyl{fill:var(--hf-iron)}
-.hf-housing{fill:url(#hfSteelX)}
-.hf-crown,.hf-lower,.hf-ram{fill:url(#hfSteel)}
+.hf-housing{fill:url(#hfPaintX)}
+.hf-crown,.hf-lower{fill:url(#hfPaint)}
+.hf-ram{fill:url(#hfSteel)}
 .hf-rod{fill:#C4CDD3;stroke:var(--hf-ink);stroke-width:1.5}
 .hf-punch,.hf-die{fill:var(--hf-slate)}
 .hf-plate-n{fill:var(--brand)}
-.hf-lamp{fill:#46535D;stroke:var(--hf-ink);stroke-width:2}
+.hf-lamp{fill:#46535D;stroke:var(--hf-ink);stroke-width:2.2}
 .hfi.messy .hf-lamp{fill:var(--hf-red);animation:hf-blink .6s steps(1) infinite}
 @keyframes hf-blink{50%{fill:#5A2024}}
 .hfi.is-done .hf-lamp{fill:var(--hf-ok);animation:none}
 /* The carts: one for another job, one for this one. */
-.hf-handle,.hf-leg{fill:var(--hf-slate)}
+.hf-handle,.hf-leg{fill:var(--hf-iron)}
 .hf-deck{fill:url(#hfSteel)}
-.hf-band{fill:#8B97A1}
+.hf-band{fill:#B9C3CB}
 .hf-band-t{fill:var(--hf-ink);font:800 12.5px/1 var(--body);letter-spacing:.08em}
 .hf-wheel{fill:#1A252C}
 .hf-hub{fill:#AEB9C1}
@@ -303,9 +310,9 @@ h1 span{display:block;color:var(--hi)}
 .hf-rev{fill:var(--hf-red);display:none}
 .hf-part.is-wrong .hf-rev{display:inline}
 .hf-edge,.hf-face{fill:none;stroke-linecap:square;stroke-linejoin:miter}
-.hf-edge{stroke:var(--hf-ink);stroke-width:9.5}
-.hf-face{stroke:#D5DCE1;stroke-width:5}
-.hf-part.is-wrong .hf-face{stroke:#F4A3A3}
+.hf-edge{stroke:var(--hf-ink);stroke-width:11}
+.hf-face{stroke:#EEF3F6;stroke-width:6.5}
+.hf-part.is-wrong .hf-face{stroke:#F98A8A}
 .hf-dot{fill:var(--accent);stroke:var(--hf-ink);stroke-width:2;opacity:0;transform:scale(.2);transform-box:fill-box;transform-origin:center;transition:opacity .2s,transform .4s cubic-bezier(.2,.9,.3,1.5)}
 .hf-part.tagged .hf-dot{opacity:1;transform:none}
 .hf-x{opacity:0;transition:opacity .2s}
@@ -330,7 +337,7 @@ h1 span{display:block;color:var(--hi)}
 .hf-mark,.hf-label{--sg-bg:var(--brand);--sg-ink:#fff}
 .hfi.dosed .hf-mark,.hfi.is-done .hf-label{opacity:1;transform:none}
 .callout-top{top:3%}
-.callout-gap{top:calc(32.9% - 15px)}
+.callout-gap{top:calc(32.5% - 15px)}
 .callout-bottom{top:41%}
 .callout-top h3 i{background:var(--brand-deep)}
 .callout-bottom h3 i{background:var(--hf-plate)}
@@ -598,6 +605,8 @@ h1 span{display:block;color:var(--hi)}
               <linearGradient id="hfSteel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hf-s0"/><stop offset=".55" class="hf-s1"/><stop offset="1" class="hf-s2"/></linearGradient>
               <linearGradient id="hfSteelX" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="hf-s2"/><stop offset=".4" class="hf-s0"/><stop offset="1" class="hf-s1"/></linearGradient>
               <linearGradient id="hfSheet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="hf-m0"/><stop offset=".48" class="hf-m1"/><stop offset=".6" class="hf-m0"/><stop offset="1" class="hf-m1"/></linearGradient>
+              <linearGradient id="hfPaint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hf-p0"/><stop offset=".5" class="hf-p1"/><stop offset="1" class="hf-p2"/></linearGradient>
+              <linearGradient id="hfPaintX" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="hf-p2"/><stop offset=".42" class="hf-p0"/><stop offset="1" class="hf-p1"/></linearGradient>
               <pattern id="hfSlats" width="9" height="9" patternUnits="userSpaceOnUse"><rect class="hf-slat-bg" width="9" height="9"/><rect class="hf-slat" x="3.5" width="2" height="9"/></pattern>
             </defs>
             <path class="hf-floor" d="M0 554.5H360"/>
@@ -607,8 +616,8 @@ h1 span{display:block;color:var(--hi)}
             <rect class="hf-glass" x="22" y="18" width="316" height="120" rx="8"/>
             <text class="hf-kick" x="40" y="43">JOB SHEET</text>
             <g class="hf-status" id="hfStatusG" data-s="plan">
-              <rect class="hf-pill" id="hfPill" x="222" y="26" width="100" height="28" rx="14"/>
-              <text class="hf-pill-t" id="hfStatus" x="272" y="46.5" text-anchor="middle">On plan</text>
+              <rect class="hf-pill" id="hfPill" x="212" y="24" width="110" height="31" rx="15.5"/>
+              <text class="hf-pill-t" id="hfStatus" x="267" y="46.5" text-anchor="middle">On plan</text>
             </g>
             <text class="hf-job" x="38" y="88">JOB 4417</text>
             <text class="hf-spec" x="40" y="112">Telecom enclosure · 14 ga · 200 pcs</text>
@@ -616,97 +625,99 @@ h1 span{display:block;color:var(--hi)}
             <rect class="hf-fill" id="hfFill" x="40" y="122" width="84" height="7" rx="3.5"/>
 
             <!-- the cable from the job sheet to the floor: broken until SimpleGrid plugs into it -->
-            <path class="hf-stub" d="M180 150V163"/>
-            <rect class="hf-plug hf-line" x="172" y="161" width="16" height="9" rx="2.5"/>
-            <path class="hf-stub" d="M180 205V217"/>
-            <rect class="hf-plug hf-line" x="172" y="197" width="16" height="9" rx="2.5"/>
-            <path class="hf-lit" d="M180 150V217"/>
-            <path class="hf-flow" d="M180 150V217"/>
+            <path class="hf-stub" d="M180 150V160"/>
+            <rect class="hf-plug hf-line" x="170" y="158" width="20" height="11" rx="3"/>
+            <path class="hf-stub" d="M180 205V214"/>
+            <rect class="hf-plug hf-line" x="170" y="195" width="20" height="11" rx="3"/>
+            <path class="hf-lit" d="M180 150V214"/>
+            <path class="hf-flow" d="M180 150V214"/>
 
             <!-- the fiber laser: a slatted bed, the sheet on it, and what the program says to cut -->
-            <rect class="hf-rail hf-line" x="12" y="216" width="336" height="12" rx="4"/>
-            <rect class="hf-jbox hf-line" x="168" y="208" width="24" height="14" rx="3"/>
-            <rect class="hf-bed hf-line" x="16" y="226" width="328" height="84"/>
-            <rect class="hf-sheet hf-line" x="34" y="231" width="292" height="74" rx="2"/>
+            <rect class="hf-rail hf-line" x="12" y="214" width="336" height="11" rx="4"/>
+            <rect class="hf-jbox hf-line" x="168" y="206" width="24" height="14" rx="3"/>
+            <rect class="hf-bed hf-line" x="16" y="222" width="328" height="80"/>
+            <rect class="hf-sheet hf-line" x="34" y="228" width="292" height="68" rx="2"/>
             <g id="hfPlan"></g>
             <g id="hfHoles"></g>
             <g id="hfKerfs"></g>
-            <rect class="hf-front hf-line" x="12" y="308" width="336" height="22" rx="4"/>
-            <rect class="hf-stripe" x="13.5" y="316" width="333" height="5"/>
-            <rect class="hf-foot" x="28" y="330" width="26" height="8" rx="2"/>
-            <rect class="hf-foot" x="306" y="330" width="26" height="8" rx="2"/>
+            <rect class="hf-front hf-line" x="12" y="300" width="336" height="20" rx="4"/>
+            <rect class="hf-stripe" x="13.5" y="307" width="333" height="5"/>
+            <rect class="hf-foot" x="28" y="320" width="26" height="7" rx="2"/>
+            <rect class="hf-foot" x="306" y="320" width="26" height="7" rx="2"/>
 
             <!-- the press brake: the ram brings the punch down on whatever is on the die -->
-            <rect class="hf-base hf-line" x="106" y="530" width="148" height="18" rx="4"/>
-            <rect class="hf-lower hf-line" x="134" y="484" width="92" height="46"/>
-            <path class="hf-die hf-line" d="M144 466H168L180 475L192 466H216V484H144Z"/>
-            <rect class="hf-rod" id="hfRod1" x="150" y="366" width="6" height="6"/>
-            <rect class="hf-rod" id="hfRod2" x="204" y="366" width="6" height="6"/>
+            <rect class="hf-base hf-line" x="102" y="520" width="156" height="28" rx="5"/>
+            <rect class="hf-lower hf-line" x="128" y="474" width="104" height="46"/>
+            <path class="hf-die hf-line" d="M142 456H166L180 465L194 456H218V474H142Z"/>
+            <rect class="hf-rod" id="hfRod1" x="148" y="352" width="7" height="6"/>
+            <rect class="hf-rod" id="hfRod2" x="205" y="352" width="7" height="6"/>
             <g id="hfRam">
-              <rect class="hf-ram hf-line" x="134" y="370" width="92" height="32" rx="3"/>
-              <path class="hf-punch hf-line" d="M164 402H196V410L187 420H173L164 410Z"/>
+              <rect class="hf-ram hf-line" x="128" y="356" width="104" height="32" rx="3"/>
+              <path class="hf-punch hf-line" d="M162 388H198V396L188 408H172L162 396Z"/>
             </g>
-            <rect class="hf-housing hf-line" x="114" y="348" width="20" height="182" rx="3"/>
-            <rect class="hf-housing hf-line" x="226" y="348" width="20" height="182" rx="3"/>
-            <rect class="hf-cyl hf-line" x="128" y="336" width="18" height="10" rx="2"/>
-            <rect class="hf-cyl hf-line" x="214" y="336" width="18" height="10" rx="2"/>
-            <rect class="hf-crown hf-line" x="108" y="344" width="144" height="28" rx="5"/>
-            <rect class="hf-plate-n" x="150" y="352" width="60" height="12" rx="2"/>
-            <circle class="hf-lamp" cx="236" cy="358" r="6"/>
+            <rect class="hf-housing hf-line" x="108" y="334" width="20" height="186" rx="3"/>
+            <rect class="hf-housing hf-line" x="232" y="334" width="20" height="186" rx="3"/>
+            <rect class="hf-cyl hf-line" x="124" y="322" width="18" height="10" rx="2"/>
+            <rect class="hf-cyl hf-line" x="218" y="322" width="18" height="10" rx="2"/>
+            <rect class="hf-crown hf-line" x="104" y="330" width="152" height="26" rx="5"/>
+            <rect class="hf-plate-n" x="146" y="337" width="62" height="12" rx="2"/>
+            <circle class="hf-lamp" cx="234" cy="343" r="7"/>
 
             <!-- the carts: another job's, and this one's -->
-            <rect class="hf-handle hf-line" x="7" y="458" width="12" height="6" rx="3"/>
-            <rect class="hf-handle hf-line" x="10" y="462" width="6" height="38"/>
-            <rect class="hf-leg" x="16" y="522" width="5" height="17"/>
-            <rect class="hf-leg" x="97" y="522" width="5" height="17"/>
-            <rect class="hf-deck hf-line" x="10" y="498" width="98" height="8" rx="2"/>
-            <rect class="hf-band hf-line" x="10" y="505" width="98" height="18" rx="2"/>
-            <text class="hf-band-t" x="59" y="518.5" text-anchor="middle">JOB 4420</text>
-            <circle class="hf-wheel" cx="26" cy="546" r="8"/><circle class="hf-hub" cx="26" cy="546" r="2.5"/>
-            <circle class="hf-wheel" cx="92" cy="546" r="8"/><circle class="hf-hub" cx="92" cy="546" r="2.5"/>
+            <rect class="hf-handle hf-line" x="2" y="397" width="16" height="8" rx="4"/>
+            <rect class="hf-handle hf-line" x="6" y="403" width="8" height="43"/>
+            <rect class="hf-leg hf-line" x="12" y="458" width="8" height="76"/>
+            <rect class="hf-leg hf-line" x="92" y="458" width="8" height="76"/>
+            <rect class="hf-deck hf-line" x="8" y="506" width="96" height="10" rx="2"/>
+            <rect class="hf-deck hf-line" x="6" y="444" width="100" height="9" rx="2"/>
+            <rect class="hf-band hf-line" x="6" y="451" width="100" height="17" rx="2"/>
+            <text class="hf-band-t" x="56" y="464" text-anchor="middle">JOB 4420</text>
+            <circle class="hf-wheel" cx="22" cy="543" r="11"/><circle class="hf-hub" cx="22" cy="543" r="3.5"/>
+            <circle class="hf-wheel" cx="90" cy="543" r="11"/><circle class="hf-hub" cx="90" cy="543" r="3.5"/>
 
-            <rect class="hf-handle hf-line" x="341" y="458" width="12" height="6" rx="3"/>
-            <rect class="hf-handle hf-line" x="344" y="462" width="6" height="38"/>
-            <rect class="hf-leg" x="258" y="522" width="5" height="17"/>
-            <rect class="hf-leg" x="339" y="522" width="5" height="17"/>
-            <rect class="hf-deck hf-line" x="252" y="498" width="98" height="8" rx="2"/>
-            <rect class="hf-band hf-line" x="252" y="505" width="98" height="18" rx="2"/>
-            <text class="hf-band-t" x="301" y="518.5" text-anchor="middle">JOB 4417</text>
-            <circle class="hf-wheel" cx="268" cy="546" r="8"/><circle class="hf-hub" cx="268" cy="546" r="2.5"/>
-            <circle class="hf-wheel" cx="334" cy="546" r="8"/><circle class="hf-hub" cx="334" cy="546" r="2.5"/>
+            <rect class="hf-handle hf-line" x="342" y="397" width="16" height="8" rx="4"/>
+            <rect class="hf-handle hf-line" x="346" y="403" width="8" height="43"/>
+            <rect class="hf-leg hf-line" x="340" y="458" width="8" height="76"/>
+            <rect class="hf-leg hf-line" x="260" y="458" width="8" height="76"/>
+            <rect class="hf-deck hf-line" x="256" y="506" width="96" height="10" rx="2"/>
+            <rect class="hf-deck hf-line" x="254" y="444" width="100" height="9" rx="2"/>
+            <rect class="hf-band hf-line" x="254" y="451" width="100" height="17" rx="2"/>
+            <text class="hf-band-t" x="304" y="464" text-anchor="middle">JOB 4417</text>
+            <circle class="hf-wheel" cx="270" cy="543" r="11"/><circle class="hf-hub" cx="270" cy="543" r="3.5"/>
+            <circle class="hf-wheel" cx="338" cy="543" r="11"/><circle class="hf-hub" cx="338" cy="543" r="3.5"/>
             <!-- once the job comes clean, its cart gets the label -->
-            <g transform="translate(301 514) scale(.42)"><g class="hf-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <g transform="translate(304 459.5) scale(.44)"><g class="hf-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
 
             <!-- what comes out clean: one enclosure -->
             <g class="hf-box" id="hfBox">
-              <path class="hf-box-top hf-line" d="M266 436L278 426H336L324 436Z"/>
-              <path class="hf-box-side hf-line" d="M324 436L336 426V488L324 498Z"/>
-              <rect class="hf-box-front hf-line" x="266" y="436" width="58" height="62"/>
-              <rect class="hf-box-door" x="271" y="441" width="48" height="52" rx="2"/>
-              <path class="hf-box-vent" d="M277 451H296M277 457H296M277 463H296M277 469H296"/>
-              <rect class="hf-box-handle" x="310" y="458" width="4" height="16" rx="2"/>
+              <path class="hf-box-top hf-line" d="M266 366L277 356H345L334 366Z"/>
+              <path class="hf-box-side hf-line" d="M334 366L345 356V434L334 444Z"/>
+              <rect class="hf-box-front hf-line" x="266" y="366" width="68" height="78"/>
+              <rect class="hf-box-door" x="272" y="372" width="56" height="66" rx="2"/>
+              <path class="hf-box-vent" d="M279 384H302M279 391H302M279 398H302M279 405H302"/>
+              <rect class="hf-box-handle" x="318" y="396" width="5" height="20" rx="2.5"/>
             </g>
 
             <!-- the six parts: the script places every one -->
             <g id="hfParts"></g>
-            <g class="hf-x" id="hfX"><g transform="translate(214 428)"><g class="hf-x-in"><circle r="11"/><path d="M-4.5-4.5L4.5 4.5M4.5-4.5L-4.5 4.5"/></g></g></g>
+            <g class="hf-x" id="hfX"><g transform="translate(222 436)"><g class="hf-x-in"><circle r="15"/><path d="M-5.5-5.5L5.5 5.5M5.5-5.5L-5.5 5.5"/></g></g></g>
 
             <!-- the cut as it happens, and the gantry that carries the head over the sheet -->
             <g id="hfHot"></g>
-            <g id="hfGantry">
-              <rect class="hf-truck hf-line" x="-13" y="210" width="26" height="12" rx="3"/>
-              <rect class="hf-beam hf-line" x="-7" y="214" width="14" height="96" rx="3"/>
-              <rect class="hf-truck hf-line" x="-13" y="302" width="26" height="12" rx="3"/>
-              <g id="hfHead">
-                <circle class="hf-glow" r="12"/>
-                <rect class="hf-head hf-line" x="-11" y="-17" width="22" height="19" rx="4"/>
+            <g id="hfGantry" transform="translate(26 0)">
+              <rect class="hf-truck hf-line" x="-14" y="206" width="28" height="12" rx="3"/>
+              <rect class="hf-beam hf-line" x="-8" y="210" width="16" height="92" rx="3"/>
+              <rect class="hf-truck hf-line" x="-14" y="294" width="28" height="12" rx="3"/>
+              <g id="hfHead" transform="translate(0 262)">
+                <circle class="hf-glow" r="14"/>
+                <rect class="hf-head hf-line" x="-13" y="-20" width="26" height="22" rx="5"/>
                 <path class="hf-sparks" id="hfSparks"/>
-                <circle class="hf-spot" r="4"/>
+                <circle class="hf-spot" r="4.5"/>
               </g>
             </g>
 
             <!-- SimpleGrid: the traveler that plugs the cable together, wearing the mark -->
-            <g class="hf-trav" id="hfTrav"><g transform="translate(180 184)">
+            <g class="hf-trav" id="hfTrav"><g transform="translate(180 182)">
               <path class="hf-trav-card hf-line" d="M-20-17L-12-25H12L20-17V20Q20 24 16 24H-16Q-20 24-20 20Z"/>
               <circle class="hf-trav-eye" cx="0" cy="-17" r="3.4"/>
               <g transform="translate(0 4) scale(.66)"><g class="hf-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
@@ -1083,7 +1094,7 @@ SG.story = function(o){
     dosing:   { btn: 'Linking…', caption: 'A traveler goes on every part, and the link joins. That’s SimpleGrid.' },
     dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: a live traveler that follows every part from laser to brake, so the job sheet sees what’s true. Now run it again.' },
     cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean job: every part cut, bent right and kitted on the right cart, ready to roll. Your ERP and your floor finally match.' }
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a finished enclosure: every part cut, bent right and kitted on the right cart, ready to roll. Your ERP and your floor finally match.' }
   };
   var TEXT = {
     apart: ['The job sheet: your ERP', 'What the system says you’re making.', 'The shop: your floor', 'What’s really happening, on Excel, whiteboards and phones.'],
@@ -1097,23 +1108,24 @@ SG.story = function(o){
   };
 
   /* ------------------------------------------------------------ Geometry */
-  var NEST = [[89, 252], [180, 252], [271, 252], [89, 284], [180, 284], [271, 284]];   // the six parts, nested on the sheet
+  var NEST = [[86, 246], [180, 246], [274, 246], [86, 278], [180, 278], [274, 278]];   // the six parts, nested on the sheet
+  var W = 84, H = 26, RIM = 2*(W + H); // a part as a plate, and the length of its cut
   var WRONG = 3;                       // the one the floor cuts from the old revision
-  var B = 22, F = 14;                  // a part seen edge-on: half its web, and each flange
-  var DIE = [180, 462.5];              // where a part lies on the die
-  var STROKE = 39, BEND = 220;         // how far the ram comes down, and how long one hit takes
-  var PARK = [28, 268];                // where the laser head waits
-  var PILL = { plan: ['On plan', 100], linked: ['Linked', 90], done: ['Done, on time', 158] };
+  var B = 26, F = 16;                  // a part seen edge-on: half its web, and each flange
+  var DIE = [180, 450.5];              // where a part lies on the die
+  var STROKE = 37, BEND = 220;         // how far the ram comes down, and how long one hit takes
+  var PARK = [26, 262];                // where the laser head waits
+  var PILL = { plan: ['On plan', 110], linked: ['Linked', 98], done: ['Done, on time', 172] };
   // A pose is [x, y, rotation, edge-on (0 a plate on the bed, 1 seen edge-on), bend (90 bent right, -90 the wrong way)].
   var MESS_END = [
-    [56, 494.5, 0, 1, 90],             // bent, in the other job's cart
-    [228, 540, 172, 1, 90],            // bent, upside down on the floor
-    [150, 544, -3, 1, 0],              // the rest, piled up flat at the brake
-    [180, 462.5, 0, 1, -90],           // the old revision, bent the wrong way and jammed on the die
-    [157, 536.5, 5, 1, 0],
-    [146, 529, -8, 1, 0]
+    [54, 432, -14, 1, 90],             // bent, tipped over in the other job's cart
+    [300, 528, 168, 1, 90],            // bent, upside down on the floor
+    [166, 539, -5, 1, 0],              // the rest, piled up flat at the brake
+    [180, 450.5, 0, 1, -90],           // the old revision, bent the wrong way and jammed under the ram
+    [184, 527, 11, 1, 0],
+    [160, 514, -16, 1, 0]
   ];
-  var STACK = NEST.map(function(n, i){ return [298, 494.5 - 7*i, 0, 1, 90]; });   // kitted, on this job's cart
+  var STACK = NEST.map(function(n, i){ return [304, 438.5 - 9*i, 0, 1, 90]; });   // kitted, on this job's cart
 
   var f = function(v){ return Math.round(v*100)/100; };
   var EASE = {
@@ -1131,25 +1143,25 @@ SG.story = function(o){
   }
 
   /* ------------------------------------------------------------ The parts */
-  function outline(i){ var n = NEST[i]; return 'M' + (n[0] - 36) + ' ' + (n[1] - 12) + 'h72v24h-72z'; }
+  function outline(i){ var n = NEST[i]; return 'M' + (n[0] - W/2) + ' ' + (n[1] - H/2) + 'h' + W + 'v' + H + 'h' + -W + 'z'; }
   var parts = NEST.map(function(n, i){
     mk('path', 'hf-plan', $('hfPlan'), { d: outline(i) });
     var p = {
-      hole: mk('rect', 'hf-hole', $('hfHoles'), { x: n[0] - 36, y: n[1] - 12, width: 72, height: 24 }),
+      hole: mk('rect', 'hf-hole', $('hfHoles'), { x: n[0] - W/2, y: n[1] - H/2, width: W, height: H }),
       kerf: mk('path', 'hf-kerf', $('hfKerfs'), { d: outline(i) }),
       burn: mk('path', 'hf-burn', $('hfHot'), { d: outline(i) }),
       cut: mk('path', 'hf-cut', $('hfHot'), { d: outline(i) }),
       g: mk('g', 'hf-part', $('hfParts'))
     };
     p.plate = mk('g', 'hf-plate', p.g);
-    mk('rect', null, p.plate, { x: -36, y: -12, width: 72, height: 24, rx: 2 });
-    mk('circle', null, p.plate, { cx: -25, cy: 0, r: 3.6 });
-    mk('rect', 'hf-slot', p.plate, { x: 8, y: -2.5, width: 20, height: 5, rx: 2.5 });
-    mk('rect', 'hf-rev', p.plate, { x: -16, y: -8, width: 16, height: 16, rx: 2 });
+    mk('rect', null, p.plate, { x: -W/2, y: -H/2, width: W, height: H, rx: 2 });
+    mk('circle', null, p.plate, { cx: -30, cy: 0, r: 4 });
+    mk('rect', 'hf-slot', p.plate, { x: 10, y: -3, width: 24, height: 6, rx: 3 });
+    mk('rect', 'hf-rev', p.plate, { x: -18, y: -9, width: 18, height: 18, rx: 2 });
     p.prof = mk('g', null, p.g);
     p.edge = mk('path', 'hf-edge', p.prof);
     p.face = mk('path', 'hf-face', p.prof);
-    mk('circle', 'hf-dot', p.g, { cx: 0, cy: -9, r: 5 });
+    mk('circle', 'hf-dot', p.g, { cx: 0, cy: -12, r: 7 });
     return p;
   });
   // Edge-on, a part is its web with a flange at each end, turned up by `th` degrees.
@@ -1163,7 +1175,7 @@ SG.story = function(o){
     var flat = s.sq < 1;
     p.plate.style.display = flat ? '' : 'none';
     p.prof.style.display = flat ? 'none' : '';
-    if (flat) p.plate.setAttribute('transform', 'scale(1 ' + f(1 - .71*s.sq) + ')');
+    if (flat) p.plate.setAttribute('transform', 'scale(1 ' + f(1 - .58*s.sq) + ')');
     else { var d = profile(s.th); p.edge.setAttribute('d', d); p.face.setAttribute('d', d); }
   }
 
@@ -1205,7 +1217,7 @@ SG.story = function(o){
 
   // Run it unlinked. The laser cuts all six; after that, nothing follows them.
   var MESS = { ms: 2150, alarm: 1880, cuts: [], lift: [380, 880, 1000, 1380, 1500, 1700],
-               hits: [620, 1120, 1620].map(function(t){ return { t: t, d: STROKE }; }) };
+               hits: [{ t: 620, d: STROKE }, { t: 1120, d: STROKE }, { t: 1620, d: STROKE, hold: true }] };
   NEST.forEach(function(n, i){ MESS.cuts.push({ i: i, t0: 140 + i*200, t1: 300 + i*200 }); });
   function cutOut(i){ var t = MESS.cuts[i].t1; return [key(0, onBed(i), { op: 0 }), key(t, onBed(i), { op: 0 }), key(t + 60, onBed(i), { e: 'lin' })]; }
   MESS.tracks = [
@@ -1222,24 +1234,24 @@ SG.story = function(o){
                trav: [key(0, [0, -70, -16], { op: 0 }), key(140, [0, -48, -12], { e: 'lin' }), key(360, [0, 4, 7], { e: 'drop' }), key(520, [0, -2, -3], { e: 'out' }), key(650, [0, 0, 0])] };
 
   // Run it linked: everything goes back to the laser, then through the brake in order and onto this job's cart.
-  var CLEAN = { ms: 3650, box: 3280, cuts: [], hits: [], land: [], tracks: [] };
+  var CLEAN = { ms: 3650, box: 3280, release: 260, cuts: [], hits: [], land: [], tracks: [] };
   [1000, 1300, 1600, 1900, 2200, 2500].forEach(function(L, i){
     var b = L + 240;
     CLEAN.cuts.push({ i: i, t0: 820 + i*120, t1: 920 + i*120 });
     CLEAN.hits.push({ t: b, d: STROKE });
     CLEAN.land.push(b + BEND + 280);
-    CLEAN.tracks.push([key(0, MESS_END[i]), key(80 + i*50, MESS_END[i]), key(600 + i*50, onBed(i), { arc: 60, sqm: 'late' }), key(L, onBed(i)), toDie(b)]
+    CLEAN.tracks.push([key(0, MESS_END[i]), key(CLEAN.release + i*50, MESS_END[i]), key(CLEAN.release + 500 + i*50, onBed(i), { arc: 60, sqm: 'late' }), key(L, onBed(i)), toDie(b)]
       .concat(hit(b, 90), [key(b + BEND + 280, STACK[i], { arc: 44 }), key(CLEAN.box, STACK[i]), key(CLEAN.box + 240, STACK[i], { op: 0 })]));
   });
 
   /* ------------------------------------------------------------ The laser */
   // A point on part i's outline, a share u of the way round from its top-left corner.
   function rim(i, u){
-    var n = NEST[i], x = n[0] - 36, y = n[1] - 12, s = (u >= 1 ? 0 : u)*192;
-    if (s < 72) return [x + s, y];
-    if (s < 96) return [x + 72, y + s - 72];
-    if (s < 168) return [x + 168 - s, y + 24];
-    return [x, y + 192 - s];
+    var n = NEST[i], x = n[0] - W/2, y = n[1] - H/2, s = (u >= 1 ? 0 : u)*RIM;
+    if (s < W) return [x + s, y];
+    if (s < W + H) return [x + W, y + s - W];
+    if (s < 2*W + H) return [x + 2*W + H - s, y + H];
+    return [x, y + RIM - s];
   }
   var mix = function(a, b, u){ return [a[0] + (b[0] - a[0])*u, a[1] + (b[1] - a[1])*u]; };
   // Where the head is at T: tracing a part, crossing to the next one, or on its way to or from rest.
@@ -1274,7 +1286,7 @@ SG.story = function(o){
     putHead(L.p, L.on);
     ph.cuts.forEach(function(c){
       var p = parts[c.i], u = clamp((T - c.t0)/(c.t1 - c.t0), 0, 1), cool = clamp((T - c.t1)/320, 0, 1);
-      var off = f(192*(1 - u)), show = u > 0 ? 1 - cool : 0;
+      var off = f(RIM*(1 - u)), show = u > 0 ? 1 - cool : 0;
       p.burn.style.strokeDashoffset = off; p.cut.style.strokeDashoffset = off;
       p.burn.style.opacity = show; p.cut.style.opacity = show;
       p.kerf.style.opacity = cutBefore ? 1 : cool;
@@ -1282,10 +1294,12 @@ SG.story = function(o){
   }
 
   /* ------------------------------------------------------------ Everything else */
+  // How far down the ram is: each hit goes down and back up, unless it jams and stays down.
   function ramAt(hits, T){
     for (var k = 0; k < hits.length; k++){
-      var u = (T - hits[k].t)/BEND;
-      if (u > 0 && u < 1) return hits[k].d*(u < .45 ? EASE.io(u/.45) : u < .6 ? 1 : 1 - EASE.io((u - .6)/.4));
+      var h = hits[k], u = (T - h.t)/BEND;
+      if (h.hold && u >= .45) return h.d;
+      if (u > 0 && u < 1) return h.d*(u < .45 ? EASE.io(u/.45) : u < .6 ? 1 : 1 - EASE.io((u - .6)/.4));
     }
     return 0;
   }
@@ -1304,12 +1318,12 @@ SG.story = function(o){
   }
   function setBar(w, warn){ fillEl.setAttribute('width', f(w)); fillEl.classList.toggle('warn', !!warn); }
   function setTrav(s){
-    trav.setAttribute('transform', 'translate(0 ' + f(s.y) + ') rotate(' + f(s.r) + ' 180 167)');
+    trav.setAttribute('transform', 'translate(0 ' + f(s.y) + ') rotate(' + f(s.r) + ' 180 165)');
     trav.style.opacity = s.op;
   }
   function setBox(k){
     box.style.opacity = k;
-    box.setAttribute('transform', 'translate(298 498) scale(' + f(.9 + .1*EASE.out(k)) + ') translate(-298 -498)');
+    box.setAttribute('transform', 'translate(304 444) scale(' + f(.9 + .1*EASE.out(k)) + ') translate(-304 -444)');
   }
 
   /* ------------------------------------------------------------ Frames */
@@ -1349,7 +1363,7 @@ SG.story = function(o){
     parts.forEach(function(p, i){ putPart(p, sample(CLEAN.tracks[i], T)); p.hole.style.opacity = 1; });
     parts[WRONG].g.classList.toggle('is-wrong', T < CLEAN.cuts[WRONG].t1);   // recut to the right revision
     drawLaser(CLEAN, T, true);
-    setRam(ramAt(CLEAN.hits, T));
+    setRam(T < CLEAN.release ? STROKE*(1 - EASE.io(T/CLEAN.release)) : ramAt(CLEAN.hits, T));
     var landed = 0;
     CLEAN.land.forEach(function(t){ landed += clamp((T - t + 60)/160, 0, 1); });
     setBar(30 + 250*landed/6, landed < 6);
@@ -1373,6 +1387,13 @@ SG.story = function(o){
       });
     });
   }
+  // Runs fn with every transition in the hero switched off, so what it changes lands at once.
+  function snap(fn){
+    obj.classList.add('hf-snap');
+    fn();
+    obj.getBoundingClientRect();
+    obj.classList.remove('hf-snap');
+  }
   function setCallouts(final){
     var w = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
@@ -1391,8 +1412,12 @@ SG.story = function(o){
     mess: function(){ return play(MESS.ms, drawMess); },
     dose: function(){ return play(DOSE.ms, drawDose); },
     clean: function(){ return play(CLEAN.ms, drawClean); },
-    restore: function(){ gen++; drawApart(); },
-    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+    restore: function(){ gen++; snap(drawApart); },
+    final: function(on){
+      setCallouts(on);
+      if (on) obj.classList.add('is-done');
+      else snap(function(){ obj.classList.remove('is-done'); });
+    }
   });
   // Tapping the shop does the same as the button.
   obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });

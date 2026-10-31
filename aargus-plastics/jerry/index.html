@@ -223,7 +223,7 @@ h1 span{display:block;color:var(--hi)}
 .bagline{
   position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
   user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
-  --mach:#323232;--mach-dk:#232323;--rim:rgba(255,255,255,.2);--steel:#CFCFCF;--steel-dk:#8E8E8E;
+  --mach:color-mix(in srgb,var(--brand),#fff 11%);--mach-dk:color-mix(in srgb,var(--brand),#fff 4%);--rim:rgba(255,255,255,.22);--steel:#CFCFCF;--steel-dk:#8E8E8E;
   --film:rgba(214,232,246,.2);--film-edge:rgba(255,255,255,.88);
   --bag:var(--accent);--bag-lit:#D24A4A;--bag-side:#952323;--bag-line:#5C1313;
   --blue:#3C7DC2;--blue-side:#2A5C91;--core:#B8915F;
@@ -232,7 +232,7 @@ h1 span{display:block;color:var(--hi)}
 .bagline svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .bl-floor{fill:none;stroke:rgba(255,255,255,.22);stroke-width:2}
 .bl-mach{fill:var(--mach);stroke:var(--rim);stroke-width:2}
-.bl-body{fill:var(--mach-dk);stroke:var(--rim);stroke-width:2}
+.bl-frame{fill:var(--mach-dk);stroke:var(--rim);stroke-width:2}
 .bl-hi{fill:none;stroke:rgba(255,255,255,.2);stroke-width:2;stroke-linecap:round}
 /* The roll sits on a black flange, so a red roll still reads once the field turns red. */
 .bl-flange{fill:var(--mach-dk);stroke:var(--rim);stroke-width:2}
@@ -256,6 +256,7 @@ h1 span{display:block;color:var(--hi)}
 .bagline.red-film .bl-web:not(.bl-web-red){opacity:0}
 .bl-web-run{fill:none;stroke:#fff;stroke-width:3.5;stroke-dasharray:2 13;stroke-linecap:round;opacity:0}
 .bagline.running .bl-web-run{opacity:.9;animation:bl-feed .35s linear infinite}
+.bagline.red-film .bl-web-run{stroke:#FF9C9C;opacity:.55}
 @keyframes bl-feed{to{stroke-dashoffset:-15}}
 .bl-idler{fill:var(--steel);stroke:var(--steel-dk);stroke-width:2}
 /* The head: the sealer and the cutter, with the count on its face. */
@@ -282,17 +283,19 @@ h1 span{display:block;color:var(--hi)}
 .bagline.jammed .bl-lamp{fill:#E5322F;animation:bl-blink .55s steps(1) infinite}
 @keyframes bl-blink{50%{fill:#5B1F1F}}
 .bagline.linked .bl-lamp{fill:#F4B400}
-.bagline.linked.running .bl-lamp,.bagline.is-done .bl-lamp{fill:#22B86A}
+.bagline.linked.running .bl-lamp,.bagline.ontime .bl-lamp,.bagline.is-done .bl-lamp{fill:#22B86A}
 /* The stacking table, and what comes off the machine. */
 .bl-leg{fill:#3A3A3A;stroke:var(--rim);stroke-width:1.5}
 .bl-rail{fill:none;stroke:#5A5A5A;stroke-width:4;stroke-linecap:round}
 .bl-table-top{fill:var(--steel)}
 .bl-table-edge{fill:var(--steel-dk)}
-.bl-body{stroke-width:2.5;stroke-linejoin:round}
-.bl-bag .bl-tee,.bl-bag[data-kind=red] .bl-plain{display:none}
-.bl-bag[data-kind=red] .bl-tee{display:inline}
+.bl-bag .bl-body{stroke-width:2.5;stroke-linejoin:round}
+.bl-bag .bl-loop,.bl-bag[data-kind=red] .bl-plain{display:none}
+.bl-bag[data-kind=red] .bl-loop{display:inline}
+.bl-handle{fill:none;stroke:var(--bag);stroke-width:9;stroke-linecap:round}
+.bl-handle-dk{fill:none;stroke:var(--bag-line);stroke-width:13;stroke-linecap:round}
+.bl-patch{fill:rgba(0,0,0,.16)}
 .bl-seal{fill:none;stroke:rgba(0,0,0,.22);stroke-width:2.5}
-.bl-fold{fill:none;stroke:rgba(0,0,0,.2);stroke-width:2}
 .bl-sheen{fill:none;stroke:rgba(255,255,255,.5);stroke-width:3.5;stroke-linecap:round}
 .bl-bag[data-kind=clear] .bl-body{fill:var(--film);stroke:var(--film-edge)}
 .bl-bag[data-kind=clear] .bl-side{fill:rgba(255,255,255,.3)}
@@ -313,7 +316,7 @@ h1 span{display:block;color:var(--hi)}
 .bl-scrap-hi{fill:none;stroke:rgba(255,255,255,.85);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 /* The band round the clean stack, and its label. */
 .bl-band{fill:#F5F5F5;opacity:0;transform-box:fill-box;transform-origin:0 50%}
-.bl-tag{--sg-bg:#1D1D1D;--sg-ink:#fff}
+.bl-tag{--sg-bg:var(--brand);--sg-ink:#fff}
 .bagline.is-done .bl-tag{opacity:1;transform:none}
 /* The link: a cable from the order to the machine, broken until SimpleGrid's eye joins it. */
 .bl-cable{fill:none;stroke:#6B6B6B;stroke-width:6;stroke-linecap:round}
@@ -322,20 +325,21 @@ h1 span{display:block;color:var(--hi)}
 .bagline.linked .bl-plug{opacity:0}
 .bl-cable-on{opacity:0;transition:opacity .3s .25s}
 .bagline.linked .bl-cable-on{opacity:1}
-.bl-cable-dk{fill:none;stroke:#141414;stroke-width:8;stroke-linecap:round}
+.bl-cable-dk{fill:none;stroke:var(--brand-press);stroke-width:8;stroke-linecap:round}
 .bl-cable-flow{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;stroke-dasharray:6 6}
 .bagline.linked .bl-cable-flow{animation:bl-flow .6s linear infinite}
 @keyframes bl-flow{to{stroke-dashoffset:-12}}
-.bl-eye-ring{fill:#141414;stroke:rgba(255,255,255,.88);stroke-width:2.6}
-.bl-mark{--sg-bg:#fff;--sg-ink:#1D1D1D;transform:translateY(-30px) scale(.86)}
+.bl-eye-ring{fill:var(--brand-press);stroke:rgba(255,255,255,.88);stroke-width:2.6}
+.bl-mark{--sg-bg:#fff;--sg-ink:var(--brand);transform:translateY(-30px) scale(.86)}
 .bagline.linked .bl-mark{opacity:1;transform:none}
 /* The order: your ERP, white and calm. */
 .bl-bezel{fill:#2B2B2B;stroke:var(--rim);stroke-width:2}
 .bl-glass{fill:#fff}
-.bl-order{fill:#1D1D1D;font:800 19px/1 var(--body);letter-spacing:.02em}
+.bl-order{fill:var(--ink);font:800 19px/1 var(--body);letter-spacing:.02em}
 .bl-spec{fill:#575757;font:600 13.5px/1 var(--body)}
-.bl-qty{fill:#1D1D1D;font:800 24px/1 var(--body)}
+.bl-qty{fill:var(--ink);font:800 24px/1 var(--body)}
 .bl-icon{fill:var(--accent)}
+.bl-icon-loop{fill:none;stroke:var(--accent);stroke-width:9;stroke-linecap:round}
 .bl-pill{fill:#DFF5EA;transition:fill .3s}
 .bl-pill-t{fill:#0A6B47;font:800 13px/1 var(--body);transition:fill .3s}
 .bagline.linked .bl-pill{fill:var(--accent)}
@@ -346,11 +350,16 @@ h1 span{display:block;color:var(--hi)}
 .bagline.smug .bl-pill-g{animation:bl-smug .8s ease-in-out .5s 3}
 @keyframes bl-smug{50%{transform:scale(1.1)}}
 .bagline:not(.in-view) *{animation-play-state:paused!important}
+/* Start over puts everything back at once, with nothing fading out on the way. */
+.bagline.snap,.bagline.snap *{transition:none!important}
 .callout-top{top:2.5%}
 .callout-gap{top:calc(37% - 15px)}
 .callout-bottom{top:47%}
 .callout-top h3 i{background:#fff}
 .callout-bottom h3 i{background:rgba(214,232,246,.35)}
+/* The dots go with the story, not the theme, so the callouts sit at the same place either side of the wipe's edge. */
+.hero[data-story=done] .callout h3 i{display:none}
+.hero[data-story=apart] .callout h3 i{display:block}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.48)}
 @media (max-width:980px){
@@ -649,8 +658,8 @@ h1 span{display:block;color:var(--hi)}
             <path class="bl-web-run" d="M122 432V287A9 9 0 0 1 131 278H150"/>
 
             <!-- the machine's frame, behind where the bags drop -->
-            <rect class="bl-body" x="160" y="322" width="156" height="206" rx="6"/>
-            <path class="bl-rail" d="M206 338V462M310 338V462"/>
+            <rect class="bl-frame" x="160" y="322" width="156" height="206" rx="6"/>
+            <path class="bl-rail" d="M202 338V462M314 338V462"/>
             <!-- the stacking table at the outfeed -->
             <rect class="bl-leg" x="197" y="484" width="9" height="44"/>
             <rect class="bl-leg" x="312" y="484" width="9" height="44"/>
@@ -661,8 +670,8 @@ h1 span{display:block;color:var(--hi)}
             <g id="blBags"></g>
 
             <!-- the band round the clean stack, and the label on it -->
-            <rect class="bl-band" id="blBand" x="212" y="441" width="92" height="12"/>
-            <g transform="translate(258 447) scale(.42)"><g class="bl-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <rect class="bl-band" id="blBand" x="208" y="435" width="100" height="12"/>
+            <g transform="translate(258 441) scale(.45)"><g class="bl-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
 
             <!-- scrap in front of the machine and on the floor -->
             <g data-at="350" data-ms="1300">
@@ -709,7 +718,7 @@ h1 span{display:block;color:var(--hi)}
             <rect class="bl-glass" x="32" y="24" width="296" height="118" rx="8"/>
             <text class="bl-order" x="48" y="55">ORDER 4417</text>
             <g class="bl-pill-g"><rect class="bl-pill" x="212" y="36" width="102" height="26" rx="13"/><text class="bl-pill-t" id="blPill" x="263" y="53.5" text-anchor="middle">On plan</text></g>
-            <path class="bl-icon" transform="translate(68 97) scale(.44)" d="M-46 50V-46Q-46-50-42-50H-28Q-24-50-24-46V-36C-24-22-14-16 0-16C14-16 24-22 24-36V-46Q24-50 28-50H42Q46-50 46-46V50Z"/>
+            <g transform="translate(68 100) scale(.42)"><path class="bl-icon-loop" d="M-24-38C-24-72 24-72 24-38"/><rect class="bl-icon" x="-50" y="-40" width="100" height="90" rx="4"/></g>
             <text class="bl-spec" x="102" y="92">Retail bags · red · handles</text>
             <text class="bl-qty" x="102" y="121">10,000</text>
           </svg>
@@ -1078,7 +1087,7 @@ SG.story = function(o){
   var COPY = {
     apart:    { btn: 'Run it to see your operations', caption: 'The order is your ERP, the bag machine is your floor, and nothing links them. Run it, or tap the machine.' },
     messing:  { btn: 'Running…', caption: 'Running it the usual way: the order in one place, the floor in another.' },
-    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. Clear bags with no handles, scrap all over the floor and a short stack, and the screen still says On plan. It won’t sort itself out, either.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. Wrong colors, no handles, scrap all over the floor and a short stack, and the screen still says On plan. It won’t sort itself out, either.' },
     dosing:   { btn: 'Linking…', caption: 'An eye goes on the line, and the cable joins up. That’s SimpleGrid.' },
     dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the line reads color, handles and count straight from the order. Now run it again.' },
     cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
@@ -1096,13 +1105,15 @@ SG.story = function(o){
   };
 
   /* ------------------------------------------------------------ The bags
-     One bag, face on, centred on 0,0. Lying flat it's squashed to half height
-     (s .5), and the strip under it is its edge, so a pile of them shows a side. */
-  var TEE = 'M-46 50V-46Q-46-50-42-50H-28Q-24-50-24-46V-36C-24-22-14-16 0-16C14-16 24-22 24-36V-46Q24-50 28-50H42Q46-50 46-46V50Z';
-  var BAG = '<rect class="bl-side" x="-46" y="50" width="92" height="8"/><rect class="bl-side-lt" x="-46" y="50" width="92" height="3"/><rect class="bl-side-dk" x="-46" y="56" width="92" height="2"/>' +
-    '<rect class="bl-body bl-plain" x="-46" y="-50" width="92" height="100" rx="3"/>' +
-    '<g class="bl-tee"><path class="bl-body" d="' + TEE + '"/><path class="bl-fold" d="M-35-44V38M35-44V38"/></g>' +
-    '<path class="bl-seal" d="M-46 40H46"/><path class="bl-sheen" d="M-26 0L-14-12M-26 22L-6 2"/>';
+     One bag, face on, centred on 0,0: plain for the first run, with a loop
+     handle for the order. Lying flat it's squashed to half height (s .5), and
+     the strip under it is its edge, so a pile of them shows a side. */
+  var LOOP = 'M-24-38C-24-72 24-72 24-38';
+  var BAG = '<rect class="bl-side" x="-50" y="50" width="100" height="10"/><rect class="bl-side-lt" x="-50" y="50" width="100" height="4"/><rect class="bl-side-dk" x="-50" y="58" width="100" height="2"/>' +
+    '<rect class="bl-body bl-plain" x="-50" y="-50" width="100" height="100" rx="3"/>' +
+    '<g class="bl-loop"><path class="bl-handle-dk" d="' + LOOP + '"/><path class="bl-handle" d="' + LOOP + '"/>' +
+    '<rect class="bl-body" x="-50" y="-40" width="100" height="90" rx="3"/><rect class="bl-patch" x="-33" y="-40" width="17" height="9"/><rect class="bl-patch" x="16" y="-40" width="17" height="9"/></g>' +
+    '<path class="bl-seal" d="M-50 40H50"/><path class="bl-sheen" d="M-30 0L-18-12M-30 22L-10 2"/>';
   var KINDS = ['clear', 'clear', 'blue', 'clear', 'clear', 'blue', 'clear'];   // the first run: what the floor had on hand
   var N = 12;                                                               // the second run: one neat stack
   var SLOT = { x: 258, y: 300 };                                           // inside the head, above its slot
@@ -1112,7 +1123,7 @@ SG.story = function(o){
     { x: 244, y: 452, t: -12 }, { x: 272, y: 446, t: 16 }, { x: 252, y: 439, t: -30 },
     { x: 322, y: 468, r: 34, t: 6 }, { x: 314, y: 531, t: -26 }, { x: 196, y: 530, t: 50 }, { x: 130, y: 532, t: -18 }
   ];
-  var stackY = function(k){ return 442 - 4*k; };
+  var stackY = function(k){ return 441 - 5*k; };
 
   var bags = [];
   for (var i = 0; i < N; i++){
@@ -1208,6 +1219,7 @@ SG.story = function(o){
     timers = [];
     anims.forEach(function(a){ a.cancel(); });
     anims = [];
+    obj.classList.add('snap');
     obj.classList.remove('running', 'smug', 'jammed', 'short', 'linked', 'red-film', 'ontime', 'is-done');
     bags.forEach(function(g, i){ g.dataset.kind = KINDS[i] || 'red'; g.style.transform = tf(SLOT); g.style.opacity = 0; });
     scraps.forEach(function(s){ s.el.style.strokeDasharray = s.len + ' ' + (s.len + 20); s.el.style.strokeDashoffset = s.len; });
@@ -1215,6 +1227,8 @@ SG.story = function(o){
     webRed.style.strokeDashoffset = WEB;
     pill.textContent = 'On plan';
     count.textContent = '0';
+    obj.getBoundingClientRect();
+    obj.classList.remove('snap');
   }
 
   // Run it unlinked: clear film, no handles, bags everywhere and scrap round the machine. The screen doesn't notice.
@@ -1242,10 +1256,9 @@ SG.story = function(o){
     animate(rollRed, [{ transform: 'translateY(-46px) scale(1)', opacity: 0 }, { transform: 'translateY(-46px) scale(1)', opacity: 1, offset: .25 }, { transform: 'translateY(0px) scale(1)', opacity: 1 }], 520, 640, 'cubic-bezier(.3,1.25,.5,1)');
     later(function(){
       obj.classList.add('red-film');
-      obj.classList.remove('short');
       animate(webRed, [{ strokeDashoffset: WEB }, { strokeDashoffset: 0 }], 380, 0, 'ease-out');
     }, 1000);
-    later(function(){ count.textContent = '0'; tally(10000, 1850); }, 1300);
+    later(function(){ obj.classList.remove('short'); count.textContent = '0'; tally(10000, 1850); }, 1300);
     bags.forEach(function(g, k){
       later(function(){ g.dataset.kind = 'red'; animate(g, drop(k), 330); }, 1300 + k*140);
     });

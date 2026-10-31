@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/korpack/og-nick.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A packing line under an order screen, with no link between them, beside the words: Nick, Korpack packs out of 200,000 square feet.">
+<meta property="og:image:alt" content="An open shipping case and a table of pouches under an order screen, with no link between them, beside the words: Nick, Korpack packs out of 200,000 square feet.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nick, tape the case.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who runs packaging and co-packing for a living.">
@@ -242,13 +242,13 @@ h1 span{display:block;color:var(--hi)}
 .pk-fill{fill:var(--ok-bar);transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
 /* The cable from the order down to the case, cut in the middle until SimpleGrid tapes it. */
 .pk-wire{fill:none;stroke:#59626C;stroke-width:6;stroke-linecap:round}
-.pk-flow{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-dasharray:7 7;opacity:0;transition:opacity .3s}
+.pk-flow{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-dasharray:7 7;opacity:0;transition:opacity .3s}
 .pack.linked .pk-flow{opacity:1;animation:pk-flow .6s linear infinite}
 @keyframes pk-flow{to{stroke-dashoffset:-14}}
 .pk-sock,.pk-plug{fill:#3A4148;stroke:#1C2025;stroke-width:1.5}
 .pk-prong{fill:#C3CBD2}
 .pk-plug-g{transition:transform .35s cubic-bezier(.3,.7,.3,1.15)}
-.pack.joined .pk-plug-g{transform:translateY(-22px)}
+.pack.joined .pk-plug-g{transform:translateY(-26px)}
 .pk-band{opacity:0;transform:scaleX(.2);transform-box:fill-box;transform-origin:center;transition:opacity .2s,transform .4s cubic-bezier(.2,.9,.3,1.3)}
 .pack.joined .pk-band{opacity:1;transform:none}
 .pk-band-tape{fill:var(--tape);stroke:var(--tape-edge);stroke-width:1.5}
@@ -263,7 +263,7 @@ h1 span{display:block;color:var(--hi)}
 .pk-wood-dk{fill:var(--wood-dk);stroke:var(--wood-edge);stroke-width:1.4;stroke-linejoin:round}
 .pk-under{fill:#3B2A18}
 /* The case: kraft outside, lighter inside, darker in its own shadow. */
-.pk-case path{stroke:var(--kraft-edge);stroke-width:2;stroke-linejoin:round}
+.pk-case>path{stroke:var(--kraft-edge);stroke-width:2;stroke-linejoin:round}
 .pk-front{fill:var(--kraft)}
 .pk-side{fill:var(--kraft-dk)}
 .pk-in{fill:var(--kraft-in)}
@@ -285,7 +285,8 @@ h1 span{display:block;color:var(--hi)}
 .pk-pouch .gloss{fill:#fff;opacity:.22}
 .pk-pouch .lbl{fill:#fff}
 /* The tape gun: SimpleGrid. It wears the mark on its roll once it goes in. */
-.pk-gun-handle{fill:#2D333A}
+.pk-gun-handle{fill:#C8323C;stroke:#5A1218;stroke-width:1.5;stroke-linejoin:round}
+.pk-hook{fill:none;stroke:#2D333A;stroke-width:5;stroke-linecap:round}
 .pk-gun-frame{fill:#59626C;stroke:#2D333A;stroke-width:1.5;stroke-linejoin:round}
 .pk-gun-blade{fill:#C3CBD2;stroke:#2D333A;stroke-width:1.2;stroke-linejoin:round}
 .pk-gun-tape{fill:none;stroke:var(--tape);stroke-width:3.5;stroke-linecap:round}
@@ -298,11 +299,13 @@ h1 span{display:block;color:var(--hi)}
 .pk-count{opacity:0;transform:scale(.8);transform-box:fill-box;transform-origin:center;transition:opacity .25s,transform .4s cubic-bezier(.2,.9,.3,1.3)}
 .pack.counted .pk-count{opacity:1;transform:none}
 .pk-count-bg{fill:var(--alert);stroke:rgba(0,0,0,.25);stroke-width:1}
-.pk-count-txt{fill:#fff;font:800 17px/1 var(--body)}
+.pk-count-kick{fill:rgba(255,255,255,.88);font:600 12px/1 var(--mono);letter-spacing:.16em}
+.pk-count-txt{fill:#fff;font:800 26px/1 var(--body)}
 .pack.shipped .pk-count-bg{fill:var(--ok-bar)}
+.pack.snap,.pack.snap *{transition:none!important}
 .pack:not(.in-view) *{animation-play-state:paused!important}
 .callout-top{top:3%}
-.callout-gap{top:calc(43% - 15px)}
+.callout-gap{top:calc(44.5% - 15px)}
 .callout-bottom{top:60%}
 .callout-top h3 i{background:var(--ok)}
 .callout-bottom h3 i{background:#C9A06A}
@@ -583,16 +586,16 @@ h1 span{display:block;color:var(--hi)}
             <g id="pkScene"></g>
 
             <!-- the cable from the order down to the case: cut until SimpleGrid tapes it -->
-            <path class="pk-wire" d="M252 172V214M252 258V392"/>
-            <path class="pk-flow" d="M252 172V392"/>
+            <path class="pk-wire" d="M246 172V216M246 270V410"/>
+            <path class="pk-flow" d="M246 172V410"/>
             <g class="pk-plug-g">
-              <rect class="pk-prong" x="245.5" y="246" width="3.5" height="12"/><rect class="pk-prong" x="255" y="246" width="3.5" height="12"/>
-              <rect class="pk-plug" x="243" y="256" width="18" height="22" rx="4"/>
+              <rect class="pk-prong" x="239.5" y="258" width="3.5" height="14"/><rect class="pk-prong" x="249" y="258" width="3.5" height="14"/>
+              <rect class="pk-plug" x="237" y="270" width="18" height="24" rx="4"/>
             </g>
-            <rect class="pk-sock" x="242" y="208" width="20" height="26" rx="4"/>
+            <rect class="pk-sock" x="236" y="212" width="20" height="28" rx="4"/>
             <g class="pk-band">
-              <rect class="pk-band-tape" x="236" y="221" width="32" height="30" rx="5"/>
-              <rect class="pk-band-hi" x="239" y="226" width="26" height="5" rx="2.5"/>
+              <rect class="pk-band-tape" x="230" y="228" width="32" height="32" rx="5"/>
+              <rect class="pk-band-hi" x="233" y="233" width="26" height="5" rx="2.5"/>
             </g>
 
             <!-- the case: the script draws it, flaps and all, and puts the pouches in it -->
@@ -603,9 +606,10 @@ h1 span{display:block;color:var(--hi)}
             <g id="pkOut"></g>
 
             <!-- the count on the floor -->
-            <g id="pkCountAt" transform="translate(180 300)"><g class="pk-count">
-              <rect class="pk-count-bg" id="pkCountBg" x="-56" y="-16" width="112" height="32" rx="16"/>
-              <text class="pk-count-txt" id="pkCountTxt" x="0" y="6" text-anchor="middle">Count: 3 of 9</text>
+            <g id="pkCountAt" transform="translate(240 468)"><g class="pk-count">
+              <rect class="pk-count-bg" id="pkCountBg" x="-52" y="-28" width="104" height="56" rx="12"/>
+              <text class="pk-count-kick" x="0" y="-8" text-anchor="middle">COUNT</text>
+              <text class="pk-count-txt" id="pkCountTxt" x="0" y="18" text-anchor="middle">3 of 9</text>
             </g></g>
 
             <!-- the tape gun: SimpleGrid, once it wears the mark -->
@@ -963,122 +967,395 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
+/* ----------------------------------------------------------------- The case
+   For co-packers. The order on the screen is the ERP, the case on the pallet
+   is the floor, and the cable between them is cut. Pack it and it goes wrong:
+   a pouch catches the rim, the case gets knocked askew, the flaps spring open,
+   three pouches land crooked and the rest end up on the table and the floor,
+   the count is wrong, and the screen still says On plan. That mess stays.
+   SimpleGrid is the tape: the gun picks up the mark and tapes the cable back
+   together. Pack it again and the same pouches go in, in neat rows, the flaps
+   fold down, the tape runs along the seam with SimpleGrid on it, and the case
+   sits square on the pallet. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), obj = $('pack'), scene = $('pkScene'), caseG = $('pkCase'), tagAt = $('pkTagAt'), outG = $('pkOut');
+  var gun = $('pkGun'), countBg = $('pkCountBg'), countTxt = $('pkCountTxt'), statusEl = $('pkStatus'), pill = $('pkPill'), fillEl = $('pkFill');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = {
+    apart:    { btn: 'Pack it to see your operations', caption: 'The order up top is your ERP, the case down below is your floor, and nothing links them. Pack it, or tap the case.' },
+    messing:  { btn: 'Packing…', caption: 'Packing it the usual way: the order in one place, the case in another.' },
+    mess:     { btn: 'Tape it with SimpleGrid', caption: 'That’s your operations today: a big mess. The flaps sprang open, pouches are on the floor, the count is wrong, and the screen still says “On plan.” It won’t sort itself out, either.' },
+    dosing:   { btn: 'Taping…', caption: 'The tape goes on. That’s SimpleGrid.' },
+    dosed:    { btn: 'Pack it again', caption: 'That’s SimpleGrid: the tape that holds the order and the case together. Now pack it again.' },
+    cleaning: { btn: 'Packing…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one clean case: the right count, in neat rows, taped shut and square on the pallet. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The order: your ERP', 'What the system says you’re shipping.', 'The case: your floor', 'What’s really going in, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The case, packed with nothing linking it: knocked askew on the pallet, its flaps sprung open, three pouches in crooked and the rest spilled across the table and onto the floor. The count is wrong, and the screen still says On plan.',
+    dosed: 'The same mess. A tape gun marked SimpleGrid has taped the cable back together, and the screen says Linked.',
+    done: 'The case packed clean: nine pouches in neat rows, the flaps folded down and taped shut with SimpleGrid tape, square on the pallet. The count is right, and the screen says Done, on time.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
-
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
-  });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  /* ------------------------------------------------------------ The camera
+     Up high and in front, looking straight ahead: the case shows its top and
+     its front, and anything upright stays upright. World units are about one
+     screen unit at the front of the pallet; y is up, z comes toward you. */
+  var F = 1000, CZ = 900, CY = 950, OX = 246, OY = -526, D2R = Math.PI/180;
+  var S = function(z){ return F/(CZ - z); };
+  var P = function(p){ var s = S(p[2]); return [OX + p[0]*s, OY + (CY - p[1])*s]; };
+  var r1 = function(v){ return Math.round(v*10)/10; };
+  function dOf(pts){ return 'M' + pts.map(function(q){ var s = P(q); return r1(s[0]) + ' ' + r1(s[1]); }).join('L') + 'Z'; }
+  function mk(tag, cls, parent, before){ var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); parent.insertBefore(e, before || null); return e; }
+  function face(g, cls, pts){ mk('path', cls, g).setAttribute('d', dOf(pts)); }
+  // A block [x0, x1, y0, y1, z0, z1]: the side the camera can see, its top and its front, each with its class.
+  function block(g, b, cls){
+    if (cls[2] && b[1] < 0) face(g, cls[2], [[b[1],b[2],b[5]],[b[1],b[2],b[4]],[b[1],b[3],b[4]],[b[1],b[3],b[5]]]);
+    if (cls[2] && b[0] > 0) face(g, cls[2], [[b[0],b[2],b[4]],[b[0],b[2],b[5]],[b[0],b[3],b[5]],[b[0],b[3],b[4]]]);
+    if (cls[0]) face(g, cls[0], [[b[0],b[3],b[5]],[b[1],b[3],b[5]],[b[1],b[3],b[4]],[b[0],b[3],b[4]]]);
+    face(g, cls[1], [[b[0],b[2],b[5]],[b[1],b[2],b[5]],[b[1],b[3],b[5]],[b[0],b[3],b[5]]]);
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  var mix = function(a, b, t){ var o = {}; for (var k in a) o[k] = a[k] + (b[k] - a[k])*t; return o; };
+  var ease = function(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; };
+  var easeOut = function(t){ return 1 - Math.pow(1 - t, 3); };
+
+  /* ------------------------------------------------------------ The floor */
+  var TABLE = { x0: -224, x1: -104, y: 100, z0: -88, z1: -6 };
+  var PL = { x0: -92, x1: 92, z0: -112, z1: 8 };
+  (function(){
+    var T = TABLE, L = 8;
+    face(scene, 'pk-shadow', [[PL.x0 - 5,0,PL.z0 - 4],[PL.x1 + 5,0,PL.z0 - 4],[PL.x1 + 7,0,PL.z1 + 9],[PL.x0 - 7,0,PL.z1 + 9]]);
+    face(scene, 'pk-shadow', [[T.x0 + 2,0,T.z0],[T.x1 - 2,0,T.z0],[T.x1 + 2,0,T.z1 + 5],[T.x0 + 6,0,T.z1 + 5]]);
+    // the packing table: its back legs, its top, its front legs
+    [T.x0 + 6, T.x1 - 6 - L].forEach(function(x){ block(scene, [x, x + L, 0, T.y - 8, T.z0 + 4, T.z0 + 4 + L], [null, 'pk-leg', 'pk-leg']); });
+    block(scene, [T.x0, T.x1, T.y - 8, T.y, T.z0, T.z1], ['pk-steel', 'pk-steel-dk', 'pk-steel-dk']);
+    [T.x0 + 6, T.x1 - 6 - L].forEach(function(x){ block(scene, [x, x + L, 0, T.y - 8, T.z1 - 4 - L, T.z1 - 4], [null, 'pk-leg', 'pk-leg']); });
+    // the pallet: the dark under it, the bottom boards, three blocks, five deck boards
+    face(scene, 'pk-under', [[PL.x0,4,PL.z1 - 3],[PL.x1,4,PL.z1 - 3],[PL.x1,16,PL.z1 - 3],[PL.x0,16,PL.z1 - 3]]);
+    block(scene, [PL.x0, PL.x1, 0, 4, PL.z0, PL.z1], [null, 'pk-wood-dk', null]);
+    [[-92, -68], [-12, 12], [68, 92]].forEach(function(x){ block(scene, [x[0], x[1], 4, 16, PL.z0, PL.z1], [null, 'pk-wood-dk', null]); });
+    [[-92, -58], [-54, -20], [-17, 17], [20, 54], [58, 92]].forEach(function(x){ block(scene, [x[0], x[1], 16, 22, PL.z0, PL.z1], ['pk-wood', 'pk-wood', null]); });
+  })();
+
+  /* ------------------------------------------------------------ The case
+     A regular slotted case: four flaps, each half as deep as the case, the
+     long pair meeting in the middle. Flap angles are degrees: 0 is folded
+     shut, 90 straight up, past 180 hanging down the outside. */
+  var W = 150, H = 60, D = 100, FL = 50, hw = W/2, hd = D/2, TW = 21;
+  var HOME = { x: 0, y: 22, z: -52, yaw: 0, roll: 0 };
+  var SKEW = { x: -6, y: 22, z: -46, yaw: -16, roll: 6 };
+  var OPEN = { b: 104, f: 254, l: 122, r: 120 };
+  var SPRUNG = { b: 148, f: 190, l: 206, r: 128 };
+  var cs = { pose: mix(HOME, HOME, 0), flaps: mix(OPEN, OPEN, 0), tape: 0 };
+
+  // Case to world: tip it onto one bottom edge (roll), turn it (yaw), then put it where it sits.
+  function toWorld(p, k){
+    var a = k.roll*D2R, c = Math.cos(a), s = Math.sin(a), px = k.roll >= 0 ? -hw : hw, dx = p[0] - px;
+    var x = px + dx*c - p[1]*s, y = dx*s + p[1]*c, b = k.yaw*D2R, cb = Math.cos(b), sb = Math.sin(b);
+    return [k.x + x*cb + p[2]*sb, k.y + y, k.z - x*sb + p[2]*cb];
+  }
+  function turn(n, k){
+    var a = k.roll*D2R, x = n[0]*Math.cos(a) - n[1]*Math.sin(a), y = n[0]*Math.sin(a) + n[1]*Math.cos(a), b = k.yaw*D2R;
+    return [x*Math.cos(b) + n[2]*Math.sin(b), y, -x*Math.sin(b) + n[2]*Math.cos(b)];
+  }
+  // Does a face with this (world) normal look toward the camera?
+  function facing(n, pts){
+    var c = [0, 0, 0];
+    pts.forEach(function(q){ c[0] += q[0]/pts.length; c[1] += q[1]/pts.length; c[2] += q[2]/pts.length; });
+    return n[0]*-c[0] + n[1]*(CY - c[1]) + n[2]*(CZ - c[2]) > 0;
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
+  // Back to front: the back flap while it stands, the inside, the pouches in it, the outside, the other flaps, the tape.
+  var el = {};
+  function part(name, cls){ el[name] = mk('path', cls, caseG, tagAt); }
+  part('flapB0', 'pk-flap-in'); part('inFloor', 'pk-in-floor'); part('inBack', 'pk-in'); part('inL', 'pk-in-side'); part('inR', 'pk-in-side');
+  var inG = mk('g', null, caseG, tagAt);
+  part('sideL', 'pk-side'); part('sideR', 'pk-side'); part('front', 'pk-front');
+  part('flapL', 'pk-flap-in'); part('flapR', 'pk-flap-in'); part('flapB1', 'pk-flap-in'); part('flapF', 'pk-flap-in');
+  part('tape', 'pk-tape'); part('tapeHi', 'pk-tape-hi');
+
+  function show(e, pts){ if (pts) e.setAttribute('d', dOf(pts)); else e.removeAttribute('d'); }
+  // Kraft, lit from up and to the left: tops are lightest, the side away from the light darkest.
+  var KRAFT = [201, 160, 106], LIGHT = [-.342, .83, .44];
+  function shade(n, lift){
+    var k = (.78 + .5*Math.max(0, n[0]*LIGHT[0] + n[1]*LIGHT[1] + n[2]*LIGHT[2]))*(lift || 1);
+    return 'rgb(' + KRAFT.map(function(c){ return Math.min(255, Math.round(c*k)); }).join(',') + ')';
+  }
+  function flap(e, a, b, dir, inner){
+    var k = cs.pose, A = [], B = [];
+    for (var j = 0; j < 3; j++){ A.push(a[j] + dir[j]*FL); B.push(b[j] + dir[j]*FL); }
+    var pts = [a, b, B, A].map(function(p){ return toWorld(p, k); }), n = turn(inner, k), shows = facing(n, pts);
+    e.style.fill = shows ? shade(n, 1.04) : shade([-n[0], -n[1], -n[2]]);
+    e.setAttribute('d', dOf(pts));
+  }
+  function drawCase(){
+    var k = cs.pose, f = cs.flaps;
+    var w = function(list){ return list.map(function(p){ return toWorld(p, k); }); };
+    var sees = function(n, pts){ return facing(turn(n, k), pts) && pts; };
+    var floor = w([[-hw,0,hd],[hw,0,hd],[hw,0,-hd],[-hw,0,-hd]]), back = w([[-hw,0,-hd],[hw,0,-hd],[hw,H,-hd],[-hw,H,-hd]]);
+    var left = w([[-hw,0,hd],[-hw,0,-hd],[-hw,H,-hd],[-hw,H,hd]]), right = w([[hw,0,-hd],[hw,0,hd],[hw,H,hd],[hw,H,-hd]]);
+    var front = w([[-hw,0,hd],[hw,0,hd],[hw,H,hd],[-hw,H,hd]]), fr = sees([0,0,1], front);
+    show(el.inFloor, sees([0,1,0], floor)); show(el.inBack, sees([0,0,1], back));
+    show(el.inL, sees([1,0,0], left)); show(el.inR, sees([-1,0,0], right));
+    show(el.sideL, sees([-1,0,0], left)); show(el.sideR, sees([1,0,0], right));
+    show(el.front, fr);
+    el.sideL.style.fill = shade(turn([-1,0,0], k)); el.sideR.style.fill = shade(turn([1,0,0], k)); el.front.style.fill = shade(turn([0,0,1], k));
+    var c = Math.cos(f.l*D2R), s = Math.sin(f.l*D2R);
+    flap(el.flapL, [-hw,H,-hd], [-hw,H,hd], [c, s, 0], [s, -c, 0]);
+    c = Math.cos(f.r*D2R); s = Math.sin(f.r*D2R);
+    flap(el.flapR, [hw,H,hd], [hw,H,-hd], [-c, s, 0], [-s, -c, 0]);
+    c = Math.cos(f.b*D2R); s = Math.sin(f.b*D2R);
+    flap(f.b >= 90 ? el.flapB0 : el.flapB1, [hw,H,-hd], [-hw,H,-hd], [0, s, c], [0, -c, s]);
+    show(f.b >= 90 ? el.flapB1 : el.flapB0, null);
+    c = Math.cos(f.f*D2R); s = Math.sin(f.f*D2R);
+    flap(el.flapF, [-hw,H,hd], [hw,H,hd], [0, s, -c], [0, -c, -s]);
+    var xe = -hw + W*cs.tape, y = H + .8;
+    show(el.tape, cs.tape > 0 && w([[-hw - 1,y,-TW],[xe,y,-TW],[xe,y,TW],[-hw - 1,y,TW]]));
+    show(el.tapeHi, cs.tape > 0 && w([[-hw - 1,y,-TW*.62],[xe,y,-TW*.62],[xe,y,-TW*.3],[-hw - 1,y,-TW*.3]]));
+  }
+  // Where the tape gun's nose is, a share t of the way along the seam, once the case is home.
+  var seam = function(t){ return P(toWorld([-hw + W*t, H, 0], HOME)); };
+  (function(){ var q = seam(.5); tagAt.setAttribute('transform', 'translate(' + r1(q[0]) + ' ' + r1(q[1]) + ') scale(.7)'); })();
+
+  /* ------------------------------------------------------------ The pouches
+     Three flavors, three of each. They wait on the table in the same block
+     they'll make in the case: a row of each flavor, back to front. */
+  var PW = 36, PH = 56;
+  var POUCH = '<path class="body" d="M-18-28H18V20Q18 28 10 28H-10Q-18 28-18 20Z"/><rect class="seal" x="-18" y="-28" width="36" height="8"/><path class="gloss" d="M-13-15H-8V20H-13Z"/><ellipse class="lbl" cx="2" cy="4" rx="10" ry="8.5"/>';
+  var FLAVOR = ['c', 'b', 'a'];
+  var COLS = [-48, 0, 48], ROWS = [-30, 0, 30];            // slots in the case, from its middle
+  var TCOLS = [-200, -164, -128], TROWS = [-74, -46, -18];  // the same block on the table
+  var row = function(i){ return Math.floor(i/3); };
+  var pouches = [];
+  for (var i = 0; i < 9; i++){
+    var g = mk('g', 'pk-pouch', outG);
+    g.setAttribute('data-c', FLAVOR[row(i)]);
+    g.innerHTML = POUCH;
+    pouches.push({ el: g, layer: 'out', z: 0, at: null });
+  }
+  var tf = function(p){ return 'translate(' + r1(p.x) + 'px,' + r1(p.y) + 'px) rotate(' + r1(p.r) + 'deg) scale(' + p.s.toFixed(3) + ')'; };
+  var pose = function(p, r){ var q = P(p); return { x: q[0], y: q[1], r: r || 0, s: S(p[2]) }; };
+  var onTable = function(i){ return pose([TCOLS[i%3], TABLE.y + PH/2, TROWS[row(i)]]); };
+  var slotZ = function(i){ return toWorld([0, 0, ROWS[row(i)]], HOME)[2]; };
+  var inSlot = function(i){ return pose(toWorld([COLS[i%3], PH/2, ROWS[row(i)]], HOME)); };
+  // A layer is kept back to front, so a pouch nearer the camera covers the one behind it.
+  function layer(pc, name, z){
+    var g = name === 'in' ? inG : outG, next = null;
+    pc.layer = name; pc.z = z;
+    for (var n = 0; n < g.children.length; n++){ var o = g.children[n].pc; if (o && o !== pc && o.z > z){ next = g.children[n]; break; } }
+    if (next !== pc.el) g.insertBefore(pc.el, next);
+  }
+  pouches.forEach(function(pc){ pc.el.pc = pc; });
+  function put(pc, p){ pc.el.getAnimations().forEach(function(a){ a.cancel(); }); pc.at = p; pc.el.style.transform = tf(p); }
+  // A throw from a to b: a quadratic curve, which is what a toss traces when it runs evenly in time.
+  function arc(a, b, lift, n){
+    var top = Math.min(a.y, b.y) - 2*lift, mx = (a.x + b.x)/2, out = [];
+    for (var k = 0; k <= n; k++){
+      var u = k/n;
+      out.push({ x: (1-u)*(1-u)*a.x + 2*(1-u)*u*mx + u*u*b.x, y: (1-u)*(1-u)*a.y + 2*(1-u)*u*top + u*u*b.y, r: a.r + (b.r - a.r)*u, s: a.s + (b.s - a.s)*u });
+    }
+    return out;
+  }
+  var highest = function(fr){ var t = 0; fr.forEach(function(p, k){ if (p.y < fr[t].y) t = k; }); return Math.min(t, fr.length - 2); };
+  function along(fr, t){ var n = fr.length - 1, k = Math.min(n - 1, Math.floor(t*n)); return mix(fr[k], fr[k + 1], t*n - k); }
+
+  /* ------------------------------------------------------------ Moving
+     Pouches fly with the Web Animations API. A flight can change layer at its
+     highest point, up above the rim, where nobody can see the swap. The case
+     and the gun are drawn every frame. Reduced motion jumps to each end. */
+  var gen = 0, timers = [];
+  function later(fn, ms){ var my = gen; if (reduce){ fn(); return; } timers.push(setTimeout(function(){ if (my === gen) fn(); }, ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  function play(ms, fn, delay){
+    var my = gen;
+    return new Promise(function(done){
+      if (reduce){ fn(1); done(); return; }
+      var t0 = null;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (t0 === null) t0 = now + (delay || 0);
+        if (now >= t0){ var t = Math.min(1, (now - t0)/ms); fn(t); if (t === 1){ done(); return; } }
+        requestAnimationFrame(tick);
+      });
+    });
+  }
+  // fr: poses evenly spaced in time. swap: [pose index, layer, depth] to change layer there.
+  function fly(pc, fr, ms, delay, swap){
+    var my = gen, n = fr.length - 1, end = fr[n];
+    pc.at = end;
+    if (reduce){ if (swap) layer(pc, swap[1], swap[2]); put(pc, end); return Promise.resolve(); }
+    var legs = swap ? [fr.slice(0, swap[0] + 1), fr.slice(swap[0])] : [fr];
+    function leg(k){
+      var part = legs[k];
+      pc.el.getAnimations().forEach(function(a){ a.cancel(); });
+      if (k) layer(pc, swap[1], swap[2]);
+      var a = pc.el.animate(part.map(function(p){ return { transform: tf(p) }; }), { duration: ms*(part.length - 1)/n, delay: k ? 0 : delay || 0, fill: 'both' });
+      return a.finished.then(function(){
+        if (my !== gen) return;
+        pc.el.style.transform = tf(part[part.length - 1]);
+        if (k + 1 < legs.length) return leg(k + 1);
+        a.cancel();
+      }, function(){});
+    }
+    return leg(0);
+  }
+  var gunAt = null;
+  function gunTo(p){ gunAt = p; gun.style.transform = tf(p); }
+  var NOSE = [47, 41];                                    // the tip of the gun's blade, from the middle of its roll
+  var byNose = function(q, r){ return { x: q[0] - NOSE[0], y: q[1] - NOSE[1], r: r || 0, s: 1 }; };
+  // It waits on a hook under the front of the table, and goes back to the table top once the case is done.
+  var HOOK = P([-150, TABLE.y - 8, TABLE.z1 + 2]);
+  var GUN_HOME = { x: HOOK[0], y: HOOK[1] + 30, r: 0, s: 1 };
+  mk('path', 'pk-hook', scene).setAttribute('d', 'M' + r1(HOOK[0]) + ' ' + r1(HOOK[1] - 3) + 'V' + r1(HOOK[1] + 12));
+  var GUN_DONE = (function(){ var q = P([-150, TABLE.y, -40]); return { x: q[0], y: q[1] - 56, r: 0, s: 1 }; })();
+  var GUN_LINK = byNose([232, 254], -4);
+
+  function setStatus(text){
+    statusEl.textContent = text;
+    var w = Math.max(92, statusEl.getComputedTextLength() + 34);
+    pill.setAttribute('x', r1(312 - w)); pill.setAttribute('width', r1(w)); statusEl.setAttribute('x', r1(312 - w/2));
+  }
+  function setCount(text){
+    countTxt.textContent = text;
+    var w = Math.max(84, countTxt.getComputedTextLength() + 32);
+    countBg.setAttribute('x', r1(-w/2)); countBg.setAttribute('width', r1(w));
+  }
+
+  /* ------------------------------------------------------------ The story */
+  // Packed with nothing linking it. Three go in crooked, the rest spill, and the case takes the knock.
   function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
+    var crooked = function(x, z, lean){ var p = toWorld([x, PH/2 + 6, z], SKEW); return { p: pose(p, -SKEW.roll + lean), z: p[2] }; };
+    var rim = pose(toWorld([-hw + 14, H + 12, hd - 6], HOME), 40);
+    var lying = function(x, y, z, r){ return { p: pose([x, y + PW/2, z], r), z: z }; };
+    var plan = [
+      [7, 0, 820, lying(50, 0, 12, 168), rim],
+      [4, 120, 640, lying(-90, 0, 8, -82)],
+      [8, 220, 620, crooked(-34, -26, -26), 'in'],
+      [5, 330, 620, crooked(28, -4, 21), 'in'],
+      [2, 440, 620, crooked(-6, 18, -9), 'in'],
+      [1, 520, 820, lying(-206, 0, 10, 104), pose(toWorld([-hw + 6, H + 30, 0], HOME), -60)],
+      [3, 640, 440, lying(-168, TABLE.y, -46, -97)],
+      [0, 700, 440, lying(-204, TABLE.y, -64, 84)],
+      [6, 780, 420, { p: pose([-114, TABLE.y + 10, -8], 48), z: -8 }]
+    ];
+    var flights = plan.map(function(o){
+      var pc = pouches[o[0]], a = pc.at, to = o[3], fr, swap = null;
+      if (o[4] === 'in'){ fr = arc(a, to.p, 110, 12); swap = [highest(fr), 'in', to.z]; }
+      else if (o[4]){ fr = arc(a, o[4], 60, 8).concat(arc(o[4], to.p, 24, 8).slice(1)); }
+      else fr = arc(a, to.p, o[2] > 500 ? 40 : 12, 8);
+      if (!swap) pc.z = to.z;
+      return fly(pc, fr, o[2], o[1], swap);
     });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    // The first pouch catches the rim: the case goes askew and the flaps spring wide.
+    var k0 = cs.pose, f0 = cs.flaps;
+    var knock = play(1400, function(t){
+      var T = t*1.4, kp = 1 - Math.exp(-6*T)*Math.cos(10*T), sp = Math.exp(-4*T)*Math.cos(9*T);
+      cs.pose = mix(k0, SKEW, kp);
+      cs.flaps = { b: SPRUNG.b + (f0.b - SPRUNG.b)*sp, f: SPRUNG.f + (f0.f - SPRUNG.f)*sp, l: SPRUNG.l + (f0.l - SPRUNG.l)*sp, r: SPRUNG.r + (f0.r - SPRUNG.r)*sp };
+      drawCase();
+    }, 390);
+    later(function(){ fillEl.setAttribute('width', 128); }, 300);
+    later(function(){ setCount('3 of 9'); obj.classList.add('counted'); }, 1500);
+    return Promise.all(flights.concat([knock, wait(1800)])).then(function(){
+      // what fell, by depth, so the nearest lies on top
+      pouches.filter(function(pc){ return pc.layer === 'out'; }).sort(function(a, b){ return a.z - b.z; }).forEach(function(pc){ outG.appendChild(pc.el); });
+    });
   }
+
+  // SimpleGrid goes in: the gun picks up the mark and tapes the cable back together.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+    var fr = arc(GUN_HOME, GUN_LINK, 50, 16);
+    later(function(){ obj.classList.add('dosed'); }, 420);
+    later(function(){ obj.classList.add('joined'); }, 640);
+    later(function(){ obj.classList.add('linked'); setStatus('Linked'); }, 900);
+    return play(760, function(t){ gunTo(along(fr, ease(t))); }).then(function(){ return wait(450); });
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
+
+  // Packed again, linked: square the case, every pouch into its slot, fold the flaps, run the tape.
   function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+    obj.classList.remove('counted');
+    var k0 = cs.pose, f0 = cs.flaps, start = seam(0), end = seam(1);
+    var lift = byNose([end[0] + 8, end[1] - 44], 10);
+    var toTape = arc(GUN_LINK, byNose([start[0], start[1] - 4], -6), 30, 14), toHome = arc(lift, GUN_DONE, 40, 14);
+    var moves = [play(480, function(t){ var e = easeOut(t); cs.pose = mix(k0, HOME, e); cs.flaps = mix(f0, OPEN, e); drawCase(); })];
+    pouches.forEach(function(pc, i){
+      var fr = arc(pc.at, inSlot(i), pc.layer === 'in' ? 60 : 100, 12);
+      moves.push(fly(pc, fr, 640, 120 + i*120, [highest(fr), 'in', slotZ(i)]));
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    var shut = function(key, ms, delay){ return play(ms, function(t){ cs.flaps[key] = OPEN[key]*(1 - ease(t)); drawCase(); }, delay); };
+    // A beat to see the rows, then the flaps come down and the gun leaves the cable for the seam.
+    moves.push(wait(2150).then(function(){
+      return Promise.all([shut('l', 380, 0), shut('r', 380, 0), shut('b', 380, 230), shut('f', 460, 430)]);
+    }).then(function(){
+      return play(420, function(t){ gunTo(along(toTape, ease(t))); });
+    }).then(function(){
+      return play(620, function(t){ cs.tape = t; drawCase(); gunTo(byNose(seam(t), 0)); });
+    }).then(function(){
+      obj.classList.add('taped', 'shipped', 'counted');
+      setCount('9 of 9');
+      setStatus('Done, on time');
+      fillEl.setAttribute('width', 264);
+      return play(220, function(t){ gunTo(mix(byNose(end, 0), lift, ease(t))); });
+    }).then(function(){
+      return play(560, function(t){ gunTo(along(toHome, ease(t))); });
+    }));
+    return Promise.all(moves);
   }
+
+  // The first picture, at once.
+  function setup(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    obj.classList.remove('counted', 'dosed', 'joined', 'linked', 'taped', 'shipped', 'is-done');
+    cs.pose = mix(HOME, HOME, 0); cs.flaps = mix(OPEN, OPEN, 0); cs.tape = 0;
+    drawCase();
+    pouches.forEach(function(pc, i){ put(pc, onTable(i)); layer(pc, 'out', TROWS[row(i)] + i*.01); });
+    gunTo(GUN_HOME);
+    setStatus('On plan');
+    setCount('3 of 9');
+    fillEl.setAttribute('width', 92);
+  }
+  function restore(){ obj.classList.add('snap'); setup(); }
   function setCallouts(final){
+    var t = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = t[0];
+    $('topText').textContent = t[1];
+    $('bottomTitle').textContent = t[2];
+    $('bottomText').textContent = t[3];
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.pack',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'The case came apart, and the screen still says On plan. Everyone’s working from a different count.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same case, same spill. Now the order and the case are taped together.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){
+      setCallouts(on);
+      obj.classList.toggle('is-done', on);
+      // Start over lands on the first picture at once, not by easing back to it.
+      if (!on){ obj.getBoundingClientRect(); obj.classList.remove('snap'); }
+    }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the case does what the button does.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
   setup();
+  // The pills hug their words, so measure again once the face has loaded.
+  if (document.fonts) document.fonts.ready.then(function(){ setStatus(statusEl.textContent); setCount(countTxt.textContent); });
 })();
 </script>
 <script>

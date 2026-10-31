@@ -232,10 +232,10 @@ h1 span{display:block;color:var(--hi)}
 .fd-dot{fill:#C3CEC6}
 .fd-kick{fill:var(--card-soft);font:600 12px/1 var(--mono);letter-spacing:.16em}
 .fd-order{fill:var(--card-ink);font:800 35px/1 var(--body);letter-spacing:-.01em}
-.fd-spec{fill:var(--card-soft);font:700 21px/1 var(--body)}
+.fd-spec{fill:var(--card-soft);font:700 22px/1 var(--body)}
 .fd-pill{fill:var(--accent-soft);transition:fill .3s}
 .fd-pill-dot{fill:var(--accent-edge);transition:fill .3s}
-.fd-status text{fill:var(--brand);font:800 18px/1 var(--body);transition:fill .3s}
+.fd-status text{fill:var(--brand);font:800 19px/1 var(--body);transition:fill .3s}
 .fold.linked .fd-pill{fill:var(--accent)}
 .fold.linked .fd-pill-dot,.fold.linked .fd-status text{fill:var(--on-accent)}
 .fd-bar{fill:#E2E8E3}
@@ -274,6 +274,7 @@ h1 span{display:block;color:var(--hi)}
 .fc.back .fc-out{display:none}
 .fc-edge{fill:none;stroke:var(--kraft-edge);stroke-width:1.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .fc-shade{stroke:none;opacity:0}
+.fc-score{fill:none;stroke:#EBCF9E;stroke-width:1.7;stroke-dasharray:4 3.5;vector-effect:non-scaling-stroke}
 .pr-white{fill:var(--print-white)}
 .pr-brown{fill:var(--print-brown)}
 .pr-green{fill:var(--print-green)}
@@ -285,6 +286,9 @@ h1 span{display:block;color:var(--hi)}
 .sm-blob{fill:var(--glue);stroke:var(--glue-edge);stroke-width:1.4}
 .fd-bead{fill:none;stroke:var(--accent);stroke-width:4.5;stroke-linecap:round;stroke-dasharray:1}
 .fd-bead-edge{fill:none;stroke:var(--accent-edge);stroke-width:7.5;stroke-linecap:round;stroke-dasharray:1}
+.fd-dent{opacity:0}
+.dn-dk{fill:none;stroke:var(--kraft-edge);stroke-width:2.6;stroke-linejoin:round;opacity:.7}
+.dn-lt{fill:none;stroke:#F3DDB4;stroke-width:1.8;stroke-linejoin:round;opacity:.75}
 /* The bundle behind it: slabs of knocked-down boxes, drawn by the script. */
 .fd-slab{stroke:var(--kraft-edge);stroke-width:1.1;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .fd-strap{fill:none;stroke:#F7F3EA;stroke-width:5.5;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .45s ease-out}
@@ -584,20 +588,20 @@ h1 span{display:block;color:var(--hi)}
 
             <!-- the glue head over the manufacturer’s joint, wearing SimpleGrid’s mark once it’s in -->
             <g class="fd-head" id="fdHead">
-              <rect class="fd-steel" x="312" y="268" width="46" height="38" rx="9"/>
-              <rect class="fd-steel-dk" x="312" y="296" width="46" height="10"/>
+              <rect class="fd-steel" x="308" y="264" width="52" height="42" rx="10"/>
+              <rect class="fd-steel-dk" x="308" y="296" width="52" height="10"/>
               <path class="fd-nozzle" d="M325 306H345L339 325H331Z"/>
               <path class="fd-nozzle fd-tip" d="M331 324H339L337.5 332H332.5Z"/>
               <circle class="fd-drop" cx="335" cy="336" r="3.6"/>
             </g>
-            <g transform="translate(335 283) scale(.62)"><g class="fd-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            <g transform="translate(334 281) scale(.74)"><g class="fd-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
             <!-- the hose from the order to the glue head: broken until SimpleGrid joins it -->
             <rect class="fd-cuff" x="310" y="160" width="16" height="10" rx="2"/>
             <path class="fd-hose" d="M318 168V198"/>
-            <path class="fd-hose" d="M318 226V266"/>
-            <path class="fd-join" d="M318 168V266"/>
-            <path class="fd-flow" d="M318 170V264"/>
+            <path class="fd-hose" d="M318 226V262"/>
+            <path class="fd-join" d="M318 168V262"/>
+            <path class="fd-flow" d="M318 170V260"/>
 
             <!-- the order: what the ERP says you’re running -->
             <rect class="fd-card-bg" x="16" y="12" width="328" height="152" rx="16"/>
@@ -605,8 +609,8 @@ h1 span{display:block;color:var(--hi)}
             <circle class="fd-dot" cx="35" cy="26" r="4.5"/><circle class="fd-dot" cx="50" cy="26" r="4.5"/><circle class="fd-dot" cx="65" cy="26" r="4.5"/>
             <text class="fd-kick" x="326" y="30.5" text-anchor="end">ERP</text>
             <text class="fd-order" x="33" y="82">ORDER 4417</text>
-            <text class="fd-spec" x="33" y="113">RSCs · 3-color · 10,000</text>
-            <g class="fd-status"><rect class="fd-pill" id="fdPill" x="33" y="125" width="104" height="29" rx="14.5"/><circle class="fd-pill-dot" cx="48" cy="139.5" r="5"/><text id="fdStatus" x="60" y="145.8">On plan</text></g>
+            <text class="fd-spec" x="33" y="114">RSCs · 3-color · 10,000</text>
+            <g class="fd-status"><rect class="fd-pill" id="fdPill" x="33" y="125" width="104" height="29" rx="14.5"/><circle class="fd-pill-dot" cx="48" cy="139.5" r="5"/><text id="fdStatus" x="60" y="146.2">On plan</text></g>
             <rect class="fd-bar" x="222" y="135.5" width="102" height="8" rx="4"/>
             <rect class="fd-fill" id="fdFill" x="222" y="135.5" width="34" height="8" rx="4"/>
           </svg>
@@ -968,7 +972,7 @@ SG.story = function(o){
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), obj = $('fold'), boxG = $('fdBox'), slabG = $('fdSlabs'), head = $('fdHead');
+  var hero = $('hero'), obj = $('fold'), boxG = $('fdBox'), bundleG = $('fdBundle'), slabG = $('fdSlabs'), head = $('fdHead');
   var shadowEl = $('fdShadow'), bShadowEl = $('fdBundleShadow'), statusEl = $('fdStatus'), pill = $('fdPill'), fill = $('fdFill');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce, clamp = SG.clamp, D = Math.PI/180;
@@ -977,10 +981,10 @@ SG.story = function(o){
     apart:    { btn: 'Fold it to see your operations', caption: 'The order is your ERP, the blank on the gluer is your floor, and nothing links them. Fold it, or tap the blank.' },
     messing:  { btn: 'Folding…', caption: 'Folding it the usual way: the plan in one place, the floor in another.' },
     mess:     { btn: 'Glue it with SimpleGrid', caption: 'That’s your operations today: a big mess. The glue’s across the print, the flaps miss, the box is skewed and the bundle’s slumped, and the order still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Gluing…', caption: 'The glue line goes on the joint. That’s SimpleGrid.' },
+    dosing:   { btn: 'Gluing…', caption: 'In goes the glue for the joint, fed straight from the order. That’s SimpleGrid.' },
     dosed:    { btn: 'Fold it again', caption: 'That’s SimpleGrid: one glue line between the order and the floor, so they stay joined. Now fold it again.' },
     cleaning: { btn: 'Folding…', caption: 'Watch the mess come clean.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a square, true box, in a neat, counted bundle, and the order knows it. Your ERP and your floor finally match.' }
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a square, true box, in a neat, strapped bundle, and the order knows it: done, on time. Your ERP and your floor finally match.' }
   };
   var TEXT = {
     apart: ['The order: your ERP', 'What the system says you’re running.', 'The blank: your floor', 'What’s really coming off the gluer, on Excel, whiteboards and phones.'],
@@ -1050,43 +1054,49 @@ SG.story = function(o){
     '<path class="sm-hi" pathLength="1" d="M82 8C74 13 70 12 61 21C53 29 45 26 37 36"/>' +
     '<path class="sm-blob" d="M45 33C48 41 47 47 47 52A3.4 3.4 0 0 1 40.2 52C40.2 47 42 41 45 33Z"/>' +
     '<circle class="sm-blob" cx="84" cy="10" r="7"/><circle class="sm-blob" cx="70" cy="44" r="3.4"/></g>';
+  // Where the front panel buckles as the box half-collapses: a crease across it.
+  var DENT = '<g class="fd-dent"><path class="dn-dk" d="M0 38L30 47L58 44L90 60"/><path class="dn-lt" d="M0 41.5L30 50.5L58 47.5L90 63.5"/></g>';
   var TABGLUE = '<g class="fd-blobs"><circle class="sm-blob" cx="5" cy="25" r="6"/><circle class="sm-blob" cx="10" cy="53" r="4.5"/><path class="sm-blob" d="M2 72Q9 69 11 78Q9 86 2 83Z"/></g>' +
     '<g class="fd-beads"><path class="fd-bead-edge" pathLength="1" d="M7 13V83"/><path class="fd-bead" pathLength="1" d="M7 13V83"/></g>';
   var FACES = [], BYK = {};
   function face(k, x, yTop, w, h, opt){
-    var f = { k: k, x: x, y: yTop, w: w, h: h, bias: 0 };
+    var f = { k: k, x: x, y: yTop, w: w, h: h, layer: 0 };
     for (var o in opt) f[o] = opt[o];
     FACES.push(f); BYK[k] = f;
   }
   [1, 2, 3, 4].forEach(function(n){
     var x = PANEL[n][0], w = PANEL[n][1], l = n === 1 ? 0 : G;
     face('P' + n, x, F + H, w, H, {});
-    face('T' + n, x + l, 2*F + H, w - l - G, F, { bias: n % 2 ? 0 : 1.5 });   // the wide (major) flaps close over the narrow ones
+    face('T' + n, x + l, 2*F + H, w - l - G, F, { layer: n % 2 ? 0 : 1 });   // the wide (major) flaps close over the narrow ones
     face('B' + n, x + l, F, w - l - G, F, {});
   });
-  face('TB', XD, F + H, T, H, { shape: 'M0 3L' + T + ' 13V' + (H - 13) + 'L0 ' + (H - 3) + 'Z', bias: 1 });
+  face('TB', XD, F + H, T, H, { shape: 'M0 3L' + T + ' 13V' + (H - 13) + 'L0 ' + (H - 3) + 'Z', layer: 1 });   // the tab laps over the side wall
   FACES.forEach(function(f){
     var d = f.shape || ('M0 0H' + r1(f.w) + 'V' + f.h + 'H0Z');
     f.g = mk('g', { 'class': 'fc' }, boxG);
     mk('path', { 'class': 'fc-board', d: d }, f.g);
     var out = mk('g', { 'class': 'fc-out' }, f.g);
-    if (f.k === 'P4') out.innerHTML = PRINT + SMEAR;
+    if (f.k === 'P4') out.innerHTML = PRINT + DENT + SMEAR;
     if (f.k === 'P2') out.innerHTML = PRINT;
     if (f.k === 'TB') out.innerHTML = TABGLUE;
     f.shade = mk('path', { 'class': 'fc-shade', d: d }, f.g);
     mk('path', { 'class': 'fc-edge', d: d }, f.g);
     f.back = false;
   });
+  // While the blank lies flat, its score lines show dashed, on top of every face: along both rows of flaps and
+  // between the panels. They’re drawn in the front panel’s frame, which every face shares while it’s flat.
+  var scores = mk('path', { 'class': 'fc-score', d: 'M' + r1(X0 - XA) + ' 0H' + r1(XD - XA) + 'M' + r1(X0 - XA) + ' ' + H + 'H' + r1(XD - XA) +
+    [XC, XB, XA, XD].map(function(x){ return 'M' + r1(x - XA) + ' 0V' + H; }).join('') }, boxG);
   var smearG = boxG.querySelector('.fd-smear'), smearPaths = [].slice.call(smearG.querySelectorAll('[pathLength]'));
-  var blobsG = boxG.querySelector('.fd-blobs'), beadsG = boxG.querySelector('.fd-beads'), beadPaths = [].slice.call(beadsG.children);
+  var blobsG = boxG.querySelector('.fd-blobs'), beadsG = boxG.querySelector('.fd-beads'), beadPaths = [].slice.call(beadsG.children), dentG = boxG.querySelector('.fd-dent');
 
   // Every pose of the box is these numbers: fold angles (90 is shut), then how the whole thing sits.
-  var KEYS = ['p1', 'p2', 'p3', 'tb', 't1', 't2', 't3', 't4', 'b1', 'b2', 'b3', 'b4', 'yaw', 'roll', 'rack', 'squash', 'zoom', 'x', 'y', 'z'];
-  var FLAT = { p1: 0, p2: 0, p3: 0, tb: 0, t1: 0, t2: 0, t3: 0, t4: 0, b1: 0, b2: 0, b3: 0, b4: 0, yaw: 0, roll: 0, rack: 0, squash: 1, zoom: 1, x: PX, y: PY, z: PZ };
+  var KEYS = ['p1', 'p2', 'p3', 'tb', 't1', 't2', 't3', 't4', 'b1', 'b2', 'b3', 'b4', 'yaw', 'roll', 'rack', 'squash', 'zoom', 'x', 'y', 'z', 'dent'];
+  var FLAT = { p1: 0, p2: 0, p3: 0, tb: 0, t1: 0, t2: 0, t3: 0, t4: 0, b1: 0, b2: 0, b3: 0, b4: 0, yaw: 0, roll: 0, rack: 0, squash: 1, zoom: 1, x: PX, y: PY, z: PZ, dent: 0 };
   // Folded with nothing linking it: the walls don’t meet, the tab flaps loose, the flaps go every which way, and it leans.
-  var MESS = { p1: 60, p2: 110, p3: 62, tb: 22, t1: -46, t2: 16, t3: 124, t4: 150, b1: 10, b2: 38, b3: 96, b4: 92, yaw: -26, roll: 8, rack: .26, squash: .8, zoom: 1.28, x: -66, y: 14, z: -26 };
+  var MESS = { p1: 62, p2: 108, p3: 66, tb: 20, t1: -58, t2: 10, t3: 120, t4: -24, b1: 12, b2: 34, b3: 96, b4: 92, yaw: -26, roll: -2, rack: .3, squash: .88, zoom: 1.28, x: -70, y: 14, z: -26, dent: 1 };
   // Folded true: everything at ninety, the joint shut, the box square on the bed.
-  var CLEAN = { p1: 90, p2: 90, p3: 90, tb: 90, t1: 90, t2: 90, t3: 90, t4: 90, b1: 90, b2: 90, b3: 90, b4: 90, yaw: -32, roll: 0, rack: 0, squash: 1, zoom: 1.4, x: -60, y: 0, z: -30 };
+  var CLEAN = { p1: 90, p2: 90, p3: 90, tb: 90, t1: 90, t2: 90, t3: 90, t4: 90, b1: 90, b2: 90, b3: 90, b4: 90, yaw: -32, roll: 0, rack: 0, squash: 1, zoom: 1.4, x: -60, y: 0, z: -30, dent: 0 };
   var copy = function(o){ var c = {}; for (var k in o) c[k] = o[k]; return c; };
   var S = copy(FLAT);
   S.smear = 0; S.smearOp = 1; S.bead = 0;
@@ -1109,6 +1119,41 @@ SG.story = function(o){
     }
     return M;
   }
+  /* Which face hides which. Two faces that overlap on screen are put in order by their planes: if one lies
+     wholly behind the other’s plane, it goes first. Faces lying in one plane (the tab on the wall, the major
+     flaps over the minor ones) go by layer; anything left undecided goes by depth. */
+  var CAM = [0, SB, CB];
+  function side(A, B){                      // -1: B is behind A’s plane, 1: in front of it, 2: in it, 0: across it
+    if (Math.abs(A.nc) < .04) return 0;
+    var behind = true, front = true;
+    for (var k = 0; k < B.wv.length; k++){
+      var v = B.wv[k], d = A.n[0]*(v[0] - A.wv[0][0]) + A.n[1]*(v[1] - A.wv[0][1]) + A.n[2]*(v[2] - A.wv[0][2]);
+      if (d > .6) behind = false;
+      if (d < -.6) front = false;
+    }
+    return behind && front ? 2 : behind ? -1 : front ? 1 : 0;
+  }
+  function order(){
+    var n = FACES.length, after = [], need = [], i, j, out = [], done = [];
+    for (i = 0; i < n; i++){ after.push([]); need.push(0); }
+    for (i = 0; i < n; i++) for (j = i + 1; j < n; j++){
+      var A = FACES[i], B = FACES[j];
+      if (A.bb[2] <= B.bb[0] || B.bb[2] <= A.bb[0] || A.bb[3] <= B.bb[1] || B.bb[3] <= A.bb[1]) continue;
+      var r = side(A, B), q;
+      if (r === 0 || r === 2){ q = side(B, A); if (q === -1) r = 1; else if (q === 1) r = -1; else if (r === 2 || q === 2) r = 2; }
+      if (r === 2) r = A.layer !== B.layer ? (B.layer > A.layer ? 1 : -1) : 0;
+      if (r === 0) r = B.z > A.z ? 1 : -1;
+      if (r > 0){ after[i].push(j); need[j]++; } else { after[j].push(i); need[i]++; }
+    }
+    while (out.length < n){
+      var pick = -1;
+      for (i = 0; i < n; i++) if (!done[i] && !need[i] && (pick < 0 || FACES[i].z < FACES[pick].z)) pick = i;
+      if (pick < 0) for (i = 0; i < n; i++) if (!done[i] && (pick < 0 || FACES[i].z < FACES[pick].z)) pick = i;   // a cycle: break it at the deepest
+      done[pick] = true; out.push(FACES[pick]);
+      after[pick].forEach(function(k){ need[k]--; });
+    }
+    return out;
+  }
   var lastOrder = '';
   function drawBox(){
     var M = frames(), foot = [];
@@ -1117,22 +1162,33 @@ SG.story = function(o){
       var back = su[0]*sv[1] - su[1]*sv[0] < 0;
       f.g.setAttribute('transform', 'matrix(' + r1(su[0]) + ' ' + r1(su[1]) + ' ' + r1(sv[0]) + ' ' + r1(sv[1]) + ' ' + r1(o[0]) + ' ' + r1(o[1]) + ')');
       if (back !== f.back){ f.back = back; f.g.classList.toggle('back', back); }
-      var n = cross(ev, eu); if (back) n = [-n[0], -n[1], -n[2]];
+      var n = cross(ev, eu), nl = Math.hypot(n[0], n[1], n[2]) || 1;
+      n = [n[0]/nl, n[1]/nl, n[2]/nl];
+      if (back) n = [-n[0], -n[1], -n[2]];
+      f.n = n; f.nc = n[0]*CAM[0] + n[1]*CAM[1] + n[2]*CAM[2];
+      f.wv = (f.shape ? [[0, 3], [T, 13], [T, H - 13], [0, H - 3]] : [[0, 0], [f.w, 0], [f.w, f.h], [0, f.h]]).map(function(c){ return ap(m, [f.x + c[0], f.y - c[1], 0]); });
+      var sx = f.wv.map(function(v){ return pr(v); });
+      f.bb = [Math.min.apply(0, sx.map(function(p){ return p[0]; })), Math.min.apply(0, sx.map(function(p){ return p[1]; })), Math.max.apply(0, sx.map(function(p){ return p[0]; })), Math.max.apply(0, sx.map(function(p){ return p[1]; }))];
       var k = lum(n)/LUM0;
       f.shade.style.fill = k < 1 ? '#000' : '#fff';
       f.shade.style.opacity = r1(k < 1 ? Math.min(.5, (1 - k)*1.15) : Math.min(.28, (k - 1)*.9));
-      f.z = depth(ap(m, [f.x + f.w/2, f.y - f.h/2, 0])) + f.bias;
+      f.z = depth(ap(m, [f.x + f.w/2, f.y - f.h/2, 0]));
       if (f.k.charAt(0) === 'P'){ foot.push(ap(m, [f.x, F, 0]), ap(m, [f.x + f.w, F, 0])); }
     });
-    var order = FACES.slice().sort(function(a, b){ return a.z - b.z; });
-    var key = order.map(function(f){ return f.k; }).join();
-    if (key !== lastOrder){ lastOrder = key; order.forEach(function(f){ boxG.appendChild(f.g); }); }
+    var flat = Math.max(Math.abs(S.p1), Math.abs(S.p2), Math.abs(S.p3), Math.abs(S.tb), Math.abs(S.t1), Math.abs(S.t2), Math.abs(S.t3), Math.abs(S.t4), Math.abs(S.b1), Math.abs(S.b2), Math.abs(S.b3), Math.abs(S.b4)) < 2;
+    scores.style.display = flat ? '' : 'none';
+    // The bundle stands behind the blank: out of sight until the blank folds away from in front of it.
+    bundleG.style.visibility = bShadowEl.style.visibility = flat ? 'hidden' : '';
+    if (flat) scores.setAttribute('transform', BYK.P4.g.getAttribute('transform'));
+    var seq = order(), key = seq.map(function(f){ return f.k; }).join();
+    if (key !== lastOrder){ lastOrder = key; seq.forEach(function(f){ boxG.appendChild(f.g); }); boxG.appendChild(scores); }
     // The glue: the smear draws on and wipes off; SimpleGrid’s bead draws down the tab.
     smearPaths.forEach(function(p){ p.style.strokeDashoffset = r1(1 - S.smear); });
     smearG.style.opacity = S.smear > 0 ? S.smearOp : 0;
     blobsG.style.opacity = S.smear > .45 ? S.smearOp : 0;
     beadPaths.forEach(function(p){ p.style.strokeDashoffset = r1(1 - S.bead); });
     beadsG.style.opacity = S.bead > 0 ? 1 : 0;
+    dentG.style.opacity = r1(S.dent);
     // Its shadow on the bed, under wherever its walls stand.
     var pts = [];
     foot.forEach(function(p){ [[-4, -4], [4, -4], [4, 4], [-4, 4]].forEach(function(o){ pts.push(pr([p[0] + o[0], 0, p[2] + o[1]])); }); });
@@ -1142,7 +1198,7 @@ SG.story = function(o){
   /* ------------------------------------------------------------ The bundle
      Knocked-down boxes in a stack at the back of the bed, behind the blank.
      Each slab is one box, folded flat; it can slide and tip on its own. */
-  var BN = 6, BW = 112, BT = 10.5, BD = 86, BYAW = -28, BX = 92, BZ = -150;
+  var BN = 6, BW = 112, BT = 10.5, BD = 86, BYAW = -28, BX = 84, BZ = -150;
   var BASE = mul(Tr(BX, 0, BZ), Ry(BYAW));
   var CUBE = [
     [[0, 1, 0], [[-1, 1, -1], [1, 1, -1], [1, 1, 1], [-1, 1, 1]]],
@@ -1162,10 +1218,10 @@ SG.story = function(o){
   for (i = 0; i < BN; i++){
     var t = i/(BN - 1);
     NEAT.push([0, 0, 0, 0, 0]);
-    SLUMP.push([t*t*16 + t*4, -t*2, t*6, -t*7, t*5]);   // [slide, drop, toward you, tip, turn]
+    SLUMP.push([t*30, t*1.5, t*8, -t*13, t*6]);         // [slide, lift, toward you, tip, turn]: a stack leaning over
   }
-  SLUMP[BN - 1] = [26, -(BN - 1)*BT + 5, 74, -12, 26];   // the top one slid off onto the bed
-  SLUMP[BN - 2] = [20, -(BN - 2)*BT*.5, 40, -24, 12];    // the next one half off, tipped against the stack
+  SLUMP[BN - 2] = [30, -BT*1.2, 30, -24, 12];              // one sliding off the side, tipped
+  SLUMP[BN - 1] = [-10, -(BN - 1)*BT + 5, 78, -9, 32];     // the top one slid off onto the bed in front
   var B = NEAT.map(function(c){ return c.slice(); });
   function slabM(i){ var c = B[i]; return mul(mul(mul(BASE, Tr(c[0], i*BT + BT/2 + c[1], c[2])), Rz(c[3])), Ry(c[4])); }
   function drawBundle(){
@@ -1176,7 +1232,7 @@ SG.story = function(o){
         var n = lin(m, fc[0]), el = slabs[i][j];
         if (depth(n) <= .01){ el.removeAttribute('d'); return; }
         el.setAttribute('d', poly(fc[1].map(function(c){ return pr(ap(m, [c[0]*BW/2, c[1]*BT/2, c[2]*BD/2])); })));
-        var k = lum(n)/LUM0;
+        var k = Math.min(1.06, lum(n)/LUM0);
         el.style.fill = 'rgb(' + KRAFT.map(function(v){ return Math.round(clamp(v*k, 0, 255)); }).join(',') + ')';
       });
       [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(c){ var p = ap(m, [c[0]*BW/2, -BT/2, c[1]*BD/2]); foot.push(pr([p[0], 0, p[2]])); });
@@ -1242,19 +1298,19 @@ SG.story = function(o){
 
   // Fold it with nothing linking it: the glue misses, the walls don’t meet, it leans, and the bundle slumps.
   var MESS_AT = {
-    _: [500, 1700],
-    p3: [480, 1250], p2: [600, 1420], p1: [720, 1560, over], tb: [800, 1300, over],
-    b4: [900, 1300], b3: [950, 1350], b2: [1000, 1450], b1: [1050, 1400],
-    t3: [1250, 1650], t1: [1300, 1700, over], t4: [1450, 1950], t2: [1500, 1850, over],
-    y: [1150, 1750, over], rack: [1350, 1950, over], squash: [1450, 2050, over], roll: [1500, 2050, over]
+    _: [450, 1750],
+    p3: [450, 1400], p2: [560, 1550], p1: [680, 1700, over], tb: [800, 1500, over],
+    b4: [900, 1350], b3: [950, 1400], b2: [1000, 1500], b1: [1050, 1450],
+    t3: [1300, 1700], t1: [1350, 1750, over], t4: [1500, 2000], t2: [1550, 1900, over],
+    y: [1200, 1800, over], rack: [1400, 2000, over], squash: [1500, 2100, over], roll: [1550, 2100, over], dent: [1650, 1950, out]
   };
   function mess(){
     var a = snap();
     nudge([{ transform: 'none' }, { transform: 'translate(-3px,4px) rotate(-8deg)', offset: .2 }, { transform: 'translate(3px,5px) rotate(7deg)', offset: .45 }, { transform: 'translate(-2px,4px) rotate(-5deg)', offset: .7 }, { transform: 'none' }], 680);
-    return play(2500, function(T){
+    return play(2700, function(T){
       S.smear = out(win(T, 40, 620));
       pose(a, MESS, T, MESS_AT);
-      bundle(NEAT, SLUMP, T, 1700, 2450);
+      bundle(NEAT, SLUMP, T, 1800, 2650);
     }).then(function(){ obj.classList.add('messy'); });
   }
 
@@ -1267,25 +1323,29 @@ SG.story = function(o){
   }
 
   // Fold it again, linked: it opens flat, the smear comes off, a straight bead goes down the joint, and it folds true.
-  var OPEN_AT = { _: [0, 650], y: [0, 500], x: [0, 700], zoom: [0, 700] };
+  var OPEN_AT = { _: [0, 600], y: [0, 460], x: [0, 650], zoom: [0, 650], dent: [0, 380] };
   var FOLD_AT = {
-    _: [0, 1250],
-    p3: [0, 760], p2: [120, 900], p1: [240, 1040], tb: [520, 1120],
-    b4: [500, 860], b2: [560, 920], b3: [620, 980], b1: [680, 1040],
-    y: [760, 1150], t3: [1150, 1450], t1: [1200, 1500], t4: [1450, 1800], t2: [1500, 1850]
+    _: [0, 1150],
+    p3: [0, 700], p2: [110, 830], p1: [220, 960], tb: [480, 1040],
+    b4: [460, 790], b2: [520, 850], b3: [570, 900], b1: [620, 960],
+    y: [700, 1060], t3: [1060, 1330], t1: [1100, 1380], t4: [1330, 1650], t2: [1380, 1700]
   };
   function clean(){
     var a = snap(), b0 = snapB();
     obj.classList.remove('messy');
     later(function(){ nudge([{ transform: 'none' }, { transform: 'translateY(7px)', offset: .25 }, { transform: 'translateY(7px)', offset: .75 }, { transform: 'none' }], 640); }, 700);
-    later(function(){ setStatus('Done, on time'); fill.setAttribute('width', 102); }, 3000);
-    return play(3300, function(T){
-      if (T < 700) pose(a, FLAT, T, OPEN_AT);
-      else pose(FLAT, CLEAN, T - 1350, FOLD_AT);
-      S.smearOp = 1 - win(T, 200, 620);
-      S.bead = ease(win(T, 760, 1260));
-      bundle(b0, NEAT, T, 300, 1300);
-    }).then(function(){ obj.classList.add('strapped'); return wait(650); });
+    return play(3500, function(T){
+      if (T < 650) pose(a, FLAT, T, OPEN_AT);
+      else pose(FLAT, CLEAN, T - 1200, FOLD_AT);
+      S.smearOp = 1 - win(T, 180, 560);
+      S.bead = ease(win(T, 680, 1150));
+      bundle(b0, NEAT, T, 2700, 3450);                    // once the box is out, the bundle squares up
+    }).then(function(){
+      obj.classList.add('strapped');
+      setStatus('Done, on time');
+      fill.setAttribute('width', 102);
+      return wait(700);
+    });
   }
 
   function restore(){
@@ -1317,7 +1377,7 @@ SG.story = function(o){
     hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.fold',
     ops: {
       mess: ['Your operations, today', 'Folded together, still not linked. The box came out skewed, and the order still says On plan.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same box, same mess. Now there’s a glue line on the joint.']
+      dosed: ['Your operations, plus SimpleGrid', 'Same box, same mess. Now the glue head runs off the order.']
     },
     mess: mess, dose: dose, clean: clean, restore: restore,
     final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }

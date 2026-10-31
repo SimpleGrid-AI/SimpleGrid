@@ -8,7 +8,7 @@
 <!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
      Built from scripts/letters/perfect-plastic.html by scripts/letters/build.js. Edit the template, not this file. -->
 <meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="theme-color" content="#0E2A47">
+<meta name="theme-color" content="#3B3C44">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SimpleGrid">
 <meta property="og:url" content="https://simplegrid.ai/perfect-plastic/todd/">
@@ -237,7 +237,7 @@ h1 span{display:block;color:var(--hi)}
 .pp-qty{fill:#fff;font:800 29px/1 var(--body);letter-spacing:-.01em}
 .pp-pill-g{transform-box:fill-box;transform-origin:center}
 .pp-pill{fill:var(--ok-bg);transition:fill .3s}
-.pp-pill-t{fill:var(--ok-ink);font:800 15px/1 var(--body);transition:fill .3s}
+.pp-pill-t{fill:var(--ok-ink);font:800 18.5px/1 var(--body);transition:fill .3s}
 .pp.linked .pp-pill{fill:var(--accent)}
 .pp.linked .pp-pill-t{fill:var(--on-accent)}
 .pp.messy .pp-pill-g{animation:pp-smug .8s ease-in-out 3}
@@ -254,23 +254,26 @@ h1 span{display:block;color:var(--hi)}
 .pp-sg-plate{fill:url(#ppGold)}
 .pp-sg-line{fill:none;stroke:var(--gold-dk);stroke-width:2.6}
 .pp-sg-rim{fill:none;stroke:var(--gold-dk);stroke-width:2.8}
-.pp-sg{--sg-bg:var(--brand-press);--sg-ink:var(--gold-hi)}
 .pp.dosed .pp-sgchip{opacity:1;transform:none}
 /* The cards: white stock, then whatever print and chip each one gets. story script sets data-p and data-c. */
 .cd-body{fill:var(--stock);stroke:var(--stock-edge);stroke-width:1}
 .cd-band{fill:var(--print)}
 .cd-ghost{fill:var(--print);opacity:.42}
+.cd-wrong{fill:#2D6CDF}
+.cd-stripe{fill:#1C1D21}
+.cd-sig{fill:#E4E7EA;stroke:#B3B9BF;stroke-width:.6}
 .cd-num{fill:var(--print-ink)}
 .cd-nfc{fill:none;stroke:var(--print-ink);stroke-width:1.5;stroke-linecap:round}
 .cd-chip{fill:url(#ppGold);stroke:var(--gold-dk);stroke-width:.8}
 .cd-chipl{fill:none;stroke:var(--gold-dk);stroke-width:.8}
-.cd-hole{fill:#8C9299;stroke:#565B63;stroke-width:1.2}
+.cd-hole{fill:#33363C;stroke:#9AA0A7;stroke-width:1.2}
 .cd-bad{fill:var(--silver);stroke:var(--silver-dk);stroke-width:.8}
 .cd-badl{fill:none;stroke:var(--silver-dk);stroke-width:.8}
 .cd-gloss{fill:#fff;opacity:.3}
 .cd-p,.cd-c,.cd-gloss{display:none}
 .cd[data-p=t] .cd-pt,.cd[data-p=m1] .cd-pm1,.cd[data-p=m2] .cd-pm2,.cd[data-p=m3] .cd-pm3,
-.cd[data-c=ok] .cd-cok,.cd[data-c=gone] .cd-cgone,.cd[data-c=bad] .cd-cbad,.cd.glossy .cd-gloss{display:inline}
+.cd[data-p=bk] .cd-pbk,.cd[data-c=ok] .cd-cok,.cd[data-c=gone] .cd-cgone,.cd[data-c=bad] .cd-cbad,.cd.glossy .cd-gloss{display:inline}
+.cd[data-p=bk] .cd-c{display:none}
 /* The floor: the line, its belt, and the counter the stack lands on. */
 .pp-floor{fill:none;stroke:rgba(0,0,0,.24);stroke-width:2}
 .pp-leg{fill:var(--steel-ink)}
@@ -281,10 +284,11 @@ h1 span{display:block;color:var(--hi)}
 .pp-beam{fill:var(--steel-ink)}
 .pp-head{fill:var(--steel)}
 .pp-head-dk{fill:var(--steel-dk)}
-.pp-label{fill:var(--steel-type);font:600 9.5px/1 var(--mono);letter-spacing:.06em}
+.pp-label{fill:var(--steel-type);font:600 11px/1 var(--mono);letter-spacing:.04em}
 .pp-ink-a{fill:var(--print)}
 .pp-ink-b{fill:var(--print-ink)}
 .pp-ink-c{fill:var(--gold)}
+.pp-ink-roll{fill:var(--print);stroke:rgba(0,0,0,.4);stroke-width:1.5}
 .pp-roller{fill:var(--silver)}
 .pp-roll{fill:none;stroke:rgba(0,0,0,.24);stroke-width:2;stroke-dasharray:4 6}
 .pp-heat{fill:none;stroke:var(--print);stroke-width:2.2;stroke-linecap:round}
@@ -292,7 +296,7 @@ h1 span{display:block;color:var(--hi)}
 .pp-tray{fill:var(--steel-dk)}
 .pp-tray-lip{fill:var(--steel)}
 .pp-display{fill:var(--screen)}
-.pp-count{fill:var(--count);font:600 15px/1 var(--mono);letter-spacing:.04em;transition:fill .3s}
+.pp-count{fill:var(--count);font:600 19px/1 var(--mono);transition:fill .3s}
 .pp.messy .pp-count{fill:var(--short)}
 .pp.closed .pp-count{fill:var(--closed)}
 .pp-check{fill:none;stroke:var(--closed);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .3s}
@@ -308,7 +312,7 @@ h1 span{display:block;color:var(--hi)}
 .callout-top h3 i{background:var(--ok-bg)}
 .callout-bottom h3 i{background:var(--stock)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.42)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.43)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -580,66 +584,66 @@ h1 span{display:block;color:var(--hi)}
             <text class="pp-kick" x="156" y="44">ORDER 4417</text>
             <text class="pp-sku" x="156" y="66">Dual-interface cards</text>
             <text class="pp-qty" x="156" y="99">250,000</text>
-            <g class="pp-pill-g"><rect class="pp-pill" id="ppPill" x="156" y="109" width="78" height="25" rx="12.5"/><text class="pp-pill-t" id="ppPillT" x="195" y="126.5" text-anchor="middle">On plan</text></g>
+            <g class="pp-pill-g"><rect class="pp-pill" id="ppPill" x="156" y="107" width="92" height="29" rx="14.5"/><text class="pp-pill-t" id="ppPillT" x="202" y="128" text-anchor="middle">On plan</text></g>
 
             <!-- the link: a cable end above, a cable end below, and an empty chip pocket where they should meet -->
-            <path class="pp-stub" d="M180 156V169"/>
-            <path class="pp-stub" d="M180 226V238"/>
-            <rect class="pp-pocket" x="153" y="174" width="54" height="47" rx="9"/>
-            <path class="pp-wire" d="M180 156V238"/>
-            <path class="pp-flow" d="M180 156V238"/>
-            <!-- SimpleGrid goes in as the chip: its contacts are the grid -->
+            <path class="pp-stub" d="M180 156V167"/>
+            <path class="pp-stub" d="M180 228V237"/>
+            <rect class="pp-pocket" x="154" y="171.5" width="52" height="52" rx="10"/>
+            <path class="pp-wire" d="M180 156V237"/>
+            <path class="pp-flow" d="M180 156V237"/>
+            <!-- SimpleGrid goes in as the chip: its contacts are the grid of the mark -->
             <g transform="translate(180 197.5)"><g id="ppEmbed"><g class="pp-sgchip sg-pop">
-              <rect class="pp-sg-plate" x="-27" y="-23.5" width="54" height="47" rx="9"/>
-              <path class="pp-sg-line" d="M-9 -23.5V23.5M9 -23.5V23.5M-27 -7.8H27M-27 7.8H27"/>
-              <rect class="pp-sg-rim" x="-27" y="-23.5" width="54" height="47" rx="9"/>
+              <rect class="pp-sg-plate" x="-26" y="-26" width="52" height="52" rx="10"/>
+              <path class="pp-sg-line" d="M-8.7 -26V26M8.7 -26V26M-26 -8.7H26M-26 8.7H26"/>
+              <rect class="pp-sg-rim" x="-26" y="-26" width="52" height="52" rx="10"/>
             </g></g></g>
 
             <!-- the floor: the belt on its legs, and the laminator's lower roller under it -->
             <path class="pp-floor" d="M0 546H360"/>
-            <rect class="pp-leg" x="20" y="356" width="8" height="190"/>
-            <rect class="pp-leg" x="212" y="356" width="8" height="190"/>
-            <rect class="pp-belt" x="4" y="344" width="302" height="12" rx="6"/>
-            <path class="pp-run" d="M10 350H300"/>
-            <rect class="pp-roller" x="158" y="357" width="44" height="10" rx="5"/>
+            <rect class="pp-leg" x="18" y="385" width="8" height="161"/>
+            <rect class="pp-leg" x="208" y="385" width="8" height="161"/>
+            <rect class="pp-belt" x="2" y="373" width="342" height="12" rx="6"/>
+            <path class="pp-run" d="M8 379H338"/>
+            <rect class="pp-roller" x="174" y="386" width="52" height="11" rx="5.5"/>
             <!-- white card stock waiting at the head of the line -->
-            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(29 318.5)"/>
-            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(32 321.5)"/>
-            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(35 324.5)"/>
+            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(39 343.5) scale(1.2)"/>
+            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(42 346.5) scale(1.2)"/>
+            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(45 349.5) scale(1.2)"/>
 
             <!-- the cards that run: the script places every one -->
             <g id="ppCards"></g>
 
             <!-- once it comes clean, the stack is banded into one brick, with the label on the band -->
-            <rect class="pp-band" x="242" y="466" width="104" height="21" rx="2"/>
-            <g transform="translate(294 476.5) scale(.46)"><g class="pp-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <rect class="pp-band" x="227" y="457" width="130" height="24.5" rx="2"/>
+            <g transform="translate(292 469.2) scale(.56)"><g class="pp-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
 
             <!-- the counter the stack lands on -->
-            <rect class="pp-tray-lip" x="236" y="513" width="116" height="6" rx="2"/>
-            <rect class="pp-tray" x="232" y="517" width="124" height="29" rx="4"/>
-            <rect class="pp-display" x="246" y="522" width="96" height="19" rx="3"/>
-            <text class="pp-count" id="ppCount" x="254" y="536.5">000,000</text>
-            <path class="pp-check" d="M325 531.5l3.6 3.6 7-7.6"/>
+            <rect class="pp-tray-lip" x="230" y="513" width="124" height="6" rx="2"/>
+            <rect class="pp-tray" x="226" y="517" width="132" height="29" rx="4"/>
+            <rect class="pp-display" x="238" y="521.5" width="108" height="20" rx="3"/>
+            <text class="pp-count" id="ppCount" x="245" y="538.5">000,000</text>
+            <path class="pp-check" d="M329 532l3.6 3.6 7-7.6"/>
 
-            <!-- the line: print, laminate, embed the chip. Cards run under the heads. -->
-            <rect class="pp-beam" x="64" y="236" width="232" height="13" rx="4"/>
-            <rect class="pp-head" x="78" y="249" width="60" height="44" rx="6"/>
-            <rect class="pp-head-dk" x="78" y="283" width="60" height="10"/>
-            <text class="pp-label" x="108" y="263" text-anchor="middle">PRINT</text>
-            <circle class="pp-ink-a" cx="95" cy="274" r="4.5"/><circle class="pp-ink-b" cx="108" cy="274" r="4.5"/><circle class="pp-ink-c" cx="121" cy="274" r="4.5"/>
-            <rect class="pp-ink-a" x="86" y="292" width="44" height="11" rx="5.5"/>
-            <path class="pp-roll" d="M91 297.5H125"/>
-            <rect class="pp-head" x="150" y="249" width="60" height="44" rx="6"/>
-            <rect class="pp-head-dk" x="150" y="283" width="60" height="10"/>
-            <text class="pp-label" x="180" y="263" text-anchor="middle">LAMINATE</text>
-            <path class="pp-heat" d="M162 275q4.5-5 9 0t9 0 9 0 9 0"/>
-            <rect class="pp-roller" x="158" y="292" width="44" height="11" rx="5.5"/>
-            <path class="pp-roll" d="M163 297.5H197"/>
-            <rect class="pp-head" x="222" y="249" width="60" height="44" rx="6"/>
-            <rect class="pp-head-dk" x="222" y="283" width="60" height="10"/>
-            <text class="pp-label" x="252" y="263" text-anchor="middle">CHIP</text>
-            <rect class="cd-chip" x="245" y="268" width="14" height="11" rx="2"/>
-            <g id="ppPiston"><rect class="pp-piston" x="247" y="292" width="10" height="7"/><rect class="pp-head-dk" x="243" y="298" width="18" height="5" rx="1.5"/></g>
+            <!-- the line: print, laminate, embed the chip. The cards run under the heads. -->
+            <rect class="pp-beam" x="76" y="236" width="248" height="13" rx="4"/>
+            <rect class="pp-head" x="84" y="249" width="72" height="64" rx="7"/>
+            <rect class="pp-head-dk" x="84" y="301" width="72" height="12"/>
+            <text class="pp-label" x="120" y="268" text-anchor="middle">PRINT</text>
+            <circle class="pp-ink-a" cx="104" cy="284" r="5.5"/><circle class="pp-ink-b" cx="120" cy="284" r="5.5"/><circle class="pp-ink-c" cx="136" cy="284" r="5.5"/>
+            <rect class="pp-ink-roll" x="94" y="312" width="52" height="12" rx="6"/>
+            <path class="pp-roll" d="M100 318H140"/>
+            <rect class="pp-head" x="164" y="249" width="72" height="64" rx="7"/>
+            <rect class="pp-head-dk" x="164" y="301" width="72" height="12"/>
+            <text class="pp-label" x="200" y="268" text-anchor="middle">LAMINATE</text>
+            <path class="pp-heat" d="M178 285q5.5-6 11 0t11 0 11 0 11 0"/>
+            <rect class="pp-roller" x="174" y="312" width="52" height="12" rx="6"/>
+            <path class="pp-roll" d="M180 318H220"/>
+            <rect class="pp-head" x="244" y="249" width="72" height="64" rx="7"/>
+            <rect class="pp-head-dk" x="244" y="301" width="72" height="12"/>
+            <text class="pp-label" x="280" y="268" text-anchor="middle">CHIP</text>
+            <rect class="cd-chip" x="270" y="277" width="20" height="15" rx="3"/><path class="cd-chipl" d="M276.7 277v15M283.3 277v15M270 282h20M270 287h20"/>
+            <g id="ppPiston"><rect class="pp-piston" x="274" y="312" width="12" height="8"/><rect class="pp-head-dk" x="269" y="318" width="22" height="7" rx="2"/></g>
           </svg>
         </div>
         <div class="callouts">
@@ -1032,12 +1036,14 @@ SG.story = function(o){
     '<g class="cd-p cd-pm1" clip-path="url(#ppClip)"><rect class="cd-ghost" x="-40" y="-25" width="80" height="14" transform="rotate(-4)"/><rect class="cd-band" x="-40" y="-13" width="80" height="14" transform="rotate(-13)"/><rect class="cd-num" x="-12" y="14" width="32" height="3" rx="1.5" transform="rotate(-13)"/></g>' +
     // smeared: the ink running down the card
     '<g class="cd-p cd-pm2" clip-path="url(#ppClip)"><path class="cd-band" d="M-31 -19.5H31V-6H-31Z"/><rect class="cd-band" x="-23" y="-8" width="5" height="17" rx="2.5"/><rect class="cd-band" x="-10" y="-8" width="6.5" height="26" rx="3.2"/><rect class="cd-band" x="5" y="-8" width="4.5" height="12" rx="2.2"/><rect class="cd-band" x="17" y="-8" width="5.5" height="21" rx="2.7"/><ellipse class="cd-ghost" cx="2" cy="5" rx="15" ry="6"/></g>' +
-    // starved: half a band, then specks
-    '<g class="cd-p cd-pm3" clip-path="url(#ppClip)"><path class="cd-band" d="M-31 -19.5H-1L-6 -16L0 -13L-7 -10L-2 -6H-31Z"/><circle class="cd-band" cx="6" cy="-15" r="1.7"/><circle class="cd-band" cx="12" cy="-10" r="1.3"/><circle class="cd-band" cx="3" cy="-8.5" r="1.1"/></g>' +
+    // face down: the back, with its magstripe and signature panel
+    '<g class="cd-p cd-pbk"><rect class="cd-stripe" x="-31" y="-14" width="62" height="8"/><rect class="cd-sig" x="-24" y="-1" width="34" height="7" rx="1"/></g>' +
+    // the wrong artwork altogether
+    '<g class="cd-p cd-pm3" clip-path="url(#ppClip)"><rect class="cd-wrong" x="-31" y="5" width="62" height="14.5"/><circle class="cd-wrong" cx="19" cy="-8" r="7.5"/><rect class="cd-num" x="-24" y="-14" width="20" height="3" rx="1.5"/></g>' +
     // the chip: in place, missing (just the milled pocket), or the wrong one in the wrong place
     '<g class="cd-c cd-cok"><rect class="cd-chip" x="-24" y="-3.5" width="12.5" height="10" rx="2"/><path class="cd-chipl" d="M-19.8 -3.5v10M-15.7 -3.5v10M-24 -.2h12.5M-24 3.2h12.5"/></g>' +
     '<g class="cd-c cd-cgone"><rect class="cd-hole" x="-24" y="-3.5" width="12.5" height="10" rx="2"/></g>' +
-    '<g class="cd-c cd-cbad" transform="translate(19 -10) rotate(28)"><rect class="cd-bad" x="-6.5" y="-5" width="13" height="10" rx="2"/><path class="cd-badl" d="M-2.2 -5v10M2.2 -5v10M-6.5 0h13"/></g>' +
+    '<g class="cd-c cd-cbad" transform="translate(27 -16) rotate(33)"><rect class="cd-bad" x="-7.5" y="-6" width="15" height="12" rx="2.4"/><path class="cd-badl" d="M-2.5 -6v12M2.5 -6v12M-7.5 0h15"/></g>' +
     // laminated: a shine across it
     '<path class="cd-gloss" clip-path="url(#ppClip)" d="M-4 -19.5H7L-9 19.5H-20Z"/>';
   function card(){ var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'cd'); g.innerHTML = CARD; return g; }
@@ -1058,27 +1064,31 @@ SG.story = function(o){
   look({ el: proof }, 't', 'ok', true);
 
   /* ------------------------------------------------------------ The line */
-  var N = 8;
-  var FEED = [35, 324.5, 0, 1];                  // a card's middle as it leaves the stock at the head of the line
-  var OFF = [300, 324.5, 0, 1];                  // and as it comes off the end of the belt
-  var DO = { print: 108, lam: 180, chip: 270 };  // where its middle is as each station does its job (the chip sits left of middle)
-  var BELT_MS = 900, STAG = 240, FALL_MS = 560, HOP_MS = 480, DROP_MS = 420;
+  var N = 10;
+  var FEED = [45, 349.5, 0, 1.2];                // a card's middle as it leaves the stock at the head of the line
+  var OFF = [330, 349.5, 0, 1.2];                 // and as it comes off the end of the belt
+  var DO = { print: 120, lam: 200, chip: 301 };   // where its middle is as each station does its job (the chip sits left of middle)
+  var BELT_MS = 880, STAG = 240, FALL_MS = 560, HOP_MS = 480, DROP_MS = 400;
   var at = function(x){ return (x - FEED[0])/(OFF[0] - FEED[0])*BELT_MS; };
   // The mess: what each card comes out as, and where it lands ([x, y, turn, size]). The last one jams in the chip press.
   var MESS = [
-    ['t',  'ok',   [286, 474, -10, 1.6]],
-    ['m1', 'ok',   [304, 471, 14, 1.6]],
-    ['t',  'gone', [200, 497, -31, 1.5]],
-    ['m2', 'bad',  [160, 510, -9, 1.5]],
-    ['t',  'ok',   [56, 505, -16, 1.5]],
-    ['m3', 'ok',   [228, 491, 58, 1.5]],
-    ['t',  'bad',  [112, 511, 7, 1.5]],
+    ['t',  'ok',   [276, 457, -26, 1.8]],
+    ['t',  'gone', [290, 473, -5, 1.8]],
+    ['m2', 'ok',   [294, 460, 21, 1.8]],
+    ['m1', 'ok',   [50, 488, -64, 1.6]],
+    ['t',  'gone', [196, 509, -7, 1.6]],
+    ['t',  'bad',  [152, 497, -27, 1.6]],
+    ['m3', 'ok',   [222, 488, 62, 1.6]],
+    ['m1', 'bad',  [128, 507, 9, 1.6]],
+    ['bk', 'n',    [98, 510, -5, 1.6]],
     ['m1', 'gone', null]
   ];
-  var JAM = [262, 321, 8, 1];
-  var MESS_COUNT = ['000,000', '029,814', '061,207', '088,350', '121,946', '152,031', '183,775', '231,904'];
+  var JAM = [288, 346, 8, 1.2];
+  var MESS_COUNT = ['000,000', '024,118', '049,730', '071,205', '098,642', '122,377', '151,904', '176,510', '203,286', '231,904'];
   var JUMPS = ['231,904', '226,517', '240,088', '218,342'];   // the count that won’t close: every recount says something else
-  var STACK = function(k){ return [294, 513 - 34.1 - 3.6*k, 0, 1.75]; };
+  // Running it again, the jammed card goes first, and each lands on the one before: slot 0 is the bottom of the brick.
+  var ORDER = [9, 0, 1, 2, 3, 4, 5, 6, 7, 8];
+  var STACK = function(slot){ return [292, 513 - 39 - 3.4*slot, 0, 2]; };
   var fmt = function(n){ var s = String(Math.round(n)); while (s.length < 6) s = '0' + s; return s.slice(0, 3) + ',' + s.slice(3); };
   var cards = [];
   for (var i = 0; i < N; i++){ var el = card(); cardsG.appendChild(el); cards.push({ el: el }); }
@@ -1114,7 +1124,7 @@ SG.story = function(o){
         chipAt = t0 + at(DO.chip);
         plan.lands.push(end);
       } else {
-        var stuck = [JAM[0], OFF[1], 0, 1];
+        var stuck = [JAM[0], OFF[1], 0, OFF[3]];
         path = [leg(t0, at(JAM[0]), FEED, stuck), leg(t0 + at(JAM[0]), 180, stuck, JAM)];
         end = t0 + at(JAM[0]) + 180;
         chipAt = t0 + at(JAM[0]);
@@ -1129,13 +1139,14 @@ SG.story = function(o){
   function cleanPlan(){
     var plan = { cards: [], chips: [], lands: [], counts: [], ms: 0 };
     for (var n = 0; n <= N; n++) plan.counts.push(fmt(n*250000/N));
-    cards.forEach(function(c, k){
-      var t0 = k*STAG, t1 = t0 + HOP_MS, t2 = t1 + BELT_MS, from = c.at;
-      plan.cards.push({ show: -1, from: [c.p, c.c, c.g], ev: [[t1 + at(DO.print), 0, 't'], [t1 + at(DO.lam), 2, true], [t1 + at(DO.chip), 1, 'ok']], path: [
+    ORDER.forEach(function(k, slot){
+      var c = cards[k], t0 = slot*STAG, t1 = t0 + HOP_MS, t2 = t1 + BELT_MS, from = c.at;
+      cardsG.appendChild(c.el);             // drawn in the order they land, so each lies on the one before
+      plan.cards[k] = { show: -1, from: [c.p, c.c, c.g], ev: [[t1 + at(DO.print), 0, 't'], [t1 + at(DO.lam), 2, true], [t1 + at(DO.chip), 1, 'ok']], path: [
         leg(t0, HOP_MS, from, FEED, [(from[0] + FEED[0])/2, Math.min(from[1], FEED[1]) - 60]),
         leg(t1, BELT_MS, FEED, OFF),
-        leg(t2, DROP_MS, OFF, STACK(k), [OFF[0] + 4, OFF[1] + 24])
-      ] });
+        leg(t2, DROP_MS, OFF, STACK(slot), [OFF[0] + 4, OFF[1] + 24])
+      ] };
       plan.chips.push(t1 + at(DO.chip));
       plan.lands.push(t2 + DROP_MS);
       plan.ms = Math.max(plan.ms, t2 + DROP_MS);
@@ -1152,7 +1163,7 @@ SG.story = function(o){
     });
     var dip = 0;
     plan.chips.forEach(function(t){ var d = Math.abs(T - t); if (d < 110) dip = Math.max(dip, 1 - d/110); });
-    piston.setAttribute('transform', 'translate(0 ' + f2(dip*7) + ')');
+    piston.setAttribute('transform', 'translate(0 ' + f2(dip*6) + ')');
     var n = 0;
     plan.lands.forEach(function(t){ if (T >= t) n++; });
     if (count.textContent !== plan.counts[n]) count.textContent = plan.counts[n];
@@ -1180,7 +1191,7 @@ SG.story = function(o){
   // The pill on the order screen, sized to what it says.
   function setPill(t){
     pillT.textContent = t;
-    var w = 24 + pillT.getComputedTextLength();
+    var w = 26 + pillT.getComputedTextLength();
     pill.setAttribute('width', f2(w));
     pillT.setAttribute('x', f2(156 + w/2));
   }
@@ -1235,7 +1246,7 @@ SG.story = function(o){
     moves = [];
     obj.classList.remove('running', 'messy', 'dosed', 'linked', 'sealed', 'closed', 'is-done');
     jumps();
-    cards.forEach(function(c){ look(c, 'b', 'n', false); pose(c, FEED, 0); });
+    cards.forEach(function(c){ cardsG.appendChild(c.el); look(c, 'b', 'n', false); pose(c, FEED, 0); });
     piston.setAttribute('transform', 'translate(0 0)');
     count.textContent = '000,000';
     setPill('On plan');

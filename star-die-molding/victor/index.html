@@ -219,10 +219,10 @@ h1 span{display:block;color:var(--hi)}
    hopper and come out as rows of identical parts. Every color is on .hero-art. */
 .hero-art{
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
-  --steel-hi:#E3E8EC;--steel:#B9C3CB;--steel-md:#94A0AB;--steel-dk:#66727E;
-  --iron:#36404A;--iron-hi:#4B5762;--iron-lo:#262E36;
+  --steel-hi:#E3E8EC;--steel:#B9C3CB;--steel-md:#94A0AB;--steel-dk:#66727E;--steel-ink:#56626E;
+  --iron:#3A4652;--iron-hi:#4F5C69;--iron-lo:#28313A;
   --mold:#7E8E9C;--mold-hi:#A9B6C1;--mold-dk:#5C6B79;
-  --part:#2F9CF0;--part-hi:#CBE9FF;--part-edge:#0A3F6B;--flash:#9CD2FA;
+  --part:#2F9CF0;--part-hi:#CBE9FF;--part-edge:#0A3F6B;--flash:#DDF0FF;
   --pellet:#F3F8FC;--glass:#252D35;
   --led:#5BE49B;--led-bad:#FF6B5D;--led-link:#9FD6FF;
   --tag:#F6C945;--tag-edge:#B8901F;--tag-ink:#4A3A12;
@@ -236,7 +236,7 @@ h1 span{display:block;color:var(--hi)}
 .pr-title{fill:#fff;font:800 28px/1 var(--body);letter-spacing:.01em}
 .pr-job{fill:rgba(255,255,255,.8);font:600 16px/1 var(--body)}
 .pr-pill{fill:#DFF5EA;transition:fill .3s}
-.pr-status{fill:#0A6B47;font:800 15px/1 var(--body);transition:fill .3s}
+.pr-status{fill:#0A6B47;font:800 17px/1 var(--body);transition:fill .3s}
 .press.linked .pr-pill{fill:var(--accent)}
 .press.linked .pr-status{fill:var(--on-accent)}
 .press.on-plan .pr-pill{fill:#2BC46F}
@@ -246,7 +246,9 @@ h1 span{display:block;color:var(--hi)}
 .pr-count{fill:#fff;font:600 18px/1 var(--mono)}
 /* The cable from the press up to the schedule: broken until SimpleGrid joins it. */
 .pr-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.pr-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
+.pr-core{fill:none;stroke:#3E4852;stroke-width:6;stroke-linecap:round;opacity:0;transition:opacity .3s}
+.pr-cable{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
+.press.linked .pr-core{opacity:1}
 .press.linked .pr-cable{opacity:1;animation:pr-flow .6s linear infinite}
 @keyframes pr-flow{to{stroke-dashoffset:-12}}
 .pr-mark{--sg-bg:var(--brand);--sg-ink:#fff}
@@ -257,6 +259,7 @@ h1 span{display:block;color:var(--hi)}
 .pr-steel-hi{fill:var(--steel-hi)}
 .pr-steel-md{fill:var(--steel-md)}
 .pr-steel-dk{fill:var(--steel-dk)}
+.pr-edge{stroke:var(--steel-ink);stroke-width:1.4;stroke-linejoin:round}
 .pr-iron{fill:var(--iron)}
 .pr-iron-hi{fill:var(--iron-hi)}
 .pr-iron-lo{fill:var(--iron-lo)}
@@ -289,12 +292,15 @@ h1 span{display:block;color:var(--hi)}
 .pr-gear{fill:var(--part);stroke:var(--part-edge);stroke-width:1.6;stroke-linejoin:round;fill-rule:evenodd}
 .pr-shine{fill:var(--part-hi);opacity:.85}
 .pr-flash{fill:var(--flash);stroke:var(--part-edge);stroke-width:1;stroke-linejoin:round}
-.pr-tear{fill:none;stroke:var(--part-edge);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
-/* The bin under the mold, clear, so you can see what's in it. */
-.pr-bin-back{fill:rgba(255,255,255,.07)}
-.pr-bin-front{fill:rgba(220,239,251,.12);stroke:rgba(255,255,255,.7);stroke-width:2.5}
-.pr-bin-sheen{fill:#fff;opacity:.14}
-.pr-bin-rim{fill:#E6EEF4}
+.pr-scorch{fill:none;stroke:#4B3220;stroke-width:3.4;stroke-linejoin:round;opacity:.85}
+.pr-drool{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0)}
+.pr-drip{fill:var(--part);stroke:var(--part-edge);stroke-width:1.5}
+.pr-drip-hi{fill:none;stroke:var(--part-hi);stroke-width:2;stroke-linecap:round;opacity:.8}
+/* The bin under the mold: a pale tote with a clear front, so you can see what's in it. */
+.pr-bin-back{fill:#E4EDF3}
+.pr-bin-front{fill:rgba(220,239,251,.14);stroke:#A9B9C6;stroke-width:2.5}
+.pr-bin-sheen{fill:#fff;opacity:.5}
+.pr-bin-rim{fill:#F7FAFC;stroke:#A9B9C6;stroke-width:1.5}
 .pr-bin-band{fill:#56687A}
 .pr-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .3s,transform .45s cubic-bezier(.2,.9,.3,1.25)}
 .press.rejects .pr-reject{opacity:1;transform:none}
@@ -311,8 +317,8 @@ h1 span{display:block;color:var(--hi)}
 @keyframes pr-sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
 .press:not(.in-view) *{animation-play-state:paused!important}
 .callout-top{top:3%}
-.callout-gap{top:calc(32.5% - 15px)}
-.callout-bottom{top:44%}
+.callout-gap{top:calc(28.4% - 15px)}
+.callout-bottom{top:40%}
 .callout-top h3 i{background:#1B2127}
 .callout-bottom h3 i{background:var(--part)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
@@ -577,103 +583,109 @@ h1 span{display:block;color:var(--hi)}
           <svg viewBox="0 0 360 560" aria-hidden="true">
             <defs>
               <path id="prGear" d=""/>
-              <clipPath id="prCut"><path d="M-22-22H22V-2L15 3L9-3L3 5L-3-1L-9 6L-15 0L-22 4Z"/></clipPath>
-              <clipPath id="prWin"><path d="M258 238H302L289 276H271Z"/></clipPath>
+              <clipPath id="prCut"><path d="M-22-22H22V1L15 6L9 0L3 8L-3 2L-9 9L-15 3L-22 7Z"/></clipPath>
+              <clipPath id="prBody"><use href="#prGear"/></clipPath>
+              <clipPath id="prWin"><path d="M255 211H305L288 256H272Z"/></clipPath>
             </defs>
 
             <!-- the schedule: what the ERP says the press is running -->
-            <rect class="pr-bezel" x="16" y="10" width="328" height="140" rx="14"/>
-            <rect class="pr-glass" x="26" y="20" width="308" height="120" rx="8"/>
-            <text class="pr-title" x="44" y="61">PRESS 22</text>
-            <rect class="pr-pill" id="prPill" x="226" y="35" width="92" height="30" rx="15"/>
-            <text class="pr-status" id="prStatus" x="272" y="55.5" text-anchor="middle">On plan</text>
-            <text class="pr-job" x="44" y="94">Mold A-114 · 40,000 shots</text>
-            <rect class="pr-bar" x="44" y="112" width="196" height="10" rx="5"/>
-            <rect class="pr-fill" id="prFill" x="44" y="112" width="88" height="10" rx="5"/>
-            <text class="pr-count" id="prPlan" x="318" y="123" text-anchor="end">18,000</text>
+            <rect class="pr-bezel" x="14" y="8" width="332" height="124" rx="14"/>
+            <rect class="pr-glass" x="24" y="17" width="312" height="106" rx="8"/>
+            <text class="pr-title" x="42" y="54">PRESS 22</text>
+            <rect class="pr-pill" id="prPill" x="226" y="28" width="94" height="32" rx="16"/>
+            <text class="pr-status" id="prStatus" x="273" y="50" text-anchor="middle">On plan</text>
+            <text class="pr-job" x="42" y="85">Mold A-114 · 40,000 shots</text>
+            <rect class="pr-bar" x="42" y="98" width="196" height="10" rx="5"/>
+            <rect class="pr-fill" id="prFill" x="42" y="98" width="88" height="10" rx="5"/>
+            <text class="pr-count" id="prPlan" x="320" y="109" text-anchor="end">18,000</text>
 
             <!-- the cable from the press up to the schedule: broken until SimpleGrid joins it -->
-            <path class="pr-stub" d="M180 150V166"/>
-            <path class="pr-stub" d="M180 198V214"/>
-            <path class="pr-cable" d="M180 214V150"/>
+            <path class="pr-stub" d="M180 132V146"/>
+            <path class="pr-stub" d="M180 172V186"/>
+            <path class="pr-core" d="M180 132V186"/>
+            <path class="pr-cable" d="M180 186V132"/>
 
-            <path class="pr-floor" d="M0 548H360"/>
+            <path class="pr-floor" d="M0 530H360"/>
             <!-- the base the press stands on -->
-            <rect class="pr-iron" x="10" y="368" width="340" height="174" rx="6"/>
-            <rect class="pr-iron-hi" x="10" y="368" width="340" height="8" rx="4"/>
-            <rect class="pr-stripe" x="10" y="382" width="340" height="4"/>
-            <rect class="pr-door" x="22" y="396" width="68" height="134" rx="5"/>
-            <rect class="pr-door" x="270" y="396" width="68" height="134" rx="5"/>
-            <rect class="pr-iron-lo" x="18" y="542" width="18" height="6"/>
-            <rect class="pr-iron-lo" x="324" y="542" width="18" height="6"/>
+            <rect class="pr-iron" x="10" y="374" width="340" height="150" rx="6"/>
+            <rect class="pr-iron-hi" x="10" y="374" width="340" height="10" rx="4"/>
+            <rect class="pr-stripe" x="10" y="388" width="340" height="4"/>
+            <rect class="pr-door" x="22" y="402" width="70" height="110" rx="5"/>
+            <rect class="pr-door" x="268" y="402" width="70" height="110" rx="5"/>
+            <rect class="pr-iron-lo" x="18" y="524" width="18" height="6"/>
+            <rect class="pr-iron-lo" x="324" y="524" width="18" height="6"/>
 
             <!-- the tie bars the moving half slides on -->
-            <rect class="pr-steel-hi" x="24" y="254" width="204" height="8" rx="3"/>
-            <rect class="pr-steel-hi" x="24" y="352" width="204" height="8" rx="3"/>
-            <!-- the half that moves: clamp rod, platen and the mold's moving half -->
+            <rect class="pr-steel-hi pr-edge" x="24" y="229" width="204" height="9" rx="3"/>
+            <rect class="pr-steel-hi pr-edge" x="24" y="358" width="204" height="9" rx="3"/>
+            <!-- the half that moves: clamp rod, platen, and the mold's moving half with its leader pins -->
             <g id="prMove">
-              <rect class="pr-steel-hi" x="52" y="301" width="52" height="12" rx="3"/>
-              <rect class="pr-steel" x="100" y="246" width="18" height="122" rx="3"/>
-              <rect class="pr-steel-md" x="100" y="246" width="5" height="122"/>
-              <rect class="pr-mold-dk" x="118" y="258" width="7" height="100" rx="1"/>
-              <rect class="pr-mold" x="124" y="262" width="32" height="92"/>
-              <rect class="pr-mold-hi" x="124" y="262" width="32" height="7"/>
+              <rect class="pr-steel-hi pr-edge" x="52" y="292" width="52" height="13" rx="3"/>
+              <rect class="pr-steel-dk" x="154" y="252" width="18" height="7" rx="2"/>
+              <rect class="pr-steel-dk" x="154" y="337" width="18" height="7" rx="2"/>
+              <rect class="pr-steel pr-edge" x="100" y="222" width="18" height="152" rx="3"/>
+              <rect class="pr-steel-md" x="101" y="223" width="5" height="150"/>
+              <rect class="pr-mold-dk" x="118" y="234" width="7" height="128" rx="1"/>
+              <rect class="pr-mold" x="124" y="238" width="32" height="120"/>
+              <rect class="pr-mold-hi" x="124" y="238" width="32" height="8"/>
             </g>
             <!-- the clamp cylinder and the rear platen -->
-            <rect class="pr-steel-dk" x="44" y="286" width="22" height="42" rx="4"/>
-            <rect class="pr-steel" x="20" y="246" width="26" height="122" rx="3"/>
-            <rect class="pr-steel-hi" x="20" y="246" width="26" height="6" rx="3"/>
-            <!-- the mold's fixed half on the fixed platen -->
-            <rect class="pr-mold" x="156" y="262" width="32" height="92"/>
-            <rect class="pr-mold-hi" x="156" y="262" width="32" height="7"/>
-            <rect class="pr-mold-dk" x="187" y="258" width="7" height="100" rx="1"/>
-            <path class="pr-parting" d="M157 262V354"/>
-            <circle class="pr-eye" cx="172" cy="268" r="2.6"/>
-            <rect class="pr-steel" x="194" y="246" width="18" height="122" rx="3"/>
-            <rect class="pr-steel-md" x="207" y="246" width="5" height="122"/>
-            <rect class="pr-steel-dk" x="212" y="251" width="14" height="14" rx="2"/>
-            <rect class="pr-steel-dk" x="212" y="349" width="14" height="14" rx="2"/>
+            <rect class="pr-steel-dk" x="44" y="274" width="22" height="48" rx="4"/>
+            <rect class="pr-steel pr-edge" x="18" y="222" width="26" height="152" rx="3"/>
+            <rect class="pr-steel-hi" x="19" y="223" width="24" height="7" rx="2"/>
+            <!-- the mold's fixed half, on the fixed platen -->
+            <rect class="pr-mold" x="156" y="238" width="32" height="120"/>
+            <rect class="pr-mold-hi" x="156" y="238" width="32" height="8"/>
+            <rect class="pr-mold-dk" x="187" y="234" width="7" height="128" rx="1"/>
+            <path class="pr-parting" d="M157 238V358"/>
+            <circle class="pr-eye" cx="172" cy="252" r="2.8"/>
+            <rect class="pr-steel pr-edge" x="194" y="222" width="18" height="152" rx="3"/>
+            <rect class="pr-steel-md" x="206" y="223" width="5" height="150"/>
+            <rect class="pr-steel-dk" x="212" y="226" width="14" height="15" rx="2"/>
+            <rect class="pr-steel-dk" x="212" y="355" width="14" height="15" rx="2"/>
             <!-- the barrel, its nozzle and heater bands -->
-            <path class="pr-steel-md" d="M212 303L220 299V319L212 315Z"/>
-            <rect class="pr-steel" x="220" y="298" width="84" height="22" rx="3"/>
-            <rect class="pr-steel-hi" x="220" y="298" width="84" height="5" rx="2"/>
-            <rect class="pr-band" x="228" y="295" width="9" height="28" rx="2"/>
-            <rect class="pr-band" x="244" y="295" width="9" height="28" rx="2"/>
-            <rect class="pr-band" x="260" y="295" width="9" height="28" rx="2"/>
+            <path class="pr-steel-md pr-edge" d="M212 291L220 286V309L212 304Z"/>
+            <rect class="pr-steel pr-edge" x="220" y="284" width="88" height="26" rx="3"/>
+            <rect class="pr-steel-hi" x="221" y="285" width="86" height="6" rx="2"/>
+            <rect class="pr-band" x="228" y="281" width="10" height="32" rx="2"/>
+            <rect class="pr-band" x="244" y="281" width="10" height="32" rx="2"/>
+            <rect class="pr-band" x="260" y="281" width="10" height="32" rx="2"/>
+            <!-- unlinked, the nozzle drools: a drip of plastic that grows with every bad shot -->
+            <g class="pr-drool" id="prDrool"><path class="pr-drip" d="M212.5 303C212.5 316 211 326 209 334C206 344 210 352 216 352C222 352 226 344 223 334C221 326 219.5 316 219.5 303Z"/><path class="pr-drip-hi" d="M214.6 311C214.5 320 213.6 328 212 336"/></g>
             <!-- the hopper of resin pellets -->
-            <rect class="pr-steel-dk" x="271" y="280" width="18" height="20"/>
-            <path class="pr-steel" d="M250 232H310L292 282H268Z"/>
-            <path class="pr-win" d="M258 238H302L289 276H271Z"/>
+            <rect class="pr-steel-dk" x="270" y="258" width="20" height="28"/>
+            <path class="pr-steel pr-edge" d="M246 204H314L292 262H268Z"/>
+            <path class="pr-win" d="M255 211H305L288 256H272Z"/>
             <g clip-path="url(#prWin)"><g id="prPellets"></g></g>
-            <rect class="pr-steel-hi" x="246" y="222" width="68" height="11" rx="3"/>
+            <rect class="pr-steel-hi pr-edge" x="240" y="192" width="80" height="13" rx="3"/>
             <!-- the drive, and the stack light on it -->
-            <rect class="pr-steel" x="300" y="278" width="46" height="58" rx="6"/>
-            <rect class="pr-steel-md" x="300" y="322" width="46" height="14" rx="4"/>
-            <rect class="pr-steel-dk" x="328" y="252" width="4" height="26"/>
-            <circle class="pr-lamp pr-red" cx="330" cy="216" r="7.5"/>
-            <circle class="pr-lamp pr-amber" cx="330" cy="231" r="7.5"/>
-            <circle class="pr-lamp pr-green" cx="330" cy="246" r="7.5"/>
+            <rect class="pr-steel pr-edge" x="306" y="266" width="42" height="68" rx="6"/>
+            <rect class="pr-steel-md" x="307" y="318" width="40" height="15" rx="4"/>
+            <rect class="pr-steel-dk" x="330" y="244" width="4" height="22"/>
+            <circle class="pr-lamp pr-red" cx="332" cy="206" r="7.5"/>
+            <circle class="pr-lamp pr-amber" cx="332" cy="221" r="7.5"/>
+            <circle class="pr-lamp pr-green" cx="332" cy="236" r="7.5"/>
             <!-- the shot counter: SimpleGrid wears its mark here once it's linked -->
-            <rect class="pr-counter" x="124" y="214" width="116" height="32" rx="6"/>
-            <text class="pr-digits" id="prShots" x="230" y="237" text-anchor="end">18,000</text>
-            <g transform="translate(142 230) scale(.68)"><g class="pr-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            <rect class="pr-counter" x="126" y="186" width="108" height="34" rx="6"/>
+            <text class="pr-digits" id="prShots" x="225" y="210" text-anchor="end">18,000</text>
+            <g transform="translate(128 203) scale(.7)"><g class="pr-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
             <!-- the parts bin under the mold: the script drops every part into it -->
-            <rect class="pr-bin-back" x="104" y="414" width="152" height="108"/>
+            <rect class="pr-bin-back" x="104" y="400" width="152" height="106"/>
             <g id="prParts"></g>
-            <rect class="pr-bin-front" x="100" y="414" width="160" height="134" rx="6"/>
-            <path class="pr-bin-sheen" d="M110 420H128L110 468Z"/>
-            <rect class="pr-bin-rim" x="96" y="408" width="168" height="10" rx="3"/>
-            <rect class="pr-bin-band" x="101" y="520" width="158" height="27"/>
-            <g transform="translate(180 533.5)"><g class="pr-reject pr-pop"><rect x="-43" y="-11" width="86" height="22" rx="4"/><text y="4.6" text-anchor="middle">REJECT</text></g></g>
-            <g transform="translate(180 533.5) scale(.5)"><g class="pr-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <rect class="pr-bin-front" x="100" y="398" width="160" height="132" rx="5"/>
+            <path class="pr-bin-sheen" d="M110 406H126L110 452Z"/>
+            <rect class="pr-bin-rim" x="96" y="393" width="168" height="9" rx="3"/>
+            <rect class="pr-bin-band" x="101" y="505" width="158" height="24"/>
+            <g transform="translate(180 517)"><g class="pr-reject pr-pop"><rect x="-43" y="-10.5" width="86" height="21" rx="4"/><text y="4.6" text-anchor="middle">REJECT</text></g></g>
+            <g transform="translate(180 517) scale(.46)"><g class="pr-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
 
             <!-- the maintenance tag, hung on the mold; the script places it -->
             <g class="pr-tag hang" id="prTag"><g class="pr-sway">
               <path class="pr-string" d="M0 0V9"/>
-              <rect class="pr-card" x="-11" y="8" width="22" height="32" rx="3"/>
-              <circle class="pr-hole" cx="0" cy="13" r="2.2"/>
-              <path class="pr-wrench" d="M-5 34L1.4 27.6M5.9 21.5A4.3 4.3 0 1 0 6.9 27"/>
+              <rect class="pr-card" x="-12" y="8" width="24" height="34" rx="3"/>
+              <circle class="pr-hole" cx="0" cy="13.5" r="2.3"/>
+              <path class="pr-wrench" d="M-5.5 36L.4 30.1M8.2 26.5A4.6 4.6 0 1 1 4 22.3"/>
             </g></g>
             <!-- what flies back up into the hopper -->
             <g id="prAir"></g>
@@ -1034,18 +1046,18 @@ SG.story = function(o){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
   var hero = $('hero'), obj = $('press'), btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
-  var moving = $('prMove'), partsG = $('prParts'), airG = $('prAir'), tag = $('prTag'), pelG = $('prPellets');
+  var moving = $('prMove'), partsG = $('prParts'), airG = $('prAir'), tag = $('prTag'), pelG = $('prPellets'), drool = $('prDrool');
   var shotsEl = $('prShots'), planEl = $('prPlan'), fillEl = $('prFill'), pill = $('prPill'), statusEl = $('prStatus');
   var reduce = SG.reduce;
 
   var COPY = {
     apart:    { btn: 'Shoot it to see your operations', caption: 'The schedule is your ERP, the press is your floor, and nothing links them. Shoot it, or tap the press.' },
     messing:  { btn: 'Shooting…', caption: 'Shooting it the usual way: the schedule in one place, the press in another.' },
-    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. Flash, short shots and warped parts spilling out of the bin, the maintenance tag on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. Flash, short shots and warped parts spill out of the bin, the maintenance tag is on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
     dosing:   { btn: 'Linking…', caption: 'The link goes in, from the press to the schedule. That’s SimpleGrid.' },
     dosed:    { btn: 'Shoot it again', caption: 'That’s SimpleGrid: the shot count, the mold and its maintenance, live from the press to the schedule. Now shoot it again.' },
     cleaning: { btn: 'Shooting…', caption: 'Watch the mess come clean.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: rows of identical parts, every shot counted, and the schedule says Done, on plan. Your ERP and your floor finally match.' }
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: identical parts in neat rows, every shot counted, and the maintenance tag back on the mold. Your ERP and your floor finally match.' }
   };
   var TEXT = {
     apart: ['The schedule: your ERP', 'What the system says the press is running.', 'The press: your floor', 'What’s really coming out, on Excel, whiteboards and phones.'],
@@ -1061,18 +1073,22 @@ SG.story = function(o){
   /* ------------------------------------------------------------ Where things are */
   var OPEN = -30;                         // the moving half: open at -30, shut at 0
   var GAP = 141;                          // the middle of the open mold, where each shot comes out
-  var HOOK = [172, 268];                  // the maintenance tag's eyelet on the mold
-  var TAG_DOWN = [22, 528, -80];          // where the tag ends up when it falls
-  var HOPPER = [280, 226];
+  var HOOK = [172, 252];                  // the maintenance tag's eyelet on the mold
+  var TAG_DOWN = [314, 513, 80];          // where the tag ends up when it falls
+  var HOPPER = [280, 198];
   var JOB = 40000, PLAN = 18000, RAN = 18412, BAR = 196;
-  // The rejects, six a shot, and where each lands: x, y, turn. The last shot's go over the rim.
-  var HEAP = [
-    [123, 506, -28], [159, 507, 18], [195, 505, 52], [232, 506, -14], [141, 479, 38], [178, 477, -46],
-    [215, 480, 24], [158, 452, 66], [199, 450, -34], [178, 424, -58], [139, 427, 28], [220, 428, 12],
-    [97, 431, 78], [263, 434, -66], [78, 533, 28], [284, 533, 62], [312, 534, -22], [298, 510, 40]
+  // The rejects, shot by shot, and where each lands: x, y, turn, and how it gets there:
+  // 0 into the bin, 1 onto the heap in front of the rim, 2 over the top and down onto the floor.
+  var SHOTS = [10, 10, 9], HEAP = [
+    [121, 489, -28, 0], [157, 490, 18, 0], [194, 488, 52, 0], [232, 489, -14, 0],
+    [126, 461, 38, 0], [162, 459, -46, 0], [199, 462, 24, 0], [235, 460, -60, 0], [121, 433, -20, 0], [158, 431, 66, 0],
+    [196, 430, -34, 0], [233, 434, 10, 0], [118, 405, 28, 1], [156, 402, -58, 1], [194, 403, 12, 1],
+    [233, 406, -40, 1], [137, 380, 70, 1], [176, 376, -22, 1], [214, 379, 44, 1], [157, 356, -12, 1],
+    [196, 354, 58, 1], [92, 412, 78, 2], [268, 415, -66, 2], [26, 515, 30, 2], [58, 515, -50, 2],
+    [86, 516, 28, 2], [42, 492, 62, 2], [334, 515, -22, 2], [322, 492, 40, 2]
   ];
-  var KIND = 'fswfswwfssfwfswswf';        // flash, short shot or warped
-  var ROWS = [503, 471, 439], COLS = [126, 162, 198, 234];
+  var KIND = 'fswfwsfswsfwfswfswwsfwsfswfsw';   // flash, short shot or warped
+  var ROWS = [489, 456, 423], COLS = [124, 161, 199, 236];
   var CYCLE = 620, SHUT = 160, HOLD = 230, OPENS = 190;
 
   var f = function(v){ return Math.round(v*10)/10; };
@@ -1104,24 +1120,24 @@ SG.story = function(o){
     return d + 'Z';
   }
   var BODY = '<use class="pr-gear" href="#prGear"/><path class="pr-shine" d="M-9.4-3.2A9.8 9.8 0 0 1-3.6-9.2L-2.4-6.6A7 7 0 0 0-6.6-2.4Z"/>';
-  // One part: g is good, f flashed, s a short shot, w warped.
+  // One part: g is good, f flashed, s a short shot (scorched where the plastic stopped), w warped.
   function part(kind){
     var g = document.createElementNS(NS, 'g'), body = BODY;
-    if (kind === 's') body = '<g clip-path="url(#prCut)">' + body + '</g>';
+    if (kind === 's') body = '<g clip-path="url(#prCut)">' + body + '<path class="pr-scorch" clip-path="url(#prBody)" d="M-22 7L-15 3L-9 9L-3 2L3 8L9 0L15 6L22 1"/></g>';
     if (kind === 'w') body = '<g transform="matrix(1.24 .3 -.18 .7 0 0)">' + body + '</g>';
     g.setAttribute('class', 'pr-part');
     g.innerHTML = (kind === 'f' ? '<path class="pr-flash" d="' + fringe() + '"/>' : '') + body;
     partsG.appendChild(g);
     return g;
   }
-  var rejects = HEAP.map(function(p, i){ return { el: part(KIND.charAt(i)), to: p }; });
+  var rejects = HEAP.map(function(p, i){ return { el: part(KIND.charAt(i)), to: p.slice(0, 3), how: p[3], home: p[3] ? airG : partsG }; });
   var goods = [];
   ROWS.forEach(function(y){ COLS.forEach(function(x){ goods.push({ el: part('g'), to: [x, y, 0] }); }); });
   // The hopper's pellets: natural resin with a blue masterbatch through it.
   (function(){
     var html = '', row = 0;
-    for (var y = 240.5; y < 280; y += 5.1, row++) for (var x = 257 + (row % 2)*2.8; x < 304; x += 5.6){
-      html += '<circle class="pr-pel' + (rand() < .32 ? ' b' : '') + '" cx="' + f(x + R(-1, 1)) + '" cy="' + f(y + R(-.9, .9)) + '" r="2.7"/>';
+    for (var y = 213.5; y < 260; y += 5.6, row++) for (var x = 254 + (row % 2)*3; x < 307; x += 6.2){
+      html += '<circle class="pr-pel' + (rand() < .32 ? ' b' : '') + '" cx="' + f(x + R(-1, 1)) + '" cy="' + f(y + R(-.9, .9)) + '" r="3"/>';
     }
     pelG.innerHTML = html;
   })();
@@ -1194,24 +1210,24 @@ SG.story = function(o){
     statusEl.textContent = text;
     var w = Math.ceil(statusEl.getComputedTextLength()) + 26;
     if (w < 50) w = 92;
-    pill.setAttribute('x', 318 - w);
+    pill.setAttribute('x', 320 - w);
     pill.setAttribute('width', w);
-    statusEl.setAttribute('x', 318 - w/2);
+    statusEl.setAttribute('x', 320 - w/2);
   }
 
-  // Out of the open mold, then flung down into the bin, or onto the heap and over the rim.
-  function badShot(j, to, over){
-    var s = [GAP + R(-3, 3), 288 + j*9, R(-30, 30), .55, 0], p = [s, [s[0], s[1] + 2, s[2], .9, 1]];
-    if (over){
-      var via = [to[0] < 180 ? 160 : 198, 404, to[2]*.4];
-      p = p.concat(arc(p[1], via, 16, 6), arc(via, to, 14, 5));
+  // Out of the open mold and flung down into the bin, onto the heap, or off the top of the heap and onto the floor.
+  function badShot(j, to, how){
+    var s = [GAP + R(-3, 3), 262 + j*9, R(-30, 30), .55, 0], p = [s, [s[0], s[1] + 2, s[2], .9, 1]];
+    if (how === 2){
+      var via = [to[0] < 180 ? 150 : 206, 346, to[2]*.4];
+      p = p.concat(arc(p[1], via, 14, 5), arc(via, to, 16, 6));
     } else p = p.concat(arc(p[1], to, R(12, 26), 8));
     p.push([to[0], to[1] - 5, to[2] + 7], [to[0], to[1], to[2]]);
     return path(p);
   }
   // Out of the open mold and straight down into its place in the row.
   function goodShot(j, to){
-    var s = [GAP + (j - 1.5)*3, 292 + j*8, 0, .55, 0], p = [s, [s[0], s[1] + 2, 0, .9, 1]];
+    var s = [GAP + (j - 1.5)*3, 270 + j*16, 0, .55, 0], p = [s, [s[0], s[1] + 2, 0, .9, 1]];
     p = p.concat(arc(p[1], to, 6, 8));
     p.push([to[0], to[1] - 3, 0], [to[0], to[1], 0]);
     return path(p);
@@ -1219,20 +1235,24 @@ SG.story = function(o){
 
   // Shoot it unlinked: three shots of bad parts, the tag knocked off, the counter running away from the schedule.
   function mess(){
-    var t0 = 80, level = [[0, 0]];
+    var t0 = 80, level = [[0, 0]], drip = [[0, 0]], first = 0, last = 0;
     later(function(){ obj.dataset.lamp = 'red'; obj.classList.add('bad'); }, t0 + SHUT);
     cycles(t0, 3, true);
-    [0, 1, 2].forEach(function(s){
+    SHOTS.forEach(function(n, s){
       var shut = t0 + s*CYCLE + SHUT, out = shut + HOLD + 100;
       shoot(shut);
       tally([shotsEl], PLAN + Math.round((RAN - PLAN)*s/3), PLAN + Math.round((RAN - PLAN)*(s + 1)/3), HOLD, shut);
       level.push([shut, s*3], [shut + HOLD, s*3 + 3]);
-      for (var j = 0; j < 6; j++){
-        var r = rejects[s*6 + j];
-        play(r.el, badShot(j, r.to, s === 2), s === 2 ? 1000 : 760, out + j*45);
+      drip.push([shut, s/3], [shut + HOLD + 120, (s + 1)/3, 'cubic-bezier(.3,.6,.4,1)']);
+      for (var j = 0; j < n; j++){
+        var r = rejects[first + j], ms = r.how === 2 ? 1000 : 760;
+        play(r.el, badShot(j, r.to, r.how), ms, out + j*42);
+        last = Math.max(last, out + j*42 + ms);
       }
+      first += n;
     });
     track(pelG, level, sink);
+    track(drool, drip, function(k){ return 'scaleY(' + k + ')'; });
     // The second shot slams it shut hard enough to knock the maintenance tag off the mold.
     var knock = t0 + CYCLE + SHUT;
     later(function(){ tag.classList.remove('hang'); }, knock);
@@ -1240,7 +1260,7 @@ SG.story = function(o){
     p.push([TAG_DOWN[0] + 1, TAG_DOWN[1] - 3, TAG_DOWN[2] + 7], TAG_DOWN);
     play(tag, path(p), 950, knock);
     later(function(){ obj.classList.add('rejects'); }, t0 + 2*CYCLE + SHUT + HOLD + 500);
-    return wait(t0 + 2*CYCLE + SHUT + HOLD + 100 + 5*45 + 1000 + 80);
+    return wait(last + 80);
   }
 
   // SimpleGrid goes in: the cable joins, the counter wears the mark, and the schedule catches up with the press.
@@ -1264,14 +1284,16 @@ SG.story = function(o){
       var p = [r.to].concat(arc(r.to, [HOPPER[0] + R(-8, 8), HOPPER[1], r.to[2] + 220, .4, 1], 46, 9));
       p[p.length - 2][4] = .8;
       p[p.length - 1][4] = 0;
-      play(r.el, path(p), 640, i*30, 'cubic-bezier(.35,0,.65,1)');
+      play(r.el, path(p), 640, i*22, 'cubic-bezier(.35,0,.65,1)');
     });
-    track(pelG, [[0, 9], [300, 9], [1000, 0]], sink);
+    track(drool, [[0, 1], [500, 0, 'cubic-bezier(.5,0,.7,.4)']], function(k){ return 'scaleY(' + k + ')'; });
     var tp = [TAG_DOWN].concat(arc(TAG_DOWN, [HOOK[0], HOOK[1], 10], 40, 9));
     tp.push([HOOK[0], HOOK[1], -5], [HOOK[0], HOOK[1], 0]);
     play(tag, path(tp), 820, 120).then(function(){ if (my === gen) tag.classList.add('hang'); });
 
-    var t0 = 1000;
+    // One track for the pellets: topped up as the rejects go in, then drawn down by the clean shots.
+    var t0 = 1050;
+    track(pelG, [[0, 9], [300, 9], [t0, 0], [t0 + 3*CYCLE, 6]], sink);
     later(function(){ obj.dataset.lamp = 'green'; }, t0 - 250);
     cycles(t0, 3, false);
     [0, 1, 2].forEach(function(s){
@@ -1283,7 +1305,6 @@ SG.story = function(o){
       }
     });
     tally([shotsEl, planEl], RAN, JOB, 2*CYCLE + HOLD, t0 + SHUT, true);
-    track(pelG, [[0, 0], [t0, 0], [t0 + 3*CYCLE, 6]], sink);
     later(function(){ setStatus('Done, on plan'); obj.classList.add('on-plan'); }, t0 + 2*CYCLE + SHUT + HOLD + 300);
     return wait(t0 + 2*CYCLE + SHUT + HOLD + 100 + 3*55 + 620 + 120);
   }
@@ -1298,9 +1319,10 @@ SG.story = function(o){
     obj.dataset.lamp = 'green';
     moving.style.transform = slide(OPEN);
     pelG.style.transform = sink(0);
+    drool.style.transform = 'scaleY(0)';
     rejects.concat(goods).forEach(function(r){
       r.el.getAnimations().forEach(function(a){ a.cancel(); });
-      partsG.appendChild(r.el);
+      (r.home || partsG).appendChild(r.el);
       put(r.el, [GAP, 300, 0, .5], 0);
     });
     put(tag, HOOK);
@@ -1321,7 +1343,7 @@ SG.story = function(o){
   var story = SG.story({
     hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.press',
     ops: {
-      mess: ['Your operations, today', 'Bad parts in the bin, the tag on the floor, and the schedule still says On plan. Everyone’s working from a different count.'],
+      mess: ['Your operations, today', 'Bad parts in the bin and on the floor, and the schedule still says On plan. Everyone’s working from a different count.'],
       dosed: ['Your operations, plus SimpleGrid', 'Same press, same mess. Now the press and the schedule share one live count.']
     },
     mess: mess, dose: dose, clean: clean, restore: restore,

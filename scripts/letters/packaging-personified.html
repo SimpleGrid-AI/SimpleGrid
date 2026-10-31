@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A film line under a spec screen, with no link between them, beside the words: {{first}}, Packaging Personified began at a kitchen table in 1975.">
+<meta property="og:image:alt" content="A laminator under a spec card, with no link between them, beside the words: {{first}}, Packaging Personified began at a kitchen table in 1975.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, laminate it.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes flexible packaging for a living.">
@@ -35,9 +35,104 @@
   --tint:#F3F1EF;--pale:#FAF9F8;--ink:#1E1D1D;--alert:#C4163F;--marker:#EFE7E1;--h2-hi:#7E624F;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#A3826C;--sku-b:#EFEFEE;--sku-c:#5B8DB8}
-
-<!--#include line.css-->
+/* ------------------------------------------------------- The roll of laminate
+   For a flexible-packaging converter. The spec card up top is the ERP: what the system
+   says you’re running. The laminator under it is the floor: a printed film from the
+   press and a clear sealant film from extrusion, meeting at the nip and winding onto
+   one roll. It’s drawn from the operator’s side and a little above, so a roll shows its
+   end as a circle with its length running back up and to the right, and a web shows
+   its face. The script draws the rolls and webs; every color is here. */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.lam{
+  --ink-m:#E5177E;--ink-c:#16A3DD;--ink-y:#FFD23F;--film:#FBFAF8;
+  --clear:#CFE3EA;--clear-face:#B3D3DD;--glue:#E9A93A;--paper:#F6F2ED;
+  --steel:#C9CFD4;--steel-hi:#EEF1F3;--steel-dk:#8E979F;--steel-ink:#5B646C;--frame:#474C52;
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+}
+.hero[data-story$=ing] .lam,.lam.is-done{cursor:default}
+.lam svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing fading home. */
+.lam.snap,.lam.snap *{transition:none!important}
+/* The spec card. */
+.lm-card-sh{fill:rgba(0,0,0,.3)}
+.lm-card{fill:var(--paper)}
+.lm-kick{fill:var(--accent-edge);font:600 11px/1 var(--mono);letter-spacing:.16em}
+.lm-order{fill:#1E1D1D;font:800 23px/1 var(--body);letter-spacing:.01em}
+.lm-sku{fill:rgba(30,29,29,.72);font:600 13.5px/1 var(--body)}
+.lm-pill{fill:#DCF2E5}
+.lm-status{fill:#0A6B47;font:800 12.5px/1 var(--body)}
+.lam.linked .lm-pill{fill:var(--accent)}
+.lam.linked .lm-status{fill:var(--on-accent)}
+.lam.signed .lm-pill{fill:#12A86B}
+.lam.signed .lm-status{fill:#fff}
+.lm-track{fill:rgba(30,29,29,.12)}
+.lm-fill{fill:#12A86B}
+/* The cable from the card to the floor: broken until SimpleGrid joins it. */
+.lm-stub{fill:none;stroke:#6F7479;stroke-width:5;stroke-linecap:round}
+.lm-cable{fill:none;stroke:var(--hi);stroke-width:5;stroke-linecap:round}
+.lm-flow{fill:none;stroke:rgba(255,255,255,.7);stroke-width:2;stroke-linecap:round;stroke-dasharray:2 10;opacity:0;transition:opacity .3s}
+.lam.joined .lm-flow{opacity:1;animation:lm-flow .7s linear infinite}
+@keyframes lm-flow{to{stroke-dashoffset:-12}}
+/* The floor, and the frame and stands on the far side of the webs. */
+.lm-floor{fill:rgba(0,0,0,.2)}
+.lm-frame{fill:var(--frame)}
+.lm-frame-hi{fill:none;stroke:rgba(255,255,255,.14);stroke-width:2;stroke-linecap:round}
+.lm-post{fill:var(--frame)}
+/* The print: three inks on white film. */
+.lm-p-film{fill:var(--film)}
+.lm-p-m{fill:var(--ink-m)}
+.lm-p-y{fill:var(--ink-y)}
+.lm-p-c{fill:var(--ink-c)}
+/* Rolls of film: the body, the print on it, its shading, then each layer's face. */
+.lm-body{fill:var(--film)}
+.lm-clear .lm-body{fill:var(--clear)}
+.lm-shade{fill:rgba(20,16,28,.2)}
+.lm-hi{fill:rgba(255,255,255,.55)}
+.lm-gloss{fill:#fff}
+.lm-face{fill:#EFE9E3;stroke:rgba(40,30,35,.3);stroke-width:1.2}
+.lm-clear .lm-face{fill:var(--clear-face);stroke:rgba(255,255,255,.7)}
+.lm-rings{fill:none;stroke:rgba(229,23,126,.2);stroke-width:1}
+.lm-clear .lm-rings{stroke:rgba(255,255,255,.55)}
+.lm-core{fill:var(--accent);stroke:var(--accent-edge);stroke-width:1.2}
+.lm-hole{fill:#2E2A29}
+.lm-crease{fill:rgba(46,20,40,.42)}
+.lm-bubble{fill:rgba(255,255,255,.5);stroke:#fff;stroke-width:1.3}
+.lm-bubble-hi{fill:#fff}
+/* Rollers: steel. */
+.lm-r-body{fill:var(--steel)}
+.lm-r-shade{fill:rgba(20,24,30,.22)}
+.lm-r-hi{fill:rgba(255,255,255,.6)}
+.lm-r-face{fill:var(--steel-hi);stroke:var(--steel-dk);stroke-width:1.5}
+.lm-r-bolt{fill:var(--steel-ink)}
+/* The webs. */
+.lm-edge{fill:none;stroke:rgba(30,20,30,.25);stroke-width:1;stroke-linejoin:round}
+.lm-clearweb{fill:rgba(210,234,243,.34);stroke:rgba(236,248,252,.85);stroke-width:1.4;stroke-linejoin:round}
+.lm-streak{fill:none;stroke:rgba(255,255,255,.75);stroke-width:2;stroke-linecap:round;stroke-dasharray:12 16}
+.lm-rip-d{fill:#2A0D22}
+.lm-rip-l{fill:#fff}
+.lm-ply{fill:rgba(214,238,248,.22);stroke:rgba(240,250,255,.8);stroke-width:1.2;stroke-linejoin:round}
+.lm-tunnel{fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.lm-tunnel-sh{fill:none;stroke:rgba(50,10,40,.45);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+/* The adhesive: SimpleGrid. Its roller comes up under the printed film in a pan of glue, wearing the mark. */
+.lm-pan{fill:var(--steel-dk)}
+.lm-pan-top{fill:var(--steel-ink)}
+.lm-glue{fill:var(--glue)}
+.lm-mark{--sg-bg:var(--brand);--sg-ink:#fff}
+.lam.dosed .lm-mark{opacity:1;transform:none}
+.lm-label{--sg-bg:var(--brand);--sg-ink:#fff}
+.lam.is-done .lm-label{opacity:1;transform:none}
+.lam:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:3%}
+.callout-gap{top:calc(31.1% - 15px)}
+.callout-bottom{top:47%}
+.callout-top h3 i{background:#F6F2ED}
+.callout-bottom h3 i{background:#E5177E}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.5)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->
@@ -63,18 +158,71 @@
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
-<!--#include line.svg-->
+        <div class="lam hero-obj" id="lam" role="img" aria-label="A spec card for order 4417 saying On spec, above a laminator where a printed film and a clear film meet at the nip and wind onto one roll. The cable between the card and the laminator is broken.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <!-- the printed film, in the web's own terms: the print repeats every 60 along it, and the web is 90 across -->
+              <pattern id="lmInk" width="60" height="90" patternUnits="userSpaceOnUse">
+                <rect class="lm-p-film" width="60" height="90"/>
+                <rect class="lm-p-m" x="5" y="11" width="35" height="68" rx="6"/>
+                <circle class="lm-p-y" cx="22.5" cy="45" r="13"/>
+                <rect class="lm-p-c" x="46" y="11" width="8" height="68" rx="3"/>
+              </pattern>
+              <!-- the same print inside the laminate: the script turns it crooked and knocks the inks out of register -->
+              <pattern id="lmInkLam" width="60" height="90" patternUnits="userSpaceOnUse">
+                <rect class="lm-p-film" width="60" height="90"/>
+                <g id="lmTilt">
+                  <rect class="lm-p-m" x="5" y="11" width="35" height="68" rx="6"/>
+                  <circle class="lm-p-y" id="lmDot" cx="22.5" cy="45" r="13"/>
+                  <rect class="lm-p-c" id="lmBar" x="46" y="11" width="8" height="68" rx="3"/>
+                </g>
+              </pattern>
+              <clipPath id="lmClipW"><path id="lmClipWPath"/></clipPath>
+              <clipPath id="lmClipU"><path id="lmClipUPath"/></clipPath>
+            </defs>
+
+            <!-- the spec: what the ERP says you're running -->
+            <rect class="lm-card-sh" x="24" y="28" width="312" height="124" rx="14"/>
+            <rect class="lm-card" x="24" y="22" width="312" height="124" rx="14"/>
+            <text class="lm-kick" x="44" y="50">SPEC</text>
+            <text class="lm-order" x="44" y="80">ORDER 4417</text>
+            <text class="lm-sku" x="44" y="103">2-ply printed laminate · 40 rolls</text>
+            <rect class="lm-pill" id="lmPill" x="242" y="36" width="76" height="24" rx="12"/>
+            <text class="lm-status" id="lmStatus" x="280" y="52.5" text-anchor="middle">On spec</text>
+            <rect class="lm-track" x="44" y="120" width="272" height="8" rx="4"/>
+            <rect class="lm-fill" id="lmFill" x="44" y="120" width="44" height="8" rx="4"/>
+
+            <!-- the cable from the spec to the floor: broken until SimpleGrid joins it -->
+            <path class="lm-stub" d="M180 146V162"/>
+            <path class="lm-stub" d="M180 186V210"/>
+            <path class="lm-cable" id="lmCable" pathLength="1" d="M180 146V210"/>
+            <path class="lm-flow" d="M180 146V210"/>
+
+            <!-- the floor: the laminator's frame and stands sit on the far side of the webs -->
+            <path class="lm-floor" d="M10 536H330L360 510H40Z"/>
+            <rect class="lm-post" x="67" y="358" width="10" height="152" rx="3"/>
+            <rect class="lm-post" x="293" y="426" width="10" height="84" rx="3"/>
+            <rect class="lm-frame" x="118" y="210" width="94" height="264" rx="14"/>
+            <path class="lm-frame-hi" d="M131 211.5H199"/>
+
+            <!-- the rolls, rollers and webs: the script draws them in here, back to front -->
+            <g id="lmMachine"></g>
+
+            <!-- the adhesive roller wears the mark (the script moves this onto it) -->
+            <g id="lmMark" transform="translate(102 352) scale(.9)"><g class="lm-mark sg-pop"><!--#include sg-badge.svg--></g></g>
+            <!-- once it comes clean, the roll gets its label -->
+            <g transform="translate(268 452) scale(.54)"><g class="lm-label sg-pop"><!--#include sg-tag.svg--></g></g>
+          </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The spec: your ERP</span></h3>
+            <p id="topText">What the system says you’re running.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The film: your floor</span></h3>
+            <p id="bottomText">What’s really on the laminator, on Excel, whiteboards and phones.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -82,10 +230,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Run it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The spec is your ERP, the film is your floor, and nothing links them. Run it, or tap the laminator.</p>
       </div>
     </div>
   </div>
@@ -150,7 +298,458 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+(function(){
+  /* -------------------------------------------------- The roll of laminate
+     For a flexible-packaging converter. The spec card is the ERP: what the
+     system says you're running. The laminator under it is the floor, and
+     nothing links them. Run it and the two films go through the nip with
+     nothing to bond them: the laminate wrinkles, bubbles and tunnels, the
+     print comes out crooked and out of register, and the roll telescopes into
+     a cone, while the card still says On spec. That mess stays. SimpleGrid is
+     the adhesive: its roller comes up under the printed film wearing the mark,
+     the cable to the card joins, and the next run comes out smooth and glossy,
+     on one tight, even roll.
+     Every move sets the numbers in S from its own clock and render() draws
+     from S, so reduced motion can jump to the end of a move, and Start over
+     puts back the first picture exactly. */
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('lam'), machine = $('lmMachine');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var pillEl = $('lmPill'), statusEl = $('lmStatus'), fillEl = $('lmFill'), cableEl = $('lmCable');
+  var tiltEl = $('lmTilt'), dotEl = $('lmDot'), barEl = $('lmBar');
+  var reduce = SG.reduce, clamp = SG.clamp;
+  var COPY = {
+    apart:    { btn: 'Run it to see your operations', caption: 'The spec is your ERP, the film is your floor, and nothing links them. Run it, or tap the laminator.' },
+    messing:  { btn: 'Running…', caption: 'Laminating it the usual way: the plan in one place, the floor in another.' },
+    mess:     { btn: 'Bond it with SimpleGrid', caption: 'That’s your operations today: a big mess. The plies wrinkle, bubble and tunnel, the print sits crooked, the roll telescopes, and the spec still says On spec. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Bonding…', caption: 'In goes the adhesive. That’s SimpleGrid.' },
+    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: it bonds the spec to the film, so both work from one live record. Now run it again.' },
+    cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one clean roll: smooth, glossy, wound tight and even, and the spec knows it. Your ERP and your floor finally match.' }
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The laminate came out wrinkled, bubbled and tunneled, its print crooked, and the roll telescoped into a cone, while the spec card still says On spec.',
+    dosed: 'The same messy roll, now with an adhesive roller wearing the SimpleGrid mark under the printed film, and the cable to the spec card joined.',
+    done: 'The two films bonded smooth and glossy onto one tight, even roll labeled SimpleGrid, and the spec card saying Done, on spec.'
+  };
+
+  var lerp = function(a, b, t){ return a + (b - a)*t; };
+  var seg = function(t, a, b){ return clamp((t - a)/(b - a), 0, 1); };
+  var sm = function(t, a, b){ var x = seg(t, a, b); return x*x*(3 - 2*x); };
+  var swing = function(x){ return x < .5 ? 2*x*x : 1 - 2*(1 - x)*(1 - x); };   // starts and stops gently
+  var mod = function(a, n){ return (a % n + n) % n; };
+
+  /* ------------------------------------------------------------ Drawing
+     Seen from the operator's side and a little above: a point on the near edge
+     of the webs is drawn where it is, and the far edge is D further on. */
+  var D = [30, -26], DL = Math.hypot(D[0], D[1]), DU = [D[0]/DL, D[1]/DL], NR = [-DU[1], DU[0]];
+  var HI = Math.atan2(NR[1], NR[0]), LO = HI - Math.PI;   // the half of a roll you can see runs round from LO to HI
+  var REP = 60, ACROSS = 90;                                // the print repeats every 60 along the web, and the web is 90 across
+  var f = function(v){ return Math.round(v*10)/10; };
+  var f3 = function(v){ return Math.round(v*1000)/1000; };
+  var pt = function(p){ return f(p[0]) + ' ' + f(p[1]); };
+  var add = function(p, v, k){ return [p[0] + v[0]*k, p[1] + v[1]*k]; };
+  var dist = function(a, b){ return Math.hypot(b[0] - a[0], b[1] - a[1]); };
+  var on = function(c, r, t){ return [c[0] + r*Math.cos(t), c[1] + r*Math.sin(t)]; };
+  function mk(tag, cls, parent){ var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); (parent || machine).appendChild(e); return e; }
+  function circ(c, r){ var R = f(r); return 'M' + f(c[0] - r) + ' ' + f(c[1]) + 'a' + R + ' ' + R + ' 0 1 0 ' + f(2*r) + ' 0a' + R + ' ' + R + ' 0 1 0 ' + f(-2*r) + ' 0Z'; }
+  // A roll lying across the machine: its near end at c, running back len along D.
+  function hull(c, r, len){
+    var e = add(c, DU, len), n = [NR[0]*r, NR[1]*r], R = f(r);
+    return 'M' + pt(add(c, n, 1)) + 'L' + pt(add(e, n, 1)) + 'A' + R + ' ' + R + ' 0 0 0 ' + pt(add(e, n, -1)) +
+           'L' + pt(add(c, n, -1)) + 'A' + R + ' ' + R + ' 0 0 0 ' + pt(add(c, n, 1)) + 'Z';
+  }
+  // A strip of a roll's visible surface: round from angle a to b, from k0 to k1 of the way back, its far end turned by tw.
+  function strip(c, r, a, b, len, tw, k0, k1){
+    a = clamp(a, LO, HI); b = clamp(b, LO, HI);
+    if (b - a < .004) return '';
+    if (k0 == null) k0 = 0;
+    if (k1 == null) k1 = 1;
+    var n = Math.max(2, Math.ceil((b - a)*r/5)), c0 = add(c, DU, len*k0), c1 = add(c, DU, len*k1), d = '', k;
+    for (k = 0; k <= n; k++) d += (k ? 'L' : 'M') + pt(on(c0, r, a + (b - a)*k/n));
+    for (k = n; k >= 0; k--) d += 'L' + pt(on(c1, r, clamp(a + (b - a)*k/n + (tw || 0), LO, HI)));
+    return d + 'Z';
+  }
+  // An oval at c: rx along ax, ry along ay.
+  function oval(c, ax, ay, rx, ry){
+    var d = '';
+    for (var k = 0; k < 16; k++){
+      var t = k/16*Math.PI*2, x = Math.cos(t)*rx, y = Math.sin(t)*ry;
+      d += (k ? 'L' : 'M') + f(c[0] + ax[0]*x + ay[0]*y) + ' ' + f(c[1] + ax[1]*x + ay[1]*y);
+    }
+    return d + 'Z';
+  }
+  // Where a web from p touches a roll at c: side -1 leaves it going clockwise, +1 lands on it.
+  function tangent(p, c, r, side){
+    var dx = p[0] - c[0], dy = p[1] - c[1];
+    return on(c, r, Math.atan2(dy, dx) + side*Math.acos(Math.min(1, r/Math.hypot(dx, dy))));
+  }
+  var quad = function(a, b){ return 'M' + pt(a) + 'L' + pt(b) + 'L' + pt(add(b, D, 1)) + 'L' + pt(add(a, D, 1)) + 'Z'; };
+  // Maps the web's own terms (along it from a, and 0 to 90 across) onto the drawing.
+  var matrix = function(a, b){ var l = dist(a, b) || 1; return 'matrix(' + [f3((b[0] - a[0])/l), f3((b[1] - a[1])/l), f3(D[0]/ACROSS), f3(D[1]/ACROSS), f(a[0]), f(a[1])].join(' ') + ')'; };
+
+  /* ------------------------------------------------------------ The machine */
+  var U1 = [44, 386], U2 = [103, 236], AP = [102, 352], NT = [152, 322], NB = [152, 366], NIP = [152, 344], W = [268, 452];
+  var RA = 22, RN = 22, CORE = 12, RUN = 520;
+
+  // A roll of film, built once: its body, the print on it and its shading, then the face of each layer group, outside in.
+  function Roll(kind, groups, clip){
+    var g = mk('g', 'lm-roll lm-' + kind), o = { groups: [], clip: clip };
+    for (var k = groups - 1; k >= 0; k--){
+      var b = { body: mk('path', 'lm-body', g) };
+      if (k === groups - 1){
+        if (clip){
+          var ink = mk('g', null, g);
+          ink.setAttribute('clip-path', 'url(#' + clip.parentNode.id + ')');
+          b.m = mk('path', 'lm-p-m', ink); b.c = mk('path', 'lm-p-c', ink); b.y = mk('path', 'lm-p-y', ink);
+          b.crease = mk('path', 'lm-crease', ink); b.bub = mk('path', 'lm-bubble', ink); b.bubHi = mk('path', 'lm-bubble-hi', ink);
+        }
+        b.hi = mk('path', 'lm-hi', g); b.gloss = mk('path', 'lm-gloss', g);
+      }
+      b.shade = mk('path', 'lm-shade', g);
+      b.face = mk('path', 'lm-face', g);
+      b.rings = mk('path', 'lm-rings', g);
+      o.groups[k] = b;
+    }
+    o.core = mk('path', 'lm-core', g);
+    o.hole = mk('path', 'lm-hole', g);
+    return o;
+  }
+  // s: spin (how far round it has turned), tele (how far the middle has slid out), twist, reg, crease, bub, gloss.
+  var CONE = [1, .8, .58, .3, 0], CREASES = [.5, 1.7, 2.9, 4.4], BUBBLES = [[1.1, .3, 7], [2.3, .64, 9], [3.6, .38, 6], [5, .7, 8]];
+  function drawRoll(o, c, r, s){
+    var n = o.groups.length, k, q;
+    var shift = function(k){ return n > 1 ? -s.tele*CONE[k] : 0; };
+    for (k = n - 1; k >= 0; k--){
+      var b = o.groups[k], r1 = CORE + (r - CORE)*(k + 1)/n, r0 = CORE + (r - CORE)*k/n;
+      var cf = add(c, DU, shift(k)), len = k === n - 1 ? DL : shift(k + 1) - shift(k);
+      b.body.setAttribute('d', hull(cf, r1, len));
+      if (k === n - 1){
+        if (o.clip){ o.clip.setAttribute('d', hull(cf, r1, len)); print(b, cf, r1, s); }
+        b.hi.setAttribute('d', strip(cf, r1, LO + .3, LO + .75, len));
+        b.gloss.setAttribute('d', s.gloss > .01 ? strip(cf, r1, HI - 1.3, HI - 1.12, len, 0, .05, .95) : '');
+        b.gloss.style.opacity = f3(s.gloss*.85);
+      }
+      b.shade.setAttribute('d', strip(cf, r1, HI - .8, HI, len));
+      b.face.setAttribute('d', circ(cf, r1));
+      var rg = '';
+      for (q = r0 + 4.5; q < r1 - 1.5; q += 4.5) rg += circ(cf, q);
+      b.rings.setAttribute('d', rg);
+    }
+    var c0 = add(c, DU, shift(0));
+    o.core.setAttribute('d', circ(c0, CORE));
+    o.hole.setAttribute('d', circ(c0, CORE*.5));
+  }
+  // The print round the outside of a roll, turning with it: panels, dots and bars. A mess twists it and knocks it out of register.
+  function print(b, c, r, s){
+    var per = REP/r, tw = (s.twist || 0)*.55, reg = s.reg || 0, m = '', cy = '', y = '', cr = '', bu = '', bh = '', a, t;
+    for (a = LO + mod(s.spin, per) - per; a < HI; a += per){
+      m += strip(c, r, a, a + 35/r, DL, tw, .12, .88);
+      cy += strip(c, r, a + (41 + reg*7)/r, a + (49 + reg*7)/r, DL, tw, .12 + reg*.08, .88 + reg*.08);
+      t = a + (17.5 + reg*8)/r + tw*.5;
+      if (t > LO + .12 && t < HI - .12) y += oval(on(add(c, DU, DL*(.5 - reg*.12)), r, t), [-Math.sin(t), Math.cos(t)], DU, 13, 13*DL/ACROSS);
+    }
+    b.m.setAttribute('d', m); b.c.setAttribute('d', cy); b.y.setAttribute('d', y);
+    if (s.crease > .01) CREASES.forEach(function(q){
+      t = LO + mod(s.spin + q - LO, Math.PI*2);
+      if (t < HI) cr += strip(c, r, t, t + .09, DL, .5, 0, 1);
+    });
+    b.crease.setAttribute('d', cr);
+    b.crease.style.opacity = f3(s.crease || 0);
+    if (s.bub > .01) BUBBLES.forEach(function(q){
+      t = LO + mod(s.spin + q[0] - LO, Math.PI*2);
+      if (t < LO + .2 || t > HI - .2) return;
+      var ax = [-Math.sin(t), Math.cos(t)], at = on(add(c, DU, DL*q[1]), r, t);
+      bu += oval(at, ax, DU, q[2], q[2]*.6);
+      bh += oval(add(add(at, ax, -q[2]*.35), DU, q[2]*.2), ax, DU, q[2]*.32, q[2]*.2);
+    });
+    b.bub.setAttribute('d', bu); b.bubHi.setAttribute('d', bh);
+    b.bub.style.opacity = b.bubHi.style.opacity = f3(s.bub || 0);
+  }
+
+  // A steel roller: only its bolts move.
+  function Roller(c, r, parent){
+    var g = mk('g', 'lm-roller', parent), o = { c: c, r: r };
+    mk('path', 'lm-r-body', g).setAttribute('d', hull(c, r, DL));
+    o.coat = mk('path', 'lm-glue', g);
+    o.coat.setAttribute('d', hull(c, r, DL));
+    o.coat.style.opacity = 0;
+    mk('path', 'lm-r-shade', g).setAttribute('d', strip(c, r, HI - .9, HI, DL));
+    mk('path', 'lm-r-hi', g).setAttribute('d', strip(c, r, LO + .35, LO + .8, DL));
+    mk('path', 'lm-r-face', g).setAttribute('d', circ(c, r));
+    o.bolt = mk('path', 'lm-r-bolt', g);
+    return o;
+  }
+  function turn(o, spin){
+    var d = circ(o.c, o.r*.24);
+    for (var k = 0; k < 3; k++) d += circ(on(o.c, o.r*.58, spin + k*2.094), o.r*.12);
+    o.bolt.setAttribute('d', d);
+  }
+
+  // A flat web with the print on it: the rect carries the print, the path its edges.
+  function Web(){ var w = { ink: mk('rect'), face: mk('path', 'lm-edge') }; w.ink.setAttribute('fill', 'url(#lmInk)'); w.ink.setAttribute('height', ACROSS); return w; }
+  // From a to b, with the print run on by `run`. Returns its length.
+  function drawWeb(w, a, b, run){
+    var len = dist(a, b), tx = mod(run, REP);
+    w.face.setAttribute('d', quad(a, b));
+    w.ink.setAttribute('transform', matrix(a, b) + ' translate(' + f(tx) + ' 0)');
+    w.ink.setAttribute('x', f(-tx - .3));
+    w.ink.setAttribute('width', f(len + .6));
+    return len;
+  }
+
+  /* The laminate, from the nip to the roll: a ribbon of short pieces, so it can sag and ripple. */
+  var LN = 40, lam = { ink: [], shade: [] };
+  function Laminate(){
+    var g = mk('g', 'lm-lam'), i, r;
+    for (i = 0; i < LN; i++){ r = mk('rect', null, g); r.setAttribute('fill', 'url(#lmInkLam)'); r.setAttribute('height', ACROSS); lam.ink.push(r); }
+    for (i = 0; i < LN; i++) lam.shade.push(mk('path', null, g));
+    lam.edge = mk('path', 'lm-edge', g);
+    lam.ply = mk('path', 'lm-ply', g);
+    lam.gloss = mk('path', 'lm-gloss', g);
+    lam.tunSh = mk('path', 'lm-tunnel-sh', g); lam.tun = mk('path', 'lm-tunnel', g);
+    lam.bub = mk('path', 'lm-bubble', g); lam.bubHi = mk('path', 'lm-bubble-hi', g);
+  }
+  var LAM_BUBBLES = [[34, 28, 7], [66, 62, 9], [98, 30, 7], [128, 58, 8]];
+  function drawLam(p, q){
+    var L = dist(p, q), u = [(q[0] - p[0])/L, (q[1] - p[1])/L], n = [-u[1], u[0]], pts = [], cum = [0], i, x;
+    for (i = 0; i <= LN; i++){
+      x = i/LN;
+      var ph = (x*L - S.run)*2*Math.PI, ripple = S.rip*sm(x, .05, .24)*(1 - sm(x, .84, .97))*(7.5*Math.sin(ph/25) + 2.5*Math.sin(ph/53 + 1.3));
+      var off = S.bow*26*Math.sin(Math.PI*x) + ripple;
+      pts.push([p[0] + u[0]*L*x + n[0]*off, p[1] + u[1]*L*x + n[1]*off]);
+      if (i) cum.push(cum[i - 1] + dist(pts[i - 1], pts[i]));
+    }
+    var base = Math.atan2(u[1], u[0]);
+    for (i = 0; i < LN; i++){
+      var a = pts[i], b = pts[i + 1], tx = mod(S.run - cum[i], REP), sh = lam.shade[i];
+      lam.ink[i].setAttribute('transform', matrix(a, b) + ' translate(' + f(tx) + ' 0)');
+      lam.ink[i].setAttribute('x', f(-tx - .3));
+      lam.ink[i].setAttribute('width', f(cum[i + 1] - cum[i] + .6));
+      var tilt = Math.atan2(b[1] - a[1], b[0] - a[0]) - base;
+      if (Math.abs(tilt) < .02){ sh.removeAttribute('d'); continue; }
+      sh.setAttribute('d', quad(a, b));
+      sh.setAttribute('class', tilt > 0 ? 'lm-rip-d' : 'lm-rip-l');
+      sh.style.opacity = f3(Math.min(.6, Math.abs(tilt)*2.2));
+    }
+    var back = pts.map(function(p){ return add(p, D, 1); });
+    lam.edge.setAttribute('d', 'M' + pts.map(pt).join('L') + 'M' + back.map(pt).join('L'));
+    var k0 = -.06 + S.twist*.12, k1 = 1.06 + S.twist*.12;
+    lam.ply.setAttribute('d', 'M' + pts.map(function(p){ return pt(add(p, D, k0)); }).join('L') + 'L' + pts.slice().reverse().map(function(p){ return pt(add(p, D, k1)); }).join('L') + 'Z');
+    var total = cum[LN];
+    // Where a point so far along it, and so far across, lands.
+    var along = function(s, w){
+      for (var j = 0; j < LN - 1 && cum[j + 1] < s; j++);
+      var t = clamp((s - cum[j])/((cum[j + 1] - cum[j]) || 1), 0, 1);
+      return add([pts[j][0] + (pts[j + 1][0] - pts[j][0])*t, pts[j][1] + (pts[j + 1][1] - pts[j][1])*t], D, w/ACROSS);
+    };
+    // Once it bonds, it shines.
+    var gl = '';
+    if (S.gloss > .01){
+      var g1 = [], g2 = [];
+      for (x = 8; x <= total - 8; x += 6){ g1.push(along(x, 20)); g2.unshift(along(x, 31)); }
+      gl = 'M' + g1.concat(g2).map(pt).join('L') + 'Z';
+    }
+    lam.gloss.setAttribute('d', gl);
+    lam.gloss.style.opacity = f3(S.gloss*.7);
+    // Unbonded, it tunnels and bubbles, and the faults ride along with the film.
+    var tu = '', ts = '', bu = '', bh = '';
+    if (S.bub > .01){
+      var t0 = 44 + S.run - RUN, line1 = [], line2 = [];
+      for (x = Math.max(6, t0); x <= Math.min(total - 6, t0 + 70); x += 5){ line1.push(along(x, 60)); line2.push(along(x, 68)); }
+      if (line1.length > 1){ tu = 'M' + line1.map(pt).join('L'); ts = 'M' + line2.map(pt).join('L'); }
+      LAM_BUBBLES.forEach(function(b){
+        var s = b[0] + S.run - RUN;
+        if (s < 8 || s > total - 8) return;
+        var c = along(s, b[1]);
+        bu += oval(c, u, DU, b[2], b[2]*DL/ACROSS*1.2);
+        bh += oval(add(add(c, u, -b[2]*.35), DU, b[2]*.25), u, DU, b[2]*.3, b[2]*.18);
+      });
+    }
+    lam.tun.setAttribute('d', tu); lam.tunSh.setAttribute('d', ts);
+    lam.bub.setAttribute('d', bu); lam.bubHi.setAttribute('d', bh);
+    lam.tun.style.opacity = lam.tunSh.style.opacity = lam.bub.style.opacity = lam.bubHi.style.opacity = f3(S.bub);
+  }
+
+  /* Built back to front: the clear film and its roll, the bottom nip roller, the adhesive,
+     the printed film and its roll, then the roll it all winds onto, the laminate, and the top nip roller. */
+  var rollU2 = Roll('clear', 1, null);
+  var clearWeb = { face: mk('path', 'lm-clearweb'), s1: mk('path', 'lm-streak'), s2: mk('path', 'lm-streak') };
+  var rollU1 = Roll('ink', 1, $('lmClipUPath'));
+  var app = mk('g', 'lm-app'), pan = [AP[0] - 26, AP[1] + 15];
+  mk('path', 'lm-pan-top', app).setAttribute('d', 'M' + [pan, [pan[0] + 52, pan[1]], add([pan[0] + 52, pan[1]], D, .9), add(pan, D, .9)].map(pt).join('L') + 'Z');
+  var glue = mk('path', 'lm-glue', app);
+  glue.setAttribute('d', 'M' + [add([pan[0] + 5, pan[1]], D, .1), add([pan[0] + 47, pan[1]], D, .1), add([pan[0] + 47, pan[1]], D, .82), add([pan[0] + 5, pan[1]], D, .82)].map(pt).join('L') + 'Z');
+  mk('path', 'lm-pan', app).setAttribute('d', 'M' + pt(pan) + 'H' + f(pan[0] + 52) + 'V' + f(pan[1] + 12) + 'Q' + f(pan[0] + 52) + ' ' + f(pan[1] + 18) + ' ' + f(pan[0] + 46) + ' ' + f(pan[1] + 18) + 'H' + f(pan[0] + 6) + 'Q' + pt(add(pan, [0, 18], 1)) + ' ' + pt(add(pan, [0, 12], 1)) + 'Z');
+  var appRoll = Roller(AP, RA, app);
+  app.appendChild($('lmMark'));
+  var nipB = Roller(NB, RN);
+  var web1 = Web(), web2 = Web();
+  var rollW = Roll('lam', 5, $('lmClipWPath'));
+  Laminate();
+  var nipT = Roller(NT, RN);
+
+  /* ------------------------------------------------------------ The card */
+  var PILL = { spec: ['On spec', 76], linked: ['Linked', 66], done: ['Done, on spec', 106] }, pillNow = '';
+  function pill(k){
+    if (pillNow === k) return;
+    pillNow = k;
+    var w = PILL[k][1];
+    statusEl.textContent = PILL[k][0];
+    pillEl.setAttribute('x', 318 - w);
+    pillEl.setAttribute('width', w);
+    statusEl.setAttribute('x', 318 - w/2);
+    obj.classList.toggle('linked', k === 'linked');
+    obj.classList.toggle('signed', k === 'done');
+  }
+
+  /* ------------------------------------------------------------ State */
+  function fresh(){
+    return { run: 0, feed: 0, rw: 22, twist: 0, reg: 0, bub: 0, rip: 0, bow: 0, crease: 0, tele: 0, gloss: 0, app: 0, glue: 0, link: 0, bar: .16 };
+  }
+  var S = fresh(), lastInk = '';
+  function render(){
+    var rU1 = lerp(28, 24, S.feed), rU2 = lerp(27, 23, S.feed), run = S.run;
+    // The adhesive roller comes up from below and lifts the printed film onto itself.
+    var a = S.app, dy = a < .55 ? 64 - 72*(1 - Math.pow(1 - a/.55, 3)) : -8*(1 - sm(a, .55, 1));
+    app.style.display = a > 0 ? '' : 'none';
+    app.style.opacity = f3(clamp(a/.3, 0, 1));
+    app.setAttribute('transform', 'translate(0 ' + f(dy) + ')');
+    glue.style.opacity = appRoll.coat.style.opacity = f3(S.glue*.9);
+    // The card, and the cable down from it.
+    fillEl.setAttribute('width', f(272*S.bar));
+    cableEl.style.opacity = S.link > .005 ? 1 : 0;
+    cableEl.setAttribute('stroke-dasharray', f3(S.link) + ' 2');
+    // The clear film, off its roll and into the nip.
+    drawRoll(rollU2, U2, rU2, { spin: run/25 });
+    var cIn = [NT[0] - RN, NT[1]], tc = tangent(cIn, U2, rU2, -1);
+    clearWeb.face.setAttribute('d', quad(tc, cIn));
+    clearWeb.s1.setAttribute('d', 'M' + pt(add(tc, D, .3)) + 'L' + pt(add(cIn, D, .3)));
+    clearWeb.s2.setAttribute('d', 'M' + pt(add(tc, D, .68)) + 'L' + pt(add(cIn, D, .68)));
+    clearWeb.s1.style.strokeDashoffset = clearWeb.s2.style.strokeDashoffset = f(-run);
+    turn(nipB, run/RN);
+    turn(appRoll, run/RA);
+    // The printed film: straight into the nip, until the adhesive roller lifts it.
+    drawRoll(rollU1, U1, rU1, { spin: run/30 });
+    var tn = tangent(NIP, U1, rU1, -1), straight = [AP[0], tn[1] + (NIP[1] - tn[1])*(AP[0] - tn[0])/(NIP[0] - tn[0])];
+    var top = AP[1] - RA + dy, bend = a > 0 && top < straight[1] ? [AP[0], top] : straight;
+    var l1 = drawWeb(web1, tangent(bend, U1, rU1, -1), bend, run);
+    drawWeb(web2, bend, NIP, run - l1);
+    // The roll it all winds onto, and the laminate on its way there.
+    drawRoll(rollW, W, S.rw, { spin: run/45, tele: S.tele*56, twist: S.twist, reg: S.reg, crease: S.crease, bub: S.bub, gloss: S.gloss });
+    drawLam(NIP, tangent(NIP, W, S.rw, 1));
+    turn(nipT, -run/RN);
+    // The laminate's print, crooked and out of register while it's a mess.
+    var k = f(S.twist) + ' ' + f(S.reg);
+    if (k !== lastInk){
+      lastInk = k;
+      tiltEl.setAttribute('transform', 'rotate(' + f(S.twist*10) + ' 22.5 45)');
+      dotEl.setAttribute('transform', 'translate(' + f(S.reg*7) + ' ' + f(-S.reg*10) + ')');
+      barEl.setAttribute('transform', 'translate(' + f(-S.reg*5) + ' ' + f(S.reg*7) + ')');
+    }
+  }
+
+  // One frame loop, running only while a move plays.
+  var active = null, raf = 0, last = 0;
+  function tick(now){
+    var dt = Math.min(.05, (now - last)/1000 || .016), m = active;
+    last = now;
+    if (m){
+      m.t = reduce ? m.dur : Math.min(m.dur, m.t + dt);
+      m.fn(m.t);
+      render();
+    }
+    if (m && m === active && m.t >= m.dur){ active = null; m.done(); }
+    raf = active ? requestAnimationFrame(tick) : 0;
+  }
+  function play(dur, fn){
+    return new Promise(function(done){
+      active = { t: 0, dur: dur, fn: fn, done: done };
+      if (!raf){ last = performance.now(); raf = requestAnimationFrame(tick); }
+    });
+  }
+
+  // Run it with nothing to bond the films: the faults show up one after another, the roll telescopes, and it stops that way.
+  function mess(){
+    var r0 = S.run;
+    return play(3.4, function(t){
+      S.run = r0 + RUN*swing(seg(t, 0, 3.4));
+      S.feed = .5*sm(t, .1, 3.3);
+      S.rw = lerp(22, 58, sm(t, .2, 3.2));
+      S.twist = sm(t, .5, 1.7); S.reg = sm(t, .7, 1.9);
+      S.bub = sm(t, .9, 2.2);
+      S.rip = sm(t, 1.1, 2.5); S.bow = sm(t, 1.3, 2.7);
+      S.crease = sm(t, 1.4, 2.8);
+      S.tele = sm(t, 1.2, 3.2);
+      S.bar = lerp(.16, .62, sm(t, .3, 3.1));
+    });
+  }
+  // In goes the adhesive, wearing the mark, and the cable to the card joins.
+  function dose(){
+    return play(1.9, function(t){
+      S.app = seg(t, 0, 1);
+      S.glue = sm(t, .8, 1.3);
+      S.link = sm(t, 1, 1.6);
+      obj.classList.toggle('dosed', t >= .62);
+      obj.classList.toggle('joined', t >= 1.6);
+      pill(t >= 1.25 ? 'linked' : 'spec');
+    });
+  }
+  // Run it again, bonded: the faults flatten out, the print straightens, the cone pulls back in, and it shines.
+  function clean(){
+    var r0 = S.run;
+    return play(3.6, function(t){
+      S.run = r0 + RUN*swing(seg(t, 0, 3.6));
+      S.feed = .5 + .5*sm(t, 0, 3.5);
+      S.rw = lerp(58, 62, sm(t, .2, 3.4));
+      S.rip = 1 - sm(t, .3, 1.5); S.bow = 1 - sm(t, .2, 1.4);
+      S.bub = 1 - sm(t, .5, 1.9);
+      S.crease = 1 - sm(t, .4, 1.8);
+      S.twist = 1 - sm(t, .7, 2.1); S.reg = 1 - sm(t, .8, 2.2);
+      S.tele = 1 - sm(t, .4, 2.5);
+      S.gloss = sm(t, 1.9, 3.2);
+      S.bar = lerp(.62, 1, sm(t, .5, 3.1));
+      pill(t >= 3.2 ? 'done' : 'linked');
+    });
+  }
+  // Start over: an idle laminator, the cable broken, the card On spec, at once.
+  function restore(){
+    active = null;
+    obj.classList.add('snap');
+    obj.classList.remove('dosed', 'joined', 'is-done');
+    S = fresh();
+    pill('spec');
+    render();
+    obj.getBoundingClientRect();
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ obj.classList.remove('snap'); }); });
+  }
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The spec: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says you’re running.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The film: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really on the laminator, on Excel, whiteboards and phones.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.lam',
+    ops: {
+      mess: ['Your operations, today', 'Laminated together, still not linked. Wrinkled, crooked, telescoped, and it stays that way.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same films, same mess. Now there’s an adhesive in it.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the laminator does the same as the button.
+  obj.addEventListener('click', function(){ if (story.phase() !== 'done' && !story.busy()) story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  pill('spec');
+  render();
+})();
 </script>
 <script>
 window.STAGE = {
