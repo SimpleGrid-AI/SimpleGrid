@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A bag line under an order screen, with no link between them, beside the words: {{first}}, Aargus has been making plastic bags in America since 1959.">
+<meta property="og:image:alt" content="A bag machine under an order screen, with the cable between them broken, beside the words: {{first}}, Aargus has been making plastic bags in America since 1959.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{first}}, make the bags.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes plastic bags for a living.">
@@ -39,9 +39,148 @@
 }
 .hero,.hero-wipe{--hi:#E04848}
 .hero[data-theme=b],.hero-wipe[data-theme=b]{--hi:#FFE3E3}
-.line{--sku-a:#B62B2B;--sku-b:#E9E9E9;--sku-c:#5B8DB8}
-
-<!--#include line.css-->
+/* ------------------------------------------------------------- The bag line
+   For Aargus. The order on the screen is the ERP, the bag machine under it is the floor, and the
+   cable between them is broken. The order says red bags with handles; the roll on the machine is
+   clear. The machine is near-black with a light rim, so it reads on the dark field and on the red
+   one; whatever is red sits in front of something dark, so it never melts into the red field. */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.bagline{
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+  --mach:#323232;--mach-dk:#232323;--rim:rgba(255,255,255,.2);--steel:#CFCFCF;--steel-dk:#8E8E8E;
+  --film:rgba(214,232,246,.2);--film-edge:rgba(255,255,255,.88);
+  --bag:var(--accent);--bag-lit:#D24A4A;--bag-side:#952323;--bag-line:#5C1313;
+  --blue:#3C7DC2;--blue-side:#2A5C91;--core:#B8915F;
+}
+.hero[data-story$=ing] .bagline,.bagline.is-done{cursor:default}
+.bagline svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bl-floor{fill:none;stroke:rgba(255,255,255,.22);stroke-width:2}
+.bl-mach{fill:var(--mach);stroke:var(--rim);stroke-width:2}
+.bl-body{fill:var(--mach-dk);stroke:var(--rim);stroke-width:2}
+.bl-hi{fill:none;stroke:rgba(255,255,255,.2);stroke-width:2;stroke-linecap:round}
+/* The roll sits on a black flange, so a red roll still reads once the field turns red. */
+.bl-flange{fill:var(--mach-dk);stroke:var(--rim);stroke-width:2}
+.bl-film{fill:var(--film);stroke:var(--film-edge);stroke-width:2.5}
+.bl-ring{fill:none;stroke:rgba(255,255,255,.42);stroke-width:1.6}
+.bl-shine{fill:none;stroke:rgba(255,255,255,.7);stroke-width:3;stroke-linecap:round}
+.bl-core{fill:var(--core)}
+.bl-hub{fill:#1A1A1A}
+.bl-notch{fill:none;stroke:#6E5232;stroke-width:2.4;stroke-linecap:round}
+.bl-roll,.bl-spin{transform-box:view-box;transform-origin:72px 432px}
+.bl-roll-red{opacity:0}
+.bl-roll-red .bl-film{fill:var(--accent);stroke:#E35A5A}
+.bl-roll-red .bl-ring{stroke:rgba(0,0,0,.28)}
+.bl-roll-red .bl-shine{stroke:rgba(255,255,255,.45)}
+.bagline.running .bl-spin{animation:bl-spin .9s linear infinite}
+@keyframes bl-spin{to{transform:rotate(360deg)}}
+/* The film, off the roll and into the head. A dark line runs under it for the red field. */
+.bl-web-under{fill:none;stroke:var(--mach-dk);stroke-width:8;stroke-linejoin:round}
+.bl-web{fill:none;stroke:var(--film-edge);stroke-width:3.5;stroke-linejoin:round;transition:opacity .3s}
+.bl-web-red{stroke:var(--accent);stroke-width:4}
+.bagline.red-film .bl-web:not(.bl-web-red){opacity:0}
+.bl-web-run{fill:none;stroke:#fff;stroke-width:3.5;stroke-dasharray:2 13;stroke-linecap:round;opacity:0}
+.bagline.running .bl-web-run{opacity:.9;animation:bl-feed .35s linear infinite}
+@keyframes bl-feed{to{stroke-dashoffset:-15}}
+.bl-idler{fill:var(--steel);stroke:var(--steel-dk);stroke-width:2}
+/* The head: the sealer and the cutter, with the count on its face. */
+.bl-lcd{fill:#0A0A0A;stroke:rgba(255,255,255,.14);stroke-width:1.5}
+.bl-count{fill:#3DDC84;font:600 14px/1 var(--mono)}
+.bagline.short .bl-count{fill:#FF5A4F}
+.bl-window{fill:#0C0C0C;stroke:rgba(255,255,255,.14);stroke-width:1.5}
+.bl-web-in{fill:none;stroke:var(--film-edge);stroke-width:3}
+.bagline.red-film .bl-web-in{stroke:var(--accent)}
+.bl-jaw-hi,.bl-jaw-lo{fill:#7C7C7C}
+.bl-heat{fill:#4A2418}
+.bl-jaw{transform-box:view-box;transform-origin:0 0}
+.bagline.running .bl-jaw{animation:bl-press .46s ease-in-out infinite}
+.bagline.running .bl-heat{animation:bl-heat .46s ease-in-out infinite}
+.bagline.running:not(.linked) .bl-jaw{animation-name:bl-slam;animation-duration:.62s}
+@keyframes bl-press{50%{transform:translateY(9px)}}
+@keyframes bl-slam{30%{transform:translateY(9px) rotate(2deg)}45%{transform:translateY(3px)}60%{transform:translateY(9px) rotate(-2deg)}}
+@keyframes bl-heat{50%{fill:#FF6B2C}}
+.bl-btn-go{fill:#1F9D57}
+.bl-btn-stop{fill:#C9302C}
+.bl-slot{fill:#0A0A0A}
+.bl-lamp{fill:#4A4A4A;stroke:var(--rim);stroke-width:1.5;transition:fill .2s}
+.bagline.running .bl-lamp{fill:#22B86A}
+.bagline.jammed .bl-lamp{fill:#E5322F;animation:bl-blink .55s steps(1) infinite}
+@keyframes bl-blink{50%{fill:#5B1F1F}}
+.bagline.linked .bl-lamp{fill:#F4B400}
+.bagline.linked.running .bl-lamp,.bagline.is-done .bl-lamp{fill:#22B86A}
+/* The stacking table, and what comes off the machine. */
+.bl-leg{fill:#3A3A3A;stroke:var(--rim);stroke-width:1.5}
+.bl-rail{fill:none;stroke:#5A5A5A;stroke-width:4;stroke-linecap:round}
+.bl-table-top{fill:var(--steel)}
+.bl-table-edge{fill:var(--steel-dk)}
+.bl-body{stroke-width:2.5;stroke-linejoin:round}
+.bl-bag .bl-tee,.bl-bag[data-kind=red] .bl-plain{display:none}
+.bl-bag[data-kind=red] .bl-tee{display:inline}
+.bl-seal{fill:none;stroke:rgba(0,0,0,.22);stroke-width:2.5}
+.bl-fold{fill:none;stroke:rgba(0,0,0,.2);stroke-width:2}
+.bl-sheen{fill:none;stroke:rgba(255,255,255,.5);stroke-width:3.5;stroke-linecap:round}
+.bl-bag[data-kind=clear] .bl-body{fill:var(--film);stroke:var(--film-edge)}
+.bl-bag[data-kind=clear] .bl-side{fill:rgba(255,255,255,.3)}
+.bl-bag[data-kind=clear] .bl-side-lt{fill:rgba(255,255,255,.75)}
+.bl-bag[data-kind=clear] .bl-side-dk{fill:rgba(255,255,255,.15)}
+.bl-bag[data-kind=clear] .bl-seal{stroke:rgba(255,255,255,.55)}
+.bl-bag[data-kind=clear] .bl-sheen{stroke:rgba(255,255,255,.75)}
+.bl-bag[data-kind=blue] .bl-body{fill:var(--blue);stroke:rgba(0,0,0,.25)}
+.bl-bag[data-kind=blue] .bl-side{fill:var(--blue-side)}
+.bl-bag[data-kind=blue] .bl-side-lt{fill:#5B97D3}
+.bl-bag[data-kind=blue] .bl-side-dk{fill:#1C3F66}
+.bl-bag[data-kind=red] .bl-body{fill:var(--bag);stroke:rgba(0,0,0,.3)}
+.bl-bag[data-kind=red] .bl-side{fill:var(--bag-side)}
+.bl-bag[data-kind=red] .bl-side-lt{fill:var(--bag-lit)}
+.bl-bag[data-kind=red] .bl-side-dk{fill:var(--bag-line)}
+/* The scrap: film that tangles round the machine and onto the floor. The script draws it on. */
+.bl-scrap{fill:none;stroke:rgba(225,238,248,.28);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.bl-scrap-hi{fill:none;stroke:rgba(255,255,255,.85);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+/* The band round the clean stack, and its label. */
+.bl-band{fill:#F5F5F5;opacity:0;transform-box:fill-box;transform-origin:0 50%}
+.bl-tag{--sg-bg:#1D1D1D;--sg-ink:#fff}
+.bagline.is-done .bl-tag{opacity:1;transform:none}
+/* The link: a cable from the order to the machine, broken until SimpleGrid's eye joins it. */
+.bl-cable{fill:none;stroke:#6B6B6B;stroke-width:6;stroke-linecap:round}
+.bl-plug{fill:#4A4A4A;stroke:var(--rim);stroke-width:1.5;transition:opacity .2s}
+.bl-mount{fill:#4A4A4A;stroke:var(--rim);stroke-width:1.5}
+.bagline.linked .bl-plug{opacity:0}
+.bl-cable-on{opacity:0;transition:opacity .3s .25s}
+.bagline.linked .bl-cable-on{opacity:1}
+.bl-cable-dk{fill:none;stroke:#141414;stroke-width:8;stroke-linecap:round}
+.bl-cable-flow{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;stroke-dasharray:6 6}
+.bagline.linked .bl-cable-flow{animation:bl-flow .6s linear infinite}
+@keyframes bl-flow{to{stroke-dashoffset:-12}}
+.bl-eye-ring{fill:#141414;stroke:rgba(255,255,255,.88);stroke-width:2.6}
+.bl-mark{--sg-bg:#fff;--sg-ink:#1D1D1D;transform:translateY(-30px) scale(.86)}
+.bagline.linked .bl-mark{opacity:1;transform:none}
+/* The order: your ERP, white and calm. */
+.bl-bezel{fill:#2B2B2B;stroke:var(--rim);stroke-width:2}
+.bl-glass{fill:#fff}
+.bl-order{fill:#1D1D1D;font:800 19px/1 var(--body);letter-spacing:.02em}
+.bl-spec{fill:#575757;font:600 13.5px/1 var(--body)}
+.bl-qty{fill:#1D1D1D;font:800 24px/1 var(--body)}
+.bl-icon{fill:var(--accent)}
+.bl-pill{fill:#DFF5EA;transition:fill .3s}
+.bl-pill-t{fill:#0A6B47;font:800 13px/1 var(--body);transition:fill .3s}
+.bagline.linked .bl-pill{fill:var(--accent)}
+.bagline.linked .bl-pill-t{fill:#fff}
+.bagline.ontime .bl-pill{fill:#DFF5EA}
+.bagline.ontime .bl-pill-t{fill:#0A6B47}
+.bl-pill-g{transform-box:fill-box;transform-origin:center}
+.bagline.smug .bl-pill-g{animation:bl-smug .8s ease-in-out .5s 3}
+@keyframes bl-smug{50%{transform:scale(1.1)}}
+.bagline:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:2.5%}
+.callout-gap{top:calc(37% - 15px)}
+.callout-bottom{top:47%}
+.callout-top h3 i{background:#fff}
+.callout-bottom h3 i{background:rgba(214,232,246,.35)}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.48)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->
@@ -67,18 +206,118 @@
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
-<!--#include line.svg-->
+        <div class="bagline hero-obj" id="bagline" role="img" aria-label="An order screen for 10,000 red retail bags with handles, above a bag machine with a roll of clear film on it. The cable between them is broken.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <path class="bl-floor" d="M0 528H360"/>
+
+            <!-- scrap that ends up behind the machine: the script draws it on -->
+            <g data-at="1250" data-ms="900">
+              <path class="bl-scrap" transform="translate(1.6 -1.6)" d="M200 252C204 228 232 222 246 236C258 248 276 224 292 232C306 240 302 262 292 278"/>
+              <path class="bl-scrap-hi" d="M200 252C204 228 232 222 246 236C258 248 276 224 292 232C306 240 302 262 292 278"/>
+              <path class="bl-scrap-hi" transform="translate(3.2 -3.2)" d="M200 252C204 228 232 222 246 236C258 248 276 224 292 232C306 240 302 262 292 278"/>
+            </g>
+
+            <!-- the unwind: a black stand and flange, and the roll of film on it -->
+            <path class="bl-mach" d="M60 432H84L112 528H32Z"/>
+            <circle class="bl-flange" cx="72" cy="432" r="57"/>
+            <g class="bl-roll" id="blRollClear">
+              <circle class="bl-film" cx="72" cy="432" r="50"/>
+              <circle class="bl-ring" cx="72" cy="432" r="41"/>
+              <circle class="bl-ring" cx="72" cy="432" r="32"/>
+              <path class="bl-shine" d="M38 405A43 43 0 0 1 70 389"/>
+              <g class="bl-spin"><circle class="bl-core" cx="72" cy="432" r="16"/><circle class="bl-hub" cx="72" cy="432" r="6"/><path class="bl-notch" d="M72 417V422M85 439.5L80.7 437M59 439.5L63.3 437"/></g>
+            </g>
+            <g class="bl-roll bl-roll-red" id="blRollRed">
+              <circle class="bl-film" cx="72" cy="432" r="50"/>
+              <circle class="bl-ring" cx="72" cy="432" r="41"/>
+              <circle class="bl-ring" cx="72" cy="432" r="32"/>
+              <path class="bl-shine" d="M38 405A43 43 0 0 1 70 389"/>
+              <g class="bl-spin"><circle class="bl-core" cx="72" cy="432" r="16"/><circle class="bl-hub" cx="72" cy="432" r="6"/><path class="bl-notch" d="M72 417V422M85 439.5L80.7 437M59 439.5L63.3 437"/></g>
+            </g>
+
+            <!-- the film: up off the roll, over the idler and into the head -->
+            <rect class="bl-mach" x="131" y="283" width="18" height="8" rx="2"/>
+            <circle class="bl-idler" cx="131" cy="287" r="9"/>
+            <path class="bl-web-under" d="M122 432V287A9 9 0 0 1 131 278H150"/>
+            <path class="bl-web" d="M122 432V287A9 9 0 0 1 131 278H150"/>
+            <path class="bl-web bl-web-red" id="blWebRed" d="M122 432V287A9 9 0 0 1 131 278H150"/>
+            <path class="bl-web-run" d="M122 432V287A9 9 0 0 1 131 278H150"/>
+
+            <!-- the machine's frame, behind where the bags drop -->
+            <rect class="bl-body" x="160" y="322" width="156" height="206" rx="6"/>
+            <path class="bl-rail" d="M206 338V462M310 338V462"/>
+            <!-- the stacking table at the outfeed -->
+            <rect class="bl-leg" x="197" y="484" width="9" height="44"/>
+            <rect class="bl-leg" x="312" y="484" width="9" height="44"/>
+            <rect class="bl-table-top" x="188" y="462" width="142" height="14" rx="2"/>
+            <rect class="bl-table-edge" x="188" y="475" width="142" height="10" rx="2"/>
+
+            <!-- the bags: the script makes them, under the head, so they come out of its slot -->
+            <g id="blBags"></g>
+
+            <!-- the band round the clean stack, and the label on it -->
+            <rect class="bl-band" id="blBand" x="212" y="441" width="92" height="12"/>
+            <g transform="translate(258 447) scale(.42)"><g class="bl-tag sg-pop"><!--#include sg-tag.svg--></g></g>
+
+            <!-- scrap in front of the machine and on the floor -->
+            <g data-at="350" data-ms="1300">
+              <path class="bl-scrap" transform="translate(1.6 -1.6)" d="M300 338C318 352 340 344 338 326C336 306 308 314 316 334C326 360 352 372 344 400C336 426 312 420 322 444C332 468 352 474 344 500C338 520 312 518 320 532"/>
+              <path class="bl-scrap-hi" d="M300 338C318 352 340 344 338 326C336 306 308 314 316 334C326 360 352 372 344 400C336 426 312 420 322 444C332 468 352 474 344 500C338 520 312 518 320 532"/>
+              <path class="bl-scrap-hi" transform="translate(3.2 -3.2)" d="M300 338C318 352 340 344 338 326C336 306 308 314 316 334C326 360 352 372 344 400C336 426 312 420 322 444C332 468 352 474 344 500C338 520 312 518 320 532"/>
+            </g>
+            <g data-at="650" data-ms="1300">
+              <path class="bl-scrap" transform="translate(1.6 -1.6)" d="M150 300C136 312 116 304 118 288C120 272 144 274 142 290C140 310 112 318 104 340C96 362 132 368 126 392C120 420 140 440 132 466C126 488 150 500 140 520C134 534 116 530 118 520"/>
+              <path class="bl-scrap-hi" d="M150 300C136 312 116 304 118 288C120 272 144 274 142 290C140 310 112 318 104 340C96 362 132 368 126 392C120 420 140 440 132 466C126 488 150 500 140 520C134 534 116 530 118 520"/>
+              <path class="bl-scrap-hi" transform="translate(3.2 -3.2)" d="M150 300C136 312 116 304 118 288C120 272 144 274 142 290C140 310 112 318 104 340C96 362 132 368 126 392C120 420 140 440 132 466C126 488 150 500 140 520C134 534 116 530 118 520"/>
+            </g>
+            <g data-at="950" data-ms="1100">
+              <path class="bl-scrap" transform="translate(1.6 -1.6)" d="M136 528C128 508 160 500 168 516C176 532 150 542 148 526C146 510 182 506 188 524C192 540 166 548 162 536"/>
+              <path class="bl-scrap-hi" d="M136 528C128 508 160 500 168 516C176 532 150 542 148 526C146 510 182 506 188 524C192 540 166 548 162 536"/>
+              <path class="bl-scrap-hi" transform="translate(3.2 -3.2)" d="M136 528C128 508 160 500 168 516C176 532 150 542 148 526C146 510 182 506 188 524C192 540 166 548 162 536"/>
+            </g>
+
+            <!-- the head: the sealer and the cutter -->
+            <rect class="bl-mach" x="146" y="236" width="180" height="100" rx="10"/>
+            <path class="bl-hi" d="M157 239H315"/>
+            <rect class="bl-lcd" x="158" y="252" width="58" height="26" rx="4"/>
+            <text class="bl-count" id="blCount" x="209" y="270" text-anchor="end">0</text>
+            <circle class="bl-btn-go" cx="168" cy="298" r="5"/>
+            <circle class="bl-btn-stop" cx="186" cy="298" r="5"/>
+            <rect class="bl-window" x="224" y="250" width="90" height="52" rx="6"/>
+            <path class="bl-web-in" d="M224 278H314"/>
+            <rect class="bl-jaw-lo" x="232" y="283" width="74" height="8" rx="2"/>
+            <g class="bl-jaw"><rect class="bl-jaw-hi" x="232" y="258" width="74" height="10" rx="2"/><rect class="bl-heat" x="236" y="266" width="66" height="4" rx="2"/></g>
+            <rect class="bl-slot" x="206" y="328" width="104" height="8" rx="2"/>
+            <path class="bl-lamp" d="M302 236A10 10 0 0 1 322 236Z"/>
+
+            <!-- the link: a cable from the order down to the machine, broken -->
+            <path class="bl-cable" d="M180 152V183"/>
+            <rect class="bl-plug" x="173" y="181" width="14" height="12" rx="2"/>
+            <rect class="bl-mach" x="177" y="226" width="6" height="10"/>
+            <rect class="bl-mount" x="170" y="222" width="20" height="5" rx="2"/>
+            <!-- SimpleGrid: the eye that joins it, and reads the order -->
+            <g class="bl-cable-on"><path class="bl-cable-dk" d="M180 152V236"/><path class="bl-cable-flow" d="M180 152V236"/></g>
+            <g transform="translate(180 209) scale(.95)"><g class="bl-mark sg-pop"><circle class="bl-eye-ring" r="25"/><!--#include sg-badge.svg--></g></g>
+
+            <!-- the order: your ERP -->
+            <rect class="bl-bezel" x="22" y="14" width="316" height="138" rx="14"/>
+            <rect class="bl-glass" x="32" y="24" width="296" height="118" rx="8"/>
+            <text class="bl-order" x="48" y="55">ORDER 4417</text>
+            <g class="bl-pill-g"><rect class="bl-pill" x="212" y="36" width="102" height="26" rx="13"/><text class="bl-pill-t" id="blPill" x="263" y="53.5" text-anchor="middle">On plan</text></g>
+            <path class="bl-icon" transform="translate(68 97) scale(.44)" d="M-46 50V-46Q-46-50-42-50H-28Q-24-50-24-46V-36C-24-22-14-16 0-16C14-16 24-22 24-36V-46Q24-50 28-50H42Q46-50 46-46V50Z"/>
+            <text class="bl-spec" x="102" y="92">Retail bags · red · handles</text>
+            <text class="bl-qty" x="102" y="121">10,000</text>
+          </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The order: your ERP</span></h3>
+            <p id="topText">What the system says you’re making.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
             <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <p id="bottomText">What’s really coming off it, on Excel, whiteboards and phones.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -86,10 +325,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Run it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The order is your ERP, the bag machine is your floor, and nothing links them. Run it, or tap the machine.</p>
       </div>
     </div>
   </div>
@@ -154,7 +393,232 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+/* ------------------------------------------------------------- The bag line
+   For Aargus. The order on the screen is the ERP: red retail bags with
+   handles, 10,000 of them. The bag machine under it is the floor, and the
+   cable between them is broken, so the machine has clear film on it. Run it
+   and that's what comes off: clear bags with no handles, a few the wrong
+   color, scrap tangled round the machine and over the floor, and a short
+   stack, while the screen still says On plan. That mess stays.
+   SimpleGrid is the eye that joins the cable and reads color, handles and
+   count straight from the order. Run it again and the mess goes back into
+   the machine and comes off right: red film, handles, and a neat stack,
+   counted to the order and banded, with the label on the band. */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('bagline'), bagsG = $('blBags'), pill = $('blPill'), count = $('blCount');
+  var rollClear = $('blRollClear'), rollRed = $('blRollRed'), webRed = $('blWebRed'), band = $('blBand');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Run it to see your operations', caption: 'The order is your ERP, the bag machine is your floor, and nothing links them. Run it, or tap the machine.' },
+    messing:  { btn: 'Running…', caption: 'Running it the usual way: the order in one place, the floor in another.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. Clear bags with no handles, scrap all over the floor and a short stack, and the screen still says On plan. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Linking…', caption: 'An eye goes on the line, and the cable joins up. That’s SimpleGrid.' },
+    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the line reads color, handles and count straight from the order. Now run it again.' },
+    cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: red bags with handles, 10,000 of them, stacked and banded. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The order: your ERP', 'What the system says you’re making.', 'The line: your floor', 'What’s really coming off it, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The bag machine, run with nothing linking it: clear bags with no handles and a few blue ones on the table and the floor, film scrap tangled round the machine, a short stack, and the order screen still saying On plan.',
+    dosed: 'The same mess, now with a SimpleGrid eye joining the cable from the order screen to the machine, and the screen saying Linked.',
+    done: 'A neat, banded stack of red bags with handles, labelled SimpleGrid, the machine’s count at 10,000, and the order screen saying Done, on time.'
+  };
+
+  /* ------------------------------------------------------------ The bags
+     One bag, face on, centred on 0,0. Lying flat it's squashed to half height
+     (s .5), and the strip under it is its edge, so a pile of them shows a side. */
+  var TEE = 'M-46 50V-46Q-46-50-42-50H-28Q-24-50-24-46V-36C-24-22-14-16 0-16C14-16 24-22 24-36V-46Q24-50 28-50H42Q46-50 46-46V50Z';
+  var BAG = '<rect class="bl-side" x="-46" y="50" width="92" height="8"/><rect class="bl-side-lt" x="-46" y="50" width="92" height="3"/><rect class="bl-side-dk" x="-46" y="56" width="92" height="2"/>' +
+    '<rect class="bl-body bl-plain" x="-46" y="-50" width="92" height="100" rx="3"/>' +
+    '<g class="bl-tee"><path class="bl-body" d="' + TEE + '"/><path class="bl-fold" d="M-35-44V38M35-44V38"/></g>' +
+    '<path class="bl-seal" d="M-46 40H46"/><path class="bl-sheen" d="M-26 0L-14-12M-26 22L-6 2"/>';
+  var KINDS = ['clear', 'clear', 'blue', 'clear', 'clear', 'blue', 'clear'];   // the first run: what the floor had on hand
+  var N = 12;                                                               // the second run: one neat stack
+  var SLOT = { x: 258, y: 300 };                                           // inside the head, above its slot
+  var EXIT = { x: 258, y: 352, s: .62 };
+  // Where the first run lands: a crooked pile on the table, one hanging off it, the rest on the floor.
+  var LAND = [
+    { x: 244, y: 452, t: -12 }, { x: 272, y: 446, t: 16 }, { x: 252, y: 439, t: -30 },
+    { x: 322, y: 468, r: 34, t: 6 }, { x: 314, y: 531, t: -26 }, { x: 196, y: 530, t: 50 }, { x: 130, y: 532, t: -18 }
+  ];
+  var stackY = function(k){ return 442 - 4*k; };
+
+  var bags = [];
+  for (var i = 0; i < N; i++){
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'bl-bag');
+    g.innerHTML = BAG;
+    bagsG.appendChild(g);
+    bags.push(g);
+  }
+  var f = function(v){ return Math.round(v*100)/100; };
+  // Always the same list of functions, so every move interpolates piece by piece.
+  function tf(p){
+    var k = p.k == null ? 1 : p.k, s = p.s == null ? .5 : p.s;
+    return 'translate(' + f(p.x) + 'px,' + f(p.y) + 'px) rotate(' + f(p.r || 0) + 'deg) scale(' + f(k) + ',' + f(k*s) + ') rotate(' + f(p.t || 0) + 'deg)';
+  }
+  // Every frame carries its own opacity, so nothing falls back to its resting style mid-move.
+  function kf(p, o, at, ease){
+    var k = { transform: tf(p), opacity: o == null ? 1 : o };
+    if (at != null) k.offset = at;
+    if (ease) k.easing = ease;
+    return k;
+  }
+  // The first run: out of the slot, tumbling, and down wherever it lands.
+  function fling(i){
+    var L = LAND[i], lift = 46 + (i % 3)*16, cx = (EXIT.x + L.x)/2, cy = Math.min(EXIT.y, L.y) - lift;
+    var spin = (L.x < EXIT.x ? -1 : 1)*(70 + i*12);
+    var frames = [kf(SLOT, 1, 0), kf(EXIT, 1, .16)];
+    for (var n = 1; n <= 7; n++){
+      var t = n/7, u = 1 - t;
+      frames.push(kf({
+        x: u*u*EXIT.x + 2*u*t*cx + t*t*L.x,
+        y: u*u*EXIT.y + 2*u*t*cy + t*t*L.y,
+        r: (L.r || 0)*t + spin*Math.sin(Math.PI*t),
+        s: .5 + .48*Math.sin(Math.PI*Math.min(1, t*1.15)) + .12*u,
+        t: (L.t || 0)*t
+      }, 1, .16 + .84*t));
+    }
+    return frames;
+  }
+  // The second run takes the first one back in.
+  function suck(i){
+    var L = LAND[i];
+    return [kf(L), kf({ x: (L.x + SLOT.x)/2, y: Math.min(L.y, 400) - 34, s: .85, r: (L.r || 0)*.4, t: (L.t || 0)*.4 }, 1, .45),
+            kf({ x: SLOT.x, y: 344, s: .5, k: .94 }, 1, .86), kf(SLOT, 0, 1)];
+  }
+  // ...and drops each bag square onto the stack.
+  function drop(k){
+    var y = stackY(k);
+    return [kf(SLOT, 1, 0, 'cubic-bezier(.5,0,1,.55)'), kf({ x: SLOT.x, y: y + 3, s: .46 }, 1, .74, 'ease-out'),
+            kf({ x: SLOT.x, y: y - 1.5, s: .52 }, 1, .87, 'ease-in-out'), kf({ x: SLOT.x, y: y }, 1, 1)];
+  }
+
+  /* ------------------------------------------------------------ Scrap
+     Each ribbon's group says when it starts and how long it takes to draw. */
+  var groups = [];
+  var scraps = [].map.call(obj.querySelectorAll('.bl-scrap,.bl-scrap-hi'), function(el){
+    var g = el.parentNode;
+    if (groups.indexOf(g) < 0) groups.push(g);
+    return { el: el, len: Math.ceil(el.getTotalLength()) + 12, at: +g.dataset.at, ms: +g.dataset.ms, n: groups.indexOf(g) };
+  });
+  var WEB = Math.ceil(webRed.getTotalLength()) + 12;
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], anims = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Kept, every one, so Start over can cancel even those a later move has replaced.
+  function animate(el, frames, ms, delay, easing){
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'linear', fill: 'both' });
+    anims.push(a);
+    return a.finished.catch(function(){});
+  }
+  var fmt = function(n){ return n.toLocaleString('en-US'); };
+  // The count on the machine's face runs up to `to` over ms.
+  function tally(to, ms){
+    var my = gen, t0 = 0;
+    if (reduce){ count.textContent = fmt(to); return; }
+    requestAnimationFrame(function step(now){
+      if (my !== gen) return;
+      if (!t0) t0 = now;
+      var t = Math.min(1, (now - t0)/ms);
+      count.textContent = fmt(Math.round(to*t/10)*10);
+      if (t < 1) requestAnimationFrame(step);
+    });
+  }
+  function drawScrap(s, on, ms, delay, easing){
+    return animate(s.el, [{ strokeDashoffset: on ? s.len : 0 }, { strokeDashoffset: on ? 0 : s.len }], ms, delay, easing);
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    anims.forEach(function(a){ a.cancel(); });
+    anims = [];
+    obj.classList.remove('running', 'smug', 'jammed', 'short', 'linked', 'red-film', 'ontime', 'is-done');
+    bags.forEach(function(g, i){ g.dataset.kind = KINDS[i] || 'red'; g.style.transform = tf(SLOT); g.style.opacity = 0; });
+    scraps.forEach(function(s){ s.el.style.strokeDasharray = s.len + ' ' + (s.len + 20); s.el.style.strokeDashoffset = s.len; });
+    webRed.style.strokeDasharray = WEB + ' ' + (WEB + 20);
+    webRed.style.strokeDashoffset = WEB;
+    pill.textContent = 'On plan';
+    count.textContent = '0';
+  }
+
+  // Run it unlinked: clear film, no handles, bags everywhere and scrap round the machine. The screen doesn't notice.
+  function mess(){
+    obj.classList.add('running', 'smug');
+    KINDS.forEach(function(kind, i){ animate(bags[i], fling(i), 760, 150 + i*230); });
+    scraps.forEach(function(s){ drawScrap(s, true, s.ms, s.at, 'cubic-bezier(.3,.55,.4,1)'); });
+    later(function(){ tally(6250, 1950); }, 200);
+    later(function(){ obj.classList.remove('running'); obj.classList.add('jammed', 'short'); }, 2250);
+    return wait(2400);
+  }
+  // SimpleGrid's eye goes on the line, and the cable joins up.
+  function dose(){
+    obj.classList.remove('jammed');
+    obj.classList.add('linked');
+    pill.textContent = 'Linked';
+    return wait(900);
+  }
+  // Run it linked: the mess goes back in, the right roll goes on, and a neat stack comes off, counted to the order.
+  function clean(){
+    obj.classList.add('running');
+    scraps.forEach(function(s){ drawScrap(s, false, 520, s.n*70, 'cubic-bezier(.5,0,.8,.4)'); });
+    KINDS.forEach(function(kind, i){ animate(bags[i], suck(i), 560, 60 + i*50); });
+    animate(rollClear, [{ transform: 'translateY(0px) scale(1)', opacity: 1 }, { transform: 'translateY(16px) scale(.82)', opacity: 0 }], 340, 420, 'ease-in');
+    animate(rollRed, [{ transform: 'translateY(-46px) scale(1)', opacity: 0 }, { transform: 'translateY(-46px) scale(1)', opacity: 1, offset: .25 }, { transform: 'translateY(0px) scale(1)', opacity: 1 }], 520, 640, 'cubic-bezier(.3,1.25,.5,1)');
+    later(function(){
+      obj.classList.add('red-film');
+      obj.classList.remove('short');
+      animate(webRed, [{ strokeDashoffset: WEB }, { strokeDashoffset: 0 }], 380, 0, 'ease-out');
+    }, 1000);
+    later(function(){ count.textContent = '0'; tally(10000, 1850); }, 1300);
+    bags.forEach(function(g, k){
+      later(function(){ g.dataset.kind = 'red'; animate(g, drop(k), 330); }, 1300 + k*140);
+    });
+    later(function(){
+      animate(band, [{ transform: 'scaleX(0)', opacity: 1 }, { transform: 'scaleX(1)', opacity: 1 }], 300, 0, 'ease-out');
+      pill.textContent = 'Done, on time';
+      obj.classList.add('ontime');
+      obj.classList.remove('running');
+    }, 3180);
+    return wait(3480);
+  }
+  function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
+  }
+
+  restore();
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.bagline',
+    ops: {
+      mess: ['Your operations, today', 'The machine ran without the order, and the screen still says On plan. Everyone’s working from a different version.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same machine, same mess. Now the order and the line are linked.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the machine does the same as the button, until the bags are done.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+})();
 </script>
 <script>
 window.STAGE = {

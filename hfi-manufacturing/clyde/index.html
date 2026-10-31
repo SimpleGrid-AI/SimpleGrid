@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/hfi-manufacturing/og-clyde.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A fabrication line under a job screen, with no link between them, beside the words: Clyde, HFI has been fabricating metal since 1966.">
+<meta property="og:image:alt" content="A job sheet on a screen above a laser bed and a press brake, with no link between them, beside the words: Clyde, HFI has been fabricating metal since 1966.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Clyde, run the job.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who fabricates metal for a living.">
@@ -210,73 +210,132 @@ h1 span{display:block;color:var(--hi)}
   --tint:#EAF4F7;--pale:#F7FBFC;--ink:#0F1E26;--alert:#D7263D;--marker:#DDFBF8;--h2-hi:#017DA7;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#C9D0D6;--sku-b:#017DA7;--sku-c:#37E9DD}
-
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
+/* ---------------------------------------------------------------- The job
+   For a sheet-metal fabricator. The job sheet on the screen is the ERP; the shop under it is the
+   floor: a fiber laser bed, a press brake and two carts, one of them for this job. The cable
+   between the screen and the floor is broken. SimpleGrid is the traveler that plugs it back
+   together and goes on every part. Steel, the laser's light and the alarm red are fixed colors;
+   everything else reads the page's palette. Every hf- class belongs to this hero. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --hf-ink:#0B1820;--hf-iron:#5B6873;--hf-slate:#7E8B96;--hf-plate:#CDD5DB;
+  --hf-hot:#FFF8E6;--hf-burn:#FF7A1A;--hf-spark:#FFC04D;--hf-red:#E5484D;--hf-ok:#1FB46B;--hf-warn:#F2B43C;
+}
+.hfi{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .hfi,.hfi.is-done{cursor:default}
+.hfi svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hfi:not(.in-view) *{animation-play-state:paused!important}
+/* Brushed steel, one ramp for everything the shop is built from. */
+.hf-s0{stop-color:#F3F6F8}
+.hf-s1{stop-color:#CBD3D9}
+.hf-s2{stop-color:#A3AEB7}
+.hf-m0{stop-color:#C3CCD3}
+.hf-m1{stop-color:#97A3AD}
+.hf-line{stroke:var(--hf-ink);stroke-width:2.5;stroke-linejoin:round}
+.hf-floor{fill:none;stroke:rgba(0,0,0,.24);stroke-width:2}
+/* The job sheet: what the ERP says. */
+.hf-bezel{fill:url(#hfSteel)}
+.hf-glass{fill:var(--brand-deep)}
+.hf-kick{fill:rgba(255,255,255,.58);font:600 12px/1 var(--mono);letter-spacing:.16em}
+.hf-job{fill:#fff;font:800 37px/1 var(--body);letter-spacing:-.01em}
+.hf-spec{fill:rgba(255,255,255,.8);font:600 15px/1 var(--body)}
+.hf-pill{fill:#D5F5E3}
+.hf-pill-t{fill:#08663F;font:800 18px/1 var(--body)}
+.hf-status[data-s=linked] .hf-pill{fill:var(--accent)}
+.hf-status[data-s=linked] .hf-pill-t{fill:var(--brand)}
+.hf-status[data-s=done] .hf-pill{fill:var(--hf-ok)}
+.hf-status[data-s=done] .hf-pill-t{fill:#fff}
+.hf-bar{fill:rgba(255,255,255,.16)}
+.hf-fill{fill:var(--hf-ok)}
+.hf-fill.warn{fill:var(--hf-warn)}
+/* The cable between them: broken until SimpleGrid plugs into it. */
+.hf-stub{fill:none;stroke:var(--hf-iron);stroke-width:6;stroke-linecap:round}
+.hf-plug{fill:var(--hf-slate)}
+.hf-lit,.hf-flow{fill:none;stroke-linecap:round;opacity:0;transition:opacity .3s}
+.hf-lit{stroke:var(--accent);stroke-width:7}
+.hf-flow{stroke:#fff;stroke-width:2.4;stroke-dasharray:4 8}
+.hfi.linked .hf-lit{opacity:1}
+.hfi.linked .hf-flow{opacity:.85;animation:hf-flow .7s linear infinite}
+@keyframes hf-flow{to{stroke-dashoffset:-12}}
+/* The fiber laser: a slatted bed, a steel sheet, and the gantry that carries the head. */
+.hf-rail,.hf-foot,.hf-truck{fill:var(--hf-iron)}
+.hf-jbox{fill:var(--hf-slate)}
+.hf-bed{fill:url(#hfSlats)}
+.hf-slat-bg{fill:#22313B}
+.hf-slat{fill:#43535E}
+.hf-sheet{fill:url(#hfSheet)}
+.hf-plan{fill:none;stroke:rgba(11,24,32,.42);stroke-width:1.4;stroke-dasharray:5 4}
+.hf-hole{fill:url(#hfSlats);stroke:var(--hf-ink);stroke-width:1.5;opacity:0}
+.hf-kerf{fill:none;stroke:#26343D;stroke-width:1.6;opacity:0}
+.hf-front{fill:url(#hfSteel)}
+.hf-stripe{fill:var(--brand)}
+.hf-beam{fill:url(#hfSteelX)}
+.hf-head{fill:var(--brand)}
+.hf-burn,.hf-cut{fill:none;stroke-linecap:round;stroke-dasharray:192;opacity:0}
+.hf-burn{stroke:var(--hf-burn);stroke-width:5.5}
+.hf-cut{stroke:var(--hf-hot);stroke-width:1.8}
+.hf-glow{fill:var(--hf-burn);opacity:0}
+.hf-spot{fill:#fff;opacity:0}
+.hf-sparks{fill:none;stroke:var(--hf-spark);stroke-width:1.8;stroke-linecap:round;opacity:0}
+.hfi.lasing .hf-glow{opacity:.45}
+.hfi.lasing .hf-spot,.hfi.lasing .hf-sparks{opacity:1}
+/* The press brake: the ram comes down, the punch bends whatever is on the die. */
+.hf-base,.hf-cyl{fill:var(--hf-iron)}
+.hf-housing{fill:url(#hfSteelX)}
+.hf-crown,.hf-lower,.hf-ram{fill:url(#hfSteel)}
+.hf-rod{fill:#C4CDD3;stroke:var(--hf-ink);stroke-width:1.5}
+.hf-punch,.hf-die{fill:var(--hf-slate)}
+.hf-plate-n{fill:var(--brand)}
+.hf-lamp{fill:#46535D;stroke:var(--hf-ink);stroke-width:2}
+.hfi.messy .hf-lamp{fill:var(--hf-red);animation:hf-blink .6s steps(1) infinite}
+@keyframes hf-blink{50%{fill:#5A2024}}
+.hfi.is-done .hf-lamp{fill:var(--hf-ok);animation:none}
+/* The carts: one for another job, one for this one. */
+.hf-handle,.hf-leg{fill:var(--hf-slate)}
+.hf-deck{fill:url(#hfSteel)}
+.hf-band{fill:#8B97A1}
+.hf-band-t{fill:var(--hf-ink);font:800 12.5px/1 var(--body);letter-spacing:.08em}
+.hf-wheel{fill:#1A252C}
+.hf-hub{fill:#AEB9C1}
+/* The parts. On the bed they're plates seen from above; off it, edge-on, so you can see the bend. */
+.hf-plate rect:first-child{fill:var(--hf-plate);stroke:var(--hf-ink);stroke-width:1.8;vector-effect:non-scaling-stroke}
+.hf-plate circle,.hf-slot{fill:#33424C}
+.hf-rev{fill:var(--hf-red);display:none}
+.hf-part.is-wrong .hf-rev{display:inline}
+.hf-edge,.hf-face{fill:none;stroke-linecap:square;stroke-linejoin:miter}
+.hf-edge{stroke:var(--hf-ink);stroke-width:9.5}
+.hf-face{stroke:#D5DCE1;stroke-width:5}
+.hf-part.is-wrong .hf-face{stroke:#F4A3A3}
+.hf-dot{fill:var(--accent);stroke:var(--hf-ink);stroke-width:2;opacity:0;transform:scale(.2);transform-box:fill-box;transform-origin:center;transition:opacity .2s,transform .4s cubic-bezier(.2,.9,.3,1.5)}
+.hf-part.tagged .hf-dot{opacity:1;transform:none}
+.hf-x{opacity:0;transition:opacity .2s}
+.hf-x circle{fill:var(--hf-red);stroke:#fff;stroke-width:2.5}
+.hf-x path{fill:none;stroke:#fff;stroke-width:3.2;stroke-linecap:round}
+.hfi.messy .hf-x{opacity:1}
+.hf-x-in{transform-box:fill-box;transform-origin:center}
+.hfi.messy .hf-x-in{animation:hf-pulse 1.1s ease-in-out infinite}
+@keyframes hf-pulse{50%{transform:scale(1.18)}}
+/* What comes out clean: one enclosure, kitted on this job's cart. */
+.hf-box{opacity:0}
+.hf-box-front{fill:url(#hfSteel)}
+.hf-box-top{fill:#EDF1F4}
+.hf-box-side{fill:#9AA6B0}
+.hf-box-door{fill:none;stroke:var(--hf-ink);stroke-width:1.6}
+.hf-box-vent{fill:none;stroke:var(--hf-ink);stroke-width:2.2;stroke-linecap:round}
+.hf-box-handle{fill:var(--brand)}
+/* SimpleGrid: the traveler wears the mark, the cart gets the label. */
+.hf-trav{opacity:0}
+.hf-trav-card{fill:#F3E6C3}
+.hf-trav-eye{fill:none;stroke:var(--hf-ink);stroke-width:2.2}
+.hf-mark,.hf-label{--sg-bg:var(--brand);--sg-ink:#fff}
+.hfi.dosed .hf-mark,.hfi.is-done .hf-label{opacity:1;transform:none}
 .callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.callout-gap{top:calc(32.9% - 15px)}
+.callout-bottom{top:41%}
+.callout-top h3 i{background:var(--brand-deep)}
+.callout-bottom h3 i{background:var(--hf-plate)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.5)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -533,67 +592,136 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="hfi hero-obj" id="hfi" role="img" aria-label="A job sheet on a screen, Job 4417, On plan, above a shop floor: a laser bed with a steel sheet, a press brake and two carts. The cable from the screen to the floor is broken.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Job 4417</text>
-              <text class="ln-sku" x="56" y="106">Telecom enclosures, 200</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <linearGradient id="hfSteel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hf-s0"/><stop offset=".55" class="hf-s1"/><stop offset="1" class="hf-s2"/></linearGradient>
+              <linearGradient id="hfSteelX" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="hf-s2"/><stop offset=".4" class="hf-s0"/><stop offset="1" class="hf-s1"/></linearGradient>
+              <linearGradient id="hfSheet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="hf-m0"/><stop offset=".48" class="hf-m1"/><stop offset=".6" class="hf-m0"/><stop offset="1" class="hf-m1"/></linearGradient>
+              <pattern id="hfSlats" width="9" height="9" patternUnits="userSpaceOnUse"><rect class="hf-slat-bg" width="9" height="9"/><rect class="hf-slat" x="3.5" width="2" height="9"/></pattern>
+            </defs>
+            <path class="hf-floor" d="M0 554.5H360"/>
+
+            <!-- the job sheet: what the ERP says you're making -->
+            <rect class="hf-bezel hf-line" x="10" y="6" width="340" height="144" rx="16"/>
+            <rect class="hf-glass" x="22" y="18" width="316" height="120" rx="8"/>
+            <text class="hf-kick" x="40" y="43">JOB SHEET</text>
+            <g class="hf-status" id="hfStatusG" data-s="plan">
+              <rect class="hf-pill" id="hfPill" x="222" y="26" width="100" height="28" rx="14"/>
+              <text class="hf-pill-t" id="hfStatus" x="272" y="46.5" text-anchor="middle">On plan</text>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            <text class="hf-job" x="38" y="88">JOB 4417</text>
+            <text class="hf-spec" x="40" y="112">Telecom enclosure · 14 ga · 200 pcs</text>
+            <rect class="hf-bar" x="40" y="122" width="280" height="7" rx="3.5"/>
+            <rect class="hf-fill" id="hfFill" x="40" y="122" width="84" height="7" rx="3.5"/>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
+            <!-- the cable from the job sheet to the floor: broken until SimpleGrid plugs into it -->
+            <path class="hf-stub" d="M180 150V163"/>
+            <rect class="hf-plug hf-line" x="172" y="161" width="16" height="9" rx="2.5"/>
+            <path class="hf-stub" d="M180 205V217"/>
+            <rect class="hf-plug hf-line" x="172" y="197" width="16" height="9" rx="2.5"/>
+            <path class="hf-lit" d="M180 150V217"/>
+            <path class="hf-flow" d="M180 150V217"/>
 
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
+            <!-- the fiber laser: a slatted bed, the sheet on it, and what the program says to cut -->
+            <rect class="hf-rail hf-line" x="12" y="216" width="336" height="12" rx="4"/>
+            <rect class="hf-jbox hf-line" x="168" y="208" width="24" height="14" rx="3"/>
+            <rect class="hf-bed hf-line" x="16" y="226" width="328" height="84"/>
+            <rect class="hf-sheet hf-line" x="34" y="231" width="292" height="74" rx="2"/>
+            <g id="hfPlan"></g>
+            <g id="hfHoles"></g>
+            <g id="hfKerfs"></g>
+            <rect class="hf-front hf-line" x="12" y="308" width="336" height="22" rx="4"/>
+            <rect class="hf-stripe" x="13.5" y="316" width="333" height="5"/>
+            <rect class="hf-foot" x="28" y="330" width="26" height="8" rx="2"/>
+            <rect class="hf-foot" x="306" y="330" width="26" height="8" rx="2"/>
 
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the press brake: the ram brings the punch down on whatever is on the die -->
+            <rect class="hf-base hf-line" x="106" y="530" width="148" height="18" rx="4"/>
+            <rect class="hf-lower hf-line" x="134" y="484" width="92" height="46"/>
+            <path class="hf-die hf-line" d="M144 466H168L180 475L192 466H216V484H144Z"/>
+            <rect class="hf-rod" id="hfRod1" x="150" y="366" width="6" height="6"/>
+            <rect class="hf-rod" id="hfRod2" x="204" y="366" width="6" height="6"/>
+            <g id="hfRam">
+              <rect class="hf-ram hf-line" x="134" y="370" width="92" height="32" rx="3"/>
+              <path class="hf-punch hf-line" d="M164 402H196V410L187 420H173L164 410Z"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <rect class="hf-housing hf-line" x="114" y="348" width="20" height="182" rx="3"/>
+            <rect class="hf-housing hf-line" x="226" y="348" width="20" height="182" rx="3"/>
+            <rect class="hf-cyl hf-line" x="128" y="336" width="18" height="10" rx="2"/>
+            <rect class="hf-cyl hf-line" x="214" y="336" width="18" height="10" rx="2"/>
+            <rect class="hf-crown hf-line" x="108" y="344" width="144" height="28" rx="5"/>
+            <rect class="hf-plate-n" x="150" y="352" width="60" height="12" rx="2"/>
+            <circle class="hf-lamp" cx="236" cy="358" r="6"/>
+
+            <!-- the carts: another job's, and this one's -->
+            <rect class="hf-handle hf-line" x="7" y="458" width="12" height="6" rx="3"/>
+            <rect class="hf-handle hf-line" x="10" y="462" width="6" height="38"/>
+            <rect class="hf-leg" x="16" y="522" width="5" height="17"/>
+            <rect class="hf-leg" x="97" y="522" width="5" height="17"/>
+            <rect class="hf-deck hf-line" x="10" y="498" width="98" height="8" rx="2"/>
+            <rect class="hf-band hf-line" x="10" y="505" width="98" height="18" rx="2"/>
+            <text class="hf-band-t" x="59" y="518.5" text-anchor="middle">JOB 4420</text>
+            <circle class="hf-wheel" cx="26" cy="546" r="8"/><circle class="hf-hub" cx="26" cy="546" r="2.5"/>
+            <circle class="hf-wheel" cx="92" cy="546" r="8"/><circle class="hf-hub" cx="92" cy="546" r="2.5"/>
+
+            <rect class="hf-handle hf-line" x="341" y="458" width="12" height="6" rx="3"/>
+            <rect class="hf-handle hf-line" x="344" y="462" width="6" height="38"/>
+            <rect class="hf-leg" x="258" y="522" width="5" height="17"/>
+            <rect class="hf-leg" x="339" y="522" width="5" height="17"/>
+            <rect class="hf-deck hf-line" x="252" y="498" width="98" height="8" rx="2"/>
+            <rect class="hf-band hf-line" x="252" y="505" width="98" height="18" rx="2"/>
+            <text class="hf-band-t" x="301" y="518.5" text-anchor="middle">JOB 4417</text>
+            <circle class="hf-wheel" cx="268" cy="546" r="8"/><circle class="hf-hub" cx="268" cy="546" r="2.5"/>
+            <circle class="hf-wheel" cx="334" cy="546" r="8"/><circle class="hf-hub" cx="334" cy="546" r="2.5"/>
+            <!-- once the job comes clean, its cart gets the label -->
+            <g transform="translate(301 514) scale(.42)"><g class="hf-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+
+            <!-- what comes out clean: one enclosure -->
+            <g class="hf-box" id="hfBox">
+              <path class="hf-box-top hf-line" d="M266 436L278 426H336L324 436Z"/>
+              <path class="hf-box-side hf-line" d="M324 436L336 426V488L324 498Z"/>
+              <rect class="hf-box-front hf-line" x="266" y="436" width="58" height="62"/>
+              <rect class="hf-box-door" x="271" y="441" width="48" height="52" rx="2"/>
+              <path class="hf-box-vent" d="M277 451H296M277 457H296M277 463H296M277 469H296"/>
+              <rect class="hf-box-handle" x="310" y="458" width="4" height="16" rx="2"/>
+            </g>
+
+            <!-- the six parts: the script places every one -->
+            <g id="hfParts"></g>
+            <g class="hf-x" id="hfX"><g transform="translate(214 428)"><g class="hf-x-in"><circle r="11"/><path d="M-4.5-4.5L4.5 4.5M4.5-4.5L-4.5 4.5"/></g></g></g>
+
+            <!-- the cut as it happens, and the gantry that carries the head over the sheet -->
+            <g id="hfHot"></g>
+            <g id="hfGantry">
+              <rect class="hf-truck hf-line" x="-13" y="210" width="26" height="12" rx="3"/>
+              <rect class="hf-beam hf-line" x="-7" y="214" width="14" height="96" rx="3"/>
+              <rect class="hf-truck hf-line" x="-13" y="302" width="26" height="12" rx="3"/>
+              <g id="hfHead">
+                <circle class="hf-glow" r="12"/>
+                <rect class="hf-head hf-line" x="-11" y="-17" width="22" height="19" rx="4"/>
+                <path class="hf-sparks" id="hfSparks"/>
+                <circle class="hf-spot" r="4"/>
+              </g>
+            </g>
+
+            <!-- SimpleGrid: the traveler that plugs the cable together, wearing the mark -->
+            <g class="hf-trav" id="hfTrav"><g transform="translate(180 184)">
+              <path class="hf-trav-card hf-line" d="M-20-17L-12-25H12L20-17V20Q20 24 16 24H-16Q-20 24-20 20Z"/>
+              <circle class="hf-trav-eye" cx="0" cy="-17" r="3.4"/>
+              <g transform="translate(0 4) scale(.66)"><g class="hf-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g></g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The job sheet: your ERP</span></h3>
+            <p id="topText">What the system says you’re making.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The shop: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -606,10 +734,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Run the job to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The job sheet is your ERP, the shop under it is your floor, and nothing links them. Run the job, or tap the laser.</p>
       </div>
     </div>
   </div>
@@ -926,122 +1054,352 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
+/* ------------------------------------------------------------------- The job
+   For a sheet-metal fabricator. The job sheet on the screen is the ERP, the
+   shop under it is the floor, and the cable between them is broken. Run the
+   job and the laser cuts fine, but nothing follows the parts: one lands in
+   another job's cart, one ends up on the floor, one cut from the old revision
+   gets bent the wrong way and jams the brake, and the rest pile up waiting.
+   The screen still says On plan, and the mess stays. SimpleGrid is the
+   traveler: it plugs the cable back together and goes on every part. Run it
+   again and the same parts go back to the laser, then through the brake in
+   order, bent right, and come together as one enclosure on this job's cart.
+   Everything moves on one clock, a frame at a time, so every phase ends on an
+   exact picture and Start over puts back the first one. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), obj = $('hfi');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
-  var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+  var reduce = SG.reduce, clamp = SG.clamp;
+  var gantry = $('hfGantry'), head = $('hfHead'), sparks = $('hfSparks'), ram = $('hfRam');
+  var rods = [$('hfRod1'), $('hfRod2')], trav = $('hfTrav'), box = $('hfBox');
+  var statusG = $('hfStatusG'), pill = $('hfPill'), statusEl = $('hfStatus'), fillEl = $('hfFill');
+
+  var COPY = {
+    apart:    { btn: 'Run the job to see your operations', caption: 'The job sheet is your ERP, the shop under it is your floor, and nothing links them. Run the job, or tap the laser.' },
+    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan on the screen, the parts on the floor.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. Parts piled up at the brake, an old revision bent the wrong way, the rest in the wrong cart or on the floor, and the screen still says On plan. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Linking…', caption: 'A traveler goes on every part, and the link joins. That’s SimpleGrid.' },
+    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: a live traveler that follows every part from laser to brake, so the job sheet sees what’s true. Now run it again.' },
+    cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean job: every part cut, bent right and kitted on the right cart, ready to roll. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The job sheet: your ERP', 'What the system says you’re making.', 'The shop: your floor', 'What’s really happening, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The job run with no link: cut parts piled at the press brake, a part from the old revision bent the wrong way and marked in red, one part in the other job’s cart and one on the floor, and the screen still says On plan.',
+    dosed: 'The same mess, now with a traveler tag marked SimpleGrid plugging the cable together, and a traveler on every part. The screen says Linked.',
+    done: 'The job run clean: every part cut, bent right and built into one enclosure on this job’s cart, labelled SimpleGrid. The screen says Done, on time.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
+  /* ------------------------------------------------------------ Geometry */
+  var NEST = [[89, 252], [180, 252], [271, 252], [89, 284], [180, 284], [271, 284]];   // the six parts, nested on the sheet
+  var WRONG = 3;                       // the one the floor cuts from the old revision
+  var B = 22, F = 14;                  // a part seen edge-on: half its web, and each flange
+  var DIE = [180, 462.5];              // where a part lies on the die
+  var STROKE = 39, BEND = 220;         // how far the ram comes down, and how long one hit takes
+  var PARK = [28, 268];                // where the laser head waits
+  var PILL = { plan: ['On plan', 100], linked: ['Linked', 90], done: ['Done, on time', 158] };
+  // A pose is [x, y, rotation, edge-on (0 a plate on the bed, 1 seen edge-on), bend (90 bent right, -90 the wrong way)].
+  var MESS_END = [
+    [56, 494.5, 0, 1, 90],             // bent, in the other job's cart
+    [228, 540, 172, 1, 90],            // bent, upside down on the floor
+    [150, 544, -3, 1, 0],              // the rest, piled up flat at the brake
+    [180, 462.5, 0, 1, -90],           // the old revision, bent the wrong way and jammed on the die
+    [157, 536.5, 5, 1, 0],
+    [146, 529, -8, 1, 0]
+  ];
+  var STACK = NEST.map(function(n, i){ return [298, 494.5 - 7*i, 0, 1, 90]; });   // kitted, on this job's cart
 
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
+  var f = function(v){ return Math.round(v*100)/100; };
+  var EASE = {
+    lin: function(u){ return u; },
+    io: function(u){ return u < .5 ? 2*u*u : 1 - 2*(1 - u)*(1 - u); },
+    out: function(u){ return 1 - Math.pow(1 - u, 3); },
+    drop: function(u){ return u*u*u; }
+  };
+  function mk(tag, cls, parent, attrs){
+    var el = document.createElementNS(NS, tag);
+    if (cls) el.setAttribute('class', cls);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    parent.appendChild(el);
+    return el;
+  }
+
+  /* ------------------------------------------------------------ The parts */
+  function outline(i){ var n = NEST[i]; return 'M' + (n[0] - 36) + ' ' + (n[1] - 12) + 'h72v24h-72z'; }
+  var parts = NEST.map(function(n, i){
+    mk('path', 'hf-plan', $('hfPlan'), { d: outline(i) });
+    var p = {
+      hole: mk('rect', 'hf-hole', $('hfHoles'), { x: n[0] - 36, y: n[1] - 12, width: 72, height: 24 }),
+      kerf: mk('path', 'hf-kerf', $('hfKerfs'), { d: outline(i) }),
+      burn: mk('path', 'hf-burn', $('hfHot'), { d: outline(i) }),
+      cut: mk('path', 'hf-cut', $('hfHot'), { d: outline(i) }),
+      g: mk('g', 'hf-part', $('hfParts'))
+    };
+    p.plate = mk('g', 'hf-plate', p.g);
+    mk('rect', null, p.plate, { x: -36, y: -12, width: 72, height: 24, rx: 2 });
+    mk('circle', null, p.plate, { cx: -25, cy: 0, r: 3.6 });
+    mk('rect', 'hf-slot', p.plate, { x: 8, y: -2.5, width: 20, height: 5, rx: 2.5 });
+    mk('rect', 'hf-rev', p.plate, { x: -16, y: -8, width: 16, height: 16, rx: 2 });
+    p.prof = mk('g', null, p.g);
+    p.edge = mk('path', 'hf-edge', p.prof);
+    p.face = mk('path', 'hf-face', p.prof);
+    mk('circle', 'hf-dot', p.g, { cx: 0, cy: -9, r: 5 });
+    return p;
   });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  // Edge-on, a part is its web with a flange at each end, turned up by `th` degrees.
+  function profile(th){
+    var a = th*Math.PI/180, c = Math.cos(a)*F, s = Math.sin(a)*F;
+    return 'M' + f(-B - c) + ' ' + f(-s) + 'L' + (-B) + ' 0H' + B + 'L' + f(B + c) + ' ' + f(-s);
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  function putPart(p, s){
+    p.g.setAttribute('transform', 'translate(' + f(s.x) + ' ' + f(s.y) + ') rotate(' + f(s.r) + ')');
+    p.g.style.opacity = s.op;
+    var flat = s.sq < 1;
+    p.plate.style.display = flat ? '' : 'none';
+    p.prof.style.display = flat ? 'none' : '';
+    if (flat) p.plate.setAttribute('transform', 'scale(1 ' + f(1 - .71*s.sq) + ')');
+    else { var d = profile(s.th); p.edge.setAttribute('d', d); p.face.setAttribute('d', d); }
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
-  function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
-    });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+  /* ------------------------------------------------------------ Moves
+     A move is a list of keys, each a time in ms, a pose, and how it gets there:
+     the easing, an arc to hop along, and whether it turns edge-on early or late. */
+  function key(t, pose, o){
+    o = o || {};
+    return { t: t, x: pose[0], y: pose[1], r: pose[2] || 0, sq: pose[3] || 0, th: pose[4] || 0,
+             op: o.op == null ? 1 : o.op, e: o.e || 'io', arc: o.arc || 0, sqm: o.sqm || '' };
   }
-  function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+  function sample(keys, T){
+    var a = keys[0];
+    if (T <= a.t) return a;
+    for (var k = 1; k < keys.length; k++){
+      var b = keys[k];
+      if (T < b.t){
+        var raw = (T - a.t)/((b.t - a.t) || 1), u = EASE[b.e](raw);
+        var us = b.sqm === 'early' ? clamp(raw/.35, 0, 1) : b.sqm === 'late' ? clamp((raw - .65)/.35, 0, 1) : u;
+        var s = { r: a.r + (b.r - a.r)*u, th: a.th + (b.th - a.th)*u, sq: a.sq + (b.sq - a.sq)*us, op: a.op + (b.op - a.op)*raw };
+        if (b.arc){
+          var mx = (a.x + b.x)/2, my = Math.min(a.y, b.y) - b.arc, v = 1 - u;
+          s.x = v*v*a.x + 2*v*u*mx + u*u*b.x;
+          s.y = v*v*a.y + 2*v*u*my + u*u*b.y;
+        } else { s.x = a.x + (b.x - a.x)*u; s.y = a.y + (b.y - a.y)*u; }
+        return s;
+      }
+      a = b;
+    }
+    return a;
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
-  function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+  var onBed = function(i){ return [NEST[i][0], NEST[i][1], 0, 0, 0]; };
+  var atDie = [DIE[0], DIE[1], 0, 1, 0];
+  var toDie = function(t){ return key(t, atDie, { arc: 36, sqm: 'early' }); };
+  // One hit of the brake from time t: the part waits flat, the punch arrives, it bends to th.
+  function hit(t, th){
+    return [key(t + BEND*.4, atDie), key(t + BEND*.58, [DIE[0], DIE[1], 0, 1, th], { e: 'out' }), key(t + BEND, [DIE[0], DIE[1], 0, 1, th])];
+  }
+
+  // Run it unlinked. The laser cuts all six; after that, nothing follows them.
+  var MESS = { ms: 2150, alarm: 1880, cuts: [], lift: [380, 880, 1000, 1380, 1500, 1700],
+               hits: [620, 1120, 1620].map(function(t){ return { t: t, d: STROKE }; }) };
+  NEST.forEach(function(n, i){ MESS.cuts.push({ i: i, t0: 140 + i*200, t1: 300 + i*200 }); });
+  function cutOut(i){ var t = MESS.cuts[i].t1; return [key(0, onBed(i), { op: 0 }), key(t, onBed(i), { op: 0 }), key(t + 60, onBed(i), { e: 'lin' })]; }
+  MESS.tracks = [
+    cutOut(0).concat([key(380, onBed(0)), toDie(620)], hit(620, 90), [key(1120, MESS_END[0], { arc: 50 })]),
+    cutOut(1).concat([key(880, onBed(1)), toDie(1120)], hit(1120, 90), [key(1640, MESS_END[1], { arc: 26, e: 'drop' })]),
+    cutOut(2).concat([key(1000, onBed(2)), key(1300, MESS_END[2], { arc: 30, sqm: 'early' })]),
+    cutOut(3).concat([key(1380, onBed(3)), toDie(1620)], hit(1620, -90)),
+    cutOut(4).concat([key(1500, onBed(4)), key(1780, MESS_END[4], { arc: 30, sqm: 'early' })]),
+    cutOut(5).concat([key(1700, onBed(5)), key(1980, MESS_END[5], { arc: 30, sqm: 'early' })])
+  ];
+
+  // SimpleGrid goes in: the traveler drops into the gap and swings to rest on its eyelet.
+  var DOSE = { ms: 1150, mark: 560, link: 620, tag: 680,
+               trav: [key(0, [0, -70, -16], { op: 0 }), key(140, [0, -48, -12], { e: 'lin' }), key(360, [0, 4, 7], { e: 'drop' }), key(520, [0, -2, -3], { e: 'out' }), key(650, [0, 0, 0])] };
+
+  // Run it linked: everything goes back to the laser, then through the brake in order and onto this job's cart.
+  var CLEAN = { ms: 3650, box: 3280, cuts: [], hits: [], land: [], tracks: [] };
+  [1000, 1300, 1600, 1900, 2200, 2500].forEach(function(L, i){
+    var b = L + 240;
+    CLEAN.cuts.push({ i: i, t0: 820 + i*120, t1: 920 + i*120 });
+    CLEAN.hits.push({ t: b, d: STROKE });
+    CLEAN.land.push(b + BEND + 280);
+    CLEAN.tracks.push([key(0, MESS_END[i]), key(80 + i*50, MESS_END[i]), key(600 + i*50, onBed(i), { arc: 60, sqm: 'late' }), key(L, onBed(i)), toDie(b)]
+      .concat(hit(b, 90), [key(b + BEND + 280, STACK[i], { arc: 44 }), key(CLEAN.box, STACK[i]), key(CLEAN.box + 240, STACK[i], { op: 0 })]));
+  });
+
+  /* ------------------------------------------------------------ The laser */
+  // A point on part i's outline, a share u of the way round from its top-left corner.
+  function rim(i, u){
+    var n = NEST[i], x = n[0] - 36, y = n[1] - 12, s = (u >= 1 ? 0 : u)*192;
+    if (s < 72) return [x + s, y];
+    if (s < 96) return [x + 72, y + s - 72];
+    if (s < 168) return [x + 168 - s, y + 24];
+    return [x, y + 192 - s];
+  }
+  var mix = function(a, b, u){ return [a[0] + (b[0] - a[0])*u, a[1] + (b[1] - a[1])*u]; };
+  // Where the head is at T: tracing a part, crossing to the next one, or on its way to or from rest.
+  function laserAt(cuts, T){
+    var k, c, first = cuts[0], last = cuts[cuts.length - 1];
+    for (k = 0; k < cuts.length; k++){ c = cuts[k]; if (T >= c.t0 && T < c.t1) return { p: rim(c.i, (T - c.t0)/(c.t1 - c.t0)), on: true }; }
+    if (T < first.t0) return { p: mix(PARK, rim(first.i, 0), EASE.io(clamp(1 - (first.t0 - T)/140, 0, 1))), on: false };
+    if (T >= last.t1) return { p: mix(rim(last.i, 0), PARK, EASE.io(clamp((T - last.t1)/240, 0, 1))), on: false };
+    for (k = 1; k < cuts.length; k++){
+      var a = cuts[k - 1], b = cuts[k];
+      if (T >= a.t1 && T < b.t0) return { p: mix(rim(a.i, 0), rim(b.i, 0), EASE.io((T - a.t1)/(b.t0 - a.t1))), on: false };
+    }
+    return { p: PARK, on: false };
+  }
+  function sparkPath(){
+    var d = '';
+    for (var k = 0; k < 6; k++){
+      var a = Math.random()*Math.PI*2, r0 = 4 + Math.random()*2, r1 = r0 + 5 + Math.random()*9;
+      d += 'M' + f(Math.cos(a)*r0) + ' ' + f(Math.sin(a)*r0) + 'L' + f(Math.cos(a)*r1) + ' ' + f(Math.sin(a)*r1);
+    }
+    return d;
+  }
+  function putHead(p, on){
+    gantry.setAttribute('transform', 'translate(' + f(p[0]) + ' 0)');
+    head.setAttribute('transform', 'translate(0 ' + f(p[1]) + ')');
+    obj.classList.toggle('lasing', on);
+    if (on) sparks.setAttribute('d', sparkPath());
+  }
+  // The head, and each part's cut: a bright line as it's traced, cooling to a dark kerf.
+  function drawLaser(ph, T, cutBefore){
+    var L = laserAt(ph.cuts, T);
+    putHead(L.p, L.on);
+    ph.cuts.forEach(function(c){
+      var p = parts[c.i], u = clamp((T - c.t0)/(c.t1 - c.t0), 0, 1), cool = clamp((T - c.t1)/320, 0, 1);
+      var off = f(192*(1 - u)), show = u > 0 ? 1 - cool : 0;
+      p.burn.style.strokeDashoffset = off; p.cut.style.strokeDashoffset = off;
+      p.burn.style.opacity = show; p.cut.style.opacity = show;
+      p.kerf.style.opacity = cutBefore ? 1 : cool;
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+  }
+
+  /* ------------------------------------------------------------ Everything else */
+  function ramAt(hits, T){
+    for (var k = 0; k < hits.length; k++){
+      var u = (T - hits[k].t)/BEND;
+      if (u > 0 && u < 1) return hits[k].d*(u < .45 ? EASE.io(u/.45) : u < .6 ? 1 : 1 - EASE.io((u - .6)/.4));
+    }
+    return 0;
+  }
+  function setRam(d){
+    ram.setAttribute('transform', 'translate(0 ' + f(d) + ')');
+    rods.forEach(function(r){ r.setAttribute('height', f(6 + d)); });
+  }
+  function setPill(s){
+    if (statusG.getAttribute('data-s') === s) return;
+    var w = PILL[s][1];
+    statusG.setAttribute('data-s', s);
+    statusEl.textContent = PILL[s][0];
+    pill.setAttribute('x', 322 - w);
+    pill.setAttribute('width', w);
+    statusEl.setAttribute('x', 322 - w/2);
+  }
+  function setBar(w, warn){ fillEl.setAttribute('width', f(w)); fillEl.classList.toggle('warn', !!warn); }
+  function setTrav(s){
+    trav.setAttribute('transform', 'translate(0 ' + f(s.y) + ') rotate(' + f(s.r) + ' 180 167)');
+    trav.style.opacity = s.op;
+  }
+  function setBox(k){
+    box.style.opacity = k;
+    box.setAttribute('transform', 'translate(298 498) scale(' + f(.9 + .1*EASE.out(k)) + ') translate(-298 -498)');
+  }
+
+  /* ------------------------------------------------------------ Frames */
+  function drawApart(){
+    parts.forEach(function(p, i){
+      putPart(p, key(0, onBed(i), { op: 0 }));
+      p.hole.style.opacity = p.kerf.style.opacity = p.burn.style.opacity = p.cut.style.opacity = 0;
+      p.g.classList.remove('tagged');
+      p.g.classList.toggle('is-wrong', i === WRONG);
+    });
+    putHead(PARK, false);
+    obj.classList.remove('messy', 'dosed', 'linked', 'is-done');
+    setRam(0);
+    setTrav(DOSE.trav[0]);
+    setPill('plan');
+    setBar(84);
+    setBox(0);
+  }
+  function drawMess(T){
+    parts.forEach(function(p, i){ putPart(p, sample(MESS.tracks[i], T)); p.hole.style.opacity = T >= MESS.lift[i] ? 1 : 0; });
+    drawLaser(MESS, T, false);
+    setRam(ramAt(MESS.hits, T));
+    obj.classList.toggle('messy', T >= MESS.alarm);
+    setBar(84 + 126*EASE.io(clamp((T - 200)/1800, 0, 1)));   // the plan keeps saying it's getting done
+  }
+  function drawDose(T){
+    setTrav(sample(DOSE.trav, T));
+    obj.classList.toggle('dosed', T >= DOSE.mark);
+    obj.classList.toggle('linked', T >= DOSE.link);
+    setPill(T >= DOSE.link ? 'linked' : 'plan');
+    var u = clamp((T - DOSE.link)/300, 0, 1);
+    setBar(210 - 180*EASE.io(u), u > 0);                      // linked, the job sheet shows where the job really is
+    parts.forEach(function(p, i){ p.g.classList.toggle('tagged', T >= DOSE.tag + i*70); });
+  }
+  function drawClean(T){
+    obj.classList.remove('messy');
+    parts.forEach(function(p, i){ putPart(p, sample(CLEAN.tracks[i], T)); p.hole.style.opacity = 1; });
+    parts[WRONG].g.classList.toggle('is-wrong', T < CLEAN.cuts[WRONG].t1);   // recut to the right revision
+    drawLaser(CLEAN, T, true);
+    setRam(ramAt(CLEAN.hits, T));
+    var landed = 0;
+    CLEAN.land.forEach(function(t){ landed += clamp((T - t + 60)/160, 0, 1); });
+    setBar(30 + 250*landed/6, landed < 6);
+    setPill(T >= CLEAN.box ? 'done' : 'linked');
+    setBox(clamp((T - CLEAN.box)/240, 0, 1));
+  }
+
+  // Runs draw(T) once a frame for ms. Reduced motion draws the last frame and is done.
+  var gen = 0;
+  function play(ms, draw){
+    var my = ++gen;
+    return new Promise(function(done){
+      if (reduce){ draw(ms); done(); return; }
+      var t0 = 0;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (!t0) t0 = now;
+        var T = Math.min(ms, now - t0);
+        draw(T);
+        if (T < ms) requestAnimationFrame(tick); else done();
+      });
+    });
   }
   function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.hfi',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Parts piled at the brake, an old revision bent wrong, and the screen still says On plan.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same parts, same pile. Now a traveler follows every one.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: function(){ return play(MESS.ms, drawMess); },
+    dose: function(){ return play(DOSE.ms, drawDose); },
+    clean: function(){ return play(CLEAN.ms, drawClean); },
+    restore: function(){ gen++; drawApart(); },
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the shop does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  drawApart();
 })();
 </script>
 <script>

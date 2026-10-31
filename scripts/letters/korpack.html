@@ -35,9 +35,107 @@
   --tint:#EAF4FA;--pale:#F4F5F7;--ink:#393941;--alert:#D7263D;--marker:#DDEFF9;--h2-hi:#157DB5;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#198FCF;--sku-b:#F26D2B;--sku-c:#C9A06A}
-
-<!--#include line.css-->
+/* ------------------------------------------------------------ The case
+   For co-packers. The order on the screen is the ERP, the case on the pallet is the floor, and the
+   cable between them is cut. Every color lives on .pack, so the hero can be recolored in one place. */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.pack{
+  position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+  --kraft:#C9A06A;--kraft-lt:#E3C795;--kraft-dk:#AE8250;--kraft-in:#93693A;--kraft-deep:#7E5830;--kraft-edge:#6B4723;
+  --tape:#A5692F;--tape-hi:#C88B4B;--tape-edge:#7A4A1C;
+  --pouch-a:var(--accent);--pouch-b:#EC4D8E;--pouch-c:#33B5EA;
+  --steel:#D5DBE0;--steel-dk:#A3ADB6;--steel-leg:#5A636C;
+  --wood:#C49558;--wood-dk:#93683A;--wood-edge:#6E4B25;
+  --screen:#1E2329;--glass:#2A313A;--ok:#DFF5EA;--ok-ink:#0A6B47;--ok-bar:#12A86B;
+}
+.hero[data-story$=ing] .pack,.pack.is-done{cursor:default}
+.pack svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The order screen: what the system says you're shipping. */
+.pk-screen{fill:var(--screen)}
+.pk-glass{fill:var(--glass)}
+.pk-kick{fill:rgba(255,255,255,.62);font:600 15px/1 var(--mono);letter-spacing:.12em}
+.pk-order{fill:#fff;font:800 33px/1 var(--body);letter-spacing:-.01em}
+.pk-qty{fill:rgba(255,255,255,.82);font:600 21px/1 var(--body)}
+.pk-pill{fill:var(--ok);transition:fill .3s}
+.pk-status{fill:var(--ok-ink);font:800 17px/1 var(--body);transition:fill .3s}
+.pack.linked .pk-pill{fill:var(--accent)}
+.pack.linked .pk-status{fill:var(--on-accent)}
+.pack.shipped .pk-pill{fill:var(--ok)}
+.pack.shipped .pk-status{fill:var(--ok-ink)}
+.pk-bar{fill:rgba(255,255,255,.14)}
+.pk-fill{fill:var(--ok-bar);transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
+/* The cable from the order down to the case, cut in the middle until SimpleGrid tapes it. */
+.pk-wire{fill:none;stroke:#59626C;stroke-width:6;stroke-linecap:round}
+.pk-flow{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-dasharray:7 7;opacity:0;transition:opacity .3s}
+.pack.linked .pk-flow{opacity:1;animation:pk-flow .6s linear infinite}
+@keyframes pk-flow{to{stroke-dashoffset:-14}}
+.pk-sock,.pk-plug{fill:#3A4148;stroke:#1C2025;stroke-width:1.5}
+.pk-prong{fill:#C3CBD2}
+.pk-plug-g{transition:transform .35s cubic-bezier(.3,.7,.3,1.15)}
+.pack.joined .pk-plug-g{transform:translateY(-22px)}
+.pk-band{opacity:0;transform:scaleX(.2);transform-box:fill-box;transform-origin:center;transition:opacity .2s,transform .4s cubic-bezier(.2,.9,.3,1.3)}
+.pack.joined .pk-band{opacity:1;transform:none}
+.pk-band-tape{fill:var(--tape);stroke:var(--tape-edge);stroke-width:1.5}
+.pk-band-hi{fill:var(--tape-hi)}
+/* The floor, the table and the pallet: the script draws them through the same camera as the case. */
+.pk-ground{fill:rgba(0,0,0,.13)}
+.pk-shadow{fill:rgba(0,0,0,.2)}
+.pk-steel{fill:var(--steel);stroke:var(--steel-leg);stroke-width:1.5;stroke-linejoin:round}
+.pk-steel-dk{fill:var(--steel-dk);stroke:var(--steel-leg);stroke-width:1.5;stroke-linejoin:round}
+.pk-leg{fill:var(--steel-leg)}
+.pk-wood{fill:var(--wood);stroke:var(--wood-edge);stroke-width:1.4;stroke-linejoin:round}
+.pk-wood-dk{fill:var(--wood-dk);stroke:var(--wood-edge);stroke-width:1.4;stroke-linejoin:round}
+.pk-under{fill:#3B2A18}
+/* The case: kraft outside, lighter inside, darker in its own shadow. */
+.pk-case path{stroke:var(--kraft-edge);stroke-width:2;stroke-linejoin:round}
+.pk-front{fill:var(--kraft)}
+.pk-side{fill:var(--kraft-dk)}
+.pk-in{fill:var(--kraft-in)}
+.pk-in-side,.pk-in-floor{fill:var(--kraft-deep)}
+.pk-flap-out{fill:var(--kraft)}
+.pk-flap-in{fill:var(--kraft-lt)}
+.pk-case .pk-label{fill:#FAF7F0;stroke:rgba(0,0,0,.25);stroke-width:1}
+.pk-case .pk-ink{fill:#3A3A3A;stroke:none}
+.pk-case .pk-tape{fill:var(--tape);stroke:var(--tape-edge);stroke-width:1.2}
+.pk-case .pk-tape-hi{fill:var(--tape-hi);stroke:none;opacity:.8}
+.pk-tag{--sg-bg:var(--brand);--sg-ink:#fff}
+.pack.taped .pk-tag{opacity:1;transform:none}
+/* The pouches: three flavors of club pack. */
+.pk-pouch .body{stroke:rgba(0,0,0,.32);stroke-width:1.4;stroke-linejoin:round}
+.pk-pouch[data-c=a] .body{fill:var(--pouch-a)}
+.pk-pouch[data-c=b] .body{fill:var(--pouch-b)}
+.pk-pouch[data-c=c] .body{fill:var(--pouch-c)}
+.pk-pouch .seal{fill:#fff;opacity:.38}
+.pk-pouch .gloss{fill:#fff;opacity:.22}
+.pk-pouch .lbl{fill:#fff}
+/* The tape gun: SimpleGrid. It wears the mark on its roll once it goes in. */
+.pk-gun-handle{fill:#2D333A}
+.pk-gun-frame{fill:#59626C;stroke:#2D333A;stroke-width:1.5;stroke-linejoin:round}
+.pk-gun-blade{fill:#C3CBD2;stroke:#2D333A;stroke-width:1.2;stroke-linejoin:round}
+.pk-gun-tape{fill:none;stroke:var(--tape);stroke-width:3.5;stroke-linecap:round}
+.pk-roll{fill:var(--tape);stroke:var(--tape-edge);stroke-width:2}
+.pk-roll-hi{fill:none;stroke:var(--tape-hi);stroke-width:3;stroke-linecap:round}
+.pk-core{fill:var(--kraft-lt);stroke:var(--tape-edge);stroke-width:1.5}
+.pk-mark{--sg-bg:var(--brand);--sg-ink:#fff}
+.pack.dosed .pk-mark{opacity:1;transform:none}
+/* The count: wrong while it's a mess, right once it's clean. */
+.pk-count{opacity:0;transform:scale(.8);transform-box:fill-box;transform-origin:center;transition:opacity .25s,transform .4s cubic-bezier(.2,.9,.3,1.3)}
+.pack.counted .pk-count{opacity:1;transform:none}
+.pk-count-bg{fill:var(--alert);stroke:rgba(0,0,0,.25);stroke-width:1}
+.pk-count-txt{fill:#fff;font:800 17px/1 var(--body)}
+.pack.shipped .pk-count-bg{fill:var(--ok-bar)}
+.pack:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:3%}
+.callout-gap{top:calc(43% - 15px)}
+.callout-bottom{top:60%}
+.callout-top h3 i{background:var(--ok)}
+.callout-bottom h3 i{background:#C9A06A}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.3)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
 
 <!--#include stage.css-->
 <!--#include label.css-->
@@ -63,18 +161,70 @@
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
-<!--#include line.svg-->
+        <div class="pack hero-obj" id="pack" role="img" aria-label="An order screen saying Order 4417, club packs, 1,200 cases, On plan. Below it, an open shipping case on a pallet, with pouches and a tape gun waiting on the table beside it. The cable between the screen and the case is cut.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <!-- the order: what the ERP says you're shipping -->
+            <rect class="pk-screen" x="20" y="10" width="320" height="162" rx="14"/>
+            <rect class="pk-glass" x="30" y="20" width="300" height="142" rx="8"/>
+            <text class="pk-kick" x="48" y="54">ORDER 4417</text>
+            <text class="pk-order" x="47" y="97">Club packs</text>
+            <text class="pk-qty" x="48" y="128">1,200 cases</text>
+            <rect class="pk-pill" id="pkPill" x="214" y="34" width="98" height="32" rx="16"/>
+            <text class="pk-status" id="pkStatus" x="263" y="56" text-anchor="middle">On plan</text>
+            <rect class="pk-bar" x="48" y="143" width="264" height="8" rx="4"/>
+            <rect class="pk-fill" id="pkFill" x="48" y="143" width="92" height="8" rx="4"/>
+
+            <!-- the floor, the table and the pallet: the script draws them in perspective -->
+            <g id="pkScene"></g>
+
+            <!-- the cable from the order down to the case: cut until SimpleGrid tapes it -->
+            <path class="pk-wire" d="M252 172V214M252 258V392"/>
+            <path class="pk-flow" d="M252 172V392"/>
+            <g class="pk-plug-g">
+              <rect class="pk-prong" x="245.5" y="246" width="3.5" height="12"/><rect class="pk-prong" x="255" y="246" width="3.5" height="12"/>
+              <rect class="pk-plug" x="243" y="256" width="18" height="22" rx="4"/>
+            </g>
+            <rect class="pk-sock" x="242" y="208" width="20" height="26" rx="4"/>
+            <g class="pk-band">
+              <rect class="pk-band-tape" x="236" y="221" width="32" height="30" rx="5"/>
+              <rect class="pk-band-hi" x="239" y="226" width="26" height="5" rx="2.5"/>
+            </g>
+
+            <!-- the case: the script draws it, flaps and all, and puts the pouches in it -->
+            <g class="pk-case" id="pkCase">
+              <g id="pkTagAt" transform="translate(252 380) scale(.6)"><g class="pk-tag sg-pop"><!--#include sg-tag.svg--></g></g>
+            </g>
+            <!-- pouches outside the case: on the table, in the air, on the floor -->
+            <g id="pkOut"></g>
+
+            <!-- the count on the floor -->
+            <g id="pkCountAt" transform="translate(180 300)"><g class="pk-count">
+              <rect class="pk-count-bg" id="pkCountBg" x="-56" y="-16" width="112" height="32" rx="16"/>
+              <text class="pk-count-txt" id="pkCountTxt" x="0" y="6" text-anchor="middle">Count: 3 of 9</text>
+            </g></g>
+
+            <!-- the tape gun: SimpleGrid, once it wears the mark -->
+            <g id="pkGun">
+              <path class="pk-gun-handle" d="M-8 14H7L3 50Q2 56-4 56H-8Q-14 56-13 50Z"/>
+              <path class="pk-gun-frame" d="M-5-5L5-5L46 30L46 39L33 39L-5 6Z"/>
+              <path class="pk-gun-blade" d="M31 38H48V42L45 45L42 42L39 45L36 42L33 45L31 42Z"/>
+              <path class="pk-gun-tape" d="M-6 24L35 38"/>
+              <circle class="pk-roll" r="25"/>
+              <path class="pk-roll-hi" d="M-15-14A20 20 0 0 1 6-19.5"/>
+              <circle class="pk-core" r="12.5"/>
+              <g transform="scale(.72)"><g class="pk-mark sg-pop"><!--#include sg-badge.svg--></g></g>
+            </g>
+          </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The order: your ERP</span></h3>
+            <p id="topText">What the system says you’re shipping.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The case: your floor</span></h3>
+            <p id="bottomText">What’s really going in, on Excel, whiteboards and phones.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -82,10 +232,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Pack it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The order up top is your ERP, the case down below is your floor, and nothing links them. Pack it, or tap the case.</p>
       </div>
     </div>
   </div>

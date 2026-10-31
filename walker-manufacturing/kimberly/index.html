@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/walker-manufacturing/og-kimberly.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A stamping press under a work order screen, with no link between them, beside the words: Kimberly, Walker was one of Toyota’s first domestic manufacturing partners.">
+<meta property="og:image:alt" content="A steel coil feeding a stamping press under a work order screen, with no link between them, beside the words: Kimberly, Walker was one of Toyota’s first domestic manufacturing partners.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kimberly, run the coil.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who stamps and fabricates metal for a living.">
@@ -210,73 +210,107 @@ h1 span{display:block;color:var(--hi)}
   --tint:#EEF0FA;--pale:#F8F9FD;--ink:#14163A;--alert:#D83232;--marker:#DDEEFF;--h2-hi:#0B6FD6;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#C9D0D6;--sku-b:#0084FF;--sku-c:#D83232}
-
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
+/* --------------------------------------------------------------- The coil
+   The work order on the screen is the ERP. Under it is the floor: a coil on an
+   uncoiler, feeding strip into a press with a stroke counter on top, and a tote
+   at the outfeed. The cable from the counter up to the screen is cut. Steel for
+   the coil, the strip and the brackets; the press in Walker’s indigo; their
+   bright blue for SimpleGrid; their red for trouble. The floor sits on a light
+   panel so an indigo press can stand out on an indigo hero. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --wk-steel:#C6CED6;--wk-steel-hi:#F1F4F7;--wk-steel-lo:#8B96A3;--wk-steel-ink:#4F5A69;
+  --wk-floor:#E1E4F2;--wk-band:#C7CCE3;
+  --wk-tote:#3D4A74;--wk-tote-in:#232B4D;--wk-tote-lip:#5B68A0;
+  --wk-bezel:#0B0D45;--wk-glass:#121667;--wk-ok:#3DDC84;--wk-hole:#262A48;
+}
+.wk{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .wk,.wk.is-done{cursor:default}
+.wk svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The work order: what the system says you’re stamping. */
+.wk-bezel{fill:var(--wk-bezel)}
+.wk-glass{fill:var(--wk-glass)}
+.wk-order{fill:#fff;font:800 21px/1 var(--body);letter-spacing:.02em}
+.wk-spec{fill:rgba(255,255,255,.8);font:600 17px/1 var(--body)}
+.wk-k{fill:rgba(255,255,255,.58);font:600 11.5px/1 var(--mono);letter-spacing:.16em}
+.wk-count{fill:#fff;font:800 48px/1 var(--body);letter-spacing:-.01em;transition:fill .25s}
+.wk-of{fill:rgba(255,255,255,.62);font:700 19px/1 var(--body)}
+.wk-bar{fill:rgba(255,255,255,.14)}
+.wk-fill{fill:var(--wk-ok);transition:fill .25s}
+.wk-coils{transition:fill .25s}
+.wk.told .wk-count{fill:#FF8A84}
+.wk.told .wk-fill{fill:var(--alert)}
+.wk.told .wk-coils{fill:#FF8A84}
+.wk-pill-bg{fill:#DFF5EA;transition:fill .3s}
+.wk-pill-t{fill:#0A6B47;font:800 16.5px/1 var(--body);transition:fill .3s}
+.wk[data-pill=live] .wk-pill-bg{fill:var(--accent)}
+.wk[data-pill=live] .wk-pill-t{fill:var(--on-accent)}
+.wk[data-pill=done] .wk-pill-bg{fill:var(--wk-ok)}
+.wk[data-pill=done] .wk-pill-t{fill:#04361F}
+/* The cable: cut, until SimpleGrid joins it and the counter wears the mark. */
+.wk-stub{fill:none;stroke:#5C6584;stroke-width:6;stroke-linecap:round}
+.wk-plug{fill:#9AA2BC;transition:opacity .3s}
+.wk-cable-case{fill:none;stroke:var(--brand-deep);stroke-width:11;stroke-linecap:round;opacity:0;transition:opacity .35s}
+.wk-cable{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-dasharray:10 5;opacity:0;transition:opacity .35s}
+.wk.linked .wk-cable-case{opacity:1}
+.wk.linked .wk-cable{opacity:1;animation:wk-flow .5s linear infinite}
+.wk.linked .wk-plug{opacity:0}
+@keyframes wk-flow{to{stroke-dashoffset:-15}}
+.wk-mark{--sg-bg:var(--accent);--sg-ink:var(--brand-deep)}
+.wk.linked .wk-mark{opacity:1;transform:none}
+/* The floor. */
+.wk-floor{fill:var(--wk-floor)}
+.wk-band{fill:var(--wk-band)}
+.wk-st-hi{stop-color:var(--wk-steel-hi)}
+.wk-st-mid{stop-color:var(--wk-steel)}
+.wk-st-lo{stop-color:var(--wk-steel-lo)}
+.wk-stand{fill:var(--brand-press)}
+.wk-eye{fill:var(--wk-hole);transition:fill .25s}
+.wk.out .wk-eye{fill:var(--alert)}
+.wk-ghost{fill:none;stroke:var(--alert);stroke-width:2.5;stroke-dasharray:9 7;opacity:0;transition:opacity .3s}
+.wk.out .wk-ghost{opacity:.9}
+.wk-hub-ring{fill:var(--wk-steel-lo);stroke:var(--wk-steel-ink);stroke-width:2}
+.wk-hub-jaw{fill:none;stroke:var(--wk-steel-ink);stroke-width:3;stroke-linecap:round}
+.wk-coil-face{fill:url(#wkFace)}
+.wk-coil-wrap{fill:none;stroke:rgba(62,72,90,.45);stroke-width:2}
+.wk-coil-rim{fill:none;stroke:var(--wk-steel-ink);stroke-width:2.5}
+.wk-strip-edge{fill:none;stroke:var(--wk-steel-ink);stroke-width:12;stroke-linejoin:round}
+.wk-strip{fill:none;stroke:var(--wk-steel);stroke-width:8.5;stroke-linejoin:round}
+.wk-strip-run{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:5 11;opacity:.38;transition:opacity .2s}
+.wk.running .wk-strip-run{opacity:.85}
+/* The press, in Walker indigo, with its stroke counter on top. */
+.wk-p{fill:var(--brand)}
+.wk-p-dk{fill:var(--brand-press)}
+.wk-p-deep{fill:var(--brand-deep)}
+.wk-p-hi{fill:#fff;opacity:.16}
+.wk-die{fill:var(--wk-steel);stroke:var(--wk-steel-ink);stroke-width:1.4}
+.wk-ctr{fill:var(--brand-deep)}
+.wk-ctr-face{fill:#05061E;transition:fill .2s}
+.wk-ctr-n{fill:#fff;font:600 37px/1 var(--mono)}
+.wk.over .wk-ctr-face{fill:var(--alert)}
+.wk.over:not(.running) .wk-ctr-face{animation:wk-alarm 1.1s steps(1) infinite}
+@keyframes wk-alarm{50%{fill:#9C1C1C}}
+/* What comes off it: brackets, and the skeleton of strip they were punched from. */
+.wk-br-body{fill:var(--wk-steel);stroke:var(--wk-steel-ink);stroke-width:1.5;stroke-linejoin:round}
+.wk-br-hole{fill:var(--wk-hole)}
+.wk-skel-edge{fill:none;stroke:var(--wk-steel-ink);stroke-width:15;stroke-linejoin:round}
+.wk-skel-body{fill:none;stroke:var(--wk-steel);stroke-width:11.5;stroke-linejoin:round}
+.wk-skel-holes{fill:none;stroke:var(--wk-hole);stroke-width:5.5;stroke-dasharray:7 6}
+/* The tote, with a clear front so you can see it fill. */
+.wk-tote-back{fill:var(--wk-tote-in)}
+.wk-tote-front{fill:var(--wk-tote);opacity:.3}
+.wk-tote-edge{fill:none;stroke:var(--wk-tote);stroke-width:3;stroke-linejoin:round}
+.wk-tote-rim{fill:var(--wk-tote-lip)}
+.wk-tag{--sg-bg:#fff;--sg-ink:var(--brand)}
+.wk.is-done .wk-tag{opacity:1;transform:none}
+.wk:not(.in-view) *{animation-play-state:paused!important}
 .callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.callout-gap{top:calc(34.8% - 15px)}
+.callout-bottom{top:47%}
+.callout-top h3 i{background:var(--wk-bezel)}
+.callout-bottom h3 i{background:var(--wk-steel)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.355)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -533,67 +567,101 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="wk hero-obj" id="wk" role="img" aria-label="A steel coil feeding a stamping press with a stroke counter, under a work order screen, and the cable between the counter and the screen cut.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">Brackets, 5,000</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <linearGradient id="wkFace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="wk-st-hi"/><stop offset=".5" class="wk-st-mid"/><stop offset="1" class="wk-st-lo"/></linearGradient>
+            </defs>
+
+            <!-- the work order: what the ERP says you’re stamping -->
+            <rect class="wk-bezel" x="14" y="8" width="332" height="168" rx="16"/>
+            <rect class="wk-glass" x="24" y="18" width="312" height="148" rx="9"/>
+            <text class="wk-order" x="42" y="51.5">ORDER 4417</text>
+            <rect class="wk-pill-bg" id="wkPillBg" x="232" y="29" width="86" height="32" rx="16"/>
+            <text class="wk-pill-t" id="wkPill" x="275" y="51" text-anchor="middle">On plan</text>
+            <text class="wk-spec" x="42" y="79">Brackets · 5,000 · <tspan class="wk-coils" id="wkCoils">3 coils</tspan></text>
+            <text class="wk-k" x="42" y="104">COUNT</text>
+            <text class="wk-count" id="wkCount" x="40" y="145">0</text>
+            <text class="wk-of" x="318" y="145" text-anchor="end">of 5,000</text>
+            <rect class="wk-bar" x="42" y="152" width="276" height="7" rx="3.5"/>
+            <rect class="wk-fill" id="wkFill" x="42" y="152" width="0" height="7" rx="3.5"/>
+
+            <!-- the floor: what’s really coming off the press -->
+            <rect class="wk-floor" x="6" y="214" width="348" height="338" rx="18"/>
+            <path class="wk-band" d="M6 506H354V534Q354 552 336 552H24Q6 552 6 534Z"/>
+
+            <!-- the uncoiler, and the coil on it -->
+            <rect class="wk-stand" x="72" y="326" width="16" height="168"/>
+            <path class="wk-stand" d="M44 506L52 488H108L116 506Z"/>
+            <g id="wkCoil">
+              <circle class="wk-coil-face" id="wkCoilFace" cx="80" cy="326" r="68"/>
+              <path class="wk-coil-wrap" id="wkCoilWrap"/>
+              <circle class="wk-coil-rim" id="wkCoilRim" cx="80" cy="326" r="68"/>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            <circle class="wk-ghost" cx="80" cy="326" r="68"/>
+            <circle class="wk-eye" cx="80" cy="326" r="19"/>
+            <g id="wkHub" transform="translate(80 326)"><circle class="wk-hub-ring" r="12"/><path class="wk-hub-jaw" d="M0-11V-5M9.5 5.5L4.3 2.5M-9.5 5.5L-4.3 2.5"/></g>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
-
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the press, in Walker indigo -->
+            <rect class="wk-p" x="158" y="320" width="24" height="90"/>
+            <rect class="wk-p" x="270" y="320" width="24" height="90"/>
+            <rect class="wk-p-dk" x="156" y="424" width="140" height="74" rx="4"/>
+            <rect class="wk-p" x="150" y="398" width="152" height="28" rx="5"/>
+            <rect class="wk-p-hi" x="156" y="402" width="140" height="4" rx="2"/>
+            <rect class="wk-p-deep" x="152" y="496" width="32" height="10" rx="2"/>
+            <rect class="wk-p-deep" x="268" y="496" width="32" height="10" rx="2"/>
+            <rect class="wk-die" x="188" y="386" width="76" height="12" rx="2"/>
+            <!-- the strip, off the coil and into the die: the script draws it -->
+            <path class="wk-strip-edge" id="wkStripEdge"/>
+            <path class="wk-strip" id="wkStrip"/>
+            <path class="wk-strip-run" id="wkStripRun"/>
+            <!-- the slide comes down on it, every stroke -->
+            <rect class="wk-p-deep" x="218" y="322" width="16" height="30"/>
+            <g id="wkRam">
+              <rect class="wk-p-dk" x="182" y="330" width="88" height="27" rx="3"/>
+              <rect class="wk-die" x="188" y="356" width="76" height="11" rx="2"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <rect class="wk-p" x="150" y="286" width="152" height="44" rx="8"/>
+            <rect class="wk-p-hi" x="158" y="292" width="136" height="5" rx="2.5"/>
+            <!-- the stroke counter on the crown -->
+            <rect class="wk-p-deep" x="214" y="276" width="24" height="12"/>
+            <rect class="wk-ctr" x="156" y="226" width="140" height="54" rx="10"/>
+            <rect class="wk-ctr-face" x="163" y="233" width="126" height="40" rx="6"/>
+            <text class="wk-ctr-n" id="wkStrokes" x="226" y="266" text-anchor="middle">0</text>
+
+            <!-- the tote at the outfeed, and the brackets: the script throws every one -->
+            <path class="wk-tote-back" d="M222 434H352L346 506H228Z"/>
+            <g id="wkBrackets"></g>
+            <path class="wk-tote-front" d="M222 434H352L346 506H228Z"/>
+            <path class="wk-tote-edge" d="M222 434L228 506H346L352 434"/>
+            <rect class="wk-tote-rim" x="217" y="428" width="140" height="9" rx="3"/>
+            <g transform="translate(287 490) scale(.5)"><g class="wk-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+
+            <!-- the skeleton: what’s left of the strip once the brackets are punched out -->
+            <path class="wk-skel-edge" id="wkSkelEdge"/>
+            <path class="wk-skel-body" id="wkSkelBody"/>
+            <path class="wk-skel-holes" id="wkSkelHoles"/>
+
+            <!-- the cable from the counter up to the work order: cut, until SimpleGrid joins it -->
+            <path class="wk-stub" d="M226 176V187"/>
+            <rect class="wk-plug" x="217" y="185" width="18" height="9" rx="2"/>
+            <path class="wk-stub" d="M226 212V226"/>
+            <rect class="wk-plug" x="217" y="204" width="18" height="9" rx="2"/>
+            <path class="wk-cable-case" d="M226 226V176"/>
+            <path class="wk-cable" d="M226 226V176"/>
+            <!-- SimpleGrid: once it’s linked, the counter wears the mark -->
+            <g transform="translate(159 229) scale(.85)"><g class="wk-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The work order: your ERP</span></h3>
+            <p id="topText">What the system says you’re stamping.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The press: your floor</span></h3>
+            <p id="bottomText">What’s really coming off it, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -606,10 +674,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Run the coil to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP is the work order up top, your floor is the press below, and nothing links them. Run the coil, or tap the press.</p>
       </div>
     </div>
   </div>
@@ -926,122 +994,352 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
 (function(){
+  /* --------------------------------------------------------------- The coil
+     The work order on the screen is your ERP: Order 4417, 5,000 brackets,
+     three coils. Under it is your floor: a coil on an uncoiler, feeding strip
+     into a press with a stroke counter on its crown, and a tote at the
+     outfeed. The cable from the counter up to the screen is cut. Run it like
+     that and the counter races past the order while the order still reads 0
+     and On plan, the coil runs out mid-strip, and brackets and skeleton scrap
+     end up all over the floor. That mess stays. SimpleGrid joins the cable:
+     the counter wears the mark, and the order finally sees what the press
+     did. Run it again and the same mess goes back through the press and
+     comes out clean: the screen and the counter climb together and stop at
+     exactly 5,000 as the last bracket drops into a full, neat tote.
+     Units are the art's own, 360 x 560. */
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), obj = $('wk');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
-  var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+  var coilG = $('wkCoil'), coilFace = $('wkCoilFace'), coilRim = $('wkCoilRim'), coilWrap = $('wkCoilWrap'), hub = $('wkHub');
+  var stripEls = [$('wkStripEdge'), $('wkStrip'), $('wkStripRun')], stripRun = $('wkStripRun');
+  var skelEls = [$('wkSkelEdge'), $('wkSkelBody'), $('wkSkelHoles')], skelHoles = $('wkSkelHoles');
+  var ram = $('wkRam'), strokesEl = $('wkStrokes'), brWrap = $('wkBrackets');
+  var countEl = $('wkCount'), fillEl = $('wkFill'), coilsEl = $('wkCoils'), pillBg = $('wkPillBg'), pillT = $('wkPill');
+  var reduce = SG.reduce, clamp = SG.clamp;
+
+  var COPY = {
+    apart:    { btn: 'Run the coil to see your operations', caption: 'Your ERP is the work order up top, your floor is the press below, and nothing links them. Run the coil, or tap the press.' },
+    messing:  { btn: 'Running…', caption: 'Running it the usual way: the order in one place, the press in another.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. The counter races past the order, the coil runs out mid-strip, brackets hit the floor, and the order still reads 0, On plan. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Linking…', caption: 'The link goes in, from the counter and the coil to the work order. That’s SimpleGrid.' },
+    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the counter and the coil, live on the work order, so it finally sees what the press did. Now run it again.' },
+    cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: exactly 5,000 brackets in the tote, and the work order counted every one. Your ERP and your floor finally match.' }
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The press counter has raced past 7,000 while the work order still reads 0 and On plan. The coil has run out mid-strip, and brackets and scrap skeleton are spilled across the floor.',
+    dosed: 'The same mess, now with the cable joined, a SimpleGrid mark on the press counter, and the work order showing the real count.',
+    done: 'A full, neat tote of brackets labelled SimpleGrid. The press counter and the work order both read 5,000, and the order says Done, on time.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
+  var ORDER = 5000, OVER = 7384, N = 9;
+  // The coil on its uncoiler: full, empty (just the mandrel), and what a clean run leaves of it.
+  var C = [80, 326], R_FULL = 68, R_EYE = 19, R_END = 44, PITCH = 8;
+  // The strip peels off the bottom of the coil, enters the press at FEED and runs to the die's far edge.
+  // Brackets drop out at DROP. Once the coil runs out, the strip's loose tail ends up at TAIL.
+  var FEED = [158, 380], DIE = [264, 380], DROP = [266, 393], TAIL = [116, 394], STROKE = 9;
+  var f1 = function(v){ return v.toFixed(1); };
+  var setD = function(el, d){ if (d) el.setAttribute('d', d); else el.removeAttribute('d'); };
 
-  var items = SKUS.map(function(sku){
+  /* ------------------------------------------------------------ Drawing */
+  // Where the strip's line to the press just touches the coil, so it always peels off the bottom.
+  function tangent(r){
+    var rho = Math.max(6, r - 4.5), dx = FEED[0] - C[0], dy = FEED[1] - C[1];
+    var a = Math.atan2(dy, dx) + Math.acos(Math.min(1, rho/Math.hypot(dx, dy)));
+    return { a: a, p: [C[0] + Math.cos(a)*rho, C[1] + Math.sin(a)*rho] };
+  }
+  // The wraps, as one spiral in from where the strip leaves: the coil turns once for every wrap it loses.
+  function drawCoil(r){
+    var on = r > R_EYE + 2;
+    coilG.style.display = on ? '' : 'none';
+    hub.setAttribute('transform', 'translate(80 326) rotate(' + f1((r - R_FULL)/PITCH*360) + ')');
+    if (!on) return;
+    coilFace.setAttribute('r', f1(r));
+    coilRim.setAttribute('r', f1(r));
+    var a0 = tangent(r).a, outer = r - 4, inner = R_EYE + 4, turns = Math.max(0, (outer - inner)/PITCH), n = Math.ceil(turns*40) + 1, d = '';
+    for (var k = 0; k <= n; k++){
+      var u = k/n, a = a0 + u*turns*2*Math.PI, rr = outer - u*(outer - inner);
+      d += (k ? 'L' : 'M') + f1(C[0] + Math.cos(a)*rr) + ' ' + f1(C[1] + Math.sin(a)*rr);
+    }
+    setD(coilWrap, turns > .05 ? d : '');
+  }
+  // The strip, from the die back to its tail: on the coil, or loose (0 to 1) once the coil runs out.
+  function drawStrip(p, loose, flow){
+    var d = 'M' + DIE[0] + ' ' + DIE[1] + 'L' + FEED[0] + ' ' + FEED[1];
+    if (!loose) d += 'L' + f1(p[0]) + ' ' + f1(p[1]);
+    else d += 'Q' + f1((FEED[0] + p[0])/2) + ' ' + f1(Math.max(FEED[1], p[1]) + 9*loose) + ' ' + f1(p[0]) + ' ' + f1(p[1]) +
+              'q' + f1(-6*loose) + ' ' + f1(1.5*loose) + ' ' + f1(-9*loose) + ' ' + f1(-9*loose);
+    stripEls.forEach(function(el){ setD(el, d); });
+    stripRun.style.strokeDashoffset = f1(flow);
+  }
+  // The skeleton's way out of the press if nothing stops it: out the side, over the tote and across the floor.
+  var ROUTE = (function(pts){
+    var out = [], cum = [0];
+    for (var i = 0; i < pts.length - 1; i++){
+      var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      var n = Math.max(2, Math.ceil(Math.hypot(p2[0] - p1[0], p2[1] - p1[1])/3));
+      for (var k = 0; k < n; k++){
+        var t = k/n, t2 = t*t, t3 = t2*t;
+        out.push([0, 1].map(function(j){ return .5*(2*p1[j] + (p2[j] - p0[j])*t + (2*p0[j] - 5*p1[j] + 4*p2[j] - p3[j])*t2 + (3*p1[j] - p0[j] - 3*p2[j] + p3[j])*t3); }));
+      }
+    }
+    out.push(pts[pts.length - 1]);
+    for (var j = 1; j < out.length; j++) cum.push(cum[j - 1] + Math.hypot(out[j][0] - out[j - 1][0], out[j][1] - out[j - 1][1]));
+    return { pts: out, cum: cum, len: cum[cum.length - 1] };
+  })([[264,380],[296,380],[318,386],[335,402],[345,428],[346,460],[340,492],[326,516],[304,530],[276,534],[258,522],[266,508],[284,516],[278,536],[252,546],[222,536],[196,544],[168,534],[142,544],[118,534]]);
+  var SKEL_NEAT = 38;   // a clean run cuts it off as it leaves the press
+  // L is how much of it is out; flow moves the punched holes along with the steel.
+  function drawSkel(L, flow){
+    var P = ROUTE.pts, cum = ROUTE.cum, d = '';
+    if (L > .5){
+      d = 'M' + P[0][0] + ' ' + P[0][1];
+      for (var i = 1; i < P.length; i++){
+        if (cum[i] >= L){
+          var t = (L - cum[i - 1])/(cum[i] - cum[i - 1]);
+          d += 'L' + f1(P[i - 1][0] + (P[i][0] - P[i - 1][0])*t) + ' ' + f1(P[i - 1][1] + (P[i][1] - P[i - 1][1])*t);
+          break;
+        }
+        d += 'L' + f1(P[i][0]) + ' ' + f1(P[i][1]);
+      }
+    }
+    skelEls.forEach(function(el){ setD(el, d); });
+    skelHoles.style.strokeDashoffset = f1(-flow);
+  }
+  // One beat of the press: the slide comes down and goes back up in the first part of it.
+  function ramAt(t, t0, beat, n){
+    var k = Math.floor((t - t0)/beat);
+    if (k < 0 || k >= n) return 0;
+    var u = (t - t0 - k*beat)/beat;
+    return u < .7 ? STROKE*Math.sin(Math.PI*u/.7) : 0;
+  }
+  function setRam(y){ ram.setAttribute('transform', 'translate(0 ' + y.toFixed(2) + ')'); }
+
+  /* ------------------------------------------------------------ The numbers */
+  var fmt = function(n){ return Math.round(n).toLocaleString('en-US'); };
+  // The counter's face is monospaced, so its comma gets tucked in rather than taking a whole digit's width.
+  var shown = '';
+  function setStrokes(n){
+    var s = fmt(n), c = s.indexOf(',');
+    if (s !== shown) strokesEl.innerHTML = c < 0 ? s : s.slice(0, c) + '<tspan dx="-7">,</tspan><tspan dx="-7">' + s.slice(c + 1) + '</tspan>';
+    shown = s;
+    obj.classList.toggle('over', Math.round(n) > ORDER);
+  }
+  function setCount(n){
+    countEl.textContent = fmt(n);
+    fillEl.setAttribute('width', f1(276*clamp(n/ORDER, 0, 1)));
+    obj.classList.toggle('told', Math.round(n) > ORDER);
+  }
+  var PILL = { plan: ['On plan', 86], live: ['Live', 70], done: ['Done, on time', 136] };
+  function setPill(k){
+    var p = PILL[k];
+    obj.dataset.pill = k;
+    pillT.textContent = p[0];
+    pillBg.setAttribute('x', 318 - p[1]);
+    pillBg.setAttribute('width', p[1]);
+    pillT.setAttribute('x', 318 - p[1]/2);
+  }
+
+  /* ------------------------------------------------------------ The brackets */
+  var brs = [], at = [];
+  for (var i = 0; i < N; i++){
     var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
-  });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
+    g.setAttribute('class', 'wk-br');
+    g.innerHTML = '<path class="wk-br-body" d="M-15-12H-5V3H15V12H-15Z"/><circle class="wk-br-hole" cx="-10" cy="-5" r="2.4"/><circle class="wk-br-hole" cx="8" cy="7.5" r="2.4"/>';
+    brWrap.appendChild(g);
+    brs.push(g);
+  }
+  // Where a run without the link leaves them: three heaped in the tote, the rest all over the floor.
+  var HEAP = [[254, 478, -30], [326, 474, -14], [296, 446, 52]];
+  var SPILL = [[208, 524, 112], [176, 543, -38], [138, 523, 64], [100, 545, -96], [318, 546, -62], [50, 532, 22]];
+  // Where a clean run puts them: in rows of three, from the bottom of the tote up.
+  var SLOT = function(k){ return [251 + (k % 3)*36, 492 - Math.floor(k/3)*22, 0]; };
+  var tf = function(p){ return 'translate(' + f1(p[0]) + 'px,' + f1(p[1]) + 'px) rotate(' + f1(p[2] || 0) + 'deg)'; };
+  function place(i, p, o){
+    brs[i].getAnimations().forEach(function(a){ a.cancel(); });
+    at[i] = p;
+    brs[i].style.transform = tf(p);
+    brs[i].style.opacity = o;
+  }
+  // A throw from a to b over c: a quadratic is the arc a tossed part makes. Its keyframes run from offset `from` to `to`.
+  function arc(a, c, b, from, to, n){
+    var out = [];
+    for (var k = 0; k <= n; k++){
+      var u = k/n, v = 1 - u;
+      out.push({ p: [v*v*a[0] + 2*v*u*c[0] + u*u*b[0], v*v*a[1] + 2*v*u*c[1] + u*u*b[1], a[2] + (b[2] - a[2])*u], o: 1, at: from + (to - from)*u });
+    }
+    return out;
+  }
+  function fly(i, frames, ms, delay){
+    var el = brs[i];
+    el.getAnimations().forEach(function(a){ a.cancel(); });
+    // Every frame carries its own opacity, so nothing falls back to a hidden style mid-throw.
+    var anim = el.animate(frames.map(function(f){ return { transform: tf(f.p), opacity: f.o, offset: f.at }; }),
+      { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: 'linear', fill: 'both' });
+    var last = frames[frames.length - 1];
+    at[i] = last.p;
+    el.style.transform = tf(last.p);
+    el.style.opacity = last.o;
     return anim.finished.catch(function(){});
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  function messThrow(i){
+    var a = [DROP[0], DROP[1], 0], f;
+    if (i < HEAP.length){
+      var b = HEAP[i];
+      f = arc(a, [(a[0] + b[0])/2 + 8, Math.min(a[1], b[1]) - 52], b, 0, 1, 10);
+    } else {
+      // The tote's already heaped, so the rest bounce off it and skid across the floor.
+      var s = SPILL[i - HEAP.length], m = [272 + (i % 3)*22, 430, s[2]*.4];
+      f = arc(a, [(a[0] + m[0])/2 + 6, a[1] - 46], m, 0, .48, 6)
+        .concat(arc(m, [(m[0] + s[0])/2, Math.min(m[1], s[1]) - 38], s, .48, 1, 8).slice(1));
+    }
+    f[0].o = 0;
+    fly(i, f, i < HEAP.length ? 640 : 900);
+  }
+  function backIn(i, delay){
+    var a = at[i], b = [DROP[0], DROP[1], 0];
+    var f = arc(a, [(a[0] + b[0])/2, Math.min(a[1], b[1]) - 44], b, 0, 1, 8);
+    f[f.length - 1].o = 0;
+    fly(i, f, 520, delay);
+  }
+  function cleanThrow(i){
+    var a = [DROP[0], DROP[1], 0], b = SLOT(i);
+    var f = arc(a, [(a[0] + b[0])/2 + 4, Math.min(a[1], b[1]) - 36], b, 0, 1, 8);
+    f[0].o = 0;
+    fly(i, f, 480);
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
+  /* ------------------------------------------------------------ The moves */
+  // gen changes on Start over, so a run still going stops where it is.
+  var gen = 0, thrown = 0;
+  var ease = function(t){ return t < .5 ? 2*t*t : 1 - 2*(1 - t)*(1 - t); };
+  var easeOut = function(t){ return 1 - (1 - t)*(1 - t)*(1 - t); };
+  // Runs frame(t) every frame from 0 to ms. With motion reduced it goes straight to the end.
+  function play(ms, frame){
+    var token = gen;
+    return new Promise(function(done){
+      if (reduce){ frame(ms); done(); return; }
+      var start = performance.now();
+      requestAnimationFrame(function tick(now){
+        if (token !== gen) return done();
+        var t = clamp(now - start, 0, ms);
+        frame(t);
+        if (t < ms) requestAnimationFrame(tick); else done();
+      });
+    });
+  }
+
+  // Run it with no link: the counter races past the order, the coil runs out, and everything ends up on the floor.
+  var M = { ms: 3700, t0: 120, beat: 230, strokes: 15, out: 2300, count: 3480 };
   function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
-    });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    thrown = 0;
+    obj.classList.add('running');
+    return play(M.ms, function(t){
+      var k = clamp((t - M.t0)/(M.out - M.t0), 0, 1), flow = Math.min(t, M.out + 450)*.1;
+      if (k < 1){
+        var r = Math.sqrt(R_FULL*R_FULL - (R_FULL*R_FULL - R_EYE*R_EYE)*k);
+        drawCoil(r);
+        drawStrip(tangent(r).p, 0, flow);
+      } else {
+        // Out of coil, mid-strip: the press drags the loose tail in until it stalls.
+        var u = easeOut(clamp((t - M.out)/450, 0, 1)), s = tangent(R_EYE).p;
+        drawCoil(R_EYE);
+        drawStrip([s[0] + (TAIL[0] - s[0])*u, s[1] + (TAIL[1] - s[1])*u], u, flow);
+        obj.classList.add('out');
+      }
+      setRam(ramAt(t, M.t0, M.beat, M.strokes));
+      setStrokes(OVER*Math.pow(clamp((t - M.t0)/(M.count - M.t0), 0, 1), 1.4));
+      var L = ROUTE.len*ease(clamp((t - 300)/2900, 0, 1));
+      drawSkel(L, L);
+      while (thrown < N && t >= M.t0 + thrown*M.beat + 60) messThrow(thrown++);
+    }).then(function(){ obj.classList.remove('running'); });
   }
+  // SimpleGrid joins the cable, the counter wears the mark, and the order catches up with the press.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
-  }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
-  function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+    obj.classList.add('linked');
+    setPill('live');
+    return play(1000, function(t){
+      var u = easeOut(clamp((t - 250)/650, 0, 1));
+      setCount(OVER*u);
+      coilsEl.textContent = u > .5 ? 'coil out' : '3 coils';
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+  }
+  // Run it again, linked: the mess goes back in, a fresh coil goes on, and it comes out clean.
+  var K = { ms: 4950, back: 900, t0: 1000, beat: 290, flight: 480 };
+  K.land = K.t0 + (N - 1)*K.beat + 60 + K.flight;
+  function clean(){
+    thrown = 0;
+    obj.classList.remove('out');
+    obj.classList.add('running');
+    coilsEl.textContent = '3 coils';
+    brs.forEach(function(g, i){ backIn(i, i*28); });
+    return play(K.ms, function(t){
+      if (t < K.t0){
+        // The brackets, the skeleton and the tail go back in, a new coil goes on, and both counts wind back together.
+        var u = ease(clamp(t/(K.back - 100), 0, 1));
+        var r = R_EYE + (R_FULL - R_EYE)*easeOut(clamp((t - 120)/620, 0, 1)), s = tangent(r).p, v = easeOut(clamp(t/280, 0, 1));
+        setStrokes(OVER*(1 - u));
+        setCount(OVER*(1 - u));
+        drawCoil(r);
+        drawStrip(v < 1 ? [TAIL[0] + (s[0] - TAIL[0])*v, TAIL[1] + (s[1] - TAIL[1])*v] : s, 1 - v, 0);
+        var L = ROUTE.len + (SKEL_NEAT - ROUTE.len)*u;
+        drawSkel(L, L);
+        setRam(0);
+        return;
+      }
+      // Then one bracket a stroke, each into its place, while the counter and the order climb together.
+      var p = clamp((t - K.t0)/(K.land - K.t0), 0, 1), fl = (t - K.t0)*.08;
+      var rr = Math.sqrt(R_FULL*R_FULL - (R_FULL*R_FULL - R_END*R_END)*p);
+      setStrokes(ORDER*p);
+      setCount(ORDER*p);
+      drawCoil(rr);
+      drawStrip(tangent(rr).p, 0, fl);
+      drawSkel(SKEL_NEAT, SKEL_NEAT + fl);
+      setRam(ramAt(t, K.t0, K.beat, N));
+      while (thrown < N && t >= K.t0 + thrown*K.beat + 60) cleanThrow(thrown++);
+      if (p >= 1 && obj.dataset.pill !== 'done') setPill('done');
+    }).then(function(){ obj.classList.remove('running'); });
+  }
+  // Back to the first picture, at once.
+  function restore(){
+    gen++;
+    thrown = 0;
+    brs.forEach(function(g, i){ place(i, [DROP[0], DROP[1], 0], 0); });
+    obj.classList.remove('running', 'over', 'told', 'out', 'linked', 'is-done');
+    drawCoil(R_FULL);
+    drawStrip(tangent(R_FULL).p, 0, 0);
+    drawSkel(0, 0);
+    setRam(0);
+    setStrokes(0);
+    setCount(0);
+    setPill('plan');
+    coilsEl.textContent = '3 coils';
   }
   function setCallouts(final){
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = final ? 'Your ERP' : 'The work order: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says you’re stamping.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The press: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really coming off it, on Excel, whiteboards and phones.';
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.wk',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'The counter says one number, the work order another. Everyone’s working from a different version.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same press, same mess. Now the counter and the coil are live on the order.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Or tap the press: it does what the button does.
+  obj.addEventListener('click', function(){ if (!story.busy()) story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  restore();
 })();
 </script>
 <script>

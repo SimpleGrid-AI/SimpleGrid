@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://simplegrid.ai/burton-medical/og-jim.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A light assembly line under a build screen, with no link between them, beside the words: Jim, Burton has been making medical lights since 1928.">
+<meta property="og:image:alt" content="A build screen above an exam light on its arm at a test bench, with no link between them, beside the words: Jim, Burton has been making medical lights since 1928.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Jim, light it up.">
 <meta name="twitter:description" content="SimpleGrid, explained to someone who makes medical lights for a living.">
@@ -210,73 +210,136 @@ h1 span{display:block;color:var(--hi)}
   --tint:#EEF2F5;--pale:#F9FBFC;--ink:#1A1A1A;--alert:#9A3324;--marker:#E6EEF3;--h2-hi:#9A3324;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#A9C1D0;--sku-b:#4F758B;--sku-c:#F3F6F8}
-
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
+/* -------------------------------------------------------------- The light
+   For a maker of medical lights. The build screen up top is the ERP, the light on
+   its arm at the test bench is the floor, and the cable between them is cut.
+   SimpleGrid is the scanner that joins it. Every color lives on .hero-art: medical
+   white and steel, a warm LED glow, and Burton's brick red for the QA holds. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --bm-white:#F4F7F9;--bm-steel:#C6D0D8;--bm-steel-dk:#8F9CA8;--bm-steel-ink:#5A6773;--bm-post:#6E7B87;
+  --bm-glass:#0E1B2C;--bm-bed:#223041;--bm-pod:#475563;--bm-pod-ring:#5E6C7A;
+  --bm-core:#FFFDF4;--bm-led:#FFF1CF;--bm-warm:#FFD58A;--bm-glow:#FFE3A1;
+  --bm-bench:#E2E8ED;--bm-bench-edge:#A7B3BD;
+  --bm-wrong:#2D3844;--bm-wrong-end:#46525F;--bm-wrong-pin:#C2893A;
+  --bm-ok:#DFF5EA;--bm-ok-ink:#0A6B47;--bm-done:#1C9E63;--bm-bar:#16A86B;
+  --bm-scan:#CDE6FF;--bm-tube:#3B4856;
+}
+.bm{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .bm,.bm.is-done{cursor:default}
+.bm svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bm.snap *{transition:none!important}
+.bm:not(.in-view) *{animation-play-state:paused!important}
+/* The gradients' colors, from the variables above. */
+.bm-s-core{stop-color:var(--bm-core)}
+.bm-s-led{stop-color:var(--bm-led)}
+.bm-s-warm{stop-color:var(--bm-warm)}
+.bm-s-glow{stop-color:var(--bm-glow)}
+.bm-s-scan{stop-color:var(--bm-scan)}
+/* The build screen: what the ERP says you're building. */
+.bm-bezel{fill:var(--bm-white)}
+.bm-glass{fill:var(--bm-glass)}
+.bm-order{fill:#fff;font:800 24px/1 var(--body);letter-spacing:.02em}
+.bm-sku{fill:rgba(255,255,255,.8);font:600 19px/1 var(--body)}
+.bm-pill{fill:var(--bm-ok);transition:fill .3s}
+.bm-pill-t{fill:var(--bm-ok-ink);font:800 15px/1 var(--body);transition:fill .3s}
+.bm.linked .bm-pill{fill:var(--accent)}
+.bm.linked .bm-pill-t{fill:var(--on-accent)}
+.bm.is-ok .bm-pill{fill:var(--bm-done)}
+.bm.is-ok .bm-pill-t{fill:#fff}
+.bm-track,.bm-prog{fill:none;stroke-width:10;stroke-linecap:round}
+.bm-track{stroke:rgba(255,255,255,.14)}
+.bm-prog{stroke:var(--bm-bar);stroke-dasharray:34 100;transition:stroke-dasharray 1.6s cubic-bezier(.3,.7,.2,1)}
+.bm.planned .bm-prog{stroke-dasharray:72 100}
+.bm.is-ok .bm-prog{stroke-dasharray:100 100}
+/* The cable: cut, until the scanner joins it and it carries the serial numbers both ways. */
+.bm-stub{fill:none;stroke:var(--bm-steel-dk);stroke-width:7;stroke-linecap:round}
+.bm-plug{fill:var(--bm-steel)}
+.bm-tube,.bm-core{fill:none;stroke-linecap:round;opacity:0;transition:opacity .3s}
+.bm-tube{stroke:var(--bm-tube);stroke-width:9}
+.bm-core{stroke:var(--accent);stroke-width:4;stroke-dasharray:6 6}
+.bm.linked .bm-tube,.bm.linked .bm-core{opacity:1}
+.bm.linked .bm-core{animation:bm-flow .6s linear infinite}
+@keyframes bm-flow{to{stroke-dashoffset:-12}}
+/* The scanner: SimpleGrid, wearing the mark. */
+.bm-scanner{opacity:0}
+.bm-sc-body{fill:var(--bm-white);stroke:var(--bm-steel-dk);stroke-width:1.5}
+.bm-sc-win{fill:var(--bm-glass)}
+.bm.linked .bm-sc-win{fill:#7FC4FF}
+.bm-mark{--sg-bg:var(--brand);--sg-ink:#fff}
+.bm.dosed .bm-mark{opacity:1;transform:none}
+.bm-fan{opacity:0;transform-box:view-box;transform-origin:180px 206px}
+.bm-fan-beam{fill:url(#bmScan)}
+.bm-fan-line{fill:#fff;opacity:.9}
+.bm.linked .bm-fan-line{animation:bm-scan 1.8s ease-in-out infinite}
+.bm.lit .bm-fan-line{animation:none}
+@keyframes bm-scan{50%{transform:translateY(112px)}}
+/* The test bench, the post and the spring arm. */
+.bm-bench-top{fill:var(--bm-bench)}
+.bm-bench-edge{fill:var(--bm-bench-edge)}
+.bm-leg,.bm-post{fill:var(--bm-post)}
+.bm-base{fill:var(--bm-steel-ink)}
+.bm-arm{fill:none;stroke:var(--bm-white);stroke-width:14;stroke-linecap:round}
+.bm-arm-core{fill:none;stroke:var(--bm-steel-dk);stroke-width:3;stroke-linecap:round}
+.bm-joint{fill:var(--bm-white);stroke:var(--bm-steel-dk);stroke-width:2.5}
+.bm-pin{fill:var(--bm-steel-dk)}
+.bm-pin-dk{fill:var(--bm-steel-ink)}
+/* The right part: a collar for the pivot. It only goes on once the build is linked. */
+.bm-collar{opacity:0}
+.bm-collar-body{fill:var(--bm-white);stroke:var(--bm-steel-dk);stroke-width:3}
+.bm-collar-pin{fill:var(--brand)}
+/* The wrong part, from some other revision: it lands on the bench and stays there. */
+.bm-wrong{opacity:0}
+.bm-wrong-bar{fill:var(--bm-wrong)}
+.bm-wrong-end{fill:var(--bm-wrong-end)}
+.bm-wrong-pin{fill:var(--bm-wrong-pin)}
+/* The head hangs from its pivot, so it can hang crooked. */
+.bm-head{transform-box:view-box;transform-origin:180px 230px}
+.bm-stem{fill:var(--bm-steel)}
+.bm-housing{fill:var(--bm-white)}
+.bm-housing-shade{fill:var(--bm-steel)}
+.bm-rim{fill:var(--bm-steel)}
+.bm-bed{fill:var(--bm-bed)}
+.bm-bed-lit{opacity:0;transition:opacity .6s}
+.bm.powered .bm-bed-lit{opacity:.07}
+.bm.lit .bm-bed-lit{opacity:.9}
+.bm-handle{fill:var(--bm-white)}
+.bm-handle-in{fill:var(--bm-steel)}
+/* The LEDs. Built unlinked: some dark, some flickering, the rest dim. Built linked: every one, bright and even. */
+.bm-pod-off{fill:var(--bm-pod)}
+.bm-pod-ring{fill:none;stroke:var(--bm-pod-ring);stroke-width:2.2}
+.bm-pod-on{fill:url(#bmLed);opacity:0;transition:opacity .3s calc(var(--i)*.06s)}
+.bm-pod-glow{fill:url(#bmPodGlow);opacity:0;transition:opacity .4s calc(var(--i)*.06s)}
+.bm.powered .bm-pod-on{opacity:var(--dim)}
+.bm.powered .bm-pod-glow{opacity:calc(var(--dim)*.45)}
+.bm.powered .dead .bm-pod-on,.bm.powered .dead .bm-pod-glow{opacity:0}
+.bm.messy .flick .bm-pod-on,.bm.messy .flick .bm-pod-glow{animation:bm-flick 1.9s steps(1,end) var(--fd) infinite}
+@keyframes bm-flick{0%{opacity:.95}7%{opacity:.06}11%{opacity:.8}36%{opacity:.1}41%{opacity:.9}46%{opacity:.04}68%{opacity:.75}75%{opacity:.08}83%{opacity:.6}}
+.bm.lit .bm-pod-on,.bm.lit .bm-pod-glow{opacity:1}
+/* Switched on, linked: a warm glow, a beam down to the bench and a pool of light on it. */
+.bm-halo{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.7);transition:opacity .45s,transform .8s cubic-bezier(.2,.8,.3,1)}
+.bm.powered .bm-halo{opacity:.16;transform:scale(.62)}
+.bm.beaming .bm-halo{opacity:1;transform:none}
+.bm-beam,.bm-pool{opacity:0;transition:opacity .6s .1s}
+.bm.beaming .bm-beam,.bm.beaming .bm-pool{opacity:1}
+/* The QA holds, in Burton's brick red. */
+.bm-hold{opacity:0}
+.bm.messy .bm-sway{animation:bm-sway 2.8s ease-in-out var(--sd) infinite}
+@keyframes bm-sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+.bm-string{fill:none;stroke:var(--bm-white);stroke-width:1.6}
+.bm-tag-body{fill:var(--alert)}
+.bm-tag-hole{fill:var(--bm-white)}
+.bm-tag-t{fill:#fff;font:800 14px/1 var(--body);letter-spacing:.04em}
+/* Once it comes clean, the head gets its label. */
+.bm-label{--sg-bg:var(--brand);--sg-ink:#fff}
+.bm.is-done .bm-label{opacity:1;transform:none}
 .callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.callout-gap{top:calc(33.2% - 15px)}
+.callout-bottom{top:54%}
+.callout-top h3 i{background:var(--bm-white)}
+.callout-bottom h3 i{background:var(--bm-warm)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.45)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -533,67 +596,155 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="bm hero-obj" id="bm" role="img" aria-label="A build screen saying Build 4417, LED exam lights, 40, On plan. Below it, a round exam light on its arm at a test bench, switched off. The cable between them is cut.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Build 4417</text>
-              <text class="ln-sku" x="56" y="106">LED exam lights, 40</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <radialGradient id="bmLed" cx=".5" cy=".42" r=".62">
+                <stop offset="0" class="bm-s-core"/>
+                <stop offset=".55" class="bm-s-led"/>
+                <stop offset="1" class="bm-s-warm"/>
+              </radialGradient>
+              <radialGradient id="bmPodGlow">
+                <stop offset=".4" class="bm-s-glow" stop-opacity=".95"/>
+                <stop offset="1" class="bm-s-glow" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="bmHalo">
+                <stop offset="0" class="bm-s-core" stop-opacity=".95"/>
+                <stop offset=".42" class="bm-s-glow" stop-opacity=".5"/>
+                <stop offset="1" class="bm-s-glow" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="bmFace" cx=".5" cy=".45" r=".6">
+                <stop offset="0" class="bm-s-core"/>
+                <stop offset=".7" class="bm-s-led"/>
+                <stop offset="1" class="bm-s-glow"/>
+              </radialGradient>
+              <linearGradient id="bmBeam" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" class="bm-s-glow" stop-opacity=".8"/>
+                <stop offset="1" class="bm-s-glow" stop-opacity=".25"/>
+              </linearGradient>
+              <radialGradient id="bmPool">
+                <stop offset="0" class="bm-s-core"/>
+                <stop offset=".6" class="bm-s-glow" stop-opacity=".7"/>
+                <stop offset="1" class="bm-s-glow" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="bmScan" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" class="bm-s-scan" stop-opacity=".85"/>
+                <stop offset="1" class="bm-s-scan" stop-opacity=".05"/>
+              </linearGradient>
+              <clipPath id="bmFanClip"><path d="M163 206H197L280 332H80Z"/></clipPath>
+            </defs>
+
+            <!-- once it's switched on, linked: the glow behind the head -->
+            <circle class="bm-halo" cx="180" cy="357" r="180" fill="url(#bmHalo)"/>
+
+            <!-- the build screen: what the ERP says you're building -->
+            <rect class="bm-bezel" x="22" y="10" width="316" height="140" rx="16"/>
+            <rect class="bm-glass" x="33" y="21" width="294" height="118" rx="9"/>
+            <text class="bm-order" x="50" y="59">BUILD 4417</text>
+            <rect class="bm-pill" x="196" y="36" width="122" height="32" rx="16"/>
+            <text class="bm-pill-t" id="bmStatus" x="257" y="57.6" text-anchor="middle">On plan</text>
+            <text class="bm-sku" x="50" y="92">LED exam lights · 40</text>
+            <path class="bm-track" d="M55 116H305"/>
+            <path class="bm-prog" d="M55 116H305" pathLength="100"/>
+
+            <!-- the test bench, with the beam and the pool of light it makes once the light is right -->
+            <path class="bm-bench-top" d="M16 496H344L354 508H6Z"/>
+            <rect class="bm-bench-edge" x="6" y="508" width="348" height="11" rx="2"/>
+            <rect class="bm-leg" x="22" y="519" width="11" height="37"/>
+            <rect class="bm-leg" x="327" y="519" width="11" height="37"/>
+            <path class="bm-beam" d="M106 404H254L332 503H28Z" fill="url(#bmBeam)"/>
+            <ellipse class="bm-pool" cx="180" cy="502" rx="138" ry="8" fill="url(#bmPool)"/>
+
+            <!-- the test stand: a post on the bench and a spring arm out to the pivot -->
+            <rect class="bm-base" x="308" y="490" width="46" height="10" rx="3"/>
+            <rect class="bm-post" x="324" y="282" width="14" height="212" rx="4"/>
+            <path class="bm-arm" d="M331 284L180 230"/>
+            <path class="bm-arm-core" d="M318.8 279.6L195.1 235.4"/>
+            <circle class="bm-joint" cx="331" cy="284" r="11"/>
+
+            <!-- the cable from the screen to the light: cut -->
+            <path class="bm-stub" d="M180 150V169"/>
+            <path class="bm-stub" d="M180 203V220"/>
+            <rect class="bm-plug" x="170" y="166" width="20" height="10" rx="3"/>
+            <rect class="bm-plug" x="170" y="196" width="20" height="10" rx="3"/>
+            <path class="bm-tube" d="M180 150V220"/>
+            <path class="bm-core" d="M180 150V220"/>
+
+            <!-- the wrong arm part, from some other revision, on the bench -->
+            <g transform="translate(66 486)"><g class="bm-wrong" id="bmWrong"><g transform="rotate(-6)">
+              <rect class="bm-wrong-bar" x="-40" y="-8" width="80" height="16" rx="4"/>
+              <circle class="bm-wrong-end" cx="-40" cy="0" r="13"/>
+              <circle class="bm-wrong-end" cx="40" cy="0" r="13"/>
+              <circle class="bm-wrong-pin" cx="-40" cy="0" r="5.5"/>
+              <circle class="bm-wrong-pin" cx="40" cy="0" r="5.5"/>
+            </g></g></g>
+
+            <!-- the light head, hanging from its pivot -->
+            <g class="bm-head" id="bmHead">
+              <rect class="bm-stem" x="174" y="226" width="12" height="30" rx="4"/>
+              <ellipse class="bm-housing-shade" cx="180" cy="351" rx="114" ry="96"/>
+              <ellipse class="bm-housing" cx="180" cy="347" rx="114" ry="95"/>
+              <ellipse class="bm-rim" cx="180" cy="357" rx="104" ry="84"/>
+              <ellipse class="bm-bed" cx="180" cy="357" rx="95" ry="75"/>
+              <ellipse class="bm-bed-lit" cx="180" cy="357" rx="95" ry="75" fill="url(#bmFace)"/>
+              <!-- eight LED modules round the handle -->
+              <g class="bm-pod" transform="translate(180 310)" style="--i:0;--dim:.62"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <g class="bm-pod dead" transform="translate(223.1 323.8)" style="--i:1;--dim:.5"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <g class="bm-pod" transform="translate(241 357)" style="--i:2;--dim:.4"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <g class="bm-pod flick" transform="translate(223.1 390.2)" style="--i:3;--dim:.5;--fd:0s"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <g class="bm-pod dead" transform="translate(180 404)" style="--i:4;--dim:.5"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <g class="bm-pod" transform="translate(136.9 390.2)" style="--i:5;--dim:.55"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <g class="bm-pod flick" transform="translate(119 357)" style="--i:6;--dim:.5;--fd:-.9s"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <g class="bm-pod" transform="translate(136.9 323.8)" style="--i:7;--dim:.32"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
+              <ellipse class="bm-handle" cx="180" cy="357" rx="18" ry="15.5"/>
+              <ellipse class="bm-handle-in" cx="180" cy="358" rx="9.5" ry="8"/>
+              <!-- QA holds, hanging off the rim once it's built wrong -->
+              <g transform="translate(134 432) rotate(10)"><g class="bm-hold"><g class="bm-sway" style="--sd:0s">
+                <path class="bm-tag-body" d="M-11 8H11L29 23V54H-29V23Z"/>
+                <circle class="bm-tag-hole" cx="0" cy="15.5" r="3.5"/>
+                <path class="bm-string" d="M0 0V15.5"/>
+                <text class="bm-tag-t" x="0" y="45" text-anchor="middle">HOLD</text>
+              </g></g></g>
+              <g transform="translate(228 431.5) rotate(4)"><g class="bm-hold"><g class="bm-sway" style="--sd:-1.3s">
+                <path class="bm-tag-body" d="M-11 8H11L29 23V54H-29V23Z"/>
+                <circle class="bm-tag-hole" cx="0" cy="15.5" r="3.5"/>
+                <path class="bm-string" d="M0 0V15.5"/>
+                <text class="bm-tag-t" x="0" y="45" text-anchor="middle">HOLD</text>
+              </g></g></g>
+              <!-- and once it's right, its label -->
+              <g transform="translate(180 441) scale(.7)"><g class="bm-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
+            <!-- the pivot, and the right part for it -->
+            <circle class="bm-pin" cx="180" cy="230" r="10"/>
+            <circle class="bm-pin-dk" cx="180" cy="230" r="4"/>
+            <g transform="translate(180 230)"><g class="bm-collar" id="bmCollar">
+              <circle class="bm-collar-body" r="15"/>
+              <circle class="bm-collar-pin" r="5.5"/>
+            </g></g>
 
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the scanner's beam, reading serial numbers -->
+            <g class="bm-fan" id="bmFan">
+              <path class="bm-fan-beam" d="M163 206H197L280 332H80Z"/>
+              <g clip-path="url(#bmFanClip)"><rect class="bm-fan-line" x="70" y="208" width="220" height="4"/></g>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <!-- SimpleGrid: the scanner that joins the cable -->
+            <g transform="translate(180 185)"><g class="bm-scanner" id="bmScanner">
+              <rect class="bm-sc-body" x="-35" y="-23" width="70" height="44" rx="11"/>
+              <rect class="bm-sc-win" x="-26" y="14" width="52" height="6" rx="3"/>
+              <g transform="translate(0 -4) scale(.82)"><g class="bm-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g></g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The build plan: your ERP</span></h3>
+            <p id="topText">What the system says you’re building.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The bench: your floor</span></h3>
+            <p id="bottomText">What’s really on it, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -606,10 +757,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Build it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The build screen is your ERP, the bench is your floor, and nothing links them. Build it, or tap the light.</p>
       </div>
     </div>
   </div>
@@ -926,122 +1077,184 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
+/* --------------------------------------------------------------- The light
+   For a maker of medical lights. The build screen is the ERP, the light on the
+   test bench is the floor, and the cable between them is cut. Build it unlinked
+   and it goes wrong: the head hangs crooked, some LEDs stay dark and others
+   flicker, QA holds go on, the wrong arm part lands on the bench, and the screen
+   still says On plan. That mess stays. SimpleGrid is the scanner that joins the
+   cable: a serial number on every part, through every hand. Build it again and
+   the holds come off, the right part goes on, the head hangs level, and every
+   LED comes on, bright and even, in one warm beam. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
-  var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), obj = $('bm'), head = $('bmHead'), statusEl = $('bmStatus');
+  var scanner = $('bmScanner'), fan = $('bmFan'), wrong = $('bmWrong'), collar = $('bmCollar');
+  var holds = [].slice.call(obj.querySelectorAll('.bm-hold'));
+  var pods = [].slice.call(obj.querySelectorAll('.bm-pod'));
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = {
+    apart:    { btn: 'Build it to see your operations', caption: 'The build screen is your ERP, the bench is your floor, and nothing links them. Build it, or tap the light.' },
+    messing:  { btn: 'Building…', caption: 'Building it the usual way: the plan in one place, the bench in another.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. LEDs dark or flickering, the wrong arm part on the bench, QA holds on the head, and the screen still says On plan. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Linking…', caption: 'In goes the scanner, and the cable joins. That’s SimpleGrid.' },
+    dosed:    { btn: 'Build it again', caption: 'That’s SimpleGrid: a serial-number link that follows every part through every hand. Now build it again.' },
+    cleaning: { btn: 'Building…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one clean light: holds off, the right parts on, every LED bright and even. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The build plan: your ERP', 'What the system says you’re building.', 'The bench: your floor', 'What’s really on it, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The light built with nothing linking it: the head hanging crooked, some LEDs dark and some flickering, red QA hold tags on the head, the wrong arm part on the bench, and the screen still saying On plan.',
+    dosed: 'The same mess, now with a scanner marked SimpleGrid joining the cable, and the screen saying Linked.',
+    done: 'The light hanging level and switched on, every LED bright and even in a warm beam, the head labelled SimpleGrid, and the screen saying Done, on time.'
   };
+  var TILT = -8;                                 // how crooked the head hangs, built unlinked
+  var DEAD = pods.filter(function(g){ return g.classList.contains('dead'); });
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
-
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
-  });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], moves = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Every keyframe carries its own opacity, so nothing falls back to its hidden starting style mid-move.
+  function move(el, frames, ms, delay, easing){
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease', fill: 'both' });
+    moves.push(a);
+    return a.finished.catch(function(){});
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
-  }
+  var rot = function(d){ return { transform: 'rotate(' + d + 'deg)' }; };
+  function at(f, o){ f.offset = o; return f; }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
+  // Build it unlinked: the wrong part lands on the bench, the head swings crooked and stays there,
+  // it switches on unevenly, the holds go on, and the screen says it's all going to plan.
   function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
+    obj.classList.add('planned');
+    var parts = [move(wrong, [
+      { transform: 'translate(-130px,-150px) rotate(-150deg)', opacity: 0 },
+      { transform: 'translate(-70px,-120px) rotate(-80deg)', opacity: 1, offset: .3 },
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1, offset: .72 },
+      { transform: 'translate(0,-9px) rotate(5deg)', opacity: 1, offset: .86 },
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1 }
+    ], 900, 0, 'cubic-bezier(.45,0,.7,1)')];
+    parts.push(move(head, [rot(0), at(rot(TILT*1.7), .34), at(rot(TILT*.55), .62), at(rot(TILT*1.18), .82), rot(TILT)], 1150, 300, 'ease-in-out'));
+    later(function(){ obj.classList.add('powered'); }, 750);
+    later(function(){ obj.classList.add('messy'); }, 1350);
+    holds.forEach(function(h, i){
+      parts.push(move(h, [
+        { transform: 'translateY(-34px) rotate(-36deg)', opacity: 0 },
+        { transform: 'translateY(0) rotate(24deg)', opacity: 1, offset: .4 },
+        { transform: 'translateY(0) rotate(-12deg)', opacity: 1, offset: .66 },
+        { transform: 'translateY(0) rotate(5deg)', opacity: 1, offset: .86 },
+        { transform: 'translateY(0) rotate(0deg)', opacity: 1 }
+      ], 900, 1250 + i*220, 'ease-out'));
     });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    return Promise.all(parts);
   }
+
+  // In goes the scanner, wearing the mark. The cable joins, the screen sees it, and the beam reads the head.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+    var parts = [move(scanner, [
+      { transform: 'translateY(-44px) scale(.7)', opacity: 0 },
+      { transform: 'translateY(4px) scale(1.04)', opacity: 1, offset: .62 },
+      { transform: 'translateY(-2px) scale(1)', opacity: 1, offset: .82 },
+      { transform: 'translateY(0) scale(1)', opacity: 1 }
+    ], 650, 0, 'ease-out')];
+    later(function(){ obj.classList.add('dosed'); }, 320);
+    later(function(){ obj.classList.add('linked'); statusEl.textContent = 'Linked'; }, 560);
+    // The beam flares as it first reads the head, then stays on, quietly reading every part.
+    parts.push(move(fan, [
+      { transform: 'scaleY(.15)', opacity: 0 },
+      { transform: 'scaleY(1)', opacity: 1, offset: .25 },
+      { transform: 'scaleY(1)', opacity: 1, offset: .6 },
+      { transform: 'scaleY(1)', opacity: .5 }
+    ], 1100, 620, 'ease-out'));
+    return Promise.all(parts);
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
+
+  // Build it again, linked: the holds come off, the wrong part goes, the right one goes on, the head
+  // swings level, the dead LEDs are swapped, and the whole head comes on, bright and even.
   function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+    obj.classList.remove('messy');
+    move(fan, [{ transform: 'scaleY(1)', opacity: .5 }, { transform: 'scaleY(1)', opacity: 0 }], 400, 0, 'ease-out');
+    var parts = holds.map(function(h, i){
+      var s = i ? 1 : -1;
+      return move(h, [
+        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+        { transform: 'translate(' + 10*s + 'px,-22px) rotate(' + 26*s + 'deg)', opacity: 1, offset: .4 },
+        { transform: 'translate(' + 36*s + 'px,-66px) rotate(' + 70*s + 'deg)', opacity: 0 }
+      ], 650, i*130, 'ease-in');
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    parts.push(move(wrong, [
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+      { transform: 'translate(-8px,-34px) rotate(-22deg)', opacity: 1, offset: .4 },
+      { transform: 'translate(-120px,-80px) rotate(-100deg)', opacity: 0 }
+    ], 700, 160, 'ease-in'));
+    parts.push(move(collar, [
+      { transform: 'translate(-200px,-40px) rotate(-200deg) scale(.6)', opacity: 0 },
+      { transform: 'translate(-120px,-62px) rotate(-100deg) scale(.95)', opacity: 1, offset: .42 },
+      { transform: 'translate(0,0) rotate(0deg) scale(1.35)', opacity: 1, offset: .8 },
+      { transform: 'translate(0,0) rotate(0deg) scale(1)', opacity: 1 }
+    ], 800, 420, 'ease-out'));
+    parts.push(move(head, [rot(TILT), at(rot(3.6), .42), at(rot(-1.5), .7), at(rot(.5), .88), rot(0)], 950, 1150, 'ease-in-out'));
+    DEAD.forEach(function(g, n){
+      var d = 950 + n*140;
+      parts.push(move(g.firstElementChild, [
+        { transform: 'scale(1)', opacity: 1 },
+        { transform: 'scale(0)', opacity: 1, offset: .45 },
+        { transform: 'scale(1.18)', opacity: 1, offset: .78 },
+        { transform: 'scale(1)', opacity: 1 }
+      ], 560, d, 'ease-in-out'));
+      later(function(){ g.classList.remove('dead'); }, d + 260);
+    });
+    later(function(){ obj.classList.remove('powered'); obj.classList.add('lit'); }, 1750);
+    later(function(){ obj.classList.add('beaming'); }, 2000);
+    later(function(){ statusEl.textContent = 'Done, on time'; obj.classList.add('is-ok'); }, 2150);
+    return Promise.all(parts).then(function(){ return wait(500); });
+  }
+
+  // Back to the first picture, at once: no transitions on the way back.
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    moves = [];
+    obj.classList.add('snap');
+    obj.classList.remove('planned', 'powered', 'messy', 'dosed', 'linked', 'lit', 'beaming', 'is-ok', 'is-done');
+    DEAD.forEach(function(g){ g.classList.add('dead'); });
+    statusEl.textContent = 'On plan';
+    getComputedStyle(head).transform;
+    obj.getBoundingClientRect();
+    obj.classList.remove('snap');
   }
   function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.bm',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Built with nothing linking it. It’s on hold, and the screen still says On plan.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same light, same holds. Now every part carries a serial number the screen can see.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the light does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
 })();
 </script>
 <script>

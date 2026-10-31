@@ -210,73 +210,113 @@ h1 span{display:block;color:var(--hi)}
   --tint:#EEF5FB;--pale:#F6F6F6;--ink:#1A2633;--alert:#D7263D;--marker:#DCEFFB;--h2-hi:#0B75C0;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#0B75C0;--sku-b:#F6F6F6;--sku-c:#45BF47}
-
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
+/* ------------------------------------------------------------- The press
+   For molders. The schedule on the screen is the ERP, the injection molding press under it is the
+   floor, and the cable between them is broken. Shoot it and the press spits out flash, short shots
+   and warped parts until the bin overflows, the maintenance tag falls off the mold, the shot counter
+   runs away from the schedule, and the screen still says On plan. That mess stays. SimpleGrid joins
+   the cable and wears its mark on the shot counter. Shoot it again and the rejects go back into the
+   hopper and come out as rows of identical parts. Every color is on .hero-art. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --steel-hi:#E3E8EC;--steel:#B9C3CB;--steel-md:#94A0AB;--steel-dk:#66727E;
+  --iron:#36404A;--iron-hi:#4B5762;--iron-lo:#262E36;
+  --mold:#7E8E9C;--mold-hi:#A9B6C1;--mold-dk:#5C6B79;
+  --part:#2F9CF0;--part-hi:#CBE9FF;--part-edge:#0A3F6B;--flash:#9CD2FA;
+  --pellet:#F3F8FC;--glass:#252D35;
+  --led:#5BE49B;--led-bad:#FF6B5D;--led-link:#9FD6FF;
+  --tag:#F6C945;--tag-edge:#B8901F;--tag-ink:#4A3A12;
+}
+.press{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .press,.press.is-done{cursor:default}
+.press svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The schedule: what the ERP says the press is running. */
+.pr-bezel{fill:#1B2127}
+.pr-glass{fill:var(--glass)}
+.pr-title{fill:#fff;font:800 28px/1 var(--body);letter-spacing:.01em}
+.pr-job{fill:rgba(255,255,255,.8);font:600 16px/1 var(--body)}
+.pr-pill{fill:#DFF5EA;transition:fill .3s}
+.pr-status{fill:#0A6B47;font:800 15px/1 var(--body);transition:fill .3s}
+.press.linked .pr-pill{fill:var(--accent)}
+.press.linked .pr-status{fill:var(--on-accent)}
+.press.on-plan .pr-pill{fill:#2BC46F}
+.press.on-plan .pr-status{fill:#fff}
+.pr-bar{fill:rgba(255,255,255,.14)}
+.pr-fill{fill:#12A86B}
+.pr-count{fill:#fff;font:600 18px/1 var(--mono)}
+/* The cable from the press up to the schedule: broken until SimpleGrid joins it. */
+.pr-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
+.pr-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
+.press.linked .pr-cable{opacity:1;animation:pr-flow .6s linear infinite}
+@keyframes pr-flow{to{stroke-dashoffset:-12}}
+.pr-mark{--sg-bg:var(--brand);--sg-ink:#fff}
+.press.linked .pr-mark{opacity:1;transform:none}
+/* The press: steel on an iron base. */
+.pr-floor{fill:none;stroke:rgba(0,0,0,.2);stroke-width:2}
+.pr-steel{fill:var(--steel)}
+.pr-steel-hi{fill:var(--steel-hi)}
+.pr-steel-md{fill:var(--steel-md)}
+.pr-steel-dk{fill:var(--steel-dk)}
+.pr-iron{fill:var(--iron)}
+.pr-iron-hi{fill:var(--iron-hi)}
+.pr-iron-lo{fill:var(--iron-lo)}
+.pr-door{fill:none;stroke:var(--iron-hi);stroke-width:2}
+.pr-stripe{fill:var(--accent)}
+.pr-mold{fill:var(--mold)}
+.pr-mold-hi{fill:var(--mold-hi)}
+.pr-mold-dk{fill:var(--mold-dk)}
+.pr-parting{fill:none;stroke:var(--mold-dk);stroke-width:2}
+.pr-eye{fill:none;stroke:var(--mold-dk);stroke-width:2}
+.pr-band{fill:#4B5661;transition:fill .15s}
+.press.inject .pr-band{fill:#FF8A3D}
+.pr-win{fill:var(--glass)}
+.pr-pel{fill:var(--pellet)}
+.pr-pel.b{fill:var(--part)}
+/* The shot counter on the press. */
+.pr-counter{fill:#12171C;stroke:var(--steel-md);stroke-width:3}
+.pr-digits{fill:var(--led);font:600 20px/1 var(--mono);transition:fill .3s}
+.press.bad .pr-digits{fill:var(--led-bad)}
+.press.linked .pr-digits{fill:var(--led-link)}
+.press.on-plan .pr-digits{fill:var(--led)}
+/* The stack light: green, red while it's a mess, amber once it's linked. */
+.pr-lamp{fill:#47525C;stroke:#2B333B;stroke-width:1.5;transition:fill .2s}
+.press[data-lamp=green] .pr-green{fill:#2BD46F}
+.press[data-lamp=amber] .pr-amber{fill:#F4B400}
+.press[data-lamp=red] .pr-red{fill:#FF4B3E;animation:pr-blink .55s steps(1) infinite}
+@keyframes pr-blink{50%{fill:#5B1F1F}}
+/* What comes out: the parts, good and bad. */
+.pr-part{opacity:0}
+.pr-gear{fill:var(--part);stroke:var(--part-edge);stroke-width:1.6;stroke-linejoin:round;fill-rule:evenodd}
+.pr-shine{fill:var(--part-hi);opacity:.85}
+.pr-flash{fill:var(--flash);stroke:var(--part-edge);stroke-width:1;stroke-linejoin:round}
+.pr-tear{fill:none;stroke:var(--part-edge);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+/* The bin under the mold, clear, so you can see what's in it. */
+.pr-bin-back{fill:rgba(255,255,255,.07)}
+.pr-bin-front{fill:rgba(220,239,251,.12);stroke:rgba(255,255,255,.7);stroke-width:2.5}
+.pr-bin-sheen{fill:#fff;opacity:.14}
+.pr-bin-rim{fill:#E6EEF4}
+.pr-bin-band{fill:#56687A}
+.pr-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .3s,transform .45s cubic-bezier(.2,.9,.3,1.25)}
+.press.rejects .pr-reject{opacity:1;transform:none}
+.pr-reject rect{fill:var(--alert)}
+.pr-reject text{fill:#fff;font:800 13px/1 var(--body);letter-spacing:.12em}
+.pr-label{--sg-bg:var(--brand);--sg-ink:#fff}
+.press.is-done .pr-label{opacity:1;transform:none}
+/* The maintenance tag on the mold. */
+.pr-card{fill:var(--tag);stroke:var(--tag-edge);stroke-width:1.2}
+.pr-hole{fill:var(--mold-dk)}
+.pr-string{fill:none;stroke:#EFE8D2;stroke-width:1.6}
+.pr-wrench{fill:none;stroke:var(--tag-ink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.pr-tag.hang .pr-sway{animation:pr-sway 3.4s ease-in-out infinite}
+@keyframes pr-sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.press:not(.in-view) *{animation-play-state:paused!important}
 .callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+.callout-gap{top:calc(32.5% - 15px)}
+.callout-bottom{top:44%}
+.callout-top h3 i{background:#1B2127}
+.callout-bottom h3 i{background:var(--part)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.49)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -533,67 +573,121 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="press hero-obj" id="press" role="img" aria-label="An injection molding press under its schedule screen, which says Press 22, Mold A-114, On plan. The cable between them is broken.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Press 22</text>
-              <text class="ln-sku" x="56" y="106">Mold A-114, 40,000 shots</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <defs>
+              <path id="prGear" d=""/>
+              <clipPath id="prCut"><path d="M-22-22H22V-2L15 3L9-3L3 5L-3-1L-9 6L-15 0L-22 4Z"/></clipPath>
+              <clipPath id="prWin"><path d="M258 238H302L289 276H271Z"/></clipPath>
+            </defs>
+
+            <!-- the schedule: what the ERP says the press is running -->
+            <rect class="pr-bezel" x="16" y="10" width="328" height="140" rx="14"/>
+            <rect class="pr-glass" x="26" y="20" width="308" height="120" rx="8"/>
+            <text class="pr-title" x="44" y="61">PRESS 22</text>
+            <rect class="pr-pill" id="prPill" x="226" y="35" width="92" height="30" rx="15"/>
+            <text class="pr-status" id="prStatus" x="272" y="55.5" text-anchor="middle">On plan</text>
+            <text class="pr-job" x="44" y="94">Mold A-114 · 40,000 shots</text>
+            <rect class="pr-bar" x="44" y="112" width="196" height="10" rx="5"/>
+            <rect class="pr-fill" id="prFill" x="44" y="112" width="88" height="10" rx="5"/>
+            <text class="pr-count" id="prPlan" x="318" y="123" text-anchor="end">18,000</text>
+
+            <!-- the cable from the press up to the schedule: broken until SimpleGrid joins it -->
+            <path class="pr-stub" d="M180 150V166"/>
+            <path class="pr-stub" d="M180 198V214"/>
+            <path class="pr-cable" d="M180 214V150"/>
+
+            <path class="pr-floor" d="M0 548H360"/>
+            <!-- the base the press stands on -->
+            <rect class="pr-iron" x="10" y="368" width="340" height="174" rx="6"/>
+            <rect class="pr-iron-hi" x="10" y="368" width="340" height="8" rx="4"/>
+            <rect class="pr-stripe" x="10" y="382" width="340" height="4"/>
+            <rect class="pr-door" x="22" y="396" width="68" height="134" rx="5"/>
+            <rect class="pr-door" x="270" y="396" width="68" height="134" rx="5"/>
+            <rect class="pr-iron-lo" x="18" y="542" width="18" height="6"/>
+            <rect class="pr-iron-lo" x="324" y="542" width="18" height="6"/>
+
+            <!-- the tie bars the moving half slides on -->
+            <rect class="pr-steel-hi" x="24" y="254" width="204" height="8" rx="3"/>
+            <rect class="pr-steel-hi" x="24" y="352" width="204" height="8" rx="3"/>
+            <!-- the half that moves: clamp rod, platen and the mold's moving half -->
+            <g id="prMove">
+              <rect class="pr-steel-hi" x="52" y="301" width="52" height="12" rx="3"/>
+              <rect class="pr-steel" x="100" y="246" width="18" height="122" rx="3"/>
+              <rect class="pr-steel-md" x="100" y="246" width="5" height="122"/>
+              <rect class="pr-mold-dk" x="118" y="258" width="7" height="100" rx="1"/>
+              <rect class="pr-mold" x="124" y="262" width="32" height="92"/>
+              <rect class="pr-mold-hi" x="124" y="262" width="32" height="7"/>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            <!-- the clamp cylinder and the rear platen -->
+            <rect class="pr-steel-dk" x="44" y="286" width="22" height="42" rx="4"/>
+            <rect class="pr-steel" x="20" y="246" width="26" height="122" rx="3"/>
+            <rect class="pr-steel-hi" x="20" y="246" width="26" height="6" rx="3"/>
+            <!-- the mold's fixed half on the fixed platen -->
+            <rect class="pr-mold" x="156" y="262" width="32" height="92"/>
+            <rect class="pr-mold-hi" x="156" y="262" width="32" height="7"/>
+            <rect class="pr-mold-dk" x="187" y="258" width="7" height="100" rx="1"/>
+            <path class="pr-parting" d="M157 262V354"/>
+            <circle class="pr-eye" cx="172" cy="268" r="2.6"/>
+            <rect class="pr-steel" x="194" y="246" width="18" height="122" rx="3"/>
+            <rect class="pr-steel-md" x="207" y="246" width="5" height="122"/>
+            <rect class="pr-steel-dk" x="212" y="251" width="14" height="14" rx="2"/>
+            <rect class="pr-steel-dk" x="212" y="349" width="14" height="14" rx="2"/>
+            <!-- the barrel, its nozzle and heater bands -->
+            <path class="pr-steel-md" d="M212 303L220 299V319L212 315Z"/>
+            <rect class="pr-steel" x="220" y="298" width="84" height="22" rx="3"/>
+            <rect class="pr-steel-hi" x="220" y="298" width="84" height="5" rx="2"/>
+            <rect class="pr-band" x="228" y="295" width="9" height="28" rx="2"/>
+            <rect class="pr-band" x="244" y="295" width="9" height="28" rx="2"/>
+            <rect class="pr-band" x="260" y="295" width="9" height="28" rx="2"/>
+            <!-- the hopper of resin pellets -->
+            <rect class="pr-steel-dk" x="271" y="280" width="18" height="20"/>
+            <path class="pr-steel" d="M250 232H310L292 282H268Z"/>
+            <path class="pr-win" d="M258 238H302L289 276H271Z"/>
+            <g clip-path="url(#prWin)"><g id="prPellets"></g></g>
+            <rect class="pr-steel-hi" x="246" y="222" width="68" height="11" rx="3"/>
+            <!-- the drive, and the stack light on it -->
+            <rect class="pr-steel" x="300" y="278" width="46" height="58" rx="6"/>
+            <rect class="pr-steel-md" x="300" y="322" width="46" height="14" rx="4"/>
+            <rect class="pr-steel-dk" x="328" y="252" width="4" height="26"/>
+            <circle class="pr-lamp pr-red" cx="330" cy="216" r="7.5"/>
+            <circle class="pr-lamp pr-amber" cx="330" cy="231" r="7.5"/>
+            <circle class="pr-lamp pr-green" cx="330" cy="246" r="7.5"/>
+            <!-- the shot counter: SimpleGrid wears its mark here once it's linked -->
+            <rect class="pr-counter" x="124" y="214" width="116" height="32" rx="6"/>
+            <text class="pr-digits" id="prShots" x="230" y="237" text-anchor="end">18,000</text>
+            <g transform="translate(142 230) scale(.68)"><g class="pr-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
+            <!-- the parts bin under the mold: the script drops every part into it -->
+            <rect class="pr-bin-back" x="104" y="414" width="152" height="108"/>
+            <g id="prParts"></g>
+            <rect class="pr-bin-front" x="100" y="414" width="160" height="134" rx="6"/>
+            <path class="pr-bin-sheen" d="M110 420H128L110 468Z"/>
+            <rect class="pr-bin-rim" x="96" y="408" width="168" height="10" rx="3"/>
+            <rect class="pr-bin-band" x="101" y="520" width="158" height="27"/>
+            <g transform="translate(180 533.5)"><g class="pr-reject pr-pop"><rect x="-43" y="-11" width="86" height="22" rx="4"/><text y="4.6" text-anchor="middle">REJECT</text></g></g>
+            <g transform="translate(180 533.5) scale(.5)"><g class="pr-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
 
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
-            </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <!-- the maintenance tag, hung on the mold; the script places it -->
+            <g class="pr-tag hang" id="prTag"><g class="pr-sway">
+              <path class="pr-string" d="M0 0V9"/>
+              <rect class="pr-card" x="-11" y="8" width="22" height="32" rx="3"/>
+              <circle class="pr-hole" cx="0" cy="13" r="2.2"/>
+              <path class="pr-wrench" d="M-5 34L1.4 27.6M5.9 21.5A4.3 4.3 0 1 0 6.9 27"/>
+            </g></g>
+            <!-- what flies back up into the hopper -->
+            <g id="prAir"></g>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
             <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <p id="topText">What the system says the press is running.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The press: your floor</span></h3>
+            <p id="bottomText">What’s really coming out, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -606,10 +700,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Shoot it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule is your ERP, the press is your floor, and nothing links them. Shoot it, or tap the press.</p>
       </div>
     </div>
   </div>
@@ -926,122 +1020,320 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
+/* -------------------------------------------------------------- The press
+   For molders. The schedule on the screen is the ERP, the press under it is
+   the floor, and the cable between them is broken. Shoot it and the press
+   cycles three times with nothing linking it: flash, short shots and warped
+   parts pile up in the bin and spill over, the maintenance tag falls off the
+   mold, the shot counter runs on while the schedule stands still, and the
+   screen still says On plan. That mess stays. SimpleGrid joins the cable and
+   wears its mark on the shot counter, and the schedule catches up. Shoot it
+   again and the rejects go back into the hopper, the tag goes back on the
+   mold, and three clean shots fill the bin with rows of identical parts. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
-  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var hero = $('hero'), obj = $('press'), btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var moving = $('prMove'), partsG = $('prParts'), airG = $('prAir'), tag = $('prTag'), pelG = $('prPellets');
+  var shotsEl = $('prShots'), planEl = $('prPlan'), fillEl = $('prFill'), pill = $('prPill'), statusEl = $('prStatus');
   var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+
+  var COPY = {
+    apart:    { btn: 'Shoot it to see your operations', caption: 'The schedule is your ERP, the press is your floor, and nothing links them. Shoot it, or tap the press.' },
+    messing:  { btn: 'Shooting…', caption: 'Shooting it the usual way: the schedule in one place, the press in another.' },
+    mess:     { btn: 'Link it with SimpleGrid', caption: 'That’s your operations today: a big mess. Flash, short shots and warped parts spilling out of the bin, the maintenance tag on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Linking…', caption: 'The link goes in, from the press to the schedule. That’s SimpleGrid.' },
+    dosed:    { btn: 'Shoot it again', caption: 'That’s SimpleGrid: the shot count, the mold and its maintenance, live from the press to the schedule. Now shoot it again.' },
+    cleaning: { btn: 'Shooting…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: rows of identical parts, every shot counted, and the schedule says Done, on plan. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The schedule: your ERP', 'What the system says the press is running.', 'The press: your floor', 'What’s really coming out, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The press has shot flashed, short and warped parts into its bin, and they spill over onto the floor. The maintenance tag has fallen off the mold, the shot counter says 18,412 while the schedule says 18,000, and the screen still says On plan.',
+    dosed: 'The same mess, with the cable joined and the SimpleGrid mark on the shot counter. The screen says Linked, and its count matches the press.',
+    done: 'The press linked to its schedule by SimpleGrid, and the bin under it holding rows of identical parts, labelled SimpleGrid. The screen says Done, on plan.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
+  /* ------------------------------------------------------------ Where things are */
+  var OPEN = -30;                         // the moving half: open at -30, shut at 0
+  var GAP = 141;                          // the middle of the open mold, where each shot comes out
+  var HOOK = [172, 268];                  // the maintenance tag's eyelet on the mold
+  var TAG_DOWN = [22, 528, -80];          // where the tag ends up when it falls
+  var HOPPER = [280, 226];
+  var JOB = 40000, PLAN = 18000, RAN = 18412, BAR = 196;
+  // The rejects, six a shot, and where each lands: x, y, turn. The last shot's go over the rim.
+  var HEAP = [
+    [123, 506, -28], [159, 507, 18], [195, 505, 52], [232, 506, -14], [141, 479, 38], [178, 477, -46],
+    [215, 480, 24], [158, 452, 66], [199, 450, -34], [178, 424, -58], [139, 427, 28], [220, 428, 12],
+    [97, 431, 78], [263, 434, -66], [78, 533, 28], [284, 533, 62], [312, 534, -22], [298, 510, 40]
+  ];
+  var KIND = 'fswfswwfssfwfswswf';        // flash, short shot or warped
+  var ROWS = [503, 471, 439], COLS = [126, 162, 198, 234];
+  var CYCLE = 620, SHUT = 160, HOLD = 230, OPENS = 190;
 
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
+  var f = function(v){ return Math.round(v*10)/10; };
+  var fmt = function(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+  var seed = 2207;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+
+  /* ------------------------------------------------------------ Drawing */
+  // A gear: n teeth out to radius ro, roots at ri, and a hole of radius h.
+  function gear(ro, ri, n, h){
+    var d = '', s = Math.PI*2/n;
+    for (var k = 0; k < n; k++){
+      var a = k*s - Math.PI/2;
+      [[ri, -.5], [ri, -.27], [ro, -.15], [ro, .15], [ri, .27]].forEach(function(p, i){
+        d += (k || i ? 'L' : 'M') + f(Math.cos(a + p[1]*s)*p[0]) + ' ' + f(Math.sin(a + p[1]*s)*p[0]);
+      });
+    }
+    return d + 'ZM' + h + ' 0A' + h + ' ' + h + ' 0 1 0 ' + (-h) + ' 0A' + h + ' ' + h + ' 0 1 0 ' + h + ' 0Z';
+  }
+  $('prGear').setAttribute('d', gear(15, 11.4, 6, 4.4));
+  // Flash: a ragged skirt of plastic where the mold didn't seal.
+  function fringe(){
+    var d = '', n = 20;
+    for (var k = 0; k < n; k++){
+      var a = k/n*Math.PI*2, r = k % 2 ? R(14.5, 16.5) : R(17.5, 21.5);
+      d += (k ? 'L' : 'M') + f(Math.cos(a)*r) + ' ' + f(Math.sin(a)*r);
+    }
+    return d + 'Z';
+  }
+  var BODY = '<use class="pr-gear" href="#prGear"/><path class="pr-shine" d="M-9.4-3.2A9.8 9.8 0 0 1-3.6-9.2L-2.4-6.6A7 7 0 0 0-6.6-2.4Z"/>';
+  // One part: g is good, f flashed, s a short shot, w warped.
+  function part(kind){
+    var g = document.createElementNS(NS, 'g'), body = BODY;
+    if (kind === 's') body = '<g clip-path="url(#prCut)">' + body + '</g>';
+    if (kind === 'w') body = '<g transform="matrix(1.24 .3 -.18 .7 0 0)">' + body + '</g>';
+    g.setAttribute('class', 'pr-part');
+    g.innerHTML = (kind === 'f' ? '<path class="pr-flash" d="' + fringe() + '"/>' : '') + body;
+    partsG.appendChild(g);
     return g;
-  });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  var rejects = HEAP.map(function(p, i){ return { el: part(KIND.charAt(i)), to: p }; });
+  var goods = [];
+  ROWS.forEach(function(y){ COLS.forEach(function(x){ goods.push({ el: part('g'), to: [x, y, 0] }); }); });
+  // The hopper's pellets: natural resin with a blue masterbatch through it.
+  (function(){
+    var html = '', row = 0;
+    for (var y = 240.5; y < 280; y += 5.1, row++) for (var x = 257 + (row % 2)*2.8; x < 304; x += 5.6){
+      html += '<circle class="pr-pel' + (rand() < .32 ? ' b' : '') + '" cx="' + f(x + R(-1, 1)) + '" cy="' + f(y + R(-.9, .9)) + '" r="2.7"/>';
+    }
+    pelG.innerHTML = html;
+  })();
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], moves = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  var T = function(p){ return 'translate(' + f(p[0]) + 'px,' + f(p[1]) + 'px) rotate(' + f(p[2] || 0) + 'deg) scale(' + (p[3] == null ? 1 : p[3]) + ')'; };
+  function put(el, p, o){ el.style.transform = T(p); el.style.opacity = o == null ? 1 : o; }
+  // Plays keyframes on el. With reduced motion it takes the last frame at once.
+  function play(el, frames, ms, delay, easing){
+    if (reduce){
+      var last = frames[frames.length - 1];
+      for (var k in last) if (k !== 'offset' && k !== 'easing') el.style[k] = last[k];
+      return Promise.resolve();
+    }
+    var a = el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || 'linear', fill: 'both' });
+    moves.push(a);
+    return a.finished.catch(function(){});
+  }
+  // Points (x, y, turn, scale, opacity) as keyframes. Every frame carries its opacity, so nothing
+  // falls back to the hidden starting style in the middle of a move.
+  function path(pts){ return pts.map(function(p){ return { transform: T(p), opacity: p[4] == null ? 1 : p[4] }; }); }
+  // Thrown from a to b, rising `lift` above the higher end: x moves evenly, y falls like a stone.
+  function arc(a, b, lift, n){
+    var top = Math.min(a[1], b[1]) - lift, out = [], s0 = a[3] == null ? 1 : a[3], s1 = b[3] == null ? 1 : b[3];
+    for (var k = 1; k <= n; k++){
+      var t = k/n, u = 1 - t;
+      out.push([a[0] + (b[0] - a[0])*t, u*u*a[1] + 2*u*t*top + t*t*b[1], (a[2] || 0) + ((b[2] || 0) - (a[2] || 0))*t, s0 + (s1 - s0)*t, b[4]]);
+    }
+    return out;
+  }
+  // A track of [ms, value, easing] for one property, as one animation.
+  function track(el, pts, css){
+    var total = pts[pts.length - 1][0];
+    return play(el, pts.map(function(p){ var k = { transform: css(p[1]), offset: p[0]/total }; if (p[2]) k.easing = p[2]; return k; }), total);
+  }
+  var slide = function(x){ return 'translateX(' + x + 'px)'; }, sink = function(y){ return 'translateY(' + y + 'px)'; };
+  // The moving half closes, holds while the barrel shoots, and opens again, once a shot.
+  function cycles(t0, n, hard){
+    var pts = [[0, OPEN]];
+    for (var s = 0; s < n; s++){
+      var t = t0 + s*CYCLE;
+      pts.push([t, OPEN, hard ? 'cubic-bezier(.6,0,1,.7)' : 'cubic-bezier(.45,0,.55,1)'], [t + SHUT, 0], [t + SHUT + HOLD, 0, 'cubic-bezier(.2,.7,.3,1)'], [t + SHUT + HOLD + OPENS, OPEN]);
+    }
+    track(moving, pts, slide);
+  }
+  function shoot(at){
+    later(function(){ obj.classList.add('inject'); }, at);
+    later(function(){ obj.classList.remove('inject'); }, at + HOLD);
+  }
+  // Counts the numbers in els from one value to another, and the schedule's bar with them if asked.
+  function tally(els, from, to, ms, delay, bar){
+    var my = gen;
+    var show = function(v){ els.forEach(function(el){ el.textContent = fmt(v); }); if (bar) fillEl.setAttribute('width', f(BAR*v/JOB)); };
+    if (reduce){ later(function(){ show(to); }, 0); return; }
+    later(function(){
+      var t0 = 0;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (!t0) t0 = now;
+        var t = Math.min(1, (now - t0)/ms);
+        show(Math.round(from + (to - from)*t));
+        if (t < 1) requestAnimationFrame(tick);
+      });
+    }, delay);
+  }
+  function setStatus(text){
+    statusEl.textContent = text;
+    var w = Math.ceil(statusEl.getComputedTextLength()) + 26;
+    if (w < 50) w = 92;
+    pill.setAttribute('x', 318 - w);
+    pill.setAttribute('width', w);
+    statusEl.setAttribute('x', 318 - w/2);
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
+  // Out of the open mold, then flung down into the bin, or onto the heap and over the rim.
+  function badShot(j, to, over){
+    var s = [GAP + R(-3, 3), 288 + j*9, R(-30, 30), .55, 0], p = [s, [s[0], s[1] + 2, s[2], .9, 1]];
+    if (over){
+      var via = [to[0] < 180 ? 160 : 198, 404, to[2]*.4];
+      p = p.concat(arc(p[1], via, 16, 6), arc(via, to, 14, 5));
+    } else p = p.concat(arc(p[1], to, R(12, 26), 8));
+    p.push([to[0], to[1] - 5, to[2] + 7], [to[0], to[1], to[2]]);
+    return path(p);
+  }
+  // Out of the open mold and straight down into its place in the row.
+  function goodShot(j, to){
+    var s = [GAP + (j - 1.5)*3, 292 + j*8, 0, .55, 0], p = [s, [s[0], s[1] + 2, 0, .9, 1]];
+    p = p.concat(arc(p[1], to, 6, 8));
+    p.push([to[0], to[1] - 3, 0], [to[0], to[1], 0]);
+    return path(p);
+  }
+
+  // Shoot it unlinked: three shots of bad parts, the tag knocked off, the counter running away from the schedule.
   function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
+    var t0 = 80, level = [[0, 0]];
+    later(function(){ obj.dataset.lamp = 'red'; obj.classList.add('bad'); }, t0 + SHUT);
+    cycles(t0, 3, true);
+    [0, 1, 2].forEach(function(s){
+      var shut = t0 + s*CYCLE + SHUT, out = shut + HOLD + 100;
+      shoot(shut);
+      tally([shotsEl], PLAN + Math.round((RAN - PLAN)*s/3), PLAN + Math.round((RAN - PLAN)*(s + 1)/3), HOLD, shut);
+      level.push([shut, s*3], [shut + HOLD, s*3 + 3]);
+      for (var j = 0; j < 6; j++){
+        var r = rejects[s*6 + j];
+        play(r.el, badShot(j, r.to, s === 2), s === 2 ? 1000 : 760, out + j*45);
+      }
     });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    track(pelG, level, sink);
+    // The second shot slams it shut hard enough to knock the maintenance tag off the mold.
+    var knock = t0 + CYCLE + SHUT;
+    later(function(){ tag.classList.remove('hang'); }, knock);
+    var a = [HOOK[0], HOOK[1], 0], b = [HOOK[0] - 3, HOOK[1] + 8, -16], p = [a, b].concat(arc(b, TAG_DOWN, 4, 9));
+    p.push([TAG_DOWN[0] + 1, TAG_DOWN[1] - 3, TAG_DOWN[2] + 7], TAG_DOWN);
+    play(tag, path(p), 950, knock);
+    later(function(){ obj.classList.add('rejects'); }, t0 + 2*CYCLE + SHUT + HOLD + 500);
+    return wait(t0 + 2*CYCLE + SHUT + HOLD + 100 + 5*45 + 1000 + 80);
   }
+
+  // SimpleGrid goes in: the cable joins, the counter wears the mark, and the schedule catches up with the press.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+    obj.classList.remove('bad');
+    obj.classList.add('linked');
+    obj.dataset.lamp = 'amber';
+    later(function(){ setStatus('Linked'); }, 250);
+    tally([planEl], PLAN, RAN, 500, 350, true);
+    return wait(1000);
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
+
+  // Shoot it linked: the rejects go back into the hopper, the tag goes back on, and three clean shots fill the bin.
   function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
+    var my = gen;
+    obj.classList.remove('rejects');
+    rejects.forEach(function(r, i){
+      r.el.getAnimations().forEach(function(a){ a.cancel(); });
+      put(r.el, r.to);
+      airG.appendChild(r.el);
+      var p = [r.to].concat(arc(r.to, [HOPPER[0] + R(-8, 8), HOPPER[1], r.to[2] + 220, .4, 1], 46, 9));
+      p[p.length - 2][4] = .8;
+      p[p.length - 1][4] = 0;
+      play(r.el, path(p), 640, i*30, 'cubic-bezier(.35,0,.65,1)');
     });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    track(pelG, [[0, 9], [300, 9], [1000, 0]], sink);
+    var tp = [TAG_DOWN].concat(arc(TAG_DOWN, [HOOK[0], HOOK[1], 10], 40, 9));
+    tp.push([HOOK[0], HOOK[1], -5], [HOOK[0], HOOK[1], 0]);
+    play(tag, path(tp), 820, 120).then(function(){ if (my === gen) tag.classList.add('hang'); });
+
+    var t0 = 1000;
+    later(function(){ obj.dataset.lamp = 'green'; }, t0 - 250);
+    cycles(t0, 3, false);
+    [0, 1, 2].forEach(function(s){
+      var shut = t0 + s*CYCLE + SHUT, out = shut + HOLD + 100;
+      shoot(shut);
+      for (var j = 0; j < 4; j++){
+        var g = goods[s*4 + j];
+        play(g.el, goodShot(j, g.to), 620, out + j*55);
+      }
+    });
+    tally([shotsEl, planEl], RAN, JOB, 2*CYCLE + HOLD, t0 + SHUT, true);
+    track(pelG, [[0, 0], [t0, 0], [t0 + 3*CYCLE, 6]], sink);
+    later(function(){ setStatus('Done, on plan'); obj.classList.add('on-plan'); }, t0 + 2*CYCLE + SHUT + HOLD + 300);
+    return wait(t0 + 2*CYCLE + SHUT + HOLD + 100 + 3*55 + 620 + 120);
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    moves = [];
+    obj.classList.remove('bad', 'linked', 'inject', 'rejects', 'on-plan', 'is-done');
+    obj.dataset.lamp = 'green';
+    moving.style.transform = slide(OPEN);
+    pelG.style.transform = sink(0);
+    rejects.concat(goods).forEach(function(r){
+      r.el.getAnimations().forEach(function(a){ a.cancel(); });
+      partsG.appendChild(r.el);
+      put(r.el, [GAP, 300, 0, .5], 0);
+    });
+    put(tag, HOOK);
+    tag.classList.add('hang');
+    shotsEl.textContent = planEl.textContent = fmt(PLAN);
+    fillEl.setAttribute('width', f(BAR*PLAN/JOB));
+    setStatus('On plan');
   }
   function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.press',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Bad parts in the bin, the tag on the floor, and the schedule still says On plan. Everyone’s working from a different count.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same press, same mess. Now the press and the schedule share one live count.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the press does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  restore();
+  if (document.fonts) document.fonts.ready.then(function(){ setStatus(statusEl.textContent); });
 })();
 </script>
 <script>

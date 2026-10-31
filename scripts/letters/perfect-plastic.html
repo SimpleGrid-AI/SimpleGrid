@@ -27,17 +27,116 @@
 <style>
 <!--#include base.css-->
 
-/* Perfect Plastic Printing’s colors (provisional). */
+/* Perfect Plastic Printing’s colors, from the theme palette in perfectplastic.com’s own page CSS: charcoal #3B3C44, near-black #28282A, orange #E56F20, burnt orange #BE5A16. Their site is set in a sans, so ours is too. */
 :root{
-  --brand:#0E2A47;--brand-press:#0A2038;--brand-deep:#061525;
-  --accent:#C9A227;--accent-soft:#F6EDCF;--accent-edge:#9A7A12;
-  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#0E2A47;--on-accent-soft:rgba(14,42,71,.84);
-  --tint:#EEF2F7;--pale:#F9FAFC;--ink:#141E2A;--alert:#D7263D;--marker:#F6EDCF;--h2-hi:#0E2A47;
+  --brand:#3B3C44;--brand-press:#28282A;--brand-deep:#1C1C1E;
+  --accent:#E56F20;--accent-soft:#FBE2D2;--accent-edge:#BE5A16;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#1C1C1E;--on-accent-soft:rgba(28,28,30,.9);
+  --tint:#EFF1F2;--pale:#F9FAFA;--ink:#28282A;--alert:#D7263D;--marker:#FBE2D2;--h2-hi:#BE5A16;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#C9A227;--sku-b:#C9D0D6;--sku-c:#0E2A47}
 
-<!--#include line.css-->
+/* ------------------------------------------------------------- The card line
+   For a card maker. The order on the screen is the ERP; the line under it is the floor: print,
+   laminate, embed the chip, count the stack. Between them is an empty chip pocket where the link
+   should be, and SimpleGrid is the chip that goes in. The hero's own colors live on .hero-art. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --stock:#fff;--stock-edge:rgba(28,28,30,.3);--print:var(--accent);--print-ink:#3B3C44;
+  --gold-hi:#FBE3A0;--gold:#E8B54A;--gold-lo:#C08A26;--gold-dk:#7E5A12;--silver:#D3D8DD;--silver-dk:#7E858D;
+  --steel:#CDD2D8;--steel-dk:#A3AAB2;--steel-ink:#62666F;--steel-type:#2E3036;
+  --screen:#1C1D21;--glass:#282A30;--belt:#1C1D21;
+  --ok-bg:#DFF5EA;--ok-ink:#0A6B47;--count:#F4B740;--short:#FF5A4F;--closed:#3DDC84;
+}
+.pp{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .pp,.pp.is-done{cursor:default}
+.pp svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pp-gold-hi{stop-color:var(--gold-hi)}
+.pp-gold{stop-color:var(--gold)}
+.pp-gold-lo{stop-color:var(--gold-lo)}
+/* The order screen: the ERP, calm whatever happens below it. */
+.pp-bezel{fill:var(--screen)}
+.pp-glass{fill:var(--glass)}
+.pp-kick{fill:rgba(255,255,255,.62);font:600 12px/1 var(--mono);letter-spacing:.12em}
+.pp-sku{fill:rgba(255,255,255,.88);font:700 14px/1 var(--body)}
+.pp-qty{fill:#fff;font:800 29px/1 var(--body);letter-spacing:-.01em}
+.pp-pill-g{transform-box:fill-box;transform-origin:center}
+.pp-pill{fill:var(--ok-bg);transition:fill .3s}
+.pp-pill-t{fill:var(--ok-ink);font:800 15px/1 var(--body);transition:fill .3s}
+.pp.linked .pp-pill{fill:var(--accent)}
+.pp.linked .pp-pill-t{fill:var(--on-accent)}
+.pp.messy .pp-pill-g{animation:pp-smug .8s ease-in-out 3}
+@keyframes pp-smug{50%{transform:scale(1.12)}}
+/* The link: two cable ends and an empty chip pocket between them, until SimpleGrid goes in. */
+.pp-stub{fill:none;stroke:var(--steel-ink);stroke-width:6;stroke-linecap:round}
+.pp-pocket{fill:rgba(0,0,0,.22);stroke:rgba(255,255,255,.6);stroke-width:2;stroke-dasharray:5 5;transition:opacity .3s}
+.pp.dosed .pp-pocket{opacity:0}
+.pp-wire{fill:none;stroke:var(--screen);stroke-width:9;stroke-linecap:round;opacity:0;transition:opacity .3s}
+.pp-flow{fill:none;stroke:var(--gold);stroke-width:3.4;stroke-linecap:round;stroke-dasharray:5 7;opacity:0;transition:opacity .3s}
+.pp.linked .pp-wire,.pp.linked .pp-flow{opacity:1}
+.pp.linked .pp-flow{animation:pp-flow .6s linear infinite}
+@keyframes pp-flow{to{stroke-dashoffset:-12}}
+.pp-sg-plate{fill:url(#ppGold)}
+.pp-sg-line{fill:none;stroke:var(--gold-dk);stroke-width:2.6}
+.pp-sg-rim{fill:none;stroke:var(--gold-dk);stroke-width:2.8}
+.pp-sg{--sg-bg:var(--brand-press);--sg-ink:var(--gold-hi)}
+.pp.dosed .pp-sgchip{opacity:1;transform:none}
+/* The cards: white stock, then whatever print and chip each one gets. story script sets data-p and data-c. */
+.cd-body{fill:var(--stock);stroke:var(--stock-edge);stroke-width:1}
+.cd-band{fill:var(--print)}
+.cd-ghost{fill:var(--print);opacity:.42}
+.cd-num{fill:var(--print-ink)}
+.cd-nfc{fill:none;stroke:var(--print-ink);stroke-width:1.5;stroke-linecap:round}
+.cd-chip{fill:url(#ppGold);stroke:var(--gold-dk);stroke-width:.8}
+.cd-chipl{fill:none;stroke:var(--gold-dk);stroke-width:.8}
+.cd-hole{fill:#8C9299;stroke:#565B63;stroke-width:1.2}
+.cd-bad{fill:var(--silver);stroke:var(--silver-dk);stroke-width:.8}
+.cd-badl{fill:none;stroke:var(--silver-dk);stroke-width:.8}
+.cd-gloss{fill:#fff;opacity:.3}
+.cd-p,.cd-c,.cd-gloss{display:none}
+.cd[data-p=t] .cd-pt,.cd[data-p=m1] .cd-pm1,.cd[data-p=m2] .cd-pm2,.cd[data-p=m3] .cd-pm3,
+.cd[data-c=ok] .cd-cok,.cd[data-c=gone] .cd-cgone,.cd[data-c=bad] .cd-cbad,.cd.glossy .cd-gloss{display:inline}
+/* The floor: the line, its belt, and the counter the stack lands on. */
+.pp-floor{fill:none;stroke:rgba(0,0,0,.24);stroke-width:2}
+.pp-leg{fill:var(--steel-ink)}
+.pp-belt{fill:var(--belt)}
+.pp-run{fill:none;stroke:rgba(255,255,255,.3);stroke-width:2;stroke-dasharray:5 9}
+.pp.running .pp-run,.pp.running .pp-roll{animation:pp-belt .4s linear infinite}
+@keyframes pp-belt{to{stroke-dashoffset:-14}}
+.pp-beam{fill:var(--steel-ink)}
+.pp-head{fill:var(--steel)}
+.pp-head-dk{fill:var(--steel-dk)}
+.pp-label{fill:var(--steel-type);font:600 9.5px/1 var(--mono);letter-spacing:.06em}
+.pp-ink-a{fill:var(--print)}
+.pp-ink-b{fill:var(--print-ink)}
+.pp-ink-c{fill:var(--gold)}
+.pp-roller{fill:var(--silver)}
+.pp-roll{fill:none;stroke:rgba(0,0,0,.24);stroke-width:2;stroke-dasharray:4 6}
+.pp-heat{fill:none;stroke:var(--print);stroke-width:2.2;stroke-linecap:round}
+.pp-piston{fill:var(--steel-ink)}
+.pp-tray{fill:var(--steel-dk)}
+.pp-tray-lip{fill:var(--steel)}
+.pp-display{fill:var(--screen)}
+.pp-count{fill:var(--count);font:600 15px/1 var(--mono);letter-spacing:.04em;transition:fill .3s}
+.pp.messy .pp-count{fill:var(--short)}
+.pp.closed .pp-count{fill:var(--closed)}
+.pp-check{fill:none;stroke:var(--closed);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .3s}
+.pp.closed .pp-check{opacity:1}
+.pp-band{fill:var(--brand-press);opacity:0;transition:opacity .35s}
+.pp.sealed .pp-band{opacity:1}
+.pp-tag{--sg-bg:#fff;--sg-ink:var(--brand-press)}
+.pp.is-done .pp-tag{opacity:1;transform:none}
+.pp:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:3%}
+.callout-gap{top:calc(35.3% - 15px)}
+.callout-bottom{top:46%}
+.callout-top h3 i{background:var(--ok-bg)}
+.callout-bottom h3 i{background:var(--stock)}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.42)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
 
 <!--#include stage.css-->
 <!--#include report.css-->
@@ -63,18 +162,92 @@
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
-<!--#include line.svg-->
+        <div class="pp hero-obj" id="card" role="img" aria-label="An order screen for 250,000 dual-interface cards, and under it a card line that prints, laminates and embeds chips, ending at a counter. The link between them is broken: an empty chip pocket.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <linearGradient id="ppGold" x1="0" y1="0" x2="1" y2="1"><stop class="pp-gold-hi" offset="0"/><stop class="pp-gold" offset=".5"/><stop class="pp-gold-lo" offset="1"/></linearGradient>
+              <!-- every card is drawn about its own middle, so this one clip fits them all -->
+              <clipPath id="ppClip"><rect x="-31" y="-19.5" width="62" height="39" rx="4"/></clipPath>
+            </defs>
+
+            <!-- the order: what the ERP says you're making -->
+            <rect class="pp-bezel" x="20" y="10" width="320" height="146" rx="14"/>
+            <rect class="pp-glass" x="30" y="20" width="300" height="126" rx="8"/>
+            <g id="ppProof" transform="translate(92 83) scale(1.6)"></g>
+            <text class="pp-kick" x="156" y="44">ORDER 4417</text>
+            <text class="pp-sku" x="156" y="66">Dual-interface cards</text>
+            <text class="pp-qty" x="156" y="99">250,000</text>
+            <g class="pp-pill-g"><rect class="pp-pill" id="ppPill" x="156" y="109" width="78" height="25" rx="12.5"/><text class="pp-pill-t" id="ppPillT" x="195" y="126.5" text-anchor="middle">On plan</text></g>
+
+            <!-- the link: a cable end above, a cable end below, and an empty chip pocket where they should meet -->
+            <path class="pp-stub" d="M180 156V169"/>
+            <path class="pp-stub" d="M180 226V238"/>
+            <rect class="pp-pocket" x="153" y="174" width="54" height="47" rx="9"/>
+            <path class="pp-wire" d="M180 156V238"/>
+            <path class="pp-flow" d="M180 156V238"/>
+            <!-- SimpleGrid goes in as the chip: its contacts are the grid -->
+            <g transform="translate(180 197.5)"><g id="ppEmbed"><g class="pp-sgchip sg-pop">
+              <rect class="pp-sg-plate" x="-27" y="-23.5" width="54" height="47" rx="9"/>
+              <path class="pp-sg-line" d="M-9 -23.5V23.5M9 -23.5V23.5M-27 -7.8H27M-27 7.8H27"/>
+              <rect class="pp-sg-rim" x="-27" y="-23.5" width="54" height="47" rx="9"/>
+            </g></g></g>
+
+            <!-- the floor: the belt on its legs, and the laminator's lower roller under it -->
+            <path class="pp-floor" d="M0 546H360"/>
+            <rect class="pp-leg" x="20" y="356" width="8" height="190"/>
+            <rect class="pp-leg" x="212" y="356" width="8" height="190"/>
+            <rect class="pp-belt" x="4" y="344" width="302" height="12" rx="6"/>
+            <path class="pp-run" d="M10 350H300"/>
+            <rect class="pp-roller" x="158" y="357" width="44" height="10" rx="5"/>
+            <!-- white card stock waiting at the head of the line -->
+            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(29 318.5)"/>
+            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(32 321.5)"/>
+            <rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4" transform="translate(35 324.5)"/>
+
+            <!-- the cards that run: the script places every one -->
+            <g id="ppCards"></g>
+
+            <!-- once it comes clean, the stack is banded into one brick, with the label on the band -->
+            <rect class="pp-band" x="242" y="466" width="104" height="21" rx="2"/>
+            <g transform="translate(294 476.5) scale(.46)"><g class="pp-tag sg-pop"><!--#include sg-tag.svg--></g></g>
+
+            <!-- the counter the stack lands on -->
+            <rect class="pp-tray-lip" x="236" y="513" width="116" height="6" rx="2"/>
+            <rect class="pp-tray" x="232" y="517" width="124" height="29" rx="4"/>
+            <rect class="pp-display" x="246" y="522" width="96" height="19" rx="3"/>
+            <text class="pp-count" id="ppCount" x="254" y="536.5">000,000</text>
+            <path class="pp-check" d="M325 531.5l3.6 3.6 7-7.6"/>
+
+            <!-- the line: print, laminate, embed the chip. Cards run under the heads. -->
+            <rect class="pp-beam" x="64" y="236" width="232" height="13" rx="4"/>
+            <rect class="pp-head" x="78" y="249" width="60" height="44" rx="6"/>
+            <rect class="pp-head-dk" x="78" y="283" width="60" height="10"/>
+            <text class="pp-label" x="108" y="263" text-anchor="middle">PRINT</text>
+            <circle class="pp-ink-a" cx="95" cy="274" r="4.5"/><circle class="pp-ink-b" cx="108" cy="274" r="4.5"/><circle class="pp-ink-c" cx="121" cy="274" r="4.5"/>
+            <rect class="pp-ink-a" x="86" y="292" width="44" height="11" rx="5.5"/>
+            <path class="pp-roll" d="M91 297.5H125"/>
+            <rect class="pp-head" x="150" y="249" width="60" height="44" rx="6"/>
+            <rect class="pp-head-dk" x="150" y="283" width="60" height="10"/>
+            <text class="pp-label" x="180" y="263" text-anchor="middle">LAMINATE</text>
+            <path class="pp-heat" d="M162 275q4.5-5 9 0t9 0 9 0 9 0"/>
+            <rect class="pp-roller" x="158" y="292" width="44" height="11" rx="5.5"/>
+            <path class="pp-roll" d="M163 297.5H197"/>
+            <rect class="pp-head" x="222" y="249" width="60" height="44" rx="6"/>
+            <rect class="pp-head-dk" x="222" y="283" width="60" height="10"/>
+            <text class="pp-label" x="252" y="263" text-anchor="middle">CHIP</text>
+            <rect class="cd-chip" x="245" y="268" width="14" height="11" rx="2"/>
+            <g id="ppPiston"><rect class="pp-piston" x="247" y="292" width="10" height="7"/><rect class="pp-head-dk" x="243" y="298" width="18" height="5" rx="1.5"/></g>
+          </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The order: your ERP</span></h3>
+            <p id="topText">What the system says you’re making.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
             <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <p id="bottomText">What’s really coming off it, on Excel, whiteboards and phones.</p>
           </div>
 <!--#include ops.html-->
         </div>
@@ -82,10 +255,10 @@
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Run it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The order is your ERP, the line is your floor, and nothing links them. Run it, or tap the line.</p>
       </div>
     </div>
   </div>
@@ -150,7 +323,289 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+/* ------------------------------------------------------------- The card line
+   For a card maker. The order on the screen is the ERP; the line under it is
+   the floor: print, laminate, embed the chip, count the stack. Between them
+   is an empty chip pocket where the link should be. Run it unlinked and the
+   cards come off misprinted, missing their chips or wearing the wrong ones;
+   they fan out and spill, the count won’t close, and the screen still says
+   On plan. That mess stays. SimpleGrid goes into the pocket as the chip, and
+   the next run takes the same cards back through: printed true, chipped
+   right, stacked into one sealed, counted brick.
+   Every move is worked out from one clock (render), so reduced motion just
+   jumps to the end of each one and lands in exactly the same place. */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('card'), cardsG = $('ppCards'), embed = $('ppEmbed'), piston = $('ppPiston');
+  var pill = $('ppPill'), pillT = $('ppPillT'), count = $('ppCount');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Run it to see your operations', caption: 'The order is your ERP, the line is your floor, and nothing links them. Run it, or tap the line.' },
+    messing:  { btn: 'Running…', caption: 'Running it the usual way: the order in one place, the floor in another.' },
+    mess:     { btn: 'Embed SimpleGrid', caption: 'That’s your operations today: a big mess. Misprints, missing chips, cards all over the floor and a count that won’t close, while the order still says On plan. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Embedding…', caption: 'In goes the chip. That’s SimpleGrid.' },
+    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: one chip that links the order and the floor, live. Now run it again.' },
+    cleaning: { btn: 'Running…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one clean brick: every card printed true, every chip in place, and the count closed at 250,000. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The order: your ERP', 'What the system says you’re making.', 'The line: your floor', 'What’s really coming off it, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The line run with no link: cards spilled across the floor and fanned over the counter, some misprinted, some missing their chips or wearing the wrong ones, one jammed in the chip press, the count stuck short and jumping, and the order screen still saying On plan.',
+    dosed: 'The same mess, with a SimpleGrid chip embedded in the pocket where the link was broken, and the order screen saying Linked.',
+    done: 'Every card printed true with its chip in place, stacked into one sealed brick with a SimpleGrid label on its band, the count closed at 250,000, and the order screen saying Done, on time.'
+  };
+
+  /* ------------------------------------------------------------ A card
+     Drawn about its own middle: white stock, then whichever print and chip it gets. */
+  var CARD =
+    '<rect class="cd-body" x="-31" y="-19.5" width="62" height="39" rx="4"/>' +
+    // printed true: the band, the number, the contactless mark
+    '<g class="cd-p cd-pt"><path class="cd-band" d="M-31 -15.5Q-31 -19.5 -27 -19.5H27Q31 -19.5 31 -15.5V-6H-31Z"/><rect class="cd-num" x="-24" y="9.5" width="32" height="3" rx="1.5"/><path class="cd-nfc" d="M15 -1q2.6 3.5 0 7M18.6 -3q4.4 5.5 0 11M22.2 -5q6.2 7.5 0 15"/></g>' +
+    // misregistered: the band printed twice, crooked, and the number with it
+    '<g class="cd-p cd-pm1" clip-path="url(#ppClip)"><rect class="cd-ghost" x="-40" y="-25" width="80" height="14" transform="rotate(-4)"/><rect class="cd-band" x="-40" y="-13" width="80" height="14" transform="rotate(-13)"/><rect class="cd-num" x="-12" y="14" width="32" height="3" rx="1.5" transform="rotate(-13)"/></g>' +
+    // smeared: the ink running down the card
+    '<g class="cd-p cd-pm2" clip-path="url(#ppClip)"><path class="cd-band" d="M-31 -19.5H31V-6H-31Z"/><rect class="cd-band" x="-23" y="-8" width="5" height="17" rx="2.5"/><rect class="cd-band" x="-10" y="-8" width="6.5" height="26" rx="3.2"/><rect class="cd-band" x="5" y="-8" width="4.5" height="12" rx="2.2"/><rect class="cd-band" x="17" y="-8" width="5.5" height="21" rx="2.7"/><ellipse class="cd-ghost" cx="2" cy="5" rx="15" ry="6"/></g>' +
+    // starved: half a band, then specks
+    '<g class="cd-p cd-pm3" clip-path="url(#ppClip)"><path class="cd-band" d="M-31 -19.5H-1L-6 -16L0 -13L-7 -10L-2 -6H-31Z"/><circle class="cd-band" cx="6" cy="-15" r="1.7"/><circle class="cd-band" cx="12" cy="-10" r="1.3"/><circle class="cd-band" cx="3" cy="-8.5" r="1.1"/></g>' +
+    // the chip: in place, missing (just the milled pocket), or the wrong one in the wrong place
+    '<g class="cd-c cd-cok"><rect class="cd-chip" x="-24" y="-3.5" width="12.5" height="10" rx="2"/><path class="cd-chipl" d="M-19.8 -3.5v10M-15.7 -3.5v10M-24 -.2h12.5M-24 3.2h12.5"/></g>' +
+    '<g class="cd-c cd-cgone"><rect class="cd-hole" x="-24" y="-3.5" width="12.5" height="10" rx="2"/></g>' +
+    '<g class="cd-c cd-cbad" transform="translate(19 -10) rotate(28)"><rect class="cd-bad" x="-6.5" y="-5" width="13" height="10" rx="2"/><path class="cd-badl" d="M-2.2 -5v10M2.2 -5v10M-6.5 0h13"/></g>' +
+    // laminated: a shine across it
+    '<path class="cd-gloss" clip-path="url(#ppClip)" d="M-4 -19.5H7L-9 19.5H-20Z"/>';
+  function card(){ var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'cd'); g.innerHTML = CARD; return g; }
+  var f2 = function(v){ return Math.round(v*100)/100; };
+  function look(c, p, ch, gl){
+    if (c.p !== p){ c.el.setAttribute('data-p', p); c.p = p; }
+    if (c.c !== ch){ c.el.setAttribute('data-c', ch); c.c = ch; }
+    if (c.g !== gl){ c.el.classList.toggle('glossy', gl); c.g = gl; }
+  }
+  function pose(c, q, o){
+    c.at = q;
+    c.el.setAttribute('transform', 'translate(' + f2(q[0]) + ' ' + f2(q[1]) + ') rotate(' + f2(q[2]) + ') scale(' + f2(q[3]) + ')');
+    if (c.o !== o){ c.el.setAttribute('opacity', o); c.o = o; }
+  }
+  // The proof on the screen: the card the way the order says it comes out.
+  var proof = card();
+  $('ppProof').appendChild(proof);
+  look({ el: proof }, 't', 'ok', true);
+
+  /* ------------------------------------------------------------ The line */
+  var N = 8;
+  var FEED = [35, 324.5, 0, 1];                  // a card's middle as it leaves the stock at the head of the line
+  var OFF = [300, 324.5, 0, 1];                  // and as it comes off the end of the belt
+  var DO = { print: 108, lam: 180, chip: 270 };  // where its middle is as each station does its job (the chip sits left of middle)
+  var BELT_MS = 900, STAG = 240, FALL_MS = 560, HOP_MS = 480, DROP_MS = 420;
+  var at = function(x){ return (x - FEED[0])/(OFF[0] - FEED[0])*BELT_MS; };
+  // The mess: what each card comes out as, and where it lands ([x, y, turn, size]). The last one jams in the chip press.
+  var MESS = [
+    ['t',  'ok',   [286, 474, -10, 1.6]],
+    ['m1', 'ok',   [304, 471, 14, 1.6]],
+    ['t',  'gone', [200, 497, -31, 1.5]],
+    ['m2', 'bad',  [160, 510, -9, 1.5]],
+    ['t',  'ok',   [56, 505, -16, 1.5]],
+    ['m3', 'ok',   [228, 491, 58, 1.5]],
+    ['t',  'bad',  [112, 511, 7, 1.5]],
+    ['m1', 'gone', null]
+  ];
+  var JAM = [262, 321, 8, 1];
+  var MESS_COUNT = ['000,000', '029,814', '061,207', '088,350', '121,946', '152,031', '183,775', '231,904'];
+  var JUMPS = ['231,904', '226,517', '240,088', '218,342'];   // the count that won’t close: every recount says something else
+  var STACK = function(k){ return [294, 513 - 34.1 - 3.6*k, 0, 1.75]; };
+  var fmt = function(n){ var s = String(Math.round(n)); while (s.length < 6) s = '0' + s; return s.slice(0, 3) + ',' + s.slice(3); };
+  var cards = [];
+  for (var i = 0; i < N; i++){ var el = card(); cardsG.appendChild(el); cards.push({ el: el }); }
+
+  // A leg goes from pose a to pose b between t0 and t1, along a curve through c if it has one, spinning on the way if asked.
+  function leg(t0, ms, a, b, c, spin){ return { t0: t0, t1: t0 + ms, a: a, b: b, c: c, spin: spin || 0 }; }
+  var lerp = function(a, b, u){ return a + (b - a)*u; };
+  var ease = function(u){ return u < .5 ? 2*u*u : 1 - Math.pow(-2*u + 2, 2)/2; };
+  function poseAt(path, T){
+    var q = path[0].a;
+    for (var i = 0; i < path.length; i++){
+      var l = path[i];
+      if (T < l.t0) return q;
+      if (T < l.t1){
+        var u = (T - l.t0)/(l.t1 - l.t0), v = 1 - u, e = ease(u), x, y;
+        if (l.c){ x = v*v*l.a[0] + 2*v*u*l.c[0] + u*u*l.b[0]; y = v*v*l.a[1] + 2*v*u*l.c[1] + u*u*l.b[1]; }
+        else { x = lerp(l.a[0], l.b[0], u); y = lerp(l.a[1], l.b[1], u); }
+        return [x, y, lerp(l.a[2], l.b[2], e) + l.spin*Math.sin(Math.PI*u), lerp(l.a[3], l.b[3], e)];
+      }
+      q = l.b;
+    }
+    return q;
+  }
+
+  // Run it unlinked: down the belt, through the stations, and off the end wherever it falls.
+  function messPlan(){
+    var plan = { cards: [], chips: [], lands: [], counts: MESS_COUNT, ms: 0 };
+    cards.forEach(function(c, k){
+      var t0 = k*STAG, m = MESS[k], path, end, chipAt;
+      if (m[2]){
+        path = [leg(t0, BELT_MS, FEED, OFF), leg(t0 + BELT_MS, FALL_MS, OFF, m[2], [OFF[0] + 14, OFF[1] - 34], k % 2 ? 40 : -45)];
+        end = t0 + BELT_MS + FALL_MS;
+        chipAt = t0 + at(DO.chip);
+        plan.lands.push(end);
+      } else {
+        var stuck = [JAM[0], OFF[1], 0, 1];
+        path = [leg(t0, at(JAM[0]), FEED, stuck), leg(t0 + at(JAM[0]), 180, stuck, JAM)];
+        end = t0 + at(JAM[0]) + 180;
+        chipAt = t0 + at(JAM[0]);
+      }
+      plan.cards.push({ path: path, show: t0, from: ['b', 'n', false], ev: [[t0 + at(DO.print), 0, m[0]], [t0 + at(DO.lam), 2, true], [chipAt, 1, m[1]]] });
+      plan.chips.push(chipAt);
+      plan.ms = Math.max(plan.ms, end);
+    });
+    return plan;
+  }
+  // Run it linked: every card, wherever it landed, back to the head of the line, through again, and onto the stack.
+  function cleanPlan(){
+    var plan = { cards: [], chips: [], lands: [], counts: [], ms: 0 };
+    for (var n = 0; n <= N; n++) plan.counts.push(fmt(n*250000/N));
+    cards.forEach(function(c, k){
+      var t0 = k*STAG, t1 = t0 + HOP_MS, t2 = t1 + BELT_MS, from = c.at;
+      plan.cards.push({ show: -1, from: [c.p, c.c, c.g], ev: [[t1 + at(DO.print), 0, 't'], [t1 + at(DO.lam), 2, true], [t1 + at(DO.chip), 1, 'ok']], path: [
+        leg(t0, HOP_MS, from, FEED, [(from[0] + FEED[0])/2, Math.min(from[1], FEED[1]) - 60]),
+        leg(t1, BELT_MS, FEED, OFF),
+        leg(t2, DROP_MS, OFF, STACK(k), [OFF[0] + 4, OFF[1] + 24])
+      ] });
+      plan.chips.push(t1 + at(DO.chip));
+      plan.lands.push(t2 + DROP_MS);
+      plan.ms = Math.max(plan.ms, t2 + DROP_MS);
+    });
+    return plan;
+  }
+  // Everything on the floor at time T of a run: each card's place and look, the chip press, the count.
+  function render(plan, T){
+    plan.cards.forEach(function(pc, k){
+      var s = pc.from.slice();
+      pc.ev.forEach(function(e){ if (T >= e[0]) s[e[1]] = e[2]; });
+      look(cards[k], s[0], s[1], s[2]);
+      pose(cards[k], poseAt(pc.path, T), pc.show < 0 || T >= pc.show ? 1 : 0);
+    });
+    var dip = 0;
+    plan.chips.forEach(function(t){ var d = Math.abs(T - t); if (d < 110) dip = Math.max(dip, 1 - d/110); });
+    piston.setAttribute('transform', 'translate(0 ' + f2(dip*7) + ')');
+    var n = 0;
+    plan.lands.forEach(function(t){ if (T >= t) n++; });
+    if (count.textContent !== plan.counts[n]) count.textContent = plan.counts[n];
+  }
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], moves = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Runs fn(T) once a frame for T from 0 to ms. Reduced motion goes straight to the end.
+  function play(ms, fn){
+    var my = gen;
+    return new Promise(function(done){
+      if (reduce){ fn(ms); done(); return; }
+      var t0 = 0;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (!t0) t0 = now;
+        var T = Math.min(ms, now - t0);
+        fn(T);
+        if (T < ms) requestAnimationFrame(tick); else done();
+      });
+    });
+  }
+  // The pill on the order screen, sized to what it says.
+  function setPill(t){
+    pillT.textContent = t;
+    var w = 24 + pillT.getComputedTextLength();
+    pill.setAttribute('width', f2(w));
+    pillT.setAttribute('x', f2(156 + w/2));
+  }
+  // While it's a mess, the count keeps changing its mind. Only on screen, and never with reduced motion.
+  var jumpT = 0, jumpI = 0;
+  function jumps(){
+    clearInterval(jumpT);
+    jumpT = 0;
+    if (reduce || !obj.classList.contains('messy') || !obj.classList.contains('in-view')) return;
+    jumpT = setInterval(function(){ jumpI = (jumpI + 1) % JUMPS.length; count.textContent = JUMPS[jumpI]; }, 620);
+  }
+
+  function mess(){
+    var plan = messPlan();
+    obj.classList.add('running');
+    return play(plan.ms, function(T){ render(plan, T); }).then(function(){
+      obj.classList.remove('running');
+      obj.classList.add('messy');
+      jumpI = 0;
+      jumps();
+    });
+  }
+  // SimpleGrid drops into the pocket as the chip; then the cable joins through it and the order screen sees the floor.
+  function dose(){
+    obj.classList.add('dosed');
+    if (!reduce) moves.push(embed.animate([
+      { transform: 'translateY(-44px) scale(1.35)', opacity: 0 },
+      { transform: 'translateY(3px) scale(.97)', opacity: 1, offset: .72 },
+      { transform: 'translateY(0) scale(1)', opacity: 1 }
+    ], { duration: 640, easing: 'cubic-bezier(.3,.6,.4,1)', fill: 'both' }));
+    later(function(){ obj.classList.add('linked'); setPill('Linked'); }, 520);
+    return wait(1000);
+  }
+  function clean(){
+    obj.classList.remove('messy');
+    jumps();
+    var plan = cleanPlan();
+    obj.classList.add('running');
+    return play(plan.ms, function(T){ render(plan, T); }).then(function(){
+      obj.classList.remove('running');
+      obj.classList.add('sealed', 'closed');
+      setPill('Done, on time');
+      return wait(450);
+    });
+  }
+  // Back to the first picture, at once.
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    moves = [];
+    obj.classList.remove('running', 'messy', 'dosed', 'linked', 'sealed', 'closed', 'is-done');
+    jumps();
+    cards.forEach(function(c){ look(c, 'b', 'n', false); pose(c, FEED, 0); });
+    piston.setAttribute('transform', 'translate(0 0)');
+    count.textContent = '000,000';
+    setPill('On plan');
+  }
+  function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
+  }
+
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.pp',
+    ops: {
+      mess: ['Your operations, today', 'Run with no link: misprints, missing chips, and a count that won’t close. Everyone’s working from a different version.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same cards, same pile. Now the order and the line are linked.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the line does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); jumps(); }).observe(obj);
+  } else obj.classList.add('in-view');
+  restore();
+  if (document.fonts) document.fonts.ready.then(function(){ setPill(pillT.textContent); });
+})();
 </script>
 <script>
 window.STAGE = {

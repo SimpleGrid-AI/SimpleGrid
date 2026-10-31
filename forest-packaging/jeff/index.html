@@ -210,73 +210,97 @@ h1 span{display:block;color:var(--hi)}
   --tint:#EEF5F0;--pale:#F9FBF9;--ink:#17221B;--alert:#D7263D;--marker:#DDF7DC;--h2-hi:#114F27;
   --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
 }
-.line{--sku-a:#C9A06A;--sku-b:#B98C55;--sku-c:#DDBB8A}
-
-/* ------------------------------------------------------- The line (co-packers)
-   The schedule on the screen is the ERP; the line under it is the floor. A page
-   sets --sku-a/-b/-c (three products on the line) and the case colors if it wants. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.line{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;--sku-a:var(--accent);--sku-b:#7FB3D5;--sku-c:#E8A87C}
-.line.is-done{cursor:default}
-.line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ln-screen{fill:#1E2329}
-.ln-glass{fill:#2A313A}
-.ln-kick{fill:rgba(255,255,255,.55);font:600 11px/1 var(--mono);letter-spacing:.14em}
-.ln-order{fill:#fff;font:800 19px/1 var(--body)}
-.ln-sku{fill:rgba(255,255,255,.78);font:600 14px/1 var(--body)}
-.ln-pill{fill:#DFF5EA;transition:fill .3s}
-.ln-status text{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
-.line.linked .ln-pill{fill:var(--accent)}
-.line.linked .ln-status text{fill:var(--on-accent)}
-.ln-bar{fill:rgba(255,255,255,.14)}
-.ln-fill{fill:#12A86B;transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
-.ln-stub{fill:none;stroke:#59626C;stroke-width:5;stroke-linecap:round}
-.ln-cable{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:6 6;opacity:0;transition:opacity .3s}
-.line.linked .ln-cable{opacity:1;animation:ln-flow .6s linear infinite}
-@keyframes ln-flow{to{stroke-dashoffset:-12}}
-.line.linked .ln-link{opacity:1;transform:none}
-.ln-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-.ln-leg{fill:#59626C}
-.ln-belt{fill:#2D333A}
-.ln-run{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 9}
-.line.running .ln-run{animation:ln-belt .5s linear infinite}
-.line.jammed .ln-run{animation:none}
-@keyframes ln-belt{to{stroke-dashoffset:-14}}
-.ln-steel{fill:#C3CBD2}
-.ln-steel-dk{fill:#A7B0B8}
-.ln-window{fill:#1E2329}
-.ln-window-hi{fill:rgba(255,255,255,.12)}
-.ln-pole{fill:#59626C}
-.ln-lamp{fill:#4A5159;stroke:#2D333A;stroke-width:1.5;transition:fill .2s}
-.line.jammed .ln-red{fill:#E5322F;animation:ln-blink .55s steps(1) infinite}
-@keyframes ln-blink{50%{fill:#5B1F1F}}
-.line.linked .ln-amber{fill:#F4B400}
-.line.is-done .ln-amber{fill:#4A5159}
-.line.is-done .ln-green{fill:#22B86A}
-.line:not(.in-view) *{animation-play-state:paused!important}
-.ln-pallet{fill:#B98B5A}
-.ln-pallet-dk{fill:#8E6A42}
-.ln-wrap{fill:rgba(255,255,255,.28);stroke:rgba(255,255,255,.75);stroke-width:1.5;opacity:0;transition:opacity .5s .2s}
-.line.is-done .ln-wrap{opacity:1}
-.ln-jam,.ln-ok{font:700 15px/1 var(--mono);letter-spacing:.08em;opacity:0}
-.ln-jam{fill:#FF4D4A}
-.ln-ok{fill:#3DDC84;font-size:12px}
-.line.jammed .ln-jam{opacity:1;animation:ln-fade .55s steps(1) infinite}
-@keyframes ln-fade{50%{opacity:.25}}
-.line.is-done .ln-ok{opacity:1}
-.line.is-done .ln-label{opacity:1;transform:none}
-.ln-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
-.itm{transition:none}
-.itm rect{stroke:rgba(0,0,0,.22);stroke-width:1}
-.itm .band{fill:#fff;stroke:none;opacity:.85}
-.itm[data-sku=a] .body{fill:var(--sku-a)}
-.itm[data-sku=b] .body{fill:var(--sku-b)}
-.itm[data-sku=c] .body{fill:var(--sku-c)}
-.callout-top{top:3%}
-.callout-gap{top:calc(28.8% - 15px)}
-.callout-bottom{top:52%}
+/* ------------------------------------------------------------- The box
+   For a corrugated sheet plant. The order card up top is the ERP; the flat die-cut blank on the
+   folder-gluer is the floor; the glue hose between them is broken. SimpleGrid is the glue line on
+   the manufacturer’s joint: the nozzle wears the mark, and the box comes out square and true.
+   The box and the bundle are drawn in 3D by the script; every color is on .hero-art. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --kraft:#C9A06A;--kraft-in:#B98E58;--kraft-edge:#6B4925;
+  --print-brown:#5A3A1C;--print-white:#FBF6EC;--print-green:var(--brand);
+  --glue:#E7BE52;--glue-edge:#A47A1E;
+  --steel:#C9D0D6;--steel-lt:#E6EAEE;--steel-dk:#8E98A1;--steel-ink:#4B545D;--belt:#262B31;
+  --card:#fff;--card-head:#E8EEE9;--card-ink:#17221B;--card-soft:#4C5A51;
+}
+.fold{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .fold,.fold.is-done{cursor:default}
+.fold svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The order: what the ERP says you’re running. */
+.fd-card-bg{fill:var(--card)}
+.fd-card-head{fill:var(--card-head)}
+.fd-dot{fill:#C3CEC6}
+.fd-kick{fill:var(--card-soft);font:600 12px/1 var(--mono);letter-spacing:.16em}
+.fd-order{fill:var(--card-ink);font:800 35px/1 var(--body);letter-spacing:-.01em}
+.fd-spec{fill:var(--card-soft);font:700 21px/1 var(--body)}
+.fd-pill{fill:var(--accent-soft);transition:fill .3s}
+.fd-pill-dot{fill:var(--accent-edge);transition:fill .3s}
+.fd-status text{fill:var(--brand);font:800 18px/1 var(--body);transition:fill .3s}
+.fold.linked .fd-pill{fill:var(--accent)}
+.fold.linked .fd-pill-dot,.fold.linked .fd-status text{fill:var(--on-accent)}
+.fd-bar{fill:#E2E8E3}
+.fd-fill{fill:var(--accent-edge);transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
+/* The hose from the order to the glue head: broken until SimpleGrid joins it. */
+.fd-hose{fill:none;stroke:var(--belt);stroke-width:9;stroke-linecap:round}
+.fd-cuff{fill:var(--steel-dk)}
+.fd-join{fill:none;stroke:var(--belt);stroke-width:9;stroke-linecap:round;opacity:0;transition:opacity .35s}
+.fd-flow{fill:none;stroke:var(--accent);stroke-width:3.6;stroke-linecap:round;stroke-dasharray:6 8;opacity:0;transition:opacity .35s}
+.fold.linked .fd-join,.fold.linked .fd-flow{opacity:1}
+.fold.linked .fd-flow{animation:fd-flow .7s linear infinite}
+@keyframes fd-flow{to{stroke-dashoffset:-14}}
+/* The folder-gluer: its bed, and the glue head over the joint. */
+.fd-bed-top{fill:var(--steel)}
+.fd-bed-belt{fill:var(--belt);opacity:.9}
+.fd-bed-front{fill:var(--steel-dk)}
+.fd-bed-lip{fill:var(--steel-lt)}
+.fd-frame{fill:var(--steel-ink)}
+.fd-roller{fill:var(--steel-dk);stroke:var(--belt);stroke-width:2}
+.fd-shadow{fill:rgba(0,0,0,.2)}
+.fd-steel{fill:var(--steel)}
+.fd-steel-lt{fill:var(--steel-lt)}
+.fd-steel-dk{fill:var(--steel-dk)}
+.fd-nozzle{fill:var(--steel-ink)}
+.fd-arm{fill:var(--steel-dk)}
+.fd-mark{--sg-bg:var(--brand);--sg-ink:#fff}
+.fold.dosed .fd-mark{opacity:1;transform:none}
+.fd-head{transform-box:fill-box;transform-origin:50% 0}
+.fd-drop{fill:var(--glue);stroke:var(--glue-edge);stroke-width:1.2;opacity:0;transform-box:fill-box;transform-origin:center}
+.fold.messy .fd-drop{animation:fd-drip 2.2s cubic-bezier(.5,0,.9,.5) infinite}
+@keyframes fd-drip{0%{opacity:0;transform:translateY(0) scale(.4)}12%{opacity:1;transform:translateY(0) scale(1)}70%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(40px) scale(.8)}}
+.fold.linked .fd-tip{fill:var(--accent-edge)}
+/* The board: kraft outside, a duller kraft inside, cut and scored edges in dark kraft. */
+.fc-board{fill:var(--kraft)}
+.fc.back .fc-board{fill:var(--kraft-in)}
+.fc.back .fc-out{display:none}
+.fc-edge{fill:none;stroke:var(--kraft-edge);stroke-width:1.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.fc-shade{stroke:none;opacity:0}
+.pr-white{fill:var(--print-white)}
+.pr-brown{fill:var(--print-brown)}
+.pr-green{fill:var(--print-green)}
+.pr-line{fill:none;stroke:var(--print-brown);stroke-width:3;stroke-linecap:round;opacity:.55}
+/* The glue: a smear that misses, or SimpleGrid’s line on the joint. The script draws both on. */
+.sm-body{fill:none;stroke:var(--glue);stroke-width:11;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;opacity:.94}
+.sm-edge{fill:none;stroke:var(--glue-edge);stroke-width:13.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;opacity:.5}
+.sm-hi{fill:none;stroke:#FFF6D6;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:1;opacity:.8}
+.sm-blob{fill:var(--glue);stroke:var(--glue-edge);stroke-width:1.4}
+.fd-bead{fill:none;stroke:var(--accent);stroke-width:4.5;stroke-linecap:round;stroke-dasharray:1}
+.fd-bead-edge{fill:none;stroke:var(--accent-edge);stroke-width:7.5;stroke-linecap:round;stroke-dasharray:1}
+/* The bundle behind it: slabs of knocked-down boxes, drawn by the script. */
+.fd-slab{stroke:var(--kraft-edge);stroke-width:1.1;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.fd-strap{fill:none;stroke:#F7F3EA;stroke-width:5.5;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .45s ease-out}
+.fd-strap + .fd-strap{transition-delay:.18s}
+.fold.strapped .fd-strap{stroke-dashoffset:0}
+.fd-tag{--sg-bg:var(--brand);--sg-ink:#fff}
+.fold.is-done .fd-tag{opacity:1;transform:none}
+.fold:not(.in-view) *{animation-play-state:paused!important}
+.fold.snap,.fold.snap *{transition:none!important}
+.callout-top{top:3.5%}
+.callout-gap{top:calc(37.9% - 15px)}
+.callout-bottom{top:54%}
+.callout-top h3 i{background:#fff}
+.callout-bottom h3 i{background:#C9A06A}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.54)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.075)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -533,67 +557,69 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+        <div class="fold hero-obj" id="fold" role="img" aria-label="An order card in your ERP: Order 4417, RSCs, 3-color, 10,000, On plan. Below it, a flat die-cut corrugated blank on a folder-gluer under the glue nozzle, and the hose from the order to the nozzle broken.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
-            <!-- the schedule: what the ERP says the line is running -->
-            <g class="ln-screen-g">
-              <rect class="ln-screen" x="30" y="24" width="300" height="118" rx="12"/>
-              <rect class="ln-glass" x="40" y="34" width="280" height="98" rx="7"/>
-              <text class="ln-kick" x="56" y="57">SCHEDULE</text>
-              <text class="ln-order" x="56" y="84">Order 4417</text>
-              <text class="ln-sku" x="56" y="106">RSCs, 3-color, 10,000</text>
-              <g class="ln-status"><rect class="ln-pill" x="222" y="45" width="84" height="22" rx="11"/><text id="lnStatus" x="264" y="60" text-anchor="middle">On plan</text></g>
-              <rect class="ln-bar" x="56" y="116" width="250" height="6" rx="3"/>
-              <rect class="ln-fill" id="lnFill" x="56" y="116" width="80" height="6" rx="3"/>
+            <!-- the folder-gluer’s bed: the blank stands on it, and the bundle waits at the back of it -->
+            <rect class="fd-bed-top" x="-8" y="369" width="376" height="89"/>
+            <rect class="fd-bed-belt" x="-8" y="443" width="376" height="10"/>
+            <rect class="fd-bed-belt" x="-8" y="410" width="376" height="5"/>
+            <rect class="fd-bed-lip" x="-8" y="457" width="376" height="4"/>
+            <rect class="fd-bed-front" x="-8" y="461" width="376" height="15"/>
+            <rect class="fd-frame" x="-8" y="476" width="376" height="27"/>
+            <circle class="fd-roller" cx="34" cy="489.5" r="8.5"/><circle class="fd-roller" cx="98" cy="489.5" r="8.5"/><circle class="fd-roller" cx="162" cy="489.5" r="8.5"/><circle class="fd-roller" cx="226" cy="489.5" r="8.5"/><circle class="fd-roller" cx="290" cy="489.5" r="8.5"/><circle class="fd-roller" cx="354" cy="489.5" r="8.5"/>
+            <rect class="fd-frame" x="20" y="503" width="16" height="43"/><rect class="fd-frame" x="318" y="503" width="16" height="43"/>
+
+            <!-- the bundle at the back: knocked-down boxes, drawn by the script, strapped and labelled once it comes clean -->
+            <path class="fd-shadow" id="fdBundleShadow"/>
+            <g id="fdBundle">
+              <g id="fdSlabs"></g>
+              <path class="fd-strap" id="fdStrapA" pathLength="1"/>
+              <path class="fd-strap" id="fdStrapB" pathLength="1"/>
+              <g id="fdTagAt"><g class="fd-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
             </g>
-            <!-- the cable from the schedule to the line: broken until SimpleGrid joins it -->
-            <path class="ln-stub" d="M165 142V154"/>
-            <path class="ln-stub" d="M165 168V180"/>
-            <path class="ln-cable" d="M165 142V180"/>
-            <g transform="translate(165 161) scale(.8)"><g class="ln-link sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
 
-            <!-- the floor under the line -->
-            <path class="ln-floor" d="M0 478H360"/>
-            <!-- the conveyor -->
-            <rect class="ln-leg" x="24" y="344" width="8" height="134"/>
-            <rect class="ln-leg" x="236" y="344" width="8" height="134"/>
-            <rect class="ln-belt" x="6" y="334" width="256" height="12" rx="6"/>
-            <path class="ln-run" d="M12 340H256"/>
-            <!-- the pallet at the end of the line -->
-            <rect class="ln-pallet" x="258" y="466" width="100" height="6" rx="1"/>
-            <rect class="ln-pallet-dk" x="262" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="302" y="472" width="12" height="6"/><rect class="ln-pallet-dk" x="342" y="472" width="12" height="6"/>
+            <!-- the blank, and the box it folds into: the script draws every panel and flap -->
+            <path class="fd-shadow" id="fdShadow"/>
+            <g id="fdBox"></g>
 
-            <!-- what runs down the line: line.js places every one -->
-            <g id="lnItems"></g>
-
-            <!-- the machine sits over the belt, so whatever runs through it disappears and comes out the other side -->
-            <g class="ln-machine">
-              <path class="ln-steel" d="M137 180H193L183 214H147Z"/>
-              <rect class="ln-steel" x="108" y="212" width="114" height="128" rx="9"/>
-              <rect class="ln-steel-dk" x="108" y="300" width="114" height="40" rx="0"/>
-              <rect class="ln-window" x="124" y="230" width="82" height="50" rx="6"/>
-              <path class="ln-window-hi" d="M132 238L150 238L136 272L128 272Z"/>
-              <text class="ln-jam" x="165" y="262" text-anchor="middle">JAM</text>
-              <text class="ln-ok" x="165" y="262" text-anchor="middle">RUNNING</text>
-              <rect class="ln-pole" x="112" y="176" width="4" height="36"/>
-              <circle class="ln-lamp ln-red" cx="114" cy="150" r="7"/>
-              <circle class="ln-lamp ln-amber" cx="114" cy="164" r="7"/>
-              <circle class="ln-lamp ln-green" cx="114" cy="178" r="7"/>
+            <!-- the glue head over the manufacturer’s joint, wearing SimpleGrid’s mark once it’s in -->
+            <g class="fd-head" id="fdHead">
+              <rect class="fd-steel" x="312" y="268" width="46" height="38" rx="9"/>
+              <rect class="fd-steel-dk" x="312" y="296" width="46" height="10"/>
+              <path class="fd-nozzle" d="M325 306H345L339 325H331Z"/>
+              <path class="fd-nozzle fd-tip" d="M331 324H339L337.5 332H332.5Z"/>
+              <circle class="fd-drop" cx="335" cy="336" r="3.6"/>
             </g>
-            <!-- once the run comes clean: stretch-wrapped, with the pallet label -->
-            <rect class="ln-wrap" x="259" y="361" width="98" height="105" rx="4"/>
-            <g transform="translate(308 417) scale(.44)"><g class="ln-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <g transform="translate(335 283) scale(.62)"><g class="fd-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+
+            <!-- the hose from the order to the glue head: broken until SimpleGrid joins it -->
+            <rect class="fd-cuff" x="310" y="160" width="16" height="10" rx="2"/>
+            <path class="fd-hose" d="M318 168V198"/>
+            <path class="fd-hose" d="M318 226V266"/>
+            <path class="fd-join" d="M318 168V266"/>
+            <path class="fd-flow" d="M318 170V264"/>
+
+            <!-- the order: what the ERP says you’re running -->
+            <rect class="fd-card-bg" x="16" y="12" width="328" height="152" rx="16"/>
+            <path class="fd-card-head" d="M16 40V28A16 16 0 0 1 32 12H328A16 16 0 0 1 344 28V40Z"/>
+            <circle class="fd-dot" cx="35" cy="26" r="4.5"/><circle class="fd-dot" cx="50" cy="26" r="4.5"/><circle class="fd-dot" cx="65" cy="26" r="4.5"/>
+            <text class="fd-kick" x="326" y="30.5" text-anchor="end">ERP</text>
+            <text class="fd-order" x="33" y="82">ORDER 4417</text>
+            <text class="fd-spec" x="33" y="113">RSCs · 3-color · 10,000</text>
+            <g class="fd-status"><rect class="fd-pill" id="fdPill" x="33" y="125" width="104" height="29" rx="14.5"/><circle class="fd-pill-dot" cx="48" cy="139.5" r="5"/><text id="fdStatus" x="60" y="145.8">On plan</text></g>
+            <rect class="fd-bar" x="222" y="135.5" width="102" height="8" rx="4"/>
+            <rect class="fd-fill" id="fdFill" x="222" y="135.5" width="34" height="8" rx="4"/>
           </svg>
         </div>
         <div class="callouts">
           <div class="callout callout-top">
-            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
-            <p id="topText">What the system says the line is running.</p>
+            <h3><i></i><span id="topTitle">The order: your ERP</span></h3>
+            <p id="topText">What the system says you’re running.</p>
           </div>
           <div class="callout-gap" id="gapTag">No link</div>
           <div class="callout callout-bottom">
-            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
-            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+            <h3><i></i><span id="bottomTitle">The blank: your floor</span></h3>
+            <p id="bottomText">What’s really coming off the gluer, on Excel, whiteboards and phones.</p>
           </div>
           <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
           <div class="ops" aria-live="polite">
@@ -606,10 +632,10 @@ h1 span{display:block;color:var(--hi)}
 
       <div class="hero-ctrl">
         <div class="ctrl-row">
-          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="go-btn" id="heroBtn" type="button">Fold it to see your operations</button>
           <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
         </div>
-        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The order is your ERP, the blank on the gluer is your floor, and nothing links them. Fold it, or tap the blank.</p>
       </div>
     </div>
   </div>
@@ -926,122 +952,384 @@ SG.story = function(o){
 };
 </script>
 <script>
-/* ---------------------------------------------------------------- The line
-   For co-packers: the schedule on the screen is the ERP, the line under it is
-   the floor, and nothing links them. Run it and the line jams: the wrong
-   product lands in the case, the rest ends up on the floor, and the screen
-   still says On plan. That mess stays. SimpleGrid joins the cable, and the
-   next run sorts the whole mess into the case, in order.
-   The page may set window.LINE_COPY before this runs, to word it its own way. */
+/* ------------------------------------------------------------------ The box
+   For a corrugated sheet plant. The order card up top is the ERP, the flat
+   die-cut blank on the folder-gluer is the floor, and the glue hose between
+   them is broken. Fold it and it goes wrong: the glue smears across the
+   print, the flaps miss, the box comes out skewed and half-collapsed, and the
+   bundle behind it slumps over, while the order still says On plan. That
+   mess stays. SimpleGrid is the glue line on the manufacturer’s joint: the
+   nozzle wears the mark and the hose joins. Fold it again and the same blank
+   comes out a square, true box, in front of a neat bundle, strapped and
+   labelled.
+   The box and the bundle are drawn in 3D. Each panel and flap is a flat face
+   hinged to the next, so a fold is just a set of angles, and each face is an
+   SVG group under the one affine matrix that puts it where it is. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
-  var hero = $('hero'), line = $('line'), wrap = $('lnItems'), statusEl = $('lnStatus'), fill = $('lnFill');
+  var hero = $('hero'), obj = $('fold'), boxG = $('fdBox'), slabG = $('fdSlabs'), head = $('fdHead');
+  var shadowEl = $('fdShadow'), bShadowEl = $('fdBundleShadow'), statusEl = $('fdStatus'), pill = $('fdPill'), fill = $('fdFill');
   var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
-  var reduce = SG.reduce;
-  var COPY = window.LINE_COPY || {
-    apart:    { btn: 'Run the line to see your operations', caption: 'The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.' },
-    messing:  { btn: 'Running…', caption: 'Running it the usual way: the plan in one place, the line in another.' },
-    mess:     { btn: 'Link them with SimpleGrid', caption: 'That’s your operations today: a big mess. A jam, the wrong product in the case, the rest on the floor, and the schedule still says On plan. It won’t sort itself out, either.' },
-    dosing:   { btn: 'Linking…', caption: 'SimpleGrid goes between the schedule and the line.' },
-    dosed:    { btn: 'Run it again', caption: 'That’s SimpleGrid: the schedule and the line on one live record. Now run it again.' },
-    cleaning: { btn: 'Running…', caption: 'Watch the mess sort itself out.' },
-    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean run: the right product, in order, in the case, and the schedule knows it.' }
+  var reduce = SG.reduce, clamp = SG.clamp, D = Math.PI/180;
+
+  var COPY = {
+    apart:    { btn: 'Fold it to see your operations', caption: 'The order is your ERP, the blank on the gluer is your floor, and nothing links them. Fold it, or tap the blank.' },
+    messing:  { btn: 'Folding…', caption: 'Folding it the usual way: the plan in one place, the floor in another.' },
+    mess:     { btn: 'Glue it with SimpleGrid', caption: 'That’s your operations today: a big mess. The glue’s across the print, the flaps miss, the box is skewed and the bundle’s slumped, and the order still says On plan. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Gluing…', caption: 'The glue line goes on the joint. That’s SimpleGrid.' },
+    dosed:    { btn: 'Fold it again', caption: 'That’s SimpleGrid: one glue line between the order and the floor, so they stay joined. Now fold it again.' },
+    cleaning: { btn: 'Folding…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a square, true box, in a neat, counted bundle, and the order knows it. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The order: your ERP', 'What the system says you’re running.', 'The blank: your floor', 'What’s really coming off the gluer, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
   };
   var ARIA = {
-    apart: line.getAttribute('aria-label'),
-    mess: 'The line jammed: products stuck at the machine, the wrong ones in the case, the rest fallen on the floor, and the schedule still saying On plan.',
-    done: 'The line running clean, every product sorted in rows in the case, the light green, and the schedule saying done on time.'
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The blank folded with nothing linking it: glue smeared across the print, the flaps missing, the box skewed and half-collapsed, and the bundle behind it slumped over, while the order still says On plan.',
+    done: 'A square, true box, glued on the joint, in front of a neat, strapped bundle labelled SimpleGrid. The order says Done, on time.'
   };
 
-  // Nine products, three kinds, in the order they come down the line.
-  var SKUS = 'abcbacacb'.split('');
-  var BELT = 317;                                         // where a product's middle sits on the belt
-  var START = [[32, BELT], [62, BELT], [92, BELT]];       // three waiting at the start
-  var MESS_PALLET = [[284, 452, 18], [326, 447, -27]];    // the wrong two get through, askew
-  var QUEUE = [[92, BELT, 0], [62, BELT, 4], [32, BELT, -3]];
-  var PILE = [[56, 458, -38], [98, 464, 26], [140, 455, 84], [182, 462, -62]];
-  var ROW = { a: 449, b: 415, c: 381 }, COL = [278, 308, 338];
+  /* ------------------------------------------------------------ 3D
+     Affine maps as three rows of four: x right, y up, z toward you. */
+  function mul(A, B){
+    return [
+      A[0]*B[0] + A[1]*B[4] + A[2]*B[8],  A[0]*B[1] + A[1]*B[5] + A[2]*B[9],  A[0]*B[2] + A[1]*B[6] + A[2]*B[10],  A[0]*B[3] + A[1]*B[7] + A[2]*B[11] + A[3],
+      A[4]*B[0] + A[5]*B[4] + A[6]*B[8],  A[4]*B[1] + A[5]*B[5] + A[6]*B[9],  A[4]*B[2] + A[5]*B[6] + A[6]*B[10],  A[4]*B[3] + A[5]*B[7] + A[6]*B[11] + A[7],
+      A[8]*B[0] + A[9]*B[4] + A[10]*B[8], A[8]*B[1] + A[9]*B[5] + A[10]*B[9], A[8]*B[2] + A[9]*B[6] + A[10]*B[10], A[8]*B[3] + A[9]*B[7] + A[10]*B[11] + A[11]
+    ];
+  }
+  var ap = function(M, p){ return [M[0]*p[0] + M[1]*p[1] + M[2]*p[2] + M[3], M[4]*p[0] + M[5]*p[1] + M[6]*p[2] + M[7], M[8]*p[0] + M[9]*p[1] + M[10]*p[2] + M[11]]; };
+  var lin = function(M, v){ return [M[0]*v[0] + M[1]*v[1] + M[2]*v[2], M[4]*v[0] + M[5]*v[1] + M[6]*v[2], M[8]*v[0] + M[9]*v[1] + M[10]*v[2]]; };
+  var cross = function(a, b){ return [a[1]*b[2] - a[2]*b[1], a[2]*b[0] - a[0]*b[2], a[0]*b[1] - a[1]*b[0]]; };
+  var Tr = function(x, y, z){ return [1,0,0,x, 0,1,0,y, 0,0,1,z]; };
+  var Rx = function(a){ var c = Math.cos(a*D), s = Math.sin(a*D); return [1,0,0,0, 0,c,-s,0, 0,s,c,0]; };
+  var Ry = function(a){ var c = Math.cos(a*D), s = Math.sin(a*D); return [c,0,s,0, 0,1,0,0, -s,0,c,0]; };
+  var Rz = function(a){ var c = Math.cos(a*D), s = Math.sin(a*D); return [c,-s,0,0, s,c,0,0, 0,0,1,0]; };
+  var about = function(R, x, y, z){ return mul(Tr(x, y, z), mul(R, Tr(-x, -y, -z))); };
+  // The camera looks down a little and never moves. The floor is y = 0.
+  var OX = 177, OY = 448, CB = Math.cos(22*D), SB = Math.sin(22*D);
+  var pr = function(p){ return [OX + p[0], OY - p[1]*CB + p[2]*SB]; };
+  var prl = function(v){ return [v[0], -v[1]*CB + v[2]*SB]; };
+  var depth = function(p){ return p[1]*SB + p[2]*CB; };          // how near you
+  var LIGHT = [-.36, .84, .41];
+  function lum(n){ var l = Math.hypot(n[0], n[1], n[2]) || 1; return .6 + .42*Math.max(0, (n[0]*LIGHT[0] + n[1]*LIGHT[1] + n[2]*LIGHT[2])/l); }
+  var LUM0 = lum([0, 0, 1]);                                       // a face square-on to you shows its own color
+  var r1 = function(v){ return Math.round(v*100)/100; };
+  function mk(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function hull(pts){
+    pts = pts.slice().sort(function(a, b){ return a[0] - b[0] || a[1] - b[1]; });
+    var turn = function(o, a, b){ return (a[0] - o[0])*(b[1] - o[1]) - (a[1] - o[1])*(b[0] - o[0]); };
+    var lo = [], up = [], i;
+    for (i = 0; i < pts.length; i++){ while (lo.length > 1 && turn(lo[lo.length - 2], lo[lo.length - 1], pts[i]) <= 0) lo.pop(); lo.push(pts[i]); }
+    for (i = pts.length - 1; i >= 0; i--){ while (up.length > 1 && turn(up[up.length - 2], up[up.length - 1], pts[i]) <= 0) up.pop(); up.push(pts[i]); }
+    return lo.slice(0, -1).concat(up.slice(0, -1));
+  }
+  var poly = function(pts){ return pts.length ? 'M' + pts.map(function(p){ return r1(p[0]) + ' ' + r1(p[1]); }).join('L') + 'Z' : ''; };
 
-  var items = SKUS.map(function(sku){
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'itm');
-    g.dataset.sku = sku;
-    g.innerHTML = '<rect class="body" x="-14" y="-17" width="28" height="34" rx="3"/><rect class="band" x="-14" y="-4" width="28" height="9"/>';
-    wrap.appendChild(g);
-    return g;
+  /* ------------------------------------------------------------ The blank
+     An RSC blank, flat and square-on to you: four panels (side, back, side,
+     front), the glue tab on the front panel’s right edge, and a flap above and
+     below each panel. The front panel carries the print and stays put; the
+     others fold back around it, so the joint ends up on the right-hand corner. */
+  var L = 90, W = 68, H = 96, F = W/2, T = 14, G = 2.5;
+  var X0 = -(2*L + 2*W + T)/2, XC = X0 + W, XB = XC + L, XA = XB + W, XD = XA + L;
+  var PX = (XA + XD)/2, PY = F, PZ = -W/2;                           // the middle of the closed box’s bottom
+  var PANEL = { 1: [X0, W], 2: [XC, L], 3: [XB, W], 4: [XA, L] };
+  // The print on the two long panels, three colors: a white panel, brown This Side Up arrows, a green band.
+  var PRINT = '<rect class="pr-white" x="9" y="11" width="72" height="54" rx="7"/>' +
+    '<path class="pr-brown" d="M30 55V37H22.5L34 21L45.5 37H38V55ZM52 55V37H44.5L56 21L67.5 37H60V55Z"/>' +
+    '<rect class="pr-brown" x="21" y="58" width="48" height="4.5" rx="1"/>' +
+    '<rect class="pr-green" x="9" y="73" width="72" height="12" rx="2"/>';
+  // The glue that misses: thrown across the print from the joint side, with a drip running off it.
+  var SMEAR_D = 'M86 9C76 15 72 13 62 24C53 34 44 30 34 42C26 52 32 58 24 70';
+  var SMEAR = '<g class="fd-smear">' +
+    '<path class="sm-edge" pathLength="1" d="' + SMEAR_D + '"/><path class="sm-body" pathLength="1" d="' + SMEAR_D + '"/>' +
+    '<path class="sm-hi" pathLength="1" d="M82 8C74 13 70 12 61 21C53 29 45 26 37 36"/>' +
+    '<path class="sm-blob" d="M45 33C48 41 47 47 47 52A3.4 3.4 0 0 1 40.2 52C40.2 47 42 41 45 33Z"/>' +
+    '<circle class="sm-blob" cx="84" cy="10" r="7"/><circle class="sm-blob" cx="70" cy="44" r="3.4"/></g>';
+  var TABGLUE = '<g class="fd-blobs"><circle class="sm-blob" cx="5" cy="25" r="6"/><circle class="sm-blob" cx="10" cy="53" r="4.5"/><path class="sm-blob" d="M2 72Q9 69 11 78Q9 86 2 83Z"/></g>' +
+    '<g class="fd-beads"><path class="fd-bead-edge" pathLength="1" d="M7 13V83"/><path class="fd-bead" pathLength="1" d="M7 13V83"/></g>';
+  var FACES = [], BYK = {};
+  function face(k, x, yTop, w, h, opt){
+    var f = { k: k, x: x, y: yTop, w: w, h: h, bias: 0 };
+    for (var o in opt) f[o] = opt[o];
+    FACES.push(f); BYK[k] = f;
+  }
+  [1, 2, 3, 4].forEach(function(n){
+    var x = PANEL[n][0], w = PANEL[n][1], l = n === 1 ? 0 : G;
+    face('P' + n, x, F + H, w, H, {});
+    face('T' + n, x + l, 2*F + H, w - l - G, F, { bias: n % 2 ? 0 : 1.5 });   // the wide (major) flaps close over the narrow ones
+    face('B' + n, x + l, F, w - l - G, F, {});
   });
-  var tf = function(p){ return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (p[2] || 0) + 'deg)'; };
-  var at = [];                                            // where each product is now
-  function place(i, p, hidden){ at[i] = p; items[i].getAnimations().forEach(function(a){ a.cancel(); }); items[i].style.transform = tf(p); items[i].style.opacity = hidden ? 0 : 1; }
-  function move(i, frames, ms, delay, easing){
-    // Every frame carries its own opacity, so nothing falls back to the hidden starting style mid-move.
-    var anim = items[i].animate(frames.map(function(f){ var k = { transform: tf(f.p), opacity: f.o == null ? 1 : f.o }; if (f.at != null) k.offset = f.at; return k; }),
-      { duration: reduce ? 1 : ms, delay: reduce ? 0 : delay, easing: easing || 'linear', fill: 'both' });
-    at[i] = frames[frames.length - 1].p;
-    return anim.finished.catch(function(){});
+  face('TB', XD, F + H, T, H, { shape: 'M0 3L' + T + ' 13V' + (H - 13) + 'L0 ' + (H - 3) + 'Z', bias: 1 });
+  FACES.forEach(function(f){
+    var d = f.shape || ('M0 0H' + r1(f.w) + 'V' + f.h + 'H0Z');
+    f.g = mk('g', { 'class': 'fc' }, boxG);
+    mk('path', { 'class': 'fc-board', d: d }, f.g);
+    var out = mk('g', { 'class': 'fc-out' }, f.g);
+    if (f.k === 'P4') out.innerHTML = PRINT + SMEAR;
+    if (f.k === 'P2') out.innerHTML = PRINT;
+    if (f.k === 'TB') out.innerHTML = TABGLUE;
+    f.shade = mk('path', { 'class': 'fc-shade', d: d }, f.g);
+    mk('path', { 'class': 'fc-edge', d: d }, f.g);
+    f.back = false;
+  });
+  var smearG = boxG.querySelector('.fd-smear'), smearPaths = [].slice.call(smearG.querySelectorAll('[pathLength]'));
+  var blobsG = boxG.querySelector('.fd-blobs'), beadsG = boxG.querySelector('.fd-beads'), beadPaths = [].slice.call(beadsG.children);
+
+  // Every pose of the box is these numbers: fold angles (90 is shut), then how the whole thing sits.
+  var KEYS = ['p1', 'p2', 'p3', 'tb', 't1', 't2', 't3', 't4', 'b1', 'b2', 'b3', 'b4', 'yaw', 'roll', 'rack', 'squash', 'zoom', 'x', 'y', 'z'];
+  var FLAT = { p1: 0, p2: 0, p3: 0, tb: 0, t1: 0, t2: 0, t3: 0, t4: 0, b1: 0, b2: 0, b3: 0, b4: 0, yaw: 0, roll: 0, rack: 0, squash: 1, zoom: 1, x: PX, y: PY, z: PZ };
+  // Folded with nothing linking it: the walls don’t meet, the tab flaps loose, the flaps go every which way, and it leans.
+  var MESS = { p1: 60, p2: 110, p3: 62, tb: 22, t1: -46, t2: 16, t3: 124, t4: 150, b1: 10, b2: 38, b3: 96, b4: 92, yaw: -26, roll: 8, rack: .26, squash: .8, zoom: 1.28, x: -66, y: 14, z: -26 };
+  // Folded true: everything at ninety, the joint shut, the box square on the bed.
+  var CLEAN = { p1: 90, p2: 90, p3: 90, tb: 90, t1: 90, t2: 90, t3: 90, t4: 90, b1: 90, b2: 90, b3: 90, b4: 90, yaw: -32, roll: 0, rack: 0, squash: 1, zoom: 1.4, x: -60, y: 0, z: -30 };
+  var copy = function(o){ var c = {}; for (var k in o) c[k] = o[k]; return c; };
+  var S = copy(FLAT);
+  S.smear = 0; S.smearOp = 1; S.bead = 0;
+
+  function root(){
+    var m = mul(Tr(S.x, S.y, S.z), Rz(S.roll));
+    m = mul(m, Ry(S.yaw));
+    m = mul(m, [S.zoom, S.rack*S.zoom, 0, 0, 0, S.squash*S.zoom, 0, 0, 0, 0, S.zoom, 0]);
+    return mul(m, Tr(-PX, -PY, -PZ));
   }
-  function setup(){
-    items.forEach(function(g, i){ place(i, START[i] || [-6, BELT], i >= START.length); });
-    line.classList.remove('running', 'jammed', 'linked', 'is-done');
-    statusEl.textContent = 'On plan';
-    fill.setAttribute('width', 80);
+  function frames(){
+    var M = { P4: root() };
+    M.P3 = mul(M.P4, about(Ry(-S.p3), XA, 0, 0));
+    M.P2 = mul(M.P3, about(Ry(-S.p2), XB, 0, 0));
+    M.P1 = mul(M.P2, about(Ry(-S.p1), XC, 0, 0));
+    M.TB = mul(M.P4, about(Ry(S.tb), XD, 0, 0));
+    for (var n = 1; n <= 4; n++){
+      M['T' + n] = mul(M['P' + n], about(Rx(-S['t' + n]), 0, F + H, 0));
+      M['B' + n] = mul(M['P' + n], about(Rx(S['b' + n]), 0, F, 0));
+    }
+    return M;
+  }
+  var lastOrder = '';
+  function drawBox(){
+    var M = frames(), foot = [];
+    FACES.forEach(function(f){
+      var m = M[f.k], o = pr(ap(m, [f.x, f.y, 0])), eu = lin(m, [1, 0, 0]), ev = lin(m, [0, -1, 0]), su = prl(eu), sv = prl(ev);
+      var back = su[0]*sv[1] - su[1]*sv[0] < 0;
+      f.g.setAttribute('transform', 'matrix(' + r1(su[0]) + ' ' + r1(su[1]) + ' ' + r1(sv[0]) + ' ' + r1(sv[1]) + ' ' + r1(o[0]) + ' ' + r1(o[1]) + ')');
+      if (back !== f.back){ f.back = back; f.g.classList.toggle('back', back); }
+      var n = cross(ev, eu); if (back) n = [-n[0], -n[1], -n[2]];
+      var k = lum(n)/LUM0;
+      f.shade.style.fill = k < 1 ? '#000' : '#fff';
+      f.shade.style.opacity = r1(k < 1 ? Math.min(.5, (1 - k)*1.15) : Math.min(.28, (k - 1)*.9));
+      f.z = depth(ap(m, [f.x + f.w/2, f.y - f.h/2, 0])) + f.bias;
+      if (f.k.charAt(0) === 'P'){ foot.push(ap(m, [f.x, F, 0]), ap(m, [f.x + f.w, F, 0])); }
+    });
+    var order = FACES.slice().sort(function(a, b){ return a.z - b.z; });
+    var key = order.map(function(f){ return f.k; }).join();
+    if (key !== lastOrder){ lastOrder = key; order.forEach(function(f){ boxG.appendChild(f.g); }); }
+    // The glue: the smear draws on and wipes off; SimpleGrid’s bead draws down the tab.
+    smearPaths.forEach(function(p){ p.style.strokeDashoffset = r1(1 - S.smear); });
+    smearG.style.opacity = S.smear > 0 ? S.smearOp : 0;
+    blobsG.style.opacity = S.smear > .45 ? S.smearOp : 0;
+    beadPaths.forEach(function(p){ p.style.strokeDashoffset = r1(1 - S.bead); });
+    beadsG.style.opacity = S.bead > 0 ? 1 : 0;
+    // Its shadow on the bed, under wherever its walls stand.
+    var pts = [];
+    foot.forEach(function(p){ [[-4, -4], [4, -4], [4, 4], [-4, 4]].forEach(function(o){ pts.push(pr([p[0] + o[0], 0, p[2] + o[1]])); }); });
+    shadowEl.setAttribute('d', poly(hull(pts)));
   }
 
-  // Run it unlinked: the wrong two get through, then it jams and the rest go on the floor.
+  /* ------------------------------------------------------------ The bundle
+     Knocked-down boxes in a stack at the back of the bed, behind the blank.
+     Each slab is one box, folded flat; it can slide and tip on its own. */
+  var BN = 6, BW = 112, BT = 10.5, BD = 86, BYAW = -28, BX = 92, BZ = -150;
+  var BASE = mul(Tr(BX, 0, BZ), Ry(BYAW));
+  var CUBE = [
+    [[0, 1, 0], [[-1, 1, -1], [1, 1, -1], [1, 1, 1], [-1, 1, 1]]],
+    [[0, -1, 0], [[-1, -1, 1], [1, -1, 1], [1, -1, -1], [-1, -1, -1]]],
+    [[0, 0, 1], [[-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]]],
+    [[0, 0, -1], [[1, -1, -1], [-1, -1, -1], [-1, 1, -1], [1, 1, -1]]],
+    [[1, 0, 0], [[1, -1, 1], [1, -1, -1], [1, 1, -1], [1, 1, 1]]],
+    [[-1, 0, 0], [[-1, -1, -1], [-1, -1, 1], [-1, 1, 1], [-1, 1, -1]]]
+  ];
+  var KRAFT = [201, 160, 106];
+  var slabs = [];
+  for (var i = 0; i < BN; i++){
+    var sg = mk('g', {}, slabG);
+    slabs.push(CUBE.map(function(){ return mk('path', { 'class': 'fd-slab' }, sg); }));
+  }
+  var NEAT = [], SLUMP = [];
+  for (i = 0; i < BN; i++){
+    var t = i/(BN - 1);
+    NEAT.push([0, 0, 0, 0, 0]);
+    SLUMP.push([t*t*16 + t*4, -t*2, t*6, -t*7, t*5]);   // [slide, drop, toward you, tip, turn]
+  }
+  SLUMP[BN - 1] = [26, -(BN - 1)*BT + 5, 74, -12, 26];   // the top one slid off onto the bed
+  SLUMP[BN - 2] = [20, -(BN - 2)*BT*.5, 40, -24, 12];    // the next one half off, tipped against the stack
+  var B = NEAT.map(function(c){ return c.slice(); });
+  function slabM(i){ var c = B[i]; return mul(mul(mul(BASE, Tr(c[0], i*BT + BT/2 + c[1], c[2])), Rz(c[3])), Ry(c[4])); }
+  function drawBundle(){
+    var foot = [];
+    for (var i = 0; i < BN; i++){
+      var m = slabM(i);
+      CUBE.forEach(function(fc, j){
+        var n = lin(m, fc[0]), el = slabs[i][j];
+        if (depth(n) <= .01){ el.removeAttribute('d'); return; }
+        el.setAttribute('d', poly(fc[1].map(function(c){ return pr(ap(m, [c[0]*BW/2, c[1]*BT/2, c[2]*BD/2])); })));
+        var k = lum(n)/LUM0;
+        el.style.fill = 'rgb(' + KRAFT.map(function(v){ return Math.round(clamp(v*k, 0, 255)); }).join(',') + ')';
+      });
+      [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(c){ var p = ap(m, [c[0]*BW/2, -BT/2, c[1]*BD/2]); foot.push(pr([p[0], 0, p[2]])); });
+    }
+    bShadowEl.setAttribute('d', poly(hull(foot)));
+  }
+  // The straps and the label, drawn once, for the bundle standing neat.
+  (function(){
+    var top = BN*BT + .6, front = BD/2 + .6;
+    [['fdStrapA', -BW*.27], ['fdStrapB', BW*.27]].forEach(function(s){
+      var pts = [[s[1], 0, front], [s[1], top, front], [s[1], top, -BD/2]].map(function(p){ return pr(ap(BASE, p)); });
+      $(s[0]).setAttribute('d', 'M' + pts.map(function(p){ return r1(p[0]) + ' ' + r1(p[1]); }).join('L'));
+    });
+    var k = .5, o = pr(ap(BASE, [0, BN*BT*.5, front + .4])), su = prl(lin(BASE, [k, 0, 0])), sv = prl(lin(BASE, [0, -k, 0]));
+    $('fdTagAt').setAttribute('transform', 'matrix(' + [su[0], su[1], sv[0], sv[1], o[0], o[1]].map(r1).join(' ') + ')');
+  })();
+
+  function draw(){ drawBox(); drawBundle(); }
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Runs fn(ms into the move) once a frame, then resolves. Reduced motion jumps straight to the end.
+  function play(ms, fn){
+    var my = gen;
+    return new Promise(function(done){
+      if (reduce){ fn(ms); draw(); done(); return; }
+      var t0 = 0;
+      requestAnimationFrame(function tick(now){
+        if (my !== gen) return;
+        if (!t0) t0 = now;
+        var T = Math.min(ms, now - t0);
+        fn(T); draw();
+        if (T < ms) requestAnimationFrame(tick); else done();
+      });
+    });
+  }
+  var ease = function(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; };
+  var out = function(t){ return 1 - Math.pow(1 - t, 3); };
+  var over = function(t){ var c = 1.6; return 1 + (c + 1)*Math.pow(t - 1, 3) + c*Math.pow(t - 1, 2); };
+  var win = function(T, a, b){ return clamp((T - a)/(b - a), 0, 1); };
+  // Moves every number of the pose from `a` to `b`, each over its own window of the move.
+  function pose(a, b, T, wins){
+    KEYS.forEach(function(k){ var w = wins[k] || wins._; S[k] = a[k] + (b[k] - a[k])*(w[2] || ease)(win(T, w[0], w[1])); });
+  }
+  function bundle(a, b, T, t0, t1){
+    for (var i = 0; i < BN; i++){
+      var e = ease(win(T, t0 + (t1 - t0)*.4*i/(BN - 1), t1));
+      for (var j = 0; j < 5; j++) B[i][j] = a[i][j] + (b[i][j] - a[i][j])*e;
+    }
+  }
+  var snap = function(){ return copy(S); };
+  var snapB = function(){ return B.map(function(c){ return c.slice(); }); };
+  function nudge(frames, ms){ if (!reduce) head.animate(frames, { duration: ms, easing: 'ease-in-out' }); }
+
+  function setStatus(text){
+    statusEl.textContent = text;
+    var w = 0;
+    try { w = statusEl.getComputedTextLength(); } catch (e) {}
+    pill.setAttribute('width', Math.round((w || text.length*9.6) + 42));
+  }
+
+  // Fold it with nothing linking it: the glue misses, the walls don’t meet, it leans, and the bundle slumps.
+  var MESS_AT = {
+    _: [500, 1700],
+    p3: [480, 1250], p2: [600, 1420], p1: [720, 1560, over], tb: [800, 1300, over],
+    b4: [900, 1300], b3: [950, 1350], b2: [1000, 1450], b1: [1050, 1400],
+    t3: [1250, 1650], t1: [1300, 1700, over], t4: [1450, 1950], t2: [1500, 1850, over],
+    y: [1150, 1750, over], rack: [1350, 1950, over], squash: [1450, 2050, over], roll: [1500, 2050, over]
+  };
   function mess(){
-    line.classList.add('running');
-    var runs = items.map(function(g, i){
-      var d = i*210, pre = i < 3 ? [{ p: START[i] }] : [{ p: [-6, BELT, 0], o: 0 }, { p: [10, BELT, 0], at: .08 }];
-      if (i < 2) return move(i, pre.concat([{ p: [96, BELT, 0], at: .3 }, { p: [234, BELT, 0], at: .68 }, { p: [262, BELT, 0], at: .78 }, { p: MESS_PALLET[i] }]), 1600, d);
-      if (i < 5) return move(i, pre.concat([{ p: QUEUE[i - 2] }]), 1000 + (i - 2)*140, d, 'cubic-bezier(.3,.6,.4,1)');
-      var p = PILE[i - 5];
-      return move(i, pre.concat([{ p: [24 + (i - 5)*6, BELT, 0], at: .4 }, { p: [p[0] - 12, BELT + 30, p[2]*.4], at: .62 }, { p: p }]), 1200, d + 200, 'cubic-bezier(.4,0,.6,1)');
-    });
-    setTimeout(function(){ line.classList.add('jammed'); }, reduce ? 0 : 1250);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    var a = snap();
+    nudge([{ transform: 'none' }, { transform: 'translate(-3px,4px) rotate(-8deg)', offset: .2 }, { transform: 'translate(3px,5px) rotate(7deg)', offset: .45 }, { transform: 'translate(-2px,4px) rotate(-5deg)', offset: .7 }, { transform: 'none' }], 680);
+    return play(2500, function(T){
+      S.smear = out(win(T, 40, 620));
+      pose(a, MESS, T, MESS_AT);
+      bundle(NEAT, SLUMP, T, 1700, 2450);
+    }).then(function(){ obj.classList.add('messy'); });
   }
+
+  // SimpleGrid goes on: the nozzle wears the mark, the hose joins, the order hears about it.
   function dose(){
-    line.classList.add('linked');
-    statusEl.textContent = 'Linked';
-    return new Promise(function(done){ setTimeout(done, reduce ? 0 : 750); });
+    obj.classList.add('dosed');
+    nudge([{ transform: 'none' }, { transform: 'translateY(-6px)', offset: .35 }, { transform: 'translateY(2px)', offset: .7 }, { transform: 'none' }], 600);
+    later(function(){ obj.classList.add('linked'); setStatus('Linked'); }, 380);
+    return wait(1000);
   }
-  // Run it linked: everything, wherever it landed, goes back through in order and into its row.
+
+  // Fold it again, linked: it opens flat, the smear comes off, a straight bead goes down the joint, and it folds true.
+  var OPEN_AT = { _: [0, 650], y: [0, 500], x: [0, 700], zoom: [0, 700] };
+  var FOLD_AT = {
+    _: [0, 1250],
+    p3: [0, 760], p2: [120, 900], p1: [240, 1040], tb: [520, 1120],
+    b4: [500, 860], b2: [560, 920], b3: [620, 980], b1: [680, 1040],
+    y: [760, 1150], t3: [1150, 1450], t1: [1200, 1500], t4: [1450, 1800], t2: [1500, 1850]
+  };
   function clean(){
-    line.classList.remove('jammed');
-    line.classList.add('running');
-    var seen = { a: 0, b: 0, c: 0 }, order = [];
-    ['a', 'b', 'c'].forEach(function(k){ SKUS.forEach(function(s, i){ if (s === k) order.push(i); }); });
-    var runs = order.map(function(i, n){
-      var sku = SKUS[i], slot = [COL[seen[sku]++], ROW[sku], 0], here = at[i];
-      return move(i, [{ p: here }, { p: [28, BELT - 40, 0], at: .2 }, { p: [28, BELT, 0], at: .3 }, { p: [96, BELT, 0], at: .48 }, { p: [234, BELT, 0], at: .7 }, { p: [262, BELT, 0], at: .78 }, { p: slot }], 1900, n*190, 'cubic-bezier(.35,.1,.45,1)');
-    });
-    setTimeout(function(){ statusEl.textContent = 'Done, on time'; fill.setAttribute('width', 250); }, reduce ? 0 : 1700);
-    return Promise.all(runs).then(function(){ line.classList.remove('running'); });
+    var a = snap(), b0 = snapB();
+    obj.classList.remove('messy');
+    later(function(){ nudge([{ transform: 'none' }, { transform: 'translateY(7px)', offset: .25 }, { transform: 'translateY(7px)', offset: .75 }, { transform: 'none' }], 640); }, 700);
+    later(function(){ setStatus('Done, on time'); fill.setAttribute('width', 102); }, 3000);
+    return play(3300, function(T){
+      if (T < 700) pose(a, FLAT, T, OPEN_AT);
+      else pose(FLAT, CLEAN, T - 1350, FOLD_AT);
+      S.smearOp = 1 - win(T, 200, 620);
+      S.bead = ease(win(T, 760, 1260));
+      bundle(b0, NEAT, T, 300, 1300);
+    }).then(function(){ obj.classList.add('strapped'); return wait(650); });
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    head.getAnimations().forEach(function(a){ a.cancel(); });
+    obj.classList.add('snap');
+    obj.classList.remove('messy', 'dosed', 'linked', 'strapped', 'is-done');
+    S = copy(FLAT); S.smear = 0; S.smearOp = 1; S.bead = 0;
+    B = NEAT.map(function(c){ return c.slice(); });
+    setStatus('On plan');
+    fill.setAttribute('width', 34);
+    draw();
+    obj.getBoundingClientRect();
+    getComputedStyle(fill).width;
+    obj.classList.remove('snap');
   }
   function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
     $('gapTag').hidden = final;
-    $('topTitle').textContent = final ? 'Your ERP' : 'The schedule: your ERP';
-    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says the line is running.';
-    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The line: your floor';
-    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What it’s really running, on Excel, whiteboards and phones.';
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
   }
 
   var story = SG.story({
-    hero: hero, obj: line, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.line',
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.fold',
     ops: {
-      mess: ['Your operations, today', 'The line jammed, and the schedule still says On plan. Everyone’s working from a different version.'],
-      dosed: ['Your operations, plus SimpleGrid', 'Same line, same pile. Now the schedule and the line are linked.']
+      mess: ['Your operations, today', 'Folded together, still not linked. The box came out skewed, and the order still says On plan.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same box, same mess. Now there’s a glue line on the joint.']
     },
-    mess: mess, dose: dose, clean: clean,
-    restore: setup,
-    final: function(on){ setCallouts(on); line.classList.toggle('is-done', on); }
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
   });
-  line.addEventListener('click', function(){ if (!story.busy()) story.go(); });
+  // Tapping the blank does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
   if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){ line.classList.toggle('in-view', entries[0].isIntersecting); }).observe(line);
-  } else line.classList.add('in-view');
-  setup();
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setStatus(statusEl.textContent); });
+  setStatus('On plan');
+  draw();
 })();
 </script>
 <script>
