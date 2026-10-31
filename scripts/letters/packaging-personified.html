@@ -430,7 +430,7 @@
         if (o.clip){ o.clip.setAttribute('d', hull(cf, r1, len)); print(b, cf, r1, s); }
         b.hi.setAttribute('d', strip(cf, r1, LO + .3, LO + .75, len));
         b.gloss.setAttribute('d', s.gloss > .01 ? strip(cf, r1, HI - 1.3, HI - 1.12, len, 0, .05, .95) : '');
-        b.gloss.style.opacity = f3(s.gloss*.85);
+        b.gloss.style.opacity = f3((s.gloss || 0)*.85);
       }
       b.shade.setAttribute('d', strip(cf, r1, HI - .8, HI, len));
       b.face.setAttribute('d', circ(cf, r1));
@@ -529,7 +529,7 @@
       lam.ink[i].setAttribute('x', f(-tx - .3));
       lam.ink[i].setAttribute('width', f(cum[i + 1] - cum[i] + .6));
       var tilt = Math.atan2(b[1] - a[1], b[0] - a[0]) - base;
-      if (Math.abs(tilt) < .02){ sh.removeAttribute('d'); continue; }
+      if (Math.abs(tilt) < .02){ sh.removeAttribute('d'); sh.removeAttribute('class'); sh.removeAttribute('style'); continue; }
       sh.setAttribute('d', quad(a, b));
       sh.setAttribute('class', tilt > 0 ? 'lm-rip-d' : 'lm-rip-l');
       sh.style.opacity = f3(Math.min(.6, Math.abs(tilt)*2.2));
@@ -573,8 +573,9 @@
     lam.tun.style.opacity = lam.tunSh.style.opacity = lam.bub.style.opacity = lam.bubHi.style.opacity = f3(S.bub);
   }
 
-  /* Built back to front: the clear film and its roll, the bottom nip roller, the adhesive,
-     the printed film and its roll, then the roll it all winds onto, the laminate, and the top nip roller. */
+  /* Built back to front: the clear film and its roll, the printed film's roll, the adhesive (hidden
+     until it goes in), the bottom nip roller, the printed film, then the roll it all winds onto, the
+     laminate, and the top nip roller over the nip, where the films meet. */
   var rollU2 = Roll('clear', 1, null);
   var clearWeb = { face: mk('path', 'lm-clearweb'), s1: mk('path', 'lm-streak'), s2: mk('path', 'lm-streak') };
   var rollU1 = Roll('ink', 1, $('lmClipUPath'));

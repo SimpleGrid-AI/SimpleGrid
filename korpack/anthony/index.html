@@ -143,7 +143,7 @@ h1 span{display:block;color:var(--hi)}
 .hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
 .ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
 .ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
-.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip{max-width:100%;overflow-wrap:anywhere;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
 .chip-sticky{background:#FFE36E}
 .chip-file{background:#fff;border-left:4px solid #107C41}
 .chip-call{background:#E3ECFF}
@@ -217,7 +217,7 @@ h1 span{display:block;color:var(--hi)}
 .pack{
   position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
   user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
-  --kraft:#C9A06A;--kraft-lt:#E3C795;--kraft-dk:#AE8250;--kraft-in:#93693A;--kraft-deep:#7E5830;--kraft-edge:#6B4723;
+  --kraft:#C9A06A;--kraft-lt:#E3C795;--kraft-in:#93693A;--kraft-deep:#7E5830;--kraft-edge:#6B4723;
   --tape:#A5692F;--tape-hi:#C88B4B;--tape-edge:#7A4A1C;
   --pouch-a:var(--accent);--pouch-b:#EC4D8E;--pouch-c:#33B5EA;
   --steel:#D5DBE0;--steel-dk:#A3ADB6;--steel-leg:#5A636C;
@@ -254,7 +254,6 @@ h1 span{display:block;color:var(--hi)}
 .pk-band-tape{fill:var(--tape);stroke:var(--tape-edge);stroke-width:1.5}
 .pk-band-hi{fill:var(--tape-hi)}
 /* The floor, the table and the pallet: the script draws them through the same camera as the case. */
-.pk-ground{fill:rgba(0,0,0,.13)}
 .pk-shadow{fill:rgba(0,0,0,.2)}
 .pk-steel{fill:var(--steel);stroke:var(--steel-leg);stroke-width:1.5;stroke-linejoin:round}
 .pk-steel-dk{fill:var(--steel-dk);stroke:var(--steel-leg);stroke-width:1.5;stroke-linejoin:round}
@@ -262,16 +261,10 @@ h1 span{display:block;color:var(--hi)}
 .pk-wood{fill:var(--wood);stroke:var(--wood-edge);stroke-width:1.4;stroke-linejoin:round}
 .pk-wood-dk{fill:var(--wood-dk);stroke:var(--wood-edge);stroke-width:1.4;stroke-linejoin:round}
 .pk-under{fill:#3B2A18}
-/* The case: kraft outside, lighter inside, darker in its own shadow. */
+/* The case: the script shades its outside and its flaps from --kraft by which way each one faces. Inside is in its own shadow. */
 .pk-case>path{stroke:var(--kraft-edge);stroke-width:2;stroke-linejoin:round}
-.pk-front{fill:var(--kraft)}
-.pk-side{fill:var(--kraft-dk)}
 .pk-in{fill:var(--kraft-in)}
 .pk-in-side,.pk-in-floor{fill:var(--kraft-deep)}
-.pk-flap-out{fill:var(--kraft)}
-.pk-flap-in{fill:var(--kraft-lt)}
-.pk-case .pk-label{fill:#FAF7F0;stroke:rgba(0,0,0,.25);stroke-width:1}
-.pk-case .pk-ink{fill:#3A3A3A;stroke:none}
 .pk-case .pk-tape{fill:var(--tape);stroke:var(--tape-edge);stroke-width:1.2}
 .pk-case .pk-tape-hi{fill:var(--tape-hi);stroke:none;opacity:.8}
 .pk-tag{--sg-bg:var(--brand);--sg-ink:#fff}
@@ -600,12 +593,12 @@ h1 span{display:block;color:var(--hi)}
 
             <!-- the case: the script draws it, flaps and all, and puts the pouches in it -->
             <g class="pk-case" id="pkCase">
-              <g id="pkTagAt" transform="translate(252 380) scale(.6)"><g class="pk-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+              <g id="pkTagAt" transform="translate(246 385.8) scale(.7)"><g class="pk-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
             </g>
             <!-- pouches outside the case: on the table, in the air, on the floor -->
             <g id="pkOut"></g>
 
-            <!-- the count on the floor -->
+            <!-- the count on the case: wrong in the mess, right once it's clean -->
             <g id="pkCountAt" transform="translate(240 468)"><g class="pk-count">
               <rect class="pk-count-bg" id="pkCountBg" x="-52" y="-28" width="104" height="56" rx="12"/>
               <text class="pk-count-kick" x="0" y="-8" text-anchor="middle">COUNT</text>
@@ -613,7 +606,7 @@ h1 span{display:block;color:var(--hi)}
             </g></g>
 
             <!-- the tape gun: SimpleGrid, once it wears the mark -->
-            <g id="pkGun">
+            <g id="pkGun" style="transform:translate(80.1px,453.1px)">
               <path class="pk-gun-handle" d="M-8 14H7L3 50Q2 56-4 56H-8Q-14 56-13 50Z"/>
               <path class="pk-gun-frame" d="M-5-5L5-5L46 30L46 39L33 39L-5 6Z"/>
               <path class="pk-gun-blade" d="M31 38H48V42L45 45L42 42L39 45L36 42L33 45L31 42Z"/>
@@ -1076,15 +1069,16 @@ SG.story = function(o){
   // Back to front: the back flap while it stands, the inside, the pouches in it, the outside, the other flaps, the tape.
   var el = {};
   function part(name, cls){ el[name] = mk('path', cls, caseG, tagAt); }
-  part('flapB0', 'pk-flap-in'); part('inFloor', 'pk-in-floor'); part('inBack', 'pk-in'); part('inL', 'pk-in-side'); part('inR', 'pk-in-side');
+  part('flapB0', 'pk-flap'); part('inFloor', 'pk-in-floor'); part('inBack', 'pk-in'); part('inL', 'pk-in-side'); part('inR', 'pk-in-side');
   var inG = mk('g', null, caseG, tagAt);
-  part('sideL', 'pk-side'); part('sideR', 'pk-side'); part('front', 'pk-front');
-  part('flapL', 'pk-flap-in'); part('flapR', 'pk-flap-in'); part('flapB1', 'pk-flap-in'); part('flapF', 'pk-flap-in');
+  part('sideL', 'pk-out'); part('sideR', 'pk-out'); part('front', 'pk-out');
+  part('flapL', 'pk-flap'); part('flapR', 'pk-flap'); part('flapB1', 'pk-flap'); part('flapF', 'pk-flap');
   part('tape', 'pk-tape'); part('tapeHi', 'pk-tape-hi');
 
   function show(e, pts){ if (pts) e.setAttribute('d', dOf(pts)); else e.removeAttribute('d'); }
   // Kraft, lit from up and to the left: tops are lightest, the side away from the light darkest.
-  var KRAFT = [201, 160, 106], LIGHT = [-.342, .83, .44];
+  var KRAFT = (getComputedStyle(obj).getPropertyValue('--kraft').trim().match(/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i) || [0, 'c9', 'a0', '6a']).slice(1, 4).map(function(h){ return parseInt(h, 16); });
+  var LIGHT = [-.342, .83, .44];
   function shade(n, lift){
     var k = (.78 + .5*Math.max(0, n[0]*LIGHT[0] + n[1]*LIGHT[1] + n[2]*LIGHT[2]))*(lift || 1);
     return 'rgb(' + KRAFT.map(function(c){ return Math.min(255, Math.round(c*k)); }).join(',') + ')';
@@ -1195,21 +1189,20 @@ SG.story = function(o){
     if (reduce){ if (swap) layer(pc, swap[1], swap[2]); put(pc, end); return Promise.resolve(); }
     var legs = swap ? [fr.slice(0, swap[0] + 1), fr.slice(swap[0])] : [fr];
     function leg(k){
-      var part = legs[k];
+      var seg = legs[k];
       pc.el.getAnimations().forEach(function(a){ a.cancel(); });
       if (k) layer(pc, swap[1], swap[2]);
-      var a = pc.el.animate(part.map(function(p){ return { transform: tf(p) }; }), { duration: ms*(part.length - 1)/n, delay: k ? 0 : delay || 0, fill: 'both' });
+      var a = pc.el.animate(seg.map(function(p){ return { transform: tf(p) }; }), { duration: ms*(seg.length - 1)/n, delay: k ? 0 : delay || 0, fill: 'both' });
       return a.finished.then(function(){
         if (my !== gen) return;
-        pc.el.style.transform = tf(part[part.length - 1]);
+        pc.el.style.transform = tf(seg[seg.length - 1]);
         if (k + 1 < legs.length) return leg(k + 1);
         a.cancel();
       }, function(){});
     }
     return leg(0);
   }
-  var gunAt = null;
-  function gunTo(p){ gunAt = p; gun.style.transform = tf(p); }
+  function gunTo(p){ gun.style.transform = tf(p); }
   var NOSE = [47, 41];                                    // the tip of the gun's blade, from the middle of its roll
   var byNose = function(q, r){ return { x: q[0] - NOSE[0], y: q[1] - NOSE[1], r: r || 0, s: 1 }; };
   // It waits on a hook under the front of the table, and goes back to the table top once the case is done.
