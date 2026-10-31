@@ -217,7 +217,7 @@ h1 span{display:block;color:var(--hi)}
    should be, and SimpleGrid is the chip that goes in. The hero's own colors live on .hero-art. */
 .hero-art{
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
-  --stock:#fff;--stock-edge:rgba(28,28,30,.3);--print:var(--accent);--print-ink:#3B3C44;
+  --stock:#fff;--stock-edge:rgba(28,28,30,.3);--print:var(--accent);--print-ink:var(--brand);
   --gold-hi:#FBE3A0;--gold:#E8B54A;--gold-lo:#C08A26;--gold-dk:#7E5A12;--silver:#D3D8DD;--silver-dk:#7E858D;
   --steel:#CDD2D8;--steel-dk:#A3AAB2;--steel-ink:#62666F;--steel-type:#2E3036;
   --screen:#1C1D21;--glass:#282A30;--belt:#1C1D21;
@@ -255,7 +255,7 @@ h1 span{display:block;color:var(--hi)}
 .pp-sg-line{fill:none;stroke:var(--gold-dk);stroke-width:2.6}
 .pp-sg-rim{fill:none;stroke:var(--gold-dk);stroke-width:2.8}
 .pp.dosed .pp-sgchip{opacity:1;transform:none}
-/* The cards: white stock, then whatever print and chip each one gets. story script sets data-p and data-c. */
+/* The cards: white stock, then whatever print (data-p) and chip (data-c) the script gives each one. */
 .cd-body{fill:var(--stock);stroke:var(--stock-edge);stroke-width:1}
 .cd-band{fill:var(--print)}
 .cd-ghost{fill:var(--print);opacity:.42}
@@ -996,8 +996,8 @@ SG.story = function(o){
    On plan. That mess stays. SimpleGrid goes into the pocket as the chip, and
    the next run takes the same cards back through: printed true, chipped
    right, stacked into one sealed, counted brick.
-   Every move is worked out from one clock (render), so reduced motion just
-   jumps to the end of each one and lands in exactly the same place. */
+   Both runs are drawn from one clock (render), so reduced motion just jumps
+   each to its end and lands in exactly the same place. */
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var NS = 'http://www.w3.org/2000/svg';
@@ -1065,7 +1065,7 @@ SG.story = function(o){
 
   /* ------------------------------------------------------------ The line */
   var N = 10;
-  var FEED = [45, 349.5, 0, 1.2];                // a card's middle as it leaves the stock at the head of the line
+  var FEED = [45, 349.5, 0, 1.2];                 // a card's middle as it leaves the stock at the head of the line
   var OFF = [330, 349.5, 0, 1.2];                 // and as it comes off the end of the belt
   var DO = { print: 120, lam: 200, chip: 301 };   // where its middle is as each station does its job (the chip sits left of middle)
   var BELT_MS = 880, STAG = 240, FALL_MS = 560, HOP_MS = 480, DROP_MS = 400;

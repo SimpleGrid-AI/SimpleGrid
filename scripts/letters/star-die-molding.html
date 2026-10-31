@@ -41,7 +41,8 @@
    and warped parts until the bin overflows, the maintenance tag falls off the mold, the shot counter
    runs away from the schedule, and the screen still says On plan. That mess stays. SimpleGrid joins
    the cable and wears its mark on the shot counter. Shoot it again and the rejects go back into the
-   hopper and come out as rows of identical parts. Every color is on .hero-art. */
+   hopper and come out as rows of identical parts. The steel, iron, mold, part and tag colors are
+   variables on .hero-art; the screen keeps its own dark glass whatever the page's theme. */
 .hero-art{
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
   --steel-hi:#E3E8EC;--steel:#B9C3CB;--steel-md:#94A0AB;--steel-dk:#66727E;--steel-ink:#56626E;
@@ -58,10 +59,10 @@
 /* The schedule: what the ERP says the press is running. */
 .pr-bezel{fill:#1B2127}
 .pr-glass{fill:var(--glass)}
-.pr-title{fill:#fff;font:800 28px/1 var(--body);letter-spacing:.01em}
+.pr-title{fill:#fff;font:800 26px/1 var(--body);letter-spacing:.01em}
 .pr-job{fill:rgba(255,255,255,.8);font:600 16px/1 var(--body)}
-.pr-pill{fill:#DFF5EA;transition:fill .3s}
-.pr-status{fill:#0A6B47;font:800 17px/1 var(--body);transition:fill .3s}
+.pr-pill{fill:#DFF5EA}
+.pr-status{fill:#0A6B47;font:800 19px/1 var(--body)}
 .press.linked .pr-pill{fill:var(--accent)}
 .press.linked .pr-status{fill:var(--on-accent)}
 .press.on-plan .pr-pill{fill:#2BC46F}
@@ -188,12 +189,12 @@
             <!-- the schedule: what the ERP says the press is running -->
             <rect class="pr-bezel" x="14" y="8" width="332" height="124" rx="14"/>
             <rect class="pr-glass" x="24" y="17" width="312" height="106" rx="8"/>
-            <text class="pr-title" x="42" y="54">PRESS 22</text>
-            <rect class="pr-pill" id="prPill" x="226" y="28" width="94" height="32" rx="16"/>
-            <text class="pr-status" id="prStatus" x="273" y="50" text-anchor="middle">On plan</text>
-            <text class="pr-job" x="42" y="85">Mold A-114 · 40,000 shots</text>
-            <rect class="pr-bar" x="42" y="98" width="196" height="10" rx="5"/>
-            <rect class="pr-fill" id="prFill" x="42" y="98" width="88" height="10" rx="5"/>
+            <text class="pr-title" x="40" y="53.5">PRESS 22</text>
+            <rect class="pr-pill" id="prPill" x="222" y="27" width="98" height="34" rx="17"/>
+            <text class="pr-status" id="prStatus" x="271" y="50.6" text-anchor="middle">On plan</text>
+            <text class="pr-job" x="40" y="85">Mold A-114 · 40,000 shots</text>
+            <rect class="pr-bar" x="40" y="98" width="196" height="10" rx="5"/>
+            <rect class="pr-fill" id="prFill" x="40" y="98" width="88" height="10" rx="5"/>
             <text class="pr-count" id="prPlan" x="320" y="109" text-anchor="end">18,000</text>
 
             <!-- the cable from the press up to the schedule: broken until SimpleGrid joins it -->
@@ -405,7 +406,7 @@
   };
   var ARIA = {
     apart: obj.getAttribute('aria-label'),
-    mess: 'The press has shot flashed, short and warped parts into its bin, and they spill over onto the floor. The maintenance tag has fallen off the mold, the shot counter says 18,412 while the schedule says 18,000, and the screen still says On plan.',
+    mess: 'The press has spat out flashed, short and warped parts. They overflow its bin onto the floor, the nozzle drips, the maintenance tag has fallen off the mold, the shot counter says 18,412 while the schedule says 18,000, and the screen still says On plan.',
     dosed: 'The same mess, with the cable joined and the SimpleGrid mark on the shot counter. The screen says Linked, and its count matches the press.',
     done: 'The press linked to its schedule by SimpleGrid, and the bin under it holding rows of identical parts, labelled SimpleGrid. The screen says Done, on plan.'
   };
@@ -548,8 +549,8 @@
   }
   function setStatus(text){
     statusEl.textContent = text;
-    var w = Math.ceil(statusEl.getComputedTextLength()) + 26;
-    if (w < 50) w = 92;
+    var w = Math.ceil(statusEl.getComputedTextLength()) + 28;
+    if (w < 50) w = 98;
     pill.setAttribute('x', 320 - w);
     pill.setAttribute('width', w);
     statusEl.setAttribute('x', 320 - w/2);
@@ -636,17 +637,20 @@
     track(pelG, [[0, 9], [300, 9], [t0, 0], [t0 + 3*CYCLE, 6]], sink);
     later(function(){ obj.dataset.lamp = 'green'; }, t0 - 250);
     cycles(t0, 3, false);
+    var landed = 0;
     [0, 1, 2].forEach(function(s){
       var shut = t0 + s*CYCLE + SHUT, out = shut + HOLD + 100;
       shoot(shut);
       for (var j = 0; j < 4; j++){
         var g = goods[s*4 + j];
         play(g.el, goodShot(j, g.to), 620, out + j*55);
+        landed = out + j*55 + 620;
       }
     });
     tally([shotsEl, planEl], RAN, JOB, 2*CYCLE + HOLD, t0 + SHUT, true);
-    later(function(){ setStatus('Done, on plan'); obj.classList.add('on-plan'); }, t0 + 2*CYCLE + SHUT + HOLD + 300);
-    return wait(t0 + 2*CYCLE + SHUT + HOLD + 100 + 3*55 + 620 + 120);
+    // The schedule calls it done as the last part lands.
+    later(function(){ setStatus('Done, on plan'); obj.classList.add('on-plan'); }, landed - 60);
+    return wait(landed + 120);
   }
 
   function restore(){

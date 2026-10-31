@@ -39,7 +39,7 @@
    For a maker of medical lights. The build screen up top is the ERP, the light on
    its arm at the test bench is the floor, and the cable between them is cut.
    SimpleGrid is the scanner that joins it. Every color lives on .hero-art: medical
-   white and steel, a warm LED glow, and Burton's brick red for the QA holds. */
+   white and steel, a warm LED glow, and Burton’s brick red for the QA holds. */
 .hero-art{
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
   --bm-white:#F4F7F9;--bm-steel:#C6D0D8;--bm-steel-dk:#8F9CA8;--bm-steel-ink:#5A6773;--bm-post:#6E7B87;
@@ -55,13 +55,13 @@
 .bm svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .bm.snap *{transition:none!important}
 .bm:not(.in-view) *{animation-play-state:paused!important}
-/* The gradients' colors, from the variables above. */
+/* The gradients’ colors, from the variables above. */
 .bm-s-core{stop-color:var(--bm-core)}
 .bm-s-led{stop-color:var(--bm-led)}
 .bm-s-warm{stop-color:var(--bm-warm)}
 .bm-s-glow{stop-color:var(--bm-glow)}
 .bm-s-scan{stop-color:var(--bm-scan)}
-/* The build screen: what the ERP says you're building. */
+/* The build screen: what the ERP says you’re building. */
 .bm-bezel{fill:var(--bm-white)}
 .bm-glass{fill:var(--bm-glass)}
 .bm-order{fill:#fff;font:800 22px/1 var(--body);letter-spacing:.02em}
@@ -146,7 +146,7 @@
 .bm.beaming .bm-halo{opacity:1;transform:none}
 .bm-beam,.bm-pool{opacity:0;transition:opacity .6s .1s}
 .bm.beaming .bm-beam,.bm.beaming .bm-pool{opacity:1}
-/* The QA holds, in Burton's brick red. */
+/* The QA holds, in Burton’s brick red. */
 .bm-hold{opacity:0}
 .bm.messy .bm-sway{animation:bm-sway 2.8s ease-in-out var(--sd) infinite}
 @keyframes bm-sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
@@ -230,10 +230,10 @@
               <clipPath id="bmFanClip"><path d="M163 206H197L280 332H80Z"/></clipPath>
             </defs>
 
-            <!-- once it's switched on, linked: the glow behind the head -->
+            <!-- once it’s switched on, linked: the glow behind the head -->
             <circle class="bm-halo" cx="180" cy="357" r="180" fill="url(#bmHalo)"/>
 
-            <!-- the build screen: what the ERP says you're building -->
+            <!-- the build screen: what the ERP says you’re building -->
             <rect class="bm-bezel" x="22" y="10" width="316" height="140" rx="16"/>
             <rect class="bm-glass" x="33" y="21" width="294" height="118" rx="9"/>
             <text class="bm-order" x="50" y="59">BUILD 4417</text>
@@ -294,7 +294,7 @@
               <g class="bm-pod" transform="translate(136.9 323.8)" style="--i:7;--dim:.32"><g class="bm-pod-in"><ellipse class="bm-pod-glow" rx="34" ry="29"/><ellipse class="bm-pod-off" rx="18" ry="15"/><ellipse class="bm-pod-ring" rx="11.3" ry="9.4"/><ellipse class="bm-pod-on" rx="18" ry="15"/></g></g>
               <ellipse class="bm-handle" cx="180" cy="357" rx="18" ry="15.5"/>
               <ellipse class="bm-handle-in" cx="180" cy="358" rx="9.5" ry="8"/>
-              <!-- QA holds, hanging off the rim once it's built wrong -->
+              <!-- QA holds, hanging off the rim once it’s built wrong -->
               <g transform="translate(134 432) rotate(10)"><g class="bm-hold"><g class="bm-sway" style="--sd:0s">
                 <path class="bm-tag-body" d="M-11 8H11L29 23V54H-29V23Z"/>
                 <circle class="bm-tag-hole" cx="0" cy="15.5" r="3.5"/>
@@ -307,7 +307,7 @@
                 <path class="bm-string" d="M0 0V15.5"/>
                 <text class="bm-tag-t" x="0" y="45" text-anchor="middle">HOLD</text>
               </g></g></g>
-              <!-- and once it's right, its label -->
+              <!-- and once it’s right, its label -->
               <g transform="translate(180 441) scale(.7)"><g class="bm-label sg-pop"><!--#include sg-tag.svg--></g></g>
             </g>
 
@@ -319,7 +319,7 @@
               <circle class="bm-collar-pin" r="5.5"/>
             </g></g>
 
-            <!-- the scanner's beam, reading serial numbers -->
+            <!-- the scanner’s beam, reading serial numbers -->
             <g class="bm-fan" id="bmFan">
               <path class="bm-fan-beam" d="M163 206H197L280 332H80Z"/>
               <g clip-path="url(#bmFanClip)"><rect class="bm-fan-line" x="70" y="208" width="220" height="4"/></g>
@@ -470,7 +470,7 @@
   function at(f, o){ f.offset = o; return f; }
 
   // Build it unlinked: the wrong part lands on the bench, the head swings crooked and stays there,
-  // it switches on unevenly, the holds go on, and the screen says it's all going to plan.
+  // it switches on unevenly, the holds go on, and the screen says it’s all going to plan.
   function mess(){
     obj.classList.add('planned');
     var parts = [move(wrong, [

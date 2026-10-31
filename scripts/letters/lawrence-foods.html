@@ -39,15 +39,18 @@
    One kettle of cherry filling. The batch ticket up top is the ERP: what the
    system says you’re cooking. The kettle and its pails are the floor. The cable
    between them is broken, and SimpleGrid is the lot scanner that joins it.
-   Every color lives on .kettle; the script draws the moving parts. */
-.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
-.kettle{
+   Every color lives on .hero-art, so the callouts' dots can read them too;
+   the script draws the moving parts. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
   --steel:#CDD5DC;--steel-hi:#F4F7F9;--steel-dk:#8D99A5;--steel-ink:#4E5B67;--inner-a:#5D6975;--inner-b:#A3AEB8;
   --fill:#C8102E;--fill-dk:#8C0A1F;--fill-hi:#F2405C;--fill-see:#D8344F;--cherry:#64040F;
-  --pail:#FFFFFF;--pail-ink:#8592A0;
+  --pail:#FFFFFF;--pail-ink:#8592A0;--paddle:#F6F8FA;--hot:#E5322F;--brass:#F2C14E;--scanner:#EEF2F5;
   --lot-a:#FFD23F;--lot-a-ink:#3B2C00;--lot-b:#B89CFF;--lot-b-ink:#24104F;
   --belt:#2B3540;--belt-hi:#56636F;--cable:#2C3844;--edge:rgba(14,32,52,.55);
-  --tk:#FFFFFF;--tk-ink:#10243A;--tk-soft:#56677A;--ok:#0E9F62;--ok-soft:#DDF4E7;--ok-ink:#0B6B45;
+  --tk:#FFFFFF;--tk-ink:#10243A;--tk-soft:#56677A;--tk-track:#E2E8EE;--ok:#0E9F62;--ok-soft:#DDF4E7;--ok-ink:#0B6B45;
+}
+.kettle{
   position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;
   user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
 }
@@ -56,7 +59,7 @@
 /* Start over puts it all back at once, with nothing fading home. */
 .kettle.snap,.kettle.snap *{transition:none!important}
 .kt-floor{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
-/* The mess on the floor: the boil-over runs down a leg and spreads out. */
+/* The mess on the floor: the boil-over drips off the kettle and spreads out. */
 .kt-slick{fill:var(--fill);stroke:var(--fill-dk);stroke-width:1.5}
 .kt-slick-hi{fill:#fff;opacity:.5}
 .kt-drip{fill:var(--fill)}
@@ -77,13 +80,13 @@
 .kt-seam{fill:none;stroke:var(--steel-ink);stroke-width:2.2;opacity:.6}
 .kt-shine{fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round;opacity:.65}
 .kt-gauge{fill:#fff;stroke:var(--steel-ink);stroke-width:3}
-.kt-gauge-ok{fill:none;stroke:#18B06B;stroke-width:4}
-.kt-gauge-hot{fill:none;stroke:#E5322F;stroke-width:4}
+.kt-gauge-ok{fill:none;stroke:var(--ok);stroke-width:4}
+.kt-gauge-hot{fill:none;stroke:var(--hot);stroke-width:4}
 .kt-needle{fill:none;stroke:var(--tk-ink);stroke-width:2.6;stroke-linecap:round}
 .kt-hub{fill:var(--tk-ink)}
 .kt-valve{fill:var(--steel-dk);stroke:var(--edge);stroke-width:1.5}
 .kt-lever{fill:none;stroke:var(--steel-ink);stroke-width:5;stroke-linecap:round}
-.kt-lever-tip{fill:#E5322F}
+.kt-lever-tip{fill:var(--hot)}
 .kt-pour{fill:var(--fill)}
 /* The line under it, and the pails on it. */
 .kt-belt{fill:var(--belt)}
@@ -118,15 +121,15 @@
 .kt-runs{fill:var(--fill)}
 .kt-runs-hi{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;opacity:.45}
 .kt-pad-edge{fill:none;stroke:var(--edge);stroke-width:13;stroke-linecap:round}
-.kt-pad{fill:none;stroke:#F6F8FA;stroke-width:9.5;stroke-linecap:round}
+.kt-pad{fill:none;stroke:var(--paddle);stroke-width:9.5;stroke-linecap:round}
 .kt-pad-smear{fill:none;stroke:var(--fill);stroke-width:7.5;stroke-linecap:round}
-.kt-knob{fill:#F6F8FA;stroke:var(--edge);stroke-width:2}
+.kt-knob{fill:var(--paddle);stroke:var(--edge);stroke-width:2}
 .kt-ripple{fill:none;stroke:var(--fill-hi);stroke-width:2}
 .kt-steam{fill:none;stroke:#fff;stroke-linecap:round}
 /* The link: a cable from the ticket, a dock on the kettle, and the gap between them. */
 .kt-cable{fill:none;stroke:var(--cable);stroke-width:7;stroke-linecap:round}
 .kt-plug rect{fill:var(--steel-ink);stroke:var(--cable);stroke-width:1.5}
-.kt-prong{fill:none;stroke:#F2C14E;stroke-width:3.2;stroke-linecap:round}
+.kt-prong{fill:none;stroke:var(--brass);stroke-width:3.2;stroke-linecap:round}
 .kt-hole{fill:none;stroke:var(--cable);stroke-width:3.2;stroke-linecap:round}
 .kt-flow{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:3 7}
 .kettle.linked .kt-flow{animation:kt-flow .5s linear infinite}
@@ -134,8 +137,8 @@
 /* SimpleGrid: the lot scanner. It drops onto the dock wearing the mark and joins the cable. */
 .kt-scan{visibility:hidden}
 .kettle.has-scan .kt-scan{visibility:visible}
-.kt-scan-body{fill:#EEF2F5;stroke:var(--cable);stroke-width:2.2}
-.kt-scan-win{fill:#E5322F}
+.kt-scan-body{fill:var(--scanner);stroke:var(--cable);stroke-width:2.2}
+.kt-scan-win{fill:var(--hot)}
 .kt-beam{fill:var(--accent)}
 .kt-scanline{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round}
 .kt-badge{--sg-bg:var(--brand);--sg-ink:#fff}
@@ -147,14 +150,14 @@
 .tk-lot rect{fill:var(--lot-a);stroke:rgba(0,0,0,.3);stroke-width:1.2}
 .tk-lot text{fill:var(--lot-a-ink);font:800 17px/1 var(--body);text-anchor:middle}
 .tk-count{fill:var(--tk-soft);font:700 19px/1 var(--body)}
-.tk-pill text{font:800 16px/1 var(--body);text-anchor:middle}
+.tk-pill text{font:800 18px/1 var(--body);text-anchor:middle}
 .kettle[data-pill=plan] .tk-pill rect{fill:var(--ok-soft)}
 .kettle[data-pill=plan] .tk-pill text{fill:var(--ok-ink)}
 .kettle[data-pill=linked] .tk-pill rect{fill:var(--brand)}
 .kettle[data-pill=linked] .tk-pill text{fill:#fff}
 .kettle[data-pill=done] .tk-pill rect{fill:var(--ok)}
 .kettle[data-pill=done] .tk-pill text{fill:#fff}
-.tk-track{fill:#E2E8EE}
+.tk-track{fill:var(--tk-track)}
 .tk-prog{fill:var(--ok)}
 /* Once the batch comes out clean, the row of pails wears the label. */
 .kt-tag{--sg-bg:var(--brand);--sg-ink:#fff}
@@ -163,8 +166,8 @@
 .callout-top{top:2%}
 .callout-gap{top:calc(34% - 15px)}
 .callout-bottom{top:45%}
-.callout-top h3 i{background:#fff}
-.callout-bottom h3 i{background:#C8102E}
+.callout-top h3 i{background:var(--tk)}
+.callout-bottom h3 i{background:var(--fill)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
 .hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.46)}
 @media (max-width:980px){
@@ -295,6 +298,7 @@
               <g id="ktCherries"></g>
             </g>
             <path class="kt-ring" d="M46 248A134 24 0 0 1 314 248"/>
+            <path class="kt-ring-edge" d="M41.5 248A138.5 28.5 0 0 1 318.5 248"/>
             <!-- the dock on the kettle: the cable's other end -->
             <path class="kt-cable" d="M180 214V226"/>
             <g class="kt-plug"><rect x="167" y="201" width="26" height="15" rx="3.5"/></g>
@@ -303,7 +307,7 @@
             <path class="kt-heap" id="ktHeap" d="M0 0"/>
             <g id="ktBubbles"></g>
             <path class="kt-ring" d="M314 248A134 24 0 0 1 46 248"/>
-            <ellipse class="kt-ring-edge" cx="180" cy="248" rx="138.5" ry="28.5"/>
+            <path class="kt-ring-edge" d="M318.5 248A138.5 28.5 0 0 1 41.5 248"/>
             <path class="kt-runs" id="ktRuns" d="M0 0"/>
             <path class="kt-runs-hi" id="ktRunsHi" d="M0 0"/>
             <!-- the paddle -->
@@ -330,13 +334,13 @@
 
             <!-- the batch ticket: your ERP -->
             <rect class="tk-card" x="20" y="10" width="320" height="142" rx="16"/>
-            <text class="tk-batch" x="40" y="47">BATCH 4417</text>
-            <text class="tk-what" x="40" y="77">Cherry filling</text>
-            <g class="tk-lot"><rect x="40" y="88" width="72" height="26" rx="6"/><text x="76" y="106.8">Lot A</text></g>
-            <text class="tk-count" x="124" y="107.4">90 pails</text>
-            <g class="tk-pill"><rect id="ktPillBg" x="40" y="120" width="96" height="25" rx="12.5"/><text id="ktPill" x="88" y="138.2">On plan</text></g>
-            <rect class="tk-track" x="198" y="129" width="122" height="7" rx="3.5"/>
-            <rect class="tk-prog" id="ktProg" x="198" y="129" width="8" height="7" rx="3.5"/>
+            <text class="tk-batch" x="40" y="45">BATCH 4417</text>
+            <text class="tk-what" x="40" y="74.5">Cherry filling</text>
+            <g class="tk-lot"><rect x="40" y="84.5" width="72" height="26" rx="6"/><text x="76" y="103.3">Lot A</text></g>
+            <text class="tk-count" x="124" y="103.9">90 pails</text>
+            <g class="tk-pill"><rect id="ktPillBg" x="40" y="117.5" width="104" height="28" rx="14"/><text id="ktPill" x="92" y="137.8">On plan</text></g>
+            <rect class="tk-track" x="216" y="128" width="104" height="7" rx="3.5"/>
+            <rect class="tk-prog" id="ktProg" x="216" y="128" width="8" height="7" rx="3.5"/>
           </svg>
         </div>
         <div class="callouts">
@@ -460,7 +464,7 @@
   var sm = function(t, a, b){ var x = seg(t, a, b); return x*x*(3 - 2*x); };
   var bump = function(t, a, b){ return Math.sin(Math.PI*seg(t, a, b)); };
   // Pops in past full size and settles: for a label slapped on.
-  var pop = function(t, a){ var k = seg(t, a, a + .28); return k <= 0 ? 0 : 1 + .3*Math.sin(Math.PI*k)*(1 - k); };
+  var pop = function(t, a){ var k = seg(t, a, a + .3) - 1; return k <= -1 ? 0 : 1 + 2.2*k*k*k + 1.2*k*k; };
   var r1 = function(v){ return Math.round(v*10)/10; };
   var r2 = function(v){ return Math.round(v*100)/100; };
   function mk(tag, cls, parent){ var e = document.createElementNS(NS, tag); if (cls) e.setAttribute('class', cls); parent.appendChild(e); return e; }
@@ -508,24 +512,26 @@
   /* Over the near rim and down the outside: a sheet of filling along the rim from x0 to x1, with drips
      hanging off it, each [x, half its width, how far it runs, how late it starts]. The left side's first
      drip is the one that keeps going, down the leg to the floor. */
-  var RUN_L = [50, 134, [[62, 7, 72, 0], [84, 6.5, 44, .12], [106, 6, 30, .2], [125, 5, 15, .3]]];
+  var RUN_L = [44, 134, [[62, 7, 86, 0], [84, 6.5, 44, .12], [106, 6, 30, .2], [125, 5, 15, .3]]];
   var RUN_R = [234, 298, [[247, 6, 30, .14], [268, 7.5, 56, 0], [288, 5, 22, .22]]];
   function grown(v, q){ var g = clamp(v*1.3 - q[3], 0, 1); return q[2]*g*g*(3 - 2*g); }
   function curtain(run, v){
     if (v < .005) return '';
     var x0 = run[0], x1 = run[1], drips = run[2], g0 = Math.min(1, v*4), top = [], bot = [], x;
+    // The sheet thins out toward its ends.
+    var taper = function(x){ return Math.sqrt(Math.max(0, Math.sin(Math.PI*(x - x0)/(x1 - x0)))); };
     for (x = x0; x <= x1 + .1; x += 3) top.push([x, lipY(x) - 5.5*g0]);
     for (x = x1; x >= x0 - .1; x -= 3){
-      var d = 8, taper = Math.sqrt(Math.max(0, Math.sin(Math.PI*(x - x0)/(x1 - x0))));
+      var d = 8;
       drips.forEach(function(q){ var u = (x - q[0])/q[1]; d += grown(v, q)*Math.exp(-u*u*.9); });
-      bot.push([x, lipY(x) + d*taper*g0]);
+      bot.push([x, lipY(x) + d*taper(x)*g0]);
     }
     var path = smooth(top.concat(bot), true);
     // A drop on the end of each drip that's run far enough.
     drips.forEach(function(q){
       var len = grown(v, q), r = q[1]*.92;
       if (len < q[1]*1.6) return;
-      var cy = lipY(q[0]) + 8 + len - r*.35;
+      var cy = lipY(q[0]) + (8 + len)*taper(q[0])*g0 - r*.35;
       path += 'M' + r1(q[0] - r) + ' ' + r1(cy) + 'a' + r1(r) + ' ' + r1(r) + ' 0 1 0 ' + r1(2*r) + ' 0a' + r1(r) + ' ' + r1(r) + ' 0 1 0 ' + r1(-2*r) + ' 0Z';
     });
     return path;
@@ -601,13 +607,13 @@
   }
   var S = fresh(), clock = 0, stir = 0;
   // The status pill fits its words: measured once the face has loaded, guessed until then.
-  var PILL = { plan: ['On plan', 96], linked: ['Linked', 88], done: ['Done, on time', 146] };
+  var PILL = { plan: ['On plan', 104], linked: ['Linked', 94], done: ['Done, on time', 164] };
   function setPill(k, force){
     if (obj.dataset.pill === k && !force) return;
     obj.dataset.pill = k;
     pillTx.textContent = PILL[k][0];
     var w = PILL[k][1];
-    try { var m = pillTx.getComputedTextLength(); if (m > 20) w = Math.round(m + 28); } catch (e) {}
+    try { var m = pillTx.getComputedTextLength(); if (m > 20) w = Math.round(m + 30); } catch (e) {}
     pillBg.setAttribute('width', w);
     pillTx.setAttribute('x', 40 + w/2);
   }
@@ -697,7 +703,7 @@
     set(lineEl, 'opacity', r2(bm));
     set(winEl, 'opacity', r2(1 - .55*clamp(S.blink, 0, 1)));
     set(flowEl, 'opacity', r2(S.link));
-    set(progEl, 'width', r1(Math.max(7, 122*S.prog)));
+    set(progEl, 'width', r1(Math.max(7, 104*S.prog)));
   }
 
   /* ------------------------------------------------------------ Time */

@@ -569,7 +569,7 @@ h1 span{display:block;color:var(--hi)}
       </div>
 
       <div class="hero-art">
-        <div class="pack hero-obj" id="pack" role="img" aria-label="An order screen saying Order 4417, club packs, 1,200 cases, On plan. Below it, an open shipping case on a pallet, with pouches and a tape gun waiting on the table beside it. The cable between the screen and the case is cut.">
+        <div class="pack hero-obj" id="pack" role="img" aria-label="An order screen saying Order 4417, club packs, 1,200 cases, On plan. Below it, an open shipping case on a pallet, with pouches waiting on the table beside it and a tape gun on a hook. The cable between the screen and the case is cut.">
           <svg viewBox="0 0 360 560" aria-hidden="true">
             <!-- the order: what the ERP says you're shipping -->
             <rect class="pk-screen" x="20" y="10" width="320" height="162" rx="14"/>
@@ -1029,7 +1029,7 @@ SG.story = function(o){
 
   /* ------------------------------------------------------------ The floor */
   var TABLE = { x0: -224, x1: -104, y: 100, z0: -88, z1: -6 };
-  var PL = { x0: -92, x1: 92, z0: -112, z1: 8 };
+  var PL = { x0: -84, x1: 84, z0: -108, z1: 6 };
   (function(){
     var T = TABLE, L = 8;
     face(scene, 'pk-shadow', [[PL.x0 - 5,0,PL.z0 - 4],[PL.x1 + 5,0,PL.z0 - 4],[PL.x1 + 7,0,PL.z1 + 9],[PL.x0 - 7,0,PL.z1 + 9]]);
@@ -1041,8 +1041,8 @@ SG.story = function(o){
     // the pallet: the dark under it, the bottom boards, three blocks, five deck boards
     face(scene, 'pk-under', [[PL.x0,4,PL.z1 - 3],[PL.x1,4,PL.z1 - 3],[PL.x1,16,PL.z1 - 3],[PL.x0,16,PL.z1 - 3]]);
     block(scene, [PL.x0, PL.x1, 0, 4, PL.z0, PL.z1], [null, 'pk-wood-dk', null]);
-    [[-92, -68], [-12, 12], [68, 92]].forEach(function(x){ block(scene, [x[0], x[1], 4, 16, PL.z0, PL.z1], [null, 'pk-wood-dk', null]); });
-    [[-92, -58], [-54, -20], [-17, 17], [20, 54], [58, 92]].forEach(function(x){ block(scene, [x[0], x[1], 16, 22, PL.z0, PL.z1], ['pk-wood', 'pk-wood', null]); });
+    [[-84, -62], [-11, 11], [62, 84]].forEach(function(x){ block(scene, [x[0], x[1], 4, 16, PL.z0, PL.z1], [null, 'pk-wood-dk', null]); });
+    [[-84, -53], [-49, -18], [-15, 15], [18, 49], [53, 84]].forEach(function(x){ block(scene, [x[0], x[1], 16, 22, PL.z0, PL.z1], ['pk-wood', 'pk-wood', null]); });
   })();
 
   /* ------------------------------------------------------------ The case
@@ -1145,7 +1145,8 @@ SG.story = function(o){
   var pose = function(p, r){ var q = P(p); return { x: q[0], y: q[1], r: r || 0, s: S(p[2]) }; };
   var onTable = function(i){ return pose([TCOLS[i%3], TABLE.y + PH/2, TROWS[row(i)]]); };
   var slotZ = function(i){ return toWorld([0, 0, ROWS[row(i)]], HOME)[2]; };
-  var inSlot = function(i){ return pose(toWorld([COLS[i%3], PH/2, ROWS[row(i)]], HOME)); };
+  // Packed, they ride a little high, so even the front row shows over the rim; the flaps cover them once they're shut.
+  var inSlot = function(i){ return pose(toWorld([COLS[i%3], PH/2 + 8, ROWS[row(i)]], HOME)); };
   // A layer is kept back to front, so a pouch nearer the camera covers the one behind it.
   function layer(pc, name, z){
     var g = name === 'in' ? inG : outG, next = null;

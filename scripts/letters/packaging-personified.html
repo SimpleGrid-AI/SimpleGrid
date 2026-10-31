@@ -614,8 +614,7 @@
     var rU1 = lerp(28, 24, S.feed), rU2 = lerp(27, 23, S.feed), run = S.run;
     // The adhesive roller comes up from below and lifts the printed film onto itself.
     var a = S.app, dy = a < .55 ? 64 - 72*(1 - Math.pow(1 - a/.55, 3)) : -8*(1 - sm(a, .55, 1));
-    app.style.display = a > 0 ? '' : 'none';
-    app.style.opacity = f3(clamp(a/.3, 0, 1));
+    app.style.cssText = a > 0 ? 'opacity:' + f3(clamp(a/.3, 0, 1)) : 'display:none';
     app.setAttribute('transform', 'translate(0 ' + f(dy) + ')');
     glue.style.opacity = appRoll.coat.style.opacity = f3(S.glue*.9);
     // The card, and the cable down from it.
@@ -642,12 +641,12 @@
     drawLam(NIP, tangent(NIP, W, S.rw, 1));
     turn(nipT, -run/RN);
     // The laminate's print, crooked and out of register while it's a mess.
-    var k = f(S.twist) + ' ' + f(S.reg);
+    var ink = [f(S.twist*10), f(S.reg*7), f(-S.reg*10), f(-S.reg*5)], k = ink.join(' ');
     if (k !== lastInk){
       lastInk = k;
-      tiltEl.setAttribute('transform', 'rotate(' + f(S.twist*10) + ' 22.5 45)');
-      dotEl.setAttribute('transform', 'translate(' + f(S.reg*7) + ' ' + f(-S.reg*10) + ')');
-      barEl.setAttribute('transform', 'translate(' + f(-S.reg*5) + ' ' + f(S.reg*7) + ')');
+      tiltEl.setAttribute('transform', 'rotate(' + ink[0] + ' 22.5 45)');
+      dotEl.setAttribute('transform', 'translate(' + ink[1] + ' ' + ink[2] + ')');
+      barEl.setAttribute('transform', 'translate(' + ink[3] + ' ' + ink[1] + ')');
     }
   }
 
