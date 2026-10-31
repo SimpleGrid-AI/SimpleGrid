@@ -22,6 +22,27 @@
         "full": "Robbie Taylor",
         "town": "Elk Grove Village",
         "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "steve",
+        "first": "Steve",
+        "full": "Steve Sallenback",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "miguel",
+        "first": "Miguel",
+        "full": "Miguel Ramirez",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "dilip",
+        "first": "Dilip",
+        "full": "Dilip Nakhasi",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
       }
     ]
   },
@@ -43,6 +64,14 @@
         "town": "Elk Grove Village",
         "where": "your office in Elk Grove Village",
         "ps": "P.S. I read your Mindsight interview. Redzone already counts the knife strokes live. SimpleGrid is how that count reaches the plan."
+      },
+      {
+        "slug": "calvin",
+        "first": "Calvin",
+        "full": "Calvin Temple Jr.",
+        "town": "Bensenville",
+        "where": "your plant in Bensenville",
+        "ps": "P.S. Your website says the first s’more recipe was printed in 1927. Ours is the first one with an ERP in it."
       }
     ]
   },
@@ -63,6 +92,27 @@
         "slug": "john",
         "first": "John",
         "full": "John Polson",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "peter-burke",
+        "first": "Peter",
+        "full": "Peter Burke",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "matthew",
+        "first": "Matthew",
+        "full": "Matthew Cox",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "peter-parthenis",
+        "first": "Peter",
+        "full": "Peter Parthenis Jr.",
         "town": "Elk Grove Village",
         "where": "your plant in Elk Grove Village"
       }
@@ -87,6 +137,27 @@
         "full": "Michael Ventrella",
         "town": "Elk Grove Village",
         "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "ronald",
+        "first": "Ronald",
+        "full": "Ronald Sammeth",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "john",
+        "first": "John",
+        "full": "John Nienhuis",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "steve",
+        "first": "Steve",
+        "full": "Steve Schroeder",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
       }
     ]
   },
@@ -97,6 +168,38 @@
         "slug": "ethan",
         "first": "Ethan",
         "full": "Ethan Stein",
+        "town": "Elk Grove Village",
+        "where": "your kitchen in Elk Grove Village",
+        "ps": "P.S. Your site says 99.8% fill rate. Whoever keeps that number up deserves a coffee. I’m buying."
+      },
+      {
+        "slug": "doug",
+        "first": "Doug",
+        "full": "Doug Feldman",
+        "town": "Elk Grove Village",
+        "where": "your kitchen in Elk Grove Village",
+        "ps": "P.S. Your site says 99.8% fill rate. Whoever keeps that number up deserves a coffee. I’m buying."
+      },
+      {
+        "slug": "alex",
+        "first": "Alex",
+        "full": "Alex Ghantous",
+        "town": "Elk Grove Village",
+        "where": "your kitchen in Elk Grove Village",
+        "ps": "P.S. Your site says 99.8% fill rate. Whoever keeps that number up deserves a coffee. I’m buying."
+      },
+      {
+        "slug": "brett",
+        "first": "Brett",
+        "full": "Brett Stein",
+        "town": "Elk Grove Village",
+        "where": "your kitchen in Elk Grove Village",
+        "ps": "P.S. Your site says 99.8% fill rate. Whoever keeps that number up deserves a coffee. I’m buying."
+      },
+      {
+        "slug": "harry",
+        "first": "Harry",
+        "full": "Harry Litberg",
         "town": "Elk Grove Village",
         "where": "your kitchen in Elk Grove Village",
         "ps": "P.S. Your site says 99.8% fill rate. Whoever keeps that number up deserves a coffee. I’m buying."
@@ -121,6 +224,22 @@
         "town": "Wood Dale",
         "where": "your shop in Wood Dale",
         "ps": "P.S. An NIU engineering Alumnus of the Year will spot every flaw in this page. Please tell me what they are."
+      },
+      {
+        "slug": "ryan",
+        "first": "Ryan",
+        "full": "Ryan Wiegel",
+        "town": "Wood Dale",
+        "where": "your shop in Wood Dale",
+        "ps": "P.S. I saw the new 24-foot in-line washer on LinkedIn. I’d love to see it in person."
+      },
+      {
+        "slug": "martin",
+        "first": "Martin",
+        "full": "Martin Wiegel",
+        "town": "Wood Dale",
+        "where": "your shop in Wood Dale",
+        "ps": "P.S. I saw the new 24-foot in-line washer on LinkedIn. I’d love to see it in person."
       }
     ]
   },
@@ -139,6 +258,22 @@
         "full": "Dan Bulich",
         "town": "Carol Stream",
         "where": "your plant in Carol Stream"
+      },
+      {
+        "slug": "tony",
+        "first": "Tony",
+        "full": "Tony Estephan",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream",
+        "ps": "P.S. I saw Blackhawk’s post about the 3rd shift: 400,000 lineal feet in eight hours, zero stops. I’d love to see that corrugator run."
+      },
+      {
+        "slug": "jose",
+        "first": "Jose",
+        "full": "Jose Gutierrez",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream",
+        "ps": "P.S. I saw Blackhawk’s post about the 3rd shift: 400,000 lineal feet in eight hours, zero stops. I’d love to see that corrugator run."
       }
     ]
   },
@@ -154,6 +289,20 @@
         "slug": "david",
         "first": "David",
         "full": "David Heineman",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park"
+      },
+      {
+        "slug": "chris",
+        "first": "Chris",
+        "full": "Chris Metheney",
+        "town": "Franklin Park",
+        "where": "a place that suits you"
+      },
+      {
+        "slug": "gregg",
+        "first": "Gregg",
+        "full": "Gregg Heineman",
         "town": "Franklin Park",
         "where": "your plant in Franklin Park"
       }
@@ -173,6 +322,20 @@
         "full": "Arlind Dano",
         "town": "Franklin Park",
         "where": "your plant in Franklin Park"
+      },
+      {
+        "slug": "andre",
+        "first": "Andre",
+        "full": "Andre Papantoniou",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park"
+      },
+      {
+        "slug": "petros",
+        "first": "Petros",
+        "full": "Petros Papantoniou",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park"
       }
     ]
   },
@@ -189,6 +352,34 @@
         "slug": "william",
         "first": "William",
         "full": "William Lopez",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream"
+      },
+      {
+        "slug": "jay",
+        "first": "Jay",
+        "full": "Jay Carman",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream"
+      },
+      {
+        "slug": "helene",
+        "first": "Helene",
+        "full": "Helene Rainville",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream"
+      },
+      {
+        "slug": "brian",
+        "first": "Brian",
+        "full": "Brian Wasil",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream"
+      },
+      {
+        "slug": "david",
+        "first": "David",
+        "full": "David Mendoza",
         "town": "Carol Stream",
         "where": "your plant in Carol Stream"
       }
@@ -211,6 +402,38 @@
         "full": "Bradley Herbolsheimer",
         "town": "Carol Stream",
         "where": "your office in Carol Stream"
+      },
+      {
+        "slug": "david",
+        "first": "David",
+        "full": "David Coughlin",
+        "town": "Carol Stream",
+        "where": "your office in Carol Stream",
+        "ps": "P.S. I met Bradley when I came by Carol Stream. I’d love 15 minutes with you too."
+      },
+      {
+        "slug": "shubhendu",
+        "first": "Shubhendu",
+        "full": "Shubhendu Das",
+        "town": "Carol Stream",
+        "where": "your office in Carol Stream",
+        "ps": "P.S. I met Bradley when I came by Carol Stream. I’d love 15 minutes with you too."
+      },
+      {
+        "slug": "samir",
+        "first": "Samir",
+        "full": "Samir Afroune",
+        "town": "Carol Stream",
+        "where": "your office in Carol Stream",
+        "ps": "P.S. I met Bradley when I came by Carol Stream. I’d love 15 minutes with you too."
+      },
+      {
+        "slug": "eric",
+        "first": "Eric",
+        "full": "Eric Lembke",
+        "town": "Carol Stream",
+        "where": "your office in Carol Stream",
+        "ps": "P.S. I met Bradley when I came by Carol Stream. I’d love 15 minutes with you too."
       }
     ]
   },
@@ -231,6 +454,20 @@
         "full": "Robert Gonnella",
         "town": "Addison",
         "where": "your plant in Addison"
+      },
+      {
+        "slug": "robert-knuepfer",
+        "first": "Robert",
+        "full": "Robert Knuepfer",
+        "town": "Addison",
+        "where": "your plant in Addison"
+      },
+      {
+        "slug": "nancy",
+        "first": "Nancy",
+        "full": "Nancy Grisanzio",
+        "town": "Addison",
+        "where": "your plant in Addison"
       }
     ]
   },
@@ -248,6 +485,30 @@
         "full": "Arnold Gantuangco",
         "town": "Bensenville",
         "where": "your office in Bensenville"
+      },
+      {
+        "slug": "gary",
+        "first": "Gary",
+        "full": "Gary Grember",
+        "town": "Bensenville",
+        "where": "your office in Bensenville",
+        "ps": "P.S. I’ve already stopped by Bensenville. Next time I’d love to make it past reception."
+      },
+      {
+        "slug": "sean",
+        "first": "Sean",
+        "full": "Sean Kirby",
+        "town": "Bensenville",
+        "where": "your office in Bensenville",
+        "ps": "P.S. I’ve already stopped by Bensenville. Next time I’d love to make it past reception."
+      },
+      {
+        "slug": "nick",
+        "first": "Nick",
+        "full": "Nick Cassier",
+        "town": "Bensenville",
+        "where": "your office in Bensenville",
+        "ps": "P.S. I’ve already stopped by Bensenville. Next time I’d love to make it past reception."
       }
     ]
   },
@@ -265,6 +526,38 @@
         "full": "Erik Spangler",
         "town": "Addison",
         "where": "your place in Addison or Glendale Heights, whichever suits you"
+      },
+      {
+        "slug": "vishal",
+        "first": "Vishal",
+        "full": "Vishal Patel",
+        "town": "Addison",
+        "where": "your place in Addison or Glendale Heights, whichever suits you",
+        "ps": "P.S. Ten million donuts a week. I’ll bring the coffee."
+      },
+      {
+        "slug": "josh",
+        "first": "Josh",
+        "full": "Josh Bickford",
+        "town": "Addison",
+        "where": "your place in Addison or Glendale Heights, whichever suits you",
+        "ps": "P.S. Ten million donuts a week. I’ll bring the coffee."
+      },
+      {
+        "slug": "kim",
+        "first": "Kim",
+        "full": "Kim Bickford",
+        "town": "Addison",
+        "where": "your place in Addison or Glendale Heights, whichever suits you",
+        "ps": "P.S. Ten million donuts a week. I’ll bring the coffee."
+      },
+      {
+        "slug": "michael",
+        "first": "Michael",
+        "full": "Michael Servatius",
+        "town": "Addison",
+        "where": "your place in Addison or Glendale Heights, whichever suits you",
+        "ps": "P.S. Ten million donuts a week. I’ll bring the coffee."
       }
     ]
   },
@@ -282,6 +575,13 @@
         "full": "Gigi Bucaro",
         "town": "Wood Dale",
         "where": "your headquarters in Wood Dale"
+      },
+      {
+        "slug": "teigan",
+        "first": "Teigan",
+        "full": "Teigan Callahan",
+        "town": "Wood Dale",
+        "where": "your headquarters in Wood Dale"
       }
     ]
   },
@@ -297,6 +597,27 @@
         "slug": "brett",
         "first": "Brett",
         "full": "Brett Piccioni",
+        "town": "Melrose Park",
+        "where": "your place in Melrose Park"
+      },
+      {
+        "slug": "natale",
+        "first": "Natale",
+        "full": "Natale Caputo",
+        "town": "Melrose Park",
+        "where": "your place in Melrose Park"
+      },
+      {
+        "slug": "lee",
+        "first": "Lee",
+        "full": "Lee Schneider",
+        "town": "Melrose Park",
+        "where": "your place in Melrose Park"
+      },
+      {
+        "slug": "john",
+        "first": "John",
+        "full": "John Fort",
         "town": "Melrose Park",
         "where": "your place in Melrose Park"
       }
@@ -318,6 +639,34 @@
         "full": "Carlos Hankins",
         "town": "Bedford Park",
         "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "tim",
+        "first": "Tim",
+        "full": "Tim Hanson",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "joseph",
+        "first": "Joseph",
+        "full": "Joseph",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "joel",
+        "first": "Joel",
+        "full": "Joel Rosenbacher",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "chato",
+        "first": "Chato",
+        "full": "Chato Prado",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
       }
     ]
   },
@@ -334,6 +683,20 @@
         "slug": "hector",
         "first": "Hector",
         "full": "Hector Leon",
+        "town": "Batavia",
+        "where": "your plant in Batavia"
+      },
+      {
+        "slug": "jeff",
+        "first": "Jeff",
+        "full": "Jeff Sawyers",
+        "town": "Batavia",
+        "where": "your plant in Batavia"
+      },
+      {
+        "slug": "don",
+        "first": "Don",
+        "full": "Don Reed",
         "town": "Batavia",
         "where": "your plant in Batavia"
       }
@@ -382,6 +745,27 @@
         "full": "Alex Van Eekeren",
         "town": "Oak Brook",
         "where": "your office in Oak Brook"
+      },
+      {
+        "slug": "dan",
+        "first": "Dan",
+        "full": "Dan Vanee",
+        "town": "Oak Brook",
+        "where": "your office in Oak Brook"
+      },
+      {
+        "slug": "jesse",
+        "first": "Jesse",
+        "full": "Jesse Lebron",
+        "town": "Oak Brook",
+        "where": "your office in Oak Brook"
+      },
+      {
+        "slug": "jose",
+        "first": "Jose",
+        "full": "Jose Perez",
+        "town": "Oak Brook",
+        "where": "your office in Oak Brook"
       }
     ],
     "template": "vanee-foods.html"
@@ -399,6 +783,38 @@
         "full": "Roshdi Shatat",
         "town": "Chicago",
         "where": "your plant in Chicago"
+      },
+      {
+        "slug": "anthony",
+        "first": "Anthony",
+        "full": "Anthony Mastrangelo",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Roshdi’s post about the new ÇRZ Makina equipment caught my eye. I’d love to see it once it’s running."
+      },
+      {
+        "slug": "mona",
+        "first": "Mona",
+        "full": "Mona Biamonte-Mastrangelo",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Roshdi’s post about the new ÇRZ Makina equipment caught my eye. I’d love to see it once it’s running."
+      },
+      {
+        "slug": "richard",
+        "first": "Richard",
+        "full": "Richard Slayton",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Roshdi’s post about the new ÇRZ Makina equipment caught my eye. I’d love to see it once it’s running."
+      },
+      {
+        "slug": "daniel",
+        "first": "Daniel",
+        "full": "Daniel Hathaway",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Roshdi’s post about the new ÇRZ Makina equipment caught my eye. I’d love to see it once it’s running."
       }
     ],
     "template": "superior-nut.html"
@@ -414,6 +830,34 @@
         "slug": "eric",
         "first": "Eric",
         "full": "Eric M. Finke",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "paul",
+        "first": "Paul",
+        "full": "Paul Salina",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "griffin",
+        "first": "Griffin",
+        "full": "Griffin Conboy",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "dean",
+        "first": "Dean",
+        "full": "Dean Doman",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "christopher",
+        "first": "Christopher",
+        "full": "Christopher Foltz",
         "town": "Chicago",
         "where": "your plant in Chicago"
       }
@@ -433,6 +877,21 @@
         "full": "Renee Togher",
         "town": "Chicago",
         "where": "your plant in Chicago"
+      },
+      {
+        "slug": "joe",
+        "first": "Joe",
+        "full": "Joe Klomes",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "arthur",
+        "first": "Arthur",
+        "full": "Arthur Velasquez",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. You and nine other businessmen from the Azteca Lions Club in Pilsen. That’s a Chicago story. I’d love to hear the rest from you."
       }
     ],
     "template": "azteca-foods.html"
@@ -450,6 +909,30 @@
         "full": "Samuel Sabori",
         "town": "Bedford Park",
         "where": "your roastery in Bedford Park"
+      },
+      {
+        "slug": "james",
+        "first": "James",
+        "full": "James McLaughlin",
+        "town": "Bedford Park",
+        "where": "your roastery in Bedford Park",
+        "ps": "P.S. Twenty times the green storage of the old place, Sam Sabori told Daily Coffee News. I’d love to see Roasting Works."
+      },
+      {
+        "slug": "matt",
+        "first": "Matt",
+        "full": "Matt Riddle",
+        "town": "Bedford Park",
+        "where": "your roastery in Bedford Park",
+        "ps": "P.S. Twenty times the green storage of the old place, Sam Sabori told Daily Coffee News. I’d love to see Roasting Works."
+      },
+      {
+        "slug": "kate",
+        "first": "Kate",
+        "full": "Kate Zehr",
+        "town": "Bedford Park",
+        "where": "your roastery in Bedford Park",
+        "ps": "P.S. Twenty times the green storage of the old place, Sam Sabori told Daily Coffee News. I’d love to see Roasting Works."
       }
     ],
     "template": "intelligentsia.html"
@@ -465,6 +948,34 @@
         "slug": "amy",
         "first": "Amy",
         "full": "Amy",
+        "town": "Bedford Park",
+        "where": "your kitchen in Bedford Park"
+      },
+      {
+        "slug": "jennifer",
+        "first": "Jennifer",
+        "full": "Jennifer Chow",
+        "town": "Bedford Park",
+        "where": "your kitchen in Bedford Park"
+      },
+      {
+        "slug": "steven",
+        "first": "Steven",
+        "full": "Steven Minisini",
+        "town": "Bedford Park",
+        "where": "your kitchen in Bedford Park"
+      },
+      {
+        "slug": "kevin",
+        "first": "Kevin",
+        "full": "Kevin Hergenreder",
+        "town": "Bedford Park",
+        "where": "your kitchen in Bedford Park"
+      },
+      {
+        "slug": "ethan",
+        "first": "Ethan",
+        "full": "Ethan Norton",
         "town": "Bedford Park",
         "where": "your kitchen in Bedford Park"
       }
@@ -484,6 +995,34 @@
         "full": "Chris",
         "town": "Bedford Park",
         "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "bradley",
+        "first": "Bradley",
+        "full": "Bradley Pure",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "rachel",
+        "first": "Rachel",
+        "full": "Rachel Bishop",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "hugo",
+        "first": "Hugo",
+        "full": "Hugo Valencia",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
+      },
+      {
+        "slug": "tim",
+        "first": "Tim",
+        "full": "Tim Hakin",
+        "town": "Bedford Park",
+        "where": "your plant in Bedford Park"
       }
     ],
     "template": "pures-food.html"
@@ -499,6 +1038,20 @@
         "slug": "ronald",
         "first": "Ronald",
         "full": "Ronald Mrow",
+        "town": "Chicago",
+        "where": "your bakery in Chicago"
+      },
+      {
+        "slug": "haq",
+        "first": "Haq",
+        "full": "Haq Chaudary",
+        "town": "Chicago",
+        "where": "your bakery in Chicago"
+      },
+      {
+        "slug": "shan",
+        "first": "Shan",
+        "full": "Shan Chaudary",
         "town": "Chicago",
         "where": "your bakery in Chicago"
       }
@@ -518,6 +1071,20 @@
         "full": "Jose Polanco",
         "town": "Chicago",
         "where": "your plant in Chicago"
+      },
+      {
+        "slug": "carlosjose",
+        "first": "Carlosjose",
+        "full": "Carlosjose Pineiro",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "curt",
+        "first": "Curt",
+        "full": "Curt Hyzy",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
       }
     ],
     "template": "amity-packing.html"
@@ -533,6 +1100,20 @@
         "slug": "corey",
         "first": "Corey",
         "full": "Corey Anders",
+        "town": "Wheeling",
+        "where": "your plant in Wheeling"
+      },
+      {
+        "slug": "ed",
+        "first": "Ed",
+        "full": "Ed Cabrales",
+        "town": "Wheeling",
+        "where": "your plant in Wheeling"
+      },
+      {
+        "slug": "mac",
+        "first": "Mac",
+        "full": "Chris McLaughlin",
         "town": "Wheeling",
         "where": "your plant in Wheeling"
       }
@@ -553,6 +1134,27 @@
         "full": "Casey Shaw",
         "town": "Batavia",
         "where": "your plant in Batavia"
+      },
+      {
+        "slug": "manas",
+        "first": "Manas",
+        "full": "Manas",
+        "town": "Batavia",
+        "where": "your plant in Batavia"
+      },
+      {
+        "slug": "robert",
+        "first": "Robert",
+        "full": "Robert Laine",
+        "town": "Batavia",
+        "where": "your plant in Batavia"
+      },
+      {
+        "slug": "david",
+        "first": "David",
+        "full": "David Gutsell",
+        "town": "Batavia",
+        "where": "your plant in Batavia"
       }
     ]
   },
@@ -568,6 +1170,20 @@
         "slug": "josh",
         "first": "Josh",
         "full": "Josh Weiss",
+        "town": "Elgin",
+        "where": "your place in Elgin"
+      },
+      {
+        "slug": "joe",
+        "first": "Joe",
+        "full": "Joe Tedesco",
+        "town": "Elgin",
+        "where": "your place in Elgin"
+      },
+      {
+        "slug": "larry",
+        "first": "Larry",
+        "full": "Larry Stein",
         "town": "Elgin",
         "where": "your place in Elgin"
       }
@@ -595,6 +1211,30 @@
         "town": "Franklin Park",
         "where": "your plant in Franklin Park",
         "ps": "P.S. “Supply Chain Execution” is one of the value-added services on your site, and execution is in your title. I’d love to compare notes."
+      },
+      {
+        "slug": "marcelo",
+        "first": "Marcelo",
+        "full": "Marcelo Buenrostro",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park",
+        "ps": "P.S. An eco-friendly powder coating line, built in your own facility in 2019. I’d love to see it run."
+      },
+      {
+        "slug": "ramiro",
+        "first": "Ramiro",
+        "full": "Ramiro Aranda",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park",
+        "ps": "P.S. An eco-friendly powder coating line, built in your own facility in 2019. I’d love to see it run."
+      },
+      {
+        "slug": "andy",
+        "first": "Andy",
+        "full": "Andy Galombeck",
+        "town": "Franklin Park",
+        "where": "your plant in Franklin Park",
+        "ps": "P.S. An eco-friendly powder coating line, built in your own facility in 2019. I’d love to see it run."
       }
     ]
   },
@@ -614,6 +1254,30 @@
         "full": "Randy Shaw",
         "town": "Bloomingdale",
         "where": "your office in Bloomingdale"
+      },
+      {
+        "slug": "justin",
+        "first": "Justin",
+        "full": "Justin Dickert",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale",
+        "ps": "P.S. “A missed retail launch date costs more than the packaging turnaround behind it,” Randy wrote in October. I couldn’t agree more."
+      },
+      {
+        "slug": "kimberly",
+        "first": "Kimberly",
+        "full": "Kimberly Vorhees",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale",
+        "ps": "P.S. “A missed retail launch date costs more than the packaging turnaround behind it,” Randy wrote in October. I couldn’t agree more."
+      },
+      {
+        "slug": "dario",
+        "first": "Dario",
+        "full": "Dario",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale",
+        "ps": "P.S. “A missed retail launch date costs more than the packaging turnaround behind it,” Randy wrote in October. I couldn’t agree more."
       }
     ]
   },
@@ -633,6 +1297,34 @@
         "full": "Carl Purnell",
         "town": "Chicago",
         "where": "your office in Chicago"
+      },
+      {
+        "slug": "bill",
+        "first": "Bill",
+        "full": "Bill Besenhofer",
+        "town": "Chicago",
+        "where": "your office in Chicago"
+      },
+      {
+        "slug": "nathan",
+        "first": "Nathan",
+        "full": "Nathan Laurell",
+        "town": "Chicago",
+        "where": "your office in Chicago"
+      },
+      {
+        "slug": "maria",
+        "first": "Maria",
+        "full": "Maria Rubio",
+        "town": "Chicago",
+        "where": "your office in Chicago"
+      },
+      {
+        "slug": "joseph",
+        "first": "Joseph",
+        "full": "Joseph Frantik",
+        "town": "Chicago",
+        "where": "your office in Chicago"
       }
     ]
   },
@@ -648,6 +1340,41 @@
         "slug": "john",
         "first": "John",
         "full": "John Drehobl",
+        "town": "Skokie",
+        "where": "your plant in Skokie"
+      },
+      {
+        "slug": "ajay",
+        "first": "Ajay",
+        "full": "Ajay Patel",
+        "town": "Skokie",
+        "where": "your plant in Skokie"
+      },
+      {
+        "slug": "dan",
+        "first": "Dan",
+        "full": "Dan O'Brien",
+        "town": "Skokie",
+        "where": "your plant in Skokie"
+      },
+      {
+        "slug": "rick",
+        "first": "Rick",
+        "full": "Rick Drehobl",
+        "town": "Skokie",
+        "where": "your plant in Skokie"
+      },
+      {
+        "slug": "ellias",
+        "first": "Ellias",
+        "full": "Ellias Gebrekidane",
+        "town": "Skokie",
+        "where": "your plant in Skokie"
+      },
+      {
+        "slug": "david",
+        "first": "David",
+        "full": "David Drehobl",
         "town": "Skokie",
         "where": "your plant in Skokie"
       }
@@ -667,6 +1394,27 @@
         "full": "Phil Layden",
         "town": "Chicago",
         "where": "your plant in Chicago"
+      },
+      {
+        "slug": "craig",
+        "first": "Craig",
+        "full": "Craig Leva",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "mark",
+        "first": "Mark",
+        "full": "Mark Myers",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "flip",
+        "first": "Flip",
+        "full": "Flip Block",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
       }
     ]
   },
@@ -682,6 +1430,41 @@
         "slug": "miguel",
         "first": "Miguel",
         "full": "Miguel Ayala-Huaracha",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "mike",
+        "first": "Mike",
+        "full": "Mike McGuire",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "joseph",
+        "first": "Joseph",
+        "full": "Joseph Bonomo",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "david",
+        "first": "David",
+        "full": "David Philippou",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "steven",
+        "first": "Steven",
+        "full": "Steven Zoll",
+        "town": "Chicago",
+        "where": "your plant in Chicago"
+      },
+      {
+        "slug": "molly",
+        "first": "Molly",
+        "full": "Molly McNary Shatken",
         "town": "Chicago",
         "where": "your plant in Chicago"
       }
@@ -701,6 +1484,27 @@
         "full": "Fallon Morgan",
         "town": "Morton Grove",
         "where": "your plant in Morton Grove"
+      },
+      {
+        "slug": "julie",
+        "first": "Julie",
+        "full": "Julie Smolyansky",
+        "town": "Morton Grove",
+        "where": "your plant in Morton Grove"
+      },
+      {
+        "slug": "dan",
+        "first": "Dan",
+        "full": "Dan Kaho",
+        "town": "Morton Grove",
+        "where": "your plant in Morton Grove"
+      },
+      {
+        "slug": "sarah",
+        "first": "Sarah",
+        "full": "Sarah Lieb",
+        "town": "Morton Grove",
+        "where": "your plant in Morton Grove"
       }
     ]
   },
@@ -718,6 +1522,27 @@
         "full": "Jacky Xu",
         "town": "Detroit",
         "where": "your office, in Chicago or Detroit"
+      },
+      {
+        "slug": "andrei",
+        "first": "Andrei",
+        "full": "Andrei Zavoichinski",
+        "town": "Chicago",
+        "where": "your office in Chicago"
+      },
+      {
+        "slug": "tao",
+        "first": "Tao",
+        "full": "Tao Wang",
+        "town": "Chicago",
+        "where": "your office in Chicago"
+      },
+      {
+        "slug": "kyle",
+        "first": "Kyle",
+        "full": "Kyle Cowden",
+        "town": "Chicago",
+        "where": "your office in Chicago"
       }
     ]
   },
@@ -735,6 +1560,46 @@
         "full": "Don Bergman",
         "town": "Chicago",
         "where": "your plant in Chicago"
+      },
+      {
+        "slug": "jordan",
+        "first": "Jordan",
+        "full": "Jordan Dorfman",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Three million pounds a week, shipped to more than 55 countries, from the old Stockyards. I’d love to see it."
+      },
+      {
+        "slug": "miguel",
+        "first": "Miguel",
+        "full": "Miguel Alfaro",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Three million pounds a week, shipped to more than 55 countries, from the old Stockyards. I’d love to see it."
+      },
+      {
+        "slug": "andrew",
+        "first": "Andrew",
+        "full": "Andrew Pipitone",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Three million pounds a week, shipped to more than 55 countries, from the old Stockyards. I’d love to see it."
+      },
+      {
+        "slug": "derek",
+        "first": "Derek",
+        "full": "Derek Rude",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. Three million pounds a week, shipped to more than 55 countries, from the old Stockyards. I’d love to see it."
+      },
+      {
+        "slug": "robert",
+        "first": "Robert",
+        "full": "Robert",
+        "town": "Chicago",
+        "where": "your plant in Chicago",
+        "ps": "P.S. I’m the one who left the popcorn for you and Don. I’d still love to meet in person."
       }
     ]
   }

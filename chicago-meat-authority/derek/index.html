@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dice the beef, Derek | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who processes beef, pork and chicken for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/chicago-meat-authority.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#A9233E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="https://simplegrid.ai/chicago-meat-authority/derek/">
+<meta property="og:title" content="Derek, dice the beef.">
+<meta property="og:description" content="SimpleGrid, explained to someone who processes beef, pork and chicken for a living.">
+<meta property="og:image" content="https://simplegrid.ai/chicago-meat-authority/og-derek.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A dicer with a slab of beef under a spec screen, with no link between them, beside the words: Derek, you can process 3 million pounds of meat a week.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Derek, dice the beef.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who processes beef, pork and chicken for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/chicago-meat-authority/og-derek.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+/* The site's self-hosted faces, so nothing here calls out to a third party. */
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('/assets/fonts/merriweather-latin.woff2') format('woff2')}
+@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/albert-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
+
+/* Each template sets its company's palette on :root. These read it:
+   --brand --brand-press --brand-deep   their main color, darker, darkest
+   --accent --accent-soft --accent-edge  the color the hero ends on
+   --on-brand --on-brand-soft --on-accent --on-accent-soft   text on those
+   --tint --pale --ink --alert            light fill, page, type, the "No link" red
+   --marker                               the highlighter in the ERP panel
+   and optionally --display, --dw (its weight; a single-weight face must not be faux-bolded) and --h2-hi. */
+:root{
+  --ink-70:rgba(26,26,26,.74);
+  --ink-55:rgba(26,26,26,.62);
+  --display:'Merriweather',Georgia,'Times New Roman',serif;
+  --body:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Consolas,'SF Mono',monospace;
+  --hand:'Bradley Hand','Noteworthy','Segoe Print','Ink Free','Comic Sans MS',cursive;
+  --dw:900;
+  --gutter:clamp(20px,5vw,56px);
+  --section:clamp(64px,9vw,128px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;font-synthesis-weight:none}
+body{margin:0;background:var(--pale);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img,svg,canvas{display:block}
+:focus-visible{outline:3px solid var(--focus,var(--brand));outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
+h2{font:var(--dw) clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
+h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
+
+/* ------------------------------------------------------------------ Hero */
+.hero,.hero-wipe{
+  --field:var(--brand);--on:var(--on-brand);--on-soft:var(--on-brand-soft);--hi:var(--accent);
+  --btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  background:var(--field);color:var(--on);
+}
+/* Where the hero ends up once the link is made. */
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:var(--accent);--on:var(--on-accent);--on-soft:var(--on-accent-soft);--hi:var(--brand-press);
+  --btn-bg:var(--brand);--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep);--focus:var(--brand-press);
+}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-inner{padding:0 var(--gutter) clamp(84px,9vw,124px);max-width:calc(1240px + 2*var(--gutter));margin-inline:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(16px,2vw,24px) 0}
+.logo{display:block;flex:none;width:clamp(138px,12vw,168px);color:inherit;border-radius:4px}
+.logo svg{width:100%;height:auto;overflow:visible}
+.bar-tag{font-size:14.5px;line-height:1.3;text-align:right;color:var(--on-soft)}
+.bar-tag span{display:inline-block}
+.bar-right{display:flex;align-items:center;gap:clamp(12px,1.6vw,22px)}
+.bar-cta{flex:none;padding:9px 15px;border-radius:9px;box-shadow:inset 0 0 0 2px currentColor;color:var(--on);font:800 15px/1 var(--body);text-decoration:none;white-space:nowrap}
+.bar-cta:hover{background:var(--on);color:var(--field);box-shadow:none}
+
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"copy art" "ctrl art";grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4vw,60px);margin-top:clamp(10px,2.4vh,30px);
+}
+.hero-copy{grid-area:copy}
+.hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+/* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
+.hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
+h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
+h1 span{display:block;color:var(--hi)}
+.hero-sub{margin-top:clamp(16px,2vw,24px);max-width:50ch;font-size:clamp(17px,.4vw + 15px,20px);color:var(--on-soft)}
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.hero-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
+
+/* The primary button presses in like something you'd find on a line. */
+.go-btn{
+  position:relative;appearance:none;border:0;cursor:pointer;
+  padding:16px 28px 19px;border-radius:12px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font:var(--dw) 18px/1.2 var(--display);text-decoration:none;display:inline-block;
+  box-shadow:0 5px 0 var(--btn-edge);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.go-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
+.go-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
+.go-btn:disabled{cursor:default;opacity:.7;transform:none;box-shadow:0 5px 0 var(--btn-edge)}
+.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* Labels beside the hero object. Each template places them. */
+.callouts{position:relative;width:clamp(150px,14.5vw,196px);flex:none}
+.callout{position:absolute;left:0;right:0}
+.callout-gap{position:absolute;left:0;padding:6px 12px;border-radius:999px;background:var(--alert);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:clamp(14px,1.6vw,24px);border-top:2px dashed var(--on-soft)}
+.callout-gap[hidden]{display:none}
+.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
+.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
+
+.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+
+@media (max-width:980px){
+  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
+  .hero-copy{display:contents}
+  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
+  .hero-art{order:2;margin-top:20px}
+  .hero-ctrl{order:3;margin-top:24px}
+  .hero-sub{order:4;margin-top:6px}
+  .hero-caption{min-height:4.6em;font-size:16.5px}
+  .bar{gap:10px}
+  .bar-tag{font-size:12px}
+  .logo{width:124px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
+  .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
+  .callout p{font-size:13.5px;line-height:1.36}
+  .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
+  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .bar-tag{display:none}
+}
+@media (max-width:350px){
+  .callout h3{font-size:13.5px}
+  .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+
+/* Chicago Meat Authority’s colors: their crimson, with butcher-paper cream. Their site is set in a sans, so ours is too. */
+:root{
+  --brand:#A9233E;--brand-press:#8E1D34;--brand-deep:#5E1322;
+  --accent:#F3D9B1;--accent-soft:#FBF1E3;--accent-edge:#C9A675;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#4A0F1C;--on-accent-soft:rgba(74,15,28,.82);
+  --tint:#F9EEF0;--pale:#FDFAFA;--ink:#1F1416;--alert:#D7263D;--marker:#FBE3E8;--h2-hi:#A9233E;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
+}
+/* ------------------------------------------------------- One tray of diced beef
+   The spec on the screen is the ERP. The dicer under it, with its slab of trim and the tray on the
+   scale, is the floor. It's drawn from just above and to the right, so every box shows its top and
+   right side, lit from the top left. Every color lives on .hero-art, so the callouts' dots read them too. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --lean:#D23E4A;--lean-hi:#EE7680;--lean-dk:#A92D3A;--meat-edge:#4A0F1C;--fat:#FFF5EF;
+  --steel:#C9D0D6;--steel-hi:#E6EBEE;--steel-dk:#9EA8B1;--steel-ink:#5B646E;--steel-deep:#3F474F;
+  --tray:#FBFAF7;--tray-in:#ECE7DE;--tray-wall:#DCD5C9;--tray-side:#D3CBBE;--tray-edge:#A3998B;
+  --screen:#1E2329;--glass:#2A313A;
+  --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
+}
+.dice{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .dice,.dice.is-done{cursor:default}
+.dice svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* The spec: what the ERP says you're cutting. */
+.dc-screen{fill:var(--screen)}
+.dc-screen-t{fill:#353D46}
+.dc-screen-r{fill:#12161A}
+.dc-glass{fill:var(--glass)}
+.dc-kick{fill:rgba(255,255,255,.55);font:600 10.5px/1 var(--mono);letter-spacing:.14em}
+.dc-order{fill:#fff;font:800 18px/1 var(--body)}
+.dc-spec{fill:rgba(255,255,255,.86);font:700 13px/1 var(--body)}
+.dc-spec2{fill:rgba(255,255,255,.66);font:600 12px/1 var(--body)}
+.dc-pill{fill:#DFF5EA;transition:fill .3s}
+.dc-pill-t{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
+.dice.linked .dc-pill{fill:var(--accent)}
+.dice.linked .dc-pill-t{fill:var(--on-accent)}
+.dc-icon path{fill:var(--accent)}
+.dc-icon .dc-icon-l{opacity:.55}
+.dc-icon .dc-icon-r{opacity:.78}
+/* The cable from the spec to the dicer: broken, until SimpleGrid joins it. */
+.dc-stub{fill:none;stroke:var(--steel-ink);stroke-width:6}
+.dc-plug{transform-box:view-box;transform-origin:0 0}
+.dc-plug rect{fill:var(--steel-deep)}
+.dc-plug path{fill:none;stroke:var(--steel-dk);stroke-width:2.4;stroke-linecap:round}
+.dc-cable{fill:none;stroke:var(--hi);stroke-width:6;stroke-linecap:round;opacity:0;transition:opacity .3s .25s}
+.dc-flow{fill:none;stroke:var(--field);stroke-width:2.2;stroke-dasharray:3 7;opacity:0;transition:opacity .3s .25s}
+.dice.linked .dc-cable{opacity:1}
+.dice.linked .dc-flow{opacity:.85;animation:dc-flow .6s linear infinite}
+@keyframes dc-flow{to{stroke-dashoffset:-10}}
+/* The dicer: a press over the tray. Its head pushes the slab down through a bed of blades. */
+.dc-back{fill:var(--steel-deep)}
+.dc-post,.dc-bar,.dc-headbox,.dc-foot{fill:var(--steel)}
+.dc-bar-t,.dc-headbox-t,.dc-foot-t{fill:var(--steel-hi)}
+.dc-post-r,.dc-bar-r,.dc-headbox-r,.dc-foot-r{fill:var(--steel-dk)}
+.dc-rod,.dc-plate,.dc-bed{fill:#8E98A2}
+.dc-plate-t,.dc-bed-t{fill:#B4BDC5}
+.dc-plate-r,.dc-bed-r{fill:#727D87}
+.dc-blades{fill:none;stroke:var(--steel-ink);stroke-width:1.6;stroke-linecap:round}
+.dc-bar-hi,.dc-bed-hi,.dc-head-hi{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;opacity:.55}
+.dc-port{fill:var(--steel-dk);stroke:var(--steel-ink);stroke-width:2}
+.dc-bolt{fill:var(--steel-dk)}
+.dc-head,.dc-rod{transform-box:view-box;transform-origin:176px 204px}
+.dc-slab{transform-box:view-box;transform-origin:176px 277px}
+.dc-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
+.dice.dosed .dc-mark{opacity:1;transform:none}
+/* The beef: lean with white fat through it, in the slab, the mess and the cubes. */
+.dc-lean,.dc-lean-hi,.dc-lean-r,.dc-pc-b,.dc-cube path{stroke:var(--meat-edge);stroke-width:2;stroke-linejoin:round}
+.dc-lean,.dc-pc-b,.dc-cube-f{fill:var(--lean)}
+.dc-lean-hi,.dc-pc-t,.dc-cube-t{fill:var(--lean-hi)}
+.dc-lean-r,.dc-cube-r{fill:var(--lean-dk)}
+.dice .dc-fat,.dc-pc-f{fill:none;stroke:var(--fat);stroke-width:2.6;stroke-linecap:round}
+.dc-pc.fatty .dc-pc-t,.dc-pc.flap .dc-pc-b{fill:var(--fat)}
+.dc-pc.flap .dc-pc-f{stroke:var(--lean)}
+.dc-pc,.dc-cube,.dc-film{transform-box:view-box;transform-origin:0 0;opacity:0}
+/* The table, the scale built into it, and the tray. */
+.dc-floor{fill:rgba(40,4,14,.2)}
+.dc-leg{fill:var(--steel-dk)}
+.dc-leg-r{fill:#7E8993}
+.dc-table{fill:#B9C2C9}
+.dc-table-t{fill:#DCE1E5}
+.dc-table-r{fill:#99A3AC}
+.dc-table-hi{fill:none;stroke:#fff;stroke-width:2;opacity:.7}
+.dc-readout{fill:var(--screen)}
+.dc-scale{fill:#A8E6C4;font:600 11px/1 var(--mono)}
+.dice.wrong .dc-scale{fill:#FF5D58;animation:dc-blink .7s steps(1) infinite}
+.dice.right .dc-scale{fill:#3DDC84}
+@keyframes dc-blink{50%{opacity:.2}}
+.dc-plate-s{fill:#8E98A2}
+.dc-plate-s-t{fill:#AAB3BB}
+.dc-plate-s-r{fill:#727D87}
+.dc-tray{fill:var(--tray);stroke:var(--tray-edge);stroke-width:1.2;stroke-linejoin:round}
+.dc-well{fill:var(--tray-in)}
+.dc-wall{fill:var(--tray-wall)}
+.dc-wall-l{fill:var(--tray-side)}
+.dc-tray-f{fill:#EAE5DC;stroke:var(--tray-edge);stroke-width:1.2;stroke-linejoin:round}
+.dc-tray-r{fill:var(--tray-side);stroke:var(--tray-edge);stroke-width:1.2;stroke-linejoin:round}
+.dc-tray-hi{fill:none;stroke:#fff;stroke-width:1.6;opacity:.9}
+/* Once it comes clean: sealed under film, with the label. */
+.dc-film-t{fill:rgba(255,255,255,.2)}
+.dc-film-f{fill:rgba(255,255,255,.14)}
+.dc-film-r{fill:rgba(255,255,255,.08)}
+.dc-film path:not(.dc-film-hi){stroke:rgba(255,255,255,.9);stroke-width:1.6;stroke-linejoin:round}
+.dc-film-hi{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;opacity:.45}
+.dc-tag{--sg-bg:var(--tag-bg);--sg-ink:var(--tag-ink)}
+.dice.is-done .dc-tag{opacity:1;transform:none}
+.dice:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:2%}
+.callout-gap{top:calc(21.9% - 15px)}
+.callout-bottom{top:47%}
+.callout-top h3 i{background:var(--screen)}
+.callout-bottom h3 i{background:var(--lean)}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.503)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+/* ------------------------------------- The gap between the ERP and the floor */
+.gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
+.stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
+.panel-erp h3,.panel-floor h3{font:var(--dw) clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
+
+/* The ERP is deliberately calm. That's the joke, and the problem. */
+.panel-erp{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
+.erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
+.stage[data-state=chaos] .erp-status{animation:smug .8s ease-in-out 3}
+@keyframes smug{50%{transform:scale(1.09)}}
+.erp-rows{margin-top:clamp(16px,2vw,28px);display:grid;gap:clamp(12px,1.5vw,21px)}
+.erp-rows li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:clamp(15.5px,.3vw + 14px,18px);line-height:1.3}
+.erp-rows span{flex:none;color:var(--ink-55)}
+.erp-rows b{font-weight:700;text-align:right}
+.erp-rows s{font-weight:400;color:var(--ink-55)}
+.erp-rows li.hit b{
+  background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 100%/0 100%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
+  animation:marker .42s ease-out var(--d,0s) forwards;
+}
+@keyframes marker{to{background-size:100% 100%}}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--alert);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
+.erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
+
+/* The broken pipe between them. Once linked, it joins up and flows. */
+.link{position:relative;display:grid;place-items:center}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:color-mix(in srgb,var(--brand) 26%,transparent);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub-a{left:0}
+.stub-b{right:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:color-mix(in srgb,var(--brand) 55%,transparent);opacity:0}
+.stub-a::after{right:1px}
+.stub-b::after{left:1px}
+.stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
+.stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
+.link-no{position:relative;z-index:2;background:var(--alert);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--brand-press);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.link-yes svg{width:56%;height:56%}
+.stage[data-state=linked] .link-no{display:none}
+.stage[data-state=linked] .link-yes{display:grid}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+@keyframes pipe{to{background-position:28px 0}}
+
+/* The floor: where the morning actually happens. */
+.panel-floor{
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
+  display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
+}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
+.floor-calm{flex:1;display:grid;place-items:center}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:var(--dw) clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.dome{
+  width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
+  box-shadow:0 0 0 9px var(--accent),0 8px 0 9px var(--accent-edge),0 18px 26px 9px rgba(0,0,0,.55);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--accent),0 6px 0 9px var(--accent-edge),0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--accent),0 1px 0 9px var(--accent-edge),0 5px 9px 9px rgba(0,0,0,.55)}
+.pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
+.stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
+.stage:not([data-state=calm]) .floor-calm{display:none}
+.n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
+@keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
+.n-sticky{background:#FFD84D;color:#2B2000}
+.n-pink{background:#FF9FB4;color:#3D0012}
+.n-board{background:#fff;color:#C4163F}
+.n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
+.n-file{background:#fff;color:#1A1A1A}
+.n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
+.n-mail{background:#E9EEF6;color:#1A1A1A}
+.n-call{background:#2F6FE0;color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:#C4163F;color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n svg{flex:none;width:15px;height:15px}
+.n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
+@keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
+.stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
+.tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
+.tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.tidy i svg{width:14px;height:14px}
+@keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
+.stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
+#linkBtn,#stageReset,#stageMeet{display:none}
+.stage[data-state=messy] #linkBtn{display:inline-block}
+.stage[data-state=linked] #stageReset,.stage[data-state=linked] #stageMeet{display:inline-block}
+.stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
+.fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
+
+@media (max-width:980px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
+}
+@media (max-width:620px){
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
+}
+@media (max-width:350px){
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
+}
+/* ------------------------------------------------- The back of the pack */
+.back{background:var(--brand);color:var(--on-brand);padding:var(--section) 0;--focus:var(--accent)}
+.back h2{color:var(--on-brand)}
+.back h2 span{color:var(--accent)}
+.label{
+  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--brand-press);
+  border-radius:16px;padding:clamp(18px,3vw,40px);
+  display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:clamp(28px,4vw,60px);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
+}
+/* The panel follows the FDA layout: heavy rules, heavy title, nothing cute about the structure. */
+.facts{border:2.5px solid var(--ink);padding:8px 11px 10px;font-family:'Helvetica Neue',Helvetica,var(--body)}
+.facts-title{font:900 clamp(37px,3.3vw + 20px,50px)/1 'Helvetica Neue',Helvetica,var(--body);letter-spacing:-.022em;white-space:nowrap}
+.facts-serving{margin-top:5px;padding-bottom:6px;font-size:15.5px;line-height:1.28}
+.facts-serving strong{font-weight:800}
+.rule-10{height:10px;background:var(--ink)}
+.rule-5{height:5px;background:var(--ink)}
+.facts-big{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:4px 0 3px;font-weight:900}
+.facts-big span{font-size:24px;line-height:1.05;letter-spacing:-.012em}
+.facts-big b{font-size:clamp(30px,2.4vw + 20px,37px);line-height:1;font-weight:900;white-space:nowrap;letter-spacing:-.02em}
+.facts table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.25}
+.facts th,.facts td{padding:5px 0;border-top:1px solid rgba(26,26,26,.55);text-align:right;font-weight:400;white-space:nowrap}
+.facts thead th{border-top:0;padding:3px 0;font-size:13.5px;font-weight:800}
+.facts th:first-child{text-align:left;font-weight:800;white-space:normal}
+.facts thead th:first-child{font-weight:400}
+.facts td{width:68px;padding-left:8px}
+.facts td:last-child{font-weight:900}
+.facts-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0 6px;font-weight:800;font-size:16px;line-height:1.2}
+.facts-saved b{font-weight:900;white-space:nowrap}
+.facts-foot{padding-top:6px;font-size:13px;line-height:1.3}
+.facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
+.margin-note{color:var(--brand-press);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
+.margin-note svg{position:absolute;left:0;top:-4px;width:32px;height:38px}
+
+.label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
+.label-copy > * + *{margin-top:18px}
+.label-copy strong{font-weight:800}
+.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;margin-top:auto;padding-top:22px}
+.barcode{display:block;text-decoration:none;color:var(--ink);flex:none;border-radius:4px}
+.barcode svg{width:190px;height:56px}
+.barcode span{display:block;margin-top:3px;text-align:center;font:500 14.5px/1 var(--body);letter-spacing:.11em}
+.inkjet{font:600 15.5px/1.42 var(--mono);letter-spacing:.05em;color:#222;max-width:27ch}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .inkjet{
+    color:transparent;
+    background:radial-gradient(circle at center,#000 54%,transparent 60%) 0 0/2.1px 2.1px;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+
+@media (max-width:980px){
+  .label{grid-template-columns:minmax(0,1fr)}
+  .facts{max-width:430px}
+}
+@media (max-width:620px){
+  .lockup{align-items:center}
+  .facts-title{font-size:min(46px,calc((100vw - 104px)/7.95))}
+  .facts-big span{font-size:20px}
+  .facts-saved{flex-direction:column;gap:1px}
+}
+/* ------------------------------------------------------------- The ask */
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
+
+/* -------------------------------------------------------------- Footer */
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
+.foot .logo{width:150px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
+
+@media (max-width:980px){
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
+}
+@media (max-width:620px){
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Cut to order for Derek Rude,</span> <span>Chicago Meat Authority. Portion size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Derek, you can process 3 million pounds of meat a week. <span>So here’s our software, explained as one tray of diced beef.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="dice hero-obj" id="dice" role="img" aria-label="A spec screen for order 4417: diced beef, cubes all one size. Under it, a dicer holding a slab of beef trim over an empty tray on a scale. The cable between the screen and the dicer is broken.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <!-- the slab sinks into the blade bed, and whatever comes out drops from under it -->
+              <clipPath id="dcAbove"><rect x="60" y="120" width="240" height="158.5"/></clipPath>
+              <clipPath id="dcBelow"><rect x="0" y="292.1" width="360" height="267.9"/></clipPath>
+              <clipPath id="dcRodClip"><rect x="150" y="150.2" width="60" height="140"/></clipPath>
+              <clipPath id="dcWrapClip"><rect x="66.8" y="290.8" width="226.5" height="128.2"/></clipPath>
+            </defs>
+
+            <!-- the floor -->
+            <path class="dc-floor" d="M2.5 546.6L282.5 546.6L351 395.9L71 395.9Z"/>
+            <!-- the cutting table, seen from just above, with a scale built into its front -->
+            <path class="dc-leg" d="M329.5 412.4L341.5 412.4L341.5 354.6L329.5 354.6Z"/>
+            <path class="dc-leg-r" d="M341.5 412.4L344.5 405.8L344.5 348L341.5 354.6Z"/>
+            <path class="dc-leg" d="M15.5 523.5L27.5 523.5L27.5 465.7L15.5 465.7Z"/>
+            <path class="dc-leg-r" d="M27.5 523.5L30.5 516.9L30.5 459.1L27.5 465.7Z"/>
+            <path class="dc-leg" d="M279 523.5L291 523.5L291 465.7L279 465.7Z"/>
+            <path class="dc-leg-r" d="M291 523.5L294 516.9L294 459.1L291 465.7Z"/>
+            <path class="dc-table-r" d="M295.5 469L352 344.7L352 326L295.5 450.3Z"/>
+            <path class="dc-table-t" d="M8 450.3L295.5 450.3L352 326L64.5 326Z"/>
+            <path class="dc-table" d="M8 469L295.5 469L295.5 450.3L8 450.3Z"/>
+            <path class="dc-table-hi" d="M12 450.3L291.5 450.3"/>
+            <rect class="dc-readout" x="105.5" y="452.9" width="92" height="13.6" rx="3"/>
+            <text class="dc-scale" id="dcScale" x="151.5" y="463.1" text-anchor="middle">0.00 lb</text>
+            <!-- the dicer: a press over the tray. Its head pushes the slab down through a bed of blades -->
+            <path class="dc-back" d="M80 264.2L284 264.2L284 149.4L80 149.4Z"/>
+            <path class="dc-post" d="M61.5 392.4L73.5 392.4L73.5 163.8L61.5 163.8Z"/>
+            <path class="dc-post-r" d="M73.5 392.4L80 378.1L80 149.4L73.5 163.8Z"/>
+            <path class="dc-foot" d="M55.5 397.5L79.5 397.5L79.5 392.4L55.5 392.4Z"/>
+            <path class="dc-foot-t" d="M55.5 392.4L79.5 392.4L86 378.1L62 378.1Z"/>
+            <path class="dc-foot-r" d="M79.5 397.5L86 383.2L86 378.1L79.5 392.4Z"/>
+            <path class="dc-post" d="M277.5 304L289.5 304L289.5 163.8L277.5 163.8Z"/>
+            <path class="dc-post-r" d="M289.5 304L296 289.7L296 149.4L289.5 163.8Z"/>
+            <g clip-path="url(#dcRodClip)"><rect class="dc-rod" id="dcRod" x="171.8" y="109.9" width="14" height="68.8"/></g>
+            <path class="dc-bar" d="M57.5 163.8L293.5 163.8L293.5 150.2L57.5 150.2Z"/>
+            <path class="dc-bar-t" d="M57.5 150.2L293.5 150.2L300 135.8L64 135.8Z"/>
+            <path class="dc-bar-r" d="M293.5 163.8L300 149.4L300 135.8L293.5 150.2Z"/>
+            <path class="dc-bar-hi" d="M61.5 151.8L289.5 151.8"/>
+            <path class="dc-bed-t" d="M73.5 278.5L277.5 278.5L284 264.2L80 264.2Z"/>
+            <path class="dc-blades" d="M141.8 277.9L147.8 264.8M209.8 277.9L215.8 264.8M76.7 273.7L278.7 273.7M78.8 269L280.8 269"/>
+            <g clip-path="url(#dcAbove)"><g class="dc-slab" id="dcSlab">
+              <path class="dc-lean-r" d="M249 247C255 253 257 266 255 277.4L261 265.5C263 255 262 242 256 235Z"/>
+              <path class="dc-lean" d="M97 277.4C93 268 94 255 100 248C107 243 121 242 137 244C157 241 183 243 205 241C225 240 243 242 249 247C255 253 257 266 255 277.4Z"/>
+              <path class="dc-lean-hi" d="M100 248C107 243 121 242 137 244C157 241 183 243 205 241C225 240 243 242 249 247L256 235C250 230 233 228 213 229C191 230 165 229 145 231C127 230 113 231 106 236Z"/>
+              <path class="dc-fat" d="M112 239C124 235 140 235 152 236M166 236C178 233 190 236 200 234M214 233C226 232 238 233 246 237M112 263C124 257 136 265 150 259M168 268C180 262 194 270 208 264M220 257C230 253 238 261 248 257"/>
+              <path class="dc-fat" d="M178 250C188 256 200 258 214 256" stroke-width="4"/>
+            </g></g>
+            <g class="dc-head" id="dcHead">
+              <path class="dc-plate" d="M85.5 228.3L265.5 228.3L265.5 223.2L85.5 223.2Z"/>
+              <path class="dc-plate-t" d="M85.5 223.2L265.5 223.2L272 208.9L92 208.9Z"/>
+              <path class="dc-plate-r" d="M265.5 228.3L272 214L272 208.9L265.5 223.2Z"/>
+              <path class="dc-headbox" d="M79.5 223.2L271.5 223.2L271.5 185L79.5 185Z"/>
+              <path class="dc-headbox-t" d="M79.5 185L271.5 185L278 170.7L86 170.7Z"/>
+              <path class="dc-headbox-r" d="M271.5 223.2L278 208.9L278 170.7L271.5 185Z"/>
+              <path class="dc-head-hi" d="M85.5 188.4L265.5 188.4"/>
+              <circle class="dc-port" cx="175.5" cy="204.1" r="13"/>
+              <circle class="dc-bolt" cx="95.5" cy="204.1" r="3.4"/>
+              <circle class="dc-bolt" cx="255.5" cy="204.1" r="3.4"/>
+              <g transform="translate(175.5 204.1) scale(.9)"><g class="dc-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g>
+            <path class="dc-bed" d="M73.5 292.1L277.5 292.1L277.5 278.5L73.5 278.5Z"/>
+            <path class="dc-bed-r" d="M277.5 292.1L284 277.8L284 264.2L277.5 278.5Z"/>
+            <path class="dc-bed-hi" d="M76.5 281.1L274.5 281.1"/>
+            <!-- the tray, on the scale -->
+            <path class="dc-plate-s-r" d="M250 440.4L298 334.8L298 332.2L250 437.8Z"/>
+            <path class="dc-plate-s-t" d="M62 437.8L250 437.8L298 332.2L110 332.2Z"/>
+            <path class="dc-plate-s" d="M62 440.4L250 440.4L250 437.8L62 437.8Z"/>
+            <path class="dc-tray" d="M70 416.4L246 416.4L290 319.6L114 319.6Z"/>
+            <path class="dc-well" d="M78.8 412.6L240.8 412.6L281.2 323.5L119.2 323.5Z"/>
+            <path class="dc-wall" d="M119.2 338.8L281.2 338.8L281.2 323.5L119.2 323.5Z"/>
+            <path class="dc-wall-l" d="M78.8 427.9L119.2 338.8L119.2 323.5L78.8 412.6Z"/>
+            <!-- what lands in the tray: the script draws it -->
+            <g clip-path="url(#dcBelow)"><g id="dcCubes"></g></g>
+            <g id="dcInTray"></g>
+            <path class="dc-tray-r" d="M246 433.4L290 336.6L290 319.6L246 416.4Z"/>
+            <path class="dc-tray" d="M246 416.4L290 319.6L281.2 323.5L240.8 412.6Z"/>
+            <path class="dc-tray" d="M70 416.4L246 416.4L240.8 412.6L78.8 412.6Z"/>
+            <path class="dc-tray-f" d="M70 433.4L246 433.4L246 416.4L70 416.4Z"/>
+            <path class="dc-tray-hi" d="M73 417.7L243 417.7"/>
+            <!-- once it comes clean: sealed under film, with the label -->
+            <g clip-path="url(#dcWrapClip)"><g class="dc-film" id="dcFilm">
+              <path class="dc-film-r" d="M246.8 417L291.2 319.1L291.2 292.8L246.8 390.7Z"/>
+              <path class="dc-film-f" d="M68.8 417L246.8 417L246.8 390.7L68.8 390.7Z"/>
+              <path class="dc-film-t" d="M68.8 390.7L246.8 390.7L291.2 292.8L113.2 292.8Z"/>
+              <path class="dc-film-hi" d="M102.5 375.8L181.5 307.6M128.5 380.2L192 328.5"/>
+            </g></g>
+            <g transform="translate(158 425.8) scale(.6)"><g class="dc-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            <!-- the right post stands in front of the tray’s far side -->
+            <path class="dc-post" d="M277.5 392.4L289.5 392.4L289.5 302.3L277.5 302.3Z"/>
+            <path class="dc-post-r" d="M289.5 392.4L296 378.1L296 288L289.5 302.3Z"/>
+            <path class="dc-foot" d="M271.5 397.5L295.5 397.5L295.5 392.4L271.5 392.4Z"/>
+            <path class="dc-foot-t" d="M271.5 392.4L295.5 392.4L302 378.1L278 378.1Z"/>
+            <path class="dc-foot-r" d="M295.5 397.5L302 383.2L302 378.1L295.5 392.4Z"/>
+            <!-- what lands on the table and the floor -->
+            <g id="dcOnTable"></g>
+            <!-- the spec: what the ERP says you’re cutting -->
+            <path class="dc-screen-t" d="M26 6H334L337 1H29Z"/>
+            <path class="dc-screen-r" d="M334 6L337 1V89L334 94Z"/>
+            <rect class="dc-screen" x="22" y="6" width="312" height="88" rx="11"/>
+            <rect class="dc-glass" x="31" y="14" width="294" height="72" rx="7"/>
+            <text class="dc-kick" x="46" y="31">SPEC</text>
+            <rect class="dc-pill" id="dcPill" x="236" y="19" width="74" height="22" rx="11"/>
+            <text class="dc-pill-t" id="dcPillText" x="273" y="34.2" text-anchor="middle">On spec</text>
+            <text class="dc-order" x="46" y="53">Order 4417</text>
+            <text class="dc-spec" x="46" y="70">Diced beef · 10.00 lb</text>
+            <text class="dc-spec2" x="46" y="82.5">Cubes, all one size</text>
+            <g class="dc-icon"><path class="dc-icon-t" d="M288 47L302 54L288 61L274 54Z"/><path class="dc-icon-l" d="M274 54L288 61V77L274 70Z"/><path class="dc-icon-r" d="M288 61L302 54V70L288 77Z"/></g>
+            <!-- the cable from the spec to the dicer: broken, until SimpleGrid joins it -->
+            <path class="dc-stub" d="M179 94V108"/>
+            <path class="dc-stub" d="M179 133V143"/>
+            <g class="dc-plug" id="dcPlugA"><rect x="171" y="101" width="16" height="9" rx="2.5"/><path d="M175 110V114M183 110V114"/></g>
+            <g class="dc-plug" id="dcPlugB"><rect x="171" y="131" width="16" height="8" rx="2.5"/></g>
+            <path class="dc-cable" d="M179 94V143"/>
+            <path class="dc-flow" d="M179 94V143"/>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The spec: your ERP</span></h3>
+            <p id="topText">What the system says you’re cutting.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The cut: your floor</span></h3>
+            <p id="bottomText">What’s really coming off the table, on Excel, whiteboards and phones.</p>
+          </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Dice it to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The spec is your ERP, the cut is your floor, and nothing links them. Dice it, or tap the beef.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<section class="gap" id="gap">
+  <div class="wrap">
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
+
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
+        </div>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
+      </div>
+
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg></i>SimpleGrid</span>
+      </div>
+
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
+        </div>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
+        <div class="floor-do">
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
+  </div>
+</section>
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of a case can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <div class="facts">
+          <!-- Same numbers as report.html. Change both. -->
+          <h3 class="facts-title">Operations Facts</h3>
+          <p class="facts-serving"><strong>Serving size:</strong> 1 deployment<br>6 plants, 1.2 million sq ft</p>
+          <div class="rule-10"></div>
+          <div class="facts-big"><span>Excel files<br>to run planning</span><b>550 → 1</b></div>
+          <div class="rule-5"></div>
+          <table>
+            <thead><tr><th scope="col">Amount per serving</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Weekly planning cycle</th><td>40 hrs</td><td>2 hrs</td></tr>
+              <tr><th scope="row">On-time delivery</th><td>70%</td><td>90%</td></tr>
+              <tr><th scope="row">Material wastage</th><td>1.5%</td><td>0.1%</td></tr>
+              <tr><th scope="row">Gross margin</th><td>19%</td><td>24%</td></tr>
+            </tbody>
+          </table>
+          <div class="rule-10"></div>
+          <div class="facts-saved"><span>Saved on wastage alone</span><b>About $200,000 a year</b></div>
+          <div class="rule-5"></div>
+          <p class="facts-foot">Not a significant source of slides, rip-and-replace or GL migration.</p>
+        </div>
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>Derek, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at your plant in Chicago. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Chicago.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">P.S. Three million pounds a week, shipped to more than 55 countries, from the old Stockyards. I’d love to see it.</p>
+    </div>
+    <div class="faces">
+      <figure class="polaroid polaroid-a">
+        <img src="/assets/letters/mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <figcaption>Mukund Agarwal</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-b">
+        <img src="/assets/letters/aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <figcaption>Aditi Puri Batra</figcaption>
+      </figure>
+      <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
+      <p class="who"><strong>Advisor.</strong> Former Country Head of QuickBooks/Intuit India. Ex-Amazon and Google in the US.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+    <p>Everything we know about Chicago Meat Authority comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll cut it again. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+/* Shared by every hero: small helpers, the wipe into the end-state colors,
+   and the barcode on the back of the label. */
+var SG = (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+
+  /* The end state spreads out from the hero object and takes the whole hero
+     with it. The clone carries the other colorway, so the type stays legible
+     as the edge passes. `skip` hides whatever shouldn't be painted twice. */
+  function wipeTo(hero, from, theme, skip){
+    if (reduce){ hero.dataset.theme = theme; return; }
+    var r = from.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
+    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
+    var over = document.createElement('div');
+    over.className = 'hero-wipe';
+    over.dataset.theme = theme;
+    over.setAttribute('aria-hidden', 'true');
+    over.inert = true;
+    var inner = hero.querySelector('.hero-inner').cloneNode(true);
+    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+    if (skip) inner.querySelectorAll(skip).forEach(function(el){ el.style.visibility = 'hidden'; });
+    over.appendChild(inner);
+    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
+    hero.appendChild(over);
+    over.getBoundingClientRect();
+    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
+    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      hero.dataset.theme = theme;
+      over.remove();
+    };
+    over.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+
+  /* The barcode is real: Code 128 for 7732804485, in bar and space widths. */
+  function barcode(svg){
+    var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
+    for (var i = 0; i < CODE.length; i++){
+      var width = +CODE.charAt(i);
+      if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="currentColor"/>';
+      x += width;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 26');
+    svg.innerHTML = bars;
+  }
+
+  /* Runs `frame(dt)` only while `el` is on screen and the tab is visible, so
+     an idle hero costs nothing once it's scrolled away. */
+  function loop(el, frame){
+    var raf = 0, last = 0, visible = true;
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(.05, (now - last)/1000 || .016);
+      last = now;
+      frame(dt);
+    }
+    function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        visible ? run() : halt();
+      }).observe(el);
+    }
+    run();
+  }
+
+  return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
+})();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
+</script>
+<script>
+/* -------------------------------------------------- One tray of diced beef
+   The spec on the screen is the ERP. The dicer under it, the slab of trim and
+   the tray on the scale are the floor, and the cable between them is broken.
+   Dice it unlinked and the slab comes out every size: lumps, slivers and
+   wedges across the table, a few on the floor, the tray half full of odd
+   pieces, the scale wrong, and the spec still says On spec. That mess stays.
+   SimpleGrid joins the cable and the dicer head wears the mark. Dice it again
+   and the same pieces go back through and land as identical cubes, in a
+   grid, sealed and labelled. */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('dice');
+  var head = $('dcHead'), rod = $('dcRod'), slab = $('dcSlab'), film = $('dcFilm');
+  var inTray = $('dcInTray'), onTable = $('dcOnTable'), cubeG = $('dcCubes');
+  var plugA = $('dcPlugA'), plugB = $('dcPlugB'), pill = $('dcPill'), pillText = $('dcPillText'), scaleEl = $('dcScale');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Dice it to see your operations', caption: 'The spec is your ERP, the cut is your floor, and nothing links them. Dice it, or tap the beef.' },
+    messing:  { btn: 'Dicing…', caption: 'Dicing it the usual way: the spec in one place, the floor in another.' },
+    mess:     { btn: 'Link the spec', caption: 'That’s your operations today: a big mess. Lumps, slivers and wedges everywhere, the tray half full, the scale wrong, and the spec still says On spec. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Linking…', caption: 'In goes the link, from the spec to the dicer. That’s SimpleGrid.' },
+    dosed:    { btn: 'Dice it again', caption: 'That’s SimpleGrid: the spec and the dicer, linked and live. Now dice it again.' },
+    cleaning: { btn: 'Dicing…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean tray: identical cubes in a neat grid, right on weight. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The spec: your ERP', 'What the system says you’re cutting.', 'The cut: your floor', 'What’s really coming off the table, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The beef diced with nothing linking it: lumps, slivers and wedges across the table and the floor, the tray half full of pieces that don’t match, the scale showing the wrong weight, and the screen still saying On spec.',
+    dosed: 'The same mess, now with the cable joined and the SimpleGrid mark on the dicer head.',
+    done: 'A tray of identical beef cubes in a neat three by three grid, sealed under clear film and labelled SimpleGrid. The scale reads 10.00 lb and the screen says Done, on spec.'
+  };
+
+  /* The mess: every size, and not one of them a cube. Each piece is drawn around the middle of its
+     base: its outline, its lit top, the fat through it, and a kind for the odd ones. */
+  var SHAPES = {
+    lump:    ['M-28 0C-31-10-27-24-14-31C-2-38 16-36 25-26C31-19 31-7 28 0Z', 'M-23-18C-20-27-8-33 4-33C15-33 24-27 25-20C12-15-8-14-23-18Z', 'M-18-8C-10-12-2-6 8-9C14-11 18-8 22-10'],
+    lump2:   ['M-21 0C-23-9-18-22-6-26C6-29 18-24 21-14C23-7 22-3 20 0Z', 'M-17-15C-14-22-5-26 4-25C13-24 19-19 20-14C8-11-6-11-17-15Z', 'M-12-6C-6-9 2-5 10-8'],
+    sliver:  ['M-27 0C-25-5-12-8 4-8C17-8 26-6 27-3C27-1 24 0 20 0Z', '', 'M-20-3.5C-8-5.5 8-5.5 22-4'],
+    sliver2: ['M-20 0C-18-4-6-7 8-6C15-5.5 20-4 20-2C19 0 16 0 12 0Z', '', 'M-14-3C-4-5 6-4.5 16-3'],
+    wedge:   ['M-18 0L-4-29C-2-32 2-32 4-29L18-3C19-1 17 0 15 0Z', 'M-18 0L-4-29C-2-32 1-31 2-28L-5 0Z', 'M-1-12L10-6'],
+    wedge2:  ['M-15 0L-12-20C-11-24-7-25-4-23L15-6C17-4 16 0 13 0Z', 'M-12-20C-11-24-7-25-4-23L15-6C6-8-4-12-12-20Z', 'M-8-7L4-10'],
+    tall:    ['M-13 0L-9-30C-8-33-4-33-2-30L13-4C14-1 12 0 10 0Z', 'M-9-30C-8-33-4-33-2-30L13-4C4-8-4-16-9-30Z', 'M-6-12C-2-14 2-12 6-14'],
+    chunk:   ['M-15 0L-16-16C-16-21-12-24-7-24L10-22C14-21 16-18 15-13L14 0Z', 'M-16-16C-16-21-12-24-7-24L10-22C14-21 16-18 15-14C6-12-6-13-16-16Z', 'M-10-6C-4-9 4-5 10-7'],
+    chunk2:  ['M-12 0L-13-14C-13-19-9-22-4-22L8-20C12-19 13-15 12-10L11 0Z', 'M-13-14C-13-19-9-22-4-22L8-20C12-19 13-16 12-12C4-10-6-11-13-14Z', 'M-8-5C-2-8 4-5 9-6'],
+    flat:    ['M-24 0C-25-6-22-12-14-13L16-14C22-14 25-9 24 0Z', 'M-22-9C-21-12-16-13-12-13L16-14C21-14 24-11 24-8C10-7-8-7-22-9Z', '', 'fatty'],
+    crumb:   ['M-6.5 0C-7-5-4-9 0-9C4-9 7-5 6.5 0Z', '', ''],
+    crumb2:  ['M-5 0L-6-5C-5-8-1-8 2-7.5L5-5L5 0Z', '', ''],
+    flap:    ['M-19 0C-20-5-15-9-6-10L12-10C17-10 20-7 19 0Z', '', 'M-14-4C-4-7 6-6 15-4', 'flap']
+  };
+  // Where each lands: [shape, x, y, turn, size, where]. Half fills the tray, and none of it matches.
+  var MESS = [
+    ['tall',    132, 360,   6, 1.25, 'tray'],
+    ['wedge',   198, 372,  16, 1.3,  'tray'],
+    ['crumb',   162, 381,   0, 1.4,  'tray'],
+    ['chunk2',  230, 386,   8, 1.3,  'tray'],
+    ['lump',    128, 402,  -6, 1.25, 'tray'],
+    ['sliver',  200, 405, -10, 1.3,  'tray'],
+    ['sliver2', 326, 360, -28, 1.5,  'table'],
+    ['sliver2',  46, 404,  24, 1.3,  'table'],
+    ['wedge2',  306, 410,  10, 1.3,  'table'],
+    ['chunk',    38, 438, -14, 1.3,  'table'],
+    ['flat',    270, 447,  -4, 1.25, 'table'],
+    ['crumb2',  100, 447,   0, 1.4,  'table'],
+    ['chunk',   266, 536, -20, 1.1,  'floor'],
+    ['lump2',    52, 540,  12, 1.3,  'floor'],
+    ['flap',    168, 544,  -6, 1.3,  'floor']
+  ];
+  // How each landing goes: how high it's thrown, how long it flies, how far it bounces, how much it turns.
+  var THROW = { tray: [16, 640, 3, 110], table: [62, 880, 9, 300], floor: [44, 1060, 12, 420] };
+  var GROUP = { floor: 0, table: 1, tray: 2 }, seen = [0, 0, 0];
+  var pieces = MESS.map(function(m, i){
+    var s = SHAPES[m[0]], g = document.createElementNS(NS, 'g'), t = THROW[m[5]], k = GROUP[m[5]];
+    g.setAttribute('class', 'dc-pc' + (s[3] ? ' ' + s[3] : ''));
+    g.innerHTML = '<path class="dc-pc-b" d="' + s[0] + '"/>' + (s[1] ? '<path class="dc-pc-t" d="' + s[1] + '"/>' : '') + (s[2] ? '<path class="dc-pc-f" d="' + s[2] + '"/>' : '');
+    (m[5] === 'tray' ? inTray : onTable).appendChild(g);
+    // going back, the floor goes first and the tray last
+    return { el: g, at: [m[1], m[2]], turn: m[3], size: m[4], lift: t[0], ms: t[1], hop: t[2], spin: (i % 2 ? -1 : 1)*t[3], back: k*120 + (seen[k]++)*35 };
+  });
+
+  // Nine cubes, all one size, three rows of three. The back row goes in first, so nearer ones sit in front.
+  var AT = [[135.2, 367.4], [187.2, 367.4], [239.2, 367.4], [122.2, 396], [174.2, 396], [226.2, 396], [109.2, 424.6], [161.2, 424.6], [213.2, 424.6]];
+  var FLECK = [['M-4-53q5-3 10-1t9-2', 'M-13-18q7 4 14 0t9 1'], ['M-1-49q5 2 10 0t8-3', 'M-6-14q6-4 13-1t8-1'], ['M-6-55q6-1 11 1t8-1', 'M-15-22q6 3 13 1t10 2']];
+  var cubes = AT.map(function(p, i){
+    var g = document.createElementNS(NS, 'g'), fl = FLECK[i % 3];
+    g.setAttribute('class', 'dc-cube');
+    g.innerHTML = '<path class="dc-cube-r" d="M23 0L34.5-25.3V-64.4L23-39.1Z"/><path class="dc-cube-f" d="M-23 0H23V-39.1H-23Z"/><path class="dc-cube-t" d="M-23-39.1H23L34.5-64.4H-11.5Z"/>' +
+      '<path class="dc-fat" d="' + fl[0] + '"/><path class="dc-fat" d="' + fl[1] + '"/>';
+    cubeG.appendChild(g);
+    return { el: g, at: p };
+  });
+  var BED = 292;                                      // the underside of the blade bed: what's cut drops from here
+  var SLAB = [176, 258];                              // the middle of the slab, where the mess goes back in
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], moves = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Every frame carries its own opacity, so nothing drops back to its hidden resting style mid-move.
+  function anim(el, frames, ms, delay, easing){
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'linear', fill: 'both' });
+    moves.push(a);
+    return a.finished.then(function(){}, function(){});
+  }
+  var f = function(v){ return Math.round(v*10)/10; };
+  var tf = function(x, y, r, s){ return 'translate(' + f(x) + 'px,' + f(y) + 'px) rotate(' + f(r || 0) + 'deg) scale(' + (s == null ? 1 : Math.round(s*1000)/1000) + ')'; };
+  // A throw from a to b: across at a steady pace, up and over by `lift`, turning by `spin` on the way to
+  // `turn`. `hop` bounces it once where it lands; size(u) and fade(t) shape it along the way.
+  function toss(a, b, o){
+    var frames = [], N = 16, land = o.hop ? .8 : 1;
+    for (var k = 0; k <= N; k++){
+      var t = k/N, u = Math.min(1, t/land), x = a[0] + (b[0] - a[0])*u, y, r;
+      if (t <= land){ y = a[1] + (b[1] - a[1])*u - 4*o.lift*u*(1 - u); r = o.turn - o.spin*(1 - u); }
+      else { var v = (t - land)/(1 - land); y = b[1] - 4*o.hop*v*(1 - v); r = o.turn + o.hop*.5*Math.sin(Math.PI*v); }
+      frames.push({ offset: t, transform: tf(x, y, r, o.size(u)), opacity: o.fade ? o.fade(t) : 1 });
+    }
+    return frames;
+  }
+  var PILL_R = 310;                                   // the pill's right edge stays put as its words change
+  function setPill(text){
+    pillText.textContent = text;
+    var w = Math.ceil(pillText.getComputedTextLength()) + 22;
+    pill.setAttribute('x', PILL_R - w);
+    pill.setAttribute('width', w);
+    pillText.setAttribute('x', PILL_R - w/2);
+  }
+  function setScale(text){ scaleEl.textContent = text; }
+  // The head and its rod move together; only the head tilts. Each key is [offset, down, tilt, easing].
+  function press(keys, ms, delay, easing){
+    anim(head, keys.map(function(k){ return { offset: k[0], transform: 'translateY(' + k[1] + 'px) rotate(' + k[2] + 'deg)', easing: k[3] || 'linear' }; }), ms, delay, easing);
+    return anim(rod, keys.map(function(k){ return { offset: k[0], transform: 'translateY(' + k[1] + 'px)', easing: k[3] || 'linear' }; }), ms, delay, easing);
+  }
+
+  // Dice it unlinked: the head comes down crooked, twice, and the slab comes out every size, everywhere.
+  function mess(){
+    press([[0, 0, 0, 'cubic-bezier(.55,0,.9,.4)'], [.22, 50, -6, 'ease-out'], [.3, 38, -3, 'ease-in'], [.38, 50, -8, 'cubic-bezier(.3,.6,.4,1)'], [1, 6, -5]], 1500);
+    anim(slab, [
+      { offset: 0, transform: 'translateY(0px) scale(1,1)', opacity: 1, easing: 'ease-in' },
+      { offset: .2, transform: 'translateY(3px) scale(1.04,.9)', opacity: 1, easing: 'ease-in' },
+      { offset: .36, transform: 'translateY(60px) scale(1.04,.9)', opacity: 1 },
+      { offset: 1, transform: 'translateY(60px) scale(1.04,.9)', opacity: 0 }
+    ], 1500);
+    var flights = pieces.map(function(p, i){
+      var from = [SLAB[0] + SG.clamp((p.at[0] - SLAB[0])*.35, -45, 45), BED + 6];
+      return anim(p.el, toss(from, p.at, { lift: p.lift, turn: p.turn, spin: p.spin, hop: p.hop,
+        size: function(u){ return p.size*(.45 + .55*Math.min(1, u*4)); }, fade: function(t){ return Math.min(1, t*25); } }), p.ms, 320 + i*40);
+    });
+    later(function(){ setScale('3.18 lb'); }, 1000);
+    later(function(){ setScale('5.07 lb'); }, 1180);
+    later(function(){ setScale('6.42 lb'); obj.classList.add('wrong'); }, 1450);
+    return Promise.all(flights);
+  }
+
+  // In goes the link: the plugs meet, the cable lights up, and the head straightens, wearing the mark.
+  function dose(){
+    obj.classList.add('linked');
+    setPill('Linked');
+    anim(plugA, [{ transform: 'translateY(0px)' }, { transform: 'translateY(8.5px)' }], 380, 0, 'cubic-bezier(.4,0,.2,1)');
+    anim(plugB, [{ transform: 'translateY(0px)' }, { transform: 'translateY(-8.5px)' }], 380, 0, 'cubic-bezier(.4,0,.2,1)');
+    press([[0, 6, -5], [.55, -5, 1.5], [1, 0, 0]], 640, 240, 'ease-in-out');
+    later(function(){ obj.classList.add('dosed'); }, 520);
+    return wait(1000);
+  }
+
+  // Dice it again, linked: every piece goes back up into the dicer, wherever it landed, the slab is
+  // whole again, and one straight cut drops nine identical cubes into the tray, row by row.
+  function clean(){
+    obj.classList.remove('wrong');
+    var back = pieces.map(function(p){
+      return anim(p.el, toss(p.at, [SLAB[0] + (p.at[0] - SLAB[0])*.25, SLAB[1]], { lift: 46, turn: p.turn + p.spin*.6, spin: p.spin*.6, hop: 0,
+        size: function(u){ return p.size*(1 - .7*Math.max(0, (u - .6)/.4)); }, fade: function(t){ return t > .82 ? (1 - t)/.18 : 1; } }), 640, p.back);
+    });
+    later(function(){ setScale('0.00 lb'); }, 420);
+    anim(slab, [
+      { offset: 0, transform: 'translateY(0px) scale(.55)', opacity: 0 },
+      { offset: .32, transform: 'translateY(0px) scale(.55)', opacity: 0, easing: 'cubic-bezier(.2,.9,.3,1.3)' },
+      { offset: .46, transform: 'translateY(0px) scale(1)', opacity: 1 },
+      { offset: .55, transform: 'translateY(0px) scale(1)', opacity: 1, easing: 'ease-in' },
+      { offset: .66, transform: 'translateY(60px) scale(1)', opacity: 1 },
+      { offset: 1, transform: 'translateY(60px) scale(1)', opacity: 0 }
+    ], 2000);
+    press([[0, 0, 0], [.5, 0, 0, 'cubic-bezier(.55,0,.9,.4)'], [.66, 50, 0], [.74, 50, 0, 'ease-in-out'], [1, 0, 0]], 2000);
+    var T0 = 1300, GAP = 115;
+    var drops = cubes.map(function(c, i){
+      var t = T0 + i*GAP;
+      later(function(){ setScale((10*(i + 1)/9).toFixed(2) + ' lb'); }, t + 340);
+      return anim(c.el, [
+        { offset: 0, transform: tf(c.at[0], BED), opacity: 1, easing: 'cubic-bezier(.5,0,.9,.55)' },
+        { offset: .72, transform: tf(c.at[0], c.at[1]), opacity: 1, easing: 'ease-out' },
+        { offset: .86, transform: tf(c.at[0], c.at[1] - 6), opacity: 1, easing: 'ease-in' },
+        { offset: 1, transform: tf(c.at[0], c.at[1]), opacity: 1 }
+      ], 470, t);
+    });
+    var T1 = T0 + 8*GAP + 500;
+    later(function(){ obj.classList.add('right'); setPill('Done, on spec'); }, T1 - 60);
+    var wrap = anim(film, [{ transform: 'translateX(-230px)', opacity: 1 }, { transform: 'translateX(0px)', opacity: 1 }], 620, T1, 'cubic-bezier(.3,.7,.2,1)');
+    return Promise.all(back.concat(drops, [wrap]));
+  }
+
+  // Start over: the first picture, at once.
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    moves = [];
+    obj.classList.remove('wrong', 'linked', 'dosed', 'right', 'is-done');
+    setPill('On spec');
+    setScale('0.00 lb');
+  }
+  function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
+  }
+
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.dice',
+    ops: {
+      mess: ['Your operations, today', 'Diced together, still not linked. Every piece a different size, and it stays that way.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same pieces, same mess. Now the spec and the dicer are linked.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the dicer does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  setPill('On spec');
+  // The pill is sized to its words, so size it again once the page's own face has loaded.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setPill(pillText.textContent); });
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Beef trim', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '28%', '<s>28%</s> 23%']
+  ],
+  notes: [
+    'Dicer 4 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Beef truck: 8,000 lb short',
+    'Which spec are we cutting???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QA hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 2 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Film PO is ready for your OK',
+    'QA: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+/* ------------------------------------ The gap: your ERP vs your floor.
+   The template sets window.STAGE = { erp, notes, tidy } before this runs:
+     erp    four rows of [label, what the ERP says, what's true once linked]
+     notes  twelve things that land on the floor, in the order below
+     tidy   four lines the floor reads once it's linked */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var data = window.STAGE;
+
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.8 14.7 1.3 9.2 1.3 3.8 1.3 2.5 2 1.5 3.3 1c.3-.1.7 0 .9.3z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>';
+  var TICK = '<i aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"/></svg></i>';
+  // kind, tilt, where it lands on a laptop, where it lands on a phone
+  var SLOTS = [
+    ['sticky', -6, 'left:1%;top:1%',   'left:0;top:0'],
+    ['call',    3, 'left:33%;top:0',   'right:0;top:8%'],
+    ['file',   -3, 'right:0;top:9%',   'left:3%;top:17%'],
+    ['pink',    5, 'right:5%;top:20%', 'right:0;top:24.5%'],
+    ['board',  -4, 'left:2%;top:20%',  'left:0;top:33.5%'],
+    ['mail',    3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag',    -7, 'left:0;top:40%',   'left:4%;top:50%'],
+    ['file',   -2, 'right:0;top:51%',  'right:0;top:57%'],
+    ['call',    4, 'left:6%;top:57%',  'left:0;top:65%'],
+    ['sticky', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink',    3, 'left:1%;top:78%',  'left:0;top:82%'],
+    ['board',  -3, 'right:7%;top:85%', 'right:4%;top:90.5%']
+  ];
+  var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
+  var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
+  var NOTE = {
+    calm: stageNote.textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
+  };
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  $('tidy').innerHTML = data.tidy.map(function(line, i){
+    return '<li style="--i:' + i + '">' + TICK + '<span>' + line + '</span></li>';
+  }).join('');
+
+  function renderErp(linked){
+    erpRows.innerHTML = data.erp.map(function(row, i){
+      return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
+    }).join('');
+    $('erpStatus').textContent = linked ? 'In sync' : 'All good';
+    $('erpFoot').textContent = linked ? 'Last updated: just now' : 'Last updated: yesterday, 6:00 PM';
+  }
+  function runMorning(){
+    var onPhone = window.matchMedia('(max-width:620px)').matches;
+    stage.dataset.state = 'chaos';
+    $('floorClock').textContent = '9:41 AM';
+    stageNote.textContent = NOTE.chaos;
+    pile.innerHTML = data.notes.map(function(text, i){
+      var slot = SLOTS[i];
+      var icon = slot[0] === 'call' ? PHONE : slot[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + slot[0] + '" style="--r:' + slot[1] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + slot[onPhone ? 3 : 2] + '">' + icon + '<span>' + text + '</span></div>';
+    }).join('');
+    later(function(){
+      stage.dataset.state = 'messy';
+      linkBtn.focus({ preventScroll: true });
+    }, data.notes.length*170 + 300);
+  }
+  // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
+  function linkUp(){
+    var link = $('stageLink').getBoundingClientRect();
+    var tx = link.left + link.width/2, ty = link.top + link.height/2;
+    [].slice.call(pile.children).forEach(function(el, i){
+      var r = el.getBoundingClientRect();
+      var rot = el.style.getPropertyValue('--r');
+      el.style.animation = 'none';
+      el.style.opacity = 1;
+      el.style.transform = 'rotate(' + rot + ')';
+      void el.offsetWidth;
+      el.style.transition = 'transform .5s cubic-bezier(.6,0,.9,.4) ' + (i*.025) + 's,opacity .5s ease-in ' + (i*.025) + 's';
+      el.style.transform = 'translate(' + (tx - r.left - r.width/2) + 'px,' + (ty - r.top - r.height/2) + 'px) scale(.12)';
+      el.style.opacity = 0;
+    });
+    linkBtn.disabled = true;
+    later(function(){
+      stage.dataset.state = 'linked';
+      linkBtn.disabled = false;
+      pile.innerHTML = '';
+      renderErp(true);
+      countUp();
+      stageNote.textContent = NOTE.linked;
+      stageReset.focus({ preventScroll: true });
+    }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  function resetStage(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage.dataset.state = 'calm';
+    pile.innerHTML = '';
+    $('floorClock').textContent = '6:58 AM';
+    stageNote.textContent = NOTE.calm;
+    renderErp(false);
+    chaosBtn.focus({ preventScroll: true });
+  }
+  chaosBtn.addEventListener('click', runMorning);
+  linkBtn.addEventListener('click', linkUp);
+  stageReset.addEventListener('click', resetStage);
+  renderErp(false);
+})();
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

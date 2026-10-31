@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Press the tortilla, Joe | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who makes tortillas for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/azteca-foods.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#69317D">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="https://simplegrid.ai/azteca-foods/joe/">
+<meta property="og:title" content="Joe, press the tortilla.">
+<meta property="og:description" content="SimpleGrid, explained to someone who makes tortillas for a living.">
+<meta property="og:image" content="https://simplegrid.ai/azteca-foods/og-joe.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A bowl of masa flour, a bowl of water and a tortilla press, beside the words: Joe, you make tortillas for a living.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Joe, press the tortilla.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who makes tortillas for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/azteca-foods/og-joe.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+/* The site's self-hosted faces, so nothing here calls out to a third party. */
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('/assets/fonts/merriweather-latin.woff2') format('woff2')}
+@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/albert-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
+
+/* Each template sets its company's palette on :root. These read it:
+   --brand --brand-press --brand-deep   their main color, darker, darkest
+   --accent --accent-soft --accent-edge  the color the hero ends on
+   --on-brand --on-brand-soft --on-accent --on-accent-soft   text on those
+   --tint --pale --ink --alert            light fill, page, type, the "No link" red
+   --marker                               the highlighter in the ERP panel
+   and optionally --display, --dw (its weight; a single-weight face must not be faux-bolded) and --h2-hi. */
+:root{
+  --ink-70:rgba(26,26,26,.74);
+  --ink-55:rgba(26,26,26,.62);
+  --display:'Merriweather',Georgia,'Times New Roman',serif;
+  --body:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Consolas,'SF Mono',monospace;
+  --hand:'Bradley Hand','Noteworthy','Segoe Print','Ink Free','Comic Sans MS',cursive;
+  --dw:900;
+  --gutter:clamp(20px,5vw,56px);
+  --section:clamp(64px,9vw,128px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;font-synthesis-weight:none}
+body{margin:0;background:var(--pale);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img,svg,canvas{display:block}
+:focus-visible{outline:3px solid var(--focus,var(--brand));outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
+h2{font:var(--dw) clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
+h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
+
+/* ------------------------------------------------------------------ Hero */
+.hero,.hero-wipe{
+  --field:var(--brand);--on:var(--on-brand);--on-soft:var(--on-brand-soft);--hi:var(--accent);
+  --btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  background:var(--field);color:var(--on);
+}
+/* Where the hero ends up once the link is made. */
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:var(--accent);--on:var(--on-accent);--on-soft:var(--on-accent-soft);--hi:var(--brand-press);
+  --btn-bg:var(--brand);--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep);--focus:var(--brand-press);
+}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-inner{padding:0 var(--gutter) clamp(84px,9vw,124px);max-width:calc(1240px + 2*var(--gutter));margin-inline:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(16px,2vw,24px) 0}
+.logo{display:block;flex:none;width:clamp(138px,12vw,168px);color:inherit;border-radius:4px}
+.logo svg{width:100%;height:auto;overflow:visible}
+.bar-tag{font-size:14.5px;line-height:1.3;text-align:right;color:var(--on-soft)}
+.bar-tag span{display:inline-block}
+.bar-right{display:flex;align-items:center;gap:clamp(12px,1.6vw,22px)}
+.bar-cta{flex:none;padding:9px 15px;border-radius:9px;box-shadow:inset 0 0 0 2px currentColor;color:var(--on);font:800 15px/1 var(--body);text-decoration:none;white-space:nowrap}
+.bar-cta:hover{background:var(--on);color:var(--field);box-shadow:none}
+
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"copy art" "ctrl art";grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4vw,60px);margin-top:clamp(10px,2.4vh,30px);
+}
+.hero-copy{grid-area:copy}
+.hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+/* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
+.hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
+h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
+h1 span{display:block;color:var(--hi)}
+.hero-sub{margin-top:clamp(16px,2vw,24px);max-width:50ch;font-size:clamp(17px,.4vw + 15px,20px);color:var(--on-soft)}
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.hero-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
+
+/* The primary button presses in like something you'd find on a line. */
+.go-btn{
+  position:relative;appearance:none;border:0;cursor:pointer;
+  padding:16px 28px 19px;border-radius:12px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font:var(--dw) 18px/1.2 var(--display);text-decoration:none;display:inline-block;
+  box-shadow:0 5px 0 var(--btn-edge);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.go-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
+.go-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
+.go-btn:disabled{cursor:default;opacity:.7;transform:none;box-shadow:0 5px 0 var(--btn-edge)}
+.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* Labels beside the hero object. Each template places them. */
+.callouts{position:relative;width:clamp(150px,14.5vw,196px);flex:none}
+.callout{position:absolute;left:0;right:0}
+.callout-gap{position:absolute;left:0;padding:6px 12px;border-radius:999px;background:var(--alert);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:clamp(14px,1.6vw,24px);border-top:2px dashed var(--on-soft)}
+.callout-gap[hidden]{display:none}
+.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
+.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
+
+.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+
+@media (max-width:980px){
+  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
+  .hero-copy{display:contents}
+  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
+  .hero-art{order:2;margin-top:20px}
+  .hero-ctrl{order:3;margin-top:24px}
+  .hero-sub{order:4;margin-top:6px}
+  .hero-caption{min-height:4.6em;font-size:16.5px}
+  .bar{gap:10px}
+  .bar-tag{font-size:12px}
+  .logo{width:124px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
+  .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
+  .callout p{font-size:13.5px;line-height:1.36}
+  .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
+  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .bar-tag{display:none}
+}
+@media (max-width:350px){
+  .callout h3{font-size:13.5px}
+  .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+
+/* Azteca’s colors, read from their own stylesheet (aztecafoods.com, css/style.css): the purple of their header,
+   footer and headings (#69317D), the marigold of their nav links (#FFB024), their teal (#00928B), the red of
+   their form’s required marks for the alert (#C2292D), on a white page. Their headings are a brush script
+   (Tomarik Brush, from Adobe Fonts) that isn’t ours to self-host, so ours stay Albert Sans. */
+:root{
+  --brand:#69317D;--brand-press:#55276A;--brand-deep:#3A1A49;
+  --accent:#FFB024;--accent-soft:#FFE9BF;--accent-edge:#C98400;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#2B1433;--on-accent-soft:rgba(43,20,51,.82);
+  --tint:#F4EEF6;--pale:#FFFFFF;--ink:#2B1433;--alert:#C2292D;--marker:#FFE6B3;--h2-hi:#69317D;
+  --teal:#00928B;--teal-deep:#00615C;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
+}
+
+/* ------------------------------------------------------- The tortilla press */
+/* Seen from the front and a little above: the masa flour is the ERP, the water is the floor. */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.press{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .press,.hero[data-story=done] .press{cursor:default}
+.press svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* Start over puts it all back at once, with nothing sliding home. */
+.press.snap,.press.snap *{transition:none!important}
+/* Everything that moves is placed in the drawing's own units. */
+.az-mv{transform-box:view-box;transform-origin:0 0}
+.az-shadow{fill:rgba(20,6,26,.3)}
+/* Cast iron: the base, the lid that swings open on its hinge at the back, the lever at the front. */
+.az-iron{fill:#2C2832}
+.az-iron-face{fill:#4A4552}
+.az-iron-plate{fill:#57525F}
+.az-iron-lid{fill:#45404D}
+.az-iron-rib{fill:none;stroke:#5E5869;stroke-width:7;stroke-linecap:round}
+.az-iron-boss{fill:#77717F}
+.az-iron-boss-top{fill:#948E9E}
+.az-iron-hi{fill:none;stroke:#A39DAE;stroke-width:2.5;stroke-linecap:round}
+.az-grip{fill:var(--teal-deep)}
+.az-grip-hi{fill:none;stroke:rgba(255,255,255,.35);stroke-width:3;stroke-linecap:round}
+.az-lid-top{transform-box:view-box;transform-origin:180px 336px;transform:scaleY(0)}
+.az-lid-in{transform-box:view-box;transform-origin:180px 336px}
+.az-lever-dn{transform-box:view-box;transform-origin:180px 452px}
+.az-lever-up{transform-box:view-box;transform-origin:180px 452px;transform:scaleY(0)}
+/* The ERP: masa flour, heaped in a clay bowl. */
+.az-clay{fill:#B85A33}
+.az-clay-in{fill:#8A3C1E}
+.az-clay-rim{fill:none;stroke:#DB8A60;stroke-width:3.5}
+.az-masa{fill:#F1DEA3}
+.az-masa-hi{fill:#FBF0CB}
+.az-masa-lo{fill:#DCC17F}
+.az-dust{fill:#F6E9C2}
+/* The floor: water, in an enamel bowl. */
+.az-enamel{fill:#F4F3EF}
+.az-enamel-in{fill:#E2E1DC}
+.az-enamel-rim{fill:none;stroke:#2F6FA8;stroke-width:4}
+.az-water{fill:#5DAFE0}
+.az-water-hi{fill:#C3E5F8}
+.az-ripple{fill:none;stroke:rgba(255,255,255,.55);stroke-width:2}
+.az-emptied{opacity:0}
+/* On the press: the heap that gets dumped, the mess it presses into, the ball, the tortilla. */
+.az-dough{opacity:0}
+.az-heap-flour{fill:#F1DEA3}
+.az-heap-wet{fill:#D9BE72}
+.az-splash{fill:#6DB9E6;opacity:.85}
+.az-wetg{opacity:0}
+.az-pop{transform-box:fill-box;transform-origin:center}
+.az-puffc{fill:#FBF3D9;opacity:0;transform-box:fill-box;transform-origin:center}
+.az-drop{fill:#6DB9E6;opacity:0}
+.az-raw{fill:#EED9A0;stroke:#C9A964;stroke-width:2;stroke-linejoin:round}
+.az-crack{fill:none;stroke:#9C7A3C;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.az-gap{fill:none;stroke:#57525F;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round}
+.az-dry{fill:#FFF9E8;opacity:.9}
+.az-wet{fill:#CDAE63;opacity:.85}
+.az-puddle{fill:#7DBFE4;opacity:.75}
+.az-crumb{fill:#EED9A0;stroke:#C9A964;stroke-width:1.5}
+.az-ball-c{fill:url(#azBallG)}
+.az-ball-crack{fill:none;stroke:#B08E4A;stroke-width:2.4;stroke-linecap:round}
+.az-ball-hi{fill:#fff;opacity:.55}
+.az-tort{fill:#F3E2B0}
+.az-tort-edge{fill:none;stroke:#E2C98A;stroke-width:3}
+.az-tort-hi{fill:#FBF1D4;opacity:.7}
+.az-spot{fill:#A8692B;opacity:0}
+.press.toasted .az-spot{opacity:.8;transition:opacity .5s}
+.press.toasted .az-spot:nth-child(2n){transition-delay:.12s}
+.press.toasted .az-spot:nth-child(3n){transition-delay:.24s}
+/* SimpleGrid does the kneading: a glove in Azteca’s teal, wearing the mark. */
+.az-glove{opacity:0}
+.az-glove-c{fill:var(--teal);stroke:var(--teal-deep);stroke-width:2.5;stroke-linejoin:round}
+.az-glove-cuff{fill:var(--teal-deep)}
+.az-glove-line{fill:none;stroke:var(--teal-deep);stroke-width:2.5;stroke-linecap:round}
+.az-badge{--sg-bg:#fff;--sg-ink:var(--brand)}
+.press.dosed .az-badge{opacity:1;transform:none}
+/* Where it ends up: the comal, and the label on its handle. */
+.az-comal{opacity:0}
+.az-comal-face{fill:#3A3541}
+.az-comal-hi{fill:none;stroke:#8F899A;stroke-width:2.5}
+.az-steam{fill:none;stroke:rgba(255,255,255,.7);stroke-width:4;stroke-linecap:round;opacity:0}
+.press.toasted .az-steam{animation:az-steam 2.6s ease-in-out infinite}
+@keyframes az-steam{0%{opacity:0;transform:translateY(6px)}30%{opacity:.9}100%{opacity:0;transform:translateY(-26px)}}
+.az-tag{--sg-bg:var(--brand);--sg-ink:#fff}
+.press.is-done .az-tag{opacity:1;transform:none}
+.press:not(.in-view) *{animation-play-state:paused!important}
+.callout-top{top:2%}
+.callout-gap{top:calc(24% - 15px)}
+.callout-bottom{top:31%}
+.callout-top h3 i{background:#F1DEA3}
+.callout-bottom h3 i{background:#5DAFE0}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.4)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+/* ------------------------------------- The gap between the ERP and the floor */
+.gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
+.stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
+.panel-erp h3,.panel-floor h3{font:var(--dw) clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
+
+/* The ERP is deliberately calm. That's the joke, and the problem. */
+.panel-erp{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
+.erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
+.stage[data-state=chaos] .erp-status{animation:smug .8s ease-in-out 3}
+@keyframes smug{50%{transform:scale(1.09)}}
+.erp-rows{margin-top:clamp(16px,2vw,28px);display:grid;gap:clamp(12px,1.5vw,21px)}
+.erp-rows li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:clamp(15.5px,.3vw + 14px,18px);line-height:1.3}
+.erp-rows span{flex:none;color:var(--ink-55)}
+.erp-rows b{font-weight:700;text-align:right}
+.erp-rows s{font-weight:400;color:var(--ink-55)}
+.erp-rows li.hit b{
+  background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 100%/0 100%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
+  animation:marker .42s ease-out var(--d,0s) forwards;
+}
+@keyframes marker{to{background-size:100% 100%}}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--alert);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
+.erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
+
+/* The broken pipe between them. Once linked, it joins up and flows. */
+.link{position:relative;display:grid;place-items:center}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:color-mix(in srgb,var(--brand) 26%,transparent);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub-a{left:0}
+.stub-b{right:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:color-mix(in srgb,var(--brand) 55%,transparent);opacity:0}
+.stub-a::after{right:1px}
+.stub-b::after{left:1px}
+.stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
+.stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
+.link-no{position:relative;z-index:2;background:var(--alert);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--brand-press);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.link-yes svg{width:56%;height:56%}
+.stage[data-state=linked] .link-no{display:none}
+.stage[data-state=linked] .link-yes{display:grid}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+@keyframes pipe{to{background-position:28px 0}}
+
+/* The floor: where the morning actually happens. */
+.panel-floor{
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
+  display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
+}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
+.floor-calm{flex:1;display:grid;place-items:center}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:var(--dw) clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.dome{
+  width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
+  box-shadow:0 0 0 9px var(--accent),0 8px 0 9px var(--accent-edge),0 18px 26px 9px rgba(0,0,0,.55);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--accent),0 6px 0 9px var(--accent-edge),0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--accent),0 1px 0 9px var(--accent-edge),0 5px 9px 9px rgba(0,0,0,.55)}
+.pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
+.stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
+.stage:not([data-state=calm]) .floor-calm{display:none}
+.n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
+@keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
+.n-sticky{background:#FFD84D;color:#2B2000}
+.n-pink{background:#FF9FB4;color:#3D0012}
+.n-board{background:#fff;color:#C4163F}
+.n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
+.n-file{background:#fff;color:#1A1A1A}
+.n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
+.n-mail{background:#E9EEF6;color:#1A1A1A}
+.n-call{background:#2F6FE0;color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:#C4163F;color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n svg{flex:none;width:15px;height:15px}
+.n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
+@keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
+.stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
+.tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
+.tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.tidy i svg{width:14px;height:14px}
+@keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
+.stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
+#linkBtn,#stageReset,#stageMeet{display:none}
+.stage[data-state=messy] #linkBtn{display:inline-block}
+.stage[data-state=linked] #stageReset,.stage[data-state=linked] #stageMeet{display:inline-block}
+.stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
+.fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
+
+@media (max-width:980px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
+}
+@media (max-width:620px){
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
+}
+@media (max-width:350px){
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
+}
+/* ------------------------------------------------- The back of the pack */
+.back{background:var(--brand);color:var(--on-brand);padding:var(--section) 0;--focus:var(--accent)}
+.back h2{color:var(--on-brand)}
+.back h2 span{color:var(--accent)}
+.label{
+  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--brand-press);
+  border-radius:16px;padding:clamp(18px,3vw,40px);
+  display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:clamp(28px,4vw,60px);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
+}
+/* The panel follows the FDA layout: heavy rules, heavy title, nothing cute about the structure. */
+.facts{border:2.5px solid var(--ink);padding:8px 11px 10px;font-family:'Helvetica Neue',Helvetica,var(--body)}
+.facts-title{font:900 clamp(37px,3.3vw + 20px,50px)/1 'Helvetica Neue',Helvetica,var(--body);letter-spacing:-.022em;white-space:nowrap}
+.facts-serving{margin-top:5px;padding-bottom:6px;font-size:15.5px;line-height:1.28}
+.facts-serving strong{font-weight:800}
+.rule-10{height:10px;background:var(--ink)}
+.rule-5{height:5px;background:var(--ink)}
+.facts-big{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:4px 0 3px;font-weight:900}
+.facts-big span{font-size:24px;line-height:1.05;letter-spacing:-.012em}
+.facts-big b{font-size:clamp(30px,2.4vw + 20px,37px);line-height:1;font-weight:900;white-space:nowrap;letter-spacing:-.02em}
+.facts table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.25}
+.facts th,.facts td{padding:5px 0;border-top:1px solid rgba(26,26,26,.55);text-align:right;font-weight:400;white-space:nowrap}
+.facts thead th{border-top:0;padding:3px 0;font-size:13.5px;font-weight:800}
+.facts th:first-child{text-align:left;font-weight:800;white-space:normal}
+.facts thead th:first-child{font-weight:400}
+.facts td{width:68px;padding-left:8px}
+.facts td:last-child{font-weight:900}
+.facts-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0 6px;font-weight:800;font-size:16px;line-height:1.2}
+.facts-saved b{font-weight:900;white-space:nowrap}
+.facts-foot{padding-top:6px;font-size:13px;line-height:1.3}
+.facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
+.margin-note{color:var(--brand-press);font:700 20px/1.26 var(--hand);transform:rotate(-1deg);max-width:27em;position:relative;padding-left:40px}
+.margin-note svg{position:absolute;left:0;top:-4px;width:32px;height:38px}
+
+.label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
+.label-copy > * + *{margin-top:18px}
+.label-copy strong{font-weight:800}
+.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;margin-top:auto;padding-top:22px}
+.barcode{display:block;text-decoration:none;color:var(--ink);flex:none;border-radius:4px}
+.barcode svg{width:190px;height:56px}
+.barcode span{display:block;margin-top:3px;text-align:center;font:500 14.5px/1 var(--body);letter-spacing:.11em}
+.inkjet{font:600 15.5px/1.42 var(--mono);letter-spacing:.05em;color:#222;max-width:27ch}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .inkjet{
+    color:transparent;
+    background:radial-gradient(circle at center,#000 54%,transparent 60%) 0 0/2.1px 2.1px;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+
+@media (max-width:980px){
+  .label{grid-template-columns:minmax(0,1fr)}
+  .facts{max-width:430px}
+}
+@media (max-width:620px){
+  .lockup{align-items:center}
+  .facts-title{font-size:min(46px,calc((100vw - 104px)/7.95))}
+  .facts-big span{font-size:20px}
+  .facts-saved{flex-direction:column;gap:1px}
+}
+/* ------------------------------------------------------------- The ask */
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
+
+/* -------------------------------------------------------------- Footer */
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
+.foot .logo{width:150px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
+
+@media (max-width:980px){
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
+}
+@media (max-width:620px){
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Pressed to order for Joe Klomes,</span> <span>Azteca Foods. Batch size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Joe, you make tortillas for a living. <span>So here’s our software, explained as one tortilla.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="press hero-obj" id="press" role="img" aria-label="A bowl of masa flour, a bowl of water below it, and an open tortilla press underneath. Nothing mixed.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <radialGradient id="azBallG" cx="40%" cy="34%" r="70%"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".55" stop-color="#EED79B"/><stop offset="1" stop-color="#CFAF68"/></radialGradient>
+            </defs>
+            <!-- where it ends up: the comal, waiting off to the side until there’s something to toast -->
+            <g class="az-comal az-mv" id="azComal">
+              <ellipse class="az-shadow" cx="172" cy="130" rx="110" ry="40"/>
+              <path class="az-iron" d="M262 102L340 90Q350 89 350 98L350 104Q350 112 341 113L262 122Z"/>
+              <path class="az-iron" d="M60 112A106 48 0 0 0 272 112L272 120A106 48 0 0 1 60 120Z"/>
+              <ellipse class="az-comal-face" cx="166" cy="112" rx="106" ry="48"/>
+              <path class="az-comal-hi" d="M60 112A106 48 0 0 1 272 112"/>
+              <path class="az-steam" d="M140 86C132 72 148 64 140 50"/>
+              <path class="az-steam" d="M192 84C184 70 200 62 192 48" style="animation-delay:-1.3s"/>
+              <!-- once it comes clean, the comal’s handle says whose tortilla it is -->
+              <g transform="translate(306 103) rotate(-8) scale(.42)"><g class="az-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            </g>
+            <!-- the press’s lid, swung open on its hinge (drawn behind the base) -->
+            <g class="az-lid-in" id="azLidIn">
+              <path class="az-iron" d="M72 284A108 50 0 0 0 288 284L288 292A108 50 0 0 1 72 292Z"/>
+              <ellipse class="az-iron-plate" cx="180" cy="284" rx="108" ry="50"/>
+              <ellipse cx="152" cy="270" rx="44" ry="13" fill="#fff" opacity=".07"/>
+              <path class="az-iron-hi" d="M72 284A108 50 0 0 1 288 284"/>
+            </g>
+            <!-- the press’s base -->
+            <ellipse class="az-shadow" cx="187" cy="420" rx="124" ry="56"/>
+            <rect class="az-iron" x="110" y="444" width="16" height="22" rx="3"/>
+            <rect class="az-iron" x="234" y="444" width="16" height="22" rx="3"/>
+            <path class="az-iron" d="M72 390A108 54 0 0 0 288 390L288 408A108 54 0 0 1 72 408Z"/>
+            <ellipse class="az-iron-face" cx="180" cy="390" rx="108" ry="54"/>
+            <ellipse class="az-iron-plate" cx="180" cy="390" rx="96" ry="47"/>
+            <path class="az-iron-hi" d="M72 390A108 54 0 0 1 288 390"/>
+            <!-- the hinge at the back -->
+            <rect class="az-iron" x="146" y="327" width="18" height="16" rx="3"/>
+            <rect class="az-iron" x="196" y="327" width="18" height="16" rx="3"/>
+            <!-- on the press: the heap that gets dumped, the mess it presses into, the ball, the tortilla -->
+            <g class="az-dough" id="azHeap" style="transform-box:fill-box;transform-origin:50% 100%">
+              <path class="az-heap-flour" d="M118 394Q128 346 180 338Q232 346 242 394Q180 408 118 394Z"/>
+              <path class="az-heap-wet" d="M150 360Q170 346 196 352Q214 362 204 376Q184 386 162 380Q146 372 150 360Z"/>
+            </g>
+            <g class="az-dough" id="azMess" style="transform-box:view-box;transform-origin:180px 392px"></g>
+            <g class="az-dough az-pop" id="azBall">
+              <g id="azBallIn" style="transform-box:view-box;transform-origin:180px 406px">
+                <circle class="az-ball-c" cx="180" cy="372" r="36"/>
+                <g id="azBallCracks" style="transform-box:view-box;transform-origin:180px 372px">
+                  <path class="az-ball-crack" d="M152 356L162 362L158 372"/>
+                  <path class="az-ball-crack" d="M200 348L194 358L202 364"/>
+                  <path class="az-ball-crack" d="M206 382L196 386L198 396"/>
+                  <path class="az-ball-crack" d="M166 392L174 386"/>
+                </g>
+                <ellipse class="az-ball-hi" id="azBallHi" cx="168" cy="356" rx="12" ry="7" transform="rotate(-30 168 356)" opacity="0"/>
+              </g>
+            </g>
+            <g class="az-dough az-pop" id="azTort">
+              <ellipse class="az-tort" cx="180" cy="390" rx="84" ry="42"/>
+              <ellipse class="az-tort-edge" cx="180" cy="390" rx="80" ry="39.5"/>
+              <ellipse class="az-tort-hi" cx="156" cy="377" rx="22" ry="6"/>
+              <g>
+                <ellipse class="az-spot" cx="146" cy="392" rx="9" ry="4"/>
+                <ellipse class="az-spot" cx="200" cy="376" rx="7" ry="3.5"/>
+                <ellipse class="az-spot" cx="214" cy="402" rx="10" ry="4.5"/>
+                <ellipse class="az-spot" cx="172" cy="408" rx="6" ry="3"/>
+                <ellipse class="az-spot" cx="236" cy="384" rx="5" ry="2.5"/>
+                <ellipse class="az-spot" cx="128" cy="376" rx="5" ry="2.5"/>
+                <ellipse class="az-spot" cx="182" cy="370" rx="4.5" ry="2"/>
+              </g>
+            </g>
+            <!-- the ERP: masa flour, heaped in a clay bowl -->
+            <g id="azFlour" style="transform-box:fill-box;transform-origin:center">
+              <ellipse class="az-shadow" cx="185" cy="127" rx="66" ry="8"/>
+              <ellipse class="az-clay-in" cx="180" cy="68" rx="82" ry="26"/>
+              <path class="az-dust az-emptied" id="azFlourDust" d="M136 74Q150 64 172 68Q190 62 210 68Q226 72 220 78Q196 84 170 82Q140 82 136 74Z"/>
+              <path class="az-clay-rim" d="M98 68A82 26 0 0 1 262 68"/>
+              <g id="azMound">
+                <path class="az-masa" d="M104 72Q112 50 128 40Q134 28 152 24Q164 13 182 15Q200 13 210 24Q230 28 236 42Q252 52 256 72Q180 88 104 72Z"/>
+                <path class="az-masa-hi" d="M124 56Q132 38 150 30Q160 22 176 21Q156 32 146 44Q138 54 138 64Z"/>
+                <path class="az-masa-lo" d="M214 30Q232 34 238 46Q250 56 252 70Q236 75 222 73Q228 54 214 30Z"/>
+              </g>
+              <path class="az-clay" d="M98 68A82 26 0 0 0 262 68Q258 124 180 128Q102 124 98 68Z"/>
+              <path class="az-clay-rim" d="M98 68A82 26 0 0 0 262 68"/>
+            </g>
+            <!-- the floor: water, in an enamel bowl -->
+            <g id="azWater" style="transform-box:fill-box;transform-origin:center">
+              <ellipse class="az-shadow" cx="184" cy="212" rx="60" ry="7"/>
+              <ellipse class="az-enamel-in" cx="180" cy="172" rx="74" ry="22"/>
+              <g id="azWaterIn">
+                <ellipse class="az-water" cx="180" cy="174" rx="68" ry="18"/>
+                <ellipse class="az-water-hi" cx="156" cy="169" rx="22" ry="5"/>
+                <ellipse class="az-ripple" cx="198" cy="176" rx="22" ry="6"/>
+              </g>
+              <path class="az-enamel" d="M106 172A74 22 0 0 0 254 172Q252 212 180 214Q108 212 106 172Z"/>
+              <ellipse class="az-enamel-rim" cx="180" cy="172" rx="74" ry="22"/>
+            </g>
+            <!-- what gets poured: flour dust, splashes (the script throws them) -->
+            <g id="azFly"></g>
+            <!-- the press’s lid, shut (it swings on the hinge at the back) -->
+            <g class="az-lid-top" id="azLidTop">
+              <path class="az-iron" d="M72 376A108 54 0 0 0 288 376L288 390A108 54 0 0 1 72 390Z"/>
+              <ellipse class="az-iron-lid" cx="180" cy="376" rx="108" ry="54"/>
+              <ellipse class="az-iron-rib" cx="180" cy="376" rx="70" ry="35"/>
+              <path class="az-iron-rib" d="M180 376L104 338M180 376L256 338M180 376L104 414M180 376L256 414"/>
+              <ellipse class="az-iron-boss" cx="180" cy="380" rx="20" ry="10"/>
+              <ellipse class="az-iron-boss-top" cx="180" cy="375" rx="20" ry="10"/>
+              <path class="az-iron-hi" d="M72 376A108 54 0 0 1 288 376"/>
+            </g>
+            <!-- the lever at the front: resting, and pulled over to press -->
+            <rect class="az-iron" x="170" y="440" width="20" height="22" rx="4"/>
+            <g class="az-lever-dn" id="azLeverDn">
+              <rect class="az-iron" x="173" y="452" width="14" height="48"/>
+              <rect class="az-grip" x="170" y="490" width="20" height="42" rx="10"/>
+              <path class="az-grip-hi" d="M175 498V524"/>
+            </g>
+            <g class="az-lever-up" id="azLeverUp">
+              <rect class="az-iron" x="173" y="350" width="14" height="102"/>
+              <rect class="az-grip" x="170" y="316" width="20" height="44" rx="10"/>
+              <path class="az-grip-hi" d="M175 324V350"/>
+            </g>
+            <circle cx="180" cy="452" r="5" fill="#7A7484"/>
+            <!-- SimpleGrid does the kneading: a glove wearing the mark -->
+            <g class="az-glove az-mv" id="azGlove">
+              <ellipse class="az-glove-c" cx="31" cy="4" rx="10" ry="21" transform="rotate(-28 31 4)"/>
+              <path class="az-glove-c" d="M-27 -36L-27 18Q-27 48 0 48Q27 48 27 18L27 -36Z"/>
+              <path class="az-glove-line" d="M-10 28V44M3 30V47M15 26V42"/>
+              <rect class="az-glove-cuff" x="-31" y="-56" width="62" height="22" rx="6"/>
+              <g transform="translate(0 -8) scale(.68)"><g class="az-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The masa flour: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The water: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Press it to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The masa flour is your ERP, the water is your floor, and nothing works them together. Press it, or tap the press to try it yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<section class="gap" id="gap">
+  <div class="wrap">
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
+
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
+        </div>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
+      </div>
+
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg></i>SimpleGrid</span>
+      </div>
+
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
+        </div>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
+        <div class="floor-do">
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
+  </div>
+</section>
+
+<section class="back">
+  <div class="wrap">
+    <h2>The front of a package can say what it likes. <span>The back has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <div class="facts">
+          <!-- Same numbers as report.html. Change both. -->
+          <h3 class="facts-title">Operations Facts</h3>
+          <p class="facts-serving"><strong>Serving size:</strong> 1 deployment<br>6 plants, 1.2 million sq ft</p>
+          <div class="rule-10"></div>
+          <div class="facts-big"><span>Excel files<br>to run planning</span><b>550 → 1</b></div>
+          <div class="rule-5"></div>
+          <table>
+            <thead><tr><th scope="col">Amount per serving</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Weekly planning cycle</th><td>40 hrs</td><td>2 hrs</td></tr>
+              <tr><th scope="row">On-time delivery</th><td>70%</td><td>90%</td></tr>
+              <tr><th scope="row">Material wastage</th><td>1.5%</td><td>0.1%</td></tr>
+              <tr><th scope="row">Gross margin</th><td>19%</td><td>24%</td></tr>
+            </tbody>
+          </table>
+          <div class="rule-10"></div>
+          <div class="facts-saved"><span>Saved on wastage alone</span><b>About $200,000 a year</b></div>
+          <div class="rule-5"></div>
+          <p class="facts-foot">Not a significant source of slides, rip-and-replace or GL migration.</p>
+        </div>
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not food: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Ingredients:</strong> Your orders, your BOMs, your people’s own words, what actually happened on the floor. Contains 2% or less of us telling you how to run your plant.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <p><strong>May contain:</strong> Traces of Excel until go-live.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">BEST BY: BEFORE YOUR NEXT ERP RENEWAL<br>LOT 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>Joe, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at your plant in Chicago. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Chicago.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">P.S. Art Velasquez and nine other businessmen from the Azteca Lions Club in Pilsen. That’s a Chicago story. I’d love to hear the rest.</p>
+    </div>
+    <div class="faces">
+      <figure class="polaroid polaroid-a">
+        <img src="/assets/letters/mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <figcaption>Mukund Agarwal</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-b">
+        <img src="/assets/letters/aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <figcaption>Aditi Puri Batra</figcaption>
+      </figure>
+      <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
+      <p class="who"><strong>Advisor.</strong> Former Country Head of QuickBooks/Intuit India. Ex-Amazon and Google in the US.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+    <p>Everything we know about Azteca Foods comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll press a fresh one. The rest of the pantry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+/* Shared by every hero: small helpers, the wipe into the end-state colors,
+   and the barcode on the back of the label. */
+var SG = (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+
+  /* The end state spreads out from the hero object and takes the whole hero
+     with it. The clone carries the other colorway, so the type stays legible
+     as the edge passes. `skip` hides whatever shouldn't be painted twice. */
+  function wipeTo(hero, from, theme, skip){
+    if (reduce){ hero.dataset.theme = theme; return; }
+    var r = from.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
+    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
+    var over = document.createElement('div');
+    over.className = 'hero-wipe';
+    over.dataset.theme = theme;
+    over.setAttribute('aria-hidden', 'true');
+    over.inert = true;
+    var inner = hero.querySelector('.hero-inner').cloneNode(true);
+    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+    if (skip) inner.querySelectorAll(skip).forEach(function(el){ el.style.visibility = 'hidden'; });
+    over.appendChild(inner);
+    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
+    hero.appendChild(over);
+    over.getBoundingClientRect();
+    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
+    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      hero.dataset.theme = theme;
+      over.remove();
+    };
+    over.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+
+  /* The barcode is real: Code 128 for 7732804485, in bar and space widths. */
+  function barcode(svg){
+    var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
+    for (var i = 0; i < CODE.length; i++){
+      var width = +CODE.charAt(i);
+      if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="currentColor"/>';
+      x += width;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 26');
+    svg.innerHTML = bars;
+  }
+
+  /* Runs `frame(dt)` only while `el` is on screen and the tab is visible, so
+     an idle hero costs nothing once it's scrolled away. */
+  function loop(el, frame){
+    var raf = 0, last = 0, visible = true;
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(.05, (now - last)/1000 || .016);
+      last = now;
+      frame(dt);
+    }
+    function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        visible ? run() : halt();
+      }).observe(el);
+    }
+    run();
+  }
+
+  return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
+})();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
+</script>
+<script>
+(function(){
+  /* ---------------------------------------------------- The tortilla press
+     The masa flour is the ERP, the water is the floor, and nothing works them
+     together. Dump both on the press and press it with nothing kneading them
+     in, and it comes out cracked, ragged and crumbling at the edges, crumbs
+     all over the press. That stays. The kneading is SimpleGrid: a glove
+     wearing the mark gathers every crumb into one smooth ball. Press again,
+     and out comes one perfect round tortilla, onto the comal to toast. */
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), press = $('press');
+  var lidTop = $('azLidTop'), lidIn = $('azLidIn'), leverDn = $('azLeverDn'), leverUp = $('azLeverUp');
+  var flour = $('azFlour'), mound = $('azMound'), flourDust = $('azFlourDust'), water = $('azWater'), waterIn = $('azWaterIn'), fly = $('azFly');
+  var heap = $('azHeap'), messG = $('azMess'), ball = $('azBall'), ballIn = $('azBallIn'), cracks = $('azBallCracks'), ballHi = $('azBallHi'), tort = $('azTort');
+  var glove = $('azGlove'), comal = $('azComal');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Press it to see your operations', caption: 'The masa flour is your ERP, the water is your floor, and nothing works them together. Press it, or tap the press to try it yourself.' },
+    messing:  { btn: 'Pressing…', caption: 'Pressing them together. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Knead it right', caption: 'That’s your operations today: a big mess. Flour and water, pressed with nothing working them in: cracked, ragged and crumbling at the edges. It won’t fix itself, either.' },
+    dosing:   { btn: 'Kneading…', caption: 'Every crumb gathered up, and worked in.' },
+    dosed:    { btn: 'Press it again', caption: 'In goes the kneading. That’s SimpleGrid. The dough holds together now, so press it again.' },
+    cleaning: { btn: 'Pressing…', caption: 'Watch the mess come together.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, one perfect round tortilla, toasted on the comal. Your ERP and your floor finally hold together.' }
+  };
+  var ARIA = {
+    apart: press.getAttribute('aria-label'),
+    mess: 'The press opened on flour and water pressed together with nothing kneaded in: a cracked, ragged disc crumbling at the edges, crumbs all over the press.',
+    dosed: 'A glove marked SimpleGrid has kneaded every crumb into one smooth ball of dough on the press.',
+    done: 'One perfect round tortilla with toasty spots, on a comal labelled SimpleGrid, above the open press.'
+  };
+
+  var anims = [], timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(r){ later(r, ms); }); }
+  // Every move is a Web Animation that holds where it lands, so Start over can cancel the lot.
+  function play(el, frames, ms, delay, easing){
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'ease-in-out', fill: 'both' });
+    anims.push(a);
+    return a.finished.catch(function(){});
+  }
+
+  /* The lid and the lever swing toward you or away, so each is two drawings:
+     one folds flat onto its hinge, then the other unfolds from it. */
+  function swing(a, b, ms, e1, e2){
+    return play(a, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], ms/2, 0, e1 || 'ease-in').then(function(){
+      return play(b, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], ms/2, 0, e2 || 'ease-out');
+    });
+  }
+  function openLid(){ return swing(lidTop, lidIn, 400); }
+  function shutLid(){ return swing(lidIn, lidTop, 300, 'ease-in', 'cubic-bezier(.6,0,1,.6)'); }
+  function pull(){ return swing(leverDn, leverUp, 320); }
+  function release(){ return swing(leverUp, leverDn, 300); }
+  function squish(){
+    play(lidTop, [{ transform: 'translateY(0px) scaleY(1)' }, { transform: 'translateY(4px) scaleY(.97)', offset: .4 }, { transform: 'translateY(0px) scaleY(1)' }], 380);
+    play(leverUp, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(.93)', offset: .4 }, { transform: 'scaleY(1)' }], 380);
+  }
+
+  /* The mess, made once and the same every time: a cracked, ragged disc with
+     dry flour and wet patches in it, a puddle, crumbs all over the plate and
+     a few more squeezed out onto the table. */
+  var seed = 1938;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function make(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+  function f1(v){ return v.toFixed(1); }
+  function blob(cx, cy, rx, ry, cls, parent){
+    var n = 8, p = [], k;
+    for (k = 0; k < n; k++){ var a = k/n*Math.PI*2, f = R(.7, 1.15); p.push([cx + Math.cos(a)*rx*f, cy + Math.sin(a)*ry*f]); }
+    var mid = function(a, b){ return f1((a[0] + b[0])/2) + ' ' + f1((a[1] + b[1])/2); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (k = 0; k < n; k++) d += 'Q' + f1(p[k][0]) + ' ' + f1(p[k][1]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return make('path', { 'class': cls, d: d + 'Z' }, parent);
+  }
+  var CX = 180, CY = 392, N = 34, pts = [], i, notch = {};
+  [2, 7, 11, 16, 21, 25, 30].forEach(function(k){ notch[k] = 1; });
+  for (i = 0; i < N; i++){
+    var ang = i/N*Math.PI*2 + R(-.05, .05), fr = notch[i] ? R(.56, .74) : R(.86, 1.1);
+    pts.push([CX + Math.cos(ang)*84*fr, CY + Math.sin(ang)*41*fr]);
+  }
+  make('path', { 'class': 'az-raw', d: 'M' + pts.map(function(p){ return f1(p[0]) + ' ' + f1(p[1]); }).join('L') + 'Z' }, messG);
+  [[148, 380, 20, 8], [214, 402, 15, 6], [194, 370, 11, 5], [136, 404, 10, 4], [236, 380, 8, 3.5]].forEach(function(b){ blob(b[0], b[1], b[2], b[3], 'az-dry', messG); });
+  [[206, 382, 16, 7], [164, 400, 13, 5], [226, 396, 9, 4], [174, 376, 8, 3.5]].forEach(function(b){ blob(b[0], b[1], b[2], b[3], 'az-wet', messG); });
+  // Where it split right open, the plate shows through; finer cracks run in from the rest.
+  function zig(p, reach, steps, jx, jy){
+    var d = 'M' + f1(p[0]) + ' ' + f1(p[1]);
+    for (var s = 1; s <= steps; s++){
+      var t = s*reach/steps;
+      d += 'L' + f1(p[0] + (CX - p[0])*t + R(-jx, jx)) + ' ' + f1(p[1] + (CY - p[1])*t + R(-jy, jy));
+    }
+    return d;
+  }
+  [2, 16, 25].forEach(function(k){ make('path', { 'class': 'az-gap', d: zig(pts[k], R(.5, .7), 4, 7, 3) }, messG); });
+  [7, 11, 21, 30, 13, 28].forEach(function(k){ make('path', { 'class': 'az-crack', d: zig(pts[k], R(.2, .4), 3, 6, 3) }, messG); });
+  blob(254, 412, 24, 8, 'az-puddle', messG);
+  function crumb(x, y, r, parent){
+    var d = '';
+    for (var k = 0; k < 5; k++){ var b = k/5*Math.PI*2 + R(-.3, .3), rr = r*R(.7, 1.2); d += (k ? 'L' : 'M') + f1(x + Math.cos(b)*rr) + ' ' + f1(y + Math.sin(b)*rr*.62); }
+    return make('path', { 'class': 'az-crumb', d: d + 'Z' }, parent);
+  }
+  crumb(112, 406, 13, messG);
+  crumb(244, 360, 10, messG);
+  for (i = 0; i < 24; i++){
+    var ca = i/24*Math.PI*2 + R(-.2, .2), cf = R(1.06, 1.34), cx = CX + Math.cos(ca)*84*cf, cy = CY + Math.sin(ca)*41*cf;
+    var q = Math.hypot((cx - 180)/100, (cy - 390)/49);
+    if (q > 1){ cx = 180 + (cx - 180)/q; cy = 390 + (cy - 390)/q; }
+    crumb(cx, cy, R(2.5, 6.5), messG);
+  }
+  for (i = 0; i < 14; i++) make('circle', { 'class': 'az-dry', cx: f1(R(96, 264)), cy: f1(R(356, 428)), r: f1(R(1.2, 2.4)) }, messG);
+  var outside = [[128, 474, 5], [228, 478, 4.5], [266, 466, 3.5], [100, 462, 4], [152, 486, 3], [212, 492, 3.5]].map(function(c){
+    var g = make('g', {}, messG);
+    crumb(c[0], c[1], c[2], g);
+    return { el: g, dx: (180 - c[0])*.5, dy: 448 - c[1] };
+  });
+  // What the water does to the heap, and what flies when things land.
+  var wetG = make('g', { 'class': 'az-wetg' }, heap);
+  wetG.appendChild(heap.querySelector('.az-heap-wet'));
+  [[170, 352, 9, 4], [200, 366, 7, 3.5], [148, 378, 6, 3]].forEach(function(b){ blob(b[0], b[1], b[2], b[3], 'az-splash', wetG); });
+  var dust = [[-44, -12, 14], [38, -18, 16], [-8, -34, 18], [56, 2, 11], [-60, 6, 10]].map(function(d){
+    return { el: make('circle', { 'class': 'az-puffc', cx: 180 + d[0]*.25, cy: 362 + d[1]*.25, r: d[2] }, fly), dx: d[0], dy: d[1] };
+  });
+  var drops = [[-46, -18], [40, -26], [-20, -36], [58, -8], [-62, -2], [24, -42]].map(function(d){
+    return { el: make('circle', { 'class': 'az-drop', cx: 180, cy: 356, r: 4 }, fly), dx: d[0], dy: d[1] };
+  });
+  function puff(){
+    dust.forEach(function(d, k){ play(d.el, [{ opacity: .95, transform: 'translate(0px,0px) scale(.5)' }, { opacity: 0, transform: 'translate(' + d.dx + 'px,' + d.dy + 'px) scale(1.6)' }], 640, k*30, 'ease-out'); });
+  }
+  function splash(){
+    drops.forEach(function(d, k){ play(d.el, [{ opacity: 1, transform: 'translate(0px,0px)' }, { opacity: 1, transform: 'translate(' + f1(d.dx*.7) + 'px,' + d.dy + 'px)', offset: .5 }, { opacity: 0, transform: 'translate(' + d.dx + 'px,' + (d.dy + 34) + 'px)' }], 560, k*25, 'ease-out'); });
+  }
+
+  // Where the vessels go to pour, and where the glove works.
+  var FLOUR_POUR = 'translate(16px,232px) rotate(-62deg)', WATER_POUR = 'translate(-26px,150px) rotate(58deg)', HOME = 'translate(0px,0px) rotate(0deg)';
+  var GLOVE_OFF = 'translate(330px,250px) rotate(30deg)', GLOVE_HOVER = 'translate(262px,314px) rotate(30deg)', GLOVE_PRESS = 'translate(204px,318px) rotate(18deg)';
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The masa flour: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The water: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: press, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.press',
+    ops: {
+      mess: ['Your operations, today', 'Pressed together, still not linked. It cracked and crumbled, and the crumbs stay put.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same dough, same crumbs. Now it’s been kneaded.']
+    },
+    // Flour in, water on top, and press it with nothing worked in. It cracks and crumbles, and stays that way.
+    mess: function(){
+      press.classList.remove('snap');
+      play(flour, [{ transform: HOME }, { transform: FLOUR_POUR }], 440, 0, 'cubic-bezier(.4,0,.3,1)');
+      return wait(420).then(function(){
+        play(mound, [{ opacity: 1 }, { opacity: 0 }], 140);
+        play(flourDust, [{ opacity: 0 }, { opacity: .9 }], 200, 260);
+        play(heap, [{ opacity: 0, transform: 'translateY(-34px) scale(.55)' }, { opacity: 1, transform: 'translateY(0px) scale(1)' }], 300, 40, 'cubic-bezier(.3,1.4,.5,1)');
+        puff();
+        play(flour, [{ transform: FLOUR_POUR }, { transform: HOME }], 480, 200, 'cubic-bezier(.4,0,.3,1)');
+        play(water, [{ transform: HOME }, { transform: WATER_POUR }], 440, 260, 'cubic-bezier(.4,0,.3,1)');
+        return wait(700);
+      }).then(function(){
+        play(waterIn, [{ opacity: 1 }, { opacity: 0 }], 140);
+        play(wetG, [{ opacity: 0 }, { opacity: 1 }], 200, 40);
+        splash();
+        play(water, [{ transform: WATER_POUR }, { transform: HOME }], 480, 220, 'cubic-bezier(.4,0,.3,1)');
+        return wait(420);
+      }).then(shutLid).then(pull).then(function(){
+        // Pressed with nothing worked in, it splits, and crumbs squeeze out the front.
+        squish();
+        play(heap, [{ opacity: 1 }, { opacity: 0 }], 1);
+        play(messG, [{ opacity: 0 }, { opacity: 1 }], 1);
+        outside.forEach(function(c, k){
+          play(c.el, [{ transform: 'translate(' + f1(c.dx) + 'px,' + c.dy + 'px) scale(.4)' }, { transform: 'translate(0px,0px) scale(1)' }], 380, k*40, 'cubic-bezier(.2,.9,.3,1.2)');
+        });
+        return wait(420);
+      }).then(release).then(openLid);
+    },
+    // A glove wearing SimpleGrid’s mark gathers every crumb and kneads it into one smooth ball.
+    dose: function(){
+      press.classList.add('dosed');
+      play(messG, [{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(.3)' }], 520, 0, 'ease-in');
+      play(ball, [{ opacity: 0, transform: 'scale(.4)' }, { opacity: 1, transform: 'scale(1)' }], 420, 300, 'cubic-bezier(.3,1.3,.5,1)');
+      play(glove, [{ opacity: 0, transform: GLOVE_OFF }, { opacity: 1, transform: GLOVE_HOVER }], 460, 160, 'cubic-bezier(.2,.8,.3,1)');
+      var kneads = wait(720);
+      [0, 1, 2].forEach(function(k){
+        kneads = kneads.then(function(){
+          // Push it down, fold it over, give it a turn.
+          play(glove, [{ transform: GLOVE_HOVER }, { transform: GLOVE_PRESS, offset: .45 }, { transform: GLOVE_HOVER }], 480);
+          play(ballIn, [{ transform: 'scale(1,1)' }, { transform: 'scale(1.3,.7)', offset: .45 }, { transform: 'scale(1,1)' }], 480);
+          play(cracks, [{ opacity: 1 - k/3, transform: 'rotate(' + k*50 + 'deg)' }, { opacity: 1 - (k + 1)/3, transform: 'rotate(' + (k + 1)*50 + 'deg)' }], 480);
+          play(ballHi, [{ opacity: k*.2 }, { opacity: (k + 1)*.2 }], 300, 180);
+          return wait(500);
+        });
+      });
+      return kneads;
+    },
+    // Press the smooth ball, and out comes a perfect round tortilla, straight onto the comal.
+    clean: function(){
+      play(glove, [{ opacity: 1, transform: GLOVE_HOVER }, { opacity: 0, transform: GLOVE_OFF }], 380, 0, 'ease-in');
+      return wait(160).then(shutLid).then(pull).then(function(){
+        squish();
+        play(ball, [{ opacity: 1 }, { opacity: 0 }], 1);
+        play(tort, [{ opacity: 0 }, { opacity: 1 }], 1);
+        return wait(340);
+      }).then(release).then(openLid).then(function(){
+        // The bowls have done their part. The comal comes in, hot.
+        play(flour, [{ opacity: 1, transform: HOME }, { opacity: 0, transform: 'translate(-44px,0px) rotate(0deg)' }], 360, 0, 'ease-in');
+        play(water, [{ opacity: 1, transform: HOME }, { opacity: 0, transform: 'translate(-44px,0px) rotate(0deg)' }], 360, 60, 'ease-in');
+        play(comal, [{ opacity: 0, transform: 'translate(46px,0px)' }, { opacity: 1, transform: 'translate(0px,0px)' }], 420, 300, 'cubic-bezier(.2,.8,.3,1)');
+        return wait(700);
+      }).then(function(){
+        // Flip it over, onto the comal.
+        play(tort, [
+          { opacity: 1, transform: 'translate(0px,0px) scale(1,1)' },
+          { opacity: 1, transform: 'translate(-7px,-170px) scale(1.06,-.45)', offset: .5 },
+          { opacity: 1, transform: 'translate(-14px,-278px) scale(1,1)' }
+        ], 640, 0, 'cubic-bezier(.4,0,.3,1)');
+        return wait(660);
+      }).then(function(){
+        press.classList.add('toasted');
+        return wait(450);
+      });
+    },
+    restore: function(){
+      timers.forEach(clearTimeout);
+      timers = [];
+      anims.forEach(function(a){ a.cancel(); });
+      anims = [];
+      press.classList.add('snap');
+      press.classList.remove('dosed', 'toasted', 'is-done');
+      press.getBoundingClientRect();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ press.classList.remove('snap'); }); });
+    },
+    final: function(on){
+      setCallouts(on);
+      press.classList.toggle('is-done', on);
+    }
+  });
+
+  // Tapping the press does the same as the button.
+  press.addEventListener('click', function(){ if (story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ press.classList.toggle('in-view', entries[0].isIntersecting); }).observe(press);
+  } else press.classList.add('in-view');
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Masa flour', '40,000 lb in stock', '<s>40,000</s> 32,000 lb in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '28%', '<s>28%</s> 23%']
+  ],
+  notes: [
+    'Press 4 is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Masa truck: 8,000 lb short',
+    'What should we buy???',
+    'Re: Re: Fwd: Re: which batch?',
+    'QA hold: batch 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Line 6 crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Flour PO is ready for your OK',
+    'QA: Batch 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+/* ------------------------------------ The gap: your ERP vs your floor.
+   The template sets window.STAGE = { erp, notes, tidy } before this runs:
+     erp    four rows of [label, what the ERP says, what's true once linked]
+     notes  twelve things that land on the floor, in the order below
+     tidy   four lines the floor reads once it's linked */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var data = window.STAGE;
+
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.8 14.7 1.3 9.2 1.3 3.8 1.3 2.5 2 1.5 3.3 1c.3-.1.7 0 .9.3z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>';
+  var TICK = '<i aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"/></svg></i>';
+  // kind, tilt, where it lands on a laptop, where it lands on a phone
+  var SLOTS = [
+    ['sticky', -6, 'left:1%;top:1%',   'left:0;top:0'],
+    ['call',    3, 'left:33%;top:0',   'right:0;top:8%'],
+    ['file',   -3, 'right:0;top:9%',   'left:3%;top:17%'],
+    ['pink',    5, 'right:5%;top:20%', 'right:0;top:24.5%'],
+    ['board',  -4, 'left:2%;top:20%',  'left:0;top:33.5%'],
+    ['mail',    3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag',    -7, 'left:0;top:40%',   'left:4%;top:50%'],
+    ['file',   -2, 'right:0;top:51%',  'right:0;top:57%'],
+    ['call',    4, 'left:6%;top:57%',  'left:0;top:65%'],
+    ['sticky', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink',    3, 'left:1%;top:78%',  'left:0;top:82%'],
+    ['board',  -3, 'right:7%;top:85%', 'right:4%;top:90.5%']
+  ];
+  var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
+  var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
+  var NOTE = {
+    calm: stageNote.textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
+  };
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  $('tidy').innerHTML = data.tidy.map(function(line, i){
+    return '<li style="--i:' + i + '">' + TICK + '<span>' + line + '</span></li>';
+  }).join('');
+
+  function renderErp(linked){
+    erpRows.innerHTML = data.erp.map(function(row, i){
+      return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
+    }).join('');
+    $('erpStatus').textContent = linked ? 'In sync' : 'All good';
+    $('erpFoot').textContent = linked ? 'Last updated: just now' : 'Last updated: yesterday, 6:00 PM';
+  }
+  function runMorning(){
+    var onPhone = window.matchMedia('(max-width:620px)').matches;
+    stage.dataset.state = 'chaos';
+    $('floorClock').textContent = '9:41 AM';
+    stageNote.textContent = NOTE.chaos;
+    pile.innerHTML = data.notes.map(function(text, i){
+      var slot = SLOTS[i];
+      var icon = slot[0] === 'call' ? PHONE : slot[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + slot[0] + '" style="--r:' + slot[1] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + slot[onPhone ? 3 : 2] + '">' + icon + '<span>' + text + '</span></div>';
+    }).join('');
+    later(function(){
+      stage.dataset.state = 'messy';
+      linkBtn.focus({ preventScroll: true });
+    }, data.notes.length*170 + 300);
+  }
+  // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
+  function linkUp(){
+    var link = $('stageLink').getBoundingClientRect();
+    var tx = link.left + link.width/2, ty = link.top + link.height/2;
+    [].slice.call(pile.children).forEach(function(el, i){
+      var r = el.getBoundingClientRect();
+      var rot = el.style.getPropertyValue('--r');
+      el.style.animation = 'none';
+      el.style.opacity = 1;
+      el.style.transform = 'rotate(' + rot + ')';
+      void el.offsetWidth;
+      el.style.transition = 'transform .5s cubic-bezier(.6,0,.9,.4) ' + (i*.025) + 's,opacity .5s ease-in ' + (i*.025) + 's';
+      el.style.transform = 'translate(' + (tx - r.left - r.width/2) + 'px,' + (ty - r.top - r.height/2) + 'px) scale(.12)';
+      el.style.opacity = 0;
+    });
+    linkBtn.disabled = true;
+    later(function(){
+      stage.dataset.state = 'linked';
+      linkBtn.disabled = false;
+      pile.innerHTML = '';
+      renderErp(true);
+      countUp();
+      stageNote.textContent = NOTE.linked;
+      stageReset.focus({ preventScroll: true });
+    }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  function resetStage(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage.dataset.state = 'calm';
+    pile.innerHTML = '';
+    $('floorClock').textContent = '6:58 AM';
+    stageNote.textContent = NOTE.calm;
+    renderErp(false);
+    chaosBtn.focus({ preventScroll: true });
+  }
+  chaosBtn.addEventListener('click', runMorning);
+  linkBtn.addEventListener('click', linkUp);
+  stageReset.addEventListener('click', resetStage);
+  renderErp(false);
+})();
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

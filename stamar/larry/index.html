@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Run the crush test, Larry | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who keeps 20,000 packaging supplies moving for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/blackhawk-corrugated.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#22324A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="https://simplegrid.ai/stamar/larry/">
+<meta property="og:title" content="Larry, run the crush test.">
+<meta property="og:description" content="SimpleGrid, explained to someone who keeps 20,000 packaging supplies moving for a living.">
+<meta property="og:image" content="https://simplegrid.ai/stamar/og-larry.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Two liners with nothing between them under a load, beside the words: Larry, Stamar keeps over 20,000 packaging supplies in stock.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Larry, run the crush test.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who keeps 20,000 packaging supplies moving for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/stamar/og-larry.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+/* The site's self-hosted faces, so nothing here calls out to a third party. */
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('/assets/fonts/merriweather-latin.woff2') format('woff2')}
+@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/albert-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
+
+/* Each template sets its company's palette on :root. These read it:
+   --brand --brand-press --brand-deep   their main color, darker, darkest
+   --accent --accent-soft --accent-edge  the color the hero ends on
+   --on-brand --on-brand-soft --on-accent --on-accent-soft   text on those
+   --tint --pale --ink --alert            light fill, page, type, the "No link" red
+   --marker                               the highlighter in the ERP panel
+   and optionally --display, --dw (its weight; a single-weight face must not be faux-bolded) and --h2-hi. */
+:root{
+  --ink-70:rgba(26,26,26,.74);
+  --ink-55:rgba(26,26,26,.62);
+  --display:'Merriweather',Georgia,'Times New Roman',serif;
+  --body:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Consolas,'SF Mono',monospace;
+  --hand:'Bradley Hand','Noteworthy','Segoe Print','Ink Free','Comic Sans MS',cursive;
+  --dw:900;
+  --gutter:clamp(20px,5vw,56px);
+  --section:clamp(64px,9vw,128px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;font-synthesis-weight:none}
+body{margin:0;background:var(--pale);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img,svg,canvas{display:block}
+:focus-visible{outline:3px solid var(--focus,var(--brand));outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
+h2{font:var(--dw) clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
+h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
+
+/* ------------------------------------------------------------------ Hero */
+.hero,.hero-wipe{
+  --field:var(--brand);--on:var(--on-brand);--on-soft:var(--on-brand-soft);--hi:var(--accent);
+  --btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  background:var(--field);color:var(--on);
+}
+/* Where the hero ends up once the link is made. */
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:var(--accent);--on:var(--on-accent);--on-soft:var(--on-accent-soft);--hi:var(--brand-press);
+  --btn-bg:var(--brand);--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep);--focus:var(--brand-press);
+}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-inner{padding:0 var(--gutter) clamp(84px,9vw,124px);max-width:calc(1240px + 2*var(--gutter));margin-inline:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(16px,2vw,24px) 0}
+.logo{display:block;flex:none;width:clamp(138px,12vw,168px);color:inherit;border-radius:4px}
+.logo svg{width:100%;height:auto;overflow:visible}
+.bar-tag{font-size:14.5px;line-height:1.3;text-align:right;color:var(--on-soft)}
+.bar-tag span{display:inline-block}
+.bar-right{display:flex;align-items:center;gap:clamp(12px,1.6vw,22px)}
+.bar-cta{flex:none;padding:9px 15px;border-radius:9px;box-shadow:inset 0 0 0 2px currentColor;color:var(--on);font:800 15px/1 var(--body);text-decoration:none;white-space:nowrap}
+.bar-cta:hover{background:var(--on);color:var(--field);box-shadow:none}
+
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"copy art" "ctrl art";grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4vw,60px);margin-top:clamp(10px,2.4vh,30px);
+}
+.hero-copy{grid-area:copy}
+.hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+/* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
+.hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
+h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
+h1 span{display:block;color:var(--hi)}
+.hero-sub{margin-top:clamp(16px,2vw,24px);max-width:50ch;font-size:clamp(17px,.4vw + 15px,20px);color:var(--on-soft)}
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.hero-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
+
+/* The primary button presses in like something you'd find on a line. */
+.go-btn{
+  position:relative;appearance:none;border:0;cursor:pointer;
+  padding:16px 28px 19px;border-radius:12px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font:var(--dw) 18px/1.2 var(--display);text-decoration:none;display:inline-block;
+  box-shadow:0 5px 0 var(--btn-edge);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.go-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
+.go-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
+.go-btn:disabled{cursor:default;opacity:.7;transform:none;box-shadow:0 5px 0 var(--btn-edge)}
+.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* Labels beside the hero object. Each template places them. */
+.callouts{position:relative;width:clamp(150px,14.5vw,196px);flex:none}
+.callout{position:absolute;left:0;right:0}
+.callout-gap{position:absolute;left:0;padding:6px 12px;border-radius:999px;background:var(--alert);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:clamp(14px,1.6vw,24px);border-top:2px dashed var(--on-soft)}
+.callout-gap[hidden]{display:none}
+.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
+.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
+
+.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+
+@media (max-width:980px){
+  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
+  .hero-copy{display:contents}
+  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
+  .hero-art{order:2;margin-top:20px}
+  .hero-ctrl{order:3;margin-top:24px}
+  .hero-sub{order:4;margin-top:6px}
+  .hero-caption{min-height:4.6em;font-size:16.5px}
+  .bar{gap:10px}
+  .bar-tag{font-size:12px}
+  .logo{width:124px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
+  .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
+  .callout p{font-size:13.5px;line-height:1.36}
+  .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
+  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .bar-tag{display:none}
+}
+@media (max-width:350px){
+  .callout h3{font-size:13.5px}
+  .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+
+/* Stamar’s colors: corrugated kraft and a deep navy (their site wouldn’t load, so these come from the boxes they sell, not their brand). */
+:root{
+  --brand:#22324A;--brand-press:#1A2739;--brand-deep:#111A27;
+  --accent:#F1E3D0;--accent-soft:#F8F0E5;--accent-edge:#C9AE88;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#1A1A1A;--on-accent-soft:rgba(26,26,26,.82);
+  --tint:#F1EEE8;--pale:#FBFAF7;--ink:#1A1A1A;--alert:#D7263D;--marker:#F1E3D0;--h2-hi:#22324A;
+}
+.hero,.hero-wipe{--hi:#E8C08F}
+.hero[data-theme=b],.hero-wipe[data-theme=b]{--hi:#22324A}
+.back{--back-hi:#A8DBAD}
+.meet{--meet-ink:#fff}
+
+/* ------------------------------------------------------ The crush test */
+.hero-art{--art-w:min(340px,29vw,calc((100vh - 130px)/1.56))}
+.board{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.board svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.kraft{fill:#C9A06A}
+.kraft-dk{fill:#A87F4B}
+.kraft-lt{fill:#DDBB8A}
+.board.held{cursor:default}
+.flute{fill:none;stroke:#B98C55;stroke-width:4.5;stroke-linejoin:round;stroke-dasharray:1300;stroke-dashoffset:1300;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1)}
+.board.fluted .flute{stroke-dashoffset:0}
+.glue{fill:#F2E3C4;opacity:0;transition:opacity .3s .8s}
+.board.fluted .glue{opacity:1}
+.load-box{fill:#C9A06A;stroke:#8F6A3A;stroke-width:2}
+.load-tape{fill:#B78F5B}
+/* A crushed case shows it: creases at the ends, a dent along the top, a flap burst open. */
+.crease{fill:none;stroke:#8F6A3A;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.flap{fill:#DDBB8A;stroke:#8F6A3A;stroke-width:2;stroke-linejoin:round}
+.load-label{--sg-bg:#fff;--sg-ink:#1A1A1A}
+.board.is-done .load-label{opacity:1;transform:none}
+.platen{fill:color-mix(in srgb,var(--field) 55%,#000)}
+.gauge{fill:rgba(0,0,0,.22)}
+.gauge-txt{font:800 13px/1 var(--body);letter-spacing:.08em;fill:var(--on-soft)}
+.gauge-val{font:900 17px/1 var(--display);fill:var(--on)}
+.board.failed .gauge{fill:var(--alert)}
+.board.failed .gauge-txt{fill:rgba(255,255,255,.88)}
+.board.failed .gauge-val{fill:#fff}
+.board.snap,.board.snap *{transition:none!important}
+.callout-top{top:31%}
+.callout-bottom{top:63.5%}
+.callout-gap{top:calc(53.6% - 15px)}
+.callout-top h3 i,.callout-bottom h3 i{background:#C9A06A}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.flute-badge{--sg-bg:#22324A;--sg-ink:#fff}
+.board.fluted .flute-badge{opacity:1;transform:none}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.1)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+/* ------------------------------------- The gap between the ERP and the floor */
+.gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
+.stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
+.panel-erp h3,.panel-floor h3{font:var(--dw) clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
+
+/* The ERP is deliberately calm. That's the joke, and the problem. */
+.panel-erp{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
+.erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
+.stage[data-state=chaos] .erp-status{animation:smug .8s ease-in-out 3}
+@keyframes smug{50%{transform:scale(1.09)}}
+.erp-rows{margin-top:clamp(16px,2vw,28px);display:grid;gap:clamp(12px,1.5vw,21px)}
+.erp-rows li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:clamp(15.5px,.3vw + 14px,18px);line-height:1.3}
+.erp-rows span{flex:none;color:var(--ink-55)}
+.erp-rows b{font-weight:700;text-align:right}
+.erp-rows s{font-weight:400;color:var(--ink-55)}
+.erp-rows li.hit b{
+  background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 100%/0 100%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
+  animation:marker .42s ease-out var(--d,0s) forwards;
+}
+@keyframes marker{to{background-size:100% 100%}}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--alert);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
+.erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
+
+/* The broken pipe between them. Once linked, it joins up and flows. */
+.link{position:relative;display:grid;place-items:center}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:color-mix(in srgb,var(--brand) 26%,transparent);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub-a{left:0}
+.stub-b{right:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:color-mix(in srgb,var(--brand) 55%,transparent);opacity:0}
+.stub-a::after{right:1px}
+.stub-b::after{left:1px}
+.stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
+.stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
+.link-no{position:relative;z-index:2;background:var(--alert);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--brand-press);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.link-yes svg{width:56%;height:56%}
+.stage[data-state=linked] .link-no{display:none}
+.stage[data-state=linked] .link-yes{display:grid}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+@keyframes pipe{to{background-position:28px 0}}
+
+/* The floor: where the morning actually happens. */
+.panel-floor{
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
+  display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
+}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
+.floor-calm{flex:1;display:grid;place-items:center}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:var(--dw) clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.dome{
+  width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
+  box-shadow:0 0 0 9px var(--accent),0 8px 0 9px var(--accent-edge),0 18px 26px 9px rgba(0,0,0,.55);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--accent),0 6px 0 9px var(--accent-edge),0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--accent),0 1px 0 9px var(--accent-edge),0 5px 9px 9px rgba(0,0,0,.55)}
+.pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
+.stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
+.stage:not([data-state=calm]) .floor-calm{display:none}
+.n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
+@keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
+.n-sticky{background:#FFD84D;color:#2B2000}
+.n-pink{background:#FF9FB4;color:#3D0012}
+.n-board{background:#fff;color:#C4163F}
+.n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
+.n-file{background:#fff;color:#1A1A1A}
+.n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
+.n-mail{background:#E9EEF6;color:#1A1A1A}
+.n-call{background:#2F6FE0;color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:#C4163F;color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n svg{flex:none;width:15px;height:15px}
+.n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
+@keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
+.stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
+.tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
+.tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.tidy i svg{width:14px;height:14px}
+@keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
+.stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
+#linkBtn,#stageReset,#stageMeet{display:none}
+.stage[data-state=messy] #linkBtn{display:inline-block}
+.stage[data-state=linked] #stageReset,.stage[data-state=linked] #stageMeet{display:inline-block}
+.stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
+.fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
+
+@media (max-width:980px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
+}
+@media (max-width:620px){
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
+}
+@media (max-width:350px){
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
+}
+/* -------------------------------------- The inspection report (same numbers as facts.html) */
+.back{background:var(--brand);color:var(--on-brand);padding:var(--section) 0;--focus:var(--accent)}
+.back h2{color:var(--on-brand)}
+.back h2 span{color:var(--back-hi,var(--accent))}
+.label{
+  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--brand-press);
+  border-radius:16px;padding:clamp(18px,3vw,40px);
+  display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:clamp(28px,4vw,60px);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
+}
+.report{position:relative;border:2px solid var(--ink);font-family:var(--body)}
+.report-head{padding:10px 12px;border-bottom:2px solid var(--ink);background:var(--tint)}
+.report-title{font:var(--dw) clamp(24px,1.2vw + 18px,30px)/1 var(--display);letter-spacing:-.01em;text-transform:uppercase}
+.report-meta{margin-top:5px;font:600 12.5px/1.35 var(--mono);color:var(--ink-70)}
+.report table{width:100%;border-collapse:collapse;font-size:15.5px;line-height:1.25}
+.report th,.report td{padding:8px 10px;border-bottom:1px solid rgba(26,26,26,.3);text-align:right;font-weight:400;white-space:nowrap}
+.report thead th{font:800 12.5px/1.2 var(--body);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-70);border-bottom:2px solid var(--ink)}
+.report th:first-child{text-align:left;white-space:normal}
+.report tbody th{font-weight:700}
+.report td{font-family:var(--mono);font-weight:600}
+.report td.ok{width:34px;color:#0A7A4B;font:800 17px/1 var(--body);text-align:center}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.report-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 12px;font-weight:800;border-bottom:1px solid rgba(26,26,26,.3)}
+.report-saved b{font-weight:900;white-space:nowrap}
+.report-foot{padding:8px 150px 10px 12px;font:600 12.5px/1.35 var(--mono);color:var(--ink-70)}
+.stamp{position:absolute;right:14px;bottom:12px;padding:4px 12px;border:3px solid var(--stamp,#C8102E);border-radius:6px;color:var(--stamp,#C8102E);font:900 19px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;transform:rotate(-9deg);opacity:.82;mix-blend-mode:multiply}
+.facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
+.label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
+.label-copy > * + *{margin-top:18px}
+.label-copy strong{font-weight:800}
+.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;margin-top:auto;padding-top:22px}
+.barcode{display:block;text-decoration:none;color:var(--ink);flex:none;border-radius:4px}
+.barcode svg{width:190px;height:56px}
+.barcode span{display:block;margin-top:3px;text-align:center;font:500 14.5px/1 var(--body);letter-spacing:.11em}
+.inkjet{font:600 15.5px/1.42 var(--mono);letter-spacing:.05em;color:#222;max-width:27ch}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .inkjet{
+    color:transparent;
+    background:radial-gradient(circle at center,#000 54%,transparent 60%) 0 0/2.1px 2.1px;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+@media (max-width:980px){
+  .label{grid-template-columns:minmax(0,1fr)}
+  .report{max-width:480px}
+}
+@media (max-width:620px){
+  .lockup{align-items:center}
+  .report th,.report td{padding:7px 7px}
+  .report table{font-size:14.5px}
+  .report-saved{flex-direction:column;gap:2px}
+  .report-foot{padding-right:12px;padding-bottom:52px}
+}
+@media (max-width:380px){
+  .report th,.report td{padding:6px 4px}
+  .report table{font-size:13px}
+  .report td.ok{width:20px}
+}
+/* ------------------------------------------------------------- The ask */
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
+
+/* -------------------------------------------------------------- Footer */
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
+.foot .logo{width:150px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
+
+@media (max-width:980px){
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
+}
+@media (max-width:620px){
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Shipped to order for Larry Stein,</span> <span>Stamar. Run size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Larry, Stamar keeps over 20,000 packaging supplies in stock. <span>So here’s our software, explained as one sheet of corrugated.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="board hero-obj" id="board" role="img" aria-label="Two liner sheets with nothing between them, under a stack of cases waiting to be set down.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <!-- the test bed -->
+            <rect class="platen" x="18" y="356" width="324" height="16" rx="4"/>
+            <rect class="platen" x="40" y="372" width="18" height="70"/>
+            <rect class="platen" x="302" y="372" width="18" height="70"/>
+            <!-- the load: three cases waiting to be set down, each drawn around its own middle so it can tip and crush.
+                 The bottom one sits behind the board, so a buckled liner swallows it. -->
+            <g class="case" id="caseBot">
+              <rect class="load-box" x="-88" y="-28" width="176" height="56" rx="3"/>
+              <rect class="load-tape" x="-8" y="-28" width="16" height="56"/>
+              <g class="dmg"><path class="crease" d="M-84 -10L-60 0L-84 12M84 -12L62 -1L84 10M-56 -22L-30 -15L-4 -23L22 -14L50 -22"/></g>
+              <!-- once it passes: the label on the case, like the Legacy jar -->
+              <g transform="scale(0.74)"><g class="load-label sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+            </g>
+            <!-- the board: top liner, flute (once there is one), bottom liner -->
+            <g id="sheet">
+              <path class="kraft-dk" id="topShadow" d="M30 260H330V270H30Z"/>
+              <path class="kraft" id="topLiner" d="M30 252H330V264H30Z"/>
+              <path class="flute" id="flute" d="M30 300.0 L32 289.5 L34 280.0 L36 272.5 L38 267.7 L40 266.0 L42 267.7 L44 272.5 L46 280.0 L48 289.5 L50 300.0 L52 310.5 L54 320.0 L56 327.5 L58 332.3 L60 334.0 L62 332.3 L64 327.5 L66 320.0 L68 310.5 L70 300.0 L72 289.5 L74 280.0 L76 272.5 L78 267.7 L80 266.0 L82 267.7 L84 272.5 L86 280.0 L88 289.5 L90 300.0 L92 310.5 L94 320.0 L96 327.5 L98 332.3 L100 334.0 L102 332.3 L104 327.5 L106 320.0 L108 310.5 L110 300.0 L112 289.5 L114 280.0 L116 272.5 L118 267.7 L120 266.0 L122 267.7 L124 272.5 L126 280.0 L128 289.5 L130 300.0 L132 310.5 L134 320.0 L136 327.5 L138 332.3 L140 334.0 L142 332.3 L144 327.5 L146 320.0 L148 310.5 L150 300.0 L152 289.5 L154 280.0 L156 272.5 L158 267.7 L160 266.0 L162 267.7 L164 272.5 L166 280.0 L168 289.5 L170 300.0 L172 310.5 L174 320.0 L176 327.5 L178 332.3 L180 334.0 L182 332.3 L184 327.5 L186 320.0 L188 310.5 L190 300.0 L192 289.5 L194 280.0 L196 272.5 L198 267.7 L200 266.0 L202 267.7 L204 272.5 L206 280.0 L208 289.5 L210 300.0 L212 310.5 L214 320.0 L216 327.5 L218 332.3 L220 334.0 L222 332.3 L224 327.5 L226 320.0 L228 310.5 L230 300.0 L232 289.5 L234 280.0 L236 272.5 L238 267.7 L240 266.0 L242 267.7 L244 272.5 L246 280.0 L248 289.5 L250 300.0 L252 310.5 L254 320.0 L256 327.5 L258 332.3 L260 334.0 L262 332.3 L264 327.5 L266 320.0 L268 310.5 L270 300.0 L272 289.5 L274 280.0 L276 272.5 L278 267.7 L280 266.0 L282 267.7 L284 272.5 L286 280.0 L288 289.5 L290 300.0 L292 310.5 L294 320.0 L296 327.5 L298 332.3 L300 334.0 L302 332.3 L304 327.5 L306 320.0 L308 310.5 L310 300.0 L312 289.5 L314 280.0 L316 272.5 L318 267.7 L320 266.0 L322 267.7 L324 272.5 L326 280.0 L328 289.5 L330 300.0"/>
+              <g class="glue" id="glue"></g>
+              <!-- the flute is SimpleGrid, and it wears the mark the way the yolk does -->
+              <g transform="translate(326 300) scale(0.8)"><g class="flute-badge sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+              <rect class="kraft-dk" x="30" y="344" width="300" height="10"/>
+              <rect class="kraft" x="30" y="336" width="300" height="12"/>
+            </g>
+            <g class="case" id="caseMid">
+              <rect class="load-box" x="-78" y="-28" width="156" height="56" rx="3"/>
+              <rect class="load-tape" x="-8" y="-28" width="16" height="56"/>
+              <g class="dmg"><path class="flap" d="M16 -28L30 -45L66 -40L58 -28Z"/><path class="crease" d="M-74 -10L-52 0L-74 12M74 -12L54 -1L74 10M-48 -22L-24 -15L-2 -23L20 -14L44 -22"/></g>
+            </g>
+            <g class="case" id="caseTop">
+              <rect class="load-box" x="-88" y="-28" width="176" height="56" rx="3"/>
+              <rect class="load-tape" x="-8" y="-28" width="16" height="56"/>
+              <g class="dmg"><path class="flap" d="M-58 -28L-44 -47L-8 -43L-16 -28Z"/><path class="crease" d="M-84 -10L-60 0L-84 12M84 -12L62 -1L84 10M-56 -22L-30 -15L-4 -23L22 -14L50 -22"/></g>
+            </g>
+            <g transform="translate(110 456)">
+              <rect class="gauge" width="140" height="64" rx="10"/>
+              <text class="gauge-txt" x="70" y="22" text-anchor="middle">CRUSH TEST</text>
+              <text class="gauge-val" id="gauge" x="70" y="49" text-anchor="middle">Ready</text>
+            </g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The top liner: your ERP</span></h3>
+            <p id="topText">What the system says happened.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The bottom liner: your floor</span></h3>
+            <p id="bottomText">What’s really happening, on Excel, whiteboards and phones.</p>
+          </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Run the crush test to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">Your ERP is the top liner, your floor is the bottom one, and nothing links them. Run the test, or tap the board to set the load down yourself.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<section class="gap" id="gap">
+  <div class="wrap">
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
+
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
+        </div>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
+      </div>
+
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg></i>SimpleGrid</span>
+      </div>
+
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
+        </div>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
+        <div class="floor-do">
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
+  </div>
+</section>
+
+<section class="back">
+  <div class="wrap">
+    <h2>The box print can say what it likes. <span>The test report has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <div class="report">
+          <!-- Same numbers as facts.html. Change both. -->
+          <div class="report-head">
+            <h3 class="report-title">Inspection Report</h3>
+            <p class="report-meta">Part: SimpleGrid deployment<br>Lot: 6 plants, 1.2 million sq ft</p>
+          </div>
+          <table>
+            <thead><tr><th scope="col">Characteristic</th><th scope="col">Before</th><th scope="col">After</th><th scope="col"><span class="vh">Result</span></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Excel files to run planning</th><td>550</td><td>1</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">Weekly planning cycle</th><td>40 hrs</td><td>2 hrs</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">On-time delivery</th><td>70%</td><td>90%</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">Material wastage</th><td>1.5%</td><td>0.1%</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">Gross margin</th><td>19%</td><td>24%</td><td class="ok">✓</td></tr>
+            </tbody>
+          </table>
+          <p class="report-saved"><span>Saved on wastage alone</span><b>About $200,000 a year</b></p>
+          <p class="report-foot">Disposition: no slides, no rip-and-replace, no GL migration.</p>
+          <span class="stamp" aria-hidden="true">Accepted</span>
+        </div>
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not packaging: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Grade:</strong> Your orders, your routings, your people’s own words, what actually happened on the floor.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">SHIP BY: BEFORE YOUR NEXT ERP RENEWAL<br>JOB 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>Larry, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at your place in Elgin. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Elgin.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">P.S. Half corrugated, half protective packaging, your LinkedIn says. I’d love to see how Elgin keeps 20,000 items straight.</p>
+    </div>
+    <div class="faces">
+      <figure class="polaroid polaroid-a">
+        <img src="/assets/letters/mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <figcaption>Mukund Agarwal</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-b">
+        <img src="/assets/letters/aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <figcaption>Aditi Puri Batra</figcaption>
+      </figure>
+      <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
+      <p class="who"><strong>Advisor.</strong> Former Country Head of QuickBooks/Intuit India. Ex-Amazon and Google in the US.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+    <p>Everything we know about Stamar comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll re-score. The rest of the plant is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+/* Shared by every hero: small helpers, the wipe into the end-state colors,
+   and the barcode on the back of the label. */
+var SG = (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+
+  /* The end state spreads out from the hero object and takes the whole hero
+     with it. The clone carries the other colorway, so the type stays legible
+     as the edge passes. `skip` hides whatever shouldn't be painted twice. */
+  function wipeTo(hero, from, theme, skip){
+    if (reduce){ hero.dataset.theme = theme; return; }
+    var r = from.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
+    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
+    var over = document.createElement('div');
+    over.className = 'hero-wipe';
+    over.dataset.theme = theme;
+    over.setAttribute('aria-hidden', 'true');
+    over.inert = true;
+    var inner = hero.querySelector('.hero-inner').cloneNode(true);
+    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+    if (skip) inner.querySelectorAll(skip).forEach(function(el){ el.style.visibility = 'hidden'; });
+    over.appendChild(inner);
+    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
+    hero.appendChild(over);
+    over.getBoundingClientRect();
+    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
+    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      hero.dataset.theme = theme;
+      over.remove();
+    };
+    over.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+
+  /* The barcode is real: Code 128 for 7732804485, in bar and space widths. */
+  function barcode(svg){
+    var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
+    for (var i = 0; i < CODE.length; i++){
+      var width = +CODE.charAt(i);
+      if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="currentColor"/>';
+      x += width;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 26');
+    svg.innerHTML = bars;
+  }
+
+  /* Runs `frame(dt)` only while `el` is on screen and the tab is visible, so
+     an idle hero costs nothing once it's scrolled away. */
+  function loop(el, frame){
+    var raf = 0, last = 0, visible = true;
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(.05, (now - last)/1000 || .016);
+      last = now;
+      frame(dt);
+    }
+    function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        visible ? run() : halt();
+      }).observe(el);
+    }
+    run();
+  }
+
+  return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
+})();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
+</script>
+<script>
+(function(){
+  /* --------------------------------------------------- The crush test
+     Top liner: the ERP. Bottom liner: the floor. With nothing between them,
+     the load buckles one down onto the other, the stack comes down with it,
+     and the wreck stays where it fell: that's your operations. The fluted
+     medium is SimpleGrid: glued to both at every flute tip, it's what lets
+     the sheet carry a load, and the same wreck stacks back up on it. */
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('hero'), board = $('board'), gauge = $('gauge');
+  var top = $('topLiner'), topShadow = $('topShadow');
+  var cases = { bot: $('caseBot'), mid: $('caseMid'), top: $('caseTop') }, NAMES = ['bot', 'mid', 'top'];
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+  var lerp = function(a, b, t){ return a + (b - a)*t; };
+  var easeOut = function(t){ return 1 - (1 - t)*(1 - t); };
+  var easeInOut = function(t){ return t < .5 ? 2*t*t : 1 - Math.pow(2 - 2*t, 2)/2; };
+  var backOut = function(t){ return 1 + 2.9*Math.pow(t - 1, 3) + 1.9*Math.pow(t - 1, 2); };
+  var smooth = function(a, b, v){ var t = Math.min(1, Math.max(0, (v - a)/(b - a))); return t*t*(3 - 2*t); };
+
+  var COPY = {
+    apart:    { btn: 'Run the crush test to see your operations', caption: 'Your ERP is the top liner, your floor is the bottom one, and nothing links them. Run the test, or tap the board to set the load down yourself.' },
+    messing:  { btn: 'Testing…', caption: 'Setting the load down on both. That’s what most ERP go-lives do.' },
+    mess:     { btn: 'Add the flute', caption: 'That’s your operations today: a big mess. With nothing between your ERP and your floor, the board buckled and the load came down. It won’t stack itself back up, either.' },
+    dosing:   { btn: 'Fluting…', caption: 'Load off. In goes the medium, glued at every tip.' },
+    dosed:    { btn: 'Run it again', caption: 'In goes the flute. That’s SimpleGrid: glued to both liners, at every tip. Now run it again.' },
+    cleaning: { btn: 'Testing…', caption: 'Watch the wreck stack back up.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the wreck, a square stack on a board that holds. Your ERP and your floor finally carry the load together.' }
+  };
+  var ARIA = {
+    apart: board.getAttribute('aria-label'),
+    mess: 'The top liner has buckled down onto the bottom one, and the cases lie toppled and crushed on the board and the floor. The gauge reads Failed.',
+    dosed: 'Fluted medium glued between the two liners, with the crushed cases lifted off above it.',
+    done: 'A sheet of corrugated board, fluted and glued, holding a square stack of cases with a SimpleGrid label. The gauge reads Passed.'
+  };
+
+  // A case's pose: where its middle is, its tilt, how it's squashed and sheared, and how creased it is.
+  // [x, y, degrees, scale x, scale y, skew, creases]
+  var POSE = {
+    stack:  { bot: [180, 196, 0, 1, 1, 0, 0], mid: [180, 140, 0, 1, 1, 0, 0], top: [180, 84, 0, 1, 1, 0, 0] },
+    seated: { bot: [180, 224, 0, 1, 1, 0, 0], mid: [180, 168, 0, 1, 1, 0, 0], top: [180, 112, 0, 1, 1, 0, 0] },
+    wreck:  { bot: [178, 296, 4, 1.06, .56, -10, 1], mid: [88, 391, -22, .95, .9, 9, 1], top: [264, 385, 156, .96, .88, -8, 1] },
+    lifted: { bot: [182, 208, 4, 1.06, .56, -10, 1], mid: [116, 150, -22, .95, .9, 9, 1], top: [248, 96, 156, .96, .88, -8, 1] }
+  };
+  // The top liner's edge, flat or buckled down onto the bottom liner, crease by crease.
+  var XS = [30, 67.5, 105, 142.5, 180, 217.5, 255, 292.5, 330];
+  var FLAT = XS.map(function(){ return 252; });
+  var BUCKLED = [270, 292, 314, 300, 322, 306, 318, 294, 274];
+
+  var anims = [], timers = [];
+  function tween(dur, delay, step){
+    return new Promise(function(done){ anims.push({ t: -(delay || 0), dur: dur, step: step, done: done }); });
+  }
+  function wait(ms){ return new Promise(function(done){ timers.push(setTimeout(done, ms)); }); }
+  function ctrl(y0, y1, apex){ return apex - Math.sqrt(Math.max(0, (y0 - apex)*(y1 - apex))); }
+  function arc(y0, c, y1, t){ return (1 - t)*(1 - t)*y0 + 2*t*(1 - t)*c + t*t*y1; }
+  function mix(a, b, t){ return a.map(function(v, i){ return lerp(v, b[i], t); }); }
+  function each(fn){ NAMES.forEach(fn); }
+
+  function setCase(n, p){
+    cases[n].setAttribute('transform', 'translate(' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ') rotate(' + p[2].toFixed(2) + ') skewX(' + p[5].toFixed(2) + ') scale(' + p[3].toFixed(3) + ' ' + p[4].toFixed(3) + ')');
+    cases[n].querySelector('.dmg').setAttribute('opacity', p[6].toFixed(2));
+  }
+  function edge(ys, dy){ return XS.map(function(x, i){ return x + ' ' + (ys[i] + dy).toFixed(1); }); }
+  function band(ys, a, b){ return 'M' + edge(ys, a).join('L') + 'L' + edge(ys, b).reverse().join('L') + 'Z'; }
+  function liner(ys){
+    top.setAttribute('d', band(ys, 0, 12));
+    topShadow.setAttribute('d', band(ys, 8, 18));
+  }
+  function gaugeSays(text, failed){
+    gauge.textContent = text;
+    board.classList.toggle('failed', !!failed);
+  }
+
+  // Glue at every flute tip that touches a liner.
+  (function(){
+    var g = '';
+    for (var x = 40; x < 330; x += 40){ g += '<ellipse cx="' + x + '" cy="266" rx="6" ry="2.4"/>'; if (x + 20 < 330) g += '<ellipse cx="' + (x + 20) + '" cy="334" rx="6" ry="2.4"/>'; }
+    $('glue').innerHTML = g;
+  })();
+
+  // A case coming off the stack: an arc to where it lands, turning as it goes, crushed as it hits.
+  function fall(n, delay, T, lift, wob){
+    var a = POSE.seated[n], b = POSE.wreck[n], B = .14;
+    var c = ctrl(a[1], b[1], Math.min(a[1], b[1]) + lift);
+    return tween(T + B, delay, function(q){
+      var s = q*(T + B), u = Math.min(1, s/T), h = Math.max(0, (s - T)/B), crush = smooth(.8, 1, u);
+      setCase(n, [lerp(a[0], b[0], u), arc(a[1], c, b[1], u*u*(3 - 2*u)*.25 + u*.75) - Math.sin(Math.PI*h)*5,
+        lerp(a[2], b[2], easeOut(u)) + wob*Math.sin(Math.PI*u),
+        lerp(1, b[3], crush), lerp(1, b[4], crush), lerp(0, b[5], crush), crush]);
+    });
+  }
+  // A case from the lifted wreck into its place in a square stack, straightening out on the way.
+  function settle(n, delay){
+    var a = POSE.lifted[n].slice(), b = POSE.seated[n];
+    if (n === 'top') a[2] -= 360;   // it finishes the turn it started on the way down
+    return tween(.62, delay, function(k){
+      var p = mix(a, b, backOut(k)), f = easeOut(Math.min(1, k*1.4));
+      p[3] = lerp(a[3], 1, f); p[4] = lerp(a[4], 1, f); p[5] = lerp(a[5], 0, f); p[6] = lerp(a[6], 0, f);
+      setCase(n, p);
+    });
+  }
+
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The top liner: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says happened.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The bottom liner: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really happening, on Excel, whiteboards and phones.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: board, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.board',
+    ops: {
+      mess: ['Your operations, today', 'Set down on both, still not linked. The board buckled, and the wreck stays where it fell.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same wreck, same load. Now there’s a flute between the liners.']
+    },
+    // The load comes down on two liners and nothing between them: the top one buckles, the stack topples and crushes. The wreck stays.
+    mess: function(){
+      gaugeSays('Loading…');
+      if (reduce){ liner(BUCKLED); each(function(n){ setCase(n, POSE.wreck[n]); }); gaugeSays('Failed', true); return; }
+      return tween(.3, 0, function(k){ each(function(n){ setCase(n, mix(POSE.stack[n], POSE.seated[n], k*k)); }); }).then(function(){
+        return Promise.all([
+          tween(.36, 0, function(k){ var e = backOut(k); liner(mix(FLAT, BUCKLED, e)); setCase('bot', mix(POSE.seated.bot, POSE.wreck.bot, e)); }),
+          tween(0, .16, function(){}).then(function(){ gaugeSays('Failed', true); }),
+          fall('top', .04, .82, -24, 0),
+          fall('mid', .12, .7, -6, -34)
+        ]);
+      }).then(function(){ return wait(250); });
+    },
+    // The wreck is lifted off as it is, the top liner springs back, and the flute slides in with glue at every tip.
+    dose: function(){
+      if (reduce){ liner(FLAT); each(function(n){ setCase(n, POSE.lifted[n]); }); gaugeSays('Ready'); board.classList.add('fluted'); return; }
+      return Promise.all([
+        tween(.62, 0, function(k){ var e = easeInOut(k); each(function(n){ setCase(n, mix(POSE.wreck[n], POSE.lifted[n], e)); }); }),
+        tween(.44, .16, function(k){ liner(mix(BUCKLED, FLAT, backOut(k))); })
+      ]).then(function(){
+        gaugeSays('Ready');
+        board.classList.add('fluted');
+        return wait(1150);
+      });
+    },
+    // Run it again: the same wreck settles into a square stack, the board takes the weight, and it passes.
+    clean: function(){
+      gaugeSays('Testing…');
+      if (reduce){ each(function(n){ setCase(n, POSE.seated[n]); }); gaugeSays('Passed'); return; }
+      return Promise.all([
+        settle('bot', 0), settle('mid', .2), settle('top', .4),
+        tween(.5, .45, function(k){ var d = Math.sin(Math.PI*k)*2.5; liner(XS.map(function(x, i){ return 252 + d*Math.sin(Math.PI*i/8); })); })
+      ]).then(function(){ liner(FLAT); gaugeSays('Passed'); return wait(450); });
+    },
+    restore: function(){
+      anims = [];
+      timers.forEach(clearTimeout);
+      timers = [];
+      board.classList.add('snap');
+      board.classList.remove('fluted');
+      gaugeSays('Ready');
+      liner(FLAT);
+      each(function(n){ setCase(n, POSE.stack[n]); });
+    },
+    final: function(on){
+      setCallouts(on);
+      board.classList.toggle('is-done', on);
+      // Start over lands on the first picture at once, not by fading back to it.
+      if (!on){ board.getBoundingClientRect(); board.classList.remove('snap'); }
+    }
+  });
+
+  function frame(dt){
+    var list = anims.slice();
+    for (var i = 0; i < list.length; i++){
+      var a = list[i];
+      a.t += dt;
+      if (a.t < 0) continue;
+      var q = a.dur > 0 ? Math.min(1, a.t/a.dur) : 1;
+      a.step(q);
+      if (q >= 1){ anims.splice(anims.indexOf(a), 1); a.done(); }
+    }
+    var phase = story.phase();
+    board.classList.toggle('held', story.busy() || !(phase === 'apart' || phase === 'mess' || phase === 'dosed'));
+  }
+
+  // Or set the load down yourself: a tap on the board does what the button does.
+  board.addEventListener('click', function(){
+    var phase = story.phase();
+    if (phase === 'apart' || phase === 'mess' || phase === 'dosed') story.go();
+  });
+
+  liner(FLAT);
+  each(function(n){ setCase(n, POSE.stack[n]); });
+  SG.loop(hero, frame);
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Liner, 42 lb', '40 rolls in stock', '<s>40</s> 32 rolls in stock'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '31%', '<s>31%</s> 27%']
+  ],
+  notes: [
+    'Corrugator is down!',
+    'Sales: Where’s the order?',
+    'plan_FINAL_v7.xlsx',
+    'Paper truck: 8 rolls short',
+    'Which die is on the rotary?',
+    'Re: Re: Fwd: Re: which job?',
+    'QC hold: job 2207',
+    'plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the plan. Again.',
+    'What did it actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Rotary crew: Order 4417 moved to you',
+    'Sales: 4417 ships Monday, and here’s why',
+    'Buyer: Liner PO is ready for your OK',
+    'QC: Job 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+/* ------------------------------------ The gap: your ERP vs your floor.
+   The template sets window.STAGE = { erp, notes, tidy } before this runs:
+     erp    four rows of [label, what the ERP says, what's true once linked]
+     notes  twelve things that land on the floor, in the order below
+     tidy   four lines the floor reads once it's linked */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var data = window.STAGE;
+
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.8 14.7 1.3 9.2 1.3 3.8 1.3 2.5 2 1.5 3.3 1c.3-.1.7 0 .9.3z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>';
+  var TICK = '<i aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"/></svg></i>';
+  // kind, tilt, where it lands on a laptop, where it lands on a phone
+  var SLOTS = [
+    ['sticky', -6, 'left:1%;top:1%',   'left:0;top:0'],
+    ['call',    3, 'left:33%;top:0',   'right:0;top:8%'],
+    ['file',   -3, 'right:0;top:9%',   'left:3%;top:17%'],
+    ['pink',    5, 'right:5%;top:20%', 'right:0;top:24.5%'],
+    ['board',  -4, 'left:2%;top:20%',  'left:0;top:33.5%'],
+    ['mail',    3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag',    -7, 'left:0;top:40%',   'left:4%;top:50%'],
+    ['file',   -2, 'right:0;top:51%',  'right:0;top:57%'],
+    ['call',    4, 'left:6%;top:57%',  'left:0;top:65%'],
+    ['sticky', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink',    3, 'left:1%;top:78%',  'left:0;top:82%'],
+    ['board',  -3, 'right:7%;top:85%', 'right:4%;top:90.5%']
+  ];
+  var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
+  var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
+  var NOTE = {
+    calm: stageNote.textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
+  };
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  $('tidy').innerHTML = data.tidy.map(function(line, i){
+    return '<li style="--i:' + i + '">' + TICK + '<span>' + line + '</span></li>';
+  }).join('');
+
+  function renderErp(linked){
+    erpRows.innerHTML = data.erp.map(function(row, i){
+      return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
+    }).join('');
+    $('erpStatus').textContent = linked ? 'In sync' : 'All good';
+    $('erpFoot').textContent = linked ? 'Last updated: just now' : 'Last updated: yesterday, 6:00 PM';
+  }
+  function runMorning(){
+    var onPhone = window.matchMedia('(max-width:620px)').matches;
+    stage.dataset.state = 'chaos';
+    $('floorClock').textContent = '9:41 AM';
+    stageNote.textContent = NOTE.chaos;
+    pile.innerHTML = data.notes.map(function(text, i){
+      var slot = SLOTS[i];
+      var icon = slot[0] === 'call' ? PHONE : slot[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + slot[0] + '" style="--r:' + slot[1] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + slot[onPhone ? 3 : 2] + '">' + icon + '<span>' + text + '</span></div>';
+    }).join('');
+    later(function(){
+      stage.dataset.state = 'messy';
+      linkBtn.focus({ preventScroll: true });
+    }, data.notes.length*170 + 300);
+  }
+  // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
+  function linkUp(){
+    var link = $('stageLink').getBoundingClientRect();
+    var tx = link.left + link.width/2, ty = link.top + link.height/2;
+    [].slice.call(pile.children).forEach(function(el, i){
+      var r = el.getBoundingClientRect();
+      var rot = el.style.getPropertyValue('--r');
+      el.style.animation = 'none';
+      el.style.opacity = 1;
+      el.style.transform = 'rotate(' + rot + ')';
+      void el.offsetWidth;
+      el.style.transition = 'transform .5s cubic-bezier(.6,0,.9,.4) ' + (i*.025) + 's,opacity .5s ease-in ' + (i*.025) + 's';
+      el.style.transform = 'translate(' + (tx - r.left - r.width/2) + 'px,' + (ty - r.top - r.height/2) + 'px) scale(.12)';
+      el.style.opacity = 0;
+    });
+    linkBtn.disabled = true;
+    later(function(){
+      stage.dataset.state = 'linked';
+      linkBtn.disabled = false;
+      pile.innerHTML = '';
+      renderErp(true);
+      countUp();
+      stageNote.textContent = NOTE.linked;
+      stageReset.focus({ preventScroll: true });
+    }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  function resetStage(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage.dataset.state = 'calm';
+    pile.innerHTML = '';
+    $('floorClock').textContent = '6:58 AM';
+    stageNote.textContent = NOTE.calm;
+    renderErp(false);
+    chaosBtn.focus({ preventScroll: true });
+  }
+  chaosBtn.addEventListener('click', runMorning);
+  linkBtn.addEventListener('click', linkUp);
+  stageReset.addEventListener('click', resetStage);
+  renderErp(false);
+})();
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>

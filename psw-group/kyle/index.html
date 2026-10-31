@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pour the melt, Kyle | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who recycles magnesium and aluminum for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/psw-group.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#146B26">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="https://simplegrid.ai/psw-group/kyle/">
+<meta property="og:title" content="Kyle, pour the melt.">
+<meta property="og:description" content="SimpleGrid, explained to someone who recycles magnesium and aluminum for a living.">
+<meta property="og:image" content="https://simplegrid.ai/psw-group/og-kyle.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A crucible of mixed scrap on a furnace under a spec screen, with no link between them, beside the words: Kyle, you recycle magnesium and aluminum on three continents.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kyle, pour the melt.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who recycles magnesium and aluminum for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/psw-group/og-kyle.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+/* The site's self-hosted faces, so nothing here calls out to a third party. */
+@font-face{font-family:'Merriweather';font-style:normal;font-weight:300 900;font-display:swap;src:url('/assets/fonts/merriweather-latin.woff2') format('woff2')}
+@font-face{font-family:'Albert Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/albert-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/ibm-plex-mono-600-latin.woff2') format('woff2')}
+
+/* Each template sets its company's palette on :root. These read it:
+   --brand --brand-press --brand-deep   their main color, darker, darkest
+   --accent --accent-soft --accent-edge  the color the hero ends on
+   --on-brand --on-brand-soft --on-accent --on-accent-soft   text on those
+   --tint --pale --ink --alert            light fill, page, type, the "No link" red
+   --marker                               the highlighter in the ERP panel
+   and optionally --display, --dw (its weight; a single-weight face must not be faux-bolded) and --h2-hi. */
+:root{
+  --ink-70:rgba(26,26,26,.74);
+  --ink-55:rgba(26,26,26,.62);
+  --display:'Merriweather',Georgia,'Times New Roman',serif;
+  --body:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Consolas,'SF Mono',monospace;
+  --hand:'Bradley Hand','Noteworthy','Segoe Print','Ink Free','Comic Sans MS',cursive;
+  --dw:900;
+  --gutter:clamp(20px,5vw,56px);
+  --section:clamp(64px,9vw,128px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;font-synthesis-weight:none}
+body{margin:0;background:var(--pale);color:var(--ink);font:400 18px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+img,svg,canvas{display:block}
+:focus-visible{outline:3px solid var(--focus,var(--brand));outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
+h2{font:var(--dw) clamp(29px,2.3vw + 20px,48px)/1.16 var(--display);letter-spacing:-.012em;text-wrap:balance}
+h2 span{display:block;color:var(--h2-hi,var(--brand-press))}
+
+/* ------------------------------------------------------------------ Hero */
+.hero,.hero-wipe{
+  --field:var(--brand);--on:var(--on-brand);--on-soft:var(--on-brand-soft);--hi:var(--accent);
+  --btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  background:var(--field);color:var(--on);
+}
+/* Where the hero ends up once the link is made. */
+.hero[data-theme=b],.hero-wipe[data-theme=b]{
+  --field:var(--accent);--on:var(--on-accent);--on-soft:var(--on-accent-soft);--hi:var(--brand-press);
+  --btn-bg:var(--brand);--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep);--focus:var(--brand-press);
+}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-wipe{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-inner{padding:0 var(--gutter) clamp(84px,9vw,124px);max-width:calc(1240px + 2*var(--gutter));margin-inline:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(16px,2vw,24px) 0}
+.logo{display:block;flex:none;width:clamp(138px,12vw,168px);color:inherit;border-radius:4px}
+.logo svg{width:100%;height:auto;overflow:visible}
+.bar-tag{font-size:14.5px;line-height:1.3;text-align:right;color:var(--on-soft)}
+.bar-tag span{display:inline-block}
+.bar-right{display:flex;align-items:center;gap:clamp(12px,1.6vw,22px)}
+.bar-cta{flex:none;padding:9px 15px;border-radius:9px;box-shadow:inset 0 0 0 2px currentColor;color:var(--on);font:800 15px/1 var(--body);text-decoration:none;white-space:nowrap}
+.bar-cta:hover{background:var(--on);color:var(--field);box-shadow:none}
+
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"copy art" "ctrl art";grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4vw,60px);margin-top:clamp(10px,2.4vh,30px);
+}
+.hero-copy{grid-area:copy}
+.hero-art{grid-area:art;position:relative;display:flex;gap:clamp(14px,1.6vw,24px);align-items:flex-start}
+/* The object itself rides above the wipe, so it never blinks out while the colors change under it. */
+.hero-obj{position:relative;z-index:3;flex:none}
+/* SimpleGrid inside the hero, the way the Legacy jar wears it: the mark on whatever does the
+   fixing (sg-badge.svg, like the yolk) and a label on what comes out (sg-tag.svg, like the jar's).
+   Each page sets --sg-bg and --sg-ink for the thing it's printed on, and says when .sg-pop shows. */
+.sg-badge-bg,.sg-tag-bg{fill:var(--sg-bg,#0047AB)}
+.sg-ink{fill:none;stroke:var(--sg-ink,#fff)}
+.sg-tag-word{fill:var(--sg-ink,#fff)}
+.sg-pop{opacity:0;transform:scale(.86);transform-box:fill-box;transform-origin:center;transition:opacity .4s ease .05s,transform .55s cubic-bezier(.2,.9,.3,1.25) .05s}
+.hero-ctrl{grid-area:ctrl;margin-top:clamp(22px,3vh,34px)}
+h1{font:var(--dw) clamp(42px,2.7vw + 16px,56px)/1.15 var(--display);letter-spacing:-.014em;text-wrap:balance}
+h1 span{display:block;color:var(--hi)}
+.hero-sub{margin-top:clamp(16px,2vw,24px);max-width:50ch;font-size:clamp(17px,.4vw + 15px,20px);color:var(--on-soft)}
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.hero-caption{margin-top:18px;max-width:52ch;min-height:3.2em;font-size:clamp(16.5px,.3vw + 15px,18px);line-height:1.5;font-weight:500}
+
+/* The primary button presses in like something you'd find on a line. */
+.go-btn{
+  position:relative;appearance:none;border:0;cursor:pointer;
+  padding:16px 28px 19px;border-radius:12px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font:var(--dw) 18px/1.2 var(--display);text-decoration:none;display:inline-block;
+  box-shadow:0 5px 0 var(--btn-edge);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.go-btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--btn-edge)}
+.go-btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--btn-edge)}
+.go-btn:disabled{cursor:default;opacity:.7;transform:none;box-shadow:0 5px 0 var(--btn-edge)}
+.quiet-btn{appearance:none;background:none;border:0;padding:6px 2px;cursor:pointer;font-size:16px;color:var(--on-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* Labels beside the hero object. Each template places them. */
+.callouts{position:relative;width:clamp(150px,14.5vw,196px);flex:none}
+.callout{position:absolute;left:0;right:0}
+.callout-gap{position:absolute;left:0;padding:6px 12px;border-radius:999px;background:var(--alert);color:#fff;font:800 15px/1.2 var(--body);white-space:nowrap}
+.callout-gap::before{content:'';position:absolute;right:100%;top:50%;width:clamp(14px,1.6vw,24px);border-top:2px dashed var(--on-soft)}
+.callout-gap[hidden]{display:none}
+.callout h3{font:800 16px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.callout h3 i{flex:none;width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1.5px var(--on-soft);transform:translateY(1px)}
+.callout p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.hero[data-theme=b] .callout h3 i,.hero-wipe[data-theme=b] .callout h3 i{display:none}
+/* Once the two halves are pushed together the labels give way to the ops panel (ops.html, run by
+   story.js): the mess is your operations, and what lands on the floor in the stage shows up here first. */
+.ops{display:none;position:absolute;left:0;right:0;top:2%}
+.hero.in-mess .callout,.hero.in-mess .callout-gap{display:none}
+.hero.in-mess .ops{display:block;animation:ops-in .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes ops-in{from{opacity:0;transform:translateY(8px)}}
+.ops h3{font:800 17px/1.25 var(--body);display:flex;align-items:baseline;gap:8px}
+.ops h3 i{flex:none;width:11px;height:11px;border-radius:50%;background:var(--alert);transform:translateY(1px)}
+.hero[data-story=dosed] .ops h3 i,.hero[data-story=cleaning] .ops h3 i{background:var(--hi)}
+.ops p{margin-top:5px;font-size:14.5px;line-height:1.42;color:var(--on-soft)}
+.ops-chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.chip{max-width:100%;padding:7px 10px;border-radius:4px;font:700 13px/1.25 var(--body);color:#1A1A1A;box-shadow:0 2px 7px rgba(0,0,0,.2);transform:rotate(var(--r));animation:chip-in .35s var(--d) both,chip-shake 2.4s calc(var(--d) + .35s) ease-in-out infinite}
+.chip-sticky{background:#FFE36E}
+.chip-file{background:#fff;border-left:4px solid #107C41}
+.chip-call{background:#E3ECFF}
+.chip-pink{background:#FFD0DF}
+.chip-mail{background:#F2F2F2}
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) rotate(var(--r)) scale(.9)}}
+@keyframes chip-shake{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r)*-1)) translateX(3px)}}
+
+.hero-edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(44px,6vw,86px);z-index:3;pointer-events:none;fill:var(--pale)}
+
+@media (max-width:980px){
+  .hero-grid{display:flex;flex-direction:column;margin-top:4px}
+  .hero-copy{display:contents}
+  h1{order:1;font-size:clamp(29px,6vw + 8px,44px)}
+  .hero-art{order:2;margin-top:20px}
+  .hero-ctrl{order:3;margin-top:24px}
+  .hero-sub{order:4;margin-top:6px}
+  .hero-caption{min-height:4.6em;font-size:16.5px}
+  .bar{gap:10px}
+  .bar-tag{font-size:12px}
+  .logo{width:124px}
+  .callouts{flex:1 1 auto;width:auto;height:auto;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:13px;padding-bottom:4px}
+  .callout{position:static}
+  .callout-gap{position:static}
+  .callout-gap::before{display:none}
+  .callout p{font-size:13.5px;line-height:1.36}
+  .callout h3{font-size:15px;gap:7px}
+  /* Templates size the callout column for the desktop layout; on a phone it has to grow with what's in it,
+     or the ops panel overflows upward into the headline. */
+  .hero .hero-art .callouts{height:auto}
+  .ops{position:static;align-self:stretch}
+  .ops h3{font-size:15.5px;gap:7px}
+  .ops p{font-size:13.5px;line-height:1.36}
+  .ops-chips{margin-top:10px;gap:7px}
+  .chip{padding:5px 8px;font-size:12px}
+  .chip:nth-child(n+4){display:none}
+  .hero-inner{padding-bottom:clamp(64px,12vw,96px)}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .bar-tag{display:none}
+}
+@media (max-width:350px){
+  .callout h3{font-size:13.5px}
+  .callout p{font-size:13px}
+}
+/* Below 360px the ops panel would outgrow the object and run up into the headline. The caption under
+   the button already says what its paragraph says, so the paragraph goes, and two chips are enough. */
+@media (max-width:359px){
+  .ops p{display:none}
+  .chip{overflow-wrap:anywhere}
+  .chip:nth-child(n+3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+
+/* PSW’s colors: their green, deepened for the field, with aluminum silver. Their site is set in a sans, so ours is too. */
+:root{
+  --brand:#146B26;--brand-press:#10561F;--brand-deep:#0A3A15;
+  --accent:#DDE3E0;--accent-soft:#F0F3F1;--accent-edge:#9AA5A0;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#0E2A15;--on-accent-soft:rgba(14,42,21,.82);
+  --tint:#EEF6EF;--pale:#F9FBF9;--ink:#1C2420;--alert:#D7263D;--marker:#DFF3E2;--h2-hi:#17802B;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
+}
+/* -------------------------------------------------------------- The melt
+   For metal recyclers. The spec screen is the ERP; the furnace, charged with chips, scrap and
+   returns, is the floor; and nothing links them. Every color lives on .hero-art. */
+.hero-art{
+  --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
+  --scr:#1E2329;--scr-glass:#2A313A;
+  --steel-hi:#66737E;--steel:#454F58;--steel-dk:#2F373E;--steel-ink:#171C20;
+  --dross:#3B3E42;--dross-dk:#1F2124;--dross-hi:#80858A;--smoke:#43474C;
+  --alu-hi:#FAFCFD;--alu:#D8DFE4;--alu-mid:#B9C2C9;--alu-dk:#8A959D;--alu-edge:#4A555E;
+  --pallet:#B98B5A;--pallet-dk:#8E6A42;
+  --live:#2FC24F;--glow:#FFB547;
+  --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
+}
+.melt{position:relative;flex:none;width:var(--art-w);aspect-ratio:360/560;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hero[data-story$=ing] .melt,.melt.is-done{cursor:default}
+.melt svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.melt:not(.in-view) *{animation-play-state:paused!important}
+/* The spec: what the system says this heat is. */
+.ml-screen{fill:var(--scr)}
+.ml-glass{fill:var(--scr-glass)}
+.ml-kick{fill:rgba(255,255,255,.55);font:600 12px/1 var(--mono);letter-spacing:.14em}
+.ml-heat{fill:#fff;font:800 28px/1 var(--body)}
+.ml-alloy{fill:rgba(255,255,255,.8);font:600 16px/1 var(--body)}
+.ml-pill{fill:#DFF5EA;transition:fill .3s}
+.ml-status text{fill:#0A6B47;font:800 17px/1 var(--body);transition:fill .3s}
+.melt.linked .ml-pill{fill:var(--accent)}
+.melt.linked .ml-status text{fill:var(--on-accent)}
+.melt.ok .ml-pill{fill:var(--live)}
+.melt.ok .ml-status text{fill:var(--brand-deep)}
+.ml-bar{fill:rgba(255,255,255,.14)}
+.ml-fill{fill:var(--live);transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
+.ml-ico-top{fill:var(--alu-hi)}
+.ml-ico-front{fill:url(#mlAluFront)}
+.ml-ico-edge{fill:none;stroke:var(--alu-dk);stroke-width:1.5;stroke-linejoin:round}
+/* The link: broken until SimpleGrid joins it. */
+.ml-stub{fill:none;stroke:#59626C;stroke-width:6;stroke-linecap:round}
+.ml-cable{fill:none;stroke:var(--brand-deep);stroke-width:9;stroke-linecap:round;opacity:0;transition:opacity .3s}
+.ml-flow{fill:none;stroke:var(--live);stroke-width:3.6;stroke-linecap:round;stroke-dasharray:6 7;opacity:0;transition:opacity .3s}
+.melt.linked .ml-cable,.melt.linked .ml-flow{opacity:1}
+.melt.linked .ml-flow{animation:ml-flow .6s linear infinite}
+@keyframes ml-flow{to{stroke-dashoffset:-13}}
+/* The furnace: a crucible on a post, tipping on its hub to pour. */
+.ml-cru{transform-box:view-box;transform-origin:172px 252px}
+.ml-halo{fill:url(#mlHalo);opacity:.8;transition:opacity .6s}
+.melt.foul .ml-halo{opacity:.35}
+.melt.clean .ml-halo{opacity:1}
+.ml-shell{fill:url(#mlShell)}
+.ml-hoop{fill:none;stroke:var(--steel-hi);stroke-width:5;stroke-linecap:round}
+.ml-rim{fill:var(--steel-hi)}
+.ml-rim-in{fill:var(--steel-ink)}
+.ml-lip{fill:var(--steel-hi)}
+.ml-lip-in{fill:var(--steel-ink)}
+.ml-drip{fill:#6B4A33;stroke:var(--dross-dk);stroke-width:1.5;opacity:0}
+.ml-melt{fill:url(#mlHot)}
+.ml-foul{fill:url(#mlFoul);opacity:0}
+.ml-post{fill:var(--steel)}
+.ml-post-hi{fill:var(--steel-hi)}
+.ml-hub{fill:var(--steel-hi);stroke:var(--steel-ink);stroke-width:3}
+.ml-bolt{fill:var(--steel-ink)}
+.ml-box{fill:url(#mlShell)}
+.ml-box-top{fill:var(--steel)}
+.ml-rivet{fill:var(--steel-hi)}
+.ml-plinth{fill:var(--steel-ink)}
+.ml-win{fill:var(--steel-ink)}
+.ml-flame{fill:url(#mlFire);transform-box:fill-box;transform-origin:50% 100%;animation:ml-flick .9s ease-in-out infinite alternate}
+.ml-flame:nth-child(3){animation-duration:.7s;animation-delay:-.3s}
+.ml-flame:nth-child(4){animation-duration:1.1s;animation-delay:-.6s}
+@keyframes ml-flick{to{transform:scale(.84,.72)}}
+/* What's really going in: chips, scrap and returns, all mixed. */
+.ml-s1{fill:#A9B2B9;stroke:#5C666E;stroke-width:1.6;stroke-linejoin:round}
+.ml-s1t{fill:#CBD2D7;stroke:#5C666E;stroke-width:1.6;stroke-linejoin:round}
+.ml-s2{fill:#D3D9DD;stroke:#6E7980;stroke-width:1.6;stroke-linejoin:round}
+.ml-s3{fill:#8C969D;stroke:#555F66;stroke-width:1.6;stroke-linejoin:round}
+.ml-s4{fill:#646D74;stroke:#3C444A;stroke-width:1.6}
+.ml-s4h{fill:var(--steel-ink)}
+.ml-s5{fill:#B8C0C6;stroke:#6C777E;stroke-width:1.6;stroke-linejoin:round}
+.ml-s6{fill:#9A7454;stroke:#614630;stroke-width:1.6;stroke-linejoin:round}
+.ml-s7{fill:#6F8AA6;stroke:#43586D;stroke-width:1.6;stroke-linejoin:round}
+.ml-chip{fill:#E3E8EB;stroke:#5E6971;stroke-width:1.5;stroke-linejoin:round}
+.ml-chip-dk{fill:#A3ADB4;stroke:#525D66;stroke-width:1.5;stroke-linejoin:round}
+/* Dross: grey-black crust that floats on a melt nobody fluxed. */
+.ml-lump{opacity:0;transform-box:fill-box;transform-origin:50% 50%}
+.ml-lump .ml-crust{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.8;stroke-linejoin:round}
+.ml-lump .ml-crust-hi{fill:none;stroke:var(--dross-hi);stroke-width:2.2;stroke-linecap:round}
+.ml-lump .ml-speck{fill:var(--dross-dk)}
+.ml-smoke circle{fill:var(--smoke);opacity:0;transform-box:fill-box;transform-origin:center}
+.melt.smoky .ml-smoke circle{animation:ml-smoke 2.7s ease-out infinite}
+.melt.smoky .ml-smoke circle:nth-child(2){animation-delay:-.9s}
+.melt.smoky .ml-smoke circle:nth-child(3){animation-delay:-1.8s}
+@keyframes ml-smoke{0%{opacity:0;transform:translateY(0) scale(.45)}18%{opacity:.8}100%{opacity:0;transform:translateY(-54px) scale(1.7)}}
+/* The flux: SimpleGrid, wearing the mark. */
+.ml-flux{opacity:0;transform-box:fill-box;transform-origin:50% 50%}
+.ml-flux-body{fill:#F2F5F3;stroke:#8E9A95;stroke-width:2}
+.ml-flux-top{fill:#fff}
+.ml-flux-wet{fill:url(#mlHot)}
+.ml-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
+.melt.dosed .ml-mark{opacity:1;transform:none}
+/* The pour: hidden until it runs (the dash sits just off both ends, so no round cap shows). */
+.ml-pour path{fill:none;stroke-linecap:round;stroke-dasharray:100 120;stroke-dashoffset:101}
+.ml-pour-out{stroke:#FF9424;stroke-width:12}
+.ml-pour-core{stroke:#FFE88F;stroke-width:5}
+.ml-pour .ml-pour-dirt{stroke:var(--dross-dk);stroke-width:6;stroke-dasharray:2 7 6 13 3 9 1 11;stroke-dashoffset:0;opacity:0;animation:ml-fall .5s linear infinite}
+.ml-pour.foul .ml-pour-out{stroke:#B85E26}
+.ml-pour.foul .ml-pour-core{stroke:#E19455}
+@keyframes ml-fall{to{stroke-dashoffset:-52}}
+.ml-mold{fill:var(--steel-dk)}
+.ml-mold-top{fill:var(--steel)}
+.ml-mold-cav{fill:var(--steel-ink)}
+.ml-mold-glow{fill:var(--glow);opacity:0}
+.ml-splat{opacity:0;transform-box:fill-box;transform-origin:50% 60%}
+.ml-splat .ml-crust{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.5}
+.ml-splat .ml-burn{fill:#8E431A}
+.ml-floor{fill:none;stroke:rgba(0,0,0,.2);stroke-width:2}
+.ml-shadow{fill:rgba(0,0,0,.18)}
+.ml-pallet{fill:var(--pallet)}
+.ml-pallet-dk{fill:var(--pallet-dk)}
+/* The ingots: the script draws each one twice, off spec and on it. */
+.ml-ing{opacity:0}
+.ml-ing.dirty .ml-ok,.ml-ing:not(.dirty) .ml-bad{display:none}
+.ml-ok .ml-top{fill:url(#mlAluTop)}
+.ml-ok .ml-front{fill:url(#mlAluFront)}
+.ml-ok .ml-shine{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round}
+.ml-ing .ml-edge{fill:none;stroke:var(--alu-edge);stroke-width:1.9;stroke-linejoin:round}
+.ml-bad .ml-crack{fill:none;stroke:#121417;stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round}
+.ml-hot{fill:#FF9A2E;opacity:0}
+.ml-strap{fill:none;stroke:var(--h2-hi);stroke-width:3.5;opacity:0;transition:opacity .4s .1s}
+.melt.is-done .ml-strap{opacity:1}
+.ml-tag{--sg-bg:var(--tag-bg);--sg-ink:var(--tag-ink)}
+.melt.is-done .ml-tag{opacity:1;transform:none}
+.callout-top{top:2%}
+.callout-gap{top:calc(33.4% - 15px)}
+.callout-bottom{top:47%}
+.callout-top h3 i{background:var(--scr)}
+.callout-bottom h3 i{background:var(--glow)}
+.hero-art .callouts{height:calc(var(--art-w)*1.556)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.522)}
+@media (max-width:980px){
+  .hero-art{--art-w:clamp(158px,43vw,290px)}
+}
+
+/* ------------------------------------- The gap between the ERP and the floor */
+.gap{padding:clamp(30px,4vw,60px) 0 var(--section)}
+.stage{margin-top:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:minmax(0,5fr) clamp(88px,10vw,136px) minmax(0,7fr);align-items:stretch}
+.panel-erp h3,.panel-floor h3{font:var(--dw) clamp(20px,.6vw + 16px,24px)/1.2 var(--display)}
+
+/* The ERP is deliberately calm. That's the joke, and the problem. */
+.panel-erp{background:#fff;border:2px solid var(--brand);border-radius:16px;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.erp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.erp-status{flex:none;padding:5px 12px;border-radius:999px;background:#DFF5EA;color:#0A6B47;font:800 15px/1.2 var(--body)}
+.erp-status::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#12A86B;margin-right:7px}
+.stage[data-state=chaos] .erp-status{animation:smug .8s ease-in-out 3}
+@keyframes smug{50%{transform:scale(1.09)}}
+.erp-rows{margin-top:clamp(16px,2vw,28px);display:grid;gap:clamp(12px,1.5vw,21px)}
+.erp-rows li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:clamp(15.5px,.3vw + 14px,18px);line-height:1.3}
+.erp-rows span{flex:none;color:var(--ink-55)}
+.erp-rows b{font-weight:700;text-align:right}
+.erp-rows s{font-weight:400;color:var(--ink-55)}
+.erp-rows li.hit b{
+  background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 100%/0 100%;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 3px;margin-right:-3px;
+  animation:marker .42s ease-out var(--d,0s) forwards;
+}
+@keyframes marker{to{background-size:100% 100%}}
+.erp-scribble{margin-top:clamp(16px,1.8vw,24px);color:var(--alert);font:700 clamp(21px,.4vw + 19px,24px)/1.2 var(--hand);transform:rotate(-2deg);visibility:hidden}
+.stage[data-state=chaos] .erp-scribble,.stage[data-state=messy] .erp-scribble{visibility:visible}
+.erp-foot{margin-top:auto;padding-top:14px;font-size:14px;color:var(--ink-55)}
+
+/* The broken pipe between them. Once linked, it joins up and flows. */
+.link{position:relative;display:grid;place-items:center}
+.stub{position:absolute;top:50%;height:14px;margin-top:-7px;width:24%;background:color-mix(in srgb,var(--brand) 26%,transparent);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.stub-a{left:0}
+.stub-b{right:0}
+.stub::after{content:'';position:absolute;top:100%;width:8px;height:10px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:color-mix(in srgb,var(--brand) 55%,transparent);opacity:0}
+.stub-a::after{right:1px}
+.stub-b::after{left:1px}
+.stage[data-state=chaos] .stub::after,.stage[data-state=messy] .stub::after{animation:drip 1.5s ease-in infinite}
+.stage[data-state=chaos] .stub-b::after,.stage[data-state=messy] .stub-b::after{animation-delay:.6s}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px)}15%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(46px)}}
+.link-no{position:relative;z-index:2;background:var(--alert);color:#fff;padding:7px 12px;border-radius:999px;font:800 15px/1 var(--body);white-space:nowrap}
+.link-yes{display:none;position:relative;z-index:2;justify-items:center;gap:6px;color:var(--brand-press);font:800 14px/1 var(--body)}
+.link-yes i{width:clamp(50px,5vw,62px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.link-yes svg{width:56%;height:56%}
+.stage[data-state=linked] .link-no{display:none}
+.stage[data-state=linked] .link-yes{display:grid}
+.stage[data-state=linked] .stub{width:52%;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:28px 100%;animation:pipe .9s linear 6}
+@keyframes pipe{to{background-position:28px 0}}
+
+/* The floor: where the morning actually happens. */
+.panel-floor{
+  --on-soft:rgba(255,255,255,.8);--btn-bg:var(--accent);--btn-fg:var(--on-accent);--btn-edge:var(--accent-edge);--focus:var(--accent);
+  position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:clamp(18px,2vw,26px);
+  display:flex;flex-direction:column;min-height:clamp(490px,37vw,530px);
+}
+.floor-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.floor-clock{font:600 15px/1 var(--mono);color:rgba(255,255,255,.72)}
+.floor-calm{flex:1;display:grid;place-items:center}
+.big-red{appearance:none;border:0;background:none;color:#fff;cursor:pointer;display:grid;justify-items:center;gap:30px;padding:16px;border-radius:14px;font:var(--dw) clamp(19px,.6vw + 16px,23px)/1.2 var(--display)}
+.dome{
+  width:clamp(100px,10vw,128px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#F4627F 0 12%,#C4163F 52%,#8E0B2B 100%);
+  box-shadow:0 0 0 9px var(--accent),0 8px 0 9px var(--accent-edge),0 18px 26px 9px rgba(0,0,0,.55);
+  transition:transform .09s ease,box-shadow .09s ease;
+}
+.big-red:hover .dome{transform:translateY(2px);box-shadow:0 0 0 9px var(--accent),0 6px 0 9px var(--accent-edge),0 15px 22px 9px rgba(0,0,0,.55)}
+.big-red:active .dome{transform:translateY(7px);box-shadow:0 0 0 9px var(--accent),0 1px 0 9px var(--accent-edge),0 5px 9px 9px rgba(0,0,0,.55)}
+.pile{display:none;flex:1;min-height:340px;margin-top:14px;position:relative;z-index:5}
+.stage[data-state=chaos] .pile,.stage[data-state=messy] .pile{display:block}
+.stage:not([data-state=calm]) .floor-calm{display:none}
+.n{position:absolute;max-width:62%;transform:rotate(var(--r,0deg));box-shadow:0 5px 12px rgba(0,0,0,.45);animation:land .36s cubic-bezier(.2,1.3,.4,1) var(--d,0s) both}
+@keyframes land{from{opacity:0;transform:translateY(-34px) scale(1.25) rotate(var(--r,0deg))}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.n-sticky,.n-pink,.n-board{font:700 clamp(18px,.4vw + 16px,20px)/1.16 var(--hand);padding:11px 13px;border-radius:2px}
+.n-sticky{background:#FFD84D;color:#2B2000}
+.n-pink{background:#FF9FB4;color:#3D0012}
+.n-board{background:#fff;color:#C4163F}
+.n-file,.n-mail,.n-call,.n-tag{font:600 14px/1.25 var(--body);padding:8px 11px;border-radius:7px;display:inline-flex;align-items:center;gap:7px}
+.n-file{background:#fff;color:#1A1A1A}
+.n-file::before{content:'X';flex:none;width:17px;height:17px;border-radius:3px;background:#107C41;color:#fff;font:800 11px/17px var(--body);text-align:center}
+.n-mail{background:#E9EEF6;color:#1A1A1A}
+.n-call{background:#2F6FE0;color:#fff;border-radius:16px 16px 16px 4px}
+.n-tag{background:#C4163F;color:#fff;font-weight:800;border-radius:3px 15px 15px 3px}
+.n svg{flex:none;width:15px;height:15px}
+.n-call svg{animation:ring .42s ease-in-out var(--d,0s) 4}
+@keyframes ring{25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.tidy{display:none;flex:1;align-content:center;gap:clamp(13px,1.4vw,18px);margin:14px 0}
+.stage[data-state=linked] .tidy{display:grid}
+.tidy-head,.wins-head{display:none;font:700 14px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tidy-head{margin-top:18px}
+.stage[data-state=linked] .tidy-head,.stage[data-state=linked] .wins-head{display:block;animation:settle .34s ease-out .1s both}
+.stage[data-state=linked] .wins-head{animation-delay:.55s}
+.wins{display:none;margin-top:4px}
+.stage[data-state=linked] .wins{display:block}
+.wins-row{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins-row li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;animation:settle .34s ease-out calc(var(--i)*.12s + .6s) both}
+.wins-row b{font:var(--dw) clamp(23px,1vw + 15px,30px)/1.05 var(--display);color:var(--accent);white-space:nowrap}
+.wins-row s{font:500 14px/1 var(--body);color:rgba(255,255,255,.55);margin-right:2px}
+.wins-row em{font-style:normal}
+.wins-row span{font-size:14px;line-height:1.25;color:rgba(255,255,255,.8)}
+.tidy li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(17px,.4vw + 15px,19px);line-height:1.32;font-weight:500;animation:settle .34s ease-out calc(var(--i)*.1s + .15s) both}
+.tidy i{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.tidy i svg{width:14px;height:14px}
+@keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.floor-do{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}
+.stage[data-state=chaos] .floor-do,.stage[data-state=messy] .floor-do{min-height:78px}
+#linkBtn,#stageReset,#stageMeet{display:none}
+.stage[data-state=messy] #linkBtn{display:inline-block}
+.stage[data-state=linked] #stageReset,.stage[data-state=linked] #stageMeet{display:inline-block}
+.stage-note{margin-top:clamp(20px,2.4vw,30px);max-width:60ch;font-size:clamp(19px,.5vw + 16px,22px);line-height:1.42;font-weight:600}
+.fine{margin-top:8px;font-size:14px;color:var(--ink-55)}
+
+@media (max-width:980px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .link{height:76px}
+  .stub{top:0;left:50%;right:auto;margin:0 0 0 -7px;width:14px;height:20%;transition:height .5s cubic-bezier(.4,0,.2,1)}
+  .stub-b{top:auto;bottom:0}
+  .stub::after{left:3px;right:auto}
+  .stub-b::after{display:none}
+  .stage[data-state=linked] .stub{width:14px;height:52%;background:repeating-linear-gradient(180deg,var(--accent) 0 14px,var(--accent-edge) 14px 28px);background-size:100% 28px;animation-name:pipe-y}
+  @keyframes pipe-y{to{background-position:0 28px}}
+  .link-yes{grid-auto-flow:column;align-items:center;gap:8px;background:var(--pale);padding:2px 10px 2px 2px;border-radius:999px}
+  .link-yes i{width:44px}
+}
+@media (max-width:620px){
+  .panel-floor{min-height:0}
+  .floor-calm{min-height:430px}
+  .pile{min-height:470px}
+  .n{max-width:90%}
+  .erp-rows li{font-size:15.5px}
+  .wins-row{gap:7px}
+  .wins-row li{padding:10px 8px 9px}
+  .wins-row b{font-size:21px;white-space:normal}
+  .wins-row s{display:block;margin:0 0 3px}
+  .wins-row span{font-size:12.5px}
+}
+@media (max-width:350px){
+  .n-file,.n-mail,.n-call,.n-tag{font-size:13px}
+  .pile{min-height:530px}
+}
+/* -------------------------------------- The inspection report (same numbers as facts.html) */
+.back{background:var(--brand);color:var(--on-brand);padding:var(--section) 0;--focus:var(--accent)}
+.back h2{color:var(--on-brand)}
+.back h2 span{color:var(--back-hi,var(--accent))}
+.label{
+  margin-top:clamp(30px,4vw,52px);background:#fff;color:var(--ink);--focus:var(--brand-press);
+  border-radius:16px;padding:clamp(18px,3vw,40px);
+  display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:clamp(28px,4vw,60px);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
+}
+.report{position:relative;border:2px solid var(--ink);font-family:var(--body)}
+.report-head{padding:10px 12px;border-bottom:2px solid var(--ink);background:var(--tint)}
+.report-title{font:var(--dw) clamp(24px,1.2vw + 18px,30px)/1 var(--display);letter-spacing:-.01em;text-transform:uppercase}
+.report-meta{margin-top:5px;font:600 12.5px/1.35 var(--mono);color:var(--ink-70)}
+.report table{width:100%;border-collapse:collapse;font-size:15.5px;line-height:1.25}
+.report th,.report td{padding:8px 10px;border-bottom:1px solid rgba(26,26,26,.3);text-align:right;font-weight:400;white-space:nowrap}
+.report thead th{font:800 12.5px/1.2 var(--body);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-70);border-bottom:2px solid var(--ink)}
+.report th:first-child{text-align:left;white-space:normal}
+.report tbody th{font-weight:700}
+.report td{font-family:var(--mono);font-weight:600}
+.report td.ok{width:34px;color:#0A7A4B;font:800 17px/1 var(--body);text-align:center}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.report-saved{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 12px;font-weight:800;border-bottom:1px solid rgba(26,26,26,.3)}
+.report-saved b{font-weight:900;white-space:nowrap}
+.report-foot{padding:8px 150px 10px 12px;font:600 12.5px/1.35 var(--mono);color:var(--ink-70)}
+.stamp{position:absolute;right:14px;bottom:12px;padding:4px 12px;border:3px solid var(--stamp,#C8102E);border-radius:6px;color:var(--stamp,#C8102E);font:900 19px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;transform:rotate(-9deg);opacity:.82;mix-blend-mode:multiply}
+.facts-src{font-size:15.5px;line-height:1.42;color:var(--ink-70)}
+.label-copy{display:flex;flex-direction:column;font-size:clamp(17px,.3vw + 16px,18.5px);line-height:1.46;min-width:0}
+.label-copy > * + *{margin-top:18px}
+.label-copy strong{font-weight:800}
+.lockup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 26px;margin-top:auto;padding-top:22px}
+.barcode{display:block;text-decoration:none;color:var(--ink);flex:none;border-radius:4px}
+.barcode svg{width:190px;height:56px}
+.barcode span{display:block;margin-top:3px;text-align:center;font:500 14.5px/1 var(--body);letter-spacing:.11em}
+.inkjet{font:600 15.5px/1.42 var(--mono);letter-spacing:.05em;color:#222;max-width:27ch}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .inkjet{
+    color:transparent;
+    background:radial-gradient(circle at center,#000 54%,transparent 60%) 0 0/2.1px 2.1px;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+@media (max-width:980px){
+  .label{grid-template-columns:minmax(0,1fr)}
+  .report{max-width:480px}
+}
+@media (max-width:620px){
+  .lockup{align-items:center}
+  .report th,.report td{padding:7px 7px}
+  .report table{font-size:14.5px}
+  .report-saved{flex-direction:column;gap:2px}
+  .report-foot{padding-right:12px;padding-bottom:52px}
+}
+@media (max-width:380px){
+  .report th,.report td{padding:6px 4px}
+  .report table{font-size:13px}
+  .report td.ok{width:20px}
+}
+/* ------------------------------------------------------------- The ask */
+/* Reads --meet-ink and --meet-btn from the template, falling back to the brand. Set them, never here. */
+.meet{background:var(--accent);color:var(--on-accent);padding:var(--section) 0;--focus:var(--brand-press)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:clamp(34px,5vw,80px);align-items:center}
+.meet h2{font-size:clamp(33px,3vw + 14px,56px);line-height:1.12}
+.meet-lead{margin-top:clamp(16px,2vw,24px);max-width:32em;font-size:clamp(20px,.7vw + 16px,25px);line-height:1.36;font-weight:500}
+.meet-lead strong{font-weight:800}
+.meet-btns{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:14px 16px;align-items:flex-start}
+.meet .go-btn{--btn-bg:var(--meet-btn,var(--brand));--btn-fg:var(--on-brand);--btn-edge:var(--brand-deep)}
+.side-btn{display:inline-block;padding:16px 22px 17px;border-radius:12px;background:#fff;color:var(--brand-press);box-shadow:inset 0 0 0 2px var(--brand);font:var(--dw) 17px/1.2 var(--display);text-decoration:none}
+.side-btn:hover{background:var(--tint)}
+.meet-contact{margin-top:22px;max-width:40em;font-size:16.5px;line-height:1.5}
+.meet-contact a{font-weight:700;color:var(--meet-ink,var(--brand-press));text-underline-offset:3px}
+.meet-ps{margin-top:18px;color:var(--meet-ink,var(--brand-press));font:700 clamp(20px,.4vw + 18px,23px)/1.25 var(--hand);transform:rotate(-1deg);transform-origin:left;text-wrap:balance}
+.faces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+.polaroid{background:#fff;padding:9px 9px 8px;box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.polaroid figcaption{margin-top:8px;text-align:center;color:var(--ink);font:700 clamp(15.5px,.3vw + 14px,17.5px)/1.15 var(--hand)}
+.polaroid-a{transform:rotate(-2deg)}
+.polaroid-b{transform:rotate(1.8deg)}
+.who{font-size:15px;line-height:1.38}
+.who strong{font-weight:800}
+
+/* -------------------------------------------------------------- Footer */
+.foot{background:var(--brand);color:var(--on-brand);padding:clamp(30px,4vw,48px) 0;--focus:var(--accent)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 40px}
+.foot .logo{width:150px}
+.foot p{font-size:15px;line-height:1.45;color:var(--on-brand-soft);max-width:64ch}
+
+@media (max-width:980px){
+  .meet-grid{grid-template-columns:minmax(0,1fr)}
+  .faces{max-width:440px}
+}
+@media (max-width:620px){
+  .meet-btns .go-btn,.meet-btns .side-btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Poured to order for Kyle Cowden,</span> <span>PSW Group. Heat size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Kyle, you recycle magnesium and aluminum on three continents. <span>So here’s our software, explained as one melt.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="melt hero-obj" id="melt" role="img" aria-label="A spec screen for heat 4417 that says On spec, and under it a furnace charged with chips, scrap and returns, all mixed, beside an empty ingot mold and an empty pallet. The cable between the screen and the furnace is broken.">
+          <svg viewBox="0 0 360 560" aria-hidden="true">
+            <defs>
+              <radialGradient id="mlHalo">
+                <stop offset="0" stop-color="#FFC45C" stop-opacity=".95"/>
+                <stop offset=".42" stop-color="#FF9A2E" stop-opacity=".62"/>
+                <stop offset=".72" stop-color="#FF8A1F" stop-opacity=".16"/>
+                <stop offset="1" stop-color="#FF8A1F" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="mlHot" cx=".44" cy=".36" r=".72">
+                <stop offset="0" stop-color="#FFF7CF"/>
+                <stop offset=".3" stop-color="#FFD54F"/>
+                <stop offset=".78" stop-color="#FF9B21"/>
+                <stop offset="1" stop-color="#E9640F"/>
+              </radialGradient>
+              <radialGradient id="mlFoul" cx=".46" cy=".4" r=".72">
+                <stop offset="0" stop-color="#B8662C"/>
+                <stop offset=".6" stop-color="#83401A"/>
+                <stop offset="1" stop-color="#4A220E"/>
+              </radialGradient>
+              <linearGradient id="mlShell" x1="0" x2="1">
+                <stop offset="0" stop-color="#6B7782"/>
+                <stop offset=".25" stop-color="#4B5660"/>
+                <stop offset=".75" stop-color="#353E46"/>
+                <stop offset="1" stop-color="#252B31"/>
+              </linearGradient>
+              <linearGradient id="mlFire" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#FFE68F"/>
+                <stop offset=".55" stop-color="#FF9F2E"/>
+                <stop offset="1" stop-color="#E5480F"/>
+              </linearGradient>
+              <linearGradient id="mlAluFront" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F5F8FA"/>
+                <stop offset=".55" stop-color="#CDD5DB"/>
+                <stop offset="1" stop-color="#97A2AB"/>
+              </linearGradient>
+              <linearGradient id="mlAluTop" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#E4EAEE"/>
+                <stop offset="1" stop-color="#FFFFFF"/>
+              </linearGradient>
+              <!-- what floats in the crucible shows only above its front lip -->
+              <clipPath id="mlMouth"><path d="M-40 254H22A70 15 0 0 0 162 254H240V30H-40Z"/></clipPath>
+            </defs>
+
+            <!-- the spec: what the ERP says this heat is -->
+            <rect class="ml-screen" x="24" y="8" width="312" height="148" rx="14"/>
+            <rect class="ml-glass" x="34" y="18" width="292" height="128" rx="8"/>
+            <text class="ml-kick" x="52" y="47">SPEC</text>
+            <text class="ml-heat" x="52" y="88">Heat 4417</text>
+            <text class="ml-alloy" x="52" y="113">Magnesium alloy ingot</text>
+            <g class="ml-status"><rect class="ml-pill" id="mlPill" x="214" y="26" width="100" height="32" rx="16"/><text id="mlStatus" x="264" y="48" text-anchor="middle">On spec</text></g>
+            <path class="ml-ico-top" d="M252 77L256 70H298L302 77Z"/>
+            <path class="ml-ico-front" d="M246 97L252 77H302L308 97Z"/>
+            <path class="ml-ico-edge" d="M246 97L252 77L256 70H298L302 77L308 97ZM252 77H302"/>
+            <rect class="ml-bar" x="52" y="124" width="256" height="8" rx="4"/>
+            <rect class="ml-fill" id="mlFill" x="52" y="124" width="90" height="8" rx="4"/>
+
+            <!-- the furnace base, with its fire -->
+            <rect class="ml-box" x="30" y="374" width="136" height="154" rx="8"/>
+            <rect class="ml-box-top" x="30" y="374" width="136" height="14" rx="6"/>
+            <circle class="ml-rivet" cx="44" cy="381" r="2.4"/><circle class="ml-rivet" cx="152" cy="381" r="2.4"/>
+            <g class="ml-fire">
+              <rect class="ml-win" x="52" y="414" width="92" height="52" rx="10"/>
+              <path class="ml-flame" d="M66 462C64 449 74 444 76 430C82 442 88 449 86 462Z"/>
+              <path class="ml-flame" d="M88 462C85 446 96 438 99 422C106 438 112 448 109 462Z"/>
+              <path class="ml-flame" d="M111 462C109 450 118 444 121 432C126 444 132 450 130 462Z"/>
+            </g>
+            <rect class="ml-plinth" x="26" y="516" width="144" height="12" rx="3"/>
+
+            <!-- the crucible: it tips on the hub to pour -->
+            <g class="ml-cru" id="mlCru">
+              <ellipse class="ml-halo" cx="92" cy="238" rx="104" ry="56"/>
+              <path class="ml-shell" d="M10 252C10 306 18 352 36 368Q44 376 62 376H122Q140 376 148 368C166 352 174 306 174 252Z"/>
+              <path class="ml-hoop" d="M13 290Q92 312 171 290M22 340Q92 360 162 340"/>
+              <path class="ml-lip" d="M156 240Q188 240 210 249Q188 262 158 268Z"/>
+              <path class="ml-lip-in" d="M162 247Q186 247 203 250Q186 255 162 259Z"/>
+              <path class="ml-drip" id="mlDrip" d="M201 252C204 251 207 252 207 256C207 262 205 269 203 275C201 269 199 262 199 256C199 253 200 252 201 252Z"/>
+              <ellipse class="ml-rim" cx="92" cy="252" rx="82" ry="22"/>
+              <ellipse class="ml-rim-in" cx="92" cy="252" rx="72" ry="17"/>
+              <ellipse class="ml-melt" cx="92" cy="254" rx="70" ry="15"/>
+              <ellipse class="ml-foul" id="mlFoul" cx="92" cy="254" rx="70" ry="15"/>
+              <g clip-path="url(#mlMouth)">
+                <!-- chips, scrap and returns, all mixed: what's really going in -->
+                <g id="mlCharge">
+                  <g class="ml-pc"><g transform="translate(56 240) rotate(-14)"><path class="ml-s1" d="M-21 7L-17-7H17L21 7Z"/><path class="ml-s1t" d="M-17-7L-14-12H14L17-7Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(128 242) rotate(10)"><path class="ml-s3" d="M-17-6L-7-13L3-6L15-11L19 3L9 11L-4 6L-16 11Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(90 246)"><circle class="ml-s4" r="13"/><circle class="ml-s4h" r="4.5"/></g></g>
+                  <g class="ml-pc"><g transform="translate(32 250) rotate(-8)"><path class="ml-s5" d="M-15-3H15V3H3V12H-3V3H-15Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(144 252) rotate(-22)"><path class="ml-s6" d="M-12-8H12L9 8H-10Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(104 226) rotate(24)"><path class="ml-s2" d="M-19-12H-10V4H19V12H-19Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(66 218) rotate(-30)"><path class="ml-s7" d="M-13-6H13V6H-13Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(82 204) rotate(10)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(126 212) rotate(70)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(42 228) rotate(-40)"><path class="ml-chip-dk" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(150 230) rotate(140)"><path class="ml-chip-dk" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(104 198) rotate(-80)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(60 232) rotate(200)"><path class="ml-chip" d="M-12 4C-11-8 7-11 12-1C7-2-3-3-12 4Z"/></g></g>
+                </g>
+                <!-- dross: it floats up once the charge melts down with nothing to clean it -->
+                <g id="mlDross">
+                  <g class="ml-lump"><g transform="translate(40 252) scale(1.2)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><g transform="translate(70 245)"><path class="ml-crust" d="M-13 5C-15-1-11-6-6-6C-5-10 2-11 5-8C9-10 14-6 13-1C16 1 15 5 13 5Z"/><path class="ml-crust-hi" d="M-8-3C-6-5-3-5-2-4"/></g></g>
+                  <g class="ml-lump"><g transform="translate(104 243) scale(.9)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><g transform="translate(134 249) scale(1.15)"><path class="ml-crust" d="M-13 5C-15-1-11-6-6-6C-5-10 2-11 5-8C9-10 14-6 13-1C16 1 15 5 13 5Z"/><path class="ml-crust-hi" d="M-8-3C-6-5-3-5-2-4"/></g></g>
+                  <g class="ml-lump"><g transform="translate(154 257) scale(.8)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><g transform="translate(60 261) scale(.95)"><path class="ml-crust" d="M-13 5C-15-1-11-6-6-6C-5-10 2-11 5-8C9-10 14-6 13-1C16 1 15 5 13 5Z"/><path class="ml-crust-hi" d="M-8-3C-6-5-3-5-2-4"/></g></g>
+                  <g class="ml-lump"><g transform="translate(108 262) scale(1.3)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><circle class="ml-speck" cx="86" cy="255" r="3"/><circle class="ml-speck" cx="122" cy="256" r="2.4"/><circle class="ml-speck" cx="50" cy="258" r="2.2"/><circle class="ml-speck" cx="146" cy="244" r="2.2"/><circle class="ml-speck" cx="88" cy="247" r="2"/></g>
+                </g>
+                <!-- the flux: SimpleGrid, wearing the mark -->
+                <g class="ml-flux" id="mlFlux"><g transform="translate(92 246)">
+                  <rect class="ml-flux-body" x="-25" y="-22" width="50" height="40" rx="8"/>
+                  <rect class="ml-flux-top" x="-23" y="-20" width="46" height="8" rx="4"/>
+                  <g transform="scale(.8)"><g class="ml-mark sg-pop"><g class="sg-badge"><circle class="sg-badge-bg" r="20"/><g class="sg-ink" transform="translate(-13.44 -13.44) scale(.64)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.8"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.4"/></g></g></g></g>
+                  <ellipse class="ml-flux-wet" cx="0" cy="17" rx="31" ry="5"/>
+                </g></g>
+              </g>
+              <g class="ml-smoke"><circle cx="56" cy="236" r="10"/><circle cx="96" cy="232" r="12"/><circle cx="130" cy="238" r="9"/></g>
+            </g>
+
+            <!-- the post it tips on -->
+            <rect class="ml-post" x="163" y="250" width="18" height="274" rx="4"/>
+            <rect class="ml-post-hi" x="163" y="250" width="5" height="274" rx="2"/>
+            <rect class="ml-post" x="157" y="520" width="30" height="8" rx="2"/>
+            <circle class="ml-hub" cx="172" cy="252" r="11"/>
+            <circle class="ml-bolt" cx="172" cy="252" r="3.5"/>
+
+            <!-- the link from the spec to the furnace: broken until SimpleGrid joins it -->
+            <path class="ml-stub" d="M172 156V175"/>
+            <path class="ml-stub" d="M172 199V241"/>
+            <path class="ml-cable" d="M172 156V241"/>
+            <path class="ml-flow" d="M172 158V240"/>
+
+            <!-- the pour, the mold it fills, and the pallet the ingots go on -->
+            <g class="ml-pour" id="mlPour"><path class="ml-pour-out" pathLength="100"/><path class="ml-pour-core" pathLength="100"/><path class="ml-pour-dirt" id="mlDirt"/></g>
+            <path class="ml-floor" d="M0 528H360"/>
+            <ellipse class="ml-shadow" cx="298" cy="529" rx="64" ry="4"/>
+            <path class="ml-mold" d="M187 508H235L231 528H191Z"/>
+            <rect class="ml-mold-top" x="185" y="503" width="52" height="7" rx="2"/>
+            <rect class="ml-mold-cav" x="192" y="504" width="38" height="3" rx="1.5"/>
+            <ellipse class="ml-mold-glow" id="mlGlow" cx="211" cy="504" rx="19" ry="4.5"/>
+            <rect class="ml-pallet" x="238" y="516" width="120" height="6" rx="1"/>
+            <rect class="ml-pallet-dk" x="242" y="522" width="14" height="6"/><rect class="ml-pallet-dk" x="291" y="522" width="14" height="6"/><rect class="ml-pallet-dk" x="340" y="522" width="14" height="6"/>
+            <!-- what spills when it pours dirty -->
+            <g class="ml-splat" id="mlSplat">
+              <path class="ml-crust" d="M186 530C188 524 198 523 202 527C207 524 214 527 212 532C207 536 190 536 186 530Z"/><path class="ml-burn" d="M195 528C198 526 202 527 203 529C200 531 196 531 195 528Z"/>
+              <path class="ml-crust" d="M234 532C237 527 245 528 247 532C245 536 236 536 234 532Z"/><path class="ml-burn" d="M238 531C240 530 243 530 244 532C242 533 239 533 238 531Z"/>
+            </g>
+            <!-- the ingots: the script draws them -->
+            <g id="mlIngots"></g>
+            <!-- once it comes clean: strapped and labeled -->
+            <path class="ml-strap" d="M258 441V516M338 441V516"/>
+            <g transform="translate(298 479) scale(.44)"><g class="ml-tag sg-pop"><g class="sg-tag"><rect class="sg-tag-bg" x="-97" y="-23" width="194" height="46" rx="8"/><g class="sg-ink" transform="translate(-87.17 -15.17) scale(.722)"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3.6"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="3.2"/></g><text class="sg-tag-word" x="-50" y="8.6" font-family="Merriweather, Georgia, serif" font-weight="900" font-size="24" letter-spacing="-.5">SimpleGrid</text></g></g></g>
+          </svg>
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The spec: your ERP</span></h3>
+            <p id="topText">What the system says you’re pouring.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The melt: your floor</span></h3>
+            <p id="bottomText">What’s really going in, on Excel, whiteboards and phones.</p>
+          </div>
+          <!-- story.js shows this once the two halves have been pushed together: the mess is your operations -->
+          <div class="ops" aria-live="polite">
+            <h3><i></i><span id="opsTitle">Your operations, today</span></h3>
+            <p id="opsText">Pushed together, still not linked.</p>
+            <ul class="ops-chips" id="opsChips" aria-hidden="true"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Pour it to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The spec is your ERP, the melt is your floor, and nothing links them. Pour it, or tap the furnace.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<section class="gap" id="gap">
+  <div class="wrap">
+    <h2>Your ERP says everything’s fine. <span>Your floor would like a word.</span></h2>
+
+    <div class="stage" id="stage" data-state="calm">
+      <div class="panel-erp">
+        <div class="erp-top">
+          <h3>Your ERP</h3>
+          <span class="erp-status" id="erpStatus">All good</span>
+        </div>
+        <ul class="erp-rows" id="erpRows"></ul>
+        <p class="erp-scribble">Still says all good.</p>
+        <p class="erp-foot" id="erpFoot">Last updated: yesterday, 6:00 PM</p>
+      </div>
+
+      <div class="link" aria-hidden="true" id="stageLink">
+        <i class="stub stub-a"></i>
+        <i class="stub stub-b"></i>
+        <span class="link-no">No link</span>
+        <span class="link-yes"><i><svg viewBox="0 0 42 42"><g fill="none" stroke="currentColor"><rect x="3" y="3" width="36" height="36" rx="7" stroke-width="3"/><path d="M15 3v36M27 3v36M3 15h36M3 27h36" stroke-width="2.6"/></g></svg></i>SimpleGrid</span>
+      </div>
+
+      <div class="panel-floor">
+        <div class="floor-top">
+          <h3>Your floor</h3>
+          <span class="floor-clock" id="floorClock">6:58 AM</span>
+        </div>
+        <div class="floor-calm">
+          <button class="big-red" id="chaosBtn" type="button"><span class="dome" aria-hidden="true"></span><span>Run a normal morning</span></button>
+        </div>
+        <div class="pile" id="pile"></div>
+        <!-- Once linked: who knows what now, and what that does for the plant. -->
+        <p class="tidy-head">Everyone has the right information:</p>
+        <ul class="tidy" id="tidy"></ul>
+        <div class="wins">
+          <p class="wins-head">So nobody chases, nobody waits, and the margin shows up:</p>
+          <!-- Same numbers as facts.html and report.html. Change all three. -->
+          <ul class="wins-row">
+            <li style="--i:0"><b><s>40 hrs</s> <em data-from="40" data-to="2">2</em> hrs</b><span>Weekly planning</span></li>
+            <li style="--i:1"><b><s>70%</s> <em data-from="70" data-to="90">90</em>%</b><span>On-time delivery</span></li>
+            <li style="--i:2"><b><s>19%</s> <em data-from="19" data-to="24">24</em>%</b><span>Gross margin</span></li>
+          </ul>
+        </div>
+        <div class="floor-do">
+          <button class="go-btn" id="linkBtn" type="button">Link them up</button>
+          <a class="go-btn" id="stageMeet" href="#meet">Let’s meet</a>
+          <button class="quiet-btn" id="stageReset" type="button">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note" id="stageNote" aria-live="polite">There’s no link between what your ERP says and what’s really happening. Press the button.</p>
+    <p class="fine">Pretend plant, pretend morning. Once it’s linked, the three numbers are real: one deployment, six plants.</p>
+  </div>
+</section>
+
+<section class="back">
+  <div class="wrap">
+    <h2>A spec sheet can say what it likes. <span>The melt has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <div class="report">
+          <!-- Same numbers as facts.html. Change both. -->
+          <div class="report-head">
+            <h3 class="report-title">Inspection Report</h3>
+            <p class="report-meta">Part: SimpleGrid deployment<br>Lot: 6 plants, 1.2 million sq ft</p>
+          </div>
+          <table>
+            <thead><tr><th scope="col">Characteristic</th><th scope="col">Before</th><th scope="col">After</th><th scope="col"><span class="vh">Result</span></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Excel files to run planning</th><td>550</td><td>1</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">Weekly planning cycle</th><td>40 hrs</td><td>2 hrs</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">On-time delivery</th><td>70%</td><td>90%</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">Material wastage</th><td>1.5%</td><td>0.1%</td><td class="ok">✓</td></tr>
+              <tr><th scope="row">Gross margin</th><td>19%</td><td>24%</td><td class="ok">✓</td></tr>
+            </tbody>
+          </table>
+          <p class="report-saved"><span>Saved on wastage alone</span><b>About $200,000 a year</b></p>
+          <p class="report-foot">Disposition: no slides, no rip-and-replace, no GL migration.</p>
+          <span class="stamp" aria-hidden="true">Accepted</span>
+        </div>
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not metal: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Material:</strong> Your orders, your routings, your people’s own words, what actually happened on the floor.</p>
+        <p><strong>Tolerance:</strong> Zero, between what your ERP says and what your floor did.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">NEXT PM: BEFORE YOUR NEXT ERP RENEWAL<br>HEAT NO. 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>Kyle, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at your office in Chicago. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20Chicago.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">P.S. Congratulations on ten years of Magretech in the PSW family. I’d love to see what the next ten look like.</p>
+    </div>
+    <div class="faces">
+      <figure class="polaroid polaroid-a">
+        <img src="/assets/letters/mukund-agarwal.jpg" width="400" height="400" alt="Portrait of Mukund Agarwal." loading="lazy" decoding="async">
+        <figcaption>Mukund Agarwal</figcaption>
+      </figure>
+      <figure class="polaroid polaroid-b">
+        <img src="/assets/letters/aditi-puri-batra.jpg" width="400" height="400" alt="Portrait of Aditi Puri Batra." loading="lazy" decoding="async">
+        <figcaption>Aditi Puri Batra</figcaption>
+      </figure>
+      <p class="who"><strong>Founder.</strong> Built and sold a $30M manufacturing business. Bought an ERP twice. Went back to Excel twice.</p>
+      <p class="who"><strong>Advisor.</strong> Former Country Head of QuickBooks/Intuit India. Ex-Amazon and Google in the US.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><svg viewBox="0 0 232 44" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="3.2" y="7.2" width="31.6" height="31.6" rx="6" stroke-width="2.4"/><path d="M13.7 7.2v31.6M24.3 7.2v31.6M3.2 17.7h31.6M3.2 28.3h31.6" stroke-width="2"/></g><text x="47" y="36" fill="currentColor" font-family="Merriweather, Georgia, serif" font-size="30" font-weight="700" letter-spacing="-0.4">SimpleGrid</text></svg></a>
+    <p>Everything we know about PSW Group comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll melt it down and pour it again. The rest of the foundry is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+/* Shared by every hero: small helpers, the wipe into the end-state colors,
+   and the barcode on the back of the label. */
+var SG = (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v, a, b){ return v < a ? a : v > b ? b : v; };
+
+  /* The end state spreads out from the hero object and takes the whole hero
+     with it. The clone carries the other colorway, so the type stays legible
+     as the edge passes. `skip` hides whatever shouldn't be painted twice. */
+  function wipeTo(hero, from, theme, skip){
+    if (reduce){ hero.dataset.theme = theme; return; }
+    var r = from.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    var cx = r.left + r.width/2 - h.left, cy = r.top + r.height/2 - h.top;
+    var R = Math.hypot(Math.max(cx, h.width - cx), Math.max(cy, h.height - cy));
+    var over = document.createElement('div');
+    over.className = 'hero-wipe';
+    over.dataset.theme = theme;
+    over.setAttribute('aria-hidden', 'true');
+    over.inert = true;
+    var inner = hero.querySelector('.hero-inner').cloneNode(true);
+    inner.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+    if (skip) inner.querySelectorAll(skip).forEach(function(el){ el.style.visibility = 'hidden'; });
+    over.appendChild(inner);
+    over.style.clipPath = 'circle(0px at ' + cx + 'px ' + cy + 'px)';
+    hero.appendChild(over);
+    over.getBoundingClientRect();
+    over.style.transition = 'clip-path .9s cubic-bezier(.3,.6,.2,1)';
+    over.style.clipPath = 'circle(' + R + 'px at ' + cx + 'px ' + cy + 'px)';
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      hero.dataset.theme = theme;
+      over.remove();
+    };
+    over.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+
+  /* The barcode is real: Code 128 for 7732804485, in bar and space widths. */
+  function barcode(svg){
+    var bars = '', x = 0, CODE = '211232413111232121111242132131124211312113' + '2331112';
+    for (var i = 0; i < CODE.length; i++){
+      var width = +CODE.charAt(i);
+      if (i % 2 === 0) bars += '<rect x="' + x + '" y="0" width="' + width + '" height="26" fill="currentColor"/>';
+      x += width;
+    }
+    svg.setAttribute('viewBox', '0 0 ' + x + ' 26');
+    svg.innerHTML = bars;
+  }
+
+  /* Runs `frame(dt)` only while `el` is on screen and the tab is visible, so
+     an idle hero costs nothing once it's scrolled away. */
+  function loop(el, frame){
+    var raf = 0, last = 0, visible = true;
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(.05, (now - last)/1000 || .016);
+      last = now;
+      frame(dt);
+    }
+    function run(){ if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function halt(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? halt() : run(); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        visible ? run() : halt();
+      }).observe(el);
+    }
+    run();
+  }
+
+  return { reduce: reduce, clamp: clamp, wipeTo: wipeTo, barcode: barcode, loop: loop };
+})();
+/* ---------------------------------------------------------------- The story
+   Every hero tells the one the Legacy jar tells. Your ERP and your floor sit
+   apart. Push them together, the way most go-lives do, and you get a mess
+   that stays: that's your operations today. Add SimpleGrid, do it again, and
+   the mess comes out clean.
+
+   A page draws its own object and hands SG.story() its moves, each returning
+   a promise: mess() turns the two halves into the mess, dose() puts
+   SimpleGrid in, clean() turns the mess into the clean result. restore()
+   puts the object back at the start, at once, and final(on) swaps the
+   callouts for the end state. This runs the button, the words, the ops panel
+   beside the object (ops.html) and Start over. It returns go(), for pages
+   that let you do the next step by hand. */
+SG.story = function(o){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = o.hero, obj = o.obj, btn = o.btn, resetBtn = o.reset, caption = o.caption;
+  var opsTitle = $('opsTitle'), opsText = $('opsText'), chips = $('opsChips');
+  var phase = 'apart', busy = false, run = 0;
+  // From each resting phase: the moving phase, where it lands, and the move that gets it there.
+  var NEXT = { apart: ['messing', 'mess', o.mess], mess: ['dosing', 'dosed', o.dose], dosed: ['cleaning', 'done', o.clean] };
+  var IN_MESS = { messing: 1, mess: 1, dosing: 1, dosed: 1, cleaning: 1 };
+  var OPS = {
+    mess: ['Your operations, today', 'Pushed together, still not linked. Everyone’s working from a different version.'],
+    dosed: ['Your operations, plus SimpleGrid', 'Same mess, same people. Now there’s a link in it.']
+  };
+  if (o.ops) for (var k in o.ops) OPS[k] = o.ops[k];
+  OPS.messing = OPS.mess; OPS.dosing = OPS.mess; OPS.cleaning = OPS.dosed;
+  var KIND = ['sticky', 'file', 'call', 'pink', 'mail'], TILT = [-4, 3, -2, 5, -3];
+
+  function set(p){
+    phase = p;
+    hero.dataset.story = p;
+    hero.classList.toggle('in-mess', !!IN_MESS[p]);
+    btn.textContent = o.copy[p].btn;
+    btn.disabled = /ing$/.test(p);
+    caption.textContent = o.copy[p].caption;
+    if (o.aria && o.aria[p]) obj.setAttribute('aria-label', o.aria[p]);
+    if (OPS[p] && opsTitle){ opsTitle.textContent = OPS[p][0]; opsText.textContent = OPS[p][1]; }
+  }
+  // What lands on the floor in the stage below shows up here first, as the mess.
+  function fillChips(){
+    if (!chips) return;
+    var notes = (window.STAGE && window.STAGE.notes) || [];
+    chips.innerHTML = [0, 2, 1, 4, 8].map(function(n){ return notes[n]; }).filter(Boolean).map(function(text, i){
+      return '<li class="chip chip-' + KIND[i] + '" style="--r:' + TILT[i] + 'deg;--d:' + (.15 + i*.14).toFixed(2) + 's">' + text + '</li>';
+    }).join('');
+  }
+  // As it comes clean, the mess gets pulled into the object, the way the stage pulls the floor's notes into the link.
+  function swallow(){
+    if (!chips || SG.reduce) return;
+    var r = obj.getBoundingClientRect(), tx = r.left + r.width/2, ty = r.top + r.height/2;
+    [].forEach.call(chips.children, function(el, i){
+      var b = el.getBoundingClientRect();
+      el.style.animation = 'none';
+      el.style.transition = 'transform .55s cubic-bezier(.6,0,.9,.4) ' + (i*.06) + 's,opacity .5s ease-in ' + (i*.06) + 's';
+      el.style.transform = 'translate(' + (tx - b.left - b.width/2) + 'px,' + (ty - b.top - b.height/2) + 'px) scale(.15)';
+      el.style.opacity = '0';
+    });
+  }
+  function go(){
+    if (busy) return;
+    if (phase === 'done'){ var gap = $('gap'); if (gap) gap.scrollIntoView(); return; }
+    var n = NEXT[phase];
+    if (!n) return;
+    var token = ++run;
+    busy = true;
+    if (phase === 'apart') fillChips();
+    if (phase === 'dosed') swallow();
+    set(n[0]);
+    Promise.resolve(n[2]()).then(function(){
+      if (token !== run) return;
+      busy = false;
+      if (n[1] !== 'done'){ set(n[1]); return; }
+      set('done');
+      if (o.final) o.final(true);
+      resetBtn.hidden = false;
+      SG.wipeTo(hero, obj, 'b', o.skip);
+    });
+  }
+  function startOver(){
+    run++;
+    busy = false;
+    o.restore();
+    if (o.final) o.final(false);
+    if (chips) chips.innerHTML = '';
+    set('apart');
+    resetBtn.hidden = true;
+    SG.wipeTo(hero, obj, 'a', o.skip);
+  }
+  btn.addEventListener('click', go);
+  resetBtn.addEventListener('click', startOver);
+  set('apart');
+  return { go: go, phase: function(){ return phase; }, busy: function(){ return busy; } };
+};
+</script>
+<script>
+/* ---------------------------------------------------------------- The melt
+   For metal recyclers. The spec screen is the ERP, the furnace is the floor,
+   and nothing links them. Pour it and the charge melts down dirty: dross
+   floats on the melt, lumpy, cracked, off-color ingots land in a crooked heap,
+   two on the floor, and the screen still says On spec. That mess stays.
+   SimpleGrid goes in as the flux, wearing the mark, and the link joins. Pour
+   it again: the off-spec ingots go back in, the dross comes out, and the same
+   metal pours out as a neat, strapped bundle of silver ingots.
+   Every move is a Web Animation that holds its last frame (or a class), so
+   Start over only has to cancel them to get the first picture back. */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('melt'), cru = $('mlCru'), foul = $('mlFoul'), flux = $('mlFlux');
+  var pour = $('mlPour'), dirt = $('mlDirt'), glow = $('mlGlow'), splat = $('mlSplat'), drip = $('mlDrip'), wrap = $('mlIngots');
+  var statusEl = $('mlStatus'), pill = $('mlPill'), fill = $('mlFill');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var pieces = [].slice.call(obj.querySelectorAll('.ml-pc'));
+  var lumps = [].slice.call(obj.querySelectorAll('.ml-lump'));
+  var streams = [].slice.call(pour.querySelectorAll('path[pathLength]'));
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Pour it to see your operations', caption: 'The spec is your ERP, the melt is your floor, and nothing links them. Pour it, or tap the furnace.' },
+    messing:  { btn: 'Pouring…', caption: 'Pouring it the usual way: the plan in one place, the floor in another.' },
+    mess:     { btn: 'Add the flux', caption: 'That’s your operations today: a big mess. Dross on the melt, lumpy, cracked ingots in a heap and on the floor, and the screen still says On spec. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Adding…', caption: 'The flux goes in, and the link joins. That’s SimpleGrid.' },
+    dosed:    { btn: 'Pour it again', caption: 'That’s SimpleGrid: the spec and the melt on one live record. Now pour it again.' },
+    cleaning: { btn: 'Pouring…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean heat: the same metal, poured into even, shiny ingots that match the spec. Your ERP and your floor finally match.' }
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The furnace poured with nothing linking it: grey-black dross floating on the melt, lumpy, cracked and off-color ingots in a crooked heap, two of them on the floor, and the screen still saying On spec.',
+    done: 'The melt glowing clean with the SimpleGrid flux in it, the cable joined, the screen saying Done, on spec, and a neat, strapped bundle of shiny silver ingots labeled SimpleGrid.'
+  };
+
+  /* ------------------------------------------------------------ Geometry */
+  var f = function(v){ return Math.round(v*10)/10; };
+  var PIVOT = [172, 252], TILT = 26, LIP = [210, 249], MOLD = [211, 497];
+  var rad = TILT*Math.PI/180;
+  // Where the lip ends up once the crucible has tipped: the pour starts there and falls into the mold.
+  var lip = [PIVOT[0] + (LIP[0] - PIVOT[0])*Math.cos(rad) - (LIP[1] - PIVOT[1])*Math.sin(rad),
+             PIVOT[1] + (LIP[0] - PIVOT[0])*Math.sin(rad) + (LIP[1] - PIVOT[1])*Math.cos(rad)];
+  var POUR = 'M' + f(lip[0]) + ' ' + f(lip[1]) + 'C' + f(lip[0] + 5) + ' ' + f(lip[1] + 60) + ' ' + MOLD[0] + ' ' + f(lip[1] + 150) + ' ' + MOLD[0] + ' 505';
+  [].forEach.call(pour.querySelectorAll('path'), function(p){ p.setAttribute('d', POUR); });
+  // The bundle: two ingots a layer, four layers, bottom first. And where each one lands when it pours dirty.
+  var SLOT = [];
+  [507.5, 490.5, 473.5, 456.5].forEach(function(y){ [268, 328].forEach(function(x){ SLOT.push([x, y, 0]); }); });
+  var HEAP = [[264, 506, -6], [327, 503, 11], [295, 487, -18], [264, 468, 17], [328, 465, -25], [300, 444, 9], [213, 539, 171], [112, 541, -6]];
+  var MOUTH = [92, 244], FLUX = [92, 240];
+  // Where each lump of dross sits, so the flux can pull it in.
+  var CENTER = lumps.map(function(el){ var b = el.getBBox(); return [b.x + b.width/2, b.y + b.height/2]; });
+
+  /* ------------------------------------------------------------ The ingots */
+  var seed = 4417;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function mk(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+  // A smooth closed shape through the points: what makes a casting lumpy.
+  function blob(p){
+    var n = p.length, mid = function(a, b){ return f((a[0] + b[0])/2) + ' ' + f((a[1] + b[1])/2); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (var k = 0; k < n; k++) d += 'Q' + f(p[k][0]) + ' ' + f(p[k][1]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return d + 'Z';
+  }
+  // Points round a four-sided face, every few units, each edge pushed in and out by its own amount.
+  function wobble(corners, amps){
+    var out = [];
+    for (var c = 0; c < 4; c++){
+      var a = corners[c], b = corners[(c + 1)%4], n = Math.max(2, Math.round(Math.hypot(b[0] - a[0], b[1] - a[1])/6));
+      for (var k = 0; k < n; k++){
+        var t = k/n, amp = k ? amps[c] : Math.min(amps[c], amps[(c + 3)%4])*.5;
+        out.push([a[0] + (b[0] - a[0])*t + R(-amp, amp)*.5, a[1] + (b[1] - a[1])*t + R(-amp, amp)]);
+      }
+    }
+    return out;
+  }
+  var OK_FRONT = 'M-29 8.5L-25-8.5H25L29 8.5Z', OK_TOP = 'M-25-8.5L-21-15.5H21L25-8.5Z', OK_ALL = 'M-29 8.5L-25-8.5L-21-15.5H21L25-8.5L29 8.5Z';
+  // Off spec, each its own way: mottled, cracked, the wrong color, black with dross.
+  var LOOK = [
+    { f: '#B5BDC3', t: '#D0D7DB', p: '#565D63', spots: 3 },
+    { f: '#C2C9CE', t: '#DCE2E5', p: '#666D73', spots: 1, crack: 1 },
+    { f: '#9A6A44', t: '#B98A61', p: '#5A3720', spots: 2 },
+    { f: '#55595E', t: '#6F757A', p: '#2A2E31', spots: 2, crack: 1 },
+    { f: '#ACB4BA', t: '#C8CFD4', p: '#4E555B', spots: 3, crack: 1 },
+    { f: '#B1A274', t: '#CCBD8F', p: '#6F6038', spots: 2 },
+    { f: '#BAC1C7', t: '#D5DBDF', p: '#585F66', spots: 4 },
+    { f: '#6C584A', t: '#8A7464', p: '#382C24', spots: 2, crack: 1 }
+  ];
+  var ings = LOOK.map(function(L){
+    var g = mk('g', { 'class': 'ml-ing dirty' }, wrap);
+    var ok = mk('g', { 'class': 'ml-ok' }, g);
+    mk('path', { 'class': 'ml-top', d: OK_TOP }, ok);
+    mk('path', { 'class': 'ml-front', d: OK_FRONT }, ok);
+    mk('path', { 'class': 'ml-shine', d: 'M-15-12H8M-20-4H-6' }, ok);
+    mk('path', { 'class': 'ml-edge', d: OK_ALL + 'M-25-8.5H25' }, ok);
+    var bad = mk('g', { 'class': 'ml-bad' }, g);
+    // Lumpy on top, where a bad pour bubbles and shrinks; the sides only a little out of true.
+    var top = blob(wobble([[-25, -7.5], [-21, -15.5], [21, -15.5], [25, -7.5]], [1, 2.2, 1, .6]));
+    var front = blob(wobble([[-29, 8.5], [-25, -8.5], [25, -8.5], [29, 8.5]], [1.2, 2.8, 1.2, .8]));
+    mk('path', { d: top, fill: L.t, stroke: 'rgba(18,20,22,.55)', 'stroke-width': 1.6 }, bad);
+    mk('path', { d: front, fill: L.f, stroke: 'rgba(18,20,22,.6)', 'stroke-width': 1.7 }, bad);
+    for (var s = 0; s < L.spots; s++) mk('ellipse', { cx: f(R(-19, 19)), cy: f(R(-3.5, 3.5)), rx: f(R(4.5, 8)), ry: f(R(2.6, 4.2)), fill: L.p, opacity: .85 }, bad);
+    if (L.crack){ var x = R(-12, 12); mk('path', { 'class': 'ml-crack', d: 'M' + f(x) + ' -14L' + f(x + 3.5) + ' -5L' + f(x - 3) + ' 1.5L' + f(x + 2) + ' 9' }, bad); }
+    var hot = mk('path', { 'class': 'ml-hot' }, g);
+    return { g: g, hot: hot, badShape: top + front };
+  });
+  function look(clean){
+    ings.forEach(function(n){ n.g.classList.toggle('dirty', !clean); n.hot.setAttribute('d', clean ? OK_ALL : n.badShape); });
+  }
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], moves = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Reduced motion runs the same moves, each over in a millisecond.
+  function anim(el, frames, ms){
+    var a = el.animate(frames, { duration: reduce ? 1 : Math.max(1, ms), fill: 'both' });
+    moves.push(a);
+    return a;
+  }
+  // A timeline: [ms, {property: value}, easing into the next key]. Every key repeats every property it moves,
+  // so nothing falls back to its hidden starting style partway through.
+  function tl(el, keys){
+    var T = keys[keys.length - 1][0];
+    return anim(el, keys.map(function(k){
+      var fr = { offset: T ? k[0]/T : 1 };
+      for (var p in k[1]) fr[p] = k[1][p];
+      if (k[2]) fr.easing = k[2];
+      return fr;
+    }), T);
+  }
+  var tf = function(p){ return 'translate(' + f(p[0]) + 'px,' + f(p[1]) + 'px) rotate(' + f(p[2] || 0) + 'deg) scale(' + (p[3] == null ? 1 : p[3]) + ')'; };
+  // A thrown arc from a to b, starting at t0 and lasting ms, peaking `lift` above the higher end:
+  // keys at even times along a parabola, which is how a thing falls. o(t) gives its opacity.
+  function arc(t0, ms, a, b, lift, o){
+    var keys = [], top = Math.min(a[1], b[1]) - lift, s0 = a[3] == null ? 1 : a[3], s1 = b[3] == null ? 1 : b[3];
+    for (var k = 0; k <= 8; k++){
+      var t = k/8, mx = (a[0] + b[0])/2;
+      keys.push([t0 + ms*t, { transform: tf([(1 - t)*(1 - t)*a[0] + 2*(1 - t)*t*mx + t*t*b[0], (1 - t)*(1 - t)*a[1] + 2*(1 - t)*t*top + t*t*b[1], (a[2] || 0) + ((b[2] || 0) - (a[2] || 0))*t, s0 + (s1 - s0)*t]), opacity: o ? o(t) : 1 }]);
+    }
+    return keys;
+  }
+  var fadeIn = function(t){ return Math.min(1, t*7); };
+  // The pour: it runs from the lip down into the mold, and its tail follows it down.
+  function pourAt(on, off){
+    streams.forEach(function(p){ tl(p, [[0, { strokeDashoffset: 101 }], [on, { strokeDashoffset: 101 }], [on + 200, { strokeDashoffset: 0 }], [off, { strokeDashoffset: 0 }], [off + 220, { strokeDashoffset: -101 }]]); });
+    tl(glow, [[0, { opacity: 0 }], [on + 150, { opacity: 0 }], [on + 260, { opacity: 1 }], [off + 120, { opacity: 1 }], [off + 300, { opacity: 0 }]]);
+  }
+  function tip(at, back){
+    tl(cru, [[0, { transform: 'rotate(0deg)' }], [at, { transform: 'rotate(0deg)' }, 'cubic-bezier(.5,0,.4,1)'], [at + 480, { transform: 'rotate(' + TILT + 'deg)' }], [back, { transform: 'rotate(' + TILT + 'deg)' }, 'cubic-bezier(.5,0,.4,1)'], [back + 480, { transform: 'rotate(0deg)' }]]);
+  }
+  function setStatus(text, w){
+    statusEl.textContent = text;
+    pill.setAttribute('x', 314 - w); pill.setAttribute('width', w);
+    statusEl.setAttribute('x', 314 - w/2);
+  }
+
+  // Pour it, nothing linking it: the charge melts down, the dross comes up, and it pours out off spec.
+  function mess(){
+    obj.classList.add('foul');
+    pour.classList.add('foul');
+    pieces.forEach(function(el, i){
+      var d = 50*i;
+      tl(el, [[0, { transform: 'translate(0px,0px)', opacity: 1 }], [d, { transform: 'translate(0px,0px)', opacity: 1 }, 'cubic-bezier(.5,0,.8,.5)'], [d + 560, { transform: 'translate(0px,44px)', opacity: 0 }]]);
+    });
+    tl(foul, [[0, { opacity: 0 }], [200, { opacity: 0 }], [1000, { opacity: 1 }]]);
+    lumps.forEach(function(el, i){
+      var d = 380 + 80*i;
+      tl(el, [[0, { transform: 'translate(0px,14px)', opacity: 0 }], [d, { transform: 'translate(0px,14px)', opacity: 0 }, 'cubic-bezier(.2,.7,.3,1)'], [d + 420, { transform: 'translate(0px,0px)', opacity: 1 }]]);
+    });
+    later(function(){ obj.classList.add('smoky'); }, 900);
+    tip(950, 2900);
+    tl(dirt, [[0, { opacity: 0 }], [1560, { opacity: 0 }], [1640, { opacity: 1 }], [2830, { opacity: 1 }], [2890, { opacity: 0 }]]);
+    pourAt(1400, 2830);
+    ings.forEach(function(n, i){
+      var t0 = 1500 + i*150, at = [MOLD[0], MOLD[1], 0, .8], to = HEAP[i];
+      var keys = [[0, { transform: tf(at), opacity: 0 }]];
+      if (i < 7) keys = keys.concat(arc(t0, 480, at, to, i === 6 ? 26 : 46 + i*5, fadeIn));
+      else keys = keys.concat(arc(t0, 380, at, [290, 444, -30], 30, fadeIn), arc(t0 + 420, 520, [290, 444, -30], to, 10).slice(1));   // this one bounces off the heap and skids to the furnace
+      tl(n.g, keys);
+      tl(n.hot, [[0, { opacity: 0 }], [t0, { opacity: 0 }], [t0 + 40, { opacity: .9 }], [t0 + 520, { opacity: 0 }]]);
+    });
+    tl(splat, [[0, { opacity: 0, transform: 'scale(.3)' }], [1700, { opacity: 0, transform: 'scale(.3)' }, 'cubic-bezier(.2,.9,.3,1.3)'], [2000, { opacity: 1, transform: 'scale(1)' }]]);
+    tl(drip, [[0, { opacity: 0 }], [3000, { opacity: 0 }], [3250, { opacity: 1 }]]);
+    return wait(3450);
+  }
+
+  // In goes the flux, wearing the mark, and the link joins.
+  function dose(){
+    obj.classList.add('dosed');
+    tl(flux, [[0, { transform: 'translate(0px,-64px) scale(.4)', opacity: 0 }, 'cubic-bezier(.2,.9,.3,1.3)'], [260, { transform: 'translate(0px,-64px) scale(1)', opacity: 1 }, 'cubic-bezier(.55,0,.9,.5)'], [600, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }, 'ease-out'], [720, { transform: 'translate(0px,-8px) scale(1)', opacity: 1 }, 'ease-in'], [860, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]]);
+    later(function(){ obj.classList.add('linked'); setStatus('Linked', 90); }, 300);
+    return wait(1050);
+  }
+
+  // Pour it again, linked: the off-spec ingots go back in, the dross comes out, and the same metal pours clean.
+  function clean(){
+    obj.classList.remove('smoky');
+    ings.forEach(function(n, i){
+      var from = HEAP[i], t1 = i*70, t2 = 1850 + i*150, at = [MOLD[0], MOLD[1], 0, .8];
+      var into = [MOUTH[0] + (i % 3 - 1)*22, MOUTH[1], from[2] + 180, .5];
+      var keys = [[0, { transform: tf(from), opacity: 1 }]].concat(arc(t1, 520, from, into, 60, function(t){ return t < .75 ? 1 : (1 - t)*4; }).slice(1));
+      keys.push([t2, { transform: tf(at), opacity: 0 }]);
+      tl(n.g, keys.concat(arc(t2, 460, at, SLOT[i], 40 + (i >> 1)*6, fadeIn).slice(1)));
+      tl(n.hot, [[0, { opacity: 0 }], [t2, { opacity: 0 }], [t2 + 40, { opacity: .9 }], [t2 + 500, { opacity: 0 }]]);
+    });
+    later(function(){ look(true); }, 1300);
+    tl(splat, [[0, { opacity: 1, transform: 'scale(1)' }], [200, { opacity: 1, transform: 'scale(1)' }], [600, { opacity: 0, transform: 'scale(.6)' }]]);
+    // The flux pulls the dross out of the melt and into itself, swelling a little with each lump.
+    lumps.forEach(function(el, i){
+      var d = 300 + 70*i, c = CENTER[i], dx = f(FLUX[0] - c[0]), dy = f(FLUX[1] - c[1]);
+      tl(el, [[0, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }], [d, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }, 'cubic-bezier(.55,0,.75,.4)'], [d + 420, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.25)', opacity: 0 }]]);
+    });
+    var gulp = [[0, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]];
+    for (var k = 0; k < 4; k++) gulp.push([420 + 170*k, { transform: 'translate(0px,-3px) scale(1.07)', opacity: 1 }], [505 + 170*k, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]);
+    gulp.push([1300, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]);
+    tl(flux, gulp);
+    tl(drip, [[0, { opacity: 1 }], [200, { opacity: 1 }], [500, { opacity: 0 }]]);
+    later(function(){ obj.classList.remove('foul'); obj.classList.add('clean'); pour.classList.remove('foul'); }, 800);
+    tl(foul, [[0, { opacity: 1 }], [700, { opacity: 1 }], [1400, { opacity: 0 }]]);
+    tip(1350, 3300);
+    pourAt(1750, 3200);
+    later(function(){ obj.classList.add('ok'); setStatus('Done, on spec', 146); fill.setAttribute('width', 256); }, 3000);
+    return wait(3850);
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    moves = [];
+    obj.classList.remove('foul', 'clean', 'smoky', 'dosed', 'linked', 'ok', 'is-done');
+    pour.classList.remove('foul');
+    look(false);
+    setStatus('On spec', 100);
+    fill.setAttribute('width', 90);
+  }
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The spec: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says you’re pouring.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The melt: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really going in, on Excel, whiteboards and phones.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.melt',
+    ops: {
+      mess: ['Your operations, today', 'Poured together, still not linked. Dross in the melt, and the screen still says On spec.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same melt, same mess. Now the spec and the floor are linked.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the furnace does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  restore();
+})();
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Scrap on hand', '400 t', '<s>400</s> 310 t'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '22%', '<s>22%</s> 17%']
+  ],
+  notes: [
+    'Furnace 2 is down!',
+    'Customer: Where’s my order?',
+    'melt_plan_FINAL_v7.xlsx',
+    'Scrap truck: 9 t short',
+    'Which alloy are we pouring???',
+    'Re: Re: Fwd: Re: which heat?',
+    'Lab hold: heat 2207',
+    'melt_plan_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the schedule. Again.',
+    'What did that heat actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Furnace 3 crew: Order 4417 moved to you',
+    'Customer: 4417 ships Monday, and here’s why',
+    'Buyer: Scrap PO is ready for your OK',
+    'Lab: Heat 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+/* ------------------------------------ The gap: your ERP vs your floor.
+   The template sets window.STAGE = { erp, notes, tidy } before this runs:
+     erp    four rows of [label, what the ERP says, what's true once linked]
+     notes  twelve things that land on the floor, in the order below
+     tidy   four lines the floor reads once it's linked */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var data = window.STAGE;
+
+  var PHONE = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.2 1.3l2 3.2c.2.3.1.7-.1.9L5 6.6c.7 1.7 2.6 3.7 4.4 4.4l1.2-1.1c.3-.2.6-.3.9-.1l3.2 2c.3.2.4.6.3.9-.5 1.2-1.5 2-2.8 2C6.8 14.7 1.3 9.2 1.3 3.8 1.3 2.5 2 1.5 3.3 1c.3-.1.7 0 .9.3z"/></svg>';
+  var ENVELOPE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>';
+  var TICK = '<i aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"/></svg></i>';
+  // kind, tilt, where it lands on a laptop, where it lands on a phone
+  var SLOTS = [
+    ['sticky', -6, 'left:1%;top:1%',   'left:0;top:0'],
+    ['call',    3, 'left:33%;top:0',   'right:0;top:8%'],
+    ['file',   -3, 'right:0;top:9%',   'left:3%;top:17%'],
+    ['pink',    5, 'right:5%;top:20%', 'right:0;top:24.5%'],
+    ['board',  -4, 'left:2%;top:20%',  'left:0;top:33.5%'],
+    ['mail',    3, 'right:9%;top:36%', 'right:2%;top:42%'],
+    ['tag',    -7, 'left:0;top:40%',   'left:4%;top:50%'],
+    ['file',   -2, 'right:0;top:51%',  'right:0;top:57%'],
+    ['call',    4, 'left:6%;top:57%',  'left:0;top:65%'],
+    ['sticky', -5, 'right:3%;top:66%', 'right:0;top:73%'],
+    ['pink',    3, 'left:1%;top:78%',  'left:0;top:82%'],
+    ['board',  -3, 'right:7%;top:85%', 'right:4%;top:90.5%']
+  ];
+  var stage = $('stage'), pile = $('pile'), erpRows = $('erpRows'), stageNote = $('stageNote');
+  var chaosBtn = $('chaosBtn'), linkBtn = $('linkBtn'), stageReset = $('stageReset');
+  var NOTE = {
+    calm: stageNote.textContent,
+    chaos: 'So people fill the gap by hand, with Excel, whiteboards and phone calls. That’s the chaos, and it costs real money.',
+    linked: 'That’s SimpleGrid: one live record between your ERP and your floor. Everyone has the right information, so the work flows and the margin shows up. Your ERP stays. The spreadsheets go.'
+  };
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+
+  $('tidy').innerHTML = data.tidy.map(function(line, i){
+    return '<li style="--i:' + i + '">' + TICK + '<span>' + line + '</span></li>';
+  }).join('');
+
+  function renderErp(linked){
+    erpRows.innerHTML = data.erp.map(function(row, i){
+      return '<li' + (linked ? ' class="hit" style="--d:' + (.25 + i*.14) + 's"' : '') + '><span>' + row[0] + '</span><b>' + row[linked ? 2 : 1] + '</b></li>';
+    }).join('');
+    $('erpStatus').textContent = linked ? 'In sync' : 'All good';
+    $('erpFoot').textContent = linked ? 'Last updated: just now' : 'Last updated: yesterday, 6:00 PM';
+  }
+  function runMorning(){
+    var onPhone = window.matchMedia('(max-width:620px)').matches;
+    stage.dataset.state = 'chaos';
+    $('floorClock').textContent = '9:41 AM';
+    stageNote.textContent = NOTE.chaos;
+    pile.innerHTML = data.notes.map(function(text, i){
+      var slot = SLOTS[i];
+      var icon = slot[0] === 'call' ? PHONE : slot[0] === 'mail' ? ENVELOPE : '';
+      return '<div class="n n-' + slot[0] + '" style="--r:' + slot[1] + 'deg;--d:' + (i*.17).toFixed(2) + 's;' + slot[onPhone ? 3 : 2] + '">' + icon + '<span>' + text + '</span></div>';
+    }).join('');
+    later(function(){
+      stage.dataset.state = 'messy';
+      linkBtn.focus({ preventScroll: true });
+    }, data.notes.length*170 + 300);
+  }
+  // The chaos gets pulled into the pipe, and what comes out the other side is tidy.
+  function linkUp(){
+    var link = $('stageLink').getBoundingClientRect();
+    var tx = link.left + link.width/2, ty = link.top + link.height/2;
+    [].slice.call(pile.children).forEach(function(el, i){
+      var r = el.getBoundingClientRect();
+      var rot = el.style.getPropertyValue('--r');
+      el.style.animation = 'none';
+      el.style.opacity = 1;
+      el.style.transform = 'rotate(' + rot + ')';
+      void el.offsetWidth;
+      el.style.transition = 'transform .5s cubic-bezier(.6,0,.9,.4) ' + (i*.025) + 's,opacity .5s ease-in ' + (i*.025) + 's';
+      el.style.transform = 'translate(' + (tx - r.left - r.width/2) + 'px,' + (ty - r.top - r.height/2) + 'px) scale(.12)';
+      el.style.opacity = 0;
+    });
+    linkBtn.disabled = true;
+    later(function(){
+      stage.dataset.state = 'linked';
+      linkBtn.disabled = false;
+      pile.innerHTML = '';
+      renderErp(true);
+      countUp();
+      stageNote.textContent = NOTE.linked;
+      stageReset.focus({ preventScroll: true });
+    }, 720);
+  }
+  // The three numbers run from before to after once everyone's on the same record.
+  function countUp(){
+    [].forEach.call(document.querySelectorAll('.wins em[data-from]'), function(el, i){
+      var a = +el.dataset.from, b = +el.dataset.to;
+      if (reduce){ el.textContent = b; return; }
+      el.textContent = a;
+      var t0 = 0, delay = 650 + i*160, dur = 900;
+      var tick = function(now){
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - delay)/dur)), e = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(a + (b - a)*e);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  function resetStage(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage.dataset.state = 'calm';
+    pile.innerHTML = '';
+    $('floorClock').textContent = '6:58 AM';
+    stageNote.textContent = NOTE.calm;
+    renderErp(false);
+    chaosBtn.focus({ preventScroll: true });
+  }
+  chaosBtn.addEventListener('click', runMorning);
+  linkBtn.addEventListener('click', linkUp);
+  stageReset.addEventListener('click', resetStage);
+  renderErp(false);
+})();
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>
