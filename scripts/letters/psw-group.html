@@ -42,8 +42,8 @@
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
   --scr:#1E2329;--scr-glass:#2A313A;
   --steel-hi:#66737E;--steel:#454F58;--steel-dk:#2F373E;--steel-ink:#171C20;
-  --dross:#3F4246;--dross-dk:#232528;--dross-hi:#7E8388;--smoke:#4A4E53;
-  --alu-hi:#FAFCFD;--alu:#D8DFE4;--alu-mid:#B9C2C9;--alu-dk:#8A959D;--alu-edge:#4E5962;
+  --dross:#3B3E42;--dross-dk:#1F2124;--dross-hi:#80858A;--smoke:#43474C;
+  --alu-hi:#FAFCFD;--alu:#D8DFE4;--alu-mid:#B9C2C9;--alu-dk:#8A959D;--alu-edge:#4A555E;
   --pallet:#B98B5A;--pallet-dk:#8E6A42;
   --live:#2FC24F;--glow:#FFB547;
   --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
@@ -59,7 +59,7 @@
 .ml-heat{fill:#fff;font:800 28px/1 var(--body)}
 .ml-alloy{fill:rgba(255,255,255,.8);font:600 16px/1 var(--body)}
 .ml-pill{fill:#DFF5EA;transition:fill .3s}
-.ml-status text{fill:#0A6B47;font:800 15px/1 var(--body);transition:fill .3s}
+.ml-status text{fill:#0A6B47;font:800 17px/1 var(--body);transition:fill .3s}
 .melt.linked .ml-pill{fill:var(--accent)}
 .melt.linked .ml-status text{fill:var(--on-accent)}
 .melt.ok .ml-pill{fill:var(--live)}
@@ -67,7 +67,7 @@
 .ml-bar{fill:rgba(255,255,255,.14)}
 .ml-fill{fill:var(--live);transition:width 1.2s cubic-bezier(.3,.7,.2,1)}
 .ml-ico-top{fill:var(--alu-hi)}
-.ml-ico-front{fill:var(--alu-mid)}
+.ml-ico-front{fill:url(#mlAluFront)}
 .ml-ico-edge{fill:none;stroke:var(--alu-dk);stroke-width:1.5;stroke-linejoin:round}
 /* The link: broken until SimpleGrid joins it. */
 .ml-stub{fill:none;stroke:#59626C;stroke-width:6;stroke-linecap:round}
@@ -77,9 +77,9 @@
 .melt.linked .ml-flow{animation:ml-flow .6s linear infinite}
 @keyframes ml-flow{to{stroke-dashoffset:-13}}
 /* The furnace: a crucible on a post, tipping on its hub to pour. */
-.ml-cru{transform-box:view-box;transform-origin:180px 252px}
+.ml-cru{transform-box:view-box;transform-origin:172px 252px}
 .ml-halo{fill:url(#mlHalo);opacity:.8;transition:opacity .6s}
-.melt.foul .ml-halo{opacity:.45}
+.melt.foul .ml-halo{opacity:.35}
 .melt.clean .ml-halo{opacity:1}
 .ml-shell{fill:url(#mlShell)}
 .ml-hoop{fill:none;stroke:var(--steel-hi);stroke-width:5;stroke-linecap:round}
@@ -87,15 +87,17 @@
 .ml-rim-in{fill:var(--steel-ink)}
 .ml-lip{fill:var(--steel-hi)}
 .ml-lip-in{fill:var(--steel-ink)}
+.ml-drip{fill:#6B4A33;stroke:var(--dross-dk);stroke-width:1.5;opacity:0}
 .ml-melt{fill:url(#mlHot)}
 .ml-foul{fill:url(#mlFoul);opacity:0}
-.ml-sheen{fill:#fff;opacity:.4}
 .ml-post{fill:var(--steel)}
 .ml-post-hi{fill:var(--steel-hi)}
 .ml-hub{fill:var(--steel-hi);stroke:var(--steel-ink);stroke-width:3}
 .ml-bolt{fill:var(--steel-ink)}
-.ml-box{fill:var(--steel-dk)}
+.ml-box{fill:url(#mlShell)}
 .ml-box-top{fill:var(--steel)}
+.ml-rivet{fill:var(--steel-hi)}
+.ml-plinth{fill:var(--steel-ink)}
 .ml-win{fill:var(--steel-ink)}
 .ml-flame{fill:url(#mlFire);transform-box:fill-box;transform-origin:50% 100%;animation:ml-flick .9s ease-in-out infinite alternate}
 .ml-flame:nth-child(3){animation-duration:.7s;animation-delay:-.3s}
@@ -111,51 +113,51 @@
 .ml-s5{fill:#B8C0C6;stroke:#6C777E;stroke-width:1.6;stroke-linejoin:round}
 .ml-s6{fill:#9A7454;stroke:#614630;stroke-width:1.6;stroke-linejoin:round}
 .ml-s7{fill:#6F8AA6;stroke:#43586D;stroke-width:1.6;stroke-linejoin:round}
-.ml-chip{fill:none;stroke:#E8EDF0;stroke-width:2.8;stroke-linecap:round}
-.ml-chip-dk{fill:none;stroke:#9EA8AF;stroke-width:2.8;stroke-linecap:round}
+.ml-chip{fill:#E6EBEE;stroke:#66717A;stroke-width:1.3;stroke-linejoin:round}
+.ml-chip-dk{fill:#A7B1B8;stroke:#56616A;stroke-width:1.3;stroke-linejoin:round}
 /* Dross: grey-black crust that floats on a melt nobody fluxed. */
-.ml-lump{opacity:0}
-.ml-lump path:first-child{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.8;stroke-linejoin:round}
-.ml-lump path+path{fill:none;stroke:var(--dross-hi);stroke-width:2.2;stroke-linecap:round}
+.ml-lump{opacity:0;transform-box:fill-box;transform-origin:50% 50%}
+.ml-lump .ml-crust{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.8;stroke-linejoin:round}
+.ml-lump .ml-crust-hi{fill:none;stroke:var(--dross-hi);stroke-width:2.2;stroke-linecap:round}
+.ml-lump .ml-speck{fill:var(--dross-dk)}
 .ml-smoke circle{fill:var(--smoke);opacity:0;transform-box:fill-box;transform-origin:center}
 .melt.smoky .ml-smoke circle{animation:ml-smoke 2.7s ease-out infinite}
 .melt.smoky .ml-smoke circle:nth-child(2){animation-delay:-.9s}
 .melt.smoky .ml-smoke circle:nth-child(3){animation-delay:-1.8s}
-@keyframes ml-smoke{0%{opacity:0;transform:translateY(0) scale(.45)}18%{opacity:.75}100%{opacity:0;transform:translateY(-54px) scale(1.7)}}
+@keyframes ml-smoke{0%{opacity:0;transform:translateY(0) scale(.45)}18%{opacity:.8}100%{opacity:0;transform:translateY(-54px) scale(1.7)}}
 /* The flux: SimpleGrid, wearing the mark. */
-.ml-flux{opacity:0}
+.ml-flux{opacity:0;transform-box:fill-box;transform-origin:50% 50%}
 .ml-flux-body{fill:#F2F5F3;stroke:#8E9A95;stroke-width:2}
 .ml-flux-top{fill:#fff}
 .ml-flux-wet{fill:url(#mlHot)}
 .ml-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
 .melt.dosed .ml-mark{opacity:1;transform:none}
-/* The pour. */
-.ml-pour path{fill:none;stroke-linecap:round;stroke-dasharray:100 100;stroke-dashoffset:100}
+/* The pour: hidden until it runs (the dash sits just off both ends, so no round cap shows). */
+.ml-pour path{fill:none;stroke-linecap:round;stroke-dasharray:100 120;stroke-dashoffset:101}
 .ml-pour-out{stroke:#FF9424;stroke-width:12}
 .ml-pour-core{stroke:#FFE88F;stroke-width:5}
-.ml-pour .ml-pour-dirt{stroke:var(--dross-dk);stroke-width:8;stroke-dasharray:4 12;stroke-dashoffset:0;opacity:0;animation:ml-fall .3s linear infinite}
-.ml-pour.foul .ml-pour-out{stroke:#C4662A}
-.ml-pour.foul .ml-pour-core{stroke:#E8A060}
-@keyframes ml-fall{to{stroke-dashoffset:-16}}
+.ml-pour .ml-pour-dirt{stroke:var(--dross-dk);stroke-width:6;stroke-dasharray:2 7 6 13 3 9 1 11;stroke-dashoffset:0;opacity:0;animation:ml-fall .5s linear infinite}
+.ml-pour.foul .ml-pour-out{stroke:#B85E26}
+.ml-pour.foul .ml-pour-core{stroke:#E19455}
+@keyframes ml-fall{to{stroke-dashoffset:-52}}
 .ml-mold{fill:var(--steel-dk)}
 .ml-mold-top{fill:var(--steel)}
 .ml-mold-cav{fill:var(--steel-ink)}
 .ml-mold-glow{fill:var(--glow);opacity:0}
-.ml-splat{opacity:0}
-.ml-splat path{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.5}
-.ml-splat path+path{fill:#9C4A1C;stroke:none}
+.ml-splat{opacity:0;transform-box:fill-box;transform-origin:50% 60%}
+.ml-splat .ml-crust{fill:var(--dross);stroke:var(--dross-dk);stroke-width:1.5}
+.ml-splat .ml-burn{fill:#8E431A}
 .ml-floor{fill:none;stroke:rgba(0,0,0,.2);stroke-width:2}
 .ml-pallet{fill:var(--pallet)}
 .ml-pallet-dk{fill:var(--pallet-dk)}
 /* The ingots: the script draws each one twice, off spec and on it. */
 .ml-ing{opacity:0}
 .ml-ing.dirty .ml-ok,.ml-ing:not(.dirty) .ml-bad{display:none}
-.ml-ok .ml-top{fill:var(--alu-hi)}
-.ml-ok .ml-front{fill:var(--alu)}
-.ml-ok .ml-shine{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round}
-.ml-ok .ml-shade{fill:var(--alu-mid)}
-.ml-ing .ml-edge{fill:none;stroke:var(--alu-edge);stroke-width:1.6;stroke-linejoin:round}
-.ml-bad .ml-crack{fill:none;stroke:#15181B;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.ml-ok .ml-top{fill:url(#mlAluTop)}
+.ml-ok .ml-front{fill:url(#mlAluFront)}
+.ml-ok .ml-shine{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round}
+.ml-ing .ml-edge{fill:none;stroke:var(--alu-edge);stroke-width:1.7;stroke-linejoin:round}
+.ml-bad .ml-crack{fill:none;stroke:#121417;stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round}
 .ml-hot{fill:#FF9A2E;opacity:0}
 .ml-strap{fill:none;stroke:var(--h2-hi);stroke-width:3.5;opacity:0;transition:opacity .4s .1s}
 .melt.is-done .ml-strap{opacity:1}
@@ -167,7 +169,7 @@
 .callout-top h3 i{background:var(--scr)}
 .callout-bottom h3 i{background:var(--glow)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.5)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.522)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -211,9 +213,9 @@
                 <stop offset="1" stop-color="#E9640F"/>
               </radialGradient>
               <radialGradient id="mlFoul" cx=".46" cy=".4" r=".72">
-                <stop offset="0" stop-color="#D98238"/>
-                <stop offset=".6" stop-color="#A8521E"/>
-                <stop offset="1" stop-color="#6A3013"/>
+                <stop offset="0" stop-color="#B8662C"/>
+                <stop offset=".6" stop-color="#83401A"/>
+                <stop offset="1" stop-color="#4A220E"/>
               </radialGradient>
               <linearGradient id="mlShell" x1="0" x2="1">
                 <stop offset="0" stop-color="#6B7782"/>
@@ -226,112 +228,126 @@
                 <stop offset=".55" stop-color="#FF9F2E"/>
                 <stop offset="1" stop-color="#E5480F"/>
               </linearGradient>
+              <linearGradient id="mlAluFront" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F3F6F8"/>
+                <stop offset="1" stop-color="#A9B3BB"/>
+              </linearGradient>
+              <linearGradient id="mlAluTop" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#E4EAEE"/>
+                <stop offset="1" stop-color="#FFFFFF"/>
+              </linearGradient>
               <!-- what floats in the crucible shows only above its front lip -->
-              <clipPath id="mlMouth"><path d="M-40 254H30A70 15 0 0 0 170 254H240V30H-40Z"/></clipPath>
+              <clipPath id="mlMouth"><path d="M-40 254H22A70 15 0 0 0 162 254H240V30H-40Z"/></clipPath>
             </defs>
 
             <!-- the spec: what the ERP says this heat is -->
             <rect class="ml-screen" x="24" y="8" width="312" height="148" rx="14"/>
             <rect class="ml-glass" x="34" y="18" width="292" height="128" rx="8"/>
             <text class="ml-kick" x="52" y="47">SPEC</text>
-            <text class="ml-heat" x="52" y="86">Heat 4417</text>
-            <text class="ml-alloy" x="52" y="112">Magnesium alloy ingot</text>
-            <g class="ml-status"><rect class="ml-pill" id="mlPill" x="218" y="28" width="96" height="30" rx="15"/><text id="mlStatus" x="266" y="48.5" text-anchor="middle">On spec</text></g>
-            <g class="ml-ico">
-              <path class="ml-ico-top" d="M252 76L256 70H298L302 76Z"/>
-              <path class="ml-ico-front" d="M246 96L252 76H302L308 96Z"/>
-              <path class="ml-ico-edge" d="M246 96L252 76L256 70H298L302 76L308 96Z M252 76H302"/>
-            </g>
+            <text class="ml-heat" x="52" y="88">Heat 4417</text>
+            <text class="ml-alloy" x="52" y="113">Magnesium alloy ingot</text>
+            <g class="ml-status"><rect class="ml-pill" id="mlPill" x="214" y="26" width="100" height="32" rx="16"/><text id="mlStatus" x="264" y="48" text-anchor="middle">On spec</text></g>
+            <path class="ml-ico-top" d="M252 77L256 70H298L302 77Z"/>
+            <path class="ml-ico-front" d="M246 97L252 77H302L308 97Z"/>
+            <path class="ml-ico-edge" d="M246 97L252 77L256 70H298L302 77L308 97ZM252 77H302"/>
             <rect class="ml-bar" x="52" y="124" width="256" height="8" rx="4"/>
             <rect class="ml-fill" id="mlFill" x="52" y="124" width="90" height="8" rx="4"/>
 
             <!-- the furnace base, with its fire -->
-            <rect class="ml-box" x="40" y="374" width="138" height="154" rx="8"/>
-            <rect class="ml-box-top" x="40" y="374" width="138" height="14" rx="6"/>
+            <rect class="ml-box" x="30" y="374" width="136" height="154" rx="8"/>
+            <rect class="ml-box-top" x="30" y="374" width="136" height="14" rx="6"/>
+            <circle class="ml-rivet" cx="44" cy="381" r="2.4"/><circle class="ml-rivet" cx="152" cy="381" r="2.4"/>
             <g class="ml-fire">
-              <rect class="ml-win" x="62" y="416" width="94" height="50" rx="10"/>
-              <path class="ml-flame" d="M76 462C74 449 84 444 86 430C92 442 98 449 96 462Z"/>
-              <path class="ml-flame" d="M98 462C95 446 106 438 109 422C116 438 122 448 119 462Z"/>
-              <path class="ml-flame" d="M121 462C119 450 128 444 131 432C136 444 142 450 140 462Z"/>
+              <rect class="ml-win" x="52" y="414" width="92" height="52" rx="10"/>
+              <path class="ml-flame" d="M66 462C64 449 74 444 76 430C82 442 88 449 86 462Z"/>
+              <path class="ml-flame" d="M88 462C85 446 96 438 99 422C106 438 112 448 109 462Z"/>
+              <path class="ml-flame" d="M111 462C109 450 118 444 121 432C126 444 132 450 130 462Z"/>
             </g>
+            <rect class="ml-plinth" x="26" y="516" width="144" height="12" rx="3"/>
 
             <!-- the crucible: it tips on the hub to pour -->
             <g class="ml-cru" id="mlCru">
-              <ellipse class="ml-halo" cx="100" cy="232" rx="112" ry="64"/>
-              <path class="ml-shell" d="M18 252C18 306 26 352 44 368Q52 376 70 376H130Q148 376 156 368C174 352 182 306 182 252Z"/>
-              <path class="ml-hoop" d="M21 290Q100 312 179 290M30 340Q100 360 170 340"/>
-              <path class="ml-lip" d="M164 240Q196 240 218 249Q196 262 166 268Z"/>
-              <path class="ml-lip-in" d="M170 247Q194 247 211 250Q194 255 170 259Z"/>
-              <ellipse class="ml-rim" cx="100" cy="252" rx="82" ry="22"/>
-              <ellipse class="ml-rim-in" cx="100" cy="252" rx="72" ry="17"/>
-              <ellipse class="ml-melt" cx="100" cy="254" rx="70" ry="15"/>
-              <ellipse class="ml-foul" id="mlFoul" cx="100" cy="254" rx="70" ry="15"/>
+              <ellipse class="ml-halo" cx="92" cy="232" rx="112" ry="64"/>
+              <path class="ml-shell" d="M10 252C10 306 18 352 36 368Q44 376 62 376H122Q140 376 148 368C166 352 174 306 174 252Z"/>
+              <path class="ml-hoop" d="M13 290Q92 312 171 290M22 340Q92 360 162 340"/>
+              <path class="ml-lip" d="M156 240Q188 240 210 249Q188 262 158 268Z"/>
+              <path class="ml-lip-in" d="M162 247Q186 247 203 250Q186 255 162 259Z"/>
+              <path class="ml-drip" id="mlDrip" d="M201 252C204 251 207 252 207 256C207 262 205 269 203 275C201 269 199 262 199 256C199 253 200 252 201 252Z"/>
+              <ellipse class="ml-rim" cx="92" cy="252" rx="82" ry="22"/>
+              <ellipse class="ml-rim-in" cx="92" cy="252" rx="72" ry="17"/>
+              <ellipse class="ml-melt" cx="92" cy="254" rx="70" ry="15"/>
+              <ellipse class="ml-foul" id="mlFoul" cx="92" cy="254" rx="70" ry="15"/>
               <g clip-path="url(#mlMouth)">
                 <!-- chips, scrap and returns, all mixed: what's really going in -->
                 <g id="mlCharge">
-                  <g class="ml-pc"><g transform="translate(64 240) rotate(-14)"><path class="ml-s1" d="M-21 7L-17-7H17L21 7Z"/><path class="ml-s1t" d="M-17-7L-14-12H14L17-7Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(136 242) rotate(10)"><path class="ml-s3" d="M-17-6L-7-13L3-6L15-11L19 3L9 11L-4 6L-16 11Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(98 246)"><circle class="ml-s4" r="13"/><circle class="ml-s4h" r="4.5"/></g></g>
-                  <g class="ml-pc"><g transform="translate(40 250) rotate(-8)"><path class="ml-s5" d="M-15-3H15V3H3V12H-3V3H-15Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(152 252) rotate(-22)"><path class="ml-s6" d="M-12-8H12L9 8H-10Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(112 226) rotate(24)"><path class="ml-s2" d="M-19-12H-10V4H19V12H-19Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(74 218) rotate(-30)"><path class="ml-s7" d="M-13-6H13V6H-13Z"/></g></g>
-                  <g class="ml-pc"><g transform="translate(88 208) rotate(10)"><path class="ml-chip" d="M-10 3C-10-6 4-8 4 0C4 6-4 6-4 1C-4-2 0-2 0 0"/></g></g>
-                  <g class="ml-pc"><g transform="translate(132 214) rotate(60)"><path class="ml-chip" d="M-10 3C-10-6 4-8 4 0C4 6-4 6-4 1C-4-2 0-2 0 0"/></g></g>
-                  <g class="ml-pc"><g transform="translate(52 228) rotate(-40)"><path class="ml-chip-dk" d="M-10 3C-10-6 4-8 4 0C4 6-4 6-4 1C-4-2 0-2 0 0"/></g></g>
-                  <g class="ml-pc"><g transform="translate(156 230) rotate(120)"><path class="ml-chip-dk" d="M-10 3C-10-6 4-8 4 0C4 6-4 6-4 1C-4-2 0-2 0 0"/></g></g>
-                  <g class="ml-pc"><g transform="translate(110 200) rotate(-70)"><path class="ml-chip" d="M-10 3C-10-6 4-8 4 0C4 6-4 6-4 1C-4-2 0-2 0 0"/></g></g>
+                  <g class="ml-pc"><g transform="translate(56 240) rotate(-14)"><path class="ml-s1" d="M-21 7L-17-7H17L21 7Z"/><path class="ml-s1t" d="M-17-7L-14-12H14L17-7Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(128 242) rotate(10)"><path class="ml-s3" d="M-17-6L-7-13L3-6L15-11L19 3L9 11L-4 6L-16 11Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(90 246)"><circle class="ml-s4" r="13"/><circle class="ml-s4h" r="4.5"/></g></g>
+                  <g class="ml-pc"><g transform="translate(32 250) rotate(-8)"><path class="ml-s5" d="M-15-3H15V3H3V12H-3V3H-15Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(144 252) rotate(-22)"><path class="ml-s6" d="M-12-8H12L9 8H-10Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(104 226) rotate(24)"><path class="ml-s2" d="M-19-12H-10V4H19V12H-19Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(66 218) rotate(-30)"><path class="ml-s7" d="M-13-6H13V6H-13Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(82 204) rotate(10)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(126 212) rotate(70)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(42 228) rotate(-40)"><path class="ml-chip-dk" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(150 230) rotate(140)"><path class="ml-chip-dk" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(104 198) rotate(-80)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
+                  <g class="ml-pc"><g transform="translate(60 232) rotate(200)"><path class="ml-chip" d="M-11 3C-10-7 6-10 11-1C6-5-4-5-11 3Z"/></g></g>
                 </g>
                 <!-- dross: it floats up once the charge melts down with nothing to clean it -->
                 <g id="mlDross">
-                  <g class="ml-lump"><g transform="translate(52 251) scale(1.15)"><path d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path d="M-9-4C-6-7-2-7 0-5"/></g></g>
-                  <g class="ml-lump"><g transform="translate(86 245) scale(.95)"><path d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path d="M-9-4C-6-7-2-7 0-5"/></g></g>
-                  <g class="ml-lump"><g transform="translate(124 256) scale(1.3)"><path d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path d="M-9-4C-6-7-2-7 0-5"/></g></g>
-                  <g class="ml-lump"><g transform="translate(150 247) scale(.9)"><path d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path d="M-9-4C-6-7-2-7 0-5"/></g></g>
-                  <g class="ml-lump"><g transform="translate(90 262) scale(.85)"><path d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><g transform="translate(40 252) scale(1.2)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><g transform="translate(70 245)"><path class="ml-crust" d="M-13 5C-15-1-11-6-6-6C-5-10 2-11 5-8C9-10 14-6 13-1C16 1 15 5 13 5Z"/><path class="ml-crust-hi" d="M-8-3C-6-5-3-5-2-4"/></g></g>
+                  <g class="ml-lump"><g transform="translate(104 243) scale(.9)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><g transform="translate(134 249) scale(1.15)"><path class="ml-crust" d="M-13 5C-15-1-11-6-6-6C-5-10 2-11 5-8C9-10 14-6 13-1C16 1 15 5 13 5Z"/><path class="ml-crust-hi" d="M-8-3C-6-5-3-5-2-4"/></g></g>
+                  <g class="ml-lump"><g transform="translate(154 257) scale(.8)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><g transform="translate(60 261) scale(.95)"><path class="ml-crust" d="M-13 5C-15-1-11-6-6-6C-5-10 2-11 5-8C9-10 14-6 13-1C16 1 15 5 13 5Z"/><path class="ml-crust-hi" d="M-8-3C-6-5-3-5-2-4"/></g></g>
+                  <g class="ml-lump"><g transform="translate(108 262) scale(1.3)"><path class="ml-crust" d="M-15 5C-16-3-10-9-3-8C0-12 8-11 10-6C15-6 17 0 15 5Z"/><path class="ml-crust-hi" d="M-9-4C-6-7-2-7 0-5"/></g></g>
+                  <g class="ml-lump"><circle class="ml-speck" cx="86" cy="255" r="3"/><circle class="ml-speck" cx="122" cy="256" r="2.4"/><circle class="ml-speck" cx="50" cy="258" r="2.2"/><circle class="ml-speck" cx="146" cy="244" r="2.2"/><circle class="ml-speck" cx="88" cy="247" r="2"/></g>
                 </g>
                 <!-- the flux: SimpleGrid, wearing the mark -->
-                <g class="ml-flux" id="mlFlux"><g transform="translate(100 246)">
+                <g class="ml-flux" id="mlFlux"><g transform="translate(92 246)">
                   <rect class="ml-flux-body" x="-25" y="-22" width="50" height="40" rx="8"/>
                   <rect class="ml-flux-top" x="-23" y="-20" width="46" height="8" rx="4"/>
-                  <g transform="translate(0 0) scale(.8)"><g class="ml-mark sg-pop"><!--#include sg-badge.svg--></g></g>
+                  <g transform="scale(.8)"><g class="ml-mark sg-pop"><!--#include sg-badge.svg--></g></g>
                   <ellipse class="ml-flux-wet" cx="0" cy="17" rx="31" ry="5"/>
                 </g></g>
               </g>
-              <g class="ml-smoke"><circle cx="64" cy="236" r="10"/><circle cx="104" cy="232" r="12"/><circle cx="138" cy="238" r="9"/></g>
+              <g class="ml-smoke"><circle cx="56" cy="236" r="10"/><circle cx="96" cy="232" r="12"/><circle cx="130" cy="238" r="9"/></g>
             </g>
 
             <!-- the post it tips on -->
-            <rect class="ml-post" x="171" y="250" width="18" height="128" rx="4"/>
-            <rect class="ml-post-hi" x="171" y="250" width="5" height="128" rx="2"/>
-            <circle class="ml-hub" cx="180" cy="252" r="11"/>
-            <circle class="ml-bolt" cx="180" cy="252" r="3.5"/>
+            <rect class="ml-post" x="163" y="250" width="18" height="274" rx="4"/>
+            <rect class="ml-post-hi" x="163" y="250" width="5" height="274" rx="2"/>
+            <rect class="ml-post" x="157" y="520" width="30" height="8" rx="2"/>
+            <circle class="ml-hub" cx="172" cy="252" r="11"/>
+            <circle class="ml-bolt" cx="172" cy="252" r="3.5"/>
 
             <!-- the link from the spec to the furnace: broken until SimpleGrid joins it -->
-            <path class="ml-stub" d="M180 156V175"/>
-            <path class="ml-stub" d="M180 199V241"/>
-            <path class="ml-cable" d="M180 156V241"/>
-            <path class="ml-flow" d="M180 158V240"/>
+            <path class="ml-stub" d="M172 156V175"/>
+            <path class="ml-stub" d="M172 199V241"/>
+            <path class="ml-cable" d="M172 156V241"/>
+            <path class="ml-flow" d="M172 158V240"/>
 
             <!-- the pour, the mold it fills, and the pallet the ingots go on -->
             <g class="ml-pour" id="mlPour"><path class="ml-pour-out" pathLength="100"/><path class="ml-pour-core" pathLength="100"/><path class="ml-pour-dirt" id="mlDirt"/></g>
             <path class="ml-floor" d="M0 528H360"/>
-            <path class="ml-mold" d="M188 508H242L238 528H192Z"/>
-            <rect class="ml-mold-top" x="186" y="504" width="58" height="7" rx="2"/>
-            <rect class="ml-mold-cav" x="194" y="505" width="42" height="3" rx="1.5"/>
-            <ellipse class="ml-mold-glow" id="mlGlow" cx="215" cy="505" rx="20" ry="4.5"/>
-            <rect class="ml-pallet" x="244" y="516" width="112" height="6" rx="1"/>
-            <rect class="ml-pallet-dk" x="248" y="522" width="14" height="6"/><rect class="ml-pallet-dk" x="293" y="522" width="14" height="6"/><rect class="ml-pallet-dk" x="338" y="522" width="14" height="6"/>
+            <path class="ml-mold" d="M187 508H235L231 528H191Z"/>
+            <rect class="ml-mold-top" x="185" y="503" width="52" height="7" rx="2"/>
+            <rect class="ml-mold-cav" x="192" y="504" width="38" height="3" rx="1.5"/>
+            <ellipse class="ml-mold-glow" id="mlGlow" cx="211" cy="504" rx="19" ry="4.5"/>
+            <rect class="ml-pallet" x="238" y="516" width="120" height="6" rx="1"/>
+            <rect class="ml-pallet-dk" x="242" y="522" width="14" height="6"/><rect class="ml-pallet-dk" x="291" y="522" width="14" height="6"/><rect class="ml-pallet-dk" x="340" y="522" width="14" height="6"/>
             <!-- what spills when it pours dirty -->
             <g class="ml-splat" id="mlSplat">
-              <path d="M184 529C186 523 196 522 200 526C205 523 212 526 210 531C205 535 188 535 184 529Z"/><path d="M193 527C196 525 200 526 201 528C198 530 194 530 193 527Z"/>
-              <path d="M236 531C239 526 247 527 249 531C247 535 238 535 236 531Z"/><path d="M240 530C242 529 245 529 246 531C244 532 241 532 240 530Z"/>
+              <path class="ml-crust" d="M186 530C188 524 198 523 202 527C207 524 214 527 212 532C207 536 190 536 186 530Z"/><path class="ml-burn" d="M195 528C198 526 202 527 203 529C200 531 196 531 195 528Z"/>
+              <path class="ml-crust" d="M234 532C237 527 245 528 247 532C245 536 236 536 234 532Z"/><path class="ml-burn" d="M238 531C240 530 243 530 244 532C242 533 239 533 238 531Z"/>
             </g>
             <!-- the ingots: the script draws them -->
             <g id="mlIngots"></g>
             <!-- once it comes clean: strapped and labeled -->
-            <path class="ml-strap" d="M262 444V516M338 444V516"/>
-            <g transform="translate(300 480) scale(.5)"><g class="ml-tag sg-pop"><!--#include sg-tag.svg--></g></g>
+            <path class="ml-strap" d="M258 441V516M338 441V516"/>
+            <g transform="translate(298 479) scale(.44)"><g class="ml-tag sg-pop"><!--#include sg-tag.svg--></g></g>
           </svg>
         </div>
         <div class="callouts">
@@ -418,7 +434,270 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+/* ---------------------------------------------------------------- The melt
+   For metal recyclers. The spec screen is the ERP, the furnace is the floor,
+   and nothing links them. Pour it and the charge melts down dirty: dross
+   floats on the melt, lumpy, cracked, off-color ingots land in a crooked heap,
+   two on the floor, and the screen still says On spec. That mess stays.
+   SimpleGrid goes in as the flux, wearing the mark, and the link joins. Pour
+   it again: the off-spec ingots go back in, the dross comes out, and the same
+   metal pours out as a neat, strapped bundle of silver ingots.
+   Every move is a Web Animation that holds its last frame (or a class), so
+   Start over only has to cancel them to get the first picture back. */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('melt'), cru = $('mlCru'), foul = $('mlFoul'), flux = $('mlFlux');
+  var pour = $('mlPour'), dirt = $('mlDirt'), glow = $('mlGlow'), splat = $('mlSplat'), drip = $('mlDrip'), wrap = $('mlIngots');
+  var statusEl = $('mlStatus'), pill = $('mlPill'), fill = $('mlFill');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var pieces = [].slice.call(obj.querySelectorAll('.ml-pc'));
+  var lumps = [].slice.call(obj.querySelectorAll('.ml-lump'));
+  var streams = [].slice.call(pour.querySelectorAll('path[pathLength]'));
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Pour it to see your operations', caption: 'The spec is your ERP, the melt is your floor, and nothing links them. Pour it, or tap the furnace.' },
+    messing:  { btn: 'Pouring…', caption: 'Pouring it the usual way: the plan in one place, the floor in another.' },
+    mess:     { btn: 'Add the flux', caption: 'That’s your operations today: a big mess. Dross on the melt, lumpy, cracked ingots in a heap and on the floor, and the screen still says On spec. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Adding…', caption: 'The flux goes in, and the link joins. That’s SimpleGrid.' },
+    dosed:    { btn: 'Pour it again', caption: 'That’s SimpleGrid: the spec and the melt on one live record. Now pour it again.' },
+    cleaning: { btn: 'Pouring…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean heat: the same metal, poured into even, shiny ingots that match the spec. Your ERP and your floor finally match.' }
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The furnace poured with nothing linking it: grey-black dross floating on the melt, lumpy, cracked and off-color ingots in a crooked heap, two of them on the floor, and the screen still saying On spec.',
+    done: 'The melt glowing clean with the SimpleGrid flux in it, the cable joined, the screen saying Done, on spec, and a neat, strapped bundle of shiny silver ingots labeled SimpleGrid.'
+  };
+
+  /* ------------------------------------------------------------ Geometry */
+  var f = function(v){ return Math.round(v*10)/10; };
+  var PIVOT = [172, 252], TILT = 26, LIP = [210, 249], MOLD = [211, 497];
+  var rad = TILT*Math.PI/180;
+  // Where the lip ends up once the crucible has tipped: the pour starts there and falls into the mold.
+  var lip = [PIVOT[0] + (LIP[0] - PIVOT[0])*Math.cos(rad) - (LIP[1] - PIVOT[1])*Math.sin(rad),
+             PIVOT[1] + (LIP[0] - PIVOT[0])*Math.sin(rad) + (LIP[1] - PIVOT[1])*Math.cos(rad)];
+  var POUR = 'M' + f(lip[0]) + ' ' + f(lip[1]) + 'C' + f(lip[0] + 5) + ' ' + f(lip[1] + 60) + ' ' + MOLD[0] + ' ' + f(lip[1] + 150) + ' ' + MOLD[0] + ' 505';
+  [].forEach.call(pour.querySelectorAll('path'), function(p){ p.setAttribute('d', POUR); });
+  // The bundle: two ingots a layer, four layers, bottom first. And where each one lands when it pours dirty.
+  var SLOT = [];
+  [507.5, 490.5, 473.5, 456.5].forEach(function(y){ [268, 328].forEach(function(x){ SLOT.push([x, y, 0]); }); });
+  var HEAP = [[264, 506, -6], [327, 503, 11], [295, 487, -18], [264, 468, 17], [328, 465, -25], [300, 444, 9], [213, 539, 171], [112, 541, -6]];
+  var MOUTH = [92, 244], FLUX = [92, 240];
+  // Where each lump of dross sits, so the flux can pull it in.
+  var CENTER = lumps.map(function(el){ var b = el.getBBox(); return [b.x + b.width/2, b.y + b.height/2]; });
+
+  /* ------------------------------------------------------------ The ingots */
+  var seed = 4417;
+  function rand(){ seed = seed*16807 % 2147483647; return (seed - 1)/2147483646; }
+  function R(a, b){ return a + (b - a)*rand(); }
+  function mk(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+  // A smooth closed shape through the points: what makes a casting lumpy.
+  function blob(p){
+    var n = p.length, mid = function(a, b){ return f((a[0] + b[0])/2) + ' ' + f((a[1] + b[1])/2); };
+    var d = 'M' + mid(p[n - 1], p[0]);
+    for (var k = 0; k < n; k++) d += 'Q' + f(p[k][0]) + ' ' + f(p[k][1]) + ' ' + mid(p[k], p[(k + 1) % n]);
+    return d + 'Z';
+  }
+  // Points round a four-sided face, every few units, each edge pushed in and out by its own amount.
+  function wobble(corners, amps){
+    var out = [];
+    for (var c = 0; c < 4; c++){
+      var a = corners[c], b = corners[(c + 1)%4], n = Math.max(2, Math.round(Math.hypot(b[0] - a[0], b[1] - a[1])/6));
+      for (var k = 0; k < n; k++){
+        var t = k/n, amp = k ? amps[c] : Math.min(amps[c], amps[(c + 3)%4])*.5;
+        out.push([a[0] + (b[0] - a[0])*t + R(-amp, amp)*.5, a[1] + (b[1] - a[1])*t + R(-amp, amp)]);
+      }
+    }
+    return out;
+  }
+  var OK_FRONT = 'M-29 8.5L-25-8.5H25L29 8.5Z', OK_TOP = 'M-25-8.5L-21-15.5H21L25-8.5Z', OK_ALL = 'M-29 8.5L-25-8.5L-21-15.5H21L25-8.5L29 8.5Z';
+  // Off spec, each its own way: mottled, cracked, the wrong color, black with dross.
+  var LOOK = [
+    { f: '#B5BDC3', t: '#D0D7DB', p: '#565D63', spots: 3 },
+    { f: '#C2C9CE', t: '#DCE2E5', p: '#666D73', spots: 1, crack: 1 },
+    { f: '#9A6A44', t: '#B98A61', p: '#5A3720', spots: 2 },
+    { f: '#55595E', t: '#6F757A', p: '#2A2E31', spots: 2, crack: 1 },
+    { f: '#ACB4BA', t: '#C8CFD4', p: '#4E555B', spots: 3, crack: 1 },
+    { f: '#B1A274', t: '#CCBD8F', p: '#6F6038', spots: 2 },
+    { f: '#BAC1C7', t: '#D5DBDF', p: '#585F66', spots: 4 },
+    { f: '#6C584A', t: '#8A7464', p: '#382C24', spots: 2, crack: 1 }
+  ];
+  var ings = LOOK.map(function(L){
+    var g = mk('g', { 'class': 'ml-ing dirty' }, wrap);
+    var ok = mk('g', { 'class': 'ml-ok' }, g);
+    mk('path', { 'class': 'ml-top', d: OK_TOP }, ok);
+    mk('path', { 'class': 'ml-front', d: OK_FRONT }, ok);
+    mk('path', { 'class': 'ml-shine', d: 'M-15-12H8M-20-4H-6' }, ok);
+    mk('path', { 'class': 'ml-edge', d: OK_ALL + 'M-25-8.5H25' }, ok);
+    var bad = mk('g', { 'class': 'ml-bad' }, g);
+    // Lumpy on top, where a bad pour bubbles and shrinks; the sides only a little out of true.
+    var top = blob(wobble([[-25, -7.5], [-21, -15.5], [21, -15.5], [25, -7.5]], [1, 2.2, 1, .6]));
+    var front = blob(wobble([[-29, 8.5], [-25, -8.5], [25, -8.5], [29, 8.5]], [1.2, 2.8, 1.2, .8]));
+    mk('path', { d: top, fill: L.t, stroke: 'rgba(18,20,22,.55)', 'stroke-width': 1.6 }, bad);
+    mk('path', { d: front, fill: L.f, stroke: 'rgba(18,20,22,.6)', 'stroke-width': 1.7 }, bad);
+    for (var s = 0; s < L.spots; s++) mk('ellipse', { cx: f(R(-19, 19)), cy: f(R(-3.5, 3.5)), rx: f(R(4.5, 8)), ry: f(R(2.6, 4.2)), fill: L.p, opacity: .85 }, bad);
+    if (L.crack){ var x = R(-12, 12); mk('path', { 'class': 'ml-crack', d: 'M' + f(x) + ' -14L' + f(x + 3.5) + ' -5L' + f(x - 3) + ' 1.5L' + f(x + 2) + ' 9' }, bad); }
+    var hot = mk('path', { 'class': 'ml-hot' }, g);
+    return { g: g, hot: hot, badShape: top + front };
+  });
+  function look(clean){
+    ings.forEach(function(n){ n.g.classList.toggle('dirty', !clean); n.hot.setAttribute('d', clean ? OK_ALL : n.badShape); });
+  }
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], moves = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Reduced motion runs the same moves, each over in a millisecond.
+  function anim(el, frames, ms){
+    var a = el.animate(frames, { duration: reduce ? 1 : Math.max(1, ms), fill: 'both' });
+    moves.push(a);
+    return a;
+  }
+  // A timeline: [ms, {property: value}, easing into the next key]. Every key repeats every property it moves,
+  // so nothing falls back to its hidden starting style partway through.
+  function tl(el, keys){
+    var T = keys[keys.length - 1][0];
+    return anim(el, keys.map(function(k){
+      var fr = { offset: T ? k[0]/T : 1 };
+      for (var p in k[1]) fr[p] = k[1][p];
+      if (k[2]) fr.easing = k[2];
+      return fr;
+    }), T);
+  }
+  var tf = function(p){ return 'translate(' + f(p[0]) + 'px,' + f(p[1]) + 'px) rotate(' + f(p[2] || 0) + 'deg) scale(' + (p[3] == null ? 1 : p[3]) + ')'; };
+  // A thrown arc from a to b, starting at t0 and lasting ms, peaking `lift` above the higher end:
+  // keys at even times along a parabola, which is how a thing falls. o(t) gives its opacity.
+  function arc(t0, ms, a, b, lift, o){
+    var keys = [], top = Math.min(a[1], b[1]) - lift, s0 = a[3] == null ? 1 : a[3], s1 = b[3] == null ? 1 : b[3];
+    for (var k = 0; k <= 8; k++){
+      var t = k/8, mx = (a[0] + b[0])/2;
+      keys.push([t0 + ms*t, { transform: tf([(1 - t)*(1 - t)*a[0] + 2*(1 - t)*t*mx + t*t*b[0], (1 - t)*(1 - t)*a[1] + 2*(1 - t)*t*top + t*t*b[1], (a[2] || 0) + ((b[2] || 0) - (a[2] || 0))*t, s0 + (s1 - s0)*t]), opacity: o ? o(t) : 1 }]);
+    }
+    return keys;
+  }
+  var fadeIn = function(t){ return Math.min(1, t*7); };
+  // The pour: it runs from the lip down into the mold, and its tail follows it down.
+  function pourAt(on, off){
+    streams.forEach(function(p){ tl(p, [[0, { strokeDashoffset: 101 }], [on, { strokeDashoffset: 101 }], [on + 200, { strokeDashoffset: 0 }], [off, { strokeDashoffset: 0 }], [off + 220, { strokeDashoffset: -101 }]]); });
+    tl(glow, [[0, { opacity: 0 }], [on + 150, { opacity: 0 }], [on + 260, { opacity: 1 }], [off + 120, { opacity: 1 }], [off + 300, { opacity: 0 }]]);
+  }
+  function tip(at, back){
+    tl(cru, [[0, { transform: 'rotate(0deg)' }], [at, { transform: 'rotate(0deg)' }, 'cubic-bezier(.5,0,.4,1)'], [at + 480, { transform: 'rotate(' + TILT + 'deg)' }], [back, { transform: 'rotate(' + TILT + 'deg)' }, 'cubic-bezier(.5,0,.4,1)'], [back + 480, { transform: 'rotate(0deg)' }]]);
+  }
+  function setStatus(text, w){
+    statusEl.textContent = text;
+    pill.setAttribute('x', 314 - w); pill.setAttribute('width', w);
+    statusEl.setAttribute('x', 314 - w/2);
+  }
+
+  // Pour it, nothing linking it: the charge melts down, the dross comes up, and it pours out off spec.
+  function mess(){
+    obj.classList.add('foul');
+    pour.classList.add('foul');
+    pieces.forEach(function(el, i){
+      var d = 50*i;
+      tl(el, [[0, { transform: 'translate(0px,0px)', opacity: 1 }], [d, { transform: 'translate(0px,0px)', opacity: 1 }, 'cubic-bezier(.5,0,.8,.5)'], [d + 560, { transform: 'translate(0px,44px)', opacity: 0 }]]);
+    });
+    tl(foul, [[0, { opacity: 0 }], [200, { opacity: 0 }], [1000, { opacity: 1 }]]);
+    lumps.forEach(function(el, i){
+      var d = 380 + 80*i;
+      tl(el, [[0, { transform: 'translate(0px,14px)', opacity: 0 }], [d, { transform: 'translate(0px,14px)', opacity: 0 }, 'cubic-bezier(.2,.7,.3,1)'], [d + 420, { transform: 'translate(0px,0px)', opacity: 1 }]]);
+    });
+    later(function(){ obj.classList.add('smoky'); }, 900);
+    tip(950, 2900);
+    tl(dirt, [[0, { opacity: 0 }], [1560, { opacity: 0 }], [1640, { opacity: 1 }], [2830, { opacity: 1 }], [2890, { opacity: 0 }]]);
+    pourAt(1400, 2830);
+    ings.forEach(function(n, i){
+      var t0 = 1500 + i*150, at = [MOLD[0], MOLD[1], 0, .8], to = HEAP[i];
+      var keys = [[0, { transform: tf(at), opacity: 0 }]];
+      if (i < 7) keys = keys.concat(arc(t0, 480, at, to, i === 6 ? 26 : 46 + i*5, fadeIn));
+      else keys = keys.concat(arc(t0, 380, at, [290, 444, -30], 30, fadeIn), arc(t0 + 420, 520, [290, 444, -30], to, 10).slice(1));   // this one bounces off the heap and skids to the furnace
+      tl(n.g, keys);
+      tl(n.hot, [[0, { opacity: 0 }], [t0, { opacity: 0 }], [t0 + 40, { opacity: .9 }], [t0 + 520, { opacity: 0 }]]);
+    });
+    tl(splat, [[0, { opacity: 0, transform: 'scale(.3)' }], [1700, { opacity: 0, transform: 'scale(.3)' }, 'cubic-bezier(.2,.9,.3,1.3)'], [2000, { opacity: 1, transform: 'scale(1)' }]]);
+    tl(drip, [[0, { opacity: 0 }], [3000, { opacity: 0 }], [3250, { opacity: 1 }]]);
+    return wait(3450);
+  }
+
+  // In goes the flux, wearing the mark, and the link joins.
+  function dose(){
+    obj.classList.add('dosed');
+    tl(flux, [[0, { transform: 'translate(0px,-64px) scale(.4)', opacity: 0 }, 'cubic-bezier(.2,.9,.3,1.3)'], [260, { transform: 'translate(0px,-64px) scale(1)', opacity: 1 }, 'cubic-bezier(.55,0,.9,.5)'], [600, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }, 'ease-out'], [720, { transform: 'translate(0px,-8px) scale(1)', opacity: 1 }, 'ease-in'], [860, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]]);
+    later(function(){ obj.classList.add('linked'); setStatus('Linked', 90); }, 300);
+    return wait(1050);
+  }
+
+  // Pour it again, linked: the off-spec ingots go back in, the dross comes out, and the same metal pours clean.
+  function clean(){
+    obj.classList.remove('smoky');
+    ings.forEach(function(n, i){
+      var from = HEAP[i], t1 = i*70, t2 = 1850 + i*150, at = [MOLD[0], MOLD[1], 0, .8];
+      var into = [MOUTH[0] + (i % 3 - 1)*22, MOUTH[1], from[2] + 180, .5];
+      var keys = [[0, { transform: tf(from), opacity: 1 }]].concat(arc(t1, 520, from, into, 60, function(t){ return t < .75 ? 1 : (1 - t)*4; }).slice(1));
+      keys.push([t2, { transform: tf(at), opacity: 0 }]);
+      tl(n.g, keys.concat(arc(t2, 460, at, SLOT[i], 40 + (i >> 1)*6, fadeIn).slice(1)));
+      tl(n.hot, [[0, { opacity: 0 }], [t2, { opacity: 0 }], [t2 + 40, { opacity: .9 }], [t2 + 500, { opacity: 0 }]]);
+    });
+    later(function(){ look(true); }, 1300);
+    tl(splat, [[0, { opacity: 1, transform: 'scale(1)' }], [200, { opacity: 1, transform: 'scale(1)' }], [600, { opacity: 0, transform: 'scale(.6)' }]]);
+    // The flux pulls the dross out of the melt and into itself, swelling a little with each lump.
+    lumps.forEach(function(el, i){
+      var d = 300 + 70*i, c = CENTER[i], dx = f(FLUX[0] - c[0]), dy = f(FLUX[1] - c[1]);
+      tl(el, [[0, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }], [d, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }, 'cubic-bezier(.55,0,.75,.4)'], [d + 420, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.25)', opacity: 0 }]]);
+    });
+    var gulp = [[0, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]];
+    for (var k = 0; k < 4; k++) gulp.push([420 + 170*k, { transform: 'translate(0px,-3px) scale(1.07)', opacity: 1 }], [505 + 170*k, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]);
+    gulp.push([1300, { transform: 'translate(0px,0px) scale(1)', opacity: 1 }]);
+    tl(flux, gulp);
+    tl(drip, [[0, { opacity: 1 }], [200, { opacity: 1 }], [500, { opacity: 0 }]]);
+    later(function(){ obj.classList.remove('foul'); obj.classList.add('clean'); pour.classList.remove('foul'); }, 800);
+    tl(foul, [[0, { opacity: 1 }], [700, { opacity: 1 }], [1400, { opacity: 0 }]]);
+    tip(1350, 3300);
+    pourAt(1750, 3200);
+    later(function(){ obj.classList.add('ok'); setStatus('Done, on spec', 146); fill.setAttribute('width', 256); }, 3000);
+    return wait(3850);
+  }
+
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    moves = [];
+    obj.classList.remove('foul', 'clean', 'smoky', 'dosed', 'linked', 'ok', 'is-done');
+    pour.classList.remove('foul');
+    look(false);
+    setStatus('On spec', 100);
+    fill.setAttribute('width', 90);
+  }
+  function setCallouts(final){
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = final ? 'Your ERP' : 'The spec: your ERP';
+    $('topText').textContent = final ? 'Still keeping the books.' : 'What the system says you’re pouring.';
+    $('bottomTitle').textContent = final ? 'Your spreadsheets' : 'The melt: your floor';
+    $('bottomText').textContent = final ? 'Retired, with thanks.' : 'What’s really going in, on Excel, whiteboards and phones.';
+  }
+
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.melt',
+    ops: {
+      mess: ['Your operations, today', 'Poured together, still not linked. Dross in the melt, and the screen still says On spec.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same melt, same mess. Now the spec and the floor are linked.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the furnace does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  restore();
+})();
 </script>
 <script>
 window.STAGE = {

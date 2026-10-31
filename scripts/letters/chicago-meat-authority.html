@@ -37,12 +37,13 @@
 }
 /* ------------------------------------------------------- One tray of diced beef
    The spec on the screen is the ERP. The dicer under it, with its slab of trim and the tray on the
-   scale, is the floor. Every color lives on .hero-art, so the callouts' dots read them too. */
+   scale, is the floor. It's drawn from just above and to the right, so every box shows its top and
+   right side, lit from the top left. Every color lives on .hero-art, so the callouts' dots read them too. */
 .hero-art{
   --art-w:min(340px,29vw,calc((100vh - 130px)/1.56));
-  --lean:#D23E4A;--lean-hi:#EE7680;--meat-edge:#4A0F1C;--fat:#FFF5EF;
-  --steel:#C9D0D6;--steel-hi:#F1F4F6;--steel-dk:#9DA7B0;--steel-ink:#5B646E;--steel-deep:#3F474F;
-  --table:#D7DDE2;--tray:#FBFAF7;--tray-in:#ECE7DE;--tray-wall:#DCD5C9;--tray-face:#EAE5DC;--tray-edge:#A3998B;
+  --lean:#D23E4A;--lean-hi:#EE7680;--lean-dk:#A92D3A;--meat-edge:#4A0F1C;--fat:#FFF5EF;
+  --steel:#C9D0D6;--steel-hi:#E6EBEE;--steel-dk:#9EA8B1;--steel-ink:#5B646E;--steel-deep:#3F474F;
+  --tray:#FBFAF7;--tray-in:#ECE7DE;--tray-wall:#DCD5C9;--tray-side:#D3CBBE;--tray-edge:#A3998B;
   --screen:#1E2329;--glass:#2A313A;
   --mark-bg:var(--brand);--mark-ink:#fff;--tag-bg:var(--brand);--tag-ink:#fff;
 }
@@ -51,11 +52,13 @@
 .dice svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 /* The spec: what the ERP says you're cutting. */
 .dc-screen{fill:var(--screen)}
+.dc-screen-t{fill:#353D46}
+.dc-screen-r{fill:#12161A}
 .dc-glass{fill:var(--glass)}
 .dc-kick{fill:rgba(255,255,255,.55);font:600 10.5px/1 var(--mono);letter-spacing:.14em}
-.dc-order{fill:#fff;font:800 19px/1 var(--body)}
-.dc-spec{fill:rgba(255,255,255,.86);font:700 13.5px/1 var(--body)}
-.dc-spec2{fill:rgba(255,255,255,.68);font:600 12.5px/1 var(--body)}
+.dc-order{fill:#fff;font:800 18px/1 var(--body)}
+.dc-spec{fill:rgba(255,255,255,.86);font:700 13px/1 var(--body)}
+.dc-spec2{fill:rgba(255,255,255,.66);font:600 12px/1 var(--body)}
 .dc-pill{fill:#DFF5EA;transition:fill .3s}
 .dc-pill-t{fill:#0A6B47;font:800 12px/1 var(--body);transition:fill .3s}
 .dice.linked .dc-pill{fill:var(--accent)}
@@ -64,7 +67,7 @@
 .dc-icon .dc-icon-l{opacity:.55}
 .dc-icon .dc-icon-r{opacity:.78}
 /* The cable from the spec to the dicer: broken, until SimpleGrid joins it. */
-.dc-stub{fill:none;stroke:var(--steel-ink);stroke-width:6;stroke-linecap:round}
+.dc-stub{fill:none;stroke:var(--steel-ink);stroke-width:6}
 .dc-plug{transform-box:view-box;transform-origin:0 0}
 .dc-plug rect{fill:var(--steel-deep)}
 .dc-plug path{fill:none;stroke:var(--steel-dk);stroke-width:2.4;stroke-linecap:round}
@@ -75,52 +78,68 @@
 @keyframes dc-flow{to{stroke-dashoffset:-10}}
 /* The dicer: a press over the tray. Its head pushes the slab down through a bed of blades. */
 .dc-back{fill:var(--steel-deep)}
-.dc-post,.dc-bar,.dc-head-body{fill:var(--steel)}
-.dc-foot,.dc-rod,.dc-plate,.dc-bed,.dc-bolt{fill:var(--steel-dk)}
-.dc-bar-hi,.dc-bed-hi{fill:none;stroke:var(--steel-hi);stroke-width:2.5;stroke-linecap:round;opacity:.8}
-.dc-head-hi{fill:var(--steel-hi);opacity:.75}
+.dc-post,.dc-bar,.dc-headbox,.dc-foot{fill:var(--steel)}
+.dc-bar-t,.dc-headbox-t,.dc-foot-t{fill:var(--steel-hi)}
+.dc-post-r,.dc-bar-r,.dc-headbox-r,.dc-foot-r{fill:var(--steel-dk)}
+.dc-rod,.dc-plate,.dc-bed{fill:#8E98A2}
+.dc-plate-t,.dc-bed-t{fill:#B4BDC5}
+.dc-plate-r,.dc-bed-r{fill:#727D87}
+.dc-blades{fill:none;stroke:var(--steel-ink);stroke-width:1.6;stroke-linecap:round}
+.dc-bar-hi,.dc-bed-hi,.dc-head-hi{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;opacity:.55}
 .dc-port{fill:var(--steel-dk);stroke:var(--steel-ink);stroke-width:2}
-.dc-head,.dc-rod{transform-box:view-box;transform-origin:180px 205px}
-.dc-slab{transform-box:view-box;transform-origin:180px 282px}
+.dc-bolt{fill:var(--steel-dk)}
+.dc-head,.dc-rod{transform-box:view-box;transform-origin:176px 204px}
+.dc-slab{transform-box:view-box;transform-origin:176px 277px}
 .dc-mark{--sg-bg:var(--mark-bg);--sg-ink:var(--mark-ink)}
 .dice.dosed .dc-mark{opacity:1;transform:none}
 /* The beef: lean with white fat through it, in the slab, the mess and the cubes. */
-.dc-lean,.dc-pc-b,.dc-cube-top,.dc-cube-front{fill:var(--lean);stroke:var(--meat-edge);stroke-width:2;stroke-linejoin:round}
-.dc-lean-hi,.dc-pc-t,.dc-cube-top{fill:var(--lean-hi)}
-.dc-fat,.dc-pc-f{fill:none;stroke:var(--fat);stroke-width:2.6;stroke-linecap:round}
+.dc-lean,.dc-lean-hi,.dc-lean-r,.dc-pc-b,.dc-cube path{stroke:var(--meat-edge);stroke-width:2;stroke-linejoin:round}
+.dc-lean,.dc-pc-b,.dc-cube-f{fill:var(--lean)}
+.dc-lean-hi,.dc-pc-t,.dc-cube-t{fill:var(--lean-hi)}
+.dc-lean-r,.dc-cube-r{fill:var(--lean-dk)}
+.dice .dc-fat,.dc-pc-f{fill:none;stroke:var(--fat);stroke-width:2.6;stroke-linecap:round}
 .dc-pc.fatty .dc-pc-t,.dc-pc.flap .dc-pc-b{fill:var(--fat)}
 .dc-pc.flap .dc-pc-f{stroke:var(--lean)}
 .dc-pc,.dc-cube,.dc-film{transform-box:view-box;transform-origin:0 0;opacity:0}
 /* The table, the scale built into it, and the tray. */
 .dc-floor{fill:rgba(40,4,14,.2)}
 .dc-leg{fill:var(--steel-dk)}
-.dc-top{fill:var(--table)}
-.dc-top-hi{fill:none;stroke:#fff;stroke-width:2;opacity:.7}
-.dc-apron{fill:var(--steel)}
+.dc-leg-r{fill:#7E8993}
+.dc-table{fill:#B9C2C9}
+.dc-table-t{fill:#DCE1E5}
+.dc-table-r{fill:#99A3AC}
+.dc-table-hi{fill:none;stroke:#fff;stroke-width:2;opacity:.7}
 .dc-readout{fill:var(--screen)}
-.dc-scale{fill:#A8E6C4;font:600 11.5px/1 var(--mono)}
+.dc-scale{fill:#A8E6C4;font:600 11px/1 var(--mono)}
 .dice.wrong .dc-scale{fill:#FF5D58;animation:dc-blink .7s steps(1) infinite}
 .dice.right .dc-scale{fill:#3DDC84}
 @keyframes dc-blink{50%{opacity:.2}}
-.dc-plat{fill:var(--steel-dk)}
-.dc-tray{fill:var(--tray);stroke:var(--tray-edge);stroke-width:1.5}
+.dc-plate-s{fill:#8E98A2}
+.dc-plate-s-t{fill:#AAB3BB}
+.dc-plate-s-r{fill:#727D87}
+.dc-tray{fill:var(--tray);stroke:var(--tray-edge);stroke-width:1.2;stroke-linejoin:round}
 .dc-well{fill:var(--tray-in)}
 .dc-wall{fill:var(--tray-wall)}
-.dc-tray-lip{fill:var(--tray)}
-.dc-tray-face{fill:var(--tray-face);stroke:var(--tray-edge);stroke-width:1.5}
+.dc-wall-l{fill:var(--tray-side)}
+.dc-tray-f{fill:#EAE5DC;stroke:var(--tray-edge);stroke-width:1.2;stroke-linejoin:round}
+.dc-tray-r{fill:var(--tray-side);stroke:var(--tray-edge);stroke-width:1.2;stroke-linejoin:round}
+.dc-tray-hi{fill:none;stroke:#fff;stroke-width:1.6;opacity:.9}
 /* Once it comes clean: sealed under film, with the label. */
-.dc-film-body{fill:rgba(255,255,255,.16);stroke:rgba(255,255,255,.9);stroke-width:2}
-.dc-film-hi{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;opacity:.42}
+.dc-film-t{fill:rgba(255,255,255,.2)}
+.dc-film-f{fill:rgba(255,255,255,.14)}
+.dc-film-r{fill:rgba(255,255,255,.08)}
+.dc-film path:not(.dc-film-hi){stroke:rgba(255,255,255,.9);stroke-width:1.6;stroke-linejoin:round}
+.dc-film-hi{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;opacity:.45}
 .dc-tag{--sg-bg:var(--tag-bg);--sg-ink:var(--tag-ink)}
 .dice.is-done .dc-tag{opacity:1;transform:none}
 .dice:not(.in-view) *{animation-play-state:paused!important}
 .callout-top{top:2%}
-.callout-gap{top:calc(25% - 15px)}
-.callout-bottom{top:50%}
+.callout-gap{top:calc(21.9% - 15px)}
+.callout-bottom{top:47%}
 .callout-top h3 i{background:var(--screen)}
 .callout-bottom h3 i{background:var(--lean)}
 .hero-art .callouts{height:calc(var(--art-w)*1.556)}
-.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.5)}
+.hero-art .callout-gap::before{width:calc(clamp(14px,1.6vw,24px) + var(--art-w)*.503)}
 @media (max-width:980px){
   .hero-art{--art-w:clamp(158px,43vw,290px)}
 }
@@ -153,93 +172,117 @@
           <svg viewBox="0 0 360 560" aria-hidden="true">
             <defs>
               <!-- the slab sinks into the blade bed, and whatever comes out drops from under it -->
-              <clipPath id="dcAbove"><rect x="70" y="150" width="220" height="132"/></clipPath>
-              <clipPath id="dcBelow"><rect x="0" y="296" width="360" height="264"/></clipPath>
-              <clipPath id="dcRodClip"><rect x="150" y="182" width="60" height="110"/></clipPath>
-              <clipPath id="dcWrapClip"><rect x="90" y="312" width="180" height="130" rx="12"/></clipPath>
+              <clipPath id="dcAbove"><rect x="60" y="120" width="240" height="158.5"/></clipPath>
+              <clipPath id="dcBelow"><rect x="0" y="292.1" width="360" height="267.9"/></clipPath>
+              <clipPath id="dcRodClip"><rect x="150" y="150.2" width="60" height="140"/></clipPath>
+              <clipPath id="dcWrapClip"><rect x="66.8" y="290.8" width="226.5" height="128.2"/></clipPath>
             </defs>
 
             <!-- the floor -->
-            <rect class="dc-floor" x="0" y="522" width="360" height="30" rx="15"/>
-
+            <path class="dc-floor" d="M2.5 546.6L282.5 546.6L351 395.9L71 395.9Z"/>
             <!-- the cutting table, seen from just above, with a scale built into its front -->
-            <rect class="dc-leg" x="20" y="462" width="12" height="68" rx="2"/>
-            <rect class="dc-leg" x="328" y="462" width="12" height="68" rx="2"/>
-            <rect class="dc-top" x="8" y="350" width="344" height="98" rx="7"/>
-            <path class="dc-top-hi" d="M18 352.5H342"/>
-            <rect class="dc-apron" x="8" y="445" width="344" height="21" rx="4"/>
-            <rect class="dc-readout" x="132" y="448" width="96" height="15" rx="3"/>
-            <text class="dc-scale" id="dcScale" x="180" y="459.6" text-anchor="middle">0.00 lb</text>
-
-            <!-- the dicer: a press over the tray. The head pushes the slab down through a bed of blades -->
-            <rect class="dc-back" x="78" y="180" width="204" height="104"/>
-            <rect class="dc-post" x="66" y="166" width="12" height="230"/>
-            <rect class="dc-post" x="282" y="166" width="12" height="230"/>
-            <rect class="dc-foot" x="58" y="390" width="28" height="8" rx="3"/>
-            <rect class="dc-foot" x="274" y="390" width="28" height="8" rx="3"/>
-            <g clip-path="url(#dcRodClip)"><rect class="dc-rod" id="dcRod" x="172" y="130" width="16" height="70"/></g>
-            <rect class="dc-bar" x="56" y="166" width="248" height="16" rx="6"/>
-            <path class="dc-bar-hi" d="M64 169.5H296"/>
+            <path class="dc-leg" d="M329.5 412.4L341.5 412.4L341.5 354.6L329.5 354.6Z"/>
+            <path class="dc-leg-r" d="M341.5 412.4L344.5 405.8L344.5 348L341.5 354.6Z"/>
+            <path class="dc-leg" d="M15.5 523.5L27.5 523.5L27.5 465.7L15.5 465.7Z"/>
+            <path class="dc-leg-r" d="M27.5 523.5L30.5 516.9L30.5 459.1L27.5 465.7Z"/>
+            <path class="dc-leg" d="M279 523.5L291 523.5L291 465.7L279 465.7Z"/>
+            <path class="dc-leg-r" d="M291 523.5L294 516.9L294 459.1L291 465.7Z"/>
+            <path class="dc-table-r" d="M295.5 469L352 344.7L352 326L295.5 450.3Z"/>
+            <path class="dc-table-t" d="M8 450.3L295.5 450.3L352 326L64.5 326Z"/>
+            <path class="dc-table" d="M8 469L295.5 469L295.5 450.3L8 450.3Z"/>
+            <path class="dc-table-hi" d="M12 450.3L291.5 450.3"/>
+            <rect class="dc-readout" x="105.5" y="452.9" width="92" height="13.6" rx="3"/>
+            <text class="dc-scale" id="dcScale" x="151.5" y="463.1" text-anchor="middle">0.00 lb</text>
+            <!-- the dicer: a press over the tray. Its head pushes the slab down through a bed of blades -->
+            <path class="dc-back" d="M80 264.2L284 264.2L284 149.4L80 149.4Z"/>
+            <path class="dc-post" d="M61.5 392.4L73.5 392.4L73.5 163.8L61.5 163.8Z"/>
+            <path class="dc-post-r" d="M73.5 392.4L80 378.1L80 149.4L73.5 163.8Z"/>
+            <path class="dc-foot" d="M55.5 397.5L79.5 397.5L79.5 392.4L55.5 392.4Z"/>
+            <path class="dc-foot-t" d="M55.5 392.4L79.5 392.4L86 378.1L62 378.1Z"/>
+            <path class="dc-foot-r" d="M79.5 397.5L86 383.2L86 378.1L79.5 392.4Z"/>
+            <path class="dc-post" d="M277.5 304L289.5 304L289.5 163.8L277.5 163.8Z"/>
+            <path class="dc-post-r" d="M289.5 304L296 289.7L296 149.4L289.5 163.8Z"/>
+            <g clip-path="url(#dcRodClip)"><rect class="dc-rod" id="dcRod" x="171.8" y="109.9" width="14" height="68.8"/></g>
+            <path class="dc-bar" d="M57.5 163.8L293.5 163.8L293.5 150.2L57.5 150.2Z"/>
+            <path class="dc-bar-t" d="M57.5 150.2L293.5 150.2L300 135.8L64 135.8Z"/>
+            <path class="dc-bar-r" d="M293.5 163.8L300 149.4L300 135.8L293.5 150.2Z"/>
+            <path class="dc-bar-hi" d="M61.5 151.8L289.5 151.8"/>
+            <path class="dc-bed-t" d="M73.5 278.5L277.5 278.5L284 264.2L80 264.2Z"/>
+            <path class="dc-blades" d="M141.8 277.9L147.8 264.8M209.8 277.9L215.8 264.8M76.7 273.7L278.7 273.7M78.8 269L280.8 269"/>
             <g clip-path="url(#dcAbove)"><g class="dc-slab" id="dcSlab">
-              <path class="dc-lean" d="M100 282C96 270 97 254 106 245C114 236 132 233 152 235C170 231 196 232 216 232C238 232 256 238 260 252C263 262 262 274 259 282Z"/>
-              <path class="dc-lean-hi" d="M107 254C109 244 125 238 147 239C169 236 196 237 216 236C236 236 251 241 254 251C239 257 218 255 198 257C172 259 137 258 107 254Z"/>
-              <path class="dc-fat" d="M111 247C121 240 136 238 150 239M150 249C160 245 172 250 184 246C192 243 200 247 210 245M226 244C234 243 242 245 248 249M114 270C126 264 138 272 152 266M170 275C182 269 196 277 210 271M222 263C232 259 240 267 252 263"/>
-              <path class="dc-fat" d="M182 259C190 265 200 267 214 266" stroke-width="4"/>
+              <path class="dc-lean-r" d="M249 247C255 253 257 266 255 277.4L261 265.5C263 255 262 242 256 235Z"/>
+              <path class="dc-lean" d="M97 277.4C93 268 94 255 100 248C107 243 121 242 137 244C157 241 183 243 205 241C225 240 243 242 249 247C255 253 257 266 255 277.4Z"/>
+              <path class="dc-lean-hi" d="M100 248C107 243 121 242 137 244C157 241 183 243 205 241C225 240 243 242 249 247L256 235C250 230 233 228 213 229C191 230 165 229 145 231C127 230 113 231 106 236Z"/>
+              <path class="dc-fat" d="M112 239C124 235 140 235 152 236M166 236C178 233 190 236 200 234M214 233C226 232 238 233 246 237M112 263C124 257 136 265 150 259M168 268C180 262 194 270 208 264M220 257C230 253 238 261 248 257"/>
+              <path class="dc-fat" d="M178 250C188 256 200 258 214 256" stroke-width="4"/>
             </g></g>
             <g class="dc-head" id="dcHead">
-              <rect class="dc-head-body" x="80" y="188" width="200" height="34" rx="9"/>
-              <rect class="dc-head-hi" x="90" y="191" width="180" height="4" rx="2"/>
-              <rect class="dc-plate" x="88" y="221" width="184" height="8" rx="2"/>
-              <circle class="dc-port" cx="180" cy="205" r="12"/>
-              <circle class="dc-bolt" cx="98" cy="205" r="3.2"/><circle class="dc-bolt" cx="262" cy="205" r="3.2"/>
-              <g transform="translate(180 205) scale(.82)"><g class="dc-mark sg-pop"><!--#include sg-badge.svg--></g></g>
+              <path class="dc-plate" d="M85.5 228.3L265.5 228.3L265.5 223.2L85.5 223.2Z"/>
+              <path class="dc-plate-t" d="M85.5 223.2L265.5 223.2L272 208.9L92 208.9Z"/>
+              <path class="dc-plate-r" d="M265.5 228.3L272 214L272 208.9L265.5 223.2Z"/>
+              <path class="dc-headbox" d="M79.5 223.2L271.5 223.2L271.5 185L79.5 185Z"/>
+              <path class="dc-headbox-t" d="M79.5 185L271.5 185L278 170.7L86 170.7Z"/>
+              <path class="dc-headbox-r" d="M271.5 223.2L278 208.9L278 170.7L271.5 185Z"/>
+              <path class="dc-head-hi" d="M85.5 188.4L265.5 188.4"/>
+              <circle class="dc-port" cx="175.5" cy="204.1" r="13"/>
+              <circle class="dc-bolt" cx="95.5" cy="204.1" r="3.4"/>
+              <circle class="dc-bolt" cx="255.5" cy="204.1" r="3.4"/>
+              <g transform="translate(175.5 204.1) scale(.9)"><g class="dc-mark sg-pop"><!--#include sg-badge.svg--></g></g>
             </g>
-            <rect class="dc-bed" x="70" y="282" width="220" height="14" rx="3"/>
-            <path class="dc-bed-hi" d="M76 285H284"/>
-
+            <path class="dc-bed" d="M73.5 292.1L277.5 292.1L277.5 278.5L73.5 278.5Z"/>
+            <path class="dc-bed-r" d="M277.5 292.1L284 277.8L284 264.2L277.5 278.5Z"/>
+            <path class="dc-bed-hi" d="M76.5 281.1L274.5 281.1"/>
             <!-- the tray, on the scale -->
-            <rect class="dc-plat" x="86" y="344" width="188" height="99" rx="6"/>
-            <rect class="dc-tray" x="94" y="338" width="172" height="101" rx="10"/>
-            <rect class="dc-well" x="100" y="341" width="160" height="80" rx="6"/>
-            <rect class="dc-wall" x="100" y="341" width="160" height="15" rx="6"/>
-            <!-- what lands in the tray: dicer.js draws it -->
+            <path class="dc-plate-s-r" d="M250 440.4L298 334.8L298 332.2L250 437.8Z"/>
+            <path class="dc-plate-s-t" d="M62 437.8L250 437.8L298 332.2L110 332.2Z"/>
+            <path class="dc-plate-s" d="M62 440.4L250 440.4L250 437.8L62 437.8Z"/>
+            <path class="dc-tray" d="M70 416.4L246 416.4L290 319.6L114 319.6Z"/>
+            <path class="dc-well" d="M78.8 412.6L240.8 412.6L281.2 323.5L119.2 323.5Z"/>
+            <path class="dc-wall" d="M119.2 338.8L281.2 338.8L281.2 323.5L119.2 323.5Z"/>
+            <path class="dc-wall-l" d="M78.8 427.9L119.2 338.8L119.2 323.5L78.8 412.6Z"/>
+            <!-- what lands in the tray: the script draws it -->
             <g clip-path="url(#dcBelow)"><g id="dcCubes"></g></g>
             <g id="dcInTray"></g>
-            <path class="dc-tray-lip" d="M94.75 419H265.25V429A9.25 9.25 0 0 1 256 438.25H104A9.25 9.25 0 0 1 94.75 429Z"/>
-            <path class="dc-tray-face" d="M94 422H266V429A10 10 0 0 1 256 439H104A10 10 0 0 1 94 429Z"/>
-
+            <path class="dc-tray-r" d="M246 433.4L290 336.6L290 319.6L246 416.4Z"/>
+            <path class="dc-tray" d="M246 416.4L290 319.6L281.2 323.5L240.8 412.6Z"/>
+            <path class="dc-tray" d="M70 416.4L246 416.4L240.8 412.6L78.8 412.6Z"/>
+            <path class="dc-tray-f" d="M70 433.4L246 433.4L246 416.4L70 416.4Z"/>
+            <path class="dc-tray-hi" d="M73 417.7L243 417.7"/>
             <!-- once it comes clean: sealed under film, with the label -->
             <g clip-path="url(#dcWrapClip)"><g class="dc-film" id="dcFilm">
-              <rect class="dc-film-body" x="91" y="313" width="178" height="128" rx="11"/>
-              <path class="dc-film-hi" d="M110 424L150 322M130 432L162 352"/>
+              <path class="dc-film-r" d="M246.8 417L291.2 319.1L291.2 292.8L246.8 390.7Z"/>
+              <path class="dc-film-f" d="M68.8 417L246.8 417L246.8 390.7L68.8 390.7Z"/>
+              <path class="dc-film-t" d="M68.8 390.7L246.8 390.7L291.2 292.8L113.2 292.8Z"/>
+              <path class="dc-film-hi" d="M102.5 375.8L181.5 307.6M128.5 380.2L192 328.5"/>
             </g></g>
-            <g transform="translate(180 431) scale(.58)"><g class="dc-tag sg-pop"><!--#include sg-tag.svg--></g></g>
-
+            <g transform="translate(158 425.8) scale(.6)"><g class="dc-tag sg-pop"><!--#include sg-tag.svg--></g></g>
+            <!-- the right post stands in front of the tray’s far side -->
+            <path class="dc-post" d="M277.5 392.4L289.5 392.4L289.5 302.3L277.5 302.3Z"/>
+            <path class="dc-post-r" d="M289.5 392.4L296 378.1L296 288L289.5 302.3Z"/>
+            <path class="dc-foot" d="M271.5 397.5L295.5 397.5L295.5 392.4L271.5 392.4Z"/>
+            <path class="dc-foot-t" d="M271.5 392.4L295.5 392.4L302 378.1L278 378.1Z"/>
+            <path class="dc-foot-r" d="M295.5 397.5L302 383.2L302 378.1L295.5 392.4Z"/>
             <!-- what lands on the table and the floor -->
             <g id="dcOnTable"></g>
-
-            <!-- the spec: what the ERP says you're cutting -->
-            <rect class="dc-screen" x="24" y="10" width="312" height="96" rx="12"/>
-            <rect class="dc-glass" x="33" y="18" width="294" height="80" rx="7"/>
-            <text class="dc-kick" x="48" y="37">SPEC</text>
-            <rect class="dc-pill" id="dcPill" x="238" y="24" width="74" height="22" rx="11"/>
-            <text class="dc-pill-t" id="dcPillText" x="275" y="39.2" text-anchor="middle">On spec</text>
-            <text class="dc-order" x="48" y="60">Order 4417</text>
-            <text class="dc-spec" x="48" y="78">Diced beef · 10.00 lb</text>
-            <text class="dc-spec2" x="48" y="93">Cubes, all one size</text>
-            <g class="dc-icon">
-              <path class="dc-icon-t" d="M290 54L305 61.5L290 69L275 61.5Z"/>
-              <path class="dc-icon-l" d="M275 61.5L290 69V87L275 79.5Z"/>
-              <path class="dc-icon-r" d="M290 69L305 61.5V79.5L290 87Z"/>
-            </g>
-
+            <!-- the spec: what the ERP says you’re cutting -->
+            <path class="dc-screen-t" d="M26 6H334L337 1H29Z"/>
+            <path class="dc-screen-r" d="M334 6L337 1V89L334 94Z"/>
+            <rect class="dc-screen" x="22" y="6" width="312" height="88" rx="11"/>
+            <rect class="dc-glass" x="31" y="14" width="294" height="72" rx="7"/>
+            <text class="dc-kick" x="46" y="31">SPEC</text>
+            <rect class="dc-pill" id="dcPill" x="236" y="19" width="74" height="22" rx="11"/>
+            <text class="dc-pill-t" id="dcPillText" x="273" y="34.2" text-anchor="middle">On spec</text>
+            <text class="dc-order" x="46" y="53">Order 4417</text>
+            <text class="dc-spec" x="46" y="70">Diced beef · 10.00 lb</text>
+            <text class="dc-spec2" x="46" y="82.5">Cubes, all one size</text>
+            <g class="dc-icon"><path class="dc-icon-t" d="M288 47L302 54L288 61L274 54Z"/><path class="dc-icon-l" d="M274 54L288 61V77L274 70Z"/><path class="dc-icon-r" d="M288 61L302 54V70L288 77Z"/></g>
             <!-- the cable from the spec to the dicer: broken, until SimpleGrid joins it -->
-            <path class="dc-stub" d="M180 106V117"/>
-            <path class="dc-stub" d="M180 157V166"/>
-            <g class="dc-plug" id="dcPlugA"><rect x="171" y="116" width="18" height="10" rx="2.5"/><path d="M175.5 126V130M184.5 126V130"/></g>
-            <g class="dc-plug" id="dcPlugB"><rect x="171" y="150" width="18" height="9" rx="2.5"/></g>
-            <path class="dc-cable" d="M180 106V166"/>
-            <path class="dc-flow" d="M180 106V166"/>
+            <path class="dc-stub" d="M179 94V108"/>
+            <path class="dc-stub" d="M179 133V143"/>
+            <g class="dc-plug" id="dcPlugA"><rect x="171" y="101" width="16" height="9" rx="2.5"/><path d="M175 110V114M183 110V114"/></g>
+            <g class="dc-plug" id="dcPlugB"><rect x="171" y="131" width="16" height="8" rx="2.5"/></g>
+            <path class="dc-cable" d="M179 94V143"/>
+            <path class="dc-flow" d="M179 94V143"/>
           </svg>
         </div>
         <div class="callouts">
@@ -326,7 +369,249 @@
 <!--#include kit.js-->
 </script>
 <script>
-<!--#include line.js-->
+/* -------------------------------------------------- One tray of diced beef
+   The spec on the screen is the ERP. The dicer under it, the slab of trim and
+   the tray on the scale are the floor, and the cable between them is broken.
+   Dice it unlinked and the slab comes out every size: lumps, slivers and
+   wedges across the table, a few on the floor, the tray half full of odd
+   pieces, the scale wrong, and the spec still says On spec. That mess stays.
+   SimpleGrid joins the cable and the dicer head wears the mark. Dice it again
+   and the same pieces go back through and land as identical cubes, in a
+   grid, sealed and labelled. */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var hero = $('hero'), obj = $('dice');
+  var head = $('dcHead'), rod = $('dcRod'), slab = $('dcSlab'), film = $('dcFilm');
+  var inTray = $('dcInTray'), onTable = $('dcOnTable'), cubeG = $('dcCubes');
+  var plugA = $('dcPlugA'), plugB = $('dcPlugB'), pill = $('dcPill'), pillText = $('dcPillText'), scaleEl = $('dcScale');
+  var btn = $('heroBtn'), resetBtn = $('heroReset'), caption = $('heroCaption');
+  var reduce = SG.reduce;
+
+  var COPY = {
+    apart:    { btn: 'Dice it to see your operations', caption: 'The spec is your ERP, the cut is your floor, and nothing links them. Dice it, or tap the beef.' },
+    messing:  { btn: 'Dicing…', caption: 'Dicing it the usual way: the spec in one place, the floor in another.' },
+    mess:     { btn: 'Link the spec', caption: 'That’s your operations today: a big mess. Lumps, slivers and wedges everywhere, the tray half full, the scale wrong, and the spec still says On spec. It won’t sort itself out, either.' },
+    dosing:   { btn: 'Linking…', caption: 'In goes the link, from the spec to the dicer. That’s SimpleGrid.' },
+    dosed:    { btn: 'Dice it again', caption: 'That’s SimpleGrid: the spec and the dicer, linked and live. Now dice it again.' },
+    cleaning: { btn: 'Dicing…', caption: 'Watch the mess come clean.' },
+    done:     { btn: 'See what changes on your floor', caption: 'From the mess, a clean tray: identical cubes in a neat grid, right on weight. Your ERP and your floor finally match.' }
+  };
+  var TEXT = {
+    apart: ['The spec: your ERP', 'What the system says you’re cutting.', 'The cut: your floor', 'What’s really coming off the table, on Excel, whiteboards and phones.'],
+    done:  ['Your ERP', 'Still keeping the books.', 'Your spreadsheets', 'Retired, with thanks.']
+  };
+  var ARIA = {
+    apart: obj.getAttribute('aria-label'),
+    mess: 'The beef diced with nothing linking it: lumps, slivers and wedges across the table and the floor, the tray half full of pieces that don’t match, the scale showing the wrong weight, and the screen still saying On spec.',
+    dosed: 'The same mess, now with the cable joined and the SimpleGrid mark on the dicer head.',
+    done: 'A tray of identical beef cubes in a neat three by three grid, sealed under clear film and labelled SimpleGrid. The scale reads 10.00 lb and the screen says Done, on spec.'
+  };
+
+  /* The mess: every size, and not one of them a cube. Each piece is drawn around the middle of its
+     base: its outline, its lit top, the fat through it, and a kind for the odd ones. */
+  var SHAPES = {
+    lump:    ['M-28 0C-31-10-27-24-14-31C-2-38 16-36 25-26C31-19 31-7 28 0Z', 'M-23-18C-20-27-8-33 4-33C15-33 24-27 25-20C12-15-8-14-23-18Z', 'M-18-8C-10-12-2-6 8-9C14-11 18-8 22-10'],
+    lump2:   ['M-21 0C-23-9-18-22-6-26C6-29 18-24 21-14C23-7 22-3 20 0Z', 'M-17-15C-14-22-5-26 4-25C13-24 19-19 20-14C8-11-6-11-17-15Z', 'M-12-6C-6-9 2-5 10-8'],
+    sliver:  ['M-27 0C-25-5-12-8 4-8C17-8 26-6 27-3C27-1 24 0 20 0Z', '', 'M-20-3.5C-8-5.5 8-5.5 22-4'],
+    sliver2: ['M-20 0C-18-4-6-7 8-6C15-5.5 20-4 20-2C19 0 16 0 12 0Z', '', 'M-14-3C-4-5 6-4.5 16-3'],
+    wedge:   ['M-18 0L-4-29C-2-32 2-32 4-29L18-3C19-1 17 0 15 0Z', 'M-18 0L-4-29C-2-32 1-31 2-28L-5 0Z', 'M-1-12L10-6'],
+    wedge2:  ['M-15 0L-12-20C-11-24-7-25-4-23L15-6C17-4 16 0 13 0Z', 'M-12-20C-11-24-7-25-4-23L15-6C6-8-4-12-12-20Z', 'M-8-7L4-10'],
+    tall:    ['M-13 0L-9-30C-8-33-4-33-2-30L13-4C14-1 12 0 10 0Z', 'M-9-30C-8-33-4-33-2-30L13-4C4-8-4-16-9-30Z', 'M-6-12C-2-14 2-12 6-14'],
+    chunk:   ['M-15 0L-16-16C-16-21-12-24-7-24L10-22C14-21 16-18 15-13L14 0Z', 'M-16-16C-16-21-12-24-7-24L10-22C14-21 16-18 15-14C6-12-6-13-16-16Z', 'M-10-6C-4-9 4-5 10-7'],
+    chunk2:  ['M-12 0L-13-14C-13-19-9-22-4-22L8-20C12-19 13-15 12-10L11 0Z', 'M-13-14C-13-19-9-22-4-22L8-20C12-19 13-16 12-12C4-10-6-11-13-14Z', 'M-8-5C-2-8 4-5 9-6'],
+    flat:    ['M-24 0C-25-6-22-12-14-13L16-14C22-14 25-9 24 0Z', 'M-22-9C-21-12-16-13-12-13L16-14C21-14 24-11 24-8C10-7-8-7-22-9Z', '', 'fatty'],
+    crumb:   ['M-6.5 0C-7-5-4-9 0-9C4-9 7-5 6.5 0Z', '', ''],
+    crumb2:  ['M-5 0L-6-5C-5-8-1-8 2-7.5L5-5L5 0Z', '', ''],
+    flap:    ['M-19 0C-20-5-15-9-6-10L12-10C17-10 20-7 19 0Z', '', 'M-14-4C-4-7 6-6 15-4', 'flap']
+  };
+  // Where each lands: [shape, x, y, turn, size, where]. Half fills the tray, and none of it matches.
+  var MESS = [
+    ['tall',    132, 360,   6, 1.25, 'tray'],
+    ['wedge',   198, 372,  16, 1.3,  'tray'],
+    ['crumb',   162, 381,   0, 1.4,  'tray'],
+    ['chunk2',  230, 386,   8, 1.3,  'tray'],
+    ['lump',    128, 402,  -6, 1.25, 'tray'],
+    ['sliver',  200, 405, -10, 1.3,  'tray'],
+    ['sliver2', 326, 360, -28, 1.5,  'table'],
+    ['sliver2',  46, 404,  24, 1.3,  'table'],
+    ['wedge2',  306, 410,  10, 1.3,  'table'],
+    ['chunk',    38, 438, -14, 1.3,  'table'],
+    ['flat',    270, 447,  -4, 1.25, 'table'],
+    ['crumb2',  100, 447,   0, 1.4,  'table'],
+    ['chunk',   266, 536, -20, 1.1,  'floor'],
+    ['lump2',    52, 540,  12, 1.3,  'floor'],
+    ['flap',    168, 544,  -6, 1.3,  'floor']
+  ];
+  // How each landing goes: how high it's thrown, how long it flies, how far it bounces, how much it turns.
+  var THROW = { tray: [16, 640, 3, 110], table: [62, 880, 9, 300], floor: [44, 1060, 12, 420] };
+  var GROUP = { floor: 0, table: 1, tray: 2 }, seen = [0, 0, 0];
+  var pieces = MESS.map(function(m, i){
+    var s = SHAPES[m[0]], g = document.createElementNS(NS, 'g'), t = THROW[m[5]], k = GROUP[m[5]];
+    g.setAttribute('class', 'dc-pc' + (s[3] ? ' ' + s[3] : ''));
+    g.innerHTML = '<path class="dc-pc-b" d="' + s[0] + '"/>' + (s[1] ? '<path class="dc-pc-t" d="' + s[1] + '"/>' : '') + (s[2] ? '<path class="dc-pc-f" d="' + s[2] + '"/>' : '');
+    (m[5] === 'tray' ? inTray : onTable).appendChild(g);
+    // going back, the floor goes first and the tray last
+    return { el: g, at: [m[1], m[2]], turn: m[3], size: m[4], lift: t[0], ms: t[1], hop: t[2], spin: (i % 2 ? -1 : 1)*t[3], back: k*120 + (seen[k]++)*35 };
+  });
+
+  // Nine cubes, all one size, three rows of three. The back row goes in first, so nearer ones sit in front.
+  var AT = [[135.2, 367.4], [187.2, 367.4], [239.2, 367.4], [122.2, 396], [174.2, 396], [226.2, 396], [109.2, 424.6], [161.2, 424.6], [213.2, 424.6]];
+  var FLECK = [['M-4-53q5-3 10-1t9-2', 'M-13-18q7 4 14 0t9 1'], ['M-1-49q5 2 10 0t8-3', 'M-6-14q6-4 13-1t8-1'], ['M-6-55q6-1 11 1t8-1', 'M-15-22q6 3 13 1t10 2']];
+  var cubes = AT.map(function(p, i){
+    var g = document.createElementNS(NS, 'g'), fl = FLECK[i % 3];
+    g.setAttribute('class', 'dc-cube');
+    g.innerHTML = '<path class="dc-cube-r" d="M23 0L34.5-25.3V-64.4L23-39.1Z"/><path class="dc-cube-f" d="M-23 0H23V-39.1H-23Z"/><path class="dc-cube-t" d="M-23-39.1H23L34.5-64.4H-11.5Z"/>' +
+      '<path class="dc-fat" d="' + fl[0] + '"/><path class="dc-fat" d="' + fl[1] + '"/>';
+    cubeG.appendChild(g);
+    return { el: g, at: p };
+  });
+  var BED = 292;                                      // the underside of the blade bed: what's cut drops from here
+  var SLAB = [176, 258];                              // the middle of the slab, where the mess goes back in
+
+  /* ------------------------------------------------------------ Moving */
+  var gen = 0, timers = [], moves = [];
+  function later(fn, ms){ var my = gen; timers.push(setTimeout(function(){ if (my === gen) fn(); }, reduce ? 0 : ms)); }
+  function wait(ms){ return new Promise(function(done){ later(done, ms); }); }
+  // Every frame carries its own opacity, so nothing drops back to its hidden resting style mid-move.
+  function anim(el, frames, ms, delay, easing){
+    var a = el.animate(frames, { duration: reduce ? 1 : ms, delay: reduce ? 0 : (delay || 0), easing: easing || 'linear', fill: 'both' });
+    moves.push(a);
+    return a.finished.then(function(){}, function(){});
+  }
+  var f = function(v){ return Math.round(v*10)/10; };
+  var tf = function(x, y, r, s){ return 'translate(' + f(x) + 'px,' + f(y) + 'px) rotate(' + f(r || 0) + 'deg) scale(' + (s == null ? 1 : Math.round(s*1000)/1000) + ')'; };
+  // A throw from a to b: across at a steady pace, up and over by `lift`, turning by `spin` on the way to
+  // `turn`. `hop` bounces it once where it lands; size(u) and fade(t) shape it along the way.
+  function toss(a, b, o){
+    var frames = [], N = 16, land = o.hop ? .8 : 1;
+    for (var k = 0; k <= N; k++){
+      var t = k/N, u = Math.min(1, t/land), x = a[0] + (b[0] - a[0])*u, y, r;
+      if (t <= land){ y = a[1] + (b[1] - a[1])*u - 4*o.lift*u*(1 - u); r = o.turn - o.spin*(1 - u); }
+      else { var v = (t - land)/(1 - land); y = b[1] - 4*o.hop*v*(1 - v); r = o.turn + o.hop*.5*Math.sin(Math.PI*v); }
+      frames.push({ offset: t, transform: tf(x, y, r, o.size(u)), opacity: o.fade ? o.fade(t) : 1 });
+    }
+    return frames;
+  }
+  var PILL_R = 310;                                   // the pill's right edge stays put as its words change
+  function setPill(text){
+    pillText.textContent = text;
+    var w = Math.ceil(pillText.getComputedTextLength()) + 22;
+    pill.setAttribute('x', PILL_R - w);
+    pill.setAttribute('width', w);
+    pillText.setAttribute('x', PILL_R - w/2);
+  }
+  function setScale(text){ scaleEl.textContent = text; }
+  // The head and its rod move together; only the head tilts. Each key is [offset, down, tilt, easing].
+  function press(keys, ms, delay, easing){
+    anim(head, keys.map(function(k){ return { offset: k[0], transform: 'translateY(' + k[1] + 'px) rotate(' + k[2] + 'deg)', easing: k[3] || 'linear' }; }), ms, delay, easing);
+    return anim(rod, keys.map(function(k){ return { offset: k[0], transform: 'translateY(' + k[1] + 'px)', easing: k[3] || 'linear' }; }), ms, delay, easing);
+  }
+
+  // Dice it unlinked: the head comes down crooked, twice, and the slab comes out every size, everywhere.
+  function mess(){
+    press([[0, 0, 0, 'cubic-bezier(.55,0,.9,.4)'], [.22, 50, -6, 'ease-out'], [.3, 38, -3, 'ease-in'], [.38, 50, -8, 'cubic-bezier(.3,.6,.4,1)'], [1, 6, -5]], 1500);
+    anim(slab, [
+      { offset: 0, transform: 'translateY(0px) scale(1,1)', opacity: 1, easing: 'ease-in' },
+      { offset: .2, transform: 'translateY(3px) scale(1.04,.9)', opacity: 1, easing: 'ease-in' },
+      { offset: .36, transform: 'translateY(60px) scale(1.04,.9)', opacity: 1 },
+      { offset: 1, transform: 'translateY(60px) scale(1.04,.9)', opacity: 0 }
+    ], 1500);
+    var flights = pieces.map(function(p, i){
+      var from = [SLAB[0] + SG.clamp((p.at[0] - SLAB[0])*.35, -45, 45), BED + 6];
+      return anim(p.el, toss(from, p.at, { lift: p.lift, turn: p.turn, spin: p.spin, hop: p.hop,
+        size: function(u){ return p.size*(.45 + .55*Math.min(1, u*4)); }, fade: function(t){ return Math.min(1, t*25); } }), p.ms, 320 + i*40);
+    });
+    later(function(){ setScale('3.18 lb'); }, 1000);
+    later(function(){ setScale('5.07 lb'); }, 1180);
+    later(function(){ setScale('6.42 lb'); obj.classList.add('wrong'); }, 1450);
+    return Promise.all(flights);
+  }
+
+  // In goes the link: the plugs meet, the cable lights up, and the head straightens, wearing the mark.
+  function dose(){
+    obj.classList.add('linked');
+    setPill('Linked');
+    anim(plugA, [{ transform: 'translateY(0px)' }, { transform: 'translateY(8.5px)' }], 380, 0, 'cubic-bezier(.4,0,.2,1)');
+    anim(plugB, [{ transform: 'translateY(0px)' }, { transform: 'translateY(-8.5px)' }], 380, 0, 'cubic-bezier(.4,0,.2,1)');
+    press([[0, 6, -5], [.55, -5, 1.5], [1, 0, 0]], 640, 240, 'ease-in-out');
+    later(function(){ obj.classList.add('dosed'); }, 520);
+    return wait(1000);
+  }
+
+  // Dice it again, linked: every piece goes back up into the dicer, wherever it landed, the slab is
+  // whole again, and one straight cut drops nine identical cubes into the tray, row by row.
+  function clean(){
+    obj.classList.remove('wrong');
+    var back = pieces.map(function(p){
+      return anim(p.el, toss(p.at, [SLAB[0] + (p.at[0] - SLAB[0])*.25, SLAB[1]], { lift: 46, turn: p.turn + p.spin*.6, spin: p.spin*.6, hop: 0,
+        size: function(u){ return p.size*(1 - .7*Math.max(0, (u - .6)/.4)); }, fade: function(t){ return t > .82 ? (1 - t)/.18 : 1; } }), 640, p.back);
+    });
+    later(function(){ setScale('0.00 lb'); }, 420);
+    anim(slab, [
+      { offset: 0, transform: 'translateY(0px) scale(.55)', opacity: 0 },
+      { offset: .32, transform: 'translateY(0px) scale(.55)', opacity: 0, easing: 'cubic-bezier(.2,.9,.3,1.3)' },
+      { offset: .46, transform: 'translateY(0px) scale(1)', opacity: 1 },
+      { offset: .55, transform: 'translateY(0px) scale(1)', opacity: 1, easing: 'ease-in' },
+      { offset: .66, transform: 'translateY(60px) scale(1)', opacity: 1 },
+      { offset: 1, transform: 'translateY(60px) scale(1)', opacity: 0 }
+    ], 2000);
+    press([[0, 0, 0], [.5, 0, 0, 'cubic-bezier(.55,0,.9,.4)'], [.66, 50, 0], [.74, 50, 0, 'ease-in-out'], [1, 0, 0]], 2000);
+    var T0 = 1300, GAP = 115;
+    var drops = cubes.map(function(c, i){
+      var t = T0 + i*GAP;
+      later(function(){ setScale((10*(i + 1)/9).toFixed(2) + ' lb'); }, t + 340);
+      return anim(c.el, [
+        { offset: 0, transform: tf(c.at[0], BED), opacity: 1, easing: 'cubic-bezier(.5,0,.9,.55)' },
+        { offset: .72, transform: tf(c.at[0], c.at[1]), opacity: 1, easing: 'ease-out' },
+        { offset: .86, transform: tf(c.at[0], c.at[1] - 6), opacity: 1, easing: 'ease-in' },
+        { offset: 1, transform: tf(c.at[0], c.at[1]), opacity: 1 }
+      ], 470, t);
+    });
+    var T1 = T0 + 8*GAP + 500;
+    later(function(){ obj.classList.add('right'); setPill('Done, on spec'); }, T1 - 60);
+    var wrap = anim(film, [{ transform: 'translateX(-230px)', opacity: 1 }, { transform: 'translateX(0px)', opacity: 1 }], 620, T1, 'cubic-bezier(.3,.7,.2,1)');
+    return Promise.all(back.concat(drops, [wrap]));
+  }
+
+  // Start over: the first picture, at once.
+  function restore(){
+    gen++;
+    timers.forEach(clearTimeout);
+    timers = [];
+    moves.forEach(function(a){ a.cancel(); });
+    moves = [];
+    obj.classList.remove('wrong', 'linked', 'dosed', 'right', 'is-done');
+    setPill('On spec');
+    setScale('0.00 lb');
+  }
+  function setCallouts(final){
+    var w = final ? TEXT.done : TEXT.apart;
+    $('gapTag').hidden = final;
+    $('topTitle').textContent = w[0];
+    $('topText').textContent = w[1];
+    $('bottomTitle').textContent = w[2];
+    $('bottomText').textContent = w[3];
+  }
+
+  var story = SG.story({
+    hero: hero, obj: obj, btn: btn, reset: resetBtn, caption: caption, copy: COPY, aria: ARIA, skip: '.dice',
+    ops: {
+      mess: ['Your operations, today', 'Diced together, still not linked. Every piece a different size, and it stays that way.'],
+      dosed: ['Your operations, plus SimpleGrid', 'Same pieces, same mess. Now the spec and the dicer are linked.']
+    },
+    mess: mess, dose: dose, clean: clean, restore: restore,
+    final: function(on){ setCallouts(on); obj.classList.toggle('is-done', on); }
+  });
+  // Tapping the dicer does the same as the button.
+  obj.addEventListener('click', function(){ if (!story.busy() && story.phase() !== 'done') story.go(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ obj.classList.toggle('in-view', entries[0].isIntersecting); }).observe(obj);
+  } else obj.classList.add('in-view');
+  setPill('On spec');
+  // The pill is sized to its words, so size it again once the page's own face has loaded.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setPill(pillText.textContent); });
+})();
 </script>
 <script>
 window.STAGE = {

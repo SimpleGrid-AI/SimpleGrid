@@ -57,7 +57,7 @@
 .bottle[data-tone=b] .bottle-shadow{opacity:.55}
 .bottle-move{position:absolute;inset:0;will-change:transform}
 .bottle-back,.bottle-front{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-/* The liquid fills the inside of the glass: shoulders, neck and all. */
+/* The liquid is drawn on a canvas over the inside of the glass, cut to the bottle's shape: shoulders, neck and all. */
 #liquid,.liquid-flat{
   position:absolute;left:14.722%;top:12.5%;width:70.556%;height:84.464%;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='53 70 254 473' preserveAspectRatio='none'%3E%3Cpath d='M140 70L140 114C140 156 53 170 53 234L53 502C53 527 71 543 100 543L260 543C289 543 307 527 307 502L307 234C307 170 220 156 220 114L220 70Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
@@ -75,7 +75,8 @@
     radial-gradient(closest-side,#C8183E 70%,transparent 80%) 28% 82%/14% 7.5% no-repeat,
     radial-gradient(closest-side,#FBF7F2 70%,transparent 80%) 52% 93%/12% 6.5% no-repeat,
     radial-gradient(closest-side,#C8183E 70%,transparent 80%) 70% 39%/11% 6% no-repeat,
-    repeating-linear-gradient(-58deg,#F6DCE2 0 18px,#D93A5E 18px 34px,#FFF6F4 34px 48px,#E86C88 48px 66px) bottom/100% 76.3% no-repeat;
+    repeating-linear-gradient(-64deg,transparent 0 31px,rgba(255,246,244,.85) 31px 36px,transparent 36px 77px,rgba(200,24,62,.7) 77px 85px,transparent 85px 113px) bottom/100% 76.3% no-repeat,
+    repeating-linear-gradient(-52deg,#F6DCE2 0 13px,#D93A5E 13px 35px,#FFF6F4 35px 43px,#E86C88 43px 61px,#FBEFF1 61px 80px,#C8183E 80px 91px) bottom/100% 76.3% no-repeat;
 }
 .bottle.no-gl[data-phase=done] .liquid-flat{background:linear-gradient(transparent 0 22.6%,#FCD3DD 22.6%)}
 
@@ -390,10 +391,10 @@ void main(){
     vec2 wb = vec2(fbm(fl*2.7 + wa*2. + vec2(1.7, t*.4)), fbm(fl*2.7 - wa*2. + vec2(8.3, -t*.5))) - .5;
     q = p + (wa*300. + wb*120.)*m;
     // Bands of kefir and fruit, warped into veins: more kefir toward the top, more fruit toward the floor.
-    float vein = sin(q.y*.05 + q.x*.013 + (fbm(q*.013 + vec2(7., 3.)) - .5)*7.);
+    float vein = sin(q.y*.05 + q.x*.011 + (fbm(q*.017 + vec2(7., 3.)) - .5)*11.);
     field = mix(q.y - inter, vein*60. + (p.y - inter)*.2, smoothstep(.12, .5, m));
   }
-  float e = mix(1.4, 3.4, m);
+  float e = mix(1.4, 7., m);
   float L = smoothstep(-e, e, field);      // 1 is kefir, 0 is fruit
 
   float hO = clamp((p.y - INTERFACE)/(SURFACE - INTERFACE), 0., 1.);
@@ -519,7 +520,8 @@ void main(){
           if (!reduce) drop.classList.add('fall');
         }, 560);
         later(function(){ s.ripple = 1; s.slopeV += .9; }, 850);
-        later(function(){ bottle.classList.remove('cap-off', 'dropping'); stable = true; s.prog = 0; done(); }, 1540);
+        // The leftover churn mustn't start blending it: the drop stays whole until it's shaken again.
+        later(function(){ bottle.classList.remove('cap-off', 'dropping'); stable = true; s.prog = s.energy = 0; done(); }, 1540);
       });
     },
     // Shake it again with the cultures in: the same mess blends smooth.
@@ -628,11 +630,11 @@ void main(){
     if (phase === 'cleaning' && !drag && shakeLeft <= 0 && s.energy < .12 && s.prog < 1) shake();
     if (waiting && waiting.test()){ var w = waiting; waiting = null; w.done(); }
 
-    // As it blends, the drop of SimpleGrid dissolves into the kefir.
+    // As it blends, the drop of SimpleGrid swirls and dissolves into the kefir. Until then it sits upright and whole.
     if (stable){
       var gone = smooth(.04, .42, s.prog);
       dropBall.style.opacity = 1 - gone;
-      dropBall.style.transform = 'scale(' + (1 - gone*.55) + ') rotate(' + (s.flow*60) + 'deg)';
+      dropBall.style.transform = 'scale(' + (1 - gone*.55) + ') rotate(' + (gone*240).toFixed(1) + 'deg)';
     }
   }
 
@@ -719,7 +721,6 @@ void main(){
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
       visible = entries[0].isIntersecting;
-      hero.classList.toggle('in-view', visible);
       visible ? run() : halt();
     }).observe(hero);
   }
