@@ -94,6 +94,10 @@ one.
   `node scripts/letters/build.js`, then `node scripts/letters/og.js` for the
   link previews. Never edit a built page by hand; `build.js --check` fails
   when one has drifted from its template.
+  Test them in a real browser with `node scripts/letters/qa.js [company]`
+  (layout at four widths, then each hero's story to the end and back);
+  `node scripts/letters/shoot.js <company>/<slug>/` screenshots each phase.
+  `scripts/letters/HERO-BRIEF.md` explains how a new hero is built.
 - **`_headers` does nothing today.** It is Cloudflare Pages / Netlify syntax,
   kept as a statement of intent. GitHub Pages ignores it, so no CSP or HSTS is
   actually in force.
