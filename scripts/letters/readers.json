@@ -1602,5 +1602,363 @@
         "ps": "P.S. I’m the one who left the popcorn for you and Don. I’d still love to meet in person."
       }
     ]
+  },
+  "korpack": {
+    "template": "korpack.html",
+    "values": {
+      "co_name": "Korpack",
+      "theme": "#0D4466",
+      "line_order": "Order 4417",
+      "line_sku": "Club packs, 1,200 cases",
+      "ask": "our demo got cancelled. I’d still love 15 minutes.",
+      "lead": "<strong>I really want to work with Korpack.</strong> Have a look at the demo, then decide. I’ve handled a lot of operational complexity, this is a new product, and it’s a 15-minute appointment at your office in Bloomingdale. Nothing more.",
+      "ps": "P.S. Pouching lines, a cartoner, a shrink tunnel and a bundle wrapper, plus SQF, USDA and FDA. That’s a lot to keep in step. I’d love to see it run."
+    },
+    "readers": [
+      {
+        "slug": "anthony",
+        "first": "Anthony",
+        "full": "Anthony Rofus",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale",
+        "ask": "I’d still like to show you that demo.",
+        "lead": "Our meeting got cancelled, and that’s okay. But a demo doesn’t hurt you or anyone else. Solving an operations problem is the thing I’m very good at, and for you it’s a small thing: 15 minutes. <strong>I really want to work with you and Korpack, and I don’t want any money.</strong> I’ll build first. Then you and your team, new faces included, look at it and make the call."
+      },
+      {
+        "slug": "nick",
+        "first": "Nick",
+        "full": "Nick Novy",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale",
+        "ps": "P.S. You wrote that at Korpack you say what you do and do what you say. So do I. We have some good delivery under our belt back in India, and all I’m asking for is a foot in the door. I’ll prove the value first; then you decide whether it’s worth paying a buck."
+      },
+      {
+        "slug": "tony",
+        "first": "Tony",
+        "full": "Tony Orr",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale"
+      },
+      {
+        "slug": "christina",
+        "first": "Christina",
+        "full": "Christina Schwark",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale"
+      },
+      {
+        "slug": "tippy",
+        "first": "Tippy",
+        "full": "Tippy Wicker",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale"
+      },
+      {
+        "slug": "john",
+        "first": "John",
+        "full": "John Zabaneh",
+        "town": "Bloomingdale",
+        "where": "your office in Bloomingdale"
+      }
+    ]
+  },
+  "forest-packaging": {
+    "template": "forest-packaging.html",
+    "values": {
+      "co_name": "Forest Packaging",
+      "theme": "#114F27",
+      "line_order": "Order 4417",
+      "line_sku": "RSCs, 3-color, 10,000"
+    },
+    "readers": [
+      {
+        "slug": "john",
+        "first": "John",
+        "full": "John Kula",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village",
+        "ps": "P.S. “If we can’t earn the business, then we don’t deserve the business,” you told AICC. That’s how I work too."
+      },
+      {
+        "slug": "jeff",
+        "first": "Jeff",
+        "full": "Jeff Kula",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village",
+        "ps": "P.S. Two shifts and 130 million square feet of corrugated a year, AICC wrote. I’d love to see it run."
+      }
+    ]
+  },
+  "packaging-personified": {
+    "template": "packaging-personified.html",
+    "values": {
+      "co_name": "Packaging Personified",
+      "theme": "#2A2929",
+      "line_order": "Order 4417",
+      "line_sku": "2-ply laminate, 40 rolls",
+      "ps": "P.S. Extrusion, printing, lamination and converting, all under your own roof. That’s a lot of handoffs to keep straight. I’d love to see how you do it."
+    },
+    "readers": [
+      {
+        "slug": "dan",
+        "first": "Dan",
+        "full": "Dan Imburgia",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream",
+        "ps": "P.S. I hear you built your own operations system in-house. Let’s trade notes: I’ll show you what’s possible from where I sit, and you tell me what you saw when you built yours."
+      },
+      {
+        "slug": "joe",
+        "first": "Joe",
+        "full": "Joe Imburgia",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream",
+        "ps": "P.S. “Ready to focus on the next 50,” you wrote. I’d love to help with the floor side of that."
+      },
+      {
+        "slug": "mike",
+        "first": "Mike",
+        "full": "Mike Dizonno",
+        "town": "Carol Stream",
+        "where": "your plant in Carol Stream"
+      }
+    ]
+  },
+  "aargus-plastics": {
+    "template": "aargus-plastics.html",
+    "values": {
+      "co_name": "Aargus Plastics",
+      "theme": "#1D1D1D",
+      "line_order": "Order 4417",
+      "line_sku": "Retail bags, red, 10,000"
+    },
+    "readers": [
+      {
+        "slug": "ismael",
+        "first": "Ismael",
+        "full": "Ismael Molina",
+        "town": "Wheeling",
+        "where": "your plant in Wheeling",
+        "ps": "P.S. I liked your post about turning every morning into a SMED exercise. When I came by, you said the problem is real. Give me 15 minutes and I’ll show you what I’d do about it."
+      },
+      {
+        "slug": "jerry",
+        "first": "Jerry",
+        "full": "Jerry Starr",
+        "town": "Wheeling",
+        "where": "your plant in Wheeling",
+        "ps": "P.S. “The best one-stop shop for all your custom bags,” you say on your site. I’d love to see the floor that backs it up."
+      }
+    ]
+  },
+  "star-die-molding": {
+    "template": "star-die-molding.html",
+    "values": {
+      "co_name": "Star Die Molding",
+      "theme": "#0B75C0",
+      "line_order": "Press 22",
+      "line_sku": "Mold A-114, 40,000 shots",
+      "ps": "P.S. ISO 13485 for medical, ISO 9001, UL registered, and clean rooms when a job needs one. I’d love to see the press floor."
+    },
+    "readers": [
+      {
+        "slug": "zlatko",
+        "first": "Zlatko",
+        "full": "Zlatko Rudman",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village",
+        "ps": "P.S. Thanks for the long talk outside when I came by. I know you’re not looking, so this is just 15 minutes to show you the idea properly."
+      },
+      {
+        "slug": "johan",
+        "first": "Johan",
+        "full": "Johan Petersen",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village",
+        "ps": "P.S. “When it comes to customer satisfaction, Star means business,” your site says. So do I."
+      },
+      {
+        "slug": "victor",
+        "first": "Victor",
+        "full": "Victor Delgado",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      }
+    ]
+  },
+  "hfi-manufacturing": {
+    "template": "hfi-manufacturing.html",
+    "values": {
+      "co_name": "HFI Manufacturing",
+      "theme": "#042535",
+      "line_order": "Job 4417",
+      "line_sku": "Telecom enclosures, 200",
+      "ps": "P.S. “Every process controlled under one roof, from laser to assembly,” your site says. I’d love to see it end to end."
+    },
+    "readers": [
+      {
+        "slug": "daniel",
+        "first": "Daniel",
+        "full": "Daniel Heckle",
+        "town": "St. Charles",
+        "where": "your plant in St. Charles",
+        "ps": "P.S. Jeff promised to leave my card on your desk when I came by. I hope it made it."
+      },
+      {
+        "slug": "clyde",
+        "first": "Clyde",
+        "full": "Clyde Braviere",
+        "town": "St. Charles",
+        "where": "your plant in St. Charles",
+        "ps": "P.S. Five robotic welding cells and a robotic bend cell, your site says. I’d love to see them run, and hear where their data goes."
+      }
+    ]
+  },
+  "perfect-plastic": {
+    "template": "perfect-plastic.html",
+    "values": {
+      "co_name": "Perfect Plastic Printing",
+      "theme": "#0E2A47",
+      "line_order": "Order 4417",
+      "line_sku": "Dual-interface cards, 250,000",
+      "ps": "P.S. More than 650 million cards in four years, with 98.7% on time, your site says. I’d love to see the line that does it."
+    },
+    "readers": [
+      {
+        "slug": "tom",
+        "first": "Tom",
+        "full": "Tom McClaughry",
+        "town": "St. Charles",
+        "where": "your plant in St. Charles",
+        "ps": "P.S. “Sometimes you just have to get outside of your comfort zone and do a thing,” you wrote after speaking at GSC. Fifteen minutes with me is a much smaller thing."
+      },
+      {
+        "slug": "jennifer",
+        "first": "Jennifer",
+        "full": "Jennifer Gustafson",
+        "town": "St. Charles",
+        "where": "your plant in St. Charles",
+        "ps": "P.S. “Compliance, risk management, process, and humanity,” you wrote last week. That’s a good list for a factory floor too."
+      },
+      {
+        "slug": "todd",
+        "first": "Todd",
+        "full": "Todd Freund",
+        "town": "St. Charles",
+        "where": "your plant in St. Charles"
+      }
+    ]
+  },
+  "walker-manufacturing": {
+    "template": "walker-manufacturing.html",
+    "values": {
+      "co_name": "Walker Manufacturing Group",
+      "theme": "#181C8E",
+      "line_order": "Order 4417",
+      "line_sku": "Brackets, 5,000"
+    },
+    "readers": [
+      {
+        "slug": "frank",
+        "first": "Frank",
+        "full": "Frank San Roman",
+        "town": "Itasca",
+        "where": "your plant in Itasca",
+        "ps": "P.S. I had a long talk with Tim when I came by Itasca, and he promised to put this in your hands. I’d like 15 minutes of yours."
+      },
+      {
+        "slug": "tim",
+        "first": "Tim",
+        "full": "Tim Kutil",
+        "town": "Itasca",
+        "where": "your plant in Itasca",
+        "ps": "P.S. Thank you for the long conversation when I came by. I’d love to take you up on those 30 minutes to go through the problems you mentioned."
+      },
+      {
+        "slug": "brian",
+        "first": "Brian",
+        "full": "Brian San Roman",
+        "town": "Itasca",
+        "where": "your plant in Itasca",
+        "ps": "P.S. Tim passed me your card when I came by Itasca, and said you look after inventory. That’s exactly where an ERP and a floor drift apart."
+      },
+      {
+        "slug": "brandon",
+        "first": "Brandon",
+        "full": "Brandon Stubblefield",
+        "town": "Ontario",
+        "where": "a time that suits you",
+        "ps": "P.S. Tim Kutil in Itasca suggested I reach out to you."
+      },
+      {
+        "slug": "kimberly",
+        "first": "Kimberly",
+        "full": "Kimberly Clarke",
+        "town": "Ontario",
+        "where": "a time that suits you",
+        "ps": "P.S. Congratulations on Walker West’s Made in California certification."
+      }
+    ]
+  },
+  "burton-medical": {
+    "template": "burton-medical.html",
+    "values": {
+      "co_name": "Burton Medical",
+      "theme": "#041E42",
+      "line_order": "Build 4417",
+      "line_sku": "LED exam lights, 40"
+    },
+    "readers": [
+      {
+        "slug": "raj",
+        "first": "Raj",
+        "full": "Raj Jayaraman",
+        "town": "Addison",
+        "where": "your plant in Addison",
+        "ps": "P.S. Over 400,000 Burton lights installed, in over 59 countries. I’d love to see where they start."
+      },
+      {
+        "slug": "jim",
+        "first": "Jim",
+        "full": "Jim White",
+        "town": "Addison",
+        "where": "your plant in Addison",
+        "ps": "P.S. Spotted: your UV503 Magnifier in The Pitt, season 2, episode 7. Congratulations."
+      }
+    ]
+  },
+  "lawrence-foods": {
+    "template": "lawrence-foods.html",
+    "values": {
+      "co_name": "Lawrence Foods",
+      "theme": "#0056A7",
+      "line_order": "Batch 4417",
+      "line_sku": "Cherry filling, 90 pails",
+      "ps": "P.S. SQF Level 3 for five years running, out of 293,000 square feet. I’d love to see the floor that keeps it."
+    },
+    "readers": [
+      {
+        "slug": "kamran",
+        "first": "Kamran",
+        "full": "Kamran Ali Baig",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village",
+        "ps": "P.S. MES is your world, so you’ll see exactly where this fits. I’d value your read on it."
+      },
+      {
+        "slug": "steve",
+        "first": "Steve",
+        "full": "Steve Wade",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      },
+      {
+        "slug": "charlie",
+        "first": "Charlie",
+        "full": "Charlie Leonard",
+        "town": "Elk Grove Village",
+        "where": "your plant in Elk Grove Village"
+      }
+    ]
   }
 }

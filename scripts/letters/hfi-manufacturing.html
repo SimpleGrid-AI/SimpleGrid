@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Run the job, {{first}} | SimpleGrid</title>
+<meta name="description" content="SimpleGrid, the operations cloud for manufacturers, explained to someone who fabricates metal for a living.">
+<!-- A page for one reader. Unlisted on purpose: not in the nav or the sitemap, and search engines are told to skip it.
+     Built from scripts/letters/{{company}}.html by scripts/letters/build.js. Edit the template, not this file. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="{{theme}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SimpleGrid">
+<meta property="og:url" content="{{url}}">
+<meta property="og:title" content="{{first}}, run the job.">
+<meta property="og:description" content="SimpleGrid, explained to someone who fabricates metal for a living.">
+<meta property="og:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A fabrication line under a job screen, with no link between them, beside the words: {{first}}, HFI has been fabricating metal since 1966.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{first}}, run the job.">
+<meta name="twitter:description" content="SimpleGrid, explained to someone who fabricates metal for a living.">
+<meta name="twitter:image" content="https://simplegrid.ai/{{company}}/{{og}}.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/albert-sans-latin.woff2" crossorigin>
+<style>
+<!--#include base.css-->
+
+/* HFI’s colors: the navy of their headings, with the bright aqua and the steel blue from their site’s palette. Their site is set in a sans, so ours is too. */
+:root{
+  --brand:#042535;--brand-press:#031B27;--brand-deep:#02121A;
+  --accent:#37E9DD;--accent-soft:#DDFBF8;--accent-edge:#1FB3A9;
+  --on-brand:#fff;--on-brand-soft:rgba(255,255,255,.86);--on-accent:#042535;--on-accent-soft:rgba(4,37,53,.84);
+  --tint:#EAF4F7;--pale:#F7FBFC;--ink:#0F1E26;--alert:#D7263D;--marker:#DDFBF8;--h2-hi:#017DA7;
+  --display:'Albert Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--dw:800;
+}
+.line{--sku-a:#C9D0D6;--sku-b:#017DA7;--sku-c:#37E9DD}
+
+<!--#include line.css-->
+
+<!--#include stage.css-->
+<!--#include report.css-->
+<!--#include ask.css-->
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" data-theme="a">
+  <div class="hero-inner">
+    <header class="bar">
+      <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+      <div class="bar-right">
+        <p class="bar-tag"><span>Cut to order for {{full}},</span> <span>{{co_name}}. Run size: 1.</span></p>
+        <a class="bar-cta" href="#meet">Let’s meet</a>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>{{first}}, HFI has been fabricating metal since 1966. <span>So here’s our software, explained as one job.</span></h1>
+        <p class="hero-sub">There’s no link between your ERP and what’s really happening on your floor. That’s where the chaos starts. SimpleGrid is the link.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="line hero-obj" id="line" role="img" aria-label="A packaging line with a schedule screen above it, and the cable between them broken.">
+<!--#include line.svg-->
+        </div>
+        <div class="callouts">
+          <div class="callout callout-top">
+            <h3><i></i><span id="topTitle">The schedule: your ERP</span></h3>
+            <p id="topText">What the system says the line is running.</p>
+          </div>
+          <div class="callout-gap" id="gapTag">No link</div>
+          <div class="callout callout-bottom">
+            <h3><i></i><span id="bottomTitle">The line: your floor</span></h3>
+            <p id="bottomText">What it’s really running, on Excel, whiteboards and phones.</p>
+          </div>
+<!--#include ops.html-->
+        </div>
+      </div>
+
+      <div class="hero-ctrl">
+        <div class="ctrl-row">
+          <button class="go-btn" id="heroBtn" type="button">Run the line to see your operations</button>
+          <button class="quiet-btn" id="heroReset" type="button" hidden>Start over</button>
+        </div>
+        <p class="hero-caption" id="heroCaption" aria-live="polite">The schedule says what to run. The line runs whatever it’s handed. Nothing links them. Run it, or tap the line.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90L0 50C120 18 210 70 330 54C470 36 530 6 670 28C810 50 870 80 1010 58C1150 36 1250 12 1440 42L1440 90Z"/></svg>
+</section>
+
+<main>
+
+<!--#include stage.html-->
+
+<section class="back">
+  <div class="wrap">
+    <h2>A print can say what it likes. <span>The inspection report has to be true.</span></h2>
+
+    <div class="label">
+      <div class="label-proof">
+        <!--#include report.html-->
+      </div>
+      <div class="label-copy">
+        <p class="facts-src">Yes, that’s furniture, not sheet metal: one group in India, six plants. Every number comes from that one deployment.</p>
+        <p><strong>Material:</strong> Your orders, your routings, your people’s own words, what actually happened on the floor.</p>
+        <p><strong>Tolerance:</strong> Zero, between what your ERP says and what your floor did.</p>
+        <p><strong>Free from:</strong> Artificial modules, added consultants, rip-and-replace and GL migration.</p>
+        <div class="lockup">
+          <a class="barcode" href="tel:+17732804485" aria-label="Call Mukund at 773 280 4485">
+            <svg id="barcode" viewBox="0 0 90 26" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span>773 280 4485</span>
+          </a>
+          <p class="inkjet">NEXT PM: BEFORE YOUR NEXT ERP RENEWAL<br>JOB NO. 1623-W-FULTON</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-ask">
+      <h2>{{first}}, I’d like an appointment with you.</h2>
+      <p class="meet-lead">15 minutes at {{where}}. <strong>I much prefer to meet in person,</strong> and I’ll come to you. No slides, nothing to buy.</p>
+      <div class="meet-btns">
+        <a class="go-btn" href="mailto:mukund@simplegrid.ai?subject=Let%E2%80%99s%20meet%20in%20person&amp;body=Hi%20Mukund%2C%0A%0ACome%20by%20{{town|url}}.%20How%20about%20">Let’s meet in person</a>
+        <a class="side-btn" href="https://cal.com/simplegrid/30min?duration=15" target="_blank" rel="noopener noreferrer">Can’t do in person? Book a call</a>
+      </div>
+      <p class="meet-contact"><a href="mailto:mukund@simplegrid.ai">mukund@simplegrid.ai</a> or <a href="tel:+17732804485">(773) 280-4485</a>. If it’s a no, just say so and I won’t follow up again.</p>
+      <p class="meet-ps">{{ps}}</p>
+    </div>
+    <!--#include faces.html-->
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="https://simplegrid.ai/" aria-label="SimpleGrid home"><!--#include logo.svg--></a>
+    <p>Everything we know about {{co_name}} comes from your website, LinkedIn and the press. If we got something wrong, tell us and we’ll cut it again. The rest of the shop is at <a href="https://simplegrid.ai/">simplegrid.ai</a>. © 2026 SimpleGrid Inc.</p>
+  </div>
+</footer>
+
+<script>
+<!--#include kit.js-->
+</script>
+<script>
+<!--#include line.js-->
+</script>
+<script>
+window.STAGE = {
+  erp: [
+    ['Order 4417', 'Ships Thursday', 'Ships <s>Thursday</s> Monday'],
+    ['Sheet stock', '400 sheets on hand', '<s>400</s> 310 sheets on hand'],
+    ['Open POs', 'None overdue', '1 new, awaiting OK'],
+    ['Margin on 4417', '22%', '<s>22%</s> 17%']
+  ],
+  notes: [
+    'Laser 2 is down!',
+    'Customer: Where’s my order?',
+    'job_board_FINAL_v7.xlsx',
+    'Steel truck: 90 sheets short',
+    'Which revision are we bending???',
+    'Re: Re: Fwd: Re: which lot?',
+    'QA hold: lot 2207',
+    'job_board_FINAL_v8_USE THIS.xlsx',
+    'Customer: You said Thursday.',
+    'Rebuilding the schedule. Again.',
+    'What did that run actually cost?',
+    'Ask whoever knows'
+  ],
+  tidy: [
+    'Brake 6 crew: Order 4417 moved to you',
+    'Customer: 4417 ships Monday, and here’s why',
+    'Buyer: Steel PO is ready for your OK',
+    'QA: Lot 2207 on hold, and everyone can see it'
+  ]
+};
+</script>
+<script>
+<!--#include stage.js-->
+SG.barcode(document.getElementById('barcode'));
+</script>
+</body>
+</html>
